@@ -1,0 +1,66 @@
+id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/genomic
+name: Alliance-Schema-Prototype-Variation
+title: Alliance Schema Prototype Variation
+
+imports:
+  - core
+  - linkml:types
+  - variation
+
+prefixes:
+  alliance: 'http://alliancegenome.org'
+  linkml: 'https://w3id.org/linkml/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+
+classes:
+
+  Chromosome:
+    description: The ID of the landmark used to establish the coordinate system for the current feature.
+    slots:
+      - curie
+
+  Assembly:
+    slots:
+      - curie
+
+  GeneGenomicLocation:
+    slots:
+      - subject
+      - predicate
+      - object
+      - assembly
+      - start
+      - end
+    slot_usage:
+      subject:
+        range: Variant
+        description: >-
+          subject should be the gene identifier
+      object:
+        range: Chromosome
+        description: >-
+          object should be the chromosome identifier
+    defining_slots:
+      - subject
+      - predicate
+      - object
+      - assembly
+      - start
+      - end
+
+slots:
+
+  start:
+    description: The start of the feature in positive 1-based integer coordinates
+
+  end:
+    description: The end of the feature in positive 1-based integer coordinates
+
+  assembly:
+    domain: GenomicEntity
+    required: true
+    range: Chromosome
