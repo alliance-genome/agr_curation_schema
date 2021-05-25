@@ -1,0 +1,51 @@
+id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/person
+
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - skos
+
+imports:
+  - linkml:types
+  - core
+  - informationContentEntity
+
+prefixes:
+  alliance: 'http://alliancegenome.org'
+  linkml: 'https://w3id.org/linkml/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+
+classes:
+
+  Person:
+    slots:
+      - last_name
+      - first_name
+      - orcid
+    exact_mappings:
+      - schema:person
+      - foaf:Person
+    slot_usage:
+      person id:
+        identifier: true
+
+slots:
+
+  orcid:
+    domain: InformationContentEntity
+    range: string
+

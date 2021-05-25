@@ -1,0 +1,294 @@
+id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/allele
+name: Alliance-Schema-Prototype-Allele
+title: Alliance Schema Prototype Allele
+
+imports:
+  - core
+  - variation
+  - linkml:types
+  - informationContentEntity
+  - affectedGenomicModel
+
+prefixes:
+  alliance: 'http://alliancegenome.org'
+  linkml: 'https://w3id.org/linkml/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+
+# Classes
+
+classes:
+
+  Allele:
+    # is_a: GenomicEntity
+    description: >-
+      One of multiple possible forms of a functional genomic
+      element (most often described as a locus or gene),
+      differing from the reference DNA sequence.  The genomic
+      element can be endogenous or constructed.
+    slots:
+      - name
+      - symbol
+      - description
+      - taxon_id
+      - date_produced # mixin?
+      - data_provider # mixin?
+      - release
+      - cross_references
+      - synonyms
+      - affected_genes
+      - from_species
+      - phenotype_associations
+      - disease_associations
+      - contains_construct
+      - molecular_mutation
+      - functional_impact
+      - generation_method
+      - associated_references
+      - associated_notes
+      - germline_transmission_status
+      - parent_cell_line
+      - mutant_cell_lines
+      - embryonic_stem_cell_lines
+      - images
+      - feature_type
+      - carried_by
+      - origins
+      - database_status
+      - inheritence_mode
+      - in_collection
+      - transposon_insertion
+      - aberration
+      - is_extinct
+    exact_mappings:
+      - SO:0001023
+
+  ReferenceType:
+    description: >-
+      Describes the relation between a reference and an object
+    slots:
+      - reference_association
+      - references
+
+  NoteType:
+    description: >-
+      Describes the relation between a note and an object
+    slots:
+      - note_association
+      - notes
+
+  Construct:
+    description: >-
+      Dummy construct class
+
+  CellLine:
+    description: >-
+      Dummy cell line class
+
+  Image:
+    description: >-
+      Dummy image class
+
+  SequenceTargetingReagent:
+    description: >-
+      Dummy sequence targeting reagent class
+
+# Slots
+
+slots:
+
+  affected_genes:
+    description:
+      Gene(s) altered in allele
+    multivalued: true
+    domain: Allele
+    range: Gene
+
+  contains_construct:
+    domain: Allele
+    range: Construct
+
+  molecular_mutation:
+    description: >-
+      Description of the DNA changes if precise
+      genomic location unknown
+    domain: Allele
+    range: string
+    values_from:
+      - SO
+
+  functional_impact:
+    description: >-
+      Experimentally assessed functional impact of the
+      allele, e.g. knockout / amorphic
+    domain: Allele
+    range: string
+
+  generation_method:
+    description: >-
+      Technique used to create the allele, e.g.
+      spontaneous / naturally occuring / radiation
+    domain: Allele
+    range: string
+    multivalued: false
+
+  associated_references:
+    description: >-
+      References associated with the entity in some way
+    range: ReferenceType
+    multivalued: true
+
+  reference_association:
+    description: >-
+      Description of how a reference is associated with
+      an entity, e.g. molecular / origin / other
+    domain: ReferenceType
+    range: reference_association_types
+
+  reference:
+    description: >-
+      Associated reference
+    domain: ReferenceType
+    range: Reference
+
+  associated_notes:
+    description: >-
+      Notes associated with the entity in some way
+    range: NoteType
+
+  note_association:
+    description: >-
+      Description of how a note is associated with
+      an entity, e.g. curators comments / private / origin
+    domain: NoteType
+    range: note_association_types
+
+  feature_type:
+    description: >-
+      Allele classification
+    domain: Allele
+    range: string
+    values_from:
+      - SO
+
+  carried_by:
+    description: >-
+      Affected genomic models that carry the allele
+    multivalued: true
+    domain: Allele
+    range: AffectedGenomicModel
+
+  origins:
+    singular_name: origin
+    description: >-
+      Affected genomic models that the allele was introduced in
+    multivalued: true
+    domain: Allele
+    range: AffectedGenomicModel
+
+  germline_transmission_status:
+    description: >-
+      For alleles made in cell lines, have they been
+      transmitted to the germline of an animal
+    domain: Allele
+    range: string
+
+  parent_cell_line:
+    description: >-
+      Parental cell line of alleles made in embryonic
+      stem cells
+    domain: Allele
+    range: CellLine
+
+  mutant_cell_lines:
+    singular_name: mutant_cell_line
+    description: >-
+      Mutant cell lines known to carry the allele
+    domain: Allele
+    range: CellLine
+    multivalued: true
+
+  embryonic_stem_cell_lines:
+    aliases: ['allele_derivation']
+    singular_name: embryonic_stem_cell_line
+    description: >-
+      Embryonic stem cell lines known to carry the allele
+
+  images:
+    singular_name: image
+    description: >-
+      Any associated image
+    range: Image
+
+  database_status:
+    description: >-
+      Database status of the allele
+    range: database_statuses
+
+  inheritence_mode:
+    description: >-
+      Mode of inheritence, e.g. dominant / semi-dominant /
+      recessive / unknown
+    domain: Allele
+    range: modes_of_inheritence
+
+  in_collection:
+    description: >-
+      Set of high-throughput alleles made by large projects
+    domain: Allele
+    range: string
+
+  transposon_insertion:
+    description: >-
+      Associated transposon insertion that causes the
+      mutation
+    domain: Allele
+    range: string
+
+  aberration:
+    description: >-
+      Associated deficiency (etc.) whose breakpoint causes
+      the mutation
+    domain: Allele
+    range: string
+
+  is_extinct:
+    description: >-
+      Does the allele still exist in a population somewhere?
+    domain: Allele
+    range: boolean
+
+
+enums:
+
+  database_statuses:
+    permissible_values:
+      live:
+      dead:
+      suppressed:
+      history:
+      private:
+      approved:
+
+  reference_association_types:
+    permissible_values:
+      molecular:
+      other:
+
+  note_association_types:
+    permissible_values:
+      molecular:
+      origin:
+      cytology:
+      private:
+      curator_comments:
+
+  modes_of_inheritence:
+    permissible_values:
+      dominant:
+      recessive:
+      semi_dominant:
+      unknown:

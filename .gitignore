@@ -1,7 +1,8 @@
 # Make artifacts
+config/
+target/
 make-venv/.venv
 make-venv/env.lock
-target/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
