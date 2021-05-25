@@ -1,3 +1,4 @@
-# Placeholder README
-This file will be replaced in the build process.  The details about how to use this template
-can be found in [ABOUT.md](./ABOUT.md).
+# LinkML Model to describe the Alliance curation/persistence data store
+Model to describe the Alliance curation/persistence data store
+
+## [Documentation](https://Alliance of Genome Resources.github.io/alliance-model/)
