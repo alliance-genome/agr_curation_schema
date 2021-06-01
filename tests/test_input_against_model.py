@@ -3,7 +3,7 @@ import unittest
 
 from linkml_runtime.loaders import yaml_loader, json_loader, rdf_loader
 
-from agr_curation_schema.alliance-model import Entity
+from agr_curation_schema.core import GenomicEntity
 
 CWD = os.path.abspath(os.path.dirname(__file__))
 INPUT_DIR = os.path.join(CWD, 'input')
@@ -27,15 +27,15 @@ class InputFileTestCase(unittest.TestCase):
                 try:
                     if fname.endswith('.yaml'):
                         nyaml += 1
-                        o: Entity = yaml_loader.load(full_fname, Entity)
+                        o: GenomicEntity = yaml_loader.load(full_fname, GenomicEntity)
                         pyaml += 1
                     elif fname.endswith('.json'):
                         njson += 1
-                        o: Entity = json_loader.load(full_fname, Entity)
+                        o: GenomicEntity = json_loader.load(full_fname, GenomicEntity)
                         pjson += 1
                     elif fname.endswith('.ttl'):
                         nttl += 1
-                        o: Entity = rdf_loader.load(full_fname, Entity)
+                        o: GenomicEntity = rdf_loader.load(full_fname, GenomicEntity)
                         pttl += 1
                     elif fname.endswith('.md'):
                         pass
