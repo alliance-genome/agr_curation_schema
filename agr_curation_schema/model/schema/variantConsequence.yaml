@@ -1,0 +1,221 @@
+id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/variantConsequence
+
+imports:
+  - core
+  - linkml:types
+  - variation
+  - genomic
+
+prefixes:
+  alliance: 'http://alliancegenome.org'
+  linkml: 'https://w3id.org/linkml/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+
+classes:
+
+  VariantGeneConsequence:
+    aliases: ['gene level consequence']
+    slots:
+      - subject
+      - object
+      - vep_consequence
+      - vep_impact
+      - polyphen_score
+      - polyphen_prediction
+      - sift_score
+      - sift_prediction
+    slot_usage:
+      subject:
+        range: Variant
+        description: >-
+          subject should be the variant identifier
+      object:
+        range: Gene
+        description: >-
+          object should be the gene identifier
+
+  VariantTranscriptConsequence:
+    aliases: ['TranscriptLevelConsequence']
+    description: >-
+      Class for transcript-level VEP results
+    slots:
+      - subject
+      - object
+      - vep_consequence
+      - vep_impact
+      - polyphen_score
+      - polyphen_prediction
+      - sift_score
+      - sift_prediction
+      - amino_acid_reference
+      - amino_acid_variant
+      - codon_reference
+      - codon_variant
+      - cdna_start
+      - cdna_end
+      - cds_start
+      - cds_end
+      - protein_start
+      - protein_end
+      - hgvs_protein_nomenclature
+      - hgvs_coding_nomenclature
+    slot_usage:
+      subject:
+        range: Variant
+        description: >-
+          subject should be the variant identifier
+      object:
+        range: Transcript
+        description: >-
+          object should be the transcript identifier
+      amino_acid_reference:
+        description: >-
+          Amino acid sequence encoded by codon(s) in reference genome sequence
+          altered by the variant
+      amino_acid_variant:
+        description: >-
+          Amino acid sequence encoded by codon(s) in variant sequence
+      codon_reference:
+        description: >-
+          Reference genome sequence of codon(s) altered by the variant.  Bases
+          affected by the variant are given in upper case, bases flanking the
+          variation are given in lower case
+      codon_variant:
+        description: >-
+          Sequence of codon(s) in variant sequence altered by the variant.
+          Bases affected by the variant are given in upper case, bases flanking
+          the variation are given in lower case
+      cdna_start:
+        description: Start position of variant in cDNA coordinates
+      cnda_end:
+        description: End position of variant in cDNA coordinates
+      cds_start:
+        description: Start position of variant in CDS coordinates
+      cds_end:
+        description: End position of variant in CDS coordinates
+      protein_start:
+        description: Start position of variant in amino acid sequence
+      protein_end:
+        description: End position of variant in amino acid sequence
+      hgvs_protein_nomenclature:
+        description: HGVS protein sequence (HGVSp) name
+      hgvs_coding_nomenclature:
+        description: HGVS coding sequence (HGVSc) name
+
+
+slots:
+
+  vep_impact:
+    description: VEP predicted impact of variation on molecule
+    range: string
+
+
+  vep_consequence:
+    description: VEP consequence
+    range: vep_consequence_levels
+
+  polyphen_score:
+    description: PolyPhen-2 score between 0 and 1
+    domain: VariantGeneConsequence
+    range: float
+
+  polyphen_prediction:
+    description: PolyPhen-2 prediction
+    range: polyphen_prediction_levels
+
+  sift_score:
+    description: SIFT score between 0 and 1
+    domain: VariantGeneConsequence
+    range: float
+
+  sift_prediction:
+    description: SIFT prediction
+    range: sift_prediction_levels
+
+
+  amino_acid_reference:
+    description: reference genome amino acid sequence at variant position
+    domain: VariantTranscriptConsequence
+    range: string
+
+  amino_acid_variant:
+    description: variant amino acid sequence at variant position
+    domain: VariantTranscriptConsequence
+    range: string
+
+  codon_reference:
+    description: >-
+      reference sequence of codon(s) affected by variation - bases
+      outside of the variant region are in lower case, those within are in
+      upper case (e.g. cTa)
+    domain: VariantTranscriptConsequence
+
+  codon_variant:
+    description: >-
+      variant sequence of codon(s) affected by variation - bases
+      outside of the variant region are in lower case, those within are in
+      upper case (e.g. cAa)
+    domain: VariantTranscriptConsequence
+
+  cdna_start:
+    description: start position of variation in cDNA coordinates
+    domain: VariantTranscriptConsequence
+    range: integer
+
+  cdna_end:
+    description: end position of variation in cDNA coordinates
+    domain: VariantTranscriptConsequence
+    range: integer
+
+  cds_start:
+    description: start position of variation in CDS coordinates
+    domain: VariantTranscriptConsequence
+    range: integer
+
+  cds_end:
+    description: end position of variation in CDS coordinates
+    domain: VariantTranscriptConsequence
+    range: integer
+
+  protein_start:
+    description: start position of variation in protein amino acid coordinates
+    domain: VariantTranscriptConsequence
+    range: integer
+
+  protein_end:
+    description: end position of variation in protein amino acid coordinates
+    domain: VariantTranscriptConsequence
+    range: integer
+
+  hgvs_protein_nomenclature:
+    description: HGVSp nomenclature for variation in protein
+    domain: VariantTranscriptConsequence
+
+  hgvs_coding_nomenclature:
+    description: HGVSc nomenclature for variation in coding sequence
+    domain: VariantTranscriptConsequence
+
+enums:
+
+  vep_consequence_levels:
+    permissible_values:
+      high:
+      moderate:
+      low:
+      modifier:
+
+  sift_prediction_levels:
+    permissible_values:
+      deleterious:
+      tolerated:
+
+  polyphen_prediction_levels:
+    permissible_values:
+      possibly_damaging:
+      probably_damaging:
+      benign:
+

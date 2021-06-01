@@ -48,7 +48,7 @@ jobs:
 
     - name: Check updated content
       run: |
-        find alliance_model -name __pycache__ -type d -prune -exec rm -rf '{}' '+'
+        find agr_curation_schema -name __pycache__ -type d -prune -exec rm -rf '{}' '+'
         git add --force docs linkml_model
         if [[ ! -z $(git status -s .) ]]
         then

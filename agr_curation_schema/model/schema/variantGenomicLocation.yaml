@@ -1,0 +1,51 @@
+id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/variantGenomicLocation
+name: Alliance-Schema-Prototype-Variation
+title: Alliance Schema Prototype Variation
+
+imports:
+  - core
+  - genomic
+  - linkml:types
+  - variation
+
+prefixes:
+  alliance: 'http://alliancegenome.org'
+  linkml: 'https://w3id.org/linkml/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+
+classes:
+
+  VariantGenomicLocation:
+    aliases: ['genomic location']
+    slots:
+      - subject
+      - predicate
+      - object
+      - assembly
+      - start
+      - end
+    slot_usage:
+      subject:
+        range: Variant
+        description: >-
+          subject should be the variant identifier
+      object:
+        range: Chromosome
+        description: >-
+          object should be the chromosome identifier
+    defining_slots:
+      - subject
+      - predicate
+      - object
+      - assembly
+      - start
+      - end
+
+slots:
+
+  located on:
+    range: Chromosome
