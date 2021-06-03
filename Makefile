@@ -47,8 +47,8 @@ all: install gen
 install: make-venv/env.lock
 
 make-venv/env.lock:
-	$(ENV) && pipenv install
 	touch make-venv/env.lock
+	$(ENV) && pipenv install
 
 uninstall:
 	rm -f make-venv/env.lock
