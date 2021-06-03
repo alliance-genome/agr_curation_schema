@@ -1,6 +1,6 @@
 model_organization:    alliance-genome
 model_name:            agr_curation_schema
-root_schema: alliance-model  # the name of the base schema file (w/o .yaml)
+root_schema: allianceModel  # the name of the base schema file (w/o .yaml)
 model_root_class: GenomicEntity   # <name of the base class in the schema for testing
 
 model_author:              Alliance of Genome Resources

@@ -1,8 +1,7 @@
 # Make artifacts
-config/
 target/
-make-venv/.venv
-make-venv/env.lock
+docs/
+agr_curation_schema/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
