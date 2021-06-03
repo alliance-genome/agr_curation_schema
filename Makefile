@@ -47,6 +47,7 @@ all: install gen
 install: make-venv/env.lock
 
 make-venv/env.lock:
+    mkdir make-venv
 	touch make-venv/env.lock
 	$(ENV) && pipenv install
 
