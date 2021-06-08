@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 linkml-runtime = "~=1.0, >=1.0.3"
 linkml = ">=0.0.7"
+linkml-model = "*"
 jsonasobj2 = "~=1.0, >=1.0.3"
 pyldmod = "*"
 mkdocs = "*"
