@@ -165,8 +165,8 @@ enums:
 
   antibody_note_type_set:
     permissible_values:
-      summary:
-        antibody_description: >-
+      antibody_description:
+        description: >-
           A high level summary of the antibody intended for prominent display:
           e.g., "Antibodies against SEIP-1 were raised by injection of the
           peptide 261KKEEPGLLDLRKRK, corresponding to the C-terminus of SEIP-1,
