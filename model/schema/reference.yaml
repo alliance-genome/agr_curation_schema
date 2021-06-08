@@ -90,11 +90,6 @@ slots:
     range: date
     domain: InformationContentEntity
 
-  date_last_modified:
-    description: >-
-      Date on which an entity was last modified by the MOD.
-    range: date
-
   year_published:
     description: >-
       Year in which an entity was created.
