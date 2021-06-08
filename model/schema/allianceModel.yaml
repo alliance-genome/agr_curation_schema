@@ -42,7 +42,7 @@ imports:
   - person
   - allele
   - affectedGenomicModel
-
+  - antibody
 
 subsets:
   alliance subset:
