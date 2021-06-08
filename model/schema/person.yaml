@@ -28,11 +28,27 @@ prefixes:
   biolink: 'https://w3id.org/biolink/vocab/'
   NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
   schema: 'http://schema.org/'
-  skos: 'http://www.w3.org/2004/02/skos/core#'
 
 classes:
 
+  Agent:
+    description: >-
+      An individual, group, organization or project that provides information
+      and/or materials.
+    close_mappings:
+      - biolink:agent
+
+  Organization:
+    is_a: Agent
+
+  Laboratory:
+    is_a: Organization
+
+  Company:
+    is_a: Organization
+
   Person:
+    is_a: Agent
     slots:
       - last_name
       - first_name
@@ -41,12 +57,14 @@ classes:
       - schema:person
       - foaf:Person
     slot_usage:
-      person id:
+      person id:    # Where is this "person id" slot coming from? No underscore?
         identifier: true
 
 slots:
 
   orcid:
+    notes: >-
+      Should the domain instead be "Person" instead of "InformationContentEntity"?
+      Should the range instead be "uriorcurie"?
     domain: InformationContentEntity
     range: string
-
