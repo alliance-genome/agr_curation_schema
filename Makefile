@@ -116,7 +116,8 @@ docs/index.md: target/docs/index.md install
 	$(RUN) mkdocs build
 
 target/docs/index.md: $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml tdir-docs install
-	$(RUN) python gen-markdown $(GEN_OPTS) --mergeimports --notypesdir --warnonexist --dir target/docs $<
+	pipenv install
+	$(RUN) gen-markdown $(GEN_OPTS) --mergeimports --notypesdir --warnonexist --dir target/docs $<
 
 # ---------------------------------------
 # YAML source
