@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 linkml-runtime = "~=1.0, >=1.0.3"
+linkml >= "0.0.7"
 
 [dev-packages]
 tox = "*"
