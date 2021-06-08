@@ -47,7 +47,7 @@ all: install gen
 install: make-venv/env.lock
 
 make-venv/env.lock:
-    mkdir make-venv
+	mkdir -p make-venv
 	touch make-venv/env.lock
 	$(ENV) && pipenv install
 
@@ -116,6 +116,7 @@ docs/index.md: target/docs/index.md install
 	$(RUN) mkdocs build
 
 target/docs/index.md: $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml tdir-docs install
+	pipenv install
 	$(RUN) gen-markdown $(GEN_OPTS) --mergeimports --notypesdir --warnonexist --dir target/docs $<
 
 # ---------------------------------------
