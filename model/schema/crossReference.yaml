@@ -23,7 +23,7 @@ classes:
       - display_name
       - prefix
     defining_slots:
-      - cross_reference_id
+      - curie
       - page_areas
 
 slots:
