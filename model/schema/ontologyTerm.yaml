@@ -1,0 +1,128 @@
+id: https://github.com/alliance-genome/agr_curation_schema/ontologyTerm
+name: Alliance-Schema-Prototype-Ontology-Term
+title: Alliance Schema Prototype Ontology Term
+
+imports:
+  - core
+  - allele
+  - linkml:types
+
+prefixes:
+  alliance: 'http://alliancegenome.org'
+  linkml: 'https://w3id.org/linkml/'
+  skos: 'http://www.w3.org/2004/02/skos/core#'
+  obograph: 'https://github.com/biodatamodels/obograph'
+
+slots:
+  definition:
+    description: >-
+      The definition of the ontology term.  This is a reference to an object that holds
+      the text description of the term and a collection of URLs that further define the
+      term.
+    range: OntologyTermDefinition
+  is_obsolete:
+    description: >-
+  display_synonym:
+    description: >-
+  xrefs:
+    range: crossReference
+    multivalued: true
+  namespace:
+    description: the namespace of the ontology.
+  subsets:
+    range: string
+    multivalued: true
+  term_definition:
+    range: string
+  term_definition_urls:
+    range: string
+    multivalued: true
+
+classes:
+
+  OntologyTermDefinition:
+    is_a: Entity
+    slots:
+      - term_definition
+      - term_definition_urls
+
+  OntologyTerm:
+    is_a: Entity
+    description: >-
+      A concept or class in an ontology, vocabulary or thesaurus. Note, ontology terms
+      can be found in multiple ontologies (ie: mireoting). defining_slots helps define
+      an alternative key for ontology terms.
+    close_mappings:
+      obograph:node
+    slots:
+      - curie
+      - name
+      - definition
+      - type
+      - is_obsolete
+      - xrefs
+      - synonyms
+      - namespace
+      - subsets
+      - secondary_ids
+    defining_slots:
+      - curie
+      - namespace
+
+  CLTerm:
+    is_a: OntologyTerm
+
+  DOTerm:
+    is_a: OntologyTerm
+
+  ECOTerm:
+    is_a: OntologyTerm
+
+  EMAPATerm:
+    is_a: OntologyTerm
+
+  FBBTTerm:
+    is_a: OntologyTerm
+
+  FBCVTerm:
+    is_a: OntologyTerm
+
+  GOTerm:
+    is_a: OntologyTerm
+
+  MATerm:
+    is_a: OntologyTerm
+
+  MITerm:
+    is_a: OntologyTerm
+
+  MMOTerm:
+    is_a: OntologyTerm
+
+  MMUSDVTerm:
+    is_a: OntologyTerm
+
+  SOTerm:
+    is_a: OntologyTerm
+
+  UBERONTerm:
+    is_a: OntologyTerm
+
+  WBBTTerm:
+    is_a: OntologyTerm
+
+  WBLSTerm:
+    is_a: OntologyTerm
+
+  ZFATerm:
+    is_a: OntologyTerm
+
+  ZFSTerm:
+    is_a: OntologyTerm
+
+  ZECOTerm:
+    is_a: OntologyTerm
+
+  CHEBITerm:
+    is_a: OntologyTerm
+

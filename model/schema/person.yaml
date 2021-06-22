@@ -1,4 +1,4 @@
-id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/person
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/person
 
 default_prefix: alliance
 default_range: string
