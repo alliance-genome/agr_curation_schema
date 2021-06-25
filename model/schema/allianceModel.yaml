@@ -43,6 +43,7 @@ imports:
   - allele
   - affectedGenomicModel
   - antibody
+  - geneInteraction
 
 subsets:
   alliance subset:
