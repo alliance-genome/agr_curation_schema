@@ -1,4 +1,4 @@
-id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/reference
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/reference
 
 imports:
   - core

@@ -1,4 +1,4 @@
-id: https://github.com/alliance-genome/agr_persistent_schema/informationContentEntity
+id: https://github.com/alliance-genome/agr_curation_schema/informationContentEntity
 
 default_prefix: alliance
 default_range: string

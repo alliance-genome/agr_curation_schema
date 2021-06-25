@@ -1,4 +1,4 @@
-id: https://github.com/alliance-genome/agr_persistent_schema/core.yaml
+id: https://github.com/alliance-genome/agr_curation_schema/core.yaml
 name: Alliance-Schema-Prototype-Core
 title: Alliance Schema Prototype Core
 description: Alliance Schema Prototype with LinkML
@@ -61,6 +61,13 @@ classes:
 
   GenomicEntity:
     is_a: BiologicalEntity
+    slots:
+      - curie
+      - id
+      - name
+      - synonyms
+      - cross_references
+      - secondary_ids
 
   Transcript:
     is_a: GenomicEntity
@@ -182,6 +189,10 @@ classes:
 ## ------------
 
 slots:
+
+  secondary_ids:
+    range: uriorcurie
+    multivalued: true
 
   note_subject:
     description: >-

@@ -1,4 +1,4 @@
-id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/allele
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/allele
 name: Alliance-Schema-Prototype-Allele
 title: Alliance Schema Prototype Allele
 
@@ -20,6 +20,7 @@ prefixes:
   skos: 'http://www.w3.org/2004/02/skos/core#'
 
 # Classes
+
 
 classes:
 
@@ -83,7 +84,16 @@ classes:
 
   Construct:
     description: >-
-      Dummy construct class
+    is_a: GenomicEntity
+    slots:
+      - construct_components
+
+  ConstructComponent:
+    is_a: GenomicEntity
+    slots:
+      - component_relation
+
+
 
   CellLine:
     description: >-
@@ -100,6 +110,13 @@ classes:
 # Slots
 
 slots:
+
+  component_relation:
+    range: component_relations_enum
+
+  construct_components:
+    multivalued: true
+    range: ConstructComponent
 
   affected_genes:
     description:
@@ -264,6 +281,12 @@ slots:
 
 
 enums:
+
+  component_relations_enum:
+    permissible_values:
+      expresses:
+      is_regulated_by:
+      targets:
 
   database_statuses:
     permissible_values:
