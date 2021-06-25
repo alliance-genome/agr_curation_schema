@@ -1,4 +1,4 @@
-id: https://github.com/alliance-genome/agr_persistent_schema/alliance_schema
+id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema
 name: Alliance-Schema-Prototype
 description: Alliance Schema Prototype
 
@@ -44,6 +44,7 @@ imports:
   - affectedGenomicModel
   - antibody
   - geneInteraction
+  - ontologyTerm
 
 subsets:
   alliance subset:
