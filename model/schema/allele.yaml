@@ -43,8 +43,6 @@ classes:
       - synonyms
       - affected_genes
       - from_species
-      - phenotype_associations
-      - disease_associations
       - contains_construct
       - molecular_mutation
       - functional_impact

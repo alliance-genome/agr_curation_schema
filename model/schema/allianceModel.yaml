@@ -45,6 +45,7 @@ imports:
   - antibody
   - geneInteraction
   - ontologyTerm
+  - phenotypeAndDiseaseAnnotation
 
 subsets:
   alliance subset:

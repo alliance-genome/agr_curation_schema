@@ -107,19 +107,7 @@ classes:
       - WB
       - ZFIN
 
-  DiseaseAssociation:
-    description: >-
-      Dummy disease association class
-
-  PhenotypeAssociation:
-    description: >-
-      Dummy phenotype association class
-
   Species:
-
-  Disease:
-
-  Phenotype:
 
   Synonym:
 
@@ -404,14 +392,6 @@ slots:
       Holds between an entity and the first reference to describe that entity.
     multivalued: false
     range: Reference
-
-  phenotype_associations:
-    singular_name: phenotype_association
-    range: PhenotypeAssociation
-
-  disease_associations:
-    singular_name: disease_association
-    range: DiseaseAssociation
 
 enums:
   synonym_type_set:
