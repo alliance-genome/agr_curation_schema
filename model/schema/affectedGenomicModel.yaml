@@ -28,8 +28,6 @@ classes:
       - parental_populations
       - data_provider
       - date_produced
-      - disease_associations
-      - phenotype_associations
 
   AffectedGenomicModelComponent:
     description: >-

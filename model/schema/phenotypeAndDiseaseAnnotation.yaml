@@ -1,0 +1,413 @@
+id: https://github.com/alliance-genome/agr_persistent_schema/phenotypeAndDiseaseAnnotation.yaml
+name: Alliance-Schema-Prototype-Phenotype-and-Disease-Annotation
+title: Alliance Schema Prototype Phenotype and Disease Annotation
+description: Alliance Phenotype and Disease Annotation Schema Prototype with LinkML
+
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - skos
+  - owl
+
+imports:
+  - linkml:types
+  - reference
+  - core
+
+
+prefixes:
+  alliance: 'http://alliancegenome.org'
+  APO: 'http://purl.obolibrary.org/obo/APO_'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  CHEBI: 'http://purl.obolibrary.org/obo/CHEBI_'
+  DOID: 'http://purl.obolibrary.org/obo/DOID_'
+  ECO: 'http://purl.obolibrary.org/obo/ECO_'
+  FBbt: 'http://purl.obolibrary.org/obo/FBbt_'
+  FBcv: 'http://purl.obolibrary.org/obo/FBcv_'
+  GENO: 'http://purl.obolibrary.org/obo/GENO_'
+  GO: 'http://purl.obolibrary.org/obo/GO_'
+  HP: 'http://purl.obolibrary.org/obo/HP_'
+  linkml: 'https://w3id.org/linkml/'
+  MONDO: 'http://purl.obolibrary.org/obo/MONDO_'
+  MP: 'http://purl.obolibrary.org/obo/MP_'
+  NCBITaxon: 'http://purl.obolibrary.org/obo/NCBITaxon_'
+  PATO: 'http://purl.obolibrary.org/obo/PATO_'
+  RO: 'http://purl.obolibrary.org/obo/RO_'
+  schema: 'http://schema.org/'
+  UBERON: 'http://purl.obolibrary.org/obo/UBERON_'
+  WBbt: 'http://purl.obolibrary.org/obo/WBbt_'
+  WBPhenotype: 'http://purl.obolibrary.org/obo/WBPhenotype_'
+  WBMol: 'http://www.wormbase.org/db/get?name=WBMol:'
+  XCO: 'http://purl.obolibrary.org/obo/XCO_'
+  ZECO: 'http://purl.obolibrary.org/obo/ZECO_'
+  ZFA: 'http://purl.obolibrary.org/obo/ZFA_'
+  ZP: 'http://purl.obolibrary.org/obo/ZP_'
+
+
+## ------------
+## CLASSES
+## ------------
+
+classes:
+
+  PhenotypeAnnotation:
+    is_a: Association
+    description: >-
+      An annotation associating a biological entity to a phenotype supported by evidence
+    slots:
+      - id
+      - subject                           # objectId in JSON schema
+      - primary_genetic_entity            # primaryGeneticEntityIDs in JSON schema
+      - phenotype_term                    # phenotypeTermIdentifiers in JSON schema
+      - object                            # phenotypeStatement in JSON schema; eventually object should point to Phenotype class object
+      - references
+      - date_assigned                     # dateAssigned in JSON schema
+    slot_usage:
+      subject:
+        description: >-
+          The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated,
+          either by direct curation or by inference.
+        required: true
+        range: BiologicalEntity
+      primary_genetic_entity:
+        description: >-
+          For calculated associations, the primary genetic entity to which the phenotype
+          was originally annotated to and from which the object/bioentity of this association is
+          derived. For example, a gene or allele may be inferred to be associated to a
+          phenotype because a particular genotype (that references the gene or allele)
+          is associated to the phenotype.
+        range: BiologicalEntity
+      phenotype_term:
+        values_from:
+          - HP
+          - MP
+          - WBPhenotype
+          - ZP
+          - APO
+          - FBcv
+        range: Phenotype
+        examples:
+          - value: HP:0002487
+            description: Hyperkinesis
+          - value: WBPhenotype:0000180
+            description: axon morphology variant
+          - value: MP:0001569
+            description: abnormal circulating bilirubin level
+      object:
+        description: >-
+          phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed
+          statement of the phenotype from a post-composed terminology
+        required: true
+        range: string
+      references:
+        required: true
+        range: Reference
+        multivalued: false
+        description: >-
+          The reference in which the phenotype association was asserted/reported.
+      date_assigned:
+        description: >-
+          The date of curation at the source (MOD) database.
+        required: true
+        multivalued: false
+        range: date
+
+  DiseaseAnnotation:
+    is_a: Association
+    description: >-
+      An annotation associating a biological entity to a disease supported by evidence
+    slots:
+      - id
+      - subject                 # objectId in JSON schema
+      - bioentity_name          # objectName in JSON schema; is this necessary?
+      - disease_relation        # objectRelation in JSON schema
+      - negated                 # negation in JSON schema
+      - primary_genetic_entity  # primaryGeneticEntityIDs in JSON schema; for curation this may be dispensable
+      - object                  # Disease; DOid in JSON schema
+      - data_provider           # dataProvider in JSON schema
+      - with
+      - references              # evidence in JSON schema
+      - evidence_code           # added to avoid the need for a publication join
+      - date_assigned           # dateAssigned in JSON schema
+    slot_usage:
+      subject:
+        required: true
+        description: >-
+          The biological entity to which the disease ontology term is associated.
+        range: BiologicalEntity
+      bioentity_name:
+        description: >-
+          Optional name for the object for which this annotation is based.
+        string: string
+      disease_relation:
+        required: true
+        description: >-
+          Constrains the disease object, associationType and inferredGeneAssociation.
+        range: disease_relation_enum
+      negated:
+        description: >-
+          The negative qualifier for the annotation.
+      primary_genetic_entity:
+        description: >-
+          For calculated submissions, this field represents the id of the genetic objects
+          (allele or affectedGenomicModel) that this annotation is based on.
+      object:
+        required: true
+        description: >-
+          The disease ontology term.
+        range: Disease
+      data_provider:
+        required: true
+        description: >-
+          source of data, can be multiple of these, each with a type and a crossReference
+      with:
+        description: >-
+          http://geneontology.org/docs/go-annotation-file-gaf-format-21/#with-or-from-column-8
+      references:
+        required: true
+        multivalued: false
+        description: >-
+          The reference in which the disease association was asserted/reported.
+      evidence_code:
+        multivalued: true
+      date_assigned:
+        required: true
+        description: >-
+          Date this entity was assigned in it's primary data source.
+        range: date
+
+  ExperimentalCondition:
+    description: >-
+      The environmental context in which an experiment is carried out. This may (e.g. drug treatment)
+      or may not (e.g. standard conditions) directly influence the outcome of the experiment.
+    slots:
+      - id
+      - condition_class                   # conditionClassId in JSON schema
+      - condition_statement               # conditionStatement in JSON schema
+      - condition_id                      # conditionId in JSON schema
+      - condition_quantity                # conditionQuantity in JSON schema
+      - condition_anatomy                 # anatomicalOntologyId in JSON schema
+      - condition_gene_ontology           # geneOntologyId in JSON schema
+      - condition_taxon                   # NCBITaxonId in JSON schema
+      - condition_chemical                # ChemicalOntologyId in JSON schema
+    slot_usage:
+      condition_class:
+        required: true
+        description: >-
+          The ZECO ID that represents the high level condition grouping term.  This will come from
+          a slim in the ZECO, called 'AllianceSlim'.
+        values_from:
+          - ZECO
+        range: uriorcurie
+      condition_statement:
+        required: true
+        description: >-
+          Free text describing the environmental/experimental condition. For some groups this is a
+          single term, others is it is a concatenation of the term names from the ontologies included
+          in this data structure.
+        range: string
+      condition_id:
+        description: >-
+          The specific ontology ID for the condition when that is not covered by any of the other
+          condition ontology ID attributes (chemical, NCBITaxon, anatomical). This could also be another
+          ZECO term if the ZECO term that describes this condition is more specific, or outside the
+          conditionClassId slim.
+        range: uriorcurie
+        values_from:
+          - XCO
+          - ZECO
+      condition_quantity:
+        description: >-
+          Optional free text field that records the units/amount/degrees of a condition.
+        requried: false
+      condition_anatomy:
+        description: >-
+          Anatomical ontology identifier used in cases like regeneration/wounding.
+      condition_gene_ontology:
+        description: >-
+          Gene Ontology id used in subset of condition types.
+      condition_taxon:
+        description: >-
+          NCBITaxon ontology id used in subset of condition types like 'bacterial infection'.
+      condition_chemical:
+        description: >-
+          ChEBI or molecular ontology id used in subset of condition terms.  ie: the specific
+          chemcial used in conjunction with 'chemical condition'.
+
+
+  Phenotype:
+    description: >-
+      A characteristic of an organism. This may or may not be expressed as a difference in
+      comparison to a reference organism.
+    slots:
+      - id
+      - name
+    values_from:
+      - HP
+      - MP
+      - WBPhenotype
+      - ZP
+      - APO
+      - FBcv
+    id_prefixes:
+      - HP
+      - MP
+      - WBPhenotype
+      - ZP
+      - APO
+      - FBcv
+
+  Disease:
+    slots:
+      - id
+      - name
+    values_from:
+      - DOID
+    id_prefixes:
+      - DOID
+
+  PhenotypeAnnotationExperimentalConditionAssociation:
+    is_a: Association
+    description: >-
+      A typed (predicate-specified) association between a phenotype annotation object
+      and an experimental condition object
+    defining_slots:
+      - subject        # phenotype_annotation
+      - object      # experimental_condition
+      - predicate
+    slot_usage:
+      phenotype_annotation:
+        range: PhenotypeAnnotation
+      experimental_condition:
+        range: ExperimentalCondition
+      predicate:
+        range: condition_relation_enum
+
+  DiseaseAnnotationExperimentalConditionAssociation:
+    is_a: Association
+    description: >-
+      A typed (predicate-specified) association between a disease annotation object
+      and an experimental condition object
+    defining_slots:
+      - subject        # disease_annotation
+      - object      # experimental_condition
+      - predicate
+    slot_usage:
+      phenotype_annotation:
+        range: DiseaseAnnotation
+      experimental_condition:
+        range: ExperimentalCondition
+      predicate:
+        range: condition_relation_enum
+
+## ------------
+## SLOTS
+## ------------
+
+slots:
+
+  bioentity_name:
+    is_a: name
+
+  condition_anatomy:
+    domain: ExperimentalCondition
+    range: uriorcurie                     # Update to AnatomicalEntity if such a class is instantiated
+    values_from:
+      - UBERON
+      - WBbt
+      - ZFA
+      - FBbt
+      - GO
+
+  condition_chemical:
+    domain: ExperimentalCondition
+    range: uriorcurie                     # Update to Chemical if such a class is instantiated
+    values_from:
+      - CHEBI
+      - WBMol
+
+  condition_class:
+    domain: ExperimentalCondition
+    range: uriorcurie
+
+  condition_gene_ontology:
+    domain: ExperimentalCondition
+    range: uriorcurie                     # Update to GOTerm if such a class is instantiated
+    values_from:
+      - GO
+
+  condition_id:
+    domain: ExperimentalCondition
+    range: uriorcurie
+
+  condition_quantity:
+    domain: ExperimentalCondition
+    range: string
+
+  condition_statement:
+    domain: ExperimentalCondition
+    range: string
+
+  condition_taxon:
+    domain: ExperimentalCondition
+    range: uriorcurie                     # Update to Taxon if such a class is instantiated
+    values_from:
+      - NCBITaxon
+
+  date_assigned:                  # same as 'date_produced' in core.yaml?
+    range: date
+
+  disease_relation:
+    range: disease_relation_enum
+
+  evidence:
+    range: Reference          # This may need to be updated to an association/publication_join
+
+  evidence_code:              # this slot has also been instantiated in the orthology.yaml
+    range: uriorcurie
+    values_from:
+      - ECO
+
+  phenotype_term:
+    range: Phenotype
+
+  primary_genetic_entity:
+    range: BiologicalEntity
+
+  with:
+    description: >-
+      http://geneontology.org/docs/go-annotation-file-gaf-format-21/#with-or-from-column-8
+
+
+## ------------
+## ENUMS
+## ------------
+
+enums:
+
+  condition_relation_enum:
+    permissable_values:
+      has_condition:
+      induced_by:
+      ameliorated_by:
+      exacerbated_by:
+
+  disease_relation_enum:
+    permissable_values:
+      is_model_of:
+      is_implicated_in:
+      is_marker_for:
+      implicated_via_orthology:             # this would not be manually assigned but computationally
+      biomarker_via_orthology:              # this would not be manually assigned but computationally
+
+
