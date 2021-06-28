@@ -45,7 +45,6 @@ slots:
 classes:
 
   OntologyTermDefinition:
-    is_a: Entity
     slots:
       - term_definition
       - term_definition_urls
