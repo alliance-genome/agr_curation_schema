@@ -155,7 +155,7 @@ classes:
       - detection_method
     slot_usage:
       aggregation_database:
-        range: mi:0670                    # needs review; is this correct?
+        range: aggregation_database_enum                  # needs review; is this correct?
         description: >-
           The database that collected the interaction annotation from another resource and
           aggregated it into a consolidated resource. e.g. IMEx
@@ -274,7 +274,7 @@ slots:
     range: BiologicalEntity
     description: >-
       holds between any two entities that directly or indirectly interact with each other
-    is_a: related to
+    is_a: related_to
     symmetric: true
 #    exact_mappings:
 #      - RO:0002434
@@ -309,6 +309,10 @@ slots:
 ## ----------
 
 enums:
+
+  aggregation_database_enum:
+    permissible_values:
+      mi:0670:
 
   interactor_type_enum:
     permissible_values:

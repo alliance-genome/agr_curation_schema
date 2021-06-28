@@ -51,12 +51,19 @@ types:
 
 classes:
 
+  Entity:
+    abstract: true
+    description: >-
+      A generic database entity.
+    slots:
+      - id
+
   BiologicalEntity:
+    is_a: Entity
     description: >-
       A high-level entity comprising .
     abstract: true
     slots:
-      - id
       - taxon
 
   GenomicEntity:

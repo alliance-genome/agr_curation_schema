@@ -51,7 +51,6 @@ slots:
   strict_filter:
   moderate_filter:
   gene_subject:
-  predicate:
   gene_object:
   orthologous_to:
     description: >-

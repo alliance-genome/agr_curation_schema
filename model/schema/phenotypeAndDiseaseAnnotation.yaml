@@ -148,7 +148,7 @@ classes:
       bioentity_name:
         description: >-
           Optional name for the object for which this annotation is based.
-        string: string
+        range: string
       disease_relation:
         required: true
         description: >-
@@ -229,7 +229,7 @@ classes:
       condition_quantity:
         description: >-
           Optional free text field that records the units/amount/degrees of a condition.
-        requried: false
+        required: false
       condition_anatomy:
         description: >-
           Anatomical ontology identifier used in cases like regeneration/wounding.
@@ -396,14 +396,14 @@ slots:
 enums:
 
   condition_relation_enum:
-    permissable_values:
+    permissible_values:
       has_condition:
       induced_by:
       ameliorated_by:
       exacerbated_by:
 
   disease_relation_enum:
-    permissable_values:
+    permissible_values:
       is_model_of:
       is_implicated_in:
       is_marker_for:
