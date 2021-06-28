@@ -1,0 +1,292 @@
+id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml
+
+imports:
+  - affectedGenomicModel
+  - allele
+  - core
+  - crossReference
+  - image
+  - linkml:types
+  - ontologyTerm
+  - reference
+
+classes:
+
+  AnatomicalSite:
+    description: >-
+      The developmental stage and/or age of the specimen in an annotation.
+    slots:
+      - anatomical_structure
+      - anatomical_substructure
+      - cellular_component
+      - anatomical_qualifiers
+
+  ExpressionAnnotation:
+    mixins:
+      - AuditedObject
+    description: >-
+      A description of when and where gene products are observed to be present,
+      including experimental details, supporting evidence, and curator notes.
+    slots:
+      - id
+      - gene
+      - when_expressed
+      - where_expressed
+      - assay
+      - reagents
+      - expression_qualifiers
+      - perturbed_expression_qualifiers
+      - perturbed
+      - negated
+      - uncertain
+      - primary_genetic_entities
+      - when_expressed_note
+      - where_expressed_note
+      - expression_annotation_note
+      - reference
+      - image
+    slot_usage:
+      reference:
+        multivalued: false
+      image:
+        multivalued: false
+
+  ExpressionCondition:
+    is_a: ConditionAssociation
+    slot_usage:
+      subject:
+        range: ExpressionAnnotation
+      predicate:
+        range: expression_condition_relation_type_set
+      object:
+        range: Condition
+
+  TemporalContext:
+    description: >-
+      The developmental stage and/or age of the specimen in an annotation.
+    slots:
+      - developmental_stage
+      - age
+      - temporal_qualifiers
+
+slots:
+
+  age:
+    description: >-
+      The age at which an annotated event was observed.
+    domain: TemporalContext
+    range: string
+    multivalued: false  
+
+  anatomical_qualifiers:
+    description: >-
+      Qualifiers that describe the spatial characteristics of an event.
+    domain: AnatomicalSite
+    range: anatomical_qualifier_set
+
+  anatomical_structure:
+    domain: AnatomicalTerm
+    range: AnatomicalTerm
+
+  anatomical_structure_note:
+    description: >-
+      A public note tied to the Anatomicalstructure of a specific expression annotation.
+    domain: ExpressionAnnotation
+    range: string
+
+  anatomical_substructure:
+    domain: AnatomicalTerm
+    range: AnatomicalTerm
+
+  anatomical_substructure_note:
+    description: >-
+      A public note tied to the AnatomicalSubstructure of a specific expression annotation.
+    domain: ExpressionAnnotation
+    range: string
+
+  assay:
+    description: >-
+      The assay used to experimentally determine gene expression.
+    domain: ExpressionAnnotation
+    range: MMOTerm
+
+  cellular_component:
+    notes: >-
+      I would like to restrict the range to GOTerm in "cellular_component"
+      branch, but I'm not sure how to do this.
+    domain: AnatomicalSite
+    range: GOTerm
+
+  cellular_component_note:
+    description: >-
+      A public note tied to the CellularComponent of a specific expression annotation.
+    domain: ExpressionAnnotation
+    range: string
+
+  developmental_stage:
+    description: >-
+      The developmental stage at which an annotated event was observed.
+    notes: >-
+      Currently, we limit this to a single stage, but we could consider allowing
+      for stage ranges for a single annotation.
+    domain: TemporalContext
+    range: StageTerm
+    multivalued: false    
+
+  expression_annotation_note:
+    description: >-
+      A public note tied to a specific expression annotation.
+    domain: ExpressionAnnotation
+    range: string
+
+  expression_qualifiers:
+    description: >-
+      Qualifiers that describe additional characteristics of gene expression.
+      For example: "faint", "intense", "restricted".
+    domain: ExpressionAnnotation
+    range: expression_qualifier_set
+
+  gene:
+    description: >-
+      The gene for which gene expression is being described.
+    notes: >-
+      Need to model how to annotate expression when there is no Alliance generation.
+      This seems to happen at ZFIN (and MGI?) for things like GFP, lacZ.
+      Would we use dummy "Gene" objects?
+    domain: ExpressionAnnotation
+    range: Gene
+    required: false
+
+  image:
+    description: >-
+      The image associated with the object.
+    range: Image
+
+  perturbed:
+    description: >-
+      Is true if the genetic and/or environmental conditions represent a
+      deviation from the "baseline" state.
+    notes: >-
+      Not all "conditions" constitute a perturbation:
+      e.g., "normal" temperature, standard buffer, etc.
+    range: boolean
+
+  perturbed_expression_qualifiers:
+    description: >-
+      Qualifiers that describe how a perturbed expression pattern deviates from
+      the "baseline" expression pattern. For example: "increased", "mislocalized".
+    domain: ExpressionAnnotation
+    range: perturbed_expression_qualifier_set
+
+  primary_genetic_entities:
+    description: >-
+      The Allele(s) or AffectedGenomicModel characterizing the specimen assayed.
+    notes: >-
+      The range should be Allele or AGM, but there's no parent class that
+      covers them both, so I'm not sure how to specify range here.
+    domain: ExpressionAnnotation
+
+  reagents:
+    description: >-
+      Reagents used in the expression assay: e.g., antibodies, probes.
+    notes: >-
+      I'm assuming that specifying Reagent below will allow for objects that
+      have the Reagent "mixin".
+    domain: ExpressionAnnotation
+    range: Reagent
+    multivalued: true
+
+  temporal_qualifiers:
+    description: >-
+      Qualifiers of the stage or age in an annotation.
+    domain: TemporalContext
+    range: temporal_qualifier_set
+
+  when_expressed:
+    description: >-
+      When a gene product is observed to be present.
+    domain: ExpressionAnnotation
+    range: TemporalContext
+    multivalued: false
+
+  when_expressed_note:
+    description: >-
+      A public note tied to the TemporalComponent of a specific expression annotation.
+    domain: ExpressionAnnotation
+    range: string
+
+  where_expressed:
+    description: >-
+      Where a gene product is observed to be present.
+    notes: >-
+      Placeholder internal notes.
+    domain: ExpressionAnnotation
+    range: AnatomicalSite
+    multivalued: false
+
+  where_expressed_note:
+    description: >-
+      A public note tied to the AnatomicalSite of a specific expression annotation.
+    domain: ExpressionAnnotation
+    range: string
+
+enums:
+
+  anatomical_qualifier_set:
+    notes: >-
+      We need to get a set of relevant qualifiers used across the MODs.
+      We may prefer to use ontology terms instead of an "enum" here.
+      Filled in with a small sample of FB qualifiers for now.
+    permissible_values:
+      anterior:
+      anterior_posterior_gradient:
+      apical:
+      basal:
+      central:
+      distal:
+      dorsal:
+      dorso-lateral:
+      egg_length:
+      gap_expression_pattern:
+      pair_rule_expression_pattern:
+      segment_polarity_expression_pattern:
+      terminal_expression_pattern:
+      gradient:
+
+  expression_condition_relation_type_set:
+    permissible_values:
+      has_condition:
+        description: >-
+          The event was observed in the context of the condition.
+      induces:
+        description: >-
+          The condition induces the event observed.
+
+  expression_qualifier_set:
+    notes: >-
+      We need to get a set of relevant qualifiers used across the MODs.
+      Filled in with FB qualifiers for now.
+    permissible_values:
+      faint:
+      granular:
+      intense:
+      punctate:
+      uniform:
+      variable:
+
+  perturbed_expression_qualifier_set:
+    notes: >-
+      We need to get a set of relevant qualifiers used across the MODs.
+    permissible_values:
+      increased:
+      decreased:
+      mislocalized:
+
+  temporal_qualifier_set:
+    notes: >-
+      We need to get a set of relevant qualifiers used across the MODs.
+      Filled in with FB qualifiers for now.
+    permissible_values:
+      progressive:
+        description: >-
+          An event that gets more pronounced with time.

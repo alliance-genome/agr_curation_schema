@@ -4,6 +4,7 @@ title: Alliance Schema Prototype Allele
 
 imports:
   - core
+  - image
   - variation
   - linkml:types
   - informationContentEntity
@@ -96,10 +97,6 @@ classes:
   CellLine:
     description: >-
       Dummy cell line class
-
-  Image:
-    description: >-
-      Dummy image class
 
   SequenceTargetingReagent:
     description: >-
@@ -232,12 +229,6 @@ slots:
     singular_name: embryonic_stem_cell_line
     description: >-
       Embryonic stem cell lines known to carry the allele
-
-  images:
-    singular_name: image
-    description: >-
-      Any associated image
-    range: Image
 
   database_status:
     description: >-

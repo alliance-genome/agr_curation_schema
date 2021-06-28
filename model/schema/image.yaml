@@ -1,0 +1,140 @@
+id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml
+
+imports:
+  - core
+  - linkml:types
+  - reference
+
+classes:
+
+  File:
+    description: >-
+      A dummy object.
+
+  Image:
+    mixins:
+      - AuditedObject
+    description: >-
+      The set of files and metadata that constitute an image.
+    slots:
+      - reference
+      - label
+      - caption
+      - width
+      - height
+      - image_file
+      - image_medium_file
+      - image_thumbnail_file
+      - cropped_from
+      - crop_x_origin
+      - crop_y_origin
+      - comment
+      - internal_comment
+    slot_usage:
+      reference:
+        multivalued: false
+        required: true
+
+slots:
+
+  caption:
+    description: >-
+      Placeholder.
+    domain: Image
+    range: string
+
+  comment:
+    description: >-
+      A publicly visible curator comment.
+    domain: Image
+    range: string
+
+  crop_x_origin:
+    description: >-
+      For a cropped image, the x coordinate within the larger source image
+      from which the cropped image begins.
+    notes: >-
+      Assuming that the x coordinate origin begins at the left of an image.
+      Would be good to synch with how MGI represents their "image panes".
+    domain: Image
+    range: integer
+    required: false
+    multivalued: false
+
+  crop_y_origin:
+    description: >-
+      For a cropped image, the y coordinate within the larger source image
+      from which the cropped image begins.
+    notes: >-
+      Assuming that the y coordinate origin begins at the bottom of an image.
+      Would be good to synch with how MGI represents their "image panes".
+    domain: Image
+    range: integer
+    required: false
+    multivalued: false
+
+  cropped_from:
+    description: >-
+      Another larger image from which this image was cropped.
+    domain: Image
+    range: Image
+    required: false
+    multivalued: false
+
+  height:
+    description: >-
+      The height of the image (pixels).
+    domain: Image
+    range: integer
+    required: true
+    multivalued: false
+
+  image_file:
+    description: >-
+      The file representing the full-sized version of this image.
+    domain: Image
+    range: File
+    required: true
+    multivalued: false
+
+  image_medium_file:
+    description: >-
+      The file representing a medium-sized version of this image.
+    domain: Image
+    range: File
+    required: true
+    multivalued: false
+
+  image_thumbnail_file:
+    description: >-
+      The file representing the thumbnail of this image.
+    domain: Image
+    range: File
+    required: true
+    multivalued: false
+
+  images:
+    singular_name: image
+    description: >-
+      Any associated image
+    range: Image
+
+  internal_comment:
+    description: >-
+      A private curator comment for internal use only.
+    domain: Image
+    range: string
+
+  label:
+    description: >-
+      Placeholder.
+    domain: Image
+    range: string
+
+  width:
+    description: >-
+      The width of the image (pixels).
+    domain: Image
+    range: integer
+    required: true
+    multivalued: false

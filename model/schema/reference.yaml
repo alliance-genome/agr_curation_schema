@@ -4,6 +4,7 @@ imports:
   - core
   - linkml:types
   - informationContentEntity
+  - image
 
 prefixes:
   alliance: 'http://alliancegenome.org'

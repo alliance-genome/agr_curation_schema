@@ -21,9 +21,6 @@ slots:
       the text description of the term and a collection of URLs that further define the
       term.
     range: OntologyTermDefinition
-  is_obsolete:
-    description: >-
-      True if term is no longer current.
   display_synonym:
     description: >-
       Placeholder.
@@ -45,13 +42,11 @@ slots:
 classes:
 
   OntologyTermDefinition:
-    is_a: Entity
     slots:
       - term_definition
       - term_definition_urls
 
   OntologyTerm:
-    is_a: Entity
     description: >-
       A concept or class in an ontology, vocabulary or thesaurus. Note, ontology terms
       can be found in multiple ontologies (ie: mireoting). defining_slots helps define
@@ -73,6 +68,9 @@ classes:
       - curie
       - namespace
 
+  AnatomicalTerm:
+    is_a: OntologyTerm
+
   CLTerm:
     is_a: OntologyTerm
 
@@ -86,7 +84,10 @@ classes:
     is_a: OntologyTerm
 
   FBBTTerm:
-    is_a: OntologyTerm
+    is_a: AnatomicalTerm
+
+  FBDVTerm:
+    is_a: StageTerm
 
   FBCVTerm:
     is_a: OntologyTerm
@@ -109,20 +110,23 @@ classes:
   SOTerm:
     is_a: OntologyTerm
 
+  StageTerm:
+    is_a: OntologyTerm
+
   UBERONTerm:
     is_a: OntologyTerm
 
   WBBTTerm:
-    is_a: OntologyTerm
+    is_a: AnatomicalTerm
 
   WBLSTerm:
-    is_a: OntologyTerm
+    is_a: StageTerm
 
   ZFATerm:
-    is_a: OntologyTerm
+    is_a: AnatomicalTerm
 
   ZFSTerm:
-    is_a: OntologyTerm
+    is_a: StageTerm
 
   ZECOTerm:
     is_a: OntologyTerm
