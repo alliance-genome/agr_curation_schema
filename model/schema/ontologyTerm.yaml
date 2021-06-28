@@ -51,7 +51,6 @@ classes:
       - term_definition_urls
 
   OntologyTerm:
-    is_a: Entity
     description: >-
       A concept or class in an ontology, vocabulary or thesaurus. Note, ontology terms
       can be found in multiple ontologies (ie: mireoting). defining_slots helps define
