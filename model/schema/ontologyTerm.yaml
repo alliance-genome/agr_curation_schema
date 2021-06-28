@@ -1,4 +1,4 @@
-id: https://github.com/alliance-genome/agr_curation_schema/ontologyTerm
+id: https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml
 name: Alliance-Schema-Prototype-Ontology-Term
 title: Alliance Schema Prototype Ontology Term
 
@@ -6,6 +6,7 @@ imports:
   - core
   - allele
   - linkml:types
+  - crossReference
 
 prefixes:
   alliance: 'http://alliancegenome.org'
@@ -22,10 +23,13 @@ slots:
     range: OntologyTermDefinition
   is_obsolete:
     description: >-
+      True if term is no longer current.
   display_synonym:
     description: >-
+      Placeholder.
   xrefs:
-    range: crossReference
+    is_a: cross_references
+    range: CrossReference
     multivalued: true
   namespace:
     description: the namespace of the ontology.
@@ -41,13 +45,11 @@ slots:
 classes:
 
   OntologyTermDefinition:
-    is_a: Entity
     slots:
       - term_definition
       - term_definition_urls
 
   OntologyTerm:
-    is_a: Entity
     description: >-
       A concept or class in an ontology, vocabulary or thesaurus. Note, ontology terms
       can be found in multiple ontologies (ie: mireoting). defining_slots helps define

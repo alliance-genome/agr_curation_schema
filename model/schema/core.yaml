@@ -56,7 +56,6 @@ classes:
       A high-level entity comprising .
     abstract: true
     slots:
-      - id
       - taxon
 
   GenomicEntity:
