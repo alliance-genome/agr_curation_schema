@@ -96,6 +96,7 @@ classes:
       - gene_synopsis
       - gene_synopsis_URL
       - type
+      - automated_gene_description
     id_prefixes:
       - ENSEMBL
       - HGNC
@@ -274,9 +275,17 @@ slots:
 
   gene_synopsis:
     description: >-
+      Gene description provided by source resource (ie: MOD gene description that is curated or
+      automated via MOD internal processes).
 
   gene_synopsis_URL:
     description: >-
+      Gene description reference URL provided by source resource (aka: MOD) in the case
+      where the curated gene_synopsis has a reference URL outside of the MOD.
+
+  automated_gene_description:
+    description: >-
+      Gene description generated via algorithm developed at the alliance.
 
   genomic_locations:
     domain: GenomicEntity
