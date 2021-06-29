@@ -174,16 +174,14 @@ classes:
   ExternalDatabaseLink:
     description: >-
       Base relation that holds the identifier prefix, base url and url suffix to help in generating
-      URLs in crossReference records.
+      URLs in crossReferences.
     slots:
       - dbkey
       - prefix
       - url_prefix
       - url_suffix
-      - display_name
-      - prefix_significance
-      - prefix_data_type
-      - prefix_sub_type
+      - prefix_page
+      - prefix_order
 
 
 ## ------------
@@ -194,19 +192,24 @@ slots:
 
   prefix:
     description: >-
+      The prefix of a resource.
 
   url_prefix:
     description: >-
+      The prefix of the url before the accession number.
+
   url_suffix:
     description: >-
-  display_name:
+      The suffix of the url after the accession number.
+
+  prefix_order:
     description: >-
-  prefix_significance:
+      The relative order of the resource when listed with other crossReferences.
+
+  prefix_page:
     description: >-
-  prefix_data_type:
-    description: >-
-  prefix_sub_type:
-    description: >-
+      The cateogry of pages the resource in the context of the URL associated with the crossReference
+      provides.  Equivalent to the 'page' attribute in the Alliance resourceDescriptor file.
 
   secondary_ids:
     range: uriorcurie
