@@ -22,9 +22,9 @@ classes:
       - gene_object
     slot_usage:
       gene_subject:
-        range: gene
+        range: Gene
       gene_object:
-        range: gene
+        range: Gene
       predicate:
         subproperty_of: orthologous_to
         symmetric: true
