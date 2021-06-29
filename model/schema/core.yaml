@@ -171,11 +171,42 @@ classes:
           Indicates if the synonym is the currently accepted/preferred synonym
           for the entity.
 
+  ExternalDatabaseLink:
+    description: >-
+      Base relation that holds the identifier prefix, base url and url suffix to help in generating
+      URLs in crossReference records.
+    slots:
+      - dbkey
+      - prefix
+      - url_prefix
+      - url_suffix
+      - display_name
+      - prefix_significance
+      - prefix_data_type
+      - prefix_sub_type
+
+
 ## ------------
 ## SLOTS
 ## ------------
 
 slots:
+
+  prefix:
+    description: >-
+
+  url_prefix:
+    description: >-
+  url_suffix:
+    description: >-
+  display_name:
+    description: >-
+  prefix_significance:
+    description: >-
+  prefix_data_type:
+    description: >-
+  prefix_sub_type:
+    description: >-
 
   secondary_ids:
     range: uriorcurie
@@ -223,6 +254,11 @@ slots:
     range: boolean
 
   curie:
+  dbkey:
+    description: >-
+      Typically the primary key on the table.  Should be a global sequence in the database to insure
+      uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier.
+      Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
 
   taxon:
     description: >-
@@ -391,6 +427,8 @@ slots:
       Holds between an entity and the first reference to describe that entity.
     multivalued: false
     range: Reference
+
+
 
 enums:
   synonym_type_set:
