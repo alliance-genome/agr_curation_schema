@@ -190,10 +190,6 @@ classes:
 
 slots:
 
-  prefix:
-    description: >-
-      The prefix of a resource.
-
   url_prefix:
     description: >-
       The prefix of the url before the accession number.
