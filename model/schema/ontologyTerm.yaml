@@ -63,7 +63,7 @@ classes:
       - definition
       - type
       - is_obsolete
-      - crossReferences
+      - cross_references
       - synonyms
       - namespace
       - subsets
