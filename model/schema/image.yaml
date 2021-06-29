@@ -7,6 +7,32 @@ imports:
 
 classes:
 
+  Figure:
+    mixins:
+      - AuditedObject
+    description: >-
+      An entity representing a figure or table in a publication.
+    notes: >-
+      Ideally, a Figure entity represents an entire figure (or table). However,
+      in some cases, a Figure entity may represent only a part of some figure.
+      For example, when importing an old cropped image of Figure 2B, it may
+      be simpler to simply create a Figure entity representing that 2B part.
+      A Figure will usually have one related Image, but it can sometimes have
+      many.
+    slots:
+      - id
+      - figure_key
+      - reference
+      - label
+      - caption
+      - curator_comment
+      - private_comment
+      - secondary_ids
+    slot_usage:
+      reference:
+        multivalued: false
+        required: true
+
   File:
     description: >-
       A dummy object.
@@ -16,62 +42,74 @@ classes:
       - AuditedObject
     description: >-
       The set of files and metadata that constitute an image.
+    notes: >-
+      Do we need a separate Image.label, or can it just use the label from the
+      parent Figure entity?
     slots:
-      - reference
-      - label
-      - caption
+      - id
+      - image_key
+      - figure
+      - curator_comment
+      - private_comment
       - width
       - height
       - image_file
       - image_medium_file
       - image_thumbnail_file
       - cropped_from
-      - crop_x_origin
-      - crop_y_origin
-      - comment
-      - internal_comment
+      - image_x_origin
+      - image_y_origin
+      - video_still
+      - secondary_ids
     slot_usage:
-      reference:
-        multivalued: false
+      figure:
+        description: >-
+          The figure to which the image belongs.
         required: true
+        multivalued: false
+      image_x_origin:
+        description: >-
+          The x coordinate within a larger source image from which the crop begins.
+        domain: Image
+      image_y_origin:
+        description: >-
+          The y coordinate within a larger source image from which the crop begins.
+        domain: Image
+
+  ImagePane:
+    mixins:
+      - AuditedObject
+    description: >-
+      Part of an Image that is relevant to some annotation. An annotation may
+      reference many panes of an Image.
+    slots:
+      - image_pane_key
+      - images
+      - label
+      - width
+      - height
+      - image_x_origin
+      - image_y_origin
+    slot_usage:
+      images:
+        required: true
+        multivalued: false
+      image_x_origin:
+        description: >-
+          The x coordinate within a larger source image from which the pane begins.
+        domain: ImagePane
+      image_y_origin:
+        description: >-
+          The y coordinate within a larger source image from which the pane begins.
+        domain: ImagePane
 
 slots:
 
   caption:
     description: >-
-      Placeholder.
-    domain: Image
+      Text describing the contents of a figure or table in a publication.
+    domain: Figure
     range: string
-
-  comment:
-    description: >-
-      A publicly visible curator comment.
-    domain: Image
-    range: string
-
-  crop_x_origin:
-    description: >-
-      For a cropped image, the x coordinate within the larger source image
-      from which the cropped image begins.
-    notes: >-
-      Assuming that the x coordinate origin begins at the left of an image.
-      Would be good to synch with how MGI represents their "image panes".
-    domain: Image
-    range: integer
-    required: false
-    multivalued: false
-
-  crop_y_origin:
-    description: >-
-      For a cropped image, the y coordinate within the larger source image
-      from which the cropped image begins.
-    notes: >-
-      Assuming that the y coordinate origin begins at the bottom of an image.
-      Would be good to synch with how MGI represents their "image panes".
-    domain: Image
-    range: integer
-    required: false
-    multivalued: false
 
   cropped_from:
     description: >-
@@ -80,6 +118,15 @@ slots:
     range: Image
     required: false
     multivalued: false
+
+  figure:
+    description: >-
+      Holds between an entity and a Figure.
+    range: Figure
+
+  figure_key:
+    is_a: database_key
+    domain: Figure
 
   height:
     description: >-
@@ -97,6 +144,10 @@ slots:
     required: true
     multivalued: false
 
+  image_key:
+    is_a: database_key
+    domain: Image
+
   image_medium_file:
     description: >-
       The file representing a medium-sized version of this image.
@@ -104,6 +155,10 @@ slots:
     range: File
     required: true
     multivalued: false
+
+  image_pane_key:
+    is_a: database_key
+    domain: ImagePane
 
   image_thumbnail_file:
     description: >-
@@ -113,23 +168,44 @@ slots:
     required: true
     multivalued: false
 
+  image_x_origin:
+    description: >-
+      The x coordinate start point when specifying a spatial section within a
+      larger image.
+    notes: >-
+      Assuming that the x coordinate origin begins at the left of an image.
+      Would be good to synch with how MGI represents their "image panes".
+    range: integer
+    required: false
+    multivalued: false
+
+  image_y_origin:
+    description: >-
+      The y coordinate start point when specifying a spatial section within a
+      larger image.
+    notes: >-
+      Assuming that the y coordinate origin begins at the bottom of an image.
+      Would be good to synch with how MGI represents their "image panes".
+    range: integer
+    required: false
+    multivalued: false
+
   images:
     singular_name: image
     description: >-
       Any associated image
     range: Image
 
-  internal_comment:
-    description: >-
-      A private curator comment for internal use only.
-    domain: Image
-    range: string
-
   label:
     description: >-
-      Placeholder.
-    domain: Image
+      A short display name for the figure. For example: "Figure 2", "Figure 3B"
     range: string
+
+  video_still:
+    description: >-
+      An image represents a video still.
+    domain: Image
+    range: boolean
 
   width:
     description: >-

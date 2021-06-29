@@ -27,6 +27,14 @@ classes:
     description: >-
       A description of when and where gene products are observed to be present,
       including experimental details, supporting evidence, and curator notes.
+    notes: >-
+      Curators can provide several levels of evidence for an annotation, in an
+      attempt to offer support the annotation schema at various MODs.
+      First, a curator can provide simply a reference (FB).
+      Second, a curator can provide a Figure within that reference (ZFIN).
+      Third, a curator can provide an ImagePane within some Figure (MGI).
+      It's unclear which of these approaches will be chosen for future Alliance
+      expression curation.
     slots:
       - id
       - gene
@@ -44,12 +52,28 @@ classes:
       - where_expressed_note
       - expression_annotation_note
       - reference
-      - image
+      - figure
     slot_usage:
+      figure:
+        description: >-
+          The figure that supports the expression annotation.
+        notes: >-
+          Optional, as existing annotations from some MODs have no related
+          images or figures.
+        required: false
+        multivalued: false
       reference:
         multivalued: false
-      image:
-        multivalued: false
+
+  ExpressionAnnotationImagePane:
+    is_a: Association
+    notes: >-
+      This aims to provide the same functionality as MGI imagepane.
+    slot_usage:
+      subject:
+        range: ExpressionAnnotation
+      object:
+        range: ImagePane
 
   ExpressionCondition:
     is_a: ConditionAssociation

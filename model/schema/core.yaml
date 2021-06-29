@@ -159,19 +159,16 @@ classes:
     is_a: Association
     description: >-
       A relationship between an entity and a synonym.
-    slots:
-      - current
     slot_usage:
       subject:
         range: BiologicalEntity
       object:
         range: Synonym
       predicate:
-        range: synonym_type_set
-      current:
+        range: entity_synonym_type_set
+      references:
         description: >-
-          Indicates if the synonym is the currently accepted/preferred synonym
-          for the entity.
+          The references in which the synonyms is used to refer to the entity.
 
   ConditionAssociation:
     is_a: Association
@@ -192,6 +189,18 @@ classes:
 ## ------------
 
 slots:
+
+  curator_comment:
+    description: >-
+      A publicly visible explanatory note from curators about some entity.
+    range: string
+
+
+  private_comment:
+    description: >-
+      A private explanatory note from curators about some entity, for internal
+      use only.
+    range: string
 
   uncertain:
     description: >-
@@ -276,12 +285,12 @@ slots:
     range: uriorcurie
 
   database_key:
-    multivalued: false
     description: >-
       The primary key for a specific table entry; unique for that table ontology.
     notes: >-
       Open question: do we want to make the database_key unique across all
       database tables?
+    multivalued: false
     range: integer
 
   date_produced:
@@ -447,11 +456,14 @@ enums:
         description: >-
           Placeholder definition.
 
-  synonym_type_set:
+  entity_synonym_type_set:
     permissible_values:
-      symbol:
-        notes: >-
-          Equivalent to FB "symbol".
-      fullname:
-        notes: >-
-          Equivalent to FB "fullname".
+      current:
+        description: >-
+          The synonym is an "officially" accepted synonym for an entity.
+          An entity should have only one current synonym of a give type.
+          For example, only one current symbol and one current full name.
+      alias:
+        description: >-
+          The synonym is an alternate symbol or name for the entity. It is not
+          the currently preferred symbol/name for the entity.
