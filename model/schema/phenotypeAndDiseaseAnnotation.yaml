@@ -23,6 +23,7 @@ imports:
   - linkml:types
   - reference
   - core
+  - ontologyTerm
 
 
 prefixes:
@@ -208,7 +209,7 @@ classes:
           a slim in the ZECO, called 'AllianceSlim'.
         values_from:
           - ZECO
-        range: uriorcurie
+        range: OntologyTerm
       condition_statement:
         required: true
         description: >-
@@ -222,7 +223,7 @@ classes:
           condition ontology ID attributes (chemical, NCBITaxon, anatomical). This could also be another
           ZECO term if the ZECO term that describes this condition is more specific, or outside the
           conditionClassId slim.
-        range: uriorcurie
+        range: OntologyTerm
         values_from:
           - XCO
           - ZECO
@@ -233,16 +234,28 @@ classes:
       condition_anatomy:
         description: >-
           Anatomical ontology identifier used in cases like regeneration/wounding.
+        range: OntologyTerm
+        # TODO: add rest of anatomical ontology prefixes here
+        values_from:
+          - ZFA
       condition_gene_ontology:
         description: >-
           Gene Ontology id used in subset of condition types.
+        range: OntologyTerm
       condition_taxon:
         description: >-
           NCBITaxon ontology id used in subset of condition types like 'bacterial infection'.
+        range: OntologyTerm
+        values_from:
+          - NCBITaxon
       condition_chemical:
         description: >-
           ChEBI or molecular ontology id used in subset of condition terms.  ie: the specific
           chemcial used in conjunction with 'chemical condition'.
+        range: OntologyTerm
+        values_from:
+          - CHEBI
+          - WBMol
 
 
   Phenotype:
