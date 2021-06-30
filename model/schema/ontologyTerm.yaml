@@ -51,6 +51,7 @@ classes:
       obograph:node
     slots:
       - curie
+      - dbkey
       - name
       - definition
       - type

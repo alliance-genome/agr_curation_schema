@@ -50,6 +50,7 @@ types:
 ## CLASSES
 ## ------------
 
+
 classes:
 
   Entity:
@@ -100,6 +101,7 @@ classes:
       - gene_synopsis
       - gene_synopsis_URL
       - type
+      - automated_gene_description
     id_prefixes:
       - ENSEMBL
       - HGNC
@@ -171,6 +173,18 @@ classes:
         description: >-
           The references in which the synonym is used to refer to the entity.
 
+  ExternalDatabaseLink:
+    description: >-
+      Base relation that holds the identifier prefix, base url and url suffix to help in generating
+      URLs in crossReferences.
+    slots:
+      - dbkey
+      - prefix
+      - url_prefix
+      - url_suffix
+      - prefix_page
+      - prefix_order
+
 ## ------------
 ## SLOTS
 ## ------------
@@ -182,6 +196,22 @@ slots:
       A publicly visible explanatory note from curators about some entity.
     range: string
 
+  url_prefix:
+    description: >-
+      The prefix of the url before the accession number.
+
+  url_suffix:
+    description: >-
+      The suffix of the url after the accession number.
+
+  prefix_order:
+    description: >-
+      The relative order of the resource when listed with other crossReferences.
+
+  prefix_page:
+    description: >-
+      The cateogry of pages the resource in the context of the URL associated with the crossReference
+      provides.  Equivalent to the 'page' attribute in the Alliance resourceDescriptor file.
 
   private_comment:
     description: >-
@@ -242,6 +272,12 @@ slots:
       A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
     range: uriorcurie
 
+  dbkey:
+    description: >-
+      Typically the primary key on the table.  Should be a global sequence in the database to insure
+      uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier.
+      Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
+
   taxon:
     description: >-
       The taxon from which the biological entity derives.
@@ -255,9 +291,17 @@ slots:
 
   gene_synopsis:
     description: >-
+      Gene description provided by source resource (ie: MOD gene description that is curated or
+      automated via MOD internal processes).
 
   gene_synopsis_URL:
     description: >-
+      Gene description reference URL provided by source resource (aka: MOD) in the case
+      where the curated gene_synopsis has a reference URL outside of the MOD.
+
+  automated_gene_description:
+    description: >-
+      Gene description generated via algorithm developed at the alliance.
 
   genomic_locations:
     domain: GenomicEntity
