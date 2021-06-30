@@ -66,9 +66,10 @@ classes:
 
   AnatomicalTerm:
     is_a: OntologyTerm
+    abstract: true
 
   CLTerm:
-    is_a: OntologyTerm
+    is_a: AnatomicalTerm
 
   DOTerm:
     is_a: OntologyTerm
@@ -108,9 +109,10 @@ classes:
 
   StageTerm:
     is_a: OntologyTerm
+    abstract: true
 
   UBERONTerm:
-    is_a: OntologyTerm
+    is_a: AnatomicalTerm
 
   WBBTTerm:
     is_a: AnatomicalTerm
