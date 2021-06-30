@@ -58,11 +58,12 @@ classes:
       obograph:node
     slots:
       - curie
+      - dbkey
       - name
       - definition
       - type
       - is_obsolete
-      - xrefs
+      - cross_references
       - synonyms
       - namespace
       - subsets

@@ -15,26 +15,40 @@ prefixes:
 
 classes:
   GeneToGeneOrthology:
+    description: >-
     slots:
-      - is_best_score
-      - is_best_reverse_score
-      - confidence
-      - strict_filter
-      - moderate_filter
       - gene_subject
       - predicate
       - gene_object
-      - reference
-      - evidence_code
     slot_usage:
       gene_subject:
-        range
+        range: Gene
       gene_object:
+        range: Gene
       predicate:
         subproperty_of: orthologous_to
         symmetric: true
         description: >-
           orthologous relationship type
+
+  GeneToGeneOrthologyCurated:
+    description: >-
+      Class that holds the properties necessary to store a curated orthology record.
+    is_a: GeneToGeneOrthology
+    slots:
+      - reference
+      - evidence_code
+
+  GeneToGeneOrthologyGenerated:
+    description: >-
+      Class that holds the properties necessary to record an orthology record from DIOPT
+    is_a: GeneToGeneOrthology
+    slots:
+     - is_best_score
+     - is_best_reverse_score
+     - confidence
+     - strict_filter
+     - moderate_filter
 
 enums:
   evidence_code_enum:
