@@ -26,7 +26,7 @@ prefixes:
 classes:
 
   Allele:
-    # is_a: GenomicEntity
+    is_a: BiologicalEntity
     description: >-
       One of multiple possible forms of a functional genomic
       element (most often described as a locus or gene),
@@ -37,7 +37,6 @@ classes:
       - symbol
       - description
       - taxon_id
-      - date_produced # mixin?
       - data_provider # mixin?
       - release
       - cross_references

@@ -39,12 +39,13 @@ classes:
       - original_reference
       # - disease    # Need a way to give DOID term and reference. Or a generic way to specify CV term and publication attribution.
     slot_usage:
-      id:
+      curie:
         description: >-
           A unique identifier for the antibody: e.g., "WBAntibody0000001".
         notes: >-
           As not all MODs have IDs (e.g., FB), some IDs will need to be minted
           at the Alliance.
+          Does anyone use RRIDs as the 1o ID for antibody?
       name:
         description: >-
           Publicly displayed name of the antibody. It often includes the name
@@ -67,7 +68,7 @@ classes:
           generation.
 
   AntibodyNote:
-    is_a: BiologicalEntityNote
+    is_a: EntityStatement
     slot_usage:
       note_type:
         range: antibody_note_type_set

@@ -65,7 +65,7 @@ classes:
     description: >-
       An annotation associating a biological entity to a phenotype supported by evidence
     slots:
-      - id
+      - curie
       - subject                           # objectId in JSON schema
       - primary_genetic_entity            # primaryGeneticEntityIDs in JSON schema
       - phenotype_term                    # phenotypeTermIdentifiers in JSON schema
@@ -127,7 +127,7 @@ classes:
     description: >-
       An annotation associating a biological entity to a disease supported by evidence
     slots:
-      - id
+      - curie
       - subject                 # objectId in JSON schema
       - bioentity_name          # objectName in JSON schema; is this necessary?
       - disease_relation        # objectRelation in JSON schema
@@ -191,7 +191,7 @@ classes:
       The environmental context in which an experiment is carried out. This may (e.g. drug treatment)
       or may not (e.g. standard conditions) directly influence the outcome of the experiment.
     slots:
-      - id
+      - curie
       - condition_class                   # conditionClassId in JSON schema
       - condition_statement               # conditionStatement in JSON schema
       - condition_id                      # conditionId in JSON schema
@@ -250,7 +250,7 @@ classes:
       A characteristic of an organism. This may or may not be expressed as a difference in
       comparison to a reference organism.
     slots:
-      - id
+      - curie
       - name
     values_from:
       - HP
@@ -269,7 +269,7 @@ classes:
 
   Disease:
     slots:
-      - id
+      - curie
       - name
     values_from:
       - DOID
@@ -388,6 +388,61 @@ slots:
     description: >-
       http://geneontology.org/docs/go-annotation-file-gaf-format-21/#with-or-from-column-8
 
+## ----------
+## PREDICATES
+## ----------
+
+  has_condition:
+    is_a: related_to
+    symmetric: false
+    domain: Entity
+    range: ExperimentalCondition
+
+  is_condition_in:
+    is_a: related_to
+    symmetric: false
+    inverse: has_condition
+    domain: ExperimentalCondition
+    range: Entity
+
+  induced_by:
+    is_a: related_to
+    symmetric: false
+    domain: Entity
+    range: ExperimentalCondition
+
+  induces:
+    is_a: related_to
+    symmetric: false
+    inverse: induced_by
+    domain: ExperimentalCondition
+    range: Entity
+
+  ameliorated_by:
+    is_a: related_to
+    symmetric: false
+    domain: Entity
+    range: ExperimentalCondition
+
+  ameliorates:
+    is_a: related_to
+    symmetric: false
+    inverse: ameliorated_by    
+    domain: ExperimentalCondition
+    range: Entity
+
+  exacerbated_by:
+    is_a: related_to
+    symmetric: false
+    domain: Entity
+    range: ExperimentalCondition
+
+  exacerbates:
+    is_a: related_to
+    symmetric: false
+    inverse: exacerbated_by    
+    domain: ExperimentalCondition
+    range: Entity
 
 ## ------------
 ## ENUMS

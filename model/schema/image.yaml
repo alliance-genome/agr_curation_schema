@@ -20,14 +20,11 @@ classes:
       A Figure will usually have one related Image, but it can sometimes have
       many.
     slots:
-      - id
-      - figure_key
+      - curie
       - reference
       - label
       - caption
-      - curator_comment
-      - private_comment
-      - secondary_ids
+      - secondary_identifiers
     slot_usage:
       reference:
         multivalued: false
@@ -46,11 +43,8 @@ classes:
       Do we need a separate Image.label, or can it just use the label from the
       parent Figure entity?
     slots:
-      - id
-      - image_key
+      - curie
       - figure
-      - curator_comment
-      - private_comment
       - width
       - height
       - image_file
@@ -60,7 +54,7 @@ classes:
       - image_x_origin
       - image_y_origin
       - video_still
-      - secondary_ids
+      - secondary_identifiers
     slot_usage:
       figure:
         description: >-
@@ -83,7 +77,6 @@ classes:
       Part of an Image that is relevant to some annotation. An annotation may
       reference many panes of an Image.
     slots:
-      - image_pane_key
       - images
       - label
       - width
@@ -124,10 +117,6 @@ slots:
       Holds between an entity and a Figure.
     range: Figure
 
-  figure_key:
-    is_a: database_key
-    domain: Figure
-
   height:
     description: >-
       The height of the image (pixels).
@@ -144,10 +133,6 @@ slots:
     required: true
     multivalued: false
 
-  image_key:
-    is_a: database_key
-    domain: Image
-
   image_medium_file:
     description: >-
       The file representing a medium-sized version of this image.
@@ -155,10 +140,6 @@ slots:
     range: File
     required: true
     multivalued: false
-
-  image_pane_key:
-    is_a: database_key
-    domain: ImagePane
 
   image_thumbnail_file:
     description: >-

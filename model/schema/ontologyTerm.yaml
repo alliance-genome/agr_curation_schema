@@ -24,10 +24,6 @@ slots:
   display_synonym:
     description: >-
       Placeholder.
-  xrefs:
-    is_a: cross_references
-    range: CrossReference
-    multivalued: true
   namespace:
     description: the namespace of the ontology.
   subsets:
@@ -59,11 +55,11 @@ classes:
       - definition
       - type
       - is_obsolete
-      - xrefs
+      - cross_references
       - synonyms
       - namespace
       - subsets
-      - secondary_ids
+      - secondary_identifiers
     defining_slots:
       - curie
       - namespace

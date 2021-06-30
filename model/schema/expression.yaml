@@ -8,6 +8,7 @@ imports:
   - image
   - linkml:types
   - ontologyTerm
+  - phenotypeAndDiseaseAnnotation
   - reference
 
 classes:
@@ -36,7 +37,7 @@ classes:
       It's unclear which of these approaches will be chosen for future Alliance
       expression curation.
     slots:
-      - id
+      - curie
       - gene
       - when_expressed
       - where_expressed
@@ -75,15 +76,22 @@ classes:
       object:
         range: ImagePane
 
-  ExpressionCondition:
-    is_a: ConditionAssociation
+  ExpressionAnnotationExperimentalConditionAssociation:
+    is_a: Association
+    description: >-
+      A typed (predicate-specified) association between an expression annotation
+      object and an experimental condition object
+    defining_slots:
+      - subject        # expression_annotation
+      - object         # experimental_condition
+      - predicate
     slot_usage:
-      subject:
+      phenotype_annotation:
         range: ExpressionAnnotation
+      experimental_condition:
+        range: ExperimentalCondition
       predicate:
-        range: expression_condition_relation_type_set
-      object:
-        range: Condition
+        range: expression_condition_relation_enum
 
   TemporalContext:
     description: >-
@@ -206,9 +214,11 @@ slots:
     description: >-
       The Allele(s) or AffectedGenomicModel characterizing the specimen assayed.
     notes: >-
-      The range should be Allele or AGM, but there's no parent class that
-      covers them both, so I'm not sure how to specify range here.
+      We might want to, somehow, tighten up the range to only Allele and
+      AffectedGenomicModel.
     domain: ExpressionAnnotation
+    range: BiologicalEntity
+    multivalued: true
 
   reagents:
     description: >-
@@ -277,14 +287,10 @@ enums:
       terminal_expression_pattern:
       gradient:
 
-  expression_condition_relation_type_set:
+  expression_condition_relation_enum:
     permissible_values:
       has_condition:
-        description: >-
-          The event was observed in the context of the condition.
-      induces:
-        description: >-
-          The condition induces the event observed.
+      induced_by:
 
   expression_qualifier_set:
     notes: >-
