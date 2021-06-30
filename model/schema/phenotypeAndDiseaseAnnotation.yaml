@@ -286,9 +286,9 @@ classes:
       - object      # experimental_condition
       - predicate
     slot_usage:
-      phenotype_annotation:
+      subject:
         range: PhenotypeAnnotation
-      experimental_condition:
+      object:
         range: ExperimentalCondition
       predicate:
         range: condition_relation_enum
@@ -303,9 +303,9 @@ classes:
       - object      # experimental_condition
       - predicate
     slot_usage:
-      phenotype_annotation:
+      subject:
         range: DiseaseAnnotation
-      experimental_condition:
+      object:
         range: ExperimentalCondition
       predicate:
         range: condition_relation_enum
