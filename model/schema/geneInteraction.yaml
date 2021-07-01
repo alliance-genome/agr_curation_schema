@@ -92,6 +92,7 @@ classes:
     is_a: GeneToGeneAssociation
     abstract: true
     slots:
+      - curie
       - cross_references
       - data_provider
       - interaction_type
@@ -116,7 +117,7 @@ classes:
       - WB
       - WWPDB
     slot_usage:
-      id:
+      curie:
         description: >-
           The unique primary identifier for the interaction. This should be the source
           (curation) database identifier, or if that is not available then the aggregation
@@ -255,26 +256,12 @@ slots:
 ## PREDICATES
 ## ----------
 
-  related_to:                         # should this be generalized in core.yaml?
-    description: >-
-      A relationship that is asserted between two named things
-    domain: BiologicalEntity
-    range: BiologicalEntity
-    multivalued: true
-    inherited: true
-    symmetric: true
-#    exact_mappings:
-#      - biolink:related_to
-#      - skos:relatedMatch
-#      - SEMMEDDB:ASSOCIATED_WITH
-#      - SEMMEDDB:associated_with
-
   interacts_with:
+    is_a: related_to
     domain: BiologicalEntity
     range: BiologicalEntity
     description: >-
       holds between any two entities that directly or indirectly interact with each other
-    is_a: related_to
     symmetric: true
 #    exact_mappings:
 #      - RO:0002434

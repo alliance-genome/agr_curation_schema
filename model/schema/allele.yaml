@@ -4,6 +4,7 @@ title: Alliance Schema Prototype Allele
 
 imports:
   - core
+  - image
   - variation
   - linkml:types
   - informationContentEntity
@@ -25,7 +26,7 @@ prefixes:
 classes:
 
   Allele:
-    # is_a: GenomicEntity
+    is_a: BiologicalEntity
     description: >-
       One of multiple possible forms of a functional genomic
       element (most often described as a locus or gene),
@@ -36,7 +37,6 @@ classes:
       - symbol
       - description
       - taxon_id
-      - date_produced # mixin?
       - data_provider # mixin?
       - release
       - cross_references
@@ -96,10 +96,6 @@ classes:
   CellLine:
     description: >-
       Dummy cell line class
-
-  Image:
-    description: >-
-      Dummy image class
 
   SequenceTargetingReagent:
     description: >-
@@ -232,12 +228,6 @@ slots:
     singular_name: embryonic_stem_cell_line
     description: >-
       Embryonic stem cell lines known to carry the allele
-
-  images:
-    singular_name: image
-    description: >-
-      Any associated image
-    range: Image
 
   database_status:
     description: >-

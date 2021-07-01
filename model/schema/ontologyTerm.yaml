@@ -21,16 +21,9 @@ slots:
       the text description of the term and a collection of URLs that further define the
       term.
     range: OntologyTermDefinition
-  is_obsolete:
-    description: >-
-      True if term is no longer current.
   display_synonym:
     description: >-
       Placeholder.
-  xrefs:
-    is_a: cross_references
-    range: CrossReference
-    multivalued: true
   namespace:
     description: the namespace of the ontology.
   subsets:
@@ -67,13 +60,17 @@ classes:
       - synonyms
       - namespace
       - subsets
-      - secondary_ids
+      - secondary_identifiers
     defining_slots:
       - curie
       - namespace
 
-  CLTerm:
+  AnatomicalTerm:
     is_a: OntologyTerm
+    abstract: true
+
+  CLTerm:
+    is_a: AnatomicalTerm
 
   DOTerm:
     is_a: OntologyTerm
@@ -85,7 +82,10 @@ classes:
     is_a: OntologyTerm
 
   FBBTTerm:
-    is_a: OntologyTerm
+    is_a: AnatomicalTerm
+
+  FBDVTerm:
+    is_a: StageTerm
 
   FBCVTerm:
     is_a: OntologyTerm
@@ -108,20 +108,24 @@ classes:
   SOTerm:
     is_a: OntologyTerm
 
-  UBERONTerm:
+  StageTerm:
     is_a: OntologyTerm
+    abstract: true
+
+  UBERONTerm:
+    is_a: AnatomicalTerm
 
   WBBTTerm:
-    is_a: OntologyTerm
+    is_a: AnatomicalTerm
 
   WBLSTerm:
-    is_a: OntologyTerm
+    is_a: StageTerm
 
   ZFATerm:
-    is_a: OntologyTerm
+    is_a: AnatomicalTerm
 
   ZFSTerm:
-    is_a: OntologyTerm
+    is_a: StageTerm
 
   ZECOTerm:
     is_a: OntologyTerm

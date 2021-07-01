@@ -4,6 +4,7 @@ imports:
   - core
   - linkml:types
   - informationContentEntity
+  - image
 
 prefixes:
   alliance: 'http://alliancegenome.org'
@@ -28,7 +29,6 @@ classes:
       - date_arrived_in_PubMed
       # date arrived in source enumeration
       - date_last_modified_in_PubMed
-      - date_last_modified
       - volume
       - pages
       - abstract
@@ -128,11 +128,6 @@ slots:
 
   issue_date:
     description: Date on which an entity was issued.
-    domain: InformationContentEntity
-    range: date
-
-  last_modified:
-    description: Date on which an entity was last modified in PubMed or in the MOD.
     domain: InformationContentEntity
     range: date
 

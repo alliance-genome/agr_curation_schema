@@ -30,13 +30,11 @@ classes:
       position or in contiguous nucleotides.
     slots:
       - curie
-      - id
       - hgvs_nomenclature
       - genomic_reference_sequence
       - genomic_variant_sequence
       - padding_left
       - padding_right
-      - date_produced
       - release
       - data_provider
       - computed_gene
