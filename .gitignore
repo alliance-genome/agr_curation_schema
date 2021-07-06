@@ -1,7 +1,7 @@
 # Make artifacts
+config/
 target/
-docs/
-agr_curation_schema/
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -78,7 +78,7 @@ docs/_build/
 
 # PyBuilder
 .pybuilder/
-
+target/
 
 # Jupyter Notebook
 .ipynb_checkpoints

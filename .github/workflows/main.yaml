@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches: [ main, linkml-sql ]
+    branches: [ main ]
 
 jobs:
   unittests-n-commits:
@@ -33,7 +33,7 @@ jobs:
       run: |
         pip install pipenv
         pipenv install --dev
-       # pipenv run python -m unittest discover -p 'test_*.py'
+        pipenv run python -m unittest discover -p 'test_*.py'
 
     - name: Check in changes to requirements files
       run: |

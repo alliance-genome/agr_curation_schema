@@ -13,7 +13,7 @@ SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
 
 SCHEMA_NAME = allianceModel
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
-PKG_TGTS = jsonld_context json_schema model
+PKG_TGTS = jsonld_context json_schema model sqlddl
 TGTS = docs python $(PKG_TGTS)
 
 # Targets by PKG_TGT
@@ -31,7 +31,7 @@ PKG_T_MODEL = $(PKG_DIR)/model
 PKG_T_SCHEMA = $(PKG_T_MODEL)/schema
 
 # Global generation options
-GEN_OPTS = --log_level ERROR
+GEN_OPTS = --log_level WARNING
 ENV = export PIPENV_VENV_IN_PROJECT=true && export PIPENV_PIPFILE=make-venv/Pipfile && export PIPENV_IGNORE_VIRTUALENVS=1
 RUN = $(ENV) && pipenv run
 
@@ -47,9 +47,8 @@ all: install gen
 install: make-venv/env.lock
 
 make-venv/env.lock:
-	mkdir -p make-venv
-	touch make-venv/env.lock
 	$(ENV) && pipenv install
+	touch make-venv/env.lock
 
 uninstall:
 	rm -f make-venv/env.lock
@@ -116,7 +115,6 @@ docs/index.md: target/docs/index.md install
 	$(RUN) mkdocs build
 
 target/docs/index.md: $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml tdir-docs install
-	pipenv install
 	$(RUN) gen-markdown $(GEN_OPTS) --mergeimports --notypesdir --warnonexist --dir target/docs $<
 
 # ---------------------------------------
