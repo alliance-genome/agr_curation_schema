@@ -13,7 +13,6 @@ emit_prefixes:
   - rdf
   - rdfs
   - xsd
-  - skos
 
 imports:
   - linkml:types

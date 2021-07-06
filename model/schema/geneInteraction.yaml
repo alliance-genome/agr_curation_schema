@@ -6,17 +6,10 @@ description: Alliance Gene Interaction Schema Prototype with LinkML
 default_prefix: alliance
 default_range: string
 
-default_curi_maps:
-  - obo_context
-  - idot_context
-  - semweb_context
-  - monarch_context
-
 emit_prefixes:
   - rdf
   - rdfs
   - xsd
-  - skos
   - owl
 
 imports:
@@ -26,27 +19,9 @@ imports:
 
 prefixes:
   alliance: 'http://alliancegenome.org'
-  BFO: 'http://purl.obolibrary.org/obo/BFO_'
-  BIOGRID: 'https://thebiogrid.org/interaction/'
-  biolink: 'https://w3id.org/biolink/vocab/'
-  CHEBI: 'https://www.ebi.ac.uk/chebi/searchId.do?chebiId='
-  DIP: 'http://dip.mbi.ucla.edu/dip/record?ac='
-  EMDB: 'http://www.ebi.ac.uk/pdbe/entry/emdb/'
-  FB: 'https://flybase.org/reports/'
-  IMEX: 'https://www.ebi.ac.uk/intact/pages/details/details.xhtml?interactionAc='
-  INTACT: 'https://www.ebi.ac.uk/intact/pages/details/details.xhtml?interactionAc='
   linkml: 'https://w3id.org/linkml/'
-  mi: 'http://purl.obolibrary.org/obo/MI_'
-  MINT: 'https://mint.bio.uniroma2.it/index.php/results-interactions/?id='
   PDBE: 'https://www.ebi.ac.uk/pdbe/entry/pdb/'
   RCSB_PDB: 'https://www.rcsb.org/structure/'
-  RO: 'http://purl.obolibrary.org/obo/RO_'
-  RTXKG1: 'http://kg1endpoint.rtx.ai/'
-  schema: 'http://schema.org/'
-  SEMMEDDB: 'https://skr3.nlm.nih.gov/SemMedDB'
-  WB: 'http://www.wormbase.org/db/get?name='
-  WIKIDATA: 'https://www.wikidata.org/wiki/'            # Wikidata Entity
-  WIKIDATA_PROPERTY: 'https://www.wikidata.org/wiki/Property:'  # Wikidata Property - not a conventional namespace prefix
   WWPDB: 'https://www.rcsb.org/structure/'
 
 ## ----------

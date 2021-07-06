@@ -11,7 +11,6 @@ imports:
 prefixes:
   alliance: 'http://alliancegenome.org'
   linkml: 'https://w3id.org/linkml/'
-  skos: 'http://www.w3.org/2004/02/skos/core#'
   obograph: 'https://github.com/biodatamodels/obograph'
 
 slots:

@@ -12,7 +12,6 @@ prefixes:
   biolink: 'https://w3id.org/biolink/vocab/'
   NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
   schema: 'http://schema.org/'
-  skos: 'http://www.w3.org/2004/02/skos/core#'
 
 classes:
   Resource:

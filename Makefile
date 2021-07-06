@@ -31,7 +31,7 @@ PKG_T_MODEL = $(PKG_DIR)/model
 PKG_T_SCHEMA = $(PKG_T_MODEL)/schema
 
 # Global generation options
-GEN_OPTS = --log_level WARNING
+GEN_OPTS = --log_level ERROR
 ENV = export PIPENV_VENV_IN_PROJECT=true && export PIPENV_PIPFILE=make-venv/Pipfile && export PIPENV_IGNORE_VIRTUALENVS=1
 RUN = $(ENV) && pipenv run
 

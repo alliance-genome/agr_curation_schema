@@ -16,7 +16,6 @@ emit_prefixes:
   - rdf
   - rdfs
   - xsd
-  - skos
 
 imports:
   - linkml:types
@@ -35,7 +34,8 @@ prefixes:
   biolink: 'https://w3id.org/biolink/vocab/'
   NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
   schema: 'http://schema.org/'
-  skos: 'http://www.w3.org/2004/02/skos/core#' # quotes are option - be consistent. check if this is needed in all yaml files.
+  dct: 'http://purl.org/dc/terms/'
+  WIKIDATA_PROPERTY: 'https://www.wikidata.org/wiki/Property:'
 
 ## ------------
 ## TYPES
@@ -481,11 +481,6 @@ slots:
     multivalued: true
     inherited: true
     symmetric: true
-#    exact_mappings:
-#      - biolink:related_to
-#      - skos:relatedMatch
-#      - SEMMEDDB:ASSOCIATED_WITH
-#      - SEMMEDDB:associated_with
 
 enums:
 
