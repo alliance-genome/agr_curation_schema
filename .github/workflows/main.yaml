@@ -49,7 +49,7 @@ jobs:
     - name: Check updated content
       run: |
         find agr_curation_schema -name __pycache__ -type d -prune -exec rm -rf '{}' '+'
-        git add --force docs linkml_model
+        git add --force docs model
         if [[ ! -z $(git status -s .) ]]
         then
           git config --local user.email "action@github.com"

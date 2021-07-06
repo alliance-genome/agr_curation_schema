@@ -246,7 +246,7 @@ target/rdf/%.model.ttl: $(SCHEMA_DIR)/%.yaml $(PKG_DIR)/jsonld/%.model.context.j
 # SQLDDL
 # ---------------------------------------
 gen-sqlddl: $(PKG_T_SQLDDL)/$(SCHEMA_NAME).sql
-.PHONY: gen-sqlddl
+.PHONY: gen-sqlddl --sqla-file $(PKG_T_SQLDDL)/$(SCHEMA_NAME)_sqlalchemy.py
 
 $(PKG_T_SQLDDL)/%.sql: target/sqlddl/%.sql
 	mkdir -p $(PKG_T_SQLDDL)
