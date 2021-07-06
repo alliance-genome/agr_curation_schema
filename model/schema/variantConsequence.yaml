@@ -18,8 +18,11 @@ prefixes:
 
 classes:
 
-  VariantGeneConsequence:
-    aliases: ['gene level consequence']
+  VariantConsequence:
+    description: >-
+      Parent class for gene- and transcript-level
+      consequences
+    abstract: true
     slots:
       - subject
       - object
@@ -32,26 +35,22 @@ classes:
     slot_usage:
       subject:
         range: Variant
-        description: >-
-          subject should be the variant identifier
+    
+  VariantGeneConsequence:
+    aliases: ['GeneLevelConsequence']
+    description: >-
+      Class for gene-level VEP results
+    is_a: VariantConsequence
+    slot_usage:
       object:
         range: Gene
-        description: >-
-          object should be the gene identifier
-
+        
   VariantTranscriptConsequence:
     aliases: ['TranscriptLevelConsequence']
+    is_a: VariantConsequence
     description: >-
       Class for transcript-level VEP results
     slots:
-      - subject
-      - object
-      - vep_consequence
-      - vep_impact
-      - polyphen_score
-      - polyphen_prediction
-      - sift_score
-      - sift_prediction
       - amino_acid_reference
       - amino_acid_variant
       - codon_reference
@@ -65,14 +64,8 @@ classes:
       - hgvs_protein_nomenclature
       - hgvs_coding_nomenclature
     slot_usage:
-      subject:
-        range: Variant
-        description: >-
-          subject should be the variant identifier
       object:
         range: Transcript
-        description: >-
-          object should be the transcript identifier
       amino_acid_reference:
         description: >-
           Amino acid sequence encoded by codon(s) in reference genome sequence
@@ -114,7 +107,6 @@ slots:
     description: VEP predicted impact of variation on molecule
     range: string
 
-
   vep_consequence:
     description: VEP consequence
     range: vep_consequence_levels
@@ -136,7 +128,6 @@ slots:
   sift_prediction:
     description: SIFT prediction
     range: sift_prediction_levels
-
 
   amino_acid_reference:
     description: reference genome amino acid sequence at variant position

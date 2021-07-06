@@ -44,12 +44,6 @@ classes:
       - type
       - references
       - notes
-      - is_variant_of_transcript
-      - is_variant_of_allele
-      - synonyms
-      - type
-      - references
-      - notes
       - protein_sequence
       - cross_references
     exact_mappings:
@@ -108,13 +102,5 @@ slots:
     range: Transcript
 
   variant_of_allele:
-    domain: Variant
-    range: Allele
-
-  is_variant_of_transcript:
-    domain: Variant
-    range: Transcript
-
-  is_variant_of_allele:
     domain: Variant
     range: Allele
