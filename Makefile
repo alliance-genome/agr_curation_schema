@@ -60,8 +60,8 @@ uninstall:
 # Test runner
 # ----------------------------------------
 test:
-	pipenv install --dev
-	pipenv run python -m unittest
+	$(ENV) && pipenv install --dev
+	$(ENV) && pipenv run python -m unittest
 
 # ---------------------------------------
 # GEN: run generator for each target
