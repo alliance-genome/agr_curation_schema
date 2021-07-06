@@ -121,7 +121,7 @@ slots:
   tags:
     singular_name: tag
     description: >-
-      Optional ist of controlled vocabulary tags that give categories to each pub (ie: "can show images").
+      Optional ist of controlled vocabulary tags that give categories to each pub (ie: can show images).
     multivalued: true
     range: tag_set
 

@@ -144,7 +144,7 @@ slots:
 
   cellular_component:
     notes: >-
-      I would like to restrict the range to GOTerm in "cellular_component"
+      I would like to restrict the range to GOTerm in cellular_component
       branch, but I'm not sure how to do this.
     domain: AnatomicalSite
     range: GOTerm
@@ -174,7 +174,7 @@ slots:
   expression_qualifiers:
     description: >-
       Qualifiers that describe additional characteristics of gene expression.
-      For example: "faint", "intense", "restricted".
+      For example: aint, intense, restricted.
     domain: ExpressionAnnotation
     range: expression_qualifier_set
 
@@ -184,7 +184,7 @@ slots:
     notes: >-
       Need to model how to annotate expression when there is no Alliance generation.
       This seems to happen at ZFIN (and MGI?) for things like GFP, lacZ.
-      Would we use dummy "Gene" objects?
+      Would we use dummy Gene objects?
     domain: ExpressionAnnotation
     range: Gene
     required: false
@@ -197,16 +197,16 @@ slots:
   perturbed:
     description: >-
       Is true if the genetic and/or environmental conditions represent a
-      deviation from the "baseline" state.
+      deviation from the baseline state.
     notes: >-
-      Not all "conditions" constitute a perturbation:
-      e.g., "normal" temperature, standard buffer, etc.
+      Not all conditions constitute a perturbation:
+      e.g., normal temperature, standard buffer, etc.
     range: boolean
 
   perturbed_expression_qualifiers:
     description: >-
       Qualifiers that describe how a perturbed expression pattern deviates from
-      the "baseline" expression pattern. For example: "increased", "mislocalized".
+      the baseline expression pattern. For example: increased, mislocalized.
     domain: ExpressionAnnotation
     range: perturbed_expression_qualifier_set
 
@@ -225,7 +225,7 @@ slots:
       Reagents used in the expression assay: e.g., antibodies, probes.
     notes: >-
       I'm assuming that specifying Reagent below will allow for objects that
-      have the Reagent "mixin".
+      have the Reagent mixin.
     domain: ExpressionAnnotation
     range: Reagent
     multivalued: true
@@ -269,7 +269,7 @@ enums:
   anatomical_qualifier_set:
     notes: >-
       We need to get a set of relevant qualifiers used across the MODs.
-      We may prefer to use ontology terms instead of an "enum" here.
+      We may prefer to use ontology terms instead of an enum here.
       Filled in with a small sample of FB qualifiers for now.
     permissible_values:
       anterior:

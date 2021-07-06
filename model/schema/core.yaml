@@ -152,7 +152,7 @@ classes:
       - biolink:association
     notes:
       Keeping this more generic than biolink:association by foregoing the
-      "qualifiers" and "negated" slots.
+      qualifiers and negated slots.
       object
     slots:
       - subject
@@ -234,8 +234,8 @@ slots:
       The type of free-text statement. For example: cytology, private,
       curator_comments.
     notes: >-
-      Note types listed here as having range "string", but should probably be
-      constrained to specific "enum" sets depending on the entity type.
+      Note types listed here as having range string, but should probably be
+      constrained to specific enum sets depending on the entity type.
     domain: EntityStatement
     range: string
 
@@ -248,7 +248,7 @@ slots:
   generated_by:
     description: >-
       Holds between a material entity and an Agent that generated it:
-      e.g., "Thomas Blumenthal", "Kornberg Laboratory".
+      e.g., Thomas Blumenthal, Kornberg Laboratory.
     required: false
     multivalued: true
     range: Agent
@@ -256,7 +256,7 @@ slots:
   manufactured_by:
     description: >-
       Holds between a material entity and an Agent that has manufactured it:
-      e.g., "Molecular Probes".
+      e.g., olecular Probes.
     required: false
     multivalued: true
     range: Agent
@@ -392,8 +392,8 @@ slots:
     description: >-
       Holds between an entity and a Species.
     notes: >-
-      This may be redundant with the "taxon" slot, but if not, then the
-      distinct usage of "taxon" versus "from_species" needs clarification.
+      This may be redundant with the taxon slot, but if not, then the
+      distinct usage of taxon versus from_species needs clarification.
     range: Species
 
   synonyms:
@@ -488,7 +488,7 @@ enums:
     permissible_values:
       current:
         description: >-
-          The synonym is an "officially" accepted synonym for an entity.
+          The synonym is an officially accepted synonym for an entity.
           An entity should have only one current synonym of a give type.
           For example, only one current symbol and one current full name.
       alias:
