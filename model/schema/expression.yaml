@@ -4,7 +4,6 @@ imports:
   - affectedGenomicModel
   - allele
   - core
-  - crossReference
   - image
   - linkml:types
   - ontologyTerm

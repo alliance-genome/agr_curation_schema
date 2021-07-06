@@ -6,7 +6,6 @@ imports:
   - core
   - allele
   - linkml:types
-  - crossReference
 
 prefixes:
   alliance: 'http://alliancegenome.org'
