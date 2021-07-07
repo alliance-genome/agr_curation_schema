@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>Class: Reference - Model to describe the Alliance curation/persistence data store</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Class: Reference";
+    var mkdocs_page_input_path = "Reference.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="icon icon-home"> Model to describe the Alliance curation/persistence data store</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="home.html">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="index.html">Index</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Model to describe the Alliance curation/persistence data store</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Class: Reference</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="class-reference">Class: Reference</h1>
+<p>URI: <a href="http://alliancegenome.orgReference">alliance:Reference</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Resource],[ReferenceType],[Resource]&lt;from_resource%200..1-%20[Reference&#124;title:string%20%3F;alliance_category:string%20%3F;date_published:date%20%3F;year_published:string%20%3F;month_published:string%20%3F;day_published:string%20%3F;date_arrived_in_PubMed:date%20%3F;date_last_modified_in_PubMed:date%20%3F;volume:string%20%3F;pages:string%20*;abstract:string%20%3F;citation:string%20%3F;PubMed_type:string%20%3F;issue_name:string%20%3F;issue_date:date%20%3F;mod_reference_types:string%20*;tags:tag_set%20*;topics:uriorcurie%20%3F;keywords:string%20*;id:string%20%3F;curie(i):uriorcurie;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[InformationContentEntity]&lt;publisher%200..1-%20[Reference],[CrossReference]&lt;cross_references%200..*-%20[Reference],[AuthorReference]&lt;authors%200..*-++[Reference],[Antibody]-%20original_reference%200..1&gt;[Reference],[DiseaseAnnotation]-%20references%201..1&gt;[Reference],[EntitySynonym]-%20references%200..*&gt;[Reference],[Figure]-%20reference%201..1&gt;[Reference],[GeneInteraction]-%20references%200..1&gt;[Reference],[PhenotypeAnnotation]-%20references%201..1&gt;[Reference],[Antibody]-%20original_reference(i)%200..1&gt;[Reference],[Figure]-%20reference(i)%200..1&gt;[Reference],[Variant]-%20references%200..*&gt;[Reference],[EntityStatement]-%20references%200..*&gt;[Reference],[Association]-%20references%200..*&gt;[Reference],[ReferenceType]-%20references%200..*&gt;[Reference],[Antibody]-%20references%200..*&gt;[Reference],[PhenotypeAnnotation]-%20references(i)%200..*&gt;[Reference],[DiseaseAnnotation]-%20references(i)%200..*&gt;[Reference],[InformationContentEntity]^-[Reference],[Variant],[PhenotypeAnnotation],[Person],[InformationContentEntity],[GeneInteraction],[Figure],[EntitySynonym],[EntityStatement],[DiseaseAnnotation],[CrossReference],[AuthorReference],[Association],[Antibody]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Resource],[ReferenceType],[Resource]&lt;from_resource%200..1-%20[Reference&#124;title:string%20%3F;alliance_category:string%20%3F;date_published:date%20%3F;year_published:string%20%3F;month_published:string%20%3F;day_published:string%20%3F;date_arrived_in_PubMed:date%20%3F;date_last_modified_in_PubMed:date%20%3F;volume:string%20%3F;pages:string%20*;abstract:string%20%3F;citation:string%20%3F;PubMed_type:string%20%3F;issue_name:string%20%3F;issue_date:date%20%3F;mod_reference_types:string%20*;tags:tag_set%20*;topics:uriorcurie%20%3F;keywords:string%20*;id:string%20%3F;curie(i):uriorcurie;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[InformationContentEntity]&lt;publisher%200..1-%20[Reference],[CrossReference]&lt;cross_references%200..*-%20[Reference],[AuthorReference]&lt;authors%200..*-++[Reference],[Antibody]-%20original_reference%200..1&gt;[Reference],[DiseaseAnnotation]-%20references%201..1&gt;[Reference],[EntitySynonym]-%20references%200..*&gt;[Reference],[Figure]-%20reference%201..1&gt;[Reference],[GeneInteraction]-%20references%200..1&gt;[Reference],[PhenotypeAnnotation]-%20references%201..1&gt;[Reference],[Antibody]-%20original_reference(i)%200..1&gt;[Reference],[Figure]-%20reference(i)%200..1&gt;[Reference],[Variant]-%20references%200..*&gt;[Reference],[EntityStatement]-%20references%200..*&gt;[Reference],[Association]-%20references%200..*&gt;[Reference],[ReferenceType]-%20references%200..*&gt;[Reference],[Antibody]-%20references%200..*&gt;[Reference],[PhenotypeAnnotation]-%20references(i)%200..*&gt;[Reference],[DiseaseAnnotation]-%20references(i)%200..*&gt;[Reference],[InformationContentEntity]^-[Reference],[Variant],[PhenotypeAnnotation],[Person],[InformationContentEntity],[GeneInteraction],[Figure],[EntitySynonym],[EntityStatement],[DiseaseAnnotation],[CrossReference],[AuthorReference],[Association],[Antibody]" /></a></p>
+<h2 id="identifier-prefixes">Identifier prefixes</h2>
+<ul>
+<li>PMID</li>
+<li>NLMID</li>
+<li>DOI</li>
+<li>SGD</li>
+<li>FB</li>
+<li>WB</li>
+<li>ZFIN</li>
+<li>MGI</li>
+<li>RGD</li>
+<li>PMC</li>
+<li>DOI</li>
+</ul>
+<h2 id="parents">Parents</h2>
+<ul>
+<li>is_a: <a href="InformationContentEntity.html">InformationContentEntity</a> - a piece of information that typically describes some topic of discourse or is used as support. Precedence of identifiers for references is as follows: PMID if available; DOI if not; actual alternate CURIE otherwise.</li>
+</ul>
+<h2 id="referenced-by-class">Referenced by class</h2>
+<ul>
+<li><strong><a href="Antibody.html">Antibody</a></strong> <em><a href="Antibody_original_reference.html">Antibody➞original_reference</a></em>  <sub>0..1</sub>  <strong><a href="Reference.html">Reference</a></strong></li>
+<li><strong><a href="DiseaseAnnotation.html">DiseaseAnnotation</a></strong> <em><a href="DiseaseAnnotation_references.html">DiseaseAnnotation➞references</a></em>  <sub>1..1</sub>  <strong><a href="Reference.html">Reference</a></strong></li>
+<li><strong><a href="EntitySynonym.html">EntitySynonym</a></strong> <em><a href="EntitySynonym_references.html">EntitySynonym➞references</a></em>  <sub>0..*</sub>  <strong><a href="Reference.html">Reference</a></strong></li>
+<li><strong><a href="Figure.html">Figure</a></strong> <em><a href="Figure_reference.html">Figure➞reference</a></em>  <sub>1..1</sub>  <strong><a href="Reference.html">Reference</a></strong></li>
+<li><strong><a href="GeneInteraction.html">GeneInteraction</a></strong> <em><a href="GeneInteraction_references.html">GeneInteraction➞references</a></em>  <sub>0..1</sub>  <strong><a href="Reference.html">Reference</a></strong></li>
+<li><strong><a href="PhenotypeAnnotation.html">PhenotypeAnnotation</a></strong> <em><a href="PhenotypeAnnotation_references.html">PhenotypeAnnotation➞references</a></em>  <sub>1..1</sub>  <strong><a href="Reference.html">Reference</a></strong></li>
+<li><strong>None</strong> <em><a href="evidence.html">evidence</a></em>  <sub>0..1</sub>  <strong><a href="Reference.html">Reference</a></strong></li>
+<li><strong>None</strong> <em><a href="original_reference.html">original_reference</a></em>  <sub>0..1</sub>  <strong><a href="Reference.html">Reference</a></strong></li>
+<li><strong><a href="ReferenceType.html">ReferenceType</a></strong> <em><a href="reference.html">reference</a></em>  <sub>0..1</sub>  <strong><a href="Reference.html">Reference</a></strong></li>
+<li><strong>None</strong> <em><a href="references.html">references</a></em>  <sub>0..*</sub>  <strong><a href="Reference.html">Reference</a></strong></li>
+</ul>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
+<ul>
+<li><a href="title.html">title</a>  <sub>0..1</sub><ul>
+<li>Description: A human readable title for a reference.</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="alliance_category.html">alliance_category</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="date_published.html">date_published</a>  <sub>0..1</sub><ul>
+<li>Description: Date on which an entity was created.</li>
+<li>Range: <a href="Date.html">Date</a></li>
+</ul>
+</li>
+<li><a href="year_published.html">year_published</a>  <sub>0..1</sub><ul>
+<li>Description: Year in which an entity was created.</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="month_published.html">month_published</a>  <sub>0..1</sub><ul>
+<li>Description: Month in which an entity was created.</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="day_published.html">day_published</a>  <sub>0..1</sub><ul>
+<li>Description: Day in which an entity was created.</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="date_arrived_in_PubMed.html">date_arrived_in_PubMed</a>  <sub>0..1</sub><ul>
+<li>Description: Day in which a reference or resource was created in PUBMED. Only relevant for PUBMED references.</li>
+<li>Range: <a href="Date.html">Date</a></li>
+</ul>
+</li>
+<li><a href="date_last_modified_in_PubMed.html">date_last_modified_in_PubMed</a>  <sub>0..1</sub><ul>
+<li>Description: Date on which an entity was created.</li>
+<li>Range: <a href="Date.html">Date</a></li>
+</ul>
+</li>
+<li><a href="volume.html">volume</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="pages.html">pages</a>  <sub>0..*</sub><ul>
+<li>Description: page number of source referenced for statement or publication</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="abstract.html">abstract</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="citation.html">citation</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="PubMed_type.html">PubMed_type</a>  <sub>0..1</sub><ul>
+<li>Description: Type of InformationContentEntity as described by pub med.</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="issue_name.html">issue_name</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="issue_date.html">issue_date</a>  <sub>0..1</sub><ul>
+<li>Description: Date on which an entity was issued.</li>
+<li>Range: <a href="Date.html">Date</a></li>
+</ul>
+</li>
+<li><a href="mod_reference_types.html">mod_reference_types</a>  <sub>0..*</sub><ul>
+<li>Description: List of types as assigned at a MOD.</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="authors.html">authors</a>  <sub>0..*</sub><ul>
+<li>Range: <a href="AuthorReference.html">AuthorReference</a></li>
+</ul>
+</li>
+<li><a href="tags.html">tags</a>  <sub>0..*</sub><ul>
+<li>Description: Optional ist of controlled vocabulary tags that give categories to each pub (ie: can show images).</li>
+<li>Range: <a href="tag_set.html">tag_set</a></li>
+</ul>
+</li>
+<li><a href="topics.html">topics</a>  <sub>0..1</sub><ul>
+<li>Description: Connects an object to a vocabulary term or ontology that describes some aspect of the entity.</li>
+<li>Range: <a href="Uriorcurie.html">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="cross_references.html">cross_references</a>  <sub>0..*</sub><ul>
+<li>Description: Holds between an object and its CrossReferences.</li>
+<li>Range: <a href="CrossReference.html">CrossReference</a></li>
+</ul>
+</li>
+<li><a href="publisher.html">publisher</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="InformationContentEntity.html">InformationContentEntity</a></li>
+</ul>
+</li>
+<li><a href="keywords.html">keywords</a>  <sub>0..*</sub><ul>
+<li>Description: keywords tagging a publication</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="from_resource.html">from_resource</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="Resource.html">Resource</a></li>
+</ul>
+</li>
+<li><a href="Reference_id.html">Reference➞id</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="inherited-from-informationcontententity">Inherited from InformationContentEntity:</h3>
+<ul>
+<li><a href="curie.html">curie</a>  <sub>1..1</sub><ul>
+<li>Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI</li>
+<li>Range: <a href="Uriorcurie.html">Uriorcurie</a></li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

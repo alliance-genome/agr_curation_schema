@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>Class: Allele - Model to describe the Alliance curation/persistence data store</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Class: Allele";
+    var mkdocs_page_input_path = "Allele.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="icon icon-home"> Model to describe the Alliance curation/persistence data store</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="home.html">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="index.html">Index</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Model to describe the Alliance curation/persistence data store</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Class: Allele</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="class-allele">Class: Allele</h1>
+<p>One of multiple possible forms of a functional genomic element (most often described as a locus or gene), differing from the reference DNA sequence.  The genomic element can be endogenous or constructed.</p>
+<p>URI: <a href="http://alliancegenome.orgAllele">alliance:Allele</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Variant],[Synonym],[ReferenceType],[Person],[NoteType],[Image],[GeneGeneticInteraction],[Gene],[CrossReference],[Construct],[CellLine],[BiologicalEntity],[AffectedGenomicModel]&lt;origins%200..*-%20[Allele&#124;name:string%20%3F;symbol:string%20%3F;taxon_id:integer%20%3F;molecular_mutation:string%20%3F;functional_impact:string%20%3F;generation_method:string%20%3F;germline_transmission_status:string%20%3F;embryonic_stem_cell_lines:string%20%3F;feature_type:string%20%3F;database_status:database_statuses%20%3F;inheritence_mode:modes_of_inheritence%20%3F;in_collection:string%20%3F;transposon_insertion:string%20%3F;aberration:string%20%3F;is_extinct:boolean%20%3F;curie(i):uriorcurie;taxon(i):uriorcurie%20%3F;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[Image]&lt;images%200..1-%20[Allele],[CellLine]&lt;mutant_cell_lines%200..*-++[Allele],[CellLine]&lt;parent_cell_line%200..1-++[Allele],[NoteType]&lt;associated_notes%200..1-++[Allele],[ReferenceType]&lt;associated_references%200..*-++[Allele],[Construct]&lt;contains_construct%200..1-%20[Allele],[Gene]&lt;affected_genes%200..*-%20[Allele],[Synonym]&lt;synonyms%200..*-++[Allele],[CrossReference]&lt;cross_references%200..*-%20[Allele],[AffectedGenomicModelComponent]-%20allele%200..1&gt;[Allele],[GeneGeneticInteraction]-%20interactor_A_genetic_perturbation%200..1&gt;[Allele],[GeneGeneticInteraction]-%20interactor_B_genetic_perturbation%200..1&gt;[Allele],[Variant]-%20variant_of_allele%200..1&gt;[Allele],[BiologicalEntity]^-[Allele],[AffectedGenomicModelComponent],[AffectedGenomicModel]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Variant],[Synonym],[ReferenceType],[Person],[NoteType],[Image],[GeneGeneticInteraction],[Gene],[CrossReference],[Construct],[CellLine],[BiologicalEntity],[AffectedGenomicModel]&lt;origins%200..*-%20[Allele&#124;name:string%20%3F;symbol:string%20%3F;taxon_id:integer%20%3F;molecular_mutation:string%20%3F;functional_impact:string%20%3F;generation_method:string%20%3F;germline_transmission_status:string%20%3F;embryonic_stem_cell_lines:string%20%3F;feature_type:string%20%3F;database_status:database_statuses%20%3F;inheritence_mode:modes_of_inheritence%20%3F;in_collection:string%20%3F;transposon_insertion:string%20%3F;aberration:string%20%3F;is_extinct:boolean%20%3F;curie(i):uriorcurie;taxon(i):uriorcurie%20%3F;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[Image]&lt;images%200..1-%20[Allele],[CellLine]&lt;mutant_cell_lines%200..*-++[Allele],[CellLine]&lt;parent_cell_line%200..1-++[Allele],[NoteType]&lt;associated_notes%200..1-++[Allele],[ReferenceType]&lt;associated_references%200..*-++[Allele],[Construct]&lt;contains_construct%200..1-%20[Allele],[Gene]&lt;affected_genes%200..*-%20[Allele],[Synonym]&lt;synonyms%200..*-++[Allele],[CrossReference]&lt;cross_references%200..*-%20[Allele],[AffectedGenomicModelComponent]-%20allele%200..1&gt;[Allele],[GeneGeneticInteraction]-%20interactor_A_genetic_perturbation%200..1&gt;[Allele],[GeneGeneticInteraction]-%20interactor_B_genetic_perturbation%200..1&gt;[Allele],[Variant]-%20variant_of_allele%200..1&gt;[Allele],[BiologicalEntity]^-[Allele],[AffectedGenomicModelComponent],[AffectedGenomicModel]" /></a></p>
+<h2 id="parents">Parents</h2>
+<ul>
+<li>is_a: <a href="BiologicalEntity.html">BiologicalEntity</a> - A high-level entity comprising .</li>
+</ul>
+<h2 id="referenced-by-class">Referenced by class</h2>
+<ul>
+<li><strong><a href="AffectedGenomicModelComponent.html">AffectedGenomicModelComponent</a></strong> <em><a href="allele.html">allele</a></em>  <sub>0..1</sub>  <strong><a href="Allele.html">Allele</a></strong></li>
+<li><strong><a href="GeneGeneticInteraction.html">GeneGeneticInteraction</a></strong> <em><a href="interactor_A_genetic_perturbation.html">interactor_A_genetic_perturbation</a></em>  <sub>0..1</sub>  <strong><a href="Allele.html">Allele</a></strong></li>
+<li><strong><a href="GeneGeneticInteraction.html">GeneGeneticInteraction</a></strong> <em><a href="interactor_B_genetic_perturbation.html">interactor_B_genetic_perturbation</a></em>  <sub>0..1</sub>  <strong><a href="Allele.html">Allele</a></strong></li>
+<li><strong><a href="Variant.html">Variant</a></strong> <em><a href="variant_of_allele.html">variant_of_allele</a></em>  <sub>0..1</sub>  <strong><a href="Allele.html">Allele</a></strong></li>
+</ul>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
+<ul>
+<li><a href="name.html">name</a>  <sub>0..1</sub><ul>
+<li>Description: a human-readable name for an entity</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="symbol.html">symbol</a>  <sub>0..1</sub><ul>
+<li>Description: Symbol for a particular thing</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="taxon_id.html">taxon_id</a>  <sub>0..1</sub><ul>
+<li>Description: NCBI taxid</li>
+<li>Range: <a href="Integer.html">Integer</a></li>
+</ul>
+</li>
+<li><a href="cross_references.html">cross_references</a>  <sub>0..*</sub><ul>
+<li>Description: Holds between an object and its CrossReferences.</li>
+<li>Range: <a href="CrossReference.html">CrossReference</a></li>
+</ul>
+</li>
+<li><a href="Allele_synonyms.html">Allele➞synonyms</a>  <sub>0..*</sub><ul>
+<li>Description: synonyms for allele names and synonyms</li>
+<li>Range: <a href="Synonym.html">Synonym</a></li>
+</ul>
+</li>
+<li><a href="affected_genes.html">affected_genes</a>  <sub>0..*</sub><ul>
+<li>Description: Gene(s) altered in allele</li>
+<li>Range: <a href="Gene.html">Gene</a></li>
+</ul>
+</li>
+<li><a href="contains_construct.html">contains_construct</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="Construct.html">Construct</a></li>
+</ul>
+</li>
+<li><a href="molecular_mutation.html">molecular_mutation</a>  <sub>0..1</sub><ul>
+<li>Description: Description of the DNA changes if precise genomic location unknown</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="functional_impact.html">functional_impact</a>  <sub>0..1</sub><ul>
+<li>Description: Experimentally assessed functional impact of the allele, e.g. knockout / amorphic</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="generation_method.html">generation_method</a>  <sub>0..1</sub><ul>
+<li>Description: Technique used to create the allele, e.g. spontaneous / naturally occuring / radiation</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="associated_references.html">associated_references</a>  <sub>0..*</sub><ul>
+<li>Description: References associated with the entity in some way</li>
+<li>Range: <a href="ReferenceType.html">ReferenceType</a></li>
+</ul>
+</li>
+<li><a href="associated_notes.html">associated_notes</a>  <sub>0..1</sub><ul>
+<li>Description: Notes associated with the entity in some way</li>
+<li>Range: <a href="NoteType.html">NoteType</a></li>
+</ul>
+</li>
+<li><a href="germline_transmission_status.html">germline_transmission_status</a>  <sub>0..1</sub><ul>
+<li>Description: For alleles made in cell lines, have they been transmitted to the germline of an animal</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="parent_cell_line.html">parent_cell_line</a>  <sub>0..1</sub><ul>
+<li>Description: Parental cell line of alleles made in embryonic stem cells</li>
+<li>Range: <a href="CellLine.html">CellLine</a></li>
+</ul>
+</li>
+<li><a href="mutant_cell_lines.html">mutant_cell_lines</a>  <sub>0..*</sub><ul>
+<li>Description: Mutant cell lines known to carry the allele</li>
+<li>Range: <a href="CellLine.html">CellLine</a></li>
+</ul>
+</li>
+<li><a href="embryonic_stem_cell_lines.html">embryonic_stem_cell_lines</a>  <sub>0..1</sub><ul>
+<li>Description: Embryonic stem cell lines known to carry the allele</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="images.html">images</a>  <sub>0..1</sub><ul>
+<li>Description: Any associated image</li>
+<li>Range: <a href="Image.html">Image</a></li>
+</ul>
+</li>
+<li><a href="feature_type.html">feature_type</a>  <sub>0..1</sub><ul>
+<li>Description: Allele classification</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="origins.html">origins</a>  <sub>0..*</sub><ul>
+<li>Description: Affected genomic models that the allele was introduced in</li>
+<li>Range: <a href="AffectedGenomicModel.html">AffectedGenomicModel</a></li>
+</ul>
+</li>
+<li><a href="database_status.html">database_status</a>  <sub>0..1</sub><ul>
+<li>Description: Database status of the allele</li>
+<li>Range: <a href="database_statuses.html">database_statuses</a></li>
+</ul>
+</li>
+<li><a href="inheritence_mode.html">inheritence_mode</a>  <sub>0..1</sub><ul>
+<li>Description: Mode of inheritence, e.g. dominant / semi-dominant / recessive / unknown</li>
+<li>Range: <a href="modes_of_inheritence.html">modes_of_inheritence</a></li>
+</ul>
+</li>
+<li><a href="in_collection.html">in_collection</a>  <sub>0..1</sub><ul>
+<li>Description: Set of high-throughput alleles made by large projects</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="transposon_insertion.html">transposon_insertion</a>  <sub>0..1</sub><ul>
+<li>Description: Associated transposon insertion that causes the mutation</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="aberration.html">aberration</a>  <sub>0..1</sub><ul>
+<li>Description: Associated deficiency (etc.) whose breakpoint causes the mutation</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="is_extinct.html">is_extinct</a>  <sub>0..1</sub><ul>
+<li>Description: Does the allele still exist in a population somewhere?</li>
+<li>Range: <a href="Boolean.html">Boolean</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="inherited-from-biologicalentity">Inherited from BiologicalEntity:</h3>
+<ul>
+<li><a href="curie.html">curie</a>  <sub>1..1</sub><ul>
+<li>Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI</li>
+<li>Range: <a href="Uriorcurie.html">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="taxon.html">taxon</a>  <sub>0..1</sub><ul>
+<li>Description: The taxon from which the biological entity derives.</li>
+<li>Range: <a href="Uriorcurie.html">Uriorcurie</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="other-properties">Other properties</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Exact Mappings:</strong></td>
+<td></td>
+<td>SO:0001023</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
