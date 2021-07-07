@@ -13,7 +13,6 @@ emit_prefixes:
   - rdf
   - rdfs
   - xsd
-  - skos
 
 imports:
   - linkml:types
@@ -27,7 +26,6 @@ prefixes:
   biolink: 'https://w3id.org/biolink/vocab/'
   NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
   schema: 'http://schema.org/'
-  skos: 'http://www.w3.org/2004/02/skos/core#'
 
 classes:
 
@@ -118,5 +116,5 @@ slots:
   address:
     description: >-
       the particulars of the place where someone or an organization is situated.  For now, this slot is a
-      simple text "blob" containing all relevant details of the given location for fitness of purpose.
-      For the moment, this "address" can include other contact details such as email and phone number(?).
+      simple text blob containing all relevant details of the given location for fitness of purpose.
+      For the moment, this address can include other contact details such as email and phone number(?).

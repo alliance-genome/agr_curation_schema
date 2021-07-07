@@ -13,7 +13,6 @@ emit_prefixes:
   - rdf
   - rdfs
   - xsd
-  - skos
 
 imports:
   - linkml:types
@@ -57,14 +56,14 @@ classes:
       - schema:person
       - foaf:Person
     slot_usage:
-      person id:    # Where is this "person id" slot coming from? No underscore?
+      person id:    # Where is this person id slot coming from? No underscore?
         identifier: true
 
 slots:
 
   orcid:
     notes: >-
-      Should the domain instead be "Person" instead of "InformationContentEntity"?
-      Should the range instead be "uriorcurie"?
+      Should the domain instead be Person instead of InformationContentEntity?
+      Should the range instead be uriorcurie?
     domain: InformationContentEntity
     range: string

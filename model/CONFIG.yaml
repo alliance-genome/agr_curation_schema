@@ -10,7 +10,7 @@ model_synopsis:  Model to describe the Alliance curation/persistence data store
 # Trove Classifiers (https://pypi.org/classifiers/) -- these can be omitted if the elemens below are sufficient
 
 # Keywords -- these can also be omitted from this file if the below is ok
-keywords: [linkml, LOD, Modeling, Linked open data, model, Alliance, MOD]
+keywords: [linkml, LOD, Modeling, Linked open data, model, Alliance of Genome Resources, Alliance , MOD]
 
 # Elements to be generated
 # See: https://github.com/linkml/linkml/generators/README.md for what the outputs look like
@@ -23,5 +23,4 @@ keywords: [linkml, LOD, Modeling, Linked open data, model, Alliance, MOD]
 #                  shex -- LinkML model definition in ShEx
 #                  sqlddl -- SQL ddl of the model
 #                  model -- copy model/schema to distribution directory
-generate: [jsonld_context, json_schema, model]
-
+generate: [jsonld_context, json_schema, model, sqlddl]

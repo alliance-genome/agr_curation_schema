@@ -13,26 +13,18 @@ prefixes:
   biolink: 'https://w3id.org/biolink/vocab/'
   NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
   schema: 'http://schema.org/'
-  skos: 'http://www.w3.org/2004/02/skos/core#'
 
 default_prefix: alliance
 default_range: string
-
-default_curi_maps:
-  - obo_context
-  - idot_context
 
 emit_prefixes:
   - rdf
   - rdfs
   - xsd
-  - skos
 
 imports:
   - reference
   - resource
-  - crossReference
-  - genomic
   - variation
   - variantConsequence
   - variantGenomicLocation

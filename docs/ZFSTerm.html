@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>Class: ZFSTerm - Model to describe the Alliance curation/persistence data store</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Class: ZFSTerm";
+    var mkdocs_page_input_path = "ZFSTerm.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="icon icon-home"> Model to describe the Alliance curation/persistence data store</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="home.html">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="index.html">Index</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Model to describe the Alliance curation/persistence data store</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Class: ZFSTerm</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="class-zfsterm">Class: ZFSTerm</h1>
+<p>URI: <a href="http://alliancegenome.orgZFSTerm">alliance:ZFSTerm</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[StageTerm]^-[ZFSTerm&#124;curie(i):uriorcurie;dbkey(i):string%20%3F;name(i):string%20%3F;type(i):uriorcurie%20%3F;is_obsolete(i):string%20%3F;namespace(i):string%20%3F;subsets(i):string%20*;secondary_identifiers(i):uriorcurie%20*],[Synonym],[StageTerm],[OntologyTermDefinition],[CrossReference]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[StageTerm]^-[ZFSTerm&#124;curie(i):uriorcurie;dbkey(i):string%20%3F;name(i):string%20%3F;type(i):uriorcurie%20%3F;is_obsolete(i):string%20%3F;namespace(i):string%20%3F;subsets(i):string%20*;secondary_identifiers(i):uriorcurie%20*],[Synonym],[StageTerm],[OntologyTermDefinition],[CrossReference]" /></a></p>
+<h2 id="parents">Parents</h2>
+<ul>
+<li>is_a: <a href="StageTerm.html">StageTerm</a></li>
+</ul>
+<h2 id="attributes">Attributes</h2>
+<h3 id="inherited-from-stageterm">Inherited from StageTerm:</h3>
+<ul>
+<li><a href="curie.html">curie</a>  <sub>1..1</sub><ul>
+<li>Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI</li>
+<li>Range: <a href="Uriorcurie.html">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="dbkey.html">dbkey</a>  <sub>0..1</sub><ul>
+<li>Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="name.html">name</a>  <sub>0..1</sub><ul>
+<li>Description: a human-readable name for an entity</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="definition.html">definition</a>  <sub>0..1</sub><ul>
+<li>Description: The definition of the ontology term.  This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.</li>
+<li>Range: <a href="OntologyTermDefinition.html">OntologyTermDefinition</a></li>
+</ul>
+</li>
+<li><a href="type.html">type</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="Uriorcurie.html">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="is_obsolete.html">is_obsolete</a>  <sub>0..1</sub><ul>
+<li>Description: Entity is no longer current.</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="cross_references.html">cross_references</a>  <sub>0..*</sub><ul>
+<li>Description: Holds between an object and its CrossReferences.</li>
+<li>Range: <a href="CrossReference.html">CrossReference</a></li>
+</ul>
+</li>
+<li><a href="synonyms.html">synonyms</a>  <sub>0..*</sub><ul>
+<li>Description: holds between a named thing and a synonym</li>
+<li>Range: <a href="Synonym.html">Synonym</a></li>
+</ul>
+</li>
+<li><a href="namespace.html">namespace</a>  <sub>0..1</sub><ul>
+<li>Description: the namespace of the ontology.</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="subsets.html">subsets</a>  <sub>0..*</sub><ul>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="secondary_identifiers.html">secondary_identifiers</a>  <sub>0..*</sub><ul>
+<li>Range: <a href="Uriorcurie.html">Uriorcurie</a></li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

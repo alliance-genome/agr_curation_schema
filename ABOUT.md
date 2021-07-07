@@ -25,7 +25,7 @@ site, as well as downstream artefacts, including:
  * OWL
  * RDF (direct mapping)
  * JSON-LD Contexts
- * SQL DDL (TODO)
+ * SQL DDL
  * Python classes to represent model elements
  * TSV/CSV reports (TODO)
 

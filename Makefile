@@ -13,7 +13,7 @@ SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
 
 SCHEMA_NAME = allianceModel
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
-PKG_TGTS = jsonld_context json_schema model
+PKG_TGTS = jsonld_context json_schema model sqlddl
 TGTS = docs python $(PKG_TGTS)
 
 # Targets by PKG_TGT
@@ -25,6 +25,7 @@ PKG_T_OWL = $(PKG_DIR)/owl
 PKG_T_RDF = $(PKG_DIR)/rdf
 PKG_T_SHEX = $(PKG_DIR)/shex
 PKG_T_SQLDDL = $(PKG_DIR)/sqlddl
+PKG_T_SQLALCHEMY = $(PKG_DIR)/sqlalchemy
 PKG_T_DOCS = $(MODEL_DOCS_DIR)
 PKG_T_PYTHON = $(PKG_DIR)
 PKG_T_MODEL = $(PKG_DIR)/model
@@ -32,6 +33,7 @@ PKG_T_SCHEMA = $(PKG_T_MODEL)/schema
 
 # Global generation options
 GEN_OPTS = --log_level WARNING
+DDL_GEN_OPTS = --sqla-file target/sqla-files/
 ENV = export PIPENV_VENV_IN_PROJECT=true && export PIPENV_PIPFILE=make-venv/Pipfile && export PIPENV_IGNORE_VIRTUALENVS=1
 RUN = $(ENV) && pipenv run
 
@@ -47,9 +49,8 @@ all: install gen
 install: make-venv/env.lock
 
 make-venv/env.lock:
-	mkdir -p make-venv
-	touch make-venv/env.lock
 	$(ENV) && pipenv install
+	touch make-venv/env.lock
 
 uninstall:
 	rm -f make-venv/env.lock
@@ -59,8 +60,8 @@ uninstall:
 # Test runner
 # ----------------------------------------
 test:
-	pipenv install --dev
-	pipenv run python -m unittest
+	$(ENV) && pipenv install --dev
+	$(ENV) && pipenv run python -m unittest
 
 # ---------------------------------------
 # GEN: run generator for each target
@@ -116,7 +117,6 @@ docs/index.md: target/docs/index.md install
 	$(RUN) mkdocs build
 
 target/docs/index.md: $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml tdir-docs install
-	pipenv install
 	$(RUN) gen-markdown $(GEN_OPTS) --mergeimports --notypesdir --warnonexist --dir target/docs $<
 
 # ---------------------------------------
@@ -255,6 +255,15 @@ $(PKG_T_SQLDDL)/%.sql: target/sqlddl/%.sql
 	cp $< $@
 target/sqlddl/%.sql: $(SCHEMA_DIR)/%.yaml tdir-sqlddl install
 	$(RUN) gen-sqlddl $(GEN_OPTS) $< > $@
+
+gen-sqlddl-sqlalchemy: $(PKG_T_SQLALCHEMY)/$(SCHEMA_NAME)_alchemy.py
+.PHONY: gen-sqlddl-sqlalchemy
+
+$(PKG_T_SQLALCHEMY)/%.py: target/sqlalchemy/%.py
+	mkdir -p $(PKG_T_SQLALCHEMY)
+	cp $< $@
+target/sqlalchemy/%.py: $(SCHEMA_DIR)/%.yaml tdir-sqlddl install
+	$(RUN) gen-sqlddl $(DDL_GEN_OPTS) $< > $@
 
 # test docs locally.
 docserve: gen-docs

@@ -16,7 +16,6 @@ emit_prefixes:
   - rdf
   - rdfs
   - xsd
-  - skos
   - owl
 
 imports:
@@ -28,31 +27,7 @@ imports:
 
 prefixes:
   alliance: 'http://alliancegenome.org'
-  APO: 'http://purl.obolibrary.org/obo/APO_'
-  biolink: 'https://w3id.org/biolink/vocab/'
-  CHEBI: 'http://purl.obolibrary.org/obo/CHEBI_'
-  DOID: 'http://purl.obolibrary.org/obo/DOID_'
-  ECO: 'http://purl.obolibrary.org/obo/ECO_'
-  FBbt: 'http://purl.obolibrary.org/obo/FBbt_'
-  FBcv: 'http://purl.obolibrary.org/obo/FBcv_'
-  GENO: 'http://purl.obolibrary.org/obo/GENO_'
-  GO: 'http://purl.obolibrary.org/obo/GO_'
-  HP: 'http://purl.obolibrary.org/obo/HP_'
   linkml: 'https://w3id.org/linkml/'
-  MONDO: 'http://purl.obolibrary.org/obo/MONDO_'
-  MP: 'http://purl.obolibrary.org/obo/MP_'
-  NCBITaxon: 'http://purl.obolibrary.org/obo/NCBITaxon_'
-  PATO: 'http://purl.obolibrary.org/obo/PATO_'
-  RO: 'http://purl.obolibrary.org/obo/RO_'
-  schema: 'http://schema.org/'
-  UBERON: 'http://purl.obolibrary.org/obo/UBERON_'
-  WBbt: 'http://purl.obolibrary.org/obo/WBbt_'
-  WBPhenotype: 'http://purl.obolibrary.org/obo/WBPhenotype_'
-  WBMol: 'http://www.wormbase.org/db/get?name=WBMol:'
-  XCO: 'http://purl.obolibrary.org/obo/XCO_'
-  ZECO: 'http://purl.obolibrary.org/obo/ZECO_'
-  ZFA: 'http://purl.obolibrary.org/obo/ZFA_'
-  ZP: 'http://purl.obolibrary.org/obo/ZP_'
 
 
 ## ------------

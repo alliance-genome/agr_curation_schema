@@ -10,4 +10,5 @@
 # `Pipfile.lock` and then regenerate `requirements*.txt`.
 ################################################################################
 
+linkml-model~=1.0
 linkml-runtime~=1.0, >=1.0.3

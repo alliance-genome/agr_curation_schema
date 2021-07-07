@@ -2,7 +2,6 @@ id: https://github.com/alliance-genome/agr_curation_schema/src/schema/antibody.y
 
 imports:
   - core
-  - crossReference
   - reference
   - linkml:types
 
@@ -17,7 +16,7 @@ classes:
       Immunoglobulin proteins that bind specific molecule(s). Can be used
       experimentally for the purposes of detection or purification.
     notes: >-
-      Inherits "id" and "taxon" slots from parental "BiologicalEntity".
+      Inherits id and taxon slots from parental BiologicalEntity.
     aliases: ['antibody', 'antibodies', 'antiserum', 'antisera']
     id_prefixes:
       - RGD
@@ -41,7 +40,7 @@ classes:
     slot_usage:
       curie:
         description: >-
-          A unique identifier for the antibody: e.g., "WBAntibody0000001".
+          A unique identifier for the antibody: e.g., WBAntibody0000001.
         notes: >-
           As not all MODs have IDs (e.g., FB), some IDs will need to be minted
           at the Alliance.
@@ -49,7 +48,7 @@ classes:
       name:
         description: >-
           Publicly displayed name of the antibody. It often includes the name
-          of the antibody target: e.g., "anti-WNT-4". It may also include the
+          of the antibody target: e.g., anti-WNT-4. It may also include the
           host species and antibody clonality.
         notes: >-
           FB does not have names for antibodies, but would be easy to generate,
@@ -95,7 +94,7 @@ slots:
 
   clonality:
     description: >-
-      The clonality of the antibody: e.g., "monoclonal".
+      The clonality of the antibody: e.g., monoclonal.
     notes: I think this will be an antibody specific slot.
     required: true
     multivalued: false
@@ -104,7 +103,7 @@ slots:
 
   heavy_chain_isotype:
     description: >-
-      The isotype of the antibody heavy chain: e.g., "IgA".
+      The isotype of the antibody heavy chain: e.g., IgA.
     required: false
     multivalued: false
     domain: Antibody
@@ -112,7 +111,7 @@ slots:
 
   light_chain_isotype:
     description: >-
-      The isotype of the antibody light chain: e.g., "i4".
+      The isotype of the antibody light chain: e.g., i4.
     required: false
     multivalued: false
     domain: Antibody
@@ -168,24 +167,24 @@ enums:
     permissible_values:
       antibody_description:
         description: >-
-          A high level summary of the antibody intended for prominent display:
-          e.g., "Antibodies against SEIP-1 were raised by injection of the
+          A high level summary of the antibody intended for prominent display
+          e.g., Antibodies against SEIP-1 were raised by injection of the
           peptide 261KKEEPGLLDLRKRK, corresponding to the C-terminus of SEIP-1,
-          into rabbits."
+          into rabbits.
         notes: >-
-          Equivalent to WB "summary".
+          Equivalent to WB summary.
       antigen_description:
         description: >-
-          A description about the antigen used to generate the antibody:
-          e.g., "N-terminal peptide (SQFRPEKKEKSTCSIC); ; full length ceKDM1A
-          (amino acids 1-897)".
+          A description about the antigen used to generate the antibody
+          e.g., N-terminal peptide (SQFRPEKKEKSTCSIC) full length ceKDM1A
+          (amino acids 1-897).
       remark:
         description: >-
           Information pertaining to the antibody that is not covered by other
-          fields: e.g., "Possible pseudonym: 7G1", "High level of background",
-          "Works well for immunoprecipitation."
+          fields e.g., Possible pseudonym 7G1, High level of background,
+          Works well for immunoprecipitation.
         notes: >-
-          Equivalent to WB "remark".
+          Equivalent to WB remark.
       private:
         description: >-
           Information intended for internal use, generally regarding aspects

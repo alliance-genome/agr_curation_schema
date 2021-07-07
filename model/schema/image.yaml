@@ -3,7 +3,7 @@ id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.ya
 imports:
   - core
   - linkml:types
-  - reference
+  - allele
 
 classes:
 
@@ -155,7 +155,7 @@ slots:
       larger image.
     notes: >-
       Assuming that the x coordinate origin begins at the left of an image.
-      Would be good to synch with how MGI represents their "image panes".
+      Would be good to synch with how MGI represents their image panes.
     range: integer
     required: false
     multivalued: false
@@ -166,7 +166,7 @@ slots:
       larger image.
     notes: >-
       Assuming that the y coordinate origin begins at the bottom of an image.
-      Would be good to synch with how MGI represents their "image panes".
+      Would be good to synch with how MGI represents their image panes.
     range: integer
     required: false
     multivalued: false
@@ -179,7 +179,7 @@ slots:
 
   label:
     description: >-
-      A short display name for the figure. For example: "Figure 2", "Figure 3B"
+      A short display name for the figure. For example: Figure 2, Figure 3B
     range: string
 
   video_still:

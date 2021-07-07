@@ -1,7 +1,7 @@
 id: https://github.com/alliance-genome/agr_curation_schema/core.yaml
-name: Alliance-Schema-Prototype-Core
-title: Alliance Schema Prototype Core
-description: Alliance Schema Prototype with LinkML
+name: Alliance-Schema-Core
+title: Alliance Schema Core
+description: Alliance Schema with LinkML
 
 default_prefix: alliance
 default_range: string
@@ -16,14 +16,11 @@ emit_prefixes:
   - rdf
   - rdfs
   - xsd
-  - skos
 
 imports:
   - linkml:types
   - reference
   - resource
-  - genomic
-  - crossReference
   - person
   - image
 
@@ -35,7 +32,8 @@ prefixes:
   biolink: 'https://w3id.org/biolink/vocab/'
   NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
   schema: 'http://schema.org/'
-  skos: 'http://www.w3.org/2004/02/skos/core#' # quotes are option - be consistent. check if this is needed in all yaml files.
+  dct: 'http://purl.org/dc/terms/'
+  WIKIDATA_PROPERTY: 'https://www.wikidata.org/wiki/Property:'
 
 ## ------------
 ## TYPES
@@ -112,6 +110,17 @@ classes:
       - WB
       - ZFIN
 
+  CrossReference:
+    is_a: InformationContentEntity
+    slots:
+      - curie
+      - page_areas
+      - display_name
+      - prefix
+    defining_slots:
+      - curie
+      - page_areas
+
   Species:
 
   Synonym:
@@ -152,7 +161,7 @@ classes:
       - biolink:association
     notes:
       Keeping this more generic than biolink:association by foregoing the
-      "qualifiers" and "negated" slots.
+      qualifiers and negated slots.
       object
     slots:
       - subject
@@ -185,11 +194,74 @@ classes:
       - prefix_page
       - prefix_order
 
+  Chromosome:
+    description: The ID of the landmark used to establish the coordinate system for the current feature.
+    slots:
+      - curie
+
+  Assembly:
+    slots:
+      - curie
+
+  GeneGenomicLocation:
+    slots:
+      - subject
+      - predicate
+      - object
+      - assembly
+      - start
+      - end
+    slot_usage:
+      subject:
+        range: Variant
+        description: >-
+          subject should be the gene identifier
+      object:
+        range: Chromosome
+        description: >-
+          object should be the chromosome identifier
+    defining_slots:
+      - subject
+      - predicate
+      - object
+      - assembly
+      - start
+      - end
+
 ## ------------
 ## SLOTS
 ## ------------
 
+
+
 slots:
+
+  start:
+    description: The start of the feature in positive 1-based integer coordinates
+
+  end:
+    description: The end of the feature in positive 1-based integer coordinates
+
+  assembly:
+    domain: GenomicEntity
+    required: true
+    range: Chromosome
+  prefix:
+    required: true
+    multivalued: false
+    description: >-
+      Denormalization to help with classifying types of crossReferences,
+      distinguishing DOIs from PMC ids, etc.
+
+  page_areas:
+    required: true
+    multivalued: true
+    range: string
+
+  display_name:
+    required: true
+    multivalued: false
+    range: string
 
   curator_comment:
     description: >-
@@ -234,8 +306,8 @@ slots:
       The type of free-text statement. For example: cytology, private,
       curator_comments.
     notes: >-
-      Note types listed here as having range "string", but should probably be
-      constrained to specific "enum" sets depending on the entity type.
+      Note types listed here as having range string, but should probably be
+      constrained to specific enum sets depending on the entity type.
     domain: EntityStatement
     range: string
 
@@ -248,7 +320,7 @@ slots:
   generated_by:
     description: >-
       Holds between a material entity and an Agent that generated it:
-      e.g., "Thomas Blumenthal", "Kornberg Laboratory".
+      e.g., Thomas Blumenthal, Kornberg Laboratory.
     required: false
     multivalued: true
     range: Agent
@@ -256,7 +328,7 @@ slots:
   manufactured_by:
     description: >-
       Holds between a material entity and an Agent that has manufactured it:
-      e.g., "Molecular Probes".
+      e.g., olecular Probes.
     required: false
     multivalued: true
     range: Agent
@@ -392,8 +464,8 @@ slots:
     description: >-
       Holds between an entity and a Species.
     notes: >-
-      This may be redundant with the "taxon" slot, but if not, then the
-      distinct usage of "taxon" versus "from_species" needs clarification.
+      This may be redundant with the taxon slot, but if not, then the
+      distinct usage of taxon versus from_species needs clarification.
     range: Species
 
   synonyms:
@@ -481,11 +553,6 @@ slots:
     multivalued: true
     inherited: true
     symmetric: true
-#    exact_mappings:
-#      - biolink:related_to
-#      - skos:relatedMatch
-#      - SEMMEDDB:ASSOCIATED_WITH
-#      - SEMMEDDB:associated_with
 
 enums:
 
@@ -493,7 +560,7 @@ enums:
     permissible_values:
       current:
         description: >-
-          The synonym is an "officially" accepted synonym for an entity.
+          The synonym is an officially accepted synonym for an entity.
           An entity should have only one current synonym of a give type.
           For example, only one current symbol and one current full name.
       alias:

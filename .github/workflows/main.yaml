@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, linkml-sql ]
 
 jobs:
   unittests-n-commits:
@@ -33,7 +33,7 @@ jobs:
       run: |
         pip install pipenv
         pipenv install --dev
-       # pipenv run python -m unittest discover -p 'test_*.py'
+        pipenv run python -m unittest discover -p 'test_*.py'
 
     - name: Check in changes to requirements files
       run: |
@@ -49,7 +49,7 @@ jobs:
     - name: Check updated content
       run: |
         find agr_curation_schema -name __pycache__ -type d -prune -exec rm -rf '{}' '+'
-        git add --force docs linkml_model
+        git add --force docs model
         if [[ ! -z $(git status -s .) ]]
         then
           git config --local user.email "action@github.com"
