@@ -257,15 +257,6 @@ $(PKG_T_SQLDDL)/%.sql: target/sqlddl/%.sql
 target/sqlddl/%.sql: $(SCHEMA_DIR)/%.yaml tdir-sqlddl install
 	$(RUN) gen-sqlddl $(GEN_OPTS) $< > $@
 
-gen-sqlddl-sqlalchemy: $(PKG_T_SQLALCHEMY)/$(SCHEMA_NAME)_alchemy.py
-.PHONY: gen-sqlddl-sqlalchemy
-
-$(PKG_T_SQLALCHEMY)/%.py: target/sqlalchemy/%.py
-	mkdir -p $(PKG_T_SQLALCHEMY)
-	cp $< $@
-target/sqlalchemy/%.py: $(SCHEMA_DIR)/%.yaml tdir-sqlddl-sqlalchemy install
-	$(RUN) gen-sqlddl $(DDL_GEN_OPTS) $< > $@
-
 # test docs locally.
 docserve: gen-docs
 	$(RUN) mkdocs serve
