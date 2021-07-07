@@ -25,8 +25,6 @@ emit_prefixes:
 imports:
   - reference
   - resource
-  - crossReference
-  - genomic
   - variation
   - variantConsequence
   - variantGenomicLocation

@@ -4,7 +4,6 @@ imports:
   - core
   - linkml:types
   - variation
-  - genomic
 
 prefixes:
   alliance: 'http://alliancegenome.org'

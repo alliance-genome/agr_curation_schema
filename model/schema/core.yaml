@@ -21,8 +21,6 @@ imports:
   - linkml:types
   - reference
   - resource
-  - genomic
-
   - person
   - image
 
@@ -196,12 +194,58 @@ classes:
       - prefix_page
       - prefix_order
 
+  Chromosome:
+    description: The ID of the landmark used to establish the coordinate system for the current feature.
+    slots:
+      - curie
+
+  Assembly:
+    slots:
+      - curie
+
+  GeneGenomicLocation:
+    slots:
+      - subject
+      - predicate
+      - object
+      - assembly
+      - start
+      - end
+    slot_usage:
+      subject:
+        range: Variant
+        description: >-
+          subject should be the gene identifier
+      object:
+        range: Chromosome
+        description: >-
+          object should be the chromosome identifier
+    defining_slots:
+      - subject
+      - predicate
+      - object
+      - assembly
+      - start
+      - end
+
 ## ------------
 ## SLOTS
 ## ------------
 
+
+
 slots:
 
+  start:
+    description: The start of the feature in positive 1-based integer coordinates
+
+  end:
+    description: The end of the feature in positive 1-based integer coordinates
+
+  assembly:
+    domain: GenomicEntity
+    required: true
+    range: Chromosome
   prefix:
     required: true
     multivalued: false
