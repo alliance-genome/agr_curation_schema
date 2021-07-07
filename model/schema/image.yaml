@@ -3,7 +3,7 @@ id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.ya
 imports:
   - core
   - linkml:types
-  - reference
+  - allele
 
 classes:
 
