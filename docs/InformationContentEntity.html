@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>Class: InformationContentEntity - Model to describe the Alliance curation/persistence data store</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Class: InformationContentEntity";
+    var mkdocs_page_input_path = "InformationContentEntity.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="icon icon-home"> Model to describe the Alliance curation/persistence data store</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="home.html">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="index.html">Index</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Model to describe the Alliance curation/persistence data store</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Class: InformationContentEntity</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="class-informationcontententity">Class: InformationContentEntity</h1>
+<p>a piece of information that typically describes some topic of discourse or is used as support. Precedence of identifiers for references is as follows: PMID if available; DOI if not; actual alternate CURIE otherwise.</p>
+<p>URI: <a href="http://alliancegenome.orgInformationContentEntity">alliance:InformationContentEntity</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Resource],[Reference],[Person],[AuthorReference]-%20corresponding_author%200..1&gt;[InformationContentEntity&#124;curie:uriorcurie;table_key:integer%20%3F;creation_date:string%20%3F;date_last_modified:date%20%3F],[AuthorReference]-%20first_name%200..1&gt;[InformationContentEntity],[Person]-%20first_name%200..1&gt;[InformationContentEntity],[AuthorReference]-%20initials%200..1&gt;[InformationContentEntity],[AuthorReference]-%20last_name%200..1&gt;[InformationContentEntity],[Person]-%20last_name%200..1&gt;[InformationContentEntity],[AuthorReference]-%20middle_names%200..1&gt;[InformationContentEntity],[Reference]-%20publisher%200..1&gt;[InformationContentEntity],[Resource]-%20publisher%200..1&gt;[InformationContentEntity],[InformationContentEntity]uses%20-.-&gt;[AuditedObject],[InformationContentEntity]^-[Resource],[InformationContentEntity]^-[Reference],[InformationContentEntity]^-[CrossReference],[CrossReference],[AuthorReference],[AuditedObject]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Resource],[Reference],[Person],[AuthorReference]-%20corresponding_author%200..1&gt;[InformationContentEntity&#124;curie:uriorcurie;table_key:integer%20%3F;creation_date:string%20%3F;date_last_modified:date%20%3F],[AuthorReference]-%20first_name%200..1&gt;[InformationContentEntity],[Person]-%20first_name%200..1&gt;[InformationContentEntity],[AuthorReference]-%20initials%200..1&gt;[InformationContentEntity],[AuthorReference]-%20last_name%200..1&gt;[InformationContentEntity],[Person]-%20last_name%200..1&gt;[InformationContentEntity],[AuthorReference]-%20middle_names%200..1&gt;[InformationContentEntity],[Reference]-%20publisher%200..1&gt;[InformationContentEntity],[Resource]-%20publisher%200..1&gt;[InformationContentEntity],[InformationContentEntity]uses%20-.-&gt;[AuditedObject],[InformationContentEntity]^-[Resource],[InformationContentEntity]^-[Reference],[InformationContentEntity]^-[CrossReference],[CrossReference],[AuthorReference],[AuditedObject]" /></a></p>
+<h2 id="uses-mixins">Uses Mixins</h2>
+<ul>
+<li>mixin: <a href="AuditedObject.html">AuditedObject</a> - Some entity for which changes are tracked, including date/time of change and the agent responsible for the change.</li>
+</ul>
+<h2 id="children">Children</h2>
+<ul>
+<li><a href="CrossReference.html">CrossReference</a></li>
+<li><a href="Reference.html">Reference</a></li>
+<li><a href="Resource.html">Resource</a></li>
+</ul>
+<h2 id="referenced-by-class">Referenced by class</h2>
+<ul>
+<li><strong><a href="InformationContentEntity.html">InformationContentEntity</a></strong> <em><a href="corresponding_author.html">corresponding_author</a></em>  <sub>0..1</sub>  <strong><a href="InformationContentEntity.html">InformationContentEntity</a></strong></li>
+<li><strong><a href="InformationContentEntity.html">InformationContentEntity</a></strong> <em><a href="first_name.html">first_name</a></em>  <sub>0..1</sub>  <strong><a href="InformationContentEntity.html">InformationContentEntity</a></strong></li>
+<li><strong><a href="InformationContentEntity.html">InformationContentEntity</a></strong> <em><a href="initials.html">initials</a></em>  <sub>0..1</sub>  <strong><a href="InformationContentEntity.html">InformationContentEntity</a></strong></li>
+<li><strong><a href="InformationContentEntity.html">InformationContentEntity</a></strong> <em><a href="last_name.html">last_name</a></em>  <sub>0..1</sub>  <strong><a href="InformationContentEntity.html">InformationContentEntity</a></strong></li>
+<li><strong><a href="InformationContentEntity.html">InformationContentEntity</a></strong> <em><a href="middle_names.html">middle_names</a></em>  <sub>0..1</sub>  <strong><a href="InformationContentEntity.html">InformationContentEntity</a></strong></li>
+<li><strong><a href="InformationContentEntity.html">InformationContentEntity</a></strong> <em><a href="publisher.html">publisher</a></em>  <sub>0..1</sub>  <strong><a href="InformationContentEntity.html">InformationContentEntity</a></strong></li>
+</ul>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
+<ul>
+<li><a href="curie.html">curie</a>  <sub>1..1</sub><ul>
+<li>Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI</li>
+<li>Range: <a href="Uriorcurie.html">Uriorcurie</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-auditedobject">Mixed in from AuditedObject:</h3>
+<ul>
+<li><a href="table_key.html">table_key</a>  <sub>0..1</sub><ul>
+<li>Description: The primary key for a specific table entry, unique for that table.</li>
+<li>Range: <a href="Integer.html">Integer</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-auditedobject_1">Mixed in from AuditedObject:</h3>
+<ul>
+<li><a href="produced_by.html">produced_by</a>  <sub>1..1</sub><ul>
+<li>Description: The individual that created the entity.</li>
+<li>Range: <a href="Person.html">Person</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-auditedobject_2">Mixed in from AuditedObject:</h3>
+<ul>
+<li><a href="creation_date.html">creation_date</a>  <sub>0..1</sub><ul>
+<li>Description: The date on which an entity was created. This can be applied to nodes or edges.</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-auditedobject_3">Mixed in from AuditedObject:</h3>
+<ul>
+<li><a href="modified_by.html">modified_by</a>  <sub>1..1</sub><ul>
+<li>Description: The individual that last modified the entity.</li>
+<li>Range: <a href="Person.html">Person</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-auditedobject_4">Mixed in from AuditedObject:</h3>
+<ul>
+<li><a href="date_last_modified.html">date_last_modified</a>  <sub>0..1</sub><ul>
+<li>Description: Date on which an entity was last modified.</li>
+<li>Range: <a href="Date.html">Date</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="other-properties">Other properties</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Aliases:</strong></td>
+<td></td>
+<td>information</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>information artifact</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>information entity</td>
+</tr>
+<tr>
+<td><strong>Exact Mappings:</strong></td>
+<td></td>
+<td>IAO:0000030</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

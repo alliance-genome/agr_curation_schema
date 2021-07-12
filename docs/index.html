@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="None">
+  
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>Model to describe the Alliance curation/persistence data store</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Index";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="icon icon-home"> Model to describe the Alliance curation/persistence data store</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="home.html">Home</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="index.html">Index</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mixins">Mixins</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#slots">Slots</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#enums">Enums</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#types">Types</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#built-in">Built in</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#defined">Defined</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Model to describe the Alliance curation/persistence data store</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Index</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="alliance-schema-prototype-schema">Alliance-Schema-Prototype schema</h1>
+<p>Alliance Schema Prototype</p>
+<h3 id="classes">Classes</h3>
+<ul>
+<li><a href="AffectedGenomicModelComponent.html">AffectedGenomicModelComponent</a> - Allele that affects the model and its zygosity</li>
+<li><a href="Agent.html">Agent</a> - An individual, group, organization or project that provides information and/or materials.<ul>
+<li><a href="Organization.html">Organization</a><ul>
+<li><a href="Company.html">Company</a></li>
+<li><a href="Laboratory.html">Laboratory</a></li>
+</ul>
+</li>
+<li><a href="Person.html">Person</a></li>
+</ul>
+</li>
+<li><a href="Assembly.html">Assembly</a></li>
+<li><a href="Association.html">Association</a> - A typed association between two entities, supported by evidence.<ul>
+<li><a href="DiseaseAnnotation.html">DiseaseAnnotation</a> - An annotation associating a biological entity to a disease supported by evidence</li>
+<li><a href="DiseaseAnnotationExperimentalConditionAssociation.html">DiseaseAnnotationExperimentalConditionAssociation</a> - A typed (predicate-specified) association between a disease annotation object and an experimental condition object</li>
+<li><a href="EntitySynonym.html">EntitySynonym</a> - A relationship between an entity and a synonym.</li>
+<li><a href="GeneToGeneAssociation.html">GeneToGeneAssociation</a> - abstract parent class for different kinds of gene-gene or gene product to gene product relationships. Includes homology and interaction.<ul>
+<li><a href="GeneInteraction.html">GeneInteraction</a> - An interaction between two genes or gene products; this may be a physical molecular interaction between gene products (e.g. protein-protein interactions), or may be a genetic interaction between genes (e.g. phenotypic suppression)<ul>
+<li><a href="GeneGeneticInteraction.html">GeneGeneticInteraction</a> - A genetic interaction between genes (e.g. phenotypic suppression)</li>
+<li><a href="GeneMolecularInteraction.html">GeneMolecularInteraction</a> - A physical molecular interaction between gene products (e.g. protein-protein interactions or protein-RNA interactions) or between genes and DNA-binding factors (e.g. protein-DNA interactions)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="PhenotypeAnnotation.html">PhenotypeAnnotation</a> - An annotation associating a biological entity to a phenotype supported by evidence</li>
+<li><a href="PhenotypeAnnotationExperimentalConditionAssociation.html">PhenotypeAnnotationExperimentalConditionAssociation</a> - A typed (predicate-specified) association between a phenotype annotation object and an experimental condition object</li>
+</ul>
+</li>
+<li><a href="AuthorReference.html">AuthorReference</a></li>
+<li><a href="BiologicalEntity.html">BiologicalEntity</a> - A high-level entity comprising .<ul>
+<li><a href="Allele.html">Allele</a> - One of multiple possible forms of a functional genomic element (most often described as a locus or gene), differing from the reference DNA sequence.  The genomic element can be endogenous or constructed.</li>
+<li><a href="Antibody.html">Antibody</a> - Immunoglobulin proteins that bind specific molecule(s). Can be used experimentally for the purposes of detection or purification.</li>
+<li><a href="GenomicEntity.html">GenomicEntity</a><ul>
+<li><a href="AffectedGenomicModel.html">AffectedGenomicModel</a> - Includes inbred strains, stocks, disease models and mutant genotypes</li>
+<li><a href="Construct.html">Construct</a></li>
+<li><a href="ConstructComponent.html">ConstructComponent</a></li>
+<li><a href="Gene.html">Gene</a> - Placeholder.</li>
+<li><a href="Transcript.html">Transcript</a> - Placeholder.</li>
+<li><a href="Variant.html">Variant</a> - A DNA sequence that differs relative to a designated reference sequence.  The sequence occurs at a single position or in contiguous nucleotides.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="CellLine.html">CellLine</a> - Dummy cell line class</li>
+<li><a href="Chromosome.html">Chromosome</a> - The ID of the landmark used to establish the coordinate system for the current feature.</li>
+<li><a href="Disease.html">Disease</a></li>
+<li><a href="Entity.html">Entity</a></li>
+<li><a href="EntityStatement.html">EntityStatement</a> - Free-text describing some aspect of an entity.<ul>
+<li><a href="AntibodyNote.html">AntibodyNote</a></li>
+</ul>
+</li>
+<li><a href="ExperimentalCondition.html">ExperimentalCondition</a> - The environmental context in which an experiment is carried out. This may (e.g. drug treatment) or may not (e.g. standard conditions) directly influence the outcome of the experiment.</li>
+<li><a href="ExternalDatabaseLink.html">ExternalDatabaseLink</a> - Base relation that holds the identifier prefix, base url and url suffix to help in generating URLs in crossReferences.</li>
+<li><a href="Figure.html">Figure</a> - An entity representing a figure or table in a publication.</li>
+<li><a href="File.html">File</a> - A dummy object.</li>
+<li><a href="GeneGenomicLocation.html">GeneGenomicLocation</a></li>
+<li><a href="Image.html">Image</a> - The set of files and metadata that constitute an image.</li>
+<li><a href="ImagePane.html">ImagePane</a> - Part of an Image that is relevant to some annotation. An annotation may reference many panes of an Image.</li>
+<li><a href="InformationContentEntity.html">InformationContentEntity</a> - a piece of information that typically describes some topic of discourse or is used as support. Precedence of identifiers for references is as follows: PMID if available; DOI if not; actual alternate CURIE otherwise.<ul>
+<li><a href="CrossReference.html">CrossReference</a></li>
+<li><a href="Reference.html">Reference</a></li>
+<li><a href="Resource.html">Resource</a></li>
+</ul>
+</li>
+<li><a href="NoteType.html">NoteType</a> - Describes the relation between a note and an object</li>
+<li><a href="OntologyTerm.html">OntologyTerm</a> - A concept or class in an ontology, vocabulary or thesaurus. Note, ontology terms can be found in multiple ontologies (ie: mireoting). defining_slots helps define an alternative key for ontology terms.<ul>
+<li><a href="AnatomicalTerm.html">AnatomicalTerm</a><ul>
+<li><a href="CLTerm.html">CLTerm</a></li>
+<li><a href="FBBTTerm.html">FBBTTerm</a></li>
+<li><a href="UBERONTerm.html">UBERONTerm</a></li>
+<li><a href="WBBTTerm.html">WBBTTerm</a></li>
+<li><a href="ZFATerm.html">ZFATerm</a></li>
+</ul>
+</li>
+<li><a href="CHEBITerm.html">CHEBITerm</a></li>
+<li><a href="DOTerm.html">DOTerm</a></li>
+<li><a href="ECOTerm.html">ECOTerm</a></li>
+<li><a href="EMAPATerm.html">EMAPATerm</a></li>
+<li><a href="FBCVTerm.html">FBCVTerm</a></li>
+<li><a href="GOTerm.html">GOTerm</a></li>
+<li><a href="MATerm.html">MATerm</a></li>
+<li><a href="MITerm.html">MITerm</a></li>
+<li><a href="MMOTerm.html">MMOTerm</a></li>
+<li><a href="MMUSDVTerm.html">MMUSDVTerm</a></li>
+<li><a href="SOTerm.html">SOTerm</a></li>
+<li><a href="StageTerm.html">StageTerm</a><ul>
+<li><a href="FBDVTerm.html">FBDVTerm</a></li>
+<li><a href="WBLSTerm.html">WBLSTerm</a></li>
+<li><a href="ZFSTerm.html">ZFSTerm</a></li>
+</ul>
+</li>
+<li><a href="ZECOTerm.html">ZECOTerm</a></li>
+</ul>
+</li>
+<li><a href="OntologyTermDefinition.html">OntologyTermDefinition</a></li>
+<li><a href="Phenotype.html">Phenotype</a> - A characteristic of an organism. This may or may not be expressed as a difference in comparison to a reference organism.</li>
+<li><a href="ReferenceType.html">ReferenceType</a> - Describes the relation between a reference and an object</li>
+<li><a href="SequenceTargetingReagent.html">SequenceTargetingReagent</a> - Dummy sequence targeting reagent class</li>
+<li><a href="Species.html">Species</a></li>
+<li><a href="Synonym.html">Synonym</a></li>
+<li><a href="VariantConsequence.html">VariantConsequence</a> - Parent class for gene- and transcript-level consequences<ul>
+<li><a href="VariantGeneConsequence.html">VariantGeneConsequence</a> - Class for gene-level VEP results</li>
+<li><a href="VariantTranscriptConsequence.html">VariantTranscriptConsequence</a> - Class for transcript-level VEP results</li>
+</ul>
+</li>
+<li><a href="VariantGenomicLocation.html">VariantGenomicLocation</a></li>
+</ul>
+<h3 id="mixins">Mixins</h3>
+<ul>
+<li><a href="AuditedObject.html">AuditedObject</a> - Some entity for which changes are tracked, including date/time of change and the agent responsible for the change.</li>
+<li><a href="Reagent.html">Reagent</a> - A material entity used in experiments.</li>
+</ul>
+<h3 id="slots">Slots</h3>
+<ul>
+<li><a href="PubMed_type.html">PubMed_type</a> - Type of InformationContentEntity as described by pub med.</li>
+<li><a href="aberration.html">aberration</a> - Associated deficiency (etc.) whose breakpoint causes the mutation</li>
+<li><a href="abstract.html">abstract</a></li>
+<li><a href="address.html">address</a> - the particulars of the place where someone or an organization is situated.  For now, this slot is a simple text blob containing all relevant details of the given location for fitness of purpose. For the moment, this address can include other contact details such as email and phone number(?).</li>
+<li><a href="affected_genes.html">affected_genes</a> - Gene(s) altered in allele</li>
+<li><a href="aggregation_database.html">aggregation_database</a><ul>
+<li><a href="GeneMolecularInteraction_aggregation_database.html">GeneMolecularInteraction➞aggregation_database</a> - The database that collected the interaction annotation from another resource and aggregated it into a consolidated resource. e.g. IMEx</li>
+</ul>
+</li>
+<li><a href="allele.html">allele</a></li>
+<li><a href="alliance_category.html">alliance_category</a></li>
+<li><a href="amino_acid_reference.html">amino_acid_reference</a> - reference genome amino acid sequence at variant position<ul>
+<li><a href="VariantTranscriptConsequence_amino_acid_reference.html">VariantTranscriptConsequence➞amino_acid_reference</a> - Amino acid sequence encoded by codon(s) in reference genome sequence altered by the variant</li>
+</ul>
+</li>
+<li><a href="amino_acid_variant.html">amino_acid_variant</a> - variant amino acid sequence at variant position<ul>
+<li><a href="VariantTranscriptConsequence_amino_acid_variant.html">VariantTranscriptConsequence➞amino_acid_variant</a> - Amino acid sequence encoded by codon(s) in variant sequence</li>
+</ul>
+</li>
+<li><a href="antibody_target_genes.html">antibody_target_genes</a> - The genes whose gene products are recognized by the antibody.</li>
+<li><a href="assembly.html">assembly</a></li>
+<li><a href="associated_notes.html">associated_notes</a> - Notes associated with the entity in some way</li>
+<li><a href="associated_references.html">associated_references</a> - References associated with the entity in some way</li>
+<li><a href="association_slot.html">association_slot</a> - any slot that relates an association to another entity<ul>
+<li><a href="interaction_type.html">interaction_type</a> - The type of interaction between the two genes or gene products. e.g. physical association</li>
+<li><a href="interactor_A_genetic_perturbation.html">interactor_A_genetic_perturbation</a></li>
+<li><a href="interactor_A_role.html">interactor_A_role</a></li>
+<li><a href="interactor_A_type.html">interactor_A_type</a></li>
+<li><a href="interactor_B_genetic_perturbation.html">interactor_B_genetic_perturbation</a></li>
+<li><a href="interactor_B_role.html">interactor_B_role</a></li>
+<li><a href="interactor_B_type.html">interactor_B_type</a></li>
+<li><a href="object.html">object</a> - connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.<ul>
+<li><a href="DiseaseAnnotationExperimentalConditionAssociation_object.html">DiseaseAnnotationExperimentalConditionAssociation➞object</a></li>
+<li><a href="DiseaseAnnotation_object.html">DiseaseAnnotation➞object</a> - The disease ontology term.</li>
+<li><a href="EntitySynonym_object.html">EntitySynonym➞object</a></li>
+<li><a href="GeneGenomicLocation_object.html">GeneGenomicLocation➞object</a> - object should be the chromosome identifier</li>
+<li><a href="GeneToGeneAssociation_object.html">GeneToGeneAssociation➞object</a> - the object gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa.<ul>
+<li><a href="GeneInteraction_object.html">GeneInteraction➞object</a></li>
+</ul>
+</li>
+<li><a href="PhenotypeAnnotationExperimentalConditionAssociation_object.html">PhenotypeAnnotationExperimentalConditionAssociation➞object</a></li>
+<li><a href="PhenotypeAnnotation_object.html">PhenotypeAnnotation➞object</a> - phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed statement of the phenotype from a post-composed terminology</li>
+<li><a href="VariantGeneConsequence_object.html">VariantGeneConsequence➞object</a></li>
+<li><a href="VariantGenomicLocation_object.html">VariantGenomicLocation➞object</a> - object should be the chromosome identifier</li>
+<li><a href="VariantTranscriptConsequence_object.html">VariantTranscriptConsequence➞object</a></li>
+</ul>
+</li>
+<li><a href="predicate.html">predicate</a> - A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.<ul>
+<li><a href="DiseaseAnnotationExperimentalConditionAssociation_predicate.html">DiseaseAnnotationExperimentalConditionAssociation➞predicate</a></li>
+<li><a href="EntitySynonym_predicate.html">EntitySynonym➞predicate</a></li>
+<li><a href="GeneInteraction_predicate.html">GeneInteraction➞predicate</a><ul>
+<li><a href="GeneGeneticInteraction_predicate.html">GeneGeneticInteraction➞predicate</a></li>
+<li><a href="GeneMolecularInteraction_predicate.html">GeneMolecularInteraction➞predicate</a></li>
+</ul>
+</li>
+<li><a href="PhenotypeAnnotationExperimentalConditionAssociation_predicate.html">PhenotypeAnnotationExperimentalConditionAssociation➞predicate</a></li>
+</ul>
+</li>
+<li><a href="subject.html">subject</a> - connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.<ul>
+<li><a href="DiseaseAnnotationExperimentalConditionAssociation_subject.html">DiseaseAnnotationExperimentalConditionAssociation➞subject</a></li>
+<li><a href="DiseaseAnnotation_subject.html">DiseaseAnnotation➞subject</a> - The biological entity to which the disease ontology term is associated.</li>
+<li><a href="GeneGenomicLocation_subject.html">GeneGenomicLocation➞subject</a> - subject should be the gene identifier</li>
+<li><a href="GeneToGeneAssociation_subject.html">GeneToGeneAssociation➞subject</a> - the subject gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa.<ul>
+<li><a href="GeneInteraction_subject.html">GeneInteraction➞subject</a></li>
+</ul>
+</li>
+<li><a href="PhenotypeAnnotationExperimentalConditionAssociation_subject.html">PhenotypeAnnotationExperimentalConditionAssociation➞subject</a></li>
+<li><a href="PhenotypeAnnotation_subject.html">PhenotypeAnnotation➞subject</a> - The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, either by direct curation or by inference.</li>
+<li><a href="VariantConsequence_subject.html">VariantConsequence➞subject</a></li>
+<li><a href="VariantGenomicLocation_subject.html">VariantGenomicLocation➞subject</a> - subject should be the variant identifier</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="authors.html">authors</a></li>
+<li><a href="automated_gene_description.html">automated_gene_description</a> - Gene description generated via algorithm developed at the alliance.</li>
+<li><a href="caption.html">caption</a> - Text describing the contents of a figure or table in a publication.</li>
+<li><a href="cdna_end.html">cdna_end</a> - end position of variation in cDNA coordinates</li>
+<li><a href="cdna_start.html">cdna_start</a> - start position of variation in cDNA coordinates<ul>
+<li><a href="VariantTranscriptConsequence_cdna_start.html">VariantTranscriptConsequence➞cdna_start</a> - Start position of variant in cDNA coordinates</li>
+</ul>
+</li>
+<li><a href="cds_end.html">cds_end</a> - end position of variation in CDS coordinates<ul>
+<li><a href="VariantTranscriptConsequence_cds_end.html">VariantTranscriptConsequence➞cds_end</a> - End position of variant in CDS coordinates</li>
+</ul>
+</li>
+<li><a href="cds_start.html">cds_start</a> - start position of variation in CDS coordinates<ul>
+<li><a href="VariantTranscriptConsequence_cds_start.html">VariantTranscriptConsequence➞cds_start</a> - Start position of variant in CDS coordinates</li>
+</ul>
+</li>
+<li><a href="citation.html">citation</a></li>
+<li><a href="clonality.html">clonality</a> - The clonality of the antibody: e.g., monoclonal.</li>
+<li><a href="cnda_end.html">cnda_end</a> - End position of variant in cDNA coordinates<ul>
+<li><a href="VariantTranscriptConsequence_cnda_end.html">VariantTranscriptConsequence➞cnda_end</a></li>
+</ul>
+</li>
+<li><a href="codon_reference.html">codon_reference</a> - reference sequence of codon(s) affected by variation - bases outside of the variant region are in lower case, those within are in upper case (e.g. cTa)<ul>
+<li><a href="VariantTranscriptConsequence_codon_reference.html">VariantTranscriptConsequence➞codon_reference</a> - Reference genome sequence of codon(s) altered by the variant.  Bases affected by the variant are given in upper case, bases flanking the variation are given in lower case</li>
+</ul>
+</li>
+<li><a href="codon_variant.html">codon_variant</a> - variant sequence of codon(s) affected by variation - bases outside of the variant region are in lower case, those within are in upper case (e.g. cAa)<ul>
+<li><a href="VariantTranscriptConsequence_codon_variant.html">VariantTranscriptConsequence➞codon_variant</a> - Sequence of codon(s) in variant sequence altered by the variant. Bases affected by the variant are given in upper case, bases flanking the variation are given in lower case</li>
+</ul>
+</li>
+<li><a href="component_relation.html">component_relation</a></li>
+<li><a href="components.html">components</a> - Collection of genomic components that make up a model, i.e. 'allele', each with a zygosity</li>
+<li><a href="computed_gene.html">computed_gene</a></li>
+<li><a href="condition_anatomy.html">condition_anatomy</a><ul>
+<li><a href="ExperimentalCondition_condition_anatomy.html">ExperimentalCondition➞condition_anatomy</a> - Anatomical ontology identifier used in cases like regeneration/wounding.</li>
+</ul>
+</li>
+<li><a href="condition_chemical.html">condition_chemical</a><ul>
+<li><a href="ExperimentalCondition_condition_chemical.html">ExperimentalCondition➞condition_chemical</a> - ChEBI or molecular ontology id used in subset of condition terms.  ie: the specific chemcial used in conjunction with 'chemical condition'.</li>
+</ul>
+</li>
+<li><a href="condition_class.html">condition_class</a><ul>
+<li><a href="ExperimentalCondition_condition_class.html">ExperimentalCondition➞condition_class</a> - The ZECO ID that represents the high level condition grouping term.  This will come from a slim in the ZECO, called 'AllianceSlim'.</li>
+</ul>
+</li>
+<li><a href="condition_gene_ontology.html">condition_gene_ontology</a><ul>
+<li><a href="ExperimentalCondition_condition_gene_ontology.html">ExperimentalCondition➞condition_gene_ontology</a> - Gene Ontology id used in subset of condition types.</li>
+</ul>
+</li>
+<li><a href="condition_id.html">condition_id</a><ul>
+<li><a href="ExperimentalCondition_condition_id.html">ExperimentalCondition➞condition_id</a> - The specific ontology ID for the condition when that is not covered by any of the other condition ontology ID attributes (chemical, NCBITaxon, anatomical). This could also be another ZECO term if the ZECO term that describes this condition is more specific, or outside the conditionClassId slim.</li>
+</ul>
+</li>
+<li><a href="condition_quantity.html">condition_quantity</a><ul>
+<li><a href="ExperimentalCondition_condition_quantity.html">ExperimentalCondition➞condition_quantity</a> - Optional free text field that records the units/amount/degrees of a condition.</li>
+</ul>
+</li>
+<li><a href="condition_statement.html">condition_statement</a><ul>
+<li><a href="ExperimentalCondition_condition_statement.html">ExperimentalCondition➞condition_statement</a> - Free text describing the environmental/experimental condition. For some groups this is a single term, others is it is a concatenation of the term names from the ontologies included in this data structure.</li>
+</ul>
+</li>
+<li><a href="condition_taxon.html">condition_taxon</a><ul>
+<li><a href="ExperimentalCondition_condition_taxon.html">ExperimentalCondition➞condition_taxon</a> - NCBITaxon ontology id used in subset of condition types like 'bacterial infection'.</li>
+</ul>
+</li>
+<li><a href="construct_components.html">construct_components</a></li>
+<li><a href="contains_construct.html">contains_construct</a></li>
+<li><a href="copyright_date.html">copyright_date</a></li>
+<li><a href="corresponding_author.html">corresponding_author</a></li>
+<li><a href="creation_date.html">creation_date</a> - The date on which an entity was created. This can be applied to nodes or edges.</li>
+<li><a href="cropped_from.html">cropped_from</a> - Another larger image from which this image was cropped.</li>
+<li><a href="cross_references.html">cross_references</a> - Holds between an object and its CrossReferences.<ul>
+<li><a href="GeneInteraction_cross_references.html">GeneInteraction➞cross_references</a> - Additional identifier(s) of the interaction annotation other than the primary id.</li>
+</ul>
+</li>
+<li><a href="curator_comment.html">curator_comment</a> - A publicly visible explanatory note from curators about some entity.</li>
+<li><a href="curie.html">curie</a> - A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI<ul>
+<li><a href="Antibody_curie.html">Antibody➞curie</a> - A unique identifier for the antibody: e.g., WBAntibody0000001.</li>
+<li><a href="GeneInteraction_curie.html">GeneInteraction➞curie</a> - The unique primary identifier for the interaction. This should be the source (curation) database identifier, or if that is not available then the aggregation database identifier (e.g. IMEx)</li>
+</ul>
+</li>
+<li><a href="current.html">current</a></li>
+<li><a href="data_provider.html">data_provider</a> - MOD that provided data<ul>
+<li><a href="DiseaseAnnotation_data_provider.html">DiseaseAnnotation➞data_provider</a> - source of data, can be multiple of these, each with a type and a crossReference</li>
+<li><a href="GeneInteraction_data_provider.html">GeneInteraction➞data_provider</a> - The database that curated the interaction. e.g. BioGRID</li>
+</ul>
+</li>
+<li><a href="database_status.html">database_status</a> - Database status of the allele</li>
+<li><a href="date_arrived_in_PubMed.html">date_arrived_in_PubMed</a> - Day in which a reference or resource was created in PUBMED. Only relevant for PUBMED references.</li>
+<li><a href="date_assigned.html">date_assigned</a><ul>
+<li><a href="DiseaseAnnotation_date_assigned.html">DiseaseAnnotation➞date_assigned</a> - Date this entity was assigned in it's primary data source.</li>
+<li><a href="PhenotypeAnnotation_date_assigned.html">PhenotypeAnnotation➞date_assigned</a> - The date of curation at the source (MOD) database.</li>
+</ul>
+</li>
+<li><a href="date_last_modified.html">date_last_modified</a> - Date on which an entity was last modified.</li>
+<li><a href="date_last_modified_in_PubMed.html">date_last_modified_in_PubMed</a> - Date on which an entity was created.</li>
+<li><a href="date_published.html">date_published</a> - Date on which an entity was created.</li>
+<li><a href="day_published.html">day_published</a> - Day in which an entity was created.</li>
+<li><a href="dbkey.html">dbkey</a> - Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.</li>
+<li><a href="definition.html">definition</a> - The definition of the ontology term.  This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.</li>
+<li><a href="description.html">description</a> - a human-readable description of an entity</li>
+<li><a href="detection_method.html">detection_method</a><ul>
+<li><a href="GeneMolecularInteraction_detection_method.html">GeneMolecularInteraction➞detection_method</a> - The experimental method used to identify the physical interaction between two molecules</li>
+</ul>
+</li>
+<li><a href="disease_relation.html">disease_relation</a><ul>
+<li><a href="DiseaseAnnotation_disease_relation.html">DiseaseAnnotation➞disease_relation</a> - Constrains the disease object, associationType and inferredGeneAssociation.</li>
+</ul>
+</li>
+<li><a href="display_name.html">display_name</a></li>
+<li><a href="display_synonym.html">display_synonym</a> - Placeholder.</li>
+<li><a href="editors.html">editors</a> - holds between a resource and a editor_resource</li>
+<li><a href="embryonic_stem_cell_lines.html">embryonic_stem_cell_lines</a> - Embryonic stem cell lines known to carry the allele</li>
+<li><a href="end.html">end</a> - The end of the feature in positive 1-based integer coordinates</li>
+<li><a href="evidence.html">evidence</a></li>
+<li><a href="evidence_code.html">evidence_code</a><ul>
+<li><a href="DiseaseAnnotation_evidence_code.html">DiseaseAnnotation➞evidence_code</a></li>
+</ul>
+</li>
+<li><a href="feature_type.html">feature_type</a> - Allele classification</li>
+<li><a href="figure.html">figure</a> - Holds between an entity and a Figure.<ul>
+<li><a href="Image_figure.html">Image➞figure</a> - The figure to which the image belongs.</li>
+</ul>
+</li>
+<li><a href="first_name.html">first_name</a></li>
+<li><a href="from_resource.html">from_resource</a></li>
+<li><a href="from_species.html">from_species</a> - Holds between an entity and a Species.</li>
+<li><a href="functional_impact.html">functional_impact</a> - Experimentally assessed functional impact of the allele, e.g. knockout / amorphic</li>
+<li><a href="gene_synopsis.html">gene_synopsis</a> - Gene description provided by source resource (ie: MOD gene description that is curated or automated via MOD internal processes).</li>
+<li><a href="gene_synopsis_URL.html">gene_synopsis_URL</a> - Gene description reference URL provided by source resource (aka: MOD) in the case where the curated gene_synopsis has a reference URL outside of the MOD.</li>
+<li><a href="generated_by.html">generated_by</a> - Holds between a material entity and an Agent that generated it: e.g., Thomas Blumenthal, Kornberg Laboratory.</li>
+<li><a href="generation_method.html">generation_method</a> - Technique used to create the allele, e.g. spontaneous / naturally occuring / radiation</li>
+<li><a href="genomic_locations.html">genomic_locations</a></li>
+<li><a href="genomic_reference_sequence.html">genomic_reference_sequence</a> - reference genome sequence at variation position</li>
+<li><a href="genomic_variant_sequence.html">genomic_variant_sequence</a> - variant genome sequence at variation position</li>
+<li><a href="germline_transmission_status.html">germline_transmission_status</a> - For alleles made in cell lines, have they been transmitted to the germline of an animal</li>
+<li><a href="heavy_chain_isotype.html">heavy_chain_isotype</a> - The isotype of the antibody heavy chain: e.g., IgA.</li>
+<li><a href="height.html">height</a> - The height of the image (pixels).</li>
+<li><a href="hgvs_coding_nomenclature.html">hgvs_coding_nomenclature</a> - HGVSc nomenclature for variation in coding sequence<ul>
+<li><a href="VariantTranscriptConsequence_hgvs_coding_nomenclature.html">VariantTranscriptConsequence➞hgvs_coding_nomenclature</a> - HGVS coding sequence (HGVSc) name</li>
+</ul>
+</li>
+<li><a href="hgvs_nomenclature.html">hgvs_nomenclature</a> - HGVSg nomenclature for variant</li>
+<li><a href="hgvs_protein_nomenclature.html">hgvs_protein_nomenclature</a> - HGVSp nomenclature for variation in protein<ul>
+<li><a href="VariantTranscriptConsequence_hgvs_protein_nomenclature.html">VariantTranscriptConsequence➞hgvs_protein_nomenclature</a> - HGVS protein sequence (HGVSp) name</li>
+</ul>
+</li>
+<li><a href="id.html">id</a><ul>
+<li><a href="Reference_id.html">Reference➞id</a></li>
+<li><a href="Resource_id.html">Resource➞id</a> - Precedence of identifiers for references is as follows: PMID if available; DOI if not; actual alternate CURIE otherwise.</li>
+</ul>
+</li>
+<li><a href="image_file.html">image_file</a> - The file representing the full-sized version of this image.</li>
+<li><a href="image_medium_file.html">image_medium_file</a> - The file representing a medium-sized version of this image.</li>
+<li><a href="image_thumbnail_file.html">image_thumbnail_file</a> - The file representing the thumbnail of this image.</li>
+<li><a href="image_x_origin.html">image_x_origin</a> - The x coordinate start point when specifying a spatial section within a larger image.<ul>
+<li><a href="ImagePane_image_x_origin.html">ImagePane➞image_x_origin</a> - The x coordinate within a larger source image from which the pane begins.</li>
+<li><a href="Image_image_x_origin.html">Image➞image_x_origin</a> - The x coordinate within a larger source image from which the crop begins.</li>
+</ul>
+</li>
+<li><a href="image_y_origin.html">image_y_origin</a> - The y coordinate start point when specifying a spatial section within a larger image.<ul>
+<li><a href="ImagePane_image_y_origin.html">ImagePane➞image_y_origin</a> - The y coordinate within a larger source image from which the pane begins.</li>
+<li><a href="Image_image_y_origin.html">Image➞image_y_origin</a> - The y coordinate within a larger source image from which the crop begins.</li>
+</ul>
+</li>
+<li><a href="images.html">images</a> - Any associated image<ul>
+<li><a href="ImagePane_images.html">ImagePane➞images</a></li>
+</ul>
+</li>
+<li><a href="in_collection.html">in_collection</a> - Set of high-throughput alleles made by large projects</li>
+<li><a href="inheritence_mode.html">inheritence_mode</a> - Mode of inheritence, e.g. dominant / semi-dominant / recessive / unknown</li>
+<li><a href="initials.html">initials</a></li>
+<li><a href="is_extinct.html">is_extinct</a> - Does the allele still exist in a population somewhere?</li>
+<li><a href="is_obsolete.html">is_obsolete</a> - Entity is no longer current.</li>
+<li><a href="iso_abbreviation.html">iso_abbreviation</a></li>
+<li><a href="issue_date.html">issue_date</a> - Date on which an entity was issued.</li>
+<li><a href="issue_name.html">issue_name</a></li>
+<li><a href="keywords.html">keywords</a> - keywords tagging a publication</li>
+<li><a href="label.html">label</a> - A short display name for the figure. For example: Figure 2, Figure 3B</li>
+<li><a href="last_name.html">last_name</a></li>
+<li><a href="light_chain_isotype.html">light_chain_isotype</a> - The isotype of the antibody light chain: e.g., i4.</li>
+<li><a href="located_on.html">located on</a></li>
+<li><a href="manufactured_by.html">manufactured_by</a> - Holds between a material entity and an Agent that has manufactured it: e.g., olecular Probes.</li>
+<li><a href="medline_abbreviation.html">medline_abbreviation</a></li>
+<li><a href="middle_names.html">middle_names</a></li>
+<li><a href="mod_reference_types.html">mod_reference_types</a> - List of types as assigned at a MOD.</li>
+<li><a href="modified_by.html">modified_by</a> - The individual that last modified the entity.</li>
+<li><a href="molecular_mutation.html">molecular_mutation</a> - Description of the DNA changes if precise genomic location unknown</li>
+<li><a href="month_published.html">month_published</a> - Month in which an entity was created.</li>
+<li><a href="mutant_cell_lines.html">mutant_cell_lines</a> - Mutant cell lines known to carry the allele</li>
+<li><a href="name.html">name</a> - a human-readable name for an entity<ul>
+<li><a href="Antibody_name.html">Antibody➞name</a> - Publicly displayed name of the antibody. It often includes the name of the antibody target: e.g., anti-WNT-4. It may also include the host species and antibody clonality.</li>
+<li><a href="bioentity_name.html">bioentity_name</a><ul>
+<li><a href="DiseaseAnnotation_bioentity_name.html">DiseaseAnnotation➞bioentity_name</a> - Optional name for the object for which this annotation is based.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="namespace.html">namespace</a> - the namespace of the ontology.</li>
+<li><a href="negated.html">negated</a> - if set to true, then the association is negated i.e. is not true<ul>
+<li><a href="DiseaseAnnotation_negated.html">DiseaseAnnotation➞negated</a> - The negative qualifier for the annotation.</li>
+</ul>
+</li>
+<li><a href="note_association.html">note_association</a> - Description of how a note is associated with an entity, e.g. curators comments / private / origin</li>
+<li><a href="note_type.html">note_type</a><ul>
+<li><a href="AntibodyNote_note_type.html">AntibodyNote➞note_type</a></li>
+</ul>
+</li>
+<li><a href="notes.html">notes</a></li>
+<li><a href="online_issn.html">online_issn</a></li>
+<li><a href="orcid.html">orcid</a></li>
+<li><a href="origins.html">origins</a> - Affected genomic models that the allele was introduced in</li>
+<li><a href="padding_left.html">padding_left</a> - flanking sequence upstream of the variation position on the sense strand of the reference genome</li>
+<li><a href="padding_right.html">padding_right</a> - flanking sequence downstream of the variation position on the sense strand of the reference genome</li>
+<li><a href="page_areas.html">page_areas</a></li>
+<li><a href="pages.html">pages</a> - page number of source referenced for statement or publication</li>
+<li><a href="parent_cell_line.html">parent_cell_line</a> - Parental cell line of alleles made in embryonic stem cells</li>
+<li><a href="parental_populations.html">parental_populations</a></li>
+<li><a href="person_id.html">person id</a><ul>
+<li><a href="Person_person_id.html">Person➞person id</a></li>
+</ul>
+</li>
+<li><a href="phenotype_or_trait.html">phenotype_or_trait</a></li>
+<li><a href="phenotype_term.html">phenotype_term</a><ul>
+<li><a href="PhenotypeAnnotation_phenotype_term.html">PhenotypeAnnotation➞phenotype_term</a></li>
+</ul>
+</li>
+<li><a href="polyphen_prediction.html">polyphen_prediction</a> - PolyPhen-2 prediction</li>
+<li><a href="polyphen_score.html">polyphen_score</a> - PolyPhen-2 score between 0 and 1</li>
+<li><a href="prefix.html">prefix</a> - Denormalization to help with classifying types of crossReferences, distinguishing DOIs from PMC ids, etc.</li>
+<li><a href="prefix_order.html">prefix_order</a> - The relative order of the resource when listed with other crossReferences.</li>
+<li><a href="prefix_page.html">prefix_page</a> - The cateogry of pages the resource in the context of the URL associated with the crossReference provides.  Equivalent to the 'page' attribute in the Alliance resourceDescriptor file.</li>
+<li><a href="primary_genetic_entity.html">primary_genetic_entity</a><ul>
+<li><a href="DiseaseAnnotation_primary_genetic_entity.html">DiseaseAnnotation➞primary_genetic_entity</a> - For calculated submissions, this field represents the id of the genetic objects (allele or affectedGenomicModel) that this annotation is based on.</li>
+<li><a href="PhenotypeAnnotation_primary_genetic_entity.html">PhenotypeAnnotation➞primary_genetic_entity</a> - For calculated associations, the primary genetic entity to which the phenotype was originally annotated to and from which the object/bioentity of this association is derived. For example, a gene or allele may be inferred to be associated to a phenotype because a particular genotype (that references the gene or allele) is associated to the phenotype.</li>
+</ul>
+</li>
+<li><a href="print_issn.html">print_issn</a></li>
+<li><a href="private_comment.html">private_comment</a> - A private explanatory note from curators about some entity, for internal use only.</li>
+<li><a href="produced_by.html">produced_by</a> - The individual that created the entity.</li>
+<li><a href="protein_end.html">protein_end</a> - end position of variation in protein amino acid coordinates<ul>
+<li><a href="VariantTranscriptConsequence_protein_end.html">VariantTranscriptConsequence➞protein_end</a> - End position of variant in amino acid sequence</li>
+</ul>
+</li>
+<li><a href="protein_sequence.html">protein_sequence</a></li>
+<li><a href="protein_start.html">protein_start</a> - start position of variation in protein amino acid coordinates<ul>
+<li><a href="VariantTranscriptConsequence_protein_start.html">VariantTranscriptConsequence➞protein_start</a> - Start position of variant in amino acid sequence</li>
+</ul>
+</li>
+<li><a href="publisher.html">publisher</a></li>
+<li><a href="qualifiers.html">qualifiers</a> - This is the MeSH qualifier term that is optionally added to the descriptor term.</li>
+<li><a href="reference.html">reference</a> - Associated reference<ul>
+<li><a href="Figure_reference.html">Figure➞reference</a></li>
+</ul>
+</li>
+<li><a href="reference_association.html">reference_association</a> - Description of how a reference is associated with an entity, e.g. molecular / origin / other</li>
+<li><a href="reference_id.html">reference_id</a></li>
+<li><a href="references.html">references</a> - holds between an object and a reference<ul>
+<li><a href="DiseaseAnnotation_references.html">DiseaseAnnotation➞references</a> - The reference in which the disease association was asserted/reported.</li>
+<li><a href="EntitySynonym_references.html">EntitySynonym➞references</a> - The references in which the synonym is used to refer to the entity.</li>
+<li><a href="GeneInteraction_references.html">GeneInteraction➞references</a> - The reference from which the interaction was annotated.</li>
+<li><a href="PhenotypeAnnotation_references.html">PhenotypeAnnotation➞references</a> - The reference in which the phenotype association was asserted/reported.</li>
+<li><a href="original_reference.html">original_reference</a> - Holds between an entity and the first reference to describe that entity.<ul>
+<li><a href="Antibody_original_reference.html">Antibody➞original_reference</a> - The reference providing the original description of the antibody's generation.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="related_to.html">related_to</a> - A relationship that is asserted between two named things.<ul>
+<li><a href="ameliorated_by.html">ameliorated_by</a></li>
+<li><a href="ameliorates.html">ameliorates</a></li>
+<li><a href="exacerbated_by.html">exacerbated_by</a></li>
+<li><a href="exacerbates.html">exacerbates</a></li>
+<li><a href="has_condition.html">has_condition</a></li>
+<li><a href="induced_by.html">induced_by</a></li>
+<li><a href="induces.html">induces</a></li>
+<li><a href="interacts_with.html">interacts_with</a> - holds between any two entities that directly or indirectly interact with each other<ul>
+<li><a href="genetically_interacts_with.html">genetically_interacts_with</a> - holds between two genes whose phenotypic effects are dependent on each other in some way - such that their combined phenotypic effects are the result of some interaction between the activity of their gene products. Examples include epistasis and synthetic lethality.</li>
+<li><a href="physically_interacts_with.html">physically_interacts_with</a> - holds between two entities that make physical contact as part of some interaction</li>
+</ul>
+</li>
+<li><a href="is_condition_in.html">is_condition_in</a></li>
+</ul>
+</li>
+<li><a href="release.html">release</a> - MOD release ID</li>
+<li><a href="secondary_identifiers.html">secondary_identifiers</a></li>
+<li><a href="sequence_targeting_reagents.html">sequence_targeting_reagents</a></li>
+<li><a href="sift_prediction.html">sift_prediction</a> - SIFT prediction</li>
+<li><a href="sift_score.html">sift_score</a> - SIFT score between 0 and 1</li>
+<li><a href="start.html">start</a> - The start of the feature in positive 1-based integer coordinates</li>
+<li><a href="statement_subject.html">statement_subject</a> - The entity being described by the note.</li>
+<li><a href="statement_text.html">statement_text</a> - Free-text describing some aspect of an entity.</li>
+<li><a href="statement_type.html">statement_type</a> - The type of free-text statement. For example: cytology, private, curator_comments.</li>
+<li><a href="subsets.html">subsets</a></li>
+<li><a href="subtype.html">subtype</a> - Subtype of affected genomic model</li>
+<li><a href="summary.html">summary</a></li>
+<li><a href="symbol.html">symbol</a> - Symbol for a particular thing</li>
+<li><a href="synonyms.html">synonyms</a> - holds between a named thing and a synonym<ul>
+<li><a href="Allele_synonyms.html">Allele➞synonyms</a> - synonyms for allele names and synonyms</li>
+</ul>
+</li>
+<li><a href="table_key.html">table_key</a> - The primary key for a specific table entry, unique for that table.</li>
+<li><a href="tags.html">tags</a> - Optional ist of controlled vocabulary tags that give categories to each pub (ie: can show images).</li>
+<li><a href="taxon.html">taxon</a> - The taxon from which the biological entity derives.<ul>
+<li><a href="Antibody_taxon.html">Antibody➞taxon</a> - The species in which the antibody was raised: e.g., mouse, rabbit, guinea pig, goat, camel, etc.</li>
+<li><a href="antigen_taxon.html">antigen_taxon</a> - Holds between an Antibody and the species from which the antigen originates (as represented by taxon).</li>
+</ul>
+</li>
+<li><a href="taxon_id.html">taxon_id</a> - NCBI taxid</li>
+<li><a href="term_definition.html">term_definition</a></li>
+<li><a href="term_definition_urls.html">term_definition_urls</a></li>
+<li><a href="title.html">title</a> - A human readable title for a reference.<ul>
+<li><a href="Resource_title.html">Resource➞title</a> - the title of the publication</li>
+</ul>
+</li>
+<li><a href="topics.html">topics</a> - Connects an object to a vocabulary term or ontology that describes some aspect of the entity.</li>
+<li><a href="transposon_insertion.html">transposon_insertion</a> - Associated transposon insertion that causes the mutation</li>
+<li><a href="type.html">type</a></li>
+<li><a href="uncertain.html">uncertain</a> - If set to true, then the related entity is uncertain.</li>
+<li><a href="url_prefix.html">url_prefix</a> - The prefix of the url before the accession number.</li>
+<li><a href="url_suffix.html">url_suffix</a> - The suffix of the url after the accession number.</li>
+<li><a href="variant_of_allele.html">variant_of_allele</a></li>
+<li><a href="variant_of_transcript.html">variant_of_transcript</a></li>
+<li><a href="vep_consequence.html">vep_consequence</a> - VEP consequence</li>
+<li><a href="vep_impact.html">vep_impact</a> - VEP predicted impact of variation on molecule</li>
+<li><a href="video_still.html">video_still</a> - An image represents a video still.</li>
+<li><a href="volume.html">volume</a></li>
+<li><a href="volumes.html">volumes</a></li>
+<li><a href="width.html">width</a> - The width of the image (pixels).</li>
+<li><a href="with.html">with</a> - http://geneontology.org/docs/go-annotation-file-gaf-format-21/#with-or-from-column-8<ul>
+<li><a href="DiseaseAnnotation_with.html">DiseaseAnnotation➞with</a></li>
+</ul>
+</li>
+<li><a href="year_published.html">year_published</a> - Year in which an entity was created.</li>
+<li><a href="zygosity.html">zygosity</a> - GENO onotology ID for allele zygosity</li>
+</ul>
+<h3 id="enums">Enums</h3>
+<ul>
+<li><a href="aggregation_database_enum.html">aggregation_database_enum</a></li>
+<li><a href="antibody_clonality_set.html">antibody_clonality_set</a></li>
+<li><a href="antibody_note_type_set.html">antibody_note_type_set</a></li>
+<li><a href="component_relations_enum.html">component_relations_enum</a></li>
+<li><a href="condition_relation_enum.html">condition_relation_enum</a></li>
+<li><a href="database_statuses.html">database_statuses</a></li>
+<li><a href="detection_methods_enum.html">detection_methods_enum</a></li>
+<li><a href="disease_relation_enum.html">disease_relation_enum</a></li>
+<li><a href="entity_synonym_type_set.html">entity_synonym_type_set</a></li>
+<li><a href="heavy_chain_isotype_set.html">heavy_chain_isotype_set</a></li>
+<li><a href="interaction_source_enum.html">interaction_source_enum</a></li>
+<li><a href="interaction_type_enum.html">interaction_type_enum</a></li>
+<li><a href="interactor_A_role_enum.html">interactor_A_role_enum</a></li>
+<li><a href="interactor_B_role_enum.html">interactor_B_role_enum</a></li>
+<li><a href="interactor_type_enum.html">interactor_type_enum</a></li>
+<li><a href="light_chain_isotype_set.html">light_chain_isotype_set</a></li>
+<li><a href="modes_of_inheritence.html">modes_of_inheritence</a></li>
+<li><a href="note_association_types.html">note_association_types</a></li>
+<li><a href="polyphen_prediction_levels.html">polyphen_prediction_levels</a></li>
+<li><a href="reference_association_types.html">reference_association_types</a></li>
+<li><a href="sift_prediction_levels.html">sift_prediction_levels</a></li>
+<li><a href="subtype_values.html">subtype_values</a></li>
+<li><a href="tag_set.html">tag_set</a></li>
+<li><a href="vep_consequence_levels.html">vep_consequence_levels</a></li>
+<li><a href="zygosity_values.html">zygosity_values</a></li>
+</ul>
+<h3 id="types">Types</h3>
+<h4 id="built-in">Built in</h4>
+<ul>
+<li><strong>Bool</strong></li>
+<li><strong>Decimal</strong></li>
+<li><strong>ElementIdentifier</strong></li>
+<li><strong>NCName</strong></li>
+<li><strong>NodeIdentifier</strong></li>
+<li><strong>URI</strong></li>
+<li><strong>URIorCURIE</strong></li>
+<li><strong>XSDDate</strong></li>
+<li><strong>XSDDateTime</strong></li>
+<li><strong>XSDTime</strong></li>
+<li><strong>float</strong></li>
+<li><strong>int</strong></li>
+<li><strong>str</strong></li>
+</ul>
+<h4 id="defined">Defined</h4>
+<ul>
+<li><a href="BiologicalSequence.html">BiologicalSequence</a>  (<a href="String.html">String</a>) </li>
+<li><a href="Boolean.html">Boolean</a>  (<strong>Bool</strong>)  - A binary (true or false) value</li>
+<li><a href="Date.html">Date</a>  (<strong>XSDDate</strong>)  - a date (year, month and day) in an idealized calendar</li>
+<li><a href="Datetime.html">Datetime</a>  (<strong>XSDDateTime</strong>)  - The combination of a date and time</li>
+<li><a href="Decimal.html">Decimal</a>  (<strong>Decimal</strong>)  - A real number with arbitrary precision that conforms to the xsd:decimal specification</li>
+<li><a href="Double.html">Double</a>  (<strong>float</strong>)  - A real number that conforms to the xsd:double specification</li>
+<li><a href="Float.html">Float</a>  (<strong>float</strong>)  - A real number that conforms to the xsd:float specification</li>
+<li><a href="Integer.html">Integer</a>  (<strong>int</strong>)  - An integer</li>
+<li><a href="Ncname.html">Ncname</a>  (<strong>NCName</strong>)  - Prefix part of CURIE</li>
+<li><a href="Nodeidentifier.html">Nodeidentifier</a>  (<strong>NodeIdentifier</strong>)  - A URI, CURIE or BNODE that represents a node in a model.</li>
+<li><a href="Objectidentifier.html">Objectidentifier</a>  (<strong>ElementIdentifier</strong>)  - A URI or CURIE that represents an object in the model.</li>
+<li><a href="String.html">String</a>  (<strong>str</strong>)  - A character string</li>
+<li><a href="Time.html">Time</a>  (<strong>XSDTime</strong>)  - A time object represents a (local) time of day, independent of any particular day</li>
+<li><a href="Uri.html">Uri</a>  (<strong>URI</strong>)  - a complete URI</li>
+<li><a href="Uriorcurie.html">Uriorcurie</a>  (<strong>URIorCURIE</strong>)  - a URI or a CURIE</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="credits.html" class="btn btn-neutral float-right" title="Credits">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="home.html" class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="home.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="credits.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.2.1
+Build Date UTC : 2021-07-12 20:24:11.317674+00:00
+-->
