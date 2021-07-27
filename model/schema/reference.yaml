@@ -61,9 +61,6 @@ classes:
 
 slots:
 
-  reference_id:
-    domain: Reference
-
   topics:
     singular_name: topic
     range: uriorcurie
