@@ -44,7 +44,7 @@ classes:
       parent Figure entity?
     slots:
       - curie
-      - figure
+      - has_figure
       - width
       - height
       - image_file
