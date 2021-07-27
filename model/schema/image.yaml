@@ -56,7 +56,7 @@ classes:
       - video_still
       - secondary_identifiers
     slot_usage:
-      figure:
+      has_figure:
         description: >-
           The figure to which the image belongs.
         required: true
@@ -112,7 +112,7 @@ slots:
     required: false
     multivalued: false
 
-  figure:
+  has_figure:
     description: >-
       Holds between an entity and a Figure.
     range: Figure

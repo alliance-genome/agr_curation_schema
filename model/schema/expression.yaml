@@ -52,9 +52,9 @@ classes:
       - where_expressed_note
       - expression_annotation_note
       - reference
-      - figure
+      - has_figure
     slot_usage:
-      figure:
+      has_figure:
         description: >-
           The figure that supports the expression annotation.
         notes: >-
