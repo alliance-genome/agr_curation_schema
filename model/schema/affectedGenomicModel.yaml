@@ -31,7 +31,7 @@ classes:
     description: >-
       Allele that affects the model and its zygosity
     slots:
-      - allele
+      - has_allele
       - zygosity
 
 slots:
@@ -51,7 +51,7 @@ slots:
     range: AffectedGenomicModelComponent
     multivalued: true
 
-  allele:
+  has_allele:
     domain: AffectedGenomicModelComponent
     range: Allele
 
