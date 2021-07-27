@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Class: GeneInteraction - Model to describe the Alliance curation/persistence data store</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Class: GeneInteraction";
+    var mkdocs_page_input_path = "GeneInteraction.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Model to describe the Alliance curation/persistence data store</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../home/">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Index</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../credits/">Credits</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Model to describe the Alliance curation/persistence data store</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Class: GeneInteraction</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="class-geneinteraction">Class: GeneInteraction</h1>
+<p>An interaction between two genes or gene products; this may be a physical molecular interaction between gene products (e.g. protein-protein interactions), or may be a genetic interaction between genes (e.g. phenotypic suppression)</p>
+<p>URI: <a href="http://alliancegenome.orgGeneInteraction">alliance:GeneInteraction</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[GeneToGeneAssociation],[GeneMolecularInteraction],[Reference]&lt;references%200..1-%20[GeneInteraction&#124;curie:uriorcurie;data_provider:interaction_source_enum;interaction_type:interaction_type_enum;interactor_A_role:interactor_A_role_enum%20*;interactor_B_role:interactor_B_role_enum%20*;interactor_A_type:interactor_type_enum;interactor_B_type:interactor_type_enum;predicate:string],[Gene]&lt;object%201..1-%20[GeneInteraction],[Gene]&lt;subject%201..1-%20[GeneInteraction],[CrossReference]&lt;cross_references%200..*-%20[GeneInteraction],[GeneInteraction]^-[GeneMolecularInteraction],[GeneInteraction]^-[GeneGeneticInteraction],[GeneToGeneAssociation]^-[GeneInteraction],[GeneGeneticInteraction],[Gene],[CrossReference]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[GeneToGeneAssociation],[GeneMolecularInteraction],[Reference]&lt;references%200..1-%20[GeneInteraction&#124;curie:uriorcurie;data_provider:interaction_source_enum;interaction_type:interaction_type_enum;interactor_A_role:interactor_A_role_enum%20*;interactor_B_role:interactor_B_role_enum%20*;interactor_A_type:interactor_type_enum;interactor_B_type:interactor_type_enum;predicate:string],[Gene]&lt;object%201..1-%20[GeneInteraction],[Gene]&lt;subject%201..1-%20[GeneInteraction],[CrossReference]&lt;cross_references%200..*-%20[GeneInteraction],[GeneInteraction]^-[GeneMolecularInteraction],[GeneInteraction]^-[GeneGeneticInteraction],[GeneToGeneAssociation]^-[GeneInteraction],[GeneGeneticInteraction],[Gene],[CrossReference]" /></a></p>
+<h2 id="identifier-prefixes">Identifier prefixes</h2>
+<ul>
+<li>BIOGRID</li>
+<li>DIP</li>
+<li>EMDB</li>
+<li>FB</li>
+<li>IMEX</li>
+<li>INTACT</li>
+<li>MINT</li>
+<li>PDBE</li>
+<li>RCSB_PDB</li>
+<li>WB</li>
+<li>WWPDB</li>
+</ul>
+<h2 id="parents">Parents</h2>
+<ul>
+<li>is_a: <a href="../GeneToGeneAssociation/">GeneToGeneAssociation</a> - abstract parent class for different kinds of gene-gene or gene product to gene product relationships. Includes homology and interaction.</li>
+</ul>
+<h2 id="children">Children</h2>
+<ul>
+<li><a href="../GeneGeneticInteraction/">GeneGeneticInteraction</a> - A genetic interaction between genes (e.g. phenotypic suppression)</li>
+<li><a href="../GeneMolecularInteraction/">GeneMolecularInteraction</a> - A physical molecular interaction between gene products (e.g. protein-protein interactions or protein-RNA interactions) or between genes and DNA-binding factors (e.g. protein-DNA interactions)</li>
+</ul>
+<h2 id="referenced-by-class">Referenced by class</h2>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
+<ul>
+<li><a href="../GeneInteraction_curie/">GeneInteraction➞curie</a>  <sub>1..1</sub><ul>
+<li>Description: The unique primary identifier for the interaction. This should be the source (curation) database identifier, or if that is not available then the aggregation database identifier (e.g. IMEx)</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="../GeneInteraction_cross_references/">GeneInteraction➞cross_references</a>  <sub>0..*</sub><ul>
+<li>Description: Additional identifier(s) of the interaction annotation other than the primary id.</li>
+<li>Range: <a href="../CrossReference/">CrossReference</a></li>
+</ul>
+</li>
+<li><a href="../GeneInteraction_data_provider/">GeneInteraction➞data_provider</a>  <sub>1..1</sub><ul>
+<li>Description: The database that curated the interaction. e.g. BioGRID</li>
+<li>Range: <a href="../interaction_source_enum/">interaction_source_enum</a></li>
+</ul>
+</li>
+<li><a href="../interaction_type/">interaction_type</a>  <sub>1..1</sub><ul>
+<li>Description: The type of interaction between the two genes or gene products. e.g. physical association</li>
+<li>Range: <a href="../interaction_type_enum/">interaction_type_enum</a></li>
+</ul>
+</li>
+<li><a href="../interactor_A_role/">interactor_A_role</a>  <sub>0..*</sub><ul>
+<li>Range: <a href="../interactor_A_role_enum/">interactor_A_role_enum</a></li>
+</ul>
+</li>
+<li><a href="../interactor_B_role/">interactor_B_role</a>  <sub>0..*</sub><ul>
+<li>Range: <a href="../interactor_B_role_enum/">interactor_B_role_enum</a></li>
+</ul>
+</li>
+<li><a href="../interactor_A_type/">interactor_A_type</a>  <sub>1..1</sub><ul>
+<li>Range: <a href="../interactor_type_enum/">interactor_type_enum</a></li>
+</ul>
+</li>
+<li><a href="../interactor_B_type/">interactor_B_type</a>  <sub>1..1</sub><ul>
+<li>Range: <a href="../interactor_type_enum/">interactor_type_enum</a></li>
+</ul>
+</li>
+<li><a href="../GeneInteraction_subject/">GeneInteraction➞subject</a>  <sub>1..1</sub><ul>
+<li>Range: <a href="../Gene/">Gene</a></li>
+</ul>
+</li>
+<li><a href="../GeneInteraction_predicate/">GeneInteraction➞predicate</a>  <sub>1..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../GeneInteraction_object/">GeneInteraction➞object</a>  <sub>1..1</sub><ul>
+<li>Range: <a href="../Gene/">Gene</a></li>
+</ul>
+</li>
+<li><a href="../GeneInteraction_references/">GeneInteraction➞references</a>  <sub>0..1</sub><ul>
+<li>Description: The reference from which the interaction was annotated.</li>
+<li>Range: <a href="../Reference/">Reference</a></li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
