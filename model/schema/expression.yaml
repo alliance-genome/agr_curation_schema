@@ -51,7 +51,7 @@ classes:
       - when_expressed_note
       - where_expressed_note
       - expression_annotation_note
-      - reference
+      - has_reference
       - has_figure
     slot_usage:
       has_figure:
@@ -62,7 +62,7 @@ classes:
           images or figures.
         required: false
         multivalued: false
-      reference:
+      has_reference:
         multivalued: false
 
   ExpressionAnnotationImagePane:

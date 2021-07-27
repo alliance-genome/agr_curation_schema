@@ -157,7 +157,7 @@ slots:
     domain: ReferenceType
     range: reference_association_types
 
-  reference:
+  has_reference:
     description: >-
       Associated reference
     domain: ReferenceType
