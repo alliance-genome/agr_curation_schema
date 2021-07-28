@@ -18,7 +18,7 @@ slots:
       The definition of the ontology term.  This is a reference to an object that holds
       the text description of the term and a collection of URLs that further define the
       term.
-    range: OntologyTermDefinition
+    range: string
   display_synonym:
     description: >-
       Placeholder.
@@ -27,18 +27,11 @@ slots:
   subsets:
     range: string
     multivalued: true
-  term_definition:
-    range: string
-  term_definition_urls:
+  definition_urls:
     range: string
     multivalued: true
 
 classes:
-
-  OntologyTermDefinition:
-    slots:
-      - term_definition
-      - term_definition_urls
 
   OntologyTerm:
     description: >-
@@ -52,6 +45,7 @@ classes:
       - dbkey
       - name
       - definition
+      - definition_urls
       - type
       - is_obsolete
       - cross_references
