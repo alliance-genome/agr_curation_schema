@@ -89,12 +89,7 @@ classes:
       Placeholder.
     is_a: GenomicEntity
     slots:
-      - curie
-      - synonyms
-      - secondary_identifiers
-      - cross_references
       - genomic_locations
-      - name
       - symbol
       - gene_synopsis
       - gene_synopsis_URL
