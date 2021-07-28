@@ -94,7 +94,7 @@
                 <h1 id="class-gene">Class: Gene</h1>
 <p>Placeholder.</p>
 <p>URI: <a href="http://alliancegenome.orgGene">alliance:Gene</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[VariantGeneConsequence],[Variant],[Synonym],[Person],[GenomicEntity],[GeneToGeneAssociation],[GeneInteraction],[GeneGenomicLocation],[CrossReference]&lt;cross_references(i)%200..*-%20[Gene&#124;symbol:string%20%3F;gene_synopsis:string%20%3F;gene_synopsis_URL:string%20%3F;type:uriorcurie%20%3F;automated_gene_description:string%20%3F;name(i):string%20%3F;secondary_identifiers(i):uriorcurie%20*;curie(i):uriorcurie;taxon(i):uriorcurie%20%3F;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[Synonym]&lt;synonyms(i)%200..*-++[Gene],[GeneGenomicLocation]&lt;genomic_locations%200..*-++[Gene],[GeneInteraction]-%20object%201..1&gt;[Gene],[GeneInteraction]-%20subject%201..1&gt;[Gene],[GeneToGeneAssociation]-%20object%201..1&gt;[Gene],[GeneToGeneAssociation]-%20subject%201..1&gt;[Gene],[VariantGeneConsequence]-%20object%201..1&gt;[Gene],[Allele]-%20affected_genes%200..*&gt;[Gene],[Antibody]-%20antibody_target_genes%200..*&gt;[Gene],[Variant]-%20computed_gene%200..1&gt;[Gene],[GenomicEntity]^-[Gene],[CrossReference],[Antibody],[Allele]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[VariantGeneConsequence],[Variant],[Synonym],[Person],[GenomicEntity],[GeneToGeneAssociation],[GeneInteraction],[GeneGenomicLocation],[CrossReference]&lt;cross_references(i)%200..*-%20[Gene&#124;symbol:string%20%3F;gene_synopsis:string%20%3F;gene_synopsis_URL:string%20%3F;type:uriorcurie%20%3F;automated_gene_description:string%20%3F;name(i):string%20%3F;secondary_identifiers(i):uriorcurie%20*;curie(i):uriorcurie;taxon(i):uriorcurie%20%3F;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[Synonym]&lt;synonyms(i)%200..*-++[Gene],[GeneGenomicLocation]&lt;genomic_locations%200..*-++[Gene],[GeneInteraction]-%20object%201..1&gt;[Gene],[GeneInteraction]-%20subject%201..1&gt;[Gene],[GeneToGeneAssociation]-%20object%201..1&gt;[Gene],[GeneToGeneAssociation]-%20subject%201..1&gt;[Gene],[VariantGeneConsequence]-%20object%201..1&gt;[Gene],[Allele]-%20affected_genes%200..*&gt;[Gene],[Antibody]-%20antibody_target_genes%200..*&gt;[Gene],[Variant]-%20computed_gene%200..1&gt;[Gene],[GenomicEntity]^-[Gene],[CrossReference],[Antibody],[Allele]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[VariantGeneConsequence],[Variant],[Synonym],[Person],[GenomicEntity],[GeneToGeneAssociation],[GeneInteraction],[GeneGenomicLocation],[GeneGenomicLocation]&lt;genomic_locations%200..*-++[Gene&#124;symbol:string%20%3F;gene_synopsis:string%20%3F;gene_synopsis_URL:string%20%3F;type:uriorcurie%20%3F;automated_gene_description:string%20%3F;name(i):string%20%3F;secondary_identifiers(i):uriorcurie%20*;curie(i):uriorcurie;taxon(i):uriorcurie%20%3F;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[GeneInteraction]-%20object%201..1&gt;[Gene],[GeneInteraction]-%20subject%201..1&gt;[Gene],[GeneToGeneAssociation]-%20object%201..1&gt;[Gene],[GeneToGeneAssociation]-%20subject%201..1&gt;[Gene],[VariantGeneConsequence]-%20object%201..1&gt;[Gene],[Allele]-%20affected_genes%200..*&gt;[Gene],[Antibody]-%20antibody_target_genes%200..*&gt;[Gene],[Variant]-%20computed_gene%200..1&gt;[Gene],[GenomicEntity]^-[Gene],[CrossReference],[Antibody],[Allele]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[VariantGeneConsequence],[Variant],[Synonym],[Person],[GenomicEntity],[GeneToGeneAssociation],[GeneInteraction],[GeneGenomicLocation],[GeneGenomicLocation]&lt;genomic_locations%200..*-++[Gene&#124;symbol:string%20%3F;gene_synopsis:string%20%3F;gene_synopsis_URL:string%20%3F;type:uriorcurie%20%3F;automated_gene_description:string%20%3F;name(i):string%20%3F;secondary_identifiers(i):uriorcurie%20*;curie(i):uriorcurie;taxon(i):uriorcurie%20%3F;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[GeneInteraction]-%20object%201..1&gt;[Gene],[GeneInteraction]-%20subject%201..1&gt;[Gene],[GeneToGeneAssociation]-%20object%201..1&gt;[Gene],[GeneToGeneAssociation]-%20subject%201..1&gt;[Gene],[VariantGeneConsequence]-%20object%201..1&gt;[Gene],[Allele]-%20affected_genes%200..*&gt;[Gene],[Antibody]-%20antibody_target_genes%200..*&gt;[Gene],[Variant]-%20computed_gene%200..1&gt;[Gene],[GenomicEntity]^-[Gene],[CrossReference],[Antibody],[Allele]" /></a></p>
 <h2 id="identifier-prefixes">Identifier prefixes</h2>
 <ul>
 <li>ENSEMBL</li>
@@ -125,32 +125,8 @@
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
-<li><a href="../curie/">curie</a>  <sub>1..1</sub><ul>
-<li>Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI</li>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
-</ul>
-</li>
-<li><a href="../synonyms/">synonyms</a>  <sub>0..*</sub><ul>
-<li>Description: holds between a named thing and a synonym</li>
-<li>Range: <a href="../Synonym/">Synonym</a></li>
-</ul>
-</li>
-<li><a href="../secondary_identifiers/">secondary_identifiers</a>  <sub>0..*</sub><ul>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
-</ul>
-</li>
-<li><a href="../cross_references/">cross_references</a>  <sub>0..*</sub><ul>
-<li>Description: Holds between an object and its CrossReferences.</li>
-<li>Range: <a href="../CrossReference/">CrossReference</a></li>
-</ul>
-</li>
 <li><a href="../genomic_locations/">genomic_locations</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../GeneGenomicLocation/">GeneGenomicLocation</a></li>
-</ul>
-</li>
-<li><a href="../name/">name</a>  <sub>0..1</sub><ul>
-<li>Description: a human-readable name for an entity</li>
-<li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
 <li><a href="../symbol/">symbol</a>  <sub>0..1</sub><ul>
@@ -180,8 +156,32 @@
 </ul>
 <h3 id="inherited-from-genomicentity">Inherited from GenomicEntity:</h3>
 <ul>
+<li><a href="../curie/">curie</a>  <sub>1..1</sub><ul>
+<li>Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
 <li><a href="../taxon/">taxon</a>  <sub>0..1</sub><ul>
 <li>Description: The taxon from which the biological entity derives.</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="../name/">name</a>  <sub>0..1</sub><ul>
+<li>Description: a human-readable name for an entity</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../synonyms/">synonyms</a>  <sub>0..*</sub><ul>
+<li>Description: holds between a named thing and a synonym</li>
+<li>Range: <a href="../Synonym/">Synonym</a></li>
+</ul>
+</li>
+<li><a href="../cross_references/">cross_references</a>  <sub>0..*</sub><ul>
+<li>Description: Holds between an object and its CrossReferences.</li>
+<li>Range: <a href="../CrossReference/">CrossReference</a></li>
+</ul>
+</li>
+<li><a href="../secondary_identifiers/">secondary_identifiers</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
