@@ -208,7 +208,7 @@ classes:
       - subject
       - predicate
       - object
-      - assembly
+      - has_assembly
       - start
       - end
     slot_usage:
@@ -224,7 +224,7 @@ classes:
       - subject
       - predicate
       - object
-      - assembly
+      - has_assembly
       - start
       - end
 
@@ -242,7 +242,7 @@ slots:
   end:
     description: The end of the feature in positive 1-based integer coordinates
 
-  assembly:
+  has_assembly:
     domain: GenomicEntity
     required: true
     range: Chromosome

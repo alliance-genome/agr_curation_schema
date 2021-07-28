@@ -51,10 +51,10 @@ classes:
       - when_expressed_note
       - where_expressed_note
       - expression_annotation_note
-      - reference
-      - figure
+      - has_reference
+      - has_figure
     slot_usage:
-      figure:
+      has_figure:
         description: >-
           The figure that supports the expression annotation.
         notes: >-
@@ -62,7 +62,7 @@ classes:
           images or figures.
         required: false
         multivalued: false
-      reference:
+      has_reference:
         multivalued: false
 
   ExpressionAnnotationImagePane:

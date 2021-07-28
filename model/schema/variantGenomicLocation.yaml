@@ -24,7 +24,7 @@ classes:
       - subject
       - predicate
       - object
-      - assembly
+      - has_assembly
       - start
       - end
     slot_usage:
@@ -40,7 +40,7 @@ classes:
       - subject
       - predicate
       - object
-      - assembly
+      - has_assembly
       - start
       - end
 

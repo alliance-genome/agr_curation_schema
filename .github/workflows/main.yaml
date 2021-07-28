@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches: [ main, linkml-sql ]
+    branches: [ main ]
 
 jobs:
   unittests-n-commits:

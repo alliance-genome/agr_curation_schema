@@ -35,7 +35,7 @@ classes:
       Class that holds the properties necessary to store a curated orthology record.
     is_a: GeneToGeneOrthology
     slots:
-      - reference
+      - has_reference
       - evidence_code
 
   GeneToGeneOrthologyGenerated:
