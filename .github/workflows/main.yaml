@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches: [ main, fix_casing_in_doc ]
+    branches: [ main ]
 
 jobs:
   unittests-n-commits:
