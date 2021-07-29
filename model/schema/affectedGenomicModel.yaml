@@ -20,8 +20,6 @@ classes:
       mutant genotypes
     slots:
       - subtype
-      - cross_references
-      - synonyms
       - components
       - sequence_targeting_reagents
       - parental_populations

@@ -25,18 +25,14 @@ prefixes:
 classes:
 
   Allele:
-    is_a: BiologicalEntity
+    is_a: GenomicEntity
     description: >-
       One of multiple possible forms of a functional genomic
       element (most often described as a locus or gene),
       differing from the reference DNA sequence.  The genomic
       element can be endogenous or constructed.
     slots:
-      - name
       - symbol
-      - taxon_id
-      - cross_references
-      - synonyms
       - affected_genes
       - contains_construct
       - molecular_mutation
