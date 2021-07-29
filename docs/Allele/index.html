@@ -94,10 +94,10 @@
                 <h1 id="class-allele">Class: Allele</h1>
 <p>One of multiple possible forms of a functional genomic element (most often described as a locus or gene), differing from the reference DNA sequence.  The genomic element can be endogenous or constructed.</p>
 <p>URI: <a href="http://alliancegenome.orgAllele">alliance:Allele</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Variant],[Synonym],[ReferenceType],[Person],[NoteType],[Image],[GeneGeneticInteraction],[Gene],[CrossReference],[Construct],[CellLine],[BiologicalEntity],[AffectedGenomicModel]&lt;origins%200..*-%20[Allele&#124;name:string%20%3F;symbol:string%20%3F;taxon_id:integer%20%3F;molecular_mutation:string%20%3F;functional_impact:string%20%3F;generation_method:string%20%3F;germline_transmission_status:string%20%3F;embryonic_stem_cell_lines:string%20%3F;feature_type:string%20%3F;database_status:database_statuses%20%3F;inheritence_mode:modes_of_inheritence%20%3F;in_collection:string%20%3F;transposon_insertion:string%20%3F;aberration:string%20%3F;is_extinct:boolean%20%3F;curie(i):uriorcurie;taxon(i):uriorcurie%20%3F;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[Image]&lt;images%200..1-%20[Allele],[CellLine]&lt;mutant_cell_lines%200..*-++[Allele],[CellLine]&lt;parent_cell_line%200..1-++[Allele],[NoteType]&lt;associated_notes%200..1-++[Allele],[ReferenceType]&lt;associated_references%200..*-++[Allele],[Construct]&lt;contains_construct%200..1-%20[Allele],[Gene]&lt;affected_genes%200..*-%20[Allele],[Synonym]&lt;synonyms%200..*-++[Allele],[CrossReference]&lt;cross_references%200..*-%20[Allele],[AffectedGenomicModelComponent]-%20has_allele%200..1&gt;[Allele],[GeneGeneticInteraction]-%20interactor_A_genetic_perturbation%200..1&gt;[Allele],[GeneGeneticInteraction]-%20interactor_B_genetic_perturbation%200..1&gt;[Allele],[Variant]-%20variant_of_allele%200..1&gt;[Allele],[BiologicalEntity]^-[Allele],[AffectedGenomicModelComponent],[AffectedGenomicModel]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Variant],[Synonym],[ReferenceType],[Person],[NoteType],[Image],[GeneGeneticInteraction],[Gene],[CrossReference],[Construct],[CellLine],[BiologicalEntity],[AffectedGenomicModel]&lt;origins%200..*-%20[Allele&#124;name:string%20%3F;symbol:string%20%3F;taxon_id:integer%20%3F;molecular_mutation:string%20%3F;functional_impact:string%20%3F;generation_method:string%20%3F;germline_transmission_status:string%20%3F;embryonic_stem_cell_lines:string%20%3F;feature_type:string%20%3F;database_status:database_statuses%20%3F;inheritence_mode:modes_of_inheritence%20%3F;in_collection:string%20%3F;transposon_insertion:string%20%3F;aberration:string%20%3F;is_extinct:boolean%20%3F;curie(i):uriorcurie;taxon(i):uriorcurie%20%3F;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[Image]&lt;images%200..1-%20[Allele],[CellLine]&lt;mutant_cell_lines%200..*-++[Allele],[CellLine]&lt;parent_cell_line%200..1-++[Allele],[NoteType]&lt;associated_notes%200..1-++[Allele],[ReferenceType]&lt;associated_references%200..*-++[Allele],[Construct]&lt;contains_construct%200..1-%20[Allele],[Gene]&lt;affected_genes%200..*-%20[Allele],[Synonym]&lt;synonyms%200..*-++[Allele],[CrossReference]&lt;cross_references%200..*-%20[Allele],[AffectedGenomicModelComponent]-%20has_allele%200..1&gt;[Allele],[GeneGeneticInteraction]-%20interactor_A_genetic_perturbation%200..1&gt;[Allele],[GeneGeneticInteraction]-%20interactor_B_genetic_perturbation%200..1&gt;[Allele],[Variant]-%20variant_of_allele%200..1&gt;[Allele],[BiologicalEntity]^-[Allele],[AffectedGenomicModelComponent],[AffectedGenomicModel]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Variant],[Synonym],[ReferenceType],[Person],[NoteType],[Image],[GenomicEntity],[GeneGeneticInteraction],[Gene],[CrossReference],[Construct],[CellLine],[Synonym]&lt;synonyms%200..*-++[Allele&#124;symbol:string%20%3F;molecular_mutation:string%20%3F;functional_impact:string%20%3F;generation_method:string%20%3F;germline_transmission_status:string%20%3F;embryonic_stem_cell_lines:string%20%3F;feature_type:string%20%3F;database_status:database_statuses%20%3F;inheritence_mode:modes_of_inheritence%20%3F;in_collection:string%20%3F;transposon_insertion:string%20%3F;aberration:string%20%3F;is_extinct:boolean%20%3F;name(i):string%20%3F;secondary_identifiers(i):uriorcurie%20*;curie(i):uriorcurie;taxon(i):uriorcurie%20%3F;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[AffectedGenomicModel]&lt;origins%200..*-%20[Allele],[Image]&lt;images%200..1-%20[Allele],[CellLine]&lt;mutant_cell_lines%200..*-++[Allele],[CellLine]&lt;parent_cell_line%200..1-++[Allele],[NoteType]&lt;associated_notes%200..1-++[Allele],[ReferenceType]&lt;associated_references%200..*-++[Allele],[Construct]&lt;contains_construct%200..1-%20[Allele],[Gene]&lt;affected_genes%200..*-%20[Allele],[AffectedGenomicModelComponent]-%20has_allele%200..1&gt;[Allele],[GeneGeneticInteraction]-%20interactor_A_genetic_perturbation%200..1&gt;[Allele],[GeneGeneticInteraction]-%20interactor_B_genetic_perturbation%200..1&gt;[Allele],[Variant]-%20variant_of_allele%200..1&gt;[Allele],[GenomicEntity]^-[Allele],[AffectedGenomicModelComponent],[AffectedGenomicModel]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Variant],[Synonym],[ReferenceType],[Person],[NoteType],[Image],[GenomicEntity],[GeneGeneticInteraction],[Gene],[CrossReference],[Construct],[CellLine],[Synonym]&lt;synonyms%200..*-++[Allele&#124;symbol:string%20%3F;molecular_mutation:string%20%3F;functional_impact:string%20%3F;generation_method:string%20%3F;germline_transmission_status:string%20%3F;embryonic_stem_cell_lines:string%20%3F;feature_type:string%20%3F;database_status:database_statuses%20%3F;inheritence_mode:modes_of_inheritence%20%3F;in_collection:string%20%3F;transposon_insertion:string%20%3F;aberration:string%20%3F;is_extinct:boolean%20%3F;name(i):string%20%3F;secondary_identifiers(i):uriorcurie%20*;curie(i):uriorcurie;taxon(i):uriorcurie%20%3F;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[AffectedGenomicModel]&lt;origins%200..*-%20[Allele],[Image]&lt;images%200..1-%20[Allele],[CellLine]&lt;mutant_cell_lines%200..*-++[Allele],[CellLine]&lt;parent_cell_line%200..1-++[Allele],[NoteType]&lt;associated_notes%200..1-++[Allele],[ReferenceType]&lt;associated_references%200..*-++[Allele],[Construct]&lt;contains_construct%200..1-%20[Allele],[Gene]&lt;affected_genes%200..*-%20[Allele],[AffectedGenomicModelComponent]-%20has_allele%200..1&gt;[Allele],[GeneGeneticInteraction]-%20interactor_A_genetic_perturbation%200..1&gt;[Allele],[GeneGeneticInteraction]-%20interactor_B_genetic_perturbation%200..1&gt;[Allele],[Variant]-%20variant_of_allele%200..1&gt;[Allele],[GenomicEntity]^-[Allele],[AffectedGenomicModelComponent],[AffectedGenomicModel]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
-<li>is_a: <a href="../BiologicalEntity/">BiologicalEntity</a> - A high-level entity comprising .</li>
+<li>is_a: <a href="../GenomicEntity/">GenomicEntity</a></li>
 </ul>
 <h2 id="referenced-by-class">Referenced by class</h2>
 <ul>
@@ -109,29 +109,9 @@
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
-<li><a href="../name/">name</a>  <sub>0..1</sub><ul>
-<li>Description: a human-readable name for an entity</li>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
 <li><a href="../symbol/">symbol</a>  <sub>0..1</sub><ul>
 <li>Description: Symbol for a particular thing</li>
 <li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../taxon_id/">taxon_id</a>  <sub>0..1</sub><ul>
-<li>Description: NCBI taxid</li>
-<li>Range: <a href="../Integer/">Integer</a></li>
-</ul>
-</li>
-<li><a href="../cross_references/">cross_references</a>  <sub>0..*</sub><ul>
-<li>Description: Holds between an object and its CrossReferences.</li>
-<li>Range: <a href="../CrossReference/">CrossReference</a></li>
-</ul>
-</li>
-<li><a href="../Allele_synonyms/">Allele➞synonyms</a>  <sub>0..*</sub><ul>
-<li>Description: synonyms for allele names and synonyms</li>
-<li>Range: <a href="../Synonym/">Synonym</a></li>
 </ul>
 </li>
 <li><a href="../affected_genes/">affected_genes</a>  <sub>0..*</sub><ul>
@@ -233,8 +213,13 @@
 <li>Range: <a href="../Boolean/">Boolean</a></li>
 </ul>
 </li>
+<li><a href="../Allele_synonyms/">Allele➞synonyms</a>  <sub>0..*</sub><ul>
+<li>Description: synonyms for allele names and synonyms</li>
+<li>Range: <a href="../Synonym/">Synonym</a></li>
 </ul>
-<h3 id="inherited-from-biologicalentity">Inherited from BiologicalEntity:</h3>
+</li>
+</ul>
+<h3 id="inherited-from-genomicentity">Inherited from GenomicEntity:</h3>
 <ul>
 <li><a href="../curie/">curie</a>  <sub>1..1</sub><ul>
 <li>Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI</li>
@@ -243,6 +228,20 @@
 </li>
 <li><a href="../taxon/">taxon</a>  <sub>0..1</sub><ul>
 <li>Description: The taxon from which the biological entity derives.</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="../name/">name</a>  <sub>0..1</sub><ul>
+<li>Description: a human-readable name for an entity</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../cross_references/">cross_references</a>  <sub>0..*</sub><ul>
+<li>Description: Holds between an object and its CrossReferences.</li>
+<li>Range: <a href="../CrossReference/">CrossReference</a></li>
+</ul>
+</li>
+<li><a href="../secondary_identifiers/">secondary_identifiers</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
