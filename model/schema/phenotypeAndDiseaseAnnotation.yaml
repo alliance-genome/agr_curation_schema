@@ -36,32 +36,19 @@ prefixes:
 
 classes:
 
-  PhenotypeAnnotation:
+  PhenotypeAnnotationCurated:
     is_a: Association
     description: >-
-      An annotation associating a biological entity to a phenotype supported by evidence
+      An annotation asserting an association between a biological entity and a phenotype supported by evidence.
     slots:
       - curie
-      - subject                           # objectId in JSON schema
-      - primary_genetic_entity            # primaryGeneticEntityIDs in JSON schema
       - phenotype_term                    # phenotypeTermIdentifiers in JSON schema
-      - object                            # phenotypeStatement in JSON schema; eventually object should point to Phenotype class object
-      - references
       - date_assigned                     # dateAssigned in JSON schema
     slot_usage:
-      subject:
+      subject:                            # objectId in JSON schema
         description: >-
-          The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated,
-          either by direct curation or by inference.
+          The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, by direct curation.
         required: true
-        range: BiologicalEntity
-      primary_genetic_entity:
-        description: >-
-          For calculated associations, the primary genetic entity to which the phenotype
-          was originally annotated to and from which the object/bioentity of this association is
-          derived. For example, a gene or allele may be inferred to be associated to a
-          phenotype because a particular genotype (that references the gene or allele)
-          is associated to the phenotype.
         range: BiologicalEntity
       phenotype_term:
         values_from:
@@ -79,7 +66,7 @@ classes:
             description: axon morphology variant
           - value: MP:0001569
             description: abnormal circulating bilirubin level
-      object:
+      object:             # phenotypeStatement in JSON schema; eventually object should point to Phenotype class object
         description: >-
           phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed
           statement of the phenotype from a post-composed terminology
@@ -98,33 +85,44 @@ classes:
         multivalued: false
         range: date
 
-  DiseaseAnnotation:
+  PhenotypeAnnotationInferred:
+    is_a: PhenotypeAnnotationCurated
+    description: >-
+      A curated phenotype annotation (see class PhenotypeAnnotationCurated) for which inferences have been made to apply 
+      additional information such as inferred gene or inferred allele.
+    slots:
+      - inferred_gene
+      - inferred_allele
+    slot_usage:
+      inferred_gene:
+        description: >-
+          The gene to which the phenotype is inferred to be associated.
+        required: false
+        range: Gene
+      inferred_allele:
+        description: >-
+          The allele to which the phenotype is inferred to be associated.
+        range: Allele
+        required: false
+
+  DiseaseAnnotationCurated:
     is_a: Association
     description: >-
-      An annotation associating a biological entity to a disease supported by evidence
+      An annotation asserting an association between a biological entity and a disease supported by evidence.
     slots:
       - curie
-      - subject                 # objectId in JSON schema
-      - bioentity_name          # objectName in JSON schema; is this necessary?
       - disease_relation        # objectRelation in JSON schema
       - negated                 # negation in JSON schema
-      - primary_genetic_entity  # primaryGeneticEntityIDs in JSON schema; for curation this may be dispensable
-      - object                  # Disease; DOid in JSON schema
       - data_provider           # dataProvider in JSON schema
       - with
-      - references              # evidence in JSON schema
       - evidence_code           # added to avoid the need for a publication join
       - date_assigned           # dateAssigned in JSON schema
     slot_usage:
-      subject:
+      subject:                  # objectId in JSON schema
         required: true
         description: >-
           The biological entity to which the disease ontology term is associated.
         range: BiologicalEntity
-      bioentity_name:
-        description: >-
-          Optional name for the object for which this annotation is based.
-        range: string
       disease_relation:
         required: true
         description: >-
@@ -133,11 +131,7 @@ classes:
       negated:
         description: >-
           The negative qualifier for the annotation.
-      primary_genetic_entity:
-        description: >-
-          For calculated submissions, this field represents the id of the genetic objects
-          (allele or affectedGenomicModel) that this annotation is based on.
-      object:
+      object:                   # Disease; DOid in JSON schema
         required: true
         description: >-
           The disease ontology term.
@@ -149,7 +143,7 @@ classes:
       with:
         description: >-
           http://geneontology.org/docs/go-annotation-file-gaf-format-21/#with-or-from-column-8
-      references:
+      references:               # evidence in JSON schema
         required: true
         multivalued: false
         description: >-
@@ -159,8 +153,28 @@ classes:
       date_assigned:
         required: true
         description: >-
-          Date this entity was assigned in it's primary data source.
+          Date this entity was assigned in its primary data source.
         range: date
+
+  DiseaseAnnotationInferred:
+    is_a: DiseaseAnnotationCurated
+    description: >-
+      A curated disease annotation (see class DiseaseAnnotationCurated) for which inferences have been made to apply 
+      additional information such as inferred gene or inferred allele.
+    slots:
+      - inferred_gene
+      - inferred_allele
+    slot_usage:
+      inferred_gene:
+        description: >-
+          The gene to which the disease is inferred to be associated.
+        required: false
+        range: Gene
+      inferred_allele:
+        description: >-
+          The allele to which the disease is inferred to be associated.
+        range: Allele
+        required: false
 
   ExperimentalCondition:
     description: >-
@@ -213,6 +227,8 @@ classes:
         # TODO: add rest of anatomical ontology prefixes here
         values_from:
           - ZFA
+          - FBbt
+          - WBbt
       condition_gene_ontology:
         description: >-
           Gene Ontology id used in subset of condition types.
@@ -231,7 +247,6 @@ classes:
         values_from:
           - CHEBI
           - WBMol
-
 
   Phenotype:
     description: >-
@@ -304,9 +319,6 @@ classes:
 
 slots:
 
-  bioentity_name:
-    is_a: name
-
   condition_anatomy:
     domain: ExperimentalCondition
     range: uriorcurie                     # Update to AnatomicalEntity if such a class is instantiated
@@ -358,19 +370,23 @@ slots:
   disease_relation:
     range: disease_relation_enum
 
-  evidence:
-    range: Reference          # This may need to be updated to an association/publication_join
-
   evidence_code:              # this slot has also been instantiated in the orthology.yaml
     range: uriorcurie
     values_from:
       - ECO
 
+  inferred_gene:
+    description: >-
+      The gene to which something is inferred to be associated.
+    range: Gene
+    
+  inferred_allele:
+    description: >-
+      The allele to which something is inferred to be associated.
+    range: Allele
+
   phenotype_term:
     range: Phenotype
-
-  primary_genetic_entity:
-    range: BiologicalEntity
 
   with:
     description: >-
