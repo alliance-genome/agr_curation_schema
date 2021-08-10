@@ -2,7 +2,8 @@ name: Build
 
 on:
   push:
-    branches: [ * ]
+    branches: 
+	- '*'
 
 jobs:
   unittests-n-commits:
