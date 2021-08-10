@@ -290,7 +290,7 @@ classes:
       - predicate
     slot_usage:
       subject:
-        range: PhenotypeAnnotation
+        range: PhenotypeAnnotationCurated
       object:
         range: ExperimentalCondition
       predicate:
@@ -307,7 +307,7 @@ classes:
       - predicate
     slot_usage:
       subject:
-        range: DiseaseAnnotation
+        range: DiseaseAnnotationCurated
       object:
         range: ExperimentalCondition
       predicate:
