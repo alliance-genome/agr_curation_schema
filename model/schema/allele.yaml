@@ -8,6 +8,7 @@ imports:
   - variation
   - linkml:types
   - informationContentEntity
+  - ontologyTerm
   - affectedGenomicModel
 
 prefixes:
@@ -96,7 +97,15 @@ classes:
     slots:
       - component_relation
 
-
+  MolecularMutation:
+    description: >-
+      Description of the DNA changes with unknown precise genomic location
+    slots:
+      - mutation_type
+      - mutation_description
+    slot_usage:
+      mutation_type:
+        required: true
 
   CellLine:
     description: >-
@@ -133,9 +142,17 @@ slots:
       Description of the DNA changes if precise
       genomic location unknown
     domain: Allele
-    range: string
-    values_from:
-      - SO
+    range: MolecularMutation
+
+  mutation_type:
+    description: SO term for type of mutation
+    domain: MolecularMutation
+    range: SOTerm
+
+  mutation_description:
+    description: >-
+      Additional information about the nature of the mutation not captured
+      by the SOTerm
 
   functional_impact:
     description: >-
@@ -187,7 +204,7 @@ slots:
     description: >-
       Allele classification
     domain: Allele
-    range: string
+    range:
     values_from:
       - SO
 
