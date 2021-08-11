@@ -226,6 +226,9 @@ slots:
     singular_name: embryonic_stem_cell_line
     description: >-
       Embryonic stem cell lines known to carry the allele
+    domain: Allele
+    range: CellLine
+    multivalued: true
 
   database_status:
     description: >-
