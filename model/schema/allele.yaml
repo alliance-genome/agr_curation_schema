@@ -40,10 +40,10 @@ classes:
       - generation_method
       - associated_references
       - associated_notes
-      - germline_transmission_status # specific to MGI
-      - parent_cell_line # specfic to MGI
-      - mutant_cell_lines # specific to MGI
-      - embryonic_stem_cell_lines #specific to MGI
+      - germline_transmission_status
+      - parent_cell_line
+      - mutant_cell_lines
+      - embryonic_stem_cell_lines
       - images
       - feature_type
       - origins
@@ -58,6 +58,18 @@ classes:
     slot_usage:
       synonyms:
         description: synonyms for allele names and synonyms
+      germline_transmission_status:
+        notes: specific to MGI
+      parent_cell_line:
+        notes: specific to MGI
+      mutant_cell_lines:
+        notes: specific to MGI
+      embryonic_cell_lines:
+        notes: specific to MGI
+      transposon_insertion:
+        notes: specific to FB
+      aberration:
+        notes: specific to FB
 
   ReferenceType:
     description: >-
@@ -280,7 +292,9 @@ enums:
     permissible_values:
       molecular:
       origin:
+        notes: specific to FB
       cytology:
+        notes: specific to FB
       private:
       curator_comments:
 
