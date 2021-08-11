@@ -46,7 +46,6 @@ classes:
       - mutant_cell_lines
       - embryonic_stem_cell_lines
       - images
-      - feature_type
       - origins
       - database_status
       - inheritence_mode
@@ -199,14 +198,6 @@ slots:
       an entity, e.g. curators comments / private / origin
     domain: NoteType
     range: note_association_types
-
-  feature_type:
-    description: >-
-      Allele classification
-    domain: Allele
-    range:
-    values_from:
-      - SO
 
   origins:
     singular_name: origin
