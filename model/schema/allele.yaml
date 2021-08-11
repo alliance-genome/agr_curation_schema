@@ -34,7 +34,7 @@ classes:
       element can be endogenous or constructed.
     slots:
       - symbol
-      - affected_genes
+      - affected_entities
       - contains_construct
       - molecular_mutation
       - functional_impact
@@ -125,12 +125,12 @@ slots:
     multivalued: true
     range: ConstructComponent
 
-  affected_genes:
+  affected_entities:
     description:
-      Gene(s) altered in allele
+      Biological entities affected by allele
     multivalued: true
     domain: Allele
-    range: Gene
+    range: BiologicalEntity
 
   contains_construct:
     domain: Allele
