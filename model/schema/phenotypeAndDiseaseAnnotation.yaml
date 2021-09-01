@@ -117,9 +117,9 @@ classes:
       - evidence_code           # added to avoid the need for a publication join
       - date_assigned           # dateAssigned in JSON schema
       - inferred_gene
-      - inferred_gene_association
+      - inferred_disease_gene_relation
       - inferred_allele
-      - inferred_allele_association
+      - inferred_disease_allele_relation
       - disease_annotation_note
       - private_note
       - disease_annotation_summary
@@ -172,11 +172,19 @@ classes:
           but rather asserted through inference ('roll-up rules').
         required: false
         range: Gene
+      inferred_disease_gene_relation:
+        description: >-
+          The relation describing the nature of the association between a disease and an inferred gene
+        required: false
       inferred_allele:
         description: >-
           The allele to which the disease is inferred to be associated. Not manually asserted in curation database
           but rather asserted through inference ('roll-up rules').
         range: Allele
+        required: false
+      inferred_disease_allele_relation:
+        description: >-
+          The relation describing the nature of the association between a disease and an inferred allele.
         required: false
       disease_annotation_note:
         required: false
@@ -399,11 +407,21 @@ slots:
     description: >-
       The gene to which something is inferred to be associated.
     range: Gene
+
+  inferred_disease_gene_relation:
+    description: >-
+      The relation describing the nature of the association between a disease and an inferred gene.
+    range: disease_relation_enum      # This currently should only ever be 'is_implicated_in' or 'is_marker_for' for genes
     
   inferred_allele:
     description: >-
       The allele to which something is inferred to be associated.
     range: Allele
+
+  inferred_disease_allele_relation:
+    description: >-
+      The relation describing the nature of the association between a disease and an inferred allele.
+    range: disease_relation_enum      # This currently should only ever be 'is_implicated_in' for alleles
 
   phenotype_term:
     range: Phenotype
