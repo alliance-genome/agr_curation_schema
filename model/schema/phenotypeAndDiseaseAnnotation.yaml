@@ -36,7 +36,7 @@ prefixes:
 
 classes:
 
-  PhenotypeAnnotationCurated:
+  PhenotypeAnnotation:
     is_a: Association
     mixins:
       - AuditedObject
@@ -44,8 +44,11 @@ classes:
       An annotation asserting an association between a biological entity and a phenotype supported by evidence.
     slots:
       - curie
+      - annotation_reference
       - phenotype_term                    # phenotypeTermIdentifiers in JSON schema
       - date_assigned                     # dateAssigned in JSON schema
+      - inferred_gene
+      - inferred_allele
     slot_usage:
       subject:                            # objectId in JSON schema
         description: >-
@@ -74,9 +77,8 @@ classes:
           statement of the phenotype from a post-composed terminology
         required: true
         range: string
-      references:
+      annotation_reference:
         required: true
-        range: Reference
         multivalued: false
         description: >-
           The reference in which the phenotype association was asserted/reported.
@@ -86,28 +88,21 @@ classes:
         required: true
         multivalued: false
         range: date
-
-  PhenotypeAnnotationInferred:
-    is_a: PhenotypeAnnotationCurated
-    description: >-
-      A curated phenotype annotation (see class PhenotypeAnnotationCurated) for which inferences have been made to apply 
-      additional information such as inferred gene or inferred allele.
-    slots:
-      - inferred_gene
-      - inferred_allele
-    slot_usage:
       inferred_gene:
         description: >-
-          The gene to which the phenotype is inferred to be associated.
+          The gene to which the phenotype is inferred to be associated. Not manually asserted in curation database
+          but rather asserted through inference ('roll-up rules').
         required: false
         range: Gene
       inferred_allele:
         description: >-
-          The allele to which the phenotype is inferred to be associated.
+          The allele to which the phenotype is inferred to be associated. Not manually asserted in curation database
+          but rather asserted through inference ('roll-up rules').
         range: Allele
         required: false
 
-  DiseaseAnnotationCurated:
+
+  DiseaseAnnotation:
     is_a: Association
     mixins:
       - AuditedObject
@@ -121,6 +116,18 @@ classes:
       - with
       - evidence_code           # added to avoid the need for a publication join
       - date_assigned           # dateAssigned in JSON schema
+      - inferred_gene
+      - inferred_gene_association
+      - inferred_allele
+      - inferred_allele_association
+      - disease_annotation_note
+      - private_note
+      - disease_annotation_summary
+      - genetic_modifier
+      - genetic_modifier_relation
+      - genetic_sex
+      - qualifier
+      - SGD_strain_background
     slot_usage:
       subject:                  # objectId in JSON schema
         required: true
@@ -147,7 +154,7 @@ classes:
       with:
         description: >-
           http://geneontology.org/docs/go-annotation-file-gaf-format-21/#with-or-from-column-8
-      references:               # evidence in JSON schema
+      annotation_reference:               # evidence in JSON schema
         required: true
         multivalued: false
         description: >-
@@ -159,26 +166,35 @@ classes:
         description: >-
           Date this entity was assigned in its primary data source.
         range: date
-
-  DiseaseAnnotationInferred:
-    is_a: DiseaseAnnotationCurated
-    description: >-
-      A curated disease annotation (see class DiseaseAnnotationCurated) for which inferences have been made to apply 
-      additional information such as inferred gene or inferred allele.
-    slots:
-      - inferred_gene
-      - inferred_allele
-    slot_usage:
       inferred_gene:
         description: >-
-          The gene to which the disease is inferred to be associated.
+          The gene to which the disease is inferred to be associated. Not manually asserted in curation database
+          but rather asserted through inference ('roll-up rules').
         required: false
         range: Gene
       inferred_allele:
         description: >-
-          The allele to which the disease is inferred to be associated.
+          The allele to which the disease is inferred to be associated. Not manually asserted in curation database
+          but rather asserted through inference ('roll-up rules').
         range: Allele
         required: false
+      disease_annotation_note:
+        required: false
+      private_note:
+        required: false
+      disease_annotation_summary:
+        required: false
+      genetic_modifier:
+        required: false
+        multivalued: true
+      genetic_modifier_relation:
+        required: false
+        multivalued: false
+      genetic_sex:
+        required: false
+      qualifier:
+        required: false
+
 
   ExperimentalCondition:
     description: >-
@@ -396,6 +412,54 @@ slots:
     description: >-
       http://geneontology.org/docs/go-annotation-file-gaf-format-21/#with-or-from-column-8
 
+  disease_annotation_note:
+    description: >-
+      Free text note for curators to add comments for properly interpreting the annotation.
+    range: string
+
+  private_note:
+    description: >-
+      Free text internal comment for curators to track private/internal communications and notes about the annotation.
+    range: string
+
+  disease_annotation_summary:
+    description: >-
+      Free text extended summary of the disease annotation.
+    range: string
+
+  genetic_modifier:
+    description: >-
+      Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
+    range: BiologicalEntity
+
+  genetic_modifier_relation:
+    description: >-
+      A relation describing how the genetic modifier modifies the disease model.
+    range: genetic_modifier_relation_enum
+
+  genetic_sex:
+    description: >-
+      The genetic sex of the disease model organism.
+    range: genetic_sex_enum
+
+  qualifier:
+    description: >-
+      Controlled vocabulary qualifier describing the nature of the disease model.
+    range: disease_annotation_qualifier_enum
+
+  annotation_reference:
+    description: >-
+      The reference in which an association/annotation was asserted/reported.
+    multivalued: false
+    range: Reference
+
+  SGD_strain_background:
+    description: >-
+      A strain used as a background for an annotation made by SGD curators. This indicates the genetic context in which
+      a particular experiment was carried our or in which an observation was made.
+    range: AffectedGenomicModel
+
+
 ## ----------
 ## PREDICATES
 ## ----------
@@ -473,4 +537,23 @@ enums:
       implicated_via_orthology:             # this would not be manually assigned but computationally
       biomarker_via_orthology:              # this would not be manually assigned but computationally
 
+  genetic_modifier_relation_enum:
+    permissible_values:
+      ameliorated_by:
+      exacerbated_by:
 
+  genetic_sex_enum:
+    permissible_values:
+      male:
+      female:
+      hermaphrodite:
+
+  disease_annotation_qualifier_enum:
+    permissible_values:
+      susceptibility:
+      disease_progression:
+      severity:
+      onset:
+      sexual_dimorphism:
+      resistance:
+      penetrance:
