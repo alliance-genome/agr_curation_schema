@@ -110,6 +110,7 @@ classes:
       An annotation asserting an association between a biological entity and a disease supported by evidence.
     slots:
       - curie
+      - annotation_reference
       - disease_relation        # objectRelation in JSON schema
       - negated                 # negation in JSON schema
       - data_provider           # dataProvider in JSON schema
@@ -474,7 +475,7 @@ slots:
   SGD_strain_background:
     description: >-
       A strain used as a background for an annotation made by SGD curators. This indicates the genetic context in which
-      a particular experiment was carried our or in which an observation was made.
+      a particular experiment was carried out or in which an observation was made.
     range: AffectedGenomicModel
 
 
