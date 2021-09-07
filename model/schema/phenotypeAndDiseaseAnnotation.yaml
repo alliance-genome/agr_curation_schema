@@ -46,7 +46,6 @@ classes:
       - curie
       - annotation_reference
       - phenotype_term                    # phenotypeTermIdentifiers in JSON schema
-      - date_assigned                     # dateAssigned in JSON schema
       - inferred_gene
       - inferred_allele
     slot_usage:
@@ -116,7 +115,6 @@ classes:
       - data_provider           # dataProvider in JSON schema
       - with
       - evidence_code           # added to avoid the need for a publication join
-      - date_assigned           # dateAssigned in JSON schema
       - inferred_gene
       - inferred_disease_gene_relation
       - inferred_allele
@@ -127,7 +125,7 @@ classes:
       - genetic_modifier
       - genetic_modifier_relation
       - genetic_sex
-      - qualifier
+      - disease_annotation_qualifier
       - SGD_strain_background
     slot_usage:
       subject:                  # objectId in JSON schema
@@ -201,8 +199,12 @@ classes:
         multivalued: false
       genetic_sex:
         required: false
-      qualifier:
+      disease_annotation_qualifier:
         required: false
+        multivalued: true
+      SGD_strain_background:
+        required: false      # Required for SGD disease annotations; not required for anyone else
+        multivalued: false
 
 
   ExperimentalCondition:
@@ -461,7 +463,7 @@ slots:
       The genetic sex of the disease model organism.
     range: genetic_sex_enum
 
-  qualifier:
+  disease_annotation_qualifier:
     description: >-
       Controlled vocabulary qualifier describing the nature of the disease model.
     range: disease_annotation_qualifier_enum
