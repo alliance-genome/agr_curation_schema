@@ -52,7 +52,7 @@ classes:
           The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, by direct curation.
         required: true
         range: BiologicalEntity
-      phenotype_term:
+      phenotype_term:∂
         values_from:
           - HP
           - MP
@@ -107,30 +107,28 @@ classes:
         range: Allele
         required: false
 
-  DiseaseAnnotationCurated:
+  DiseaseAnnotation:
     is_a: Association
+    abstract: true
     mixins:
       - AuditedObject
     description: >-
       An annotation asserting an association between a biological entity and a disease supported by evidence.
     slots:
       - curie
-      - disease_relation        # objectRelation in JSON schema
       - negated                 # negation in JSON schema
-      - data_provider           # dataProvider in JSON schema
-      - with
-      - evidence_code           # added to avoid the need for a publication join
-      - date_assigned           # dateAssigned in JSON schema
+      - disease_reference
+      - evidence_codes           # added to avoid the need for a publication join
     slot_usage:
       subject:                  # objectId in JSON schema
         required: true
         description: >-
           The biological entity to which the disease ontology term is associated.
         range: BiologicalEntity
-      disease_relation:
+      predicate:
         required: true
         description: >-
-          Constrains the disease object, associationType and inferredGeneAssociation.
+          Constrains the disease subject, associationType and inferredGeneAssociation.
         range: disease_relation_enum
       negated:
         description: >-
@@ -140,13 +138,6 @@ classes:
         description: >-
           The disease ontology term.
         range: Disease
-      data_provider:
-        required: true
-        description: >-
-          source of data, can be multiple of these, each with a type and a crossReference
-      with:
-        description: >-
-          http://geneontology.org/docs/go-annotation-file-gaf-format-21/#with-or-from-column-8
       references:               # evidence in JSON schema
         required: true
         multivalued: false
@@ -159,6 +150,38 @@ classes:
         description: >-
           Date this entity was assigned in its primary data source.
         range: date
+
+  GeneDiseaseAnnotation:
+    is_a: DiseaseAnnotation
+    mixins:
+      - AuditedObject
+    description:
+    slots:
+      - curie
+      - negated
+      - evidence_codes
+      - gene_disease_relation
+      - gene_disease_reference
+    slot_usage:
+      subject:
+        required: true
+        description: >-
+          The gene to which the disease ontology term is associated.
+        range: Gene
+      gene_disease_relation:
+        required: true
+        range: gene_disease_relation_enum
+      negated:
+        description: >-
+          The negative qualifier for the annotation.
+      object:
+        required: true
+        description: >-
+          The disease ontology term.
+        range: Disease
+      with:
+        description: >-
+          http://geneontology.org/docs/go-annotation-file-gaf-format-21/#with-or-from-column-8
 
   DiseaseAnnotationInferred:
     is_a: DiseaseAnnotationCurated
@@ -473,4 +496,5 @@ enums:
       implicated_via_orthology:             # this would not be manually assigned but computationally
       biomarker_via_orthology:              # this would not be manually assigned but computationally
 
-
+  disease_object_enumeration:
+    permissible_values:
