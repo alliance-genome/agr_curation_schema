@@ -426,6 +426,12 @@ slots:
   private_note:
     range: string
 
+  disease_annotation_note:
+    range: string
+
+  disease_annotation_summary:
+    range: string
+    
   annotation_reference:
     required: true
     range: Reference
