@@ -338,7 +338,7 @@ classes:
       - predicate
     slot_usage:
       subject:
-        range: DiseaseAnnotationCurated
+        range: DiseaseAnnotation
       object:
         range: ExperimentalCondition
       predicate:
