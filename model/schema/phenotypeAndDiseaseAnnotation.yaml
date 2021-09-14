@@ -338,7 +338,7 @@ classes:
       - predicate
     slot_usage:
       subject:
-        range: DiseaseAnnotation
+        range: DiseaseAnnotation # should this just be for one kind of biological entity disease annotation.
       object:
         range: ExperimentalCondition
       predicate:
