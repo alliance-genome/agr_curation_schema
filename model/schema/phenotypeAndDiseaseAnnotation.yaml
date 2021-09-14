@@ -431,12 +431,18 @@ slots:
 
   allele_disease_relation:
     range: allele_disease_relation_enum
-    
+
+  agm_disease_relation:
+    range: agm_disease_relation_enum
+
   disease_annotation_note:
     range: string
 
   disease_annotation_summary:
     range: string
+
+  sgd_strain_background:
+    range: AffectedGenomicModel
 
   annotation_reference:
     required: true
@@ -448,7 +454,7 @@ slots:
   genetic_modifier:
     description: >-
       Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
-    range: genetic_modifier_enum
+    range: BiologicalEntity # TODO: fix this in the class hierarchy -- add a mixin?
 
   genetic_modifier_relation:
     description: >-
