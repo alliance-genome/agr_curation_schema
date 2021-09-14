@@ -52,7 +52,7 @@ classes:
           The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, by direct curation.
         required: true
         range: BiologicalEntity
-      phenotype_term:∂
+      phenotype_term:
         values_from:
           - HP
           - MP
@@ -119,9 +119,9 @@ classes:
       - negated
       - evidence_codes
       - annotation_reference
-      - qualifiers # what is the enumeration that constrains this?
+      - disease_qualifiers # what is the enumeration that constrains this?
       - genetic_sex # does this really belong at the top level?
-      - private_notes # we should probably pull this out into a _private_ note object.
+      - private_note # we should probably pull this out into a _private_ note object.
       - disease_annotation_note # we should probably pull this out into a note object.
       - disease_annotation_summary # we should probably pull this out into a note object
     slot_usage:
@@ -417,11 +417,14 @@ slots:
       The allele to which something is inferred to be associated.
     range: Allele
 
-  qualifiers:
+  disease_qualifiers:
     range: disease_annotation_qualifier_enum
 
   genetic_sex:
     range: genetic_sex_enum
+
+  private_note:
+    range: string
 
   annotation_reference:
     required: true
