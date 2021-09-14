@@ -116,61 +116,25 @@ classes:
       An annotation asserting an association between a biological entity and a disease supported by evidence.
     slots:
       - curie
-      - negated                 # negation in JSON schema
-      - disease_reference
-      - evidence_codes           # added to avoid the need for a publication join
-    slot_usage:
-      subject:                  # objectId in JSON schema
-        required: true
-        description: >-
-          The biological entity to which the disease ontology term is associated.
-        range: BiologicalEntity
-      predicate:
-        required: true
-        description: >-
-          Constrains the disease subject, associationType and inferredGeneAssociation.
-        range: disease_relation_enum
-      negated:
-        description: >-
-          The negative qualifier for the annotation.
-      object:                   # Disease; DOid in JSON schema
-        required: true
-        description: >-
-          The disease ontology term.
-        range: Disease
-      references:               # evidence in JSON schema
-        required: true
-        multivalued: false
-        description: >-
-          The reference in which the disease association was asserted/reported.
-      evidence_code:
-        multivalued: true
-      date_assigned:
-        required: true
-        description: >-
-          Date this entity was assigned in its primary data source.
-        range: date
-
-  GeneDiseaseAnnotation:
-    is_a: DiseaseAnnotation
-    mixins:
-      - AuditedObject
-    description:
-    slots:
-      - curie
       - negated
       - evidence_codes
-      - gene_disease_relation
-      - gene_disease_reference
+      - annotation_reference
+      - qualifiers # what is the enumeration that constrains this?
+      - genetic_sex # does this really belong at the top level?
+      - private_notes # we should probably pull this out into a _private_ note object.
+      - disease_annotation_note # we should probably pull this out into a note object.
+      - disease_annotation_summary # we should probably pull this out into a note object
     slot_usage:
       subject:
         required: true
         description: >-
-          The gene to which the disease ontology term is associated.
-        range: Gene
-      gene_disease_relation:
+          The biological entity to which the disease ontology term is associated.
+        range: BiologicalEntity
+      predicate:  # predicate is basically disease_relation.  We should determine if we want such a generic name for this in the parent Association objectl
         required: true
-        range: gene_disease_relation_enum
+        description: >-
+          Constrains the disease subject, associationType and inferredGeneAssociation.
+        range: disease_relation_enum
       negated:
         description: >-
           The negative qualifier for the annotation.
@@ -179,19 +143,59 @@ classes:
         description: >-
           The disease ontology term.
         range: Disease
-      with:
-        description: >-
-          http://geneontology.org/docs/go-annotation-file-gaf-format-21/#with-or-from-column-8
+      evidence_code:
+        multivalued: true
+      genetic_sex:
+        range: genetic_sex_enum
 
-  DiseaseAnnotationInferred:
-    is_a: DiseaseAnnotationCurated
-    description: >-
-      A curated disease annotation (see class DiseaseAnnotationCurated) for which inferences have been made to apply 
-      additional information such as inferred gene or inferred allele.
+  GeneDiseaseAnnotation:
+    is_a: DiseaseAnnotation
+    description:
     slots:
-      - inferred_gene
-      - inferred_allele
+      - gene_disease_relation
     slot_usage:
+      subject:
+        required: true
+        description: >-
+          The gene to which the disease ontology term is associated.
+        range: Gene
+      predicate:
+        required: true
+        range: gene_disease_relation_enum
+
+  AlleleDiseaseAnnotation:
+    is_a: DiseaseAnnotation
+    slots:
+      - allele_disease_relation
+      - genetic_modifier
+      - genetic_modifier_relation
+      - with
+      - sgd_strain_background
+      - inferred_gene
+    slot_usage:
+      subject:
+        range: Allele
+      predicate:
+        range: allele_disease_relation_enum
+        required: true
+      inferred_gene:
+        description: >-
+          The gene to which the disease is inferred to be associated.
+        required: false
+        range: Gene
+
+  AGMDiseaseAnnotation:
+    is_a: DiseaseAnnotation
+    slots:
+      - agm_disease_relation
+      - inferred_allele
+      - inferred_gene
+    slot_usage:
+      subject:
+        range: Allele
+      predicate:
+        range: allele_disease_relation_enum
+        required: true
       inferred_gene:
         description: >-
           The gene to which the disease is inferred to be associated.
@@ -200,8 +204,8 @@ classes:
       inferred_allele:
         description: >-
           The allele to which the disease is inferred to be associated.
-        range: Allele
         required: false
+        range: Allele
 
   ExperimentalCondition:
     description: >-
@@ -397,8 +401,9 @@ slots:
   disease_relation:
     range: disease_relation_enum
 
-  evidence_code:              # this slot has also been instantiated in the orthology.yaml
+  evidence_codes:              # this slot has also been instantiated in the orthology.yaml
     range: uriorcurie
+    multivalued: true
     values_from:
       - ECO
 
@@ -411,6 +416,29 @@ slots:
     description: >-
       The allele to which something is inferred to be associated.
     range: Allele
+
+  qualifiers:
+    range: disease_annotation_qualifier_enum
+
+  genetic_sex:
+    range: genetic_sex_enum
+
+  annotation_reference:
+    required: true
+    range: Reference
+    multivalued: false
+    description: >-
+          The reference in which the association was asserted/reported.
+
+  genetic_modifier:
+    description: >-
+      Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
+    range: genetic_modifier_enum
+
+  genetic_modifier_relation:
+    description: >-
+      A relation describing how the genetic modifier modifies the disease model.
+    range: genetic_modifier_relation_enum # TODO: define a range or enumeration
 
   phenotype_term:
     range: Phenotype
@@ -496,5 +524,36 @@ enums:
       implicated_via_orthology:             # this would not be manually assigned but computationally
       biomarker_via_orthology:              # this would not be manually assigned but computationally
 
-  disease_object_enumeration:
+  gene_disease_relation_enum:
     permissible_values:
+      is_implicated_in:
+      is_marker_for:
+
+  allele_disease_relation_enum:
+    permissible_values:
+      is_implicated_in:
+
+  agm_disease_relation_enum:
+    permissible_values:
+      is_model_of:
+
+  genetic_sex_enum:
+    permissible_values:
+      male:
+      female:
+      hermaphrodite:
+
+  genetic_modifier_relation_enum:
+    permissible_values:
+      ameliorated_by:
+      exacerbated_by:
+
+  disease_annotation_qualifier_enum:
+    permissible_values:
+      susceptibility:
+      disease_progression:
+      severity:
+      onset:
+      sexual_dimorphism:
+      resistance:
+      penetrance:
