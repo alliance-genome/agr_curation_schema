@@ -38,6 +38,8 @@ classes:
 
   PhenotypeAnnotationCurated:
     is_a: Association
+    mixins:
+      - AuditedObject
     description: >-
       An annotation asserting an association between a biological entity and a phenotype supported by evidence.
     slots:
@@ -107,6 +109,8 @@ classes:
 
   DiseaseAnnotationCurated:
     is_a: Association
+    mixins:
+      - AuditedObject
     description: >-
       An annotation asserting an association between a biological entity and a disease supported by evidence.
     slots:
