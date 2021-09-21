@@ -62,6 +62,9 @@ classes:
     slots:
       - curie
       - taxon
+    slot_usage:
+      taxon:
+        required: true
 
   GenomicEntity:
     is_a: BiologicalEntity
@@ -104,11 +107,13 @@ classes:
       - SGD
       - WB
       - ZFIN
+    slot_usage:
+      symbol:
+        required: true
 
   CrossReference:
     is_a: InformationContentEntity
     slots:
-      - curie
       - page_areas
       - display_name
       - prefix

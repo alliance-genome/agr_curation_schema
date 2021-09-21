@@ -8,6 +8,7 @@ imports:
   - variation
   - linkml:types
   - informationContentEntity
+  - ontologyTerm
   - affectedGenomicModel
 
 prefixes:
@@ -33,19 +34,18 @@ classes:
       element can be endogenous or constructed.
     slots:
       - symbol
-      - affected_genes
+      - affected_entities
       - contains_construct
       - molecular_mutation
       - functional_impact
       - generation_method
       - associated_references
       - associated_notes
-      - germline_transmission_status # specific to MGI
-      - parent_cell_line # specfic to MGI
-      - mutant_cell_lines # specific to MGI
-      - embryonic_stem_cell_lines #specific to MGI
+      - germline_transmission_status
+      - parent_cell_line
+      - mutant_cell_lines
+      - embryonic_stem_cell_lines
       - images
-      - feature_type
       - origins
       - database_status
       - inheritence_mode
@@ -58,6 +58,18 @@ classes:
     slot_usage:
       synonyms:
         description: synonyms for allele names and synonyms
+      germline_transmission_status:
+        notes: specific to MGI
+      parent_cell_line:
+        notes: specific to MGI
+      mutant_cell_lines:
+        notes: specific to MGI
+      embryonic_cell_lines:
+        notes: specific to MGI
+      transposon_insertion:
+        notes: specific to FB
+      aberration:
+        notes: specific to FB
 
   ReferenceType:
     description: >-
@@ -84,7 +96,15 @@ classes:
     slots:
       - component_relation
 
-
+  MolecularMutation:
+    description: >-
+      Description of the DNA changes with unknown precise genomic location
+    slots:
+      - mutation_type
+      - mutation_description
+    slot_usage:
+      mutation_type:
+        required: true
 
   CellLine:
     description: >-
@@ -105,12 +125,12 @@ slots:
     multivalued: true
     range: ConstructComponent
 
-  affected_genes:
+  affected_entities:
     description:
-      Gene(s) altered in allele
+      Biological entities affected by allele
     multivalued: true
     domain: Allele
-    range: Gene
+    range: BiologicalEntity
 
   contains_construct:
     domain: Allele
@@ -121,9 +141,17 @@ slots:
       Description of the DNA changes if precise
       genomic location unknown
     domain: Allele
-    range: string
-    values_from:
-      - SO
+    range: MolecularMutation
+
+  mutation_type:
+    description: SO term for type of mutation
+    domain: MolecularMutation
+    range: SOTerm
+
+  mutation_description:
+    description: >-
+      Additional information about the nature of the mutation not captured
+      by the SOTerm
 
   functional_impact:
     description: >-
@@ -171,14 +199,6 @@ slots:
     domain: NoteType
     range: note_association_types
 
-  feature_type:
-    description: >-
-      Allele classification
-    domain: Allele
-    range: string
-    values_from:
-      - SO
-
   origins:
     singular_name: origin
     description: >-
@@ -214,6 +234,9 @@ slots:
     singular_name: embryonic_stem_cell_line
     description: >-
       Embryonic stem cell lines known to carry the allele
+    domain: Allele
+    range: CellLine
+    multivalued: true
 
   database_status:
     description: >-
@@ -280,7 +303,9 @@ enums:
     permissible_values:
       molecular:
       origin:
+        notes: specific to FB
       cytology:
+        notes: specific to FB
       private:
       curator_comments:
 
