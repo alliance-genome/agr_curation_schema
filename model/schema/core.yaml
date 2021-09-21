@@ -114,7 +114,6 @@ classes:
   CrossReference:
     is_a: InformationContentEntity
     slots:
-      - curie
       - page_areas
       - display_name
       - prefix
