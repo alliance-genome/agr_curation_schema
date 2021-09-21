@@ -196,7 +196,7 @@ classes:
     is_a: DiseaseAnnotation
     slots:
       - agm_disease_relation
-      - agm_disease_gentic_modifier
+      - agm_disease_genetic_modifier
       - agm_disease_genetic_modifier_relation
       - inferred_allele
       - inferred_gene
