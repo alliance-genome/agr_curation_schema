@@ -153,8 +153,8 @@ classes:
     is_a: DiseaseAnnotation
     description:
     slots:
-      - gene_genetic_modifier
-      - gene_genetic_modifier_relation
+      - gene_disease_genetic_modifier
+      - gene_disease_genetic_modifier_relation
       - gene_disease_relation
       - sgd_strain_background
     slot_usage:
@@ -166,13 +166,16 @@ classes:
       predicate:
         required: true
         range: gene_disease_relation_enum
+      gene_disease_genetic_modifier:
+        required: false
+        range: BiologicalEntity
 
   AlleleDiseaseAnnotation:
     is_a: DiseaseAnnotation
     slots:
       - allele_disease_relation
-      - allele_genetic_modifier
-      - allele_genetic_modifier_relation
+      - allele_disease_genetic_modifier
+      - allele_disease_genetic_modifier_relation
       - inferred_gene
     slot_usage:
       subject:
@@ -185,13 +188,16 @@ classes:
           The gene to which the disease is inferred to be associated.
         required: false
         range: Gene
+      allele_disease_genetic_modifier:
+        required: false
+        range: BiologicalEntity
 
   AGMDiseaseAnnotation:
     is_a: DiseaseAnnotation
     slots:
       - agm_disease_relation
-      - agm_gentic_modifier
-      - agm_genetic_modifier_relation
+      - agm_disease_gentic_modifier
+      - agm_disease_genetic_modifier_relation
       - inferred_allele
       - inferred_gene
     slot_usage:
@@ -210,6 +216,9 @@ classes:
           The allele to which the disease is inferred to be associated.
         required: false
         range: Allele
+      agm_disease_genetic_modifier:
+        required: false
+        range: BiologicalEntity
 
   ExperimentalCondition:
     description: >-
@@ -455,15 +464,36 @@ slots:
     description: >-
           The reference in which the association was asserted/reported.
 
-  genetic_modifier:
+  gene_disease_genetic_modifier:
     description: >-
       Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
     range: BiologicalEntity # TODO: fix this in the class hierarchy -- add a mixin?
 
-  genetic_modifier_relation:
+  allele_disease_genetic_modifier:
+    description: >-
+      Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
+    range: BiologicalEntity # TODO: fix this in the class hierarchy -- add a mixin?
+
+  agm_disease_genetic_modifier:
+    description: >-
+      Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
+    range: BiologicalEntity # TODO: fix this in the class hierarchy -- add a mixin?
+
+  gene_disease_genetic_modifier_relation:
     description: >-
       A relation describing how the genetic modifier modifies the disease model.
     range: genetic_modifier_relation_enum # TODO: define a range or enumeration
+
+  allele_disease_genetic_modifier_relation:
+    description: >-
+      A relation describing how the genetic modifier modifies the disease model.
+    range: genetic_modifier_relation_enum # TODO: define a range or enumeration
+
+  agm_disease_genetic_modifier_relation:
+    description: >-
+      A relation describing how the genetic modifier modifies the disease model.
+    range: genetic_modifier_relation_enum # TODO: define a range or enumeration
+
 
   phenotype_term:
     range: Phenotype
@@ -582,3 +612,4 @@ enums:
       sexual_dimorphism:
       resistance:
       penetrance:
+
