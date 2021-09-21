@@ -119,6 +119,7 @@ classes:
       - negated
       - evidence_codes
       - annotation_reference
+      - with # what constrains this?  what is gene+with=strain?
       - disease_qualifiers # what is the enumeration that constrains this?
       - genetic_sex # does this really belong at the top level?
       - private_note # we should probably pull this out into a _private_ note object.
@@ -152,7 +153,10 @@ classes:
     is_a: DiseaseAnnotation
     description:
     slots:
+      - gene_genetic_modifier
+      - gene_genetic_modifier_relation
       - gene_disease_relation
+      - sgd_strain_background
     slot_usage:
       subject:
         required: true
@@ -167,10 +171,8 @@ classes:
     is_a: DiseaseAnnotation
     slots:
       - allele_disease_relation
-      - genetic_modifier
-      - genetic_modifier_relation
-      - with
-      - sgd_strain_background
+      - allele_genetic_modifier
+      - allele_genetic_modifier_relation
       - inferred_gene
     slot_usage:
       subject:
@@ -188,13 +190,15 @@ classes:
     is_a: DiseaseAnnotation
     slots:
       - agm_disease_relation
+      - agm_gentic_modifier
+      - agm_genetic_modifier_relation
       - inferred_allele
       - inferred_gene
     slot_usage:
       subject:
-        range: Allele
+        range: AffectedGenomicModel
       predicate:
-        range: allele_disease_relation_enum
+        range: agm_disease_relation_enum
         required: true
       inferred_gene:
         description: >-
