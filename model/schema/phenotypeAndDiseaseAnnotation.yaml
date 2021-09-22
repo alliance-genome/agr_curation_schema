@@ -152,7 +152,7 @@ classes:
         multivalued: false
         description: >-
           The reference in which the disease association was asserted/reported.
-      evidence_code:
+      evidence_codes:
         multivalued: true
       date_assigned:
         required: true
@@ -374,10 +374,8 @@ slots:
   disease_relation:
     range: disease_relation_enum
 
-  evidence_code:              # this slot has also been instantiated in the orthology.yaml
-    range: uriorcurie
-    values_from:
-      - ECO
+  evidence_codes:              # this slot has also been instantiated in the orthology.yaml
+    range: ECOTerm
 
   inferred_gene:
     description: >-
