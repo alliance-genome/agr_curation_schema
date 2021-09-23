@@ -57,27 +57,12 @@ classes:
       - curie
       - namespace
 
-  AnatomicalTerm:
-    is_a: OntologyTerm
-    abstract: true
-
-  CLTerm:
-    is_a: AnatomicalTerm
 
   DOTerm:
     is_a: OntologyTerm
 
   ECOTerm:
     is_a: OntologyTerm
-
-  EMAPATerm:
-    is_a: OntologyTerm
-
-  FBBTTerm:
-    is_a: AnatomicalTerm
-
-  FBDVTerm:
-    is_a: StageTerm
 
   FBCVTerm:
     is_a: OntologyTerm
@@ -100,9 +85,46 @@ classes:
   SOTerm:
     is_a: OntologyTerm
 
+  CHEBITerm:
+    is_a: OntologyTerm
+
+
   StageTerm:
     is_a: OntologyTerm
     abstract: true
+
+  FBDVTerm:
+    is_a: StageTerm
+
+  WBLSTerm:
+    is_a: StageTerm
+
+  ZFSTerm:
+    is_a: StageTerm
+
+
+  ExperimentalConditionOntologyTerm:
+    is_a: OntologyTerm
+    abstract: true
+
+  ZECOTerm:
+    is_a: ExperimentalConditionOntologyTerm
+
+  XCOTerm:
+    is_a: ExperimentalConditionOntologyTerm
+
+  AnatomicalTerm:
+    is_a: OntologyTerm
+    abstract: true
+
+  CLTerm:
+    is_a: AnatomicalTerm
+
+  EMAPATerm:
+    is_a: AnatomicalTerm
+
+  FBBTTerm:
+    is_a: AnatomicalTerm
 
   UBERONTerm:
     is_a: AnatomicalTerm
@@ -110,18 +132,6 @@ classes:
   WBBTTerm:
     is_a: AnatomicalTerm
 
-  WBLSTerm:
-    is_a: StageTerm
-
   ZFATerm:
     is_a: AnatomicalTerm
-
-  ZFSTerm:
-    is_a: StageTerm
-
-  ZECOTerm:
-    is_a: OntologyTerm
-
-  CHEBITerm:
-    is_a: OntologyTerm
 
