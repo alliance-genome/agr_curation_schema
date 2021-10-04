@@ -144,7 +144,20 @@ classes:
         description: >-
           The disease ontology term.
         range: Disease
-      evidence_code:
+      data_provider:
+        required: true
+        description: >-
+          source of data, can be multiple of these, each with a type and a crossReference
+      with:
+        description: >-
+          http://geneontology.org/docs/go-annotation-file-gaf-format-21/#with-or-from-column-8
+      references:               # evidence in JSON schema
+        required: true
+        multivalued: false
+        description: >-
+          The reference in which the disease association was asserted/reported.
+      evidence_codes:
+
         multivalued: true
       genetic_sex:
         range: genetic_sex_enum
@@ -419,6 +432,7 @@ slots:
     multivalued: true
     values_from:
       - ECO
+    range: ECOTerm
 
   inferred_gene:
     description: >-
