@@ -271,5 +271,5 @@ gen-java: $(patsubst %, $(PKG_T_JAVA)/%.java, $(SCHEMA_NAMES))
 $(PKG_T_JAVA)/%.java: target/java/%.java
 	mkdir -p $(PKG_T_JAVA)
 	cp $< $@
-target/java/%.java: $(SCHEMA_DIR)/%.yaml  tdir-java install
+target/java/%.java: $(SCHEMA_DIR)/%.yaml tdir-java install
 	$(RUN) gen-java $(GEN_OPTS)  $< > $@
