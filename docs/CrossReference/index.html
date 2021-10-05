@@ -106,11 +106,6 @@
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
-<li><a href="../curie/">curie</a>  <sub>1..1</sub><ul>
-<li>Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI</li>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
-</ul>
-</li>
 <li><a href="../page_areas/">page_areas</a>  <sub>1..*</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
@@ -122,6 +117,14 @@
 <li><a href="../prefix/">prefix</a>  <sub>1..1</sub><ul>
 <li>Description: Denormalization to help with classifying types of crossReferences, distinguishing DOIs from PMC ids, etc.</li>
 <li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="inherited-from-informationcontententity">Inherited from InformationContentEntity:</h3>
+<ul>
+<li><a href="../curie/">curie</a>  <sub>1..1</sub><ul>
+<li>Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
 </ul>

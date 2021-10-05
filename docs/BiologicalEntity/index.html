@@ -94,7 +94,7 @@
                 <h1 id="class-biologicalentity">Class: BiologicalEntity</h1>
 <p>A high-level entity comprising .</p>
 <p>URI: <a href="http://alliancegenome.orgBiologicalEntity">alliance:BiologicalEntity</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PhenotypeAnnotationCurated],[Person],[GenomicEntity],[DiseaseAnnotationCurated],[DiseaseAnnotationCurated]-%20subject%201..1&gt;[BiologicalEntity&#124;curie:uriorcurie;taxon:uriorcurie%20%3F;table_key:integer%20%3F;creation_date:string%20%3F;date_last_modified:date%20%3F],[PhenotypeAnnotationCurated]-%20subject%201..1&gt;[BiologicalEntity],[BiologicalEntity]uses%20-.-&gt;[AuditedObject],[BiologicalEntity]^-[GenomicEntity],[BiologicalEntity]^-[Antibody],[AuditedObject],[Antibody]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PhenotypeAnnotationCurated],[Person],[GenomicEntity],[DiseaseAnnotationCurated],[DiseaseAnnotationCurated]-%20subject%201..1&gt;[BiologicalEntity&#124;curie:uriorcurie;taxon:uriorcurie%20%3F;table_key:integer%20%3F;creation_date:string%20%3F;date_last_modified:date%20%3F],[PhenotypeAnnotationCurated]-%20subject%201..1&gt;[BiologicalEntity],[BiologicalEntity]uses%20-.-&gt;[AuditedObject],[BiologicalEntity]^-[GenomicEntity],[BiologicalEntity]^-[Antibody],[AuditedObject],[Antibody]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PhenotypeAnnotationCurated],[Person],[GenomicEntity],[DiseaseAnnotationCurated],[DiseaseAnnotationCurated]-%20subject%201..1&gt;[BiologicalEntity&#124;curie:uriorcurie;taxon:uriorcurie;table_key:integer%20%3F;creation_date:string%20%3F;date_last_modified:date%20%3F],[PhenotypeAnnotationCurated]-%20subject%201..1&gt;[BiologicalEntity],[Allele]-%20affected_entities%200..*&gt;[BiologicalEntity],[BiologicalEntity]uses%20-.-&gt;[AuditedObject],[BiologicalEntity]^-[GenomicEntity],[BiologicalEntity]^-[Antibody],[AuditedObject],[Antibody],[Allele]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PhenotypeAnnotationCurated],[Person],[GenomicEntity],[DiseaseAnnotationCurated],[DiseaseAnnotationCurated]-%20subject%201..1&gt;[BiologicalEntity&#124;curie:uriorcurie;taxon:uriorcurie;table_key:integer%20%3F;creation_date:string%20%3F;date_last_modified:date%20%3F],[PhenotypeAnnotationCurated]-%20subject%201..1&gt;[BiologicalEntity],[Allele]-%20affected_entities%200..*&gt;[BiologicalEntity],[BiologicalEntity]uses%20-.-&gt;[AuditedObject],[BiologicalEntity]^-[GenomicEntity],[BiologicalEntity]^-[Antibody],[AuditedObject],[Antibody],[Allele]" /></a></p>
 <h2 id="uses-mixins">Uses Mixins</h2>
 <ul>
 <li>mixin: <a href="../AuditedObject/">AuditedObject</a> - Some entity for which changes are tracked, including date/time of change and the agent responsible for the change.</li>
@@ -108,6 +108,7 @@
 <ul>
 <li><strong><a href="../DiseaseAnnotationCurated/">DiseaseAnnotationCurated</a></strong> <em><a href="../DiseaseAnnotationCurated_subject/">DiseaseAnnotationCurated➞subject</a></em>  <sub>1..1</sub>  <strong><a href="./">BiologicalEntity</a></strong></li>
 <li><strong><a href="../PhenotypeAnnotationCurated/">PhenotypeAnnotationCurated</a></strong> <em><a href="../PhenotypeAnnotationCurated_subject/">PhenotypeAnnotationCurated➞subject</a></em>  <sub>1..1</sub>  <strong><a href="./">BiologicalEntity</a></strong></li>
+<li><strong><a href="../Allele/">Allele</a></strong> <em><a href="../affected_entities/">affected_entities</a></em>  <sub>0..*</sub>  <strong><a href="./">BiologicalEntity</a></strong></li>
 <li><strong><a href="./">BiologicalEntity</a></strong> <em><a href="../interacts_with/">interacts_with</a></em>  <sub>0..*</sub>  <strong><a href="./">BiologicalEntity</a></strong></li>
 <li><strong><a href="./">BiologicalEntity</a></strong> <em><a href="../physically_interacts_with/">physically_interacts_with</a></em>  <sub>0..*</sub>  <strong><a href="./">BiologicalEntity</a></strong></li>
 </ul>
@@ -119,8 +120,7 @@
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
-<li><a href="../taxon/">taxon</a>  <sub>0..1</sub><ul>
-<li>Description: The taxon from which the biological entity derives.</li>
+<li><a href="../BiologicalEntity_taxon/">BiologicalEntity➞taxon</a>  <sub>1..1</sub><ul>
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>

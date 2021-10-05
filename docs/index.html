@@ -184,6 +184,7 @@
 <li><a href="Resource/">Resource</a></li>
 </ul>
 </li>
+<li><a href="MolecularMutation/">MolecularMutation</a> - Description of the DNA changes with unknown precise genomic location</li>
 <li><a href="NoteType/">NoteType</a> - Describes the relation between a note and an object</li>
 <li><a href="OntologyTerm/">OntologyTerm</a> - A concept or class in an ontology, vocabulary or thesaurus. Note, ontology terms can be found in multiple ontologies (ie: mireoting). defining_slots helps define an alternative key for ontology terms.<ul>
 <li><a href="AnatomicalTerm/">AnatomicalTerm</a><ul>
@@ -234,10 +235,13 @@
 <h3 id="slots">Slots</h3>
 <ul>
 <li><a href="PubMed_type/">PubMed_type</a> - Type of InformationContentEntity as described by pub med.</li>
-<li><a href="aberration/">aberration</a> - Associated deficiency (etc.) whose breakpoint causes the mutation</li>
+<li><a href="aberration/">aberration</a> - Associated deficiency (etc.) whose breakpoint causes the mutation<ul>
+<li><a href="Allele_aberration/">Allele➞aberration</a></li>
+</ul>
+</li>
 <li><a href="abstract/">abstract</a></li>
 <li><a href="address/">address</a> - the particulars of the place where someone or an organization is situated.  For now, this slot is a simple text blob containing all relevant details of the given location for fitness of purpose. For the moment, this address can include other contact details such as email and phone number(?).</li>
-<li><a href="affected_genes/">affected_genes</a> - Gene(s) altered in allele</li>
+<li><a href="affected_entities/">affected_entities</a> - Biological entities affected by allele</li>
 <li><a href="aggregation_database/">aggregation_database</a><ul>
 <li><a href="GeneMolecularInteraction_aggregation_database/">GeneMolecularInteraction➞aggregation_database</a> - The database that collected the interaction annotation from another resource and aggregated it into a consolidated resource. e.g. IMEx</li>
 </ul>
@@ -418,13 +422,16 @@
 <li><a href="display_name/">display_name</a></li>
 <li><a href="display_synonym/">display_synonym</a> - Placeholder.</li>
 <li><a href="editors/">editors</a> - holds between a resource and a editor_resource</li>
+<li><a href="embryonic_cell_lines/">embryonic_cell_lines</a><ul>
+<li><a href="Allele_embryonic_cell_lines/">Allele➞embryonic_cell_lines</a></li>
+</ul>
+</li>
 <li><a href="embryonic_stem_cell_lines/">embryonic_stem_cell_lines</a> - Embryonic stem cell lines known to carry the allele</li>
 <li><a href="end/">end</a> - The end of the feature in positive 1-based integer coordinates</li>
 <li><a href="evidence_code/">evidence_code</a><ul>
 <li><a href="DiseaseAnnotationCurated_evidence_code/">DiseaseAnnotationCurated➞evidence_code</a></li>
 </ul>
 </li>
-<li><a href="feature_type/">feature_type</a> - Allele classification</li>
 <li><a href="first_name/">first_name</a></li>
 <li><a href="from_resource/">from_resource</a></li>
 <li><a href="from_species/">from_species</a> - Holds between an entity and a Species.</li>
@@ -436,7 +443,10 @@
 <li><a href="genomic_locations/">genomic_locations</a></li>
 <li><a href="genomic_reference_sequence/">genomic_reference_sequence</a> - reference genome sequence at variation position</li>
 <li><a href="genomic_variant_sequence/">genomic_variant_sequence</a> - variant genome sequence at variation position</li>
-<li><a href="germline_transmission_status/">germline_transmission_status</a> - For alleles made in cell lines, have they been transmitted to the germline of an animal</li>
+<li><a href="germline_transmission_status/">germline_transmission_status</a> - For alleles made in cell lines, have they been transmitted to the germline of an animal<ul>
+<li><a href="Allele_germline_transmission_status/">Allele➞germline_transmission_status</a></li>
+</ul>
+</li>
 <li><a href="has_allele/">has_allele</a></li>
 <li><a href="has_assembly/">has_assembly</a></li>
 <li><a href="has_figure/">has_figure</a> - Holds between an entity and a Figure.<ul>
@@ -510,7 +520,15 @@
 <li><a href="modified_by/">modified_by</a> - The individual that last modified the entity.</li>
 <li><a href="molecular_mutation/">molecular_mutation</a> - Description of the DNA changes if precise genomic location unknown</li>
 <li><a href="month_published/">month_published</a> - Month in which an entity was created.</li>
-<li><a href="mutant_cell_lines/">mutant_cell_lines</a> - Mutant cell lines known to carry the allele</li>
+<li><a href="mutant_cell_lines/">mutant_cell_lines</a> - Mutant cell lines known to carry the allele<ul>
+<li><a href="Allele_mutant_cell_lines/">Allele➞mutant_cell_lines</a></li>
+</ul>
+</li>
+<li><a href="mutation_description/">mutation_description</a> - Additional information about the nature of the mutation not captured by the SOTerm</li>
+<li><a href="mutation_type/">mutation_type</a> - SO term for type of mutation<ul>
+<li><a href="MolecularMutation_mutation_type/">MolecularMutation➞mutation_type</a></li>
+</ul>
+</li>
 <li><a href="name/">name</a> - a human-readable name for an entity<ul>
 <li><a href="Antibody_name/">Antibody➞name</a> - Publicly displayed name of the antibody. It often includes the name of the antibody target: e.g., anti-WNT-4. It may also include the host species and antibody clonality.</li>
 </ul>
@@ -533,7 +551,10 @@
 <li><a href="padding_right/">padding_right</a> - flanking sequence downstream of the variation position on the sense strand of the reference genome</li>
 <li><a href="page_areas/">page_areas</a></li>
 <li><a href="pages/">pages</a> - page number of source referenced for statement or publication</li>
-<li><a href="parent_cell_line/">parent_cell_line</a> - Parental cell line of alleles made in embryonic stem cells</li>
+<li><a href="parent_cell_line/">parent_cell_line</a> - Parental cell line of alleles made in embryonic stem cells<ul>
+<li><a href="Allele_parent_cell_line/">Allele➞parent_cell_line</a></li>
+</ul>
+</li>
 <li><a href="parental_populations/">parental_populations</a></li>
 <li><a href="person_id/">person id</a><ul>
 <li><a href="Person_person_id/">Person➞person id</a></li>
@@ -603,7 +624,10 @@
 <li><a href="subsets/">subsets</a></li>
 <li><a href="subtype/">subtype</a> - Subtype of affected genomic model</li>
 <li><a href="summary/">summary</a></li>
-<li><a href="symbol/">symbol</a> - Symbol for a particular thing</li>
+<li><a href="symbol/">symbol</a> - Symbol for a particular thing<ul>
+<li><a href="Gene_symbol/">Gene➞symbol</a></li>
+</ul>
+</li>
 <li><a href="synonyms/">synonyms</a> - holds between a named thing and a synonym<ul>
 <li><a href="Allele_synonyms/">Allele➞synonyms</a> - synonyms for allele names and synonyms</li>
 </ul>
@@ -611,7 +635,10 @@
 <li><a href="table_key/">table_key</a> - The primary key for a specific table entry, unique for that table.</li>
 <li><a href="tags/">tags</a> - Optional ist of controlled vocabulary tags that give categories to each pub (ie: can show images).</li>
 <li><a href="taxon/">taxon</a> - The taxon from which the biological entity derives.<ul>
+<li><a href="BiologicalEntity_taxon/">BiologicalEntity➞taxon</a><ul>
 <li><a href="Antibody_taxon/">Antibody➞taxon</a> - The species in which the antibody was raised: e.g., mouse, rabbit, guinea pig, goat, camel, etc.</li>
+</ul>
+</li>
 <li><a href="antigen_taxon/">antigen_taxon</a> - Holds between an Antibody and the species from which the antigen originates (as represented by taxon).</li>
 </ul>
 </li>
@@ -621,7 +648,10 @@
 </ul>
 </li>
 <li><a href="topics/">topics</a> - Connects an object to a vocabulary term or ontology that describes some aspect of the entity.</li>
-<li><a href="transposon_insertion/">transposon_insertion</a> - Associated transposon insertion that causes the mutation</li>
+<li><a href="transposon_insertion/">transposon_insertion</a> - Associated transposon insertion that causes the mutation<ul>
+<li><a href="Allele_transposon_insertion/">Allele➞transposon_insertion</a></li>
+</ul>
+</li>
 <li><a href="type/">type</a></li>
 <li><a href="uncertain/">uncertain</a> - If set to true, then the related entity is uncertain.</li>
 <li><a href="url_prefix/">url_prefix</a> - The prefix of the url before the accession number.</li>
@@ -766,5 +796,5 @@
 
 <!--
 MkDocs version : 1.2.2
-Build Date UTC : 2021-08-10 14:58:50.247756+00:00
+Build Date UTC : 2021-10-04 23:49:54.342927+00:00
 -->

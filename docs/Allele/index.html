@@ -94,7 +94,7 @@
                 <h1 id="class-allele">Class: Allele</h1>
 <p>One of multiple possible forms of a functional genomic element (most often described as a locus or gene), differing from the reference DNA sequence.  The genomic element can be endogenous or constructed.</p>
 <p>URI: <a href="http://alliancegenome.orgAllele">alliance:Allele</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Variant],[Synonym],[ReferenceType],[PhenotypeAnnotationInferred],[Person],[NoteType],[Image],[GenomicEntity],[GeneGeneticInteraction],[Gene],[DiseaseAnnotationInferred],[CrossReference],[Construct],[CellLine],[Synonym]&lt;synonyms%200..*-++[Allele&#124;symbol:string%20%3F;molecular_mutation:string%20%3F;functional_impact:string%20%3F;generation_method:string%20%3F;germline_transmission_status:string%20%3F;embryonic_stem_cell_lines:string%20%3F;feature_type:string%20%3F;database_status:database_statuses%20%3F;inheritence_mode:modes_of_inheritence%20%3F;in_collection:string%20%3F;transposon_insertion:string%20%3F;aberration:string%20%3F;is_extinct:boolean%20%3F;name(i):string%20%3F;secondary_identifiers(i):uriorcurie%20*;curie(i):uriorcurie;taxon(i):uriorcurie%20%3F;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[AffectedGenomicModel]&lt;origins%200..*-%20[Allele],[Image]&lt;images%200..1-%20[Allele],[CellLine]&lt;mutant_cell_lines%200..*-++[Allele],[CellLine]&lt;parent_cell_line%200..1-++[Allele],[NoteType]&lt;associated_notes%200..1-++[Allele],[ReferenceType]&lt;associated_references%200..*-++[Allele],[Construct]&lt;contains_construct%200..1-%20[Allele],[Gene]&lt;affected_genes%200..*-%20[Allele],[DiseaseAnnotationInferred]-%20inferred_allele%200..1&gt;[Allele],[PhenotypeAnnotationInferred]-%20inferred_allele%200..1&gt;[Allele],[AffectedGenomicModelComponent]-%20has_allele%200..1&gt;[Allele],[PhenotypeAnnotationInferred]-%20inferred_allele(i)%200..1&gt;[Allele],[DiseaseAnnotationInferred]-%20inferred_allele(i)%200..1&gt;[Allele],[GeneGeneticInteraction]-%20interactor_A_genetic_perturbation%200..1&gt;[Allele],[GeneGeneticInteraction]-%20interactor_B_genetic_perturbation%200..1&gt;[Allele],[Variant]-%20variant_of_allele%200..1&gt;[Allele],[GenomicEntity]^-[Allele],[AffectedGenomicModelComponent],[AffectedGenomicModel]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Variant],[Synonym],[ReferenceType],[PhenotypeAnnotationInferred],[Person],[NoteType],[Image],[GenomicEntity],[GeneGeneticInteraction],[Gene],[DiseaseAnnotationInferred],[CrossReference],[Construct],[CellLine],[Synonym]&lt;synonyms%200..*-++[Allele&#124;symbol:string%20%3F;molecular_mutation:string%20%3F;functional_impact:string%20%3F;generation_method:string%20%3F;germline_transmission_status:string%20%3F;embryonic_stem_cell_lines:string%20%3F;feature_type:string%20%3F;database_status:database_statuses%20%3F;inheritence_mode:modes_of_inheritence%20%3F;in_collection:string%20%3F;transposon_insertion:string%20%3F;aberration:string%20%3F;is_extinct:boolean%20%3F;name(i):string%20%3F;secondary_identifiers(i):uriorcurie%20*;curie(i):uriorcurie;taxon(i):uriorcurie%20%3F;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[AffectedGenomicModel]&lt;origins%200..*-%20[Allele],[Image]&lt;images%200..1-%20[Allele],[CellLine]&lt;mutant_cell_lines%200..*-++[Allele],[CellLine]&lt;parent_cell_line%200..1-++[Allele],[NoteType]&lt;associated_notes%200..1-++[Allele],[ReferenceType]&lt;associated_references%200..*-++[Allele],[Construct]&lt;contains_construct%200..1-%20[Allele],[Gene]&lt;affected_genes%200..*-%20[Allele],[DiseaseAnnotationInferred]-%20inferred_allele%200..1&gt;[Allele],[PhenotypeAnnotationInferred]-%20inferred_allele%200..1&gt;[Allele],[AffectedGenomicModelComponent]-%20has_allele%200..1&gt;[Allele],[PhenotypeAnnotationInferred]-%20inferred_allele(i)%200..1&gt;[Allele],[DiseaseAnnotationInferred]-%20inferred_allele(i)%200..1&gt;[Allele],[GeneGeneticInteraction]-%20interactor_A_genetic_perturbation%200..1&gt;[Allele],[GeneGeneticInteraction]-%20interactor_B_genetic_perturbation%200..1&gt;[Allele],[Variant]-%20variant_of_allele%200..1&gt;[Allele],[GenomicEntity]^-[Allele],[AffectedGenomicModelComponent],[AffectedGenomicModel]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Variant],[Synonym],[ReferenceType],[PhenotypeAnnotationInferred],[Person],[NoteType],[MolecularMutation],[Image],[GenomicEntity],[GeneGeneticInteraction],[DiseaseAnnotationInferred],[CrossReference],[Construct],[CellLine],[BiologicalEntity],[Synonym]&lt;synonyms%200..*-++[Allele&#124;symbol:string%20%3F;functional_impact:string%20%3F;generation_method:string%20%3F;germline_transmission_status:string%20%3F;database_status:database_statuses%20%3F;inheritence_mode:modes_of_inheritence%20%3F;in_collection:string%20%3F;transposon_insertion:string%20%3F;aberration:string%20%3F;is_extinct:boolean%20%3F;embryonic_cell_lines:string%20%3F;name(i):string%20%3F;secondary_identifiers(i):uriorcurie%20*;curie(i):uriorcurie;taxon(i):uriorcurie;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[AffectedGenomicModel]&lt;origins%200..*-%20[Allele],[Image]&lt;images%200..1-%20[Allele],[CellLine]&lt;embryonic_stem_cell_lines%200..*-++[Allele],[CellLine]&lt;mutant_cell_lines%200..*-++[Allele],[CellLine]&lt;parent_cell_line%200..1-++[Allele],[NoteType]&lt;associated_notes%200..1-++[Allele],[ReferenceType]&lt;associated_references%200..*-++[Allele],[MolecularMutation]&lt;molecular_mutation%200..1-++[Allele],[Construct]&lt;contains_construct%200..1-%20[Allele],[BiologicalEntity]&lt;affected_entities%200..*-%20[Allele],[DiseaseAnnotationInferred]-%20inferred_allele%200..1&gt;[Allele],[PhenotypeAnnotationInferred]-%20inferred_allele%200..1&gt;[Allele],[AffectedGenomicModelComponent]-%20has_allele%200..1&gt;[Allele],[PhenotypeAnnotationInferred]-%20inferred_allele(i)%200..1&gt;[Allele],[DiseaseAnnotationInferred]-%20inferred_allele(i)%200..1&gt;[Allele],[GeneGeneticInteraction]-%20interactor_A_genetic_perturbation%200..1&gt;[Allele],[GeneGeneticInteraction]-%20interactor_B_genetic_perturbation%200..1&gt;[Allele],[Variant]-%20variant_of_allele%200..1&gt;[Allele],[GenomicEntity]^-[Allele],[AffectedGenomicModelComponent],[AffectedGenomicModel]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Variant],[Synonym],[ReferenceType],[PhenotypeAnnotationInferred],[Person],[NoteType],[MolecularMutation],[Image],[GenomicEntity],[GeneGeneticInteraction],[DiseaseAnnotationInferred],[CrossReference],[Construct],[CellLine],[BiologicalEntity],[Synonym]&lt;synonyms%200..*-++[Allele&#124;symbol:string%20%3F;functional_impact:string%20%3F;generation_method:string%20%3F;germline_transmission_status:string%20%3F;database_status:database_statuses%20%3F;inheritence_mode:modes_of_inheritence%20%3F;in_collection:string%20%3F;transposon_insertion:string%20%3F;aberration:string%20%3F;is_extinct:boolean%20%3F;embryonic_cell_lines:string%20%3F;name(i):string%20%3F;secondary_identifiers(i):uriorcurie%20*;curie(i):uriorcurie;taxon(i):uriorcurie;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[AffectedGenomicModel]&lt;origins%200..*-%20[Allele],[Image]&lt;images%200..1-%20[Allele],[CellLine]&lt;embryonic_stem_cell_lines%200..*-++[Allele],[CellLine]&lt;mutant_cell_lines%200..*-++[Allele],[CellLine]&lt;parent_cell_line%200..1-++[Allele],[NoteType]&lt;associated_notes%200..1-++[Allele],[ReferenceType]&lt;associated_references%200..*-++[Allele],[MolecularMutation]&lt;molecular_mutation%200..1-++[Allele],[Construct]&lt;contains_construct%200..1-%20[Allele],[BiologicalEntity]&lt;affected_entities%200..*-%20[Allele],[DiseaseAnnotationInferred]-%20inferred_allele%200..1&gt;[Allele],[PhenotypeAnnotationInferred]-%20inferred_allele%200..1&gt;[Allele],[AffectedGenomicModelComponent]-%20has_allele%200..1&gt;[Allele],[PhenotypeAnnotationInferred]-%20inferred_allele(i)%200..1&gt;[Allele],[DiseaseAnnotationInferred]-%20inferred_allele(i)%200..1&gt;[Allele],[GeneGeneticInteraction]-%20interactor_A_genetic_perturbation%200..1&gt;[Allele],[GeneGeneticInteraction]-%20interactor_B_genetic_perturbation%200..1&gt;[Allele],[Variant]-%20variant_of_allele%200..1&gt;[Allele],[GenomicEntity]^-[Allele],[AffectedGenomicModelComponent],[AffectedGenomicModel]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../GenomicEntity/">GenomicEntity</a></li>
@@ -117,9 +117,9 @@
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../affected_genes/">affected_genes</a>  <sub>0..*</sub><ul>
-<li>Description: Gene(s) altered in allele</li>
-<li>Range: <a href="../Gene/">Gene</a></li>
+<li><a href="../affected_entities/">affected_entities</a>  <sub>0..*</sub><ul>
+<li>Description: Biological entities affected by allele</li>
+<li>Range: <a href="../BiologicalEntity/">BiologicalEntity</a></li>
 </ul>
 </li>
 <li><a href="../contains_construct/">contains_construct</a>  <sub>0..1</sub><ul>
@@ -128,7 +128,7 @@
 </li>
 <li><a href="../molecular_mutation/">molecular_mutation</a>  <sub>0..1</sub><ul>
 <li>Description: Description of the DNA changes if precise genomic location unknown</li>
-<li>Range: <a href="../String/">String</a></li>
+<li>Range: <a href="../MolecularMutation/">MolecularMutation</a></li>
 </ul>
 </li>
 <li><a href="../functional_impact/">functional_impact</a>  <sub>0..1</sub><ul>
@@ -151,34 +151,26 @@
 <li>Range: <a href="../NoteType/">NoteType</a></li>
 </ul>
 </li>
-<li><a href="../germline_transmission_status/">germline_transmission_status</a>  <sub>0..1</sub><ul>
-<li>Description: For alleles made in cell lines, have they been transmitted to the germline of an animal</li>
+<li><a href="../Allele_germline_transmission_status/">Allele➞germline_transmission_status</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../parent_cell_line/">parent_cell_line</a>  <sub>0..1</sub><ul>
-<li>Description: Parental cell line of alleles made in embryonic stem cells</li>
+<li><a href="../Allele_parent_cell_line/">Allele➞parent_cell_line</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../CellLine/">CellLine</a></li>
 </ul>
 </li>
-<li><a href="../mutant_cell_lines/">mutant_cell_lines</a>  <sub>0..*</sub><ul>
-<li>Description: Mutant cell lines known to carry the allele</li>
+<li><a href="../Allele_mutant_cell_lines/">Allele➞mutant_cell_lines</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../CellLine/">CellLine</a></li>
 </ul>
 </li>
-<li><a href="../embryonic_stem_cell_lines/">embryonic_stem_cell_lines</a>  <sub>0..1</sub><ul>
+<li><a href="../embryonic_stem_cell_lines/">embryonic_stem_cell_lines</a>  <sub>0..*</sub><ul>
 <li>Description: Embryonic stem cell lines known to carry the allele</li>
-<li>Range: <a href="../String/">String</a></li>
+<li>Range: <a href="../CellLine/">CellLine</a></li>
 </ul>
 </li>
 <li><a href="../images/">images</a>  <sub>0..1</sub><ul>
 <li>Description: Any associated image</li>
 <li>Range: <a href="../Image/">Image</a></li>
-</ul>
-</li>
-<li><a href="../feature_type/">feature_type</a>  <sub>0..1</sub><ul>
-<li>Description: Allele classification</li>
-<li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
 <li><a href="../origins/">origins</a>  <sub>0..*</sub><ul>
@@ -201,13 +193,11 @@
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../transposon_insertion/">transposon_insertion</a>  <sub>0..1</sub><ul>
-<li>Description: Associated transposon insertion that causes the mutation</li>
+<li><a href="../Allele_transposon_insertion/">Allele➞transposon_insertion</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../aberration/">aberration</a>  <sub>0..1</sub><ul>
-<li>Description: Associated deficiency (etc.) whose breakpoint causes the mutation</li>
+<li><a href="../Allele_aberration/">Allele➞aberration</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
@@ -221,6 +211,10 @@
 <li>Range: <a href="../Synonym/">Synonym</a></li>
 </ul>
 </li>
+<li><a href="../Allele_embryonic_cell_lines/">Allele➞embryonic_cell_lines</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
 </ul>
 <h3 id="inherited-from-genomicentity">Inherited from GenomicEntity:</h3>
 <ul>
@@ -229,8 +223,7 @@
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
-<li><a href="../taxon/">taxon</a>  <sub>0..1</sub><ul>
-<li>Description: The taxon from which the biological entity derives.</li>
+<li><a href="../BiologicalEntity_taxon/">BiologicalEntity➞taxon</a>  <sub>1..1</sub><ul>
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
