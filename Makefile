@@ -14,7 +14,7 @@ SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
 SCHEMA_NAME = allianceModel
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
 # PKG_TGTS = sqlddl-sqlalchemy
-PKG_TGTS = jsonld_context json_schema model sqlddl
+PKG_TGTS = jsonld_context json_schema model sqlddl java
 TGTS = docs python $(PKG_TGTS)
 
 # Targets by PKG_TGT
@@ -25,6 +25,7 @@ PKG_T_JSON_SCHEMA = $(PKG_DIR)/jsonschema
 PKG_T_OWL = $(PKG_DIR)/owl
 PKG_T_RDF = $(PKG_DIR)/rdf
 PKG_T_SHEX = $(PKG_DIR)/shex
+PKG_T_JAVA = $(PKG_DIR)/java
 PKG_T_SQLDDL = $(PKG_DIR)/sqlddl
 PKG_T_SQLALCHEMY = $(PKG_DIR)/sqlalchemy
 PKG_T_DOCS = $(MODEL_DOCS_DIR)
@@ -260,3 +261,15 @@ target/sqlddl/%.sql: $(SCHEMA_DIR)/%.yaml tdir-sqlddl install
 # test docs locally.
 docserve: gen-docs
 	$(RUN) mkdocs serve
+
+# ---------------------------------------
+# Java
+# ---------------------------------------
+gen-java: $(patsubst %, $(PKG_T_JAVA)/%.java, $(SCHEMA_NAMES))
+.PHONY: gen-java
+
+$(PKG_T_JAVA)/%.java: target/java/%.java
+	mkdir -p $(PKG_T_JAVA)
+	cp $< $@
+target/java/%.java: $(SCHEMA_DIR)/%.yaml tdir-java install
+	$(RUN) gen-java $(GEN_OPTS)  $< > $@

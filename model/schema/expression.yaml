@@ -223,7 +223,7 @@ slots:
     description: >-
       Reagents used in the expression assay: e.g., antibodies, probes.
     notes: >-
-      I'm assuming that specifying Reagent below will allow for objects that
+      assuming that specifying Reagent below will allow for objects that
       have the Reagent mixin.
     domain: ExpressionAnnotation
     range: Reagent
