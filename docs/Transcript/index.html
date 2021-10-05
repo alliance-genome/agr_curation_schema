@@ -94,7 +94,7 @@
                 <h1 id="class-transcript">Class: Transcript</h1>
 <p>Placeholder.</p>
 <p>URI: <a href="http://alliancegenome.orgTranscript">alliance:Transcript</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[VariantTranscriptConsequence],[Variant],[VariantTranscriptConsequence]-%20object%201..1&gt;[Transcript&#124;name(i):string%20%3F;secondary_identifiers(i):uriorcurie%20*;curie(i):uriorcurie;taxon(i):uriorcurie%20%3F;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[Variant]-%20variant_of_transcript%200..1&gt;[Transcript],[GenomicEntity]^-[Transcript],[Synonym],[Person],[GenomicEntity],[CrossReference]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[VariantTranscriptConsequence],[Variant],[VariantTranscriptConsequence]-%20object%201..1&gt;[Transcript&#124;name(i):string%20%3F;secondary_identifiers(i):uriorcurie%20*;curie(i):uriorcurie;taxon(i):uriorcurie%20%3F;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[Variant]-%20variant_of_transcript%200..1&gt;[Transcript],[GenomicEntity]^-[Transcript],[Synonym],[Person],[GenomicEntity],[CrossReference]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[VariantTranscriptConsequence],[Variant],[VariantTranscriptConsequence]-%20object%201..1&gt;[Transcript&#124;name(i):string%20%3F;secondary_identifiers(i):uriorcurie%20*;curie(i):uriorcurie;taxon(i):uriorcurie;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[Variant]-%20variant_of_transcript%200..1&gt;[Transcript],[GenomicEntity]^-[Transcript],[Synonym],[Person],[GenomicEntity],[CrossReference]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[VariantTranscriptConsequence],[Variant],[VariantTranscriptConsequence]-%20object%201..1&gt;[Transcript&#124;name(i):string%20%3F;secondary_identifiers(i):uriorcurie%20*;curie(i):uriorcurie;taxon(i):uriorcurie;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[Variant]-%20variant_of_transcript%200..1&gt;[Transcript],[GenomicEntity]^-[Transcript],[Synonym],[Person],[GenomicEntity],[CrossReference]" /></a></p>
 <h2 id="identifier-prefixes">Identifier prefixes</h2>
 <ul>
 <li>ENSEMBL</li>
@@ -109,7 +109,7 @@
 <ul>
 <li>is_a: <a href="../GenomicEntity/">GenomicEntity</a></li>
 </ul>
-<h2 id="referenced-by-class">Referenced by class</h2>
+<h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
 <li><strong><a href="../VariantTranscriptConsequence/">VariantTranscriptConsequence</a></strong> <em><a href="../VariantTranscriptConsequence_object/">VariantTranscriptConsequence➞object</a></em>  <sub>1..1</sub>  <strong><a href="./">Transcript</a></strong></li>
 <li><strong><a href="../Variant/">Variant</a></strong> <em><a href="../variant_of_transcript/">variant_of_transcript</a></em>  <sub>0..1</sub>  <strong><a href="./">Transcript</a></strong></li>
@@ -122,8 +122,7 @@
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
-<li><a href="../taxon/">taxon</a>  <sub>0..1</sub><ul>
-<li>Description: The taxon from which the biological entity derives.</li>
+<li><a href="../BiologicalEntity_taxon/">BiologicalEntity➞taxon</a>  <sub>1..1</sub><ul>
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>

@@ -95,7 +95,7 @@
 <p>a piece of information that typically describes some topic of discourse or is used as support. Precedence of identifiers for references is as follows: PMID if available; DOI if not; actual alternate CURIE otherwise.</p>
 <p>URI: <a href="http://alliancegenome.orgInformationContentEntity">alliance:InformationContentEntity</a></p>
 <p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Resource],[Reference],[Person],[AuthorReference]-%20corresponding_author%200..1&gt;[InformationContentEntity&#124;curie:uriorcurie;table_key:integer%20%3F;creation_date:string%20%3F;date_last_modified:date%20%3F],[AuthorReference]-%20first_name%200..1&gt;[InformationContentEntity],[Person]-%20first_name%200..1&gt;[InformationContentEntity],[AuthorReference]-%20initials%200..1&gt;[InformationContentEntity],[AuthorReference]-%20last_name%200..1&gt;[InformationContentEntity],[Person]-%20last_name%200..1&gt;[InformationContentEntity],[AuthorReference]-%20middle_names%200..1&gt;[InformationContentEntity],[Reference]-%20publisher%200..1&gt;[InformationContentEntity],[Resource]-%20publisher%200..1&gt;[InformationContentEntity],[InformationContentEntity]uses%20-.-&gt;[AuditedObject],[InformationContentEntity]^-[Resource],[InformationContentEntity]^-[Reference],[InformationContentEntity]^-[CrossReference],[CrossReference],[AuthorReference],[AuditedObject]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Resource],[Reference],[Person],[AuthorReference]-%20corresponding_author%200..1&gt;[InformationContentEntity&#124;curie:uriorcurie;table_key:integer%20%3F;creation_date:string%20%3F;date_last_modified:date%20%3F],[AuthorReference]-%20first_name%200..1&gt;[InformationContentEntity],[Person]-%20first_name%200..1&gt;[InformationContentEntity],[AuthorReference]-%20initials%200..1&gt;[InformationContentEntity],[AuthorReference]-%20last_name%200..1&gt;[InformationContentEntity],[Person]-%20last_name%200..1&gt;[InformationContentEntity],[AuthorReference]-%20middle_names%200..1&gt;[InformationContentEntity],[Reference]-%20publisher%200..1&gt;[InformationContentEntity],[Resource]-%20publisher%200..1&gt;[InformationContentEntity],[InformationContentEntity]uses%20-.-&gt;[AuditedObject],[InformationContentEntity]^-[Resource],[InformationContentEntity]^-[Reference],[InformationContentEntity]^-[CrossReference],[CrossReference],[AuthorReference],[AuditedObject]" /></a></p>
-<h2 id="uses-mixins">Uses Mixins</h2>
+<h2 id="uses-mixin">Uses Mixin</h2>
 <ul>
 <li>mixin: <a href="../AuditedObject/">AuditedObject</a> - Some entity for which changes are tracked, including date/time of change and the agent responsible for the change.</li>
 </ul>
@@ -105,7 +105,7 @@
 <li><a href="../Reference/">Reference</a></li>
 <li><a href="../Resource/">Resource</a></li>
 </ul>
-<h2 id="referenced-by-class">Referenced by class</h2>
+<h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
 <li><strong><a href="./">InformationContentEntity</a></strong> <em><a href="../corresponding_author/">corresponding_author</a></em>  <sub>0..1</sub>  <strong><a href="./">InformationContentEntity</a></strong></li>
 <li><strong><a href="./">InformationContentEntity</a></strong> <em><a href="../first_name/">first_name</a></em>  <sub>0..1</sub>  <strong><a href="./">InformationContentEntity</a></strong></li>

@@ -94,8 +94,8 @@
                 <h1 id="class-biologicalentity">Class: BiologicalEntity</h1>
 <p>A high-level entity comprising .</p>
 <p>URI: <a href="http://alliancegenome.orgBiologicalEntity">alliance:BiologicalEntity</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PhenotypeAnnotationCurated],[Person],[GenomicEntity],[DiseaseAnnotation],[DiseaseAnnotation]-%20subject%201..1&gt;[BiologicalEntity&#124;curie:uriorcurie;taxon:uriorcurie%20%3F;table_key:integer%20%3F;creation_date:string%20%3F;date_last_modified:date%20%3F],[PhenotypeAnnotationCurated]-%20subject%201..1&gt;[BiologicalEntity],[AlleleDiseaseAnnotation]-%20genetic_modifier%200..1&gt;[BiologicalEntity],[BiologicalEntity]uses%20-.-&gt;[AuditedObject],[BiologicalEntity]^-[GenomicEntity],[BiologicalEntity]^-[Antibody],[AuditedObject],[Antibody],[AlleleDiseaseAnnotation]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PhenotypeAnnotationCurated],[Person],[GenomicEntity],[DiseaseAnnotation],[DiseaseAnnotation]-%20subject%201..1&gt;[BiologicalEntity&#124;curie:uriorcurie;taxon:uriorcurie%20%3F;table_key:integer%20%3F;creation_date:string%20%3F;date_last_modified:date%20%3F],[PhenotypeAnnotationCurated]-%20subject%201..1&gt;[BiologicalEntity],[AlleleDiseaseAnnotation]-%20genetic_modifier%200..1&gt;[BiologicalEntity],[BiologicalEntity]uses%20-.-&gt;[AuditedObject],[BiologicalEntity]^-[GenomicEntity],[BiologicalEntity]^-[Antibody],[AuditedObject],[Antibody],[AlleleDiseaseAnnotation]" /></a></p>
-<h2 id="uses-mixins">Uses Mixins</h2>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PhenotypeAnnotationCurated],[Person],[GenomicEntity],[GeneDiseaseAnnotation],[DiseaseAnnotation],[AGMDiseaseAnnotation]-%20agm_disease_genetic_modifier%200..1&gt;[BiologicalEntity&#124;curie:uriorcurie;taxon:uriorcurie;table_key:integer%20%3F;creation_date:string%20%3F;date_last_modified:date%20%3F],[AlleleDiseaseAnnotation]-%20allele_disease_genetic_modifier%200..1&gt;[BiologicalEntity],[DiseaseAnnotation]-%20subject%201..1&gt;[BiologicalEntity],[GeneDiseaseAnnotation]-%20gene_disease_genetic_modifier%200..1&gt;[BiologicalEntity],[PhenotypeAnnotationCurated]-%20subject%201..1&gt;[BiologicalEntity],[Allele]-%20affected_entities%200..*&gt;[BiologicalEntity],[AGMDiseaseAnnotation]-%20agm_disease_genetic_modifier(i)%200..1&gt;[BiologicalEntity],[AlleleDiseaseAnnotation]-%20allele_disease_genetic_modifier(i)%200..1&gt;[BiologicalEntity],[GeneDiseaseAnnotation]-%20gene_disease_genetic_modifier(i)%200..1&gt;[BiologicalEntity],[BiologicalEntity]uses%20-.-&gt;[AuditedObject],[BiologicalEntity]^-[GenomicEntity],[BiologicalEntity]^-[Antibody],[AuditedObject],[Antibody],[AlleleDiseaseAnnotation],[Allele],[AGMDiseaseAnnotation]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PhenotypeAnnotationCurated],[Person],[GenomicEntity],[GeneDiseaseAnnotation],[DiseaseAnnotation],[AGMDiseaseAnnotation]-%20agm_disease_genetic_modifier%200..1&gt;[BiologicalEntity&#124;curie:uriorcurie;taxon:uriorcurie;table_key:integer%20%3F;creation_date:string%20%3F;date_last_modified:date%20%3F],[AlleleDiseaseAnnotation]-%20allele_disease_genetic_modifier%200..1&gt;[BiologicalEntity],[DiseaseAnnotation]-%20subject%201..1&gt;[BiologicalEntity],[GeneDiseaseAnnotation]-%20gene_disease_genetic_modifier%200..1&gt;[BiologicalEntity],[PhenotypeAnnotationCurated]-%20subject%201..1&gt;[BiologicalEntity],[Allele]-%20affected_entities%200..*&gt;[BiologicalEntity],[AGMDiseaseAnnotation]-%20agm_disease_genetic_modifier(i)%200..1&gt;[BiologicalEntity],[AlleleDiseaseAnnotation]-%20allele_disease_genetic_modifier(i)%200..1&gt;[BiologicalEntity],[GeneDiseaseAnnotation]-%20gene_disease_genetic_modifier(i)%200..1&gt;[BiologicalEntity],[BiologicalEntity]uses%20-.-&gt;[AuditedObject],[BiologicalEntity]^-[GenomicEntity],[BiologicalEntity]^-[Antibody],[AuditedObject],[Antibody],[AlleleDiseaseAnnotation],[Allele],[AGMDiseaseAnnotation]" /></a></p>
+<h2 id="uses-mixin">Uses Mixin</h2>
 <ul>
 <li>mixin: <a href="../AuditedObject/">AuditedObject</a> - Some entity for which changes are tracked, including date/time of change and the agent responsible for the change.</li>
 </ul>
@@ -104,11 +104,17 @@
 <li><a href="../Antibody/">Antibody</a> - Immunoglobulin proteins that bind specific molecule(s). Can be used experimentally for the purposes of detection or purification.</li>
 <li><a href="../GenomicEntity/">GenomicEntity</a></li>
 </ul>
-<h2 id="referenced-by-class">Referenced by class</h2>
+<h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
+<li><strong><a href="../AGMDiseaseAnnotation/">AGMDiseaseAnnotation</a></strong> <em><a href="../AGMDiseaseAnnotation_agm_disease_genetic_modifier/">AGMDiseaseAnnotation➞agm_disease_genetic_modifier</a></em>  <sub>0..1</sub>  <strong><a href="./">BiologicalEntity</a></strong></li>
+<li><strong><a href="../AlleleDiseaseAnnotation/">AlleleDiseaseAnnotation</a></strong> <em><a href="../AlleleDiseaseAnnotation_allele_disease_genetic_modifier/">AlleleDiseaseAnnotation➞allele_disease_genetic_modifier</a></em>  <sub>0..1</sub>  <strong><a href="./">BiologicalEntity</a></strong></li>
 <li><strong><a href="../DiseaseAnnotation/">DiseaseAnnotation</a></strong> <em><a href="../DiseaseAnnotation_subject/">DiseaseAnnotation➞subject</a></em>  <sub>1..1</sub>  <strong><a href="./">BiologicalEntity</a></strong></li>
+<li><strong><a href="../GeneDiseaseAnnotation/">GeneDiseaseAnnotation</a></strong> <em><a href="../GeneDiseaseAnnotation_gene_disease_genetic_modifier/">GeneDiseaseAnnotation➞gene_disease_genetic_modifier</a></em>  <sub>0..1</sub>  <strong><a href="./">BiologicalEntity</a></strong></li>
 <li><strong><a href="../PhenotypeAnnotationCurated/">PhenotypeAnnotationCurated</a></strong> <em><a href="../PhenotypeAnnotationCurated_subject/">PhenotypeAnnotationCurated➞subject</a></em>  <sub>1..1</sub>  <strong><a href="./">BiologicalEntity</a></strong></li>
-<li><strong>None</strong> <em><a href="../genetic_modifier/">genetic_modifier</a></em>  <sub>0..1</sub>  <strong><a href="./">BiologicalEntity</a></strong></li>
+<li><strong><a href="../Allele/">Allele</a></strong> <em><a href="../affected_entities/">affected_entities</a></em>  <sub>0..*</sub>  <strong><a href="./">BiologicalEntity</a></strong></li>
+<li><strong>None</strong> <em><a href="../agm_disease_genetic_modifier/">agm_disease_genetic_modifier</a></em>  <sub>0..1</sub>  <strong><a href="./">BiologicalEntity</a></strong></li>
+<li><strong>None</strong> <em><a href="../allele_disease_genetic_modifier/">allele_disease_genetic_modifier</a></em>  <sub>0..1</sub>  <strong><a href="./">BiologicalEntity</a></strong></li>
+<li><strong>None</strong> <em><a href="../gene_disease_genetic_modifier/">gene_disease_genetic_modifier</a></em>  <sub>0..1</sub>  <strong><a href="./">BiologicalEntity</a></strong></li>
 <li><strong><a href="./">BiologicalEntity</a></strong> <em><a href="../interacts_with/">interacts_with</a></em>  <sub>0..*</sub>  <strong><a href="./">BiologicalEntity</a></strong></li>
 <li><strong><a href="./">BiologicalEntity</a></strong> <em><a href="../physically_interacts_with/">physically_interacts_with</a></em>  <sub>0..*</sub>  <strong><a href="./">BiologicalEntity</a></strong></li>
 </ul>
@@ -120,8 +126,7 @@
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
-<li><a href="../taxon/">taxon</a>  <sub>0..1</sub><ul>
-<li>Description: The taxon from which the biological entity derives.</li>
+<li><a href="../BiologicalEntity_taxon/">BiologicalEntity➞taxon</a>  <sub>1..1</sub><ul>
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Class: DiseaseAnnotation - Model to describe the Alliance curation/persistence data store</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Class: DiseaseAnnotation";
+    var mkdocs_page_input_path = "DiseaseAnnotation.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Model to describe the Alliance curation/persistence data store</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../home/">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Index</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../credits/">Credits</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Model to describe the Alliance curation/persistence data store</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Class: DiseaseAnnotation</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="class-diseaseannotation">Class: DiseaseAnnotation</h1>
+<p>An annotation asserting an association between a biological entity and a disease supported by evidence.</p>
+<p>URI: <a href="http://alliancegenome.orgDiseaseAnnotation">alliance:DiseaseAnnotation</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Person],[GeneDiseaseAnnotation],[ECOTerm],[DiseaseAnnotationExperimentalConditionAssociation],[Reference]&lt;references%201..1-%20[DiseaseAnnotation&#124;curie:uriorcurie;negated:boolean%20%3F;with:string%20%3F;disease_qualifiers:disease_annotation_qualifier_enum%20%3F;genetic_sex:genetic_sex_enum%20%3F;private_note:string%20%3F;disease_annotation_note:string%20%3F;disease_annotation_summary:string%20%3F;predicate:disease_relation_enum;data_provider:string%20%2B;table_key:integer%20%3F;creation_date:string%20%3F;date_last_modified:date%20%3F],[Disease]&lt;object%201..1-%20[DiseaseAnnotation],[BiologicalEntity]&lt;subject%201..1-%20[DiseaseAnnotation],[Reference]&lt;annotation_reference%201..1-%20[DiseaseAnnotation],[ECOTerm]&lt;evidence_codes%200..*-%20[DiseaseAnnotation],[DiseaseAnnotationExperimentalConditionAssociation]-%20subject%201..1&gt;[DiseaseAnnotation],[DiseaseAnnotation]uses%20-.-&gt;[AuditedObject],[DiseaseAnnotation]^-[GeneDiseaseAnnotation],[DiseaseAnnotation]^-[AlleleDiseaseAnnotation],[DiseaseAnnotation]^-[AGMDiseaseAnnotation],[Association]^-[DiseaseAnnotation],[Disease],[BiologicalEntity],[AuditedObject],[Association],[AlleleDiseaseAnnotation],[AGMDiseaseAnnotation]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Person],[GeneDiseaseAnnotation],[ECOTerm],[DiseaseAnnotationExperimentalConditionAssociation],[Reference]&lt;references%201..1-%20[DiseaseAnnotation&#124;curie:uriorcurie;negated:boolean%20%3F;with:string%20%3F;disease_qualifiers:disease_annotation_qualifier_enum%20%3F;genetic_sex:genetic_sex_enum%20%3F;private_note:string%20%3F;disease_annotation_note:string%20%3F;disease_annotation_summary:string%20%3F;predicate:disease_relation_enum;data_provider:string%20%2B;table_key:integer%20%3F;creation_date:string%20%3F;date_last_modified:date%20%3F],[Disease]&lt;object%201..1-%20[DiseaseAnnotation],[BiologicalEntity]&lt;subject%201..1-%20[DiseaseAnnotation],[Reference]&lt;annotation_reference%201..1-%20[DiseaseAnnotation],[ECOTerm]&lt;evidence_codes%200..*-%20[DiseaseAnnotation],[DiseaseAnnotationExperimentalConditionAssociation]-%20subject%201..1&gt;[DiseaseAnnotation],[DiseaseAnnotation]uses%20-.-&gt;[AuditedObject],[DiseaseAnnotation]^-[GeneDiseaseAnnotation],[DiseaseAnnotation]^-[AlleleDiseaseAnnotation],[DiseaseAnnotation]^-[AGMDiseaseAnnotation],[Association]^-[DiseaseAnnotation],[Disease],[BiologicalEntity],[AuditedObject],[Association],[AlleleDiseaseAnnotation],[AGMDiseaseAnnotation]" /></a></p>
+<h2 id="parents">Parents</h2>
+<ul>
+<li>is_a: <a href="../Association/">Association</a> - A typed association between two entities, supported by evidence.</li>
+</ul>
+<h2 id="uses-mixin">Uses Mixin</h2>
+<ul>
+<li>mixin: <a href="../AuditedObject/">AuditedObject</a> - Some entity for which changes are tracked, including date/time of change and the agent responsible for the change.</li>
+</ul>
+<h2 id="children">Children</h2>
+<ul>
+<li><a href="../AGMDiseaseAnnotation/">AGMDiseaseAnnotation</a></li>
+<li><a href="../AlleleDiseaseAnnotation/">AlleleDiseaseAnnotation</a></li>
+<li><a href="../GeneDiseaseAnnotation/">GeneDiseaseAnnotation</a></li>
+</ul>
+<h2 id="referenced-by-class">Referenced by Class</h2>
+<ul>
+<li><strong><a href="../DiseaseAnnotationExperimentalConditionAssociation/">DiseaseAnnotationExperimentalConditionAssociation</a></strong> <em><a href="../DiseaseAnnotationExperimentalConditionAssociation_subject/">DiseaseAnnotationExperimentalConditionAssociation➞subject</a></em>  <sub>1..1</sub>  <strong><a href="./">DiseaseAnnotation</a></strong></li>
+</ul>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
+<ul>
+<li><a href="../curie/">curie</a>  <sub>1..1</sub><ul>
+<li>Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="../DiseaseAnnotation_negated/">DiseaseAnnotation➞negated</a>  <sub>0..1</sub><ul>
+<li>Description: The negative qualifier for the annotation.</li>
+<li>Range: <a href="../Boolean/">Boolean</a></li>
+</ul>
+</li>
+<li><a href="../DiseaseAnnotation_evidence_codes/">DiseaseAnnotation➞evidence_codes</a>  <sub>0..*</sub><ul>
+<li>Range: <a href="../ECOTerm/">ECOTerm</a></li>
+</ul>
+</li>
+<li><a href="../annotation_reference/">annotation_reference</a>  <sub>1..1</sub><ul>
+<li>Description: The reference in which the association was asserted/reported.</li>
+<li>Range: <a href="../Reference/">Reference</a></li>
+</ul>
+</li>
+<li><a href="../DiseaseAnnotation_with/">DiseaseAnnotation➞with</a>  <sub>0..1</sub><ul>
+<li>Description: http://geneontology.org/docs/go-annotation-file-gaf-format-21/#with-or-from-column-8</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../disease_qualifiers/">disease_qualifiers</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../disease_annotation_qualifier_enum/">disease_annotation_qualifier_enum</a></li>
+</ul>
+</li>
+<li><a href="../DiseaseAnnotation_genetic_sex/">DiseaseAnnotation➞genetic_sex</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../genetic_sex_enum/">genetic_sex_enum</a></li>
+</ul>
+</li>
+<li><a href="../private_note/">private_note</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../disease_annotation_note/">disease_annotation_note</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../disease_annotation_summary/">disease_annotation_summary</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../DiseaseAnnotation_subject/">DiseaseAnnotation➞subject</a>  <sub>1..1</sub><ul>
+<li>Description: The biological entity to which the disease ontology term is associated.</li>
+<li>Range: <a href="../BiologicalEntity/">BiologicalEntity</a></li>
+</ul>
+</li>
+<li><a href="../DiseaseAnnotation_predicate/">DiseaseAnnotation➞predicate</a>  <sub>1..1</sub><ul>
+<li>Description: Constrains the disease subject, associationType and inferredGeneAssociation.</li>
+<li>Range: <a href="../disease_relation_enum/">disease_relation_enum</a></li>
+</ul>
+</li>
+<li><a href="../DiseaseAnnotation_object/">DiseaseAnnotation➞object</a>  <sub>1..1</sub><ul>
+<li>Description: The disease ontology term.</li>
+<li>Range: <a href="../Disease/">Disease</a></li>
+</ul>
+</li>
+<li><a href="../DiseaseAnnotation_data_provider/">DiseaseAnnotation➞data_provider</a>  <sub>1..*</sub><ul>
+<li>Description: source of data, can be multiple of these, each with a type and a crossReference</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../DiseaseAnnotation_references/">DiseaseAnnotation➞references</a>  <sub>1..1</sub><ul>
+<li>Description: The reference in which the disease association was asserted/reported.</li>
+<li>Range: <a href="../Reference/">Reference</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-auditedobject">Mixed in from AuditedObject:</h3>
+<ul>
+<li><a href="../table_key/">table_key</a>  <sub>0..1</sub><ul>
+<li>Description: The primary key for a specific table entry, unique for that table.</li>
+<li>Range: <a href="../Integer/">Integer</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-auditedobject_1">Mixed in from AuditedObject:</h3>
+<ul>
+<li><a href="../produced_by/">produced_by</a>  <sub>1..1</sub><ul>
+<li>Description: The individual that created the entity.</li>
+<li>Range: <a href="../Person/">Person</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-auditedobject_2">Mixed in from AuditedObject:</h3>
+<ul>
+<li><a href="../creation_date/">creation_date</a>  <sub>0..1</sub><ul>
+<li>Description: The date on which an entity was created. This can be applied to nodes or edges.</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-auditedobject_3">Mixed in from AuditedObject:</h3>
+<ul>
+<li><a href="../modified_by/">modified_by</a>  <sub>1..1</sub><ul>
+<li>Description: The individual that last modified the entity.</li>
+<li>Range: <a href="../Person/">Person</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-auditedobject_4">Mixed in from AuditedObject:</h3>
+<ul>
+<li><a href="../date_last_modified/">date_last_modified</a>  <sub>0..1</sub><ul>
+<li>Description: Date on which an entity was last modified.</li>
+<li>Range: <a href="../Date/">Date</a></li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

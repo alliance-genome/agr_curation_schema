@@ -93,12 +93,12 @@
               
                 <h1 id="class-construct">Class: Construct</h1>
 <p>URI: <a href="http://alliancegenome.orgConstruct">alliance:Construct</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Synonym],[Person],[GenomicEntity],[CrossReference],[ConstructComponent],[ConstructComponent]&lt;construct_components%200..*-%20[Construct&#124;name(i):string%20%3F;secondary_identifiers(i):uriorcurie%20*;curie(i):uriorcurie;taxon(i):uriorcurie%20%3F;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[Allele]-%20contains_construct%200..1&gt;[Construct],[GenomicEntity]^-[Construct],[Allele]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Synonym],[Person],[GenomicEntity],[CrossReference],[ConstructComponent],[ConstructComponent]&lt;construct_components%200..*-%20[Construct&#124;name(i):string%20%3F;secondary_identifiers(i):uriorcurie%20*;curie(i):uriorcurie;taxon(i):uriorcurie%20%3F;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[Allele]-%20contains_construct%200..1&gt;[Construct],[GenomicEntity]^-[Construct],[Allele]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Synonym],[Person],[GenomicEntity],[CrossReference],[ConstructComponent],[ConstructComponent]&lt;construct_components%200..*-%20[Construct&#124;name(i):string%20%3F;secondary_identifiers(i):uriorcurie%20*;curie(i):uriorcurie;taxon(i):uriorcurie;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[Allele]-%20contains_construct%200..1&gt;[Construct],[GenomicEntity]^-[Construct],[Allele]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Synonym],[Person],[GenomicEntity],[CrossReference],[ConstructComponent],[ConstructComponent]&lt;construct_components%200..*-%20[Construct&#124;name(i):string%20%3F;secondary_identifiers(i):uriorcurie%20*;curie(i):uriorcurie;taxon(i):uriorcurie;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[Allele]-%20contains_construct%200..1&gt;[Construct],[GenomicEntity]^-[Construct],[Allele]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../GenomicEntity/">GenomicEntity</a></li>
 </ul>
-<h2 id="referenced-by-class">Referenced by class</h2>
+<h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
 <li><strong><a href="../Allele/">Allele</a></strong> <em><a href="../contains_construct/">contains_construct</a></em>  <sub>0..1</sub>  <strong><a href="./">Construct</a></strong></li>
 </ul>
@@ -117,8 +117,7 @@
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
-<li><a href="../taxon/">taxon</a>  <sub>0..1</sub><ul>
-<li>Description: The taxon from which the biological entity derives.</li>
+<li><a href="../BiologicalEntity_taxon/">BiologicalEntity➞taxon</a>  <sub>1..1</sub><ul>
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
