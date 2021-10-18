@@ -1,4 +1,4 @@
-id: https://github.com/alliance-genome/agr_persistent_schema/phenotypeAndDiseaseAnnotation.yaml
+32id: https://github.com/alliance-genome/agr_persistent_schema/phenotypeAndDiseaseAnnotation.yaml
 name: Alliance-Schema-Prototype-Phenotype-and-Disease-Annotation
 title: Alliance Schema Prototype Phenotype and Disease Annotation
 description: Alliance Phenotype and Disease Annotation Schema Prototype with LinkML
@@ -90,7 +90,7 @@ classes:
   PhenotypeAnnotationInferred:
     is_a: PhenotypeAnnotationCurated
     description: >-
-      A curated phenotype annotation (see class PhenotypeAnnotationCurated) for which inferences have been made to apply 
+      A curated phenotype annotation (see class PhenotypeAnnotationCurated) for which inferences have been made to apply
       additional information such as inferred gene or inferred allele.
     slots:
       - inferred_gene
@@ -125,6 +125,7 @@ classes:
       - private_note # we should probably pull this out into a _private_ note object.
       - disease_annotation_note # we should probably pull this out into a note object.
       - disease_annotation_summary # we should probably pull this out into a note object
+      - data_provider
     slot_usage:
       subject:
         required: true
@@ -143,7 +144,7 @@ classes:
         required: true
         description: >-
           The disease ontology term.
-        range: Disease
+        range: DOTerm
       data_provider:
         required: true
         description: >-
@@ -151,13 +152,14 @@ classes:
       with:
         description: >-
           http://geneontology.org/docs/go-annotation-file-gaf-format-21/#with-or-from-column-8
-      references:               # evidence in JSON schema
+      annotation_reference:               # evidence in JSON schema
         required: true
         multivalued: false
         description: >-
           The reference in which the disease association was asserted/reported.
       evidence_codes:
         multivalued: true
+        required: true
       genetic_sex:
         range: genetic_sex_enum
 
@@ -167,7 +169,6 @@ classes:
     slots:
       - gene_disease_genetic_modifier
       - gene_disease_genetic_modifier_relation
-      - gene_disease_relation
       - sgd_strain_background
     slot_usage:
       subject:
@@ -185,7 +186,6 @@ classes:
   AlleleDiseaseAnnotation:
     is_a: DiseaseAnnotation
     slots:
-      - allele_disease_relation
       - allele_disease_genetic_modifier
       - allele_disease_genetic_modifier_relation
       - inferred_gene
@@ -207,7 +207,6 @@ classes:
   AGMDiseaseAnnotation:
     is_a: DiseaseAnnotation
     slots:
-      - agm_disease_relation
       - agm_disease_genetic_modifier
       - agm_disease_genetic_modifier_relation
       - inferred_allele
@@ -436,7 +435,7 @@ slots:
     description: >-
       The gene to which something is inferred to be associated.
     range: Gene
-    
+
   inferred_allele:
     description: >-
       The allele to which something is inferred to be associated.
@@ -450,15 +449,6 @@ slots:
 
   private_note:
     range: string
-
-  gene_disease_relation:
-    range: gene_disease_relation_enum
-
-  allele_disease_relation:
-    range: allele_disease_relation_enum
-
-  agm_disease_relation:
-    range: agm_disease_relation_enum
 
   disease_annotation_note:
     range: string
@@ -513,6 +503,7 @@ slots:
   with:
     description: >-
       http://geneontology.org/docs/go-annotation-file-gaf-format-21/#with-or-from-column-8
+    range: Gene
 
 ## ----------
 ## PREDICATES
@@ -553,7 +544,7 @@ slots:
   ameliorates:
     is_a: related_to
     symmetric: false
-    inverse: ameliorated_by    
+    inverse: ameliorated_by
     domain: ExperimentalCondition
     range: Entity
 
@@ -566,7 +557,7 @@ slots:
   exacerbates:
     is_a: related_to
     symmetric: false
-    inverse: exacerbated_by    
+    inverse: exacerbated_by
     domain: ExperimentalCondition
     range: Entity
 
@@ -613,7 +604,9 @@ enums:
   genetic_modifier_relation_enum:
     permissible_values:
       ameliorated_by:
+      not_ameliorated_by:
       exacerbated_by:
+      not_exacerbated_by:
 
   disease_annotation_qualifier_enum:
     permissible_values:
@@ -624,4 +617,3 @@ enums:
       sexual_dimorphism:
       resistance:
       penetrance:
-
