@@ -90,7 +90,7 @@ classes:
   PhenotypeAnnotationInferred:
     is_a: PhenotypeAnnotationCurated
     description: >-
-      A curated phenotype annotation (see class PhenotypeAnnotationCurated) for which inferences have been made to apply 
+      A curated phenotype annotation (see class PhenotypeAnnotationCurated) for which inferences have been made to apply
       additional information such as inferred gene or inferred allele.
     slots:
       - inferred_gene
@@ -125,6 +125,9 @@ classes:
       - private_note # we should probably pull this out into a _private_ note object.
       - disease_annotation_note # we should probably pull this out into a note object.
       - disease_annotation_summary # we should probably pull this out into a note object
+      - data_provider
+      - disease_genetic_modifier
+      - disease_genetic_modifier_relation
     slot_usage:
       subject:
         required: true
@@ -143,7 +146,7 @@ classes:
         required: true
         description: >-
           The disease ontology term.
-        range: Disease
+        range: DOTerm
       data_provider:
         required: true
         description: >-
@@ -151,13 +154,14 @@ classes:
       with:
         description: >-
           http://geneontology.org/docs/go-annotation-file-gaf-format-21/#with-or-from-column-8
-      references:               # evidence in JSON schema
+      annotation_reference:               # evidence in JSON schema
         required: true
         multivalued: false
         description: >-
           The reference in which the disease association was asserted/reported.
       evidence_codes:
         multivalued: true
+        required: true
       genetic_sex:
         range: genetic_sex_enum
 
@@ -165,9 +169,6 @@ classes:
     is_a: DiseaseAnnotation
     description:
     slots:
-      - gene_disease_genetic_modifier
-      - gene_disease_genetic_modifier_relation
-      - gene_disease_relation
       - sgd_strain_background
     slot_usage:
       subject:
@@ -178,16 +179,10 @@ classes:
       predicate:
         required: true
         range: gene_disease_relation_enum
-      gene_disease_genetic_modifier:
-        required: false
-        range: BiologicalEntity
 
   AlleleDiseaseAnnotation:
     is_a: DiseaseAnnotation
     slots:
-      - allele_disease_relation
-      - allele_disease_genetic_modifier
-      - allele_disease_genetic_modifier_relation
       - inferred_gene
     slot_usage:
       subject:
@@ -200,16 +195,10 @@ classes:
           The gene to which the disease is inferred to be associated.
         required: false
         range: Gene
-      allele_disease_genetic_modifier:
-        required: false
-        range: BiologicalEntity
 
   AGMDiseaseAnnotation:
     is_a: DiseaseAnnotation
     slots:
-      - agm_disease_relation
-      - agm_disease_genetic_modifier
-      - agm_disease_genetic_modifier_relation
       - inferred_allele
       - inferred_gene
     slot_usage:
@@ -228,9 +217,6 @@ classes:
           The allele to which the disease is inferred to be associated.
         required: false
         range: Allele
-      agm_disease_genetic_modifier:
-        required: false
-        range: BiologicalEntity
 
   ExperimentalCondition:
     description: >-
@@ -436,7 +422,7 @@ slots:
     description: >-
       The gene to which something is inferred to be associated.
     range: Gene
-    
+
   inferred_allele:
     description: >-
       The allele to which something is inferred to be associated.
@@ -450,15 +436,6 @@ slots:
 
   private_note:
     range: string
-
-  gene_disease_relation:
-    range: gene_disease_relation_enum
-
-  allele_disease_relation:
-    range: allele_disease_relation_enum
-
-  agm_disease_relation:
-    range: agm_disease_relation_enum
 
   disease_annotation_note:
     range: string
@@ -476,36 +453,16 @@ slots:
     description: >-
           The reference in which the association was asserted/reported.
 
-  gene_disease_genetic_modifier:
+  disease_genetic_modifier:
     description: >-
       Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
-    range: BiologicalEntity # TODO: fix this in the class hierarchy -- add a mixin?
+    range: BiologicalEntity
+    required: false
 
-  allele_disease_genetic_modifier:
-    description: >-
-      Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
-    range: BiologicalEntity # TODO: fix this in the class hierarchy -- add a mixin?
-
-  agm_disease_genetic_modifier:
-    description: >-
-      Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
-    range: BiologicalEntity # TODO: fix this in the class hierarchy -- add a mixin?
-
-  gene_disease_genetic_modifier_relation:
+  disease_genetic_modifier_relation:
     description: >-
       A relation describing how the genetic modifier modifies the disease model.
-    range: genetic_modifier_relation_enum # TODO: define a range or enumeration
-
-  allele_disease_genetic_modifier_relation:
-    description: >-
-      A relation describing how the genetic modifier modifies the disease model.
-    range: genetic_modifier_relation_enum # TODO: define a range or enumeration
-
-  agm_disease_genetic_modifier_relation:
-    description: >-
-      A relation describing how the genetic modifier modifies the disease model.
-    range: genetic_modifier_relation_enum # TODO: define a range or enumeration
-
+    range: genetic_modifier_relation_enum
 
   phenotype_term:
     range: Phenotype
@@ -513,6 +470,7 @@ slots:
   with:
     description: >-
       http://geneontology.org/docs/go-annotation-file-gaf-format-21/#with-or-from-column-8
+    range: Gene
 
 ## ----------
 ## PREDICATES
@@ -553,7 +511,7 @@ slots:
   ameliorates:
     is_a: related_to
     symmetric: false
-    inverse: ameliorated_by    
+    inverse: ameliorated_by
     domain: ExperimentalCondition
     range: Entity
 
@@ -566,7 +524,7 @@ slots:
   exacerbates:
     is_a: related_to
     symmetric: false
-    inverse: exacerbated_by    
+    inverse: exacerbated_by
     domain: ExperimentalCondition
     range: Entity
 
@@ -613,7 +571,9 @@ enums:
   genetic_modifier_relation_enum:
     permissible_values:
       ameliorated_by:
+      not_ameliorated_by:
       exacerbated_by:
+      not_exacerbated_by:
 
   disease_annotation_qualifier_enum:
     permissible_values:
@@ -624,4 +584,3 @@ enums:
       sexual_dimorphism:
       resistance:
       penetrance:
-
