@@ -1,4 +1,4 @@
-32id: https://github.com/alliance-genome/agr_persistent_schema/phenotypeAndDiseaseAnnotation.yaml
+id: https://github.com/alliance-genome/agr_persistent_schema/phenotypeAndDiseaseAnnotation.yaml
 name: Alliance-Schema-Prototype-Phenotype-and-Disease-Annotation
 title: Alliance Schema Prototype Phenotype and Disease Annotation
 description: Alliance Phenotype and Disease Annotation Schema Prototype with LinkML
