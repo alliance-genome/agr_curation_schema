@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Slot: allele_disease_genetic_modifier - Model to describe the Alliance curation/persistence data store</title>
+  <title>Slot: annotation_reference - Model to describe the Alliance curation/persistence data store</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Slot: allele_disease_genetic_modifier";
-    var mkdocs_page_input_path = "AlleleDiseaseAnnotation_allele_disease_genetic_modifier.md";
+    var mkdocs_page_name = "Slot: annotation_reference";
+    var mkdocs_page_input_path = "DiseaseAnnotation_annotation_reference.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Slot: allele_disease_genetic_modifier</li>
+    <li>Slot: annotation_reference</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,18 +91,22 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="slot-allele_disease_genetic_modifier">Slot: allele_disease_genetic_modifier</h1>
-<p>URI: <a href="http://alliancegenome.orgAlleleDiseaseAnnotation_allele_disease_genetic_modifier">alliance:AlleleDiseaseAnnotation_allele_disease_genetic_modifier</a></p>
+                <h1 id="slot-annotation_reference">Slot: annotation_reference</h1>
+<p>The reference in which the disease association was asserted/reported.</p>
+<p>URI: <a href="http://alliancegenome.orgDiseaseAnnotation_annotation_reference">alliance:DiseaseAnnotation_annotation_reference</a></p>
 <h2 id="domain-and-range">Domain and Range</h2>
-<p><a href="../AlleleDiseaseAnnotation/">AlleleDiseaseAnnotation</a> &#8594;  <sub>0..1</sub> <a href="../BiologicalEntity/">BiologicalEntity</a></p>
+<p><a href="../DiseaseAnnotation/">DiseaseAnnotation</a> &#8594;  <sub>1..1</sub> <a href="../Reference/">Reference</a></p>
 <h2 id="parents">Parents</h2>
 <ul>
-<li>is_a: <a href="../allele_disease_genetic_modifier/">allele_disease_genetic_modifier</a></li>
+<li>is_a: <a href="../annotation_reference/">annotation_reference</a></li>
 </ul>
 <h2 id="children">Children</h2>
 <h2 id="used-by">Used by</h2>
 <ul>
+<li><a href="../AGMDiseaseAnnotation/">AGMDiseaseAnnotation</a></li>
 <li><a href="../AlleleDiseaseAnnotation/">AlleleDiseaseAnnotation</a></li>
+<li><a href="../DiseaseAnnotation/">DiseaseAnnotation</a></li>
+<li><a href="../GeneDiseaseAnnotation/">GeneDiseaseAnnotation</a></li>
 </ul>
               
             </div>

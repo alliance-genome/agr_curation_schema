@@ -94,7 +94,7 @@
                 <h1 id="class-diseaseannotation">Class: DiseaseAnnotation</h1>
 <p>An annotation asserting an association between a biological entity and a disease supported by evidence.</p>
 <p>URI: <a href="http://alliancegenome.orgDiseaseAnnotation">alliance:DiseaseAnnotation</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Person],[GeneDiseaseAnnotation],[ECOTerm],[DiseaseAnnotationExperimentalConditionAssociation],[Reference]&lt;references%201..1-%20[DiseaseAnnotation&#124;curie:uriorcurie;negated:boolean%20%3F;with:string%20%3F;disease_qualifiers:disease_annotation_qualifier_enum%20%3F;genetic_sex:genetic_sex_enum%20%3F;private_note:string%20%3F;disease_annotation_note:string%20%3F;disease_annotation_summary:string%20%3F;predicate:disease_relation_enum;data_provider:string%20%2B;table_key:integer%20%3F;creation_date:string%20%3F;date_last_modified:date%20%3F],[Disease]&lt;object%201..1-%20[DiseaseAnnotation],[BiologicalEntity]&lt;subject%201..1-%20[DiseaseAnnotation],[Reference]&lt;annotation_reference%201..1-%20[DiseaseAnnotation],[ECOTerm]&lt;evidence_codes%200..*-%20[DiseaseAnnotation],[DiseaseAnnotationExperimentalConditionAssociation]-%20subject%201..1&gt;[DiseaseAnnotation],[DiseaseAnnotation]uses%20-.-&gt;[AuditedObject],[DiseaseAnnotation]^-[GeneDiseaseAnnotation],[DiseaseAnnotation]^-[AlleleDiseaseAnnotation],[DiseaseAnnotation]^-[AGMDiseaseAnnotation],[Association]^-[DiseaseAnnotation],[Disease],[BiologicalEntity],[AuditedObject],[Association],[AlleleDiseaseAnnotation],[AGMDiseaseAnnotation]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Person],[GeneDiseaseAnnotation],[ECOTerm],[DiseaseAnnotationExperimentalConditionAssociation],[Reference]&lt;references%201..1-%20[DiseaseAnnotation&#124;curie:uriorcurie;negated:boolean%20%3F;with:string%20%3F;disease_qualifiers:disease_annotation_qualifier_enum%20%3F;genetic_sex:genetic_sex_enum%20%3F;private_note:string%20%3F;disease_annotation_note:string%20%3F;disease_annotation_summary:string%20%3F;predicate:disease_relation_enum;data_provider:string%20%2B;table_key:integer%20%3F;creation_date:string%20%3F;date_last_modified:date%20%3F],[Disease]&lt;object%201..1-%20[DiseaseAnnotation],[BiologicalEntity]&lt;subject%201..1-%20[DiseaseAnnotation],[Reference]&lt;annotation_reference%201..1-%20[DiseaseAnnotation],[ECOTerm]&lt;evidence_codes%200..*-%20[DiseaseAnnotation],[DiseaseAnnotationExperimentalConditionAssociation]-%20subject%201..1&gt;[DiseaseAnnotation],[DiseaseAnnotation]uses%20-.-&gt;[AuditedObject],[DiseaseAnnotation]^-[GeneDiseaseAnnotation],[DiseaseAnnotation]^-[AlleleDiseaseAnnotation],[DiseaseAnnotation]^-[AGMDiseaseAnnotation],[Association]^-[DiseaseAnnotation],[Disease],[BiologicalEntity],[AuditedObject],[Association],[AlleleDiseaseAnnotation],[AGMDiseaseAnnotation]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Person],[GeneDiseaseAnnotation],[Gene],[ECOTerm],[DiseaseAnnotationExperimentalConditionAssociation],[DOTerm]&lt;object%201..1-%20[DiseaseAnnotation&#124;curie:uriorcurie;negated:boolean%20%3F;disease_qualifiers:disease_annotation_qualifier_enum%20%3F;genetic_sex:genetic_sex_enum%20%3F;private_note:string%20%3F;disease_annotation_note:string%20%3F;disease_annotation_summary:string%20%3F;data_provider:string%20%2B;disease_genetic_modifier_relation:genetic_modifier_relation_enum%20%3F;predicate:disease_relation_enum;table_key:integer%20%3F;creation_date:string%20%3F;date_last_modified:date%20%3F],[BiologicalEntity]&lt;subject%201..1-%20[DiseaseAnnotation],[BiologicalEntity]&lt;disease_genetic_modifier%200..1-%20[DiseaseAnnotation],[Gene]&lt;with%200..1-%20[DiseaseAnnotation],[Reference]&lt;annotation_reference%201..1-%20[DiseaseAnnotation],[ECOTerm]&lt;evidence_codes%201..*-%20[DiseaseAnnotation],[DiseaseAnnotationExperimentalConditionAssociation]-%20subject%201..1&gt;[DiseaseAnnotation],[DiseaseAnnotation]uses%20-.-&gt;[AuditedObject],[DiseaseAnnotation]^-[GeneDiseaseAnnotation],[DiseaseAnnotation]^-[AlleleDiseaseAnnotation],[DiseaseAnnotation]^-[AGMDiseaseAnnotation],[Association]^-[DiseaseAnnotation],[DOTerm],[BiologicalEntity],[AuditedObject],[Association],[AlleleDiseaseAnnotation],[AGMDiseaseAnnotation]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Person],[GeneDiseaseAnnotation],[Gene],[ECOTerm],[DiseaseAnnotationExperimentalConditionAssociation],[DOTerm]&lt;object%201..1-%20[DiseaseAnnotation&#124;curie:uriorcurie;negated:boolean%20%3F;disease_qualifiers:disease_annotation_qualifier_enum%20%3F;genetic_sex:genetic_sex_enum%20%3F;private_note:string%20%3F;disease_annotation_note:string%20%3F;disease_annotation_summary:string%20%3F;data_provider:string%20%2B;disease_genetic_modifier_relation:genetic_modifier_relation_enum%20%3F;predicate:disease_relation_enum;table_key:integer%20%3F;creation_date:string%20%3F;date_last_modified:date%20%3F],[BiologicalEntity]&lt;subject%201..1-%20[DiseaseAnnotation],[BiologicalEntity]&lt;disease_genetic_modifier%200..1-%20[DiseaseAnnotation],[Gene]&lt;with%200..1-%20[DiseaseAnnotation],[Reference]&lt;annotation_reference%201..1-%20[DiseaseAnnotation],[ECOTerm]&lt;evidence_codes%201..*-%20[DiseaseAnnotation],[DiseaseAnnotationExperimentalConditionAssociation]-%20subject%201..1&gt;[DiseaseAnnotation],[DiseaseAnnotation]uses%20-.-&gt;[AuditedObject],[DiseaseAnnotation]^-[GeneDiseaseAnnotation],[DiseaseAnnotation]^-[AlleleDiseaseAnnotation],[DiseaseAnnotation]^-[AGMDiseaseAnnotation],[Association]^-[DiseaseAnnotation],[DOTerm],[BiologicalEntity],[AuditedObject],[Association],[AlleleDiseaseAnnotation],[AGMDiseaseAnnotation]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../Association/">Association</a> - A typed association between two entities, supported by evidence.</li>
@@ -126,18 +126,18 @@
 <li>Range: <a href="../Boolean/">Boolean</a></li>
 </ul>
 </li>
-<li><a href="../DiseaseAnnotation_evidence_codes/">DiseaseAnnotation➞evidence_codes</a>  <sub>0..*</sub><ul>
+<li><a href="../DiseaseAnnotation_evidence_codes/">DiseaseAnnotation➞evidence_codes</a>  <sub>1..*</sub><ul>
 <li>Range: <a href="../ECOTerm/">ECOTerm</a></li>
 </ul>
 </li>
-<li><a href="../annotation_reference/">annotation_reference</a>  <sub>1..1</sub><ul>
-<li>Description: The reference in which the association was asserted/reported.</li>
+<li><a href="../DiseaseAnnotation_annotation_reference/">DiseaseAnnotation➞annotation_reference</a>  <sub>1..1</sub><ul>
+<li>Description: The reference in which the disease association was asserted/reported.</li>
 <li>Range: <a href="../Reference/">Reference</a></li>
 </ul>
 </li>
 <li><a href="../DiseaseAnnotation_with/">DiseaseAnnotation➞with</a>  <sub>0..1</sub><ul>
 <li>Description: http://geneontology.org/docs/go-annotation-file-gaf-format-21/#with-or-from-column-8</li>
-<li>Range: <a href="../String/">String</a></li>
+<li>Range: <a href="../Gene/">Gene</a></li>
 </ul>
 </li>
 <li><a href="../disease_qualifiers/">disease_qualifiers</a>  <sub>0..1</sub><ul>
@@ -160,6 +160,21 @@
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
+<li><a href="../DiseaseAnnotation_data_provider/">DiseaseAnnotation➞data_provider</a>  <sub>1..*</sub><ul>
+<li>Description: source of data, can be multiple of these, each with a type and a crossReference</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../disease_genetic_modifier/">disease_genetic_modifier</a>  <sub>0..1</sub><ul>
+<li>Description: Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.</li>
+<li>Range: <a href="../BiologicalEntity/">BiologicalEntity</a></li>
+</ul>
+</li>
+<li><a href="../disease_genetic_modifier_relation/">disease_genetic_modifier_relation</a>  <sub>0..1</sub><ul>
+<li>Description: A relation describing how the genetic modifier modifies the disease model.</li>
+<li>Range: <a href="../genetic_modifier_relation_enum/">genetic_modifier_relation_enum</a></li>
+</ul>
+</li>
 <li><a href="../DiseaseAnnotation_subject/">DiseaseAnnotation➞subject</a>  <sub>1..1</sub><ul>
 <li>Description: The biological entity to which the disease ontology term is associated.</li>
 <li>Range: <a href="../BiologicalEntity/">BiologicalEntity</a></li>
@@ -172,16 +187,14 @@
 </li>
 <li><a href="../DiseaseAnnotation_object/">DiseaseAnnotation➞object</a>  <sub>1..1</sub><ul>
 <li>Description: The disease ontology term.</li>
-<li>Range: <a href="../Disease/">Disease</a></li>
+<li>Range: <a href="../DOTerm/">DOTerm</a></li>
 </ul>
 </li>
-<li><a href="../DiseaseAnnotation_data_provider/">DiseaseAnnotation➞data_provider</a>  <sub>1..*</sub><ul>
-<li>Description: source of data, can be multiple of these, each with a type and a crossReference</li>
-<li>Range: <a href="../String/">String</a></li>
 </ul>
-</li>
-<li><a href="../DiseaseAnnotation_references/">DiseaseAnnotation➞references</a>  <sub>1..1</sub><ul>
-<li>Description: The reference in which the disease association was asserted/reported.</li>
+<h3 id="inherited-from-association">Inherited from Association:</h3>
+<ul>
+<li><a href="../references/">references</a>  <sub>0..*</sub><ul>
+<li>Description: holds between an object and a reference</li>
 <li>Range: <a href="../Reference/">Reference</a></li>
 </ul>
 </li>

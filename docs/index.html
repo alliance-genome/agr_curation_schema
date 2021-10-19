@@ -144,7 +144,7 @@
 </ul>
 </li>
 <li><a href="PhenotypeAnnotationCurated/">PhenotypeAnnotationCurated</a> - An annotation asserting an association between a biological entity and a phenotype supported by evidence.<ul>
-<li><a href="PhenotypeAnnotationInferred/">PhenotypeAnnotationInferred</a> - A curated phenotype annotation (see class PhenotypeAnnotationCurated) for which inferences have been made to apply  additional information such as inferred gene or inferred allele.</li>
+<li><a href="PhenotypeAnnotationInferred/">PhenotypeAnnotationInferred</a> - A curated phenotype annotation (see class PhenotypeAnnotationCurated) for which inferences have been made to apply additional information such as inferred gene or inferred allele.</li>
 </ul>
 </li>
 <li><a href="PhenotypeAnnotationExperimentalConditionAssociation/">PhenotypeAnnotationExperimentalConditionAssociation</a> - A typed (predicate-specified) association between a phenotype annotation object and an experimental condition object</li>
@@ -252,18 +252,6 @@
 <li><a href="GeneMolecularInteraction_aggregation_database/">GeneMolecularInteraction➞aggregation_database</a> - The database that collected the interaction annotation from another resource and aggregated it into a consolidated resource. e.g. IMEx</li>
 </ul>
 </li>
-<li><a href="agm_disease_genetic_modifier/">agm_disease_genetic_modifier</a> - Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.<ul>
-<li><a href="AGMDiseaseAnnotation_agm_disease_genetic_modifier/">AGMDiseaseAnnotation➞agm_disease_genetic_modifier</a></li>
-</ul>
-</li>
-<li><a href="agm_disease_genetic_modifier_relation/">agm_disease_genetic_modifier_relation</a> - A relation describing how the genetic modifier modifies the disease model.</li>
-<li><a href="agm_disease_relation/">agm_disease_relation</a></li>
-<li><a href="allele_disease_genetic_modifier/">allele_disease_genetic_modifier</a> - Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.<ul>
-<li><a href="AlleleDiseaseAnnotation_allele_disease_genetic_modifier/">AlleleDiseaseAnnotation➞allele_disease_genetic_modifier</a></li>
-</ul>
-</li>
-<li><a href="allele_disease_genetic_modifier_relation/">allele_disease_genetic_modifier_relation</a> - A relation describing how the genetic modifier modifies the disease model.</li>
-<li><a href="allele_disease_relation/">allele_disease_relation</a></li>
 <li><a href="alliance_category/">alliance_category</a></li>
 <li><a href="amino_acid_reference/">amino_acid_reference</a> - reference genome amino acid sequence at variant position<ul>
 <li><a href="VariantTranscriptConsequence_amino_acid_reference/">VariantTranscriptConsequence➞amino_acid_reference</a> - Amino acid sequence encoded by codon(s) in reference genome sequence altered by the variant</li>
@@ -273,7 +261,10 @@
 <li><a href="VariantTranscriptConsequence_amino_acid_variant/">VariantTranscriptConsequence➞amino_acid_variant</a> - Amino acid sequence encoded by codon(s) in variant sequence</li>
 </ul>
 </li>
-<li><a href="annotation_reference/">annotation_reference</a> - The reference in which the association was asserted/reported.</li>
+<li><a href="annotation_reference/">annotation_reference</a> - The reference in which the association was asserted/reported.<ul>
+<li><a href="DiseaseAnnotation_annotation_reference/">DiseaseAnnotation➞annotation_reference</a> - The reference in which the disease association was asserted/reported.</li>
+</ul>
+</li>
 <li><a href="antibody_target_genes/">antibody_target_genes</a> - The genes whose gene products are recognized by the antibody.</li>
 <li><a href="associated_notes/">associated_notes</a> - Notes associated with the entity in some way</li>
 <li><a href="associated_references/">associated_references</a> - References associated with the entity in some way</li>
@@ -291,7 +282,7 @@
 <li><a href="EntitySynonym_object/">EntitySynonym➞object</a></li>
 <li><a href="GeneGenomicLocation_object/">GeneGenomicLocation➞object</a> - object should be the chromosome identifier</li>
 <li><a href="GeneToGeneAssociation_object/">GeneToGeneAssociation➞object</a> - the object gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa.<ul>
-<li><a href="GeneInteraction_object/">GeneInteraction➞object</a></li>
+<li><a href="GeneInteraction_object/">GeneInteraction➞object</a> - connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.</li>
 </ul>
 </li>
 <li><a href="PhenotypeAnnotationCurated_object/">PhenotypeAnnotationCurated➞object</a> - phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed statement of the phenotype from a post-composed terminology</li>
@@ -304,9 +295,9 @@
 <li><a href="predicate/">predicate</a> - A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.<ul>
 <li><a href="DiseaseAnnotationExperimentalConditionAssociation_predicate/">DiseaseAnnotationExperimentalConditionAssociation➞predicate</a></li>
 <li><a href="DiseaseAnnotation_predicate/">DiseaseAnnotation➞predicate</a> - Constrains the disease subject, associationType and inferredGeneAssociation.<ul>
-<li><a href="AGMDiseaseAnnotation_predicate/">AGMDiseaseAnnotation➞predicate</a></li>
-<li><a href="AlleleDiseaseAnnotation_predicate/">AlleleDiseaseAnnotation➞predicate</a></li>
-<li><a href="GeneDiseaseAnnotation_predicate/">GeneDiseaseAnnotation➞predicate</a></li>
+<li><a href="AGMDiseaseAnnotation_predicate/">AGMDiseaseAnnotation➞predicate</a> - A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.</li>
+<li><a href="AlleleDiseaseAnnotation_predicate/">AlleleDiseaseAnnotation➞predicate</a> - A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.</li>
+<li><a href="GeneDiseaseAnnotation_predicate/">GeneDiseaseAnnotation➞predicate</a> - A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.</li>
 </ul>
 </li>
 <li><a href="EntitySynonym_predicate/">EntitySynonym➞predicate</a></li>
@@ -321,14 +312,14 @@
 <li><a href="subject/">subject</a> - connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.<ul>
 <li><a href="DiseaseAnnotationExperimentalConditionAssociation_subject/">DiseaseAnnotationExperimentalConditionAssociation➞subject</a></li>
 <li><a href="DiseaseAnnotation_subject/">DiseaseAnnotation➞subject</a> - The biological entity to which the disease ontology term is associated.<ul>
-<li><a href="AGMDiseaseAnnotation_subject/">AGMDiseaseAnnotation➞subject</a></li>
-<li><a href="AlleleDiseaseAnnotation_subject/">AlleleDiseaseAnnotation➞subject</a></li>
+<li><a href="AGMDiseaseAnnotation_subject/">AGMDiseaseAnnotation➞subject</a> - connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.</li>
+<li><a href="AlleleDiseaseAnnotation_subject/">AlleleDiseaseAnnotation➞subject</a> - connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.</li>
 <li><a href="GeneDiseaseAnnotation_subject/">GeneDiseaseAnnotation➞subject</a> - The gene to which the disease ontology term is associated.</li>
 </ul>
 </li>
 <li><a href="GeneGenomicLocation_subject/">GeneGenomicLocation➞subject</a> - subject should be the gene identifier</li>
 <li><a href="GeneToGeneAssociation_subject/">GeneToGeneAssociation➞subject</a> - the subject gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa.<ul>
-<li><a href="GeneInteraction_subject/">GeneInteraction➞subject</a></li>
+<li><a href="GeneInteraction_subject/">GeneInteraction➞subject</a> - connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.</li>
 </ul>
 </li>
 <li><a href="PhenotypeAnnotationCurated_subject/">PhenotypeAnnotationCurated➞subject</a> - The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, by direct curation.</li>
@@ -446,6 +437,8 @@
 </li>
 <li><a href="disease_annotation_note/">disease_annotation_note</a></li>
 <li><a href="disease_annotation_summary/">disease_annotation_summary</a></li>
+<li><a href="disease_genetic_modifier/">disease_genetic_modifier</a> - Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.</li>
+<li><a href="disease_genetic_modifier_relation/">disease_genetic_modifier_relation</a> - A relation describing how the genetic modifier modifies the disease model.</li>
 <li><a href="disease_qualifiers/">disease_qualifiers</a></li>
 <li><a href="disease_relation/">disease_relation</a></li>
 <li><a href="display_name/">display_name</a></li>
@@ -465,12 +458,6 @@
 <li><a href="from_resource/">from_resource</a></li>
 <li><a href="from_species/">from_species</a> - Holds between an entity and a Species.</li>
 <li><a href="functional_impact/">functional_impact</a> - Experimentally assessed functional impact of the allele, e.g. knockout / amorphic</li>
-<li><a href="gene_disease_genetic_modifier/">gene_disease_genetic_modifier</a> - Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.<ul>
-<li><a href="GeneDiseaseAnnotation_gene_disease_genetic_modifier/">GeneDiseaseAnnotation➞gene_disease_genetic_modifier</a></li>
-</ul>
-</li>
-<li><a href="gene_disease_genetic_modifier_relation/">gene_disease_genetic_modifier_relation</a> - A relation describing how the genetic modifier modifies the disease model.</li>
-<li><a href="gene_disease_relation/">gene_disease_relation</a></li>
 <li><a href="gene_synopsis/">gene_synopsis</a> - Gene description provided by source resource (ie: MOD gene description that is curated or automated via MOD internal processes).</li>
 <li><a href="gene_synopsis_URL/">gene_synopsis_URL</a> - Gene description reference URL provided by source resource (aka: MOD) in the case where the curated gene_synopsis has a reference URL outside of the MOD.</li>
 <li><a href="generated_by/">generated_by</a> - Holds between a material entity and an Agent that generated it: e.g., Thomas Blumenthal, Kornberg Laboratory.</li>
@@ -627,7 +614,6 @@
 <li><a href="qualifiers/">qualifiers</a> - This is the MeSH qualifier term that is optionally added to the descriptor term.</li>
 <li><a href="reference_association/">reference_association</a> - Description of how a reference is associated with an entity, e.g. molecular / origin / other</li>
 <li><a href="references/">references</a> - holds between an object and a reference<ul>
-<li><a href="DiseaseAnnotation_references/">DiseaseAnnotation➞references</a> - The reference in which the disease association was asserted/reported.</li>
 <li><a href="EntitySynonym_references/">EntitySynonym➞references</a> - The references in which the synonym is used to refer to the entity.</li>
 <li><a href="GeneInteraction_references/">GeneInteraction➞references</a> - The reference from which the interaction was annotated.</li>
 <li><a href="PhenotypeAnnotationCurated_references/">PhenotypeAnnotationCurated➞references</a> - The reference in which the phenotype association was asserted/reported.</li>
@@ -843,6 +829,6 @@
 </html>
 
 <!--
-MkDocs version : 1.2.2
-Build Date UTC : 2021-10-05 01:00:59.350806+00:00
+MkDocs version : 1.2.3
+Build Date UTC : 2021-10-19 19:44:21.555970+00:00
 -->

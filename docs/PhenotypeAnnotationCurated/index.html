@@ -94,7 +94,7 @@
                 <h1 id="class-phenotypeannotationcurated">Class: PhenotypeAnnotationCurated</h1>
 <p>An annotation asserting an association between a biological entity and a phenotype supported by evidence.</p>
 <p>URI: <a href="http://alliancegenome.orgPhenotypeAnnotationCurated">alliance:PhenotypeAnnotationCurated</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[PhenotypeAnnotationInferred],[PhenotypeAnnotationExperimentalConditionAssociation],[Reference]&lt;references%201..1-%20[PhenotypeAnnotationCurated&#124;curie:uriorcurie;date_assigned:date;object:string;table_key:integer%20%3F;creation_date:string%20%3F;date_last_modified:date%20%3F;predicate(i):string],[BiologicalEntity]&lt;subject%201..1-%20[PhenotypeAnnotationCurated],[Phenotype]&lt;phenotype_term%200..1-%20[PhenotypeAnnotationCurated],[PhenotypeAnnotationExperimentalConditionAssociation]-%20subject%201..1&gt;[PhenotypeAnnotationCurated],[PhenotypeAnnotationCurated]uses%20-.-&gt;[AuditedObject],[PhenotypeAnnotationCurated]^-[PhenotypeAnnotationInferred],[Association]^-[PhenotypeAnnotationCurated],[Phenotype],[Person],[BiologicalEntity],[AuditedObject],[Association]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[PhenotypeAnnotationInferred],[PhenotypeAnnotationExperimentalConditionAssociation],[Reference]&lt;references%201..1-%20[PhenotypeAnnotationCurated&#124;curie:uriorcurie;date_assigned:date;object:string;table_key:integer%20%3F;creation_date:string%20%3F;date_last_modified:date%20%3F;predicate(i):string],[BiologicalEntity]&lt;subject%201..1-%20[PhenotypeAnnotationCurated],[Phenotype]&lt;phenotype_term%200..1-%20[PhenotypeAnnotationCurated],[PhenotypeAnnotationExperimentalConditionAssociation]-%20subject%201..1&gt;[PhenotypeAnnotationCurated],[PhenotypeAnnotationCurated]uses%20-.-&gt;[AuditedObject],[PhenotypeAnnotationCurated]^-[PhenotypeAnnotationInferred],[Association]^-[PhenotypeAnnotationCurated],[Phenotype],[Person],[BiologicalEntity],[AuditedObject],[Association]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[PhenotypeAnnotationInferred],[PhenotypeAnnotationExperimentalConditionAssociation],[Reference]&lt;references%201..*-%20[PhenotypeAnnotationCurated&#124;curie:uriorcurie;date_assigned:date;object:string;table_key:integer%20%3F;creation_date:string%20%3F;date_last_modified:date%20%3F;predicate(i):string],[BiologicalEntity]&lt;subject%201..1-%20[PhenotypeAnnotationCurated],[Phenotype]&lt;phenotype_term%200..1-%20[PhenotypeAnnotationCurated],[PhenotypeAnnotationExperimentalConditionAssociation]-%20subject%201..1&gt;[PhenotypeAnnotationCurated],[PhenotypeAnnotationCurated]uses%20-.-&gt;[AuditedObject],[PhenotypeAnnotationCurated]^-[PhenotypeAnnotationInferred],[Association]^-[PhenotypeAnnotationCurated],[Phenotype],[Person],[BiologicalEntity],[AuditedObject],[Association]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[PhenotypeAnnotationInferred],[PhenotypeAnnotationExperimentalConditionAssociation],[Reference]&lt;references%201..*-%20[PhenotypeAnnotationCurated&#124;curie:uriorcurie;date_assigned:date;object:string;table_key:integer%20%3F;creation_date:string%20%3F;date_last_modified:date%20%3F;predicate(i):string],[BiologicalEntity]&lt;subject%201..1-%20[PhenotypeAnnotationCurated],[Phenotype]&lt;phenotype_term%200..1-%20[PhenotypeAnnotationCurated],[PhenotypeAnnotationExperimentalConditionAssociation]-%20subject%201..1&gt;[PhenotypeAnnotationCurated],[PhenotypeAnnotationCurated]uses%20-.-&gt;[AuditedObject],[PhenotypeAnnotationCurated]^-[PhenotypeAnnotationInferred],[Association]^-[PhenotypeAnnotationCurated],[Phenotype],[Person],[BiologicalEntity],[AuditedObject],[Association]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../Association/">Association</a> - A typed association between two entities, supported by evidence.</li>
@@ -105,7 +105,7 @@
 </ul>
 <h2 id="children">Children</h2>
 <ul>
-<li><a href="../PhenotypeAnnotationInferred/">PhenotypeAnnotationInferred</a> - A curated phenotype annotation (see class PhenotypeAnnotationCurated) for which inferences have been made to apply  additional information such as inferred gene or inferred allele.</li>
+<li><a href="../PhenotypeAnnotationInferred/">PhenotypeAnnotationInferred</a> - A curated phenotype annotation (see class PhenotypeAnnotationCurated) for which inferences have been made to apply additional information such as inferred gene or inferred allele.</li>
 </ul>
 <h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
@@ -141,7 +141,7 @@
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../PhenotypeAnnotationCurated_references/">PhenotypeAnnotationCurated➞references</a>  <sub>1..1</sub><ul>
+<li><a href="../PhenotypeAnnotationCurated_references/">PhenotypeAnnotationCurated➞references</a>  <sub>1..*</sub><ul>
 <li>Description: The reference in which the phenotype association was asserted/reported.</li>
 <li>Range: <a href="../Reference/">Reference</a></li>
 </ul>

@@ -104,14 +104,17 @@
 <h3 id="own">Own</h3>
 <ul>
 <li><a href="../DiseaseAnnotationExperimentalConditionAssociation_subject/">DiseaseAnnotationExperimentalConditionAssociation➞subject</a>  <sub>1..1</sub><ul>
+<li>Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.</li>
 <li>Range: <a href="../DiseaseAnnotation/">DiseaseAnnotation</a></li>
 </ul>
 </li>
 <li><a href="../DiseaseAnnotationExperimentalConditionAssociation_object/">DiseaseAnnotationExperimentalConditionAssociation➞object</a>  <sub>1..1</sub><ul>
+<li>Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.</li>
 <li>Range: <a href="../ExperimentalCondition/">ExperimentalCondition</a></li>
 </ul>
 </li>
 <li><a href="../DiseaseAnnotationExperimentalConditionAssociation_predicate/">DiseaseAnnotationExperimentalConditionAssociation➞predicate</a>  <sub>1..1</sub><ul>
+<li>Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.</li>
 <li>Range: <a href="../condition_relation_enum/">condition_relation_enum</a></li>
 </ul>
 </li>

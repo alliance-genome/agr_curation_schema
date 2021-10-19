@@ -94,7 +94,7 @@
                 <h1 id="class-geneinteraction">Class: GeneInteraction</h1>
 <p>An interaction between two genes or gene products; this may be a physical molecular interaction between gene products (e.g. protein-protein interactions), or may be a genetic interaction between genes (e.g. phenotypic suppression)</p>
 <p>URI: <a href="http://alliancegenome.orgGeneInteraction">alliance:GeneInteraction</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[GeneToGeneAssociation],[GeneMolecularInteraction],[Reference]&lt;references%200..1-%20[GeneInteraction&#124;curie:uriorcurie;data_provider:interaction_source_enum;interaction_type:interaction_type_enum;interactor_A_role:interactor_A_role_enum%20*;interactor_B_role:interactor_B_role_enum%20*;interactor_A_type:interactor_type_enum;interactor_B_type:interactor_type_enum;predicate:string],[Gene]&lt;object%201..1-%20[GeneInteraction],[Gene]&lt;subject%201..1-%20[GeneInteraction],[CrossReference]&lt;cross_references%200..*-%20[GeneInteraction],[GeneInteraction]^-[GeneMolecularInteraction],[GeneInteraction]^-[GeneGeneticInteraction],[GeneToGeneAssociation]^-[GeneInteraction],[GeneGeneticInteraction],[Gene],[CrossReference]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[GeneToGeneAssociation],[GeneMolecularInteraction],[Reference]&lt;references%200..1-%20[GeneInteraction&#124;curie:uriorcurie;data_provider:interaction_source_enum;interaction_type:interaction_type_enum;interactor_A_role:interactor_A_role_enum%20*;interactor_B_role:interactor_B_role_enum%20*;interactor_A_type:interactor_type_enum;interactor_B_type:interactor_type_enum;predicate:string],[Gene]&lt;object%201..1-%20[GeneInteraction],[Gene]&lt;subject%201..1-%20[GeneInteraction],[CrossReference]&lt;cross_references%200..*-%20[GeneInteraction],[GeneInteraction]^-[GeneMolecularInteraction],[GeneInteraction]^-[GeneGeneticInteraction],[GeneToGeneAssociation]^-[GeneInteraction],[GeneGeneticInteraction],[Gene],[CrossReference]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[GeneToGeneAssociation],[GeneMolecularInteraction],[Reference]&lt;references%200..*-%20[GeneInteraction&#124;curie:uriorcurie;data_provider:interaction_source_enum%20%2B;interaction_type:interaction_type_enum;interactor_A_role:interactor_A_role_enum%20*;interactor_B_role:interactor_B_role_enum%20*;interactor_A_type:interactor_type_enum;interactor_B_type:interactor_type_enum;predicate:string],[Gene]&lt;object%201..1-%20[GeneInteraction],[Gene]&lt;subject%201..1-%20[GeneInteraction],[CrossReference]&lt;cross_references%200..*-%20[GeneInteraction],[GeneInteraction]^-[GeneMolecularInteraction],[GeneInteraction]^-[GeneGeneticInteraction],[GeneToGeneAssociation]^-[GeneInteraction],[GeneGeneticInteraction],[Gene],[CrossReference]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[GeneToGeneAssociation],[GeneMolecularInteraction],[Reference]&lt;references%200..*-%20[GeneInteraction&#124;curie:uriorcurie;data_provider:interaction_source_enum%20%2B;interaction_type:interaction_type_enum;interactor_A_role:interactor_A_role_enum%20*;interactor_B_role:interactor_B_role_enum%20*;interactor_A_type:interactor_type_enum;interactor_B_type:interactor_type_enum;predicate:string],[Gene]&lt;object%201..1-%20[GeneInteraction],[Gene]&lt;subject%201..1-%20[GeneInteraction],[CrossReference]&lt;cross_references%200..*-%20[GeneInteraction],[GeneInteraction]^-[GeneMolecularInteraction],[GeneInteraction]^-[GeneGeneticInteraction],[GeneToGeneAssociation]^-[GeneInteraction],[GeneGeneticInteraction],[Gene],[CrossReference]" /></a></p>
 <h2 id="identifier-prefixes">Identifier prefixes</h2>
 <ul>
 <li>BIOGRID</li>
@@ -132,7 +132,7 @@
 <li>Range: <a href="../CrossReference/">CrossReference</a></li>
 </ul>
 </li>
-<li><a href="../GeneInteraction_data_provider/">GeneInteraction➞data_provider</a>  <sub>1..1</sub><ul>
+<li><a href="../GeneInteraction_data_provider/">GeneInteraction➞data_provider</a>  <sub>1..*</sub><ul>
 <li>Description: The database that curated the interaction. e.g. BioGRID</li>
 <li>Range: <a href="../interaction_source_enum/">interaction_source_enum</a></li>
 </ul>
@@ -159,18 +159,21 @@
 </ul>
 </li>
 <li><a href="../GeneInteraction_subject/">GeneInteraction➞subject</a>  <sub>1..1</sub><ul>
+<li>Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.</li>
 <li>Range: <a href="../Gene/">Gene</a></li>
 </ul>
 </li>
 <li><a href="../GeneInteraction_predicate/">GeneInteraction➞predicate</a>  <sub>1..1</sub><ul>
+<li>Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.</li>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
 <li><a href="../GeneInteraction_object/">GeneInteraction➞object</a>  <sub>1..1</sub><ul>
+<li>Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.</li>
 <li>Range: <a href="../Gene/">Gene</a></li>
 </ul>
 </li>
-<li><a href="../GeneInteraction_references/">GeneInteraction➞references</a>  <sub>0..1</sub><ul>
+<li><a href="../GeneInteraction_references/">GeneInteraction➞references</a>  <sub>0..*</sub><ul>
 <li>Description: The reference from which the interaction was annotated.</li>
 <li>Range: <a href="../Reference/">Reference</a></li>
 </ul>

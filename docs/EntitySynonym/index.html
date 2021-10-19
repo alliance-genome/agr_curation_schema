@@ -104,10 +104,12 @@
 <h3 id="own">Own</h3>
 <ul>
 <li><a href="../EntitySynonym_object/">EntitySynonym➞object</a>  <sub>1..1</sub><ul>
+<li>Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.</li>
 <li>Range: <a href="../Synonym/">Synonym</a></li>
 </ul>
 </li>
 <li><a href="../EntitySynonym_predicate/">EntitySynonym➞predicate</a>  <sub>1..1</sub><ul>
+<li>Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.</li>
 <li>Range: <a href="../entity_synonym_type_set/">entity_synonym_type_set</a></li>
 </ul>
 </li>
