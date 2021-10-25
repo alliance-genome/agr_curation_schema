@@ -281,4 +281,4 @@ $(PKG_T_JAVA)/%.java: target/java/%.java
 # JAVA_GEN_OPTS should hold the location of the generated java files that we expect, and the package name of the
 # java generator.
 target/java/%.java: $(SCHEMA_DIR)/%.yaml tdir-java install
-    $(RUN) gen-java $(JAVA_GEN_OPTS)  $< > $@
+	$(RUN) gen-java $(JAVA_GEN_OPTS)  $< > $@
