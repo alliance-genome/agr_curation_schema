@@ -35,6 +35,7 @@ PKG_T_SCHEMA = $(PKG_T_MODEL)/schema
 
 # Global generation options
 GEN_OPTS = --log_level WARNING
+JAVA_GEN_OPTS = --output_directory org/alliancegenome/curation/model --package org.alliancegenome.curation.model
 DDL_GEN_OPTS = --sqla-file target/sqla-files/
 ENV = export PIPENV_VENV_IN_PROJECT=true && export PIPENV_PIPFILE=make-venv/Pipfile && export PIPENV_IGNORE_VIRTUALENVS=1
 RUN = $(ENV) && pipenv run
@@ -271,5 +272,13 @@ gen-java: $(patsubst %, $(PKG_T_JAVA)/%.java, $(SCHEMA_NAMES))
 $(PKG_T_JAVA)/%.java: target/java/%.java
 	mkdir -p $(PKG_T_JAVA)
 	cp $< $@
+# this target is the workhorse
+# $< The filenames of all the prerequisites (which in this case is the target below), separated by spaces.
+# $@ The filename representing the target.
+# tdir-java is another target that removes the java directory and recreates it (like a rm -rf to start)
+# install in this case is another target which resets the venv/env.lock file to tell pipenv what to do.
+# $(RUN) is a variable to do the pipenv run command
+# JAVA_GEN_OPTS should hold the location of the generated java files that we expect, and the package name of the
+# java generator.
 target/java/%.java: $(SCHEMA_DIR)/%.yaml tdir-java install
-	$(RUN) gen-java $(GEN_OPTS)  $< > $@
+    $(RUN) gen-java $(JAVA_GEN_OPTS)  $< > $@
