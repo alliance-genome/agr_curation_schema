@@ -14,7 +14,7 @@ SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
 SCHEMA_NAME = allianceModel
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
 # PKG_TGTS = sqlddl-sqlalchemy
-PKG_TGTS = jsonld_context json_schema model sqlddl java
+PKG_TGTS = json_schema model sqlddl java
 TGTS = docs python $(PKG_TGTS)
 
 # Targets by PKG_TGT
