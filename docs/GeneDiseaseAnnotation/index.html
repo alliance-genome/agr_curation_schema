@@ -92,6 +92,7 @@
             <div class="section">
               
                 <h1 id="class-genediseaseannotation">Class: GeneDiseaseAnnotation</h1>
+<p>An annotation asserting an association between a gene and a disease supported by evidence.</p>
 <p>URI: <a href="http://alliancegenome.orgGeneDiseaseAnnotation">alliance:GeneDiseaseAnnotation</a></p>
 <p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Person],[Gene]&lt;subject%201..1-%20[GeneDiseaseAnnotation&#124;predicate:gene_disease_relation_enum;curie(i):uriorcurie;negated(i):boolean%20%3F;disease_qualifiers(i):disease_annotation_qualifier_enum%20%3F;genetic_sex(i):genetic_sex_enum%20%3F;private_note(i):string%20%3F;disease_annotation_note(i):string%20%3F;disease_annotation_summary(i):string%20%3F;data_provider(i):string%20%2B;disease_genetic_modifier_relation(i):genetic_modifier_relation_enum%20%3F;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[AffectedGenomicModel]&lt;sgd_strain_background%200..1-%20[GeneDiseaseAnnotation],[DiseaseAnnotation]^-[GeneDiseaseAnnotation],[Gene],[ECOTerm],[DiseaseAnnotation],[DOTerm],[BiologicalEntity],[AffectedGenomicModel]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Person],[Gene]&lt;subject%201..1-%20[GeneDiseaseAnnotation&#124;predicate:gene_disease_relation_enum;curie(i):uriorcurie;negated(i):boolean%20%3F;disease_qualifiers(i):disease_annotation_qualifier_enum%20%3F;genetic_sex(i):genetic_sex_enum%20%3F;private_note(i):string%20%3F;disease_annotation_note(i):string%20%3F;disease_annotation_summary(i):string%20%3F;data_provider(i):string%20%2B;disease_genetic_modifier_relation(i):genetic_modifier_relation_enum%20%3F;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[AffectedGenomicModel]&lt;sgd_strain_background%200..1-%20[GeneDiseaseAnnotation],[DiseaseAnnotation]^-[GeneDiseaseAnnotation],[Gene],[ECOTerm],[DiseaseAnnotation],[DOTerm],[BiologicalEntity],[AffectedGenomicModel]" /></a></p>
 <h2 id="parents">Parents</h2>
@@ -112,7 +113,7 @@
 </ul>
 </li>
 <li><a href="../GeneDiseaseAnnotation_predicate/">GeneDiseaseAnnotation➞predicate</a>  <sub>1..1</sub><ul>
-<li>Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.</li>
+<li>Description: The relationship between gene and disease.</li>
 <li>Range: <a href="../gene_disease_relation_enum/">gene_disease_relation_enum</a></li>
 </ul>
 </li>
@@ -135,6 +136,7 @@
 </ul>
 </li>
 <li><a href="../DiseaseAnnotation_evidence_codes/">DiseaseAnnotation➞evidence_codes</a>  <sub>1..*</sub><ul>
+<li>Description: ECO term IDs</li>
 <li>Range: <a href="../ECOTerm/">ECOTerm</a></li>
 </ul>
 </li>

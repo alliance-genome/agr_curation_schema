@@ -128,9 +128,9 @@
 <li><a href="Assembly/">Assembly</a></li>
 <li><a href="Association/">Association</a> - A typed association between two entities, supported by evidence.<ul>
 <li><a href="DiseaseAnnotation/">DiseaseAnnotation</a> - An annotation asserting an association between a biological entity and a disease supported by evidence.<ul>
-<li><a href="AGMDiseaseAnnotation/">AGMDiseaseAnnotation</a></li>
-<li><a href="AlleleDiseaseAnnotation/">AlleleDiseaseAnnotation</a></li>
-<li><a href="GeneDiseaseAnnotation/">GeneDiseaseAnnotation</a></li>
+<li><a href="AGMDiseaseAnnotation/">AGMDiseaseAnnotation</a> - An annotation asserting an association between an AGM and a disease supported by evidence.</li>
+<li><a href="AlleleDiseaseAnnotation/">AlleleDiseaseAnnotation</a> - An annotation asserting an association between an allele and a disease supported by evidence.</li>
+<li><a href="GeneDiseaseAnnotation/">GeneDiseaseAnnotation</a> - An annotation asserting an association between a gene and a disease supported by evidence.</li>
 </ul>
 </li>
 <li><a href="DiseaseAnnotationExperimentalConditionAssociation/">DiseaseAnnotationExperimentalConditionAssociation</a> - A typed (predicate-specified) association between a disease annotation object and an experimental condition object</li>
@@ -295,9 +295,9 @@
 <li><a href="predicate/">predicate</a> - A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.<ul>
 <li><a href="DiseaseAnnotationExperimentalConditionAssociation_predicate/">DiseaseAnnotationExperimentalConditionAssociation➞predicate</a></li>
 <li><a href="DiseaseAnnotation_predicate/">DiseaseAnnotation➞predicate</a> - Constrains the disease subject, associationType and inferredGeneAssociation.<ul>
-<li><a href="AGMDiseaseAnnotation_predicate/">AGMDiseaseAnnotation➞predicate</a> - A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.</li>
-<li><a href="AlleleDiseaseAnnotation_predicate/">AlleleDiseaseAnnotation➞predicate</a> - A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.</li>
-<li><a href="GeneDiseaseAnnotation_predicate/">GeneDiseaseAnnotation➞predicate</a> - A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.</li>
+<li><a href="AGMDiseaseAnnotation_predicate/">AGMDiseaseAnnotation➞predicate</a> - The relationship between AGM and disease.</li>
+<li><a href="AlleleDiseaseAnnotation_predicate/">AlleleDiseaseAnnotation➞predicate</a> - The relationship between allele and disease.</li>
+<li><a href="GeneDiseaseAnnotation_predicate/">GeneDiseaseAnnotation➞predicate</a> - The relationship between gene and disease.</li>
 </ul>
 </li>
 <li><a href="EntitySynonym_predicate/">EntitySynonym➞predicate</a></li>
@@ -312,8 +312,8 @@
 <li><a href="subject/">subject</a> - connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.<ul>
 <li><a href="DiseaseAnnotationExperimentalConditionAssociation_subject/">DiseaseAnnotationExperimentalConditionAssociation➞subject</a></li>
 <li><a href="DiseaseAnnotation_subject/">DiseaseAnnotation➞subject</a> - The biological entity to which the disease ontology term is associated.<ul>
-<li><a href="AGMDiseaseAnnotation_subject/">AGMDiseaseAnnotation➞subject</a> - connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.</li>
-<li><a href="AlleleDiseaseAnnotation_subject/">AlleleDiseaseAnnotation➞subject</a> - connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.</li>
+<li><a href="AGMDiseaseAnnotation_subject/">AGMDiseaseAnnotation➞subject</a> - The AGM to which the disease ontology term is associated.</li>
+<li><a href="AlleleDiseaseAnnotation_subject/">AlleleDiseaseAnnotation➞subject</a> - The gene to which the disease ontology term is associated.</li>
 <li><a href="GeneDiseaseAnnotation_subject/">GeneDiseaseAnnotation➞subject</a> - The gene to which the disease ontology term is associated.</li>
 </ul>
 </li>
@@ -440,7 +440,6 @@
 <li><a href="disease_genetic_modifier/">disease_genetic_modifier</a> - Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.</li>
 <li><a href="disease_genetic_modifier_relation/">disease_genetic_modifier_relation</a> - A relation describing how the genetic modifier modifies the disease model.</li>
 <li><a href="disease_qualifiers/">disease_qualifiers</a></li>
-<li><a href="disease_relation/">disease_relation</a></li>
 <li><a href="display_name/">display_name</a></li>
 <li><a href="display_synonym/">display_synonym</a> - Placeholder.</li>
 <li><a href="editors/">editors</a> - holds between a resource and a editor_resource</li>
@@ -450,7 +449,7 @@
 </li>
 <li><a href="embryonic_stem_cell_lines/">embryonic_stem_cell_lines</a> - Embryonic stem cell lines known to carry the allele</li>
 <li><a href="end/">end</a> - The end of the feature in positive 1-based integer coordinates</li>
-<li><a href="evidence_codes/">evidence_codes</a><ul>
+<li><a href="evidence_codes/">evidence_codes</a> - ECO term IDs<ul>
 <li><a href="DiseaseAnnotation_evidence_codes/">DiseaseAnnotation➞evidence_codes</a></li>
 </ul>
 </li>
@@ -702,8 +701,8 @@
 <h3 id="enums">Enums</h3>
 <ul>
 <li><a href="aggregation_database_enum/">aggregation_database_enum</a></li>
-<li><a href="agm_disease_relation_enum/">agm_disease_relation_enum</a></li>
-<li><a href="allele_disease_relation_enum/">allele_disease_relation_enum</a></li>
+<li><a href="agm_disease_relation_enum/">agm_disease_relation_enum</a> - Permissible values describing the relationship between gene and disease.</li>
+<li><a href="allele_disease_relation_enum/">allele_disease_relation_enum</a> - Permissible values describing the relationship between allele and disease.</li>
 <li><a href="antibody_clonality_set/">antibody_clonality_set</a></li>
 <li><a href="antibody_note_type_set/">antibody_note_type_set</a></li>
 <li><a href="component_relations_enum/">component_relations_enum</a></li>
@@ -711,11 +710,10 @@
 <li><a href="database_statuses/">database_statuses</a></li>
 <li><a href="detection_methods_enum/">detection_methods_enum</a></li>
 <li><a href="disease_annotation_qualifier_enum/">disease_annotation_qualifier_enum</a></li>
-<li><a href="disease_relation_enum/">disease_relation_enum</a></li>
 <li><a href="entity_synonym_type_set/">entity_synonym_type_set</a></li>
-<li><a href="gene_disease_relation_enum/">gene_disease_relation_enum</a></li>
-<li><a href="genetic_modifier_relation_enum/">genetic_modifier_relation_enum</a></li>
-<li><a href="genetic_sex_enum/">genetic_sex_enum</a></li>
+<li><a href="gene_disease_relation_enum/">gene_disease_relation_enum</a> - Permissible values describing the relationship between gene and disease.</li>
+<li><a href="genetic_modifier_relation_enum/">genetic_modifier_relation_enum</a> - Permissible values for describing how a genetic object modifies the disease model.</li>
+<li><a href="genetic_sex_enum/">genetic_sex_enum</a> - Permissible values for the genetic sex.</li>
 <li><a href="heavy_chain_isotype_set/">heavy_chain_isotype_set</a></li>
 <li><a href="interaction_source_enum/">interaction_source_enum</a></li>
 <li><a href="interaction_type_enum/">interaction_type_enum</a></li>
@@ -830,5 +828,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2021-10-25 21:36:49.133740+00:00
+Build Date UTC : 2021-10-28 15:33:32.931252+00:00
 -->

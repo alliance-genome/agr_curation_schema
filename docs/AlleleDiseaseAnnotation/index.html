@@ -92,6 +92,7 @@
             <div class="section">
               
                 <h1 id="class-allelediseaseannotation">Class: AlleleDiseaseAnnotation</h1>
+<p>An annotation asserting an association between an allele and a disease supported by evidence.</p>
 <p>URI: <a href="http://alliancegenome.orgAlleleDiseaseAnnotation">alliance:AlleleDiseaseAnnotation</a></p>
 <p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Person],[Gene],[ECOTerm],[DiseaseAnnotation],[DOTerm],[BiologicalEntity],[Allele]&lt;subject%201..1-%20[AlleleDiseaseAnnotation&#124;predicate:allele_disease_relation_enum;curie(i):uriorcurie;negated(i):boolean%20%3F;disease_qualifiers(i):disease_annotation_qualifier_enum%20%3F;genetic_sex(i):genetic_sex_enum%20%3F;private_note(i):string%20%3F;disease_annotation_note(i):string%20%3F;disease_annotation_summary(i):string%20%3F;data_provider(i):string%20%2B;disease_genetic_modifier_relation(i):genetic_modifier_relation_enum%20%3F;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[Gene]&lt;inferred_gene%200..1-%20[AlleleDiseaseAnnotation],[DiseaseAnnotation]^-[AlleleDiseaseAnnotation],[Allele]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Person],[Gene],[ECOTerm],[DiseaseAnnotation],[DOTerm],[BiologicalEntity],[Allele]&lt;subject%201..1-%20[AlleleDiseaseAnnotation&#124;predicate:allele_disease_relation_enum;curie(i):uriorcurie;negated(i):boolean%20%3F;disease_qualifiers(i):disease_annotation_qualifier_enum%20%3F;genetic_sex(i):genetic_sex_enum%20%3F;private_note(i):string%20%3F;disease_annotation_note(i):string%20%3F;disease_annotation_summary(i):string%20%3F;data_provider(i):string%20%2B;disease_genetic_modifier_relation(i):genetic_modifier_relation_enum%20%3F;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[Gene]&lt;inferred_gene%200..1-%20[AlleleDiseaseAnnotation],[DiseaseAnnotation]^-[AlleleDiseaseAnnotation],[Allele]" /></a></p>
 <h2 id="parents">Parents</h2>
@@ -108,12 +109,12 @@
 </ul>
 </li>
 <li><a href="../AlleleDiseaseAnnotation_subject/">AlleleDiseaseAnnotation➞subject</a>  <sub>1..1</sub><ul>
-<li>Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.</li>
+<li>Description: The gene to which the disease ontology term is associated.</li>
 <li>Range: <a href="../Allele/">Allele</a></li>
 </ul>
 </li>
 <li><a href="../AlleleDiseaseAnnotation_predicate/">AlleleDiseaseAnnotation➞predicate</a>  <sub>1..1</sub><ul>
-<li>Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.</li>
+<li>Description: The relationship between allele and disease.</li>
 <li>Range: <a href="../allele_disease_relation_enum/">allele_disease_relation_enum</a></li>
 </ul>
 </li>
@@ -136,6 +137,7 @@
 </ul>
 </li>
 <li><a href="../DiseaseAnnotation_evidence_codes/">DiseaseAnnotation➞evidence_codes</a>  <sub>1..*</sub><ul>
+<li>Description: ECO term IDs</li>
 <li>Range: <a href="../ECOTerm/">ECOTerm</a></li>
 </ul>
 </li>
