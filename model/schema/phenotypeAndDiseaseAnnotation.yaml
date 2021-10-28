@@ -120,7 +120,7 @@ classes:
       - evidence_codes
       - annotation_reference
       - with # what constrains this?  what is gene+with=strain?
-      - disease_qualifiers # what is the enumeration that constrains this?
+      - disease_qualifiers
       - genetic_sex # does this really belong at the top level?
       - private_note # we should probably pull this out into a _private_ note object.
       - disease_annotation_note # we should probably pull this out into a note object.
@@ -138,7 +138,6 @@ classes:
         required: true
         description: >-
           Constrains the disease subject, associationType and inferredGeneAssociation.
-        range: disease_relation_enum
       negated:
         description: >-
           The negative qualifier for the annotation.
@@ -166,8 +165,10 @@ classes:
         range: genetic_sex_enum
 
   GeneDiseaseAnnotation:
+    description: >-
+      An annotation asserting an association between a gene and a disease
+      supported by evidence.
     is_a: DiseaseAnnotation
-    description:
     slots:
       - sgd_strain_background
     slot_usage:
@@ -177,17 +178,24 @@ classes:
           The gene to which the disease ontology term is associated.
         range: Gene
       predicate:
+        description: The relationship between gene and disease.
         required: true
         range: gene_disease_relation_enum
 
   AlleleDiseaseAnnotation:
+    description: >-
+      An annotation asserting an association between an allele
+      and a disease supported by evidence.
     is_a: DiseaseAnnotation
     slots:
       - inferred_gene
     slot_usage:
       subject:
+        description: >-
+          The gene to which the disease ontology term is associated.
         range: Allele
       predicate:
+        description: The relationship between allele and disease.
         range: allele_disease_relation_enum
         required: true
       inferred_gene:
@@ -197,14 +205,20 @@ classes:
         range: Gene
 
   AGMDiseaseAnnotation:
+    description: >-
+      An annotation asserting an association between an AGM and a disease
+      supported by evidence.
     is_a: DiseaseAnnotation
     slots:
       - inferred_allele
       - inferred_gene
     slot_usage:
       subject:
+        description: >-
+          The AGM to which the disease ontology term is associated.
         range: AffectedGenomicModel
       predicate:
+        description: The relationship between AGM and disease.
         range: agm_disease_relation_enum
         required: true
       inferred_gene:
@@ -409,10 +423,8 @@ slots:
   date_assigned:                  # same as 'date_produced' in core.yaml?
     range: date
 
-  disease_relation:
-    range: disease_relation_enum
-
-  evidence_codes:              # this slot has also been instantiated in the orthology.yaml
+  evidence_codes:
+    description: ECO term IDs             # this slot has also been instantiated in the orthology.yaml
     multivalued: true
     values_from:
       - ECO
@@ -541,34 +553,37 @@ enums:
       ameliorated_by:
       exacerbated_by:
 
-  disease_relation_enum:
-    permissible_values:
-      is_model_of:
-      is_implicated_in:
-      is_marker_for:
-      implicated_via_orthology:             # this would not be manually assigned but computationally
-      biomarker_via_orthology:              # this would not be manually assigned but computationally
-
   gene_disease_relation_enum:
+    description: >-
+      Permissible values describing the relationship between gene and disease.
     permissible_values:
       is_implicated_in:
       is_marker_for:
 
   allele_disease_relation_enum:
+    description: >-
+      Permissible values describing the relationship between allele and disease.
     permissible_values:
       is_implicated_in:
 
   agm_disease_relation_enum:
+    description: >-
+      Permissible values describing the relationship between gene and disease.
     permissible_values:
       is_model_of:
 
   genetic_sex_enum:
+    description: >-
+      Permissible values for the genetic sex.
     permissible_values:
       male:
       female:
       hermaphrodite:
 
   genetic_modifier_relation_enum:
+    description: >-
+      Permissible values for describing how a genetic object modifies the
+      disease model.
     permissible_values:
       ameliorated_by:
       not_ameliorated_by:
