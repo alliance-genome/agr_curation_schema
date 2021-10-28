@@ -369,6 +369,20 @@ classes:
       predicate:
         range: condition_relation_enum
 
+  Molecule:
+    description: >-
+      Molecules as described by WormBase
+    slots:
+      - curie
+      - name
+      - inchi
+      - inchi_key
+      - iupac
+      - formula
+      - smiles
+      - synonyms
+      - cross_references
+
 ## ------------
 ## SLOTS
 ## ------------
@@ -539,6 +553,31 @@ slots:
     inverse: exacerbated_by
     domain: ExperimentalCondition
     range: Entity
+
+  inchi:
+    description: InChi style description of the molecule
+    domain: Molecule
+    range: string
+
+  inchi_key:
+    description: InChi key description of the molecule
+    domain: Molecule
+    range: string
+
+  iupac:
+    description: IUPAC name of the molecule
+    domain: Molecule
+    range: string
+
+  formula:
+    description: Formula of the molecule
+    domain: Molecule
+    range: string
+
+  smiles:
+    description: Molecular structure in SMILES format
+    domain: Molecule
+    range: string
 
 ## ------------
 ## ENUMS
