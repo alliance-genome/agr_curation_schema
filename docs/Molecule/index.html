@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Slot: curie - Model to describe the Alliance curation/persistence data store</title>
+  <title>Class: Molecule - Model to describe the Alliance curation/persistence data store</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Slot: curie";
-    var mkdocs_page_input_path = "curie.md";
+    var mkdocs_page_name = "Class: Molecule";
+    var mkdocs_page_input_path = "Molecule.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Slot: curie</li>
+    <li>Class: Molecule</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,71 +91,59 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="slot-curie">Slot: curie</h1>
-<p>A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI</p>
-<p>URI: <a href="http://alliancegenome.orgcurie">alliance:curie</a></p>
-<h2 id="domain-and-range">Domain and Range</h2>
-<p>None &#8594;  <sub>1..1</sub> <a href="../Uriorcurie/">Uriorcurie</a></p>
-<h2 id="parents">Parents</h2>
-<h2 id="children">Children</h2>
+                <h1 id="class-molecule">Class: Molecule</h1>
+<p>Molecules as described by WormBase</p>
+<p>URI: <a href="http://alliancegenome.orgMolecule">alliance:Molecule</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Synonym],[CrossReference]&lt;cross_references%200..*-%20[Molecule&#124;curie:uriorcurie;name:string%20%3F;inchi:string%20%3F;inchi_key:string%20%3F;iupac:string%20%3F;formula:string%20%3F;smiles:string%20%3F],[Synonym]&lt;synonyms%200..*-++[Molecule],[CrossReference]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Synonym],[CrossReference]&lt;cross_references%200..*-%20[Molecule&#124;curie:uriorcurie;name:string%20%3F;inchi:string%20%3F;inchi_key:string%20%3F;iupac:string%20%3F;formula:string%20%3F;smiles:string%20%3F],[Synonym]&lt;synonyms%200..*-++[Molecule],[CrossReference]" /></a></p>
+<h2 id="referenced-by-class">Referenced by Class</h2>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
 <ul>
-<li><a href="../Antibody_curie/">Antibody➞curie</a></li>
-<li><a href="../GeneInteraction_curie/">GeneInteraction➞curie</a></li>
+<li><a href="../curie/">curie</a>  <sub>1..1</sub><ul>
+<li>Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
-<h2 id="used-by">Used by</h2>
-<ul>
-<li><a href="../AGMDiseaseAnnotation/">AGMDiseaseAnnotation</a></li>
-<li><a href="../AffectedGenomicModel/">AffectedGenomicModel</a></li>
-<li><a href="../Allele/">Allele</a></li>
-<li><a href="../AlleleDiseaseAnnotation/">AlleleDiseaseAnnotation</a></li>
-<li><a href="../AnatomicalTerm/">AnatomicalTerm</a></li>
-<li><a href="../Assembly/">Assembly</a></li>
-<li><a href="../BiologicalEntity/">BiologicalEntity</a></li>
-<li><a href="../CHEBITerm/">CHEBITerm</a></li>
-<li><a href="../CLTerm/">CLTerm</a></li>
-<li><a href="../Chromosome/">Chromosome</a></li>
-<li><a href="../Construct/">Construct</a></li>
-<li><a href="../ConstructComponent/">ConstructComponent</a></li>
-<li><a href="../CrossReference/">CrossReference</a></li>
-<li><a href="../DOTerm/">DOTerm</a></li>
-<li><a href="../Disease/">Disease</a></li>
-<li><a href="../DiseaseAnnotation/">DiseaseAnnotation</a></li>
-<li><a href="../ECOTerm/">ECOTerm</a></li>
-<li><a href="../EMAPATerm/">EMAPATerm</a></li>
-<li><a href="../ExperimentalCondition/">ExperimentalCondition</a></li>
-<li><a href="../ExperimentalConditionOntologyTerm/">ExperimentalConditionOntologyTerm</a></li>
-<li><a href="../FBBTTerm/">FBBTTerm</a></li>
-<li><a href="../FBCVTerm/">FBCVTerm</a></li>
-<li><a href="../FBDVTerm/">FBDVTerm</a></li>
-<li><a href="../Figure/">Figure</a></li>
-<li><a href="../GOTerm/">GOTerm</a></li>
-<li><a href="../Gene/">Gene</a></li>
-<li><a href="../GeneDiseaseAnnotation/">GeneDiseaseAnnotation</a></li>
-<li><a href="../GenomicEntity/">GenomicEntity</a></li>
-<li><a href="../Image/">Image</a></li>
-<li><a href="../InformationContentEntity/">InformationContentEntity</a></li>
-<li><a href="../MATerm/">MATerm</a></li>
-<li><a href="../MITerm/">MITerm</a></li>
-<li><a href="../MMOTerm/">MMOTerm</a></li>
-<li><a href="../MMUSDVTerm/">MMUSDVTerm</a></li>
-<li><a href="../Molecule/">Molecule</a></li>
-<li><a href="../OntologyTerm/">OntologyTerm</a></li>
-<li><a href="../Phenotype/">Phenotype</a></li>
-<li><a href="../PhenotypeAnnotationCurated/">PhenotypeAnnotationCurated</a></li>
-<li><a href="../PhenotypeAnnotationInferred/">PhenotypeAnnotationInferred</a></li>
-<li><a href="../Reference/">Reference</a></li>
-<li><a href="../Resource/">Resource</a></li>
-<li><a href="../SOTerm/">SOTerm</a></li>
-<li><a href="../StageTerm/">StageTerm</a></li>
-<li><a href="../Transcript/">Transcript</a></li>
-<li><a href="../UBERONTerm/">UBERONTerm</a></li>
-<li><a href="../Variant/">Variant</a></li>
-<li><a href="../WBBTTerm/">WBBTTerm</a></li>
-<li><a href="../WBLSTerm/">WBLSTerm</a></li>
-<li><a href="../XCOTerm/">XCOTerm</a></li>
-<li><a href="../ZECOTerm/">ZECOTerm</a></li>
-<li><a href="../ZFATerm/">ZFATerm</a></li>
-<li><a href="../ZFSTerm/">ZFSTerm</a></li>
+</li>
+<li><a href="../name/">name</a>  <sub>0..1</sub><ul>
+<li>Description: a human-readable name for an entity</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../inchi/">inchi</a>  <sub>0..1</sub><ul>
+<li>Description: InChi style description of the molecule</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../inchi_key/">inchi_key</a>  <sub>0..1</sub><ul>
+<li>Description: InChi key description of the molecule</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../iupac/">iupac</a>  <sub>0..1</sub><ul>
+<li>Description: IUPAC name of the molecule</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../formula/">formula</a>  <sub>0..1</sub><ul>
+<li>Description: Formula of the molecule</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../smiles/">smiles</a>  <sub>0..1</sub><ul>
+<li>Description: Molecular structure in SMILES format</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../synonyms/">synonyms</a>  <sub>0..*</sub><ul>
+<li>Description: holds between a named thing and a synonym</li>
+<li>Range: <a href="../Synonym/">Synonym</a></li>
+</ul>
+</li>
+<li><a href="../cross_references/">cross_references</a>  <sub>0..*</sub><ul>
+<li>Description: Holds between an object and its CrossReferences.</li>
+<li>Range: <a href="../CrossReference/">CrossReference</a></li>
+</ul>
+</li>
 </ul>
               
             </div>
