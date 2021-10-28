@@ -90,7 +90,7 @@ classes:
   PhenotypeAnnotationInferred:
     is_a: PhenotypeAnnotationCurated
     description: >-
-      A curated phenotype annotation (see class PhenotypeAnnotationCurated) for which inferences have been made to apply 
+      A curated phenotype annotation (see class PhenotypeAnnotationCurated) for which inferences have been made to apply
       additional information such as inferred gene or inferred allele.
     slots:
       - inferred_gene
@@ -369,6 +369,20 @@ classes:
       predicate:
         range: condition_relation_enum
 
+  Molecule:
+    description: >-
+      Molecules as described by WormBase
+    slots:
+      - curie
+      - name
+      - inchi
+      - inchi_key
+      - iupac
+      - formula
+      - smiles
+      - synonyms
+      - cross_references
+
 ## ------------
 ## SLOTS
 ## ------------
@@ -436,7 +450,7 @@ slots:
     description: >-
       The gene to which something is inferred to be associated.
     range: Gene
-    
+
   inferred_allele:
     description: >-
       The allele to which something is inferred to be associated.
@@ -553,7 +567,7 @@ slots:
   ameliorates:
     is_a: related_to
     symmetric: false
-    inverse: ameliorated_by    
+    inverse: ameliorated_by
     domain: ExperimentalCondition
     range: Entity
 
@@ -566,9 +580,34 @@ slots:
   exacerbates:
     is_a: related_to
     symmetric: false
-    inverse: exacerbated_by    
+    inverse: exacerbated_by
     domain: ExperimentalCondition
     range: Entity
+
+  inchi:
+    description: InChi style description of the molecule
+    domain: Molecule
+    range: string
+
+  inchi_key:
+    description: InChi key description of the molecule
+    domain: Molecule
+    range: string
+
+  iupac:
+    description: IUPAC name of the molecule
+    domain: Molecule
+    range: string
+
+  formula:
+    description: Formula of the molecule
+    domain: Molecule
+    range: string
+
+  smiles:
+    description: Molecular structure in SMILES format
+    domain: Molecule
+    range: string
 
 ## ------------
 ## ENUMS
@@ -624,4 +663,3 @@ enums:
       sexual_dimorphism:
       resistance:
       penetrance:
-
