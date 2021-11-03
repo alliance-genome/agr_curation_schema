@@ -46,6 +46,7 @@ classes:
       - curie
       - phenotype_term                    # phenotypeTermIdentifiers in JSON schema
       - date_assigned                     # dateAssigned in JSON schema
+      - condition_relations
     slot_usage:
       subject:                            # objectId in JSON schema
         description: >-
@@ -121,6 +122,7 @@ classes:
       - annotation_reference
       - with # what constrains this?  what is gene+with=strain?
       - disease_qualifiers
+      - condition_relations
       - genetic_sex # does this really belong at the top level?
       - private_note # we should probably pull this out into a _private_ note object.
       - disease_annotation_note # we should probably pull this out into a note object.
@@ -326,40 +328,20 @@ classes:
       - APO
       - FBcv
 
-
-  PhenotypeAnnotationExperimentalConditionAssociation:
-    is_a: Association
+  ConditionRelation:
     description: >-
-      A typed (predicate-specified) association between a phenotype annotation object
-      and an experimental condition object
-    defining_slots:
-      - subject        # phenotype_annotation
-      - object      # experimental_condition
-      - predicate
+      A pairing of an experimental condition relation (i.e. has_condition) with a list of 1 or more
+      ExperimentalCondition objects. Annotation objects can connect directly to a set of 0 or more
+      of these ConditionRelation objects via a 'condition_relations' slot to express the experimental
+      conditions relevant to the annotation.
+    slots:
+      - curie
+      - condition_relation_type
+      - conditions
     slot_usage:
-      subject:
-        range: PhenotypeAnnotationCurated
-      object:
-        range: ExperimentalCondition
-      predicate:
-        range: condition_relation_enum
-
-  DiseaseAnnotationExperimentalConditionAssociation:
-    is_a: Association
-    description: >-
-      A typed (predicate-specified) association between a disease annotation object
-      and an experimental condition object
-    defining_slots:
-      - subject        # disease_annotation
-      - object      # experimental_condition
-      - predicate
-    slot_usage:
-      subject:
-        range: DiseaseAnnotation # should this just be for one kind of biological entity disease annotation.
-      object:
-        range: ExperimentalCondition
-      predicate:
-        range: condition_relation_enum
+      - condition_relation_type:
+          required: true
+          multivalued: false
 
   Molecule:
     description: >-
@@ -425,6 +407,17 @@ slots:
     range: uriorcurie                     # Update to Taxon if such a class is instantiated
     values_from:
       - NCBITaxon
+
+  condition_relations:
+    range: ConditionRelation
+    multivalued: true
+
+  condition_relation_type:
+    range: condition_relation_enum
+
+  conditions:
+    range: ExperimentalCondition
+    multivalued: true
 
   date_assigned:                  # same as 'date_produced' in core.yaml?
     range: date
@@ -581,8 +574,11 @@ enums:
     permissible_values:
       has_condition:
       induced_by:
+      not_induced_by:
       ameliorated_by:
+      not_ameliorated_by:
       exacerbated_by:
+      not_exacerbated_by:
 
   gene_disease_relation_enum:
     description: >-
