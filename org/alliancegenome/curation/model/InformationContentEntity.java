@@ -11,10 +11,5 @@ import lombok.*;
 public abstractclass InformationContentEntity  {
 
   private String curie;
-  private Integer tableKey;
-  private Person producedBy;
-  private String creationDate;
-  private Person modifiedBy;
-  private String dateLastModified;
 
 }

@@ -133,7 +133,6 @@
 <li><a href="GeneDiseaseAnnotation/">GeneDiseaseAnnotation</a> - An annotation asserting an association between a gene and a disease supported by evidence.</li>
 </ul>
 </li>
-<li><a href="DiseaseAnnotationExperimentalConditionAssociation/">DiseaseAnnotationExperimentalConditionAssociation</a> - A typed (predicate-specified) association between a disease annotation object and an experimental condition object</li>
 <li><a href="EntitySynonym/">EntitySynonym</a> - A relationship between an entity and a synonym.</li>
 <li><a href="GeneToGeneAssociation/">GeneToGeneAssociation</a> - abstract parent class for different kinds of gene-gene or gene product to gene product relationships. Includes homology and interaction.<ul>
 <li><a href="GeneInteraction/">GeneInteraction</a> - An interaction between two genes or gene products; this may be a physical molecular interaction between gene products (e.g. protein-protein interactions), or may be a genetic interaction between genes (e.g. phenotypic suppression)<ul>
@@ -147,7 +146,6 @@
 <li><a href="PhenotypeAnnotationInferred/">PhenotypeAnnotationInferred</a> - A curated phenotype annotation (see class PhenotypeAnnotationCurated) for which inferences have been made to apply additional information such as inferred gene or inferred allele.</li>
 </ul>
 </li>
-<li><a href="PhenotypeAnnotationExperimentalConditionAssociation/">PhenotypeAnnotationExperimentalConditionAssociation</a> - A typed (predicate-specified) association between a phenotype annotation object and an experimental condition object</li>
 </ul>
 </li>
 <li><a href="AuthorReference/">AuthorReference</a></li>
@@ -167,7 +165,7 @@
 </li>
 <li><a href="CellLine/">CellLine</a> - Dummy cell line class</li>
 <li><a href="Chromosome/">Chromosome</a> - The ID of the landmark used to establish the coordinate system for the current feature.</li>
-<li><a href="Disease/">Disease</a></li>
+<li><a href="ConditionRelation/">ConditionRelation</a> - A pairing of an experimental condition relation (i.e. has_condition) with a list of 1 or more ExperimentalCondition objects. Annotation objects can connect directly to a set of 0 or more of these ConditionRelation objects via a 'condition_relations' slot to express the experimental conditions relevant to the annotation.</li>
 <li><a href="Entity/">Entity</a></li>
 <li><a href="EntityStatement/">EntityStatement</a> - Free-text describing some aspect of an entity.<ul>
 <li><a href="AntibodyNote/">AntibodyNote</a></li>
@@ -278,7 +276,6 @@
 <li><a href="interactor_B_role/">interactor_B_role</a></li>
 <li><a href="interactor_B_type/">interactor_B_type</a></li>
 <li><a href="object/">object</a> - connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.<ul>
-<li><a href="DiseaseAnnotationExperimentalConditionAssociation_object/">DiseaseAnnotationExperimentalConditionAssociation➞object</a></li>
 <li><a href="DiseaseAnnotation_object/">DiseaseAnnotation➞object</a> - The disease ontology term.</li>
 <li><a href="EntitySynonym_object/">EntitySynonym➞object</a></li>
 <li><a href="GeneGenomicLocation_object/">GeneGenomicLocation➞object</a> - object should be the chromosome identifier</li>
@@ -287,14 +284,12 @@
 </ul>
 </li>
 <li><a href="PhenotypeAnnotationCurated_object/">PhenotypeAnnotationCurated➞object</a> - phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed statement of the phenotype from a post-composed terminology</li>
-<li><a href="PhenotypeAnnotationExperimentalConditionAssociation_object/">PhenotypeAnnotationExperimentalConditionAssociation➞object</a></li>
 <li><a href="VariantGeneConsequence_object/">VariantGeneConsequence➞object</a></li>
 <li><a href="VariantGenomicLocation_object/">VariantGenomicLocation➞object</a> - object should be the chromosome identifier</li>
 <li><a href="VariantTranscriptConsequence_object/">VariantTranscriptConsequence➞object</a></li>
 </ul>
 </li>
 <li><a href="predicate/">predicate</a> - A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.<ul>
-<li><a href="DiseaseAnnotationExperimentalConditionAssociation_predicate/">DiseaseAnnotationExperimentalConditionAssociation➞predicate</a></li>
 <li><a href="DiseaseAnnotation_predicate/">DiseaseAnnotation➞predicate</a> - Constrains the disease subject, associationType and inferredGeneAssociation.<ul>
 <li><a href="AGMDiseaseAnnotation_predicate/">AGMDiseaseAnnotation➞predicate</a> - The relationship between AGM and disease.</li>
 <li><a href="AlleleDiseaseAnnotation_predicate/">AlleleDiseaseAnnotation➞predicate</a> - The relationship between allele and disease.</li>
@@ -307,11 +302,9 @@
 <li><a href="GeneMolecularInteraction_predicate/">GeneMolecularInteraction➞predicate</a></li>
 </ul>
 </li>
-<li><a href="PhenotypeAnnotationExperimentalConditionAssociation_predicate/">PhenotypeAnnotationExperimentalConditionAssociation➞predicate</a></li>
 </ul>
 </li>
 <li><a href="subject/">subject</a> - connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.<ul>
-<li><a href="DiseaseAnnotationExperimentalConditionAssociation_subject/">DiseaseAnnotationExperimentalConditionAssociation➞subject</a></li>
 <li><a href="DiseaseAnnotation_subject/">DiseaseAnnotation➞subject</a> - The biological entity to which the disease ontology term is associated.<ul>
 <li><a href="AGMDiseaseAnnotation_subject/">AGMDiseaseAnnotation➞subject</a> - The AGM to which the disease ontology term is associated.</li>
 <li><a href="AlleleDiseaseAnnotation_subject/">AlleleDiseaseAnnotation➞subject</a> - The gene to which the disease ontology term is associated.</li>
@@ -324,7 +317,6 @@
 </ul>
 </li>
 <li><a href="PhenotypeAnnotationCurated_subject/">PhenotypeAnnotationCurated➞subject</a> - The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, by direct curation.</li>
-<li><a href="PhenotypeAnnotationExperimentalConditionAssociation_subject/">PhenotypeAnnotationExperimentalConditionAssociation➞subject</a></li>
 <li><a href="VariantConsequence_subject/">VariantConsequence➞subject</a></li>
 <li><a href="VariantGenomicLocation_subject/">VariantGenomicLocation➞subject</a> - subject should be the variant identifier</li>
 </ul>
@@ -388,6 +380,11 @@
 <li><a href="ExperimentalCondition_condition_quantity/">ExperimentalCondition➞condition_quantity</a> - Optional free text field that records the units/amount/degrees of a condition.</li>
 </ul>
 </li>
+<li><a href="condition_relation_type/">condition_relation_type</a><ul>
+<li><a href="ConditionRelation_condition_relation_type/">ConditionRelation➞condition_relation_type</a></li>
+</ul>
+</li>
+<li><a href="condition_relations/">condition_relations</a></li>
 <li><a href="condition_statement/">condition_statement</a><ul>
 <li><a href="ExperimentalCondition_condition_statement/">ExperimentalCondition➞condition_statement</a> - Free text describing the environmental/experimental condition. For some groups this is a single term, others is it is a concatenation of the term names from the ontologies included in this data structure.</li>
 </ul>
@@ -396,6 +393,7 @@
 <li><a href="ExperimentalCondition_condition_taxon/">ExperimentalCondition➞condition_taxon</a> - NCBITaxon ontology id used in subset of condition types like 'bacterial infection'.</li>
 </ul>
 </li>
+<li><a href="conditions/">conditions</a></li>
 <li><a href="construct_components/">construct_components</a></li>
 <li><a href="contains_construct/">contains_construct</a></li>
 <li><a href="copyright_date/">copyright_date</a></li>
@@ -834,5 +832,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2021-10-28 18:17:01.729163+00:00
+Build Date UTC : 2021-11-03 20:04:21.035977+00:00
 -->

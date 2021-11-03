@@ -16,6 +16,7 @@ public abstractclass DiseaseAnnotation extends Association {
   private Reference annotationReference;
   private Gene with;
   private String diseaseQualifiers;
+  private List<ConditionRelation> conditionRelations;
   private String geneticSex;
   private String privateNote;
   private String diseaseAnnotationNote;

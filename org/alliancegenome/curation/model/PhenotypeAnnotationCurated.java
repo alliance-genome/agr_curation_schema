@@ -13,6 +13,7 @@ public class PhenotypeAnnotationCurated extends Association {
   private String curie;
   private Phenotype phenotypeTerm;
   private String dateAssigned;
+  private List<ConditionRelation> conditionRelations;
   private Integer tableKey;
   private Person producedBy;
   private String creationDate;

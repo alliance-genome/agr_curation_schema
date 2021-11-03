@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Slot: object - Model to describe the Alliance curation/persistence data store</title>
+  <title>Slot: condition_relations - Model to describe the Alliance curation/persistence data store</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Slot: object";
-    var mkdocs_page_input_path = "DiseaseAnnotationExperimentalConditionAssociation_object.md";
+    var mkdocs_page_name = "Slot: condition_relations";
+    var mkdocs_page_input_path = "condition_relations.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Slot: object</li>
+    <li>Slot: condition_relations</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,37 +91,21 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="slot-object">Slot: object</h1>
-<p>connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.</p>
-<p>URI: <a href="http://alliancegenome.orgDiseaseAnnotationExperimentalConditionAssociation_object">alliance:DiseaseAnnotationExperimentalConditionAssociation_object</a></p>
+                <h1 id="slot-condition_relations">Slot: condition_relations</h1>
+<p>URI: <a href="http://alliancegenome.orgcondition_relations">alliance:condition_relations</a></p>
 <h2 id="domain-and-range">Domain and Range</h2>
-<p><a href="../DiseaseAnnotationExperimentalConditionAssociation/">DiseaseAnnotationExperimentalConditionAssociation</a> &#8594;  <sub>1..1</sub> <a href="../ExperimentalCondition/">ExperimentalCondition</a></p>
+<p>None &#8594;  <sub>0..*</sub> <a href="../ConditionRelation/">ConditionRelation</a></p>
 <h2 id="parents">Parents</h2>
-<ul>
-<li>is_a: <a href="../object/">object</a></li>
-</ul>
 <h2 id="children">Children</h2>
 <h2 id="used-by">Used by</h2>
 <ul>
-<li><a href="../DiseaseAnnotationExperimentalConditionAssociation/">DiseaseAnnotationExperimentalConditionAssociation</a></li>
+<li><a href="../AGMDiseaseAnnotation/">AGMDiseaseAnnotation</a></li>
+<li><a href="../AlleleDiseaseAnnotation/">AlleleDiseaseAnnotation</a></li>
+<li><a href="../DiseaseAnnotation/">DiseaseAnnotation</a></li>
+<li><a href="../GeneDiseaseAnnotation/">GeneDiseaseAnnotation</a></li>
+<li><a href="../PhenotypeAnnotationCurated/">PhenotypeAnnotationCurated</a></li>
+<li><a href="../PhenotypeAnnotationInferred/">PhenotypeAnnotationInferred</a></li>
 </ul>
-<h2 id="other-properties">Other properties</h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Exact Mappings:</strong></td>
-<td></td>
-<td>biolink:object</td>
-</tr>
-</tbody>
-</table>
               
             </div>
           </div>

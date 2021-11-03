@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Slot: object - Model to describe the Alliance curation/persistence data store</title>
+  <title>Class: ConditionRelation - Model to describe the Alliance curation/persistence data store</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Slot: object";
-    var mkdocs_page_input_path = "PhenotypeAnnotationExperimentalConditionAssociation_object.md";
+    var mkdocs_page_name = "Class: ConditionRelation";
+    var mkdocs_page_input_path = "ConditionRelation.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Slot: object</li>
+    <li>Class: ConditionRelation</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,37 +91,31 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="slot-object">Slot: object</h1>
-<p>connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.</p>
-<p>URI: <a href="http://alliancegenome.orgPhenotypeAnnotationExperimentalConditionAssociation_object">alliance:PhenotypeAnnotationExperimentalConditionAssociation_object</a></p>
-<h2 id="domain-and-range">Domain and Range</h2>
-<p><a href="../PhenotypeAnnotationExperimentalConditionAssociation/">PhenotypeAnnotationExperimentalConditionAssociation</a> &#8594;  <sub>1..1</sub> <a href="../ExperimentalCondition/">ExperimentalCondition</a></p>
-<h2 id="parents">Parents</h2>
+                <h1 id="class-conditionrelation">Class: ConditionRelation</h1>
+<p>A pairing of an experimental condition relation (i.e. has_condition) with a list of 1 or more ExperimentalCondition objects. Annotation objects can connect directly to a set of 0 or more of these ConditionRelation objects via a 'condition_relations' slot to express the experimental conditions relevant to the annotation.</p>
+<p>URI: <a href="http://alliancegenome.orgConditionRelation">alliance:ConditionRelation</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[ExperimentalCondition],[ExperimentalCondition]&lt;conditions%200..*-%20[ConditionRelation&#124;curie:uriorcurie;condition_relation_type:condition_relation_enum],[PhenotypeAnnotationCurated]-%20condition_relations%200..*&gt;[ConditionRelation],[DiseaseAnnotation]-%20condition_relations%200..*&gt;[ConditionRelation],[PhenotypeAnnotationCurated],[DiseaseAnnotation]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[ExperimentalCondition],[ExperimentalCondition]&lt;conditions%200..*-%20[ConditionRelation&#124;curie:uriorcurie;condition_relation_type:condition_relation_enum],[PhenotypeAnnotationCurated]-%20condition_relations%200..*&gt;[ConditionRelation],[DiseaseAnnotation]-%20condition_relations%200..*&gt;[ConditionRelation],[PhenotypeAnnotationCurated],[DiseaseAnnotation]" /></a></p>
+<h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
-<li>is_a: <a href="../object/">object</a></li>
+<li><strong>None</strong> <em><a href="../condition_relations/">condition_relations</a></em>  <sub>0..*</sub>  <strong><a href="./">ConditionRelation</a></strong></li>
 </ul>
-<h2 id="children">Children</h2>
-<h2 id="used-by">Used by</h2>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
 <ul>
-<li><a href="../PhenotypeAnnotationExperimentalConditionAssociation/">PhenotypeAnnotationExperimentalConditionAssociation</a></li>
+<li><a href="../curie/">curie</a>  <sub>1..1</sub><ul>
+<li>Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
-<h2 id="other-properties">Other properties</h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Exact Mappings:</strong></td>
-<td></td>
-<td>biolink:object</td>
-</tr>
-</tbody>
-</table>
+</li>
+<li><a href="../ConditionRelation_condition_relation_type/">ConditionRelation➞condition_relation_type</a>  <sub>1..1</sub><ul>
+<li>Range: <a href="../condition_relation_enum/">condition_relation_enum</a></li>
+</ul>
+</li>
+<li><a href="../conditions/">conditions</a>  <sub>0..*</sub><ul>
+<li>Range: <a href="../ExperimentalCondition/">ExperimentalCondition</a></li>
+</ul>
+</li>
+</ul>
               
             </div>
           </div>

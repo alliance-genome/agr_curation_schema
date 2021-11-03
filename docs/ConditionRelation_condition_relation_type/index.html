@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Class: DiseaseAnnotationExperimentalConditionAssociation - Model to describe the Alliance curation/persistence data store</title>
+  <title>Slot: condition_relation_type - Model to describe the Alliance curation/persistence data store</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Class: DiseaseAnnotationExperimentalConditionAssociation";
-    var mkdocs_page_input_path = "DiseaseAnnotationExperimentalConditionAssociation.md";
+    var mkdocs_page_name = "Slot: condition_relation_type";
+    var mkdocs_page_input_path = "ConditionRelation_condition_relation_type.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Class: DiseaseAnnotationExperimentalConditionAssociation</li>
+    <li>Slot: condition_relation_type</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,41 +91,18 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="class-diseaseannotationexperimentalconditionassociation">Class: DiseaseAnnotationExperimentalConditionAssociation</h1>
-<p>A typed (predicate-specified) association between a disease annotation object and an experimental condition object</p>
-<p>URI: <a href="http://alliancegenome.orgDiseaseAnnotationExperimentalConditionAssociation">alliance:DiseaseAnnotationExperimentalConditionAssociation</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[ExperimentalCondition],[ExperimentalCondition]&lt;object%201..1-%20[DiseaseAnnotationExperimentalConditionAssociation&#124;predicate:condition_relation_enum],[DiseaseAnnotation]&lt;subject%201..1-%20[DiseaseAnnotationExperimentalConditionAssociation],[Association]^-[DiseaseAnnotationExperimentalConditionAssociation],[DiseaseAnnotation],[Association]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[ExperimentalCondition],[ExperimentalCondition]&lt;object%201..1-%20[DiseaseAnnotationExperimentalConditionAssociation&#124;predicate:condition_relation_enum],[DiseaseAnnotation]&lt;subject%201..1-%20[DiseaseAnnotationExperimentalConditionAssociation],[Association]^-[DiseaseAnnotationExperimentalConditionAssociation],[DiseaseAnnotation],[Association]" /></a></p>
+                <h1 id="slot-condition_relation_type">Slot: condition_relation_type</h1>
+<p>URI: <a href="http://alliancegenome.orgConditionRelation_condition_relation_type">alliance:ConditionRelation_condition_relation_type</a></p>
+<h2 id="domain-and-range">Domain and Range</h2>
+<p><a href="../ConditionRelation/">ConditionRelation</a> &#8594;  <sub>1..1</sub> <a href="../condition_relation_enum/">condition_relation_enum</a></p>
 <h2 id="parents">Parents</h2>
 <ul>
-<li>is_a: <a href="../Association/">Association</a> - A typed association between two entities, supported by evidence.</li>
+<li>is_a: <a href="../condition_relation_type/">condition_relation_type</a></li>
 </ul>
-<h2 id="referenced-by-class">Referenced by Class</h2>
-<h2 id="attributes">Attributes</h2>
-<h3 id="own">Own</h3>
+<h2 id="children">Children</h2>
+<h2 id="used-by">Used by</h2>
 <ul>
-<li><a href="../DiseaseAnnotationExperimentalConditionAssociation_subject/">DiseaseAnnotationExperimentalConditionAssociation➞subject</a>  <sub>1..1</sub><ul>
-<li>Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.</li>
-<li>Range: <a href="../DiseaseAnnotation/">DiseaseAnnotation</a></li>
-</ul>
-</li>
-<li><a href="../DiseaseAnnotationExperimentalConditionAssociation_object/">DiseaseAnnotationExperimentalConditionAssociation➞object</a>  <sub>1..1</sub><ul>
-<li>Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.</li>
-<li>Range: <a href="../ExperimentalCondition/">ExperimentalCondition</a></li>
-</ul>
-</li>
-<li><a href="../DiseaseAnnotationExperimentalConditionAssociation_predicate/">DiseaseAnnotationExperimentalConditionAssociation➞predicate</a>  <sub>1..1</sub><ul>
-<li>Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.</li>
-<li>Range: <a href="../condition_relation_enum/">condition_relation_enum</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="inherited-from-association">Inherited from Association:</h3>
-<ul>
-<li><a href="../references/">references</a>  <sub>0..*</sub><ul>
-<li>Description: holds between an object and a reference</li>
-<li>Range: <a href="../Reference/">Reference</a></li>
-</ul>
-</li>
+<li><a href="../ConditionRelation/">ConditionRelation</a></li>
 </ul>
               
             </div>

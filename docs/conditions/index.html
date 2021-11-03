@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Slot: subject - Model to describe the Alliance curation/persistence data store</title>
+  <title>Slot: conditions - Model to describe the Alliance curation/persistence data store</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Slot: subject";
-    var mkdocs_page_input_path = "PhenotypeAnnotationExperimentalConditionAssociation_subject.md";
+    var mkdocs_page_name = "Slot: conditions";
+    var mkdocs_page_input_path = "conditions.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Slot: subject</li>
+    <li>Slot: conditions</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,42 +91,16 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="slot-subject">Slot: subject</h1>
-<p>connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.</p>
-<p>URI: <a href="http://alliancegenome.orgPhenotypeAnnotationExperimentalConditionAssociation_subject">alliance:PhenotypeAnnotationExperimentalConditionAssociation_subject</a></p>
+                <h1 id="slot-conditions">Slot: conditions</h1>
+<p>URI: <a href="http://alliancegenome.orgconditions">alliance:conditions</a></p>
 <h2 id="domain-and-range">Domain and Range</h2>
-<p><a href="../PhenotypeAnnotationExperimentalConditionAssociation/">PhenotypeAnnotationExperimentalConditionAssociation</a> &#8594;  <sub>1..1</sub> <a href="../PhenotypeAnnotationCurated/">PhenotypeAnnotationCurated</a></p>
+<p>None &#8594;  <sub>0..*</sub> <a href="../ExperimentalCondition/">ExperimentalCondition</a></p>
 <h2 id="parents">Parents</h2>
-<ul>
-<li>is_a: <a href="../subject/">subject</a></li>
-</ul>
 <h2 id="children">Children</h2>
 <h2 id="used-by">Used by</h2>
 <ul>
-<li><a href="../PhenotypeAnnotationExperimentalConditionAssociation/">PhenotypeAnnotationExperimentalConditionAssociation</a></li>
+<li><a href="../ConditionRelation/">ConditionRelation</a></li>
 </ul>
-<h2 id="other-properties">Other properties</h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Exact Mappings:</strong></td>
-<td></td>
-<td>owl:annotatedSource</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>biolink:subject</td>
-</tr>
-</tbody>
-</table>
               
             </div>
           </div>
