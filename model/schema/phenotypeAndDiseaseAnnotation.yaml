@@ -326,14 +326,6 @@ classes:
       - APO
       - FBcv
 
-  Disease:
-    slots:
-      - curie
-      - name
-    values_from:
-      - DOID
-    id_prefixes:
-      - DOID
 
   PhenotypeAnnotationExperimentalConditionAssociation:
     is_a: Association
