@@ -11,12 +11,12 @@ import lombok.*;
 public class ExperimentalCondition  {
 
   private String curie;
-  private OntologyTerm conditionClass;
+  private ZECOTerm conditionClass;
   private String conditionStatement;
-  private OntologyTerm conditionId;
+  private ExperimentalConditionOntologyTerm conditionId;
   private String conditionQuantity;
-  private OntologyTerm conditionAnatomy;
-  private OntologyTerm conditionGeneOntology;
+  private AnatomicalTerm conditionAnatomy;
+  private GOTerm conditionGeneOntology;
   private OntologyTerm conditionTaxon;
   private OntologyTerm conditionChemical;
 

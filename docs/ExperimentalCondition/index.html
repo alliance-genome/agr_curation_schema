@@ -94,7 +94,7 @@
                 <h1 id="class-experimentalcondition">Class: ExperimentalCondition</h1>
 <p>The environmental context in which an experiment is carried out. This may (e.g. drug treatment) or may not (e.g. standard conditions) directly influence the outcome of the experiment.</p>
 <p>URI: <a href="http://alliancegenome.orgExperimentalCondition">alliance:ExperimentalCondition</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[OntologyTerm],[OntologyTerm]&lt;condition_chemical%200..1-%20[ExperimentalCondition&#124;curie:uriorcurie;condition_statement:string;condition_quantity:string%20%3F],[OntologyTerm]&lt;condition_taxon%200..1-%20[ExperimentalCondition],[OntologyTerm]&lt;condition_gene_ontology%200..1-%20[ExperimentalCondition],[OntologyTerm]&lt;condition_anatomy%200..1-%20[ExperimentalCondition],[OntologyTerm]&lt;condition_id%200..1-%20[ExperimentalCondition],[OntologyTerm]&lt;condition_class%201..1-%20[ExperimentalCondition],[ConditionRelation]-%20conditions%200..*&gt;[ExperimentalCondition],[Entity],[ConditionRelation]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[OntologyTerm],[OntologyTerm]&lt;condition_chemical%200..1-%20[ExperimentalCondition&#124;curie:uriorcurie;condition_statement:string;condition_quantity:string%20%3F],[OntologyTerm]&lt;condition_taxon%200..1-%20[ExperimentalCondition],[OntologyTerm]&lt;condition_gene_ontology%200..1-%20[ExperimentalCondition],[OntologyTerm]&lt;condition_anatomy%200..1-%20[ExperimentalCondition],[OntologyTerm]&lt;condition_id%200..1-%20[ExperimentalCondition],[OntologyTerm]&lt;condition_class%201..1-%20[ExperimentalCondition],[ConditionRelation]-%20conditions%200..*&gt;[ExperimentalCondition],[Entity],[ConditionRelation]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[ZECOTerm],[OntologyTerm],[GOTerm],[ExperimentalConditionOntologyTerm],[OntologyTerm]&lt;condition_chemical%200..1-%20[ExperimentalCondition&#124;curie:uriorcurie;condition_statement:string;condition_quantity:string%20%3F],[OntologyTerm]&lt;condition_taxon%200..1-%20[ExperimentalCondition],[GOTerm]&lt;condition_gene_ontology%200..1-%20[ExperimentalCondition],[AnatomicalTerm]&lt;condition_anatomy%200..1-%20[ExperimentalCondition],[ExperimentalConditionOntologyTerm]&lt;condition_id%200..1-%20[ExperimentalCondition],[ZECOTerm]&lt;condition_class%201..1-%20[ExperimentalCondition],[ConditionRelation]-%20conditions%200..*&gt;[ExperimentalCondition],[Entity],[ConditionRelation],[AnatomicalTerm]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[ZECOTerm],[OntologyTerm],[GOTerm],[ExperimentalConditionOntologyTerm],[OntologyTerm]&lt;condition_chemical%200..1-%20[ExperimentalCondition&#124;curie:uriorcurie;condition_statement:string;condition_quantity:string%20%3F],[OntologyTerm]&lt;condition_taxon%200..1-%20[ExperimentalCondition],[GOTerm]&lt;condition_gene_ontology%200..1-%20[ExperimentalCondition],[AnatomicalTerm]&lt;condition_anatomy%200..1-%20[ExperimentalCondition],[ExperimentalConditionOntologyTerm]&lt;condition_id%200..1-%20[ExperimentalCondition],[ZECOTerm]&lt;condition_class%201..1-%20[ExperimentalCondition],[ConditionRelation]-%20conditions%200..*&gt;[ExperimentalCondition],[Entity],[ConditionRelation],[AnatomicalTerm]" /></a></p>
 <h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
 <li><strong><a href="../Entity/">Entity</a></strong> <em><a href="../ameliorated_by/">ameliorated_by</a></em>  <sub>0..*</sub>  <strong><a href="./">ExperimentalCondition</a></strong></li>
@@ -113,7 +113,7 @@
 </li>
 <li><a href="../ExperimentalCondition_condition_class/">ExperimentalCondition➞condition_class</a>  <sub>1..1</sub><ul>
 <li>Description: The ZECO ID that represents the high level condition grouping term.  This will come from a slim in the ZECO, called 'AllianceSlim'.</li>
-<li>Range: <a href="../OntologyTerm/">OntologyTerm</a></li>
+<li>Range: <a href="../ZECOTerm/">ZECOTerm</a></li>
 </ul>
 </li>
 <li><a href="../ExperimentalCondition_condition_statement/">ExperimentalCondition➞condition_statement</a>  <sub>1..1</sub><ul>
@@ -123,7 +123,7 @@
 </li>
 <li><a href="../ExperimentalCondition_condition_id/">ExperimentalCondition➞condition_id</a>  <sub>0..1</sub><ul>
 <li>Description: The specific ontology ID for the condition when that is not covered by any of the other condition ontology ID attributes (chemical, NCBITaxon, anatomical). This could also be another ZECO term if the ZECO term that describes this condition is more specific, or outside the conditionClassId slim.</li>
-<li>Range: <a href="../OntologyTerm/">OntologyTerm</a></li>
+<li>Range: <a href="../ExperimentalConditionOntologyTerm/">ExperimentalConditionOntologyTerm</a></li>
 </ul>
 </li>
 <li><a href="../ExperimentalCondition_condition_quantity/">ExperimentalCondition➞condition_quantity</a>  <sub>0..1</sub><ul>
@@ -133,12 +133,12 @@
 </li>
 <li><a href="../ExperimentalCondition_condition_anatomy/">ExperimentalCondition➞condition_anatomy</a>  <sub>0..1</sub><ul>
 <li>Description: Anatomical ontology identifier used in cases like regeneration/wounding.</li>
-<li>Range: <a href="../OntologyTerm/">OntologyTerm</a></li>
+<li>Range: <a href="../AnatomicalTerm/">AnatomicalTerm</a></li>
 </ul>
 </li>
 <li><a href="../ExperimentalCondition_condition_gene_ontology/">ExperimentalCondition➞condition_gene_ontology</a>  <sub>0..1</sub><ul>
 <li>Description: Gene Ontology id used in subset of condition types.</li>
-<li>Range: <a href="../OntologyTerm/">OntologyTerm</a></li>
+<li>Range: <a href="../GOTerm/">GOTerm</a></li>
 </ul>
 </li>
 <li><a href="../ExperimentalCondition_condition_taxon/">ExperimentalCondition➞condition_taxon</a>  <sub>0..1</sub><ul>
