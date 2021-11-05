@@ -254,9 +254,7 @@ classes:
         description: >-
           The ZECO ID that represents the high level condition grouping term.  This will come from
           a slim in the ZECO, called 'AllianceSlim'.
-        values_from:
-          - ZECO
-        range: OntologyTerm
+        range: ZECOTerm
       condition_statement:
         required: true
         description: >-
@@ -270,10 +268,7 @@ classes:
           condition ontology ID attributes (chemical, NCBITaxon, anatomical). This could also be another
           ZECO term if the ZECO term that describes this condition is more specific, or outside the
           conditionClassId slim.
-        range: OntologyTerm
-        values_from:
-          - XCO
-          - ZECO
+        range: ExperimentalConditionOntologyTerm
       condition_quantity:
         description: >-
           Optional free text field that records the units/amount/degrees of a condition.
@@ -281,16 +276,11 @@ classes:
       condition_anatomy:
         description: >-
           Anatomical ontology identifier used in cases like regeneration/wounding.
-        range: OntologyTerm
-        # TODO: add rest of anatomical ontology prefixes here
-        values_from:
-          - ZFA
-          - FBbt
-          - WBbt
+        range: AnatomicalTerm
       condition_gene_ontology:
         description: >-
           Gene Ontology id used in subset of condition types.
-        range: OntologyTerm
+        range: GOTerm
       condition_taxon:
         description: >-
           NCBITaxon ontology id used in subset of condition types like 'bacterial infection'.
