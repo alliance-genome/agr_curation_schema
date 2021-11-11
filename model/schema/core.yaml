@@ -442,7 +442,6 @@ slots:
   name:
     description: >-
       a human-readable name for an entity
-    required: false
     multivalued: false
     range: string
 
@@ -509,6 +508,7 @@ slots:
     notes: >-
       Obsolete entities are preserved in the database for posterity but should
       not be publicly displayed.
+    range: boolean
 
 ## --------------------
 ## ASSOCIATION SLOTS

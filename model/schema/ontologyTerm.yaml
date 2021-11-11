@@ -15,9 +15,7 @@ prefixes:
 slots:
   definition:
     description: >-
-      The definition of the ontology term.  This is a reference to an object that holds
-      the text description of the term and a collection of URLs that further define the
-      term.
+      The explanation of the meaning of a term.
     range: string
   display_synonym:
     description: >-
@@ -56,6 +54,12 @@ classes:
     defining_slots:
       - curie
       - namespace
+    slot_usage:
+      - definition:
+          description: >-
+            The definition of the ontology term. This is a reference to an object that holds
+            the text description of the term and a collection of URLs that further define the
+            term.
 
 
   DOTerm:

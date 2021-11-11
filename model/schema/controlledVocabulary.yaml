@@ -5,6 +5,7 @@ title: Alliance Schema Prototype Controlled Vocabulary
 imports:
   - core
   - linkml:types
+  - ontologyTerm
 
 prefixes:
   alliance: 'http://alliancegenome.org'
@@ -12,9 +13,22 @@ prefixes:
   obograph: 'https://github.com/biodatamodels/obograph'
 
 slots:
-  definition:
+  text_synonyms:
     description: >-
-      The explanation of the meaning of a term
+      Free text synonym(s) of a term, used for controlled vocabulary terms; this is distinct from the
+      'synonyms' slot which has a range of a Synonym class object.
+    range: string
+    multivalued: true
+
+  member_terms:
+    description: >-
+      Set of VocabularyTerm objects in a Vocabulary object set
+    range: VocabularyTerm
+    multivalued: true
+
+  vocabulary_description:
+    description: >-
+      The free text description of a Vocabulary including its intended use.
     range: string
 
 classes:
@@ -28,39 +42,25 @@ classes:
       - name
       - definition
       - is_obsolete
-      - synonyms
+      - text_synonyms
     slot_usage:
-      - name
+      name:
         required: true
-        range: string
-      - definition
-        range: string
-      - is_obsolete
-        range: boolean
-      - synonyms
-        multivalued: true
 
- Vocabulary:
+  Vocabulary:
     description: >-
       A set of VocabularyTerm objects.
     mixins:
       - AuditedObject 
     slots:
       - name
-      - description
+      - vocabulary_description
       - is_obsolete
-      - terms
+      - member_terms
     slot_usage:
-      - name
+      name:
         required: true
-        range: string
-      - description
-        range: string
-      - is_obsolete
-        range: boolean
-      - terms
-        range: VocabularyTerm
-        multivalued: true
+
 
 
   
