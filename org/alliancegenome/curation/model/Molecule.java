@@ -19,5 +19,10 @@ public class Molecule  {
   private String smiles;
   private List<Synonym> synonyms;
   private List<CrossReference> crossReferences;
+  private Integer tableKey;
+  private Person producedBy;
+  private String creationDate;
+  private Person modifiedBy;
+  private String dateLastModified;
 
 }
