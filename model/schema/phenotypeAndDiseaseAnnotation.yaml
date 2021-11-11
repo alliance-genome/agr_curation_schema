@@ -336,6 +336,8 @@ classes:
   Molecule:
     description: >-
       Molecules as described by WormBase
+    mixins:
+      - AuditedObject
     slots:
       - curie
       - name
