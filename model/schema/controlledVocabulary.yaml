@@ -1,0 +1,67 @@
+id: https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml
+name: Alliance-Schema-Prototype-Controlled-Vocabulary
+title: Alliance Schema Prototype Controlled Vocabulary
+
+imports:
+  - core
+  - linkml:types
+
+prefixes:
+  alliance: 'http://alliancegenome.org'
+  linkml: 'https://w3id.org/linkml/'
+  obograph: 'https://github.com/biodatamodels/obograph'
+
+slots:
+  definition:
+    description: >-
+      The explanation of the meaning of a term
+    range: string
+
+classes:
+
+  VocabularyTerm:
+    description: >-
+      A concept or class in a simple vocabulary.
+    mixins:
+      - AuditedObject 
+    slots:
+      - name
+      - definition
+      - is_obsolete
+      - synonyms
+    slot_usage:
+      - name
+        required: true
+        range: string
+      - definition
+        range: string
+      - is_obsolete
+        range: boolean
+      - synonyms
+        multivalued: true
+
+ Vocabulary:
+    description: >-
+      A set of VocabularyTerm objects.
+    mixins:
+      - AuditedObject 
+    slots:
+      - name
+      - description
+      - is_obsolete
+      - terms
+    slot_usage:
+      - name
+        required: true
+        range: string
+      - description
+        range: string
+      - is_obsolete
+        range: boolean
+      - terms
+        range: VocabularyTerm
+        multivalued: true
+
+
+  
+
