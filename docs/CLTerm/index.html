@@ -93,7 +93,7 @@
               
                 <h1 id="class-clterm">Class: CLTerm</h1>
 <p>URI: <a href="http://alliancegenome.orgCLTerm">alliance:CLTerm</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Synonym],[CrossReference],[AnatomicalTerm]^-[CLTerm&#124;curie(i):uriorcurie;dbkey(i):string%20%3F;name(i):string%20%3F;definition(i):string%20%3F;definition_urls(i):string%20*;type(i):uriorcurie%20%3F;is_obsolete(i):string%20%3F;namespace(i):string%20%3F;subsets(i):string%20*;secondary_identifiers(i):uriorcurie%20*],[AnatomicalTerm]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Synonym],[CrossReference],[AnatomicalTerm]^-[CLTerm&#124;curie(i):uriorcurie;dbkey(i):string%20%3F;name(i):string%20%3F;definition(i):string%20%3F;definition_urls(i):string%20*;type(i):uriorcurie%20%3F;is_obsolete(i):string%20%3F;namespace(i):string%20%3F;subsets(i):string%20*;secondary_identifiers(i):uriorcurie%20*],[AnatomicalTerm]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Synonym],[CrossReference],[AnatomicalTerm]^-[CLTerm&#124;curie(i):uriorcurie;dbkey(i):string%20%3F;name(i):string%20%3F;definition(i):string%20%3F;definition_urls(i):string%20*;type(i):uriorcurie%20%3F;is_obsolete(i):boolean%20%3F;namespace(i):string%20%3F;subsets(i):string%20*;secondary_identifiers(i):uriorcurie%20*],[AnatomicalTerm]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Synonym],[CrossReference],[AnatomicalTerm]^-[CLTerm&#124;curie(i):uriorcurie;dbkey(i):string%20%3F;name(i):string%20%3F;definition(i):string%20%3F;definition_urls(i):string%20*;type(i):uriorcurie%20%3F;is_obsolete(i):boolean%20%3F;namespace(i):string%20%3F;subsets(i):string%20*;secondary_identifiers(i):uriorcurie%20*],[AnatomicalTerm]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../AnatomicalTerm/">AnatomicalTerm</a></li>
@@ -116,8 +116,8 @@
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../definition/">definition</a>  <sub>0..1</sub><ul>
-<li>Description: The definition of the ontology term.  This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.</li>
+<li><a href="../OntologyTerm_definition/">OntologyTerm➞definition</a>  <sub>0..1</sub><ul>
+<li>Description: The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.</li>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
@@ -131,7 +131,7 @@
 </li>
 <li><a href="../is_obsolete/">is_obsolete</a>  <sub>0..1</sub><ul>
 <li>Description: Entity is no longer current.</li>
-<li>Range: <a href="../String/">String</a></li>
+<li>Range: <a href="../Boolean/">Boolean</a></li>
 </ul>
 </li>
 <li><a href="../cross_references/">cross_references</a>  <sub>0..*</sub><ul>

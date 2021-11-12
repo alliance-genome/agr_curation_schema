@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Class: MATerm - Model to describe the Alliance curation/persistence data store</title>
+  <title>Class: Vocabulary - Model to describe the Alliance curation/persistence data store</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Class: MATerm";
-    var mkdocs_page_input_path = "MATerm.md";
+    var mkdocs_page_name = "Class: Vocabulary";
+    var mkdocs_page_input_path = "Vocabulary.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Class: MATerm</li>
+    <li>Class: Vocabulary</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,42 +91,26 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="class-materm">Class: MATerm</h1>
-<p>URI: <a href="http://alliancegenome.orgMATerm">alliance:MATerm</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Synonym],[OntologyTerm],[OntologyTerm]^-[MATerm&#124;curie(i):uriorcurie;dbkey(i):string%20%3F;name(i):string%20%3F;definition(i):string%20%3F;definition_urls(i):string%20*;type(i):uriorcurie%20%3F;is_obsolete(i):boolean%20%3F;namespace(i):string%20%3F;subsets(i):string%20*;secondary_identifiers(i):uriorcurie%20*],[CrossReference]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Synonym],[OntologyTerm],[OntologyTerm]^-[MATerm&#124;curie(i):uriorcurie;dbkey(i):string%20%3F;name(i):string%20%3F;definition(i):string%20%3F;definition_urls(i):string%20*;type(i):uriorcurie%20%3F;is_obsolete(i):boolean%20%3F;namespace(i):string%20%3F;subsets(i):string%20*;secondary_identifiers(i):uriorcurie%20*],[CrossReference]" /></a></p>
-<h2 id="parents">Parents</h2>
+                <h1 id="class-vocabulary">Class: Vocabulary</h1>
+<p>A set of VocabularyTerm objects.</p>
+<p>URI: <a href="http://alliancegenome.orgVocabulary">alliance:Vocabulary</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[VocabularyTerm],[VocabularyTerm]&lt;member_terms%200..*-++[Vocabulary&#124;name:string;vocabulary_description:string%20%3F;is_obsolete:boolean%20%3F;table_key:integer%20%3F;creation_date:string%20%3F;date_last_modified:date%20%3F],[Vocabulary]uses%20-.-&gt;[AuditedObject],[Person],[AuditedObject]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[VocabularyTerm],[VocabularyTerm]&lt;member_terms%200..*-++[Vocabulary&#124;name:string;vocabulary_description:string%20%3F;is_obsolete:boolean%20%3F;table_key:integer%20%3F;creation_date:string%20%3F;date_last_modified:date%20%3F],[Vocabulary]uses%20-.-&gt;[AuditedObject],[Person],[AuditedObject]" /></a></p>
+<h2 id="uses-mixin">Uses Mixin</h2>
 <ul>
-<li>is_a: <a href="../OntologyTerm/">OntologyTerm</a> - A concept or class in an ontology, vocabulary or thesaurus. Note, ontology terms can be found in multiple ontologies (ie: mireoting). defining_slots helps define an alternative key for ontology terms.</li>
+<li>mixin: <a href="../AuditedObject/">AuditedObject</a> - Some entity for which changes are tracked, including date/time of change and the agent responsible for the change.</li>
 </ul>
+<h2 id="referenced-by-class">Referenced by Class</h2>
 <h2 id="attributes">Attributes</h2>
-<h3 id="inherited-from-ontologyterm">Inherited from OntologyTerm:</h3>
+<h3 id="own">Own</h3>
 <ul>
-<li><a href="../curie/">curie</a>  <sub>1..1</sub><ul>
-<li>Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI</li>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
-</ul>
-</li>
-<li><a href="../dbkey/">dbkey</a>  <sub>0..1</sub><ul>
-<li>Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.</li>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../name/">name</a>  <sub>0..1</sub><ul>
+<li><a href="../Vocabulary_name/">Vocabulary➞name</a>  <sub>1..1</sub><ul>
 <li>Description: a human-readable name for an entity</li>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../OntologyTerm_definition/">OntologyTerm➞definition</a>  <sub>0..1</sub><ul>
-<li>Description: The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.</li>
+<li><a href="../vocabulary_description/">vocabulary_description</a>  <sub>0..1</sub><ul>
+<li>Description: The free text description of a Vocabulary including its intended use.</li>
 <li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../definition_urls/">definition_urls</a>  <sub>0..*</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../type/">type</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
 <li><a href="../is_obsolete/">is_obsolete</a>  <sub>0..1</sub><ul>
@@ -134,27 +118,49 @@
 <li>Range: <a href="../Boolean/">Boolean</a></li>
 </ul>
 </li>
-<li><a href="../cross_references/">cross_references</a>  <sub>0..*</sub><ul>
-<li>Description: Holds between an object and its CrossReferences.</li>
-<li>Range: <a href="../CrossReference/">CrossReference</a></li>
+<li><a href="../member_terms/">member_terms</a>  <sub>0..*</sub><ul>
+<li>Description: Set of VocabularyTerm objects in a Vocabulary object set</li>
+<li>Range: <a href="../VocabularyTerm/">VocabularyTerm</a></li>
 </ul>
 </li>
-<li><a href="../synonyms/">synonyms</a>  <sub>0..*</sub><ul>
-<li>Description: holds between a named thing and a synonym</li>
-<li>Range: <a href="../Synonym/">Synonym</a></li>
+</ul>
+<h3 id="mixed-in-from-auditedobject">Mixed in from AuditedObject:</h3>
+<ul>
+<li><a href="../table_key/">table_key</a>  <sub>0..1</sub><ul>
+<li>Description: The primary key for a specific table entry, unique for that table.</li>
+<li>Range: <a href="../Integer/">Integer</a></li>
 </ul>
 </li>
-<li><a href="../namespace/">namespace</a>  <sub>0..1</sub><ul>
-<li>Description: the namespace of the ontology.</li>
+</ul>
+<h3 id="mixed-in-from-auditedobject_1">Mixed in from AuditedObject:</h3>
+<ul>
+<li><a href="../produced_by/">produced_by</a>  <sub>1..1</sub><ul>
+<li>Description: The individual that created the entity.</li>
+<li>Range: <a href="../Person/">Person</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-auditedobject_2">Mixed in from AuditedObject:</h3>
+<ul>
+<li><a href="../creation_date/">creation_date</a>  <sub>0..1</sub><ul>
+<li>Description: The date on which an entity was created. This can be applied to nodes or edges.</li>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../subsets/">subsets</a>  <sub>0..*</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
+</ul>
+<h3 id="mixed-in-from-auditedobject_3">Mixed in from AuditedObject:</h3>
+<ul>
+<li><a href="../modified_by/">modified_by</a>  <sub>1..1</sub><ul>
+<li>Description: The individual that last modified the entity.</li>
+<li>Range: <a href="../Person/">Person</a></li>
 </ul>
 </li>
-<li><a href="../secondary_identifiers/">secondary_identifiers</a>  <sub>0..*</sub><ul>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+<h3 id="mixed-in-from-auditedobject_4">Mixed in from AuditedObject:</h3>
+<ul>
+<li><a href="../date_last_modified/">date_last_modified</a>  <sub>0..1</sub><ul>
+<li>Description: Date on which an entity was last modified.</li>
+<li>Range: <a href="../Date/">Date</a></li>
 </ul>
 </li>
 </ul>

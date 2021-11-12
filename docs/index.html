@@ -231,6 +231,8 @@
 </ul>
 </li>
 <li><a href="VariantGenomicLocation/">VariantGenomicLocation</a></li>
+<li><a href="Vocabulary/">Vocabulary</a> - A set of VocabularyTerm objects.</li>
+<li><a href="VocabularyTerm/">VocabularyTerm</a> - A concept or class in a simple vocabulary.</li>
 </ul>
 <h3 id="mixins">Mixins</h3>
 <ul>
@@ -427,7 +429,10 @@
 <li><a href="date_published/">date_published</a> - Date on which an entity was created.</li>
 <li><a href="day_published/">day_published</a> - Day in which an entity was created.</li>
 <li><a href="dbkey/">dbkey</a> - Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.</li>
-<li><a href="definition/">definition</a> - The definition of the ontology term.  This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.</li>
+<li><a href="definition/">definition</a> - The explanation of the meaning of a term.<ul>
+<li><a href="OntologyTerm_definition/">OntologyTerm➞definition</a> - The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.</li>
+</ul>
+</li>
 <li><a href="definition_urls/">definition_urls</a></li>
 <li><a href="description/">description</a> - a human-readable description of an entity</li>
 <li><a href="detection_method/">detection_method</a><ul>
@@ -544,6 +549,7 @@
 <li><a href="located_on/">located on</a></li>
 <li><a href="manufactured_by/">manufactured_by</a> - Holds between a material entity and an Agent that has manufactured it: e.g., olecular Probes.</li>
 <li><a href="medline_abbreviation/">medline_abbreviation</a></li>
+<li><a href="member_terms/">member_terms</a> - Set of VocabularyTerm objects in a Vocabulary object set</li>
 <li><a href="middle_names/">middle_names</a></li>
 <li><a href="mod_reference_types/">mod_reference_types</a> - List of types as assigned at a MOD.</li>
 <li><a href="modified_by/">modified_by</a> - The individual that last modified the entity.</li>
@@ -560,6 +566,8 @@
 </li>
 <li><a href="name/">name</a> - a human-readable name for an entity<ul>
 <li><a href="Antibody_name/">Antibody➞name</a> - Publicly displayed name of the antibody. It often includes the name of the antibody target: e.g., anti-WNT-4. It may also include the host species and antibody clonality.</li>
+<li><a href="VocabularyTerm_name/">VocabularyTerm➞name</a></li>
+<li><a href="Vocabulary_name/">Vocabulary➞name</a></li>
 </ul>
 </li>
 <li><a href="namespace/">namespace</a> - the namespace of the ontology.</li>
@@ -674,6 +682,7 @@
 </ul>
 </li>
 <li><a href="taxon_id/">taxon_id</a> - NCBI taxid</li>
+<li><a href="text_synonyms/">text_synonyms</a> - Free text synonym(s) of a term, used for controlled vocabulary terms; this is distinct from the 'synonyms' slot which has a range of a Synonym class object.</li>
 <li><a href="title/">title</a> - A human readable title for a reference.<ul>
 <li><a href="Resource_title/">Resource➞title</a> - the title of the publication</li>
 </ul>
@@ -692,6 +701,7 @@
 <li><a href="vep_consequence/">vep_consequence</a> - VEP consequence</li>
 <li><a href="vep_impact/">vep_impact</a> - VEP predicted impact of variation on molecule</li>
 <li><a href="video_still/">video_still</a> - An image represents a video still.</li>
+<li><a href="vocabulary_description/">vocabulary_description</a> - The free text description of a Vocabulary including its intended use.</li>
 <li><a href="volume/">volume</a></li>
 <li><a href="volumes/">volumes</a></li>
 <li><a href="width/">width</a> - The width of the image (pixels).</li>
@@ -832,5 +842,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2021-11-11 15:49:18.671702+00:00
+Build Date UTC : 2021-11-12 02:32:47.164374+00:00
 -->

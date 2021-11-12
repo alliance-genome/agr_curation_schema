@@ -16,7 +16,7 @@ public class OntologyTerm  {
   private String definition;
   private List<String> definitionUrls;
   private String type;
-  private String isObsolete;
+  private Boolean isObsolete;
   private List<CrossReference> crossReferences;
   private List<Synonym> synonyms;
   private String namespace;
