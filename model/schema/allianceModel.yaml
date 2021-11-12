@@ -38,6 +38,7 @@ imports:
   - geneInteraction
   - ontologyTerm
   - phenotypeAndDiseaseAnnotation
+  - controlledVocabulary
 
 subsets:
   alliance subset:
