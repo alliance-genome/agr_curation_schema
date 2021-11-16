@@ -69,7 +69,7 @@ classes:
     slots:
       - curie
       - cross_references
-      - data_provider
+      - interaction_data_provider
       - interaction_type
       - interactor_A_role
       - interactor_B_role
@@ -107,10 +107,7 @@ classes:
         symmetric: true
       object:
         range: Gene                   # is this declaration needed since it is already made in the parent class?
-      data_provider:
-        range: interaction_source_enum
-        description: >-
-          The database that curated the interaction. e.g. BioGRID
+      interaction_data_provider:
         required: true
         multivalued: false
       references:
@@ -167,6 +164,11 @@ slots:
   aggregation_database:         # this should be generalized in core.yaml
     required: false
     multivalued: false
+
+  interaction_data_provider:
+    range: interaction_source_enum
+    description: >-
+      The interaction database that curated the interaction. e.g. BioGRID
 
   interaction_type:
     required: true

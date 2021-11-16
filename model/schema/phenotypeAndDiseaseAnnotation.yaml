@@ -36,7 +36,7 @@ prefixes:
 
 classes:
 
-  PhenotypeAnnotationCurated:
+  PhenotypeAnnotation:
     is_a: Association
     mixins:
       - AuditedObject
@@ -44,8 +44,8 @@ classes:
       An annotation asserting an association between a biological entity and a phenotype supported by evidence.
     slots:
       - curie
+      - annotation_reference
       - phenotype_term                    # phenotypeTermIdentifiers in JSON schema
-      - date_assigned                     # dateAssigned in JSON schema
       - condition_relations
     slot_usage:
       subject:                            # objectId in JSON schema
@@ -61,7 +61,7 @@ classes:
           - ZP
           - APO
           - FBcv
-        range: Phenotype
+        range: PhenotypeTerm
         examples:
           - value: HP:0002487
             description: Hyperkinesis
@@ -75,28 +75,72 @@ classes:
           statement of the phenotype from a post-composed terminology
         required: true
         range: string
-      references:
-        required: true
-        range: Reference
-        multivalued: false
+      annotation_reference:
         description: >-
           The reference in which the phenotype association was asserted/reported.
-      date_assigned:
+      creation_date:
         description: >-
           The date of curation at the source (MOD) database.
         required: true
         multivalued: false
-        range: date
 
-  PhenotypeAnnotationInferred:
-    is_a: PhenotypeAnnotationCurated
+  GenePhenotypeAnnotation:
     description: >-
-      A curated phenotype annotation (see class PhenotypeAnnotationCurated) for which inferences have been made to apply
-      additional information such as inferred gene or inferred allele.
+      An annotation asserting an association between a gene and a phenotype
+      supported by evidence.
+    is_a: PhenotypeAnnotation
+    slots:
+      - sgd_strain_background   # Does this also apply to phenotype annotations?
+    slot_usage:
+      subject:
+        required: true
+        description: >-
+          The gene to which the phenotype ontology term is associated.
+        range: Gene
+      predicate:
+        description: The relationship between gene and phenotype.
+        required: true
+        range: gene_phenotype_relation_enum  # TO DO: generate this relation enumeration or don't specify predicate
+
+  AllelePhenotypeAnnotation:
+    description: >-
+      An annotation asserting an association between an allele
+      and a phenotype supported by evidence.
+    is_a: PhenotypeAnnotation
     slots:
       - inferred_gene
-      - inferred_allele
     slot_usage:
+      subject:
+        description: >-
+          The gene to which the phenotype ontology term is associated.
+        range: Allele
+      predicate:
+        description: The relationship between allele and phenotype.
+        range: allele_phenotype_relation_enum   # TO DO: generate this relation enumeration or don't specify predicate
+        required: true
+      inferred_gene:
+        description: >-
+          The gene to which the phenotype is inferred to be associated.
+        required: false
+        range: Gene
+
+  AGMPhenotypeAnnotation:
+    description: >-
+      An annotation asserting an association between an AGM and a phenotype
+      supported by evidence.
+    is_a: PhenotypeAnnotation
+    slots:
+      - inferred_allele
+      - inferred_gene
+    slot_usage:
+      subject:
+        description: >-
+          The AGM to which the phenotype ontology term is associated.
+        range: AffectedGenomicModel
+      predicate:
+        description: The relationship between AGM and phenotype.
+        range: agm_disease_relation_enum   # TO DO: generate this relation enumeration or don't specify predicate
+        required: true
       inferred_gene:
         description: >-
           The gene to which the phenotype is inferred to be associated.
@@ -105,8 +149,9 @@ classes:
       inferred_allele:
         description: >-
           The allele to which the phenotype is inferred to be associated.
-        range: Allele
         required: false
+        range: Allele
+
 
   DiseaseAnnotation:
     is_a: Association
@@ -117,13 +162,15 @@ classes:
       An annotation asserting an association between a biological entity and a disease supported by evidence.
     slots:
       - curie
+      - mod_id
       - negated
       - evidence_codes
       - annotation_reference
-      - with # what constrains this?  what is gene+with=strain?
+      - annotation_type
+      - with
       - disease_qualifiers
       - condition_relations
-      - genetic_sex # does this really belong at the top level?
+      - genetic_sex
       - private_note # we should probably pull this out into a _private_ note object.
       - disease_annotation_note # we should probably pull this out into a note object.
       - disease_annotation_summary # we should probably pull this out into a note object
@@ -131,12 +178,16 @@ classes:
       - disease_genetic_modifier
       - disease_genetic_modifier_relation
     slot_usage:
+      mod_id:
+        description: >-
+          The model organism database (MOD) identifier/curie for the disease annotation. Currently only
+          used by WormBase for disease annotations, e.g. "WBDOannot00000907"
       subject:
         required: true
         description: >-
           The biological entity to which the disease ontology term is associated.
         range: BiologicalEntity
-      predicate:  # predicate is basically disease_relation.  We should determine if we want such a generic name for this in the parent Association objectl
+      predicate:  # predicate is basically disease_relation.  We should determine if we want such a generic name for this in the parent Association object
         required: true
         description: >-
           Constrains the disease subject, associationType and inferredGeneAssociation.
@@ -150,11 +201,14 @@ classes:
         range: DOTerm
       data_provider:
         required: true
-        description: >-
-          source of data, can be multiple of these, each with a type and a crossReference
       with:
         description: >-
-          http://geneontology.org/docs/go-annotation-file-gaf-format-21/#with-or-from-column-8
+          A field for disease annotations that captures the human gene the
+          implicated MOD gene is homologous or orthologous to when using the ISS (inferred
+          from sequence similarity) evidence code or the ISO (inferred from sequence orthology)
+          evidence code. The assertion would state that the MOD gene is implicated in the
+          indicated disease based on sequence-similarity/sequence-orthology "with" some human
+          gene. Currently used by SGD.
       annotation_reference:               # evidence in JSON schema
         required: true
         multivalued: false
@@ -291,32 +345,11 @@ classes:
         description: >-
           ChEBI or molecular ontology id used in subset of condition terms.  ie: the specific
           chemcial used in conjunction with 'chemical condition'.
-        range: OntologyTerm
+        range: OntologyTerm    # Need to consider this; Molecule class (for WB molecules) is not an ontology
         values_from:
           - CHEBI
           - WBMol
 
-  Phenotype:
-    description: >-
-      A characteristic of an organism. This may or may not be expressed as a difference in
-      comparison to a reference organism.
-    slots:
-      - curie
-      - name
-    values_from:
-      - HP
-      - MP
-      - WBPhenotype
-      - ZP
-      - APO
-      - FBcv
-    id_prefixes:
-      - HP
-      - MP
-      - WBPhenotype
-      - ZP
-      - APO
-      - FBcv
 
   ConditionRelation:
     description: >-
@@ -357,7 +390,7 @@ slots:
 
   condition_anatomy:
     domain: ExperimentalCondition
-    range: uriorcurie                     # Update to AnatomicalEntity if such a class is instantiated
+    range: AnatomicalTerm
     values_from:
       - UBERON
       - WBbt
@@ -374,17 +407,15 @@ slots:
 
   condition_class:
     domain: ExperimentalCondition
-    range: uriorcurie
+    range: ZECOTerm
 
   condition_gene_ontology:
     domain: ExperimentalCondition
-    range: uriorcurie                     # Update to GOTerm if such a class is instantiated
-    values_from:
-      - GO
+    range: GOTerm                     # Update to GOTerm if such a class is instantiated
 
   condition_id:
     domain: ExperimentalCondition
-    range: uriorcurie
+    range: ExperimentalConditionOntologyTerm
 
   condition_quantity:
     domain: ExperimentalCondition
@@ -410,9 +441,6 @@ slots:
   conditions:
     range: ExperimentalCondition
     multivalued: true
-
-  date_assigned:                  # same as 'date_produced' in core.yaml?
-    range: date
 
   evidence_codes:
     description: ECO term IDs             # this slot has also been instantiated in the orthology.yaml
@@ -456,6 +484,12 @@ slots:
     description: >-
           The reference in which the association was asserted/reported.
 
+  annotation_type:
+    range: annotation_type_enum
+    description: >-
+      The type of annotation classified according to curation method:
+      manually curated, high-throughput, computational
+
   disease_genetic_modifier:
     description: >-
       Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
@@ -468,12 +502,17 @@ slots:
     range: genetic_modifier_relation_enum
 
   phenotype_term:
-    range: Phenotype
+    range: PhenotypeTerm
 
   with:
     description: >-
-      http://geneontology.org/docs/go-annotation-file-gaf-format-21/#with-or-from-column-8
+      http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8
     range: Gene
+
+  mod_id:
+    description: >-
+      The model organism database (MOD) identifier/curie for the object
+    range: string   # Should this be uriorcurie?
 
 ## ----------
 ## PREDICATES
@@ -618,3 +657,9 @@ enums:
       sexual_dimorphism:
       resistance:
       penetrance:
+
+  annotation_type_enum:
+    permissible_values:
+      manually_curated:
+      high-throughput:
+      computational:

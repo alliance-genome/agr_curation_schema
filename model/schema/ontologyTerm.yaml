@@ -139,3 +139,8 @@ classes:
   ZFATerm:
     is_a: AnatomicalTerm
 
+  PhenotypeTerm:
+    is_a: OntologyTerm
+    description: >-
+      An ontology term representing a characteristic of an organism. This may or may not be
+      expressed as a difference in comparison to a reference organism.

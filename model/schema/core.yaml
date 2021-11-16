@@ -132,7 +132,7 @@ classes:
       and the agent responsible for the change.
     slots:
       - table_key
-      - produced_by
+      - created_by
       - creation_date
       - modified_by
       - date_last_modified
@@ -162,12 +162,10 @@ classes:
     notes:
       Keeping this more generic than biolink:association by foregoing the
       qualifiers and negated slots.
-      object
     slots:
       - subject
       - predicate
       - object
-      - references
 
   EntitySynonym:
     is_a: Association
@@ -389,9 +387,10 @@ slots:
     range: integer
 
   creation_date:
-    aliases: [ 'publication date' ]
+    aliases: [ 'publication date' ]    # Can we revisit this? I don't think creation_date and 'publication date' are the same thing (CG)
     description: >-
       The date on which an entity was created. This can be applied to nodes or edges.
+    range: date
     exact_mappings:
       - dct:createdOn
       - WIKIDATA_PROPERTY:P577
@@ -401,7 +400,7 @@ slots:
       Date on which an entity was last modified.
     range: date
 
-  produced_by:
+  created_by:
     description: >-
       The individual that created the entity.
     required: true
