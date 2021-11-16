@@ -451,6 +451,8 @@ slots:
       Holds between an object and its CrossReferences.
     multivalued: true
     range: CrossReference
+    inlined: true
+    inlined_as_list: true
 
   symbol:
     description: >-

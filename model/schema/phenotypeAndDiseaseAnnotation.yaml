@@ -434,6 +434,8 @@ slots:
   condition_relations:
     range: ConditionRelation
     multivalued: true
+    inlined: true
+    inlined_as_list: true
 
   condition_relation_type:
     range: condition_relation_enum
@@ -441,6 +443,8 @@ slots:
   conditions:
     range: ExperimentalCondition
     multivalued: true
+    inlined: true
+    inlined_as_list: true
 
   evidence_codes:
     description: ECO term IDs             # this slot has also been instantiated in the orthology.yaml
