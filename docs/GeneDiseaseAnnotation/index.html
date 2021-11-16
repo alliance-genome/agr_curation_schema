@@ -94,7 +94,7 @@
                 <h1 id="class-genediseaseannotation">Class: GeneDiseaseAnnotation</h1>
 <p>An annotation asserting an association between a gene and a disease supported by evidence.</p>
 <p>URI: <a href="http://alliancegenome.orgGeneDiseaseAnnotation">alliance:GeneDiseaseAnnotation</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Person],[Gene]&lt;subject%201..1-%20[GeneDiseaseAnnotation&#124;predicate:gene_disease_relation_enum;curie(i):uriorcurie;negated(i):boolean%20%3F;disease_qualifiers(i):disease_annotation_qualifier_enum%20%3F;genetic_sex(i):genetic_sex_enum%20%3F;private_note(i):string%20%3F;disease_annotation_note(i):string%20%3F;disease_annotation_summary(i):string%20%3F;data_provider(i):string%20%2B;disease_genetic_modifier_relation(i):genetic_modifier_relation_enum%20%3F;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[AffectedGenomicModel]&lt;sgd_strain_background%200..1-%20[GeneDiseaseAnnotation],[DiseaseAnnotation]^-[GeneDiseaseAnnotation],[Gene],[ECOTerm],[DiseaseAnnotation],[DOTerm],[ConditionRelation],[BiologicalEntity],[AffectedGenomicModel]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Person],[Gene]&lt;subject%201..1-%20[GeneDiseaseAnnotation&#124;predicate:gene_disease_relation_enum;curie(i):uriorcurie;negated(i):boolean%20%3F;disease_qualifiers(i):disease_annotation_qualifier_enum%20%3F;genetic_sex(i):genetic_sex_enum%20%3F;private_note(i):string%20%3F;disease_annotation_note(i):string%20%3F;disease_annotation_summary(i):string%20%3F;data_provider(i):string%20%2B;disease_genetic_modifier_relation(i):genetic_modifier_relation_enum%20%3F;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[AffectedGenomicModel]&lt;sgd_strain_background%200..1-%20[GeneDiseaseAnnotation],[DiseaseAnnotation]^-[GeneDiseaseAnnotation],[Gene],[ECOTerm],[DiseaseAnnotation],[DOTerm],[ConditionRelation],[BiologicalEntity],[AffectedGenomicModel]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Person],[Gene]&lt;subject%201..1-%20[GeneDiseaseAnnotation&#124;predicate:gene_disease_relation_enum;curie(i):uriorcurie;mod_id(i):string%20%3F;negated(i):boolean%20%3F;annotation_type(i):annotation_type_enum%20%3F;disease_qualifiers(i):disease_annotation_qualifier_enum%20%3F;genetic_sex(i):genetic_sex_enum%20%3F;private_note(i):string%20%3F;disease_annotation_note(i):string%20%3F;disease_annotation_summary(i):string%20%3F;data_provider(i):string%20%2B;disease_genetic_modifier_relation(i):genetic_modifier_relation_enum%20%3F;table_key(i):integer%20%3F;creation_date(i):date%20%3F;date_last_modified(i):date%20%3F],[AffectedGenomicModel]&lt;sgd_strain_background%200..1-%20[GeneDiseaseAnnotation],[DiseaseAnnotation]^-[GeneDiseaseAnnotation],[Gene],[ECOTerm],[DiseaseAnnotation],[DOTerm],[ConditionRelation],[BiologicalEntity],[AffectedGenomicModel]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Person],[Gene]&lt;subject%201..1-%20[GeneDiseaseAnnotation&#124;predicate:gene_disease_relation_enum;curie(i):uriorcurie;mod_id(i):string%20%3F;negated(i):boolean%20%3F;annotation_type(i):annotation_type_enum%20%3F;disease_qualifiers(i):disease_annotation_qualifier_enum%20%3F;genetic_sex(i):genetic_sex_enum%20%3F;private_note(i):string%20%3F;disease_annotation_note(i):string%20%3F;disease_annotation_summary(i):string%20%3F;data_provider(i):string%20%2B;disease_genetic_modifier_relation(i):genetic_modifier_relation_enum%20%3F;table_key(i):integer%20%3F;creation_date(i):date%20%3F;date_last_modified(i):date%20%3F],[AffectedGenomicModel]&lt;sgd_strain_background%200..1-%20[GeneDiseaseAnnotation],[DiseaseAnnotation]^-[GeneDiseaseAnnotation],[Gene],[ECOTerm],[DiseaseAnnotation],[DOTerm],[ConditionRelation],[BiologicalEntity],[AffectedGenomicModel]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../DiseaseAnnotation/">DiseaseAnnotation</a> - An annotation asserting an association between a biological entity and a disease supported by evidence.</li>
@@ -120,14 +120,14 @@
 </ul>
 <h3 id="inherited-from-diseaseannotation">Inherited from DiseaseAnnotation:</h3>
 <ul>
-<li><a href="../references/">references</a>  <sub>0..*</sub><ul>
-<li>Description: holds between an object and a reference</li>
-<li>Range: <a href="../Reference/">Reference</a></li>
-</ul>
-</li>
 <li><a href="../curie/">curie</a>  <sub>1..1</sub><ul>
 <li>Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI</li>
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="../DiseaseAnnotation_mod_id/">DiseaseAnnotation➞mod_id</a>  <sub>0..1</sub><ul>
+<li>Description: The model organism database (MOD) identifier/curie for the disease annotation. Currently only used by WormBase for disease annotations, e.g. "WBDOannot00000907"</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
 <li><a href="../DiseaseAnnotation_negated/">DiseaseAnnotation➞negated</a>  <sub>0..1</sub><ul>
@@ -145,8 +145,13 @@
 <li>Range: <a href="../Reference/">Reference</a></li>
 </ul>
 </li>
+<li><a href="../annotation_type/">annotation_type</a>  <sub>0..1</sub><ul>
+<li>Description: The type of annotation classified according to curation method: manually curated, high-throughput, computational</li>
+<li>Range: <a href="../annotation_type_enum/">annotation_type_enum</a></li>
+</ul>
+</li>
 <li><a href="../DiseaseAnnotation_with/">DiseaseAnnotation➞with</a>  <sub>0..1</sub><ul>
-<li>Description: http://geneontology.org/docs/go-annotation-file-gaf-format-21/#with-or-from-column-8</li>
+<li>Description: A field for disease annotations that captures the human gene the implicated MOD gene is homologous or orthologous to when using the ISS (inferred from sequence similarity) evidence code or the ISO (inferred from sequence orthology) evidence code. The assertion would state that the MOD gene is implicated in the indicated disease based on sequence-similarity/sequence-orthology "with" some human gene. Currently used by SGD.</li>
 <li>Range: <a href="../Gene/">Gene</a></li>
 </ul>
 </li>
@@ -175,7 +180,7 @@
 </ul>
 </li>
 <li><a href="../DiseaseAnnotation_data_provider/">DiseaseAnnotation➞data_provider</a>  <sub>1..*</sub><ul>
-<li>Description: source of data, can be multiple of these, each with a type and a crossReference</li>
+<li>Description: MOD that provided data</li>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>

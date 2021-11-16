@@ -12,7 +12,7 @@ public abstractclass GeneInteraction extends GeneToGeneAssociation {
 
   private String curie;
   private List<CrossReference> crossReferences;
-  private String dataProvider;
+  private String interactionDataProvider;
   private String interactionType;
   private List<String> interactorARole;
   private List<String> interactorBRole;

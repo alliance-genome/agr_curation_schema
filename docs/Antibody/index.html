@@ -94,7 +94,7 @@
                 <h1 id="class-antibody">Class: Antibody</h1>
 <p>Immunoglobulin proteins that bind specific molecule(s). Can be used experimentally for the purposes of detection or purification.</p>
 <p>URI: <a href="http://alliancegenome.orgAntibody">alliance:Antibody</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Reagent],[Person],[Gene],[CrossReference],[BiologicalEntity],[AuditedObject],[Reference]&lt;original_reference%200..1-%20[Antibody&#124;name:string;antigen_taxon:uriorcurie%20%3F;clonality:antibody_clonality_set;heavy_chain_isotype:heavy_chain_isotype_set%20%3F;light_chain_isotype:light_chain_isotype_set%20%3F;secondary_identifiers:uriorcurie%20*;curie:uriorcurie;taxon:uriorcurie%20%3F;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[Reference]&lt;references%200..*-%20[Antibody],[CrossReference]&lt;cross_references%200..*-%20[Antibody],[Gene]&lt;antibody_target_genes%200..*-%20[Antibody],[Antibody]uses%20-.-&gt;[AuditedObject],[Antibody]uses%20-.-&gt;[Reagent],[BiologicalEntity]^-[Antibody],[Agent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Reagent],[Person],[Gene],[CrossReference],[BiologicalEntity],[AuditedObject],[Reference]&lt;original_reference%200..1-%20[Antibody&#124;name:string;antigen_taxon:uriorcurie%20%3F;clonality:antibody_clonality_set;heavy_chain_isotype:heavy_chain_isotype_set%20%3F;light_chain_isotype:light_chain_isotype_set%20%3F;secondary_identifiers:uriorcurie%20*;curie:uriorcurie;taxon:uriorcurie%20%3F;table_key(i):integer%20%3F;creation_date(i):string%20%3F;date_last_modified(i):date%20%3F],[Reference]&lt;references%200..*-%20[Antibody],[CrossReference]&lt;cross_references%200..*-%20[Antibody],[Gene]&lt;antibody_target_genes%200..*-%20[Antibody],[Antibody]uses%20-.-&gt;[AuditedObject],[Antibody]uses%20-.-&gt;[Reagent],[BiologicalEntity]^-[Antibody],[Agent]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Reagent],[Person],[Gene],[CrossReference],[BiologicalEntity],[AuditedObject],[Reference]&lt;original_reference%200..1-%20[Antibody&#124;name:string;antigen_taxon:uriorcurie%20%3F;clonality:antibody_clonality_set;heavy_chain_isotype:heavy_chain_isotype_set%20%3F;light_chain_isotype:light_chain_isotype_set%20%3F;secondary_identifiers:uriorcurie%20*;curie:uriorcurie;taxon:uriorcurie%20%3F;table_key(i):integer%20%3F;creation_date(i):date%20%3F;date_last_modified(i):date%20%3F],[Reference]&lt;references%200..*-%20[Antibody],[CrossReference]&lt;cross_references%200..*-%20[Antibody],[Gene]&lt;antibody_target_genes%200..*-%20[Antibody],[Antibody]uses%20-.-&gt;[AuditedObject],[Antibody]uses%20-.-&gt;[Reagent],[BiologicalEntity]^-[Antibody],[Agent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Reagent],[Person],[Gene],[CrossReference],[BiologicalEntity],[AuditedObject],[Reference]&lt;original_reference%200..1-%20[Antibody&#124;name:string;antigen_taxon:uriorcurie%20%3F;clonality:antibody_clonality_set;heavy_chain_isotype:heavy_chain_isotype_set%20%3F;light_chain_isotype:light_chain_isotype_set%20%3F;secondary_identifiers:uriorcurie%20*;curie:uriorcurie;taxon:uriorcurie%20%3F;table_key(i):integer%20%3F;creation_date(i):date%20%3F;date_last_modified(i):date%20%3F],[Reference]&lt;references%200..*-%20[Antibody],[CrossReference]&lt;cross_references%200..*-%20[Antibody],[Gene]&lt;antibody_target_genes%200..*-%20[Antibody],[Antibody]uses%20-.-&gt;[AuditedObject],[Antibody]uses%20-.-&gt;[Reagent],[BiologicalEntity]^-[Antibody],[Agent]" /></a></p>
 <h2 id="identifier-prefixes">Identifier prefixes</h2>
 <ul>
 <li>RGD</li>
@@ -187,7 +187,7 @@
 </ul>
 <h3 id="mixed-in-from-auditedobject_1">Mixed in from AuditedObject:</h3>
 <ul>
-<li><a href="../produced_by/">produced_by</a>  <sub>1..1</sub><ul>
+<li><a href="../created_by/">created_by</a>  <sub>1..1</sub><ul>
 <li>Description: The individual that created the entity.</li>
 <li>Range: <a href="../Person/">Person</a></li>
 </ul>
@@ -197,7 +197,7 @@
 <ul>
 <li><a href="../creation_date/">creation_date</a>  <sub>0..1</sub><ul>
 <li>Description: The date on which an entity was created. This can be applied to nodes or edges.</li>
-<li>Range: <a href="../String/">String</a></li>
+<li>Range: <a href="../Date/">Date</a></li>
 </ul>
 </li>
 </ul>

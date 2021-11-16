@@ -11,7 +11,7 @@ import lombok.*;
 public class AuditedObject  {
 
   private Integer tableKey;
-  private Person producedBy;
+  private Person createdBy;
   private String creationDate;
   private Person modifiedBy;
   private String dateLastModified;

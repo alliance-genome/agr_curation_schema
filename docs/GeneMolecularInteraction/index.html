@@ -94,7 +94,7 @@
                 <h1 id="class-genemolecularinteraction">Class: GeneMolecularInteraction</h1>
 <p>A physical molecular interaction between gene products (e.g. protein-protein interactions or protein-RNA interactions) or between genes and DNA-binding factors (e.g. protein-DNA interactions)</p>
 <p>URI: <a href="http://alliancegenome.orgGeneMolecularInteraction">alliance:GeneMolecularInteraction</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[GeneInteraction]^-[GeneMolecularInteraction&#124;aggregation_database:aggregation_database_enum%20%3F;detection_method:detection_methods_enum%20%3F;predicate:string;curie(i):uriorcurie;data_provider(i):interaction_source_enum%20%2B;interaction_type(i):interaction_type_enum;interactor_A_role(i):interactor_A_role_enum%20*;interactor_B_role(i):interactor_B_role_enum%20*;interactor_A_type(i):interactor_type_enum;interactor_B_type(i):interactor_type_enum],[GeneInteraction],[Gene],[CrossReference]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[GeneInteraction]^-[GeneMolecularInteraction&#124;aggregation_database:aggregation_database_enum%20%3F;detection_method:detection_methods_enum%20%3F;predicate:string;curie(i):uriorcurie;data_provider(i):interaction_source_enum%20%2B;interaction_type(i):interaction_type_enum;interactor_A_role(i):interactor_A_role_enum%20*;interactor_B_role(i):interactor_B_role_enum%20*;interactor_A_type(i):interactor_type_enum;interactor_B_type(i):interactor_type_enum],[GeneInteraction],[Gene],[CrossReference]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[GeneInteraction]^-[GeneMolecularInteraction&#124;aggregation_database:aggregation_database_enum%20%3F;detection_method:detection_methods_enum%20%3F;predicate:string;curie(i):uriorcurie;interaction_data_provider(i):interaction_source_enum;interaction_type(i):interaction_type_enum;interactor_A_role(i):interactor_A_role_enum%20*;interactor_B_role(i):interactor_B_role_enum%20*;interactor_A_type(i):interactor_type_enum;interactor_B_type(i):interactor_type_enum],[GeneInteraction],[Gene],[CrossReference]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[GeneInteraction]^-[GeneMolecularInteraction&#124;aggregation_database:aggregation_database_enum%20%3F;detection_method:detection_methods_enum%20%3F;predicate:string;curie(i):uriorcurie;interaction_data_provider(i):interaction_source_enum;interaction_type(i):interaction_type_enum;interactor_A_role(i):interactor_A_role_enum%20*;interactor_B_role(i):interactor_B_role_enum%20*;interactor_A_type(i):interactor_type_enum;interactor_B_type(i):interactor_type_enum],[GeneInteraction],[Gene],[CrossReference]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../GeneInteraction/">GeneInteraction</a> - An interaction between two genes or gene products; this may be a physical molecular interaction between gene products (e.g. protein-protein interactions), or may be a genetic interaction between genes (e.g. phenotypic suppression)</li>
@@ -131,8 +131,8 @@
 <li>Range: <a href="../CrossReference/">CrossReference</a></li>
 </ul>
 </li>
-<li><a href="../GeneInteraction_data_provider/">GeneInteraction➞data_provider</a>  <sub>1..*</sub><ul>
-<li>Description: The database that curated the interaction. e.g. BioGRID</li>
+<li><a href="../GeneInteraction_interaction_data_provider/">GeneInteraction➞interaction_data_provider</a>  <sub>1..1</sub><ul>
+<li>Description: The interaction database that curated the interaction. e.g. BioGRID</li>
 <li>Range: <a href="../interaction_source_enum/">interaction_source_enum</a></li>
 </ul>
 </li>

@@ -11,9 +11,11 @@ import lombok.*;
 public abstractclass DiseaseAnnotation extends Association {
 
   private String curie;
+  private String modId;
   private Boolean negated;
   private List<ECOTerm> evidenceCodes;
   private Reference annotationReference;
+  private String annotationType;
   private Gene with;
   private String diseaseQualifiers;
   private List<ConditionRelation> conditionRelations;
@@ -25,7 +27,7 @@ public abstractclass DiseaseAnnotation extends Association {
   private BiologicalEntity diseaseGeneticModifier;
   private String diseaseGeneticModifierRelation;
   private Integer tableKey;
-  private Person producedBy;
+  private Person createdBy;
   private String creationDate;
   private Person modifiedBy;
   private String dateLastModified;

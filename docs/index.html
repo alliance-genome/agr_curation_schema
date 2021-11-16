@@ -142,8 +142,10 @@
 </li>
 </ul>
 </li>
-<li><a href="PhenotypeAnnotationCurated/">PhenotypeAnnotationCurated</a> - An annotation asserting an association between a biological entity and a phenotype supported by evidence.<ul>
-<li><a href="PhenotypeAnnotationInferred/">PhenotypeAnnotationInferred</a> - A curated phenotype annotation (see class PhenotypeAnnotationCurated) for which inferences have been made to apply additional information such as inferred gene or inferred allele.</li>
+<li><a href="PhenotypeAnnotation/">PhenotypeAnnotation</a> - An annotation asserting an association between a biological entity and a phenotype supported by evidence.<ul>
+<li><a href="AGMPhenotypeAnnotation/">AGMPhenotypeAnnotation</a> - An annotation asserting an association between an AGM and a phenotype supported by evidence.</li>
+<li><a href="AllelePhenotypeAnnotation/">AllelePhenotypeAnnotation</a> - An annotation asserting an association between an allele and a phenotype supported by evidence.</li>
+<li><a href="GenePhenotypeAnnotation/">GenePhenotypeAnnotation</a> - An annotation asserting an association between a gene and a phenotype supported by evidence.</li>
 </ul>
 </li>
 </ul>
@@ -211,6 +213,7 @@
 <li><a href="MITerm/">MITerm</a></li>
 <li><a href="MMOTerm/">MMOTerm</a></li>
 <li><a href="MMUSDVTerm/">MMUSDVTerm</a></li>
+<li><a href="PhenotypeTerm/">PhenotypeTerm</a> - An ontology term representing a characteristic of an organism. This may or may not be expressed as a difference in comparison to a reference organism.</li>
 <li><a href="SOTerm/">SOTerm</a></li>
 <li><a href="StageTerm/">StageTerm</a><ul>
 <li><a href="FBDVTerm/">FBDVTerm</a></li>
@@ -220,7 +223,6 @@
 </li>
 </ul>
 </li>
-<li><a href="Phenotype/">Phenotype</a> - A characteristic of an organism. This may or may not be expressed as a difference in comparison to a reference organism.</li>
 <li><a href="ReferenceType/">ReferenceType</a> - Describes the relation between a reference and an object</li>
 <li><a href="SequenceTargetingReagent/">SequenceTargetingReagent</a> - Dummy sequence targeting reagent class</li>
 <li><a href="Species/">Species</a></li>
@@ -264,8 +266,10 @@
 </li>
 <li><a href="annotation_reference/">annotation_reference</a> - The reference in which the association was asserted/reported.<ul>
 <li><a href="DiseaseAnnotation_annotation_reference/">DiseaseAnnotation➞annotation_reference</a> - The reference in which the disease association was asserted/reported.</li>
+<li><a href="PhenotypeAnnotation_annotation_reference/">PhenotypeAnnotation➞annotation_reference</a> - The reference in which the phenotype association was asserted/reported.</li>
 </ul>
 </li>
+<li><a href="annotation_type/">annotation_type</a> - The type of annotation classified according to curation method: manually curated, high-throughput, computational</li>
 <li><a href="antibody_target_genes/">antibody_target_genes</a> - The genes whose gene products are recognized by the antibody.</li>
 <li><a href="associated_notes/">associated_notes</a> - Notes associated with the entity in some way</li>
 <li><a href="associated_references/">associated_references</a> - References associated with the entity in some way</li>
@@ -285,13 +289,15 @@
 <li><a href="GeneInteraction_object/">GeneInteraction➞object</a> - connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.</li>
 </ul>
 </li>
-<li><a href="PhenotypeAnnotationCurated_object/">PhenotypeAnnotationCurated➞object</a> - phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed statement of the phenotype from a post-composed terminology</li>
+<li><a href="PhenotypeAnnotation_object/">PhenotypeAnnotation➞object</a> - phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed statement of the phenotype from a post-composed terminology</li>
 <li><a href="VariantGeneConsequence_object/">VariantGeneConsequence➞object</a></li>
 <li><a href="VariantGenomicLocation_object/">VariantGenomicLocation➞object</a> - object should be the chromosome identifier</li>
 <li><a href="VariantTranscriptConsequence_object/">VariantTranscriptConsequence➞object</a></li>
 </ul>
 </li>
 <li><a href="predicate/">predicate</a> - A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.<ul>
+<li><a href="AGMPhenotypeAnnotation_predicate/">AGMPhenotypeAnnotation➞predicate</a> - The relationship between AGM and phenotype.</li>
+<li><a href="AllelePhenotypeAnnotation_predicate/">AllelePhenotypeAnnotation➞predicate</a> - The relationship between allele and phenotype.</li>
 <li><a href="DiseaseAnnotation_predicate/">DiseaseAnnotation➞predicate</a> - Constrains the disease subject, associationType and inferredGeneAssociation.<ul>
 <li><a href="AGMDiseaseAnnotation_predicate/">AGMDiseaseAnnotation➞predicate</a> - The relationship between AGM and disease.</li>
 <li><a href="AlleleDiseaseAnnotation_predicate/">AlleleDiseaseAnnotation➞predicate</a> - The relationship between allele and disease.</li>
@@ -304,6 +310,7 @@
 <li><a href="GeneMolecularInteraction_predicate/">GeneMolecularInteraction➞predicate</a></li>
 </ul>
 </li>
+<li><a href="GenePhenotypeAnnotation_predicate/">GenePhenotypeAnnotation➞predicate</a> - The relationship between gene and phenotype.</li>
 </ul>
 </li>
 <li><a href="subject/">subject</a> - connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.<ul>
@@ -318,7 +325,12 @@
 <li><a href="GeneInteraction_subject/">GeneInteraction➞subject</a> - connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.</li>
 </ul>
 </li>
-<li><a href="PhenotypeAnnotationCurated_subject/">PhenotypeAnnotationCurated➞subject</a> - The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, by direct curation.</li>
+<li><a href="PhenotypeAnnotation_subject/">PhenotypeAnnotation➞subject</a> - The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, by direct curation.<ul>
+<li><a href="AGMPhenotypeAnnotation_subject/">AGMPhenotypeAnnotation➞subject</a> - The AGM to which the phenotype ontology term is associated.</li>
+<li><a href="AllelePhenotypeAnnotation_subject/">AllelePhenotypeAnnotation➞subject</a> - The gene to which the phenotype ontology term is associated.</li>
+<li><a href="GenePhenotypeAnnotation_subject/">GenePhenotypeAnnotation➞subject</a> - The gene to which the phenotype ontology term is associated.</li>
+</ul>
+</li>
 <li><a href="VariantConsequence_subject/">VariantConsequence➞subject</a></li>
 <li><a href="VariantGenomicLocation_subject/">VariantGenomicLocation➞subject</a> - subject should be the variant identifier</li>
 </ul>
@@ -400,7 +412,11 @@
 <li><a href="contains_construct/">contains_construct</a></li>
 <li><a href="copyright_date/">copyright_date</a></li>
 <li><a href="corresponding_author/">corresponding_author</a></li>
-<li><a href="creation_date/">creation_date</a> - The date on which an entity was created. This can be applied to nodes or edges.</li>
+<li><a href="created_by/">created_by</a> - The individual that created the entity.</li>
+<li><a href="creation_date/">creation_date</a> - The date on which an entity was created. This can be applied to nodes or edges.<ul>
+<li><a href="PhenotypeAnnotation_creation_date/">PhenotypeAnnotation➞creation_date</a> - The date of curation at the source (MOD) database.</li>
+</ul>
+</li>
 <li><a href="cropped_from/">cropped_from</a> - Another larger image from which this image was cropped.</li>
 <li><a href="cross_references/">cross_references</a> - Holds between an object and its CrossReferences.<ul>
 <li><a href="GeneInteraction_cross_references/">GeneInteraction➞cross_references</a> - Additional identifier(s) of the interaction annotation other than the primary id.</li>
@@ -414,16 +430,11 @@
 </li>
 <li><a href="current/">current</a></li>
 <li><a href="data_provider/">data_provider</a> - MOD that provided data<ul>
-<li><a href="DiseaseAnnotation_data_provider/">DiseaseAnnotation➞data_provider</a> - source of data, can be multiple of these, each with a type and a crossReference</li>
-<li><a href="GeneInteraction_data_provider/">GeneInteraction➞data_provider</a> - The database that curated the interaction. e.g. BioGRID</li>
+<li><a href="DiseaseAnnotation_data_provider/">DiseaseAnnotation➞data_provider</a></li>
 </ul>
 </li>
 <li><a href="database_status/">database_status</a> - Database status of the allele</li>
 <li><a href="date_arrived_in_PubMed/">date_arrived_in_PubMed</a> - Day in which a reference or resource was created in PUBMED. Only relevant for PUBMED references.</li>
-<li><a href="date_assigned/">date_assigned</a><ul>
-<li><a href="PhenotypeAnnotationCurated_date_assigned/">PhenotypeAnnotationCurated➞date_assigned</a> - The date of curation at the source (MOD) database.</li>
-</ul>
-</li>
 <li><a href="date_last_modified/">date_last_modified</a> - Date on which an entity was last modified.</li>
 <li><a href="date_last_modified_in_PubMed/">date_last_modified_in_PubMed</a> - Date on which an entity was created.</li>
 <li><a href="date_published/">date_published</a> - Date on which an entity was created.</li>
@@ -525,17 +536,22 @@
 <li><a href="inchi_key/">inchi_key</a> - InChi key description of the molecule</li>
 <li><a href="inferred_allele/">inferred_allele</a> - The allele to which something is inferred to be associated.<ul>
 <li><a href="AGMDiseaseAnnotation_inferred_allele/">AGMDiseaseAnnotation➞inferred_allele</a> - The allele to which the disease is inferred to be associated.</li>
-<li><a href="PhenotypeAnnotationInferred_inferred_allele/">PhenotypeAnnotationInferred➞inferred_allele</a> - The allele to which the phenotype is inferred to be associated.</li>
+<li><a href="AGMPhenotypeAnnotation_inferred_allele/">AGMPhenotypeAnnotation➞inferred_allele</a> - The allele to which the phenotype is inferred to be associated.</li>
 </ul>
 </li>
 <li><a href="inferred_gene/">inferred_gene</a> - The gene to which something is inferred to be associated.<ul>
 <li><a href="AGMDiseaseAnnotation_inferred_gene/">AGMDiseaseAnnotation➞inferred_gene</a> - The gene to which the disease is inferred to be associated.</li>
+<li><a href="AGMPhenotypeAnnotation_inferred_gene/">AGMPhenotypeAnnotation➞inferred_gene</a> - The gene to which the phenotype is inferred to be associated.</li>
 <li><a href="AlleleDiseaseAnnotation_inferred_gene/">AlleleDiseaseAnnotation➞inferred_gene</a> - The gene to which the disease is inferred to be associated.</li>
-<li><a href="PhenotypeAnnotationInferred_inferred_gene/">PhenotypeAnnotationInferred➞inferred_gene</a> - The gene to which the phenotype is inferred to be associated.</li>
+<li><a href="AllelePhenotypeAnnotation_inferred_gene/">AllelePhenotypeAnnotation➞inferred_gene</a> - The gene to which the phenotype is inferred to be associated.</li>
 </ul>
 </li>
 <li><a href="inheritence_mode/">inheritence_mode</a> - Mode of inheritence, e.g. dominant / semi-dominant / recessive / unknown</li>
 <li><a href="initials/">initials</a></li>
+<li><a href="interaction_data_provider/">interaction_data_provider</a> - The interaction database that curated the interaction. e.g. BioGRID<ul>
+<li><a href="GeneInteraction_interaction_data_provider/">GeneInteraction➞interaction_data_provider</a></li>
+</ul>
+</li>
 <li><a href="is_extinct/">is_extinct</a> - Does the allele still exist in a population somewhere?</li>
 <li><a href="is_obsolete/">is_obsolete</a> - Entity is no longer current.</li>
 <li><a href="iso_abbreviation/">iso_abbreviation</a></li>
@@ -551,6 +567,10 @@
 <li><a href="medline_abbreviation/">medline_abbreviation</a></li>
 <li><a href="member_terms/">member_terms</a> - Set of VocabularyTerm objects in a Vocabulary object set</li>
 <li><a href="middle_names/">middle_names</a></li>
+<li><a href="mod_id/">mod_id</a> - The model organism database (MOD) identifier/curie for the object<ul>
+<li><a href="DiseaseAnnotation_mod_id/">DiseaseAnnotation➞mod_id</a> - The model organism database (MOD) identifier/curie for the disease annotation. Currently only used by WormBase for disease annotations, e.g. "WBDOannot00000907"</li>
+</ul>
+</li>
 <li><a href="mod_reference_types/">mod_reference_types</a> - List of types as assigned at a MOD.</li>
 <li><a href="modified_by/">modified_by</a> - The individual that last modified the entity.</li>
 <li><a href="molecular_mutation/">molecular_mutation</a> - Description of the DNA changes if precise genomic location unknown</li>
@@ -599,7 +619,7 @@
 </li>
 <li><a href="phenotype_or_trait/">phenotype_or_trait</a></li>
 <li><a href="phenotype_term/">phenotype_term</a><ul>
-<li><a href="PhenotypeAnnotationCurated_phenotype_term/">PhenotypeAnnotationCurated➞phenotype_term</a></li>
+<li><a href="PhenotypeAnnotation_phenotype_term/">PhenotypeAnnotation➞phenotype_term</a></li>
 </ul>
 </li>
 <li><a href="polyphen_prediction/">polyphen_prediction</a> - PolyPhen-2 prediction</li>
@@ -610,7 +630,6 @@
 <li><a href="print_issn/">print_issn</a></li>
 <li><a href="private_comment/">private_comment</a> - A private explanatory note from curators about some entity, for internal use only.</li>
 <li><a href="private_note/">private_note</a></li>
-<li><a href="produced_by/">produced_by</a> - The individual that created the entity.</li>
 <li><a href="protein_end/">protein_end</a> - end position of variation in protein amino acid coordinates<ul>
 <li><a href="VariantTranscriptConsequence_protein_end/">VariantTranscriptConsequence➞protein_end</a> - End position of variant in amino acid sequence</li>
 </ul>
@@ -626,7 +645,6 @@
 <li><a href="references/">references</a> - holds between an object and a reference<ul>
 <li><a href="EntitySynonym_references/">EntitySynonym➞references</a> - The references in which the synonym is used to refer to the entity.</li>
 <li><a href="GeneInteraction_references/">GeneInteraction➞references</a> - The reference from which the interaction was annotated.</li>
-<li><a href="PhenotypeAnnotationCurated_references/">PhenotypeAnnotationCurated➞references</a> - The reference in which the phenotype association was asserted/reported.</li>
 <li><a href="original_reference/">original_reference</a> - Holds between an entity and the first reference to describe that entity.<ul>
 <li><a href="Antibody_original_reference/">Antibody➞original_reference</a> - The reference providing the original description of the antibody's generation.</li>
 </ul>
@@ -705,8 +723,8 @@
 <li><a href="volume/">volume</a></li>
 <li><a href="volumes/">volumes</a></li>
 <li><a href="width/">width</a> - The width of the image (pixels).</li>
-<li><a href="with/">with</a> - http://geneontology.org/docs/go-annotation-file-gaf-format-21/#with-or-from-column-8<ul>
-<li><a href="DiseaseAnnotation_with/">DiseaseAnnotation➞with</a></li>
+<li><a href="with/">with</a> - http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8<ul>
+<li><a href="DiseaseAnnotation_with/">DiseaseAnnotation➞with</a> - A field for disease annotations that captures the human gene the implicated MOD gene is homologous or orthologous to when using the ISS (inferred from sequence similarity) evidence code or the ISO (inferred from sequence orthology) evidence code. The assertion would state that the MOD gene is implicated in the indicated disease based on sequence-similarity/sequence-orthology "with" some human gene. Currently used by SGD.</li>
 </ul>
 </li>
 <li><a href="year_published/">year_published</a> - Year in which an entity was created.</li>
@@ -717,6 +735,7 @@
 <li><a href="aggregation_database_enum/">aggregation_database_enum</a></li>
 <li><a href="agm_disease_relation_enum/">agm_disease_relation_enum</a> - Permissible values describing the relationship between gene and disease.</li>
 <li><a href="allele_disease_relation_enum/">allele_disease_relation_enum</a> - Permissible values describing the relationship between allele and disease.</li>
+<li><a href="annotation_type_enum/">annotation_type_enum</a></li>
 <li><a href="antibody_clonality_set/">antibody_clonality_set</a></li>
 <li><a href="antibody_note_type_set/">antibody_note_type_set</a></li>
 <li><a href="component_relations_enum/">component_relations_enum</a></li>
@@ -842,5 +861,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2021-11-12 02:32:47.164374+00:00
+Build Date UTC : 2021-11-16 21:59:55.343759+00:00
 -->

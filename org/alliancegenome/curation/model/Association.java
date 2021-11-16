@@ -13,6 +13,5 @@ public class Association  {
   private String subject;
   private String predicate;
   private String object;
-  private List<Reference> references;
 
 }

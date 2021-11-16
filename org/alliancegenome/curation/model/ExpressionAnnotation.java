@@ -28,7 +28,7 @@ public class ExpressionAnnotation  {
   private Reference hasReference;
   private Figure hasFigure;
   private Integer tableKey;
-  private Person producedBy;
+  private Person createdBy;
   private String creationDate;
   private Person modifiedBy;
   private String dateLastModified;

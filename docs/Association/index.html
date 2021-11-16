@@ -94,13 +94,13 @@
                 <h1 id="class-association">Class: Association</h1>
 <p>A typed association between two entities, supported by evidence.</p>
 <p>URI: <a href="http://alliancegenome.orgAssociation">alliance:Association</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[PhenotypeAnnotationCurated],[GeneToGeneAssociation],[EntitySynonym],[DiseaseAnnotation],[Reference]&lt;references%200..*-%20[Association&#124;subject:string;predicate:string;object:string],[Association]^-[PhenotypeAnnotationCurated],[Association]^-[GeneToGeneAssociation],[Association]^-[EntitySynonym],[Association]^-[DiseaseAnnotation]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[PhenotypeAnnotationCurated],[GeneToGeneAssociation],[EntitySynonym],[DiseaseAnnotation],[Reference]&lt;references%200..*-%20[Association&#124;subject:string;predicate:string;object:string],[Association]^-[PhenotypeAnnotationCurated],[Association]^-[GeneToGeneAssociation],[Association]^-[EntitySynonym],[Association]^-[DiseaseAnnotation]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PhenotypeAnnotation],[GeneToGeneAssociation],[EntitySynonym],[DiseaseAnnotation],[Association&#124;subject:string;predicate:string;object:string]^-[PhenotypeAnnotation],[Association]^-[GeneToGeneAssociation],[Association]^-[EntitySynonym],[Association]^-[DiseaseAnnotation]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PhenotypeAnnotation],[GeneToGeneAssociation],[EntitySynonym],[DiseaseAnnotation],[Association&#124;subject:string;predicate:string;object:string]^-[PhenotypeAnnotation],[Association]^-[GeneToGeneAssociation],[Association]^-[EntitySynonym],[Association]^-[DiseaseAnnotation]" /></a></p>
 <h2 id="children">Children</h2>
 <ul>
 <li><a href="../DiseaseAnnotation/">DiseaseAnnotation</a> - An annotation asserting an association between a biological entity and a disease supported by evidence.</li>
 <li><a href="../EntitySynonym/">EntitySynonym</a> - A relationship between an entity and a synonym.</li>
 <li><a href="../GeneToGeneAssociation/">GeneToGeneAssociation</a> - abstract parent class for different kinds of gene-gene or gene product to gene product relationships. Includes homology and interaction.</li>
-<li><a href="../PhenotypeAnnotationCurated/">PhenotypeAnnotationCurated</a> - An annotation asserting an association between a biological entity and a phenotype supported by evidence.</li>
+<li><a href="../PhenotypeAnnotation/">PhenotypeAnnotation</a> - An annotation asserting an association between a biological entity and a phenotype supported by evidence.</li>
 </ul>
 <h2 id="referenced-by-class">Referenced by Class</h2>
 <h2 id="attributes">Attributes</h2>
@@ -119,11 +119,6 @@
 <li><a href="../object/">object</a>  <sub>1..1</sub><ul>
 <li>Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.</li>
 <li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../references/">references</a>  <sub>0..*</sub><ul>
-<li>Description: holds between an object and a reference</li>
-<li>Range: <a href="../Reference/">Reference</a></li>
 </ul>
 </li>
 </ul>

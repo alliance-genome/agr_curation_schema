@@ -15,7 +15,7 @@ public class Vocabulary  {
   private Boolean isObsolete;
   private List<VocabularyTerm> memberTerms;
   private Integer tableKey;
-  private Person producedBy;
+  private Person createdBy;
   private String creationDate;
   private Person modifiedBy;
   private String dateLastModified;

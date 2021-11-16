@@ -17,7 +17,7 @@ public class ImagePane  {
   private Integer imageXOrigin;
   private Integer imageYOrigin;
   private Integer tableKey;
-  private Person producedBy;
+  private Person createdBy;
   private String creationDate;
   private Person modifiedBy;
   private String dateLastModified;

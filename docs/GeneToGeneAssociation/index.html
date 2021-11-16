@@ -94,7 +94,7 @@
                 <h1 id="class-genetogeneassociation">Class: GeneToGeneAssociation</h1>
 <p>abstract parent class for different kinds of gene-gene or gene product to gene product relationships. Includes homology and interaction.</p>
 <p>URI: <a href="http://alliancegenome.orgGeneToGeneAssociation">alliance:GeneToGeneAssociation</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Gene]&lt;object%201..1-%20[GeneToGeneAssociation&#124;predicate(i):string],[Gene]&lt;subject%201..1-%20[GeneToGeneAssociation],[GeneToGeneAssociation]^-[GeneInteraction],[Association]^-[GeneToGeneAssociation],[GeneInteraction],[Gene],[Association]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Gene]&lt;object%201..1-%20[GeneToGeneAssociation&#124;predicate(i):string],[Gene]&lt;subject%201..1-%20[GeneToGeneAssociation],[GeneToGeneAssociation]^-[GeneInteraction],[Association]^-[GeneToGeneAssociation],[GeneInteraction],[Gene],[Association]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Gene]&lt;object%201..1-%20[GeneToGeneAssociation&#124;predicate(i):string],[Gene]&lt;subject%201..1-%20[GeneToGeneAssociation],[GeneToGeneAssociation]^-[GeneInteraction],[Association]^-[GeneToGeneAssociation],[GeneInteraction],[Gene],[Association]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Gene]&lt;object%201..1-%20[GeneToGeneAssociation&#124;predicate(i):string],[Gene]&lt;subject%201..1-%20[GeneToGeneAssociation],[GeneToGeneAssociation]^-[GeneInteraction],[Association]^-[GeneToGeneAssociation],[GeneInteraction],[Gene],[Association]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../Association/">Association</a> - A typed association between two entities, supported by evidence.</li>
@@ -123,11 +123,6 @@
 <li><a href="../predicate/">predicate</a>  <sub>1..1</sub><ul>
 <li>Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.</li>
 <li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../references/">references</a>  <sub>0..*</sub><ul>
-<li>Description: holds between an object and a reference</li>
-<li>Range: <a href="../Reference/">Reference</a></li>
 </ul>
 </li>
 </ul>

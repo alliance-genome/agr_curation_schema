@@ -13,7 +13,7 @@ public abstractclass BiologicalEntity  {
   private String curie;
   private String taxon;
   private Integer tableKey;
-  private Person producedBy;
+  private Person createdBy;
   private String creationDate;
   private Person modifiedBy;
   private String dateLastModified;

@@ -23,7 +23,7 @@ public class Image  {
   private Boolean videoStill;
   private List<String> secondaryIdentifiers;
   private Integer tableKey;
-  private Person producedBy;
+  private Person createdBy;
   private String creationDate;
   private Person modifiedBy;
   private String dateLastModified;

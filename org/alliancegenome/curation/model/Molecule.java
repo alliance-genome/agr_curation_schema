@@ -20,7 +20,7 @@ public class Molecule  {
   private List<Synonym> synonyms;
   private List<CrossReference> crossReferences;
   private Integer tableKey;
-  private Person producedBy;
+  private Person createdBy;
   private String creationDate;
   private Person modifiedBy;
   private String dateLastModified;
