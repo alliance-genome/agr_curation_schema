@@ -100,7 +100,7 @@ classes:
       predicate:
         description: The relationship between gene and phenotype.
         required: true
-        range: gene_phenotype_relation_enum  # TO DO: generate this relation enumeration or don't specify predicate
+#        range: gene_phenotype_relation_enum  # TO DO: generate this relation enumeration or don't specify predicate
 
   AllelePhenotypeAnnotation:
     description: >-
@@ -116,7 +116,7 @@ classes:
         range: Allele
       predicate:
         description: The relationship between allele and phenotype.
-        range: allele_phenotype_relation_enum   # TO DO: generate this relation enumeration or don't specify predicate
+#        range: allele_phenotype_relation_enum   # TO DO: generate this relation enumeration or don't specify predicate
         required: true
       inferred_gene:
         description: >-
@@ -139,7 +139,7 @@ classes:
         range: AffectedGenomicModel
       predicate:
         description: The relationship between AGM and phenotype.
-        range: agm_disease_relation_enum   # TO DO: generate this relation enumeration or don't specify predicate
+#        range: agm_disease_relation_enum   # TO DO: generate this relation enumeration or don't specify predicate
         required: true
       inferred_gene:
         description: >-
