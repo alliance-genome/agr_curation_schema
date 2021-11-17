@@ -94,7 +94,7 @@
                 <h1 id="class-agmphenotypeannotation">Class: AGMPhenotypeAnnotation</h1>
 <p>An annotation asserting an association between an AGM and a phenotype supported by evidence.</p>
 <p>URI: <a href="http://alliancegenome.orgAGMPhenotypeAnnotation">alliance:AGMPhenotypeAnnotation</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[PhenotypeTerm],[PhenotypeAnnotation],[Person],[Gene],[ConditionRelation],[Allele],[AffectedGenomicModel],[AffectedGenomicModel]&lt;subject%201..1-%20[AGMPhenotypeAnnotation&#124;predicate:string;curie(i):uriorcurie;object(i):string;creation_date(i):date;table_key(i):integer%20%3F;date_last_modified(i):date%20%3F],[Gene]&lt;inferred_gene%200..1-%20[AGMPhenotypeAnnotation],[Allele]&lt;inferred_allele%200..1-%20[AGMPhenotypeAnnotation],[PhenotypeAnnotation]^-[AGMPhenotypeAnnotation]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[PhenotypeTerm],[PhenotypeAnnotation],[Person],[Gene],[ConditionRelation],[Allele],[AffectedGenomicModel],[AffectedGenomicModel]&lt;subject%201..1-%20[AGMPhenotypeAnnotation&#124;predicate:string;curie(i):uriorcurie;object(i):string;creation_date(i):date;table_key(i):integer%20%3F;date_last_modified(i):date%20%3F],[Gene]&lt;inferred_gene%200..1-%20[AGMPhenotypeAnnotation],[Allele]&lt;inferred_allele%200..1-%20[AGMPhenotypeAnnotation],[PhenotypeAnnotation]^-[AGMPhenotypeAnnotation]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[PhenotypeTerm],[PhenotypeAnnotation],[Person],[Gene],[ConditionRelation],[Allele],[AffectedGenomicModel],[AffectedGenomicModel]&lt;subject%201..1-%20[AGMPhenotypeAnnotation&#124;curie(i):uriorcurie;object(i):string;creation_date(i):date;table_key(i):integer%20%3F;date_last_modified(i):date%20%3F;predicate(i):string],[Gene]&lt;inferred_gene%200..1-%20[AGMPhenotypeAnnotation],[Allele]&lt;inferred_allele%200..1-%20[AGMPhenotypeAnnotation],[PhenotypeAnnotation]^-[AGMPhenotypeAnnotation]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[PhenotypeTerm],[PhenotypeAnnotation],[Person],[Gene],[ConditionRelation],[Allele],[AffectedGenomicModel],[AffectedGenomicModel]&lt;subject%201..1-%20[AGMPhenotypeAnnotation&#124;curie(i):uriorcurie;object(i):string;creation_date(i):date;table_key(i):integer%20%3F;date_last_modified(i):date%20%3F;predicate(i):string],[Gene]&lt;inferred_gene%200..1-%20[AGMPhenotypeAnnotation],[Allele]&lt;inferred_allele%200..1-%20[AGMPhenotypeAnnotation],[PhenotypeAnnotation]^-[AGMPhenotypeAnnotation]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../PhenotypeAnnotation/">PhenotypeAnnotation</a> - An annotation asserting an association between a biological entity and a phenotype supported by evidence.</li>
@@ -118,14 +118,14 @@
 <li>Range: <a href="../AffectedGenomicModel/">AffectedGenomicModel</a></li>
 </ul>
 </li>
-<li><a href="../AGMPhenotypeAnnotation_predicate/">AGMPhenotypeAnnotation➞predicate</a>  <sub>1..1</sub><ul>
-<li>Description: The relationship between AGM and phenotype.</li>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
 </ul>
 <h3 id="inherited-from-phenotypeannotation">Inherited from PhenotypeAnnotation:</h3>
 <ul>
+<li><a href="../predicate/">predicate</a>  <sub>1..1</sub><ul>
+<li>Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
 <li><a href="../curie/">curie</a>  <sub>1..1</sub><ul>
 <li>Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI</li>
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
