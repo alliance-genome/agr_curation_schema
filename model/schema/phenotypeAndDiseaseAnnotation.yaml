@@ -381,6 +381,9 @@ classes:
       - smiles
       - synonyms
       - cross_references
+    slot_usage:
+      name:
+        required: true
 
 ## ------------
 ## SLOTS
