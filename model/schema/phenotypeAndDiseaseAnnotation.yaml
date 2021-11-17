@@ -97,9 +97,9 @@ classes:
         description: >-
           The gene to which the phenotype ontology term is associated.
         range: Gene
-      predicate:
-        description: The relationship between gene and phenotype.
-        required: true
+#      predicate:
+#        description: The relationship between gene and phenotype.
+#        required: true
 #        range: gene_phenotype_relation_enum  # TO DO: generate this relation enumeration or don't specify predicate
 
   AllelePhenotypeAnnotation:
@@ -112,12 +112,12 @@ classes:
     slot_usage:
       subject:
         description: >-
-          The gene to which the phenotype ontology term is associated.
+          The allele to which the phenotype ontology term is associated.
         range: Allele
-      predicate:
-        description: The relationship between allele and phenotype.
+#      predicate:
+#        description: The relationship between allele and phenotype.
 #        range: allele_phenotype_relation_enum   # TO DO: generate this relation enumeration or don't specify predicate
-        required: true
+#        required: true
       inferred_gene:
         description: >-
           The gene to which the phenotype is inferred to be associated.
@@ -137,10 +137,10 @@ classes:
         description: >-
           The AGM to which the phenotype ontology term is associated.
         range: AffectedGenomicModel
-      predicate:
-        description: The relationship between AGM and phenotype.
-#        range: agm_disease_relation_enum   # TO DO: generate this relation enumeration or don't specify predicate
-        required: true
+#      predicate:
+#        description: The relationship between AGM and phenotype.
+#        range: agm_phenotype_relation_enum   # TO DO: generate this relation enumeration or don't specify predicate
+#        required: true
       inferred_gene:
         description: >-
           The gene to which the phenotype is inferred to be associated.
@@ -248,7 +248,7 @@ classes:
     slot_usage:
       subject:
         description: >-
-          The gene to which the disease ontology term is associated.
+          The allele to which the disease ontology term is associated.
         range: Allele
       predicate:
         description: The relationship between allele and disease.
