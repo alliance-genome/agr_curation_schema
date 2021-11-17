@@ -5,6 +5,7 @@ title: Alliance Schema Prototype Affected Genomic Model
 imports:
   - core
   - allele
+  - ontologyTerm
   - linkml:types
 
 prefixes:
@@ -32,7 +33,23 @@ classes:
       - has_allele
       - zygosity
 
+  SequenceTargetingReagent:
+    is_a: GenomicEntity
+    description: >-
+      Gene disrupting small sequence agents like CRISPR, TALEN, RNAi and
+      Morpholino objects
+    slots:
+      - so_term
+      - target_genes
+
 slots:
+
+  target_genes:
+    description: >-
+      Targeted genes identified for a sequence_targeting_reagent
+    domain: SequenceTargetingReagent
+    range: Gene
+    multivalued: true
 
   subtype:
     description: >-
@@ -64,6 +81,8 @@ slots:
     domain: AffectedGenomicModel
     range: SequenceTargetingReagent
     multivalued: true
+    inlined: true
+    inlined_as_list: true
 
   parental_populations:
     singular_name: parental_population

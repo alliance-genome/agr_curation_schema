@@ -17,17 +17,25 @@ slots:
     description: >-
       The explanation of the meaning of a term.
     range: string
+
   display_synonym:
     description: >-
       Placeholder.
+
   namespace:
     description: the namespace of the ontology.
+
   subsets:
     range: string
     multivalued: true
+
   definition_urls:
     range: string
     multivalued: true
+
+  so_term:
+    range: SOTerm
+    multivalued: false
 
 classes:
 

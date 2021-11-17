@@ -110,10 +110,6 @@ classes:
     description: >-
       Dummy cell line class
 
-  SequenceTargetingReagent:
-    description: >-
-      Dummy sequence targeting reagent class
-
 # Slots
 
 slots:

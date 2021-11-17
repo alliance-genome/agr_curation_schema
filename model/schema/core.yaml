@@ -444,8 +444,14 @@ slots:
     multivalued: false
     range: string
 
+  cross_reference:
+    aliases: ['xref']
+    description: >-
+      Holds between an object and its CrossReference.
+    multivalued: false
+    range: CrossReference
+
   cross_references:
-    singular_name: cross_reference
     aliases: ['xrefs']
     description: >-
       Holds between an object and its CrossReferences.
