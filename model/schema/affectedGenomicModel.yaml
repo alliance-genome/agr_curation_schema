@@ -39,8 +39,12 @@ classes:
       Gene disrupting small sequence agents like CRISPR, TALEN, RNAi and
       Morpholino objects
     slots:
+      - data_provider
       - so_term
       - target_genes
+    slot_usage:
+      data_provider:
+        required: true
 
 slots:
 
