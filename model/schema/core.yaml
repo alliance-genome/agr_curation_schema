@@ -492,8 +492,13 @@ slots:
 
   references:
     singular_name: reference
-    description: holds between an object and a reference
+    description: holds between an object and a list of references
     multivalued: true
+    range: Reference
+
+  reference:
+    description: holds between an object and a single reference
+    multivalued: false
     range: Reference
 
   original_reference:

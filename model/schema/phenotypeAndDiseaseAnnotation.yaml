@@ -44,7 +44,7 @@ classes:
       An annotation asserting an association between a biological entity and a phenotype supported by evidence.
     slots:
       - curie
-      - annotation_reference
+      - reference
       - phenotype_term                    # phenotypeTermIdentifiers in JSON schema
       - condition_relations
     slot_usage:
@@ -75,7 +75,7 @@ classes:
           statement of the phenotype from a post-composed terminology
         required: true
         range: string
-      annotation_reference:
+      reference:
         description: >-
           The reference in which the phenotype association was asserted/reported.
       creation_date:
@@ -165,7 +165,7 @@ classes:
       - mod_id
       - negated
       - evidence_codes
-      - annotation_reference
+      - reference
       - annotation_type
       - with
       - disease_qualifiers
@@ -201,6 +201,8 @@ classes:
         range: DOTerm
       data_provider:
         required: true
+      annotation_type:
+        required: false
       with:
         description: >-
           A field for disease annotations that captures the human gene the
@@ -209,9 +211,9 @@ classes:
           evidence code. The assertion would state that the MOD gene is implicated in the
           indicated disease based on sequence-similarity/sequence-orthology "with" some human
           gene. Currently used by SGD.
-      annotation_reference:               # evidence in JSON schema
+        required: false    # Required for SGD disease annotations using ISS or ISO evidence codes
+      reference:               # evidence in JSON schema
         required: true
-        multivalued: false
         description: >-
           The reference in which the disease association was asserted/reported.
       evidence_codes:
@@ -219,6 +221,7 @@ classes:
         required: true
       genetic_sex:
         range: genetic_sex_enum
+        required: false
 
   GeneDiseaseAnnotation:
     description: >-
@@ -302,6 +305,7 @@ classes:
       - condition_gene_ontology           # geneOntologyId in JSON schema
       - condition_taxon                   # NCBITaxonId in JSON schema
       - condition_chemical                # ChemicalOntologyId in JSON schema
+      - paper_handle
     slot_usage:
       condition_class:
         required: true
@@ -349,6 +353,11 @@ classes:
         values_from:
           - CHEBI
           - WBMol
+      paper_handle:
+        description: >-
+          Used by ZFIN to provide reference-specific labels/aliases to experimental conditions;
+          useful for referencing experimental conditions while curating.
+        required: false
 
 
   ConditionRelation:
@@ -362,9 +371,9 @@ classes:
       - condition_relation_type
       - conditions
     slot_usage:
-      - condition_relation_type:
-          required: true
-          multivalued: false
+      condition_relation_type:
+        required: true
+        multivalued: false
 
   Molecule:
     description: >-
@@ -384,6 +393,22 @@ classes:
     slot_usage:
       name:
         required: true
+
+  PaperHandle:
+    description: >-
+      A pairing of a reference and a free text string that allows an object to have
+      a reference-specific alias (or handle). For example, used for experimental
+      conditions from ZFIN to label (in a reference-specific manner) individual
+      experimental conditions when curating a particular reference.
+    slots:
+      - reference
+      - handle
+    slot_usage:
+      reference:
+        required: true
+      handle:
+        required: true
+
 
 ## ------------
 ## SLOTS
@@ -484,13 +509,6 @@ slots:
   sgd_strain_background:
     range: AffectedGenomicModel
 
-  annotation_reference:
-    required: true
-    range: Reference
-    multivalued: false
-    description: >-
-          The reference in which the association was asserted/reported.
-
   annotation_type:
     range: annotation_type_enum
     description: >-
@@ -520,6 +538,20 @@ slots:
     description: >-
       The model organism database (MOD) identifier/curie for the object
     range: string   # Should this be uriorcurie?
+
+  paper_handle:
+    description: >-
+      A slot that points to a PaperHandle object, a pairing of a reference and a free
+      text string that allows an object to have a reference-specific alias (or handle).
+      Used for experimental conditions from ZFIN to label (in a reference-specific manner)
+      individual experimental conditions when curating a particular reference.
+    range: PaperHandle
+
+  handle:
+    description: >-
+      A slot pointing to a free-text alias or 'handle' for a data object, such as
+      a reference-specific alias for a data object used while curating.
+    range: string
 
 ## ----------
 ## PREDICATES
