@@ -305,7 +305,7 @@ classes:
       - condition_gene_ontology           # geneOntologyId in JSON schema
       - condition_taxon                   # NCBITaxonId in JSON schema
       - condition_chemical                # ChemicalOntologyId in JSON schema
-      - paper_handle
+      - paper_handles
     slot_usage:
       condition_class:
         required: true
@@ -353,7 +353,7 @@ classes:
         values_from:
           - CHEBI
           - WBMol
-      paper_handle:
+      paper_handles:
         description: >-
           Used by ZFIN to provide reference-specific labels/aliases to experimental conditions;
           useful for referencing experimental conditions while curating.
@@ -408,6 +408,7 @@ classes:
         required: true
       handle:
         required: true
+        multivalued: false
 
 
 ## ------------
@@ -539,13 +540,14 @@ slots:
       The model organism database (MOD) identifier/curie for the object
     range: string   # Should this be uriorcurie?
 
-  paper_handle:
+  paper_handles:
     description: >-
-      A slot that points to a PaperHandle object, a pairing of a reference and a free
+      A slot that points to a list of PaperHandle objects, pairings of a reference and a free
       text string that allows an object to have a reference-specific alias (or handle).
       Used for experimental conditions from ZFIN to label (in a reference-specific manner)
       individual experimental conditions when curating a particular reference.
     range: PaperHandle
+    multivalued: true
 
   handle:
     description: >-
