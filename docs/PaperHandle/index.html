@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Slot: references - Model to describe the Alliance curation/persistence data store</title>
+  <title>Class: PaperHandle - Model to describe the Alliance curation/persistence data store</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Slot: references";
-    var mkdocs_page_input_path = "references.md";
+    var mkdocs_page_name = "Class: PaperHandle";
+    var mkdocs_page_input_path = "PaperHandle.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Slot: references</li>
+    <li>Class: PaperHandle</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,25 +91,28 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="slot-references">Slot: references</h1>
-<p>holds between an object and a list of references</p>
-<p>URI: <a href="http://alliancegenome.orgreferences">alliance:references</a></p>
-<h2 id="domain-and-range">Domain and Range</h2>
-<p>None &#8594;  <sub>0..*</sub> <a href="../Reference/">Reference</a></p>
-<h2 id="parents">Parents</h2>
-<h2 id="children">Children</h2>
+                <h1 id="class-paperhandle">Class: PaperHandle</h1>
+<p>A pairing of a reference and a free text string that allows an object to have a reference-specific alias (or handle). For example, used for experimental conditions from ZFIN to label (in a reference-specific manner) individual experimental conditions when curating a particular reference.</p>
+<p>URI: <a href="http://alliancegenome.orgPaperHandle">alliance:PaperHandle</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Reference]&lt;reference%201..1-%20[PaperHandle&#124;handle:string],[ExperimentalCondition]++-%20paper_handles%200..*&gt;[PaperHandle],[ExperimentalCondition]++-%20paper_handles(i)%200..*&gt;[PaperHandle],[ExperimentalCondition]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Reference]&lt;reference%201..1-%20[PaperHandle&#124;handle:string],[ExperimentalCondition]++-%20paper_handles%200..*&gt;[PaperHandle],[ExperimentalCondition]++-%20paper_handles(i)%200..*&gt;[PaperHandle],[ExperimentalCondition]" /></a></p>
+<h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
-<li><a href="../EntitySynonym_references/">EntitySynonym➞references</a></li>
-<li><a href="../GeneInteraction_references/">GeneInteraction➞references</a></li>
-<li><a href="../original_reference/">original_reference</a></li>
+<li><strong><a href="../ExperimentalCondition/">ExperimentalCondition</a></strong> <em><a href="../ExperimentalCondition_paper_handles/">ExperimentalCondition➞paper_handles</a></em>  <sub>0..*</sub>  <strong><a href="./">PaperHandle</a></strong></li>
+<li><strong>None</strong> <em><a href="../paper_handles/">paper_handles</a></em>  <sub>0..*</sub>  <strong><a href="./">PaperHandle</a></strong></li>
 </ul>
-<h2 id="used-by">Used by</h2>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
 <ul>
-<li><a href="../Antibody/">Antibody</a></li>
-<li><a href="../AntibodyNote/">AntibodyNote</a></li>
-<li><a href="../EntityStatement/">EntityStatement</a></li>
-<li><a href="../ReferenceType/">ReferenceType</a></li>
-<li><a href="../Variant/">Variant</a></li>
+<li><a href="../PaperHandle_reference/">PaperHandle➞reference</a>  <sub>1..1</sub><ul>
+<li>Description: holds between an object and a single reference</li>
+<li>Range: <a href="../Reference/">Reference</a></li>
+</ul>
+</li>
+<li><a href="../PaperHandle_handle/">PaperHandle➞handle</a>  <sub>1..1</sub><ul>
+<li>Description: A slot pointing to a free-text alias or 'handle' for a data object, such as a reference-specific alias for a data object used while curating.</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
 </ul>
               
             </div>

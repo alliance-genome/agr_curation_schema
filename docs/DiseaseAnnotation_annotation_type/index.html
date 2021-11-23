@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Slot: references - Model to describe the Alliance curation/persistence data store</title>
+  <title>Slot: annotation_type - Model to describe the Alliance curation/persistence data store</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Slot: references";
-    var mkdocs_page_input_path = "references.md";
+    var mkdocs_page_name = "Slot: annotation_type";
+    var mkdocs_page_input_path = "DiseaseAnnotation_annotation_type.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Slot: references</li>
+    <li>Slot: annotation_type</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,25 +91,22 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="slot-references">Slot: references</h1>
-<p>holds between an object and a list of references</p>
-<p>URI: <a href="http://alliancegenome.orgreferences">alliance:references</a></p>
+                <h1 id="slot-annotation_type">Slot: annotation_type</h1>
+<p>The type of annotation classified according to curation method: manually curated, high-throughput, computational</p>
+<p>URI: <a href="http://alliancegenome.orgDiseaseAnnotation_annotation_type">alliance:DiseaseAnnotation_annotation_type</a></p>
 <h2 id="domain-and-range">Domain and Range</h2>
-<p>None &#8594;  <sub>0..*</sub> <a href="../Reference/">Reference</a></p>
+<p><a href="../DiseaseAnnotation/">DiseaseAnnotation</a> &#8594;  <sub>0..1</sub> <a href="../annotation_type_enum/">annotation_type_enum</a></p>
 <h2 id="parents">Parents</h2>
-<h2 id="children">Children</h2>
 <ul>
-<li><a href="../EntitySynonym_references/">EntitySynonym➞references</a></li>
-<li><a href="../GeneInteraction_references/">GeneInteraction➞references</a></li>
-<li><a href="../original_reference/">original_reference</a></li>
+<li>is_a: <a href="../annotation_type/">annotation_type</a></li>
 </ul>
+<h2 id="children">Children</h2>
 <h2 id="used-by">Used by</h2>
 <ul>
-<li><a href="../Antibody/">Antibody</a></li>
-<li><a href="../AntibodyNote/">AntibodyNote</a></li>
-<li><a href="../EntityStatement/">EntityStatement</a></li>
-<li><a href="../ReferenceType/">ReferenceType</a></li>
-<li><a href="../Variant/">Variant</a></li>
+<li><a href="../AGMDiseaseAnnotation/">AGMDiseaseAnnotation</a></li>
+<li><a href="../AlleleDiseaseAnnotation/">AlleleDiseaseAnnotation</a></li>
+<li><a href="../DiseaseAnnotation/">DiseaseAnnotation</a></li>
+<li><a href="../GeneDiseaseAnnotation/">GeneDiseaseAnnotation</a></li>
 </ul>
               
             </div>

@@ -11,7 +11,7 @@ import lombok.*;
 public class PhenotypeAnnotation extends Association {
 
   private String curie;
-  private Reference annotationReference;
+  private Reference reference;
   private PhenotypeTerm phenotypeTerm;
   private List<ConditionRelation> conditionRelations;
   private Integer tableKey;
