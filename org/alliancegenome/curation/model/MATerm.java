@@ -6,7 +6,7 @@ import lombok.*;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class MATerm extends OntologyTerm {
+public class MATerm extends AnatomicalTerm {
 
 
 }
