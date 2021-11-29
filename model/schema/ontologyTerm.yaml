@@ -74,9 +74,6 @@ classes:
   GOTerm:
     is_a: OntologyTerm
 
-  MATerm:
-    is_a: OntologyTerm
-
   MITerm:
     is_a: OntologyTerm
 
@@ -128,6 +125,9 @@ classes:
     is_a: AnatomicalTerm
 
   FBBTTerm:
+    is_a: AnatomicalTerm
+
+  MATerm:
     is_a: AnatomicalTerm
 
   UBERONTerm:
