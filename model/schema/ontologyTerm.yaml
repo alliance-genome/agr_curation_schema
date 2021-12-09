@@ -17,17 +17,26 @@ slots:
     description: >-
       The explanation of the meaning of a term.
     range: string
+  
   display_synonym:
     description: >-
       Placeholder.
+  
   namespace:
     description: the namespace of the ontology.
+  
   subsets:
     range: string
     multivalued: true
+  
   definition_urls:
     range: string
     multivalued: true
+  
+  abbreviation:
+    domain: ECOTerm
+    range: string
+    multivalued: false
 
 classes:
 
@@ -67,6 +76,12 @@ classes:
 
   ECOTerm:
     is_a: OntologyTerm
+    slots:
+      - abbreviation
+    slot_usage:
+      abbreviation:
+        description: >-
+          Letter code used by curators to refer to the ECO term.
 
   FBCVTerm:
     is_a: OntologyTerm
