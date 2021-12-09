@@ -96,8 +96,8 @@ classes:
     is_a: Association
     notes: >-
       This aims to provide the same functionality as MGI imagepane.
-      Images without panes (ZFIN) will be referenced in annotation by panes.
-      An image pane can encompass the entirety of an image.
+      Some MODs (like ZFIN) point to the whole image. In these cases,
+      the pane would encompass the whole image.
     slot_usage:
       subject:
         range: ExpressionAnnotation
