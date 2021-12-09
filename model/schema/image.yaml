@@ -86,7 +86,7 @@ classes:
       - image_x_origin
       - image_y_origin
     slot_usage:
-      image:
+      from_image:
         required: true
         multivalued: false
       image_x_origin:
