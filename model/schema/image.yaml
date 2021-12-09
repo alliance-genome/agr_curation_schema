@@ -117,8 +117,6 @@ slots:
   associated_with_figure:
     description: >-
       Holds between an entity and a Figure.
-    notes: >-
-      MGI calls this an image stub.
     range: Figure
 
   from_image:
