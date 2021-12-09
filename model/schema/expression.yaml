@@ -28,7 +28,7 @@ classes:
       - reagents_used
       - specimen_genomic_model
       - specimen_alleles
-      - associated_with_conditions
+      - condition_relations
     slot_usage:
       references:
         multivalued: false    # Should I call this slot just "reference" then?
@@ -170,18 +170,6 @@ slots:
       The assay used to experimentally determine gene expression.
     domain: ExpressionExperiment
     range: MMOTerm
-
-  associated_with_conditions:
-    description: >-
-      The set of environmental conditions for the ExpressionExperiment.
-    notes: >-
-      We need the whole set of conditions as a uniquely identifying attribute
-      of the ExpressionExperiment. Here, we only use the set of conditions,
-      with no consideration of the relation type. This is partly to make it 
-      easier to model, but also because I'm unsure if we need that relation info.
-    domain: ExpressionExperiment
-    range: ExperimentalCondition
-    multivalued: true
 
   cellular_component:
     notes: >-
