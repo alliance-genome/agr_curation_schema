@@ -8,7 +8,7 @@ import lombok.*;
 **/
 @Data
 @EqualsAndHashCode(callSuper=false)
-public abstractclass InformationContentEntity  {
+public class InformationContentEntity  {
 
   private String curie;
   private Integer tableKey;

@@ -94,7 +94,7 @@
                 <h1 id="class-molecule">Class: Molecule</h1>
 <p>Molecules as described by WormBase</p>
 <p>URI: <a href="http://alliancegenome.orgMolecule">alliance:Molecule</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Synonym],[Person],[CrossReference]&lt;cross_references%200..*-++[Molecule&#124;curie:uriorcurie;name:string;inchi:string%20%3F;inchi_key:string%20%3F;iupac:string%20%3F;formula:string%20%3F;smiles:string%20%3F;table_key:integer%20%3F;creation_date:date%20%3F;date_last_modified:date%20%3F],[Synonym]&lt;synonyms%200..*-++[Molecule],[Molecule]uses%20-.-&gt;[AuditedObject],[CrossReference],[AuditedObject]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Synonym],[Person],[CrossReference]&lt;cross_references%200..*-++[Molecule&#124;curie:uriorcurie;name:string;inchi:string%20%3F;inchi_key:string%20%3F;iupac:string%20%3F;formula:string%20%3F;smiles:string%20%3F;table_key:integer%20%3F;creation_date:date%20%3F;date_last_modified:date%20%3F],[Synonym]&lt;synonyms%200..*-++[Molecule],[Molecule]uses%20-.-&gt;[AuditedObject],[CrossReference],[AuditedObject]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Synonym],[Person],[CrossReference]&lt;cross_references%200..*-%20[Molecule&#124;curie:uriorcurie;name:string%20%3F;inchi:string%20%3F;inchi_key:string%20%3F;iupac:string%20%3F;formula:string%20%3F;smiles:string%20%3F;table_key:integer%20%3F;creation_date:date%20%3F;date_last_modified:date%20%3F],[Synonym]&lt;synonyms%200..*-++[Molecule],[Molecule]uses%20-.-&gt;[AuditedObject],[CrossReference],[AuditedObject]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Synonym],[Person],[CrossReference]&lt;cross_references%200..*-%20[Molecule&#124;curie:uriorcurie;name:string%20%3F;inchi:string%20%3F;inchi_key:string%20%3F;iupac:string%20%3F;formula:string%20%3F;smiles:string%20%3F;table_key:integer%20%3F;creation_date:date%20%3F;date_last_modified:date%20%3F],[Synonym]&lt;synonyms%200..*-++[Molecule],[Molecule]uses%20-.-&gt;[AuditedObject],[CrossReference],[AuditedObject]" /></a></p>
 <h2 id="uses-mixin">Uses Mixin</h2>
 <ul>
 <li>mixin: <a href="../AuditedObject/">AuditedObject</a> - Some entity for which changes are tracked, including date/time of change and the agent responsible for the change.</li>
@@ -108,7 +108,7 @@
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
-<li><a href="../Molecule_name/">Molecule➞name</a>  <sub>1..1</sub><ul>
+<li><a href="../name/">name</a>  <sub>0..1</sub><ul>
 <li>Description: a human-readable name for an entity</li>
 <li>Range: <a href="../String/">String</a></li>
 </ul>

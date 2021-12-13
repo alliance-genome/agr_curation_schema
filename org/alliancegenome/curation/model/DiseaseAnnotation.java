@@ -8,7 +8,7 @@ import lombok.*;
 **/
 @Data
 @EqualsAndHashCode(callSuper=false)
-public abstractclass DiseaseAnnotation extends Association {
+public class DiseaseAnnotation extends Association {
 
   private String curie;
   private String modId;

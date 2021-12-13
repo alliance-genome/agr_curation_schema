@@ -14,6 +14,7 @@ public class VocabularyTerm  {
   private String definition;
   private Boolean isObsolete;
   private List<String> textSynonyms;
+  private String abbreviation;
   private Integer tableKey;
   private Person createdBy;
   private String creationDate;

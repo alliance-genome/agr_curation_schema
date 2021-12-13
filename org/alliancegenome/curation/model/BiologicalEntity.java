@@ -8,7 +8,7 @@ import lombok.*;
 **/
 @Data
 @EqualsAndHashCode(callSuper=false)
-public abstractclass BiologicalEntity  {
+public class BiologicalEntity  {
 
   private String curie;
   private String taxon;

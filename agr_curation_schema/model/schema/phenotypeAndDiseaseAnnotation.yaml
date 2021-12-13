@@ -1,0 +1,706 @@
+id: https://github.com/alliance-genome/agr_persistent_schema/phenotypeAndDiseaseAnnotation.yaml
+name: Alliance-Schema-Prototype-Phenotype-and-Disease-Annotation
+title: Alliance Schema Prototype Phenotype and Disease Annotation
+description: Alliance Phenotype and Disease Annotation Schema Prototype with LinkML
+
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - owl
+
+imports:
+  - linkml:types
+  - reference
+  - core
+  - ontologyTerm
+
+
+prefixes:
+  alliance: 'http://alliancegenome.org'
+  linkml: 'https://w3id.org/linkml/'
+
+
+## ------------
+## CLASSES
+## ------------
+
+classes:
+
+  PhenotypeAnnotation:
+    is_a: Association
+    mixins:
+      - AuditedObject
+    description: >-
+      An annotation asserting an association between a biological entity and a phenotype supported by evidence.
+    slots:
+      - curie
+      - reference
+      - phenotype_term                    # phenotypeTermIdentifiers in JSON schema
+      - condition_relations
+    slot_usage:
+      subject:                            # objectId in JSON schema
+        description: >-
+          The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, by direct curation.
+        required: true
+        range: BiologicalEntity
+      phenotype_term:
+        values_from:
+          - HP
+          - MP
+          - WBPhenotype
+          - ZP
+          - APO
+          - FBcv
+        range: PhenotypeTerm
+        examples:
+          - value: HP:0002487
+            description: Hyperkinesis
+          - value: WBPhenotype:0000180
+            description: axon morphology variant
+          - value: MP:0001569
+            description: abnormal circulating bilirubin level
+      object:             # phenotypeStatement in JSON schema; eventually object should point to Phenotype class object
+        description: >-
+          phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed
+          statement of the phenotype from a post-composed terminology
+        required: true
+        range: string
+      reference:
+        description: >-
+          The reference in which the phenotype association was asserted/reported.
+      creation_date:
+        description: >-
+          The date of curation at the source (MOD) database.
+        required: true
+        multivalued: false
+
+  GenePhenotypeAnnotation:
+    description: >-
+      An annotation asserting an association between a gene and a phenotype
+      supported by evidence.
+    is_a: PhenotypeAnnotation
+    slots:
+      - sgd_strain_background   # Does this also apply to phenotype annotations?
+    slot_usage:
+      subject:
+        required: true
+        description: >-
+          The gene to which the phenotype ontology term is associated.
+        range: Gene
+#      predicate:
+#        description: The relationship between gene and phenotype.
+#        required: true
+#        range: gene_phenotype_relation_enum  # TO DO: generate this relation enumeration or don't specify predicate
+
+  AllelePhenotypeAnnotation:
+    description: >-
+      An annotation asserting an association between an allele
+      and a phenotype supported by evidence.
+    is_a: PhenotypeAnnotation
+    slots:
+      - inferred_gene
+    slot_usage:
+      subject:
+        description: >-
+          The allele to which the phenotype ontology term is associated.
+        range: Allele
+#      predicate:
+#        description: The relationship between allele and phenotype.
+#        range: allele_phenotype_relation_enum   # TO DO: generate this relation enumeration or don't specify predicate
+#        required: true
+      inferred_gene:
+        description: >-
+          The gene to which the phenotype is inferred to be associated.
+        required: false
+        range: Gene
+
+  AGMPhenotypeAnnotation:
+    description: >-
+      An annotation asserting an association between an AGM and a phenotype
+      supported by evidence.
+    is_a: PhenotypeAnnotation
+    slots:
+      - inferred_allele
+      - inferred_gene
+    slot_usage:
+      subject:
+        description: >-
+          The AGM to which the phenotype ontology term is associated.
+        range: AffectedGenomicModel
+#      predicate:
+#        description: The relationship between AGM and phenotype.
+#        range: agm_phenotype_relation_enum   # TO DO: generate this relation enumeration or don't specify predicate
+#        required: true
+      inferred_gene:
+        description: >-
+          The gene to which the phenotype is inferred to be associated.
+        required: false
+        range: Gene
+      inferred_allele:
+        description: >-
+          The allele to which the phenotype is inferred to be associated.
+        required: false
+        range: Allele
+
+
+  DiseaseAnnotation:
+    is_a: Association
+    abstract: true
+    mixins:
+      - AuditedObject
+    description: >-
+      An annotation asserting an association between a biological entity and a disease supported by evidence.
+    slots:
+      - curie
+      - mod_id
+      - negated
+      - evidence_codes
+      - reference
+      - annotation_type
+      - with
+      - disease_qualifiers
+      - condition_relations
+      - genetic_sex
+      - private_note # we should probably pull this out into a _private_ note object.
+      - disease_annotation_note # we should probably pull this out into a note object.
+      - disease_annotation_summary # we should probably pull this out into a note object
+      - data_provider
+      - disease_genetic_modifier
+      - disease_genetic_modifier_relation
+    slot_usage:
+      mod_id:
+        description: >-
+          The model organism database (MOD) identifier/curie for the disease annotation. Currently only
+          used by WormBase for disease annotations, e.g. "WBDOannot00000907"
+      subject:
+        required: true
+        description: >-
+          The biological entity to which the disease ontology term is associated.
+        range: BiologicalEntity
+      predicate:  # predicate is basically disease_relation.  We should determine if we want such a generic name for this in the parent Association object
+        required: true
+        description: >-
+          Constrains the disease subject, associationType and inferredGeneAssociation.
+      negated:
+        description: >-
+          The negative qualifier for the annotation.
+      object:
+        required: true
+        description: >-
+          The disease ontology term.
+        range: DOTerm
+      data_provider:
+        required: true
+      annotation_type:
+        required: false
+      with:
+        description: >-
+          A field for disease annotations that captures the human gene the
+          implicated MOD gene is homologous or orthologous to when using the ISS (inferred
+          from sequence similarity) evidence code or the ISO (inferred from sequence orthology)
+          evidence code. The assertion would state that the MOD gene is implicated in the
+          indicated disease based on sequence-similarity/sequence-orthology "with" some human
+          gene. Currently used by SGD.
+        required: false    # Required for SGD disease annotations using ISS or ISO evidence codes
+      reference:               # evidence in JSON schema
+        required: true
+        description: >-
+          The reference in which the disease association was asserted/reported.
+      evidence_codes:
+        multivalued: true
+        required: true
+      genetic_sex:
+        range: genetic_sex_enum
+        required: false
+
+  GeneDiseaseAnnotation:
+    description: >-
+      An annotation asserting an association between a gene and a disease
+      supported by evidence.
+    is_a: DiseaseAnnotation
+    slots:
+      - sgd_strain_background
+    slot_usage:
+      subject:
+        required: true
+        description: >-
+          The gene to which the disease ontology term is associated.
+        range: Gene
+      predicate:
+        description: The relationship between gene and disease.
+        required: true
+        range: gene_disease_relation_enum
+
+  AlleleDiseaseAnnotation:
+    description: >-
+      An annotation asserting an association between an allele
+      and a disease supported by evidence.
+    is_a: DiseaseAnnotation
+    slots:
+      - inferred_gene
+    slot_usage:
+      subject:
+        description: >-
+          The allele to which the disease ontology term is associated.
+        range: Allele
+      predicate:
+        description: The relationship between allele and disease.
+        range: allele_disease_relation_enum
+        required: true
+      inferred_gene:
+        description: >-
+          The gene to which the disease is inferred to be associated.
+        required: false
+        range: Gene
+
+  AGMDiseaseAnnotation:
+    description: >-
+      An annotation asserting an association between an AGM and a disease
+      supported by evidence.
+    is_a: DiseaseAnnotation
+    slots:
+      - inferred_allele
+      - inferred_gene
+    slot_usage:
+      subject:
+        description: >-
+          The AGM to which the disease ontology term is associated.
+        range: AffectedGenomicModel
+      predicate:
+        description: The relationship between AGM and disease.
+        range: agm_disease_relation_enum
+        required: true
+      inferred_gene:
+        description: >-
+          The gene to which the disease is inferred to be associated.
+        required: false
+        range: Gene
+      inferred_allele:
+        description: >-
+          The allele to which the disease is inferred to be associated.
+        required: false
+        range: Allele
+
+  ExperimentalCondition:
+    description: >-
+      The environmental context in which an experiment is carried out. This may (e.g. drug treatment)
+      or may not (e.g. standard conditions) directly influence the outcome of the experiment.
+    slots:
+      - curie
+      - condition_class                   # conditionClassId in JSON schema
+      - condition_statement               # conditionStatement in JSON schema
+      - condition_id                      # conditionId in JSON schema
+      - condition_quantity                # conditionQuantity in JSON schema
+      - condition_anatomy                 # anatomicalOntologyId in JSON schema
+      - condition_gene_ontology           # geneOntologyId in JSON schema
+      - condition_taxon                   # NCBITaxonId in JSON schema
+      - condition_chemical                # ChemicalOntologyId in JSON schema
+      - paper_handles
+    slot_usage:
+      condition_class:
+        required: true
+        description: >-
+          The ZECO ID that represents the high level condition grouping term.  This will come from
+          a slim in the ZECO, called 'AllianceSlim'.
+        range: ZECOTerm
+      condition_statement:
+        required: true
+        description: >-
+          Free text describing the environmental/experimental condition. For some groups this is a
+          single term, others is it is a concatenation of the term names from the ontologies included
+          in this data structure.
+        range: string
+      condition_id:
+        description: >-
+          The specific ontology ID for the condition when that is not covered by any of the other
+          condition ontology ID attributes (chemical, NCBITaxon, anatomical). This could also be another
+          ZECO term if the ZECO term that describes this condition is more specific, or outside the
+          conditionClassId slim.
+        range: ExperimentalConditionOntologyTerm
+      condition_quantity:
+        description: >-
+          Optional free text field that records the units/amount/degrees of a condition.
+        required: false
+      condition_anatomy:
+        description: >-
+          Anatomical ontology identifier used in cases like regeneration/wounding.
+        range: AnatomicalTerm
+      condition_gene_ontology:
+        description: >-
+          Gene Ontology id used in subset of condition types.
+        range: GOTerm
+      condition_taxon:
+        description: >-
+          NCBITaxon ontology id used in subset of condition types like 'bacterial infection'.
+        range: OntologyTerm
+        values_from:
+          - NCBITaxon
+      condition_chemical:
+        description: >-
+          ChEBI or molecular ontology id used in subset of condition terms.  ie: the specific
+          chemcial used in conjunction with 'chemical condition'.
+        range: OntologyTerm    # Need to consider this; Molecule class (for WB molecules) is not an ontology
+        values_from:
+          - CHEBI
+          - WBMol
+      paper_handles:
+        description: >-
+          Used by ZFIN to provide reference-specific labels/aliases to experimental conditions;
+          useful for referencing experimental conditions while curating.
+        required: false
+
+
+  ConditionRelation:
+    description: >-
+      A pairing of an experimental condition relation (i.e. has_condition) with a list of 1 or more
+      ExperimentalCondition objects. Annotation objects can connect directly to a set of 0 or more
+      of these ConditionRelation objects via a 'condition_relations' slot to express the experimental
+      conditions relevant to the annotation.
+    slots:
+      - curie
+      - condition_relation_type
+      - conditions
+    slot_usage:
+      condition_relation_type:
+        required: true
+        multivalued: false
+
+  Molecule:
+    description: >-
+      Molecules as described by WormBase
+    mixins:
+      - AuditedObject
+    slots:
+      - curie
+      - name
+      - inchi
+      - inchi_key
+      - iupac
+      - formula
+      - smiles
+      - synonyms
+      - cross_references
+    slot_usage:
+      name:
+        required: true
+
+  PaperHandle:
+    description: >-
+      A pairing of a reference and a free text string that allows an object to have
+      a reference-specific alias (or handle). For example, used for experimental
+      conditions from ZFIN to label (in a reference-specific manner) individual
+      experimental conditions when curating a particular reference.
+    slots:
+      - reference
+      - handle
+    slot_usage:
+      reference:
+        required: true
+      handle:
+        required: true
+        multivalued: false
+
+
+## ------------
+## SLOTS
+## ------------
+
+slots:
+
+  condition_anatomy:
+    domain: ExperimentalCondition
+    range: AnatomicalTerm
+    values_from:
+      - UBERON
+      - WBbt
+      - ZFA
+      - FBbt
+      - GO
+
+  condition_chemical:
+    domain: ExperimentalCondition
+    range: uriorcurie                     # Update to Chemical if such a class is instantiated
+    values_from:
+      - CHEBI
+      - WBMol
+
+  condition_class:
+    domain: ExperimentalCondition
+    range: ZECOTerm
+
+  condition_gene_ontology:
+    domain: ExperimentalCondition
+    range: GOTerm                     # Update to GOTerm if such a class is instantiated
+
+  condition_id:
+    domain: ExperimentalCondition
+    range: ExperimentalConditionOntologyTerm
+
+  condition_quantity:
+    domain: ExperimentalCondition
+    range: string
+
+  condition_statement:
+    domain: ExperimentalCondition
+    range: string
+
+  condition_taxon:
+    domain: ExperimentalCondition
+    range: uriorcurie                     # Update to Taxon if such a class is instantiated
+    values_from:
+      - NCBITaxon
+
+  condition_relations:
+    range: ConditionRelation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  condition_relation_type:
+    range: condition_relation_enum
+
+  conditions:
+    range: ExperimentalCondition
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  evidence_codes:
+    description: ECO term IDs             # this slot has also been instantiated in the orthology.yaml
+    multivalued: true
+    values_from:
+      - ECO
+    range: ECOTerm
+
+  inferred_gene:
+    description: >-
+      The gene to which something is inferred to be associated.
+    range: Gene
+
+  inferred_allele:
+    description: >-
+      The allele to which something is inferred to be associated.
+    range: Allele
+
+  disease_qualifiers:
+    range: disease_annotation_qualifier_enum
+
+  genetic_sex:
+    range: genetic_sex_enum
+
+  private_note:
+    range: string
+
+  disease_annotation_note:
+    range: string
+
+  disease_annotation_summary:
+    range: string
+
+  sgd_strain_background:
+    range: AffectedGenomicModel
+
+  annotation_type:
+    range: annotation_type_enum
+    description: >-
+      The type of annotation classified according to curation method:
+      manually curated, high-throughput, computational
+
+  disease_genetic_modifier:
+    description: >-
+      Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
+    range: BiologicalEntity
+    required: false
+
+  disease_genetic_modifier_relation:
+    description: >-
+      A relation describing how the genetic modifier modifies the disease model.
+    range: genetic_modifier_relation_enum
+
+  phenotype_term:
+    range: PhenotypeTerm
+
+  with:
+    description: >-
+      http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8
+    range: Gene
+
+  mod_id:
+    description: >-
+      The model organism database (MOD) identifier/curie for the object
+    range: string   # Should this be uriorcurie?
+
+  paper_handles:
+    description: >-
+      A slot that points to a list of PaperHandle objects, pairings of a reference and a free
+      text string that allows an object to have a reference-specific alias (or handle).
+      Used for experimental conditions from ZFIN to label (in a reference-specific manner)
+      individual experimental conditions when curating a particular reference.
+    range: PaperHandle
+    multivalued: true
+
+  handle:
+    description: >-
+      A slot pointing to a free-text alias or 'handle' for a data object, such as
+      a reference-specific alias for a data object used while curating.
+    range: string
+
+## ----------
+## PREDICATES
+## ----------
+
+  has_condition:
+    is_a: related_to
+    symmetric: false
+    domain: Entity
+    range: ExperimentalCondition
+
+  is_condition_in:
+    is_a: related_to
+    symmetric: false
+    inverse: has_condition
+    domain: ExperimentalCondition
+    range: Entity
+
+  induced_by:
+    is_a: related_to
+    symmetric: false
+    domain: Entity
+    range: ExperimentalCondition
+
+  induces:
+    is_a: related_to
+    symmetric: false
+    inverse: induced_by
+    domain: ExperimentalCondition
+    range: Entity
+
+  ameliorated_by:
+    is_a: related_to
+    symmetric: false
+    domain: Entity
+    range: ExperimentalCondition
+
+  ameliorates:
+    is_a: related_to
+    symmetric: false
+    inverse: ameliorated_by
+    domain: ExperimentalCondition
+    range: Entity
+
+  exacerbated_by:
+    is_a: related_to
+    symmetric: false
+    domain: Entity
+    range: ExperimentalCondition
+
+  exacerbates:
+    is_a: related_to
+    symmetric: false
+    inverse: exacerbated_by
+    domain: ExperimentalCondition
+    range: Entity
+
+  inchi:
+    description: InChi style description of the molecule
+    domain: Molecule
+    range: string
+
+  inchi_key:
+    description: InChi key description of the molecule
+    domain: Molecule
+    range: string
+
+  iupac:
+    description: IUPAC name of the molecule
+    domain: Molecule
+    range: string
+
+  formula:
+    description: Formula of the molecule
+    domain: Molecule
+    range: string
+
+  smiles:
+    description: Molecular structure in SMILES format
+    domain: Molecule
+    range: string
+
+## ------------
+## ENUMS
+## ------------
+
+enums:
+
+  condition_relation_enum:
+    permissible_values:
+      has_condition:
+      induced_by:
+      not_induced_by:
+      ameliorated_by:
+      not_ameliorated_by:
+      exacerbated_by:
+      not_exacerbated_by:
+
+  gene_disease_relation_enum:
+    description: >-
+      Permissible values describing the relationship between gene and disease.
+    permissible_values:
+      is_implicated_in:
+      is_marker_for:
+
+  allele_disease_relation_enum:
+    description: >-
+      Permissible values describing the relationship between allele and disease.
+    permissible_values:
+      is_implicated_in:
+
+  agm_disease_relation_enum:
+    description: >-
+      Permissible values describing the relationship between gene and disease.
+    permissible_values:
+      is_model_of:
+
+  genetic_sex_enum:
+    description: >-
+      Permissible values for the genetic sex.
+    permissible_values:
+      male:
+      female:
+      hermaphrodite:
+
+  genetic_modifier_relation_enum:
+    description: >-
+      Permissible values for describing how a genetic object modifies the
+      disease model.
+    permissible_values:
+      ameliorated_by:
+      not_ameliorated_by:
+      exacerbated_by:
+      not_exacerbated_by:
+
+  disease_annotation_qualifier_enum:
+    permissible_values:
+      susceptibility:
+      disease_progression:
+      severity:
+      onset:
+      sexual_dimorphism:
+      resistance:
+      penetrance:
+
+  annotation_type_enum:
+    permissible_values:
+      manually_curated:
+      high-throughput:
+      computational:

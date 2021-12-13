@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Slot: reference - Model to describe the Alliance curation/persistence data store</title>
+  <title>Class: Reference - Model to describe the Alliance curation/persistence data store</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Slot: reference";
-    var mkdocs_page_input_path = "reference.md";
+    var mkdocs_page_name = "Class: Reference";
+    var mkdocs_page_input_path = "Reference.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Slot: reference</li>
+    <li>Class: Reference</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,19 +91,163 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="slot-reference">Slot: reference</h1>
-<p>holds between an object and a single reference</p>
-<p>URI: <a href="http://alliancegenome.orgreference">alliance:reference</a></p>
-<h2 id="domain-and-range">Domain and Range</h2>
-<p>None &#8594;  <sub>0..1</sub> <a href="../Reference/">Reference</a></p>
-<h2 id="parents">Parents</h2>
-<h2 id="children">Children</h2>
+                <h1 id="class-reference">Class: Reference</h1>
+<p>URI: <a href="http://alliancegenome.orgReference">alliance:Reference</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Resource],[ReferenceType],[Resource]&lt;from_resource%200..1-%20[Reference&#124;title:string%20%3F;alliance_category:string%20%3F;date_published:date%20%3F;year_published:string%20%3F;month_published:string%20%3F;day_published:string%20%3F;date_arrived_in_PubMed:date%20%3F;date_last_modified_in_PubMed:date%20%3F;volume:string%20%3F;pages:string%20*;abstract:string%20%3F;citation:string%20%3F;PubMed_type:string%20%3F;issue_name:string%20%3F;issue_date:date%20%3F;mod_reference_types:string%20*;tags:tag_set%20*;topics:uriorcurie%20%3F;keywords:string%20*;id:string%20%3F;curie(i):uriorcurie;table_key(i):integer%20%3F;creation_date(i):date%20%3F;date_last_modified(i):date%20%3F],[InformationContentEntity]&lt;publisher%200..1-%20[Reference],[CrossReference]&lt;cross_references%200..*-%20[Reference],[AuthorReference]&lt;authors%200..*-++[Reference],[Antibody]-%20original_reference%200..1&gt;[Reference],[DiseaseAnnotation]-%20annotation_reference%201..1&gt;[Reference],[EntitySynonym]-%20references%200..*&gt;[Reference],[Figure]-%20has_reference%201..1&gt;[Reference],[GeneInteraction]-%20references%200..1&gt;[Reference],[PhenotypeAnnotation]-%20annotation_reference%201..1&gt;[Reference],[PhenotypeAnnotation]-%20annotation_reference(i)%201..1&gt;[Reference],[DiseaseAnnotation]-%20annotation_reference(i)%201..1&gt;[Reference],[Figure]-%20has_reference(i)%200..1&gt;[Reference],[Antibody]-%20original_reference(i)%200..1&gt;[Reference],[Variant]-%20references%200..*&gt;[Reference],[EntityStatement]-%20references%200..*&gt;[Reference],[ReferenceType]-%20references%200..*&gt;[Reference],[Antibody]-%20references%200..*&gt;[Reference],[InformationContentEntity]^-[Reference],[Variant],[PhenotypeAnnotation],[Person],[InformationContentEntity],[GeneInteraction],[Figure],[EntitySynonym],[EntityStatement],[DiseaseAnnotation],[CrossReference],[AuthorReference],[Antibody]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Resource],[ReferenceType],[Resource]&lt;from_resource%200..1-%20[Reference&#124;title:string%20%3F;alliance_category:string%20%3F;date_published:date%20%3F;year_published:string%20%3F;month_published:string%20%3F;day_published:string%20%3F;date_arrived_in_PubMed:date%20%3F;date_last_modified_in_PubMed:date%20%3F;volume:string%20%3F;pages:string%20*;abstract:string%20%3F;citation:string%20%3F;PubMed_type:string%20%3F;issue_name:string%20%3F;issue_date:date%20%3F;mod_reference_types:string%20*;tags:tag_set%20*;topics:uriorcurie%20%3F;keywords:string%20*;id:string%20%3F;curie(i):uriorcurie;table_key(i):integer%20%3F;creation_date(i):date%20%3F;date_last_modified(i):date%20%3F],[InformationContentEntity]&lt;publisher%200..1-%20[Reference],[CrossReference]&lt;cross_references%200..*-%20[Reference],[AuthorReference]&lt;authors%200..*-++[Reference],[Antibody]-%20original_reference%200..1&gt;[Reference],[DiseaseAnnotation]-%20annotation_reference%201..1&gt;[Reference],[EntitySynonym]-%20references%200..*&gt;[Reference],[Figure]-%20has_reference%201..1&gt;[Reference],[GeneInteraction]-%20references%200..1&gt;[Reference],[PhenotypeAnnotation]-%20annotation_reference%201..1&gt;[Reference],[PhenotypeAnnotation]-%20annotation_reference(i)%201..1&gt;[Reference],[DiseaseAnnotation]-%20annotation_reference(i)%201..1&gt;[Reference],[Figure]-%20has_reference(i)%200..1&gt;[Reference],[Antibody]-%20original_reference(i)%200..1&gt;[Reference],[Variant]-%20references%200..*&gt;[Reference],[EntityStatement]-%20references%200..*&gt;[Reference],[ReferenceType]-%20references%200..*&gt;[Reference],[Antibody]-%20references%200..*&gt;[Reference],[InformationContentEntity]^-[Reference],[Variant],[PhenotypeAnnotation],[Person],[InformationContentEntity],[GeneInteraction],[Figure],[EntitySynonym],[EntityStatement],[DiseaseAnnotation],[CrossReference],[AuthorReference],[Antibody]" /></a></p>
+<h2 id="identifier-prefixes">Identifier prefixes</h2>
 <ul>
-<li><a href="../DiseaseAnnotation_reference/">DiseaseAnnotation➞reference</a></li>
-<li><a href="../PaperHandle_reference/">PaperHandle➞reference</a></li>
-<li><a href="../PhenotypeAnnotation_reference/">PhenotypeAnnotation➞reference</a></li>
+<li>PMID</li>
+<li>NLMID</li>
+<li>DOI</li>
+<li>SGD</li>
+<li>FB</li>
+<li>WB</li>
+<li>ZFIN</li>
+<li>MGI</li>
+<li>RGD</li>
+<li>PMC</li>
+<li>DOI</li>
 </ul>
-<h2 id="used-by">Used by</h2>
+<h2 id="parents">Parents</h2>
+<ul>
+<li>is_a: <a href="../InformationContentEntity/">InformationContentEntity</a> - a piece of information that typically describes some topic of discourse or is used as support. Precedence of identifiers for references is as follows: PMID if available; DOI if not; actual alternate CURIE otherwise.</li>
+</ul>
+<h2 id="referenced-by-class">Referenced by Class</h2>
+<ul>
+<li><strong><a href="../Antibody/">Antibody</a></strong> <em><a href="../Antibody_original_reference/">Antibody➞original_reference</a></em>  <sub>0..1</sub>  <strong><a href="./">Reference</a></strong></li>
+<li><strong><a href="../DiseaseAnnotation/">DiseaseAnnotation</a></strong> <em><a href="../DiseaseAnnotation_annotation_reference/">DiseaseAnnotation➞annotation_reference</a></em>  <sub>1..1</sub>  <strong><a href="./">Reference</a></strong></li>
+<li><strong><a href="../EntitySynonym/">EntitySynonym</a></strong> <em><a href="../EntitySynonym_references/">EntitySynonym➞references</a></em>  <sub>0..*</sub>  <strong><a href="./">Reference</a></strong></li>
+<li><strong><a href="../Figure/">Figure</a></strong> <em><a href="../Figure_has_reference/">Figure➞has_reference</a></em>  <sub>1..1</sub>  <strong><a href="./">Reference</a></strong></li>
+<li><strong><a href="../GeneInteraction/">GeneInteraction</a></strong> <em><a href="../GeneInteraction_references/">GeneInteraction➞references</a></em>  <sub>0..1</sub>  <strong><a href="./">Reference</a></strong></li>
+<li><strong><a href="../PhenotypeAnnotation/">PhenotypeAnnotation</a></strong> <em><a href="../PhenotypeAnnotation_annotation_reference/">PhenotypeAnnotation➞annotation_reference</a></em>  <sub>1..1</sub>  <strong><a href="./">Reference</a></strong></li>
+<li><strong>None</strong> <em><a href="../annotation_reference/">annotation_reference</a></em>  <sub>1..1</sub>  <strong><a href="./">Reference</a></strong></li>
+<li><strong><a href="../ReferenceType/">ReferenceType</a></strong> <em><a href="../has_reference/">has_reference</a></em>  <sub>0..1</sub>  <strong><a href="./">Reference</a></strong></li>
+<li><strong>None</strong> <em><a href="../original_reference/">original_reference</a></em>  <sub>0..1</sub>  <strong><a href="./">Reference</a></strong></li>
+<li><strong>None</strong> <em><a href="../references/">references</a></em>  <sub>0..*</sub>  <strong><a href="./">Reference</a></strong></li>
+</ul>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
+<ul>
+<li><a href="../title/">title</a>  <sub>0..1</sub><ul>
+<li>Description: A human readable title for a reference.</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../alliance_category/">alliance_category</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../date_published/">date_published</a>  <sub>0..1</sub><ul>
+<li>Description: Date on which an entity was created.</li>
+<li>Range: <a href="../Date/">Date</a></li>
+</ul>
+</li>
+<li><a href="../year_published/">year_published</a>  <sub>0..1</sub><ul>
+<li>Description: Year in which an entity was created.</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../month_published/">month_published</a>  <sub>0..1</sub><ul>
+<li>Description: Month in which an entity was created.</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../day_published/">day_published</a>  <sub>0..1</sub><ul>
+<li>Description: Day in which an entity was created.</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../date_arrived_in_PubMed/">date_arrived_in_PubMed</a>  <sub>0..1</sub><ul>
+<li>Description: Day in which a reference or resource was created in PUBMED. Only relevant for PUBMED references.</li>
+<li>Range: <a href="../Date/">Date</a></li>
+</ul>
+</li>
+<li><a href="../date_last_modified_in_PubMed/">date_last_modified_in_PubMed</a>  <sub>0..1</sub><ul>
+<li>Description: Date on which an entity was created.</li>
+<li>Range: <a href="../Date/">Date</a></li>
+</ul>
+</li>
+<li><a href="../volume/">volume</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../pages/">pages</a>  <sub>0..*</sub><ul>
+<li>Description: page number of source referenced for statement or publication</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../abstract/">abstract</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../citation/">citation</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../PubMed_type/">PubMed_type</a>  <sub>0..1</sub><ul>
+<li>Description: Type of InformationContentEntity as described by pub med.</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../issue_name/">issue_name</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../issue_date/">issue_date</a>  <sub>0..1</sub><ul>
+<li>Description: Date on which an entity was issued.</li>
+<li>Range: <a href="../Date/">Date</a></li>
+</ul>
+</li>
+<li><a href="../mod_reference_types/">mod_reference_types</a>  <sub>0..*</sub><ul>
+<li>Description: List of types as assigned at a MOD.</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../authors/">authors</a>  <sub>0..*</sub><ul>
+<li>Range: <a href="../AuthorReference/">AuthorReference</a></li>
+</ul>
+</li>
+<li><a href="../tags/">tags</a>  <sub>0..*</sub><ul>
+<li>Description: Optional ist of controlled vocabulary tags that give categories to each pub (ie: can show images).</li>
+<li>Range: <a href="../tag_set/">tag_set</a></li>
+</ul>
+</li>
+<li><a href="../topics/">topics</a>  <sub>0..1</sub><ul>
+<li>Description: Connects an object to a vocabulary term or ontology that describes some aspect of the entity.</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="../cross_references/">cross_references</a>  <sub>0..*</sub><ul>
+<li>Description: Holds between an object and its CrossReferences.</li>
+<li>Range: <a href="../CrossReference/">CrossReference</a></li>
+</ul>
+</li>
+<li><a href="../publisher/">publisher</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../InformationContentEntity/">InformationContentEntity</a></li>
+</ul>
+</li>
+<li><a href="../keywords/">keywords</a>  <sub>0..*</sub><ul>
+<li>Description: keywords tagging a publication</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../from_resource/">from_resource</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../Resource/">Resource</a></li>
+</ul>
+</li>
+<li><a href="../Reference_id/">Reference➞id</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="inherited-from-informationcontententity">Inherited from InformationContentEntity:</h3>
+<ul>
+<li><a href="../curie/">curie</a>  <sub>1..1</sub><ul>
+<li>Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+</ul>
               
             </div>
           </div>
