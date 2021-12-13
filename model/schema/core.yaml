@@ -516,6 +516,10 @@ slots:
       not be publicly displayed.
     range: boolean
 
+  abbreviation:
+    multivalued: false
+    range: string
+
 ## --------------------
 ## ASSOCIATION SLOTS
 ## --------------------
