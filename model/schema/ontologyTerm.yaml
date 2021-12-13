@@ -33,6 +33,11 @@ slots:
     range: string
     multivalued: true
   
+  abbreviation:
+    domain: ECOTerm
+    range: string
+    multivalued: false
+
 classes:
 
   OntologyTerm:

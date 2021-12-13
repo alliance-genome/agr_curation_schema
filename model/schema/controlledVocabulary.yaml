@@ -37,10 +37,9 @@ classes:
     description: >-
       A concept or class in a simple vocabulary.
     mixins:
-      - AuditedObject
+      - AuditedObject 
     slots:
       - name
-      - abbreviation
       - definition
       - is_obsolete
       - text_synonyms
@@ -52,7 +51,7 @@ classes:
     description: >-
       A set of VocabularyTerm objects.
     mixins:
-      - AuditedObject
+      - AuditedObject 
     slots:
       - name
       - vocabulary_description
@@ -61,4 +60,8 @@ classes:
     slot_usage:
       name:
         required: true
-        idenfifier: true
+
+
+
+  
+
