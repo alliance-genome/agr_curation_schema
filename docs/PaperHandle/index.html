@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Slot: name - Model to describe the Alliance curation/persistence data store</title>
+  <title>Class: PaperHandle - Model to describe the Alliance curation/persistence data store</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Slot: name";
-    var mkdocs_page_input_path = "name.md";
+    var mkdocs_page_name = "Class: PaperHandle";
+    var mkdocs_page_input_path = "PaperHandle.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Slot: name</li>
+    <li>Class: PaperHandle</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,55 +91,28 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="slot-name">Slot: name</h1>
-<p>a human-readable name for an entity</p>
-<p>URI: <a href="http://alliancegenome.orgname">alliance:name</a></p>
-<h2 id="domain-and-range">Domain and Range</h2>
-<p>None &#8594;  <sub>0..1</sub> <a href="../String/">String</a></p>
-<h2 id="parents">Parents</h2>
-<h2 id="children">Children</h2>
+                <h1 id="class-paperhandle">Class: PaperHandle</h1>
+<p>A pairing of a reference and a free text string that allows an object to have a reference-specific alias (or handle). For example, used for experimental conditions from ZFIN to label (in a reference-specific manner) individual experimental conditions when curating a particular reference.</p>
+<p>URI: <a href="http://alliancegenome.orgPaperHandle">alliance:PaperHandle</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Reference]&lt;reference%201..1-%20[PaperHandle&#124;handle:string],[ExperimentalCondition]++-%20paper_handles%200..*&gt;[PaperHandle],[ExperimentalCondition]++-%20paper_handles(i)%200..*&gt;[PaperHandle],[ExperimentalCondition]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Reference]&lt;reference%201..1-%20[PaperHandle&#124;handle:string],[ExperimentalCondition]++-%20paper_handles%200..*&gt;[PaperHandle],[ExperimentalCondition]++-%20paper_handles(i)%200..*&gt;[PaperHandle],[ExperimentalCondition]" /></a></p>
+<h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
-<li><a href="../Antibody_name/">Antibody➞name</a></li>
-<li><a href="../Molecule_name/">Molecule➞name</a></li>
-<li><a href="../VocabularyTerm_name/">VocabularyTerm➞name</a></li>
-<li><a href="../Vocabulary_name/">Vocabulary➞name</a></li>
+<li><strong><a href="../ExperimentalCondition/">ExperimentalCondition</a></strong> <em><a href="../ExperimentalCondition_paper_handles/">ExperimentalCondition➞paper_handles</a></em>  <sub>0..*</sub>  <strong><a href="./">PaperHandle</a></strong></li>
+<li><strong>None</strong> <em><a href="../paper_handles/">paper_handles</a></em>  <sub>0..*</sub>  <strong><a href="./">PaperHandle</a></strong></li>
 </ul>
-<h2 id="used-by">Used by</h2>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
 <ul>
-<li><a href="../AffectedGenomicModel/">AffectedGenomicModel</a></li>
-<li><a href="../Allele/">Allele</a></li>
-<li><a href="../AnatomicalTerm/">AnatomicalTerm</a></li>
-<li><a href="../CHEBITerm/">CHEBITerm</a></li>
-<li><a href="../CLTerm/">CLTerm</a></li>
-<li><a href="../Construct/">Construct</a></li>
-<li><a href="../ConstructComponent/">ConstructComponent</a></li>
-<li><a href="../DOTerm/">DOTerm</a></li>
-<li><a href="../ECOTerm/">ECOTerm</a></li>
-<li><a href="../EMAPATerm/">EMAPATerm</a></li>
-<li><a href="../ExperimentalConditionOntologyTerm/">ExperimentalConditionOntologyTerm</a></li>
-<li><a href="../FBBTTerm/">FBBTTerm</a></li>
-<li><a href="../FBCVTerm/">FBCVTerm</a></li>
-<li><a href="../FBDVTerm/">FBDVTerm</a></li>
-<li><a href="../GOTerm/">GOTerm</a></li>
-<li><a href="../Gene/">Gene</a></li>
-<li><a href="../GenomicEntity/">GenomicEntity</a></li>
-<li><a href="../MATerm/">MATerm</a></li>
-<li><a href="../MITerm/">MITerm</a></li>
-<li><a href="../MMOTerm/">MMOTerm</a></li>
-<li><a href="../MMUSDVTerm/">MMUSDVTerm</a></li>
-<li><a href="../OntologyTerm/">OntologyTerm</a></li>
-<li><a href="../PhenotypeTerm/">PhenotypeTerm</a></li>
-<li><a href="../SOTerm/">SOTerm</a></li>
-<li><a href="../StageTerm/">StageTerm</a></li>
-<li><a href="../Transcript/">Transcript</a></li>
-<li><a href="../UBERONTerm/">UBERONTerm</a></li>
-<li><a href="../Variant/">Variant</a></li>
-<li><a href="../WBBTTerm/">WBBTTerm</a></li>
-<li><a href="../WBLSTerm/">WBLSTerm</a></li>
-<li><a href="../XCOTerm/">XCOTerm</a></li>
-<li><a href="../ZECOTerm/">ZECOTerm</a></li>
-<li><a href="../ZFATerm/">ZFATerm</a></li>
-<li><a href="../ZFSTerm/">ZFSTerm</a></li>
+<li><a href="../PaperHandle_reference/">PaperHandle➞reference</a>  <sub>1..1</sub><ul>
+<li>Description: holds between an object and a single reference</li>
+<li>Range: <a href="../Reference/">Reference</a></li>
+</ul>
+</li>
+<li><a href="../PaperHandle_handle/">PaperHandle➞handle</a>  <sub>1..1</sub><ul>
+<li>Description: A slot pointing to a free-text alias or 'handle' for a data object, such as a reference-specific alias for a data object used while curating.</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
 </ul>
               
             </div>

@@ -194,6 +194,7 @@
 <li><a href="CLTerm/">CLTerm</a></li>
 <li><a href="EMAPATerm/">EMAPATerm</a></li>
 <li><a href="FBBTTerm/">FBBTTerm</a></li>
+<li><a href="MATerm/">MATerm</a></li>
 <li><a href="UBERONTerm/">UBERONTerm</a></li>
 <li><a href="WBBTTerm/">WBBTTerm</a></li>
 <li><a href="ZFATerm/">ZFATerm</a></li>
@@ -209,7 +210,6 @@
 </li>
 <li><a href="FBCVTerm/">FBCVTerm</a></li>
 <li><a href="GOTerm/">GOTerm</a></li>
-<li><a href="MATerm/">MATerm</a></li>
 <li><a href="MITerm/">MITerm</a></li>
 <li><a href="MMOTerm/">MMOTerm</a></li>
 <li><a href="MMUSDVTerm/">MMUSDVTerm</a></li>
@@ -223,6 +223,7 @@
 </li>
 </ul>
 </li>
+<li><a href="PaperHandle/">PaperHandle</a> - A pairing of a reference and a free text string that allows an object to have a reference-specific alias (or handle). For example, used for experimental conditions from ZFIN to label (in a reference-specific manner) individual experimental conditions when curating a particular reference.</li>
 <li><a href="ReferenceType/">ReferenceType</a> - Describes the relation between a reference and an object</li>
 <li><a href="SequenceTargetingReagent/">SequenceTargetingReagent</a> - Dummy sequence targeting reagent class</li>
 <li><a href="Species/">Species</a></li>
@@ -244,6 +245,10 @@
 <h3 id="slots">Slots</h3>
 <ul>
 <li><a href="PubMed_type/">PubMed_type</a> - Type of InformationContentEntity as described by pub med.</li>
+<li><a href="abbreviation/">abbreviation</a><ul>
+<li><a href="ECOTerm_abbreviation/">ECOTerm➞abbreviation</a> - Letter code used by curators to refer to the ECO term.</li>
+</ul>
+</li>
 <li><a href="aberration/">aberration</a> - Associated deficiency (etc.) whose breakpoint causes the mutation<ul>
 <li><a href="Allele_aberration/">Allele➞aberration</a></li>
 </ul>
@@ -264,12 +269,10 @@
 <li><a href="VariantTranscriptConsequence_amino_acid_variant/">VariantTranscriptConsequence➞amino_acid_variant</a> - Amino acid sequence encoded by codon(s) in variant sequence</li>
 </ul>
 </li>
-<li><a href="annotation_reference/">annotation_reference</a> - The reference in which the association was asserted/reported.<ul>
-<li><a href="DiseaseAnnotation_annotation_reference/">DiseaseAnnotation➞annotation_reference</a> - The reference in which the disease association was asserted/reported.</li>
-<li><a href="PhenotypeAnnotation_annotation_reference/">PhenotypeAnnotation➞annotation_reference</a> - The reference in which the phenotype association was asserted/reported.</li>
+<li><a href="annotation_type/">annotation_type</a> - The type of annotation classified according to curation method: manually curated, high-throughput, computational<ul>
+<li><a href="DiseaseAnnotation_annotation_type/">DiseaseAnnotation➞annotation_type</a></li>
 </ul>
 </li>
-<li><a href="annotation_type/">annotation_type</a> - The type of annotation classified according to curation method: manually curated, high-throughput, computational</li>
 <li><a href="antibody_target_genes/">antibody_target_genes</a> - The genes whose gene products are recognized by the antibody.</li>
 <li><a href="associated_notes/">associated_notes</a> - Notes associated with the entity in some way</li>
 <li><a href="associated_references/">associated_references</a> - References associated with the entity in some way</li>
@@ -296,8 +299,6 @@
 </ul>
 </li>
 <li><a href="predicate/">predicate</a> - A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.<ul>
-<li><a href="AGMPhenotypeAnnotation_predicate/">AGMPhenotypeAnnotation➞predicate</a> - The relationship between AGM and phenotype.</li>
-<li><a href="AllelePhenotypeAnnotation_predicate/">AllelePhenotypeAnnotation➞predicate</a> - The relationship between allele and phenotype.</li>
 <li><a href="DiseaseAnnotation_predicate/">DiseaseAnnotation➞predicate</a> - Constrains the disease subject, associationType and inferredGeneAssociation.<ul>
 <li><a href="AGMDiseaseAnnotation_predicate/">AGMDiseaseAnnotation➞predicate</a> - The relationship between AGM and disease.</li>
 <li><a href="AlleleDiseaseAnnotation_predicate/">AlleleDiseaseAnnotation➞predicate</a> - The relationship between allele and disease.</li>
@@ -310,13 +311,12 @@
 <li><a href="GeneMolecularInteraction_predicate/">GeneMolecularInteraction➞predicate</a></li>
 </ul>
 </li>
-<li><a href="GenePhenotypeAnnotation_predicate/">GenePhenotypeAnnotation➞predicate</a> - The relationship between gene and phenotype.</li>
 </ul>
 </li>
 <li><a href="subject/">subject</a> - connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.<ul>
 <li><a href="DiseaseAnnotation_subject/">DiseaseAnnotation➞subject</a> - The biological entity to which the disease ontology term is associated.<ul>
 <li><a href="AGMDiseaseAnnotation_subject/">AGMDiseaseAnnotation➞subject</a> - The AGM to which the disease ontology term is associated.</li>
-<li><a href="AlleleDiseaseAnnotation_subject/">AlleleDiseaseAnnotation➞subject</a> - The gene to which the disease ontology term is associated.</li>
+<li><a href="AlleleDiseaseAnnotation_subject/">AlleleDiseaseAnnotation➞subject</a> - The allele to which the disease ontology term is associated.</li>
 <li><a href="GeneDiseaseAnnotation_subject/">GeneDiseaseAnnotation➞subject</a> - The gene to which the disease ontology term is associated.</li>
 </ul>
 </li>
@@ -327,7 +327,7 @@
 </li>
 <li><a href="PhenotypeAnnotation_subject/">PhenotypeAnnotation➞subject</a> - The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, by direct curation.<ul>
 <li><a href="AGMPhenotypeAnnotation_subject/">AGMPhenotypeAnnotation➞subject</a> - The AGM to which the phenotype ontology term is associated.</li>
-<li><a href="AllelePhenotypeAnnotation_subject/">AllelePhenotypeAnnotation➞subject</a> - The gene to which the phenotype ontology term is associated.</li>
+<li><a href="AllelePhenotypeAnnotation_subject/">AllelePhenotypeAnnotation➞subject</a> - The allele to which the phenotype ontology term is associated.</li>
 <li><a href="GenePhenotypeAnnotation_subject/">GenePhenotypeAnnotation➞subject</a> - The gene to which the phenotype ontology term is associated.</li>
 </ul>
 </li>
@@ -488,6 +488,10 @@
 <li><a href="Allele_germline_transmission_status/">Allele➞germline_transmission_status</a></li>
 </ul>
 </li>
+<li><a href="handle/">handle</a> - A slot pointing to a free-text alias or 'handle' for a data object, such as a reference-specific alias for a data object used while curating.<ul>
+<li><a href="PaperHandle_handle/">PaperHandle➞handle</a></li>
+</ul>
+</li>
 <li><a href="has_allele/">has_allele</a></li>
 <li><a href="has_assembly/">has_assembly</a></li>
 <li><a href="has_figure/">has_figure</a> - Holds between an entity and a Figure.<ul>
@@ -586,6 +590,7 @@
 </li>
 <li><a href="name/">name</a> - a human-readable name for an entity<ul>
 <li><a href="Antibody_name/">Antibody➞name</a> - Publicly displayed name of the antibody. It often includes the name of the antibody target: e.g., anti-WNT-4. It may also include the host species and antibody clonality.</li>
+<li><a href="Molecule_name/">Molecule➞name</a></li>
 <li><a href="VocabularyTerm_name/">VocabularyTerm➞name</a></li>
 <li><a href="Vocabulary_name/">Vocabulary➞name</a></li>
 </ul>
@@ -608,6 +613,10 @@
 <li><a href="padding_right/">padding_right</a> - flanking sequence downstream of the variation position on the sense strand of the reference genome</li>
 <li><a href="page_areas/">page_areas</a></li>
 <li><a href="pages/">pages</a> - page number of source referenced for statement or publication</li>
+<li><a href="paper_handles/">paper_handles</a> - A slot that points to a list of PaperHandle objects, pairings of a reference and a free text string that allows an object to have a reference-specific alias (or handle). Used for experimental conditions from ZFIN to label (in a reference-specific manner) individual experimental conditions when curating a particular reference.<ul>
+<li><a href="ExperimentalCondition_paper_handles/">ExperimentalCondition➞paper_handles</a> - Used by ZFIN to provide reference-specific labels/aliases to experimental conditions; useful for referencing experimental conditions while curating.</li>
+</ul>
+</li>
 <li><a href="parent_cell_line/">parent_cell_line</a> - Parental cell line of alleles made in embryonic stem cells<ul>
 <li><a href="Allele_parent_cell_line/">Allele➞parent_cell_line</a></li>
 </ul>
@@ -641,8 +650,14 @@
 </li>
 <li><a href="publisher/">publisher</a></li>
 <li><a href="qualifiers/">qualifiers</a> - This is the MeSH qualifier term that is optionally added to the descriptor term.</li>
+<li><a href="reference/">reference</a> - holds between an object and a single reference<ul>
+<li><a href="DiseaseAnnotation_reference/">DiseaseAnnotation➞reference</a> - The reference in which the disease association was asserted/reported.</li>
+<li><a href="PaperHandle_reference/">PaperHandle➞reference</a></li>
+<li><a href="PhenotypeAnnotation_reference/">PhenotypeAnnotation➞reference</a> - The reference in which the phenotype association was asserted/reported.</li>
+</ul>
+</li>
 <li><a href="reference_association/">reference_association</a> - Description of how a reference is associated with an entity, e.g. molecular / origin / other</li>
-<li><a href="references/">references</a> - holds between an object and a reference<ul>
+<li><a href="references/">references</a> - holds between an object and a list of references<ul>
 <li><a href="EntitySynonym_references/">EntitySynonym➞references</a> - The references in which the synonym is used to refer to the entity.</li>
 <li><a href="GeneInteraction_references/">GeneInteraction➞references</a> - The reference from which the interaction was annotated.</li>
 <li><a href="original_reference/">original_reference</a> - Holds between an entity and the first reference to describe that entity.<ul>
@@ -861,5 +876,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2021-11-16 21:59:55.343759+00:00
+Build Date UTC : 2021-12-09 20:22:21.467382+00:00
 -->

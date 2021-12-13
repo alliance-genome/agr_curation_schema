@@ -14,7 +14,7 @@ public abstractclass DiseaseAnnotation extends Association {
   private String modId;
   private Boolean negated;
   private List<ECOTerm> evidenceCodes;
-  private Reference annotationReference;
+  private Reference reference;
   private String annotationType;
   private Gene with;
   private String diseaseQualifiers;

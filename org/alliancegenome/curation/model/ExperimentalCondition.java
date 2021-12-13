@@ -19,5 +19,6 @@ public class ExperimentalCondition  {
   private GOTerm conditionGeneOntology;
   private OntologyTerm conditionTaxon;
   private OntologyTerm conditionChemical;
+  private List<PaperHandle> paperHandles;
 
 }
