@@ -11,6 +11,7 @@ import lombok.*;
 public class VocabularyTerm  {
 
   private String name;
+  private String abbreviation;
   private String definition;
   private Boolean isObsolete;
   private List<String> textSynonyms;
