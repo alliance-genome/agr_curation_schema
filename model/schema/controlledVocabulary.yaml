@@ -61,4 +61,4 @@ classes:
     slot_usage:
       name:
         required: true
-        idenfifier: true
+        identifier: true
