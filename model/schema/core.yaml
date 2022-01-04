@@ -496,8 +496,13 @@ slots:
     multivalued: true
     range: Reference
 
-  reference:
-    description: holds between an object and a single reference
+  annotation_reference:
+    description: holds between an annotation and a single reference
+    multivalued: false
+    range: Reference
+
+  entity_reference:
+    description: holds between an entity and a single reference
     multivalued: false
     range: Reference
 
