@@ -14,7 +14,7 @@ public class Gene extends GenomicEntity {
   private String symbol;
   private String geneSynopsis;
   private String geneSynopsisURL;
-  private String type;
+  private SOTerm geneType;
   private String automatedGeneDescription;
 
 }
