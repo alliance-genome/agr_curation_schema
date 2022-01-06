@@ -96,7 +96,7 @@ classes:
       - symbol
       - gene_synopsis
       - gene_synopsis_URL
-      - type
+      - gene_type
       - automated_gene_description
     id_prefixes:
       - ENSEMBL
@@ -485,6 +485,11 @@ slots:
 
   type:
     range: uriorcurie
+
+  gene_type:
+    description: SOTerm describing gene type
+    domain: Gene
+    range: SOTerm
 
   taxon_id:
     description: NCBI taxid
