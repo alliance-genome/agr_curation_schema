@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Provides CLI to validate json files against the agr_curation jsonschema."""
+"""Provides CLI to validate json files against the NMDC jsonschema."""
 
 import click
 import json
+from pprint import pprint
 import jsonschema
 
 
-def is_valid_json(json_file: str, database_set: str = "") -> bool:
+def is_valid_json(json_file: str, schema_file: str) -> bool:
     """
     Determines if the data in json_file conforms to the NMDC json schema.
     Parameters
@@ -23,15 +24,10 @@ def is_valid_json(json_file: str, database_set: str = "") -> bool:
     """
     with open(json_file, "r") as fh:
         json_data = json.load(fh)
-
-        database_set = database_set.strip()
-        if len(database_set) > 0:
-            if type(json_data) == type([]):
-                json_data = {f"{database_set}": json_data}
-            else:
-                json_data = {f"{database_set}": [json_data]}
+    with open(schema_file) as json_file:
+        schema_dict = json.load(json_file)
     try:
-        jsonschema.validate(instance=json_data, schema=get_nmdc_dict())
+        jsonschema.validate(instance=json_data, schema=schema_dict)
     except jsonschema.exceptions.ValidationError as err:
         print(err.message)
         return False
@@ -44,20 +40,20 @@ def is_valid_json(json_file: str, database_set: str = "") -> bool:
 @click.option(
     "--input",
     "-i",
-    help="the path the file containing json formatted data.",
+    help="the path to the file containing json data to validate.",
 )
 @click.option(
-    "--database-set",
-    "-set",
+    "--schema_file",
+    "-schema",
     default="",
-    help="An optional top level database set (e.g, study_set, biosample_set) that contains the data.",
+    help="the path to the file containing the json schema to validate against.",
 )
-def cli(input: str, database_set: str):
-    if is_valid_json(input, database_set):
-        click.echo("%s: The JSON data is VALID for NMDC schema." % input)
+def cli(input: str, schema_file: str):
+    if is_valid_json(input, schema_file):
+        click.echo("%s: Valid JSON data." % input)
     else:
-        click.echo("%s: The JSON data is ** NOT ** valid for NMDC schema." % input)
+        click.echo("%s: The JSON data is ** NOT ** valid." % input)
 
 
 if __name__ == "__main__":
-    cli()  # CLI interface
+    cli()

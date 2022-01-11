@@ -1,0 +1,166 @@
+{
+  "$id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/allele",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": true,
+  "definitions": {
+    "Allele": {
+      "additionalProperties": false,
+      "description": "One of multiple possible forms of a functional genomic element (most often described as a locus or gene), differing from the reference DNA sequence.  The genomic element can be endogenous or constructed.",
+      "properties": {
+        "aberration": {
+          "type": "string"
+        },
+        "affected_entities": {
+          "description": "Biological entities affected by allele",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "associated_notes": {
+          "$ref": "#/definitions/NoteType",
+          "description": "Notes associated with the entity in some way"
+        },
+        "associated_references": {
+          "description": "References associated with the entity in some way",
+          "items": {
+            "$ref": "#/definitions/ReferenceType"
+          },
+          "type": "array"
+        },
+        "contains_construct": {
+          "type": "string"
+        },
+        "created_by": {
+          "description": "The individual that created the entity.",
+          "type": "string"
+        },
+        "creation_date": {
+          "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+          "format": "date",
+          "type": "string"
+        },
+        "cross_references": {
+          "description": "Holds between an object and its CrossReferences.",
+          "items": {
+            "$ref": "#/definitions/CrossReference"
+          },
+          "type": "array"
+        },
+        "curie": {
+          "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+          "type": "string"
+        },
+        "database_status": {
+          "$ref": "#/definitions/DatabaseStatuses",
+          "description": "Database status of the allele"
+        },
+        "date_last_modified": {
+          "description": "Date on which an entity was last modified.",
+          "format": "date",
+          "type": "string"
+        },
+        "embryonic_cell_lines": {
+          "type": "string"
+        },
+        "embryonic_stem_cell_lines": {
+          "description": "Embryonic stem cell lines known to carry the allele",
+          "items": {
+            "$ref": "#/definitions/CellLine"
+          },
+          "type": "array"
+        },
+        "functional_impact": {
+          "description": "Experimentally assessed functional impact of the allele, e.g. knockout / amorphic",
+          "type": "string"
+        },
+        "generation_method": {
+          "description": "Technique used to create the allele, e.g. spontaneous / naturally occuring / radiation",
+          "type": "string"
+        },
+        "germline_transmission_status": {
+          "type": "string"
+        },
+        "images": {
+          "description": "Any associated image",
+          "type": "string"
+        },
+        "in_collection": {
+          "description": "Set of high-throughput alleles made by large projects",
+          "type": "string"
+        },
+        "inheritence_mode": {
+          "$ref": "#/definitions/ModesOfInheritence",
+          "description": "Mode of inheritence, e.g. dominant / semi-dominant / recessive / unknown"
+        },
+        "is_extinct": {
+          "description": "Does the allele still exist in a population somewhere?",
+          "type": "boolean"
+        },
+        "modified_by": {
+          "description": "The individual that last modified the entity.",
+          "type": "string"
+        },
+        "molecular_mutation": {
+          "$ref": "#/definitions/MolecularMutation",
+          "description": "Description of the DNA changes if precise genomic location unknown"
+        },
+        "mutant_cell_lines": {
+          "items": {
+            "$ref": "#/definitions/CellLine"
+          },
+          "type": "array"
+        },
+        "name": {
+          "description": "a human-readable name for an entity",
+          "type": "string"
+        },
+        "origins": {
+          "description": "Affected genomic models that the allele was introduced in",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "parent_cell_line": {
+          "$ref": "#/definitions/CellLine"
+        },
+        "secondary_identifiers": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "symbol": {
+          "description": "Symbol for a particular thing",
+          "type": "string"
+        },
+        "synonyms": {
+          "description": "synonyms for allele names and synonyms",
+          "items": {
+            "$ref": "#/definitions/Synonym"
+          },
+          "type": "array"
+        },
+        "table_key": {
+          "description": "The primary key for a specific table entry, unique for that table.",
+          "type": "integer"
+        },
+        "taxon": {
+          "type": "string"
+        },
+        "transposon_insertion": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "curie",
+        "taxon",
+        "created_by",
+        "modified_by"
+      ],
+      "title": "Allele",
+      "type": "object"
+    }
+  }
+}
