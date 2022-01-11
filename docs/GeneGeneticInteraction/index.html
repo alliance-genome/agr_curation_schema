@@ -99,7 +99,7 @@
 <ul>
 <li>is_a: <a href="../GeneInteraction/">GeneInteraction</a> - An interaction between two genes or gene products; this may be a physical molecular interaction between gene products (e.g. protein-protein interactions), or may be a genetic interaction between genes (e.g. phenotypic suppression)</li>
 </ul>
-<h2 id="referenced-by-class">Referenced by Class</h2>
+<h2 id="referenced-by-class">Referenced by class</h2>
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
@@ -116,7 +116,6 @@
 </ul>
 </li>
 <li><a href="../GeneGeneticInteraction_predicate/">GeneGeneticInteraction➞predicate</a>  <sub>1..1</sub><ul>
-<li>Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.</li>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
@@ -134,7 +133,6 @@
 </ul>
 </li>
 <li><a href="../GeneInteraction_interaction_data_provider/">GeneInteraction➞interaction_data_provider</a>  <sub>1..1</sub><ul>
-<li>Description: The interaction database that curated the interaction. e.g. BioGRID</li>
 <li>Range: <a href="../interaction_source_enum/">interaction_source_enum</a></li>
 </ul>
 </li>
@@ -160,18 +158,16 @@
 </ul>
 </li>
 <li><a href="../GeneInteraction_subject/">GeneInteraction➞subject</a>  <sub>1..1</sub><ul>
-<li>Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.</li>
 <li>Range: <a href="../Gene/">Gene</a></li>
 </ul>
 </li>
 <li><a href="../GeneInteraction_object/">GeneInteraction➞object</a>  <sub>1..1</sub><ul>
-<li>Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.</li>
 <li>Range: <a href="../Gene/">Gene</a></li>
 </ul>
 </li>
-<li><a href="../GeneInteraction_references/">GeneInteraction➞references</a>  <sub>0..*</sub><ul>
+<li><a href="../GeneInteraction_references/">GeneInteraction➞references</a>  <sub>0..1</sub><ul>
 <li>Description: The reference from which the interaction was annotated.</li>
-<li>Range: <a href="../Reference/">Reference</a></li>
+<li>Range: <a href="Reference.md">Reference</a></li>
 </ul>
 </li>
 </ul>

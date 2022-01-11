@@ -95,7 +95,7 @@
 <p>A high-level entity comprising .</p>
 <p>URI: <a href="http://alliancegenome.orgBiologicalEntity">alliance:BiologicalEntity</a></p>
 <p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PhenotypeAnnotation],[Person],[GenomicEntity],[DiseaseAnnotation],[DiseaseAnnotation]-%20subject%201..1&gt;[BiologicalEntity&#124;curie:uriorcurie;taxon:uriorcurie;table_key:integer%20%3F;creation_date:date%20%3F;date_last_modified:date%20%3F],[PhenotypeAnnotation]-%20subject%201..1&gt;[BiologicalEntity],[Allele]-%20affected_entities%200..*&gt;[BiologicalEntity],[DiseaseAnnotation]-%20disease_genetic_modifier%200..1&gt;[BiologicalEntity],[BiologicalEntity]uses%20-.-&gt;[AuditedObject],[BiologicalEntity]^-[GenomicEntity],[BiologicalEntity]^-[Antibody],[AuditedObject],[Antibody],[Allele]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PhenotypeAnnotation],[Person],[GenomicEntity],[DiseaseAnnotation],[DiseaseAnnotation]-%20subject%201..1&gt;[BiologicalEntity&#124;curie:uriorcurie;taxon:uriorcurie;table_key:integer%20%3F;creation_date:date%20%3F;date_last_modified:date%20%3F],[PhenotypeAnnotation]-%20subject%201..1&gt;[BiologicalEntity],[Allele]-%20affected_entities%200..*&gt;[BiologicalEntity],[DiseaseAnnotation]-%20disease_genetic_modifier%200..1&gt;[BiologicalEntity],[BiologicalEntity]uses%20-.-&gt;[AuditedObject],[BiologicalEntity]^-[GenomicEntity],[BiologicalEntity]^-[Antibody],[AuditedObject],[Antibody],[Allele]" /></a></p>
-<h2 id="uses-mixin">Uses Mixin</h2>
+<h2 id="uses-mixins">Uses Mixins</h2>
 <ul>
 <li>mixin: <a href="../AuditedObject/">AuditedObject</a> - Some entity for which changes are tracked, including date/time of change and the agent responsible for the change.</li>
 </ul>
@@ -104,7 +104,7 @@
 <li><a href="../Antibody/">Antibody</a> - Immunoglobulin proteins that bind specific molecule(s). Can be used experimentally for the purposes of detection or purification.</li>
 <li><a href="../GenomicEntity/">GenomicEntity</a></li>
 </ul>
-<h2 id="referenced-by-class">Referenced by Class</h2>
+<h2 id="referenced-by-class">Referenced by class</h2>
 <ul>
 <li><strong><a href="../DiseaseAnnotation/">DiseaseAnnotation</a></strong> <em><a href="../DiseaseAnnotation_subject/">DiseaseAnnotation➞subject</a></em>  <sub>1..1</sub>  <strong><a href="./">BiologicalEntity</a></strong></li>
 <li><strong><a href="../PhenotypeAnnotation/">PhenotypeAnnotation</a></strong> <em><a href="../PhenotypeAnnotation_subject/">PhenotypeAnnotation➞subject</a></em>  <sub>1..1</sub>  <strong><a href="./">BiologicalEntity</a></strong></li>
@@ -122,7 +122,6 @@
 </ul>
 </li>
 <li><a href="../BiologicalEntity_taxon/">BiologicalEntity➞taxon</a>  <sub>1..1</sub><ul>
-<li>Description: The taxon from which the biological entity derives.</li>
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>

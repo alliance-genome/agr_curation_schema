@@ -1,6 +1,8 @@
 # Make artifacts
 config/
 target/
+agr_curation_schema/
+python
 
 
 # Byte-compiled / optimized / DLL files

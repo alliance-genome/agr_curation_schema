@@ -1,0 +1,3367 @@
+{
+   "$id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/allele",
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "additionalProperties": true,
+   "definitions": {
+      "AffectedGenomicModel": {
+         "additionalProperties": false,
+         "description": "Includes inbred strains, stocks, disease models and mutant genotypes",
+         "properties": {
+            "components": {
+               "description": "Collection of genomic components that make up a model, i.e. 'allele', each with a zygosity",
+               "items": {
+                  "$ref": "#/definitions/AffectedGenomicModelComponent"
+               },
+               "type": "array"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "data_provider": {
+               "description": "MOD that provided data",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "parental_populations": {
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "sequence_targeting_reagents": {
+               "items": {
+                  "$ref": "#/definitions/SequenceTargetingReagent"
+               },
+               "type": "array"
+            },
+            "subtype": {
+               "$ref": "#/definitions/SubtypeValues",
+               "description": "Subtype of affected genomic model"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
+            "taxon": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie",
+            "taxon",
+            "created_by",
+            "modified_by"
+         ],
+         "title": "AffectedGenomicModel",
+         "type": "object"
+      },
+      "AffectedGenomicModelComponent": {
+         "additionalProperties": false,
+         "description": "Allele that affects the model and its zygosity",
+         "properties": {
+            "has_allele": {
+               "type": "string"
+            },
+            "zygosity": {
+               "$ref": "#/definitions/ZygosityValues",
+               "description": "GENO onotology ID for allele zygosity"
+            }
+         },
+         "required": [],
+         "title": "AffectedGenomicModelComponent",
+         "type": "object"
+      },
+      "Agent": {
+         "additionalProperties": false,
+         "description": "An individual, group, organization or project that provides information and/or materials.",
+         "properties": {},
+         "required": [],
+         "title": "Agent",
+         "type": "object"
+      },
+      "Allele": {
+         "additionalProperties": false,
+         "description": "One of multiple possible forms of a functional genomic element (most often described as a locus or gene), differing from the reference DNA sequence.  The genomic element can be endogenous or constructed.",
+         "properties": {
+            "aberration": {
+               "type": "string"
+            },
+            "affected_entities": {
+               "description": "Biological entities affected by allele",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "associated_notes": {
+               "$ref": "#/definitions/NoteType",
+               "description": "Notes associated with the entity in some way"
+            },
+            "associated_references": {
+               "description": "References associated with the entity in some way",
+               "items": {
+                  "$ref": "#/definitions/ReferenceType"
+               },
+               "type": "array"
+            },
+            "contains_construct": {
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "database_status": {
+               "$ref": "#/definitions/DatabaseStatuses",
+               "description": "Database status of the allele"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "embryonic_cell_lines": {
+               "type": "string"
+            },
+            "embryonic_stem_cell_lines": {
+               "description": "Embryonic stem cell lines known to carry the allele",
+               "items": {
+                  "$ref": "#/definitions/CellLine"
+               },
+               "type": "array"
+            },
+            "functional_impact": {
+               "description": "Experimentally assessed functional impact of the allele, e.g. knockout / amorphic",
+               "type": "string"
+            },
+            "generation_method": {
+               "description": "Technique used to create the allele, e.g. spontaneous / naturally occuring / radiation",
+               "type": "string"
+            },
+            "germline_transmission_status": {
+               "type": "string"
+            },
+            "images": {
+               "description": "Any associated image",
+               "type": "string"
+            },
+            "in_collection": {
+               "description": "Set of high-throughput alleles made by large projects",
+               "type": "string"
+            },
+            "inheritence_mode": {
+               "$ref": "#/definitions/ModesOfInheritence",
+               "description": "Mode of inheritence, e.g. dominant / semi-dominant / recessive / unknown"
+            },
+            "is_extinct": {
+               "description": "Does the allele still exist in a population somewhere?",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "molecular_mutation": {
+               "$ref": "#/definitions/MolecularMutation",
+               "description": "Description of the DNA changes if precise genomic location unknown"
+            },
+            "mutant_cell_lines": {
+               "items": {
+                  "$ref": "#/definitions/CellLine"
+               },
+               "type": "array"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "origins": {
+               "description": "Affected genomic models that the allele was introduced in",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "parent_cell_line": {
+               "$ref": "#/definitions/CellLine"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "symbol": {
+               "description": "Symbol for a particular thing",
+               "type": "string"
+            },
+            "synonyms": {
+               "description": "synonyms for allele names and synonyms",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
+            "taxon": {
+               "type": "string"
+            },
+            "transposon_insertion": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie",
+            "taxon",
+            "created_by",
+            "modified_by"
+         ],
+         "title": "Allele",
+         "type": "object"
+      },
+      "Assembly": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "Assembly",
+         "type": "object"
+      },
+      "Association": {
+         "additionalProperties": false,
+         "description": "A typed association between two entities, supported by evidence.",
+         "properties": {
+            "object": {
+               "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            },
+            "predicate": {
+               "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+               "type": "string"
+            },
+            "subject": {
+               "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "subject",
+            "predicate",
+            "object"
+         ],
+         "title": "Association",
+         "type": "object"
+      },
+      "AuthorReference": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "corresponding_author": {
+               "type": "string"
+            },
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "first_name": {
+               "type": "string"
+            },
+            "initials": {
+               "type": "string"
+            },
+            "last_name": {
+               "type": "string"
+            },
+            "middle_names": {
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "AuthorReference",
+         "type": "object"
+      },
+      "CHEBITerm": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "CHEBITerm",
+         "type": "object"
+      },
+      "CLTerm": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "CLTerm",
+         "type": "object"
+      },
+      "CellLine": {
+         "additionalProperties": false,
+         "description": "Dummy cell line class",
+         "properties": {},
+         "required": [],
+         "title": "CellLine",
+         "type": "object"
+      },
+      "Chromosome": {
+         "additionalProperties": false,
+         "description": "The ID of the landmark used to establish the coordinate system for the current feature.",
+         "properties": {
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "Chromosome",
+         "type": "object"
+      },
+      "Company": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {},
+         "required": [],
+         "title": "Company",
+         "type": "object"
+      },
+      "ComponentRelationsEnum": {
+         "description": "",
+         "enum": [
+            "expresses",
+            "is_regulated_by",
+            "targets"
+         ],
+         "title": "ComponentRelationsEnum",
+         "type": "string"
+      },
+      "Construct": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "construct_components": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
+            "taxon": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie",
+            "taxon",
+            "created_by",
+            "modified_by"
+         ],
+         "title": "Construct",
+         "type": "object"
+      },
+      "ConstructComponent": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "component_relation": {
+               "$ref": "#/definitions/ComponentRelationsEnum"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
+            "taxon": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie",
+            "taxon",
+            "created_by",
+            "modified_by"
+         ],
+         "title": "ConstructComponent",
+         "type": "object"
+      },
+      "CrossReference": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "display_name": {
+               "type": "string"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "page_areas": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "prefix": {
+               "description": "Denormalization to help with classifying types of crossReferences, distinguishing DOIs from PMC ids, etc.",
+               "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            }
+         },
+         "required": [
+            "curie",
+            "created_by",
+            "modified_by",
+            "page_areas",
+            "display_name",
+            "prefix"
+         ],
+         "title": "CrossReference",
+         "type": "object"
+      },
+      "DOTerm": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "DOTerm",
+         "type": "object"
+      },
+      "DatabaseStatuses": {
+         "description": "",
+         "enum": [
+            "live",
+            "dead",
+            "suppressed",
+            "history",
+            "private",
+            "approved"
+         ],
+         "title": "DatabaseStatuses",
+         "type": "string"
+      },
+      "ECOTerm": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "abbreviation": {
+               "description": "Letter code used by curators to refer to the ECO term.",
+               "type": "string"
+            },
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "ECOTerm",
+         "type": "object"
+      },
+      "EMAPATerm": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "EMAPATerm",
+         "type": "object"
+      },
+      "Entity": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {},
+         "required": [],
+         "title": "Entity",
+         "type": "object"
+      },
+      "EntityStatement": {
+         "additionalProperties": false,
+         "description": "Free-text describing some aspect of an entity.",
+         "properties": {
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "statement_subject": {
+               "description": "The entity being described by the note.",
+               "type": "string"
+            },
+            "statement_text": {
+               "description": "Free-text describing some aspect of an entity.",
+               "type": "string"
+            },
+            "statement_type": {
+               "description": "The type of free-text statement. For example: cytology, private, curator_comments.",
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "EntityStatement",
+         "type": "object"
+      },
+      "EntitySynonym": {
+         "additionalProperties": false,
+         "description": "A relationship between an entity and a synonym.",
+         "properties": {
+            "object": {
+               "$ref": "#/definitions/Synonym"
+            },
+            "predicate": {
+               "$ref": "#/definitions/EntitySynonymTypeSet"
+            },
+            "references": {
+               "description": "The references in which the synonym is used to refer to the entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subject": {
+               "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "subject",
+            "object",
+            "predicate"
+         ],
+         "title": "EntitySynonym",
+         "type": "object"
+      },
+      "EntitySynonymTypeSet": {
+         "description": "",
+         "enum": [
+            "current",
+            "alias"
+         ],
+         "title": "EntitySynonymTypeSet",
+         "type": "string"
+      },
+      "ExternalDatabaseLink": {
+         "additionalProperties": false,
+         "description": "Base relation that holds the identifier prefix, base url and url suffix to help in generating URLs in crossReferences.",
+         "properties": {
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "prefix": {
+               "description": "Denormalization to help with classifying types of crossReferences, distinguishing DOIs from PMC ids, etc.",
+               "type": "string"
+            },
+            "prefix_order": {
+               "description": "The relative order of the resource when listed with other crossReferences.",
+               "type": "string"
+            },
+            "prefix_page": {
+               "description": "The cateogry of pages the resource in the context of the URL associated with the crossReference provides.  Equivalent to the 'page' attribute in the Alliance resourceDescriptor file.",
+               "type": "string"
+            },
+            "url_prefix": {
+               "description": "The prefix of the url before the accession number.",
+               "type": "string"
+            },
+            "url_suffix": {
+               "description": "The suffix of the url after the accession number.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "prefix"
+         ],
+         "title": "ExternalDatabaseLink",
+         "type": "object"
+      },
+      "FBBTTerm": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "FBBTTerm",
+         "type": "object"
+      },
+      "FBCVTerm": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "FBCVTerm",
+         "type": "object"
+      },
+      "FBDVTerm": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "FBDVTerm",
+         "type": "object"
+      },
+      "Figure": {
+         "additionalProperties": false,
+         "description": "An entity representing a figure or table in a publication.",
+         "properties": {
+            "caption": {
+               "description": "Text describing the contents of a figure or table in a publication.",
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "has_reference": {
+               "type": "string"
+            },
+            "label": {
+               "description": "A short display name for the figure. For example: Figure 2, Figure 3B",
+               "type": "string"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            }
+         },
+         "required": [
+            "curie",
+            "has_reference",
+            "created_by",
+            "modified_by"
+         ],
+         "title": "Figure",
+         "type": "object"
+      },
+      "File": {
+         "additionalProperties": false,
+         "description": "A dummy object.",
+         "properties": {},
+         "required": [],
+         "title": "File",
+         "type": "object"
+      },
+      "GOTerm": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "GOTerm",
+         "type": "object"
+      },
+      "Gene": {
+         "additionalProperties": false,
+         "description": "Placeholder.",
+         "properties": {
+            "automated_gene_description": {
+               "description": "Gene description generated via algorithm developed at the alliance.",
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "gene_synopsis": {
+               "description": "Gene description provided by source resource (ie: MOD gene description that is curated or automated via MOD internal processes).",
+               "type": "string"
+            },
+            "gene_synopsis_URL": {
+               "description": "Gene description reference URL provided by source resource (aka: MOD) in the case where the curated gene_synopsis has a reference URL outside of the MOD.",
+               "type": "string"
+            },
+            "gene_type": {
+               "description": "SOTerm describing gene type",
+               "type": "string"
+            },
+            "genomic_locations": {
+               "items": {
+                  "$ref": "#/definitions/GeneGenomicLocation"
+               },
+               "type": "array"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "symbol": {
+               "type": "string"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
+            "taxon": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie",
+            "taxon",
+            "created_by",
+            "modified_by",
+            "symbol"
+         ],
+         "title": "Gene",
+         "type": "object"
+      },
+      "GeneGenomicLocation": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "end": {
+               "description": "The end of the feature in positive 1-based integer coordinates",
+               "type": "string"
+            },
+            "has_assembly": {
+               "type": "string"
+            },
+            "object": {
+               "description": "object should be the chromosome identifier",
+               "type": "string"
+            },
+            "predicate": {
+               "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+               "type": "string"
+            },
+            "start": {
+               "description": "The start of the feature in positive 1-based integer coordinates",
+               "type": "string"
+            },
+            "subject": {
+               "description": "subject should be the gene identifier",
+               "type": "string"
+            }
+         },
+         "required": [
+            "subject",
+            "predicate",
+            "object",
+            "has_assembly"
+         ],
+         "title": "GeneGenomicLocation",
+         "type": "object"
+      },
+      "GenomicEntity": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
+            "taxon": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie",
+            "taxon",
+            "created_by",
+            "modified_by"
+         ],
+         "title": "GenomicEntity",
+         "type": "object"
+      },
+      "Image": {
+         "additionalProperties": false,
+         "description": "The set of files and metadata that constitute an image.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "cropped_from": {
+               "description": "Another larger image from which this image was cropped.",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "has_figure": {
+               "description": "The figure to which the image belongs.",
+               "type": "string"
+            },
+            "height": {
+               "description": "The height of the image (pixels).",
+               "type": "integer"
+            },
+            "image_file": {
+               "$ref": "#/definitions/File",
+               "description": "The file representing the full-sized version of this image."
+            },
+            "image_medium_file": {
+               "$ref": "#/definitions/File",
+               "description": "The file representing a medium-sized version of this image."
+            },
+            "image_thumbnail_file": {
+               "$ref": "#/definitions/File",
+               "description": "The file representing the thumbnail of this image."
+            },
+            "image_x_origin": {
+               "description": "The x coordinate within a larger source image from which the crop begins.",
+               "type": "integer"
+            },
+            "image_y_origin": {
+               "description": "The y coordinate within a larger source image from which the crop begins.",
+               "type": "integer"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
+            "video_still": {
+               "description": "An image represents a video still.",
+               "type": "boolean"
+            },
+            "width": {
+               "description": "The width of the image (pixels).",
+               "type": "integer"
+            }
+         },
+         "required": [
+            "curie",
+            "has_figure",
+            "width",
+            "height",
+            "image_file",
+            "image_medium_file",
+            "image_thumbnail_file",
+            "created_by",
+            "modified_by"
+         ],
+         "title": "Image",
+         "type": "object"
+      },
+      "ImagePane": {
+         "additionalProperties": false,
+         "description": "Part of an Image that is relevant to some annotation. An annotation may reference many panes of an Image.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "height": {
+               "description": "The height of the image (pixels).",
+               "type": "integer"
+            },
+            "image_x_origin": {
+               "description": "The x coordinate within a larger source image from which the pane begins.",
+               "type": "integer"
+            },
+            "image_y_origin": {
+               "description": "The y coordinate within a larger source image from which the pane begins.",
+               "type": "integer"
+            },
+            "images": {
+               "type": "string"
+            },
+            "label": {
+               "description": "A short display name for the figure. For example: Figure 2, Figure 3B",
+               "type": "string"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
+            "width": {
+               "description": "The width of the image (pixels).",
+               "type": "integer"
+            }
+         },
+         "required": [
+            "images",
+            "width",
+            "height",
+            "created_by",
+            "modified_by"
+         ],
+         "title": "ImagePane",
+         "type": "object"
+      },
+      "Laboratory": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {},
+         "required": [],
+         "title": "Laboratory",
+         "type": "object"
+      },
+      "MATerm": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "MATerm",
+         "type": "object"
+      },
+      "MITerm": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "MITerm",
+         "type": "object"
+      },
+      "MMOTerm": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "MMOTerm",
+         "type": "object"
+      },
+      "MMUSDVTerm": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "MMUSDVTerm",
+         "type": "object"
+      },
+      "ModesOfInheritence": {
+         "description": "",
+         "enum": [
+            "dominant",
+            "recessive",
+            "semi_dominant",
+            "unknown"
+         ],
+         "title": "ModesOfInheritence",
+         "type": "string"
+      },
+      "MolecularMutation": {
+         "additionalProperties": false,
+         "description": "Description of the DNA changes with unknown precise genomic location",
+         "properties": {
+            "mutation_description": {
+               "description": "Additional information about the nature of the mutation not captured by the SOTerm",
+               "type": "string"
+            },
+            "mutation_type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "mutation_type"
+         ],
+         "title": "MolecularMutation",
+         "type": "object"
+      },
+      "NoteAssociationTypes": {
+         "description": "",
+         "enum": [
+            "molecular",
+            "origin",
+            "cytology",
+            "private",
+            "curator_comments"
+         ],
+         "title": "NoteAssociationTypes",
+         "type": "string"
+      },
+      "NoteType": {
+         "additionalProperties": false,
+         "description": "Describes the relation between a note and an object",
+         "properties": {
+            "note_association": {
+               "$ref": "#/definitions/NoteAssociationTypes",
+               "description": "Description of how a note is associated with an entity, e.g. curators comments / private / origin"
+            },
+            "notes": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [],
+         "title": "NoteType",
+         "type": "object"
+      },
+      "OntologyTerm": {
+         "additionalProperties": false,
+         "description": "A concept or class in an ontology, vocabulary or thesaurus. Note, ontology terms can be found in multiple ontologies (ie: mireoting). defining_slots helps define an alternative key for ontology terms.",
+         "properties": {
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "OntologyTerm",
+         "type": "object"
+      },
+      "Organization": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {},
+         "required": [],
+         "title": "Organization",
+         "type": "object"
+      },
+      "Person": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "first_name": {
+               "type": "string"
+            },
+            "last_name": {
+               "type": "string"
+            },
+            "orcid": {
+               "type": "string"
+            },
+            "person_id": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "person_id"
+         ],
+         "title": "Person",
+         "type": "object"
+      },
+      "PhenotypeTerm": {
+         "additionalProperties": false,
+         "description": "An ontology term representing a characteristic of an organism. This may or may not be expressed as a difference in comparison to a reference organism.",
+         "properties": {
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "PhenotypeTerm",
+         "type": "object"
+      },
+      "Reference": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "PubMed_type": {
+               "description": "Type of InformationContentEntity as described by pub med.",
+               "type": "string"
+            },
+            "abstract": {
+               "type": "string"
+            },
+            "alliance_category": {
+               "type": "string"
+            },
+            "authors": {
+               "items": {
+                  "$ref": "#/definitions/AuthorReference"
+               },
+               "type": "array"
+            },
+            "citation": {
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_arrived_in_PubMed": {
+               "description": "Day in which a reference or resource was created in PUBMED. Only relevant for PUBMED references.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified_in_PubMed": {
+               "description": "Date on which an entity was created.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_published": {
+               "description": "Date on which an entity was created.",
+               "format": "date",
+               "type": "string"
+            },
+            "day_published": {
+               "description": "Day in which an entity was created.",
+               "type": "string"
+            },
+            "from_resource": {
+               "type": "string"
+            },
+            "id": {
+               "type": "string"
+            },
+            "issue_date": {
+               "description": "Date on which an entity was issued.",
+               "format": "date",
+               "type": "string"
+            },
+            "issue_name": {
+               "type": "string"
+            },
+            "keywords": {
+               "description": "keywords tagging a publication",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "mod_reference_types": {
+               "description": "List of types as assigned at a MOD.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "month_published": {
+               "description": "Month in which an entity was created.",
+               "type": "string"
+            },
+            "pages": {
+               "description": "page number of source referenced for statement or publication",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "publisher": {
+               "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
+            "tags": {
+               "description": "Optional ist of controlled vocabulary tags that give categories to each pub (ie: can show images).",
+               "items": {
+                  "$ref": "#/definitions/TagSet"
+               },
+               "type": "array"
+            },
+            "title": {
+               "description": "A human readable title for a reference.",
+               "type": "string"
+            },
+            "topics": {
+               "description": "Connects an object to a vocabulary term or ontology that describes some aspect of the entity.",
+               "type": "string"
+            },
+            "volume": {
+               "type": "string"
+            },
+            "year_published": {
+               "description": "Year in which an entity was created.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie",
+            "created_by",
+            "modified_by"
+         ],
+         "title": "Reference",
+         "type": "object"
+      },
+      "ReferenceAssociationTypes": {
+         "description": "",
+         "enum": [
+            "molecular",
+            "other"
+         ],
+         "title": "ReferenceAssociationTypes",
+         "type": "string"
+      },
+      "ReferenceType": {
+         "additionalProperties": false,
+         "description": "Describes the relation between a reference and an object",
+         "properties": {
+            "reference_association": {
+               "$ref": "#/definitions/ReferenceAssociationTypes",
+               "description": "Description of how a reference is associated with an entity, e.g. molecular / origin / other"
+            },
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [],
+         "title": "ReferenceType",
+         "type": "object"
+      },
+      "Resource": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "authors": {
+               "items": {
+                  "$ref": "#/definitions/AuthorReference"
+               },
+               "type": "array"
+            },
+            "copyright_date": {
+               "format": "date",
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "editors": {
+               "description": "holds between a resource and a editor_resource",
+               "items": {
+                  "$ref": "#/definitions/AuthorReference"
+               },
+               "type": "array"
+            },
+            "id": {
+               "description": "Precedence of identifiers for references is as follows: PMID if available; DOI if not; actual alternate CURIE otherwise.",
+               "type": "string"
+            },
+            "iso_abbreviation": {
+               "type": "string"
+            },
+            "medline_abbreviation": {
+               "type": "string"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "online_issn": {
+               "type": "string"
+            },
+            "print_issn": {
+               "type": "string"
+            },
+            "publisher": {
+               "type": "string"
+            },
+            "summary": {
+               "type": "string"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
+            "title": {
+               "description": "the title of the publication",
+               "type": "string"
+            },
+            "volumes": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie",
+            "created_by",
+            "modified_by"
+         ],
+         "title": "Resource",
+         "type": "object"
+      },
+      "SOTerm": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "SOTerm",
+         "type": "object"
+      },
+      "SequenceTargetingReagent": {
+         "additionalProperties": false,
+         "description": "Dummy sequence targeting reagent class",
+         "properties": {},
+         "required": [],
+         "title": "SequenceTargetingReagent",
+         "type": "object"
+      },
+      "Species": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {},
+         "required": [],
+         "title": "Species",
+         "type": "object"
+      },
+      "SubtypeValues": {
+         "description": "",
+         "enum": [
+            "strain",
+            "genotype"
+         ],
+         "title": "SubtypeValues",
+         "type": "string"
+      },
+      "Synonym": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {},
+         "required": [],
+         "title": "Synonym",
+         "type": "object"
+      },
+      "TagSet": {
+         "description": "",
+         "enum": [
+            "image",
+            "test"
+         ],
+         "title": "TagSet",
+         "type": "string"
+      },
+      "Transcript": {
+         "additionalProperties": false,
+         "description": "Placeholder.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
+            "taxon": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie",
+            "taxon",
+            "created_by",
+            "modified_by"
+         ],
+         "title": "Transcript",
+         "type": "object"
+      },
+      "UBERONTerm": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "UBERONTerm",
+         "type": "object"
+      },
+      "Variant": {
+         "additionalProperties": false,
+         "description": "A DNA sequence that differs relative to a designated reference sequence.  The sequence occurs at a single position or in contiguous nucleotides.",
+         "properties": {
+            "computed_gene": {
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "data_provider": {
+               "description": "MOD that provided data",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "genomic_reference_sequence": {
+               "description": "reference genome sequence at variation position",
+               "type": "string"
+            },
+            "genomic_variant_sequence": {
+               "description": "variant genome sequence at variation position",
+               "type": "string"
+            },
+            "hgvs_nomenclature": {
+               "description": "HGVSg nomenclature for variant",
+               "type": "string"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "notes": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "padding_left": {
+               "description": "flanking sequence upstream of the variation position on the sense strand of the reference genome",
+               "type": "string"
+            },
+            "padding_right": {
+               "description": "flanking sequence downstream of the variation position on the sense strand of the reference genome",
+               "type": "string"
+            },
+            "protein_sequence": {
+               "type": "string"
+            },
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "release": {
+               "description": "MOD release ID",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
+            "taxon": {
+               "type": "string"
+            },
+            "type": {
+               "type": "string"
+            },
+            "variant_of_allele": {
+               "type": "string"
+            },
+            "variant_of_transcript": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "taxon",
+            "created_by",
+            "modified_by",
+            "curie"
+         ],
+         "title": "Variant",
+         "type": "object"
+      },
+      "WBBTTerm": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "WBBTTerm",
+         "type": "object"
+      },
+      "WBLSTerm": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "WBLSTerm",
+         "type": "object"
+      },
+      "XCOTerm": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "XCOTerm",
+         "type": "object"
+      },
+      "ZECOTerm": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "ZECOTerm",
+         "type": "object"
+      },
+      "ZFATerm": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "ZFATerm",
+         "type": "object"
+      },
+      "ZFSTerm": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/definitions/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/definitions/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "ZFSTerm",
+         "type": "object"
+      },
+      "ZygosityValues": {
+         "description": "",
+         "enum": [
+            "GENO:0000602",
+            "GENO:0000603",
+            "GENO:0000604",
+            "GENO:0000605",
+            "GENO:0000606",
+            "GENO:0000135",
+            "GENO:0000136",
+            "GENO:0000137",
+            "GENO:0000134"
+         ],
+         "title": "ZygosityValues",
+         "type": "string"
+      }
+   },
+   "properties": {},
+   "title": "Alliance-Schema-Prototype-Allele",
+   "type": "object"
+}
+

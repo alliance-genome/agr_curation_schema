@@ -1,0 +1,52 @@
+{
+   "$id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/resource",
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "additionalProperties": true,
+   "definitions": {
+      "AuthorReference": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "first_name": {
+               "type": "string"
+            },
+            "last_name": {
+               "type": "string"
+            },
+            "middle_names": {
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "AuthorReference",
+         "type": "object"
+      },
+      "Resource": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "id": {
+               "description": "Precedence of identifiers for references is as follows: PMID if available; DOI if not; actual alternate CURIE otherwise.",
+               "type": "string"
+            },
+            "title": {
+               "description": "the title of the publication",
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "Resource",
+         "type": "object"
+      }
+   },
+   "properties": {},
+   "title": "resource",
+   "type": "object"
+}
+

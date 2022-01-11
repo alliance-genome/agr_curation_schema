@@ -15,7 +15,8 @@ SCHEMA_NAME = allianceModel
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
 # PKG_TGTS = sqlddl-sqlalchemy
 PKG_TGTS = json_schema model sqlddl java
-TGTS = docs python $(PKG_TGTS)
+TGTS = docs $(PKG_TGTS)
+# TGTS = docs python $(PKG_TGTS)
 
 # Targets by PKG_TGT
 PKG_T_GRAPHQL = $(PKG_DIR)/graphql
@@ -29,7 +30,7 @@ PKG_T_JAVA = $(PKG_DIR)/java
 PKG_T_SQLDDL = $(PKG_DIR)/sqlddl
 PKG_T_SQLALCHEMY = $(PKG_DIR)/sqlalchemy
 PKG_T_DOCS = $(MODEL_DOCS_DIR)
-PKG_T_PYTHON = $(PKG_DIR)
+# PKG_T_PYTHON = $(PKG_DIR)
 PKG_T_MODEL = $(PKG_DIR)/model
 PKG_T_SCHEMA = $(PKG_T_MODEL)/schema
 
@@ -43,7 +44,17 @@ RUN = $(ENV) && pipenv run
 # ----------------------------------------
 # TOP LEVEL TARGETS
 # ----------------------------------------
-all: install gen
+all: install clean clean-package gen stage
+
+
+###  -- PYPI TARGETS
+# Use the build-package target to build a PYPI package locally
+# This is usefule for testing
+.PHONY: clean-package build-package deploy-pypi
+clean-package:
+	rm -rf dist && echo 'dist removed'
+	rm -rf agr_curation_schema.egg-info && echo 'egg-info removed'
+	rm -rf agr_curation_schema
 
 # ---------------------------------------
 # We don't want to pollute the python environment with linkml tool specific packages.  For this reason,
@@ -64,12 +75,15 @@ uninstall:
 # ----------------------------------------
 test:
 	$(ENV) && pipenv install --dev
-	$(ENV) && pipenv run python -m unittest
+	# $(ENV) && pipenv run python -m unittest
 
 # ---------------------------------------
 # GEN: run generator for each target
 # ---------------------------------------
 gen: $(patsubst %,gen-%,$(TGTS))
+
+stage:
+	cp -pr target/json_schema .
 
 # ---------------------------------------
 # CLEAN: clear out all of the targets
@@ -134,12 +148,12 @@ $(PKG_T_SCHEMA)/%.yaml: model/schema/%.yaml
 # ---------------------------------------
 # PYTHON Source
 # ---------------------------------------
-gen-python: $(patsubst %, $(PKG_T_PYTHON)/%.py, $(SCHEMA_NAMES))
-$(PKG_T_PYTHON)/%.py: target/python/%.py
-	mkdir -p $(PKG_T_PYTHON)
-	cp $< $@
-target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python install
-	$(RUN) gen-python $(GEN_OPTS)  --no-slots --no-mergeimports $< > $@
+# gen-python: $(patsubst %, $(PKG_T_PYTHON)/%.py, $(SCHEMA_NAMES))
+# $(PKG_T_PYTHON)/%.py: target/python/%.py
+# 	mkdir -p $(PKG_T_PYTHON)
+# 	cp $< $@
+# target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python install
+# 	$(RUN) gen-python $(GEN_OPTS)  --no-slots --no-mergeimports $< > $@
 
 # ---------------------------------------
 # GRAPHQL Source

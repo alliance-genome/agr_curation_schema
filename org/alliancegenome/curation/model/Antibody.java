@@ -19,7 +19,7 @@ public class Antibody extends BiologicalEntity {
   private List<CrossReference> crossReferences;
   private List<String> secondaryIdentifiers;
   private List<Reference> references;
-  private List<Reference> originalReference;
+  private Reference originalReference;
   private List<Agent> generatedBy;
   private List<Agent> manufacturedBy;
 

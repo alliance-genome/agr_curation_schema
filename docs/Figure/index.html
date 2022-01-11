@@ -95,11 +95,11 @@
 <p>An entity representing a figure or table in a publication.</p>
 <p>URI: <a href="http://alliancegenome.orgFigure">alliance:Figure</a></p>
 <p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Person],[Image],[Reference]&lt;has_reference%201..1-%20[Figure&#124;curie:uriorcurie;label:string%20%3F;caption:string%20%3F;secondary_identifiers:uriorcurie%20*;table_key:integer%20%3F;creation_date:date%20%3F;date_last_modified:date%20%3F],[Image]-%20has_figure%201..1&gt;[Figure],[Image]-%20has_figure(i)%200..1&gt;[Figure],[Figure]uses%20-.-&gt;[AuditedObject],[AuditedObject]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reference],[Person],[Image],[Reference]&lt;has_reference%201..1-%20[Figure&#124;curie:uriorcurie;label:string%20%3F;caption:string%20%3F;secondary_identifiers:uriorcurie%20*;table_key:integer%20%3F;creation_date:date%20%3F;date_last_modified:date%20%3F],[Image]-%20has_figure%201..1&gt;[Figure],[Image]-%20has_figure(i)%200..1&gt;[Figure],[Figure]uses%20-.-&gt;[AuditedObject],[AuditedObject]" /></a></p>
-<h2 id="uses-mixin">Uses Mixin</h2>
+<h2 id="uses-mixins">Uses Mixins</h2>
 <ul>
 <li>mixin: <a href="../AuditedObject/">AuditedObject</a> - Some entity for which changes are tracked, including date/time of change and the agent responsible for the change.</li>
 </ul>
-<h2 id="referenced-by-class">Referenced by Class</h2>
+<h2 id="referenced-by-class">Referenced by class</h2>
 <ul>
 <li><strong><a href="../Image/">Image</a></strong> <em><a href="../Image_has_figure/">Image➞has_figure</a></em>  <sub>1..1</sub>  <strong><a href="./">Figure</a></strong></li>
 <li><strong>None</strong> <em><a href="../has_figure/">has_figure</a></em>  <sub>0..1</sub>  <strong><a href="./">Figure</a></strong></li>
@@ -113,8 +113,7 @@
 </ul>
 </li>
 <li><a href="../Figure_has_reference/">Figure➞has_reference</a>  <sub>1..1</sub><ul>
-<li>Description: Associated reference</li>
-<li>Range: <a href="../Reference/">Reference</a></li>
+<li>Range: <a href="Reference.md">Reference</a></li>
 </ul>
 </li>
 <li><a href="../label/">label</a>  <sub>0..1</sub><ul>
