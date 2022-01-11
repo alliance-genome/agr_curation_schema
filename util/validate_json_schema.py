@@ -6,6 +6,7 @@ import click
 import json
 from pprint import pprint
 import jsonschema
+import os
 
 
 def is_valid_json(json_file: str, schema_file: str) -> bool:
@@ -22,16 +23,30 @@ def is_valid_json(json_file: str, schema_file: str) -> bool:
     bool
         True if data conforms to the NMDC json schema; False otherwise.
     """
-    with open(json_file, "r") as fh:
-        json_data = json.load(fh)
-    with open(schema_file) as json_file:
-        schema_dict = json.load(json_file)
-    try:
-        jsonschema.validate(instance=json_data, schema=schema_dict)
-    except jsonschema.exceptions.ValidationError as err:
-        print(err.message)
-        return False
 
+    with open(json_file) as data_file:
+        data = json.load(data_file)
+
+    schema_file_name = schema_file
+    with open(schema_file_name) as schema_file:
+        schema = json.load(schema_file)
+
+    # Defining a resolver for relative paths and schema issues, see https://github.com/Julian/jsonschema/issues/313
+    # and https://github.com/Julian/jsonschema/issues/274
+    schema_dir = os.path.dirname(os.path.abspath(schema_file_name))
+    resolver = jsonschema.RefResolver(base_uri='file://' + schema_dir + '/', referrer=schema)
+
+    try:
+        jsonschema.validate(data, schema, format_checker=jsonschema.FormatChecker(), resolver=resolver)
+        print("'%s' successfully validated against '%s'" % (json_file, schema_file_name))
+    except jsonschema.ValidationError as e:
+        print(e.message)
+        print(e)
+        return False
+    except jsonschema.SchemaError as e:
+        print(e.message)
+        print(e)
+        return False
     return True
 
 
@@ -44,7 +59,7 @@ def is_valid_json(json_file: str, schema_file: str) -> bool:
 )
 @click.option(
     "--schema_file",
-    "-schema",
+    "-s",
     default="",
     help="the path to the file containing the json schema to validate against.",
 )

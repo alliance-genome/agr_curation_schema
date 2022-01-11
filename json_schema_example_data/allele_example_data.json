@@ -1,16 +1,4 @@
-[
-  {
-    "curie": "ZFIN:ZDB-ALT-980203-1091",
-    "symbol": "ti282a",
-    "synonyms": [
-      "AI82a"
-    ],
-    "taxon": "NCBITaxon:7955",
-    "affected_entites": [
-      "ZFIN:ZDB-GENE-990415-72"
-    ]
-  },
-  {
+ {
     "curie": "ZFIN:ZDB-ALT-980203-1091",
     "symbol": "ti282a",
     "synonyms": [
@@ -21,4 +9,3 @@
       "ZFIN:ZDB-GENE-990415-72"
     ]
   }
-]
