@@ -342,6 +342,13 @@ slots:
       A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
     range: uriorcurie
 
+  unique_id:
+    description: >-
+      A non-curie unique identifier for a thing.
+    identifier: true
+    multivalued: false
+    range: string
+
   dbkey:
     description: >-
       Typically the primary key on the table.  Should be a global sequence in the database to insure
