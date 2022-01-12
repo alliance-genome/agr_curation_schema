@@ -10,7 +10,7 @@ import lombok.*;
 @EqualsAndHashCode(callSuper=false)
 public abstractclass DiseaseAnnotation extends Association {
 
-  private String curie;
+  private String uniqueId;
   private String modId;
   private Boolean negated;
   private List<ECOTerm> evidenceCodes;
