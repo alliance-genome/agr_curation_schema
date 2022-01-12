@@ -345,7 +345,6 @@ slots:
   unique_id:
     description: >-
       A non-curie unique identifier for a thing.
-    identifier: true
     multivalued: false
     range: string
 
