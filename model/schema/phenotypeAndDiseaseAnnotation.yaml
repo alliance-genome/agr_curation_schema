@@ -161,7 +161,7 @@ classes:
     description: >-
       An annotation asserting an association between a biological entity and a disease supported by evidence.
     slots:
-      - curie
+      - unique_id
       - mod_id
       - negated
       - evidence_codes
@@ -178,6 +178,11 @@ classes:
       - disease_genetic_modifier
       - disease_genetic_modifier_relation
     slot_usage:
+      unique_id:
+        description: >-
+          Unique identifer for the disease annotation.  Will be generated at AGR
+          if not submitted by the MOD.
+        required: false
       mod_id:
         description: >-
           The model organism database (MOD) identifier/curie for the disease annotation. Currently only
