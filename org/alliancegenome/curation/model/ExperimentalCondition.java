@@ -10,7 +10,7 @@ import lombok.*;
 @EqualsAndHashCode(callSuper=false)
 public class ExperimentalCondition  {
 
-  private String curie;
+  private String uniqueId;
   private ZECOTerm conditionClass;
   private String conditionStatement;
   private ExperimentalConditionOntologyTerm conditionId;

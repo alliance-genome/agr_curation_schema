@@ -10,7 +10,7 @@ import lombok.*;
 @EqualsAndHashCode(callSuper=false)
 public class ConditionRelation  {
 
-  private String curie;
+  private String uniqueId;
   private String conditionRelationType;
   private List<ExperimentalCondition> conditions;
 
