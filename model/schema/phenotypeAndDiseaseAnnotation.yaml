@@ -301,7 +301,7 @@ classes:
       The environmental context in which an experiment is carried out. This may (e.g. drug treatment)
       or may not (e.g. standard conditions) directly influence the outcome of the experiment.
     slots:
-      - curie
+      - unique_id
       - condition_class                   # conditionClassId in JSON schema
       - condition_statement               # conditionStatement in JSON schema
       - condition_id                      # conditionId in JSON schema
@@ -312,6 +312,11 @@ classes:
       - condition_chemical                # ChemicalOntologyId in JSON schema
       - paper_handles
     slot_usage:
+      unique_id:
+        description: >-
+          Unique identifer for the experimental condition.  Will be generated at
+          AGR.
+        required: false
       condition_class:
         required: true
         description: >-
@@ -372,10 +377,15 @@ classes:
       of these ConditionRelation objects via a 'condition_relations' slot to express the experimental
       conditions relevant to the annotation.
     slots:
-      - curie
+      - unique_id
       - condition_relation_type
       - conditions
     slot_usage:
+      unique_id:
+        description: >-
+          Unique identifer for the condition relation.  Will be generated at
+          AGR.
+        required: false
       condition_relation_type:
         required: true
         multivalued: false
