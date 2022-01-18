@@ -276,6 +276,10 @@ slots:
     domain: Allele
     range: boolean
 
+  allele_ingest_set:
+    description:
+    range: Allele
+    multivalued: true
 
 enums:
 
