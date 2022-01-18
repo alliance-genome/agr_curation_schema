@@ -326,7 +326,7 @@ slots:
   manufactured_by:
     description: >-
       Holds between a material entity and an Agent that has manufactured it:
-      e.g., olecular Probes.
+      e.g., Molecular Probes.
     required: false
     multivalued: true
     range: Agent
