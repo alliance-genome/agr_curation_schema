@@ -1,0 +1,27 @@
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/allele_ingest
+name: Alliance-Schema-Prototype-Allele-Ingest
+title: Alliance Schema Prototype Allele Ingest
+
+imports:
+  - core
+  - image
+  - variation
+  - linkml:types
+  - informationContentEntity
+  - ontologyTerm
+  - affectedGenomicModel
+
+prefixes:
+  alliance: 'http://alliancegenome.org'
+  linkml: 'https://w3id.org/linkml/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+
+slots:
+  allele_ingest_set:
+    description:
+    range: Allele
+    multivalued: true
