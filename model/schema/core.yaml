@@ -23,6 +23,7 @@ imports:
   - resource
   - person
   - image
+  - ontologyTerm
 
 prefixes:
   alliance: 'http://alliancegenome.org'
@@ -358,7 +359,7 @@ slots:
     description: >-
       The taxon from which the biological entity derives.
     multivalued: false
-    range: uriorcurie
+    range: NCBITaxonTerm
 
   secondary_identifiers:
     aliases: ['secondary_ids']

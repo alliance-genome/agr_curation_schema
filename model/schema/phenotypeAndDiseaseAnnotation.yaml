@@ -352,9 +352,7 @@ classes:
       condition_taxon:
         description: >-
           NCBITaxon ontology id used in subset of condition types like 'bacterial infection'.
-        range: OntologyTerm
-        values_from:
-          - NCBITaxon
+        range: NCBITaxonTerm
       condition_chemical:
         description: >-
           ChEBI or molecular ontology id used in subset of condition terms.  ie: the specific
@@ -471,9 +469,7 @@ slots:
 
   condition_taxon:
     domain: ExperimentalCondition
-    range: uriorcurie                     # Update to Taxon if such a class is instantiated
-    values_from:
-      - NCBITaxon
+    range: NCBITaxonTerm                    
 
   condition_relations:
     range: ConditionRelation
