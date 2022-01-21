@@ -6,7 +6,7 @@ import lombok.*;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class CHEBITerm extends OntologyTerm {
+public class CHEBITerm extends ChemicalTerm {
 
 
 }
