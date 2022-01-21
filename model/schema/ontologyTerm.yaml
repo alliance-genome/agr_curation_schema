@@ -17,22 +17,47 @@ slots:
     description: >-
       The explanation of the meaning of a term.
     range: string
-  
+
   display_synonym:
     description: >-
       Placeholder.
-  
+
   namespace:
     description: the namespace of the ontology.
-  
+
   subsets:
     range: string
     multivalued: true
-  
+
   definition_urls:
     range: string
     multivalued: true
-  
+
+  inchi:
+    description: InChi style description of the molecule
+    domain: Molecule
+    range: string
+
+  inchi_key:
+    description: InChi key description of the molecule
+    domain: Molecule
+    range: string
+
+  iupac:
+    description: IUPAC name of the molecule
+    domain: Molecule
+    range: string
+
+  formula:
+    description: Formula of the molecule
+    domain: Molecule
+    range: string
+
+  smiles:
+    description: Molecular structure in SMILES format
+    domain: Molecule
+    range: string
+
 classes:
 
   OntologyTerm:
@@ -97,7 +122,7 @@ classes:
     is_a: OntologyTerm
 
   CHEBITerm:
-    is_a: OntologyTerm
+    is_a: ChemicalTerm
 
 
   StageTerm:
@@ -154,3 +179,22 @@ classes:
     description: >-
       An ontology term representing a characteristic of an organism. This may or may not be
       expressed as a difference in comparison to a reference organism.
+
+  ChemicalTerm:
+    is_a: OntologyTerm
+    abstract: true
+    description: >-
+      An ontology term representing a chemical or molecule
+    slots:
+      - inchi
+      - inchi_key
+      - iupac
+      - formula
+      - smiles
+
+  Molecule:
+    is_a: ChemicalTerm
+    description: >-
+      Molecules as described by WormBase
+    mixins:
+      - AuditedObject
