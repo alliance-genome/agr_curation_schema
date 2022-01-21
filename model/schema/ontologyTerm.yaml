@@ -102,7 +102,6 @@ classes:
   CHEBITerm:
     is_a: OntologyTerm
 
-
   StageTerm:
     is_a: OntologyTerm
     abstract: true
@@ -137,7 +136,7 @@ classes:
   EMAPATerm:
     is_a: AnatomicalTerm
 
-  FBBTTerm:
+  DAOTerm:
     is_a: AnatomicalTerm
 
   MATerm:
