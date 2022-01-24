@@ -11,7 +11,7 @@ import lombok.*;
 public class Antibody extends BiologicalEntity {
 
   private String name;
-  private String antigenTaxon;
+  private NCBITaxonTerm antigenTaxon;
   private String clonality;
   private String heavyChainIsotype;
   private String lightChainIsotype;

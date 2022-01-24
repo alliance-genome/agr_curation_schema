@@ -17,7 +17,7 @@ public class ExperimentalCondition  {
   private String conditionQuantity;
   private AnatomicalTerm conditionAnatomy;
   private GOTerm conditionGeneOntology;
-  private OntologyTerm conditionTaxon;
+  private NCBITaxonTerm conditionTaxon;
   private OntologyTerm conditionChemical;
   private List<PaperHandle> paperHandles;
 
