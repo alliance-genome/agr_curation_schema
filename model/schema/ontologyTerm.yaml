@@ -103,6 +103,9 @@ classes:
         description: >-
           Letter code used by curators to refer to the ECO term.
 
+  NCBITaxonTerm:
+    is_a: OntologyTerm
+
   FBCVTerm:
     is_a: OntologyTerm
 
@@ -123,7 +126,6 @@ classes:
 
   CHEBITerm:
     is_a: ChemicalTerm
-
 
   StageTerm:
     is_a: OntologyTerm
@@ -159,7 +161,7 @@ classes:
   EMAPATerm:
     is_a: AnatomicalTerm
 
-  FBBTTerm:
+  DAOTerm:
     is_a: AnatomicalTerm
 
   MATerm:

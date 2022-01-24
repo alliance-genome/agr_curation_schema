@@ -23,6 +23,7 @@ imports:
   - resource
   - person
   - image
+  - ontologyTerm
 
 prefixes:
   alliance: 'http://alliancegenome.org'
@@ -120,8 +121,6 @@ classes:
     defining_slots:
       - curie
       - page_areas
-
-  Species:
 
   Synonym:
 
@@ -358,7 +357,7 @@ slots:
     description: >-
       The taxon from which the biological entity derives.
     multivalued: false
-    range: uriorcurie
+    range: NCBITaxonTerm
 
   secondary_identifiers:
     aliases: ['secondary_ids']
@@ -466,14 +465,6 @@ slots:
     exact_mappings:
       - biolink:symbol
 
-  from_species:
-    description: >-
-      Holds between an entity and a Species.
-    notes: >-
-      This may be redundant with the taxon slot, but if not, then the
-      distinct usage of taxon versus from_species needs clarification.
-    range: Species
-
   synonyms:
     singular_name: synonym
     description: holds between a named thing and a synonym
@@ -496,10 +487,6 @@ slots:
     description: SOTerm describing gene type
     domain: Gene
     range: SOTerm
-
-  taxon_id:
-    description: NCBI taxid
-    range: integer
 
   references:
     singular_name: reference
