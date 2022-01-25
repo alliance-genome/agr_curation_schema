@@ -9,6 +9,12 @@ linkml-model = "~=1.0"
 
 [dev-packages]
 tox = "*"
+jq = "*"
+mkdocs = "*"
+pandoc = "*"
+twine = "*"
+build = "*"
+openpyxl = "3.0.7"
 
 [pipenv]
 allow_prereleases = true

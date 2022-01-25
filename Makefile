@@ -155,17 +155,37 @@ target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql install
 	$(RUN) gen-graphql $(GEN_OPTS) $< > $@
 
 # ---------------------------------------
-# JSON Schema
+# JSON Schema all in one
 # ---------------------------------------
-gen-json_schema: $(patsubst %, $(PKG_T_JSON_SCHEMA)/%.schema.json, $(SCHEMA_NAMES))
+
+gen-json_schema: target/json_schema/$(SCHEMA_NAME).schema.json
 .PHONY: gen-json_schema
 
 $(PKG_T_JSON_SCHEMA)/%.schema.json: target/json_schema/%.schema.json
 	mkdir -p $(PKG_T_JSON_SCHEMA)
 	cp $< $@
 
-target/json_schema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-json_schema install
+target/json_schema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-json_schema
+	$(RUN) gen-json-schema $(GEN_OPTS) --closed -t database -t transaction $< > $@
+
+
+# ---------------------------------------
+# JSON Schema individuals
+# ---------------------------------------
+
+gen-json_schema_individuals: $(patsubst %, $(PKG_T_JSON_SCHEMA)/%.schema.json, $(SCHEMA_NAMES))
+.PHONY: gen-json_schema_individuals
+
+$(PKG_T_JSON_SCHEMA)/%.schema.json: target/json_schema/%.schema.json
+	mkdir -p $(PKG_T_JSON_SCHEMA)
+	cp $< $@
+
+target/json_schema_individuals/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-json_schema_individuals install
 	$(RUN) gen-json-schema $(GEN_OPTS) -t transaction $< > $@
+
+
+
+
 
 # ---------------------------------------
 # ShEx
