@@ -1,0 +1,90 @@
+id: https://github.com/alliance-genome/agr_curation_schema/affectedGenomicModel
+name: Alliance-Schema-Prototype-Affected-Genomic-Model
+title: Alliance Schema Prototype Affected Genomic Model
+
+imports:
+  - core
+  - allele
+  - linkml:types
+
+prefixes:
+  alliance: 'http://alliancegenome.org'
+  linkml: 'https://w3id.org/linkml/'
+
+classes:
+
+  AffectedGenomicModel:
+    is_a: GenomicEntity
+    description: >-
+      Includes inbred strains, stocks, disease models and
+      mutant genotypes
+    slots:
+      - subtype
+      - components
+      - sequence_targeting_reagents
+      - parental_populations
+      - data_provider
+
+  AffectedGenomicModelComponent:
+    description: >-
+      Allele that affects the model and its zygosity
+    slots:
+      - has_allele
+      - zygosity
+
+slots:
+
+  subtype:
+    description: >-
+      Subtype of affected genomic model
+    domain: AffectedGenomicModel
+    range: subtype_values
+
+  components:
+    singular_name: component
+    description: >-
+      Collection of genomic components that make up a model,
+      i.e. 'allele', each with a zygosity
+    domain: AffectedGenomicModel
+    range: AffectedGenomicModelComponent
+    multivalued: true
+
+  has_allele:
+    domain: AffectedGenomicModelComponent
+    range: Allele
+
+  zygosity:
+    description: >-
+      GENO onotology ID for allele zygosity
+    domain: AffectedGenomicModelComponent
+    range: zygosity_values
+
+  sequence_targeting_reagents:
+    singular_name: sequence_targeting_reagent
+    domain: AffectedGenomicModel
+    range: SequenceTargetingReagent
+    multivalued: true
+
+  parental_populations:
+    singular_name: parental_population
+    domain: AffectedGenomicModel
+    range: uriorcurie
+
+enums:
+
+  subtype_values:
+    permissible_values:
+      strain:
+      genotype:
+
+  zygosity_values:
+    permissible_values:
+      GENO:0000602:
+      GENO:0000603:
+      GENO:0000604:
+      GENO:0000605:
+      GENO:0000606:
+      GENO:0000135:
+      GENO:0000136:
+      GENO:0000137:
+      GENO:0000134:

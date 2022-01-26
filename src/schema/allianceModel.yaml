@@ -1,0 +1,46 @@
+id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema
+name: Alliance-Schema-Prototype
+description: Alliance Schema Prototype
+
+license: https://creativecommons.org/publicdomain/zero/1.0/
+version: 0.0.1
+
+prefixes:
+  alliance: 'http://alliancegenome.org'
+  linkml: 'https://w3id.org/linkml/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+
+default_prefix: alliance
+default_range: string
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+
+imports:
+  - reference
+  - resource
+  - variation
+  - variantConsequence
+  - variantGenomicLocation
+  - linkml:types
+  - core
+  - informationContentEntity
+  - person
+  - allele
+  - affectedGenomicModel
+  - antibody
+  - geneInteraction
+  - ontologyTerm
+  - phenotypeAndDiseaseAnnotation
+  - controlledVocabulary
+
+subsets:
+  alliance subset:
+    description: >-
+      Subset consisting of just the alliance activities
