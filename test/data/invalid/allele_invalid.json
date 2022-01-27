@@ -1,0 +1,17 @@
+{
+  "allele_ingest_set": [
+    {
+      "additional_propertie": "this is invalid",
+      "curie": "ZFIN:ZDB-ALT-123456-1",
+      "taxon": "NCBITaxon:7955",
+      "created_by": "ZFIN",
+      "modified_by": "ZFIN"
+    },
+    {
+      "curi": "ZFIN:ZDB-ALT-123456-2",
+      "taxon": "NCBITaxon:7955",
+      "created_by": "ZFIN",
+      "modified_by": "ZFIN"
+    }
+  ]
+}

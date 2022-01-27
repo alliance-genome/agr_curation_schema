@@ -1,5 +1,5 @@
 # Auto generated from allele_ingest.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-01-26T15:08:47
+# Generation date: 2022-01-26T15:59:36
 # Schema: Alliance-Schema-Prototype-Allele-Ingest
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/allele_ingest

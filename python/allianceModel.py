@@ -1,5 +1,5 @@
 # Auto generated from allianceModel.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-01-26T15:07:47
+# Generation date: 2022-01-26T16:04:40
 # Schema: Alliance-Schema-Prototype
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema
@@ -5438,6 +5438,9 @@ slots.member_terms = Slot(uri="str(uriorcurie)", name="member_terms", curie=None
 
 slots.vocabulary_description = Slot(uri="str(uriorcurie)", name="vocabulary_description", curie=None,
                    model_uri=ALLIANCE.vocabulary_description, domain=None, range=Optional[str])
+
+slots.allele_ingest_set = Slot(uri="str(uriorcurie)", name="allele_ingest_set", curie=None,
+                   model_uri=ALLIANCE.allele_ingest_set, domain=None, range=Optional[Union[Union[str, AlleleCurie], List[Union[str, AlleleCurie]]]])
 
 slots.caption = Slot(uri="str(uriorcurie)", name="caption", curie=None,
                    model_uri=ALLIANCE.caption, domain=Figure, range=Optional[str])

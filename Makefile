@@ -174,33 +174,15 @@ deploy-testpypi:
 
 # datasets used test/validate the schema
 SCHEMA_TEST_EXAMPLES := \
-	biosample_test \
-	gold_project_test \
-	img_mg_annotation_objects \
-	allianceModel_example_database \
-	MAGs_activity \
-	mg_assembly_activities_test \
-	mg_assembly_data_objects_test \
-	allianceModel_example_database \
-	study_test \
-	functional_annotation_set \
-	study_credit_test
+	allele_test \
+	disease_test \
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
-	biosample_invalid_range \
-	biosample_mismatch_regex \
-	biosample_missing_required_field \
-	biosample_single_multi_value_mixup \
-	biosample_undeclared_slot \
-	study_credit_enum_mangle
-
-# 	functional_annotation_set_invalid has invalid ID pattern but regex tests aren't applied yet? MAM 2021-06-24
+	allele_invalid \
+	disease_invalid \
 
 .PHONY: test-jsonschema
 test-jsonschema: $(foreach example, $(SCHEMA_TEST_EXAMPLES), validate-$(example))
-
-# .PHONY: test-jsonschema
-# test-jsonschema: $(foreach example, $(SCHEMA_TEST_EXAMPLES), echo $(example))
 
 .PHONY: test-jsonschema_invalid
 test-jsonschema_invalid: $(foreach example, $(SCHEMA_TEST_EXAMPLES_INVALID), validate-invalid-$(example))
