@@ -53,8 +53,8 @@ classes:
     is_a: BulkScheduledLoad
     description: This bulk load automatically pulls files from the BulkFMSLoad
     slots:
-      - data_type
-      - data_sub_type
+      - fms_data_type
+      - fms_data_sub_type
 
   BulkURLLoad:
     is_a: BulkScheduledLoad
@@ -131,10 +131,10 @@ slots:
     description: Any errors in syntax on the cron_schedule
     range: string
 
-  data_type:
+  fms_data_type:
     description: The dataType paramater in the FMS
     range: string
-  data_sub_type:
+  fms_data_sub_type:
     description: The dataSubType paramater in the FMS
     range: string
   url:
