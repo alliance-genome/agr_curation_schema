@@ -60,7 +60,7 @@ classes:
     is_a: BulkScheduledLoad
     description: This bulk load automatically pulls files from a defined BulkURLLoad
     slots:
-      - url
+      - bulkload_url
 
   BulkManualLoad:
     is_a: BulkLoad
@@ -137,7 +137,7 @@ slots:
   fms_data_sub_type:
     description: The dataSubType paramater in the FMS
     range: string
-  url:
+  bulkload_url:
     description: The URL that this bulk load will download for ingest
     range: string
   backend_load_type:
