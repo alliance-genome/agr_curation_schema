@@ -49,9 +49,12 @@ classes:
   Person:
     is_a: Agent
     slots:
-      - last_name
-      - first_name
+      - lastName
+      - firstName
       - orcid
+      - email
+      - mod_id
+      - unique_id
     exact_mappings:
       - schema:person
       - foaf:Person
@@ -61,9 +64,32 @@ classes:
 
 slots:
 
+  lastName:
+    notes: >- last name, also family name 
+    domain: Person
+    range: string
+
+  firstName:
+    notes: >- first name
+    domain: Person
+    range: string
+
   orcid:
-    notes: >-
-      Should the domain instead be Person instead of InformationContentEntity?
-      Should the range instead be uriorcurie?
-    domain: InformationContentEntity
+    notes: >- Open Researcher and Contributor ID
+    domain: Person
+    range: uriorcurie
+
+  email:
+    notes: >- the primary e-mail address
+    domain: Person
+    range: string
+  
+  mod_id:
+    notes: >- the identifier asigned by the MOD system
+    domain: Person
+    range: string
+
+  unique_id:
+    notes: >- unique identifier managed by Okta
+    domain: Person
     range: string
