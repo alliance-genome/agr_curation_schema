@@ -88,7 +88,7 @@ slots:
   ontology_type:
     range: ontology_bulk_load_type_enum
 
-  group:
+  bulkload_group:
     description: Bulk load group designed to group together bulk loads
     range: BulkLoadGroup
 
