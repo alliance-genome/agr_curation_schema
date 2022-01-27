@@ -49,8 +49,8 @@ classes:
   Person:
     is_a: Agent
     slots:
-      - lastName
-      - firstName
+      - last_name
+      - first_name
       - orcid
       - email
       - mod_id
@@ -64,12 +64,12 @@ classes:
 
 slots:
 
-  lastName:
-    notes: >- last name, also family name 
+  last_name:
+    notes: >- last name, also called family name 
     domain: Person
     range: string
 
-  firstName:
+  first_name:
     notes: >- first name
     domain: Person
     range: string
