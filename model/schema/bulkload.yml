@@ -19,7 +19,7 @@ classes:
     description: Base class for all loads
     slots:
       - name
-      - status
+      - bulkload_status
       - error_message
       - backend_bulk_load_type
       - ontology_type
@@ -31,7 +31,7 @@ classes:
       - AuditedObject
     description: This class is used to hold version of the files being loaded
     slots:
-      - status
+      - bulkload_status
       - md5_sum
       - local_file_path
       - file_size
@@ -74,7 +74,7 @@ slots:
     multivalued: true
     range: BulkLoad
 
-  status:
+  bulkload_status:
     description: Status used to capture the progress of the load
     range: bulk_load_status_enum
 
