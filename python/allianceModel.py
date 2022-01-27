@@ -1,9 +1,9 @@
 # Auto generated from allianceModel.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-01-26T16:28:33
-# Schema: Alliance-Schema-Prototype
+# Generation date: 2022-01-26T16:43:43
+# Schema: Alliance-Schema
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema
-# description: Alliance Schema Prototype
+# description: Alliance Schema
 # license: https://creativecommons.org/publicdomain/zero/1.0/
 
 import dataclasses
@@ -294,6 +294,28 @@ class FigureCurie(URIorCURIE):
 
 class ImageCurie(URIorCURIE):
     pass
+
+
+@dataclass
+class Ingest(YAMLRoot):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.Ingest
+    class_class_curie: ClassVar[str] = "alliance:Ingest"
+    class_name: ClassVar[str] = "Ingest"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.Ingest
+
+    allele_ingest_set: Optional[Union[Dict[Union[str, AlleleCurie], Union[dict, "Allele"]], List[Union[dict, "Allele"]]]] = empty_dict()
+    disease_annotation_ingest_set: Optional[Union[Union[dict, "DiseaseAnnotation"], List[Union[dict, "DiseaseAnnotation"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        self._normalize_inlined_as_list(slot_name="allele_ingest_set", slot_type=Allele, key_name="curie", keyed=True)
+
+        if not isinstance(self.disease_annotation_ingest_set, list):
+            self.disease_annotation_ingest_set = [self.disease_annotation_ingest_set] if self.disease_annotation_ingest_set is not None else []
+        self.disease_annotation_ingest_set = [v if isinstance(v, DiseaseAnnotation) else DiseaseAnnotation(**as_dict(v)) for v in self.disease_annotation_ingest_set]
+
+        super().__post_init__(**kwargs)
 
 
 @dataclass
@@ -3503,28 +3525,6 @@ class Vocabulary(YAMLRoot):
 
 
 @dataclass
-class Ingest(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/ingest/Ingest")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "Ingest"
-    class_model_uri: ClassVar[URIRef] = ALLIANCE.Ingest
-
-    allele_ingest_set: Optional[Union[Union[str, AlleleCurie], List[Union[str, AlleleCurie]]]] = empty_list()
-    disease_annotation_ingest_set: Optional[Union[Union[dict, DiseaseAnnotation], List[Union[dict, DiseaseAnnotation]]]] = empty_list()
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if not isinstance(self.allele_ingest_set, list):
-            self.allele_ingest_set = [self.allele_ingest_set] if self.allele_ingest_set is not None else []
-        self.allele_ingest_set = [v if isinstance(v, AlleleCurie) else AlleleCurie(v) for v in self.allele_ingest_set]
-
-        self._normalize_inlined_as_dict(slot_name="disease_annotation_ingest_set", slot_type=DiseaseAnnotation, key_name="evidence_codes", keyed=False)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
 class Figure(YAMLRoot):
     """
     An entity representing a figure or table in a publication.
@@ -4798,6 +4798,15 @@ class AnnotationTypeEnum(EnumDefinitionImpl):
 class slots:
     pass
 
+slots.allele_ingest_set = Slot(uri=ALLIANCE.allele_ingest_set, name="allele ingest set", curie=ALLIANCE.curie('allele_ingest_set'),
+                   model_uri=ALLIANCE.allele_ingest_set, domain=Ingest, range=Optional[Union[Dict[Union[str, AlleleCurie], Union[dict, "Allele"]], List[Union[dict, "Allele"]]]])
+
+slots.disease_annotation_ingest_set = Slot(uri=ALLIANCE.disease_annotation_ingest_set, name="disease annotation ingest set", curie=ALLIANCE.curie('disease_annotation_ingest_set'),
+                   model_uri=ALLIANCE.disease_annotation_ingest_set, domain=Ingest, range=Optional[Union[Union[dict, "DiseaseAnnotation"], List[Union[dict, "DiseaseAnnotation"]]]])
+
+slots.object_set = Slot(uri=ALLIANCE.object_set, name="object set", curie=ALLIANCE.curie('object_set'),
+                   model_uri=ALLIANCE.object_set, domain=Ingest, range=Optional[Union[str, List[str]]])
+
 slots.topics = Slot(uri="str(uriorcurie)", name="topics", curie=None,
                    model_uri=ALLIANCE.topics, domain=None, range=Optional[Union[str, URIorCURIE]])
 
@@ -5460,12 +5469,6 @@ slots.member_terms = Slot(uri="str(uriorcurie)", name="member_terms", curie=None
 
 slots.vocabulary_description = Slot(uri="str(uriorcurie)", name="vocabulary_description", curie=None,
                    model_uri=ALLIANCE.vocabulary_description, domain=None, range=Optional[str])
-
-slots.allele_ingest_set = Slot(uri="str(uriorcurie)", name="allele ingest set", curie=None,
-                   model_uri=ALLIANCE.allele_ingest_set, domain=Ingest, range=Optional[Union[Union[str, AlleleCurie], List[Union[str, AlleleCurie]]]])
-
-slots.disease_annotation_ingest_set = Slot(uri="str(uriorcurie)", name="disease annotation ingest set", curie=None,
-                   model_uri=ALLIANCE.disease_annotation_ingest_set, domain=Ingest, range=Optional[Union[Union[dict, DiseaseAnnotation], List[Union[dict, DiseaseAnnotation]]]])
 
 slots.caption = Slot(uri="str(uriorcurie)", name="caption", curie=None,
                    model_uri=ALLIANCE.caption, domain=Figure, range=Optional[str])

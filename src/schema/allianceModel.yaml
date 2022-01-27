@@ -1,6 +1,6 @@
 id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema
-name: Alliance-Schema-Prototype
-description: Alliance Schema Prototype
+name: Alliance-Schema
+description: Alliance Schema
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
 version: 0.0.1
@@ -39,9 +39,42 @@ imports:
   - ontologyTerm
   - phenotypeAndDiseaseAnnotation
   - controlledVocabulary
-  - ingest
 
 subsets:
   alliance subset:
     description: >-
       Subset consisting of just the alliance activities
+
+slots:
+  allele ingest set:
+    description: >-
+    domain: Ingest
+    range: Allele
+    multivalued: true
+    mixins:
+      - object set
+
+  disease annotation ingest set:
+    description: >-
+    domain: Ingest
+    range: DiseaseAnnotation
+    multivalued: true
+    mixins:
+      - object set
+
+  object set:
+    mixin: true
+    domain: Ingest
+    multivalued: true
+    inlined_as_list: true
+    description:
+      Applies to a property that links a ingest object to a set of objects.
+      This is necessary in a json document to provide context for a list, and
+      to allow for a single json object that combines multiple object types
+
+classes:
+  Ingest:
+    tree_root: true
+    slots:
+      - allele ingest set
+      - disease annotation ingest set

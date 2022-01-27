@@ -3095,7 +3095,7 @@
          "properties": {
             "allele_ingest_set": {
                "items": {
-                  "type": "string"
+                  "$ref": "#/$defs/Allele"
                },
                "type": "array"
             },
@@ -5384,7 +5384,7 @@
    "additionalProperties": false,
    "properties": {},
    "required": [],
-   "title": "Alliance-Schema-Prototype",
+   "title": "Alliance-Schema",
    "type": "object"
 }
 
