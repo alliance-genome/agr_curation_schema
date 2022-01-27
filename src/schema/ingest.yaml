@@ -1,6 +1,6 @@
-id: https://github.com/alliance-genome/agr_curation_schema/src/schema/alleleIngest
-name: Alliance-Schema-Prototype-Allele-Ingest
-title: Alliance Schema Prototype Allele Ingest
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/ingest
+name: Alliance-Schema-Ingest
+title: Alliance Schema Ingest
 
 imports:
   - core
@@ -10,6 +10,7 @@ imports:
   - informationContentEntity
   - ontologyTerm
   - affectedGenomicModel
+  - phenotypeAndDiseaseAnnotation
 
 prefixes:
   alliance: 'http://alliancegenome.org'
@@ -21,7 +22,22 @@ prefixes:
   schema: 'http://schema.org/'
 
 slots:
-  allele_ingest_set:
+  allele ingest set:
     description: >-
+    domain: Ingest
     range: Allele
     multivalued: true
+
+  disease annotation ingest set:
+    description: >-
+    domain: Ingest
+    range: DiseaseAnnotation
+    multivalued: true
+
+
+classes:
+  Ingest:
+    slots:
+      - allele ingest set
+      - disease annotation ingest set
+

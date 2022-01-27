@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-01-26T16:04:36\n    Schema: Alliance-Schema-Prototype\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: Alliance Schema Prototype\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-01-26T16:28:28\n    Schema: Alliance-Schema-Prototype\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: Alliance Schema Prototype\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "BIOGRID": "http://identifiers.org/biogrid/",
       "DIP": "http://identifiers.org/dip/",
@@ -70,7 +70,7 @@
       },
       "allele_ingest_set": {
          "@type": "@id",
-         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/alleleIngest/allele_ingest_set"
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/ingest/allele_ingest_set"
       },
       "alliance_category": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/alliance_category"
@@ -266,6 +266,10 @@
       },
       "detection_method": {
          "@type": "@id"
+      },
+      "disease_annotation_ingest_set": {
+         "@type": "@id",
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/ingest/disease_annotation_ingest_set"
       },
       "disease_genetic_modifier": {
          "@type": "@id"
@@ -879,6 +883,9 @@
       },
       "ImagePane": {
          "@id": "https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/ImagePane"
+      },
+      "Ingest": {
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/ingest/Ingest"
       },
       "MATerm": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/MATerm"

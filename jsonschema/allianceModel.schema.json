@@ -3089,6 +3089,27 @@
          "title": "ImagePane",
          "type": "object"
       },
+      "Ingest": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "allele_ingest_set": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "disease_annotation_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/DiseaseAnnotation"
+               },
+               "type": "array"
+            }
+         },
+         "required": [],
+         "title": "Ingest",
+         "type": "object"
+      },
       "InteractionSourceEnum": {
          "description": "",
          "enum": [
