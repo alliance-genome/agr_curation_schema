@@ -85,7 +85,7 @@ target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
 gen-jsonschema: target/jsonschema/$(SCHEMA_NAME).schema.json
 .PHONY: gen-jsonschema
 target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
-	pipenv run gen-json-schema $(GEN_OPTS) --closed -t database $< > $@
+	pipenv run gen-json-schema $(GEN_OPTS) --closed -t ingest $< > $@
 
 ###  -- JSONLD Context --
 gen-jsonld-context: target/jsonld-context/$(SCHEMA_NAME).context.jsonld

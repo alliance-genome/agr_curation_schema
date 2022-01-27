@@ -3099,7 +3099,7 @@
                },
                "type": "array"
             },
-            "disease_annotation_ingest_set": {
+            "disease_allele_ingest_set": {
                "items": {
                   "$ref": "#/$defs/DiseaseAnnotation"
                },
@@ -5382,7 +5382,20 @@
    "$id": "https://github.com/alliance-genome/agr_curation_schema/alliance_schema",
    "$schema": "http://json-schema.org/draft-07/schema#",
    "additionalProperties": false,
-   "properties": {},
+   "properties": {
+      "allele_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/Allele"
+         },
+         "type": "array"
+      },
+      "disease_allele_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/DiseaseAnnotation"
+         },
+         "type": "array"
+      }
+   },
    "required": [],
    "title": "Alliance-Schema",
    "type": "object"
