@@ -1,0 +1,198 @@
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml
+
+imports:
+  - core
+
+classes:
+
+  BulkLoadGroup:
+    mixins:
+      - AuditedObject
+    description: This class is use to group together bulk load_files
+    slots:
+      - name
+      - loads
+
+  BulkLoad:
+    mixins:
+      - AuditedObject
+    description: Base class for all loads
+    slots:
+      - name
+      - bulkload_status
+      - error_message
+      - backend_bulk_load_type
+      - ontology_type
+      - group
+      - load_files
+
+  BulkLoadFile:
+    mixins:
+      - AuditedObject
+    description: This class is used to hold version of the files being loaded
+    slots:
+      - bulkload_status
+      - md5_sum
+      - local_file_path
+      - file_size
+      - s3_path
+      - s3_url
+      - record_count
+      - error_message
+      - bulk_load
+
+  BulkScheduledLoad:
+    is_a: BulkLoad
+    description: This a bulk load that includes a cron scheuld
+    slots:
+      - schedule_active
+      - cron_schedule
+      - scheduling_error_message
+
+  BulkFMSLoad:
+    is_a: BulkScheduledLoad
+    description: This bulk load automatically pulls files from the BulkFMSLoad
+    slots:
+      - fms_data_type
+      - fms_data_sub_type
+
+  BulkURLLoad:
+    is_a: BulkScheduledLoad
+    description: This bulk load automatically pulls files from a defined BulkURLLoad
+    slots:
+      - bulkload_url
+
+  BulkManualLoad:
+    is_a: BulkLoad
+    description: This bulk load is used by DQM's to submit their files to the curation system
+    slots:
+      - backend_load_type
+
+slots:
+
+  loads:
+    multivalued: true
+    range: BulkLoad
+
+  bulkload_status:
+    description: Status used to capture the progress of the load
+    range: bulk_load_status_enum
+
+  error_message:
+    description: Error message string if an error occurs
+    range: string
+
+  backend_bulk_load_type:
+    range: backend_bulk_load_type_enum
+
+  ontology_type:
+    range: ontology_bulk_load_type_enum
+
+  bulkload_group:
+    description: Bulk load group designed to group together bulk loads
+    range: BulkLoadGroup
+
+  load_files:
+    multivalued: true
+    range: BulkLoadFile
+
+  md5_sum:
+    description: Generated md5Sum of the file that has been uploaded
+    range: string
+
+  local_file_path:
+    description: Local file path to where the file has been saved for processing
+    range: string
+  file_size:
+    description: The size of the file
+    range: integer
+  s3_path:
+    description: The relative path to the file in the S3 bucket
+    range: string
+  s3_url:
+    description: The full URL to the file from S3
+    range: string
+  record_count:
+    description: The number of records found in the file
+    range: integer
+  bulk_load:
+    description: A link back to the parent bulk load
+    range: BulkLoad
+
+  schedule_active:
+    description: This determines if the the schedule is active or not
+    range: boolean
+
+  cron_schedule:
+    description: A string describing the cron syntax for the schedule
+    range: string
+
+  scheduling_error_message:
+    description: Any errors in syntax on the cron_schedule
+    range: string
+
+  fms_data_type:
+    description: The dataType paramater in the FMS
+    range: string
+  fms_data_sub_type:
+    description: The dataSubType paramater in the FMS
+    range: string
+  bulkload_url:
+    description: The URL that this bulk load will download for ingest
+    range: string
+  backend_load_type:
+    range: backend_bulk_data_type_enum
+
+enums:
+
+  bulk_load_status_enum:
+    permissible_values:
+      STARTED:
+      RUNNING:
+      STOPPED:
+      FINISHED:
+      PENDING:
+      FAILED:
+      DOWNLOADING:
+      NOT_RESPONDING:
+      ADMINISTRATIVELY_STOPPED:
+      PAUSED:
+
+  backend_bulk_load_type_enum:
+    permissible_values:
+      GENE_DTO:
+      ALLELE_DTO:
+      AGM_DTO:
+      DISEASE_ANNOTATION_DTO:
+      GENE:
+      ALLELE:
+      AGM:
+      DISEASE_ANNOTATION:
+      ONTOLOGY:
+      MOLECULE:
+
+  ontology_bulk_load_type_enum:
+    permissible_values:
+      ECO:
+      ZFA:
+      DO:
+      MA:
+      CHEBI:
+      XCO:
+      MP:
+      DAO:
+      ZECO:
+      WBBT:
+      EMAPA:
+      GO:
+      SO:
+
+  backend_bulk_data_type_enum:
+    permissible_values:
+      RGD:
+      MGI:
+      SGD:
+      HUMAN:
+      ZFIN:
+      FB:
+      WB:
