@@ -53,8 +53,7 @@ classes:
       - middle_names
       - first_name
       - orcid
-      - email
-      - other_emails
+      - emails
       - mod_id
       - unique_id
     exact_mappings:
@@ -71,12 +70,7 @@ slots:
     domain: Person
     range: uriorcurie
 
-  email:
-    description:  the primary e-mail address
-    domain: Person
-    range: string
-  
-  other_emails:
-    description: additional email addresses
-    multivalued: true
+  emails:
+    description: space separated email addresses
+    multivalued: false
     range: string

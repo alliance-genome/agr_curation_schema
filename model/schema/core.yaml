@@ -521,13 +521,13 @@ slots:
   mod_id:
     description: >-
       The model organism database (MOD) identifier/curie for the object
-    range: uriorcurie
+    range: string
 
   first_name:
     description: first name of a person
     range: string
 
-  middle_names:
+  middle_name:
     description: middle names of a person
     range: string
     multivalued: false
