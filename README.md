@@ -6,8 +6,6 @@ Model to describe the Alliance curation/persistence data store
 ## Developing the AGR Curation Schema 
 
 
-
-
 ## Building a new release of AGR Curation Schema
 
 ## Writing Tests 

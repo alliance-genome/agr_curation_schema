@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""Provides CLI to validate json files against the agr jsonschema."""
 
 import jsonschema
 import json
 from typing import Dict
-
 import click
 
 
@@ -46,7 +43,7 @@ def is_valid_json(json_file: str) -> bool:
     return True
 
 
-##### CLI interface #####
+# CLI interface
 @click.command(context_settings=dict(help_option_names=["-h", "--help"]))
 @click.option(
     "--input",
