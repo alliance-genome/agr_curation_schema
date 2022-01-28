@@ -6,8 +6,7 @@ import lombok.*;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class Resource extends InformationContentEntity {
+public class NCBITaxonTerm extends OntologyTerm {
 
-  private String title;
 
 }

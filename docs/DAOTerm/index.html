@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Slot: name - Model to describe the Alliance curation/persistence data store</title>
+  <title>Class: DAOTerm - Model to describe the Alliance curation/persistence data store</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Slot: name";
-    var mkdocs_page_input_path = "Molecule_name.md";
+    var mkdocs_page_name = "Class: DAOTerm";
+    var mkdocs_page_input_path = "DAOTerm.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Slot: name</li>
+    <li>Class: DAOTerm</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,19 +91,72 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="slot-name">Slot: name</h1>
-<p>a human-readable name for an entity</p>
-<p>URI: <a href="http://alliancegenome.orgMolecule_name">alliance:Molecule_name</a></p>
-<h2 id="domain-and-range">Domain and Range</h2>
-<p><a href="../Molecule/">Molecule</a> &#8594;  <sub>1..1</sub> <a href="../String/">String</a></p>
+                <h1 id="class-daoterm">Class: DAOTerm</h1>
+<p>URI: <a href="http://alliancegenome.orgDAOTerm">alliance:DAOTerm</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Synonym],[AnatomicalTerm]^-[DAOTerm&#124;curie(i):uriorcurie;dbkey(i):string%20%3F;name(i):string%20%3F;definition(i):string%20%3F;definition_urls(i):string%20*;type(i):uriorcurie%20%3F;is_obsolete(i):boolean%20%3F;namespace(i):string%20%3F;subsets(i):string%20*;secondary_identifiers(i):uriorcurie%20*],[CrossReference],[AnatomicalTerm]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Synonym],[AnatomicalTerm]^-[DAOTerm&#124;curie(i):uriorcurie;dbkey(i):string%20%3F;name(i):string%20%3F;definition(i):string%20%3F;definition_urls(i):string%20*;type(i):uriorcurie%20%3F;is_obsolete(i):boolean%20%3F;namespace(i):string%20%3F;subsets(i):string%20*;secondary_identifiers(i):uriorcurie%20*],[CrossReference],[AnatomicalTerm]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
-<li>is_a: <a href="../name/">name</a></li>
+<li>is_a: <a href="../AnatomicalTerm/">AnatomicalTerm</a></li>
 </ul>
-<h2 id="children">Children</h2>
-<h2 id="used-by">Used by</h2>
+<h2 id="attributes">Attributes</h2>
+<h3 id="inherited-from-anatomicalterm">Inherited from AnatomicalTerm:</h3>
 <ul>
-<li><a href="../Molecule/">Molecule</a></li>
+<li><a href="../curie/">curie</a>  <sub>1..1</sub><ul>
+<li>Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="../dbkey/">dbkey</a>  <sub>0..1</sub><ul>
+<li>Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../name/">name</a>  <sub>0..1</sub><ul>
+<li>Description: a human-readable name for an entity</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../OntologyTerm_definition/">OntologyTerm➞definition</a>  <sub>0..1</sub><ul>
+<li>Description: The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../definition_urls/">definition_urls</a>  <sub>0..*</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../type/">type</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="../is_obsolete/">is_obsolete</a>  <sub>0..1</sub><ul>
+<li>Description: Entity is no longer current.</li>
+<li>Range: <a href="../Boolean/">Boolean</a></li>
+</ul>
+</li>
+<li><a href="../cross_references/">cross_references</a>  <sub>0..*</sub><ul>
+<li>Description: Holds between an object and its CrossReferences.</li>
+<li>Range: <a href="../CrossReference/">CrossReference</a></li>
+</ul>
+</li>
+<li><a href="../synonyms/">synonyms</a>  <sub>0..*</sub><ul>
+<li>Description: holds between a named thing and a synonym</li>
+<li>Range: <a href="../Synonym/">Synonym</a></li>
+</ul>
+</li>
+<li><a href="../namespace/">namespace</a>  <sub>0..1</sub><ul>
+<li>Description: the namespace of the ontology.</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../subsets/">subsets</a>  <sub>0..*</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../secondary_identifiers/">secondary_identifiers</a>  <sub>0..*</sub><ul>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
 </ul>
               
             </div>

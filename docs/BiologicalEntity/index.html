@@ -94,7 +94,7 @@
                 <h1 id="class-biologicalentity">Class: BiologicalEntity</h1>
 <p>A high-level entity comprising .</p>
 <p>URI: <a href="http://alliancegenome.orgBiologicalEntity">alliance:BiologicalEntity</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PhenotypeAnnotation],[Person],[GenomicEntity],[DiseaseAnnotation],[DiseaseAnnotation]-%20subject%201..1&gt;[BiologicalEntity&#124;curie:uriorcurie;taxon:uriorcurie;table_key:integer%20%3F;creation_date:date%20%3F;date_last_modified:date%20%3F],[PhenotypeAnnotation]-%20subject%201..1&gt;[BiologicalEntity],[Allele]-%20affected_entities%200..*&gt;[BiologicalEntity],[DiseaseAnnotation]-%20disease_genetic_modifier%200..1&gt;[BiologicalEntity],[BiologicalEntity]uses%20-.-&gt;[AuditedObject],[BiologicalEntity]^-[GenomicEntity],[BiologicalEntity]^-[Antibody],[AuditedObject],[Antibody],[Allele]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PhenotypeAnnotation],[Person],[GenomicEntity],[DiseaseAnnotation],[DiseaseAnnotation]-%20subject%201..1&gt;[BiologicalEntity&#124;curie:uriorcurie;taxon:uriorcurie;table_key:integer%20%3F;creation_date:date%20%3F;date_last_modified:date%20%3F],[PhenotypeAnnotation]-%20subject%201..1&gt;[BiologicalEntity],[Allele]-%20affected_entities%200..*&gt;[BiologicalEntity],[DiseaseAnnotation]-%20disease_genetic_modifier%200..1&gt;[BiologicalEntity],[BiologicalEntity]uses%20-.-&gt;[AuditedObject],[BiologicalEntity]^-[GenomicEntity],[BiologicalEntity]^-[Antibody],[AuditedObject],[Antibody],[Allele]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PhenotypeAnnotation],[Person],[NCBITaxonTerm],[GenomicEntity],[DiseaseAnnotation],[NCBITaxonTerm]&lt;taxon%201..1-%20[BiologicalEntity&#124;curie:uriorcurie;table_key:integer%20%3F;creation_date:date%20%3F;date_last_modified:date%20%3F],[DiseaseAnnotation]-%20subject%201..1&gt;[BiologicalEntity],[PhenotypeAnnotation]-%20subject%201..1&gt;[BiologicalEntity],[Allele]-%20affected_entities%200..*&gt;[BiologicalEntity],[DiseaseAnnotation]-%20disease_genetic_modifier%200..1&gt;[BiologicalEntity],[BiologicalEntity]uses%20-.-&gt;[AuditedObject],[BiologicalEntity]^-[GenomicEntity],[BiologicalEntity]^-[Antibody],[AuditedObject],[Antibody],[Allele]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PhenotypeAnnotation],[Person],[NCBITaxonTerm],[GenomicEntity],[DiseaseAnnotation],[NCBITaxonTerm]&lt;taxon%201..1-%20[BiologicalEntity&#124;curie:uriorcurie;table_key:integer%20%3F;creation_date:date%20%3F;date_last_modified:date%20%3F],[DiseaseAnnotation]-%20subject%201..1&gt;[BiologicalEntity],[PhenotypeAnnotation]-%20subject%201..1&gt;[BiologicalEntity],[Allele]-%20affected_entities%200..*&gt;[BiologicalEntity],[DiseaseAnnotation]-%20disease_genetic_modifier%200..1&gt;[BiologicalEntity],[BiologicalEntity]uses%20-.-&gt;[AuditedObject],[BiologicalEntity]^-[GenomicEntity],[BiologicalEntity]^-[Antibody],[AuditedObject],[Antibody],[Allele]" /></a></p>
 <h2 id="uses-mixin">Uses Mixin</h2>
 <ul>
 <li>mixin: <a href="../AuditedObject/">AuditedObject</a> - Some entity for which changes are tracked, including date/time of change and the agent responsible for the change.</li>
@@ -123,7 +123,7 @@
 </li>
 <li><a href="../BiologicalEntity_taxon/">BiologicalEntity➞taxon</a>  <sub>1..1</sub><ul>
 <li>Description: The taxon from which the biological entity derives.</li>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+<li>Range: <a href="../NCBITaxonTerm/">NCBITaxonTerm</a></li>
 </ul>
 </li>
 </ul>
