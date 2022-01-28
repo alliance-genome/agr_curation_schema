@@ -32,12 +32,12 @@ jobs:
     - name: Build package
       run: |
         # make build-package
-        cp model/schema/*.yaml allianceModel_schema/ # copy yaml files
-        cp python/*.py allianceModel_schema/ # copy python files
-        cp jsonschema/allianceModel.schema.json allianceModel_schema/ # copy allianceModel json schema
-        cp util/validate_allianceModel_json.py allianceModel_schema/ # copy command-line validation tool
-        cp util/allianceModel_version.py allianceModel_schema/ # copy command-line version tool
-        cp util/allianceModel_data.py allianceModel_schema/ # copy command-line data retrieval tool
+        cp model/schema/*.yaml agr_schema/ # copy yaml files
+        cp python/*.py agr_schema/ # copy python files
+        cp jsonschema/allianceModel.schema.json agr_schema/ # copy allianceModel json schema
+        cp util/validate_allianceModel_json.py agr_schema/ # copy command-line validation tool
+        cp util/allianceModel_version.py agr_schema/ # copy command-line version tool
+        cp util/allianceModel_data.py agr_schema/ # copy command-line data retrieval tool
         python setup.py bdist_wheel sdist
 
     - name: Publish distribution 📦 to PyPI

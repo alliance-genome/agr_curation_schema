@@ -23,10 +23,6 @@ jobs:
         with:
           python-version: 3.9
 
-      # Install pandoc
-      - name: Install pandoc
-        run: sudo apt-get install pandoc
-
       # Install pipenv
       - name: Install pipenv
         run: python3 -m pip install --no-cache-dir pipenv
