@@ -1,5 +1,5 @@
 # Auto generated from person.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-01-28T10:55:22
+# Generation date: 2022-01-28T11:34:01
 # Schema: person
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/person

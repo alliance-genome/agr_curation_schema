@@ -31,7 +31,7 @@ t:
 echo:
 	echo $(patsubst %,gen-%,$(TGTS))
 
-test: all test-jsonschema
+test: all test-jsonschema test-jsonschema_invalid
 
 install:
 #	. environment.sh
