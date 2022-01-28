@@ -1,8 +1,8 @@
 # Auto generated from test.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-01-28T10:20:23
+# Generation date: 2022-01-28T10:55:21
 # Schema: resource
 #
-# id: https://github.com/alliance-genome/agr_curation_schema/model/schema/resource
+# id: https://github.com/alliance-genome/agr_curation_schema/src/schema/resource
 # description:
 # license: https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -47,7 +47,7 @@ FALDO = CurieNamespace('faldo', 'http://biohackathon.org/resource/faldo#')
 GFF = CurieNamespace('gff', 'https://w3id.org/gff')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
-DEFAULT_ = CurieNamespace('', 'https://github.com/alliance-genome/agr_curation_schema/model/schema/resource/')
+DEFAULT_ = CurieNamespace('', 'https://github.com/alliance-genome/agr_curation_schema/src/schema/resource/')
 
 
 # Types
@@ -69,10 +69,10 @@ class InformationContentEntity(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/resource/InformationContentEntity")
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/resource/InformationContentEntity")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "InformationContentEntity"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/resource/InformationContentEntity")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/resource/InformationContentEntity")
 
     curie: Union[str, InformationContentEntityCurie] = None
 
@@ -86,39 +86,13 @@ class InformationContentEntity(YAMLRoot):
 
 
 @dataclass
-class AuthorReference(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/resource/AuthorReference")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "AuthorReference"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/resource/AuthorReference")
-
-    first_name: Optional[Union[str, InformationContentEntityCurie]] = None
-    middle_names: Optional[Union[str, InformationContentEntityCurie]] = None
-    last_name: Optional[Union[str, InformationContentEntityCurie]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.first_name is not None and not isinstance(self.first_name, InformationContentEntityCurie):
-            self.first_name = InformationContentEntityCurie(self.first_name)
-
-        if self.middle_names is not None and not isinstance(self.middle_names, InformationContentEntityCurie):
-            self.middle_names = InformationContentEntityCurie(self.middle_names)
-
-        if self.last_name is not None and not isinstance(self.last_name, InformationContentEntityCurie):
-            self.last_name = InformationContentEntityCurie(self.last_name)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
 class Resource(InformationContentEntity):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/resource/Resource")
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/resource/Resource")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "Resource"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/resource/Resource")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/resource/Resource")
 
     curie: Union[str, ResourceCurie] = None
     title: Optional[str] = None
@@ -155,20 +129,8 @@ slots.summary = Slot(uri=DEFAULT_.summary, name="summary", curie=DEFAULT_.curie(
 slots.copyright_date = Slot(uri=DEFAULT_.copyright_date, name="copyright_date", curie=DEFAULT_.curie('copyright_date'),
                    model_uri=DEFAULT_.copyright_date, domain=InformationContentEntity, range=Optional[Union[str, XSDDate]])
 
-slots.authors = Slot(uri=DEFAULT_.authors, name="authors", curie=DEFAULT_.curie('authors'),
-                   model_uri=DEFAULT_.authors, domain=InformationContentEntity, range=Optional[Union[Union[dict, "AuthorReference"], List[Union[dict, "AuthorReference"]]]])
-
 slots.corresponding_author = Slot(uri=DEFAULT_.corresponding_author, name="corresponding_author", curie=DEFAULT_.curie('corresponding_author'),
                    model_uri=DEFAULT_.corresponding_author, domain=InformationContentEntity, range=Optional[Union[str, InformationContentEntityCurie]])
-
-slots.first_name = Slot(uri=DEFAULT_.first_name, name="first_name", curie=DEFAULT_.curie('first_name'),
-                   model_uri=DEFAULT_.first_name, domain=InformationContentEntity, range=Optional[Union[str, InformationContentEntityCurie]])
-
-slots.middle_names = Slot(uri=DEFAULT_.middle_names, name="middle_names", curie=DEFAULT_.curie('middle_names'),
-                   model_uri=DEFAULT_.middle_names, domain=InformationContentEntity, range=Optional[Union[str, InformationContentEntityCurie]])
-
-slots.last_name = Slot(uri=DEFAULT_.last_name, name="last_name", curie=DEFAULT_.curie('last_name'),
-                   model_uri=DEFAULT_.last_name, domain=InformationContentEntity, range=Optional[Union[str, InformationContentEntityCurie]])
 
 slots.initials = Slot(uri=DEFAULT_.initials, name="initials", curie=DEFAULT_.curie('initials'),
                    model_uri=DEFAULT_.initials, domain=InformationContentEntity, range=Optional[Union[str, InformationContentEntityCurie]])
@@ -196,9 +158,6 @@ slots.print_issn = Slot(uri=DEFAULT_.print_issn, name="print_issn", curie=DEFAUL
 
 slots.online_issn = Slot(uri=DEFAULT_.online_issn, name="online_issn", curie=DEFAULT_.curie('online_issn'),
                    model_uri=DEFAULT_.online_issn, domain=Resource, range=Optional[str])
-
-slots.editors = Slot(uri=DEFAULT_.editors, name="editors", curie=DEFAULT_.curie('editors'),
-                   model_uri=DEFAULT_.editors, domain=Resource, range=Optional[Union[Union[dict, AuthorReference], List[Union[dict, AuthorReference]]]])
 
 slots.id = Slot(uri=DEFAULT_.id, name="id", curie=DEFAULT_.curie('id'),
                    model_uri=DEFAULT_.id, domain=None, range=Optional[str])
