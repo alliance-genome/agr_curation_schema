@@ -187,20 +187,23 @@
 </ul>
 </li>
 <li><a href="MolecularMutation/">MolecularMutation</a> - Description of the DNA changes with unknown precise genomic location</li>
-<li><a href="Molecule/">Molecule</a> - Molecules as described by WormBase</li>
 <li><a href="NoteType/">NoteType</a> - Describes the relation between a note and an object</li>
 <li><a href="OntologyTerm/">OntologyTerm</a> - A concept or class in an ontology, vocabulary or thesaurus. Note, ontology terms can be found in multiple ontologies (ie: mireoting). defining_slots helps define an alternative key for ontology terms.<ul>
 <li><a href="AnatomicalTerm/">AnatomicalTerm</a><ul>
 <li><a href="CLTerm/">CLTerm</a></li>
+<li><a href="DAOTerm/">DAOTerm</a></li>
 <li><a href="EMAPATerm/">EMAPATerm</a></li>
-<li><a href="FBBTTerm/">FBBTTerm</a></li>
 <li><a href="MATerm/">MATerm</a></li>
 <li><a href="UBERONTerm/">UBERONTerm</a></li>
 <li><a href="WBBTTerm/">WBBTTerm</a></li>
 <li><a href="ZFATerm/">ZFATerm</a></li>
 </ul>
 </li>
+<li><a href="ChemicalTerm/">ChemicalTerm</a> - An ontology term representing a chemical or molecule<ul>
 <li><a href="CHEBITerm/">CHEBITerm</a></li>
+<li><a href="Molecule/">Molecule</a> - Molecules as described by WormBase</li>
+</ul>
+</li>
 <li><a href="DOTerm/">DOTerm</a></li>
 <li><a href="ECOTerm/">ECOTerm</a></li>
 <li><a href="ExperimentalConditionOntologyTerm/">ExperimentalConditionOntologyTerm</a><ul>
@@ -213,6 +216,7 @@
 <li><a href="MITerm/">MITerm</a></li>
 <li><a href="MMOTerm/">MMOTerm</a></li>
 <li><a href="MMUSDVTerm/">MMUSDVTerm</a></li>
+<li><a href="NCBITaxonTerm/">NCBITaxonTerm</a></li>
 <li><a href="PhenotypeTerm/">PhenotypeTerm</a> - An ontology term representing a characteristic of an organism. This may or may not be expressed as a difference in comparison to a reference organism.</li>
 <li><a href="SOTerm/">SOTerm</a></li>
 <li><a href="StageTerm/">StageTerm</a><ul>
@@ -226,7 +230,6 @@
 <li><a href="PaperHandle/">PaperHandle</a> - A pairing of a reference and a free text string that allows an object to have a reference-specific alias (or handle). For example, used for experimental conditions from ZFIN to label (in a reference-specific manner) individual experimental conditions when curating a particular reference.</li>
 <li><a href="ReferenceType/">ReferenceType</a> - Describes the relation between a reference and an object</li>
 <li><a href="SequenceTargetingReagent/">SequenceTargetingReagent</a> - Dummy sequence targeting reagent class</li>
-<li><a href="Species/">Species</a></li>
 <li><a href="Synonym/">Synonym</a></li>
 <li><a href="VariantConsequence/">VariantConsequence</a> - Parent class for gene- and transcript-level consequences<ul>
 <li><a href="VariantGeneConsequence/">VariantGeneConsequence</a> - Class for gene-level VEP results</li>
@@ -274,6 +277,7 @@
 </ul>
 </li>
 <li><a href="antibody_target_genes/">antibody_target_genes</a> - The genes whose gene products are recognized by the antibody.</li>
+<li><a href="antigen_taxon/">antigen_taxon</a> - Holds between an Antibody and the species from which the antigen originates (as represented by taxon).</li>
 <li><a href="associated_notes/">associated_notes</a> - Notes associated with the entity in some way</li>
 <li><a href="associated_references/">associated_references</a> - References associated with the entity in some way</li>
 <li><a href="association_slot/">association_slot</a> - any slot that relates an association to another entity<ul>
@@ -471,7 +475,6 @@
 <li><a href="first_name/">first_name</a></li>
 <li><a href="formula/">formula</a> - Formula of the molecule</li>
 <li><a href="from_resource/">from_resource</a></li>
-<li><a href="from_species/">from_species</a> - Holds between an entity and a Species.</li>
 <li><a href="functional_impact/">functional_impact</a> - Experimentally assessed functional impact of the allele, e.g. knockout / amorphic</li>
 <li><a href="gene_synopsis/">gene_synopsis</a> - Gene description provided by source resource (ie: MOD gene description that is curated or automated via MOD internal processes).</li>
 <li><a href="gene_synopsis_URL/">gene_synopsis_URL</a> - Gene description reference URL provided by source resource (aka: MOD) in the case where the curated gene_synopsis has a reference URL outside of the MOD.</li>
@@ -591,7 +594,6 @@
 </li>
 <li><a href="name/">name</a> - a human-readable name for an entity<ul>
 <li><a href="Antibody_name/">Antibody➞name</a> - Publicly displayed name of the antibody. It often includes the name of the antibody target: e.g., anti-WNT-4. It may also include the host species and antibody clonality.</li>
-<li><a href="Molecule_name/">Molecule➞name</a></li>
 <li><a href="VocabularyTerm_name/">VocabularyTerm➞name</a></li>
 <li><a href="Vocabulary_name/">Vocabulary➞name</a></li>
 </ul>
@@ -712,10 +714,8 @@
 <li><a href="Antibody_taxon/">Antibody➞taxon</a> - The species in which the antibody was raised: e.g., mouse, rabbit, guinea pig, goat, camel, etc.</li>
 </ul>
 </li>
-<li><a href="antigen_taxon/">antigen_taxon</a> - Holds between an Antibody and the species from which the antigen originates (as represented by taxon).</li>
 </ul>
 </li>
-<li><a href="taxon_id/">taxon_id</a> - NCBI taxid</li>
 <li><a href="text_synonyms/">text_synonyms</a> - Free text synonym(s) of a term, used for controlled vocabulary terms; this is distinct from the 'synonyms' slot which has a range of a Synonym class object.</li>
 <li><a href="title/">title</a> - A human readable title for a reference.<ul>
 <li><a href="Resource_title/">Resource➞title</a> - the title of the publication</li>
@@ -883,5 +883,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-01-13 13:50:21.467419+00:00
+Build Date UTC : 2022-01-27 17:51:11.812519+00:00
 -->
