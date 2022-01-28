@@ -193,15 +193,8 @@ validate-invalid-%: test/data/invalid/%.json jsonschema/allianceModel.schema.jso
 # ---------------------------------------
 # Java
 # ---------------------------------------
-gen-java: $(patsubst %, target/%.java, $(SCHEMA_NAMES))
+gen-java: $(patsubst %, target/java/%.java, $(SCHEMA_NAMES))
 .PHONY: gen-java
-target/java/%.py: $(SCHEMA_DIR)/%.yaml  tdir-java
+
+target/java/%.java: $(SCHEMA_DIR)/%.yaml tdir-java
 	pipenv run gen-java $(JAVA_GEN_OPTS)  $< > $@
-
-
-gen-python: $(patsubst %, target/python/%.py, $(SCHEMA_NAMES))
-.PHONY: gen-python
-target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python
-# --no-mergeimports was causing an import error
-#	gen-py-classes --no-mergeimports $(GEN_OPTS) $< > $@
-	pipenv run gen-py-classes --mergeimports $(GEN_OPTS) $< > $@

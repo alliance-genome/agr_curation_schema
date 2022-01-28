@@ -8,8 +8,11 @@ import lombok.*;
 @EqualsAndHashCode(callSuper=false)
 public class AuthorReference  {
 
-  private InformationContentEntity firstName;
-  private InformationContentEntity middleNames;
-  private InformationContentEntity lastName;
+  private InformationContentEntity correspondingAuthor;
+  private String firstName;
+  private String middleName;
+  private String lastName;
+  private InformationContentEntity initials;
+  private List<CrossReference> crossReferences;
 
 }
