@@ -5,6 +5,14 @@ Model to describe the Alliance curation/persistence data store
 
 ## Developing the AGR Curation Schema 
 
+The Alliance schema is stored in a series of interconnected YAML files in the  `src/schema` directory and follow
+a series of local conventions.    
+
+1. Classes should be written in CamelCase
+2. Slots should be written in snake_case
+
+
+The Alliance schema uses LinkML language and a tutorial on authoring LinkML schemas is [here](https://linkml.io/linkml/intro/tutorial.html). 
 
 ## Building a new release of AGR Curation Schema
 
