@@ -518,6 +518,24 @@ slots:
     multivalued: false
     range: string
 
+  mod_id:
+    description: the identifier asigned by the MOD system
+    range: uriorcurie
+
+  first_name:
+    description: first name of a person
+    range: string
+
+  middle_names:
+    description: middle names of a person
+    range: string
+    multivalued: false
+
+  last_name:
+    description: last (family) name of a person
+    range: string
+
+
 ## --------------------
 ## ASSOCIATION SLOTS
 ## --------------------

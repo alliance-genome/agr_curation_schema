@@ -64,32 +64,17 @@ classes:
 
 slots:
 
-  last_name:
-    notes: >- last name, also called family name 
-    domain: Person
-    range: string
-
-  first_name:
-    notes: >- first name
-    domain: Person
-    range: string
-
   orcid:
-    notes: >- Open Researcher and Contributor ID
+    description:  Open Researcher and Contributor ID
     domain: Person
     range: uriorcurie
 
   email:
-    notes: >- the primary e-mail address
+    description:  the primary e-mail address
     domain: Person
     range: string
   
-  mod_id:
-    notes: >- the identifier asigned by the MOD system
-    domain: Person
-    range: string
-
-  unique_id:
-    notes: >- unique identifier managed by Okta
-    domain: Person
+  other_emails:
+    description: additional email addresses
+    multivalued: true
     range: string
