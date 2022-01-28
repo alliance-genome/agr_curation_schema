@@ -523,11 +523,6 @@ slots:
       http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8
     range: Gene
 
-  mod_id:
-    description: >-
-      The model organism database (MOD) identifier/curie for the object
-    range: string   # Should this be uriorcurie?
-
   paper_handles:
     description: >-
       A slot that points to a list of PaperHandle objects, pairings of a reference and a free
