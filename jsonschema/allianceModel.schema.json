@@ -933,15 +933,18 @@
                "type": "array"
             },
             "first_name": {
+               "description": "first name of a person",
                "type": "string"
             },
             "initials": {
                "type": "string"
             },
             "last_name": {
+               "description": "last (family) name of a person",
                "type": "string"
             },
-            "middle_names": {
+            "middle_name": {
+               "description": "middle names of a person",
                "type": "string"
             }
          },
@@ -978,9 +981,25 @@
                },
                "type": "array"
             },
+            "formula": {
+               "description": "Formula of the molecule",
+               "type": "string"
+            },
+            "inchi": {
+               "description": "InChi style description of the molecule",
+               "type": "string"
+            },
+            "inchi_key": {
+               "description": "InChi key description of the molecule",
+               "type": "string"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "iupac": {
+               "description": "IUPAC name of the molecule",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -995,6 +1014,10 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "smiles": {
+               "description": "Molecular structure in SMILES format",
+               "type": "string"
             },
             "subsets": {
                "items": {
@@ -1366,6 +1389,76 @@
             "prefix"
          ],
          "title": "CrossReference",
+         "type": "object"
+      },
+      "DAOTerm": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/$defs/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/$defs/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "DAOTerm",
          "type": "object"
       },
       "DOTerm": {
@@ -1972,76 +2065,6 @@
             "prefix"
          ],
          "title": "ExternalDatabaseLink",
-         "type": "object"
-      },
-      "FBBTTerm": {
-         "additionalProperties": false,
-         "description": "",
-         "properties": {
-            "cross_references": {
-               "description": "Holds between an object and its CrossReferences.",
-               "items": {
-                  "$ref": "#/$defs/CrossReference"
-               },
-               "type": "array"
-            },
-            "curie": {
-               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-               "type": "string"
-            },
-            "dbkey": {
-               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
-               "type": "string"
-            },
-            "definition": {
-               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
-               "type": "string"
-            },
-            "definition_urls": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "is_obsolete": {
-               "description": "Entity is no longer current.",
-               "type": "boolean"
-            },
-            "name": {
-               "description": "a human-readable name for an entity",
-               "type": "string"
-            },
-            "namespace": {
-               "description": "the namespace of the ontology.",
-               "type": "string"
-            },
-            "secondary_identifiers": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "subsets": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "synonyms": {
-               "description": "holds between a named thing and a synonym",
-               "items": {
-                  "$ref": "#/$defs/Synonym"
-               },
-               "type": "array"
-            },
-            "type": {
-               "type": "string"
-            }
-         },
-         "required": [
-            "curie"
-         ],
-         "title": "FBBTTerm",
          "type": "object"
       },
       "FBCVTerm": {
@@ -3089,27 +3112,6 @@
          "title": "ImagePane",
          "type": "object"
       },
-      "Ingest": {
-         "additionalProperties": false,
-         "description": "",
-         "properties": {
-            "allele_ingest_set": {
-               "items": {
-                  "$ref": "#/$defs/Allele"
-               },
-               "type": "array"
-            },
-            "disease_allele_ingest_set": {
-               "items": {
-                  "$ref": "#/$defs/AlleleDiseaseAnnotation"
-               },
-               "type": "array"
-            }
-         },
-         "required": [],
-         "title": "Ingest",
-         "type": "object"
-      },
       "InteractionSourceEnum": {
          "description": "",
          "enum": [
@@ -3639,6 +3641,20 @@
                "format": "date",
                "type": "string"
             },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "formula": {
                "description": "Formula of the molecule",
                "type": "string"
@@ -3650,6 +3666,10 @@
             "inchi_key": {
                "description": "InChi key description of the molecule",
                "type": "string"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
             },
             "iupac": {
                "description": "IUPAC name of the molecule",
@@ -3663,9 +3683,25 @@
                "description": "a human-readable name for an entity",
                "type": "string"
             },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "smiles": {
                "description": "Molecular structure in SMILES format",
                "type": "string"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "synonyms": {
                "description": "holds between a named thing and a synonym",
@@ -3677,15 +3713,87 @@
             "table_key": {
                "description": "The primary key for a specific table entry, unique for that table.",
                "type": "integer"
+            },
+            "type": {
+               "type": "string"
             }
          },
          "required": [
             "curie",
-            "name",
             "created_by",
             "modified_by"
          ],
          "title": "Molecule",
+         "type": "object"
+      },
+      "NCBITaxonTerm": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/$defs/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "is_obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/$defs/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "NCBITaxonTerm",
          "type": "object"
       },
       "NoteAssociationTypes": {
@@ -3821,16 +3929,35 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "emails": {
+               "description": "space separated email addresses",
+               "type": "string"
+            },
             "first_name": {
+               "description": "first name of a person",
                "type": "string"
             },
             "last_name": {
+               "description": "last (family) name of a person",
+               "type": "string"
+            },
+            "middle_name": {
+               "description": "middle names of a person",
+               "type": "string"
+            },
+            "mod_id": {
+               "description": "The model organism database (MOD) identifier/curie for the object",
                "type": "string"
             },
             "orcid": {
+               "description": "Open Researcher and Contributor ID",
                "type": "string"
             },
             "person_id": {
+               "type": "string"
+            },
+            "unique_id": {
+               "description": "A non-curie unique identifier for a thing.",
                "type": "string"
             }
          },
@@ -4343,14 +4470,6 @@
          ],
          "title": "SiftPredictionLevels",
          "type": "string"
-      },
-      "Species": {
-         "additionalProperties": false,
-         "description": "",
-         "properties": {},
-         "required": [],
-         "title": "Species",
-         "type": "object"
       },
       "SubtypeValues": {
          "description": "",
@@ -5382,22 +5501,9 @@
    "$id": "https://github.com/alliance-genome/agr_curation_schema/alliance_schema",
    "$schema": "http://json-schema.org/draft-07/schema#",
    "additionalProperties": false,
-   "properties": {
-      "allele_ingest_set": {
-         "items": {
-            "$ref": "#/$defs/Allele"
-         },
-         "type": "array"
-      },
-      "disease_allele_ingest_set": {
-         "items": {
-            "$ref": "#/$defs/AlleleDiseaseAnnotation"
-         },
-         "type": "array"
-      }
-   },
+   "properties": {},
    "required": [],
-   "title": "Alliance-Schema",
+   "title": "Alliance-Schema-Prototype",
    "type": "object"
 }
 
