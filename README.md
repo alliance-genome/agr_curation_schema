@@ -12,11 +12,36 @@ Model to describe the Alliance curation/persistence data store
 
 The Makefile in this repository runs a series of json schema validation tests using test data stored in this repository.
 Test data are located in the 'test/data' directory which is split into example data that are valid JSON according
-to the Alliance JSON schema, and data that are invalid accordingly.
+to the Alliance JSON schema, and data that are invalid.  
 
 To run the tests in this repository:
 ```bash
 make test
+```
+
+Note there is a convention in this repository to make a 'set' slot for each ingest as a convenient convention for 
+being able to validate objects in a JSON list.  In the example below, an "allele ingest set" is defined in the 
+model as being a multivalued slot that contains Allele objects.  In this way, the JSON validator and automated
+tests can validate that the submission is a list of Allele objects (as opposed to a list of Gene objects, or a 
+list of GOTerm objects).  A simple example (using only the required fields of the Allele object), would look like this:
+
+```json
+{
+  "allele_ingest_set": [
+    {
+      "curie": "ZFIN:ZDB-ALT-123456-1",
+      "taxon": "NCBITaxon:7955",
+      "created_by": "ZFIN",
+      "modified_by": "ZFIN"
+    },
+    {
+      "curie": "ZFIN:ZDB-ALT-123456-2",
+      "taxon": "NCBITaxon:7955",
+      "created_by": "ZFIN",
+      "modified_by": "ZFIN"
+    }
+  ]
+}
 ```
 
 
