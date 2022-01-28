@@ -7,6 +7,8 @@ SCHEMA_NAME = allianceModel
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
 #TGTS = graphql jsonschema docs shex owl csv  python
 TGTS = jsonschema jsonld-context python docs
+JAVA_GEN_OPTS = --output_directory org/alliancegenome/curation/model --package org.alliancegenome.curation.model
+DDL_GEN_OPTS = --sqla-file target/sqla-files/
 
 #GEN_OPTS = --no-mergeimports
 GEN_OPTS =
@@ -65,7 +67,6 @@ stage-docs: gen-docs
 	cp -pr target/docs .
 
 ###  -- PYTHON --
-# TODO: modularize imports
 gen-python: $(patsubst %, target/python/%.py, $(SCHEMA_NAMES))
 .PHONY: gen-python
 target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python
@@ -74,14 +75,12 @@ target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python
 	pipenv run gen-py-classes --mergeimports $(GEN_OPTS) $< > $@
 
 ###  -- GRAPHQL --
-# TODO: modularize imports. For now imports are merged.
 gen-graphql:target/graphql/$(SCHEMA_NAME).graphql
 .PHONY: gen-graphql
 target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
 	pipenv run gen-graphql $(GEN_OPTS) $< > $@
 
 ###  -- JSON SCHEMA --
-# TODO: modularize imports. For now imports are merged.
 gen-jsonschema: target/jsonschema/$(SCHEMA_NAME).schema.json
 .PHONY: gen-jsonschema
 target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
@@ -143,19 +142,16 @@ gh-deploy:
 .PHONY: clean-package build-package deploy-pypi
 clean-package:
 	rm -rf dist && echo 'dist removed'
-	rm -rf allianceModel_schema.egg-info && echo 'egg-info removed'
-	rm -f allianceModel_schema/*.py
-	rm -f allianceModel_schema/*.json
-	rm -f allianceModel_schema/*.tsv
+	rm -rf agr_schema.egg-info && echo 'egg-info removed'
+	rm -f agr_schema/*.py
+	rm -f agr_schema/*.json
+	rm -f agr_schema/*.tsv
 
 build-package: clean-package
-	cp model/schema/allianceModel.yaml allianceModel_schema/ # copy allianceModel yaml file
-	cp python/*.py allianceModel_schema/ # copy python files
-	cp jsonschema/allianceModel.schema.json allianceModel_schema/ # copy allianceModel json schema
-	cp sssom/gold-to-mixs.sssom.tsv allianceModel_schema/ # copy sssom mapping
-	cp util/validate_allianceModel_json.py allianceModel_schema/ # copy command-line validation tool
-	cp util/allianceModel_version.py allianceModel_schema/ # copy command-line version tool
-	cp util/allianceModel_data.py allianceModel_schema/ # copy command-line data retrieval tool
+	cp model/schema/allianceModel.yaml agr_schema/ # copy allianceModel yaml file
+	cp python/*.py agr_schema/ # copy python files
+	cp jsonschema/allianceModel.schema.json agr_schema/ # copy allianceModel json schema
+	cp util/validate_agr_json.py agr_schema/ # copy command-line validation tool
 	python setup.py bdist_wheel sdist
 
 deploy-pypi:
@@ -197,19 +193,15 @@ validate-invalid-%: test/data/invalid/%.json jsonschema/allianceModel.schema.jso
 # ---------------------------------------
 # Java
 # ---------------------------------------
-# gen-java: $(patsubst %, $(PKG_T_JAVA)/%.java, $(SCHEMA_NAMES))
-# .PHONY: gen-java
-#
-# $(PKG_T_JAVA)/%.java: target/java/%.java
-# 	mkdir -p $(PKG_T_JAVA)
-# 	cp $< $@
-# this target is the workhorse
-# $< The filenames of all the prerequisites (which in this case is the target below), separated by spaces.
-# $@ The filename representing the target.
-# tdir-java is another target that removes the java directory and recreates it (like a rm -rf to start)
-# install in this case is another target which resets the venv/env.lock file to tell pipenv what to do.
-# $(RUN) is a variable to do the pipenv run command
-# JAVA_GEN_OPTS should hold the location of the generated java files that we expect, and the package name of the
-# java generator.
-# target/java/%.java: $(SCHEMA_DIR)/%.yaml tdir-java install
-# 	$(RUN) gen-java $(JAVA_GEN_OPTS)  $< > $@
+gen-java: $(patsubst %, target/%.java, $(SCHEMA_NAMES))
+.PHONY: gen-java
+target/java/%.py: $(SCHEMA_DIR)/%.yaml  tdir-java
+	pipenv run gen-java $(JAVA_GEN_OPTS)  $< > $@
+
+
+gen-python: $(patsubst %, target/python/%.py, $(SCHEMA_NAMES))
+.PHONY: gen-python
+target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python
+# --no-mergeimports was causing an import error
+#	gen-py-classes --no-mergeimports $(GEN_OPTS) $< > $@
+	pipenv run gen-py-classes --mergeimports $(GEN_OPTS) $< > $@
