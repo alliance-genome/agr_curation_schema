@@ -5,14 +5,34 @@ Model to describe the Alliance curation/persistence data store
 
 ## Developing the AGR Curation Schema 
 
-The Alliance schema is stored in a series of interconnected YAML files in the  `src/schema` directory and follow
-a series of local conventions.    
+The Alliance schema is stored in a series of interconnected YAML files in the `src/schema` directory written using
+LinkML syntax. LinkML is an object-oriented modeling language, tutorial [here](https://linkml.io/linkml/intro/tutorial.html)
+with tooling that can convert simple, easy to author YAML into validatable artifacts such as: JSON schemas, SQL DDL, 
+python and java classes, markdown documentation and others.  Some of these artifact types and generated and stored in 
+this reposit ory as well including JSON schemas that are used to submit data.  
+
+The main modeling components of any LinkML model are: classes, slots, enumerations and types.
+
+### Classes 
+
+Classes are a set or category of things having some property or attribute in common and differentiated from others by 
+kind, type, or quality.
+
+### Slots
+
+Slots (synonym: attributes) are properties or attributes of classes and can be specified once and reused in many 
+classes in the model. 
+
+### Types
+
+Types 
+
+
+In addition to LinkML conventions, this repository follows a series of local conventions.    
 
 1. Classes should be written in CamelCase
 2. Slots should be written in snake_case
 
-
-The Alliance schema uses LinkML language and a tutorial on authoring LinkML schemas is [here](https://linkml.io/linkml/intro/tutorial.html). 
 
 ## Building a new release of AGR Curation Schema
 
