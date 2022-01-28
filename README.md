@@ -6,12 +6,13 @@ Model to describe the Alliance curation/persistence data store
 ## Developing the AGR Curation Schema 
 
 The Alliance schema is stored in a series of interconnected YAML files in the `model/schema` directory written using
-LinkML syntax. LinkML is an object-oriented modeling language, tutorial [here](https://linkml.io/linkml/intro/tutorial.html)
-with tooling that can convert simple, easy to author YAML into validatable artifacts such as: JSON schemas, SQL DDL, 
-python and java classes, markdown documentation and others.  Some of these artifact types and generated and stored in 
-this reposit ory as well including JSON schemas that are used to submit data.  
+[LinkML syntax](https://linkml.io/linkml/intro/tutorial.html). LinkML is an object-oriented modeling language, tutorial 
+[here](https://linkml.io/linkml/intro/tutorial.html) with tooling that can convert simple, easy to author YAML into 
+validatable artifacts such as: JSON schemas, SQL DDL, python and java classes, markdown documentation and others.  
+Some of these artifact types and generated and stored in this repository as well including JSON schemas that are used
+to submit data.  
 
-The main modeling components of any LinkML model are: classes, slots, enumerations and types.
+The main modeling components of any LinkML model are: classes, slots, enumerations and types.  
 
 ### Classes 
 
@@ -27,11 +28,31 @@ classes in the model.
 
 Types 
 
+### Alliance Development Conventions
 
 In addition to LinkML conventions, this repository follows a series of local conventions.    
 
-1. Classes should be written in CamelCase
-2. Slots should be written in snake_case
+- classes should be written in CamelCase
+- slots should be written in snake_case
+
+The Schema is divided into several YAML files roughly by biological domain.  There are two special YAML files that
+behave differently from the rest:
+
+`model/schema/allianceModel.yaml`
+
+allianceModel.yaml is the grouping schema file for all the other split out schemas (YAML files).  In its "imports"
+section, all the other YAML files are listed by name.  This helps the automated regeneration of artifacts (like 
+JSONSchema, python, java files) to find and combine all the sub schemas together.  When adding a new YAML file (a new
+biological domain, or new schema component file) be sure to add your schema file as an import to allianceModel.yaml
+   
+`model/schema/core.yaml` 
+
+The core.yaml file holds classes and
+attributes that should or can be reused in several of the biological domains (e.g. AuditedObject, a class that holds
+all relevant data tracking information is a parent class of all other biological objects that need to be audited.  
+AuditedObject lives in core.yaml)
+
+
 
 
 ## Building a new release of AGR Curation Schema
