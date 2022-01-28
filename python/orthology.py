@@ -1,5 +1,5 @@
 # Auto generated from orthology.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-01-28T10:45:33
+# Generation date: 2022-01-28T10:48:18
 # Schema: Alliance-Schema-Orthology-Term
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/ontologyTerm

@@ -3112,6 +3112,27 @@
          "title": "ImagePane",
          "type": "object"
       },
+      "Ingest": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "allele_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/Allele"
+               },
+               "type": "array"
+            },
+            "disease_allele_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AlleleDiseaseAnnotation"
+               },
+               "type": "array"
+            }
+         },
+         "required": [],
+         "title": "Ingest",
+         "type": "object"
+      },
       "InteractionSourceEnum": {
          "description": "",
          "enum": [
@@ -5501,7 +5522,20 @@
    "$id": "https://github.com/alliance-genome/agr_curation_schema/alliance_schema",
    "$schema": "http://json-schema.org/draft-07/schema#",
    "additionalProperties": false,
-   "properties": {},
+   "properties": {
+      "allele_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/Allele"
+         },
+         "type": "array"
+      },
+      "disease_allele_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AlleleDiseaseAnnotation"
+         },
+         "type": "array"
+      }
+   },
    "required": [],
    "title": "Alliance-Schema-Prototype",
    "type": "object"
