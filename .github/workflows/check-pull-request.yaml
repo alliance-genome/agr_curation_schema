@@ -1,0 +1,61 @@
+name: Check Pull Request
+
+# Controls when the action will run. Triggers the workflow on pull requests.
+on:
+  pull_request:
+    branches:
+      - main
+  repository_dispatch:
+    types: trigger-check-pull-request
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+
+    # Install pandoc
+    - name: Install pandoc
+      run: sudo apt-get install pandoc
+
+    # Install pipenv
+    - name: Install pipenv
+      run: python3 -m pip install --no-cache-dir pipenv
+
+    # Load pipenv virtual environment from cache
+    # see: https://ianwhitestone.work/aws-serverless-deployments-with-github-actions/
+#     - name: Load pipenv from cache
+#       uses: actions/cache@v2
+#       with:
+#         path: ~/.local/share/virtualenvs
+#         key: ${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-pipenv-${{ hashFiles('Pipfile.lock') }}
+
+
+    # If cache was not loaded, install dependencies
+    - name: Install dependencies
+      # if: steps.cache-pipenv.outputs.cache-hit != 'true'
+      run: pipenv install -d
+
+    # Excute the Makefile to build generated artifacts
+    - name: Make Artifacts
+      run: |
+        make clean-artifacts
+        make all
+
+    # Validate json schema aganst test data
+    - name: Validate JSON Schema
+      run: |
+        make test-jsonschema
+        make test-jsonschema_invalid
