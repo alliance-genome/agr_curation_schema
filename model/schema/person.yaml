@@ -50,9 +50,11 @@ classes:
     is_a: Agent
     slots:
       - last_name
+      - middle_names
       - first_name
       - orcid
       - email
+      - other_emails
       - mod_id
       - unique_id
     exact_mappings:
