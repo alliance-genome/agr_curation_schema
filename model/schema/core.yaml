@@ -519,7 +519,8 @@ slots:
     range: string
 
   mod_id:
-    description: the identifier asigned by the MOD system
+    description: >-
+      The model organism database (MOD) identifier/curie for the object
     range: uriorcurie
 
   first_name:
