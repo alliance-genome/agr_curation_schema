@@ -1,5 +1,5 @@
 # Auto generated from allianceModel.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-01-27T15:17:35
+# Generation date: 2022-01-27T17:00:52
 # Schema: Alliance-Schema
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema
@@ -306,14 +306,14 @@ class Ingest(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Ingest
 
     allele_ingest_set: Optional[Union[Dict[Union[str, AlleleCurie], Union[dict, "Allele"]], List[Union[dict, "Allele"]]]] = empty_dict()
-    disease_allele_ingest_set: Optional[Union[Union[dict, "DiseaseAnnotation"], List[Union[dict, "DiseaseAnnotation"]]]] = empty_list()
+    disease_allele_ingest_set: Optional[Union[Union[dict, "AlleleDiseaseAnnotation"], List[Union[dict, "AlleleDiseaseAnnotation"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         self._normalize_inlined_as_list(slot_name="allele_ingest_set", slot_type=Allele, key_name="curie", keyed=True)
 
         if not isinstance(self.disease_allele_ingest_set, list):
             self.disease_allele_ingest_set = [self.disease_allele_ingest_set] if self.disease_allele_ingest_set is not None else []
-        self.disease_allele_ingest_set = [v if isinstance(v, DiseaseAnnotation) else DiseaseAnnotation(**as_dict(v)) for v in self.disease_allele_ingest_set]
+        self.disease_allele_ingest_set = [v if isinstance(v, AlleleDiseaseAnnotation) else AlleleDiseaseAnnotation(**as_dict(v)) for v in self.disease_allele_ingest_set]
 
         super().__post_init__(**kwargs)
 
@@ -4802,7 +4802,7 @@ slots.allele_ingest_set = Slot(uri=ALLIANCE.allele_ingest_set, name="allele_inge
                    model_uri=ALLIANCE.allele_ingest_set, domain=Ingest, range=Optional[Union[Dict[Union[str, AlleleCurie], Union[dict, "Allele"]], List[Union[dict, "Allele"]]]])
 
 slots.disease_allele_ingest_set = Slot(uri=ALLIANCE.disease_allele_ingest_set, name="disease_allele_ingest_set", curie=ALLIANCE.curie('disease_allele_ingest_set'),
-                   model_uri=ALLIANCE.disease_allele_ingest_set, domain=Ingest, range=Optional[Union[Union[dict, "DiseaseAnnotation"], List[Union[dict, "DiseaseAnnotation"]]]])
+                   model_uri=ALLIANCE.disease_allele_ingest_set, domain=Ingest, range=Optional[Union[Union[dict, "AlleleDiseaseAnnotation"], List[Union[dict, "AlleleDiseaseAnnotation"]]]])
 
 slots.object_set = Slot(uri=ALLIANCE.object_set, name="object_set", curie=ALLIANCE.curie('object_set'),
                    model_uri=ALLIANCE.object_set, domain=Ingest, range=Optional[Union[str, List[str]]])

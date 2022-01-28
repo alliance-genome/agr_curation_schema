@@ -57,7 +57,7 @@ slots:
   disease_allele_ingest_set:
     description: >-
     domain: Ingest
-    range: DiseaseAnnotation
+    range: AlleleDiseaseAnnotation
     multivalued: true
     mixins:
       - object_set

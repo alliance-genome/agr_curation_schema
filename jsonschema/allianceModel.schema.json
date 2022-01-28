@@ -3101,7 +3101,7 @@
             },
             "disease_allele_ingest_set": {
                "items": {
-                  "$ref": "#/$defs/DiseaseAnnotation"
+                  "$ref": "#/$defs/AlleleDiseaseAnnotation"
                },
                "type": "array"
             }
@@ -5391,7 +5391,7 @@
       },
       "disease_allele_ingest_set": {
          "items": {
-            "$ref": "#/$defs/DiseaseAnnotation"
+            "$ref": "#/$defs/AlleleDiseaseAnnotation"
          },
          "type": "array"
       }

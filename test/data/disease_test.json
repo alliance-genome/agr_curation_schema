@@ -3,9 +3,9 @@
     {
       "evidence_codes": ["TAS"],
       "reference": "PMID:0012345",
-      "data_provider": "ZFIN",
+      "data_provider": ["ZFIN"],
       "subject": "ZFIN:ZDB-ALT-001122-1",
-      "predicate": "is model of",
+      "predicate": "is_implicated_in",
       "object": "DOID:0001234",
       "created_by": "ZFIN",
       "modified_by": "ZFIN"
