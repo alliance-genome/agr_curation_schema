@@ -1,4 +1,4 @@
-SRC_DIR = src
+SRC_DIR = model
 SCHEMA_DIR = $(SRC_DIR)/schema
 SOURCE_FILES := $(shell find $(SCHEMA_DIR) -name '*.yaml')
 SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
@@ -149,7 +149,7 @@ clean-package:
 	rm -f allianceModel_schema/*.tsv
 
 build-package: clean-package
-	cp src/schema/allianceModel.yaml allianceModel_schema/ # copy allianceModel yaml file
+	cp model/schema/allianceModel.yaml allianceModel_schema/ # copy allianceModel yaml file
 	cp python/*.py allianceModel_schema/ # copy python files
 	cp jsonschema/allianceModel.schema.json allianceModel_schema/ # copy allianceModel json schema
 	cp sssom/gold-to-mixs.sssom.tsv allianceModel_schema/ # copy sssom mapping

@@ -1,4 +1,4 @@
-id: https://github.com/alliance-genome/agr_curation_schema/src/schema/resource
+id: https://github.com/alliance-genome/agr_curation_schema/model/schema/resource
 
 prefixes:
   alliance: 'http://alliancegenome.org'

@@ -1,8 +1,8 @@
 # Auto generated from test.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-01-27T15:18:01
+# Generation date: 2022-01-28T10:08:52
 # Schema: resource
 #
-# id: https://github.com/alliance-genome/agr_curation_schema/src/schema/resource
+# id: https://github.com/alliance-genome/agr_curation_schema/model/schema/resource
 # description:
 # license: https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -47,7 +47,7 @@ FALDO = CurieNamespace('faldo', 'http://biohackathon.org/resource/faldo#')
 GFF = CurieNamespace('gff', 'https://w3id.org/gff')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
-DEFAULT_ = CurieNamespace('', 'https://github.com/alliance-genome/agr_curation_schema/src/schema/resource/')
+DEFAULT_ = CurieNamespace('', 'https://github.com/alliance-genome/agr_curation_schema/model/schema/resource/')
 
 
 # Types
@@ -69,10 +69,10 @@ class InformationContentEntity(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/resource/InformationContentEntity")
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/resource/InformationContentEntity")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "InformationContentEntity"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/resource/InformationContentEntity")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/resource/InformationContentEntity")
 
     curie: Union[str, InformationContentEntityCurie] = None
 
@@ -89,10 +89,10 @@ class InformationContentEntity(YAMLRoot):
 class AuthorReference(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/resource/AuthorReference")
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/resource/AuthorReference")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "AuthorReference"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/resource/AuthorReference")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/resource/AuthorReference")
 
     first_name: Optional[Union[str, InformationContentEntityCurie]] = None
     middle_names: Optional[Union[str, InformationContentEntityCurie]] = None
@@ -115,10 +115,10 @@ class AuthorReference(YAMLRoot):
 class Resource(InformationContentEntity):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/resource/Resource")
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/resource/Resource")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "Resource"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/resource/Resource")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/resource/Resource")
 
     curie: Union[str, ResourceCurie] = None
     title: Optional[str] = None

@@ -7,8 +7,8 @@ on:
       - main
     paths:
       - 'mkdocs.yml'
-      - 'src/schema/*.yaml'
-      - 'src/docs/*'
+      - 'model/schema/*.yaml'
+      - 'model/docs/*'
 
   repository_dispatch:
     types: trigger-build-deploy-documentation

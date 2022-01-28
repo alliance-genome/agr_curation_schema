@@ -1,4 +1,4 @@
-id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml
+id: https://github.com/alliance-genome/agr_persistent_schema/model/schema/expression.yaml
 
 imports:
   - affectedGenomicModel

@@ -32,7 +32,7 @@ jobs:
     - name: Build package
       run: |
         # make build-package
-        cp src/schema/*.yaml allianceModel_schema/ # copy yaml files
+        cp model/schema/*.yaml allianceModel_schema/ # copy yaml files
         cp python/*.py allianceModel_schema/ # copy python files
         cp jsonschema/allianceModel.schema.json allianceModel_schema/ # copy allianceModel json schema
         cp sssom/gold-to-mixs.sssom.tsv allianceModel_schema/ # copy sssom mapping

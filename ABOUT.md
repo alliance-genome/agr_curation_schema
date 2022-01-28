@@ -59,7 +59,7 @@ This repo is a GitHub "template" repo. When you "Use this template" it will make
 
 Everything is orchestrated by a generic single [Makefile](Makefile). For this to work you should follow certain conventions:
 
- * Keep your schema in src/schema
+ * Keep your schema in model/schema
  * Use the `.yaml` suffix for all schema files
  * Use the suggested directory layout here.
 

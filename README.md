@@ -5,7 +5,7 @@ Model to describe the Alliance curation/persistence data store
 
 ## Developing the AGR Curation Schema 
 
-The Alliance schema is stored in a series of interconnected YAML files in the `src/schema` directory written using
+The Alliance schema is stored in a series of interconnected YAML files in the `model/schema` directory written using
 LinkML syntax. LinkML is an object-oriented modeling language, tutorial [here](https://linkml.io/linkml/intro/tutorial.html)
 with tooling that can convert simple, easy to author YAML into validatable artifacts such as: JSON schemas, SQL DDL, 
 python and java classes, markdown documentation and others.  Some of these artifact types and generated and stored in 
@@ -75,7 +75,7 @@ list of GOTerm objects).  A simple example (using only the required fields of th
 
 ## Generating MOD JSON files and validating them
 
-The Alliance JSON schema is generated from the Alliance model yaml in src/schema in this repository.  Also provided in 
+The Alliance JSON schema is generated from the Alliance model yaml in model/schema in this repository.  Also provided in 
 this repository is a simple JSON schema validator (util/validate_agr_schema.py) that has a command line interface.
 
 For users wishing to run a validator locally before submitting their files to the Alliance, this can be done by:

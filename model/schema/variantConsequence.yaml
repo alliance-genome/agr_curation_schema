@@ -1,4 +1,4 @@
-id: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence
+id: https://github.com/alliance-genome/agr_curation_schema/model/schema/variantConsequence
 
 imports:
   - core
