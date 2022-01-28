@@ -1,4 +1,4 @@
-id: https://github.com/alliance-genome/agr_curation_schema/model/schema/person
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/person
 
 default_prefix: alliance
 default_range: string
@@ -50,8 +50,12 @@ classes:
     is_a: Agent
     slots:
       - last_name
+      - middle_name
       - first_name
       - orcid
+      - emails
+      - mod_id
+      - unique_id
     exact_mappings:
       - schema:person
       - foaf:Person
@@ -62,8 +66,11 @@ classes:
 slots:
 
   orcid:
-    notes: >-
-      Should the domain instead be Person instead of InformationContentEntity?
-      Should the range instead be uriorcurie?
-    domain: InformationContentEntity
+    description:  Open Researcher and Contributor ID
+    domain: Person
+    range: uriorcurie
+
+  emails:
+    description: space separated email addresses
+    multivalued: false
     range: string

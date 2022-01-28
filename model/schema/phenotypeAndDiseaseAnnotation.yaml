@@ -318,13 +318,10 @@ classes:
           AGR.
         required: false
       condition_class:
-        required: true
         description: >-
           The ZECO ID that represents the high level condition grouping term.  This will come from
           a slim in the ZECO, called 'AllianceSlim'.
-        range: ZECOTerm
       condition_statement:
-        required: true
         description: >-
           Free text describing the environmental/experimental condition. For some groups this is a
           single term, others is it is a concatenation of the term names from the ontologies included
@@ -336,7 +333,6 @@ classes:
           condition ontology ID attributes (chemical, NCBITaxon, anatomical). This could also be another
           ZECO term if the ZECO term that describes this condition is more specific, or outside the
           conditionClassId slim.
-        range: ExperimentalConditionOntologyTerm
       condition_quantity:
         description: >-
           Optional free text field that records the units/amount/degrees of a condition.
@@ -344,7 +340,6 @@ classes:
       condition_anatomy:
         description: >-
           Anatomical ontology identifier used in cases like regeneration/wounding.
-        range: AnatomicalTerm
       condition_gene_ontology:
         description: >-
           Gene Ontology id used in subset of condition types.
@@ -352,9 +347,6 @@ classes:
       condition_taxon:
         description: >-
           NCBITaxon ontology id used in subset of condition types like 'bacterial infection'.
-        range: OntologyTerm
-        values_from:
-          - NCBITaxon
       condition_chemical:
         description: >-
           ChEBI or molecular ontology id used in subset of condition terms.  ie: the specific
@@ -389,25 +381,6 @@ classes:
       condition_relation_type:
         required: true
         multivalued: false
-
-  Molecule:
-    description: >-
-      Molecules as described by WormBase
-    mixins:
-      - AuditedObject
-    slots:
-      - curie
-      - name
-      - inchi
-      - inchi_key
-      - iupac
-      - formula
-      - smiles
-      - synonyms
-      - cross_references
-    slot_usage:
-      name:
-        required: true
 
   PaperHandle:
     description: >-
@@ -444,12 +417,13 @@ slots:
 
   condition_chemical:
     domain: ExperimentalCondition
-    range: uriorcurie                     # Update to Chemical if such a class is instantiated
+    range: OntologyTerm                     # Update to Chemical if such a class is instantiated
     values_from:
       - CHEBI
       - WBMol
 
   condition_class:
+    required: true
     domain: ExperimentalCondition
     range: ZECOTerm
 
@@ -466,14 +440,13 @@ slots:
     range: string
 
   condition_statement:
+    required: true
     domain: ExperimentalCondition
     range: string
 
   condition_taxon:
     domain: ExperimentalCondition
-    range: uriorcurie                     # Update to Taxon if such a class is instantiated
-    values_from:
-      - NCBITaxon
+    range: NCBITaxonTerm
 
   condition_relations:
     range: ConditionRelation
@@ -550,11 +523,6 @@ slots:
       http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8
     range: Gene
 
-  mod_id:
-    description: >-
-      The model organism database (MOD) identifier/curie for the object
-    range: string   # Should this be uriorcurie?
-
   paper_handles:
     description: >-
       A slot that points to a list of PaperHandle objects, pairings of a reference and a free
@@ -626,30 +594,6 @@ slots:
     domain: ExperimentalCondition
     range: Entity
 
-  inchi:
-    description: InChi style description of the molecule
-    domain: Molecule
-    range: string
-
-  inchi_key:
-    description: InChi key description of the molecule
-    domain: Molecule
-    range: string
-
-  iupac:
-    description: IUPAC name of the molecule
-    domain: Molecule
-    range: string
-
-  formula:
-    description: Formula of the molecule
-    domain: Molecule
-    range: string
-
-  smiles:
-    description: Molecular structure in SMILES format
-    domain: Molecule
-    range: string
 
 ## ------------
 ## ENUMS

@@ -1,4 +1,4 @@
-id: https://github.com/alliance-genome/agr_curation_schema/model/schema/antibody.yaml
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/antibody.yaml
 
 imports:
   - core
@@ -92,14 +92,13 @@ slots:
     range: Gene
 
   antigen_taxon:
-    is_a: taxon
     description: >-
       Holds between an Antibody and the species from which the antigen
       originates (as represented by taxon).
     required: false
     multivalued: false
     domain: Antibody
-    range: uriorcurie
+    range: NCBITaxonTerm
 
   clonality:
     description: >-

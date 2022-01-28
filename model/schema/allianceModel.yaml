@@ -1,6 +1,6 @@
 id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema
-name: Alliance-Schema
-description: Alliance Schema
+name: Alliance-Schema-Prototype
+description: Alliance Schema Prototype
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
 version: 0.0.1
@@ -39,7 +39,6 @@ imports:
   - ontologyTerm
   - phenotypeAndDiseaseAnnotation
   - controlledVocabulary
-  - ingest
 
 subsets:
   alliance subset:

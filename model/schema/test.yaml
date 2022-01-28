@@ -1,4 +1,4 @@
-id: https://github.com/alliance-genome/agr_curation_schema/model/schema/resource
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/resource
 
 prefixes:
   alliance: 'http://alliancegenome.org'
@@ -29,7 +29,7 @@ classes:
   AuthorReference:
     slots:
       - first_name
-      - middle_names
+      - middle_name
       - last_name
 
   Resource:
@@ -85,22 +85,6 @@ slots:
     description: >-
     range: InformationContentEntity
     domain: InformationContentEntity
-
-  first_name:
-    description: >-
-    domain: InformationContentEntity
-    range: InformationContentEntity
-
-  middle_names:
-    description: >-
-    domain: InformationContentEntity
-    range: InformationContentEntity
-    multivalued: false
-
-  last_name:
-    description: >-
-    domain: InformationContentEntity
-    range: InformationContentEntity
 
   initials:
     description: >-

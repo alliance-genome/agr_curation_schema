@@ -47,7 +47,7 @@ classes:
     slots:
       - corresponding_author
       - first_name
-      - middle_names
+      - middle_name
       - last_name
       - initials
       - cross_references
@@ -74,21 +74,6 @@ slots:
     range: InformationContentEntity
     domain: InformationContentEntity
 
-  first_name:
-    description: >-
-    domain: InformationContentEntity
-    range: InformationContentEntity
-
-  middle_names:
-    description: >-
-    domain: InformationContentEntity
-    range: InformationContentEntity
-    multivalued: false
-
-  last_name:
-    description: >-
-    domain: InformationContentEntity
-    range: InformationContentEntity
 
   initials:
     description: >-
