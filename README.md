@@ -28,6 +28,11 @@ classes in the model.
 
 Types 
 
+### Enums
+
+Enumerations are objects that are used to restrict the values of a particular slot to those declared in the 
+enumeration.
+
 ### Alliance Model Development Conventions
 
 In addition to LinkML conventions, this repository follows a series of local conventions.    
