@@ -47,7 +47,7 @@ classes:
     slots:
       - corresponding_author
       - first_name
-      - middle_names
+      - middle_name
       - last_name
       - initials
       - cross_references

@@ -50,7 +50,7 @@ classes:
     is_a: Agent
     slots:
       - last_name
-      - middle_names
+      - middle_name
       - first_name
       - orcid
       - emails
