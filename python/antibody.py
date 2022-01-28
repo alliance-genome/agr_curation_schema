@@ -1,5 +1,5 @@
 # Auto generated from antibody.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-01-28T10:08:44
+# Generation date: 2022-01-28T10:20:14
 # Schema: antibody.yaml
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/model/schema/antibody.yaml

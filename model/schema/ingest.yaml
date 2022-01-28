@@ -22,22 +22,36 @@ prefixes:
   schema: 'http://schema.org/'
 
 slots:
-  allele ingest set:
+  allele_ingest_set:
     description: >-
     domain: Ingest
     range: Allele
     multivalued: true
+    mixins:
+      - object_set
 
-  disease annotation ingest set:
+  disease_allele_ingest_set:
     description: >-
     domain: Ingest
-    range: DiseaseAnnotation
+    range: AlleleDiseaseAnnotation
     multivalued: true
+    mixins:
+      - object_set
 
+  object_set:
+    mixin: true
+    domain: Ingest
+    multivalued: true
+    inlined_as_list: true
+    description:
+      Applies to a property that links a ingest object to a set of objects.
+      This is necessary in a json document to provide context for a list, and
+      to allow for a single json object that combines multiple object types
 
 classes:
   Ingest:
+    tree_root: true
     slots:
-      - allele ingest set
-      - disease annotation ingest set
+      - allele_ingest_set
+      - disease_allele_ingest_set
 

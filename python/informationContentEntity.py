@@ -1,5 +1,5 @@
 # Auto generated from informationContentEntity.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-01-28T10:09:44
+# Generation date: 2022-01-28T10:21:22
 # Schema: informationContentEntity
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/informationContentEntity

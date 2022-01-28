@@ -1,5 +1,5 @@
 # Auto generated from reference.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-01-28T10:09:25
+# Generation date: 2022-01-28T10:21:00
 # Schema: reference
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/model/schema/reference

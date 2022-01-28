@@ -1,5 +1,5 @@
 # Auto generated from test.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-01-28T10:08:52
+# Generation date: 2022-01-28T10:20:23
 # Schema: resource
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/model/schema/resource

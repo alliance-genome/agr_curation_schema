@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-01-28T10:08:24\n    Schema: Alliance-Schema\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: Alliance Schema\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-01-28T10:19:52\n    Schema: Alliance-Schema\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: Alliance Schema\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "BIOGRID": "http://identifiers.org/biogrid/",
       "DIP": "http://identifiers.org/dip/",
@@ -69,7 +69,8 @@
          "@id": "https://github.com/alliance-genome/agr_curation_schema/model/schema/allele/affected_entities"
       },
       "allele_ingest_set": {
-         "@type": "@id"
+         "@type": "@id",
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/allele_ingest_set"
       },
       "alliance_category": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/model/schema/reference/alliance_category"
@@ -267,7 +268,8 @@
          "@type": "@id"
       },
       "disease_allele_ingest_set": {
-         "@type": "@id"
+         "@type": "@id",
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/disease_allele_ingest_set"
       },
       "disease_genetic_modifier": {
          "@type": "@id"
@@ -606,6 +608,9 @@
       "notes": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/model/schema/variation/notes"
       },
+      "object_set": {
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/object_set"
+      },
       "online_issn": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/model/schema/resource/online_issn"
       },
@@ -881,6 +886,9 @@
       },
       "ImagePane": {
          "@id": "https://github.com/alliance-genome/agr_persistent_schema/model/schema/image.yaml/ImagePane"
+      },
+      "Ingest": {
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/Ingest"
       },
       "MATerm": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/MATerm"
