@@ -179,7 +179,7 @@ SCHEMA_TEST_EXAMPLES := \
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
 	allele_invalid \
-	disease_invalid \
+	disease_allele_invalid \
 
 .PHONY: test-jsonschema
 test-jsonschema: $(foreach example, $(SCHEMA_TEST_EXAMPLES), validate-$(example))
@@ -191,7 +191,7 @@ validate-%: test/data/%.json jsonschema/allianceModel.schema.json
 # util/validate_allianceModel_json.py -i $< # example of validating data using the cli
 	pipenv run jsonschema -i $< $(word 2, $^)
 
-validate-invalid-%: test/data/invalid_schemas/%.json jsonschema/allianceModel.schema.json
+validate-invalid-%: test/data/invalid/%.json jsonschema/allianceModel.schema.json
 	! pipenv run jsonschema -i $< $(word 2, $^)
 
 # ---------------------------------------
