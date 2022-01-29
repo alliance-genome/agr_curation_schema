@@ -54,6 +54,7 @@ classes:
       - first_name
       - orcid
       - emails
+      - old_emails
       - mod_id
       - unique_id
     exact_mappings:
@@ -81,6 +82,11 @@ slots:
 
   emails:
     description: list of emails for a person
+    multivalued: true
+    range: string
+
+  old_emails:
+    description: list of old (outdated) emails for a person
     multivalued: true
     range: string
 
