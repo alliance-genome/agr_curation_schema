@@ -59,9 +59,17 @@ classes:
     exact_mappings:
       - schema:person
       - foaf:Person
+
+  LoggedInPerson:
+    is_a: Person
+    slots:
+      - okta_id
+      - okta_email
     slot_usage:
-      person id:    # Where is this person id slot coming from? No underscore?
-        identifier: true
+      okta_id:
+        required: true
+      okta_email:
+        required: true
 
 slots:
 
@@ -69,8 +77,21 @@ slots:
     description:  Open Researcher and Contributor ID
     domain: Person
     range: uriorcurie
+    multivalued: false
 
   emails:
-    description: space separated email addresses
-    multivalued: false
+    description: list of emails for a person
+    multivalued: true
     range: string
+
+  okta_id:
+    description: The Okta identifier for the person registered in Okta for user authentication
+    domain: LoggedInPerson
+    range: string
+    multivalued: false
+
+  okta_email:
+    description: The email address of the LoggedInPerson registered with Okta for user authentication
+    domain: LoggedInPerson
+    range: string
+    multivalued: false
