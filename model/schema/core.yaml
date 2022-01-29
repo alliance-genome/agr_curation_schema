@@ -525,18 +525,15 @@ slots:
 
   first_name:
     description: first name of a person
-    domain: Person
     range: string
 
   middle_name:
     description: middle names of a person
-    domain: Person
     range: string
     multivalued: false
 
   last_name:
     description: last (family) name of a person
-    domain: Person
     range: string
 
 
