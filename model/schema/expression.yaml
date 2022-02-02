@@ -77,11 +77,13 @@ classes:
 
   TemporalContext:
     description: >-
-      The developmental stage and/or age of the specimen in an annotation.
+      The developmental stage and/or age of the specimen in an annotation. Developmental_stage_stop is optional. Add an uncertainty flag here?
     slots:
-      - developmental_stage
+      - developmental_stage_start
+      - developmental_stage_stop
       - age
-      - temporal_qualifiers
+      - temporal_qualifier
+      - stage_uncertain
 
   AnatomicalSite:
     description: >-
@@ -177,10 +179,20 @@ slots:
       branch, but I'm not sure how to do this.
     domain: AnatomicalSite
     range: GOTerm
-
-  developmental_stage:
+  
+  developmental_stage_start:
     description: >-
-      The developmental stage at which an annotated event was observed.
+      The beginning developmental stage at which an annotated event was observed.
+    notes: >-
+      Currently, we limit this to a single stage, but we could consider allowing
+      for stage ranges for a single annotation.
+    domain: TemporalContext
+    range: StageTerm
+    multivalued: false
+    
+  developmental_stage_stop:
+    description: >-
+      The end developmental stage at which an annotated event was observed.
     notes: >-
       Currently, we limit this to a single stage, but we could consider allowing
       for stage ranges for a single annotation.
@@ -245,6 +257,13 @@ slots:
       The AffectedGenomicModel of the specimen assayed.
     domain: ExpressionExperiment
     range: AffectedGenomicModel
+    multivalued: false
+    
+  stage_uncertainty:
+    notes: >-
+      Flag for whether or not the temporal stage is certain or uncertain. Boolean true/false?
+    domain: TemporalContext
+    range: string
     multivalued: false
 
   temporal_qualifiers:
