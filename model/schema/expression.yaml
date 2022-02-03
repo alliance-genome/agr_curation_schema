@@ -3,6 +3,7 @@ id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/expressi
 imports:
   - affectedGenomicModel
   - allele
+  - antibody
   - core
   - image
   - linkml:types
@@ -218,11 +219,11 @@ slots:
       regulatory region activity for unknown gene(s).
       MGI: some expression data for "other feature type"
       WB: some expression for sequence features (WBsf).
-      ZFIN: some expression using antibodies with unknown target.
+      ZFIN: some expression using antibodies with unknown target. Antibody is a BiologicalEntity
     domain: ExpressionExperiment
     range: BiologicalEntity
     multivalued: false
-    required: false
+    required: true
 
   image:
     description: >-
