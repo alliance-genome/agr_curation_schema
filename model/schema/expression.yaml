@@ -37,8 +37,8 @@ classes:
 # - HOW TO LIMIT CVTERMS ALLOWED IN XPRN - DID I USE THE RIGHT APPROACH?
 # - OK TO JUST USE LIST OF CONDITIONS WITHOUT RELATIONS?
 # - OH, MAYBE HAVE DIFF SLOTS FOR CONDITIONS (PER RELATION ALLOWED).
-
-
+# - SHOULD 'CURIE' BE CHANGED TO 'ID' TO CONFORM TO STANDARD PRACTICE? Is this CURIE for Expression Class/Obj? 
+# - What if MODs do NOT have object IDs for Experiments or Expression annotations
 
   ExpressionAnnotation:
     mixins:
@@ -222,7 +222,7 @@ slots:
     domain: ExpressionExperiment
     range: BiologicalEntity
     multivalued: false
-    required: true
+    required: false
 
   image:
     description: >-
