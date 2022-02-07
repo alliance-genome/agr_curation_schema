@@ -76,6 +76,22 @@ slots:
     range: InformationContentEntity
     domain: InformationContentEntity
 
+  first_name:
+    description: >-
+    domain: InformationContentEntity
+    range: InformationContentEntity
+
+  middle_name:
+    description: >-
+    domain: InformationContentEntity
+    range: InformationContentEntity
+    multivalued: false
+
+  last_name:
+    description: >-
+    domain: InformationContentEntity
+    range: InformationContentEntity
+ 
   initials:
     description: >-
     domain: InformationContentEntity

@@ -93,10 +93,14 @@
               
                 <h1 id="class-person">Class: Person</h1>
 <p>URI: <a href="http://alliancegenome.orgPerson">alliance:Person</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[InformationContentEntity]&lt;first_name%200..1-%20[Person&#124;orcid:string%20%3F;person_id:string],[InformationContentEntity]&lt;last_name%200..1-%20[Person],[AuditedObject]-%20created_by%201..1&gt;[Person],[AuditedObject]-%20modified_by%201..1&gt;[Person],[Agent]^-[Person],[InformationContentEntity],[AuditedObject],[Agent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[InformationContentEntity]&lt;first_name%200..1-%20[Person&#124;orcid:string%20%3F;person_id:string],[InformationContentEntity]&lt;last_name%200..1-%20[Person],[AuditedObject]-%20created_by%201..1&gt;[Person],[AuditedObject]-%20modified_by%201..1&gt;[Person],[Agent]^-[Person],[InformationContentEntity],[AuditedObject],[Agent]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[AuditedObject]++-%20created_by%201..1&gt;[Person&#124;last_name:string%20%3F;middle_name:string%20%3F;first_name:string%20%3F;orcid:uriorcurie%20%3F;emails:string%20*;old_emails:string%20*;mod_id:string%20%3F;unique_id:string%20%3F],[AuditedObject]++-%20modified_by%201..1&gt;[Person],[Person]^-[LoggedInPerson],[Agent]^-[Person],[LoggedInPerson],[AuditedObject],[Agent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[AuditedObject]++-%20created_by%201..1&gt;[Person&#124;last_name:string%20%3F;middle_name:string%20%3F;first_name:string%20%3F;orcid:uriorcurie%20%3F;emails:string%20*;old_emails:string%20*;mod_id:string%20%3F;unique_id:string%20%3F],[AuditedObject]++-%20modified_by%201..1&gt;[Person],[Person]^-[LoggedInPerson],[Agent]^-[Person],[LoggedInPerson],[AuditedObject],[Agent]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../Agent/">Agent</a> - An individual, group, organization or project that provides information and/or materials.</li>
+</ul>
+<h2 id="children">Children</h2>
+<ul>
+<li><a href="../LoggedInPerson/">LoggedInPerson</a></li>
 </ul>
 <h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
@@ -107,18 +111,42 @@
 <h3 id="own">Own</h3>
 <ul>
 <li><a href="../last_name/">last_name</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../InformationContentEntity/">InformationContentEntity</a></li>
-</ul>
-</li>
-<li><a href="../first_name/">first_name</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../InformationContentEntity/">InformationContentEntity</a></li>
-</ul>
-</li>
-<li><a href="../orcid/">orcid</a>  <sub>0..1</sub><ul>
+<li>Description: last (family) name of a person</li>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../Person_person_id/">Person➞person id</a>  <sub>1..1</sub><ul>
+<li><a href="../middle_name/">middle_name</a>  <sub>0..1</sub><ul>
+<li>Description: middle names of a person</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../first_name/">first_name</a>  <sub>0..1</sub><ul>
+<li>Description: first name of a person</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../orcid/">orcid</a>  <sub>0..1</sub><ul>
+<li>Description: Open Researcher and Contributor ID</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="../emails/">emails</a>  <sub>0..*</sub><ul>
+<li>Description: list of emails for a person</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../old_emails/">old_emails</a>  <sub>0..*</sub><ul>
+<li>Description: list of old (outdated) emails for a person</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../mod_id/">mod_id</a>  <sub>0..1</sub><ul>
+<li>Description: The model organism database (MOD) identifier/curie for the object</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../unique_id/">unique_id</a>  <sub>0..1</sub><ul>
+<li>Description: A non-curie unique identifier for a thing.</li>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
