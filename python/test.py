@@ -1,5 +1,5 @@
 # Auto generated from test.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-01-28T12:01:44
+# Generation date: 2022-02-07T13:32:33
 # Schema: resource
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/resource
@@ -131,6 +131,15 @@ slots.copyright_date = Slot(uri=DEFAULT_.copyright_date, name="copyright_date", 
 
 slots.corresponding_author = Slot(uri=DEFAULT_.corresponding_author, name="corresponding_author", curie=DEFAULT_.curie('corresponding_author'),
                    model_uri=DEFAULT_.corresponding_author, domain=InformationContentEntity, range=Optional[Union[str, InformationContentEntityCurie]])
+
+slots.first_name = Slot(uri=DEFAULT_.first_name, name="first_name", curie=DEFAULT_.curie('first_name'),
+                   model_uri=DEFAULT_.first_name, domain=InformationContentEntity, range=Optional[Union[str, InformationContentEntityCurie]])
+
+slots.middle_name = Slot(uri=DEFAULT_.middle_name, name="middle_name", curie=DEFAULT_.curie('middle_name'),
+                   model_uri=DEFAULT_.middle_name, domain=InformationContentEntity, range=Optional[Union[str, InformationContentEntityCurie]])
+
+slots.last_name = Slot(uri=DEFAULT_.last_name, name="last_name", curie=DEFAULT_.curie('last_name'),
+                   model_uri=DEFAULT_.last_name, domain=InformationContentEntity, range=Optional[Union[str, InformationContentEntityCurie]])
 
 slots.initials = Slot(uri=DEFAULT_.initials, name="initials", curie=DEFAULT_.curie('initials'),
                    model_uri=DEFAULT_.initials, domain=InformationContentEntity, range=Optional[Union[str, InformationContentEntityCurie]])

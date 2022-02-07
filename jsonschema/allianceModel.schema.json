@@ -15,8 +15,8 @@
                "type": "array"
             },
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -75,8 +75,8 @@
                "type": "string"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "negated": {
                "description": "The negative qualifier for the annotation.",
@@ -138,8 +138,8 @@
                "type": "array"
             },
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date of curation at the source (MOD) database.",
@@ -164,8 +164,8 @@
                "type": "string"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "object": {
                "description": "phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed statement of the phenotype from a post-composed terminology",
@@ -215,8 +215,8 @@
                "type": "array"
             },
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -247,8 +247,8 @@
                "type": "string"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -368,8 +368,8 @@
                "type": "string"
             },
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -435,8 +435,8 @@
                "type": "boolean"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "molecular_mutation": {
                "$ref": "#/$defs/MolecularMutation",
@@ -518,8 +518,8 @@
                "type": "array"
             },
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -574,8 +574,8 @@
                "type": "string"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "negated": {
                "description": "The negative qualifier for the annotation.",
@@ -645,8 +645,8 @@
                "type": "array"
             },
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date of curation at the source (MOD) database.",
@@ -667,8 +667,8 @@
                "type": "string"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "object": {
                "description": "phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed statement of the phenotype from a post-composed terminology",
@@ -736,8 +736,8 @@
                "description": "The clonality of the antibody: e.g., monoclonal."
             },
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -783,8 +783,8 @@
                "type": "array"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "name": {
                "description": "Publicly displayed name of the antibody. It often includes the name of the antibody target: e.g., anti-WNT-4. It may also include the host species and antibody clonality.",
@@ -1202,8 +1202,8 @@
                "type": "array"
             },
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -1227,8 +1227,8 @@
                "type": "string"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -1273,8 +1273,8 @@
                "$ref": "#/$defs/ComponentRelationsEnum"
             },
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -1298,8 +1298,8 @@
                "type": "string"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -1341,8 +1341,8 @@
          "description": "",
          "properties": {
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -1362,8 +1362,8 @@
                "type": "string"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "page_areas": {
                "items": {
@@ -2216,8 +2216,8 @@
                "type": "string"
             },
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -2242,8 +2242,8 @@
                "type": "string"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "secondary_identifiers": {
                "items": {
@@ -2352,8 +2352,8 @@
                "type": "string"
             },
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -2395,8 +2395,8 @@
                "type": "array"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -2453,8 +2453,8 @@
                "type": "array"
             },
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -2505,8 +2505,8 @@
                "type": "string"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "negated": {
                "description": "The negative qualifier for the annotation.",
@@ -2785,8 +2785,8 @@
                "type": "array"
             },
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date of curation at the source (MOD) database.",
@@ -2803,8 +2803,8 @@
                "type": "string"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "object": {
                "description": "phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed statement of the phenotype from a post-composed terminology",
@@ -2871,8 +2871,8 @@
          "description": "",
          "properties": {
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -2896,8 +2896,8 @@
                "type": "string"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -2965,8 +2965,8 @@
          "description": "The set of files and metadata that constitute an image.",
          "properties": {
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -3015,8 +3015,8 @@
                "type": "integer"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "secondary_identifiers": {
                "items": {
@@ -3056,8 +3056,8 @@
          "description": "Part of an Image that is relevant to some annotation. An annotation may reference many panes of an Image.",
          "properties": {
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -3090,8 +3090,8 @@
                "type": "string"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "table_key": {
                "description": "The primary key for a specific table entry, unique for that table.",
@@ -3322,6 +3322,64 @@
          ],
          "title": "LightChainIsotypeSet",
          "type": "string"
+      },
+      "LoggedInPerson": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "emails": {
+               "description": "list of emails for a person",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "first_name": {
+               "description": "first name of a person",
+               "type": "string"
+            },
+            "last_name": {
+               "description": "last (family) name of a person",
+               "type": "string"
+            },
+            "middle_name": {
+               "description": "middle names of a person",
+               "type": "string"
+            },
+            "mod_id": {
+               "description": "The model organism database (MOD) identifier/curie for the object",
+               "type": "string"
+            },
+            "okta_email": {
+               "description": "The email address of the LoggedInPerson registered with Okta for user authentication",
+               "type": "string"
+            },
+            "okta_id": {
+               "description": "The Okta identifier for the person registered in Okta for user authentication",
+               "type": "string"
+            },
+            "old_emails": {
+               "description": "list of old (outdated) emails for a person",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "orcid": {
+               "description": "Open Researcher and Contributor ID",
+               "type": "string"
+            },
+            "unique_id": {
+               "description": "A non-curie unique identifier for a thing.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "okta_id",
+            "okta_email"
+         ],
+         "title": "LoggedInPerson",
+         "type": "object"
       },
       "MATerm": {
          "additionalProperties": false,
@@ -3638,8 +3696,8 @@
          "description": "Molecules as described by WormBase",
          "properties": {
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -3697,8 +3755,8 @@
                "type": "string"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -3951,8 +4009,11 @@
          "description": "",
          "properties": {
             "emails": {
-               "description": "space separated email addresses",
-               "type": "string"
+               "description": "list of emails for a person",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "first_name": {
                "description": "first name of a person",
@@ -3970,11 +4031,15 @@
                "description": "The model organism database (MOD) identifier/curie for the object",
                "type": "string"
             },
+            "old_emails": {
+               "description": "list of old (outdated) emails for a person",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "orcid": {
                "description": "Open Researcher and Contributor ID",
-               "type": "string"
-            },
-            "person_id": {
                "type": "string"
             },
             "unique_id": {
@@ -3982,9 +4047,7 @@
                "type": "string"
             }
          },
-         "required": [
-            "person_id"
-         ],
+         "required": [],
          "title": "Person",
          "type": "object"
       },
@@ -3999,8 +4062,8 @@
                "type": "array"
             },
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date of curation at the source (MOD) database.",
@@ -4017,8 +4080,8 @@
                "type": "string"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "object": {
                "description": "phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed statement of the phenotype from a post-composed terminology",
@@ -4160,8 +4223,8 @@
                "type": "string"
             },
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -4232,8 +4295,8 @@
                "type": "array"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "month_published": {
                "description": "Month in which an entity was created.",
@@ -4328,8 +4391,8 @@
                "type": "string"
             },
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -4363,8 +4426,8 @@
                "type": "string"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "online_issn": {
                "type": "string"
@@ -4523,8 +4586,8 @@
          "description": "Placeholder.",
          "properties": {
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -4548,8 +4611,8 @@
                "type": "string"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -4664,8 +4727,8 @@
                "type": "string"
             },
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -4708,8 +4771,8 @@
                "type": "string"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -4976,8 +5039,8 @@
          "description": "A set of VocabularyTerm objects.",
          "properties": {
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -5001,8 +5064,8 @@
                "type": "array"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -5033,8 +5096,8 @@
                "type": "string"
             },
             "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that created the entity."
             },
             "creation_date": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -5055,8 +5118,8 @@
                "type": "boolean"
             },
             "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
+               "$ref": "#/$defs/Person",
+               "description": "The individual that last modified the entity."
             },
             "name": {
                "description": "a human-readable name for an entity",
