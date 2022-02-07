@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Class: AuthorReference - Model to describe the Alliance curation/persistence data store</title>
+  <title>Class: LoggedInPerson - Model to describe the Alliance curation/persistence data store</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Class: AuthorReference";
-    var mkdocs_page_input_path = "AuthorReference.md";
+    var mkdocs_page_name = "Class: LoggedInPerson";
+    var mkdocs_page_input_path = "LoggedInPerson.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Class: AuthorReference</li>
+    <li>Class: LoggedInPerson</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,23 +91,32 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="class-authorreference">Class: AuthorReference</h1>
-<p>URI: <a href="http://alliancegenome.orgAuthorReference">alliance:AuthorReference</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Resource],[InformationContentEntity],[CrossReference],[CrossReference]&lt;cross_references%200..*-++[AuthorReference&#124;first_name:string%20%3F;middle_name:string%20%3F;last_name:string%20%3F],[InformationContentEntity]&lt;initials%200..1-%20[AuthorReference],[InformationContentEntity]&lt;corresponding_author%200..1-%20[AuthorReference],[Reference]++-%20authors%200..*&gt;[AuthorReference],[Resource]++-%20authors%200..*&gt;[AuthorReference],[Resource]++-%20editors%200..*&gt;[AuthorReference],[Reference]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Resource],[InformationContentEntity],[CrossReference],[CrossReference]&lt;cross_references%200..*-++[AuthorReference&#124;first_name:string%20%3F;middle_name:string%20%3F;last_name:string%20%3F],[InformationContentEntity]&lt;initials%200..1-%20[AuthorReference],[InformationContentEntity]&lt;corresponding_author%200..1-%20[AuthorReference],[Reference]++-%20authors%200..*&gt;[AuthorReference],[Resource]++-%20authors%200..*&gt;[AuthorReference],[Resource]++-%20editors%200..*&gt;[AuthorReference],[Reference]" /></a></p>
-<h2 id="referenced-by-class">Referenced by Class</h2>
+                <h1 id="class-loggedinperson">Class: LoggedInPerson</h1>
+<p>URI: <a href="http://alliancegenome.orgLoggedInPerson">alliance:LoggedInPerson</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Person],[Person]^-[LoggedInPerson&#124;okta_id:string;okta_email:string;last_name(i):string%20%3F;middle_name(i):string%20%3F;first_name(i):string%20%3F;orcid(i):uriorcurie%20%3F;emails(i):string%20*;old_emails(i):string%20*;mod_id(i):string%20%3F;unique_id(i):string%20%3F]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Person],[Person]^-[LoggedInPerson&#124;okta_id:string;okta_email:string;last_name(i):string%20%3F;middle_name(i):string%20%3F;first_name(i):string%20%3F;orcid(i):uriorcurie%20%3F;emails(i):string%20*;old_emails(i):string%20*;mod_id(i):string%20%3F;unique_id(i):string%20%3F]" /></a></p>
+<h2 id="parents">Parents</h2>
 <ul>
-<li><strong><a href="../InformationContentEntity/">InformationContentEntity</a></strong> <em><a href="../authors/">authors</a></em>  <sub>0..*</sub>  <strong><a href="./">AuthorReference</a></strong></li>
-<li><strong><a href="../Resource/">Resource</a></strong> <em><a href="../editors/">editors</a></em>  <sub>0..*</sub>  <strong><a href="./">AuthorReference</a></strong></li>
+<li>is_a: <a href="../Person/">Person</a></li>
 </ul>
+<h2 id="referenced-by-class">Referenced by Class</h2>
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
-<li><a href="../corresponding_author/">corresponding_author</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../InformationContentEntity/">InformationContentEntity</a></li>
+<li><a href="../LoggedInPerson_okta_id/">LoggedInPerson➞okta_id</a>  <sub>1..1</sub><ul>
+<li>Description: The Okta identifier for the person registered in Okta for user authentication</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../first_name/">first_name</a>  <sub>0..1</sub><ul>
-<li>Description: first name of a person</li>
+<li><a href="../LoggedInPerson_okta_email/">LoggedInPerson➞okta_email</a>  <sub>1..1</sub><ul>
+<li>Description: The email address of the LoggedInPerson registered with Okta for user authentication</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="inherited-from-person">Inherited from Person:</h3>
+<ul>
+<li><a href="../last_name/">last_name</a>  <sub>0..1</sub><ul>
+<li>Description: last (family) name of a person</li>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
@@ -116,18 +125,34 @@
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../last_name/">last_name</a>  <sub>0..1</sub><ul>
-<li>Description: last (family) name of a person</li>
+<li><a href="../first_name/">first_name</a>  <sub>0..1</sub><ul>
+<li>Description: first name of a person</li>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../initials/">initials</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../InformationContentEntity/">InformationContentEntity</a></li>
+<li><a href="../orcid/">orcid</a>  <sub>0..1</sub><ul>
+<li>Description: Open Researcher and Contributor ID</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
-<li><a href="../cross_references/">cross_references</a>  <sub>0..*</sub><ul>
-<li>Description: Holds between an object and its CrossReferences.</li>
-<li>Range: <a href="../CrossReference/">CrossReference</a></li>
+<li><a href="../emails/">emails</a>  <sub>0..*</sub><ul>
+<li>Description: list of emails for a person</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../old_emails/">old_emails</a>  <sub>0..*</sub><ul>
+<li>Description: list of old (outdated) emails for a person</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../mod_id/">mod_id</a>  <sub>0..1</sub><ul>
+<li>Description: The model organism database (MOD) identifier/curie for the object</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../unique_id/">unique_id</a>  <sub>0..1</sub><ul>
+<li>Description: A non-curie unique identifier for a thing.</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
 </ul>

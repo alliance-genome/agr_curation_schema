@@ -122,7 +122,10 @@
 <li><a href="Laboratory/">Laboratory</a></li>
 </ul>
 </li>
-<li><a href="Person/">Person</a></li>
+<li><a href="Person/">Person</a><ul>
+<li><a href="LoggedInPerson/">LoggedInPerson</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="Assembly/">Assembly</a></li>
@@ -462,6 +465,7 @@
 <li><a href="display_name/">display_name</a></li>
 <li><a href="display_synonym/">display_synonym</a> - Placeholder.</li>
 <li><a href="editors/">editors</a> - holds between a resource and a editor_resource</li>
+<li><a href="emails/">emails</a> - list of emails for a person</li>
 <li><a href="embryonic_cell_lines/">embryonic_cell_lines</a><ul>
 <li><a href="Allele_embryonic_cell_lines/">Allele➞embryonic_cell_lines</a></li>
 </ul>
@@ -472,7 +476,7 @@
 <li><a href="DiseaseAnnotation_evidence_codes/">DiseaseAnnotation➞evidence_codes</a></li>
 </ul>
 </li>
-<li><a href="first_name/">first_name</a></li>
+<li><a href="first_name/">first_name</a> - first name of a person</li>
 <li><a href="formula/">formula</a> - Formula of the molecule</li>
 <li><a href="from_resource/">from_resource</a></li>
 <li><a href="functional_impact/">functional_impact</a> - Experimentally assessed functional impact of the allele, e.g. knockout / amorphic</li>
@@ -568,13 +572,13 @@
 <li><a href="iupac/">iupac</a> - IUPAC name of the molecule</li>
 <li><a href="keywords/">keywords</a> - keywords tagging a publication</li>
 <li><a href="label/">label</a> - A short display name for the figure. For example: Figure 2, Figure 3B</li>
-<li><a href="last_name/">last_name</a></li>
+<li><a href="last_name/">last_name</a> - last (family) name of a person</li>
 <li><a href="light_chain_isotype/">light_chain_isotype</a> - The isotype of the antibody light chain: e.g., i4.</li>
 <li><a href="located_on/">located on</a></li>
 <li><a href="manufactured_by/">manufactured_by</a> - Holds between a material entity and an Agent that has manufactured it: e.g., olecular Probes.</li>
 <li><a href="medline_abbreviation/">medline_abbreviation</a></li>
 <li><a href="member_terms/">member_terms</a> - Set of VocabularyTerm objects in a Vocabulary object set</li>
-<li><a href="middle_names/">middle_names</a></li>
+<li><a href="middle_name/">middle_name</a> - middle names of a person</li>
 <li><a href="mod_id/">mod_id</a> - The model organism database (MOD) identifier/curie for the object<ul>
 <li><a href="DiseaseAnnotation_mod_id/">DiseaseAnnotation➞mod_id</a> - The model organism database (MOD) identifier/curie for the disease annotation. Currently only used by WormBase for disease annotations, e.g. "WBDOannot00000907"</li>
 </ul>
@@ -609,8 +613,17 @@
 </ul>
 </li>
 <li><a href="notes/">notes</a></li>
+<li><a href="okta_email/">okta_email</a> - The email address of the LoggedInPerson registered with Okta for user authentication<ul>
+<li><a href="LoggedInPerson_okta_email/">LoggedInPerson➞okta_email</a></li>
+</ul>
+</li>
+<li><a href="okta_id/">okta_id</a> - The Okta identifier for the person registered in Okta for user authentication<ul>
+<li><a href="LoggedInPerson_okta_id/">LoggedInPerson➞okta_id</a></li>
+</ul>
+</li>
+<li><a href="old_emails/">old_emails</a> - list of old (outdated) emails for a person</li>
 <li><a href="online_issn/">online_issn</a></li>
-<li><a href="orcid/">orcid</a></li>
+<li><a href="orcid/">orcid</a> - Open Researcher and Contributor ID</li>
 <li><a href="origins/">origins</a> - Affected genomic models that the allele was introduced in</li>
 <li><a href="padding_left/">padding_left</a> - flanking sequence upstream of the variation position on the sense strand of the reference genome</li>
 <li><a href="padding_right/">padding_right</a> - flanking sequence downstream of the variation position on the sense strand of the reference genome</li>
@@ -625,10 +638,6 @@
 </ul>
 </li>
 <li><a href="parental_populations/">parental_populations</a></li>
-<li><a href="person_id/">person id</a><ul>
-<li><a href="Person_person_id/">Person➞person id</a></li>
-</ul>
-</li>
 <li><a href="phenotype_or_trait/">phenotype_or_trait</a></li>
 <li><a href="phenotype_term/">phenotype_term</a><ul>
 <li><a href="PhenotypeAnnotation_phenotype_term/">PhenotypeAnnotation➞phenotype_term</a></li>
@@ -883,5 +892,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-01-27 17:51:11.812519+00:00
+Build Date UTC : 2022-02-07 17:09:48.705804+00:00
 -->

@@ -9,7 +9,7 @@ import lombok.*;
 public class AuthorReference  {
 
   private InformationContentEntity firstName;
-  private InformationContentEntity middleNames;
+  private InformationContentEntity middleName;
   private InformationContentEntity lastName;
 
 }
