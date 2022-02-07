@@ -26,11 +26,6 @@ classes:
     exact_mappings:
       - IAO:0000030
 
-  AuthorReference:
-    slots:
-      - first_name
-      - middle_name
-      - last_name
 
   Resource:
     is_a: InformationContentEntity
@@ -54,7 +49,6 @@ classes:
       title:
         description: >-
           the title of the publication
-
 slots:
 
 
@@ -76,10 +70,6 @@ slots:
     domain: InformationContentEntity
     range: date
 
-  authors:
-    multivalued: true
-    domain: InformationContentEntity
-    range: AuthorReference
 
   corresponding_author:
     description: >-
@@ -120,7 +110,6 @@ slots:
     range: string
     domain: InformationContentEntity
     description: >-
-
   publisher:
     range: InformationContentEntity
     domain: InformationContentEntity
@@ -130,7 +119,6 @@ slots:
       the particulars of the place where someone or an organization is situated.  For now, this slot is a
       simple text blob containing all relevant details of the given location for fitness of purpose.
       For the moment, this address can include other contact details such as email and phone number(?).
-
   iso_abbreviation:
     description: >-
     domain: Resource
@@ -150,11 +138,3 @@ slots:
     description: >-
     domain: Resource
     range: string
-
-  editors:
-    singular_name: editor
-    description: >-
-      holds between a resource and a editor_resource
-    multivalued: true
-    domain: Resource
-    range: AuthorReference

@@ -1,0 +1,199 @@
+CHANGES
+=======
+
+* add disease examples
+* add allele set
+* add validator and example data
+* Updating generated outputs
+* Change curie to unique\_id
+* Updating generated outputs
+* Remove identifier flag
+* Replace curie with unique\_id on DiseaseAnnotation
+* Updating generated outputs
+* Add gene\_type slot linking gene to SOTerm
+* Updating generated outputs
+* Fix typo
+* Remove abbreviation definition as moved to core
+* SCRUM-879 vocabulary changes
+* Updating generated outputs
+* SCRUM-963 Add letter code abbreviations of ECO terms
+
+v1.0.0
+------
+
+* Updating generated outputs
+* Made MA ontology term a type of anatomical term
+* Updating generated outputs
+* Made 'paper\_handle' slot plural 'paper\_handles'
+* PaperHandle class, paper\_handle slot, other edits
+* Updating generated outputs
+* Update molecule
+* Updating generated outputs
+* Clean up to disease and phenotype annotation yaml
+* Updating generated outputs
+* Initial use of inlining to create nested JSON schema
+* Updating generated outputs
+* Removed phenotype relation enum references
+* Updated slot descriptions, added new slots and classes for phenotype and disease annotations
+* Updating generated outputs
+* Update allianceModel.yaml with controlledVocabulary import
+* Removed unnecessary dash before 'definition' slot usage in ontologyTerm.yaml
+* Updated vocabulary additions
+* added controlled vocabulary yaml
+* Updating generated outputs
+* Add 'AuditedObject' mixin to Molecule class
+* Updating generated outputs
+* Update ExperimentalCondition slot\_usage ranges
+* Updating generated outputs
+* Define ConditionRelation class and add relevant slots
+* Remove obsolete 'Disease' class
+* Updating generated outputs
+* Updating generated outputs
+* Initial commit of schema for WB molecules
+* Add descriptions and tidy up
+* Updating generated outputs
+* add more targets to store
+* add makefile for javagen
+* add java gene
+* Updating generated outputs
+* remove typo before id
+* Inherit slots from parent DiseaseAnnotation class
+* SCRUM-569 Disease annotation updates
+* Updating generated outputs
+* add gen-java
+* add gen-java fix typo
+* Added ExperimentalConditionOntologyTerm class
+* Made "ECOTerm" range for "evidence\_code" slot
+* fix typo
+* add small changes to potentially restrict what goes in the modifier fields
+* fixing class slots per review
+* SCRUM-248 Update to required fields
+* regenerate docs, etc
+* fixing tests
+* fixing tests
+* fixing tests
+* fixing tests
+* fixing tests
+* add several subclasses
+* refactor disease annotation to be a superclass
+* Added prefix stanza to the antibody schema yaml
+* Set theme jekyll-theme-cayman
+* Update phenotypeAndDiseaseAnnotation.yaml
+* Change affected\_genes to affected\_entities
+* Remove feature\_type slot
+* Create MolecularMutation class
+* Add details to embryonic\_cell\_lines slot
+* Replace comments with notes tag
+* Remove curie slot from CrossReference class
+* Updating generated outputs
+* fixing tests
+* Updates to phenotypeAndDiseaseAnnotation.yaml
+* Updating generated outputs
+* Removed fields that exist in the is\_a class
+* Updating generated outputs
+* Removed the One to One relationship as no other classes use this class
+* Removed redundant slots as these were on the parent classes
+* Updating generated outputs
+* Update main.yaml
+* Updating generated outputs
+* fix reference
+* remove reference id
+* remove docs
+* fix refernee
+* Updating generated outputs
+* remove docs
+* remove doc, add has\_allele
+* Updating generated outputs
+* fix figure
+* edit workflow so it runs on a test branch
+* fixing redundant names of slots and classes
+* Updating generated outputs
+* added docs ignores
+* removed docs/
+* Updating generated outputs
+* Add docs/ to .gitignore
+* Updating generated outputs
+* Updating generated outputs
+* fixing conflicts
+* Updating generated outputs
+* fixing Makefiel
+* remove sqlalchemy for now
+* add test.yaml
+* Updating generated outputs
+* Updating generated outputs
+* Automatically generated requirements.txt and requirements-dev.txt
+* fixing test
+* fixing tests
+* fixing tests
+* fix circular crossReference
+* remove double quotes
+* fixing antibody
+* fix linkml-model
+* fix linkml-model error
+* adding linkmk-model
+* test actions
+* removing redundant imports
+* Create VariantConsequence parent class
+* Remove duplicate variation slots
+* Remove non-required slots as discussed in Allele WG
+* Automatically generated requirements.txt and requirements-dev.txt
+* remove test for now
+* remove test for now
+* flag other anatomy terms
+* minor tidying
+* remove redundant condition modeling
+* add Figure and ImagePane
+* fix range on orthology
+* added ontologyterm ranges
+* added ontologyterm ranges
+* added ontologyterm ranges
+* add gene synopsis descriptions
+* ortho association classes
+* externalDatabaseLink
+* adding external id xref tables
+* 1st draft xprn, image
+* remove entity is a relation
+* remove entity is a relation
+* remove entity is a relation
+* minimal changes required to get "make install all" working
+* First submission of phentoypeAndDiseaseAnnotation.yaml to agr\_curation\_schema
+* First submission of geneInteraction.yaml to agr-curation-schema
+* orthology
+* add construct relation, ontology term
+* add AntibodyGene association
+* update
+* add Antibody
+* fix tests
+* remove the top level requirements from Pipfile
+* rm env.lock
+* adding linkml upstream
+* adding linkml upstream
+* adding linkml upstream
+* adding linkml upstream
+* adding linkml upstream
+* messing with pipenv
+* messing with pipenv
+* messing with pipenv
+* try out different version of linkml
+* try out different version of linkml
+* fix pip
+* update Pipfile to include linkml
+* update Pipfile to include linkml
+* fix dependency
+* try adding linkml to the Pipfile
+* try commiting make-venv
+* try touching dir before install
+* try touching dir before install
+* try touching dir before install
+* try touching dir before install
+* remove duplicate target/ from gitignore
+* alliance-model to allianceModel, fix docs and agr\_curation\_schema in .gitignore, remove test artifacts
+* made GenomicEntity the base class for testing
+* fix up config from linkml-config-model to agr\_curation\_schema config
+* remove make-venv directory
+* remove stray images directory
+* Initial generation run
+* update git ignore
+* add workflows
+* migrate currently checked in code to new repository
+* Initial commit

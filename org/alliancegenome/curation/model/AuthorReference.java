@@ -8,6 +8,7 @@ import lombok.*;
 @EqualsAndHashCode(callSuper=false)
 public class AuthorReference  {
 
+
   private InformationContentEntity firstName;
   private InformationContentEntity middleName;
   private InformationContentEntity lastName;

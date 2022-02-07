@@ -39,6 +39,7 @@ imports:
   - ontologyTerm
   - phenotypeAndDiseaseAnnotation
   - controlledVocabulary
+  - ingest
 
 subsets:
   alliance subset:
