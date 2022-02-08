@@ -319,12 +319,26 @@ enums:
       We need to get a set of relevant qualifiers used across the MODs.
       Filled in with FB qualifiers for now.
     permissible_values:
+      strong:
+      moderate:
       faint:
-      granular:
+      granular: 
       intense:
       punctate:
       uniform:
+      non-uniform:
       variable:
+      clusters:
+      diffuse:
+      graded:
+      not_specified:
+      patchy:
+      regionally_restricted:
+      scattered:
+      single_cells:
+      spotted:
+      ubiquitous:
+      widespread:   
 
   temporal_qualifier_set:
     notes: >-
@@ -334,6 +348,12 @@ enums:
       progressive:
         description: >-
           An event that gets more pronounced with time.
+      throughout:
+        description: >-
+          An event that happens from start to end times included in the annotation
+      sometime_during:
+        description: >-
+          An event that happens during some of the stages included in the annotation, but maybe not all
 
   expression_condition_relation_enum:
     permissible_values:
