@@ -171,7 +171,9 @@ deploy-testpypi:
 # datasets used test/validate the schema
 SCHEMA_TEST_EXAMPLES := \
 	allele_test \
-	disease_test \
+	disease_allele_test \
+	disease_agm_test \
+	disease_gene_test \
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
 	allele_invalid \

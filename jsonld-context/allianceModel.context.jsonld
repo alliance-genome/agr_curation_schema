@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-02-07T13:32:02\n    Schema: Alliance-Schema-Prototype\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: Alliance Schema Prototype\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-02-07T19:44:49\n    Schema: Alliance-Schema-Prototype\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: Alliance Schema Prototype\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "BIOGRID": "http://identifiers.org/biogrid/",
       "DIP": "http://identifiers.org/dip/",
@@ -267,9 +267,17 @@
       "detection_method": {
          "@type": "@id"
       },
+      "disease_agm_ingest_set": {
+         "@type": "@id",
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/disease_agm_ingest_set"
+      },
       "disease_allele_ingest_set": {
          "@type": "@id",
          "@id": "https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/disease_allele_ingest_set"
+      },
+      "disease_gene_ingest_set": {
+         "@type": "@id",
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/disease_gene_ingest_set"
       },
       "disease_genetic_modifier": {
          "@type": "@id"

@@ -1,0 +1,39 @@
+{
+  "disease_agm_ingest_set": [
+    {
+      "evidence_codes": [
+        "ECO:0000305"
+      ],
+      "reference": "PMID:0012345",
+      "data_provider": [
+        "ZFIN"
+      ],
+      "object": "DOID:9452",
+      "created_by": {
+        "first_name": "ZFIN"
+      },
+      "modified_by": {
+        "first_name": "ZFIN"
+      },
+      "subject": "ZFIN:ZDB-FISH-180912-16",
+      "predicate": "is_model_of",
+      "condition_relations": [
+        {
+          "condition_relation_type": "has_condition",
+          "conditions": [
+            {
+              "condition_statement": "standard conditions",
+              "condition_class": "ZECO:0000103",
+              "paper_handles": [
+                {
+                  "reference": "PMID:0012345",
+                  "handle": "standard"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
