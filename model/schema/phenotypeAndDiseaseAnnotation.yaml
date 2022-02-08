@@ -355,11 +355,6 @@ classes:
         values_from:
           - CHEBI
           - WBMol
-      paper_handles:
-        description: >-
-          Used by ZFIN to provide reference-specific labels/aliases to experimental conditions;
-          useful for referencing experimental conditions while curating.
-        required: false
 
 
   ConditionRelation:
