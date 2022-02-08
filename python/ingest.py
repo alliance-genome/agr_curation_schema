@@ -1,5 +1,5 @@
 # Auto generated from ingest.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-07T20:22:06
+# Generation date: 2022-02-08T10:32:32
 # Schema: Alliance-Schema-Ingest
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest
@@ -285,6 +285,7 @@ class Ingest(YAMLRoot):
     disease_agm_ingest_set: Optional[Union[Union[dict, "AGMDiseaseAnnotation"], List[Union[dict, "AGMDiseaseAnnotation"]]]] = empty_list()
     disease_gene_ingest_set: Optional[Union[Union[dict, "GeneDiseaseAnnotation"], List[Union[dict, "GeneDiseaseAnnotation"]]]] = empty_list()
     gene_ingest_set: Optional[Union[Dict[Union[str, GeneCurie], Union[dict, "Gene"]], List[Union[dict, "Gene"]]]] = empty_dict()
+    agm_ingest_set: Optional[Union[Dict[Union[str, AffectedGenomicModelCurie], Union[dict, "AffectedGenomicModel"]], List[Union[dict, "AffectedGenomicModel"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         self._normalize_inlined_as_list(slot_name="allele_ingest_set", slot_type=Allele, key_name="curie", keyed=True)
@@ -302,6 +303,8 @@ class Ingest(YAMLRoot):
         self.disease_gene_ingest_set = [v if isinstance(v, GeneDiseaseAnnotation) else GeneDiseaseAnnotation(**as_dict(v)) for v in self.disease_gene_ingest_set]
 
         self._normalize_inlined_as_list(slot_name="gene_ingest_set", slot_type=Gene, key_name="curie", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="agm_ingest_set", slot_type=AffectedGenomicModel, key_name="curie", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -3400,6 +3403,9 @@ slots.disease_gene_ingest_set = Slot(uri=DEFAULT_.disease_gene_ingest_set, name=
 
 slots.gene_ingest_set = Slot(uri=DEFAULT_.gene_ingest_set, name="gene_ingest_set", curie=DEFAULT_.curie('gene_ingest_set'),
                    model_uri=DEFAULT_.gene_ingest_set, domain=Ingest, range=Optional[Union[Dict[Union[str, GeneCurie], Union[dict, "Gene"]], List[Union[dict, "Gene"]]]])
+
+slots.agm_ingest_set = Slot(uri=DEFAULT_.agm_ingest_set, name="agm_ingest_set", curie=DEFAULT_.curie('agm_ingest_set'),
+                   model_uri=DEFAULT_.agm_ingest_set, domain=Ingest, range=Optional[Union[Dict[Union[str, AffectedGenomicModelCurie], Union[dict, "AffectedGenomicModel"]], List[Union[dict, "AffectedGenomicModel"]]]])
 
 slots.object_set = Slot(uri=DEFAULT_.object_set, name="object_set", curie=DEFAULT_.curie('object_set'),
                    model_uri=DEFAULT_.object_set, domain=Ingest, range=Optional[Union[str, List[str]]])

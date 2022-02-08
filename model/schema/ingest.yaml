@@ -62,6 +62,14 @@ slots:
     mixins:
       - object_set
 
+  agm_ingest_set:
+    description: >-
+    domain: Ingest
+    range: AffectedGenomicModel
+    multivalued: true
+    mixins:
+      - object_set
+
   object_set:
     mixin: true
     domain: Ingest
@@ -81,4 +89,5 @@ classes:
       - disease_agm_ingest_set
       - disease_gene_ingest_set
       - gene_ingest_set
+      - agm_ingest_set
 

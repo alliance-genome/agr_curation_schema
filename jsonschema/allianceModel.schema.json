@@ -3116,6 +3116,12 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "agm_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AffectedGenomicModel"
+               },
+               "type": "array"
+            },
             "allele_ingest_set": {
                "items": {
                   "$ref": "#/$defs/Allele"
@@ -5604,6 +5610,12 @@
    "$schema": "http://json-schema.org/draft-07/schema#",
    "additionalProperties": false,
    "properties": {
+      "agm_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AffectedGenomicModel"
+         },
+         "type": "array"
+      },
       "allele_ingest_set": {
          "items": {
             "$ref": "#/$defs/Allele"

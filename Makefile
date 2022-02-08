@@ -175,6 +175,7 @@ SCHEMA_TEST_EXAMPLES := \
 	disease_agm_test \
 	disease_gene_test \
 	gene_test \
+	agm_test \
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
 	allele_invalid \

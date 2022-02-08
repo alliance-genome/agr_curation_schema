@@ -1,0 +1,13 @@
+{
+  "agm_ingest_set": [
+    {
+      "curie": "ZFIN:ZDB-FISH-123456-1",
+      "taxon": "NCBITaxon:7955",
+      "created_by": {},
+      "modified_by": {},
+      "name": "",
+      "sequence_target_reagents": [],
+
+    }
+  ]
+}
