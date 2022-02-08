@@ -1,5 +1,5 @@
 # Auto generated from ingest.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-07T13:33:00
+# Generation date: 2022-02-07T19:47:42
 # Schema: Alliance-Schema-Ingest
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest
@@ -282,6 +282,8 @@ class Ingest(YAMLRoot):
 
     allele_ingest_set: Optional[Union[Dict[Union[str, AlleleCurie], Union[dict, "Allele"]], List[Union[dict, "Allele"]]]] = empty_dict()
     disease_allele_ingest_set: Optional[Union[Union[dict, "AlleleDiseaseAnnotation"], List[Union[dict, "AlleleDiseaseAnnotation"]]]] = empty_list()
+    disease_agm_ingest_set: Optional[Union[Union[dict, "AGMDiseaseAnnotation"], List[Union[dict, "AGMDiseaseAnnotation"]]]] = empty_list()
+    disease_gene_ingest_set: Optional[Union[Union[dict, "GeneDiseaseAnnotation"], List[Union[dict, "GeneDiseaseAnnotation"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         self._normalize_inlined_as_list(slot_name="allele_ingest_set", slot_type=Allele, key_name="curie", keyed=True)
@@ -289,6 +291,14 @@ class Ingest(YAMLRoot):
         if not isinstance(self.disease_allele_ingest_set, list):
             self.disease_allele_ingest_set = [self.disease_allele_ingest_set] if self.disease_allele_ingest_set is not None else []
         self.disease_allele_ingest_set = [v if isinstance(v, AlleleDiseaseAnnotation) else AlleleDiseaseAnnotation(**as_dict(v)) for v in self.disease_allele_ingest_set]
+
+        if not isinstance(self.disease_agm_ingest_set, list):
+            self.disease_agm_ingest_set = [self.disease_agm_ingest_set] if self.disease_agm_ingest_set is not None else []
+        self.disease_agm_ingest_set = [v if isinstance(v, AGMDiseaseAnnotation) else AGMDiseaseAnnotation(**as_dict(v)) for v in self.disease_agm_ingest_set]
+
+        if not isinstance(self.disease_gene_ingest_set, list):
+            self.disease_gene_ingest_set = [self.disease_gene_ingest_set] if self.disease_gene_ingest_set is not None else []
+        self.disease_gene_ingest_set = [v if isinstance(v, GeneDiseaseAnnotation) else GeneDiseaseAnnotation(**as_dict(v)) for v in self.disease_gene_ingest_set]
 
         super().__post_init__(**kwargs)
 
@@ -3378,6 +3388,12 @@ slots.allele_ingest_set = Slot(uri=DEFAULT_.allele_ingest_set, name="allele_inge
 
 slots.disease_allele_ingest_set = Slot(uri=DEFAULT_.disease_allele_ingest_set, name="disease_allele_ingest_set", curie=DEFAULT_.curie('disease_allele_ingest_set'),
                    model_uri=DEFAULT_.disease_allele_ingest_set, domain=Ingest, range=Optional[Union[Union[dict, "AlleleDiseaseAnnotation"], List[Union[dict, "AlleleDiseaseAnnotation"]]]])
+
+slots.disease_agm_ingest_set = Slot(uri=DEFAULT_.disease_agm_ingest_set, name="disease_agm_ingest_set", curie=DEFAULT_.curie('disease_agm_ingest_set'),
+                   model_uri=DEFAULT_.disease_agm_ingest_set, domain=Ingest, range=Optional[Union[Union[dict, "AGMDiseaseAnnotation"], List[Union[dict, "AGMDiseaseAnnotation"]]]])
+
+slots.disease_gene_ingest_set = Slot(uri=DEFAULT_.disease_gene_ingest_set, name="disease_gene_ingest_set", curie=DEFAULT_.curie('disease_gene_ingest_set'),
+                   model_uri=DEFAULT_.disease_gene_ingest_set, domain=Ingest, range=Optional[Union[Union[dict, "GeneDiseaseAnnotation"], List[Union[dict, "GeneDiseaseAnnotation"]]]])
 
 slots.object_set = Slot(uri=DEFAULT_.object_set, name="object_set", curie=DEFAULT_.curie('object_set'),
                    model_uri=DEFAULT_.object_set, domain=Ingest, range=Optional[Union[str, List[str]]])

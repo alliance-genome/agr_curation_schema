@@ -53,7 +53,7 @@ slots:
     multivalued: true
     mixins:
       - object_set
-      
+
   object_set:
     mixin: true
     domain: Ingest
