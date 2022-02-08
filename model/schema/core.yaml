@@ -494,7 +494,7 @@ slots:
     multivalued: true
     range: Reference
 
-  reference:
+  single_reference:
     description: holds between an object and a single reference
     multivalued: false
     range: Reference

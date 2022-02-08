@@ -44,7 +44,7 @@ classes:
       An annotation asserting an association between a biological entity and a phenotype supported by evidence.
     slots:
       - curie
-      - reference
+      - single_reference
       - phenotype_term                    # phenotypeTermIdentifiers in JSON schema
       - condition_relations
     slot_usage:
@@ -75,7 +75,7 @@ classes:
           statement of the phenotype from a post-composed terminology
         required: true
         range: string
-      reference:
+      single_reference:
         description: >-
           The reference in which the phenotype association was asserted/reported.
       creation_date:
@@ -165,7 +165,7 @@ classes:
       - mod_id
       - negated
       - evidence_codes
-      - reference
+      - single_reference
       - annotation_type
       - with
       - disease_qualifiers
@@ -217,7 +217,7 @@ classes:
           indicated disease based on sequence-similarity/sequence-orthology "with" some human
           gene. Currently used by SGD.
         required: false    # Required for SGD disease annotations using ISS or ISO evidence codes
-      reference:               # evidence in JSON schema
+      single_reference:               # evidence in JSON schema
         required: true
         description: >-
           The reference in which the disease association was asserted/reported.
@@ -389,10 +389,10 @@ classes:
       conditions from ZFIN to label (in a reference-specific manner) individual
       experimental conditions when curating a particular reference.
     slots:
-      - reference
+      - single_reference
       - handle
     slot_usage:
-      reference:
+      single_reference:
         required: true
       handle:
         required: true
