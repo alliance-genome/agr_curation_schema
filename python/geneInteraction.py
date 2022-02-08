@@ -1,5 +1,5 @@
 # Auto generated from geneInteraction.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-07T19:45:28
+# Generation date: 2022-02-07T20:17:59
 # Schema: Alliance-Gene-Interaction-Schema-Prototype
 #
 # id: https://github.com/alliance-genome/agr_persistent_schema/geneInteraction.yaml

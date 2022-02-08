@@ -1,5 +1,5 @@
 # Auto generated from allianceModel.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-07T19:44:54
+# Generation date: 2022-02-07T20:17:26
 # Schema: Alliance-Schema-Prototype
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema
@@ -3576,6 +3576,7 @@ class Ingest(YAMLRoot):
     disease_allele_ingest_set: Optional[Union[Union[dict, AlleleDiseaseAnnotation], List[Union[dict, AlleleDiseaseAnnotation]]]] = empty_list()
     disease_agm_ingest_set: Optional[Union[Union[dict, AGMDiseaseAnnotation], List[Union[dict, AGMDiseaseAnnotation]]]] = empty_list()
     disease_gene_ingest_set: Optional[Union[Union[dict, GeneDiseaseAnnotation], List[Union[dict, GeneDiseaseAnnotation]]]] = empty_list()
+    gene_ingest_set: Optional[Union[Dict[Union[str, GeneCurie], Union[dict, Gene]], List[Union[dict, Gene]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         self._normalize_inlined_as_list(slot_name="allele_ingest_set", slot_type=Allele, key_name="curie", keyed=True)
@@ -3591,6 +3592,8 @@ class Ingest(YAMLRoot):
         if not isinstance(self.disease_gene_ingest_set, list):
             self.disease_gene_ingest_set = [self.disease_gene_ingest_set] if self.disease_gene_ingest_set is not None else []
         self.disease_gene_ingest_set = [v if isinstance(v, GeneDiseaseAnnotation) else GeneDiseaseAnnotation(**as_dict(v)) for v in self.disease_gene_ingest_set]
+
+        self._normalize_inlined_as_list(slot_name="gene_ingest_set", slot_type=Gene, key_name="curie", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -5549,6 +5552,9 @@ slots.disease_agm_ingest_set = Slot(uri="str(uriorcurie)", name="disease_agm_ing
 
 slots.disease_gene_ingest_set = Slot(uri="str(uriorcurie)", name="disease_gene_ingest_set", curie=None,
                    model_uri=ALLIANCE.disease_gene_ingest_set, domain=Ingest, range=Optional[Union[Union[dict, GeneDiseaseAnnotation], List[Union[dict, GeneDiseaseAnnotation]]]])
+
+slots.gene_ingest_set = Slot(uri="str(uriorcurie)", name="gene_ingest_set", curie=None,
+                   model_uri=ALLIANCE.gene_ingest_set, domain=Ingest, range=Optional[Union[Dict[Union[str, GeneCurie], Union[dict, Gene]], List[Union[dict, Gene]]]])
 
 slots.object_set = Slot(uri="str(uriorcurie)", name="object_set", curie=None,
                    model_uri=ALLIANCE.object_set, domain=Ingest, range=Optional[Union[str, List[str]]])

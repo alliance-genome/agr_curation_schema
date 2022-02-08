@@ -54,6 +54,14 @@ slots:
     mixins:
       - object_set
 
+  gene_ingest_set:
+    description: >-
+    domain: Ingest
+    range: Gene
+    multivalued: true
+    mixins:
+      - object_set
+
   object_set:
     mixin: true
     domain: Ingest
@@ -72,4 +80,5 @@ classes:
       - disease_allele_ingest_set
       - disease_agm_ingest_set
       - disease_gene_ingest_set
+      - gene_ingest_set
 

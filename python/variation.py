@@ -1,5 +1,5 @@
 # Auto generated from variation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-07T19:45:03
+# Generation date: 2022-02-07T20:17:34
 # Schema: Alliance-Schema-Prototype-Variation
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/variation
