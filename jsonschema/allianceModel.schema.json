@@ -4590,7 +4590,7 @@
          "title": "Synonym",
          "type": "object"
       },
-      "TagSet": {
+      "TagSet":
          "description": "",
          "enum": [
             "image",

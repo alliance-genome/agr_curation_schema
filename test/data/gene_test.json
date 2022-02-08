@@ -40,11 +40,6 @@
         "prefix": "NCBI_Gene"
       }
     ],
-    "gene_type": "SO:0001217",
-    "secondary_identifiers": [],
-    "synonyms": [
-      {
-      }
-    ]
+    "gene_type": "SO:0001217"
   }
 }
