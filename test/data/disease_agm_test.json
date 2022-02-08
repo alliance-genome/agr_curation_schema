@@ -20,14 +20,16 @@
       "condition_relations": [
         {
           "condition_relation_type": "has_condition",
-          "paper_handles": [{
-            "reference": "PMID:0012345",
-            "handle": "standard"
-          }],
           "conditions": [
             {
               "condition_statement": "standard conditions",
-              "condition_class": "ZECO:0000103"
+              "condition_class": "ZECO:0000103",
+              "paper_handles": [
+                {
+                  "reference": "PMID:0012345",
+                  "handle": "standard"
+                }
+              ]
             }
           ]
         }
