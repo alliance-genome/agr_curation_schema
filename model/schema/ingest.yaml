@@ -38,6 +38,22 @@ slots:
     mixins:
       - object_set
 
+  disease_agm_ingest_set:
+    description: >-
+    domain: Ingest
+    range: AGMDiseaseAnnotation
+    multivalued: true
+    mixins:
+      - object_set
+      -
+  disease_gene_ingest_set:
+    description: >-
+    domain: Ingest
+    range: GeneDiseaseAnnotation
+    multivalued: true
+    mixins:
+      - object_set
+      -
   object_set:
     mixin: true
     domain: Ingest
