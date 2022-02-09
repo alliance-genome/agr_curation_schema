@@ -24,6 +24,7 @@ imports:
   - person
   - image
   - ontologyTerm
+  - controlledVocabulary
 
 prefixes:
   alliance: 'http://alliancegenome.org'
@@ -146,7 +147,9 @@ classes:
 
   Note:
     description: >-
-      Free-text describing some attribute of an entity.
+      Note object for capturing free-text describing some attribute of an entity,
+      coupled with a 'note type', private boolean, and an optional list of
+      references.
     slots:
       - free_text
       - note_type
@@ -317,7 +320,7 @@ slots:
   note_type:
     description: >-
       The type of note: e.g., cytology, comment, summary.
-    range: OntologyTerm
+    range: VocabularyTerm
 
   private:
     description: >-
