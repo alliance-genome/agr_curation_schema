@@ -1,5 +1,5 @@
 # Auto generated from expression.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-07T20:22:10
+# Generation date: 2022-02-08T17:04:42
 # Schema: expression.yaml
 #
 # id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml
@@ -68,11 +68,15 @@ class BiologicalSequence(String):
 
 
 # Class references
-class ExpressionAnnotationCurie(URIorCURIE):
+class ExpressionExperimentCurie(URIorCURIE):
     pass
 
 
 class BiologicalEntityCurie(URIorCURIE):
+    pass
+
+
+class AntibodyCurie(BiologicalEntityCurie):
     pass
 
 
@@ -273,34 +277,83 @@ class ResourceCurie(InformationContentEntityCurie):
 
 
 @dataclass
-class AnatomicalSite(YAMLRoot):
+class ExpressionExperiment(YAMLRoot):
     """
-    The developmental stage and/or age of the specimen in an annotation.
+    Defined by the gene of interest, the specimen, the assay, the reagents (Antibody, Probe), and the reference. It
+    groups ExpressionAnnotations.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/AnatomicalSite")
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/ExpressionExperiment")
     class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "AnatomicalSite"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/AnatomicalSite")
+    class_name: ClassVar[str] = "ExpressionExperiment"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/ExpressionExperiment")
 
-    anatomical_structure: Optional[Union[str, AnatomicalTermCurie]] = None
-    anatomical_substructure: Optional[Union[str, AnatomicalTermCurie]] = None
-    cellular_component: Optional[Union[str, GOTermCurie]] = None
-    anatomical_qualifiers: Optional[Union[str, "AnatomicalQualifierSet"]] = None
+    curie: Union[str, ExpressionExperimentCurie] = None
+    biological_entity_assayed: Union[str, BiologicalEntityCurie] = None
+    created_by: Union[dict, "Person"] = None
+    modified_by: Union[dict, "Person"] = None
+    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
+    assay_used: Optional[Union[str, MMOTermCurie]] = None
+    reagents_used: Optional[Union[Union[dict, "Reagent"], List[Union[dict, "Reagent"]]]] = empty_list()
+    specimen_genomic_model: Optional[Union[str, AffectedGenomicModelCurie]] = None
+    specimen_alleles: Optional[Union[Union[str, AlleleCurie], List[Union[str, AlleleCurie]]]] = empty_list()
+    condition_relations: Optional[Union[Union[dict, "ConditionRelation"], List[Union[dict, "ConditionRelation"]]]] = empty_list()
+    table_key: Optional[int] = None
+    creation_date: Optional[Union[str, XSDDate]] = None
+    date_last_modified: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.anatomical_structure is not None and not isinstance(self.anatomical_structure, AnatomicalTermCurie):
-            self.anatomical_structure = AnatomicalTermCurie(self.anatomical_structure)
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, ExpressionExperimentCurie):
+            self.curie = ExpressionExperimentCurie(self.curie)
 
-        if self.anatomical_substructure is not None and not isinstance(self.anatomical_substructure, AnatomicalTermCurie):
-            self.anatomical_substructure = AnatomicalTermCurie(self.anatomical_substructure)
+        if self._is_empty(self.biological_entity_assayed):
+            self.MissingRequiredField("biological_entity_assayed")
+        if not isinstance(self.biological_entity_assayed, BiologicalEntityCurie):
+            self.biological_entity_assayed = BiologicalEntityCurie(self.biological_entity_assayed)
 
-        if self.cellular_component is not None and not isinstance(self.cellular_component, GOTermCurie):
-            self.cellular_component = GOTermCurie(self.cellular_component)
+        if self._is_empty(self.created_by):
+            self.MissingRequiredField("created_by")
+        if not isinstance(self.created_by, Person):
+            self.created_by = Person(**as_dict(self.created_by))
 
-        if self.anatomical_qualifiers is not None and not isinstance(self.anatomical_qualifiers, AnatomicalQualifierSet):
-            self.anatomical_qualifiers = AnatomicalQualifierSet(self.anatomical_qualifiers)
+        if self._is_empty(self.modified_by):
+            self.MissingRequiredField("modified_by")
+        if not isinstance(self.modified_by, Person):
+            self.modified_by = Person(**as_dict(self.modified_by))
+
+        if not isinstance(self.references, list):
+            self.references = [self.references] if self.references is not None else []
+        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
+
+        if self.assay_used is not None and not isinstance(self.assay_used, MMOTermCurie):
+            self.assay_used = MMOTermCurie(self.assay_used)
+
+        if not isinstance(self.reagents_used, list):
+            self.reagents_used = [self.reagents_used] if self.reagents_used is not None else []
+        self.reagents_used = [v if isinstance(v, Reagent) else Reagent(**as_dict(v)) for v in self.reagents_used]
+
+        if self.specimen_genomic_model is not None and not isinstance(self.specimen_genomic_model, AffectedGenomicModelCurie):
+            self.specimen_genomic_model = AffectedGenomicModelCurie(self.specimen_genomic_model)
+
+        if not isinstance(self.specimen_alleles, list):
+            self.specimen_alleles = [self.specimen_alleles] if self.specimen_alleles is not None else []
+        self.specimen_alleles = [v if isinstance(v, AlleleCurie) else AlleleCurie(v) for v in self.specimen_alleles]
+
+        if not isinstance(self.condition_relations, list):
+            self.condition_relations = [self.condition_relations] if self.condition_relations is not None else []
+        self.condition_relations = [v if isinstance(v, ConditionRelation) else ConditionRelation(**as_dict(v)) for v in self.condition_relations]
+
+        if self.table_key is not None and not isinstance(self.table_key, int):
+            self.table_key = int(self.table_key)
+
+        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
+            self.creation_date = XSDDate(self.creation_date)
+
+        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
+            self.date_last_modified = XSDDate(self.date_last_modified)
 
         super().__post_init__(**kwargs)
 
@@ -318,34 +371,25 @@ class ExpressionAnnotation(YAMLRoot):
     class_name: ClassVar[str] = "ExpressionAnnotation"
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/ExpressionAnnotation")
 
-    curie: Union[str, ExpressionAnnotationCurie] = None
+    belongs_to_expression_experiment: Union[str, ExpressionExperimentCurie] = None
     created_by: Union[dict, "Person"] = None
     modified_by: Union[dict, "Person"] = None
-    gene: Optional[Union[str, GeneCurie]] = None
     when_expressed: Optional[Union[dict, "TemporalContext"]] = None
-    where_expressed: Optional[Union[dict, AnatomicalSite]] = None
-    assay: Optional[Union[str, MMOTermCurie]] = None
-    reagents: Optional[Union[Union[dict, "Reagent"], List[Union[dict, "Reagent"]]]] = empty_list()
+    where_expressed: Optional[Union[dict, "AnatomicalSite"]] = None
     expression_qualifiers: Optional[Union[str, "ExpressionQualifierSet"]] = None
-    perturbed_expression_qualifiers: Optional[Union[str, "PerturbedExpressionQualifierSet"]] = None
-    perturbed: Optional[Union[bool, Bool]] = None
     negated: Optional[Union[bool, Bool]] = None
     uncertain: Optional[Union[bool, Bool]] = None
-    primary_genetic_entities: Optional[Union[Union[str, BiologicalEntityCurie], List[Union[str, BiologicalEntityCurie]]]] = empty_list()
-    when_expressed_note: Optional[str] = None
-    where_expressed_note: Optional[str] = None
-    expression_annotation_note: Optional[str] = None
+    associated_with_figure: Optional[Union[Union[str, FigureCurie], List[Union[str, FigureCurie]]]] = empty_list()
     has_reference: Optional[Union[str, ReferenceCurie]] = None
-    has_figure: Optional[Union[str, FigureCurie]] = None
     table_key: Optional[int] = None
     creation_date: Optional[Union[str, XSDDate]] = None
     date_last_modified: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.curie):
-            self.MissingRequiredField("curie")
-        if not isinstance(self.curie, ExpressionAnnotationCurie):
-            self.curie = ExpressionAnnotationCurie(self.curie)
+        if self._is_empty(self.belongs_to_expression_experiment):
+            self.MissingRequiredField("belongs_to_expression_experiment")
+        if not isinstance(self.belongs_to_expression_experiment, ExpressionExperimentCurie):
+            self.belongs_to_expression_experiment = ExpressionExperimentCurie(self.belongs_to_expression_experiment)
 
         if self._is_empty(self.created_by):
             self.MissingRequiredField("created_by")
@@ -357,30 +401,14 @@ class ExpressionAnnotation(YAMLRoot):
         if not isinstance(self.modified_by, Person):
             self.modified_by = Person(**as_dict(self.modified_by))
 
-        if self.gene is not None and not isinstance(self.gene, GeneCurie):
-            self.gene = GeneCurie(self.gene)
-
         if self.when_expressed is not None and not isinstance(self.when_expressed, TemporalContext):
             self.when_expressed = TemporalContext(**as_dict(self.when_expressed))
 
         if self.where_expressed is not None and not isinstance(self.where_expressed, AnatomicalSite):
             self.where_expressed = AnatomicalSite(**as_dict(self.where_expressed))
 
-        if self.assay is not None and not isinstance(self.assay, MMOTermCurie):
-            self.assay = MMOTermCurie(self.assay)
-
-        if not isinstance(self.reagents, list):
-            self.reagents = [self.reagents] if self.reagents is not None else []
-        self.reagents = [v if isinstance(v, Reagent) else Reagent(**as_dict(v)) for v in self.reagents]
-
         if self.expression_qualifiers is not None and not isinstance(self.expression_qualifiers, ExpressionQualifierSet):
             self.expression_qualifiers = ExpressionQualifierSet(self.expression_qualifiers)
-
-        if self.perturbed_expression_qualifiers is not None and not isinstance(self.perturbed_expression_qualifiers, PerturbedExpressionQualifierSet):
-            self.perturbed_expression_qualifiers = PerturbedExpressionQualifierSet(self.perturbed_expression_qualifiers)
-
-        if self.perturbed is not None and not isinstance(self.perturbed, Bool):
-            self.perturbed = Bool(self.perturbed)
 
         if self.negated is not None and not isinstance(self.negated, Bool):
             self.negated = Bool(self.negated)
@@ -388,24 +416,12 @@ class ExpressionAnnotation(YAMLRoot):
         if self.uncertain is not None and not isinstance(self.uncertain, Bool):
             self.uncertain = Bool(self.uncertain)
 
-        if not isinstance(self.primary_genetic_entities, list):
-            self.primary_genetic_entities = [self.primary_genetic_entities] if self.primary_genetic_entities is not None else []
-        self.primary_genetic_entities = [v if isinstance(v, BiologicalEntityCurie) else BiologicalEntityCurie(v) for v in self.primary_genetic_entities]
-
-        if self.when_expressed_note is not None and not isinstance(self.when_expressed_note, str):
-            self.when_expressed_note = str(self.when_expressed_note)
-
-        if self.where_expressed_note is not None and not isinstance(self.where_expressed_note, str):
-            self.where_expressed_note = str(self.where_expressed_note)
-
-        if self.expression_annotation_note is not None and not isinstance(self.expression_annotation_note, str):
-            self.expression_annotation_note = str(self.expression_annotation_note)
+        if not isinstance(self.associated_with_figure, list):
+            self.associated_with_figure = [self.associated_with_figure] if self.associated_with_figure is not None else []
+        self.associated_with_figure = [v if isinstance(v, FigureCurie) else FigureCurie(v) for v in self.associated_with_figure]
 
         if self.has_reference is not None and not isinstance(self.has_reference, ReferenceCurie):
             self.has_reference = ReferenceCurie(self.has_reference)
-
-        if self.has_figure is not None and not isinstance(self.has_figure, FigureCurie):
-            self.has_figure = FigureCurie(self.has_figure)
 
         if self.table_key is not None and not isinstance(self.table_key, int):
             self.table_key = int(self.table_key)
@@ -422,7 +438,8 @@ class ExpressionAnnotation(YAMLRoot):
 @dataclass
 class TemporalContext(YAMLRoot):
     """
-    The developmental stage and/or age of the specimen in an annotation.
+    The developmental stage and/or age of the specimen in an annotation. Developmental_stage_stop is optional. Add an
+    uncertainty flag here?
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -431,19 +448,60 @@ class TemporalContext(YAMLRoot):
     class_name: ClassVar[str] = "TemporalContext"
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/TemporalContext")
 
-    developmental_stage: Optional[Union[str, StageTermCurie]] = None
+    developmental_stage_start: Optional[Union[str, StageTermCurie]] = None
+    developmental_stage_stop: Optional[Union[str, StageTermCurie]] = None
     age: Optional[str] = None
     temporal_qualifiers: Optional[Union[str, "TemporalQualifierSet"]] = None
+    stage_uncertainty: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.developmental_stage is not None and not isinstance(self.developmental_stage, StageTermCurie):
-            self.developmental_stage = StageTermCurie(self.developmental_stage)
+        if self.developmental_stage_start is not None and not isinstance(self.developmental_stage_start, StageTermCurie):
+            self.developmental_stage_start = StageTermCurie(self.developmental_stage_start)
+
+        if self.developmental_stage_stop is not None and not isinstance(self.developmental_stage_stop, StageTermCurie):
+            self.developmental_stage_stop = StageTermCurie(self.developmental_stage_stop)
 
         if self.age is not None and not isinstance(self.age, str):
             self.age = str(self.age)
 
         if self.temporal_qualifiers is not None and not isinstance(self.temporal_qualifiers, TemporalQualifierSet):
             self.temporal_qualifiers = TemporalQualifierSet(self.temporal_qualifiers)
+
+        if self.stage_uncertainty is not None and not isinstance(self.stage_uncertainty, str):
+            self.stage_uncertainty = str(self.stage_uncertainty)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class AnatomicalSite(YAMLRoot):
+    """
+    The developmental stage and/or age of the specimen in an annotation.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/AnatomicalSite")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "AnatomicalSite"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/AnatomicalSite")
+
+    anatomical_structure: Optional[Union[str, AnatomicalTermCurie]] = None
+    anatomical_substructure: Optional[Union[str, AnatomicalTermCurie]] = None
+    cellular_component: Optional[Union[str, GOTermCurie]] = None
+    spatial_qualifiers: Optional[Union[str, "SpatialQualifierSet"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.anatomical_structure is not None and not isinstance(self.anatomical_structure, AnatomicalTermCurie):
+            self.anatomical_structure = AnatomicalTermCurie(self.anatomical_structure)
+
+        if self.anatomical_substructure is not None and not isinstance(self.anatomical_substructure, AnatomicalTermCurie):
+            self.anatomical_substructure = AnatomicalTermCurie(self.anatomical_substructure)
+
+        if self.cellular_component is not None and not isinstance(self.cellular_component, GOTermCurie):
+            self.cellular_component = GOTermCurie(self.cellular_component)
+
+        if self.spatial_qualifiers is not None and not isinstance(self.spatial_qualifiers, SpatialQualifierSet):
+            self.spatial_qualifiers = SpatialQualifierSet(self.spatial_qualifiers)
 
         super().__post_init__(**kwargs)
 
@@ -634,6 +692,114 @@ class BiologicalEntity(YAMLRoot):
 
         if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
             self.date_last_modified = XSDDate(self.date_last_modified)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Antibody(BiologicalEntity):
+    """
+    Immunoglobulin proteins that bind specific molecule(s). Can be used experimentally for the purposes of detection
+    or purification.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/antibody.yaml/Antibody")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "Antibody"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/Antibody")
+
+    curie: Union[str, AntibodyCurie] = None
+    created_by: Union[dict, "Person"] = None
+    modified_by: Union[dict, "Person"] = None
+    name: str = None
+    clonality: Union[str, "AntibodyClonalitySet"] = None
+    table_key: Optional[int] = None
+    creation_date: Optional[Union[str, XSDDate]] = None
+    date_last_modified: Optional[Union[str, XSDDate]] = None
+    antigen_taxon: Optional[Union[str, NCBITaxonTermCurie]] = None
+    heavy_chain_isotype: Optional[Union[str, "HeavyChainIsotypeSet"]] = None
+    light_chain_isotype: Optional[Union[str, "LightChainIsotypeSet"]] = None
+    antibody_target_genes: Optional[Union[Union[str, GeneCurie], List[Union[str, GeneCurie]]]] = empty_list()
+    cross_references: Optional[Union[Dict[Union[str, CrossReferenceCurie], Union[dict, "CrossReference"]], List[Union[dict, "CrossReference"]]]] = empty_dict()
+    secondary_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
+    original_reference: Optional[Union[str, ReferenceCurie]] = None
+    taxon: Optional[Union[str, NCBITaxonTermCurie]] = None
+    generated_by: Optional[Union[Union[dict, "Agent"], List[Union[dict, "Agent"]]]] = empty_list()
+    manufactured_by: Optional[Union[Union[dict, "Agent"], List[Union[dict, "Agent"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, AntibodyCurie):
+            self.curie = AntibodyCurie(self.curie)
+
+        if self._is_empty(self.created_by):
+            self.MissingRequiredField("created_by")
+        if not isinstance(self.created_by, Person):
+            self.created_by = Person(**as_dict(self.created_by))
+
+        if self._is_empty(self.modified_by):
+            self.MissingRequiredField("modified_by")
+        if not isinstance(self.modified_by, Person):
+            self.modified_by = Person(**as_dict(self.modified_by))
+
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self._is_empty(self.clonality):
+            self.MissingRequiredField("clonality")
+        if not isinstance(self.clonality, AntibodyClonalitySet):
+            self.clonality = AntibodyClonalitySet(self.clonality)
+
+        if self.table_key is not None and not isinstance(self.table_key, int):
+            self.table_key = int(self.table_key)
+
+        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
+            self.creation_date = XSDDate(self.creation_date)
+
+        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
+            self.date_last_modified = XSDDate(self.date_last_modified)
+
+        if self.antigen_taxon is not None and not isinstance(self.antigen_taxon, NCBITaxonTermCurie):
+            self.antigen_taxon = NCBITaxonTermCurie(self.antigen_taxon)
+
+        if self.heavy_chain_isotype is not None and not isinstance(self.heavy_chain_isotype, HeavyChainIsotypeSet):
+            self.heavy_chain_isotype = HeavyChainIsotypeSet(self.heavy_chain_isotype)
+
+        if self.light_chain_isotype is not None and not isinstance(self.light_chain_isotype, LightChainIsotypeSet):
+            self.light_chain_isotype = LightChainIsotypeSet(self.light_chain_isotype)
+
+        if not isinstance(self.antibody_target_genes, list):
+            self.antibody_target_genes = [self.antibody_target_genes] if self.antibody_target_genes is not None else []
+        self.antibody_target_genes = [v if isinstance(v, GeneCurie) else GeneCurie(v) for v in self.antibody_target_genes]
+
+        self._normalize_inlined_as_list(slot_name="cross_references", slot_type=CrossReference, key_name="curie", keyed=True)
+
+        if not isinstance(self.secondary_identifiers, list):
+            self.secondary_identifiers = [self.secondary_identifiers] if self.secondary_identifiers is not None else []
+        self.secondary_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.secondary_identifiers]
+
+        if not isinstance(self.references, list):
+            self.references = [self.references] if self.references is not None else []
+        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
+
+        if self.original_reference is not None and not isinstance(self.original_reference, ReferenceCurie):
+            self.original_reference = ReferenceCurie(self.original_reference)
+
+        if self.taxon is not None and not isinstance(self.taxon, NCBITaxonTermCurie):
+            self.taxon = NCBITaxonTermCurie(self.taxon)
+
+        if not isinstance(self.generated_by, list):
+            self.generated_by = [self.generated_by] if self.generated_by is not None else []
+        self.generated_by = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.generated_by]
+
+        if not isinstance(self.manufactured_by, list):
+            self.manufactured_by = [self.manufactured_by] if self.manufactured_by is not None else []
+        self.manufactured_by = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.manufactured_by]
 
         super().__post_init__(**kwargs)
 
@@ -1092,6 +1258,94 @@ class EntityStatement(YAMLRoot):
 
 
 @dataclass
+class GeneExpressionStatement(EntityStatement):
+    """
+    Free-text describing some aspect(s) of a gene's expression, particularly nuanced information that is not readily
+    captured in annotations. May summarize data from many annotations and/or many publications.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/GeneExpressionStatement")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "GeneExpressionStatement"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/GeneExpressionStatement")
+
+    statement_subject: Optional[Union[str, GeneCurie]] = None
+    statement_type: Optional[Union[str, "ExpressionStatementTypeEnum"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.statement_subject is not None and not isinstance(self.statement_subject, GeneCurie):
+            self.statement_subject = GeneCurie(self.statement_subject)
+
+        if self.statement_type is not None and not isinstance(self.statement_type, ExpressionStatementTypeEnum):
+            self.statement_type = ExpressionStatementTypeEnum(self.statement_type)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class ExpressionExperimentStatement(EntityStatement):
+    """
+    Free-text describing some aspect(s) of a gene's expression, particularly nuanced information that is not readily
+    captured in annotations. This statement's scope is limited to the associated ExpressionExperiment.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/ExpressionExperimentStatement")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "ExpressionExperimentStatement"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/ExpressionExperimentStatement")
+
+    statement_subject: Optional[Union[str, ExpressionExperimentCurie]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.statement_subject is not None and not isinstance(self.statement_subject, ExpressionExperimentCurie):
+            self.statement_subject = ExpressionExperimentCurie(self.statement_subject)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class ExpressionAnnotationStatement(EntityStatement):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/ExpressionAnnotationStatement")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "ExpressionAnnotationStatement"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/ExpressionAnnotationStatement")
+
+    statement_subject: Optional[Union[dict, ExpressionAnnotation]] = None
+    statement_type: Optional[Union[str, "ExpressionStatementTypeEnum"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.statement_subject is not None and not isinstance(self.statement_subject, ExpressionAnnotation):
+            self.statement_subject = ExpressionAnnotation(**as_dict(self.statement_subject))
+
+        if self.statement_type is not None and not isinstance(self.statement_type, ExpressionStatementTypeEnum):
+            self.statement_type = ExpressionStatementTypeEnum(self.statement_type)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class AntibodyNote(EntityStatement):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/antibody.yaml/AntibodyNote")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "AntibodyNote"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/AntibodyNote")
+
+    note_type: Optional[Union[str, "AntibodyNoteTypeSet"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.note_type is not None and not isinstance(self.note_type, AntibodyNoteTypeSet):
+            self.note_type = AntibodyNoteTypeSet(self.note_type)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class Association(YAMLRoot):
     """
     A typed association between two entities, supported by evidence.
@@ -1136,53 +1390,19 @@ class ExpressionAnnotationImagePane(Association):
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/ExpressionAnnotationImagePane")
 
     predicate: str = None
-    subject: Union[str, ExpressionAnnotationCurie] = None
+    subject: Union[dict, ExpressionAnnotation] = None
     object: Union[dict, "ImagePane"] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.subject):
             self.MissingRequiredField("subject")
-        if not isinstance(self.subject, ExpressionAnnotationCurie):
-            self.subject = ExpressionAnnotationCurie(self.subject)
+        if not isinstance(self.subject, ExpressionAnnotation):
+            self.subject = ExpressionAnnotation(**as_dict(self.subject))
 
         if self._is_empty(self.object):
             self.MissingRequiredField("object")
         if not isinstance(self.object, ImagePane):
             self.object = ImagePane(**as_dict(self.object))
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class ExpressionAnnotationExperimentalConditionAssociation(Association):
-    """
-    A typed (predicate-specified) association between an expression annotation object and an experimental condition
-    object
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/ExpressionAnnotationExperimentalConditionAssociation")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "ExpressionAnnotationExperimentalConditionAssociation"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/ExpressionAnnotationExperimentalConditionAssociation")
-
-    subject: str = None
-    object: str = None
-    predicate: Union[str, "ExpressionConditionRelationEnum"] = None
-    phenotype_annotation: Optional[Union[str, ExpressionAnnotationCurie]] = None
-    experimental_condition: Optional[Union[dict, "ExperimentalCondition"]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.predicate):
-            self.MissingRequiredField("predicate")
-        if not isinstance(self.predicate, ExpressionConditionRelationEnum):
-            self.predicate = ExpressionConditionRelationEnum(self.predicate)
-
-        if self.phenotype_annotation is not None and not isinstance(self.phenotype_annotation, ExpressionAnnotationCurie):
-            self.phenotype_annotation = ExpressionAnnotationCurie(self.phenotype_annotation)
-
-        if self.experimental_condition is not None and not isinstance(self.experimental_condition, ExperimentalCondition):
-            self.experimental_condition = ExperimentalCondition(**as_dict(self.experimental_condition))
 
         super().__post_init__(**kwargs)
 
@@ -1446,7 +1666,7 @@ class Image(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/Image")
 
     curie: Union[str, ImageCurie] = None
-    has_figure: Union[str, FigureCurie] = None
+    associated_with_figure: Union[str, FigureCurie] = None
     width: int = None
     height: int = None
     image_file: Union[dict, File] = None
@@ -1469,10 +1689,10 @@ class Image(YAMLRoot):
         if not isinstance(self.curie, ImageCurie):
             self.curie = ImageCurie(self.curie)
 
-        if self._is_empty(self.has_figure):
-            self.MissingRequiredField("has_figure")
-        if not isinstance(self.has_figure, FigureCurie):
-            self.has_figure = FigureCurie(self.has_figure)
+        if self._is_empty(self.associated_with_figure):
+            self.MissingRequiredField("associated_with_figure")
+        if not isinstance(self.associated_with_figure, FigureCurie):
+            self.associated_with_figure = FigureCurie(self.associated_with_figure)
 
         if self._is_empty(self.width):
             self.MissingRequiredField("width")
@@ -1549,7 +1769,7 @@ class ImagePane(YAMLRoot):
     class_name: ClassVar[str] = "ImagePane"
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/ImagePane")
 
-    images: Union[str, ImageCurie] = None
+    from_image: Union[str, ImageCurie] = None
     width: int = None
     height: int = None
     created_by: Union[dict, "Person"] = None
@@ -1562,10 +1782,10 @@ class ImagePane(YAMLRoot):
     date_last_modified: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.images):
-            self.MissingRequiredField("images")
-        if not isinstance(self.images, ImageCurie):
-            self.images = ImageCurie(self.images)
+        if self._is_empty(self.from_image):
+            self.MissingRequiredField("from_image")
+        if not isinstance(self.from_image, ImageCurie):
+            self.from_image = ImageCurie(self.from_image)
 
         if self._is_empty(self.width):
             self.MissingRequiredField("width")
@@ -2284,7 +2504,7 @@ class PhenotypeAnnotation(Association):
     creation_date: Union[str, XSDDate] = None
     created_by: Union[dict, "Person"] = None
     modified_by: Union[dict, "Person"] = None
-    reference: Optional[Union[str, ReferenceCurie]] = None
+    single_reference: Optional[Union[str, ReferenceCurie]] = None
     phenotype_term: Optional[Union[str, PhenotypeTermCurie]] = None
     condition_relations: Optional[Union[Union[dict, "ConditionRelation"], List[Union[dict, "ConditionRelation"]]]] = empty_list()
     table_key: Optional[int] = None
@@ -2321,8 +2541,8 @@ class PhenotypeAnnotation(Association):
         if not isinstance(self.modified_by, Person):
             self.modified_by = Person(**as_dict(self.modified_by))
 
-        if self.reference is not None and not isinstance(self.reference, ReferenceCurie):
-            self.reference = ReferenceCurie(self.reference)
+        if self.single_reference is not None and not isinstance(self.single_reference, ReferenceCurie):
+            self.single_reference = ReferenceCurie(self.single_reference)
 
         if self.phenotype_term is not None and not isinstance(self.phenotype_term, PhenotypeTermCurie):
             self.phenotype_term = PhenotypeTermCurie(self.phenotype_term)
@@ -2471,7 +2691,7 @@ class DiseaseAnnotation(Association):
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/DiseaseAnnotation")
 
     evidence_codes: Union[Union[str, ECOTermCurie], List[Union[str, ECOTermCurie]]] = None
-    reference: Union[str, ReferenceCurie] = None
+    single_reference: Union[str, ReferenceCurie] = None
     data_provider: Union[str, List[str]] = None
     subject: Union[str, BiologicalEntityCurie] = None
     predicate: str = None
@@ -2502,10 +2722,10 @@ class DiseaseAnnotation(Association):
             self.evidence_codes = [self.evidence_codes] if self.evidence_codes is not None else []
         self.evidence_codes = [v if isinstance(v, ECOTermCurie) else ECOTermCurie(v) for v in self.evidence_codes]
 
-        if self._is_empty(self.reference):
-            self.MissingRequiredField("reference")
-        if not isinstance(self.reference, ReferenceCurie):
-            self.reference = ReferenceCurie(self.reference)
+        if self._is_empty(self.single_reference):
+            self.MissingRequiredField("single_reference")
+        if not isinstance(self.single_reference, ReferenceCurie):
+            self.single_reference = ReferenceCurie(self.single_reference)
 
         if self._is_empty(self.data_provider):
             self.MissingRequiredField("data_provider")
@@ -2603,7 +2823,7 @@ class GeneDiseaseAnnotation(DiseaseAnnotation):
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/GeneDiseaseAnnotation")
 
     evidence_codes: Union[Union[str, ECOTermCurie], List[Union[str, ECOTermCurie]]] = None
-    reference: Union[str, ReferenceCurie] = None
+    single_reference: Union[str, ReferenceCurie] = None
     data_provider: Union[str, List[str]] = None
     object: Union[str, DOTermCurie] = None
     created_by: Union[dict, "Person"] = None
@@ -2642,7 +2862,7 @@ class AlleleDiseaseAnnotation(DiseaseAnnotation):
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/AlleleDiseaseAnnotation")
 
     evidence_codes: Union[Union[str, ECOTermCurie], List[Union[str, ECOTermCurie]]] = None
-    reference: Union[str, ReferenceCurie] = None
+    single_reference: Union[str, ReferenceCurie] = None
     data_provider: Union[str, List[str]] = None
     object: Union[str, DOTermCurie] = None
     created_by: Union[dict, "Person"] = None
@@ -2681,7 +2901,7 @@ class AGMDiseaseAnnotation(DiseaseAnnotation):
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/AGMDiseaseAnnotation")
 
     evidence_codes: Union[Union[str, ECOTermCurie], List[Union[str, ECOTermCurie]]] = None
-    reference: Union[str, ReferenceCurie] = None
+    single_reference: Union[str, ReferenceCurie] = None
     data_provider: Union[str, List[str]] = None
     object: Union[str, DOTermCurie] = None
     created_by: Union[dict, "Person"] = None
@@ -2767,7 +2987,7 @@ class ExperimentalCondition(YAMLRoot):
         if self.condition_chemical is not None and not isinstance(self.condition_chemical, OntologyTermCurie):
             self.condition_chemical = OntologyTermCurie(self.condition_chemical)
 
-        self._normalize_inlined_as_dict(slot_name="paper_handles", slot_type=PaperHandle, key_name="reference", keyed=False)
+        self._normalize_inlined_as_dict(slot_name="paper_handles", slot_type=PaperHandle, key_name="single_reference", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -2821,14 +3041,14 @@ class PaperHandle(YAMLRoot):
     class_name: ClassVar[str] = "PaperHandle"
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/PaperHandle")
 
-    reference: Union[str, ReferenceCurie] = None
+    single_reference: Union[str, ReferenceCurie] = None
     handle: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.reference):
-            self.MissingRequiredField("reference")
-        if not isinstance(self.reference, ReferenceCurie):
-            self.reference = ReferenceCurie(self.reference)
+        if self._is_empty(self.single_reference):
+            self.MissingRequiredField("single_reference")
+        if not isinstance(self.single_reference, ReferenceCurie):
+            self.single_reference = ReferenceCurie(self.single_reference)
 
         if self._is_empty(self.handle):
             self.MissingRequiredField("handle")
@@ -3371,7 +3591,7 @@ class LoggedInPerson(Person):
 
 
 # Enumerations
-class AnatomicalQualifierSet(EnumDefinitionImpl):
+class SpatialQualifierSet(EnumDefinitionImpl):
 
     anterior = PermissibleValue(text="anterior")
     anterior_posterior_gradient = PermissibleValue(text="anterior_posterior_gradient")
@@ -3388,13 +3608,57 @@ class AnatomicalQualifierSet(EnumDefinitionImpl):
     gradient = PermissibleValue(text="gradient")
 
     _defn = EnumDefinition(
-        name="AnatomicalQualifierSet",
+        name="SpatialQualifierSet",
     )
 
     @classmethod
     def _addvals(cls):
         setattr(cls, "dorso-lateral",
                 PermissibleValue(text="dorso-lateral") )
+
+class ExpressionQualifierSet(EnumDefinitionImpl):
+
+    strong = PermissibleValue(text="strong")
+    moderate = PermissibleValue(text="moderate")
+    faint = PermissibleValue(text="faint")
+    granular = PermissibleValue(text="granular")
+    intense = PermissibleValue(text="intense")
+    punctate = PermissibleValue(text="punctate")
+    uniform = PermissibleValue(text="uniform")
+    variable = PermissibleValue(text="variable")
+    clusters = PermissibleValue(text="clusters")
+    diffuse = PermissibleValue(text="diffuse")
+    graded = PermissibleValue(text="graded")
+    not_specified = PermissibleValue(text="not_specified")
+    patchy = PermissibleValue(text="patchy")
+    regionally_restricted = PermissibleValue(text="regionally_restricted")
+    scattered = PermissibleValue(text="scattered")
+    single_cells = PermissibleValue(text="single_cells")
+    spotted = PermissibleValue(text="spotted")
+    ubiquitous = PermissibleValue(text="ubiquitous")
+    widespread = PermissibleValue(text="widespread")
+
+    _defn = EnumDefinition(
+        name="ExpressionQualifierSet",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "non-uniform",
+                PermissibleValue(text="non-uniform") )
+
+class TemporalQualifierSet(EnumDefinitionImpl):
+
+    progressive = PermissibleValue(text="progressive",
+                                             description="An event that gets more pronounced with time.")
+    throughout = PermissibleValue(text="throughout",
+                                           description="An event that happens from start to end times included in the annotation")
+    sometime_during = PermissibleValue(text="sometime_during",
+                                                     description="An event that happens during some of the stages included in the annotation, but maybe not all")
+
+    _defn = EnumDefinition(
+        name="TemporalQualifierSet",
+    )
 
 class ExpressionConditionRelationEnum(EnumDefinitionImpl):
 
@@ -3405,36 +3669,19 @@ class ExpressionConditionRelationEnum(EnumDefinitionImpl):
         name="ExpressionConditionRelationEnum",
     )
 
-class ExpressionQualifierSet(EnumDefinitionImpl):
+class ExpressionStatementTypeEnum(EnumDefinitionImpl):
 
-    faint = PermissibleValue(text="faint")
-    granular = PermissibleValue(text="granular")
-    intense = PermissibleValue(text="intense")
-    punctate = PermissibleValue(text="punctate")
-    uniform = PermissibleValue(text="uniform")
-    variable = PermissibleValue(text="variable")
-
-    _defn = EnumDefinition(
-        name="ExpressionQualifierSet",
-    )
-
-class PerturbedExpressionQualifierSet(EnumDefinitionImpl):
-
-    increased = PermissibleValue(text="increased")
-    decreased = PermissibleValue(text="decreased")
-    mislocalized = PermissibleValue(text="mislocalized")
+    expression_summary = PermissibleValue(text="expression_summary",
+                                                           description="Free-text that summarizes expression across many annotations, experiments or publictaions.")
+    when_expressed_note = PermissibleValue(text="when_expressed_note",
+                                                             description="Additional free-text describing the stage/age of expression in an expression annotation.")
+    where_expressed_note = PermissibleValue(text="where_expressed_note",
+                                                               description="Additional free-text describing the anatomical site of expression in an expression annotation.")
+    expression_annotation_note = PermissibleValue(text="expression_annotation_note",
+                                                                           description="Additional free-text describing other aspects of an expression annotation. For example, only in the head neurons, only when JNK is activated, etc. Corresponds to note type #1 of AGR-1407.")
 
     _defn = EnumDefinition(
-        name="PerturbedExpressionQualifierSet",
-    )
-
-class TemporalQualifierSet(EnumDefinitionImpl):
-
-    progressive = PermissibleValue(text="progressive",
-                                             description="An event that gets more pronounced with time.")
-
-    _defn = EnumDefinition(
-        name="TemporalQualifierSet",
+        name="ExpressionStatementTypeEnum",
     )
 
 class SubtypeValues(EnumDefinitionImpl):
@@ -3526,6 +3773,77 @@ class ModesOfInheritence(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="ModesOfInheritence",
+    )
+
+class AntibodyClonalitySet(EnumDefinitionImpl):
+
+    monoclonal = PermissibleValue(text="monoclonal")
+    polyclonal = PermissibleValue(text="polyclonal")
+    unspecified = PermissibleValue(text="unspecified")
+
+    _defn = EnumDefinition(
+        name="AntibodyClonalitySet",
+    )
+
+class HeavyChainIsotypeSet(EnumDefinitionImpl):
+
+    IgA = PermissibleValue(text="IgA")
+    IgA1 = PermissibleValue(text="IgA1")
+    IgA2 = PermissibleValue(text="IgA2")
+    IgD = PermissibleValue(text="IgD")
+    IgE = PermissibleValue(text="IgE")
+    IgG = PermissibleValue(text="IgG")
+    IgG1 = PermissibleValue(text="IgG1")
+    IgG2 = PermissibleValue(text="IgG2")
+    IgG2a = PermissibleValue(text="IgG2a")
+    IgG2b = PermissibleValue(text="IgG2b")
+    IgG2c = PermissibleValue(text="IgG2c")
+    IgG3 = PermissibleValue(text="IgG3")
+    IgG4 = PermissibleValue(text="IgG4")
+    IgM = PermissibleValue(text="IgM")
+    IgN = PermissibleValue(text="IgN")
+    IgR = PermissibleValue(text="IgR")
+    IgW = PermissibleValue(text="IgW")
+    IgX = PermissibleValue(text="IgX")
+    IgY = PermissibleValue(text="IgY")
+
+    _defn = EnumDefinition(
+        name="HeavyChainIsotypeSet",
+    )
+
+class LightChainIsotypeSet(EnumDefinitionImpl):
+
+    k = PermissibleValue(text="k")
+    l = PermissibleValue(text="l")
+    l1 = PermissibleValue(text="l1")
+    l2 = PermissibleValue(text="l2")
+    l3 = PermissibleValue(text="l3")
+    l4 = PermissibleValue(text="l4")
+    r = PermissibleValue(text="r")
+    s = PermissibleValue(text="s")
+    i = PermissibleValue(text="i")
+    i1 = PermissibleValue(text="i1")
+    i2 = PermissibleValue(text="i2")
+    i3 = PermissibleValue(text="i3")
+    i4 = PermissibleValue(text="i4")
+
+    _defn = EnumDefinition(
+        name="LightChainIsotypeSet",
+    )
+
+class AntibodyNoteTypeSet(EnumDefinitionImpl):
+
+    antibody_description = PermissibleValue(text="antibody_description",
+                                                               description="A high level summary of the antibody intended for prominent display e.g., Antibodies against SEIP-1 were raised by injection of the peptide 261KKEEPGLLDLRKRK, corresponding to the C-terminus of SEIP-1, into rabbits.")
+    antigen_description = PermissibleValue(text="antigen_description",
+                                                             description="A description about the antigen used to generate the antibody e.g., N-terminal peptide (SQFRPEKKEKSTCSIC) full length ceKDM1A (amino acids 1-897).")
+    remark = PermissibleValue(text="remark",
+                                   description="Information pertaining to the antibody that is not covered by other fields e.g., Possible pseudonym 7G1, High level of background, Works well for immunoprecipitation.")
+    private = PermissibleValue(text="private",
+                                     description="Information intended for internal use, generally regarding aspects of curation.")
+
+    _defn = EnumDefinition(
+        name="AntibodyNoteTypeSet",
     )
 
 class EntitySynonymTypeSet(EnumDefinitionImpl):
@@ -3655,59 +3973,53 @@ class TagSet(EnumDefinitionImpl):
 class slots:
     pass
 
+slots.belongs_to_expression_experiment = Slot(uri=DEFAULT_.belongs_to_expression_experiment, name="belongs_to_expression_experiment", curie=DEFAULT_.curie('belongs_to_expression_experiment'),
+                   model_uri=DEFAULT_.belongs_to_expression_experiment, domain=ExpressionAnnotation, range=Union[str, ExpressionExperimentCurie])
+
 slots.age = Slot(uri=DEFAULT_.age, name="age", curie=DEFAULT_.curie('age'),
                    model_uri=DEFAULT_.age, domain=TemporalContext, range=Optional[str])
-
-slots.anatomical_qualifiers = Slot(uri=DEFAULT_.anatomical_qualifiers, name="anatomical_qualifiers", curie=DEFAULT_.curie('anatomical_qualifiers'),
-                   model_uri=DEFAULT_.anatomical_qualifiers, domain=AnatomicalSite, range=Optional[Union[str, "AnatomicalQualifierSet"]])
 
 slots.anatomical_structure = Slot(uri=DEFAULT_.anatomical_structure, name="anatomical_structure", curie=DEFAULT_.curie('anatomical_structure'),
                    model_uri=DEFAULT_.anatomical_structure, domain=AnatomicalTerm, range=Optional[Union[str, AnatomicalTermCurie]])
 
-slots.anatomical_structure_note = Slot(uri=DEFAULT_.anatomical_structure_note, name="anatomical_structure_note", curie=DEFAULT_.curie('anatomical_structure_note'),
-                   model_uri=DEFAULT_.anatomical_structure_note, domain=ExpressionAnnotation, range=Optional[str])
-
 slots.anatomical_substructure = Slot(uri=DEFAULT_.anatomical_substructure, name="anatomical_substructure", curie=DEFAULT_.curie('anatomical_substructure'),
                    model_uri=DEFAULT_.anatomical_substructure, domain=AnatomicalTerm, range=Optional[Union[str, AnatomicalTermCurie]])
 
-slots.anatomical_substructure_note = Slot(uri=DEFAULT_.anatomical_substructure_note, name="anatomical_substructure_note", curie=DEFAULT_.curie('anatomical_substructure_note'),
-                   model_uri=DEFAULT_.anatomical_substructure_note, domain=ExpressionAnnotation, range=Optional[str])
-
-slots.assay = Slot(uri=DEFAULT_.assay, name="assay", curie=DEFAULT_.curie('assay'),
-                   model_uri=DEFAULT_.assay, domain=ExpressionAnnotation, range=Optional[Union[str, MMOTermCurie]])
+slots.assay_used = Slot(uri=DEFAULT_.assay_used, name="assay_used", curie=DEFAULT_.curie('assay_used'),
+                   model_uri=DEFAULT_.assay_used, domain=ExpressionExperiment, range=Optional[Union[str, MMOTermCurie]])
 
 slots.cellular_component = Slot(uri=DEFAULT_.cellular_component, name="cellular_component", curie=DEFAULT_.curie('cellular_component'),
                    model_uri=DEFAULT_.cellular_component, domain=AnatomicalSite, range=Optional[Union[str, GOTermCurie]])
 
-slots.cellular_component_note = Slot(uri=DEFAULT_.cellular_component_note, name="cellular_component_note", curie=DEFAULT_.curie('cellular_component_note'),
-                   model_uri=DEFAULT_.cellular_component_note, domain=ExpressionAnnotation, range=Optional[str])
+slots.developmental_stage_start = Slot(uri=DEFAULT_.developmental_stage_start, name="developmental_stage_start", curie=DEFAULT_.curie('developmental_stage_start'),
+                   model_uri=DEFAULT_.developmental_stage_start, domain=TemporalContext, range=Optional[Union[str, StageTermCurie]])
 
-slots.developmental_stage = Slot(uri=DEFAULT_.developmental_stage, name="developmental_stage", curie=DEFAULT_.curie('developmental_stage'),
-                   model_uri=DEFAULT_.developmental_stage, domain=TemporalContext, range=Optional[Union[str, StageTermCurie]])
-
-slots.expression_annotation_note = Slot(uri=DEFAULT_.expression_annotation_note, name="expression_annotation_note", curie=DEFAULT_.curie('expression_annotation_note'),
-                   model_uri=DEFAULT_.expression_annotation_note, domain=ExpressionAnnotation, range=Optional[str])
+slots.developmental_stage_stop = Slot(uri=DEFAULT_.developmental_stage_stop, name="developmental_stage_stop", curie=DEFAULT_.curie('developmental_stage_stop'),
+                   model_uri=DEFAULT_.developmental_stage_stop, domain=TemporalContext, range=Optional[Union[str, StageTermCurie]])
 
 slots.expression_qualifiers = Slot(uri=DEFAULT_.expression_qualifiers, name="expression_qualifiers", curie=DEFAULT_.curie('expression_qualifiers'),
                    model_uri=DEFAULT_.expression_qualifiers, domain=ExpressionAnnotation, range=Optional[Union[str, "ExpressionQualifierSet"]])
 
-slots.gene = Slot(uri=DEFAULT_.gene, name="gene", curie=DEFAULT_.curie('gene'),
-                   model_uri=DEFAULT_.gene, domain=ExpressionAnnotation, range=Optional[Union[str, GeneCurie]])
+slots.biological_entity_assayed = Slot(uri=DEFAULT_.biological_entity_assayed, name="biological_entity_assayed", curie=DEFAULT_.curie('biological_entity_assayed'),
+                   model_uri=DEFAULT_.biological_entity_assayed, domain=ExpressionExperiment, range=Union[str, BiologicalEntityCurie])
 
 slots.image = Slot(uri=DEFAULT_.image, name="image", curie=DEFAULT_.curie('image'),
                    model_uri=DEFAULT_.image, domain=None, range=Optional[Union[str, ImageCurie]])
 
-slots.perturbed = Slot(uri=DEFAULT_.perturbed, name="perturbed", curie=DEFAULT_.curie('perturbed'),
-                   model_uri=DEFAULT_.perturbed, domain=None, range=Optional[Union[bool, Bool]])
+slots.spatial_qualifiers = Slot(uri=DEFAULT_.spatial_qualifiers, name="spatial_qualifiers", curie=DEFAULT_.curie('spatial_qualifiers'),
+                   model_uri=DEFAULT_.spatial_qualifiers, domain=AnatomicalSite, range=Optional[Union[str, "SpatialQualifierSet"]])
 
-slots.perturbed_expression_qualifiers = Slot(uri=DEFAULT_.perturbed_expression_qualifiers, name="perturbed_expression_qualifiers", curie=DEFAULT_.curie('perturbed_expression_qualifiers'),
-                   model_uri=DEFAULT_.perturbed_expression_qualifiers, domain=ExpressionAnnotation, range=Optional[Union[str, "PerturbedExpressionQualifierSet"]])
+slots.reagents_used = Slot(uri=DEFAULT_.reagents_used, name="reagents_used", curie=DEFAULT_.curie('reagents_used'),
+                   model_uri=DEFAULT_.reagents_used, domain=ExpressionExperiment, range=Optional[Union[Union[dict, "Reagent"], List[Union[dict, "Reagent"]]]])
 
-slots.primary_genetic_entities = Slot(uri=DEFAULT_.primary_genetic_entities, name="primary_genetic_entities", curie=DEFAULT_.curie('primary_genetic_entities'),
-                   model_uri=DEFAULT_.primary_genetic_entities, domain=ExpressionAnnotation, range=Optional[Union[Union[str, BiologicalEntityCurie], List[Union[str, BiologicalEntityCurie]]]])
+slots.specimen_alleles = Slot(uri=DEFAULT_.specimen_alleles, name="specimen_alleles", curie=DEFAULT_.curie('specimen_alleles'),
+                   model_uri=DEFAULT_.specimen_alleles, domain=ExpressionExperiment, range=Optional[Union[Union[str, AlleleCurie], List[Union[str, AlleleCurie]]]])
 
-slots.reagents = Slot(uri=DEFAULT_.reagents, name="reagents", curie=DEFAULT_.curie('reagents'),
-                   model_uri=DEFAULT_.reagents, domain=ExpressionAnnotation, range=Optional[Union[Union[dict, "Reagent"], List[Union[dict, "Reagent"]]]])
+slots.specimen_genomic_model = Slot(uri=DEFAULT_.specimen_genomic_model, name="specimen_genomic_model", curie=DEFAULT_.curie('specimen_genomic_model'),
+                   model_uri=DEFAULT_.specimen_genomic_model, domain=ExpressionExperiment, range=Optional[Union[str, AffectedGenomicModelCurie]])
+
+slots.stage_uncertainty = Slot(uri=DEFAULT_.stage_uncertainty, name="stage_uncertainty", curie=DEFAULT_.curie('stage_uncertainty'),
+                   model_uri=DEFAULT_.stage_uncertainty, domain=TemporalContext, range=Optional[str])
 
 slots.temporal_qualifiers = Slot(uri=DEFAULT_.temporal_qualifiers, name="temporal_qualifiers", curie=DEFAULT_.curie('temporal_qualifiers'),
                    model_uri=DEFAULT_.temporal_qualifiers, domain=TemporalContext, range=Optional[Union[str, "TemporalQualifierSet"]])
@@ -3715,14 +4027,8 @@ slots.temporal_qualifiers = Slot(uri=DEFAULT_.temporal_qualifiers, name="tempora
 slots.when_expressed = Slot(uri=DEFAULT_.when_expressed, name="when_expressed", curie=DEFAULT_.curie('when_expressed'),
                    model_uri=DEFAULT_.when_expressed, domain=ExpressionAnnotation, range=Optional[Union[dict, "TemporalContext"]])
 
-slots.when_expressed_note = Slot(uri=DEFAULT_.when_expressed_note, name="when_expressed_note", curie=DEFAULT_.curie('when_expressed_note'),
-                   model_uri=DEFAULT_.when_expressed_note, domain=ExpressionAnnotation, range=Optional[str])
-
 slots.where_expressed = Slot(uri=DEFAULT_.where_expressed, name="where_expressed", curie=DEFAULT_.curie('where_expressed'),
-                   model_uri=DEFAULT_.where_expressed, domain=ExpressionAnnotation, range=Optional[Union[dict, AnatomicalSite]])
-
-slots.where_expressed_note = Slot(uri=DEFAULT_.where_expressed_note, name="where_expressed_note", curie=DEFAULT_.curie('where_expressed_note'),
-                   model_uri=DEFAULT_.where_expressed_note, domain=ExpressionAnnotation, range=Optional[str])
+                   model_uri=DEFAULT_.where_expressed, domain=ExpressionAnnotation, range=Optional[Union[dict, "AnatomicalSite"]])
 
 slots.subtype = Slot(uri="str(uriorcurie)", name="subtype", curie=None,
                    model_uri=DEFAULT_.subtype, domain=AffectedGenomicModel, range=Optional[Union[str, "SubtypeValues"]])
@@ -3816,6 +4122,21 @@ slots.aberration = Slot(uri="str(uriorcurie)", name="aberration", curie=None,
 
 slots.is_extinct = Slot(uri="str(uriorcurie)", name="is_extinct", curie=None,
                    model_uri=DEFAULT_.is_extinct, domain=Allele, range=Optional[Union[bool, Bool]])
+
+slots.antibody_target_genes = Slot(uri="str(uriorcurie)", name="antibody_target_genes", curie=None,
+                   model_uri=DEFAULT_.antibody_target_genes, domain=Antibody, range=Optional[Union[Union[str, GeneCurie], List[Union[str, GeneCurie]]]])
+
+slots.antigen_taxon = Slot(uri="str(uriorcurie)", name="antigen_taxon", curie=None,
+                   model_uri=DEFAULT_.antigen_taxon, domain=Antibody, range=Optional[Union[str, NCBITaxonTermCurie]])
+
+slots.clonality = Slot(uri="str(uriorcurie)", name="clonality", curie=None,
+                   model_uri=DEFAULT_.clonality, domain=Antibody, range=Union[str, "AntibodyClonalitySet"])
+
+slots.heavy_chain_isotype = Slot(uri="str(uriorcurie)", name="heavy_chain_isotype", curie=None,
+                   model_uri=DEFAULT_.heavy_chain_isotype, domain=Antibody, range=Optional[Union[str, "HeavyChainIsotypeSet"]])
+
+slots.light_chain_isotype = Slot(uri="str(uriorcurie)", name="light_chain_isotype", curie=None,
+                   model_uri=DEFAULT_.light_chain_isotype, domain=Antibody, range=Optional[Union[str, "LightChainIsotypeSet"]])
 
 slots.start = Slot(uri=ALLIANCE.start, name="start", curie=ALLIANCE.curie('start'),
                    model_uri=DEFAULT_.start, domain=None, range=Optional[str])
@@ -3955,8 +4276,8 @@ slots.gene_type = Slot(uri=ALLIANCE.gene_type, name="gene_type", curie=ALLIANCE.
 slots.references = Slot(uri=ALLIANCE.references, name="references", curie=ALLIANCE.curie('references'),
                    model_uri=DEFAULT_.references, domain=None, range=Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]])
 
-slots.reference = Slot(uri=ALLIANCE.reference, name="reference", curie=ALLIANCE.curie('reference'),
-                   model_uri=DEFAULT_.reference, domain=None, range=Optional[Union[str, ReferenceCurie]])
+slots.single_reference = Slot(uri=ALLIANCE.single_reference, name="single_reference", curie=ALLIANCE.curie('single_reference'),
+                   model_uri=DEFAULT_.single_reference, domain=None, range=Optional[Union[str, ReferenceCurie]])
 
 slots.original_reference = Slot(uri=ALLIANCE.original_reference, name="original_reference", curie=ALLIANCE.curie('original_reference'),
                    model_uri=DEFAULT_.original_reference, domain=None, range=Optional[Union[str, ReferenceCurie]])
@@ -3997,8 +4318,11 @@ slots.caption = Slot(uri="str(uriorcurie)", name="caption", curie=None,
 slots.cropped_from = Slot(uri="str(uriorcurie)", name="cropped_from", curie=None,
                    model_uri=DEFAULT_.cropped_from, domain=Image, range=Optional[Union[str, ImageCurie]])
 
-slots.has_figure = Slot(uri="str(uriorcurie)", name="has_figure", curie=None,
-                   model_uri=DEFAULT_.has_figure, domain=None, range=Optional[Union[str, FigureCurie]])
+slots.associated_with_figure = Slot(uri="str(uriorcurie)", name="associated_with_figure", curie=None,
+                   model_uri=DEFAULT_.associated_with_figure, domain=None, range=Optional[Union[str, FigureCurie]])
+
+slots.from_image = Slot(uri="str(uriorcurie)", name="from_image", curie=None,
+                   model_uri=DEFAULT_.from_image, domain=ImagePane, range=Optional[Union[str, ImageCurie]])
 
 slots.height = Slot(uri="str(uriorcurie)", name="height", curie=None,
                    model_uri=DEFAULT_.height, domain=Image, range=int)
@@ -4309,38 +4633,44 @@ slots.okta_id = Slot(uri=ALLIANCE.okta_id, name="okta_id", curie=ALLIANCE.curie(
 slots.okta_email = Slot(uri=ALLIANCE.okta_email, name="okta_email", curie=ALLIANCE.curie('okta_email'),
                    model_uri=DEFAULT_.okta_email, domain=LoggedInPerson, range=Optional[str])
 
-slots.phenotype_annotation = Slot(uri=DEFAULT_.phenotype_annotation, name="phenotype_annotation", curie=DEFAULT_.curie('phenotype_annotation'),
-                   model_uri=DEFAULT_.phenotype_annotation, domain=None, range=Optional[Union[str, ExpressionAnnotationCurie]])
-
-slots.experimental_condition = Slot(uri=DEFAULT_.experimental_condition, name="experimental_condition", curie=DEFAULT_.curie('experimental_condition'),
-                   model_uri=DEFAULT_.experimental_condition, domain=None, range=Optional[Union[dict, ExperimentalCondition]])
-
 slots.embryonic_cell_lines = Slot(uri=DEFAULT_.embryonic_cell_lines, name="embryonic_cell_lines", curie=DEFAULT_.curie('embryonic_cell_lines'),
                    model_uri=DEFAULT_.embryonic_cell_lines, domain=None, range=Optional[str])
+
+slots.note_type = Slot(uri=DEFAULT_.note_type, name="note_type", curie=DEFAULT_.curie('note_type'),
+                   model_uri=DEFAULT_.note_type, domain=None, range=Optional[Union[str, "AntibodyNoteTypeSet"]])
 
 slots.id = Slot(uri=DEFAULT_.id, name="id", curie=DEFAULT_.curie('id'),
                    model_uri=DEFAULT_.id, domain=None, range=Optional[str])
 
-slots.ExpressionAnnotation_has_figure = Slot(uri="str(uriorcurie)", name="ExpressionAnnotation_has_figure", curie=None,
-                   model_uri=DEFAULT_.ExpressionAnnotation_has_figure, domain=ExpressionAnnotation, range=Optional[Union[str, FigureCurie]])
+slots.ExpressionExperiment_references = Slot(uri=ALLIANCE.references, name="ExpressionExperiment_references", curie=ALLIANCE.curie('references'),
+                   model_uri=DEFAULT_.ExpressionExperiment_references, domain=ExpressionExperiment, range=Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]])
+
+slots.ExpressionAnnotation_associated_with_figure = Slot(uri="str(uriorcurie)", name="ExpressionAnnotation_associated_with_figure", curie=None,
+                   model_uri=DEFAULT_.ExpressionAnnotation_associated_with_figure, domain=ExpressionAnnotation, range=Optional[Union[Union[str, FigureCurie], List[Union[str, FigureCurie]]]])
 
 slots.ExpressionAnnotation_has_reference = Slot(uri="str(uriorcurie)", name="ExpressionAnnotation_has_reference", curie=None,
                    model_uri=DEFAULT_.ExpressionAnnotation_has_reference, domain=ExpressionAnnotation, range=Optional[Union[str, ReferenceCurie]])
 
 slots.ExpressionAnnotationImagePane_subject = Slot(uri=ALLIANCE.subject, name="ExpressionAnnotationImagePane_subject", curie=ALLIANCE.curie('subject'),
-                   model_uri=DEFAULT_.ExpressionAnnotationImagePane_subject, domain=ExpressionAnnotationImagePane, range=Union[str, ExpressionAnnotationCurie])
+                   model_uri=DEFAULT_.ExpressionAnnotationImagePane_subject, domain=ExpressionAnnotationImagePane, range=Union[dict, ExpressionAnnotation])
 
 slots.ExpressionAnnotationImagePane_object = Slot(uri=ALLIANCE.object, name="ExpressionAnnotationImagePane_object", curie=ALLIANCE.curie('object'),
                    model_uri=DEFAULT_.ExpressionAnnotationImagePane_object, domain=ExpressionAnnotationImagePane, range=Union[dict, "ImagePane"])
 
-slots.ExpressionAnnotationExperimentalConditionAssociation_phenotype_annotation = Slot(uri=DEFAULT_.phenotype_annotation, name="ExpressionAnnotationExperimentalConditionAssociation_phenotype_annotation", curie=DEFAULT_.curie('phenotype_annotation'),
-                   model_uri=DEFAULT_.ExpressionAnnotationExperimentalConditionAssociation_phenotype_annotation, domain=ExpressionAnnotationExperimentalConditionAssociation, range=Optional[Union[str, ExpressionAnnotationCurie]])
+slots.GeneExpressionStatement_statement_subject = Slot(uri=ALLIANCE.statement_subject, name="GeneExpressionStatement_statement_subject", curie=ALLIANCE.curie('statement_subject'),
+                   model_uri=DEFAULT_.GeneExpressionStatement_statement_subject, domain=GeneExpressionStatement, range=Optional[Union[str, GeneCurie]])
 
-slots.ExpressionAnnotationExperimentalConditionAssociation_experimental_condition = Slot(uri=DEFAULT_.experimental_condition, name="ExpressionAnnotationExperimentalConditionAssociation_experimental_condition", curie=DEFAULT_.curie('experimental_condition'),
-                   model_uri=DEFAULT_.ExpressionAnnotationExperimentalConditionAssociation_experimental_condition, domain=ExpressionAnnotationExperimentalConditionAssociation, range=Optional[Union[dict, "ExperimentalCondition"]])
+slots.GeneExpressionStatement_statement_type = Slot(uri=ALLIANCE.statement_type, name="GeneExpressionStatement_statement_type", curie=ALLIANCE.curie('statement_type'),
+                   model_uri=DEFAULT_.GeneExpressionStatement_statement_type, domain=GeneExpressionStatement, range=Optional[Union[str, "ExpressionStatementTypeEnum"]])
 
-slots.ExpressionAnnotationExperimentalConditionAssociation_predicate = Slot(uri=ALLIANCE.predicate, name="ExpressionAnnotationExperimentalConditionAssociation_predicate", curie=ALLIANCE.curie('predicate'),
-                   model_uri=DEFAULT_.ExpressionAnnotationExperimentalConditionAssociation_predicate, domain=ExpressionAnnotationExperimentalConditionAssociation, range=Union[str, "ExpressionConditionRelationEnum"])
+slots.ExpressionExperimentStatement_statement_subject = Slot(uri=ALLIANCE.statement_subject, name="ExpressionExperimentStatement_statement_subject", curie=ALLIANCE.curie('statement_subject'),
+                   model_uri=DEFAULT_.ExpressionExperimentStatement_statement_subject, domain=ExpressionExperimentStatement, range=Optional[Union[str, ExpressionExperimentCurie]])
+
+slots.ExpressionAnnotationStatement_statement_subject = Slot(uri=ALLIANCE.statement_subject, name="ExpressionAnnotationStatement_statement_subject", curie=ALLIANCE.curie('statement_subject'),
+                   model_uri=DEFAULT_.ExpressionAnnotationStatement_statement_subject, domain=ExpressionAnnotationStatement, range=Optional[Union[dict, ExpressionAnnotation]])
+
+slots.ExpressionAnnotationStatement_statement_type = Slot(uri=ALLIANCE.statement_type, name="ExpressionAnnotationStatement_statement_type", curie=ALLIANCE.curie('statement_type'),
+                   model_uri=DEFAULT_.ExpressionAnnotationStatement_statement_type, domain=ExpressionAnnotationStatement, range=Optional[Union[str, "ExpressionStatementTypeEnum"]])
 
 slots.Allele_synonyms = Slot(uri=ALLIANCE.synonyms, name="Allele_synonyms", curie=ALLIANCE.curie('synonyms'),
                    model_uri=DEFAULT_.Allele_synonyms, domain=Allele, range=Optional[Union[Union[dict, "Synonym"], List[Union[dict, "Synonym"]]]])
@@ -4366,6 +4696,21 @@ slots.Allele_aberration = Slot(uri="str(uriorcurie)", name="Allele_aberration", 
 slots.MolecularMutation_mutation_type = Slot(uri="str(uriorcurie)", name="MolecularMutation_mutation_type", curie=None,
                    model_uri=DEFAULT_.MolecularMutation_mutation_type, domain=MolecularMutation, range=Union[str, SOTermCurie])
 
+slots.Antibody_curie = Slot(uri=ALLIANCE.curie, name="Antibody_curie", curie=ALLIANCE.curie('curie'),
+                   model_uri=DEFAULT_.Antibody_curie, domain=Antibody, range=Union[str, AntibodyCurie])
+
+slots.Antibody_name = Slot(uri=ALLIANCE.name, name="Antibody_name", curie=ALLIANCE.curie('name'),
+                   model_uri=DEFAULT_.Antibody_name, domain=Antibody, range=str)
+
+slots.Antibody_taxon = Slot(uri=ALLIANCE.taxon, name="Antibody_taxon", curie=ALLIANCE.curie('taxon'),
+                   model_uri=DEFAULT_.Antibody_taxon, domain=Antibody, range=Optional[Union[str, NCBITaxonTermCurie]])
+
+slots.Antibody_original_reference = Slot(uri=ALLIANCE.original_reference, name="Antibody_original_reference", curie=ALLIANCE.curie('original_reference'),
+                   model_uri=DEFAULT_.Antibody_original_reference, domain=Antibody, range=Optional[Union[str, ReferenceCurie]])
+
+slots.AntibodyNote_note_type = Slot(uri=DEFAULT_.note_type, name="AntibodyNote_note_type", curie=DEFAULT_.curie('note_type'),
+                   model_uri=DEFAULT_.AntibodyNote_note_type, domain=AntibodyNote, range=Optional[Union[str, "AntibodyNoteTypeSet"]])
+
 slots.BiologicalEntity_taxon = Slot(uri=ALLIANCE.taxon, name="BiologicalEntity_taxon", curie=ALLIANCE.curie('taxon'),
                    model_uri=DEFAULT_.BiologicalEntity_taxon, domain=BiologicalEntity, range=Union[str, NCBITaxonTermCurie])
 
@@ -4390,8 +4735,8 @@ slots.GeneGenomicLocation_object = Slot(uri=ALLIANCE.object, name="GeneGenomicLo
 slots.Figure_has_reference = Slot(uri="str(uriorcurie)", name="Figure_has_reference", curie=None,
                    model_uri=DEFAULT_.Figure_has_reference, domain=Figure, range=Union[str, ReferenceCurie])
 
-slots.Image_has_figure = Slot(uri="str(uriorcurie)", name="Image_has_figure", curie=None,
-                   model_uri=DEFAULT_.Image_has_figure, domain=Image, range=Union[str, FigureCurie])
+slots.Image_associated_with_figure = Slot(uri="str(uriorcurie)", name="Image_associated_with_figure", curie=None,
+                   model_uri=DEFAULT_.Image_associated_with_figure, domain=Image, range=Union[str, FigureCurie])
 
 slots.Image_image_x_origin = Slot(uri="str(uriorcurie)", name="Image_image_x_origin", curie=None,
                    model_uri=DEFAULT_.Image_image_x_origin, domain=Image, range=Optional[int])
@@ -4399,8 +4744,8 @@ slots.Image_image_x_origin = Slot(uri="str(uriorcurie)", name="Image_image_x_ori
 slots.Image_image_y_origin = Slot(uri="str(uriorcurie)", name="Image_image_y_origin", curie=None,
                    model_uri=DEFAULT_.Image_image_y_origin, domain=Image, range=Optional[int])
 
-slots.ImagePane_images = Slot(uri="str(uriorcurie)", name="ImagePane_images", curie=None,
-                   model_uri=DEFAULT_.ImagePane_images, domain=ImagePane, range=Union[str, ImageCurie])
+slots.ImagePane_from_image = Slot(uri="str(uriorcurie)", name="ImagePane_from_image", curie=None,
+                   model_uri=DEFAULT_.ImagePane_from_image, domain=ImagePane, range=Union[str, ImageCurie])
 
 slots.ImagePane_image_x_origin = Slot(uri="str(uriorcurie)", name="ImagePane_image_x_origin", curie=None,
                    model_uri=DEFAULT_.ImagePane_image_x_origin, domain=ImagePane, range=Optional[int])
@@ -4423,8 +4768,8 @@ slots.PhenotypeAnnotation_phenotype_term = Slot(uri=ALLIANCE.phenotype_term, nam
 slots.PhenotypeAnnotation_object = Slot(uri=ALLIANCE.object, name="PhenotypeAnnotation_object", curie=ALLIANCE.curie('object'),
                    model_uri=DEFAULT_.PhenotypeAnnotation_object, domain=PhenotypeAnnotation, range=str)
 
-slots.PhenotypeAnnotation_reference = Slot(uri=ALLIANCE.reference, name="PhenotypeAnnotation_reference", curie=ALLIANCE.curie('reference'),
-                   model_uri=DEFAULT_.PhenotypeAnnotation_reference, domain=PhenotypeAnnotation, range=Optional[Union[str, ReferenceCurie]])
+slots.PhenotypeAnnotation_single_reference = Slot(uri=ALLIANCE.single_reference, name="PhenotypeAnnotation_single_reference", curie=ALLIANCE.curie('single_reference'),
+                   model_uri=DEFAULT_.PhenotypeAnnotation_single_reference, domain=PhenotypeAnnotation, range=Optional[Union[str, ReferenceCurie]])
 
 slots.PhenotypeAnnotation_creation_date = Slot(uri=ALLIANCE.creation_date, name="PhenotypeAnnotation_creation_date", curie=ALLIANCE.curie('creation_date'),
                    model_uri=DEFAULT_.PhenotypeAnnotation_creation_date, domain=PhenotypeAnnotation, range=Union[str, XSDDate])
@@ -4474,8 +4819,8 @@ slots.DiseaseAnnotation_annotation_type = Slot(uri=ALLIANCE.annotation_type, nam
 slots.DiseaseAnnotation_with = Slot(uri=ALLIANCE.with, name="DiseaseAnnotation_with", curie=ALLIANCE.curie('with'),
                    model_uri=DEFAULT_.DiseaseAnnotation_with, domain=DiseaseAnnotation, range=Optional[Union[str, GeneCurie]])
 
-slots.DiseaseAnnotation_reference = Slot(uri=ALLIANCE.reference, name="DiseaseAnnotation_reference", curie=ALLIANCE.curie('reference'),
-                   model_uri=DEFAULT_.DiseaseAnnotation_reference, domain=DiseaseAnnotation, range=Union[str, ReferenceCurie])
+slots.DiseaseAnnotation_single_reference = Slot(uri=ALLIANCE.single_reference, name="DiseaseAnnotation_single_reference", curie=ALLIANCE.curie('single_reference'),
+                   model_uri=DEFAULT_.DiseaseAnnotation_single_reference, domain=DiseaseAnnotation, range=Union[str, ReferenceCurie])
 
 slots.DiseaseAnnotation_evidence_codes = Slot(uri=ALLIANCE.evidence_codes, name="DiseaseAnnotation_evidence_codes", curie=ALLIANCE.curie('evidence_codes'),
                    model_uri=DEFAULT_.DiseaseAnnotation_evidence_codes, domain=DiseaseAnnotation, range=Union[Union[str, ECOTermCurie], List[Union[str, ECOTermCurie]]])
@@ -4546,8 +4891,8 @@ slots.ConditionRelation_unique_id = Slot(uri=ALLIANCE.unique_id, name="Condition
 slots.ConditionRelation_condition_relation_type = Slot(uri=ALLIANCE.condition_relation_type, name="ConditionRelation_condition_relation_type", curie=ALLIANCE.curie('condition_relation_type'),
                    model_uri=DEFAULT_.ConditionRelation_condition_relation_type, domain=ConditionRelation, range=Union[str, "ConditionRelationEnum"])
 
-slots.PaperHandle_reference = Slot(uri=ALLIANCE.reference, name="PaperHandle_reference", curie=ALLIANCE.curie('reference'),
-                   model_uri=DEFAULT_.PaperHandle_reference, domain=PaperHandle, range=Union[str, ReferenceCurie])
+slots.PaperHandle_single_reference = Slot(uri=ALLIANCE.single_reference, name="PaperHandle_single_reference", curie=ALLIANCE.curie('single_reference'),
+                   model_uri=DEFAULT_.PaperHandle_single_reference, domain=PaperHandle, range=Union[str, ReferenceCurie])
 
 slots.PaperHandle_handle = Slot(uri=ALLIANCE.handle, name="PaperHandle_handle", curie=ALLIANCE.curie('handle'),
                    model_uri=DEFAULT_.PaperHandle_handle, domain=PaperHandle, range=str)

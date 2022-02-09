@@ -93,7 +93,7 @@
             "private_note": {
                "type": "string"
             },
-            "reference": {
+            "single_reference": {
                "description": "The reference in which the disease association was asserted/reported.",
                "type": "string"
             },
@@ -116,7 +116,7 @@
          },
          "required": [
             "evidence_codes",
-            "reference",
+            "single_reference",
             "data_provider",
             "object",
             "created_by",
@@ -178,7 +178,7 @@
                "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                "type": "string"
             },
-            "reference": {
+            "single_reference": {
                "description": "The reference in which the phenotype association was asserted/reported.",
                "type": "string"
             },
@@ -592,7 +592,7 @@
             "private_note": {
                "type": "string"
             },
-            "reference": {
+            "single_reference": {
                "description": "The reference in which the disease association was asserted/reported.",
                "type": "string"
             },
@@ -615,7 +615,7 @@
          },
          "required": [
             "evidence_codes",
-            "reference",
+            "single_reference",
             "data_provider",
             "object",
             "created_by",
@@ -681,7 +681,7 @@
                "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                "type": "string"
             },
-            "reference": {
+            "single_reference": {
                "description": "The reference in which the phenotype association was asserted/reported.",
                "type": "string"
             },
@@ -776,7 +776,7 @@
                "description": "The isotype of the antibody light chain: e.g., i4."
             },
             "manufactured_by": {
-               "description": "Holds between a material entity and an Agent that has manufactured it: e.g., olecular Probes.",
+               "description": "Holds between a material entity and an Agent that has manufactured it: e.g., Molecular Probes.",
                "items": {
                   "$ref": "#/$defs/Agent"
                },
@@ -2523,11 +2523,11 @@
             "private_note": {
                "type": "string"
             },
-            "reference": {
-               "description": "The reference in which the disease association was asserted/reported.",
+            "sgd_strain_background": {
                "type": "string"
             },
-            "sgd_strain_background": {
+            "single_reference": {
+               "description": "The reference in which the disease association was asserted/reported.",
                "type": "string"
             },
             "subject": {
@@ -2549,7 +2549,7 @@
          },
          "required": [
             "evidence_codes",
-            "reference",
+            "single_reference",
             "data_provider",
             "object",
             "created_by",
@@ -2817,11 +2817,11 @@
                "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                "type": "string"
             },
-            "reference": {
-               "description": "The reference in which the phenotype association was asserted/reported.",
+            "sgd_strain_background": {
                "type": "string"
             },
-            "sgd_strain_background": {
+            "single_reference": {
+               "description": "The reference in which the phenotype association was asserted/reported.",
                "type": "string"
             },
             "subject": {
@@ -2964,6 +2964,10 @@
          "additionalProperties": false,
          "description": "The set of files and metadata that constitute an image.",
          "properties": {
+            "associated_with_figure": {
+               "description": "The figure to which the image belongs.",
+               "type": "string"
+            },
             "created_by": {
                "$ref": "#/$defs/Person",
                "description": "The individual that created the entity."
@@ -2984,10 +2988,6 @@
             "date_last_modified": {
                "description": "Date on which an entity was last modified.",
                "format": "date",
-               "type": "string"
-            },
-            "has_figure": {
-               "description": "The figure to which the image belongs.",
                "type": "string"
             },
             "height": {
@@ -3039,7 +3039,7 @@
          },
          "required": [
             "curie",
-            "has_figure",
+            "associated_with_figure",
             "width",
             "height",
             "image_file",
@@ -3069,6 +3069,10 @@
                "format": "date",
                "type": "string"
             },
+            "from_image": {
+               "description": "Holds between an ImagePane and an Image.",
+               "type": "string"
+            },
             "height": {
                "description": "The height of the image (pixels).",
                "type": "integer"
@@ -3080,10 +3084,6 @@
             "image_y_origin": {
                "description": "The y coordinate within a larger source image from which the pane begins.",
                "type": "integer"
-            },
-            "images": {
-               "description": "Any associated image",
-               "type": "string"
             },
             "label": {
                "description": "A short display name for the figure. For example: Figure 2, Figure 3B",
@@ -3103,7 +3103,7 @@
             }
          },
          "required": [
-            "images",
+            "from_image",
             "width",
             "height",
             "created_by",
@@ -4010,13 +4010,13 @@
                "description": "A slot pointing to a free-text alias or 'handle' for a data object, such as a reference-specific alias for a data object used while curating.",
                "type": "string"
             },
-            "reference": {
+            "single_reference": {
                "description": "holds between an object and a single reference",
                "type": "string"
             }
          },
          "required": [
-            "reference",
+            "single_reference",
             "handle"
          ],
          "title": "PaperHandle",
@@ -4112,7 +4112,7 @@
                "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                "type": "string"
             },
-            "reference": {
+            "single_reference": {
                "description": "The reference in which the phenotype association was asserted/reported.",
                "type": "string"
             },

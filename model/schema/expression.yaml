@@ -3,6 +3,7 @@ id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/expressi
 imports:
   - affectedGenomicModel
   - allele
+  - antibody
   - core
   - image
   - linkml:types
@@ -12,14 +13,33 @@ imports:
 
 classes:
 
-  AnatomicalSite:
+  ExpressionExperiment:
+    mixins:
+      - AuditedObject
     description: >-
-      The developmental stage and/or age of the specimen in an annotation.
+      Defined by the gene of interest, the specimen, the assay, the reagents 
+      (Antibody, Probe), and the reference. It groups ExpressionAnnotations.
+    notes: >-
+      Specimens are defined by their AGM and/or alleles (or gel lane at MGI).
     slots:
-      - anatomical_structure
-      - anatomical_substructure
-      - cellular_component
-      - anatomical_qualifiers
+      - curie
+      - references
+      - biological_entity_assayed
+      - assay_used
+      - reagents_used
+      - specimen_genomic_model
+      - specimen_alleles
+      - condition_relations
+    slot_usage:
+      references:
+        multivalued: false    # Should I call this slot just "reference" then?
+
+# QUESTIONS
+# - HOW TO LIMIT CVTERMS ALLOWED IN XPRN - DID I USE THE RIGHT APPROACH?
+# - OK TO JUST USE LIST OF CONDITIONS WITHOUT RELATIONS?
+# - OH, MAYBE HAVE DIFF SLOTS FOR CONDITIONS (PER RELATION ALLOWED).
+# - SHOULD 'CURIE' BE CHANGED TO 'ID' TO CONFORM TO STANDARD PRACTICE? Is this CURIE for Expression Class/Obj? 
+# - What if MODs do NOT have object IDs for Experiments or Expression annotations
 
   ExpressionAnnotation:
     mixins:
@@ -30,77 +50,108 @@ classes:
     notes: >-
       Curators can provide several levels of evidence for an annotation, in an
       attempt to offer support the annotation schema at various MODs.
-      First, a curator can provide simply a reference (FB).
-      Second, a curator can provide a Figure within that reference (ZFIN).
-      Third, a curator can provide an ImagePane within some Figure (MGI).
+      A curator can provide a Figure within that reference (ZFIN).
+      Also, a curator can provide an ImagePane within some Figure (MGI).
       It's unclear which of these approaches will be chosen for future Alliance
       expression curation.
     slots:
-      - curie
-      - gene
+      - belongs_to_expression_experiment
       - when_expressed
       - where_expressed
-      - assay
-      - reagents
       - expression_qualifiers
-      - perturbed_expression_qualifiers
-      - perturbed
       - negated
       - uncertain
-      - primary_genetic_entities
-      - when_expressed_note
-      - where_expressed_note
-      - expression_annotation_note
-      - has_reference
-      - has_figure
+      - associated_with_figure    # this is often redundant
     slot_usage:
-      has_figure:
+      associated_with_figure:
         description: >-
-          The figure that supports the expression annotation.
+          The figure(s) that support(s) the expression annotation.
         notes: >-
+          This can seem redundant with ExpressionAnnotationImagePane.
+          But, sometimes we know the figure but don't have the image.
           Optional, as existing annotations from some MODs have no related
           images or figures.
         required: false
-        multivalued: false
+        multivalued: true
       has_reference:
         multivalued: false
+
+  TemporalContext:
+    description: >-
+      The developmental stage and/or age of the specimen in an annotation. Developmental_stage_stop is optional. Add an uncertainty flag here?
+    slots:
+      - developmental_stage_start
+      - developmental_stage_stop
+      - age
+      - temporal_qualifiers
+      - stage_uncertainty
+
+  AnatomicalSite:
+    description: >-
+      The developmental stage and/or age of the specimen in an annotation.
+    slots:
+      - anatomical_structure
+      - anatomical_substructure
+      - cellular_component
+      - spatial_qualifiers
 
   ExpressionAnnotationImagePane:
     is_a: Association
     notes: >-
       This aims to provide the same functionality as MGI imagepane.
+      Some MODs (like ZFIN) point to the whole image. In these cases,
+      the pane would encompass the whole image.
     slot_usage:
       subject:
         range: ExpressionAnnotation
       object:
         range: ImagePane
 
-  ExpressionAnnotationExperimentalConditionAssociation:
-    is_a: Association
+  GeneExpressionStatement:
+    is_a: EntityStatement
     description: >-
-      A typed (predicate-specified) association between an expression annotation
-      object and an experimental condition object
-    defining_slots:
-      - subject        # expression_annotation
-      - object         # experimental_condition
-      - predicate
+      Free-text describing some aspect(s) of a gene's expression, particularly
+      nuanced information that is not readily captured in annotations.
+      May summarize data from many annotations and/or many publications.
+    notes: >-
+      Inherits: statement_subject, statement_type, statement_text, references.
+      Not sure if/how to use the statement_type slot - seems redundant.
     slot_usage:
-      phenotype_annotation:
-        range: ExpressionAnnotation
-      experimental_condition:
-        range: ExperimentalCondition
-      predicate:
-        range: expression_condition_relation_enum
+      statement_subject:
+        range: Gene
+      statement_type:
+        range: expression_statement_type_enum
 
-  TemporalContext:
+  ExpressionExperimentStatement:
+    is_a: EntityStatement
     description: >-
-      The developmental stage and/or age of the specimen in an annotation.
-    slots:
-      - developmental_stage
-      - age
-      - temporal_qualifiers
+      Free-text describing some aspect(s) of a gene's expression, particularly
+      nuanced information that is not readily captured in annotations.
+      This statement's scope is limited to the associated ExpressionExperiment.
+    notes: >-
+      Inherits: statement_subject, statement_type, statement_text, references.
+      Not sure if/how to use the statement_type slot - seems redundant.
+    slot_usage:
+      statement_subject:
+        range: ExpressionExperiment
+
+  ExpressionAnnotationStatement:
+    is_a: EntityStatement
+    slot_usage:
+      statement_subject:
+        range: ExpressionAnnotation
+      statement_type:
+        range: expression_statement_type_enum
 
 slots:
+
+  belongs_to_expression_experiment:
+    description: >-
+      Holds between an ExpressionAnnotation and an ExpressionExperiment.
+    domain: ExpressionAnnotation
+    range: ExpressionExperiment
+    required: true
+    multivalued: false
 
   age:
     description: >-
@@ -109,36 +160,18 @@ slots:
     range: string
     multivalued: false  
 
-  anatomical_qualifiers:
-    description: >-
-      Qualifiers that describe the spatial characteristics of an event.
-    domain: AnatomicalSite
-    range: anatomical_qualifier_set
-
   anatomical_structure:
     domain: AnatomicalTerm
     range: AnatomicalTerm
-
-  anatomical_structure_note:
-    description: >-
-      A public note tied to the Anatomicalstructure of a specific expression annotation.
-    domain: ExpressionAnnotation
-    range: string
 
   anatomical_substructure:
     domain: AnatomicalTerm
     range: AnatomicalTerm
 
-  anatomical_substructure_note:
-    description: >-
-      A public note tied to the AnatomicalSubstructure of a specific expression annotation.
-    domain: ExpressionAnnotation
-    range: string
-
-  assay:
+  assay_used:
     description: >-
       The assay used to experimentally determine gene expression.
-    domain: ExpressionAnnotation
+    domain: ExpressionExperiment
     range: MMOTerm
 
   cellular_component:
@@ -147,28 +180,26 @@ slots:
       branch, but I'm not sure how to do this.
     domain: AnatomicalSite
     range: GOTerm
-
-  cellular_component_note:
+  
+  developmental_stage_start:
     description: >-
-      A public note tied to the CellularComponent of a specific expression annotation.
-    domain: ExpressionAnnotation
-    range: string
-
-  developmental_stage:
-    description: >-
-      The developmental stage at which an annotated event was observed.
+      The beginning developmental stage at which an annotated event was observed.
     notes: >-
       Currently, we limit this to a single stage, but we could consider allowing
       for stage ranges for a single annotation.
     domain: TemporalContext
     range: StageTerm
-    multivalued: false    
-
-  expression_annotation_note:
+    multivalued: false
+    
+  developmental_stage_stop:
     description: >-
-      A public note tied to a specific expression annotation.
-    domain: ExpressionAnnotation
-    range: string
+      The end developmental stage at which an annotated event was observed.
+    notes: >-
+      Currently, we limit this to a single stage, but we could consider allowing
+      for stage ranges for a single annotation.
+    domain: TemporalContext
+    range: StageTerm
+    multivalued: false
 
   expression_qualifiers:
     description: >-
@@ -177,57 +208,64 @@ slots:
     domain: ExpressionAnnotation
     range: expression_qualifier_set
 
-  gene:
+  biological_entity_assayed:
     description: >-
-      The gene for which gene expression is being described.
+      Holds between a BiologicalEntity and an ExpressionExperiment that 
+      reports on its expression.
     notes: >-
-      Need to model how to annotate expression when there is no Alliance generation.
-      This seems to happen at ZFIN (and MGI?) for things like GFP, lacZ.
-      Would we use dummy Gene objects?
-    domain: ExpressionAnnotation
-    range: Gene
-    required: false
+      The BiologicalEntity will usually be a Gene, but there are exceptions to
+      this norm at most MODs.
+      FB: some expression for genomic insertions that reflect nearby 
+      regulatory region activity for unknown gene(s).
+      MGI: some expression data for "other feature type"
+      WB: some expression for sequence features (WBsf).
+      ZFIN: some expression using antibodies with unknown target. Antibody is a BiologicalEntity
+    domain: ExpressionExperiment
+    range: BiologicalEntity
+    multivalued: false
+    required: true
 
   image:
     description: >-
       The image associated with the object.
     range: Image
 
-  perturbed:
+  spatial_qualifiers:
     description: >-
-      Is true if the genetic and/or environmental conditions represent a
-      deviation from the baseline state.
-    notes: >-
-      Not all conditions constitute a perturbation:
-      e.g., normal temperature, standard buffer, etc.
-    range: boolean
+      Qualifiers that describe the spatial characteristics of an event.
+    domain: AnatomicalSite
+    range: spatial_qualifier_set
 
-  perturbed_expression_qualifiers:
-    description: >-
-      Qualifiers that describe how a perturbed expression pattern deviates from
-      the baseline expression pattern. For example: increased, mislocalized.
-    domain: ExpressionAnnotation
-    range: perturbed_expression_qualifier_set
-
-  primary_genetic_entities:
-    description: >-
-      The Allele(s) or AffectedGenomicModel characterizing the specimen assayed.
-    notes: >-
-      We might want to, somehow, tighten up the range to only Allele and
-      AffectedGenomicModel.
-    domain: ExpressionAnnotation
-    range: BiologicalEntity
-    multivalued: true
-
-  reagents:
+  reagents_used:
     description: >-
       Reagents used in the expression assay: e.g., antibodies, probes.
     notes: >-
-      assuming that specifying Reagent below will allow for objects that
+      I'm assuming that specifying Reagent below will allow for objects that
       have the Reagent mixin.
-    domain: ExpressionAnnotation
+    domain: ExpressionExperiment
     range: Reagent
     multivalued: true
+
+  specimen_alleles:
+    description: >-
+      The Allele(s) of the specimen assayed.
+    domain: ExpressionExperiment
+    range: Allele
+    multivalued: true
+
+  specimen_genomic_model:
+    description: >-
+      The AffectedGenomicModel of the specimen assayed.
+    domain: ExpressionExperiment
+    range: AffectedGenomicModel
+    multivalued: false
+    
+  stage_uncertainty:
+    notes: >-
+      Flag for whether or not the temporal stage is certain or uncertain. Boolean true/false?
+    domain: TemporalContext
+    range: string
+    multivalued: false
 
   temporal_qualifiers:
     description: >-
@@ -242,12 +280,6 @@ slots:
     range: TemporalContext
     multivalued: false
 
-  when_expressed_note:
-    description: >-
-      A public note tied to the TemporalComponent of a specific expression annotation.
-    domain: ExpressionAnnotation
-    range: string
-
   where_expressed:
     description: >-
       Where a gene product is observed to be present.
@@ -257,19 +289,15 @@ slots:
     range: AnatomicalSite
     multivalued: false
 
-  where_expressed_note:
-    description: >-
-      A public note tied to the AnatomicalSite of a specific expression annotation.
-    domain: ExpressionAnnotation
-    range: string
-
 enums:
 
-  anatomical_qualifier_set:
+  spatial_qualifier_set:
     notes: >-
       We need to get a set of relevant qualifiers used across the MODs.
       We may prefer to use ontology terms instead of an enum here.
       Filled in with a small sample of FB qualifiers for now.
+      Seems like MGI has similar terms 
+      ZFIN does this.
     permissible_values:
       anterior:
       anterior_posterior_gradient:
@@ -286,36 +314,69 @@ enums:
       terminal_expression_pattern:
       gradient:
 
-  expression_condition_relation_enum:
-    permissible_values:
-      has_condition:
-      induced_by:
-
   expression_qualifier_set:
     notes: >-
       We need to get a set of relevant qualifiers used across the MODs.
       Filled in with FB qualifiers for now.
     permissible_values:
+      strong:
+      moderate:
       faint:
-      granular:
+      endogenous:
+      granular: 
       intense:
       punctate:
       uniform:
+      non-uniform:
       variable:
-
-  perturbed_expression_qualifier_set:
-    notes: >-
-      We need to get a set of relevant qualifiers used across the MODs.
-    permissible_values:
-      increased:
-      decreased:
-      mislocalized:
+      clusters:
+      diffuse:
+      graded:
+      not_specified:
+      patchy:
+      regionally_restricted:
+      scattered:
+      single_cells:
+      spotted:
+      ubiquitous:
+      widespread:   
 
   temporal_qualifier_set:
     notes: >-
       We need to get a set of relevant qualifiers used across the MODs.
-      Filled in with FB qualifiers for now.
+      Filled in with a FB qualifier for now. MGI, WB, ZFIN don't use this.
     permissible_values:
       progressive:
         description: >-
           An event that gets more pronounced with time.
+      throughout:
+        description: >-
+          An event that happens from start to end times included in the annotation
+      sometime_during:
+        description: >-
+          An event that happens during some of the stages included in the annotation, but maybe not all
+
+  expression_condition_relation_enum:
+    permissible_values:
+      has_condition:
+      induced_by:
+
+  expression_statement_type_enum:
+    notes: >-
+      Types of free-text statements associated with an expression annotation.
+    permissible_values:
+      expression_summary:
+        description: >-
+          Free-text that summarizes expression across many annotations, experiments or publictaions.
+      when_expressed_note:
+        description: >-
+          Additional free-text describing the stage/age of expression in an expression annotation.
+      where_expressed_note:
+        description: >-
+          Additional free-text describing the anatomical site of expression in an expression annotation.
+      expression_annotation_note:
+        description: >-
+          Additional free-text describing other aspects of an expression annotation.
+          For example, only in the head neurons, only when JNK is activated, etc.
+          Corresponds to note type #1 of AGR-1407.
+
