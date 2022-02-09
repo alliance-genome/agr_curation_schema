@@ -1,5 +1,5 @@
 # Auto generated from informationContentEntity.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-07T20:22:35
+# Generation date: 2022-02-08T17:05:06
 # Schema: informationContentEntity
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/informationContentEntity
@@ -1277,7 +1277,7 @@ class Image(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Image
 
     curie: Union[str, ImageCurie] = None
-    has_figure: Union[str, FigureCurie] = None
+    associated_with_figure: Union[str, FigureCurie] = None
     width: int = None
     height: int = None
     image_file: Union[dict, File] = None
@@ -1300,10 +1300,10 @@ class Image(YAMLRoot):
         if not isinstance(self.curie, ImageCurie):
             self.curie = ImageCurie(self.curie)
 
-        if self._is_empty(self.has_figure):
-            self.MissingRequiredField("has_figure")
-        if not isinstance(self.has_figure, FigureCurie):
-            self.has_figure = FigureCurie(self.has_figure)
+        if self._is_empty(self.associated_with_figure):
+            self.MissingRequiredField("associated_with_figure")
+        if not isinstance(self.associated_with_figure, FigureCurie):
+            self.associated_with_figure = FigureCurie(self.associated_with_figure)
 
         if self._is_empty(self.width):
             self.MissingRequiredField("width")
@@ -1380,7 +1380,7 @@ class ImagePane(YAMLRoot):
     class_name: ClassVar[str] = "ImagePane"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.ImagePane
 
-    images: Union[str, ImageCurie] = None
+    from_image: Union[str, ImageCurie] = None
     width: int = None
     height: int = None
     created_by: Union[dict, Person] = None
@@ -1393,10 +1393,10 @@ class ImagePane(YAMLRoot):
     date_last_modified: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.images):
-            self.MissingRequiredField("images")
-        if not isinstance(self.images, ImageCurie):
-            self.images = ImageCurie(self.images)
+        if self._is_empty(self.from_image):
+            self.MissingRequiredField("from_image")
+        if not isinstance(self.from_image, ImageCurie):
+            self.from_image = ImageCurie(self.from_image)
 
         if self._is_empty(self.width):
             self.MissingRequiredField("width")
@@ -2824,8 +2824,8 @@ slots.gene_type = Slot(uri=ALLIANCE.gene_type, name="gene_type", curie=ALLIANCE.
 slots.references = Slot(uri=ALLIANCE.references, name="references", curie=ALLIANCE.curie('references'),
                    model_uri=ALLIANCE.references, domain=None, range=Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]])
 
-slots.reference = Slot(uri=ALLIANCE.reference, name="reference", curie=ALLIANCE.curie('reference'),
-                   model_uri=ALLIANCE.reference, domain=None, range=Optional[Union[str, ReferenceCurie]])
+slots.single_reference = Slot(uri=ALLIANCE.single_reference, name="single_reference", curie=ALLIANCE.curie('single_reference'),
+                   model_uri=ALLIANCE.single_reference, domain=None, range=Optional[Union[str, ReferenceCurie]])
 
 slots.original_reference = Slot(uri=ALLIANCE.original_reference, name="original_reference", curie=ALLIANCE.curie('original_reference'),
                    model_uri=ALLIANCE.original_reference, domain=None, range=Optional[Union[str, ReferenceCurie]])
@@ -2953,8 +2953,11 @@ slots.caption = Slot(uri="str(uriorcurie)", name="caption", curie=None,
 slots.cropped_from = Slot(uri="str(uriorcurie)", name="cropped_from", curie=None,
                    model_uri=ALLIANCE.cropped_from, domain=Image, range=Optional[Union[str, ImageCurie]])
 
-slots.has_figure = Slot(uri="str(uriorcurie)", name="has_figure", curie=None,
-                   model_uri=ALLIANCE.has_figure, domain=None, range=Optional[Union[str, FigureCurie]])
+slots.associated_with_figure = Slot(uri="str(uriorcurie)", name="associated_with_figure", curie=None,
+                   model_uri=ALLIANCE.associated_with_figure, domain=None, range=Optional[Union[str, FigureCurie]])
+
+slots.from_image = Slot(uri="str(uriorcurie)", name="from_image", curie=None,
+                   model_uri=ALLIANCE.from_image, domain=ImagePane, range=Optional[Union[str, ImageCurie]])
 
 slots.height = Slot(uri="str(uriorcurie)", name="height", curie=None,
                    model_uri=ALLIANCE.height, domain=Image, range=int)
@@ -3184,8 +3187,8 @@ slots.LoggedInPerson_okta_email = Slot(uri=ALLIANCE.okta_email, name="LoggedInPe
 slots.Figure_has_reference = Slot(uri="str(uriorcurie)", name="Figure_has_reference", curie=None,
                    model_uri=ALLIANCE.Figure_has_reference, domain=Figure, range=Union[str, ReferenceCurie])
 
-slots.Image_has_figure = Slot(uri="str(uriorcurie)", name="Image_has_figure", curie=None,
-                   model_uri=ALLIANCE.Image_has_figure, domain=Image, range=Union[str, FigureCurie])
+slots.Image_associated_with_figure = Slot(uri="str(uriorcurie)", name="Image_associated_with_figure", curie=None,
+                   model_uri=ALLIANCE.Image_associated_with_figure, domain=Image, range=Union[str, FigureCurie])
 
 slots.Image_image_x_origin = Slot(uri="str(uriorcurie)", name="Image_image_x_origin", curie=None,
                    model_uri=ALLIANCE.Image_image_x_origin, domain=Image, range=Optional[int])
@@ -3193,8 +3196,8 @@ slots.Image_image_x_origin = Slot(uri="str(uriorcurie)", name="Image_image_x_ori
 slots.Image_image_y_origin = Slot(uri="str(uriorcurie)", name="Image_image_y_origin", curie=None,
                    model_uri=ALLIANCE.Image_image_y_origin, domain=Image, range=Optional[int])
 
-slots.ImagePane_images = Slot(uri="str(uriorcurie)", name="ImagePane_images", curie=None,
-                   model_uri=ALLIANCE.ImagePane_images, domain=ImagePane, range=Union[str, ImageCurie])
+slots.ImagePane_from_image = Slot(uri="str(uriorcurie)", name="ImagePane_from_image", curie=None,
+                   model_uri=ALLIANCE.ImagePane_from_image, domain=ImagePane, range=Union[str, ImageCurie])
 
 slots.ImagePane_image_x_origin = Slot(uri="str(uriorcurie)", name="ImagePane_image_x_origin", curie=None,
                    model_uri=ALLIANCE.ImagePane_image_x_origin, domain=ImagePane, range=Optional[int])
