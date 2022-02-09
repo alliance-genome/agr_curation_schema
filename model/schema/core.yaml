@@ -144,6 +144,22 @@ classes:
       - generated_by
       - manufactured_by
 
+  Note:
+    description: >-
+      Free-text describing some attribute of an entity.
+    slots:
+      - free_text
+      - note_type
+      - private
+      - references
+    slot_usage:
+      free_text:
+        required: true
+      note_type:
+        required: true
+      private:
+        required: true
+
   EntityStatement:
     description: >-
       Free-text describing some aspect of an entity.
@@ -291,6 +307,23 @@ slots:
   uncertain:
     description: >-
       If set to true, then the related entity is uncertain.
+    range: boolean
+
+  free_text:
+    description: >-
+      A free text string that describes some aspect of an entity.
+    range: string
+
+  note_type:
+    description: >-
+      The type of note: e.g., cytology, comment, summary.
+    range: OntologyTerm
+
+  private:
+    description: >-
+      Classifies the entity as private (for internal use) or not (for public use).
+    notes: >-
+      Default value is true.
     range: boolean
 
   statement_subject:
