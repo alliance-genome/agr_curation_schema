@@ -111,7 +111,7 @@ To make a schema change and test your changes:
 6. run the tests to confirm that your test data is validated against the generated JSONschema artifact that you made in 
 step 2 above.
     ```bash
-    git add test/data/new_test_name # optional step if you added a new test
+    git add test/data/[new_]test.json # optional step if you added a new test
     make test 
     ```
 7. commit your change and open pull request.
@@ -189,7 +189,8 @@ note: it's good practice to use a python virtual environment when running comman
 pyvenv venv
 source venv/bin/activate
 export PYTHONPATH=.:$PYTHONPATH
-pip install -r requirements.txt
+pip install pipenv
+pip install -e .
 ```
 
 ## GitHub Actions

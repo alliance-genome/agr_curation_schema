@@ -1,5 +1,5 @@
 # Auto generated from ontologyTerm.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-08T16:09:30
+# Generation date: 2022-02-08T17:04:18
 # Schema: Alliance-Schema-Prototype-Ontology-Term
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml

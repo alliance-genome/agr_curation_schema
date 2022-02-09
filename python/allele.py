@@ -1,5 +1,5 @@
 # Auto generated from allele.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-08T16:09:21
+# Generation date: 2022-02-08T17:04:09
 # Schema: Alliance-Schema-Prototype-Allele
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/allele

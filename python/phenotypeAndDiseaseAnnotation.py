@@ -1,5 +1,5 @@
 # Auto generated from phenotypeAndDiseaseAnnotation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-08T16:10:14
+# Generation date: 2022-02-08T17:05:02
 # Schema: Alliance-Schema-Prototype-Phenotype-and-Disease-Annotation
 #
 # id: https://github.com/alliance-genome/agr_persistent_schema/phenotypeAndDiseaseAnnotation.yaml
