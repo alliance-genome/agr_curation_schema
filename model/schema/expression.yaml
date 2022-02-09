@@ -322,6 +322,7 @@ enums:
       strong:
       moderate:
       faint:
+      endogenous:
       granular: 
       intense:
       punctate:
