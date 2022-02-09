@@ -83,8 +83,8 @@ classes:
       - developmental_stage_start
       - developmental_stage_stop
       - age
-      - temporal_qualifier
-      - stage_uncertain
+      - temporal_qualifiers
+      - stage_uncertainty
 
   AnatomicalSite:
     description: >-

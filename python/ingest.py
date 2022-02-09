@@ -1,5 +1,5 @@
 # Auto generated from ingest.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-07T20:22:06
+# Generation date: 2022-02-08T16:09:49
 # Schema: Alliance-Schema-Ingest
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest
@@ -890,7 +890,7 @@ class Image(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/Image")
 
     curie: Union[str, ImageCurie] = None
-    has_figure: Union[str, FigureCurie] = None
+    associated_with_figure: Union[str, FigureCurie] = None
     width: int = None
     height: int = None
     image_file: Union[dict, File] = None
@@ -913,10 +913,10 @@ class Image(YAMLRoot):
         if not isinstance(self.curie, ImageCurie):
             self.curie = ImageCurie(self.curie)
 
-        if self._is_empty(self.has_figure):
-            self.MissingRequiredField("has_figure")
-        if not isinstance(self.has_figure, FigureCurie):
-            self.has_figure = FigureCurie(self.has_figure)
+        if self._is_empty(self.associated_with_figure):
+            self.MissingRequiredField("associated_with_figure")
+        if not isinstance(self.associated_with_figure, FigureCurie):
+            self.associated_with_figure = FigureCurie(self.associated_with_figure)
 
         if self._is_empty(self.width):
             self.MissingRequiredField("width")
@@ -993,7 +993,7 @@ class ImagePane(YAMLRoot):
     class_name: ClassVar[str] = "ImagePane"
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/ImagePane")
 
-    images: Union[str, ImageCurie] = None
+    from_image: Union[str, ImageCurie] = None
     width: int = None
     height: int = None
     created_by: Union[dict, "Person"] = None
@@ -1006,10 +1006,10 @@ class ImagePane(YAMLRoot):
     date_last_modified: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.images):
-            self.MissingRequiredField("images")
-        if not isinstance(self.images, ImageCurie):
-            self.images = ImageCurie(self.images)
+        if self._is_empty(self.from_image):
+            self.MissingRequiredField("from_image")
+        if not isinstance(self.from_image, ImageCurie):
+            self.from_image = ImageCurie(self.from_image)
 
         if self._is_empty(self.width):
             self.MissingRequiredField("width")
@@ -2022,7 +2022,7 @@ class PhenotypeAnnotation(Association):
     creation_date: Union[str, XSDDate] = None
     created_by: Union[dict, "Person"] = None
     modified_by: Union[dict, "Person"] = None
-    reference: Optional[Union[str, ReferenceCurie]] = None
+    single_reference: Optional[Union[str, ReferenceCurie]] = None
     phenotype_term: Optional[Union[str, PhenotypeTermCurie]] = None
     condition_relations: Optional[Union[Union[dict, "ConditionRelation"], List[Union[dict, "ConditionRelation"]]]] = empty_list()
     table_key: Optional[int] = None
@@ -2059,8 +2059,8 @@ class PhenotypeAnnotation(Association):
         if not isinstance(self.modified_by, Person):
             self.modified_by = Person(**as_dict(self.modified_by))
 
-        if self.reference is not None and not isinstance(self.reference, ReferenceCurie):
-            self.reference = ReferenceCurie(self.reference)
+        if self.single_reference is not None and not isinstance(self.single_reference, ReferenceCurie):
+            self.single_reference = ReferenceCurie(self.single_reference)
 
         if self.phenotype_term is not None and not isinstance(self.phenotype_term, PhenotypeTermCurie):
             self.phenotype_term = PhenotypeTermCurie(self.phenotype_term)
@@ -2209,7 +2209,7 @@ class DiseaseAnnotation(Association):
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/DiseaseAnnotation")
 
     evidence_codes: Union[Union[str, ECOTermCurie], List[Union[str, ECOTermCurie]]] = None
-    reference: Union[str, ReferenceCurie] = None
+    single_reference: Union[str, ReferenceCurie] = None
     data_provider: Union[str, List[str]] = None
     subject: Union[str, BiologicalEntityCurie] = None
     predicate: str = None
@@ -2240,10 +2240,10 @@ class DiseaseAnnotation(Association):
             self.evidence_codes = [self.evidence_codes] if self.evidence_codes is not None else []
         self.evidence_codes = [v if isinstance(v, ECOTermCurie) else ECOTermCurie(v) for v in self.evidence_codes]
 
-        if self._is_empty(self.reference):
-            self.MissingRequiredField("reference")
-        if not isinstance(self.reference, ReferenceCurie):
-            self.reference = ReferenceCurie(self.reference)
+        if self._is_empty(self.single_reference):
+            self.MissingRequiredField("single_reference")
+        if not isinstance(self.single_reference, ReferenceCurie):
+            self.single_reference = ReferenceCurie(self.single_reference)
 
         if self._is_empty(self.data_provider):
             self.MissingRequiredField("data_provider")
@@ -2341,7 +2341,7 @@ class GeneDiseaseAnnotation(DiseaseAnnotation):
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/GeneDiseaseAnnotation")
 
     evidence_codes: Union[Union[str, ECOTermCurie], List[Union[str, ECOTermCurie]]] = None
-    reference: Union[str, ReferenceCurie] = None
+    single_reference: Union[str, ReferenceCurie] = None
     data_provider: Union[str, List[str]] = None
     object: Union[str, DOTermCurie] = None
     created_by: Union[dict, "Person"] = None
@@ -2380,7 +2380,7 @@ class AlleleDiseaseAnnotation(DiseaseAnnotation):
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/AlleleDiseaseAnnotation")
 
     evidence_codes: Union[Union[str, ECOTermCurie], List[Union[str, ECOTermCurie]]] = None
-    reference: Union[str, ReferenceCurie] = None
+    single_reference: Union[str, ReferenceCurie] = None
     data_provider: Union[str, List[str]] = None
     object: Union[str, DOTermCurie] = None
     created_by: Union[dict, "Person"] = None
@@ -2419,7 +2419,7 @@ class AGMDiseaseAnnotation(DiseaseAnnotation):
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/AGMDiseaseAnnotation")
 
     evidence_codes: Union[Union[str, ECOTermCurie], List[Union[str, ECOTermCurie]]] = None
-    reference: Union[str, ReferenceCurie] = None
+    single_reference: Union[str, ReferenceCurie] = None
     data_provider: Union[str, List[str]] = None
     object: Union[str, DOTermCurie] = None
     created_by: Union[dict, "Person"] = None
@@ -2505,7 +2505,7 @@ class ExperimentalCondition(YAMLRoot):
         if self.condition_chemical is not None and not isinstance(self.condition_chemical, OntologyTermCurie):
             self.condition_chemical = OntologyTermCurie(self.condition_chemical)
 
-        self._normalize_inlined_as_dict(slot_name="paper_handles", slot_type=PaperHandle, key_name="reference", keyed=False)
+        self._normalize_inlined_as_dict(slot_name="paper_handles", slot_type=PaperHandle, key_name="single_reference", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -2559,14 +2559,14 @@ class PaperHandle(YAMLRoot):
     class_name: ClassVar[str] = "PaperHandle"
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/PaperHandle")
 
-    reference: Union[str, ReferenceCurie] = None
+    single_reference: Union[str, ReferenceCurie] = None
     handle: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.reference):
-            self.MissingRequiredField("reference")
-        if not isinstance(self.reference, ReferenceCurie):
-            self.reference = ReferenceCurie(self.reference)
+        if self._is_empty(self.single_reference):
+            self.MissingRequiredField("single_reference")
+        if not isinstance(self.single_reference, ReferenceCurie):
+            self.single_reference = ReferenceCurie(self.single_reference)
 
         if self._is_empty(self.handle):
             self.MissingRequiredField("handle")
@@ -3542,8 +3542,8 @@ slots.gene_type = Slot(uri=ALLIANCE.gene_type, name="gene_type", curie=ALLIANCE.
 slots.references = Slot(uri=ALLIANCE.references, name="references", curie=ALLIANCE.curie('references'),
                    model_uri=DEFAULT_.references, domain=None, range=Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]])
 
-slots.reference = Slot(uri=ALLIANCE.reference, name="reference", curie=ALLIANCE.curie('reference'),
-                   model_uri=DEFAULT_.reference, domain=None, range=Optional[Union[str, ReferenceCurie]])
+slots.single_reference = Slot(uri=ALLIANCE.single_reference, name="single_reference", curie=ALLIANCE.curie('single_reference'),
+                   model_uri=DEFAULT_.single_reference, domain=None, range=Optional[Union[str, ReferenceCurie]])
 
 slots.original_reference = Slot(uri=ALLIANCE.original_reference, name="original_reference", curie=ALLIANCE.curie('original_reference'),
                    model_uri=DEFAULT_.original_reference, domain=None, range=Optional[Union[str, ReferenceCurie]])
@@ -3584,8 +3584,11 @@ slots.caption = Slot(uri="str(uriorcurie)", name="caption", curie=None,
 slots.cropped_from = Slot(uri="str(uriorcurie)", name="cropped_from", curie=None,
                    model_uri=DEFAULT_.cropped_from, domain=Image, range=Optional[Union[str, ImageCurie]])
 
-slots.has_figure = Slot(uri="str(uriorcurie)", name="has_figure", curie=None,
-                   model_uri=DEFAULT_.has_figure, domain=None, range=Optional[Union[str, FigureCurie]])
+slots.associated_with_figure = Slot(uri="str(uriorcurie)", name="associated_with_figure", curie=None,
+                   model_uri=DEFAULT_.associated_with_figure, domain=None, range=Optional[Union[str, FigureCurie]])
+
+slots.from_image = Slot(uri="str(uriorcurie)", name="from_image", curie=None,
+                   model_uri=DEFAULT_.from_image, domain=ImagePane, range=Optional[Union[str, ImageCurie]])
 
 slots.height = Slot(uri="str(uriorcurie)", name="height", curie=None,
                    model_uri=DEFAULT_.height, domain=Image, range=int)
@@ -4019,8 +4022,8 @@ slots.GeneGenomicLocation_object = Slot(uri=ALLIANCE.object, name="GeneGenomicLo
 slots.Figure_has_reference = Slot(uri="str(uriorcurie)", name="Figure_has_reference", curie=None,
                    model_uri=DEFAULT_.Figure_has_reference, domain=Figure, range=Union[str, ReferenceCurie])
 
-slots.Image_has_figure = Slot(uri="str(uriorcurie)", name="Image_has_figure", curie=None,
-                   model_uri=DEFAULT_.Image_has_figure, domain=Image, range=Union[str, FigureCurie])
+slots.Image_associated_with_figure = Slot(uri="str(uriorcurie)", name="Image_associated_with_figure", curie=None,
+                   model_uri=DEFAULT_.Image_associated_with_figure, domain=Image, range=Union[str, FigureCurie])
 
 slots.Image_image_x_origin = Slot(uri="str(uriorcurie)", name="Image_image_x_origin", curie=None,
                    model_uri=DEFAULT_.Image_image_x_origin, domain=Image, range=Optional[int])
@@ -4028,8 +4031,8 @@ slots.Image_image_x_origin = Slot(uri="str(uriorcurie)", name="Image_image_x_ori
 slots.Image_image_y_origin = Slot(uri="str(uriorcurie)", name="Image_image_y_origin", curie=None,
                    model_uri=DEFAULT_.Image_image_y_origin, domain=Image, range=Optional[int])
 
-slots.ImagePane_images = Slot(uri="str(uriorcurie)", name="ImagePane_images", curie=None,
-                   model_uri=DEFAULT_.ImagePane_images, domain=ImagePane, range=Union[str, ImageCurie])
+slots.ImagePane_from_image = Slot(uri="str(uriorcurie)", name="ImagePane_from_image", curie=None,
+                   model_uri=DEFAULT_.ImagePane_from_image, domain=ImagePane, range=Union[str, ImageCurie])
 
 slots.ImagePane_image_x_origin = Slot(uri="str(uriorcurie)", name="ImagePane_image_x_origin", curie=None,
                    model_uri=DEFAULT_.ImagePane_image_x_origin, domain=ImagePane, range=Optional[int])
@@ -4052,8 +4055,8 @@ slots.PhenotypeAnnotation_phenotype_term = Slot(uri=ALLIANCE.phenotype_term, nam
 slots.PhenotypeAnnotation_object = Slot(uri=ALLIANCE.object, name="PhenotypeAnnotation_object", curie=ALLIANCE.curie('object'),
                    model_uri=DEFAULT_.PhenotypeAnnotation_object, domain=PhenotypeAnnotation, range=str)
 
-slots.PhenotypeAnnotation_reference = Slot(uri=ALLIANCE.reference, name="PhenotypeAnnotation_reference", curie=ALLIANCE.curie('reference'),
-                   model_uri=DEFAULT_.PhenotypeAnnotation_reference, domain=PhenotypeAnnotation, range=Optional[Union[str, ReferenceCurie]])
+slots.PhenotypeAnnotation_single_reference = Slot(uri=ALLIANCE.single_reference, name="PhenotypeAnnotation_single_reference", curie=ALLIANCE.curie('single_reference'),
+                   model_uri=DEFAULT_.PhenotypeAnnotation_single_reference, domain=PhenotypeAnnotation, range=Optional[Union[str, ReferenceCurie]])
 
 slots.PhenotypeAnnotation_creation_date = Slot(uri=ALLIANCE.creation_date, name="PhenotypeAnnotation_creation_date", curie=ALLIANCE.curie('creation_date'),
                    model_uri=DEFAULT_.PhenotypeAnnotation_creation_date, domain=PhenotypeAnnotation, range=Union[str, XSDDate])
@@ -4103,8 +4106,8 @@ slots.DiseaseAnnotation_annotation_type = Slot(uri=ALLIANCE.annotation_type, nam
 slots.DiseaseAnnotation_with = Slot(uri=ALLIANCE.with, name="DiseaseAnnotation_with", curie=ALLIANCE.curie('with'),
                    model_uri=DEFAULT_.DiseaseAnnotation_with, domain=DiseaseAnnotation, range=Optional[Union[str, GeneCurie]])
 
-slots.DiseaseAnnotation_reference = Slot(uri=ALLIANCE.reference, name="DiseaseAnnotation_reference", curie=ALLIANCE.curie('reference'),
-                   model_uri=DEFAULT_.DiseaseAnnotation_reference, domain=DiseaseAnnotation, range=Union[str, ReferenceCurie])
+slots.DiseaseAnnotation_single_reference = Slot(uri=ALLIANCE.single_reference, name="DiseaseAnnotation_single_reference", curie=ALLIANCE.curie('single_reference'),
+                   model_uri=DEFAULT_.DiseaseAnnotation_single_reference, domain=DiseaseAnnotation, range=Union[str, ReferenceCurie])
 
 slots.DiseaseAnnotation_evidence_codes = Slot(uri=ALLIANCE.evidence_codes, name="DiseaseAnnotation_evidence_codes", curie=ALLIANCE.curie('evidence_codes'),
                    model_uri=DEFAULT_.DiseaseAnnotation_evidence_codes, domain=DiseaseAnnotation, range=Union[Union[str, ECOTermCurie], List[Union[str, ECOTermCurie]]])
@@ -4175,8 +4178,8 @@ slots.ConditionRelation_unique_id = Slot(uri=ALLIANCE.unique_id, name="Condition
 slots.ConditionRelation_condition_relation_type = Slot(uri=ALLIANCE.condition_relation_type, name="ConditionRelation_condition_relation_type", curie=ALLIANCE.curie('condition_relation_type'),
                    model_uri=DEFAULT_.ConditionRelation_condition_relation_type, domain=ConditionRelation, range=Union[str, "ConditionRelationEnum"])
 
-slots.PaperHandle_reference = Slot(uri=ALLIANCE.reference, name="PaperHandle_reference", curie=ALLIANCE.curie('reference'),
-                   model_uri=DEFAULT_.PaperHandle_reference, domain=PaperHandle, range=Union[str, ReferenceCurie])
+slots.PaperHandle_single_reference = Slot(uri=ALLIANCE.single_reference, name="PaperHandle_single_reference", curie=ALLIANCE.curie('single_reference'),
+                   model_uri=DEFAULT_.PaperHandle_single_reference, domain=PaperHandle, range=Union[str, ReferenceCurie])
 
 slots.PaperHandle_handle = Slot(uri=ALLIANCE.handle, name="PaperHandle_handle", curie=ALLIANCE.curie('handle'),
                    model_uri=DEFAULT_.PaperHandle_handle, domain=PaperHandle, range=str)
