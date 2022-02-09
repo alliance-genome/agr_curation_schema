@@ -1,5 +1,5 @@
 # Auto generated from allianceModel.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-08T17:03:48
+# Generation date: 2022-02-09T15:21:04
 # Schema: Alliance-Schema-Prototype
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema
@@ -845,6 +845,47 @@ class Reagent(YAMLRoot):
         if not isinstance(self.manufactured_by, list):
             self.manufactured_by = [self.manufactured_by] if self.manufactured_by is not None else []
         self.manufactured_by = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.manufactured_by]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Note(YAMLRoot):
+    """
+    Note object for capturing free-text describing some attribute of an entity, coupled with a 'note type', private
+    boolean, and an optional list of references.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.Note
+    class_class_curie: ClassVar[str] = "alliance:Note"
+    class_name: ClassVar[str] = "Note"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.Note
+
+    free_text: str = None
+    note_type: Union[dict, "VocabularyTerm"] = None
+    private: Union[bool, Bool] = None
+    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.free_text):
+            self.MissingRequiredField("free_text")
+        if not isinstance(self.free_text, str):
+            self.free_text = str(self.free_text)
+
+        if self._is_empty(self.note_type):
+            self.MissingRequiredField("note_type")
+        if not isinstance(self.note_type, VocabularyTerm):
+            self.note_type = VocabularyTerm(**as_dict(self.note_type))
+
+        if self._is_empty(self.private):
+            self.MissingRequiredField("private")
+        if not isinstance(self.private, Bool):
+            self.private = Bool(self.private)
+
+        if not isinstance(self.references, list):
+            self.references = [self.references] if self.references is not None else []
+        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
 
         super().__post_init__(**kwargs)
 
@@ -3336,7 +3377,6 @@ class ExperimentalCondition(YAMLRoot):
     condition_gene_ontology: Optional[Union[str, GOTermCurie]] = None
     condition_taxon: Optional[Union[str, NCBITaxonTermCurie]] = None
     condition_chemical: Optional[Union[str, OntologyTermCurie]] = None
-    paper_handles: Optional[Union[Union[dict, "PaperHandle"], List[Union[dict, "PaperHandle"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.condition_class):
@@ -3369,8 +3409,6 @@ class ExperimentalCondition(YAMLRoot):
 
         if self.condition_chemical is not None and not isinstance(self.condition_chemical, OntologyTermCurie):
             self.condition_chemical = OntologyTermCurie(self.condition_chemical)
-
-        self._normalize_inlined_as_dict(slot_name="paper_handles", slot_type=PaperHandle, key_name="single_reference", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -5070,6 +5108,18 @@ slots.private_comment = Slot(uri=ALLIANCE.private_comment, name="private_comment
 slots.uncertain = Slot(uri=ALLIANCE.uncertain, name="uncertain", curie=ALLIANCE.curie('uncertain'),
                    model_uri=ALLIANCE.uncertain, domain=None, range=Optional[Union[bool, Bool]])
 
+slots.free_text = Slot(uri=ALLIANCE.free_text, name="free_text", curie=ALLIANCE.curie('free_text'),
+                   model_uri=ALLIANCE.free_text, domain=None, range=Optional[str])
+
+slots.note_type = Slot(uri=ALLIANCE.note_type, name="note_type", curie=ALLIANCE.curie('note_type'),
+                   model_uri=ALLIANCE.note_type, domain=None, range=Optional[Union[dict, VocabularyTerm]])
+
+slots.private = Slot(uri=ALLIANCE.private, name="private", curie=ALLIANCE.curie('private'),
+                   model_uri=ALLIANCE.private, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.related_notes = Slot(uri=ALLIANCE.related_notes, name="related_notes", curie=ALLIANCE.curie('related_notes'),
+                   model_uri=ALLIANCE.related_notes, domain=None, range=Optional[Union[Union[dict, Note], List[Union[dict, Note]]]])
+
 slots.statement_subject = Slot(uri=ALLIANCE.statement_subject, name="statement_subject", curie=ALLIANCE.curie('statement_subject'),
                    model_uri=ALLIANCE.statement_subject, domain=EntityStatement, range=Optional[str])
 
@@ -5610,9 +5660,6 @@ slots.cnda_end = Slot(uri=ALLIANCE.cnda_end, name="cnda_end", curie=ALLIANCE.cur
 slots.embryonic_cell_lines = Slot(uri=ALLIANCE.embryonic_cell_lines, name="embryonic_cell_lines", curie=ALLIANCE.curie('embryonic_cell_lines'),
                    model_uri=ALLIANCE.embryonic_cell_lines, domain=None, range=Optional[str])
 
-slots.note_type = Slot(uri=ALLIANCE.note_type, name="note_type", curie=ALLIANCE.curie('note_type'),
-                   model_uri=ALLIANCE.note_type, domain=None, range=Optional[Union[str, "AntibodyNoteTypeSet"]])
-
 slots.Reference_id = Slot(uri=ALLIANCE.id, name="Reference_id", curie=ALLIANCE.curie('id'),
                    model_uri=ALLIANCE.Reference_id, domain=Reference, range=Optional[str])
 
@@ -5678,6 +5725,15 @@ slots.BiologicalEntity_taxon = Slot(uri=ALLIANCE.taxon, name="BiologicalEntity_t
 
 slots.Gene_symbol = Slot(uri=ALLIANCE.symbol, name="Gene_symbol", curie=ALLIANCE.curie('symbol'),
                    model_uri=ALLIANCE.Gene_symbol, domain=Gene, range=str)
+
+slots.Note_free_text = Slot(uri=ALLIANCE.free_text, name="Note_free_text", curie=ALLIANCE.curie('free_text'),
+                   model_uri=ALLIANCE.Note_free_text, domain=Note, range=str)
+
+slots.Note_note_type = Slot(uri=ALLIANCE.note_type, name="Note_note_type", curie=ALLIANCE.curie('note_type'),
+                   model_uri=ALLIANCE.Note_note_type, domain=Note, range=Union[dict, "VocabularyTerm"])
+
+slots.Note_private = Slot(uri=ALLIANCE.private, name="Note_private", curie=ALLIANCE.curie('private'),
+                   model_uri=ALLIANCE.Note_private, domain=Note, range=Union[bool, Bool])
 
 slots.EntitySynonym_object = Slot(uri=ALLIANCE.object, name="EntitySynonym_object", curie=ALLIANCE.curie('object'),
                    model_uri=ALLIANCE.EntitySynonym_object, domain=EntitySynonym, range=Union[dict, Synonym])
@@ -5906,9 +5962,6 @@ slots.ExperimentalCondition_condition_taxon = Slot(uri=ALLIANCE.condition_taxon,
 
 slots.ExperimentalCondition_condition_chemical = Slot(uri=ALLIANCE.condition_chemical, name="ExperimentalCondition_condition_chemical", curie=ALLIANCE.curie('condition_chemical'),
                    model_uri=ALLIANCE.ExperimentalCondition_condition_chemical, domain=ExperimentalCondition, range=Optional[Union[str, OntologyTermCurie]])
-
-slots.ExperimentalCondition_paper_handles = Slot(uri=ALLIANCE.paper_handles, name="ExperimentalCondition_paper_handles", curie=ALLIANCE.curie('paper_handles'),
-                   model_uri=ALLIANCE.ExperimentalCondition_paper_handles, domain=ExperimentalCondition, range=Optional[Union[Union[dict, "PaperHandle"], List[Union[dict, "PaperHandle"]]]])
 
 slots.ConditionRelation_unique_id = Slot(uri=ALLIANCE.unique_id, name="ConditionRelation_unique_id", curie=ALLIANCE.curie('unique_id'),
                    model_uri=ALLIANCE.ConditionRelation_unique_id, domain=ConditionRelation, range=Optional[str])

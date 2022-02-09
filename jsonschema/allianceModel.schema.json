@@ -841,7 +841,8 @@
          "description": "",
          "properties": {
             "note_type": {
-               "$ref": "#/$defs/AntibodyNoteTypeSet"
+               "$ref": "#/$defs/AntibodyNoteTypeSet",
+               "description": "The type of note: e.g., cytology, comment, summary."
             },
             "references": {
                "description": "holds between an object and a list of references",
@@ -2012,13 +2013,6 @@
             "condition_taxon": {
                "description": "NCBITaxon ontology id used in subset of condition types like 'bacterial infection'.",
                "type": "string"
-            },
-            "paper_handles": {
-               "description": "Used by ZFIN to provide reference-specific labels/aliases to experimental conditions; useful for referencing experimental conditions while curating.",
-               "items": {
-                  "$ref": "#/$defs/PaperHandle"
-               },
-               "type": "array"
             },
             "unique_id": {
                "description": "Unique identifer for the experimental condition.  Will be generated at AGR.",
@@ -3891,6 +3885,38 @@
             "curie"
          ],
          "title": "NCBITaxonTerm",
+         "type": "object"
+      },
+      "Note": {
+         "additionalProperties": false,
+         "description": "Note object for capturing free-text describing some attribute of an entity, coupled with a 'note type', private boolean, and an optional list of references.",
+         "properties": {
+            "free_text": {
+               "description": "A free text string that describes some aspect of an entity.",
+               "type": "string"
+            },
+            "note_type": {
+               "$ref": "#/$defs/VocabularyTerm",
+               "description": "The type of note: e.g., cytology, comment, summary."
+            },
+            "private": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "free_text",
+            "note_type",
+            "private"
+         ],
+         "title": "Note",
          "type": "object"
       },
       "NoteAssociationTypes": {

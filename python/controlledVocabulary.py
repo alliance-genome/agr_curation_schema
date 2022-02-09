@@ -1,5 +1,5 @@
 # Auto generated from controlledVocabulary.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-08T17:03:53
+# Generation date: 2022-02-09T15:21:08
 # Schema: Alliance-Schema-Prototype-Controlled-Vocabulary
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml
@@ -631,6 +631,47 @@ class Reagent(YAMLRoot):
         if not isinstance(self.manufactured_by, list):
             self.manufactured_by = [self.manufactured_by] if self.manufactured_by is not None else []
         self.manufactured_by = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.manufactured_by]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Note(YAMLRoot):
+    """
+    Note object for capturing free-text describing some attribute of an entity, coupled with a 'note type', private
+    boolean, and an optional list of references.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.Note
+    class_class_curie: ClassVar[str] = "alliance:Note"
+    class_name: ClassVar[str] = "Note"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/Note")
+
+    free_text: str = None
+    note_type: Union[dict, VocabularyTerm] = None
+    private: Union[bool, Bool] = None
+    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.free_text):
+            self.MissingRequiredField("free_text")
+        if not isinstance(self.free_text, str):
+            self.free_text = str(self.free_text)
+
+        if self._is_empty(self.note_type):
+            self.MissingRequiredField("note_type")
+        if not isinstance(self.note_type, VocabularyTerm):
+            self.note_type = VocabularyTerm(**as_dict(self.note_type))
+
+        if self._is_empty(self.private):
+            self.MissingRequiredField("private")
+        if not isinstance(self.private, Bool):
+            self.private = Bool(self.private)
+
+        if not isinstance(self.references, list):
+            self.references = [self.references] if self.references is not None else []
+        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
 
         super().__post_init__(**kwargs)
 
@@ -2831,6 +2872,18 @@ slots.private_comment = Slot(uri=ALLIANCE.private_comment, name="private_comment
 slots.uncertain = Slot(uri=ALLIANCE.uncertain, name="uncertain", curie=ALLIANCE.curie('uncertain'),
                    model_uri=DEFAULT_.uncertain, domain=None, range=Optional[Union[bool, Bool]])
 
+slots.free_text = Slot(uri=ALLIANCE.free_text, name="free_text", curie=ALLIANCE.curie('free_text'),
+                   model_uri=DEFAULT_.free_text, domain=None, range=Optional[str])
+
+slots.note_type = Slot(uri=ALLIANCE.note_type, name="note_type", curie=ALLIANCE.curie('note_type'),
+                   model_uri=DEFAULT_.note_type, domain=None, range=Optional[Union[dict, VocabularyTerm]])
+
+slots.private = Slot(uri=ALLIANCE.private, name="private", curie=ALLIANCE.curie('private'),
+                   model_uri=DEFAULT_.private, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.related_notes = Slot(uri=ALLIANCE.related_notes, name="related_notes", curie=ALLIANCE.curie('related_notes'),
+                   model_uri=DEFAULT_.related_notes, domain=None, range=Optional[Union[Union[dict, Note], List[Union[dict, Note]]]])
+
 slots.statement_subject = Slot(uri=ALLIANCE.statement_subject, name="statement_subject", curie=ALLIANCE.curie('statement_subject'),
                    model_uri=DEFAULT_.statement_subject, domain=EntityStatement, range=Optional[str])
 
@@ -3292,6 +3345,15 @@ slots.BiologicalEntity_taxon = Slot(uri=ALLIANCE.taxon, name="BiologicalEntity_t
 
 slots.Gene_symbol = Slot(uri=ALLIANCE.symbol, name="Gene_symbol", curie=ALLIANCE.curie('symbol'),
                    model_uri=DEFAULT_.Gene_symbol, domain=Gene, range=str)
+
+slots.Note_free_text = Slot(uri=ALLIANCE.free_text, name="Note_free_text", curie=ALLIANCE.curie('free_text'),
+                   model_uri=DEFAULT_.Note_free_text, domain=Note, range=str)
+
+slots.Note_note_type = Slot(uri=ALLIANCE.note_type, name="Note_note_type", curie=ALLIANCE.curie('note_type'),
+                   model_uri=DEFAULT_.Note_note_type, domain=Note, range=Union[dict, VocabularyTerm])
+
+slots.Note_private = Slot(uri=ALLIANCE.private, name="Note_private", curie=ALLIANCE.curie('private'),
+                   model_uri=DEFAULT_.Note_private, domain=Note, range=Union[bool, Bool])
 
 slots.EntitySynonym_object = Slot(uri=ALLIANCE.object, name="EntitySynonym_object", curie=ALLIANCE.curie('object'),
                    model_uri=DEFAULT_.EntitySynonym_object, domain=EntitySynonym, range=Union[dict, Synonym])
