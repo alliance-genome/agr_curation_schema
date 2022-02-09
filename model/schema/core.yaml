@@ -326,6 +326,15 @@ slots:
       Default value is true.
     range: boolean
 
+  related_notes:
+    description: Holds between an object and a list of related Note objects.
+    notes: >-
+      The original name suggested for this slot was simply notes, but I think
+      that label is reserved in LinkML for internal descriptions of objects,
+      hence the related_notes label used here.
+    range: Note
+    multivalued: true
+
   statement_subject:
     description: >-
       The entity being described by the note.
