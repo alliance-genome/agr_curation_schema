@@ -4,7 +4,7 @@
       "evidence_codes": [
         "ECO:0000305"
       ],
-      "reference": "PMID:0012345",
+      "single_reference": "PMID:0012345",
       "data_provider": [
         "ZFIN"
       ],
@@ -26,7 +26,7 @@
               "condition_class": "ZECO:0000103",
               "paper_handles": [
                 {
-                  "reference": "PMID:0012345",
+                  "single_reference": "PMID:0012345",
                   "handle": "standard"
                 }
               ]
