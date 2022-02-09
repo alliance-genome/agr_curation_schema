@@ -310,7 +310,6 @@ classes:
       - condition_gene_ontology           # geneOntologyId in JSON schema
       - condition_taxon                   # NCBITaxonId in JSON schema
       - condition_chemical                # ChemicalOntologyId in JSON schema
-      - paper_handles
     slot_usage:
       unique_id:
         description: >-

@@ -1,5 +1,5 @@
 # Auto generated from phenotypeAndDiseaseAnnotation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-08T17:05:02
+# Generation date: 2022-02-09T15:19:08
 # Schema: Alliance-Schema-Prototype-Phenotype-and-Disease-Annotation
 #
 # id: https://github.com/alliance-genome/agr_persistent_schema/phenotypeAndDiseaseAnnotation.yaml
@@ -249,6 +249,10 @@ class ResourceCurie(InformationContentEntityCurie):
     pass
 
 
+class VocabularyName(extended_str):
+    pass
+
+
 class AlleleCurie(GenomicEntityCurie):
     pass
 
@@ -291,7 +295,6 @@ class ExperimentalCondition(YAMLRoot):
     condition_gene_ontology: Optional[Union[str, GOTermCurie]] = None
     condition_taxon: Optional[Union[str, NCBITaxonTermCurie]] = None
     condition_chemical: Optional[Union[str, OntologyTermCurie]] = None
-    paper_handles: Optional[Union[Union[dict, "PaperHandle"], List[Union[dict, "PaperHandle"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.condition_class):
@@ -324,8 +327,6 @@ class ExperimentalCondition(YAMLRoot):
 
         if self.condition_chemical is not None and not isinstance(self.condition_chemical, OntologyTermCurie):
             self.condition_chemical = OntologyTermCurie(self.condition_chemical)
-
-        self._normalize_inlined_as_dict(slot_name="paper_handles", slot_type=PaperHandle, key_name="single_reference", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -648,6 +649,47 @@ class Reagent(YAMLRoot):
         if not isinstance(self.manufactured_by, list):
             self.manufactured_by = [self.manufactured_by] if self.manufactured_by is not None else []
         self.manufactured_by = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.manufactured_by]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Note(YAMLRoot):
+    """
+    Note object for capturing free-text describing some attribute of an entity, coupled with a 'note type', private
+    boolean, and an optional list of references.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.Note
+    class_class_curie: ClassVar[str] = "alliance:Note"
+    class_name: ClassVar[str] = "Note"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.Note
+
+    free_text: str = None
+    note_type: Union[dict, "VocabularyTerm"] = None
+    private: Union[bool, Bool] = None
+    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.free_text):
+            self.MissingRequiredField("free_text")
+        if not isinstance(self.free_text, str):
+            self.free_text = str(self.free_text)
+
+        if self._is_empty(self.note_type):
+            self.MissingRequiredField("note_type")
+        if not isinstance(self.note_type, VocabularyTerm):
+            self.note_type = VocabularyTerm(**as_dict(self.note_type))
+
+        if self._is_empty(self.private):
+            self.MissingRequiredField("private")
+        if not isinstance(self.private, Bool):
+            self.private = Bool(self.private)
+
+        if not isinstance(self.references, list):
+            self.references = [self.references] if self.references is not None else []
+        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
 
         super().__post_init__(**kwargs)
 
@@ -2684,6 +2726,128 @@ class LoggedInPerson(Person):
 
 
 @dataclass
+class VocabularyTerm(YAMLRoot):
+    """
+    A concept or class in a simple vocabulary.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/VocabularyTerm")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "VocabularyTerm"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.VocabularyTerm
+
+    name: str = None
+    created_by: Union[dict, Person] = None
+    modified_by: Union[dict, Person] = None
+    abbreviation: Optional[str] = None
+    definition: Optional[str] = None
+    is_obsolete: Optional[Union[bool, Bool]] = None
+    text_synonyms: Optional[Union[str, List[str]]] = empty_list()
+    table_key: Optional[int] = None
+    creation_date: Optional[Union[str, XSDDate]] = None
+    date_last_modified: Optional[Union[str, XSDDate]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self._is_empty(self.created_by):
+            self.MissingRequiredField("created_by")
+        if not isinstance(self.created_by, Person):
+            self.created_by = Person(**as_dict(self.created_by))
+
+        if self._is_empty(self.modified_by):
+            self.MissingRequiredField("modified_by")
+        if not isinstance(self.modified_by, Person):
+            self.modified_by = Person(**as_dict(self.modified_by))
+
+        if self.abbreviation is not None and not isinstance(self.abbreviation, str):
+            self.abbreviation = str(self.abbreviation)
+
+        if self.definition is not None and not isinstance(self.definition, str):
+            self.definition = str(self.definition)
+
+        if self.is_obsolete is not None and not isinstance(self.is_obsolete, Bool):
+            self.is_obsolete = Bool(self.is_obsolete)
+
+        if not isinstance(self.text_synonyms, list):
+            self.text_synonyms = [self.text_synonyms] if self.text_synonyms is not None else []
+        self.text_synonyms = [v if isinstance(v, str) else str(v) for v in self.text_synonyms]
+
+        if self.table_key is not None and not isinstance(self.table_key, int):
+            self.table_key = int(self.table_key)
+
+        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
+            self.creation_date = XSDDate(self.creation_date)
+
+        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
+            self.date_last_modified = XSDDate(self.date_last_modified)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Vocabulary(YAMLRoot):
+    """
+    A set of VocabularyTerm objects.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/Vocabulary")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "Vocabulary"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.Vocabulary
+
+    name: Union[str, VocabularyName] = None
+    created_by: Union[dict, Person] = None
+    modified_by: Union[dict, Person] = None
+    vocabulary_description: Optional[str] = None
+    is_obsolete: Optional[Union[bool, Bool]] = None
+    member_terms: Optional[Union[Union[dict, VocabularyTerm], List[Union[dict, VocabularyTerm]]]] = empty_list()
+    table_key: Optional[int] = None
+    creation_date: Optional[Union[str, XSDDate]] = None
+    date_last_modified: Optional[Union[str, XSDDate]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, VocabularyName):
+            self.name = VocabularyName(self.name)
+
+        if self._is_empty(self.created_by):
+            self.MissingRequiredField("created_by")
+        if not isinstance(self.created_by, Person):
+            self.created_by = Person(**as_dict(self.created_by))
+
+        if self._is_empty(self.modified_by):
+            self.MissingRequiredField("modified_by")
+        if not isinstance(self.modified_by, Person):
+            self.modified_by = Person(**as_dict(self.modified_by))
+
+        if self.vocabulary_description is not None and not isinstance(self.vocabulary_description, str):
+            self.vocabulary_description = str(self.vocabulary_description)
+
+        if self.is_obsolete is not None and not isinstance(self.is_obsolete, Bool):
+            self.is_obsolete = Bool(self.is_obsolete)
+
+        self._normalize_inlined_as_dict(slot_name="member_terms", slot_type=VocabularyTerm, key_name="name", keyed=False)
+
+        if self.table_key is not None and not isinstance(self.table_key, int):
+            self.table_key = int(self.table_key)
+
+        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
+            self.creation_date = XSDDate(self.creation_date)
+
+        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
+            self.date_last_modified = XSDDate(self.date_last_modified)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class Allele(GenomicEntity):
     """
     One of multiple possible forms of a functional genomic element (most often described as a locus or gene),
@@ -3550,6 +3714,18 @@ slots.private_comment = Slot(uri=ALLIANCE.private_comment, name="private_comment
 slots.uncertain = Slot(uri=ALLIANCE.uncertain, name="uncertain", curie=ALLIANCE.curie('uncertain'),
                    model_uri=ALLIANCE.uncertain, domain=None, range=Optional[Union[bool, Bool]])
 
+slots.free_text = Slot(uri=ALLIANCE.free_text, name="free_text", curie=ALLIANCE.curie('free_text'),
+                   model_uri=ALLIANCE.free_text, domain=None, range=Optional[str])
+
+slots.note_type = Slot(uri=ALLIANCE.note_type, name="note_type", curie=ALLIANCE.curie('note_type'),
+                   model_uri=ALLIANCE.note_type, domain=None, range=Optional[Union[dict, VocabularyTerm]])
+
+slots.private = Slot(uri=ALLIANCE.private, name="private", curie=ALLIANCE.curie('private'),
+                   model_uri=ALLIANCE.private, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.related_notes = Slot(uri=ALLIANCE.related_notes, name="related_notes", curie=ALLIANCE.curie('related_notes'),
+                   model_uri=ALLIANCE.related_notes, domain=None, range=Optional[Union[Union[dict, Note], List[Union[dict, Note]]]])
+
 slots.statement_subject = Slot(uri=ALLIANCE.statement_subject, name="statement_subject", curie=ALLIANCE.curie('statement_subject'),
                    model_uri=ALLIANCE.statement_subject, domain=EntityStatement, range=Optional[str])
 
@@ -3814,6 +3990,15 @@ slots.okta_id = Slot(uri=ALLIANCE.okta_id, name="okta_id", curie=ALLIANCE.curie(
 slots.okta_email = Slot(uri=ALLIANCE.okta_email, name="okta_email", curie=ALLIANCE.curie('okta_email'),
                    model_uri=ALLIANCE.okta_email, domain=LoggedInPerson, range=Optional[str])
 
+slots.text_synonyms = Slot(uri="str(uriorcurie)", name="text_synonyms", curie=None,
+                   model_uri=ALLIANCE.text_synonyms, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.member_terms = Slot(uri="str(uriorcurie)", name="member_terms", curie=None,
+                   model_uri=ALLIANCE.member_terms, domain=None, range=Optional[Union[Union[dict, VocabularyTerm], List[Union[dict, VocabularyTerm]]]])
+
+slots.vocabulary_description = Slot(uri="str(uriorcurie)", name="vocabulary_description", curie=None,
+                   model_uri=ALLIANCE.vocabulary_description, domain=None, range=Optional[str])
+
 slots.component_relation = Slot(uri="str(uriorcurie)", name="component_relation", curie=None,
                    model_uri=ALLIANCE.component_relation, domain=None, range=Optional[Union[str, "ComponentRelationsEnum"]])
 
@@ -4066,9 +4251,6 @@ slots.ExperimentalCondition_condition_taxon = Slot(uri=ALLIANCE.condition_taxon,
 slots.ExperimentalCondition_condition_chemical = Slot(uri=ALLIANCE.condition_chemical, name="ExperimentalCondition_condition_chemical", curie=ALLIANCE.curie('condition_chemical'),
                    model_uri=ALLIANCE.ExperimentalCondition_condition_chemical, domain=ExperimentalCondition, range=Optional[Union[str, OntologyTermCurie]])
 
-slots.ExperimentalCondition_paper_handles = Slot(uri=ALLIANCE.paper_handles, name="ExperimentalCondition_paper_handles", curie=ALLIANCE.curie('paper_handles'),
-                   model_uri=ALLIANCE.ExperimentalCondition_paper_handles, domain=ExperimentalCondition, range=Optional[Union[Union[dict, "PaperHandle"], List[Union[dict, "PaperHandle"]]]])
-
 slots.ConditionRelation_unique_id = Slot(uri=ALLIANCE.unique_id, name="ConditionRelation_unique_id", curie=ALLIANCE.curie('unique_id'),
                    model_uri=ALLIANCE.ConditionRelation_unique_id, domain=ConditionRelation, range=Optional[str])
 
@@ -4089,6 +4271,15 @@ slots.BiologicalEntity_taxon = Slot(uri=ALLIANCE.taxon, name="BiologicalEntity_t
 
 slots.Gene_symbol = Slot(uri=ALLIANCE.symbol, name="Gene_symbol", curie=ALLIANCE.curie('symbol'),
                    model_uri=ALLIANCE.Gene_symbol, domain=Gene, range=str)
+
+slots.Note_free_text = Slot(uri=ALLIANCE.free_text, name="Note_free_text", curie=ALLIANCE.curie('free_text'),
+                   model_uri=ALLIANCE.Note_free_text, domain=Note, range=str)
+
+slots.Note_note_type = Slot(uri=ALLIANCE.note_type, name="Note_note_type", curie=ALLIANCE.curie('note_type'),
+                   model_uri=ALLIANCE.Note_note_type, domain=Note, range=Union[dict, "VocabularyTerm"])
+
+slots.Note_private = Slot(uri=ALLIANCE.private, name="Note_private", curie=ALLIANCE.curie('private'),
+                   model_uri=ALLIANCE.Note_private, domain=Note, range=Union[bool, Bool])
 
 slots.EntitySynonym_object = Slot(uri=ALLIANCE.object, name="EntitySynonym_object", curie=ALLIANCE.curie('object'),
                    model_uri=ALLIANCE.EntitySynonym_object, domain=EntitySynonym, range=Union[dict, Synonym])
@@ -4143,6 +4334,12 @@ slots.LoggedInPerson_okta_id = Slot(uri=ALLIANCE.okta_id, name="LoggedInPerson_o
 
 slots.LoggedInPerson_okta_email = Slot(uri=ALLIANCE.okta_email, name="LoggedInPerson_okta_email", curie=ALLIANCE.curie('okta_email'),
                    model_uri=ALLIANCE.LoggedInPerson_okta_email, domain=LoggedInPerson, range=str)
+
+slots.VocabularyTerm_name = Slot(uri=ALLIANCE.name, name="VocabularyTerm_name", curie=ALLIANCE.curie('name'),
+                   model_uri=ALLIANCE.VocabularyTerm_name, domain=VocabularyTerm, range=str)
+
+slots.Vocabulary_name = Slot(uri=ALLIANCE.name, name="Vocabulary_name", curie=ALLIANCE.curie('name'),
+                   model_uri=ALLIANCE.Vocabulary_name, domain=Vocabulary, range=Union[str, VocabularyName])
 
 slots.Allele_synonyms = Slot(uri=ALLIANCE.synonyms, name="Allele_synonyms", curie=ALLIANCE.curie('synonyms'),
                    model_uri=ALLIANCE.Allele_synonyms, domain=Allele, range=Optional[Union[Union[dict, Synonym], List[Union[dict, Synonym]]]])
