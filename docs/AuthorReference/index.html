@@ -93,7 +93,7 @@
               
                 <h1 id="class-authorreference">Class: AuthorReference</h1>
 <p>URI: <a href="http://alliancegenome.orgAuthorReference">alliance:AuthorReference</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Resource],[InformationContentEntity],[CrossReference],[CrossReference]&lt;cross_references%200..*-++[AuthorReference],[InformationContentEntity]&lt;initials%200..1-%20[AuthorReference],[InformationContentEntity]&lt;last_name%200..1-%20[AuthorReference],[InformationContentEntity]&lt;middle_names%200..1-%20[AuthorReference],[InformationContentEntity]&lt;first_name%200..1-%20[AuthorReference],[InformationContentEntity]&lt;corresponding_author%200..1-%20[AuthorReference],[Reference]++-%20authors%200..*&gt;[AuthorReference],[Resource]++-%20authors%200..*&gt;[AuthorReference],[Resource]++-%20editors%200..*&gt;[AuthorReference],[Reference]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Resource],[InformationContentEntity],[CrossReference],[CrossReference]&lt;cross_references%200..*-++[AuthorReference],[InformationContentEntity]&lt;initials%200..1-%20[AuthorReference],[InformationContentEntity]&lt;last_name%200..1-%20[AuthorReference],[InformationContentEntity]&lt;middle_names%200..1-%20[AuthorReference],[InformationContentEntity]&lt;first_name%200..1-%20[AuthorReference],[InformationContentEntity]&lt;corresponding_author%200..1-%20[AuthorReference],[Reference]++-%20authors%200..*&gt;[AuthorReference],[Resource]++-%20authors%200..*&gt;[AuthorReference],[Resource]++-%20editors%200..*&gt;[AuthorReference],[Reference]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Resource],[InformationContentEntity],[CrossReference],[CrossReference]&lt;cross_references%200..*-++[AuthorReference&#124;first_name:string%20%3F;middle_name:string%20%3F;last_name:string%20%3F],[InformationContentEntity]&lt;initials%200..1-%20[AuthorReference],[InformationContentEntity]&lt;corresponding_author%200..1-%20[AuthorReference],[Reference]++-%20authors%200..*&gt;[AuthorReference],[Resource]++-%20authors%200..*&gt;[AuthorReference],[Resource]++-%20editors%200..*&gt;[AuthorReference],[Reference]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Resource],[InformationContentEntity],[CrossReference],[CrossReference]&lt;cross_references%200..*-++[AuthorReference&#124;first_name:string%20%3F;middle_name:string%20%3F;last_name:string%20%3F],[InformationContentEntity]&lt;initials%200..1-%20[AuthorReference],[InformationContentEntity]&lt;corresponding_author%200..1-%20[AuthorReference],[Reference]++-%20authors%200..*&gt;[AuthorReference],[Resource]++-%20authors%200..*&gt;[AuthorReference],[Resource]++-%20editors%200..*&gt;[AuthorReference],[Reference]" /></a></p>
 <h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
 <li><strong><a href="../InformationContentEntity/">InformationContentEntity</a></strong> <em><a href="../authors/">authors</a></em>  <sub>0..*</sub>  <strong><a href="./">AuthorReference</a></strong></li>
@@ -107,15 +107,18 @@
 </ul>
 </li>
 <li><a href="../first_name/">first_name</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../InformationContentEntity/">InformationContentEntity</a></li>
+<li>Description: first name of a person</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../middle_names/">middle_names</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../InformationContentEntity/">InformationContentEntity</a></li>
+<li><a href="../middle_name/">middle_name</a>  <sub>0..1</sub><ul>
+<li>Description: middle names of a person</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
 <li><a href="../last_name/">last_name</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../InformationContentEntity/">InformationContentEntity</a></li>
+<li>Description: last (family) name of a person</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
 <li><a href="../initials/">initials</a>  <sub>0..1</sub><ul>

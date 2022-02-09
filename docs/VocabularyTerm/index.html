@@ -94,7 +94,7 @@
                 <h1 id="class-vocabularyterm">Class: VocabularyTerm</h1>
 <p>A concept or class in a simple vocabulary.</p>
 <p>URI: <a href="http://alliancegenome.orgVocabularyTerm">alliance:VocabularyTerm</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Vocabulary]++-%20member_terms%200..*&gt;[VocabularyTerm&#124;name:string;definition:string%20%3F;is_obsolete:boolean%20%3F;text_synonyms:string%20*;table_key:integer%20%3F;creation_date:date%20%3F;date_last_modified:date%20%3F],[VocabularyTerm]uses%20-.-&gt;[AuditedObject],[Vocabulary],[Person],[AuditedObject]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Vocabulary]++-%20member_terms%200..*&gt;[VocabularyTerm&#124;name:string;definition:string%20%3F;is_obsolete:boolean%20%3F;text_synonyms:string%20*;table_key:integer%20%3F;creation_date:date%20%3F;date_last_modified:date%20%3F],[VocabularyTerm]uses%20-.-&gt;[AuditedObject],[Vocabulary],[Person],[AuditedObject]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Vocabulary]++-%20member_terms%200..*&gt;[VocabularyTerm&#124;name:string;abbreviation:string%20%3F;definition:string%20%3F;is_obsolete:boolean%20%3F;text_synonyms:string%20*;table_key:integer%20%3F;creation_date:date%20%3F;date_last_modified:date%20%3F],[VocabularyTerm]uses%20-.-&gt;[AuditedObject],[Vocabulary],[Person],[AuditedObject]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Vocabulary]++-%20member_terms%200..*&gt;[VocabularyTerm&#124;name:string;abbreviation:string%20%3F;definition:string%20%3F;is_obsolete:boolean%20%3F;text_synonyms:string%20*;table_key:integer%20%3F;creation_date:date%20%3F;date_last_modified:date%20%3F],[VocabularyTerm]uses%20-.-&gt;[AuditedObject],[Vocabulary],[Person],[AuditedObject]" /></a></p>
 <h2 id="uses-mixin">Uses Mixin</h2>
 <ul>
 <li>mixin: <a href="../AuditedObject/">AuditedObject</a> - Some entity for which changes are tracked, including date/time of change and the agent responsible for the change.</li>
@@ -108,6 +108,10 @@
 <ul>
 <li><a href="../VocabularyTerm_name/">VocabularyTerm➞name</a>  <sub>1..1</sub><ul>
 <li>Description: a human-readable name for an entity</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../abbreviation/">abbreviation</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>

@@ -1,0 +1,84 @@
+id: https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest
+name: Alliance-Schema-Ingest
+title: Alliance Schema Ingest
+
+imports:
+  - core
+  - image
+  - variation
+  - linkml:types
+  - informationContentEntity
+  - ontologyTerm
+  - affectedGenomicModel
+  - phenotypeAndDiseaseAnnotation
+
+prefixes:
+  alliance: 'http://alliancegenome.org'
+  linkml: 'https://w3id.org/linkml/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+
+slots:
+  allele_ingest_set:
+    description: >-
+    domain: Ingest
+    range: Allele
+    multivalued: true
+    mixins:
+      - object_set
+
+  disease_allele_ingest_set:
+    description: >-
+    domain: Ingest
+    range: AlleleDiseaseAnnotation
+    multivalued: true
+    mixins:
+      - object_set
+
+  disease_agm_ingest_set:
+    description: >-
+    domain: Ingest
+    range: AGMDiseaseAnnotation
+    multivalued: true
+    mixins:
+      - object_set
+
+  disease_gene_ingest_set:
+    description: >-
+    domain: Ingest
+    range: GeneDiseaseAnnotation
+    multivalued: true
+    mixins:
+      - object_set
+
+  gene_ingest_set:
+    description: >-
+    domain: Ingest
+    range: Gene
+    multivalued: true
+    mixins:
+      - object_set
+
+  object_set:
+    mixin: true
+    domain: Ingest
+    multivalued: true
+    inlined_as_list: true
+    description:
+      Applies to a property that links a ingest object to a set of objects.
+      This is necessary in a json document to provide context for a list, and
+      to allow for a single json object that combines multiple object types
+
+classes:
+  Ingest:
+    tree_root: true
+    slots:
+      - allele_ingest_set
+      - disease_allele_ingest_set
+      - disease_agm_ingest_set
+      - disease_gene_ingest_set
+      - gene_ingest_set
+

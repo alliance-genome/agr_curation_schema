@@ -8,5 +8,6 @@ import lombok.*;
 @EqualsAndHashCode(callSuper=false)
 public class ECOTerm extends OntologyTerm {
 
+  private String abbreviation;
 
 }

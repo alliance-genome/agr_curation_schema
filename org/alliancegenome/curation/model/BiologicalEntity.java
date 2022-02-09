@@ -11,7 +11,7 @@ import lombok.*;
 public abstractclass BiologicalEntity  {
 
   private String curie;
-  private String taxon;
+  private NCBITaxonTerm taxon;
   private Integer tableKey;
   private Person createdBy;
   private String creationDate;

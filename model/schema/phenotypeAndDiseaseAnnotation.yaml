@@ -44,7 +44,7 @@ classes:
       An annotation asserting an association between a biological entity and a phenotype supported by evidence.
     slots:
       - curie
-      - reference
+      - single_reference
       - phenotype_term                    # phenotypeTermIdentifiers in JSON schema
       - condition_relations
     slot_usage:
@@ -75,7 +75,7 @@ classes:
           statement of the phenotype from a post-composed terminology
         required: true
         range: string
-      reference:
+      single_reference:
         description: >-
           The reference in which the phenotype association was asserted/reported.
       creation_date:
@@ -161,11 +161,11 @@ classes:
     description: >-
       An annotation asserting an association between a biological entity and a disease supported by evidence.
     slots:
-      - curie
+      - unique_id
       - mod_id
       - negated
       - evidence_codes
-      - reference
+      - single_reference
       - annotation_type
       - with
       - disease_qualifiers
@@ -178,6 +178,11 @@ classes:
       - disease_genetic_modifier
       - disease_genetic_modifier_relation
     slot_usage:
+      unique_id:
+        description: >-
+          Unique identifer for the disease annotation.  Will be generated at AGR
+          if not submitted by the MOD.
+        required: false
       mod_id:
         description: >-
           The model organism database (MOD) identifier/curie for the disease annotation. Currently only
@@ -212,7 +217,7 @@ classes:
           indicated disease based on sequence-similarity/sequence-orthology "with" some human
           gene. Currently used by SGD.
         required: false    # Required for SGD disease annotations using ISS or ISO evidence codes
-      reference:               # evidence in JSON schema
+      single_reference:               # evidence in JSON schema
         required: true
         description: >-
           The reference in which the disease association was asserted/reported.
@@ -296,7 +301,7 @@ classes:
       The environmental context in which an experiment is carried out. This may (e.g. drug treatment)
       or may not (e.g. standard conditions) directly influence the outcome of the experiment.
     slots:
-      - curie
+      - unique_id
       - condition_class                   # conditionClassId in JSON schema
       - condition_statement               # conditionStatement in JSON schema
       - condition_id                      # conditionId in JSON schema
@@ -307,14 +312,16 @@ classes:
       - condition_chemical                # ChemicalOntologyId in JSON schema
       - paper_handles
     slot_usage:
+      unique_id:
+        description: >-
+          Unique identifer for the experimental condition.  Will be generated at
+          AGR.
+        required: false
       condition_class:
-        required: true
         description: >-
           The ZECO ID that represents the high level condition grouping term.  This will come from
           a slim in the ZECO, called 'AllianceSlim'.
-        range: ZECOTerm
       condition_statement:
-        required: true
         description: >-
           Free text describing the environmental/experimental condition. For some groups this is a
           single term, others is it is a concatenation of the term names from the ontologies included
@@ -326,7 +333,6 @@ classes:
           condition ontology ID attributes (chemical, NCBITaxon, anatomical). This could also be another
           ZECO term if the ZECO term that describes this condition is more specific, or outside the
           conditionClassId slim.
-        range: ExperimentalConditionOntologyTerm
       condition_quantity:
         description: >-
           Optional free text field that records the units/amount/degrees of a condition.
@@ -334,7 +340,6 @@ classes:
       condition_anatomy:
         description: >-
           Anatomical ontology identifier used in cases like regeneration/wounding.
-        range: AnatomicalTerm
       condition_gene_ontology:
         description: >-
           Gene Ontology id used in subset of condition types.
@@ -342,9 +347,6 @@ classes:
       condition_taxon:
         description: >-
           NCBITaxon ontology id used in subset of condition types like 'bacterial infection'.
-        range: OntologyTerm
-        values_from:
-          - NCBITaxon
       condition_chemical:
         description: >-
           ChEBI or molecular ontology id used in subset of condition terms.  ie: the specific
@@ -367,32 +369,18 @@ classes:
       of these ConditionRelation objects via a 'condition_relations' slot to express the experimental
       conditions relevant to the annotation.
     slots:
-      - curie
+      - unique_id
       - condition_relation_type
       - conditions
     slot_usage:
+      unique_id:
+        description: >-
+          Unique identifer for the condition relation.  Will be generated at
+          AGR.
+        required: false
       condition_relation_type:
         required: true
         multivalued: false
-
-  Molecule:
-    description: >-
-      Molecules as described by WormBase
-    mixins:
-      - AuditedObject
-    slots:
-      - curie
-      - name
-      - inchi
-      - inchi_key
-      - iupac
-      - formula
-      - smiles
-      - synonyms
-      - cross_references
-    slot_usage:
-      name:
-        required: true
 
   PaperHandle:
     description: >-
@@ -401,10 +389,10 @@ classes:
       conditions from ZFIN to label (in a reference-specific manner) individual
       experimental conditions when curating a particular reference.
     slots:
-      - reference
+      - single_reference
       - handle
     slot_usage:
-      reference:
+      single_reference:
         required: true
       handle:
         required: true
@@ -429,12 +417,13 @@ slots:
 
   condition_chemical:
     domain: ExperimentalCondition
-    range: uriorcurie                     # Update to Chemical if such a class is instantiated
+    range: OntologyTerm                     # Update to Chemical if such a class is instantiated
     values_from:
       - CHEBI
       - WBMol
 
   condition_class:
+    required: true
     domain: ExperimentalCondition
     range: ZECOTerm
 
@@ -451,14 +440,13 @@ slots:
     range: string
 
   condition_statement:
+    required: true
     domain: ExperimentalCondition
     range: string
 
   condition_taxon:
     domain: ExperimentalCondition
-    range: uriorcurie                     # Update to Taxon if such a class is instantiated
-    values_from:
-      - NCBITaxon
+    range: NCBITaxonTerm
 
   condition_relations:
     range: ConditionRelation
@@ -535,11 +523,6 @@ slots:
       http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8
     range: Gene
 
-  mod_id:
-    description: >-
-      The model organism database (MOD) identifier/curie for the object
-    range: string   # Should this be uriorcurie?
-
   paper_handles:
     description: >-
       A slot that points to a list of PaperHandle objects, pairings of a reference and a free
@@ -611,30 +594,6 @@ slots:
     domain: ExperimentalCondition
     range: Entity
 
-  inchi:
-    description: InChi style description of the molecule
-    domain: Molecule
-    range: string
-
-  inchi_key:
-    description: InChi key description of the molecule
-    domain: Molecule
-    range: string
-
-  iupac:
-    description: IUPAC name of the molecule
-    domain: Molecule
-    range: string
-
-  formula:
-    description: Formula of the molecule
-    domain: Molecule
-    range: string
-
-  smiles:
-    description: Molecular structure in SMILES format
-    domain: Molecule
-    range: string
 
 ## ------------
 ## ENUMS

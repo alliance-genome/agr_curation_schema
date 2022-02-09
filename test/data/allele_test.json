@@ -1,0 +1,16 @@
+{
+  "allele_ingest_set": [
+    {
+      "curie": "ZFIN:ZDB-ALT-123456-1",
+      "taxon": "NCBITaxon:7955",
+      "created_by": {"first_name":"ZFIN"},
+      "modified_by": {"first_name":"ZFIN"}
+    },
+    {
+      "curie": "ZFIN:ZDB-ALT-123456-2",
+      "taxon": "NCBITaxon:7955",
+      "created_by": {"first_name":"ZFIN"},
+      "modified_by": {"first_name":"ZFIN"}
+    }
+  ]
+}

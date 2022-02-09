@@ -10,14 +10,14 @@ import lombok.*;
 @EqualsAndHashCode(callSuper=false)
 public class ExperimentalCondition  {
 
-  private String curie;
+  private String uniqueId;
   private ZECOTerm conditionClass;
   private String conditionStatement;
   private ExperimentalConditionOntologyTerm conditionId;
   private String conditionQuantity;
   private AnatomicalTerm conditionAnatomy;
   private GOTerm conditionGeneOntology;
-  private OntologyTerm conditionTaxon;
+  private NCBITaxonTerm conditionTaxon;
   private OntologyTerm conditionChemical;
   private List<PaperHandle> paperHandles;
 

@@ -122,7 +122,10 @@
 <li><a href="Laboratory/">Laboratory</a></li>
 </ul>
 </li>
-<li><a href="Person/">Person</a></li>
+<li><a href="Person/">Person</a><ul>
+<li><a href="LoggedInPerson/">LoggedInPerson</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="Assembly/">Assembly</a></li>
@@ -187,20 +190,23 @@
 </ul>
 </li>
 <li><a href="MolecularMutation/">MolecularMutation</a> - Description of the DNA changes with unknown precise genomic location</li>
-<li><a href="Molecule/">Molecule</a> - Molecules as described by WormBase</li>
 <li><a href="NoteType/">NoteType</a> - Describes the relation between a note and an object</li>
 <li><a href="OntologyTerm/">OntologyTerm</a> - A concept or class in an ontology, vocabulary or thesaurus. Note, ontology terms can be found in multiple ontologies (ie: mireoting). defining_slots helps define an alternative key for ontology terms.<ul>
 <li><a href="AnatomicalTerm/">AnatomicalTerm</a><ul>
 <li><a href="CLTerm/">CLTerm</a></li>
+<li><a href="DAOTerm/">DAOTerm</a></li>
 <li><a href="EMAPATerm/">EMAPATerm</a></li>
-<li><a href="FBBTTerm/">FBBTTerm</a></li>
 <li><a href="MATerm/">MATerm</a></li>
 <li><a href="UBERONTerm/">UBERONTerm</a></li>
 <li><a href="WBBTTerm/">WBBTTerm</a></li>
 <li><a href="ZFATerm/">ZFATerm</a></li>
 </ul>
 </li>
+<li><a href="ChemicalTerm/">ChemicalTerm</a> - An ontology term representing a chemical or molecule<ul>
 <li><a href="CHEBITerm/">CHEBITerm</a></li>
+<li><a href="Molecule/">Molecule</a> - Molecules as described by WormBase</li>
+</ul>
+</li>
 <li><a href="DOTerm/">DOTerm</a></li>
 <li><a href="ECOTerm/">ECOTerm</a></li>
 <li><a href="ExperimentalConditionOntologyTerm/">ExperimentalConditionOntologyTerm</a><ul>
@@ -213,6 +219,7 @@
 <li><a href="MITerm/">MITerm</a></li>
 <li><a href="MMOTerm/">MMOTerm</a></li>
 <li><a href="MMUSDVTerm/">MMUSDVTerm</a></li>
+<li><a href="NCBITaxonTerm/">NCBITaxonTerm</a></li>
 <li><a href="PhenotypeTerm/">PhenotypeTerm</a> - An ontology term representing a characteristic of an organism. This may or may not be expressed as a difference in comparison to a reference organism.</li>
 <li><a href="SOTerm/">SOTerm</a></li>
 <li><a href="StageTerm/">StageTerm</a><ul>
@@ -226,7 +233,6 @@
 <li><a href="PaperHandle/">PaperHandle</a> - A pairing of a reference and a free text string that allows an object to have a reference-specific alias (or handle). For example, used for experimental conditions from ZFIN to label (in a reference-specific manner) individual experimental conditions when curating a particular reference.</li>
 <li><a href="ReferenceType/">ReferenceType</a> - Describes the relation between a reference and an object</li>
 <li><a href="SequenceTargetingReagent/">SequenceTargetingReagent</a> - Dummy sequence targeting reagent class</li>
-<li><a href="Species/">Species</a></li>
 <li><a href="Synonym/">Synonym</a></li>
 <li><a href="VariantConsequence/">VariantConsequence</a> - Parent class for gene- and transcript-level consequences<ul>
 <li><a href="VariantGeneConsequence/">VariantGeneConsequence</a> - Class for gene-level VEP results</li>
@@ -245,6 +251,10 @@
 <h3 id="slots">Slots</h3>
 <ul>
 <li><a href="PubMed_type/">PubMed_type</a> - Type of InformationContentEntity as described by pub med.</li>
+<li><a href="abbreviation/">abbreviation</a><ul>
+<li><a href="ECOTerm_abbreviation/">ECOTerm➞abbreviation</a> - Letter code used by curators to refer to the ECO term.</li>
+</ul>
+</li>
 <li><a href="aberration/">aberration</a> - Associated deficiency (etc.) whose breakpoint causes the mutation<ul>
 <li><a href="Allele_aberration/">Allele➞aberration</a></li>
 </ul>
@@ -270,6 +280,7 @@
 </ul>
 </li>
 <li><a href="antibody_target_genes/">antibody_target_genes</a> - The genes whose gene products are recognized by the antibody.</li>
+<li><a href="antigen_taxon/">antigen_taxon</a> - Holds between an Antibody and the species from which the antigen originates (as represented by taxon).</li>
 <li><a href="associated_notes/">associated_notes</a> - Notes associated with the entity in some way</li>
 <li><a href="associated_references/">associated_references</a> - References associated with the entity in some way</li>
 <li><a href="association_slot/">association_slot</a> - any slot that relates an association to another entity<ul>
@@ -454,6 +465,7 @@
 <li><a href="display_name/">display_name</a></li>
 <li><a href="display_synonym/">display_synonym</a> - Placeholder.</li>
 <li><a href="editors/">editors</a> - holds between a resource and a editor_resource</li>
+<li><a href="emails/">emails</a> - list of emails for a person</li>
 <li><a href="embryonic_cell_lines/">embryonic_cell_lines</a><ul>
 <li><a href="Allele_embryonic_cell_lines/">Allele➞embryonic_cell_lines</a></li>
 </ul>
@@ -464,13 +476,13 @@
 <li><a href="DiseaseAnnotation_evidence_codes/">DiseaseAnnotation➞evidence_codes</a></li>
 </ul>
 </li>
-<li><a href="first_name/">first_name</a></li>
+<li><a href="first_name/">first_name</a> - first name of a person</li>
 <li><a href="formula/">formula</a> - Formula of the molecule</li>
 <li><a href="from_resource/">from_resource</a></li>
-<li><a href="from_species/">from_species</a> - Holds between an entity and a Species.</li>
 <li><a href="functional_impact/">functional_impact</a> - Experimentally assessed functional impact of the allele, e.g. knockout / amorphic</li>
 <li><a href="gene_synopsis/">gene_synopsis</a> - Gene description provided by source resource (ie: MOD gene description that is curated or automated via MOD internal processes).</li>
 <li><a href="gene_synopsis_URL/">gene_synopsis_URL</a> - Gene description reference URL provided by source resource (aka: MOD) in the case where the curated gene_synopsis has a reference URL outside of the MOD.</li>
+<li><a href="gene_type/">gene_type</a> - SOTerm describing gene type</li>
 <li><a href="generated_by/">generated_by</a> - Holds between a material entity and an Agent that generated it: e.g., Thomas Blumenthal, Kornberg Laboratory.</li>
 <li><a href="generation_method/">generation_method</a> - Technique used to create the allele, e.g. spontaneous / naturally occuring / radiation</li>
 <li><a href="genetic_sex/">genetic_sex</a><ul>
@@ -560,13 +572,13 @@
 <li><a href="iupac/">iupac</a> - IUPAC name of the molecule</li>
 <li><a href="keywords/">keywords</a> - keywords tagging a publication</li>
 <li><a href="label/">label</a> - A short display name for the figure. For example: Figure 2, Figure 3B</li>
-<li><a href="last_name/">last_name</a></li>
+<li><a href="last_name/">last_name</a> - last (family) name of a person</li>
 <li><a href="light_chain_isotype/">light_chain_isotype</a> - The isotype of the antibody light chain: e.g., i4.</li>
 <li><a href="located_on/">located on</a></li>
 <li><a href="manufactured_by/">manufactured_by</a> - Holds between a material entity and an Agent that has manufactured it: e.g., olecular Probes.</li>
 <li><a href="medline_abbreviation/">medline_abbreviation</a></li>
 <li><a href="member_terms/">member_terms</a> - Set of VocabularyTerm objects in a Vocabulary object set</li>
-<li><a href="middle_names/">middle_names</a></li>
+<li><a href="middle_name/">middle_name</a> - middle names of a person</li>
 <li><a href="mod_id/">mod_id</a> - The model organism database (MOD) identifier/curie for the object<ul>
 <li><a href="DiseaseAnnotation_mod_id/">DiseaseAnnotation➞mod_id</a> - The model organism database (MOD) identifier/curie for the disease annotation. Currently only used by WormBase for disease annotations, e.g. "WBDOannot00000907"</li>
 </ul>
@@ -586,7 +598,6 @@
 </li>
 <li><a href="name/">name</a> - a human-readable name for an entity<ul>
 <li><a href="Antibody_name/">Antibody➞name</a> - Publicly displayed name of the antibody. It often includes the name of the antibody target: e.g., anti-WNT-4. It may also include the host species and antibody clonality.</li>
-<li><a href="Molecule_name/">Molecule➞name</a></li>
 <li><a href="VocabularyTerm_name/">VocabularyTerm➞name</a></li>
 <li><a href="Vocabulary_name/">Vocabulary➞name</a></li>
 </ul>
@@ -602,8 +613,17 @@
 </ul>
 </li>
 <li><a href="notes/">notes</a></li>
+<li><a href="okta_email/">okta_email</a> - The email address of the LoggedInPerson registered with Okta for user authentication<ul>
+<li><a href="LoggedInPerson_okta_email/">LoggedInPerson➞okta_email</a></li>
+</ul>
+</li>
+<li><a href="okta_id/">okta_id</a> - The Okta identifier for the person registered in Okta for user authentication<ul>
+<li><a href="LoggedInPerson_okta_id/">LoggedInPerson➞okta_id</a></li>
+</ul>
+</li>
+<li><a href="old_emails/">old_emails</a> - list of old (outdated) emails for a person</li>
 <li><a href="online_issn/">online_issn</a></li>
-<li><a href="orcid/">orcid</a></li>
+<li><a href="orcid/">orcid</a> - Open Researcher and Contributor ID</li>
 <li><a href="origins/">origins</a> - Affected genomic models that the allele was introduced in</li>
 <li><a href="padding_left/">padding_left</a> - flanking sequence upstream of the variation position on the sense strand of the reference genome</li>
 <li><a href="padding_right/">padding_right</a> - flanking sequence downstream of the variation position on the sense strand of the reference genome</li>
@@ -618,10 +638,6 @@
 </ul>
 </li>
 <li><a href="parental_populations/">parental_populations</a></li>
-<li><a href="person_id/">person id</a><ul>
-<li><a href="Person_person_id/">Person➞person id</a></li>
-</ul>
-</li>
 <li><a href="phenotype_or_trait/">phenotype_or_trait</a></li>
 <li><a href="phenotype_term/">phenotype_term</a><ul>
 <li><a href="PhenotypeAnnotation_phenotype_term/">PhenotypeAnnotation➞phenotype_term</a></li>
@@ -707,10 +723,8 @@
 <li><a href="Antibody_taxon/">Antibody➞taxon</a> - The species in which the antibody was raised: e.g., mouse, rabbit, guinea pig, goat, camel, etc.</li>
 </ul>
 </li>
-<li><a href="antigen_taxon/">antigen_taxon</a> - Holds between an Antibody and the species from which the antigen originates (as represented by taxon).</li>
 </ul>
 </li>
-<li><a href="taxon_id/">taxon_id</a> - NCBI taxid</li>
 <li><a href="text_synonyms/">text_synonyms</a> - Free text synonym(s) of a term, used for controlled vocabulary terms; this is distinct from the 'synonyms' slot which has a range of a Synonym class object.</li>
 <li><a href="title/">title</a> - A human readable title for a reference.<ul>
 <li><a href="Resource_title/">Resource➞title</a> - the title of the publication</li>
@@ -723,6 +737,12 @@
 </li>
 <li><a href="type/">type</a></li>
 <li><a href="uncertain/">uncertain</a> - If set to true, then the related entity is uncertain.</li>
+<li><a href="unique_id/">unique_id</a> - A non-curie unique identifier for a thing.<ul>
+<li><a href="ConditionRelation_unique_id/">ConditionRelation➞unique_id</a> - Unique identifer for the condition relation.  Will be generated at AGR.</li>
+<li><a href="DiseaseAnnotation_unique_id/">DiseaseAnnotation➞unique_id</a> - Unique identifer for the disease annotation.  Will be generated at AGR if not submitted by the MOD.</li>
+<li><a href="ExperimentalCondition_unique_id/">ExperimentalCondition➞unique_id</a> - Unique identifer for the experimental condition.  Will be generated at AGR.</li>
+</ul>
+</li>
 <li><a href="url_prefix/">url_prefix</a> - The prefix of the url before the accession number.</li>
 <li><a href="url_suffix/">url_suffix</a> - The suffix of the url after the accession number.</li>
 <li><a href="variant_of_allele/">variant_of_allele</a></li>
@@ -872,5 +892,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2021-11-29 16:01:39.441507+00:00
+Build Date UTC : 2022-02-07 17:09:48.705804+00:00
 -->

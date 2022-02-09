@@ -1,0 +1,14 @@
+{
+  "disease_allele_ingest_set": [
+    {
+      "evidence_codes": ["ECO:0000305"],
+      "reference": "PMID:0012345",
+      "data_provider": ["ZFIN"],
+      "subject": "ZFIN:ZDB-ALT-001122-1",
+      "predicate": "is_implicated_in",
+      "object": "DOID:0001234",
+      "created_by": {"first_name":"ZFIN"},
+      "modified_by": {"first_name":"ZFIN"}
+    }
+  ]
+}

@@ -23,6 +23,7 @@ imports:
   - resource
   - person
   - image
+  - ontologyTerm
 
 prefixes:
   alliance: 'http://alliancegenome.org'
@@ -96,7 +97,7 @@ classes:
       - symbol
       - gene_synopsis
       - gene_synopsis_URL
-      - type
+      - gene_type
       - automated_gene_description
     id_prefixes:
       - ENSEMBL
@@ -120,8 +121,6 @@ classes:
     defining_slots:
       - curie
       - page_areas
-
-  Species:
 
   Synonym:
 
@@ -342,6 +341,12 @@ slots:
       A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
     range: uriorcurie
 
+  unique_id:
+    description: >-
+      A non-curie unique identifier for a thing.
+    multivalued: false
+    range: string
+
   dbkey:
     description: >-
       Typically the primary key on the table.  Should be a global sequence in the database to insure
@@ -352,7 +357,7 @@ slots:
     description: >-
       The taxon from which the biological entity derives.
     multivalued: false
-    range: uriorcurie
+    range: NCBITaxonTerm
 
   secondary_identifiers:
     aliases: ['secondary_ids']
@@ -460,14 +465,6 @@ slots:
     exact_mappings:
       - biolink:symbol
 
-  from_species:
-    description: >-
-      Holds between an entity and a Species.
-    notes: >-
-      This may be redundant with the taxon slot, but if not, then the
-      distinct usage of taxon versus from_species needs clarification.
-    range: Species
-
   synonyms:
     singular_name: synonym
     description: holds between a named thing and a synonym
@@ -486,9 +483,10 @@ slots:
   type:
     range: uriorcurie
 
-  taxon_id:
-    description: NCBI taxid
-    range: integer
+  gene_type:
+    description: SOTerm describing gene type
+    domain: Gene
+    range: SOTerm
 
   references:
     singular_name: reference
@@ -496,7 +494,7 @@ slots:
     multivalued: true
     range: Reference
 
-  reference:
+  single_reference:
     description: holds between an object and a single reference
     multivalued: false
     range: Reference
@@ -515,6 +513,29 @@ slots:
       Obsolete entities are preserved in the database for posterity but should
       not be publicly displayed.
     range: boolean
+
+  abbreviation:
+    multivalued: false
+    range: string
+
+  mod_id:
+    description: >-
+      The model organism database (MOD) identifier/curie for the object
+    range: string
+
+  first_name:
+    description: first name of a person
+    range: string
+
+  middle_name:
+    description: middle names of a person
+    range: string
+    multivalued: false
+
+  last_name:
+    description: last (family) name of a person
+    range: string
+
 
 ## --------------------
 ## ASSOCIATION SLOTS

@@ -94,23 +94,73 @@
                 <h1 id="class-molecule">Class: Molecule</h1>
 <p>Molecules as described by WormBase</p>
 <p>URI: <a href="http://alliancegenome.orgMolecule">alliance:Molecule</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Synonym],[Person],[CrossReference]&lt;cross_references%200..*-++[Molecule&#124;curie:uriorcurie;name:string;inchi:string%20%3F;inchi_key:string%20%3F;iupac:string%20%3F;formula:string%20%3F;smiles:string%20%3F;table_key:integer%20%3F;creation_date:date%20%3F;date_last_modified:date%20%3F],[Synonym]&lt;synonyms%200..*-++[Molecule],[Molecule]uses%20-.-&gt;[AuditedObject],[CrossReference],[AuditedObject]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Synonym],[Person],[CrossReference]&lt;cross_references%200..*-++[Molecule&#124;curie:uriorcurie;name:string;inchi:string%20%3F;inchi_key:string%20%3F;iupac:string%20%3F;formula:string%20%3F;smiles:string%20%3F;table_key:integer%20%3F;creation_date:date%20%3F;date_last_modified:date%20%3F],[Synonym]&lt;synonyms%200..*-++[Molecule],[Molecule]uses%20-.-&gt;[AuditedObject],[CrossReference],[AuditedObject]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Synonym],[Person],[Molecule&#124;table_key:integer%20%3F;creation_date:date%20%3F;date_last_modified:date%20%3F;inchi(i):string%20%3F;inchi_key(i):string%20%3F;iupac(i):string%20%3F;formula(i):string%20%3F;smiles(i):string%20%3F;curie(i):uriorcurie;dbkey(i):string%20%3F;name(i):string%20%3F;definition(i):string%20%3F;definition_urls(i):string%20*;type(i):uriorcurie%20%3F;is_obsolete(i):boolean%20%3F;namespace(i):string%20%3F;subsets(i):string%20*;secondary_identifiers(i):uriorcurie%20*]uses%20-.-&gt;[AuditedObject],[ChemicalTerm]^-[Molecule],[CrossReference],[ChemicalTerm],[AuditedObject]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Synonym],[Person],[Molecule&#124;table_key:integer%20%3F;creation_date:date%20%3F;date_last_modified:date%20%3F;inchi(i):string%20%3F;inchi_key(i):string%20%3F;iupac(i):string%20%3F;formula(i):string%20%3F;smiles(i):string%20%3F;curie(i):uriorcurie;dbkey(i):string%20%3F;name(i):string%20%3F;definition(i):string%20%3F;definition_urls(i):string%20*;type(i):uriorcurie%20%3F;is_obsolete(i):boolean%20%3F;namespace(i):string%20%3F;subsets(i):string%20*;secondary_identifiers(i):uriorcurie%20*]uses%20-.-&gt;[AuditedObject],[ChemicalTerm]^-[Molecule],[CrossReference],[ChemicalTerm],[AuditedObject]" /></a></p>
+<h2 id="parents">Parents</h2>
+<ul>
+<li>is_a: <a href="../ChemicalTerm/">ChemicalTerm</a> - An ontology term representing a chemical or molecule</li>
+</ul>
 <h2 id="uses-mixin">Uses Mixin</h2>
 <ul>
 <li>mixin: <a href="../AuditedObject/">AuditedObject</a> - Some entity for which changes are tracked, including date/time of change and the agent responsible for the change.</li>
 </ul>
 <h2 id="referenced-by-class">Referenced by Class</h2>
 <h2 id="attributes">Attributes</h2>
-<h3 id="own">Own</h3>
+<h3 id="inherited-from-chemicalterm">Inherited from ChemicalTerm:</h3>
 <ul>
 <li><a href="../curie/">curie</a>  <sub>1..1</sub><ul>
 <li>Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI</li>
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
-<li><a href="../Molecule_name/">Molecule➞name</a>  <sub>1..1</sub><ul>
+<li><a href="../dbkey/">dbkey</a>  <sub>0..1</sub><ul>
+<li>Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../name/">name</a>  <sub>0..1</sub><ul>
 <li>Description: a human-readable name for an entity</li>
 <li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../OntologyTerm_definition/">OntologyTerm➞definition</a>  <sub>0..1</sub><ul>
+<li>Description: The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../definition_urls/">definition_urls</a>  <sub>0..*</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../type/">type</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="../is_obsolete/">is_obsolete</a>  <sub>0..1</sub><ul>
+<li>Description: Entity is no longer current.</li>
+<li>Range: <a href="../Boolean/">Boolean</a></li>
+</ul>
+</li>
+<li><a href="../cross_references/">cross_references</a>  <sub>0..*</sub><ul>
+<li>Description: Holds between an object and its CrossReferences.</li>
+<li>Range: <a href="../CrossReference/">CrossReference</a></li>
+</ul>
+</li>
+<li><a href="../synonyms/">synonyms</a>  <sub>0..*</sub><ul>
+<li>Description: holds between a named thing and a synonym</li>
+<li>Range: <a href="../Synonym/">Synonym</a></li>
+</ul>
+</li>
+<li><a href="../namespace/">namespace</a>  <sub>0..1</sub><ul>
+<li>Description: the namespace of the ontology.</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../subsets/">subsets</a>  <sub>0..*</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../secondary_identifiers/">secondary_identifiers</a>  <sub>0..*</sub><ul>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
 <li><a href="../inchi/">inchi</a>  <sub>0..1</sub><ul>
@@ -136,16 +186,6 @@
 <li><a href="../smiles/">smiles</a>  <sub>0..1</sub><ul>
 <li>Description: Molecular structure in SMILES format</li>
 <li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../synonyms/">synonyms</a>  <sub>0..*</sub><ul>
-<li>Description: holds between a named thing and a synonym</li>
-<li>Range: <a href="../Synonym/">Synonym</a></li>
-</ul>
-</li>
-<li><a href="../cross_references/">cross_references</a>  <sub>0..*</sub><ul>
-<li>Description: Holds between an object and its CrossReferences.</li>
-<li>Range: <a href="../CrossReference/">CrossReference</a></li>
 </ul>
 </li>
 </ul>

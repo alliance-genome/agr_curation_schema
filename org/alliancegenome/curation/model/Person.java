@@ -8,8 +8,14 @@ import lombok.*;
 @EqualsAndHashCode(callSuper=false)
 public class Person extends Agent {
 
-  private InformationContentEntity lastName;
-  private InformationContentEntity firstName;
+  private String lastName;
+  private String middleName;
+  private String firstName;
   private String orcid;
+  private List<String> emails;
+  private List<String> oldEmails;
+
+  private String modId;
+  private String uniqueId;
 
 }
