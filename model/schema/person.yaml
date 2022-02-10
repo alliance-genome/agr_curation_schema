@@ -60,6 +60,9 @@ classes:
     exact_mappings:
       - schema:person
       - foaf:Person
+    slot_usage:
+      unique_id:
+        identifier: true
 
   LoggedInPerson:
     is_a: Person
