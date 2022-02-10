@@ -24,8 +24,8 @@ clean-artifacts:
 
 clean-docs:
 	ls docs/*.md | egrep -v 'README.md|README.markdown' | xargs rm -f # keep readme files
-	rm -f docs/images/*
-	rm -f docs/types/*
+	rm -rf docs/images/*
+	rm -rf docs/types/*
 
 t:
 	echo $(SCHEMA_NAMES)
