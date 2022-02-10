@@ -1,13 +1,9 @@
 {
   "disease_gene_ingest_set": [
     {
-      "evidence_codes": [
-        "ECO:0000305"
-      ],
+      "evidence_codes": ["ECO:0000305"],
       "single_reference": "PMID:0012345",
-      "data_provider": [
-        "ZFIN"
-      ],
+      "data_provider": ["ZFIN"],
       "object": "DOID:9452",
       "created_by": {
         "first_name": "ZFIN"

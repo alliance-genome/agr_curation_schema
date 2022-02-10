@@ -310,7 +310,6 @@ classes:
       - condition_gene_ontology           # geneOntologyId in JSON schema
       - condition_taxon                   # NCBITaxonId in JSON schema
       - condition_chemical                # ChemicalOntologyId in JSON schema
-      - paper_handles
     slot_usage:
       unique_id:
         description: >-
@@ -355,11 +354,6 @@ classes:
         values_from:
           - CHEBI
           - WBMol
-      paper_handles:
-        description: >-
-          Used by ZFIN to provide reference-specific labels/aliases to experimental conditions;
-          useful for referencing experimental conditions while curating.
-        required: false
 
 
   ConditionRelation:

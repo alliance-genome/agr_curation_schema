@@ -1,5 +1,5 @@
 # Auto generated from antibody.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-07T20:21:32
+# Generation date: 2022-02-09T16:57:25
 # Schema: antibody.yaml
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/antibody.yaml
@@ -220,6 +220,10 @@ class CHEBITermCurie(ChemicalTermCurie):
 
 
 class MoleculeCurie(ChemicalTermCurie):
+    pass
+
+
+class VocabularyName(extended_str):
     pass
 
 
@@ -619,6 +623,47 @@ class Reagent(YAMLRoot):
         if not isinstance(self.manufactured_by, list):
             self.manufactured_by = [self.manufactured_by] if self.manufactured_by is not None else []
         self.manufactured_by = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.manufactured_by]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Note(YAMLRoot):
+    """
+    Note object for capturing free-text describing some attribute of an entity, coupled with a 'note type', private
+    boolean, and an optional list of references.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.Note
+    class_class_curie: ClassVar[str] = "alliance:Note"
+    class_name: ClassVar[str] = "Note"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/antibody.yaml/Note")
+
+    free_text: str = None
+    note_type: Union[dict, "VocabularyTerm"] = None
+    private: Union[bool, Bool] = None
+    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.free_text):
+            self.MissingRequiredField("free_text")
+        if not isinstance(self.free_text, str):
+            self.free_text = str(self.free_text)
+
+        if self._is_empty(self.note_type):
+            self.MissingRequiredField("note_type")
+        if not isinstance(self.note_type, VocabularyTerm):
+            self.note_type = VocabularyTerm(**as_dict(self.note_type))
+
+        if self._is_empty(self.private):
+            self.MissingRequiredField("private")
+        if not isinstance(self.private, Bool):
+            self.private = Bool(self.private)
+
+        if not isinstance(self.references, list):
+            self.references = [self.references] if self.references is not None else []
+        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
 
         super().__post_init__(**kwargs)
 
@@ -1082,7 +1127,7 @@ class Image(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/antibody.yaml/Image")
 
     curie: Union[str, ImageCurie] = None
-    has_figure: Union[str, FigureCurie] = None
+    associated_with_figure: Union[str, FigureCurie] = None
     width: int = None
     height: int = None
     image_file: Union[dict, File] = None
@@ -1105,10 +1150,10 @@ class Image(YAMLRoot):
         if not isinstance(self.curie, ImageCurie):
             self.curie = ImageCurie(self.curie)
 
-        if self._is_empty(self.has_figure):
-            self.MissingRequiredField("has_figure")
-        if not isinstance(self.has_figure, FigureCurie):
-            self.has_figure = FigureCurie(self.has_figure)
+        if self._is_empty(self.associated_with_figure):
+            self.MissingRequiredField("associated_with_figure")
+        if not isinstance(self.associated_with_figure, FigureCurie):
+            self.associated_with_figure = FigureCurie(self.associated_with_figure)
 
         if self._is_empty(self.width):
             self.MissingRequiredField("width")
@@ -1185,7 +1230,7 @@ class ImagePane(YAMLRoot):
     class_name: ClassVar[str] = "ImagePane"
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/antibody.yaml/ImagePane")
 
-    images: Union[str, ImageCurie] = None
+    from_image: Union[str, ImageCurie] = None
     width: int = None
     height: int = None
     created_by: Union[dict, Person] = None
@@ -1198,10 +1243,10 @@ class ImagePane(YAMLRoot):
     date_last_modified: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.images):
-            self.MissingRequiredField("images")
-        if not isinstance(self.images, ImageCurie):
-            self.images = ImageCurie(self.images)
+        if self._is_empty(self.from_image):
+            self.MissingRequiredField("from_image")
+        if not isinstance(self.from_image, ImageCurie):
+            self.from_image = ImageCurie(self.from_image)
 
         if self._is_empty(self.width):
             self.MissingRequiredField("width")
@@ -1888,6 +1933,128 @@ class Molecule(ChemicalTerm):
             self.MissingRequiredField("modified_by")
         if not isinstance(self.modified_by, Person):
             self.modified_by = Person(**as_dict(self.modified_by))
+
+        if self.table_key is not None and not isinstance(self.table_key, int):
+            self.table_key = int(self.table_key)
+
+        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
+            self.creation_date = XSDDate(self.creation_date)
+
+        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
+            self.date_last_modified = XSDDate(self.date_last_modified)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class VocabularyTerm(YAMLRoot):
+    """
+    A concept or class in a simple vocabulary.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/VocabularyTerm")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "VocabularyTerm"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/antibody.yaml/VocabularyTerm")
+
+    name: str = None
+    created_by: Union[dict, Person] = None
+    modified_by: Union[dict, Person] = None
+    abbreviation: Optional[str] = None
+    definition: Optional[str] = None
+    is_obsolete: Optional[Union[bool, Bool]] = None
+    text_synonyms: Optional[Union[str, List[str]]] = empty_list()
+    table_key: Optional[int] = None
+    creation_date: Optional[Union[str, XSDDate]] = None
+    date_last_modified: Optional[Union[str, XSDDate]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self._is_empty(self.created_by):
+            self.MissingRequiredField("created_by")
+        if not isinstance(self.created_by, Person):
+            self.created_by = Person(**as_dict(self.created_by))
+
+        if self._is_empty(self.modified_by):
+            self.MissingRequiredField("modified_by")
+        if not isinstance(self.modified_by, Person):
+            self.modified_by = Person(**as_dict(self.modified_by))
+
+        if self.abbreviation is not None and not isinstance(self.abbreviation, str):
+            self.abbreviation = str(self.abbreviation)
+
+        if self.definition is not None and not isinstance(self.definition, str):
+            self.definition = str(self.definition)
+
+        if self.is_obsolete is not None and not isinstance(self.is_obsolete, Bool):
+            self.is_obsolete = Bool(self.is_obsolete)
+
+        if not isinstance(self.text_synonyms, list):
+            self.text_synonyms = [self.text_synonyms] if self.text_synonyms is not None else []
+        self.text_synonyms = [v if isinstance(v, str) else str(v) for v in self.text_synonyms]
+
+        if self.table_key is not None and not isinstance(self.table_key, int):
+            self.table_key = int(self.table_key)
+
+        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
+            self.creation_date = XSDDate(self.creation_date)
+
+        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
+            self.date_last_modified = XSDDate(self.date_last_modified)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Vocabulary(YAMLRoot):
+    """
+    A set of VocabularyTerm objects.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/Vocabulary")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "Vocabulary"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/antibody.yaml/Vocabulary")
+
+    name: Union[str, VocabularyName] = None
+    created_by: Union[dict, Person] = None
+    modified_by: Union[dict, Person] = None
+    vocabulary_description: Optional[str] = None
+    is_obsolete: Optional[Union[bool, Bool]] = None
+    member_terms: Optional[Union[Union[dict, VocabularyTerm], List[Union[dict, VocabularyTerm]]]] = empty_list()
+    table_key: Optional[int] = None
+    creation_date: Optional[Union[str, XSDDate]] = None
+    date_last_modified: Optional[Union[str, XSDDate]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, VocabularyName):
+            self.name = VocabularyName(self.name)
+
+        if self._is_empty(self.created_by):
+            self.MissingRequiredField("created_by")
+        if not isinstance(self.created_by, Person):
+            self.created_by = Person(**as_dict(self.created_by))
+
+        if self._is_empty(self.modified_by):
+            self.MissingRequiredField("modified_by")
+        if not isinstance(self.modified_by, Person):
+            self.modified_by = Person(**as_dict(self.modified_by))
+
+        if self.vocabulary_description is not None and not isinstance(self.vocabulary_description, str):
+            self.vocabulary_description = str(self.vocabulary_description)
+
+        if self.is_obsolete is not None and not isinstance(self.is_obsolete, Bool):
+            self.is_obsolete = Bool(self.is_obsolete)
+
+        self._normalize_inlined_as_dict(slot_name="member_terms", slot_type=VocabularyTerm, key_name="name", keyed=False)
 
         if self.table_key is not None and not isinstance(self.table_key, int):
             self.table_key = int(self.table_key)
@@ -2914,6 +3081,18 @@ slots.private_comment = Slot(uri=ALLIANCE.private_comment, name="private_comment
 slots.uncertain = Slot(uri=ALLIANCE.uncertain, name="uncertain", curie=ALLIANCE.curie('uncertain'),
                    model_uri=DEFAULT_.uncertain, domain=None, range=Optional[Union[bool, Bool]])
 
+slots.free_text = Slot(uri=ALLIANCE.free_text, name="free_text", curie=ALLIANCE.curie('free_text'),
+                   model_uri=DEFAULT_.free_text, domain=None, range=Optional[str])
+
+slots.note_type = Slot(uri=ALLIANCE.note_type, name="note_type", curie=ALLIANCE.curie('note_type'),
+                   model_uri=DEFAULT_.note_type, domain=None, range=Optional[Union[dict, VocabularyTerm]])
+
+slots.private = Slot(uri=ALLIANCE.private, name="private", curie=ALLIANCE.curie('private'),
+                   model_uri=DEFAULT_.private, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.related_notes = Slot(uri=ALLIANCE.related_notes, name="related_notes", curie=ALLIANCE.curie('related_notes'),
+                   model_uri=DEFAULT_.related_notes, domain=None, range=Optional[Union[Union[dict, Note], List[Union[dict, Note]]]])
+
 slots.statement_subject = Slot(uri=ALLIANCE.statement_subject, name="statement_subject", curie=ALLIANCE.curie('statement_subject'),
                    model_uri=DEFAULT_.statement_subject, domain=EntityStatement, range=Optional[str])
 
@@ -3013,8 +3192,8 @@ slots.gene_type = Slot(uri=ALLIANCE.gene_type, name="gene_type", curie=ALLIANCE.
 slots.references = Slot(uri=ALLIANCE.references, name="references", curie=ALLIANCE.curie('references'),
                    model_uri=DEFAULT_.references, domain=None, range=Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]])
 
-slots.reference = Slot(uri=ALLIANCE.reference, name="reference", curie=ALLIANCE.curie('reference'),
-                   model_uri=DEFAULT_.reference, domain=None, range=Optional[Union[str, ReferenceCurie]])
+slots.single_reference = Slot(uri=ALLIANCE.single_reference, name="single_reference", curie=ALLIANCE.curie('single_reference'),
+                   model_uri=DEFAULT_.single_reference, domain=None, range=Optional[Union[str, ReferenceCurie]])
 
 slots.original_reference = Slot(uri=ALLIANCE.original_reference, name="original_reference", curie=ALLIANCE.curie('original_reference'),
                    model_uri=DEFAULT_.original_reference, domain=None, range=Optional[Union[str, ReferenceCurie]])
@@ -3142,8 +3321,11 @@ slots.caption = Slot(uri="str(uriorcurie)", name="caption", curie=None,
 slots.cropped_from = Slot(uri="str(uriorcurie)", name="cropped_from", curie=None,
                    model_uri=DEFAULT_.cropped_from, domain=Image, range=Optional[Union[str, ImageCurie]])
 
-slots.has_figure = Slot(uri="str(uriorcurie)", name="has_figure", curie=None,
-                   model_uri=DEFAULT_.has_figure, domain=None, range=Optional[Union[str, FigureCurie]])
+slots.associated_with_figure = Slot(uri="str(uriorcurie)", name="associated_with_figure", curie=None,
+                   model_uri=DEFAULT_.associated_with_figure, domain=None, range=Optional[Union[str, FigureCurie]])
+
+slots.from_image = Slot(uri="str(uriorcurie)", name="from_image", curie=None,
+                   model_uri=DEFAULT_.from_image, domain=ImagePane, range=Optional[Union[str, ImageCurie]])
 
 slots.height = Slot(uri="str(uriorcurie)", name="height", curie=None,
                    model_uri=DEFAULT_.height, domain=Image, range=int)
@@ -3204,6 +3386,15 @@ slots.formula = Slot(uri="str(uriorcurie)", name="formula", curie=None,
 
 slots.smiles = Slot(uri="str(uriorcurie)", name="smiles", curie=None,
                    model_uri=DEFAULT_.smiles, domain=Molecule, range=Optional[str])
+
+slots.text_synonyms = Slot(uri="str(uriorcurie)", name="text_synonyms", curie=None,
+                   model_uri=DEFAULT_.text_synonyms, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.member_terms = Slot(uri="str(uriorcurie)", name="member_terms", curie=None,
+                   model_uri=DEFAULT_.member_terms, domain=None, range=Optional[Union[Union[dict, VocabularyTerm], List[Union[dict, VocabularyTerm]]]])
+
+slots.vocabulary_description = Slot(uri="str(uriorcurie)", name="vocabulary_description", curie=None,
+                   model_uri=DEFAULT_.vocabulary_description, domain=None, range=Optional[str])
 
 slots.summary = Slot(uri=ALLIANCE.summary, name="summary", curie=ALLIANCE.curie('summary'),
                    model_uri=DEFAULT_.summary, domain=InformationContentEntity, range=Optional[str])
@@ -3355,9 +3546,6 @@ slots.sequence_targeting_reagents = Slot(uri="str(uriorcurie)", name="sequence_t
 slots.parental_populations = Slot(uri="str(uriorcurie)", name="parental_populations", curie=None,
                    model_uri=DEFAULT_.parental_populations, domain=AffectedGenomicModel, range=Optional[Union[str, URIorCURIE]])
 
-slots.note_type = Slot(uri=DEFAULT_.note_type, name="note_type", curie=DEFAULT_.curie('note_type'),
-                   model_uri=DEFAULT_.note_type, domain=None, range=Optional[Union[str, "AntibodyNoteTypeSet"]])
-
 slots.id = Slot(uri=DEFAULT_.id, name="id", curie=DEFAULT_.curie('id'),
                    model_uri=DEFAULT_.id, domain=None, range=Optional[str])
 
@@ -3376,7 +3564,7 @@ slots.Antibody_taxon = Slot(uri=ALLIANCE.taxon, name="Antibody_taxon", curie=ALL
 slots.Antibody_original_reference = Slot(uri=ALLIANCE.original_reference, name="Antibody_original_reference", curie=ALLIANCE.curie('original_reference'),
                    model_uri=DEFAULT_.Antibody_original_reference, domain=Antibody, range=Optional[Union[str, ReferenceCurie]])
 
-slots.AntibodyNote_note_type = Slot(uri=DEFAULT_.note_type, name="AntibodyNote_note_type", curie=DEFAULT_.curie('note_type'),
+slots.AntibodyNote_note_type = Slot(uri=ALLIANCE.note_type, name="AntibodyNote_note_type", curie=ALLIANCE.curie('note_type'),
                    model_uri=DEFAULT_.AntibodyNote_note_type, domain=AntibodyNote, range=Optional[Union[str, "AntibodyNoteTypeSet"]])
 
 slots.BiologicalEntity_taxon = Slot(uri=ALLIANCE.taxon, name="BiologicalEntity_taxon", curie=ALLIANCE.curie('taxon'),
@@ -3384,6 +3572,15 @@ slots.BiologicalEntity_taxon = Slot(uri=ALLIANCE.taxon, name="BiologicalEntity_t
 
 slots.Gene_symbol = Slot(uri=ALLIANCE.symbol, name="Gene_symbol", curie=ALLIANCE.curie('symbol'),
                    model_uri=DEFAULT_.Gene_symbol, domain=Gene, range=str)
+
+slots.Note_free_text = Slot(uri=ALLIANCE.free_text, name="Note_free_text", curie=ALLIANCE.curie('free_text'),
+                   model_uri=DEFAULT_.Note_free_text, domain=Note, range=str)
+
+slots.Note_note_type = Slot(uri=ALLIANCE.note_type, name="Note_note_type", curie=ALLIANCE.curie('note_type'),
+                   model_uri=DEFAULT_.Note_note_type, domain=Note, range=Union[dict, "VocabularyTerm"])
+
+slots.Note_private = Slot(uri=ALLIANCE.private, name="Note_private", curie=ALLIANCE.curie('private'),
+                   model_uri=DEFAULT_.Note_private, domain=Note, range=Union[bool, Bool])
 
 slots.EntitySynonym_object = Slot(uri=ALLIANCE.object, name="EntitySynonym_object", curie=ALLIANCE.curie('object'),
                    model_uri=DEFAULT_.EntitySynonym_object, domain=EntitySynonym, range=Union[dict, Synonym])
@@ -3418,8 +3615,8 @@ slots.LoggedInPerson_okta_email = Slot(uri=ALLIANCE.okta_email, name="LoggedInPe
 slots.Figure_has_reference = Slot(uri="str(uriorcurie)", name="Figure_has_reference", curie=None,
                    model_uri=DEFAULT_.Figure_has_reference, domain=Figure, range=Union[str, ReferenceCurie])
 
-slots.Image_has_figure = Slot(uri="str(uriorcurie)", name="Image_has_figure", curie=None,
-                   model_uri=DEFAULT_.Image_has_figure, domain=Image, range=Union[str, FigureCurie])
+slots.Image_associated_with_figure = Slot(uri="str(uriorcurie)", name="Image_associated_with_figure", curie=None,
+                   model_uri=DEFAULT_.Image_associated_with_figure, domain=Image, range=Union[str, FigureCurie])
 
 slots.Image_image_x_origin = Slot(uri="str(uriorcurie)", name="Image_image_x_origin", curie=None,
                    model_uri=DEFAULT_.Image_image_x_origin, domain=Image, range=Optional[int])
@@ -3427,8 +3624,8 @@ slots.Image_image_x_origin = Slot(uri="str(uriorcurie)", name="Image_image_x_ori
 slots.Image_image_y_origin = Slot(uri="str(uriorcurie)", name="Image_image_y_origin", curie=None,
                    model_uri=DEFAULT_.Image_image_y_origin, domain=Image, range=Optional[int])
 
-slots.ImagePane_images = Slot(uri="str(uriorcurie)", name="ImagePane_images", curie=None,
-                   model_uri=DEFAULT_.ImagePane_images, domain=ImagePane, range=Union[str, ImageCurie])
+slots.ImagePane_from_image = Slot(uri="str(uriorcurie)", name="ImagePane_from_image", curie=None,
+                   model_uri=DEFAULT_.ImagePane_from_image, domain=ImagePane, range=Union[str, ImageCurie])
 
 slots.ImagePane_image_x_origin = Slot(uri="str(uriorcurie)", name="ImagePane_image_x_origin", curie=None,
                    model_uri=DEFAULT_.ImagePane_image_x_origin, domain=ImagePane, range=Optional[int])
@@ -3441,6 +3638,12 @@ slots.OntologyTerm_definition = Slot(uri="str(uriorcurie)", name="OntologyTerm_d
 
 slots.ECOTerm_abbreviation = Slot(uri=ALLIANCE.abbreviation, name="ECOTerm_abbreviation", curie=ALLIANCE.curie('abbreviation'),
                    model_uri=DEFAULT_.ECOTerm_abbreviation, domain=ECOTerm, range=Optional[str])
+
+slots.VocabularyTerm_name = Slot(uri=ALLIANCE.name, name="VocabularyTerm_name", curie=ALLIANCE.curie('name'),
+                   model_uri=DEFAULT_.VocabularyTerm_name, domain=VocabularyTerm, range=str)
+
+slots.Vocabulary_name = Slot(uri=ALLIANCE.name, name="Vocabulary_name", curie=ALLIANCE.curie('name'),
+                   model_uri=DEFAULT_.Vocabulary_name, domain=Vocabulary, range=Union[str, VocabularyName])
 
 slots.Allele_synonyms = Slot(uri=ALLIANCE.synonyms, name="Allele_synonyms", curie=ALLIANCE.curie('synonyms'),
                    model_uri=DEFAULT_.Allele_synonyms, domain=Allele, range=Optional[Union[Union[dict, Synonym], List[Union[dict, Synonym]]]])

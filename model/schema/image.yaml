@@ -44,7 +44,7 @@ classes:
       parent Figure entity?
     slots:
       - curie
-      - has_figure
+      - associated_with_figure
       - width
       - height
       - image_file
@@ -56,7 +56,7 @@ classes:
       - video_still
       - secondary_identifiers
     slot_usage:
-      has_figure:
+      associated_with_figure:
         description: >-
           The figure to which the image belongs.
         required: true
@@ -76,15 +76,17 @@ classes:
     description: >-
       Part of an Image that is relevant to some annotation. An annotation may
       reference many panes of an Image.
+    notes: >-
+      An image pane can encompass an entire image.
     slots:
-      - images
+      - from_image
       - label
       - width
       - height
       - image_x_origin
       - image_y_origin
     slot_usage:
-      images:
+      from_image:
         required: true
         multivalued: false
       image_x_origin:
@@ -112,10 +114,16 @@ slots:
     required: false
     multivalued: false
 
-  has_figure:
+  associated_with_figure:
     description: >-
       Holds between an entity and a Figure.
     range: Figure
+
+  from_image:
+    description: >-
+      Holds between an ImagePane and an Image.
+    domain: ImagePane
+    range: Image
 
   height:
     description: >-
