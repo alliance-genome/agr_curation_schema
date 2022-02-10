@@ -9,12 +9,8 @@
         "ZFIN"
       ],
       "object": "DOID:9452",
-      "created_by": {
-        "first_name": "ZFIN"
-      },
-      "modified_by": {
-        "first_name": "ZFIN"
-      },
+      "created_by": "ZFIN",
+      "modified_by": "ZFIN",
       "subject": "ZFIN:ZDB-FISH-180912-16",
       "predicate": "is_model_of",
       "condition_relations": [
