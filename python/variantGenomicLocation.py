@@ -1,5 +1,5 @@
 # Auto generated from variantGenomicLocation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-09T16:57:53
+# Generation date: 2022-02-09T17:19:11
 # Schema: Alliance-Schema-Prototype-Variation
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantGenomicLocation
