@@ -32,6 +32,11 @@ jobs:
         # if: steps.cache-pipenv.outputs.cache-hit != 'true'
         run: pipenv install -d
 
+      - name: Make Artifacts
+        run: |
+          make clean-artifacts
+          make all
+
       # generate markdown files
       - run: make stage-docs
 
