@@ -10,6 +10,9 @@ on:
       - 'mkdocs.yml'
       - 'model/schema/*.yaml'
       - 'model/docs/*'
+  pull_request:
+    branches:
+      - main
 
   repository_dispatch:
     types: trigger-build-deploy-documentation
