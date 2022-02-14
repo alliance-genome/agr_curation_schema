@@ -209,8 +209,10 @@ passes the schema.  One should change the tests when changing the schema in orde
 
 2. ```build-deploy-documentation.yaml```
 
-On each merge into master, the docs are regerated and pushed into the 'docs' directory at the top of this repository.
-The documents are also pushed to the gh pages site for this repository.
+On each merge into main, the docs are regerated (regenerated with a [linkml generator](https://linkml.io/linkml/generators/markdown.html)) using the model/schema/\*.yaml files, generates markdown documentation and UML diagrams and pushes them into the gh-pages branch of this repository.  
+Note: the documentation is only stored in the gh-pages branch only, not in the main repository.
+
+This process is controlled in part by the mkdocs.yaml file in this repo which declares the source and site documentation repos and the location of the navigation index.html.
 
 3. ```pypi-publish.yaml```
 
