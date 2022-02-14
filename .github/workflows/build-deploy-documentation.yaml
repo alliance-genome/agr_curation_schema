@@ -1,59 +1,38 @@
-name: Deploy Documentation
+name: Build and Deploy Static Mkdocs Documentation
 
-# Controls when the action will run. Triggers the workflow on push
+# Controls when the action will run. Triggers the workflow on pull request
 on:
   push:
     branches:
-    - main
-  repository_dispatch:
-    types: trigger-build-documentation
+      - main
+    paths:
+      - 'mkdocs.yml'
+      - 'model/schema/*.yaml'
 
+  repository_dispatch:
+    types: trigger-build-deploy-documentation
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  synchronize:
+  github-pages:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Merge master to gh-pages branch
-        uses: devmasx/merge-branch@v1.1.0
+      - uses: actions/setup-python@v2
         with:
-          type: now
-          target_branch: gh-pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          python-version: 3.9
 
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+      # Install pipenv
+      - name: Install pipenv
+        run: python3 -m pip install --no-cache-dir pipenv
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+      # If cache was not loaded, install dependencies
+      - name: Install dependencies
+        # if: steps.cache-pipenv.outputs.cache-hit != 'true'
+        run: pipenv install -d
 
-    - name: Setup Python Environment
-      uses: actions/setup-python@v2
-      with:
-        # Version range or exact version of a Python version to use, using SemVer's version range syntax.
-        python-version: 3.9
-        # The target architecture (x86, x64) of the Python interpreter.
-        # architecture: x64 # optional
+      # generate markdown files
+      - run: make stage-docs
 
-    - name: Setup build environment
-      run: |
-        python3 -m pip install --no-cache-dir pipenv
-        pipenv install -d
-        make stage-docs
-
-    - name: Deploy to gh-pages branch
-      uses: JamesIves/github-pages-deploy-action@releases/v3
-      with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        REPOSITORY_NAME: alliance-genome/agr_curation_schema # The repository the action should deploy to
-        BRANCH: gh-pages # The branch the action should deploy to.
-        COMMIT_MESSAGE: 'Update documentation'
-        FOLDER: . # The folder the action should deploy.
+      # deploy documentation (note: requires documentation is in docs dir)
+      - run: make gh-deploy
