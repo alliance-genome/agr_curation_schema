@@ -112,6 +112,7 @@ To make a schema change and test your changes:
 step 2 above.
     ```bash
     git add test/data/[new_]test.json # optional step if you added a new test
+    make clean
     make test 
     ```
 7. commit your change and open pull request.
@@ -131,6 +132,7 @@ more clearly stated.
 
 To run the tests in this repository:
 ```bash
+make clean
 make test
 ```
 
