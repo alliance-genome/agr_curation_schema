@@ -4,4 +4,4 @@ site_dir: docs
 theme:
   name: readthedocs
 nav:
-  - Index: index.md
+  - Index: index.html
