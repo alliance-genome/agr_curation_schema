@@ -32,11 +32,6 @@ jobs:
       - name: Install dependencies
         run: pipenv install -d
 
-      - name: Make Artifacts
-        run: |
-          make clean-artifacts
-          make all
-
       # generate markdown files
       - name: Stage docs
         run: make stage-docs
