@@ -1,7 +1,5 @@
 site_name: "Model to describe the Alliance curation/persistence data store"
 theme:
   name: readthedocs
-docs_dir: target/docs
-site_dir: docs
 nav:
   - Index: index.md
