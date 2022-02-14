@@ -26,7 +26,7 @@ classes in the model.
 
 ### Types
 
-Types 
+Types can be "string" or "integer" per many language specifications, but if custom types can also be defined.  Alliance model reuses a custom LinkML type (URIorCurie) which restricts a slot value to a URI or CURIE data type. 
 
 ### Enums
 
@@ -89,11 +89,11 @@ those targets create a specific kind of file.  For example, the `gen-jsonschema`
 file are executed when `make` or `make all` is run from the command line.  The github actions in this repository also
 use these Makefile targets to generate the artifacts for a pull request or for a release of the repository.
 
-To regenerate docs, jsonschema, etc. locally, run `make` from the command line.
+To regenerate python, java, jsonschema, etc. locally, run `make` from the command line.
 Two other important targets exist in the Makefile for this repository: stage and test.  Stage moves all the assembled 
 artifacts that are generated in a non-checked-in directory (`target` directory) into the top of the repository for 
 easier finding and for easier packaging of these artifacts.  `stage` is executed as part of the build targets in the Makefile
-via github actions.
+via github actions (GA) and so developers can ignore these targets in favor of automated builds via GA.
 
 To make a schema change and test your changes:
 
