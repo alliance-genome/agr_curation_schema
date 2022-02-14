@@ -1,39 +1,71 @@
-name: Build and Deploy Static Mkdocs Documentation
+name: Deploy Documentation
 
-# Controls when the action will run. Triggers the workflow on pull request
+# Controls when the action will run. Triggers the workflow on push
 on:
   push:
     branches:
-      - main
+    - master
     paths:
-      - 'mkdocs.yml'
-      - 'model/schema/*.yaml'
-
+    - '*.md'
+    - 'biolink-model.ttl'
+    - 'biolink-model.owl'
+    - 'biolink-model.shex'
+    - 'about/*'
+    - 'context.jsonld'
   repository_dispatch:
-    types: trigger-build-deploy-documentation
+    types: trigger-build-documentation
 
-  workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  github-pages:
+  synchronize:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - name: Merge master to gh-pages branch
+        uses: devmasx/merge-branch@v1.1.0
         with:
-          python-version: 3.9
+          type: now
+          target_branch: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Setup Python Environment
+      uses: actions/setup-python@v2
+      with:
+        # Version range or exact version of a Python version to use, using SemVer's version range syntax.
+        python-version: 3.9
+        # The target architecture (x86, x64) of the Python interpreter.
+        # architecture: x64 # optional
 
       # Install pipenv
-      - name: Install pipenv
-        run: python3 -m pip install --no-cache-dir pipenv
+    - name: Install pipenv
+      run: python3 -m pip install --no-cache-dir pipenv
 
       # If cache was not loaded, install dependencies
-      - name: Install dependencies
-        run: pipenv install -d
+    - name: Install dependencies
+      run: pipenv install -d
 
-      # generate markdown files
-      - run: make stage-docs
+    - name: Build documentation
+      run: make stage-docs
 
-      # deploy documentation (note: requires documentation is in docs dir)
-      - run: make gh-deploy
+    - name: Deploy to gh-pages branch
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        GITHUB_TOKEN: ${{ github.token }}
+        REPOSITORY_NAME: alliance-genome/agr_curation_schema # The repository the action should deploy to
+        BRANCH: gh-pages # The branch the action should deploy to.
+        COMMIT_MESSAGE: 'Update documentation'
+        FOLDER: . # The folder the action should deploy.
