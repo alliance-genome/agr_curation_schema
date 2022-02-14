@@ -33,9 +33,7 @@ jobs:
         run: pipenv install -d
 
       # generate markdown files
-      - name: Stage docs
-        run: make stage-docs
+      - run: make stage-docs
 
       # deploy documentation (note: requires documentation is in docs dir)
-      - name: gh deploy
-        run: make gh-deploy
+      - run: make gh-deploy
