@@ -1,8 +1,10 @@
 {
   "disease_allele_ingest_set": [
     {
-      "evidence_code": ["TAS"],
-      "reference": "PMID:0012345",
+      "evidence_code": [
+        "TAS"
+      ],
+      "single_reference": "PMID:0012345",
       "data_provider": "ZFIN",
       "subjectTO": "ZFIN:ZDB-ALT-001122-1",
       "predicate": "is model of",

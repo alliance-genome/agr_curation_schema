@@ -23,9 +23,9 @@ clean-artifacts:
 	rm -rf target/
 
 clean-docs:
-	ls docs/*.md | egrep -v 'README.md|README.markdown' | xargs rm -f # keep readme files
-	rm -f docs/images/*
-	rm -f docs/types/*
+	rm -rf docs/images/*
+	rm -rf docs/types/*
+	rm -rf docs/
 
 t:
 	echo $(SCHEMA_NAMES)
@@ -173,6 +173,7 @@ SCHEMA_TEST_EXAMPLES := \
 	disease_agm_test \
 	disease_gene_test \
 	gene_test \
+	wb_disease_test \
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
 	allele_invalid \

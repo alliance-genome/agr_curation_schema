@@ -5,11 +5,10 @@
       "single_reference": "PMID:0012345",
       "data_provider": ["ZFIN"],
       "object": "DOID:9452",
-      "created_by": {"first_name":"ZFIN"},
-      "modified_by": {"first_name":"ZFIN"},
+	"created_by": "ZFIN",
+      "modified_by": "ZFIN",
       "subject": "ZFIN:ZDB-GENE-060503-338",
       "predicate": "is_implicated_in"
-
     }
   ]
 }
