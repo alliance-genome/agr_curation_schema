@@ -301,15 +301,16 @@ classes:
       The environmental context in which an experiment is carried out. This may (e.g. drug treatment)
       or may not (e.g. standard conditions) directly influence the outcome of the experiment.
     slots:
-      - unique_id
-      - condition_class                   # conditionClassId in JSON schema
-      - condition_statement               # conditionStatement in JSON schema
-      - condition_id                      # conditionId in JSON schema
-      - condition_quantity                # conditionQuantity in JSON schema
-      - condition_anatomy                 # anatomicalOntologyId in JSON schema
-      - condition_gene_ontology           # geneOntologyId in JSON schema
-      - condition_taxon                   # NCBITaxonId in JSON schema
-      - condition_chemical                # ChemicalOntologyId in JSON schema
+      - unique_id                         # calculated centrally at the Alliance after import from MODs
+      - condition_class                   # conditionClassId in frozen JSON schema
+      - condition_summary                 # conditionStatement in frozen JSON schema; for new DQM submissions should not be submitted but rather calculated centrally at the Alliance
+      - condition_id                      # conditionId in frozen JSON schema
+      - condition_free_text               # dedicated slot for free text
+      - condition_quantity                # conditionQuantity in frozen JSON schema
+      - condition_anatomy                 # anatomicalOntologyId in frozen JSON schema
+      - condition_gene_ontology           # geneOntologyId in frozen JSON schema
+      - condition_taxon                   # NCBITaxonId in frozen JSON schema
+      - condition_chemical                # ChemicalOntologyId in frozen JSON schema
     slot_usage:
       unique_id:
         description: >-
@@ -320,7 +321,7 @@ classes:
         description: >-
           The ZECO ID that represents the high level condition grouping term.  This will come from
           a slim in the ZECO, called 'AllianceSlim'.
-      condition_statement:
+      condition_summary:
         description: >-
           Free text describing the environmental/experimental condition. For some groups this is a
           single term, others is it is a concatenation of the term names from the ontologies included
@@ -350,10 +351,7 @@ classes:
         description: >-
           ChEBI or molecular ontology id used in subset of condition terms.  ie: the specific
           chemcial used in conjunction with 'chemical condition'.
-        range: OntologyTerm    # Need to consider this; Molecule class (for WB molecules) is not an ontology
-        values_from:
-          - CHEBI
-          - WBMol
+        range: ChemicalTerm
 
 
   ConditionRelation:
@@ -433,8 +431,18 @@ slots:
     domain: ExperimentalCondition
     range: string
 
-  condition_statement:
+  condition_summary:
+    description: >-
+      A human-readable summary of the experimental condition accounting for all ontology terms and free-text
+      components of the ExperimentalCondition object.
     required: true
+    domain: ExperimentalCondition
+    range: string
+
+  condition_free_text:
+    description: >-
+      Free-text description of the experimental condition
+    required: false
     domain: ExperimentalCondition
     range: string
 
