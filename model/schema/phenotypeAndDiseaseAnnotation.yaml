@@ -175,6 +175,7 @@ classes:
       - disease_annotation_note # we should probably pull this out into a note object.
       - disease_annotation_summary # we should probably pull this out into a note object
       - data_provider
+      - secondary_data_provider
       - disease_genetic_modifier
       - disease_genetic_modifier_relation
     slot_usage:

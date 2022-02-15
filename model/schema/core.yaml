@@ -471,7 +471,12 @@ slots:
     range: string
 
   data_provider:
-    description: MOD that provided data
+    description: Organization (e.g. MOD) from which the data was sourced
+    multivalued: true
+    range: string
+
+  secondary_data_provider:
+    description: Organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source
     multivalued: true
     range: string
 
