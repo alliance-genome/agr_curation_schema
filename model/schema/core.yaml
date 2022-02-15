@@ -158,7 +158,7 @@ classes:
     slot_usage:
       free_text:
         required: true
-      note_type:
+      note_type:              # Permissible values currently: disease_summary, disease_note
         required: true
       private:
         required: true

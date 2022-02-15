@@ -171,9 +171,7 @@ classes:
       - disease_qualifiers
       - condition_relations
       - genetic_sex
-      - private_note # we should probably pull this out into a _private_ note object.
-      - disease_annotation_note # we should probably pull this out into a note object.
-      - disease_annotation_summary # we should probably pull this out into a note object
+      - related_notes
       - data_provider
       - secondary_data_provider
       - disease_genetic_modifier
@@ -304,7 +302,8 @@ classes:
     slots:
       - unique_id                         # calculated centrally at the Alliance after import from MODs
       - condition_class                   # conditionClassId in frozen JSON schema
-      - condition_summary                 # conditionStatement in frozen JSON schema; for new DQM submissions should not be submitted but rather calculated centrally at the Alliance
+      - condition_summary                 # analagous to conditionStatement in frozen JSON schema; for new DQM submissions should not be submitted but rather calculated centrally at the Alliance
+      - condition_statement               # conditionStatement in frozen JSON schema
       - condition_id                      # conditionId in frozen JSON schema
       - condition_free_text               # dedicated slot for free text
       - condition_quantity                # conditionQuantity in frozen JSON schema
@@ -322,11 +321,20 @@ classes:
         description: >-
           The ZECO ID that represents the high level condition grouping term.  This will come from
           a slim in the ZECO, called 'AllianceSlim'.
+      condition_statement:
+        description: >-
+          Free text describing the environmental/experimental condition. For some groups this is a
+          single term, others is it is a concatenation of the term names from the ontologies included
+          in this data structure. To be submitted by DQMs; eventually will be deprecated once DQMs no
+          longer submit these ExperimentalCondition objects.
+        range: string
       condition_summary:
         description: >-
           Free text describing the environmental/experimental condition. For some groups this is a
           single term, others is it is a concatenation of the term names from the ontologies included
-          in this data structure.
+          in this data structure. Similar to condition_statement except the condition_summary will not
+          be submitted by DQMs but rather generated at the Alliance after ingest (or generated/updated
+          in the curation interface and persistent store).
         range: string
       condition_id:
         description: >-
@@ -432,11 +440,20 @@ slots:
     domain: ExperimentalCondition
     range: string
 
+  condition_statement:
+    description: >-
+      A human-readable summary of the experimental condition accounting for all ontology terms and free-text
+      components of the ExperimentalCondition object. To be generated and submitted by DQMs
+    required: true
+    domain: ExperimentalCondition
+    range: string
+
   condition_summary:
     description: >-
       A human-readable summary of the experimental condition accounting for all ontology terms and free-text
-      components of the ExperimentalCondition object.
-    required: true
+      components of the ExperimentalCondition object. Not generated or submitted by DQMs, but generated at the
+      Alliance after ingest only (or generated/updated in the curation interface).
+    required: false     # not required for DQM submission; otherwise required in the persistent store and downstream
     domain: ExperimentalCondition
     range: string
 
