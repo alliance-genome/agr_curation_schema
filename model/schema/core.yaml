@@ -563,7 +563,7 @@ slots:
     multivalued: false
     range: string
 
-  mod_id:
+  mod_entity_id:
     description: >-
       The model organism database (MOD) identifier/curie for the object
     range: string

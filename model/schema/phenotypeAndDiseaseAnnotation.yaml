@@ -162,7 +162,7 @@ classes:
       An annotation asserting an association between a biological entity and a disease supported by evidence.
     slots:
       - unique_id
-      - mod_id
+      - mod_entity_id
       - negated
       - evidence_codes
       - single_reference
@@ -183,7 +183,7 @@ classes:
           Unique identifer for the disease annotation.  Will be generated at AGR
           if not submitted by the MOD.
         required: false
-      mod_id:
+      mod_entity_id:
         description: >-
           The model organism database (MOD) identifier/curie for the disease annotation. Currently only
           used by WormBase for disease annotations, e.g. "WBDOannot00000907"
