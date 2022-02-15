@@ -71,6 +71,41 @@ classes:
       aberration:
         notes: specific to FB
 
+  AlleleGenomicEntityAssociation:
+    is_a: Association
+    abstract: true
+    description: >-
+      Association between an allele and a genomic entity
+    mixins:
+      - AuditedObject
+    slots:
+      - single_reference
+      - evidence_code
+      - allele_association_note
+    slot_usage:
+      subject:
+        range: Allele
+      predicate:
+        range: ROTerm
+      object:
+        range: BiologicalEntity
+
+  AlleleGeneAssociation:
+    is_a: AlleleGenomicEntityAssociation
+    description: >-
+      Association between an allele and a transcript
+    slot_usage:
+      object:
+        range: Gene
+
+  AlleleTranscriptAssociation:
+    is_a: AlleleGenomicEntityAssociation
+    description: >-
+      Association between an allele and a transcript
+    slot_usage:
+      object:
+        range: Transcript
+
   ReferenceType:
     description: >-
       Describes the relation between a reference and an object
@@ -275,6 +310,13 @@ slots:
       Does the allele still exist in a population somewhere?
     domain: Allele
     range: boolean
+
+  allele_association_note:
+    description: >-
+      Single note attached to an association between an allele and a
+      genomic entity
+    domain: AlleleGenomicEntityAssociation
+    range: Note
 
 
 enums:
