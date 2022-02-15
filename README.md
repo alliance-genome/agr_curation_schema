@@ -26,7 +26,7 @@ classes in the model.
 
 ### Types
 
-Types 
+Types can be "string" or "integer" per many language specifications, but if custom types can also be defined.  Alliance model reuses a custom LinkML type (URIorCurie) which restricts a slot value to a URI or CURIE data type. 
 
 ### Enums
 
@@ -89,11 +89,11 @@ those targets create a specific kind of file.  For example, the `gen-jsonschema`
 file are executed when `make` or `make all` is run from the command line.  The github actions in this repository also
 use these Makefile targets to generate the artifacts for a pull request or for a release of the repository.
 
-To regenerate docs, jsonschema, etc. locally, run `make` from the command line.
+To regenerate python, java, jsonschema, etc. locally, run `make` from the command line.
 Two other important targets exist in the Makefile for this repository: stage and test.  Stage moves all the assembled 
 artifacts that are generated in a non-checked-in directory (`target` directory) into the top of the repository for 
 easier finding and for easier packaging of these artifacts.  `stage` is executed as part of the build targets in the Makefile
-via github actions.
+via github actions (GA) and so developers can ignore these targets in favor of automated builds via GA.
 
 To make a schema change and test your changes:
 
@@ -112,6 +112,7 @@ To make a schema change and test your changes:
 step 2 above.
     ```bash
     git add test/data/[new_]test.json # optional step if you added a new test
+    make clean
     make test 
     ```
 7. commit your change and open pull request.
@@ -131,6 +132,7 @@ more clearly stated.
 
 To run the tests in this repository:
 ```bash
+make clean
 make test
 ```
 
@@ -207,8 +209,10 @@ passes the schema.  One should change the tests when changing the schema in orde
 
 2. ```build-deploy-documentation.yaml```
 
-On each merge into master, the docs are regerated and pushed into the 'docs' directory at the top of this repository.
-The documents are also pushed to the gh pages site for this repository.
+On each merge into main, the docs are regerated (regenerated with a [linkml generator](https://linkml.io/linkml/generators/markdown.html)) using the model/schema/\*.yaml files, generates markdown documentation and UML diagrams and pushes them into the gh-pages branch of this repository.  
+Note: the documentation is only stored in the gh-pages branch only, not in the main repository.
+
+This process is controlled in part by the mkdocs.yaml file in this repo which declares the source and site documentation repos and the location of the navigation index.html.
 
 3. ```pypi-publish.yaml```
 

@@ -24,6 +24,7 @@ imports:
   - person
   - image
   - ontologyTerm
+  - controlledVocabulary
 
 prefixes:
   alliance: 'http://alliancegenome.org'
@@ -143,6 +144,24 @@ classes:
     slots:
       - generated_by
       - manufactured_by
+
+  Note:
+    description: >-
+      Note object for capturing free-text describing some attribute of an entity,
+      coupled with a 'note type', private boolean, and an optional list of
+      references.
+    slots:
+      - free_text
+      - note_type
+      - private
+      - references
+    slot_usage:
+      free_text:
+        required: true
+      note_type:
+        required: true
+      private:
+        required: true
 
   EntityStatement:
     description: >-
@@ -292,6 +311,32 @@ slots:
     description: >-
       If set to true, then the related entity is uncertain.
     range: boolean
+
+  free_text:
+    description: >-
+      A free text string that describes some aspect of an entity.
+    range: string
+
+  note_type:
+    description: >-
+      The type of note: e.g., cytology, comment, summary.
+    range: VocabularyTerm
+
+  private:
+    description: >-
+      Classifies the entity as private (for internal use) or not (for public use).
+    notes: >-
+      Default value is true.
+    range: boolean
+
+  related_notes:
+    description: Holds between an object and a list of related Note objects.
+    notes: >-
+      The original name suggested for this slot was simply notes, but I think
+      that label is reserved in LinkML for internal descriptions of objects,
+      hence the related_notes label used here.
+    range: Note
+    multivalued: true
 
   statement_subject:
     description: >-

@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-02-08T17:03:44\n    Schema: Alliance-Schema-Prototype\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: Alliance Schema Prototype\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-02-11T15:24:11\n    Schema: Alliance-Schema-Prototype\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: Alliance Schema Prototype\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "BIOGRID": "http://identifiers.org/biogrid/",
       "DIP": "http://identifiers.org/dip/",
@@ -55,7 +55,7 @@
       "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
       "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
       "schema": "http://schema.org/",
-      "skos": "https://www.w3.org/TR/skos-reference/#",
+      "skos": "http://www.w3.org/2004/02/skos/core#",
       "xsd": "http://www.w3.org/2001/XMLSchema#",
       "@vocab": "http://alliancegenome.org",
       "aberration": {
@@ -614,12 +614,7 @@
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/note_association"
       },
       "note_type": {
-         "@context": {
-            "@vocab": "@null",
-            "text": "skos:notation",
-            "description": "skos:prefLabel",
-            "meaning": "@id"
-         }
+         "@type": "@id"
       },
       "notes": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/notes"
@@ -660,6 +655,7 @@
          "@type": "@id",
          "@id": "https://github.com/alliance-genome/agr_curation_schema/affectedGenomicModel/parental_populations"
       },
+      "unique_id": "@id",
       "phenotype_term": {
          "@type": "@id"
       },
@@ -681,6 +677,9 @@
       },
       "print_issn": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/resource/print_issn"
+      },
+      "private": {
+         "@type": "xsd:boolean"
       },
       "protein_end": {
          "@type": "xsd:integer",
@@ -709,6 +708,9 @@
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/reference_association"
       },
       "references": {
+         "@type": "@id"
+      },
+      "related_notes": {
          "@type": "@id"
       },
       "secondary_identifiers": {
