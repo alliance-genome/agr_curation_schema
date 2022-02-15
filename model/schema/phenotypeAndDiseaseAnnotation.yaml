@@ -516,6 +516,7 @@ slots:
     description: >-
       http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8
     range: Gene
+    multivalued: true
 
   paper_handles:
     description: >-
