@@ -1,5 +1,5 @@
 # Auto generated from ingest.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-09T16:57:57
+# Generation date: 2022-02-11T15:25:03
 # Schema: Alliance-Schema-Ingest
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest
@@ -259,6 +259,14 @@ class ResourceCurie(InformationContentEntityCurie):
     pass
 
 
+class PersonUniqueId(extended_str):
+    pass
+
+
+class LoggedInPersonUniqueId(PersonUniqueId):
+    pass
+
+
 class VocabularyName(extended_str):
     pass
 
@@ -333,8 +341,8 @@ class BiologicalEntity(YAMLRoot):
 
     curie: Union[str, BiologicalEntityCurie] = None
     taxon: Union[str, NCBITaxonTermCurie] = None
-    created_by: Union[dict, "Person"] = None
-    modified_by: Union[dict, "Person"] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     table_key: Optional[int] = None
     creation_date: Optional[Union[str, XSDDate]] = None
     date_last_modified: Optional[Union[str, XSDDate]] = None
@@ -352,13 +360,13 @@ class BiologicalEntity(YAMLRoot):
 
         if self._is_empty(self.created_by):
             self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, Person):
-            self.created_by = Person(**as_dict(self.created_by))
+        if not isinstance(self.created_by, PersonUniqueId):
+            self.created_by = PersonUniqueId(self.created_by)
 
         if self._is_empty(self.modified_by):
             self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, Person):
-            self.modified_by = Person(**as_dict(self.modified_by))
+        if not isinstance(self.modified_by, PersonUniqueId):
+            self.modified_by = PersonUniqueId(self.modified_by)
 
         if self.table_key is not None and not isinstance(self.table_key, int):
             self.table_key = int(self.table_key)
@@ -383,8 +391,8 @@ class GenomicEntity(BiologicalEntity):
 
     curie: Union[str, GenomicEntityCurie] = None
     taxon: Union[str, NCBITaxonTermCurie] = None
-    created_by: Union[dict, "Person"] = None
-    modified_by: Union[dict, "Person"] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     name: Optional[str] = None
     synonyms: Optional[Union[Union[dict, "Synonym"], List[Union[dict, "Synonym"]]]] = empty_list()
     cross_references: Optional[Union[Dict[Union[str, CrossReferenceCurie], Union[dict, "CrossReference"]], List[Union[dict, "CrossReference"]]]] = empty_dict()
@@ -426,8 +434,8 @@ class Transcript(GenomicEntity):
 
     curie: Union[str, TranscriptCurie] = None
     taxon: Union[str, NCBITaxonTermCurie] = None
-    created_by: Union[dict, "Person"] = None
-    modified_by: Union[dict, "Person"] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -452,8 +460,8 @@ class Gene(GenomicEntity):
 
     curie: Union[str, GeneCurie] = None
     taxon: Union[str, NCBITaxonTermCurie] = None
-    created_by: Union[dict, "Person"] = None
-    modified_by: Union[dict, "Person"] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     symbol: str = None
     genomic_locations: Optional[Union[Union[dict, "GeneGenomicLocation"], List[Union[dict, "GeneGenomicLocation"]]]] = empty_list()
     gene_synopsis: Optional[str] = None
@@ -510,8 +518,8 @@ class AuditedObject(YAMLRoot):
     class_name: ClassVar[str] = "AuditedObject"
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/AuditedObject")
 
-    created_by: Union[dict, "Person"] = None
-    modified_by: Union[dict, "Person"] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     table_key: Optional[int] = None
     creation_date: Optional[Union[str, XSDDate]] = None
     date_last_modified: Optional[Union[str, XSDDate]] = None
@@ -519,13 +527,13 @@ class AuditedObject(YAMLRoot):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.created_by):
             self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, Person):
-            self.created_by = Person(**as_dict(self.created_by))
+        if not isinstance(self.created_by, PersonUniqueId):
+            self.created_by = PersonUniqueId(self.created_by)
 
         if self._is_empty(self.modified_by):
             self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, Person):
-            self.modified_by = Person(**as_dict(self.modified_by))
+        if not isinstance(self.modified_by, PersonUniqueId):
+            self.modified_by = PersonUniqueId(self.modified_by)
 
         if self.table_key is not None and not isinstance(self.table_key, int):
             self.table_key = int(self.table_key)
@@ -858,8 +866,8 @@ class Figure(YAMLRoot):
 
     curie: Union[str, FigureCurie] = None
     has_reference: Union[str, ReferenceCurie] = None
-    created_by: Union[dict, "Person"] = None
-    modified_by: Union[dict, "Person"] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     label: Optional[str] = None
     caption: Optional[str] = None
     secondary_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
@@ -880,13 +888,13 @@ class Figure(YAMLRoot):
 
         if self._is_empty(self.created_by):
             self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, Person):
-            self.created_by = Person(**as_dict(self.created_by))
+        if not isinstance(self.created_by, PersonUniqueId):
+            self.created_by = PersonUniqueId(self.created_by)
 
         if self._is_empty(self.modified_by):
             self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, Person):
-            self.modified_by = Person(**as_dict(self.modified_by))
+        if not isinstance(self.modified_by, PersonUniqueId):
+            self.modified_by = PersonUniqueId(self.modified_by)
 
         if self.label is not None and not isinstance(self.label, str):
             self.label = str(self.label)
@@ -941,8 +949,8 @@ class Image(YAMLRoot):
     image_file: Union[dict, File] = None
     image_medium_file: Union[dict, File] = None
     image_thumbnail_file: Union[dict, File] = None
-    created_by: Union[dict, "Person"] = None
-    modified_by: Union[dict, "Person"] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     cropped_from: Optional[Union[str, ImageCurie]] = None
     image_x_origin: Optional[int] = None
     image_y_origin: Optional[int] = None
@@ -990,13 +998,13 @@ class Image(YAMLRoot):
 
         if self._is_empty(self.created_by):
             self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, Person):
-            self.created_by = Person(**as_dict(self.created_by))
+        if not isinstance(self.created_by, PersonUniqueId):
+            self.created_by = PersonUniqueId(self.created_by)
 
         if self._is_empty(self.modified_by):
             self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, Person):
-            self.modified_by = Person(**as_dict(self.modified_by))
+        if not isinstance(self.modified_by, PersonUniqueId):
+            self.modified_by = PersonUniqueId(self.modified_by)
 
         if self.cropped_from is not None and not isinstance(self.cropped_from, ImageCurie):
             self.cropped_from = ImageCurie(self.cropped_from)
@@ -1041,8 +1049,8 @@ class ImagePane(YAMLRoot):
     from_image: Union[str, ImageCurie] = None
     width: int = None
     height: int = None
-    created_by: Union[dict, "Person"] = None
-    modified_by: Union[dict, "Person"] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     label: Optional[str] = None
     image_x_origin: Optional[int] = None
     image_y_origin: Optional[int] = None
@@ -1068,13 +1076,13 @@ class ImagePane(YAMLRoot):
 
         if self._is_empty(self.created_by):
             self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, Person):
-            self.created_by = Person(**as_dict(self.created_by))
+        if not isinstance(self.created_by, PersonUniqueId):
+            self.created_by = PersonUniqueId(self.created_by)
 
         if self._is_empty(self.modified_by):
             self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, Person):
-            self.modified_by = Person(**as_dict(self.modified_by))
+        if not isinstance(self.modified_by, PersonUniqueId):
+            self.modified_by = PersonUniqueId(self.modified_by)
 
         if self.label is not None and not isinstance(self.label, str):
             self.label = str(self.label)
@@ -1112,8 +1120,8 @@ class Variant(GenomicEntity):
 
     curie: Union[str, VariantCurie] = None
     taxon: Union[str, NCBITaxonTermCurie] = None
-    created_by: Union[dict, "Person"] = None
-    modified_by: Union[dict, "Person"] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     hgvs_nomenclature: Optional[str] = None
     genomic_reference_sequence: Optional[str] = None
     genomic_variant_sequence: Optional[str] = None
@@ -1205,8 +1213,8 @@ class InformationContentEntity(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/InformationContentEntity")
 
     curie: Union[str, InformationContentEntityCurie] = None
-    created_by: Union[dict, "Person"] = None
-    modified_by: Union[dict, "Person"] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     table_key: Optional[int] = None
     creation_date: Optional[Union[str, XSDDate]] = None
     date_last_modified: Optional[Union[str, XSDDate]] = None
@@ -1219,13 +1227,13 @@ class InformationContentEntity(YAMLRoot):
 
         if self._is_empty(self.created_by):
             self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, Person):
-            self.created_by = Person(**as_dict(self.created_by))
+        if not isinstance(self.created_by, PersonUniqueId):
+            self.created_by = PersonUniqueId(self.created_by)
 
         if self._is_empty(self.modified_by):
             self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, Person):
-            self.modified_by = Person(**as_dict(self.modified_by))
+        if not isinstance(self.modified_by, PersonUniqueId):
+            self.modified_by = PersonUniqueId(self.modified_by)
 
         if self.table_key is not None and not isinstance(self.table_key, int):
             self.table_key = int(self.table_key)
@@ -1249,8 +1257,8 @@ class CrossReference(InformationContentEntity):
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/CrossReference")
 
     curie: Union[str, CrossReferenceCurie] = None
-    created_by: Union[dict, "Person"] = None
-    modified_by: Union[dict, "Person"] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     page_areas: Union[str, List[str]] = None
     display_name: str = None
     prefix: str = None
@@ -1940,8 +1948,8 @@ class Molecule(ChemicalTerm):
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/Molecule")
 
     curie: Union[str, MoleculeCurie] = None
-    created_by: Union[dict, "Person"] = None
-    modified_by: Union[dict, "Person"] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     table_key: Optional[int] = None
     creation_date: Optional[Union[str, XSDDate]] = None
     date_last_modified: Optional[Union[str, XSDDate]] = None
@@ -1954,13 +1962,13 @@ class Molecule(ChemicalTerm):
 
         if self._is_empty(self.created_by):
             self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, Person):
-            self.created_by = Person(**as_dict(self.created_by))
+        if not isinstance(self.created_by, PersonUniqueId):
+            self.created_by = PersonUniqueId(self.created_by)
 
         if self._is_empty(self.modified_by):
             self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, Person):
-            self.modified_by = Person(**as_dict(self.modified_by))
+        if not isinstance(self.modified_by, PersonUniqueId):
+            self.modified_by = PersonUniqueId(self.modified_by)
 
         if self.table_key is not None and not isinstance(self.table_key, int):
             self.table_key = int(self.table_key)
@@ -1988,8 +1996,8 @@ class AffectedGenomicModel(GenomicEntity):
 
     curie: Union[str, AffectedGenomicModelCurie] = None
     taxon: Union[str, NCBITaxonTermCurie] = None
-    created_by: Union[dict, "Person"] = None
-    modified_by: Union[dict, "Person"] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     subtype: Optional[Union[str, "SubtypeValues"]] = None
     components: Optional[Union[Union[dict, "AffectedGenomicModelComponent"], List[Union[dict, "AffectedGenomicModelComponent"]]]] = empty_list()
     sequence_targeting_reagents: Optional[Union[Union[dict, "SequenceTargetingReagent"], List[Union[dict, "SequenceTargetingReagent"]]]] = empty_list()
@@ -2065,8 +2073,8 @@ class PhenotypeAnnotation(Association):
     subject: Union[str, BiologicalEntityCurie] = None
     object: str = None
     creation_date: Union[str, XSDDate] = None
-    created_by: Union[dict, "Person"] = None
-    modified_by: Union[dict, "Person"] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     single_reference: Optional[Union[str, ReferenceCurie]] = None
     phenotype_term: Optional[Union[str, PhenotypeTermCurie]] = None
     condition_relations: Optional[Union[Union[dict, "ConditionRelation"], List[Union[dict, "ConditionRelation"]]]] = empty_list()
@@ -2096,13 +2104,13 @@ class PhenotypeAnnotation(Association):
 
         if self._is_empty(self.created_by):
             self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, Person):
-            self.created_by = Person(**as_dict(self.created_by))
+        if not isinstance(self.created_by, PersonUniqueId):
+            self.created_by = PersonUniqueId(self.created_by)
 
         if self._is_empty(self.modified_by):
             self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, Person):
-            self.modified_by = Person(**as_dict(self.modified_by))
+        if not isinstance(self.modified_by, PersonUniqueId):
+            self.modified_by = PersonUniqueId(self.modified_by)
 
         if self.single_reference is not None and not isinstance(self.single_reference, ReferenceCurie):
             self.single_reference = ReferenceCurie(self.single_reference)
@@ -2139,8 +2147,8 @@ class GenePhenotypeAnnotation(PhenotypeAnnotation):
     predicate: str = None
     object: str = None
     creation_date: Union[str, XSDDate] = None
-    created_by: Union[dict, "Person"] = None
-    modified_by: Union[dict, "Person"] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     subject: Union[str, GeneCurie] = None
     sgd_strain_background: Optional[Union[str, AffectedGenomicModelCurie]] = None
 
@@ -2177,8 +2185,8 @@ class AllelePhenotypeAnnotation(PhenotypeAnnotation):
     predicate: str = None
     object: str = None
     creation_date: Union[str, XSDDate] = None
-    created_by: Union[dict, "Person"] = None
-    modified_by: Union[dict, "Person"] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     subject: Union[str, AlleleCurie] = None
     inferred_gene: Optional[Union[str, GeneCurie]] = None
 
@@ -2215,8 +2223,8 @@ class AGMPhenotypeAnnotation(PhenotypeAnnotation):
     predicate: str = None
     object: str = None
     creation_date: Union[str, XSDDate] = None
-    created_by: Union[dict, "Person"] = None
-    modified_by: Union[dict, "Person"] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     subject: Union[str, AffectedGenomicModelCurie] = None
     inferred_allele: Optional[Union[str, AlleleCurie]] = None
     inferred_gene: Optional[Union[str, GeneCurie]] = None
@@ -2259,8 +2267,8 @@ class DiseaseAnnotation(Association):
     subject: Union[str, BiologicalEntityCurie] = None
     predicate: str = None
     object: Union[str, DOTermCurie] = None
-    created_by: Union[dict, "Person"] = None
-    modified_by: Union[dict, "Person"] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     unique_id: Optional[str] = None
     mod_id: Optional[str] = None
     negated: Optional[Union[bool, Bool]] = None
@@ -2313,13 +2321,13 @@ class DiseaseAnnotation(Association):
 
         if self._is_empty(self.created_by):
             self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, Person):
-            self.created_by = Person(**as_dict(self.created_by))
+        if not isinstance(self.created_by, PersonUniqueId):
+            self.created_by = PersonUniqueId(self.created_by)
 
         if self._is_empty(self.modified_by):
             self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, Person):
-            self.modified_by = Person(**as_dict(self.modified_by))
+        if not isinstance(self.modified_by, PersonUniqueId):
+            self.modified_by = PersonUniqueId(self.modified_by)
 
         if self.unique_id is not None and not isinstance(self.unique_id, str):
             self.unique_id = str(self.unique_id)
@@ -2389,8 +2397,8 @@ class GeneDiseaseAnnotation(DiseaseAnnotation):
     single_reference: Union[str, ReferenceCurie] = None
     data_provider: Union[str, List[str]] = None
     object: Union[str, DOTermCurie] = None
-    created_by: Union[dict, "Person"] = None
-    modified_by: Union[dict, "Person"] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     subject: Union[str, GeneCurie] = None
     predicate: Union[str, "GeneDiseaseRelationEnum"] = None
     sgd_strain_background: Optional[Union[str, AffectedGenomicModelCurie]] = None
@@ -2428,8 +2436,8 @@ class AlleleDiseaseAnnotation(DiseaseAnnotation):
     single_reference: Union[str, ReferenceCurie] = None
     data_provider: Union[str, List[str]] = None
     object: Union[str, DOTermCurie] = None
-    created_by: Union[dict, "Person"] = None
-    modified_by: Union[dict, "Person"] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     subject: Union[str, AlleleCurie] = None
     predicate: Union[str, "AlleleDiseaseRelationEnum"] = None
     inferred_gene: Optional[Union[str, GeneCurie]] = None
@@ -2467,8 +2475,8 @@ class AGMDiseaseAnnotation(DiseaseAnnotation):
     single_reference: Union[str, ReferenceCurie] = None
     data_provider: Union[str, List[str]] = None
     object: Union[str, DOTermCurie] = None
-    created_by: Union[dict, "Person"] = None
-    modified_by: Union[dict, "Person"] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     subject: Union[str, AffectedGenomicModelCurie] = None
     predicate: Union[str, "AgmDiseaseRelationEnum"] = None
     inferred_allele: Optional[Union[str, AlleleCurie]] = None
@@ -2628,8 +2636,8 @@ class Reference(InformationContentEntity):
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/Reference")
 
     curie: Union[str, ReferenceCurie] = None
-    created_by: Union[dict, "Person"] = None
-    modified_by: Union[dict, "Person"] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     title: Optional[str] = None
     alliance_category: Optional[str] = None
     date_published: Optional[Union[str, XSDDate]] = None
@@ -2750,8 +2758,8 @@ class Resource(InformationContentEntity):
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/Resource")
 
     curie: Union[str, ResourceCurie] = None
-    created_by: Union[dict, "Person"] = None
-    modified_by: Union[dict, "Person"] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     title: Optional[str] = None
     iso_abbreviation: Optional[str] = None
     medline_abbreviation: Optional[str] = None
@@ -2865,6 +2873,7 @@ class Person(Agent):
     class_name: ClassVar[str] = "Person"
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/Person")
 
+    unique_id: Union[str, PersonUniqueId] = None
     last_name: Optional[str] = None
     middle_name: Optional[str] = None
     first_name: Optional[str] = None
@@ -2872,9 +2881,13 @@ class Person(Agent):
     emails: Optional[Union[str, List[str]]] = empty_list()
     old_emails: Optional[Union[str, List[str]]] = empty_list()
     mod_id: Optional[str] = None
-    unique_id: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.unique_id):
+            self.MissingRequiredField("unique_id")
+        if not isinstance(self.unique_id, PersonUniqueId):
+            self.unique_id = PersonUniqueId(self.unique_id)
+
         if self.last_name is not None and not isinstance(self.last_name, str):
             self.last_name = str(self.last_name)
 
@@ -2898,9 +2911,6 @@ class Person(Agent):
         if self.mod_id is not None and not isinstance(self.mod_id, str):
             self.mod_id = str(self.mod_id)
 
-        if self.unique_id is not None and not isinstance(self.unique_id, str):
-            self.unique_id = str(self.unique_id)
-
         super().__post_init__(**kwargs)
 
 
@@ -2913,10 +2923,16 @@ class LoggedInPerson(Person):
     class_name: ClassVar[str] = "LoggedInPerson"
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/LoggedInPerson")
 
+    unique_id: Union[str, LoggedInPersonUniqueId] = None
     okta_id: str = None
     okta_email: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.unique_id):
+            self.MissingRequiredField("unique_id")
+        if not isinstance(self.unique_id, LoggedInPersonUniqueId):
+            self.unique_id = LoggedInPersonUniqueId(self.unique_id)
+
         if self._is_empty(self.okta_id):
             self.MissingRequiredField("okta_id")
         if not isinstance(self.okta_id, str):
@@ -2943,8 +2959,8 @@ class VocabularyTerm(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/VocabularyTerm")
 
     name: str = None
-    created_by: Union[dict, Person] = None
-    modified_by: Union[dict, Person] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     abbreviation: Optional[str] = None
     definition: Optional[str] = None
     is_obsolete: Optional[Union[bool, Bool]] = None
@@ -2961,13 +2977,13 @@ class VocabularyTerm(YAMLRoot):
 
         if self._is_empty(self.created_by):
             self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, Person):
-            self.created_by = Person(**as_dict(self.created_by))
+        if not isinstance(self.created_by, PersonUniqueId):
+            self.created_by = PersonUniqueId(self.created_by)
 
         if self._is_empty(self.modified_by):
             self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, Person):
-            self.modified_by = Person(**as_dict(self.modified_by))
+        if not isinstance(self.modified_by, PersonUniqueId):
+            self.modified_by = PersonUniqueId(self.modified_by)
 
         if self.abbreviation is not None and not isinstance(self.abbreviation, str):
             self.abbreviation = str(self.abbreviation)
@@ -3007,8 +3023,8 @@ class Vocabulary(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/Vocabulary")
 
     name: Union[str, VocabularyName] = None
-    created_by: Union[dict, Person] = None
-    modified_by: Union[dict, Person] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     vocabulary_description: Optional[str] = None
     is_obsolete: Optional[Union[bool, Bool]] = None
     member_terms: Optional[Union[Union[dict, VocabularyTerm], List[Union[dict, VocabularyTerm]]]] = empty_list()
@@ -3024,13 +3040,13 @@ class Vocabulary(YAMLRoot):
 
         if self._is_empty(self.created_by):
             self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, Person):
-            self.created_by = Person(**as_dict(self.created_by))
+        if not isinstance(self.created_by, PersonUniqueId):
+            self.created_by = PersonUniqueId(self.created_by)
 
         if self._is_empty(self.modified_by):
             self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, Person):
-            self.modified_by = Person(**as_dict(self.modified_by))
+        if not isinstance(self.modified_by, PersonUniqueId):
+            self.modified_by = PersonUniqueId(self.modified_by)
 
         if self.vocabulary_description is not None and not isinstance(self.vocabulary_description, str):
             self.vocabulary_description = str(self.vocabulary_description)
@@ -3067,8 +3083,8 @@ class Allele(GenomicEntity):
 
     curie: Union[str, AlleleCurie] = None
     taxon: Union[str, NCBITaxonTermCurie] = None
-    created_by: Union[dict, Person] = None
-    modified_by: Union[dict, Person] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     symbol: Optional[str] = None
     affected_entities: Optional[Union[Union[str, BiologicalEntityCurie], List[Union[str, BiologicalEntityCurie]]]] = empty_list()
     contains_construct: Optional[Union[str, ConstructCurie]] = None
@@ -3236,8 +3252,8 @@ class Construct(GenomicEntity):
 
     curie: Union[str, ConstructCurie] = None
     taxon: Union[str, NCBITaxonTermCurie] = None
-    created_by: Union[dict, Person] = None
-    modified_by: Union[dict, Person] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     construct_components: Optional[Union[Union[str, ConstructComponentCurie], List[Union[str, ConstructComponentCurie]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -3264,8 +3280,8 @@ class ConstructComponent(GenomicEntity):
 
     curie: Union[str, ConstructComponentCurie] = None
     taxon: Union[str, NCBITaxonTermCurie] = None
-    created_by: Union[dict, Person] = None
-    modified_by: Union[dict, Person] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     component_relation: Optional[Union[str, "ComponentRelationsEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -3674,10 +3690,10 @@ slots.date_last_modified = Slot(uri=ALLIANCE.date_last_modified, name="date_last
                    model_uri=DEFAULT_.date_last_modified, domain=None, range=Optional[Union[str, XSDDate]])
 
 slots.created_by = Slot(uri=ALLIANCE.created_by, name="created_by", curie=ALLIANCE.curie('created_by'),
-                   model_uri=DEFAULT_.created_by, domain=None, range=Union[dict, "Person"])
+                   model_uri=DEFAULT_.created_by, domain=None, range=Union[str, PersonUniqueId])
 
 slots.modified_by = Slot(uri=ALLIANCE.modified_by, name="modified_by", curie=ALLIANCE.curie('modified_by'),
-                   model_uri=DEFAULT_.modified_by, domain=None, range=Union[dict, "Person"])
+                   model_uri=DEFAULT_.modified_by, domain=None, range=Union[str, PersonUniqueId])
 
 slots.release = Slot(uri=ALLIANCE.release, name="release", curie=ALLIANCE.curie('release'),
                    model_uri=DEFAULT_.release, domain=None, range=Optional[str])
@@ -4383,6 +4399,9 @@ slots.Resource_id = Slot(uri=DEFAULT_.id, name="Resource_id", curie=DEFAULT_.cur
 
 slots.Resource_title = Slot(uri=ALLIANCE.title, name="Resource_title", curie=ALLIANCE.curie('title'),
                    model_uri=DEFAULT_.Resource_title, domain=Resource, range=Optional[str])
+
+slots.Person_unique_id = Slot(uri=ALLIANCE.unique_id, name="Person_unique_id", curie=ALLIANCE.curie('unique_id'),
+                   model_uri=DEFAULT_.Person_unique_id, domain=Person, range=Union[str, PersonUniqueId])
 
 slots.LoggedInPerson_okta_id = Slot(uri=ALLIANCE.okta_id, name="LoggedInPerson_okta_id", curie=ALLIANCE.curie('okta_id'),
                    model_uri=DEFAULT_.LoggedInPerson_okta_id, domain=LoggedInPerson, range=str)

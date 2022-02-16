@@ -158,7 +158,7 @@ classes:
     slot_usage:
       free_text:
         required: true
-      note_type:
+      note_type:              # Permissible values currently: disease_summary, disease_note
         required: true
       private:
         required: true
@@ -471,7 +471,12 @@ slots:
     range: string
 
   data_provider:
-    description: MOD that provided data
+    description: Organization (e.g. MOD) from which the data was sourced
+    multivalued: true
+    range: string
+
+  secondary_data_provider:
+    description: Organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source
     multivalued: true
     range: string
 
@@ -563,7 +568,7 @@ slots:
     multivalued: false
     range: string
 
-  mod_id:
+  mod_entity_id:
     description: >-
       The model organism database (MOD) identifier/curie for the object
     range: string

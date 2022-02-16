@@ -47,6 +47,7 @@ classes:
     slot_usage:
       name:
         required: true
+        identifier: true
 
   Vocabulary:
     description: >-

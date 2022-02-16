@@ -55,11 +55,14 @@ classes:
       - orcid
       - emails
       - old_emails
-      - mod_id
+      - mod_entity_id
       - unique_id
     exact_mappings:
       - schema:person
       - foaf:Person
+    slot_usage:
+      unique_id:
+        identifier: true
 
   LoggedInPerson:
     is_a: Person
