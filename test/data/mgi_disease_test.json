@@ -1,54 +1,4 @@
 
-{
-  "gene_ingest_set": [
-    {
-      "curie": "MGI:97490",
-      "taxon": "NCBITaxon:10090",
-      "created_by": "MGI",
-      "modified_by": "MGI",
-      "symbol": "Pax6",
-      "name": "paired box 6",
-      "cross_references": [
-        {
-          "curie": "MGI:97490",
-          "created_by": "MGI",
-          "display_name": "",
-          "modified_by": "MGI",
-	  "page_areas": [
-            "gene",
-            "gene/expression",
-            "gene/wild_type_expression",
-            "gene/expression_images",
-            "gene/references"
-          ],
-          "prefix": "MGI"
-        },
-        {
-          "curie": "NCBI_Gene:18508",
-          "created_by": "MGI",
-          "modified_by": "MGI",
-          "page_areas": [
-          ],
-          "prefix": "NCBI_Gene",
-          "display_name": ""
-        }
-      ],
-      "gene_type": "SO:0001217"
-    }
-  ]
-}
-
-{
-  "allele_ingest_set": [
-    {
-      "curie": "MGI:1856585",
-      "taxon": "NCBITaxon:10090",
-      "created_by": "MGI",
-      "modified_by": "MGI"
-    }
-  ]
-}
-
 
 {
   "disease_agm_ingest_set": [
@@ -56,46 +6,73 @@
       "evidence_codes": [
         "ECO:0000033"
       ],
-      "single_reference": "PMID:7035547",
+      "annotation_type" : "manually_curated",
+      "single_reference": "PMID:16899370",
       "data_provider": [
         "MGI"
       ],
-      "object": "DOID:83",
+      "object": "DOID:10652",
       "created_by": "MGI",
       "modified_by": "MGI",
-      "subject": "MGI:2175741",
+      "subject": "MGI:3665286",
+      "predicate": "is_model_of",
+      "condition_relations": [ ],
+      "creation_date" : "2006-10-31"
+    }, {
+      "evidence_codes": [
+        "ECO:0000033"
+      ],
+      "annotation_type" : "manually_curated",
+      "single_reference": "PMID:16899370",
+      "data_provider": [
+        "MGI"
+      ],
+      "object": "DOID:0110042",
+      "created_by": "MGI",
+      "modified_by": "MGI",
+      "subject": "MGI:3665286",
+      "predicate": "is_model_of",
+      "condition_relations": [ ],
+      "creation_date" : "2006-10-31"
+    }, {
+      "evidence_codes": [
+        "ECO:0000033"
+      ],
+      "annotation_type" : "manually_curated",
+      "single_reference": "PMID:28442491",
+      "data_provider": [
+        "MGI"
+      ],
+      "object": "DOID:4479",
+      "created_by": "MGI",
+      "modified_by": "MGI",
+      "subject": "MGI:6423631",
+      "private_note" : "familial hyperkalemic hypertension",
       "predicate": "is_model_of",
       "condition_relations": [ ]
-    }
-  ]
-}
-
-{
+  }],
   "disease_allele_ingest_set": [
     {
       "evidence_codes": ["ECO:0000033"],
-      "single_reference": "PMID:7035547",
+      "annotation_type" : "manually_curated",
+      "single_reference": "PMID:18378045",
       "data_provider": ["MGI"],
-      "subject": "MGI:1856585",
+      "subject": "MGI:3524957",
       "predicate": "is_implicated_in",
-      "object": "DOID:83",
+      "object": "DOID:10652",
       "created_by": "MGI",
       "modified_by": "MGI"
-    }
-  ]
-}
-
-{
-  "disease_gene_ingest_set": [
-    {
+    }, {
       "evidence_codes": ["ECO:0000033"],
-      "single_reference": "PMID:7035547",
+      "annotation_type" : "manually_curated",
+      "single_reference": "PMID:28228716",
       "data_provider": ["MGI"],
-      "object": "DOID:83",
-	"created_by": "MGI",
-      "modified_by": "MGI",
-      "subject": "MGI:97490",
-      "predicate": "is_implicated_in"
+      "subject": "MGI:3524957",
+      "predicate": "is_implicated_in",
+      "disease_annotation_note" : "therepy",
+      "object": "DOID:10652",
+      "created_by": "MGI",
+      "modified_by": "MGI"
     }
   ]
 }
