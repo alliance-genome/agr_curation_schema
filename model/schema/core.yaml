@@ -338,6 +338,13 @@ slots:
     range: Note
     multivalued: true
 
+  related_note:
+    description: Holds between an object and a Note object.
+    notes: >-
+      Singular version of related_notes
+    range: Note
+    multivalued: false
+
   statement_subject:
     description: >-
       The entity being described by the note.
