@@ -124,6 +124,9 @@ classes:
   SOTerm:
     is_a: OntologyTerm
 
+  ROTerm:
+    is_a: OntologyTerm
+
   CHEBITerm:
     is_a: ChemicalTerm
 
