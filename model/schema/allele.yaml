@@ -152,7 +152,7 @@ slots:
 
   mutation_type:
     description: SO term for type of mutation
-    domain: MolecularMutation
+    domain: Allele
     range: SOTerm
 
   mutation_description:
