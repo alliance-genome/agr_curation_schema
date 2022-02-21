@@ -593,6 +593,17 @@ slots:
     description: last (family) name of a person
     range: string
 
+  evidence_codes:
+    description: ECO term IDs             # this slot has also been instantiated in the orthology.yaml
+    multivalued: true
+    values_from:
+      - ECO
+    range: ECOTerm
+
+  evidence_code:
+    multivalued: false
+    range: ECOTerm
+
 
 ## --------------------
 ## ASSOCIATION SLOTS

@@ -49,13 +49,7 @@ classes:
      - strict_filter
      - moderate_filter
 
-enums:
-  evidence_code_enum:
-    permissible_values:
-
 slots:
-  evidence_code:
-    range: evidence_code_enum
   publication:
     range: Reference
   is_best_score:
