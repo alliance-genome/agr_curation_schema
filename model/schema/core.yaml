@@ -244,6 +244,9 @@ classes:
       - start
       - end
 
+  Protein:
+    is_a: GenomicEntity
+
 ## ------------
 ## SLOTS
 ## ------------
@@ -585,6 +588,10 @@ slots:
   last_name:
     description: last (family) name of a person
     range: string
+
+  evidence_code:
+    multivalued: false
+    range: ECOTerm
 
 
 ## --------------------
