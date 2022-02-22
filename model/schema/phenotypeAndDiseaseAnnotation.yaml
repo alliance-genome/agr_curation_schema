@@ -501,6 +501,7 @@ slots:
     range: Allele
 
   disease_qualifiers:
+    multivalued: true
     range: disease_annotation_qualifier_enum
 
   genetic_sex:
