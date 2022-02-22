@@ -27,7 +27,6 @@ imports:
   - resource
   - variation
   - variantConsequence
-  - variantGenomicLocation
   - linkml:types
   - core
   - informationContentEntity

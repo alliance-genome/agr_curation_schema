@@ -244,6 +244,9 @@ classes:
       - start
       - end
 
+  Protein:
+    is_a: GenomicEntity
+
 ## ------------
 ## SLOTS
 ## ------------
