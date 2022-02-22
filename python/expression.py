@@ -1,5 +1,5 @@
 # Auto generated from expression.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-22T10:45:03
+# Generation date: 2022-02-22T15:49:07
 # Schema: expression.yaml
 #
 # id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml
@@ -317,7 +317,7 @@ class ExpressionExperiment(YAMLRoot):
     biological_entity_assayed: Union[str, BiologicalEntityCurie] = None
     created_by: Union[str, PersonUniqueId] = None
     modified_by: Union[str, PersonUniqueId] = None
-    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
+    single_reference: Optional[Union[str, ReferenceCurie]] = None
     assay_used: Optional[Union[str, MMOTermCurie]] = None
     reagents_used: Optional[Union[Union[dict, "Reagent"], List[Union[dict, "Reagent"]]]] = empty_list()
     specimen_genomic_model: Optional[Union[str, AffectedGenomicModelCurie]] = None
@@ -348,9 +348,8 @@ class ExpressionExperiment(YAMLRoot):
         if not isinstance(self.modified_by, PersonUniqueId):
             self.modified_by = PersonUniqueId(self.modified_by)
 
-        if not isinstance(self.references, list):
-            self.references = [self.references] if self.references is not None else []
-        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
+        if self.single_reference is not None and not isinstance(self.single_reference, ReferenceCurie):
+            self.single_reference = ReferenceCurie(self.single_reference)
 
         if self.assay_used is not None and not isinstance(self.assay_used, MMOTermCurie):
             self.assay_used = MMOTermCurie(self.assay_used)
@@ -4307,6 +4306,12 @@ class TagSet(EnumDefinitionImpl):
 class slots:
     pass
 
+slots.atomic_number = Slot(uri=DEFAULT_.atomic_number, name="atomic_number", curie=DEFAULT_.curie('atomic_number'),
+                   model_uri=DEFAULT_.atomic_number, domain=None, range=Optional[int])
+
+slots.neutron_number = Slot(uri=DEFAULT_.neutron_number, name="neutron_number", curie=DEFAULT_.curie('neutron_number'),
+                   model_uri=DEFAULT_.neutron_number, domain=None, range=Optional[int])
+
 slots.belongs_to_expression_experiment = Slot(uri=DEFAULT_.belongs_to_expression_experiment, name="belongs_to_expression_experiment", curie=DEFAULT_.curie('belongs_to_expression_experiment'),
                    model_uri=DEFAULT_.belongs_to_expression_experiment, domain=ExpressionAnnotation, range=Union[str, ExpressionExperimentCurie])
 
@@ -5044,9 +5049,6 @@ slots.embryonic_cell_lines = Slot(uri=DEFAULT_.embryonic_cell_lines, name="embry
 
 slots.id = Slot(uri=DEFAULT_.id, name="id", curie=DEFAULT_.curie('id'),
                    model_uri=DEFAULT_.id, domain=None, range=Optional[str])
-
-slots.ExpressionExperiment_references = Slot(uri=ALLIANCE.references, name="ExpressionExperiment_references", curie=ALLIANCE.curie('references'),
-                   model_uri=DEFAULT_.ExpressionExperiment_references, domain=ExpressionExperiment, range=Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]])
 
 slots.ExpressionAnnotation_associated_with_figure = Slot(uri="str(uriorcurie)", name="ExpressionAnnotation_associated_with_figure", curie=None,
                    model_uri=DEFAULT_.ExpressionAnnotation_associated_with_figure, domain=ExpressionAnnotation, range=Optional[Union[Union[str, FigureCurie], List[Union[str, FigureCurie]]]])

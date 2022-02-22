@@ -1,5 +1,5 @@
 # Auto generated from affectedGenomicModel.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-22T10:44:21
+# Generation date: 2022-02-22T15:48:27
 # Schema: Alliance-Schema-Prototype-Affected-Genomic-Model
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/affectedGenomicModel
