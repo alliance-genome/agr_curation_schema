@@ -160,7 +160,7 @@ classes:
         required: true
       note_type:              # Permissible values currently: disease_summary, disease_note
         required: true
-      private:
+      internal:
         required: true
 
   EntityStatement:
