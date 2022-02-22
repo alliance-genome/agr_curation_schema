@@ -148,19 +148,19 @@ classes:
   Note:
     description: >-
       Note object for capturing free-text describing some attribute of an entity,
-      coupled with a 'note type', private boolean, and an optional list of
+      coupled with a 'note type', internal boolean, and an optional list of
       references.
     slots:
       - free_text
       - note_type
-      - private
+      - internal
       - references
     slot_usage:
       free_text:
         required: true
       note_type:              # Permissible values currently: disease_summary, disease_note
         required: true
-      private:
+      internal:
         required: true
 
   EntityStatement:
@@ -325,7 +325,7 @@ slots:
       The type of note: e.g., cytology, comment, summary.
     range: VocabularyTerm
 
-  private:
+  internal:
     description: >-
       Classifies the entity as private (for internal use) or not (for public use).
     notes: >-
@@ -475,12 +475,12 @@ slots:
 
   data_provider:
     description: Organization (e.g. MOD) from which the data was sourced
-    multivalued: true
+    multivalued: false
     range: string
 
   secondary_data_provider:
     description: Organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source
-    multivalued: true
+    multivalued: false
     range: string
 
   association_slot:
