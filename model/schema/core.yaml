@@ -148,12 +148,12 @@ classes:
   Note:
     description: >-
       Note object for capturing free-text describing some attribute of an entity,
-      coupled with a 'note type', private boolean, and an optional list of
+      coupled with a 'note type', internal boolean, and an optional list of
       references.
     slots:
       - free_text
       - note_type
-      - private
+      - internal
       - references
     slot_usage:
       free_text:
@@ -325,7 +325,7 @@ slots:
       The type of note: e.g., cytology, comment, summary.
     range: VocabularyTerm
 
-  private:
+  internal:
     description: >-
       Classifies the entity as private (for internal use) or not (for public use).
     notes: >-
