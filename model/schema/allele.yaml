@@ -190,15 +190,6 @@ slots:
     multivalued: false
     domain: AssociatedReference
     range: VocabularyTerm
-    domain: ReferenceType
-    range: reference_association_types
-
-  has_reference:
-    description: >-
-      Associated reference
-    domain: ReferenceType
-    range: Reference
-
 
   origins:
     singular_name: origin
@@ -283,4 +274,3 @@ slots:
       by sequencing
     domain: Variant
     range: VocabularyTerm
-
