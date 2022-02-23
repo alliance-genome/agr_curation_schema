@@ -16,6 +16,14 @@ prefixes:
 
 classes:
 
+  Reagent:
+    is_a: BiologicalEntity
+    description: >-
+      A material entity used in experiments.
+    slots:
+      - generated_by
+      - manufactured_by
+
   Antibody:
     is_a: Reagent
     mixins:

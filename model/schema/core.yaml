@@ -137,14 +137,6 @@ classes:
       - modified_by
       - date_last_modified
 
-  Reagent:
-    is_a: BiologicalEntity
-    description: >-
-      A material entity used in experiments.
-    slots:
-      - generated_by
-      - manufactured_by
-
   Note:
     description: >-
       Note object for capturing free-text describing some attribute of an entity,
