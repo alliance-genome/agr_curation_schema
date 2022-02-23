@@ -138,7 +138,7 @@ classes:
       - date_last_modified
 
   Reagent:
-    mixin: true
+    is_a: BiologicalEntity
     description: >-
       A material entity used in experiments.
     slots:

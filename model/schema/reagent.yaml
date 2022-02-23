@@ -1,4 +1,4 @@
-id: https://github.com/alliance-genome/agr_curation_schema/src/schema/antibody.yaml
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml
 
 imports:
   - core
@@ -17,7 +17,7 @@ prefixes:
 classes:
 
   Antibody:
-    is_a: BiologicalEntity
+    is_a: Reagent
     mixins:
       - AuditedObject
       - Reagent
@@ -75,6 +75,15 @@ classes:
         description: >-
           The reference providing the original description of the antibody's
           generation.
+
+  # If we need to have multiple paths to root class, then we can consider a mixin that allows
+  # DNA|RNAClones to be classified independently from Reagents.
+  
+  DNAClone:
+    is_a: Reagent
+
+  RNAClone:
+    is_a: Reagent
 
 
 slots:
