@@ -33,7 +33,7 @@ imports:
   - person
   - allele
   - affectedGenomicModel
-  - antibody
+  - reagent
   - geneInteraction
   - ontologyTerm
   - phenotypeAndDiseaseAnnotation

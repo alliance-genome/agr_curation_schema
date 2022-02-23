@@ -3,7 +3,7 @@ id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/expressi
 imports:
   - affectedGenomicModel
   - allele
-  - antibody
+  - reagent
   - core
   - image
   - linkml:types
@@ -23,16 +23,24 @@ classes:
       Specimens are defined by their AGM and/or alleles (or gel lane at MGI).
     slots:
       - curie
-      - references
+      - single_reference
       - biological_entity_assayed
       - assay_used
       - reagents_used
       - specimen_genomic_model
       - specimen_alleles
       - condition_relations
-    slot_usage:
-      references:
-        multivalued: false    # Should I call this slot just "reference" then?
+    rules:
+      - postconditions:
+          any_of:
+            - slot_conditions:
+                biological_entity_assayed:
+                  required: true
+            - slot_conditions:
+                reagents_used:
+                  required: true
+          description: At least one of biological_entity_assayed or reagents_used should be populated.
+
 
 # QUESTIONS
 # - HOW TO LIMIT CVTERMS ALLOWED IN XPRN - DID I USE THE RIGHT APPROACH?
@@ -223,7 +231,6 @@ slots:
     domain: ExpressionExperiment
     range: BiologicalEntity
     multivalued: false
-    required: true
 
   image:
     description: >-
