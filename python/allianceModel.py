@@ -1,5 +1,5 @@
 # Auto generated from allianceModel.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-22T15:48:14
+# Generation date: 2022-02-22T16:04:17
 # Schema: Alliance-Schema-Prototype
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema
@@ -100,6 +100,10 @@ class GeneCurie(GenomicEntityCurie):
     pass
 
 
+class ReagentCurie(BiologicalEntityCurie):
+    pass
+
+
 class ChromosomeCurie(URIorCURIE):
     pass
 
@@ -152,7 +156,15 @@ class AffectedGenomicModelCurie(GenomicEntityCurie):
     pass
 
 
-class AntibodyCurie(BiologicalEntityCurie):
+class AntibodyCurie(ReagentCurie):
+    pass
+
+
+class DNACloneCurie(ReagentCurie):
+    pass
+
+
+class RNACloneCurie(ReagentCurie):
     pass
 
 
@@ -942,7 +954,7 @@ class AuditedObject(YAMLRoot):
 
 
 @dataclass
-class Reagent(YAMLRoot):
+class Reagent(BiologicalEntity):
     """
     A material entity used in experiments.
     """
@@ -953,10 +965,19 @@ class Reagent(YAMLRoot):
     class_name: ClassVar[str] = "Reagent"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Reagent
 
+    curie: Union[str, ReagentCurie] = None
+    taxon: Union[str, NCBITaxonTermCurie] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     generated_by: Optional[Union[Union[dict, "Agent"], List[Union[dict, "Agent"]]]] = empty_list()
     manufactured_by: Optional[Union[Union[dict, "Agent"], List[Union[dict, "Agent"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, ReagentCurie):
+            self.curie = ReagentCurie(self.curie)
+
         if not isinstance(self.generated_by, list):
             self.generated_by = [self.generated_by] if self.generated_by is not None else []
         self.generated_by = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.generated_by]
@@ -2042,14 +2063,14 @@ class AffectedGenomicModelComponent(YAMLRoot):
 
 
 @dataclass
-class Antibody(BiologicalEntity):
+class Antibody(Reagent):
     """
     Immunoglobulin proteins that bind specific molecule(s). Can be used experimentally for the purposes of detection
     or purification.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/antibody.yaml/Antibody")
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Antibody")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "Antibody"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Antibody
@@ -2062,6 +2083,8 @@ class Antibody(BiologicalEntity):
     table_key: Optional[int] = None
     creation_date: Optional[Union[str, XSDDate]] = None
     date_last_modified: Optional[Union[str, XSDDate]] = None
+    generated_by: Optional[Union[Union[dict, Agent], List[Union[dict, Agent]]]] = empty_list()
+    manufactured_by: Optional[Union[Union[dict, Agent], List[Union[dict, Agent]]]] = empty_list()
     antigen_taxon: Optional[Union[str, NCBITaxonTermCurie]] = None
     heavy_chain_isotype: Optional[Union[str, "HeavyChainIsotypeSet"]] = None
     light_chain_isotype: Optional[Union[str, "LightChainIsotypeSet"]] = None
@@ -2072,8 +2095,6 @@ class Antibody(BiologicalEntity):
     original_reference: Optional[Union[str, ReferenceCurie]] = None
     related_notes: Optional[Union[Union[dict, Note], List[Union[dict, Note]]]] = empty_list()
     taxon: Optional[Union[str, NCBITaxonTermCurie]] = None
-    generated_by: Optional[Union[Union[dict, Agent], List[Union[dict, Agent]]]] = empty_list()
-    manufactured_by: Optional[Union[Union[dict, Agent], List[Union[dict, Agent]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -2110,6 +2131,14 @@ class Antibody(BiologicalEntity):
         if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
             self.date_last_modified = XSDDate(self.date_last_modified)
 
+        if not isinstance(self.generated_by, list):
+            self.generated_by = [self.generated_by] if self.generated_by is not None else []
+        self.generated_by = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.generated_by]
+
+        if not isinstance(self.manufactured_by, list):
+            self.manufactured_by = [self.manufactured_by] if self.manufactured_by is not None else []
+        self.manufactured_by = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.manufactured_by]
+
         if self.antigen_taxon is not None and not isinstance(self.antigen_taxon, NCBITaxonTermCurie):
             self.antigen_taxon = NCBITaxonTermCurie(self.antigen_taxon)
 
@@ -2141,13 +2170,51 @@ class Antibody(BiologicalEntity):
         if self.taxon is not None and not isinstance(self.taxon, NCBITaxonTermCurie):
             self.taxon = NCBITaxonTermCurie(self.taxon)
 
-        if not isinstance(self.generated_by, list):
-            self.generated_by = [self.generated_by] if self.generated_by is not None else []
-        self.generated_by = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.generated_by]
+        super().__post_init__(**kwargs)
 
-        if not isinstance(self.manufactured_by, list):
-            self.manufactured_by = [self.manufactured_by] if self.manufactured_by is not None else []
-        self.manufactured_by = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.manufactured_by]
+
+@dataclass
+class DNAClone(Reagent):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/DNAClone")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "DNAClone"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.DNAClone
+
+    curie: Union[str, DNACloneCurie] = None
+    taxon: Union[str, NCBITaxonTermCurie] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, DNACloneCurie):
+            self.curie = DNACloneCurie(self.curie)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class RNAClone(Reagent):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/RNAClone")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "RNAClone"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.RNAClone
+
+    curie: Union[str, RNACloneCurie] = None
+    taxon: Union[str, NCBITaxonTermCurie] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, RNACloneCurie):
+            self.curie = RNACloneCurie(self.curie)
 
         super().__post_init__(**kwargs)
 

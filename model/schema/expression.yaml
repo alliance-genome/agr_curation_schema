@@ -3,7 +3,7 @@ id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/expressi
 imports:
   - affectedGenomicModel
   - allele
-  - antibody
+  - reagent
   - core
   - image
   - linkml:types

@@ -1456,6 +1456,64 @@
          "title": "DAOTerm",
          "type": "object"
       },
+      "DNAClone": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "generated_by": {
+               "description": "Holds between a material entity and an Agent that generated it: e.g., Thomas Blumenthal, Kornberg Laboratory.",
+               "items": {
+                  "$ref": "#/$defs/Agent"
+               },
+               "type": "array"
+            },
+            "manufactured_by": {
+               "description": "Holds between a material entity and an Agent that has manufactured it: e.g., Molecular Probes.",
+               "items": {
+                  "$ref": "#/$defs/Agent"
+               },
+               "type": "array"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
+            "taxon": {
+               "description": "The taxon from which the biological entity derives.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie",
+            "taxon",
+            "created_by",
+            "modified_by"
+         ],
+         "title": "DNAClone",
+         "type": "object"
+      },
       "DOTerm": {
          "additionalProperties": false,
          "description": "",
@@ -4293,6 +4351,64 @@
          "title": "Protein",
          "type": "object"
       },
+      "RNAClone": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "generated_by": {
+               "description": "Holds between a material entity and an Agent that generated it: e.g., Thomas Blumenthal, Kornberg Laboratory.",
+               "items": {
+                  "$ref": "#/$defs/Agent"
+               },
+               "type": "array"
+            },
+            "manufactured_by": {
+               "description": "Holds between a material entity and an Agent that has manufactured it: e.g., Molecular Probes.",
+               "items": {
+                  "$ref": "#/$defs/Agent"
+               },
+               "type": "array"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
+            "taxon": {
+               "description": "The taxon from which the biological entity derives.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie",
+            "taxon",
+            "created_by",
+            "modified_by"
+         ],
+         "title": "RNAClone",
+         "type": "object"
+      },
       "ROTerm": {
          "additionalProperties": false,
          "description": "",
@@ -4361,6 +4477,64 @@
             "curie"
          ],
          "title": "ROTerm",
+         "type": "object"
+      },
+      "Reagent": {
+         "additionalProperties": false,
+         "description": "A material entity used in experiments.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "generated_by": {
+               "description": "Holds between a material entity and an Agent that generated it: e.g., Thomas Blumenthal, Kornberg Laboratory.",
+               "items": {
+                  "$ref": "#/$defs/Agent"
+               },
+               "type": "array"
+            },
+            "manufactured_by": {
+               "description": "Holds between a material entity and an Agent that has manufactured it: e.g., Molecular Probes.",
+               "items": {
+                  "$ref": "#/$defs/Agent"
+               },
+               "type": "array"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
+            "taxon": {
+               "description": "The taxon from which the biological entity derives.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie",
+            "taxon",
+            "created_by",
+            "modified_by"
+         ],
+         "title": "Reagent",
          "type": "object"
       },
       "Reference": {

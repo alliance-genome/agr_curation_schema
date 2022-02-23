@@ -1,5 +1,5 @@
 # Auto generated from expression.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-22T15:56:54
+# Generation date: 2022-02-22T16:08:12
 # Schema: expression.yaml
 #
 # id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml
@@ -76,10 +76,6 @@ class BiologicalEntityCurie(URIorCURIE):
     pass
 
 
-class AntibodyCurie(BiologicalEntityCurie):
-    pass
-
-
 class GenomicEntityCurie(BiologicalEntityCurie):
     pass
 
@@ -105,6 +101,22 @@ class TranscriptCurie(GenomicEntityCurie):
 
 
 class GeneCurie(GenomicEntityCurie):
+    pass
+
+
+class ReagentCurie(BiologicalEntityCurie):
+    pass
+
+
+class AntibodyCurie(ReagentCurie):
+    pass
+
+
+class DNACloneCurie(ReagentCurie):
+    pass
+
+
+class RNACloneCurie(ReagentCurie):
     pass
 
 
@@ -319,7 +331,7 @@ class ExpressionExperiment(YAMLRoot):
     modified_by: Union[str, PersonUniqueId] = None
     single_reference: Optional[Union[str, ReferenceCurie]] = None
     assay_used: Optional[Union[str, MMOTermCurie]] = None
-    reagents_used: Optional[Union[Union[dict, "Reagent"], List[Union[dict, "Reagent"]]]] = empty_list()
+    reagents_used: Optional[Union[Union[str, ReagentCurie], List[Union[str, ReagentCurie]]]] = empty_list()
     specimen_genomic_model: Optional[Union[str, AffectedGenomicModelCurie]] = None
     specimen_alleles: Optional[Union[Union[str, AlleleCurie], List[Union[str, AlleleCurie]]]] = empty_list()
     condition_relations: Optional[Union[Union[dict, "ConditionRelation"], List[Union[dict, "ConditionRelation"]]]] = empty_list()
@@ -356,7 +368,7 @@ class ExpressionExperiment(YAMLRoot):
 
         if not isinstance(self.reagents_used, list):
             self.reagents_used = [self.reagents_used] if self.reagents_used is not None else []
-        self.reagents_used = [v if isinstance(v, Reagent) else Reagent(**as_dict(v)) for v in self.reagents_used]
+        self.reagents_used = [v if isinstance(v, ReagentCurie) else ReagentCurie(v) for v in self.reagents_used]
 
         if self.specimen_genomic_model is not None and not isinstance(self.specimen_genomic_model, AffectedGenomicModelCurie):
             self.specimen_genomic_model = AffectedGenomicModelCurie(self.specimen_genomic_model)
@@ -689,117 +701,6 @@ class BiologicalEntity(YAMLRoot):
 
         if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
             self.date_last_modified = XSDDate(self.date_last_modified)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class Antibody(BiologicalEntity):
-    """
-    Immunoglobulin proteins that bind specific molecule(s). Can be used experimentally for the purposes of detection
-    or purification.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/antibody.yaml/Antibody")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "Antibody"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/Antibody")
-
-    curie: Union[str, AntibodyCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
-    name: str = None
-    clonality: Union[str, "AntibodyClonalitySet"] = None
-    table_key: Optional[int] = None
-    creation_date: Optional[Union[str, XSDDate]] = None
-    date_last_modified: Optional[Union[str, XSDDate]] = None
-    antigen_taxon: Optional[Union[str, NCBITaxonTermCurie]] = None
-    heavy_chain_isotype: Optional[Union[str, "HeavyChainIsotypeSet"]] = None
-    light_chain_isotype: Optional[Union[str, "LightChainIsotypeSet"]] = None
-    antibody_target_genes: Optional[Union[Union[str, GeneCurie], List[Union[str, GeneCurie]]]] = empty_list()
-    cross_references: Optional[Union[Dict[Union[str, CrossReferenceCurie], Union[dict, "CrossReference"]], List[Union[dict, "CrossReference"]]]] = empty_dict()
-    secondary_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
-    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
-    original_reference: Optional[Union[str, ReferenceCurie]] = None
-    related_notes: Optional[Union[Union[dict, "Note"], List[Union[dict, "Note"]]]] = empty_list()
-    taxon: Optional[Union[str, NCBITaxonTermCurie]] = None
-    generated_by: Optional[Union[Union[dict, "Agent"], List[Union[dict, "Agent"]]]] = empty_list()
-    manufactured_by: Optional[Union[Union[dict, "Agent"], List[Union[dict, "Agent"]]]] = empty_list()
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.curie):
-            self.MissingRequiredField("curie")
-        if not isinstance(self.curie, AntibodyCurie):
-            self.curie = AntibodyCurie(self.curie)
-
-        if self._is_empty(self.created_by):
-            self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, PersonUniqueId):
-            self.created_by = PersonUniqueId(self.created_by)
-
-        if self._is_empty(self.modified_by):
-            self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, PersonUniqueId):
-            self.modified_by = PersonUniqueId(self.modified_by)
-
-        if self._is_empty(self.name):
-            self.MissingRequiredField("name")
-        if not isinstance(self.name, str):
-            self.name = str(self.name)
-
-        if self._is_empty(self.clonality):
-            self.MissingRequiredField("clonality")
-        if not isinstance(self.clonality, AntibodyClonalitySet):
-            self.clonality = AntibodyClonalitySet(self.clonality)
-
-        if self.table_key is not None and not isinstance(self.table_key, int):
-            self.table_key = int(self.table_key)
-
-        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
-            self.creation_date = XSDDate(self.creation_date)
-
-        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
-            self.date_last_modified = XSDDate(self.date_last_modified)
-
-        if self.antigen_taxon is not None and not isinstance(self.antigen_taxon, NCBITaxonTermCurie):
-            self.antigen_taxon = NCBITaxonTermCurie(self.antigen_taxon)
-
-        if self.heavy_chain_isotype is not None and not isinstance(self.heavy_chain_isotype, HeavyChainIsotypeSet):
-            self.heavy_chain_isotype = HeavyChainIsotypeSet(self.heavy_chain_isotype)
-
-        if self.light_chain_isotype is not None and not isinstance(self.light_chain_isotype, LightChainIsotypeSet):
-            self.light_chain_isotype = LightChainIsotypeSet(self.light_chain_isotype)
-
-        if not isinstance(self.antibody_target_genes, list):
-            self.antibody_target_genes = [self.antibody_target_genes] if self.antibody_target_genes is not None else []
-        self.antibody_target_genes = [v if isinstance(v, GeneCurie) else GeneCurie(v) for v in self.antibody_target_genes]
-
-        self._normalize_inlined_as_list(slot_name="cross_references", slot_type=CrossReference, key_name="curie", keyed=True)
-
-        if not isinstance(self.secondary_identifiers, list):
-            self.secondary_identifiers = [self.secondary_identifiers] if self.secondary_identifiers is not None else []
-        self.secondary_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.secondary_identifiers]
-
-        if not isinstance(self.references, list):
-            self.references = [self.references] if self.references is not None else []
-        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
-
-        if self.original_reference is not None and not isinstance(self.original_reference, ReferenceCurie):
-            self.original_reference = ReferenceCurie(self.original_reference)
-
-        self._normalize_inlined_as_dict(slot_name="related_notes", slot_type=Note, key_name="free_text", keyed=False)
-
-        if self.taxon is not None and not isinstance(self.taxon, NCBITaxonTermCurie):
-            self.taxon = NCBITaxonTermCurie(self.taxon)
-
-        if not isinstance(self.generated_by, list):
-            self.generated_by = [self.generated_by] if self.generated_by is not None else []
-        self.generated_by = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.generated_by]
-
-        if not isinstance(self.manufactured_by, list):
-            self.manufactured_by = [self.manufactured_by] if self.manufactured_by is not None else []
-        self.manufactured_by = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.manufactured_by]
 
         super().__post_init__(**kwargs)
 
@@ -1196,7 +1097,7 @@ class AuditedObject(YAMLRoot):
 
 
 @dataclass
-class Reagent(YAMLRoot):
+class Reagent(BiologicalEntity):
     """
     A material entity used in experiments.
     """
@@ -1207,10 +1108,19 @@ class Reagent(YAMLRoot):
     class_name: ClassVar[str] = "Reagent"
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/Reagent")
 
+    curie: Union[str, ReagentCurie] = None
+    taxon: Union[str, NCBITaxonTermCurie] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
     generated_by: Optional[Union[Union[dict, "Agent"], List[Union[dict, "Agent"]]]] = empty_list()
     manufactured_by: Optional[Union[Union[dict, "Agent"], List[Union[dict, "Agent"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, ReagentCurie):
+            self.curie = ReagentCurie(self.curie)
+
         if not isinstance(self.generated_by, list):
             self.generated_by = [self.generated_by] if self.generated_by is not None else []
         self.generated_by = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.generated_by]
@@ -1218,6 +1128,163 @@ class Reagent(YAMLRoot):
         if not isinstance(self.manufactured_by, list):
             self.manufactured_by = [self.manufactured_by] if self.manufactured_by is not None else []
         self.manufactured_by = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.manufactured_by]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Antibody(Reagent):
+    """
+    Immunoglobulin proteins that bind specific molecule(s). Can be used experimentally for the purposes of detection
+    or purification.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Antibody")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "Antibody"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/Antibody")
+
+    curie: Union[str, AntibodyCurie] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
+    name: str = None
+    clonality: Union[str, "AntibodyClonalitySet"] = None
+    table_key: Optional[int] = None
+    creation_date: Optional[Union[str, XSDDate]] = None
+    date_last_modified: Optional[Union[str, XSDDate]] = None
+    generated_by: Optional[Union[Union[dict, "Agent"], List[Union[dict, "Agent"]]]] = empty_list()
+    manufactured_by: Optional[Union[Union[dict, "Agent"], List[Union[dict, "Agent"]]]] = empty_list()
+    antigen_taxon: Optional[Union[str, NCBITaxonTermCurie]] = None
+    heavy_chain_isotype: Optional[Union[str, "HeavyChainIsotypeSet"]] = None
+    light_chain_isotype: Optional[Union[str, "LightChainIsotypeSet"]] = None
+    antibody_target_genes: Optional[Union[Union[str, GeneCurie], List[Union[str, GeneCurie]]]] = empty_list()
+    cross_references: Optional[Union[Dict[Union[str, CrossReferenceCurie], Union[dict, "CrossReference"]], List[Union[dict, "CrossReference"]]]] = empty_dict()
+    secondary_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
+    original_reference: Optional[Union[str, ReferenceCurie]] = None
+    related_notes: Optional[Union[Union[dict, "Note"], List[Union[dict, "Note"]]]] = empty_list()
+    taxon: Optional[Union[str, NCBITaxonTermCurie]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, AntibodyCurie):
+            self.curie = AntibodyCurie(self.curie)
+
+        if self._is_empty(self.created_by):
+            self.MissingRequiredField("created_by")
+        if not isinstance(self.created_by, PersonUniqueId):
+            self.created_by = PersonUniqueId(self.created_by)
+
+        if self._is_empty(self.modified_by):
+            self.MissingRequiredField("modified_by")
+        if not isinstance(self.modified_by, PersonUniqueId):
+            self.modified_by = PersonUniqueId(self.modified_by)
+
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self._is_empty(self.clonality):
+            self.MissingRequiredField("clonality")
+        if not isinstance(self.clonality, AntibodyClonalitySet):
+            self.clonality = AntibodyClonalitySet(self.clonality)
+
+        if self.table_key is not None and not isinstance(self.table_key, int):
+            self.table_key = int(self.table_key)
+
+        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
+            self.creation_date = XSDDate(self.creation_date)
+
+        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
+            self.date_last_modified = XSDDate(self.date_last_modified)
+
+        if not isinstance(self.generated_by, list):
+            self.generated_by = [self.generated_by] if self.generated_by is not None else []
+        self.generated_by = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.generated_by]
+
+        if not isinstance(self.manufactured_by, list):
+            self.manufactured_by = [self.manufactured_by] if self.manufactured_by is not None else []
+        self.manufactured_by = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.manufactured_by]
+
+        if self.antigen_taxon is not None and not isinstance(self.antigen_taxon, NCBITaxonTermCurie):
+            self.antigen_taxon = NCBITaxonTermCurie(self.antigen_taxon)
+
+        if self.heavy_chain_isotype is not None and not isinstance(self.heavy_chain_isotype, HeavyChainIsotypeSet):
+            self.heavy_chain_isotype = HeavyChainIsotypeSet(self.heavy_chain_isotype)
+
+        if self.light_chain_isotype is not None and not isinstance(self.light_chain_isotype, LightChainIsotypeSet):
+            self.light_chain_isotype = LightChainIsotypeSet(self.light_chain_isotype)
+
+        if not isinstance(self.antibody_target_genes, list):
+            self.antibody_target_genes = [self.antibody_target_genes] if self.antibody_target_genes is not None else []
+        self.antibody_target_genes = [v if isinstance(v, GeneCurie) else GeneCurie(v) for v in self.antibody_target_genes]
+
+        self._normalize_inlined_as_list(slot_name="cross_references", slot_type=CrossReference, key_name="curie", keyed=True)
+
+        if not isinstance(self.secondary_identifiers, list):
+            self.secondary_identifiers = [self.secondary_identifiers] if self.secondary_identifiers is not None else []
+        self.secondary_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.secondary_identifiers]
+
+        if not isinstance(self.references, list):
+            self.references = [self.references] if self.references is not None else []
+        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
+
+        if self.original_reference is not None and not isinstance(self.original_reference, ReferenceCurie):
+            self.original_reference = ReferenceCurie(self.original_reference)
+
+        self._normalize_inlined_as_dict(slot_name="related_notes", slot_type=Note, key_name="free_text", keyed=False)
+
+        if self.taxon is not None and not isinstance(self.taxon, NCBITaxonTermCurie):
+            self.taxon = NCBITaxonTermCurie(self.taxon)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class DNAClone(Reagent):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/DNAClone")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "DNAClone"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/DNAClone")
+
+    curie: Union[str, DNACloneCurie] = None
+    taxon: Union[str, NCBITaxonTermCurie] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, DNACloneCurie):
+            self.curie = DNACloneCurie(self.curie)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class RNAClone(Reagent):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/RNAClone")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "RNAClone"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/RNAClone")
+
+    curie: Union[str, RNACloneCurie] = None
+    taxon: Union[str, NCBITaxonTermCurie] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, RNACloneCurie):
+            self.curie = RNACloneCurie(self.curie)
 
         super().__post_init__(**kwargs)
 
@@ -4343,7 +4410,7 @@ slots.spatial_qualifiers = Slot(uri=DEFAULT_.spatial_qualifiers, name="spatial_q
                    model_uri=DEFAULT_.spatial_qualifiers, domain=AnatomicalSite, range=Optional[Union[str, "SpatialQualifierSet"]])
 
 slots.reagents_used = Slot(uri=DEFAULT_.reagents_used, name="reagents_used", curie=DEFAULT_.curie('reagents_used'),
-                   model_uri=DEFAULT_.reagents_used, domain=ExpressionExperiment, range=Optional[Union[Union[dict, "Reagent"], List[Union[dict, "Reagent"]]]])
+                   model_uri=DEFAULT_.reagents_used, domain=ExpressionExperiment, range=Optional[Union[Union[str, ReagentCurie], List[Union[str, ReagentCurie]]]])
 
 slots.specimen_alleles = Slot(uri=DEFAULT_.specimen_alleles, name="specimen_alleles", curie=DEFAULT_.curie('specimen_alleles'),
                    model_uri=DEFAULT_.specimen_alleles, domain=ExpressionExperiment, range=Optional[Union[Union[str, AlleleCurie], List[Union[str, AlleleCurie]]]])

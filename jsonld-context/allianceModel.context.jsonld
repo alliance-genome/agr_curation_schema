@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-02-22T15:48:09\n    Schema: Alliance-Schema-Prototype\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: Alliance Schema Prototype\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-02-22T16:04:13\n    Schema: Alliance-Schema-Prototype\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: Alliance Schema Prototype\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "BIOGRID": "http://identifiers.org/biogrid/",
       "DIP": "http://identifiers.org/dip/",
@@ -98,11 +98,11 @@
       "curie": "@id",
       "antibody_target_genes": {
          "@type": "@id",
-         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/antibody.yaml/antibody_target_genes"
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/antibody_target_genes"
       },
       "antigen_taxon": {
          "@type": "@id",
-         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/antibody.yaml/antigen_taxon"
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/antigen_taxon"
       },
       "associated_references": {
          "@type": "@id",
@@ -144,7 +144,7 @@
             "description": "skos:prefLabel",
             "meaning": "@id"
          },
-         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/antibody.yaml/clonality"
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/clonality"
       },
       "codon_reference": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/codon_reference"
@@ -424,7 +424,7 @@
             "description": "skos:prefLabel",
             "meaning": "@id"
          },
-         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/antibody.yaml/heavy_chain_isotype"
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/heavy_chain_isotype"
       },
       "height": {
          "@type": "xsd:integer",
@@ -589,7 +589,7 @@
             "description": "skos:prefLabel",
             "meaning": "@id"
          },
-         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/antibody.yaml/light_chain_isotype"
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/light_chain_isotype"
       },
       "manufactured_by": {
          "@type": "@id"
@@ -899,7 +899,7 @@
          "@id": "https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/AnatomicalTerm"
       },
       "Antibody": {
-         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/antibody.yaml/Antibody"
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Antibody"
       },
       "CellLine": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/CellLine"
@@ -921,6 +921,9 @@
       },
       "DAOTerm": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/DAOTerm"
+      },
+      "DNAClone": {
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/DNAClone"
       },
       "DOTerm": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/DOTerm"
@@ -993,6 +996,9 @@
       },
       "Resource": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/resource/Resource"
+      },
+      "RNAClone": {
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/RNAClone"
       },
       "ROTerm": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ROTerm"
