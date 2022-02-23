@@ -231,7 +231,6 @@ slots:
     domain: ExpressionExperiment
     range: BiologicalEntity
     multivalued: false
-    required: true
 
   image:
     description: >-
