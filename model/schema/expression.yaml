@@ -17,7 +17,7 @@ classes:
     mixins:
       - AuditedObject
     description: >-
-      Defined by the gene of interest, the specimen, the assay, the reagents 
+      Defined by the gene of interest, the specimen, the assay, the reagents
       (Antibody, Probe), and the reference. It groups ExpressionAnnotations.
     notes: >-
       Specimens are defined by their AGM and/or alleles (or gel lane at MGI).
@@ -46,7 +46,7 @@ classes:
 # - HOW TO LIMIT CVTERMS ALLOWED IN XPRN - DID I USE THE RIGHT APPROACH?
 # - OK TO JUST USE LIST OF CONDITIONS WITHOUT RELATIONS?
 # - OH, MAYBE HAVE DIFF SLOTS FOR CONDITIONS (PER RELATION ALLOWED).
-# - SHOULD 'CURIE' BE CHANGED TO 'ID' TO CONFORM TO STANDARD PRACTICE? Is this CURIE for Expression Class/Obj? 
+# - SHOULD 'CURIE' BE CHANGED TO 'ID' TO CONFORM TO STANDARD PRACTICE? Is this CURIE for Expression Class/Obj?
 # - What if MODs do NOT have object IDs for Experiments or Expression annotations
 
   ExpressionAnnotation:
@@ -81,8 +81,6 @@ classes:
           images or figures.
         required: false
         multivalued: true
-      has_reference:
-        multivalued: false
 
   TemporalContext:
     description: >-
@@ -166,7 +164,7 @@ slots:
       The age at which an annotated event was observed.
     domain: TemporalContext
     range: string
-    multivalued: false  
+    multivalued: false
 
   anatomical_structure:
     domain: AnatomicalTerm
@@ -188,7 +186,7 @@ slots:
       branch, but I'm not sure how to do this.
     domain: AnatomicalSite
     range: GOTerm
-  
+
   developmental_stage_start:
     description: >-
       The beginning developmental stage at which an annotated event was observed.
@@ -198,7 +196,7 @@ slots:
     domain: TemporalContext
     range: StageTerm
     multivalued: false
-    
+
   developmental_stage_stop:
     description: >-
       The end developmental stage at which an annotated event was observed.
@@ -218,12 +216,12 @@ slots:
 
   biological_entity_assayed:
     description: >-
-      Holds between a BiologicalEntity and an ExpressionExperiment that 
+      Holds between a BiologicalEntity and an ExpressionExperiment that
       reports on its expression.
     notes: >-
       The BiologicalEntity will usually be a Gene, but there are exceptions to
       this norm at most MODs.
-      FB: some expression for genomic insertions that reflect nearby 
+      FB: some expression for genomic insertions that reflect nearby
       regulatory region activity for unknown gene(s).
       MGI: some expression data for "other feature type"
       WB: some expression for sequence features (WBsf).
@@ -266,7 +264,7 @@ slots:
     domain: ExpressionExperiment
     range: AffectedGenomicModel
     multivalued: false
-    
+
   stage_uncertainty:
     notes: >-
       Flag for whether or not the temporal stage is certain or uncertain. Boolean true/false?
@@ -303,7 +301,7 @@ enums:
       We need to get a set of relevant qualifiers used across the MODs.
       We may prefer to use ontology terms instead of an enum here.
       Filled in with a small sample of FB qualifiers for now.
-      Seems like MGI has similar terms 
+      Seems like MGI has similar terms
       ZFIN does this.
     permissible_values:
       anterior:
@@ -330,7 +328,7 @@ enums:
       moderate:
       faint:
       endogenous:
-      granular: 
+      granular:
       intense:
       punctate:
       uniform:
@@ -346,7 +344,7 @@ enums:
       single_cells:
       spotted:
       ubiquitous:
-      widespread:   
+      widespread:
 
   temporal_qualifier_set:
     notes: >-
@@ -386,4 +384,3 @@ enums:
           Additional free-text describing other aspects of an expression annotation.
           For example, only in the head neurons, only when JNK is activated, etc.
           Corresponds to note type #1 of AGR-1407.
-

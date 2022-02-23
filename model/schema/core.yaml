@@ -333,6 +333,13 @@ slots:
     range: Note
     multivalued: true
 
+  related_note:
+    description: Holds between an object and a Note object.
+    notes: >-
+      Singular version of related_notes
+    range: Note
+    multivalued: false
+
   statement_subject:
     description: >-
       The entity being described by the note.
@@ -580,6 +587,13 @@ slots:
   last_name:
     description: last (family) name of a person
     range: string
+
+  evidence_codes:
+    description: ECO term IDs             # this slot has also been instantiated in the orthology.yaml
+    multivalued: true
+    values_from:
+      - ECO
+    range: ECOTerm
 
   evidence_code:
     multivalued: false
