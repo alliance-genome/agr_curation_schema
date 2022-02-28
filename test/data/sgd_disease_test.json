@@ -7,9 +7,7 @@
             ],
             "annotation_type": "manually curated",
             "single_reference": "PMID:21145416",
-            "data_provider": [
-                "SGD"
-            ],
+            "data_provider": "SGD",
             "object": "DOID:10588",
             "created_by": "SGD",
             "modified_by": "SGD",
