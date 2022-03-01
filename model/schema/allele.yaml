@@ -34,7 +34,6 @@ classes:
       element can be endogenous or constructed.
     slots:
       - symbol
-      - affected_genes
       - contains_constructs
       - molecular_mutations
       - functional_impact
@@ -89,12 +88,12 @@ classes:
       predicate:
         range: ROTerm
       object:
-        range: BiologicalEntity
+        range: GenomicEntity
 
   AlleleGeneAssociation:
     is_a: AlleleGenomicEntityAssociation
     description: >-
-      Association between an allele and a transcript
+      Association between an allele and a gene
     slot_usage:
       object:
         range: Gene
@@ -106,6 +105,14 @@ classes:
     slot_usage:
       object:
         range: Transcript
+
+  AlleleProteinAssociation:
+    is_a: AlleleGenomicEntityAssociation
+    description: >-
+      Association between an allele and a protein
+    slot_usage:
+      object:
+        range: Protein
 
   AssociatedReference:
     description: >-
@@ -129,13 +136,6 @@ classes:
 # Slots
 
 slots:
-
-  affected_genes:
-    description:
-      Genes affected by allele
-    multivalued: true
-    domain: Allele
-    range: Gene
 
   contains_constructs:
     multivalued: true
