@@ -12,8 +12,8 @@
         "MGI"
       ],
       "object": "DOID:10652",
-      "created_by": "MGI",
-      "modified_by": "MGI",
+      "created_by": "MGI:curation_staff",
+      "modified_by": "MGI:curation_staff",
       "subject": "MGI:3665286",
       "predicate": "is_model_of",
       "condition_relations": [ ],
@@ -28,8 +28,8 @@
         "MGI"
       ],
       "object": "DOID:0110042",
-      "created_by": "MGI",
-      "modified_by": "MGI",
+      "created_by": "MGI:curation_staff",
+      "modified_by": "MGI:curation_staff",
       "subject": "MGI:3665286",
       "predicate": "is_model_of",
       "condition_relations": [ ],
@@ -44,8 +44,8 @@
         "MGI"
       ],
       "object": "DOID:4479",
-      "created_by": "MGI",
-      "modified_by": "MGI",
+      "created_by": "MGI:curation_staff",
+      "modified_by": "MGI:curation_staff",
       "subject": "MGI:6423631",
       "private_note" : "familial hyperkalemic hypertension",
       "predicate": "is_model_of",
@@ -60,8 +60,8 @@
       "subject": "MGI:3524957",
       "predicate": "is_implicated_in",
       "object": "DOID:10652",
-      "created_by": "MGI",
-      "modified_by": "MGI"
+      "created_by": "MGI:curation_staff",
+      "modified_by": "MGI:curation_staff"
     }, {
       "evidence_codes": ["ECO:0000033"],
       "annotation_type" : "manually_curated",
@@ -69,10 +69,9 @@
       "data_provider": ["MGI"],
       "subject": "MGI:3524957",
       "predicate": "is_implicated_in",
-      "disease_annotation_note" : "therepy",
       "object": "DOID:10652",
-      "created_by": "MGI",
-      "modified_by": "MGI"
+      "created_by": "MGI:curation_staff",
+      "modified_by": "MGI:curation_staff"
     }
   ]
 }
