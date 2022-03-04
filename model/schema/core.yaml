@@ -141,7 +141,7 @@ classes:
     description: >-
       Note object for capturing free-text describing some attribute of an entity,
       coupled with a 'note type', internal boolean, and an optional list of
-      references.
+      references. Permissible values for 'note_type' currently = disease_summary, disease_note
     slots:
       - free_text
       - note_type
