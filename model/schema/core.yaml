@@ -137,30 +137,22 @@ classes:
       - modified_by
       - date_last_modified
 
-  Reagent:
-    mixin: true
-    description: >-
-      A material entity used in experiments.
-    slots:
-      - generated_by
-      - manufactured_by
-
   Note:
     description: >-
       Note object for capturing free-text describing some attribute of an entity,
-      coupled with a 'note type', private boolean, and an optional list of
-      references.
+      coupled with a 'note type', internal boolean, and an optional list of
+      references. Permissible values for 'note_type' currently = disease_summary, disease_note
     slots:
       - free_text
       - note_type
-      - private
+      - internal
       - references
     slot_usage:
       free_text:
         required: true
-      note_type:
+      note_type:              # Permissible values currently: disease_summary, disease_note
         required: true
-      private:
+      internal:
         required: true
 
   EntityStatement:
@@ -244,6 +236,9 @@ classes:
       - start
       - end
 
+  Protein:
+    is_a: GenomicEntity
+
 ## ------------
 ## SLOTS
 ## ------------
@@ -322,7 +317,7 @@ slots:
       The type of note: e.g., cytology, comment, summary.
     range: VocabularyTerm
 
-  private:
+  internal:
     description: >-
       Classifies the entity as private (for internal use) or not (for public use).
     notes: >-
@@ -337,6 +332,13 @@ slots:
       hence the related_notes label used here.
     range: Note
     multivalued: true
+
+  related_note:
+    description: Holds between an object and a Note object.
+    notes: >-
+      Singular version of related_notes
+    range: Note
+    multivalued: false
 
   statement_subject:
     description: >-
@@ -471,8 +473,13 @@ slots:
     range: string
 
   data_provider:
-    description: MOD that provided data
-    multivalued: true
+    description: Organization (e.g. MOD) from which the data was sourced
+    multivalued: false
+    range: string
+
+  secondary_data_provider:
+    description: Organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source
+    multivalued: false
     range: string
 
   association_slot:
@@ -563,7 +570,7 @@ slots:
     multivalued: false
     range: string
 
-  mod_id:
+  mod_entity_id:
     description: >-
       The model organism database (MOD) identifier/curie for the object
     range: string
@@ -580,6 +587,17 @@ slots:
   last_name:
     description: last (family) name of a person
     range: string
+
+  evidence_codes:
+    description: ECO term IDs             # this slot has also been instantiated in the orthology.yaml
+    multivalued: true
+    values_from:
+      - ECO
+    range: ECOTerm
+
+  evidence_code:
+    multivalued: false
+    range: ECOTerm
 
 
 ## --------------------

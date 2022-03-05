@@ -35,7 +35,7 @@ classes:
       Class that holds the properties necessary to store a curated orthology record.
     is_a: GeneToGeneOrthology
     slots:
-      - has_reference
+      - single_reference
       - evidence_code
 
   GeneToGeneOrthologyGenerated:
@@ -49,13 +49,7 @@ classes:
      - strict_filter
      - moderate_filter
 
-enums:
-  evidence_code_enum:
-    permissible_values:
-
 slots:
-  evidence_code:
-    range: evidence_code_enum
   publication:
     range: Reference
   is_best_score:

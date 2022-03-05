@@ -68,6 +68,16 @@ classes:
     slots:
       - backend_load_type
 
+  BulkLoadFileHistory:
+    description: Object used to describe the indiviual run of this BulkLoadFile
+    slots:
+      - load_started
+      - load_finished
+      - total_records
+      - failed_records
+      - completed_records
+      - load_exceptions
+
 slots:
 
   loads:
@@ -142,6 +152,30 @@ slots:
     range: string
   backend_load_type:
     range: backend_bulk_data_type_enum
+  load_started:
+    description: >-
+      The date and time that the load started.
+    range: date
+  load_finished:
+    description: >-
+      The date and time that the load finished.
+    range: date
+  total_records:
+    description:
+      The total number of records
+    range: long
+  failed_records:
+    description:
+      The number of failed records
+    range: long
+  completed_records:
+    description:
+      The number of completed records
+  load_exceptions:
+    description:
+      A list of execeptions the load encountered 
+    multivalued: true
+    range: string
 
 enums:
 

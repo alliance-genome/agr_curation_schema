@@ -1,0 +1,24 @@
+{
+    "disease_gene_ingest_set": [
+        {
+            "evidence_codes": [
+                "ECO:0000250",
+                "ECO:0000316"
+            ],
+            "annotation_type": "manually curated",
+            "single_reference": "PMID:21145416",
+            "data_provider": "SGD",
+            "object": "DOID:10588",
+            "created_by": "SGD",
+            "modified_by": "SGD",
+            "creation_date": "2018-04-25T14:04:15-00:00",
+            "subject": "SGD:S000001671",
+            "disease_annotation_summary": "Yeast PXA2 is homologous to human ABCD1 and ABCD2, and has been used to study adrenoleukodystrophy",
+            "predicate": "is_implicated_in",
+            "with": [
+                "HGNC:61",
+                "HGNC:66"
+            ]
+        }
+    ]
+}

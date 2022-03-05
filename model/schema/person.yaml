@@ -55,7 +55,7 @@ classes:
       - orcid
       - emails
       - old_emails
-      - mod_id
+      - mod_entity_id
       - unique_id
     exact_mappings:
       - schema:person

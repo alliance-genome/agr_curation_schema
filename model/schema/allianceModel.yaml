@@ -27,14 +27,13 @@ imports:
   - resource
   - variation
   - variantConsequence
-  - variantGenomicLocation
   - linkml:types
   - core
   - informationContentEntity
   - person
   - allele
   - affectedGenomicModel
-  - antibody
+  - reagent
   - geneInteraction
   - ontologyTerm
   - phenotypeAndDiseaseAnnotation

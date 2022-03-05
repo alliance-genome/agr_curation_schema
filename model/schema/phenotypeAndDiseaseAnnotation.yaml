@@ -162,7 +162,7 @@ classes:
       An annotation asserting an association between a biological entity and a disease supported by evidence.
     slots:
       - unique_id
-      - mod_id
+      - mod_entity_id
       - negated
       - evidence_codes
       - single_reference
@@ -171,10 +171,9 @@ classes:
       - disease_qualifiers
       - condition_relations
       - genetic_sex
-      - private_note # we should probably pull this out into a _private_ note object.
-      - disease_annotation_note # we should probably pull this out into a note object.
-      - disease_annotation_summary # we should probably pull this out into a note object
+      - related_notes
       - data_provider
+      - secondary_data_provider
       - disease_genetic_modifier
       - disease_genetic_modifier_relation
     slot_usage:
@@ -183,7 +182,7 @@ classes:
           Unique identifer for the disease annotation.  Will be generated at AGR
           if not submitted by the MOD.
         required: false
-      mod_id:
+      mod_entity_id:
         description: >-
           The model organism database (MOD) identifier/curie for the disease annotation. Currently only
           used by WormBase for disease annotations, e.g. "WBDOannot00000907"
@@ -301,15 +300,17 @@ classes:
       The environmental context in which an experiment is carried out. This may (e.g. drug treatment)
       or may not (e.g. standard conditions) directly influence the outcome of the experiment.
     slots:
-      - unique_id
-      - condition_class                   # conditionClassId in JSON schema
-      - condition_statement               # conditionStatement in JSON schema
-      - condition_id                      # conditionId in JSON schema
-      - condition_quantity                # conditionQuantity in JSON schema
-      - condition_anatomy                 # anatomicalOntologyId in JSON schema
-      - condition_gene_ontology           # geneOntologyId in JSON schema
-      - condition_taxon                   # NCBITaxonId in JSON schema
-      - condition_chemical                # ChemicalOntologyId in JSON schema
+      - unique_id                         # calculated centrally at the Alliance after import from MODs
+      - condition_class                   # conditionClassId in frozen JSON schema
+      - condition_summary                 # analagous to conditionStatement in frozen JSON schema; for new DQM submissions should not be submitted but rather calculated centrally at the Alliance
+      - condition_statement               # conditionStatement in frozen JSON schema
+      - condition_id                      # conditionId in frozen JSON schema
+      - condition_free_text               # dedicated slot for free text
+      - condition_quantity                # conditionQuantity in frozen JSON schema
+      - condition_anatomy                 # anatomicalOntologyId in frozen JSON schema
+      - condition_gene_ontology           # geneOntologyId in frozen JSON schema
+      - condition_taxon                   # NCBITaxonId in frozen JSON schema
+      - condition_chemical                # ChemicalOntologyId in frozen JSON schema
     slot_usage:
       unique_id:
         description: >-
@@ -324,7 +325,16 @@ classes:
         description: >-
           Free text describing the environmental/experimental condition. For some groups this is a
           single term, others is it is a concatenation of the term names from the ontologies included
-          in this data structure.
+          in this data structure. To be submitted by DQMs; eventually will be deprecated once DQMs no
+          longer submit these ExperimentalCondition objects.
+        range: string
+      condition_summary:
+        description: >-
+          Free text describing the environmental/experimental condition. For some groups this is a
+          single term, others is it is a concatenation of the term names from the ontologies included
+          in this data structure. Similar to condition_statement except the condition_summary will not
+          be submitted by DQMs but rather generated at the Alliance after ingest (or generated/updated
+          in the curation interface and persistent store).
         range: string
       condition_id:
         description: >-
@@ -350,10 +360,7 @@ classes:
         description: >-
           ChEBI or molecular ontology id used in subset of condition terms.  ie: the specific
           chemcial used in conjunction with 'chemical condition'.
-        range: OntologyTerm    # Need to consider this; Molecule class (for WB molecules) is not an ontology
-        values_from:
-          - CHEBI
-          - WBMol
+        range: ChemicalTerm
 
 
   ConditionRelation:
@@ -434,7 +441,26 @@ slots:
     range: string
 
   condition_statement:
+    description: >-
+      A human-readable summary of the experimental condition accounting for all ontology terms and free-text
+      components of the ExperimentalCondition object. To be generated and submitted by DQMs
     required: true
+    domain: ExperimentalCondition
+    range: string
+
+  condition_summary:
+    description: >-
+      A human-readable summary of the experimental condition accounting for all ontology terms and free-text
+      components of the ExperimentalCondition object. Not generated or submitted by DQMs, but generated at the
+      Alliance after ingest only (or generated/updated in the curation interface).
+    required: false     # not required for DQM submission; otherwise required in the persistent store and downstream
+    domain: ExperimentalCondition
+    range: string
+
+  condition_free_text:
+    description: >-
+      Free-text description of the experimental condition
+    required: false
     domain: ExperimentalCondition
     range: string
 
@@ -457,13 +483,6 @@ slots:
     inlined: true
     inlined_as_list: true
 
-  evidence_codes:
-    description: ECO term IDs             # this slot has also been instantiated in the orthology.yaml
-    multivalued: true
-    values_from:
-      - ECO
-    range: ECOTerm
-
   inferred_gene:
     description: >-
       The gene to which something is inferred to be associated.
@@ -475,6 +494,7 @@ slots:
     range: Allele
 
   disease_qualifiers:
+    multivalued: true
     range: disease_annotation_qualifier_enum
 
   genetic_sex:
@@ -516,6 +536,7 @@ slots:
     description: >-
       http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8
     range: Gene
+    multivalued: true
 
   paper_handles:
     description: >-

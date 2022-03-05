@@ -112,6 +112,9 @@ classes:
   GOTerm:
     is_a: OntologyTerm
 
+  ROTerm:
+    is_a: OntologyTerm
+
   MITerm:
     is_a: OntologyTerm
 
