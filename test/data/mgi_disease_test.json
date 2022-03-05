@@ -1,78 +1,93 @@
-
-
 {
   "disease_agm_ingest_set": [
     {
       "evidence_codes": [
         "ECO:0000033"
       ],
-      "annotation_type" : "manually_curated",
+      "annotation_type": "manually_curated",
       "single_reference": "PMID:16899370",
-      "data_provider": [
-        "MGI"
-      ],
+      "data_provider": "MGI",
       "object": "DOID:10652",
       "created_by": "MGI:curation_staff",
       "modified_by": "MGI:curation_staff",
       "subject": "MGI:3665286",
       "predicate": "is_model_of",
-      "condition_relations": [ ],
-      "creation_date" : "2006-10-31"
-    }, {
+      "negated": false,
+      "creation_date": "2006-10-31 14:41:32.090000",
+      "date_last_modified": "2006-10-31 14:41:32.090000"
+    },
+    {
       "evidence_codes": [
         "ECO:0000033"
       ],
-      "annotation_type" : "manually_curated",
+      "annotation_type": "manually_curated",
       "single_reference": "PMID:16899370",
-      "data_provider": [
-        "MGI"
-      ],
+      "data_provider": "MGI",
       "object": "DOID:0110042",
       "created_by": "MGI:curation_staff",
       "modified_by": "MGI:curation_staff",
       "subject": "MGI:3665286",
       "predicate": "is_model_of",
-      "condition_relations": [ ],
-      "creation_date" : "2006-10-31"
-    }, {
+      "negated": false,
+      "creation_date": "2006-10-31 14:47:49.883000",
+      "date_last_modified": "2006-10-31 14:47:49.883000"
+    },
+    {
       "evidence_codes": [
         "ECO:0000033"
       ],
-      "annotation_type" : "manually_curated",
+      "annotation_type": "manually_curated",
       "single_reference": "PMID:28442491",
-      "data_provider": [
-        "MGI"
-      ],
+      "data_provider": "MGI",
       "object": "DOID:4479",
       "created_by": "MGI:curation_staff",
       "modified_by": "MGI:curation_staff",
       "subject": "MGI:6423631",
-      "private_note" : "familial hyperkalemic hypertension",
       "predicate": "is_model_of",
-      "condition_relations": [ ]
-  }],
+      "negated": false,
+      "creation_date": "2020-05-21 18:47:55.086000",
+      "date_last_modified": "2020-05-21 18:49:42.695000",
+      "related_notes": [
+        {
+          "free_text": "familial hyperkalemic hypertension",
+          "internal": true,
+          "note_type": "disease_note"
+        }
+      ]
+    }
+  ],
   "disease_allele_ingest_set": [
     {
-      "evidence_codes": ["ECO:0000033"],
-      "annotation_type" : "manually_curated",
+      "evidence_codes": [
+        "ECO:0000033"
+      ],
+      "annotation_type": "manually_curated",
       "single_reference": "PMID:18378045",
-      "data_provider": ["MGI"],
-      "subject": "MGI:3524957",
-      "predicate": "is_implicated_in",
+      "data_provider": "MGI",
       "object": "DOID:10652",
       "created_by": "MGI:curation_staff",
-      "modified_by": "MGI:curation_staff"
-    }, {
-      "evidence_codes": ["ECO:0000033"],
-      "annotation_type" : "manually_curated",
+      "modified_by": "MGI:curation_staff",
+      "subject": "MGI:3524957",
+      "predicate": "is_implicated_in",
+      "negated": false,
+      "creation_date": "2016-07-26 14:24:31.208856",
+      "date_last_modified": "2016-07-26 14:24:31.208856"
+    },
+    {
+      "evidence_codes": [
+        "ECO:0000033"
+      ],
+      "annotation_type": "manually_curated",
       "single_reference": "PMID:28228716",
-      "data_provider": ["MGI"],
-      "subject": "MGI:3524957",
-      "predicate": "is_implicated_in",
+      "data_provider": "MGI",
       "object": "DOID:10652",
       "created_by": "MGI:curation_staff",
-      "modified_by": "MGI:curation_staff"
+      "modified_by": "MGI:curation_staff",
+      "subject": "MGI:3524957",
+      "predicate": "is_implicated_in",
+      "negated": false,
+      "creation_date": "2020-08-12 16:57:53.721438",
+      "date_last_modified": "2020-08-12 16:57:53.721438"
     }
   ]
 }
-
