@@ -77,12 +77,6 @@ slots:
       Date on which an entity was created.
     range: date
     domain: InformationContentEntity
-
-  date_arrived_in_pubmed:
-    description: >-
-      Date on which an entity was created.
-    range: date
-    domain: InformationContentEntity
   
   date_created:
     description: >-
