@@ -24,7 +24,7 @@ classes:
       - print_issn
       - online_issn
       - publisher
-      - volumes
+      - volume
       - summary
       - synonyms
       - authors

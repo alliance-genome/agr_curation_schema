@@ -21,6 +21,7 @@ classes:
       - abstract
       - category
       - citation
+      - curie
       - date_arrived_in_pubmed
       - date_created
       - date_last_modified
@@ -31,6 +32,7 @@ classes:
       - keywords
       - language
       - merged_into_id
+      - open_access
       - pages
       - plain_language_abstract
       - publisher
@@ -53,72 +55,101 @@ classes:
       - RGD
       - PMC
       - DOI
-    slot_usage: # use regex to constrain local id
+    slot_usage:
+      date_last_modified:
+        notes: >-
+          In the literature database, the values in this column actually
+          correspond to date_last_modified_in_pubmed, so the column should
+          be renamed in the literature database.
+      # use regex to constrain local id
       id:
         pattern: # check this add a regex - check about resourceDescriptor
 
 slots:
 
   reference_id:
+    is_a: table_key
     domain: Reference
 
   resource_id:
+    notes: >-
+      The value is the primary key for the resources table (an integer).
     domain: Reference
-    range: uriorcurie
+    range: integer
 
   pubmed_type:
     description: >-
       Type of InformationContentEntity as described by pub med.
+    multivalued: true
     range: string
     domain: InformationContentEntity
 
   date_published:
     description: >-
       Date on which an entity was created.
-    range: date
+    notes: >-
+      Values here can be quite variable: e.g., just a year, or a year-season, etc.
+    multivalued: false
+    range: string
     domain: InformationContentEntity
   
   date_created:
     description: >-
-      Date on which an entity was created.
+      Date on which an entity was created in the Alliance literature database.
+    notes: >-
+      An alias of the creation_date slot of AuditedObject.
+    multivalued: false
     range: date
     domain: InformationContentEntity
 
   date_updated:
     description: >-
-      Date on which an entity was updated.
+      Date on which an entity was updated in the Alliance literature database.
+    notes: >-
+      An alias of the date_last_modified slot of AuditedObject.
+    multivalued: false
     range: date
     domain: InformationContentEntity
 
   date_arrived_in_pubmed:
     description: Day in which a reference or resource was created in PUBMED. Only relevant for PUBMED references.
-    range: date
-    domain: InformationContentEntity
-
-  issue_date:
-    description: Date on which an entity was issued.
-    domain: InformationContentEntity
-    range: date
-
-  last_modified:
-    description: Date on which an entity was last modified in PubMed or in the MOD.
-    domain: InformationContentEntity
-    range: date
-
-  volume:
-    multivalued: false
+    multivalued: true
     range: string
     domain: InformationContentEntity
 
+  date_last_modified_in_pubmed:
+    notes: >-
+      Currently values in date_last_modified slot actually correspond to date_arrived_in_pubmed.
+    description: Date on which entity was last updated at PubMed.
+    multivalued: false
+    domain: Reference
+    range: string
+
+  issue_date:
+    description: Date on which an entity was issued.
+    multivalued: false
+    domain: InformationContentEntity
+    range: string
+
+  open_access:
+    description: >-
+      Indicates if the reference is freely available for use by anyone, usually
+      with fewer copyright and licensing barriers.
+    multivalued: false
+    domain: Reference
+    range: boolean
+
   pages:
     description: page number of source referenced for statement or publication
+    multivalued: false
     domain: InformationContentEntity
-    multivalued: true
+    range: string
     exact_mappings:
       - WIKIDATA_PROPERTY:P304
     
   plain_language_abstract:
     description: Plain language abstract
+    multivalued: false
     domain: Reference
     range: string
 
@@ -130,15 +161,21 @@ slots:
 
   pubmed_publication_status:
     description: status of the publication
+    multivalued: false
     domain: Reference
-    range: pubmed_publication_status
+    range: pubmed_publication_status_enum
 
   abstract:
+    description: >-
+      The author summary of the publication.
     multivalued: false
     domain: Reference
     range: string
 
   citation:
+    description: >-
+      A short form way of referring to a publication, typically consisting of
+      the first author's name, publication date, and journal (title, vol, pages).
     multivalued: false
     domain: Reference
     range: string
@@ -146,10 +183,12 @@ slots:
   issue_name:
     multivalued: false
     domain: Reference
+    range: string
 
   category:
     multivalued: false
     domain: Reference
+    range: reference_category_enum
 
   keywords:
     multivalued: true
@@ -170,8 +209,26 @@ slots:
     range: uriorcurie
 
 enums:
-  pubmed_publication_status:
+
+  pubmed_publication_status_enum:
     permissible_values:
       ppublish:
       epublish:
       aheadofprint:
+
+  reference_category_enum:
+    permissible_values:
+      Research_Article:
+      Review_Article:
+      Thesis:
+      Book:
+      Other:
+      Preprint:
+      Conference_Publication:
+      Personal_Communication:
+      Direct_Data_Submission:
+      Internal_Process_Reference:
+      Unknown:
+      Retraction:
+
+
