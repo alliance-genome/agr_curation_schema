@@ -88,7 +88,7 @@ slots:
     range: string
 
   volume:
-    multivalued: true
+    multivalued: false
     range: string
     domain: InformationContentEntity
     description: >-
