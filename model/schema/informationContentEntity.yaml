@@ -81,22 +81,22 @@ slots:
     range: InformationContentEntity
 
   title:
-    multivalued: false
     description: >-
       A human readable title for a reference.
+    multivalued: false
     domain: InformationContentEntity
     range: string
 
-  volumes:
-    singular_name: volume
+  volume:
     multivalued: false
     range: string
     domain: InformationContentEntity
     description: >-
 
   publisher:
-    range: InformationContentEntity
+    multivalued: false
     domain: InformationContentEntity
+    range: string
 
   address:
     description: >-

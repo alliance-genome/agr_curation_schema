@@ -439,7 +439,7 @@ slots:
     range: integer
 
   creation_date:
-    aliases: [ 'publication date' ]    # Can we revisit this? I don't think creation_date and 'publication date' are the same thing (CG)
+    aliases: [ 'date_created' ]
     description: >-
       The date on which an entity was created. This can be applied to nodes or edges.
     range: date
@@ -448,6 +448,7 @@ slots:
       - WIKIDATA_PROPERTY:P577
 
   date_last_modified:
+    aliases: ['date_updated']
     description: >-
       Date on which an entity was last modified.
     range: date
