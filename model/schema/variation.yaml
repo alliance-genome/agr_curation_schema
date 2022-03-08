@@ -33,7 +33,6 @@ classes:
       - references
       - related_notes
       - source_general_consequence
-      - curated_general_consequence
       - evidence_code
       - variant_locations
     exact_mappings:
@@ -54,6 +53,8 @@ classes:
       - curated_reference_sequence
       - source_variant_sequence
       - curated_variant_sequence
+      - source_consequence
+      - curated_consequence
     slot_usage:
       evidence_code:
         required: false
@@ -75,8 +76,6 @@ classes:
     slots:
       - source_transcript
       - curated_transcript
-      - source_transcript_consequence
-      - curated_transcript_consequence
 
   VariantPolypeptideLocation:
     is_a: VariantLocation
@@ -103,38 +102,30 @@ slots:
   source_general_consequence:
     description: >-
       SOTerm (child of SO:0001576 - transcript_variant) that describes the
+      consequence of the variant, as stated in the source reference when no
+      transcript ID is provided.
+    required: false
+    multivalued: false
+    domain: Variant
+    range: SOTerm
+
+  source_consequence:
+    description: >-
+      SOTerm (child of SO:0001576 - transcript_variant) that describes the
       consequence of the variant, as stated in the source reference.
     required: false
     multivalued: false
-    domain: Variant
+    domain: VariantLocation
     range: SOTerm
 
-  curated_general_consequence:
+  curated_consequence:
     description: >-
       SOTerm that describes the consequence of the variant, as determined by
       the curator.
     required: false
     multivalued: false
-    domain: Variant
+    domain: VariantLocation
     range: SOTerm
-
-  source_transcript_consequence:
-    description: >-
-      SOTerm that describes the consequence of the variant, as stated in the
-      source reference.
-    required: false
-    multivalued: false
-    domain: Variant
-    range: SOTerm # is this correct?
-
-  curated_transcript_consequence:
-    description: >-
-      SOTerm that describes the consequence of the variant, as determined by
-      the curator.
-    required: false
-    multivalued: false
-    domain: Variant
-    range: SOTerm # is this correct?
 
   variant_locations:
     description: >-
