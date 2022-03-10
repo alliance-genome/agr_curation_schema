@@ -1,5 +1,5 @@
 # Auto generated from allianceModel.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-04T08:17:47
+# Generation date: 2022-02-23T19:02:58
 # Schema: Alliance-Schema-Prototype
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema
@@ -26,7 +26,6 @@ from linkml_runtime.linkml_model.types import Boolean, Date, Float, Integer, Str
 from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
-version = "0.0.1"
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
@@ -950,8 +949,7 @@ class AuditedObject(YAMLRoot):
 class Note(YAMLRoot):
     """
     Note object for capturing free-text describing some attribute of an entity, coupled with a 'note type', internal
-    boolean, and an optional list of references. Permissible values for 'note_type' currently = disease_summary,
-    disease_note
+    boolean, and an optional list of references.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
