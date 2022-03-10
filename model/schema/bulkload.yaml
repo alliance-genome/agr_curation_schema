@@ -2,6 +2,7 @@ id: https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.y
 
 imports:
   - core
+  - linkml:types
 
 classes:
 
@@ -23,7 +24,7 @@ classes:
       - error_message
       - backend_bulk_load_type
       - ontology_type
-      - group
+      - bulkload_group
       - load_files
 
   BulkLoadFile:
@@ -163,11 +164,11 @@ slots:
   total_records:
     description:
       The total number of records
-    range: long
+    range: integer
   failed_records:
     description:
       The number of failed records
-    range: long
+    range: integer
   completed_records:
     description:
       The number of completed records
