@@ -3958,7 +3958,7 @@
       },
       "Note": {
          "additionalProperties": false,
-         "description": "Note object for capturing free-text describing some attribute of an entity, coupled with a 'note type', internal boolean, and an optional list of references. Permissible values for 'note_type' currently = disease_summary, disease_note",
+         "description": "Note object for capturing free-text describing some attribute of an entity, coupled with a 'note type', internal boolean, and an optional list of references.",
          "properties": {
             "free_text": {
                "description": "A free text string that describes some aspect of an entity.",
@@ -6050,7 +6050,6 @@
    "$id": "https://github.com/alliance-genome/agr_curation_schema/alliance_schema",
    "$schema": "http://json-schema.org/draft-07/schema#",
    "additionalProperties": false,
-   "metamodel_version": "1.7.0",
    "properties": {
       "allele_ingest_set": {
          "items": {
@@ -6085,7 +6084,6 @@
    },
    "required": [],
    "title": "Alliance-Schema-Prototype",
-   "type": "object",
-   "version": "0.0.1"
+   "type": "object"
 }
 

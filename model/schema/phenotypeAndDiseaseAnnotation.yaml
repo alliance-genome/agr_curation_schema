@@ -224,7 +224,10 @@ classes:
         multivalued: true
         required: true
       genetic_sex:
-        range: genetic_sex_enum
+        description: >-
+          Submitted value should be a vocabulary term from the 'Genetic sexes'
+          vocabulary
+        range: VocabularyTerm
         required: false
 
   GeneDiseaseAnnotation:
@@ -241,9 +244,11 @@ classes:
           The gene to which the disease ontology term is associated.
         range: Gene
       predicate:
-        description: The relationship between gene and disease.
+        description: >-
+          The relationship between gene and disease. Submitted value should be a
+          vocabulary term from the 'Gene disease relations' vocabulary
         required: true
-        range: gene_disease_relation_enum
+        range: VocabularyTerm
 
   AlleleDiseaseAnnotation:
     description: >-
@@ -258,8 +263,10 @@ classes:
           The allele to which the disease ontology term is associated.
         range: Allele
       predicate:
-        description: The relationship between allele and disease.
-        range: allele_disease_relation_enum
+        description: >-
+          The relationship between allele and disease. Submitted value should be
+          a vocabulary term from the 'Allele disease relations' vocabulary
+        range: VocabularyTerm
         required: true
       inferred_gene:
         description: >-
@@ -281,8 +288,10 @@ classes:
           The AGM to which the disease ontology term is associated.
         range: AffectedGenomicModel
       predicate:
-        description: The relationship between AGM and disease.
-        range: agm_disease_relation_enum
+        description: >-
+          The relationship between AGM and disease. Submitted value should be a
+          vocabulary term from the 'AGM disease relations' vocabulary
+        range: VocabularyTerm
         required: true
       inferred_gene:
         description: >-
@@ -475,7 +484,11 @@ slots:
     inlined_as_list: true
 
   condition_relation_type:
-    range: condition_relation_enum
+    description: >-
+      Submitted value should be a vocabulary term from the 'Condition relation
+      types' vocabulary
+    domain: ConditionRelation
+    range: VocabularyTerm
 
   conditions:
     range: ExperimentalCondition
@@ -494,29 +507,27 @@ slots:
     range: Allele
 
   disease_qualifiers:
+    description: >-
+      Submitted values should be vocabulary terms from the 'Disease Qualifiers'
+      vocabulary
+    domain: DiseaseAnnotation
     multivalued: true
-    range: disease_annotation_qualifier_enum
+    range: VocabularyTerm
 
   genetic_sex:
-    range: genetic_sex_enum
-
-  private_note:
-    range: string
-
-  disease_annotation_note:
-    range: string
-
-  disease_annotation_summary:
-    range: string
+    description: >-
+      Submitted value should be a vocabulary term from the 'Genetic sexes'
+      vocabulary
+    range: VocabularyTerm
 
   sgd_strain_background:
     range: AffectedGenomicModel
 
   annotation_type:
-    range: annotation_type_enum
+    range: VocabularyTerm
     description: >-
-      The type of annotation classified according to curation method:
-      manually curated, high-throughput, computational
+      The type of annotation classified according to curation method. Submitted
+      value should be a vocabulary term from the 'Annotation types' vocabulary
 
   disease_genetic_modifier:
     description: >-
@@ -527,7 +538,9 @@ slots:
   disease_genetic_modifier_relation:
     description: >-
       A relation describing how the genetic modifier modifies the disease model.
-    range: genetic_modifier_relation_enum
+      Submitted value should be a vocabulary term from the 'Disease genetic
+      modifiers' vocabulary
+    range: VocabularyTerm
 
   phenotype_term:
     range: PhenotypeTerm
@@ -608,73 +621,3 @@ slots:
     inverse: exacerbated_by
     domain: ExperimentalCondition
     range: Entity
-
-
-## ------------
-## ENUMS
-## ------------
-
-enums:
-
-  condition_relation_enum:
-    permissible_values:
-      has_condition:
-      induced_by:
-      not_induced_by:
-      ameliorated_by:
-      not_ameliorated_by:
-      exacerbated_by:
-      not_exacerbated_by:
-
-  gene_disease_relation_enum:
-    description: >-
-      Permissible values describing the relationship between gene and disease.
-    permissible_values:
-      is_implicated_in:
-      is_marker_for:
-
-  allele_disease_relation_enum:
-    description: >-
-      Permissible values describing the relationship between allele and disease.
-    permissible_values:
-      is_implicated_in:
-
-  agm_disease_relation_enum:
-    description: >-
-      Permissible values describing the relationship between gene and disease.
-    permissible_values:
-      is_model_of:
-
-  genetic_sex_enum:
-    description: >-
-      Permissible values for the genetic sex.
-    permissible_values:
-      male:
-      female:
-      hermaphrodite:
-
-  genetic_modifier_relation_enum:
-    description: >-
-      Permissible values for describing how a genetic object modifies the
-      disease model.
-    permissible_values:
-      ameliorated_by:
-      not_ameliorated_by:
-      exacerbated_by:
-      not_exacerbated_by:
-
-  disease_annotation_qualifier_enum:
-    permissible_values:
-      susceptibility:
-      disease_progression:
-      severity:
-      onset:
-      sexual_dimorphism:
-      resistance:
-      penetrance:
-
-  annotation_type_enum:
-    permissible_values:
-      manually_curated:
-      high-throughput:
-      computational:
