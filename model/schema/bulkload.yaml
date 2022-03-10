@@ -163,11 +163,11 @@ slots:
   total_records:
     description:
       The total number of records
-    range: long
+    range: int
   failed_records:
     description:
       The number of failed records
-    range: long
+    range: int
   completed_records:
     description:
       The number of completed records
