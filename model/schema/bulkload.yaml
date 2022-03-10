@@ -23,7 +23,7 @@ classes:
       - error_message
       - backend_bulk_load_type
       - ontology_type
-      - group
+      - bulkload_group
       - load_files
 
   BulkLoadFile:
