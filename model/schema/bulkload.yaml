@@ -2,6 +2,7 @@ id: https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.y
 
 imports:
   - core
+  - linkml:types
 
 classes:
 
