@@ -35,7 +35,7 @@ classes:
       - source_general_consequence
       - evidence_code
       - variant_genome_location
-      - variant_polypeptide_lcoation
+      - variant_polypeptide_location
       - variant_transcript_location
     exact_mappings:
       - SO:0001059
