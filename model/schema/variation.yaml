@@ -39,6 +39,19 @@ classes:
       - variant_transcript_location
     exact_mappings:
       - SO:0001059
+    rules:
+      - postconditions:
+          any_of:
+            - slot_conditions:
+                variant_genome_location:
+                  required: true
+            - slot_conditions:
+                variant_polypeptide_location:
+                  required: true
+            - slot_conditions:
+                variant_transcript_location:
+                  required: true
+          description: a variant must have at least one of the three kinds of variant locations.
 
   VariantLocation:
     abstract: true
