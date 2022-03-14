@@ -25,9 +25,9 @@ classes:
   Variant:
     is_a: GenomicEntity
     description: >-
-      A DNA sequence that differs relative to a designated
-      reference sequence.  The sequence occurs at a single
-      position or in contiguous nucleotides.
+      A DNA, RNA or protein/polypeptide sequence that differs relative to a
+      designated reference sequence.  The sequence occurs at a single
+      position or in a range of contiguous nucleotides or amino acids.
     slots:
       - variant_type
       - references
@@ -41,7 +41,13 @@ classes:
   VariantLocation:
     abstract: true
     description: >-
-      Base class linking a variant to a position on a genomic entity.
+      Base class linking a variant to a position on a genomic entity and the resulting consequence to the sequence
+      and/or function of that genomic entity. Slots are provided for data taken from a source publication or data
+      load and for data resulting from manual curation. Where the values are the same, the curator has confirmed
+      the information from the source.  In other cases, the curator's analysis has resulted in different values,
+      for instance, if the assembly is different, the source did not specify the transcript or protein isoform,
+      the definition of the transcript or protein isoform used by the source has changed, or if there was an error
+      in the source data.
     slots:
       - evidence_code
       - hgvs
@@ -62,7 +68,9 @@ classes:
   VariantGenomeLocation:
     is_a: VariantLocation
     description: >-
-      Links a variant to a genomic position.
+      Links a variant to a genomic position and the resulting consequence to the sequence and/or function.
+      In practice, functional consequences for variants which overlap genes are not generally provided at the
+      genome level but rather are calculated and annotated relative to a specific transcript or protein isoform.
     slots:
       - source_assembly
       - curated_assembly
@@ -72,7 +80,8 @@ classes:
   VariantTranscriptLocation:
     is_a: VariantLocation
     description: >-
-      Links a variant to a position on a transcript.
+      Links a variant to a position on a specified transcript and the resulting consequence to the sequence and/or
+      function of that transcript.
     slots:
       - source_transcript
       - curated_transcript
@@ -80,7 +89,8 @@ classes:
   VariantPolypeptideLocation:
     is_a: VariantLocation
     description: >-
-      Links a variant to a position on a polypeptide.
+      Links a variant to a position on a specified polypeptide and the resulting consequence to the sequence and/or
+      function of that polypeptide.
     slots:
       - source_polypeptide
       - curated_polypeptide
@@ -93,7 +103,8 @@ slots:
 
   variant_type:
     description: >-
-      SOTerm describing the type of variant
+      SOTerm describing the type of variant. In practice, variant type will be limited to a subset of the SO specified
+      in an Alliance controlled vocabulary in order to maintain consistency.
     required: true
     multivalued: false
     domain: Variant
@@ -103,7 +114,9 @@ slots:
     description: >-
       SOTerm (child of SO:0001576 - transcript_variant) that describes the
       consequence of the variant, as stated in the source reference when no
-      transcript ID is provided.
+      transcript ID is provided. Since a curator would determine variant location and consequences relative to at
+      least one specific genome assembly, transcript and/or polypeptide, no slot for curated general consequence
+      is provided.
     required: false
     multivalued: false
     domain: Variant
@@ -112,7 +125,9 @@ slots:
   source_consequence:
     description: >-
       SOTerm (child of SO:0001576 - transcript_variant) that describes the
-      consequence of the variant, as stated in the source reference.
+      consequence of the variant, as stated in the source reference. In practice source consequence will be
+      associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and
+      VariantPolypeptideLocation.
     required: false
     multivalued: false
     domain: VariantLocation
@@ -121,7 +136,8 @@ slots:
   curated_consequence:
     description: >-
       SOTerm that describes the consequence of the variant, as determined by
-      the curator.
+      the curator. In practice curated consequence will be associated with locations at any or all of
+      VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.
     required: false
     multivalued: false
     domain: VariantLocation
@@ -129,7 +145,9 @@ slots:
 
   variant_locations:
     description: >-
-      Location of the variant within genomic entities.
+      Location of the variant within genomic entities. Variant_locations can include any or all of: one
+      VariantGenomeLocation stanza, one or more VariantTranscriptLocation stanzas and/or one or more
+      VariantPolypeptideLocation stanzas.
     required: true
     multivalued: true
     domain: Variant
@@ -137,7 +155,8 @@ slots:
 
   hgvs:
     description: >-
-      HGVS nomenclature for variant located on a genomic entity.
+      HGVS nomenclature for variant located on a genomic entity. In practice HGVS nomenclature will be derived
+      for any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.
     required: true
     domain: VariantLocation
     range: string
@@ -228,7 +247,7 @@ slots:
 
   source_variant_sequence:
     description: >-
-      Variant sequence of genome or genomic entity at position of variant,
+      Sequence that differs from the reference sequence of genome or genomic entity at position of variant,
       as specified at source.
     multivalued: false
     required: false
@@ -237,7 +256,7 @@ slots:
 
   curated_variant_sequence:
     description: >-
-      Variant sequence of genome or genomic entity at position of variant,
+      Sequence that differs from the reference sequence of genome or genomic entity at position of variant,
       as specified by curator.
     multivalued: false
     required: false
@@ -246,7 +265,9 @@ slots:
 
   source_transcript:
     description: >-
-      Transcript associated with variation, as specified at source.
+      Transcript associated with variant and for which a specific location and consequence of that variant
+      is provided, as specified at source.  Multivalued=false for this slot because although a variant can have
+      multiple VariantTranscriptLocation stanzas, each stanza will have one and only one source transcript ID.
     required: false
     multivalued: false
     domain: VariantTranscriptLocation
@@ -254,7 +275,9 @@ slots:
 
   curated_transcript:
     description: >-
-      Transcript associated with variation, as specified by curator.
+      Transcript associated with variant and for which a specific location and consequence of that variant is
+      provided, as specified by curator. Multivalued=false for this slot because although a variant can have
+      multiple VariantTranscriptLocation stanzas, each stanza will have one and only one curated transcript ID.
     required: true
     multivalued: false
     domain: VariantTranscriptLocation
@@ -262,7 +285,9 @@ slots:
 
   source_polypeptide:
     description: >-
-      Polypeptide associated with variation, as specified at source.
+      Polypeptide associated with variant and for which a specific location and consequence of that variant
+      is provided, as specified at source. Multivalued=false for this slot because although a variant can have
+      multiple VariantPolypeptideLocation stanzas, each stanza will have one and only one source polypeptide ID.
     required: false
     multivalued: false
     domain: VariantPolypeptideLocation
@@ -270,7 +295,9 @@ slots:
 
   curated_polypeptide:
     description: >-
-      Polypeptide associated with variation, as specified by curator.
+      Polypeptide associated with variant and for which a specific location and consequence of that variant
+      is provided, as specified by curator. Multivalued=false for this slot because although a variant can
+      have multiple VariantPolypeptideLocation stanzas, each stanza will have one and only one curated polypeptide ID.
     required: true
     multivalued: false
     domain: VariantPolypeptideLocation
@@ -279,7 +306,8 @@ slots:
   source_associated_transcripts:
     description:
       Transcript(s) associated with polypeptide to which variant is aligned,
-      as specified at source.
+      as specified at source. Multivalued=true for this slot because a single polypeptide can be associated
+      with (i.e., translated from) more than one transcript.
     required: false
     multivalued: true
     domain: VariantPolypeptideLocation
@@ -288,7 +316,8 @@ slots:
   curated_associated_transcripts:
     description:
       Transcript(s) associated with polypeptide to which variant is aligned,
-      as specified by curator.
+      as specified by curator. Multivalued=true for this slot because a single polypeptide can be associated
+      with (i.e., translated from) more than one transcript.
     required: false
     multivalued: true
     domain: VariantPolypeptideLocation
