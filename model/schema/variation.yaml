@@ -24,6 +24,7 @@ classes:
 
   Variant:
     is_a: GenomicEntity
+    abstract: True
     description: >-
       A DNA sequence that differs relative to a designated
       reference sequence.  The sequence occurs at a single
@@ -34,12 +35,22 @@ classes:
       - related_notes
       - source_general_consequence
       - evidence_code
-      - variant_locations
     exact_mappings:
       - SO:0001059
 
+  PointMutationVariant:
+    is_a: Variant
+    mixins:
+      - VariantLocation
+    slots:
+      - variant_type
+      - references
+      - related_notes
+      - source_general_consequence
+    slot_usage:
+
+
   VariantLocation:
-    abstract: true
     description: >-
       Base class linking a variant to a position on a genomic entity.
     slots:
@@ -55,6 +66,7 @@ classes:
       - curated_variant_sequence
       - source_consequence
       - curated_consequence
+    mixin: true
     slot_usage:
       evidence_code:
         required: false
