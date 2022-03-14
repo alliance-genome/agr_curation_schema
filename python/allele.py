@@ -1,5 +1,5 @@
 # Auto generated from allele.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-04T18:05:11
+# Generation date: 2022-03-04T08:18:05
 # Schema: Alliance-Schema-Prototype-Allele
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/allele
@@ -26,6 +26,7 @@ from linkml_runtime.linkml_model.types import Boolean, Date, Integer, String, Ur
 from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
+version = None
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
@@ -1411,6 +1412,7 @@ class Variant(GenomicEntity):
     references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
     related_notes: Optional[Union[Union[dict, Note], List[Union[dict, Note]]]] = empty_list()
     source_general_consequence: Optional[Union[str, SOTermCurie]] = None
+    curated_general_consequence: Optional[Union[str, SOTermCurie]] = None
     evidence_code: Optional[Union[str, ECOTermCurie]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -1436,6 +1438,9 @@ class Variant(GenomicEntity):
 
         if self.source_general_consequence is not None and not isinstance(self.source_general_consequence, SOTermCurie):
             self.source_general_consequence = SOTermCurie(self.source_general_consequence)
+
+        if self.curated_general_consequence is not None and not isinstance(self.curated_general_consequence, SOTermCurie):
+            self.curated_general_consequence = SOTermCurie(self.curated_general_consequence)
 
         if self.evidence_code is not None and not isinstance(self.evidence_code, ECOTermCurie):
             self.evidence_code = ECOTermCurie(self.evidence_code)
@@ -1465,8 +1470,6 @@ class VariantLocation(YAMLRoot):
     curated_reference_sequence: Optional[Union[str, BiologicalSequence]] = None
     source_variant_sequence: Optional[Union[str, BiologicalSequence]] = None
     curated_variant_sequence: Optional[Union[str, BiologicalSequence]] = None
-    source_consequence: Optional[Union[str, SOTermCurie]] = None
-    curated_consequence: Optional[Union[str, SOTermCurie]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.hgvs):
@@ -1504,12 +1507,6 @@ class VariantLocation(YAMLRoot):
 
         if self.curated_variant_sequence is not None and not isinstance(self.curated_variant_sequence, BiologicalSequence):
             self.curated_variant_sequence = BiologicalSequence(self.curated_variant_sequence)
-
-        if self.source_consequence is not None and not isinstance(self.source_consequence, SOTermCurie):
-            self.source_consequence = SOTermCurie(self.source_consequence)
-
-        if self.curated_consequence is not None and not isinstance(self.curated_consequence, SOTermCurie):
-            self.curated_consequence = SOTermCurie(self.curated_consequence)
 
         super().__post_init__(**kwargs)
 
@@ -1571,6 +1568,8 @@ class VariantTranscriptLocation(VariantLocation):
     curated_end_position: int = None
     curated_transcript: Union[str, TranscriptCurie] = None
     source_transcript: Optional[Union[str, TranscriptCurie]] = None
+    source_transcript_consequence: Optional[Union[str, SOTermCurie]] = None
+    curated_transcript_consequence: Optional[Union[str, SOTermCurie]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curated_transcript):
@@ -1580,6 +1579,12 @@ class VariantTranscriptLocation(VariantLocation):
 
         if self.source_transcript is not None and not isinstance(self.source_transcript, TranscriptCurie):
             self.source_transcript = TranscriptCurie(self.source_transcript)
+
+        if self.source_transcript_consequence is not None and not isinstance(self.source_transcript_consequence, SOTermCurie):
+            self.source_transcript_consequence = SOTermCurie(self.source_transcript_consequence)
+
+        if self.curated_transcript_consequence is not None and not isinstance(self.curated_transcript_consequence, SOTermCurie):
+            self.curated_transcript_consequence = SOTermCurie(self.curated_transcript_consequence)
 
         super().__post_init__(**kwargs)
 
@@ -3311,11 +3316,14 @@ slots.variant_type = Slot(uri="str(uriorcurie)", name="variant_type", curie=None
 slots.source_general_consequence = Slot(uri="str(uriorcurie)", name="source_general_consequence", curie=None,
                    model_uri=DEFAULT_.source_general_consequence, domain=Variant, range=Optional[Union[str, SOTermCurie]])
 
-slots.source_consequence = Slot(uri="str(uriorcurie)", name="source_consequence", curie=None,
-                   model_uri=DEFAULT_.source_consequence, domain=VariantLocation, range=Optional[Union[str, SOTermCurie]])
+slots.curated_general_consequence = Slot(uri="str(uriorcurie)", name="curated_general_consequence", curie=None,
+                   model_uri=DEFAULT_.curated_general_consequence, domain=Variant, range=Optional[Union[str, SOTermCurie]])
 
-slots.curated_consequence = Slot(uri="str(uriorcurie)", name="curated_consequence", curie=None,
-                   model_uri=DEFAULT_.curated_consequence, domain=VariantLocation, range=Optional[Union[str, SOTermCurie]])
+slots.source_transcript_consequence = Slot(uri="str(uriorcurie)", name="source_transcript_consequence", curie=None,
+                   model_uri=DEFAULT_.source_transcript_consequence, domain=Variant, range=Optional[Union[str, SOTermCurie]])
+
+slots.curated_transcript_consequence = Slot(uri="str(uriorcurie)", name="curated_transcript_consequence", curie=None,
+                   model_uri=DEFAULT_.curated_transcript_consequence, domain=Variant, range=Optional[Union[str, SOTermCurie]])
 
 slots.variant_locations = Slot(uri="str(uriorcurie)", name="variant_locations", curie=None,
                    model_uri=DEFAULT_.variant_locations, domain=Variant, range=Union[Union[dict, "VariantLocation"], List[Union[dict, "VariantLocation"]]])
