@@ -380,6 +380,8 @@ classes:
       conditions relevant to the annotation.
     slots:
       - unique_id
+      - handle
+      - single_reference
       - condition_relation_type
       - conditions
     slot_usage:
@@ -388,26 +390,14 @@ classes:
           Unique identifer for the condition relation.  Will be generated at
           AGR.
         required: false
+      handle:
+        required: false
+        multivalued: false
+      single_reference:
+        required: false
       condition_relation_type:
         required: true
         multivalued: false
-
-  PaperHandle:
-    description: >-
-      A pairing of a reference and a free text string that allows an object to have
-      a reference-specific alias (or handle). For example, used for experimental
-      conditions from ZFIN to label (in a reference-specific manner) individual
-      experimental conditions when curating a particular reference.
-    slots:
-      - single_reference
-      - handle
-    slot_usage:
-      single_reference:
-        required: true
-      handle:
-        required: true
-        multivalued: false
-
 
 ## ------------
 ## SLOTS
@@ -551,16 +541,7 @@ slots:
     range: Gene
     multivalued: true
 
-  paper_handles:
-    description: >-
-      A slot that points to a list of PaperHandle objects, pairings of a reference and a free
-      text string that allows an object to have a reference-specific alias (or handle).
-      Used for experimental conditions from ZFIN to label (in a reference-specific manner)
-      individual experimental conditions when curating a particular reference.
-    range: PaperHandle
-    multivalued: true
-
-  handle:
+  paper_handle:
     description: >-
       A slot pointing to a free-text alias or 'handle' for a data object, such as
       a reference-specific alias for a data object used while curating.
