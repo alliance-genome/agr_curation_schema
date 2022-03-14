@@ -541,7 +541,7 @@ slots:
     range: Gene
     multivalued: true
 
-  paper_handle:
+  handle:
     description: >-
       A slot pointing to a free-text alias or 'handle' for a data object, such as
       a reference-specific alias for a data object used while curating.
