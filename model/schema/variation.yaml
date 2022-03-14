@@ -34,7 +34,9 @@ classes:
       - related_notes
       - source_general_consequence
       - evidence_code
-      - variant_locations
+      - variant_genome_location
+      - variant_polypeptide_lcoation
+      - variant_transcript_location
     exact_mappings:
       - SO:0001059
 
@@ -127,13 +129,29 @@ slots:
     domain: VariantLocation
     range: SOTerm
 
-  variant_locations:
+  variant_genome_location:
     description: >-
       Location of the variant within genomic entities.
     required: true
     multivalued: true
     domain: Variant
-    range: VariantLocation
+    range: VariantGenomeLocation
+
+  variant_polypeptide_location:
+    description: >-
+      Location of the variant within polypeptide entities.
+    required: true
+    multivalued: true
+    domain: Variant
+    range: VariantPolypeptideLocation
+
+  variant_transcript_location:
+    description: >-
+      Location of the variant within transcript entities.
+    required: true
+    multivalued: true
+    domain: Variant
+    range: VariantTranscriptLocation
 
   hgvs:
     description: >-
