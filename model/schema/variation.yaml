@@ -35,8 +35,8 @@ classes:
       - source_general_consequence
       - evidence_code
       - variant_genome_location
-      - variant_polypeptide_location
-      - variant_transcript_location
+      - variant_polypeptide_locations
+      - variant_transcript_locations
     exact_mappings:
       - SO:0001059
     rules:
@@ -46,10 +46,10 @@ classes:
                 variant_genome_location:
                   required: true
             - slot_conditions:
-                variant_polypeptide_location:
+                variant_polypeptide_locations:
                   required: true
             - slot_conditions:
-                variant_transcript_location:
+                variant_transcript_locations:
                   required: true
           description: a variant must have at least one of the three kinds of variant locations.
 
@@ -146,11 +146,11 @@ slots:
     description: >-
       Location of the variant within genomic entities.
     required: true
-    multivalued: true
+    multivalued: false
     domain: Variant
     range: VariantGenomeLocation
 
-  variant_polypeptide_location:
+  variant_polypeptide_locations:
     description: >-
       Location of the variant within polypeptide entities.
     required: true
@@ -158,7 +158,7 @@ slots:
     domain: Variant
     range: VariantPolypeptideLocation
 
-  variant_transcript_location:
+  variant_transcript_locations:
     description: >-
       Location of the variant within transcript entities.
     required: true
