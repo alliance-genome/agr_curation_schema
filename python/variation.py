@@ -1,5 +1,5 @@
 # Auto generated from variation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-14T16:22:54
+# Generation date: 2022-03-14T17:11:50
 # Schema: Alliance-Schema-Prototype-Variation
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/variation
@@ -573,9 +573,9 @@ class Variant(GenomicEntity):
     created_by: Union[str, PersonUniqueId] = None
     modified_by: Union[str, PersonUniqueId] = None
     variant_type: Union[str, SOTermCurie] = None
-    variant_genome_location: Union[Union[dict, "VariantGenomeLocation"], List[Union[dict, "VariantGenomeLocation"]]] = None
-    variant_polypeptide_location: Union[Union[dict, "VariantPolypeptideLocation"], List[Union[dict, "VariantPolypeptideLocation"]]] = None
-    variant_transcript_location: Union[Union[dict, "VariantTranscriptLocation"], List[Union[dict, "VariantTranscriptLocation"]]] = None
+    variant_genome_location: Union[dict, "VariantGenomeLocation"] = None
+    variant_polypeptide_locations: Union[Union[dict, "VariantPolypeptideLocation"], List[Union[dict, "VariantPolypeptideLocation"]]] = None
+    variant_transcript_locations: Union[Union[dict, "VariantTranscriptLocation"], List[Union[dict, "VariantTranscriptLocation"]]] = None
     references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
     related_notes: Optional[Union[Union[dict, "Note"], List[Union[dict, "Note"]]]] = empty_list()
     source_general_consequence: Optional[Union[str, SOTermCurie]] = None
@@ -594,15 +594,16 @@ class Variant(GenomicEntity):
 
         if self._is_empty(self.variant_genome_location):
             self.MissingRequiredField("variant_genome_location")
-        self._normalize_inlined_as_dict(slot_name="variant_genome_location", slot_type=VariantGenomeLocation, key_name="hgvs", keyed=False)
+        if not isinstance(self.variant_genome_location, VariantGenomeLocation):
+            self.variant_genome_location = VariantGenomeLocation(**as_dict(self.variant_genome_location))
 
-        if self._is_empty(self.variant_polypeptide_location):
-            self.MissingRequiredField("variant_polypeptide_location")
-        self._normalize_inlined_as_dict(slot_name="variant_polypeptide_location", slot_type=VariantPolypeptideLocation, key_name="hgvs", keyed=False)
+        if self._is_empty(self.variant_polypeptide_locations):
+            self.MissingRequiredField("variant_polypeptide_locations")
+        self._normalize_inlined_as_dict(slot_name="variant_polypeptide_locations", slot_type=VariantPolypeptideLocation, key_name="hgvs", keyed=False)
 
-        if self._is_empty(self.variant_transcript_location):
-            self.MissingRequiredField("variant_transcript_location")
-        self._normalize_inlined_as_dict(slot_name="variant_transcript_location", slot_type=VariantTranscriptLocation, key_name="hgvs", keyed=False)
+        if self._is_empty(self.variant_transcript_locations):
+            self.MissingRequiredField("variant_transcript_locations")
+        self._normalize_inlined_as_dict(slot_name="variant_transcript_locations", slot_type=VariantTranscriptLocation, key_name="hgvs", keyed=False)
 
         if not isinstance(self.references, list):
             self.references = [self.references] if self.references is not None else []
@@ -3053,13 +3054,13 @@ slots.curated_consequence = Slot(uri=DEFAULT_.curated_consequence, name="curated
                    model_uri=DEFAULT_.curated_consequence, domain=VariantLocation, range=Optional[Union[str, SOTermCurie]])
 
 slots.variant_genome_location = Slot(uri=DEFAULT_.variant_genome_location, name="variant_genome_location", curie=DEFAULT_.curie('variant_genome_location'),
-                   model_uri=DEFAULT_.variant_genome_location, domain=Variant, range=Union[Union[dict, "VariantGenomeLocation"], List[Union[dict, "VariantGenomeLocation"]]])
+                   model_uri=DEFAULT_.variant_genome_location, domain=Variant, range=Union[dict, "VariantGenomeLocation"])
 
-slots.variant_polypeptide_location = Slot(uri=DEFAULT_.variant_polypeptide_location, name="variant_polypeptide_location", curie=DEFAULT_.curie('variant_polypeptide_location'),
-                   model_uri=DEFAULT_.variant_polypeptide_location, domain=Variant, range=Union[Union[dict, "VariantPolypeptideLocation"], List[Union[dict, "VariantPolypeptideLocation"]]])
+slots.variant_polypeptide_locations = Slot(uri=DEFAULT_.variant_polypeptide_locations, name="variant_polypeptide_locations", curie=DEFAULT_.curie('variant_polypeptide_locations'),
+                   model_uri=DEFAULT_.variant_polypeptide_locations, domain=Variant, range=Union[Union[dict, "VariantPolypeptideLocation"], List[Union[dict, "VariantPolypeptideLocation"]]])
 
-slots.variant_transcript_location = Slot(uri=DEFAULT_.variant_transcript_location, name="variant_transcript_location", curie=DEFAULT_.curie('variant_transcript_location'),
-                   model_uri=DEFAULT_.variant_transcript_location, domain=Variant, range=Union[Union[dict, "VariantTranscriptLocation"], List[Union[dict, "VariantTranscriptLocation"]]])
+slots.variant_transcript_locations = Slot(uri=DEFAULT_.variant_transcript_locations, name="variant_transcript_locations", curie=DEFAULT_.curie('variant_transcript_locations'),
+                   model_uri=DEFAULT_.variant_transcript_locations, domain=Variant, range=Union[Union[dict, "VariantTranscriptLocation"], List[Union[dict, "VariantTranscriptLocation"]]])
 
 slots.hgvs = Slot(uri=DEFAULT_.hgvs, name="hgvs", curie=DEFAULT_.curie('hgvs'),
                    model_uri=DEFAULT_.hgvs, domain=VariantLocation, range=str)

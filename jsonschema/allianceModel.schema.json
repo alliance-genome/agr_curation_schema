@@ -5,8 +5,8 @@
          "description": "An annotation asserting an association between an AGM and a disease supported by evidence.",
          "properties": {
             "annotation_type": {
-               "$ref": "#/$defs/AnnotationTypeEnum",
-               "description": "The type of annotation classified according to curation method: manually curated, high-throughput, computational"
+               "description": "The type of annotation classified according to curation method. Submitted value should be a vocabulary term from the 'Annotation types' vocabulary",
+               "type": "string"
             },
             "condition_relations": {
                "items": {
@@ -37,12 +37,13 @@
                "type": "string"
             },
             "disease_genetic_modifier_relation": {
-               "$ref": "#/$defs/GeneticModifierRelationEnum",
-               "description": "A relation describing how the genetic modifier modifies the disease model."
+               "description": "A relation describing how the genetic modifier modifies the disease model. Submitted value should be a vocabulary term from the 'Disease genetic modifiers' vocabulary",
+               "type": "string"
             },
             "disease_qualifiers": {
+               "description": "Submitted values should be vocabulary terms from the 'Disease Qualifiers' vocabulary",
                "items": {
-                  "$ref": "#/$defs/DiseaseAnnotationQualifierEnum"
+                  "type": "string"
                },
                "type": "array"
             },
@@ -54,7 +55,8 @@
                "type": "array"
             },
             "genetic_sex": {
-               "$ref": "#/$defs/GeneticSexEnum"
+               "description": "Submitted value should be a vocabulary term from the 'Genetic sexes' vocabulary",
+               "type": "string"
             },
             "inferred_allele": {
                "description": "The allele to which the disease is inferred to be associated.",
@@ -81,8 +83,8 @@
                "type": "string"
             },
             "predicate": {
-               "$ref": "#/$defs/AgmDiseaseRelationEnum",
-               "description": "The relationship between AGM and disease."
+               "description": "The relationship between AGM and disease. Submitted value should be a vocabulary term from the 'AGM disease relations' vocabulary",
+               "type": "string"
             },
             "related_notes": {
                "description": "Holds between an object and a list of related Note objects.",
@@ -332,14 +334,6 @@
          "title": "AggregationDatabaseEnum",
          "type": "string"
       },
-      "AgmDiseaseRelationEnum": {
-         "description": "Permissible values describing the relationship between gene and disease.",
-         "enum": [
-            "is_model_of"
-         ],
-         "title": "AgmDiseaseRelationEnum",
-         "type": "string"
-      },
       "Allele": {
          "additionalProperties": false,
          "description": "One of multiple possible forms of a functional genomic element (most often described as a locus or gene), differing from the reference DNA sequence.  The genomic element can be endogenous or constructed.",
@@ -516,8 +510,8 @@
          "description": "An annotation asserting an association between an allele and a disease supported by evidence.",
          "properties": {
             "annotation_type": {
-               "$ref": "#/$defs/AnnotationTypeEnum",
-               "description": "The type of annotation classified according to curation method: manually curated, high-throughput, computational"
+               "description": "The type of annotation classified according to curation method. Submitted value should be a vocabulary term from the 'Annotation types' vocabulary",
+               "type": "string"
             },
             "condition_relations": {
                "items": {
@@ -548,12 +542,13 @@
                "type": "string"
             },
             "disease_genetic_modifier_relation": {
-               "$ref": "#/$defs/GeneticModifierRelationEnum",
-               "description": "A relation describing how the genetic modifier modifies the disease model."
+               "description": "A relation describing how the genetic modifier modifies the disease model. Submitted value should be a vocabulary term from the 'Disease genetic modifiers' vocabulary",
+               "type": "string"
             },
             "disease_qualifiers": {
+               "description": "Submitted values should be vocabulary terms from the 'Disease Qualifiers' vocabulary",
                "items": {
-                  "$ref": "#/$defs/DiseaseAnnotationQualifierEnum"
+                  "type": "string"
                },
                "type": "array"
             },
@@ -565,7 +560,8 @@
                "type": "array"
             },
             "genetic_sex": {
-               "$ref": "#/$defs/GeneticSexEnum"
+               "description": "Submitted value should be a vocabulary term from the 'Genetic sexes' vocabulary",
+               "type": "string"
             },
             "inferred_gene": {
                "description": "The gene to which the disease is inferred to be associated.",
@@ -588,8 +584,8 @@
                "type": "string"
             },
             "predicate": {
-               "$ref": "#/$defs/AlleleDiseaseRelationEnum",
-               "description": "The relationship between allele and disease."
+               "description": "The relationship between allele and disease. Submitted value should be a vocabulary term from the 'Allele disease relations' vocabulary",
+               "type": "string"
             },
             "related_notes": {
                "description": "Holds between an object and a list of related Note objects.",
@@ -638,14 +634,6 @@
          ],
          "title": "AlleleDiseaseAnnotation",
          "type": "object"
-      },
-      "AlleleDiseaseRelationEnum": {
-         "description": "Permissible values describing the relationship between allele and disease.",
-         "enum": [
-            "is_implicated_in"
-         ],
-         "title": "AlleleDiseaseRelationEnum",
-         "type": "string"
       },
       "AlleleGeneAssociation": {
          "additionalProperties": false,
@@ -899,15 +887,27 @@
          "title": "AlleleTranscriptAssociation",
          "type": "object"
       },
-      "AnnotationTypeEnum": {
-         "description": "",
-         "enum": [
-            "manually_curated",
-            "high-throughput",
-            "computational"
-         ],
-         "title": "AnnotationTypeEnum",
-         "type": "string"
+      "AnatomicalSite": {
+         "additionalProperties": false,
+         "description": "The developmental stage and/or age of the specimen in an annotation.",
+         "properties": {
+            "anatomical_structure": {
+               "type": "string"
+            },
+            "anatomical_substructure": {
+               "type": "string"
+            },
+            "cellular_component": {
+               "type": "string"
+            },
+            "spatial_qualifiers": {
+               "$ref": "#/$defs/SpatialQualifierSet",
+               "description": "Qualifiers that describe the spatial characteristics of an event."
+            }
+         },
+         "required": [],
+         "title": "AnatomicalSite",
+         "type": "object"
       },
       "Antibody": {
          "additionalProperties": false,
@@ -1336,7 +1336,8 @@
          "description": "A pairing of an experimental condition relation (i.e. has_condition) with a list of 1 or more ExperimentalCondition objects. Annotation objects can connect directly to a set of 0 or more of these ConditionRelation objects via a 'condition_relations' slot to express the experimental conditions relevant to the annotation.",
          "properties": {
             "condition_relation_type": {
-               "$ref": "#/$defs/ConditionRelationEnum"
+               "description": "Submitted value should be a vocabulary term from the 'Condition relation types' vocabulary",
+               "type": "string"
             },
             "conditions": {
                "items": {
@@ -1354,20 +1355,6 @@
          ],
          "title": "ConditionRelation",
          "type": "object"
-      },
-      "ConditionRelationEnum": {
-         "description": "",
-         "enum": [
-            "has_condition",
-            "induced_by",
-            "not_induced_by",
-            "ameliorated_by",
-            "not_ameliorated_by",
-            "exacerbated_by",
-            "not_exacerbated_by"
-         ],
-         "title": "ConditionRelationEnum",
-         "type": "string"
       },
       "Construct": {
          "additionalProperties": false,
@@ -1828,20 +1815,6 @@
          "title": "DetectionMethodsEnum",
          "type": "string"
       },
-      "DiseaseAnnotationQualifierEnum": {
-         "description": "",
-         "enum": [
-            "susceptibility",
-            "disease_progression",
-            "severity",
-            "onset",
-            "sexual_dimorphism",
-            "resistance",
-            "penetrance"
-         ],
-         "title": "DiseaseAnnotationQualifierEnum",
-         "type": "string"
-      },
       "ECOTerm": {
          "additionalProperties": false,
          "description": "",
@@ -2118,6 +2091,276 @@
          ],
          "title": "ExperimentalCondition",
          "type": "object"
+      },
+      "ExpressionAnnotation": {
+         "additionalProperties": false,
+         "description": "A description of when and where gene products are observed to be present, including experimental details, supporting evidence, and curator notes.",
+         "properties": {
+            "associated_with_figure": {
+               "description": "The figure(s) that support(s) the expression annotation.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "belongs_to_expression_experiment": {
+               "description": "Holds between an ExpressionAnnotation and an ExpressionExperiment.",
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "expression_qualifiers": {
+               "$ref": "#/$defs/ExpressionQualifierSet",
+               "description": "Qualifiers that describe additional characteristics of gene expression. For example: aint, intense, restricted."
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "negated": {
+               "description": "if set to true, then the association is negated i.e. is not true",
+               "type": "boolean"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
+            "uncertain": {
+               "description": "If set to true, then the related entity is uncertain.",
+               "type": "boolean"
+            },
+            "when_expressed": {
+               "$ref": "#/$defs/TemporalContext",
+               "description": "When a gene product is observed to be present."
+            },
+            "where_expressed": {
+               "$ref": "#/$defs/AnatomicalSite",
+               "description": "Where a gene product is observed to be present."
+            }
+         },
+         "required": [
+            "belongs_to_expression_experiment",
+            "created_by",
+            "modified_by"
+         ],
+         "title": "ExpressionAnnotation",
+         "type": "object"
+      },
+      "ExpressionAnnotationImagePane": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "object": {
+               "$ref": "#/$defs/ImagePane",
+               "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+            },
+            "predicate": {
+               "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+               "type": "string"
+            },
+            "subject": {
+               "$ref": "#/$defs/ExpressionAnnotation",
+               "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+            }
+         },
+         "required": [
+            "predicate",
+            "subject",
+            "object"
+         ],
+         "title": "ExpressionAnnotationImagePane",
+         "type": "object"
+      },
+      "ExpressionAnnotationStatement": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "statement_subject": {
+               "$ref": "#/$defs/ExpressionAnnotation",
+               "description": "The entity being described by the note."
+            },
+            "statement_text": {
+               "description": "Free-text describing some aspect of an entity.",
+               "type": "string"
+            },
+            "statement_type": {
+               "$ref": "#/$defs/ExpressionStatementTypeEnum",
+               "description": "The type of free-text statement. For example: cytology, private, curator_comments."
+            }
+         },
+         "required": [],
+         "title": "ExpressionAnnotationStatement",
+         "type": "object"
+      },
+      "ExpressionConditionRelationEnum": {
+         "description": "",
+         "enum": [
+            "has_condition",
+            "induced_by"
+         ],
+         "title": "ExpressionConditionRelationEnum",
+         "type": "string"
+      },
+      "ExpressionExperiment": {
+         "additionalProperties": false,
+         "description": "Defined by the gene of interest, the specimen, the assay, the reagents (Antibody, Probe), and the reference. It groups ExpressionAnnotations.",
+         "properties": {
+            "assay_used": {
+               "description": "The assay used to experimentally determine gene expression.",
+               "type": "string"
+            },
+            "biological_entity_assayed": {
+               "description": "Holds between a BiologicalEntity and an ExpressionExperiment that reports on its expression.",
+               "type": "string"
+            },
+            "condition_relations": {
+               "items": {
+                  "$ref": "#/$defs/ConditionRelation"
+               },
+               "type": "array"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "reagents_used": {
+               "description": "Reagents used in the expression assay: e.g., antibodies, probes.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "single_reference": {
+               "description": "holds between an object and a single reference",
+               "type": "string"
+            },
+            "specimen_alleles": {
+               "description": "The Allele(s) of the specimen assayed.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "specimen_genomic_model": {
+               "description": "The AffectedGenomicModel of the specimen assayed.",
+               "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            }
+         },
+         "required": [
+            "curie",
+            "created_by",
+            "modified_by"
+         ],
+         "title": "ExpressionExperiment",
+         "type": "object"
+      },
+      "ExpressionExperimentStatement": {
+         "additionalProperties": false,
+         "description": "Free-text describing some aspect(s) of a gene's expression, particularly nuanced information that is not readily captured in annotations. This statement's scope is limited to the associated ExpressionExperiment.",
+         "properties": {
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "statement_subject": {
+               "description": "The entity being described by the note.",
+               "type": "string"
+            },
+            "statement_text": {
+               "description": "Free-text describing some aspect of an entity.",
+               "type": "string"
+            },
+            "statement_type": {
+               "description": "The type of free-text statement. For example: cytology, private, curator_comments.",
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "ExpressionExperimentStatement",
+         "type": "object"
+      },
+      "ExpressionQualifierSet": {
+         "description": "",
+         "enum": [
+            "strong",
+            "moderate",
+            "faint",
+            "endogenous",
+            "granular",
+            "intense",
+            "punctate",
+            "uniform",
+            "non-uniform",
+            "variable",
+            "clusters",
+            "diffuse",
+            "graded",
+            "not_specified",
+            "patchy",
+            "regionally_restricted",
+            "scattered",
+            "single_cells",
+            "spotted",
+            "ubiquitous",
+            "widespread"
+         ],
+         "title": "ExpressionQualifierSet",
+         "type": "string"
+      },
+      "ExpressionStatementTypeEnum": {
+         "description": "",
+         "enum": [
+            "expression_summary",
+            "when_expressed_note",
+            "where_expressed_note",
+            "expression_annotation_note"
+         ],
+         "title": "ExpressionStatementTypeEnum",
+         "type": "string"
       },
       "ExternalDatabaseLink": {
          "additionalProperties": false,
@@ -2530,8 +2773,8 @@
          "description": "An annotation asserting an association between a gene and a disease supported by evidence.",
          "properties": {
             "annotation_type": {
-               "$ref": "#/$defs/AnnotationTypeEnum",
-               "description": "The type of annotation classified according to curation method: manually curated, high-throughput, computational"
+               "description": "The type of annotation classified according to curation method. Submitted value should be a vocabulary term from the 'Annotation types' vocabulary",
+               "type": "string"
             },
             "condition_relations": {
                "items": {
@@ -2562,12 +2805,13 @@
                "type": "string"
             },
             "disease_genetic_modifier_relation": {
-               "$ref": "#/$defs/GeneticModifierRelationEnum",
-               "description": "A relation describing how the genetic modifier modifies the disease model."
+               "description": "A relation describing how the genetic modifier modifies the disease model. Submitted value should be a vocabulary term from the 'Disease genetic modifiers' vocabulary",
+               "type": "string"
             },
             "disease_qualifiers": {
+               "description": "Submitted values should be vocabulary terms from the 'Disease Qualifiers' vocabulary",
                "items": {
-                  "$ref": "#/$defs/DiseaseAnnotationQualifierEnum"
+                  "type": "string"
                },
                "type": "array"
             },
@@ -2579,7 +2823,8 @@
                "type": "array"
             },
             "genetic_sex": {
-               "$ref": "#/$defs/GeneticSexEnum"
+               "description": "Submitted value should be a vocabulary term from the 'Genetic sexes' vocabulary",
+               "type": "string"
             },
             "mod_entity_id": {
                "description": "The model organism database (MOD) identifier/curie for the disease annotation. Currently only used by WormBase for disease annotations, e.g. \"WBDOannot00000907\"",
@@ -2598,8 +2843,8 @@
                "type": "string"
             },
             "predicate": {
-               "$ref": "#/$defs/GeneDiseaseRelationEnum",
-               "description": "The relationship between gene and disease."
+               "description": "The relationship between gene and disease. Submitted value should be a vocabulary term from the 'Gene disease relations' vocabulary",
+               "type": "string"
             },
             "related_notes": {
                "description": "Holds between an object and a list of related Note objects.",
@@ -2652,14 +2897,33 @@
          "title": "GeneDiseaseAnnotation",
          "type": "object"
       },
-      "GeneDiseaseRelationEnum": {
-         "description": "Permissible values describing the relationship between gene and disease.",
-         "enum": [
-            "is_implicated_in",
-            "is_marker_for"
-         ],
-         "title": "GeneDiseaseRelationEnum",
-         "type": "string"
+      "GeneExpressionStatement": {
+         "additionalProperties": false,
+         "description": "Free-text describing some aspect(s) of a gene's expression, particularly nuanced information that is not readily captured in annotations. May summarize data from many annotations and/or many publications.",
+         "properties": {
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "statement_subject": {
+               "description": "The entity being described by the note.",
+               "type": "string"
+            },
+            "statement_text": {
+               "description": "Free-text describing some aspect of an entity.",
+               "type": "string"
+            },
+            "statement_type": {
+               "$ref": "#/$defs/ExpressionStatementTypeEnum",
+               "description": "The type of free-text statement. For example: cytology, private, curator_comments."
+            }
+         },
+         "required": [],
+         "title": "GeneExpressionStatement",
+         "type": "object"
       },
       "GeneGeneticInteraction": {
          "additionalProperties": false,
@@ -2936,27 +3200,6 @@
          ],
          "title": "GenePhenotypeAnnotation",
          "type": "object"
-      },
-      "GeneticModifierRelationEnum": {
-         "description": "Permissible values for describing how a genetic object modifies the disease model.",
-         "enum": [
-            "ameliorated_by",
-            "not_ameliorated_by",
-            "exacerbated_by",
-            "not_exacerbated_by"
-         ],
-         "title": "GeneticModifierRelationEnum",
-         "type": "string"
-      },
-      "GeneticSexEnum": {
-         "description": "Permissible values for the genetic sex.",
-         "enum": [
-            "male",
-            "female",
-            "hermaphrodite"
-         ],
-         "title": "GeneticSexEnum",
-         "type": "string"
       },
       "GenomicEntity": {
          "additionalProperties": false,
@@ -4351,6 +4594,16 @@
          "title": "Protein",
          "type": "object"
       },
+      "PubmedPublicationStatusEnum": {
+         "description": "",
+         "enum": [
+            "ppublish",
+            "epublish",
+            "aheadofprint"
+         ],
+         "title": "PubmedPublicationStatusEnum",
+         "type": "string"
+      },
       "RNAClone": {
          "additionalProperties": false,
          "description": "",
@@ -4541,23 +4794,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
-            "PubMed_type": {
-               "description": "Type of InformationContentEntity as described by pub med.",
-               "type": "string"
-            },
             "abstract": {
+               "description": "The author summary of the publication.",
                "type": "string"
             },
-            "alliance_category": {
-               "type": "string"
-            },
-            "authors": {
-               "items": {
-                  "$ref": "#/$defs/AuthorReference"
-               },
-               "type": "array"
+            "category": {
+               "$ref": "#/$defs/ReferenceCategoryEnum"
             },
             "citation": {
+               "description": "A short form way of referring to a publication, typically consisting of the first author's name, publication date, and journal (title, vol, pages).",
                "type": "string"
             },
             "created_by": {
@@ -4569,19 +4814,19 @@
                "format": "date",
                "type": "string"
             },
-            "cross_references": {
-               "description": "Holds between an object and its CrossReferences.",
-               "items": {
-                  "$ref": "#/$defs/CrossReference"
-               },
-               "type": "array"
-            },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                "type": "string"
             },
-            "date_arrived_in_PubMed": {
+            "date_arrived_in_pubmed": {
                "description": "Day in which a reference or resource was created in PUBMED. Only relevant for PUBMED references.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "date_created": {
+               "description": "Date on which an entity was created in the Alliance literature database.",
                "format": "date",
                "type": "string"
             },
@@ -4590,21 +4835,13 @@
                "format": "date",
                "type": "string"
             },
-            "date_last_modified_in_PubMed": {
-               "description": "Date on which an entity was created.",
-               "format": "date",
-               "type": "string"
-            },
             "date_published": {
                "description": "Date on which an entity was created.",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was updated in the Alliance literature database.",
                "format": "date",
-               "type": "string"
-            },
-            "day_published": {
-               "description": "Day in which an entity was created.",
-               "type": "string"
-            },
-            "from_resource": {
                "type": "string"
             },
             "id": {
@@ -4612,7 +4849,6 @@
             },
             "issue_date": {
                "description": "Date on which an entity was issued.",
-               "format": "date",
                "type": "string"
             },
             "issue_name": {
@@ -4625,65 +4861,95 @@
                },
                "type": "array"
             },
-            "mod_reference_types": {
-               "description": "List of types as assigned at a MOD.",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
+            "language": {
+               "description": "Language of the reference",
+               "type": "string"
+            },
+            "merged_into_id": {
+               "description": "ID that used to refer to this reference",
+               "type": "string"
             },
             "modified_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
             },
-            "month_published": {
-               "description": "Month in which an entity was created.",
-               "type": "string"
+            "open_access": {
+               "description": "Indicates if the reference is freely available for use by anyone, usually with fewer copyright and licensing barriers.",
+               "type": "boolean"
             },
             "pages": {
                "description": "page number of source referenced for statement or publication",
+               "type": "string"
+            },
+            "plain_language_abstract": {
+               "description": "Plain language abstract",
+               "type": "string"
+            },
+            "publisher": {
+               "type": "string"
+            },
+            "pubmed_abstract_languages": {
+               "description": "Languages for the abstract",
                "items": {
                   "type": "string"
                },
                "type": "array"
             },
-            "publisher": {
-               "type": "string"
+            "pubmed_publication_status": {
+               "$ref": "#/$defs/PubmedPublicationStatusEnum",
+               "description": "status of the publication"
+            },
+            "pubmed_type": {
+               "description": "Type of InformationContentEntity as described by pub med.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "reference_id": {
+               "type": "integer"
+            },
+            "resource_id": {
+               "type": "integer"
             },
             "table_key": {
                "description": "The primary key for a specific table entry, unique for that table.",
                "type": "integer"
             },
-            "tags": {
-               "description": "Optional ist of controlled vocabulary tags that give categories to each pub (ie: can show images).",
-               "items": {
-                  "$ref": "#/$defs/TagSet"
-               },
-               "type": "array"
-            },
             "title": {
                "description": "A human readable title for a reference.",
                "type": "string"
             },
-            "topics": {
-               "description": "Connects an object to a vocabulary term or ontology that describes some aspect of the entity.",
-               "type": "string"
-            },
             "volume": {
-               "type": "string"
-            },
-            "year_published": {
-               "description": "Year in which an entity was created.",
                "type": "string"
             }
          },
          "required": [
-            "curie",
             "created_by",
-            "modified_by"
+            "modified_by",
+            "curie"
          ],
          "title": "Reference",
          "type": "object"
+      },
+      "ReferenceCategoryEnum": {
+         "description": "",
+         "enum": [
+            "Research_Article",
+            "Review_Article",
+            "Thesis",
+            "Book",
+            "Other",
+            "Preprint",
+            "Conference_Publication",
+            "Personal_Communication",
+            "Direct_Data_Submission",
+            "Internal_Process_Reference",
+            "Unknown",
+            "Retraction"
+         ],
+         "title": "ReferenceCategoryEnum",
+         "type": "string"
       },
       "Resource": {
          "additionalProperties": false,
@@ -4765,7 +5031,7 @@
                "description": "the title of the publication",
                "type": "string"
             },
-            "volumes": {
+            "volume": {
                "type": "string"
             }
          },
@@ -4864,6 +5130,27 @@
          "title": "SiftPredictionLevels",
          "type": "string"
       },
+      "SpatialQualifierSet": {
+         "description": "",
+         "enum": [
+            "anterior",
+            "anterior_posterior_gradient",
+            "apical",
+            "basal",
+            "central",
+            "distal",
+            "dorsal",
+            "dorso-lateral",
+            "egg_length",
+            "gap_expression_pattern",
+            "pair_rule_expression_pattern",
+            "segment_polarity_expression_pattern",
+            "terminal_expression_pattern",
+            "gradient"
+         ],
+         "title": "SpatialQualifierSet",
+         "type": "string"
+      },
       "SubtypeValues": {
          "description": "",
          "enum": [
@@ -4881,13 +5168,42 @@
          "title": "Synonym",
          "type": "object"
       },
-      "TagSet": {
+      "TemporalContext": {
+         "additionalProperties": false,
+         "description": "The developmental stage and/or age of the specimen in an annotation. Developmental_stage_stop is optional. Add an uncertainty flag here?",
+         "properties": {
+            "age": {
+               "description": "The age at which an annotated event was observed.",
+               "type": "string"
+            },
+            "developmental_stage_start": {
+               "description": "The beginning developmental stage at which an annotated event was observed.",
+               "type": "string"
+            },
+            "developmental_stage_stop": {
+               "description": "The end developmental stage at which an annotated event was observed.",
+               "type": "string"
+            },
+            "stage_uncertainty": {
+               "type": "string"
+            },
+            "temporal_qualifiers": {
+               "$ref": "#/$defs/TemporalQualifierSet",
+               "description": "Qualifiers of the stage or age in an annotation."
+            }
+         },
+         "required": [],
+         "title": "TemporalContext",
+         "type": "object"
+      },
+      "TemporalQualifierSet": {
          "description": "",
          "enum": [
-            "image",
-            "test"
+            "progressive",
+            "throughout",
+            "sometime_during"
          ],
-         "title": "TagSet",
+         "title": "TemporalQualifierSet",
          "type": "string"
       },
       "Transcript": {
@@ -5048,10 +5364,6 @@
                },
                "type": "array"
             },
-            "curated_general_consequence": {
-               "description": "SOTerm that describes the consequence of the variant, as determined by the curator.",
-               "type": "string"
-            },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                "type": "string"
@@ -5093,7 +5405,7 @@
                "type": "array"
             },
             "source_general_consequence": {
-               "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference.",
+               "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference when no transcript ID is provided.",
                "type": "string"
             },
             "synonyms": {
@@ -5111,10 +5423,21 @@
                "description": "The taxon from which the biological entity derives.",
                "type": "string"
             },
-            "variant_locations": {
-               "description": "Location of the variant within genomic entities.",
+            "variant_genome_location": {
+               "$ref": "#/$defs/VariantGenomeLocation",
+               "description": "Location of the variant within genomic entities."
+            },
+            "variant_polypeptide_locations": {
+               "description": "Location of the variant within polypeptide entities.",
                "items": {
-                  "$ref": "#/$defs/VariantLocation"
+                  "$ref": "#/$defs/VariantPolypeptideLocation"
+               },
+               "type": "array"
+            },
+            "variant_transcript_locations": {
+               "description": "Location of the variant within transcript entities.",
+               "items": {
+                  "$ref": "#/$defs/VariantTranscriptLocation"
                },
                "type": "array"
             },
@@ -5129,7 +5452,9 @@
             "created_by",
             "modified_by",
             "variant_type",
-            "variant_locations"
+            "variant_genome_location",
+            "variant_polypeptide_locations",
+            "variant_transcript_locations"
          ],
          "title": "Variant",
          "type": "object"
@@ -5190,6 +5515,10 @@
                "description": "Chromosome to which variant is aligned as specified by curator.",
                "type": "string"
             },
+            "curated_consequence": {
+               "description": "SOTerm that describes the consequence of the variant, as determined by the curator.",
+               "type": "string"
+            },
             "curated_end_position": {
                "description": "End position of variant on genomic entity as specified at source.",
                "type": "integer"
@@ -5219,6 +5548,10 @@
             },
             "source_chromosome": {
                "description": "Chromosome to which variant is aligned as specified at source.",
+               "type": "string"
+            },
+            "source_consequence": {
+               "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference.",
                "type": "string"
             },
             "source_end_position": {
@@ -5259,6 +5592,10 @@
                },
                "type": "array"
             },
+            "curated_consequence": {
+               "description": "SOTerm that describes the consequence of the variant, as determined by the curator.",
+               "type": "string"
+            },
             "curated_end_position": {
                "description": "End position of variant on genomic entity as specified at source.",
                "type": "integer"
@@ -5292,6 +5629,10 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "source_consequence": {
+               "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference.",
+               "type": "string"
             },
             "source_end_position": {
                "description": "End position of variant on genomic entity as specified at source.",
@@ -5423,6 +5764,10 @@
          "additionalProperties": false,
          "description": "Links a variant to a position on a transcript.",
          "properties": {
+            "curated_consequence": {
+               "description": "SOTerm that describes the consequence of the variant, as determined by the curator.",
+               "type": "string"
+            },
             "curated_end_position": {
                "description": "End position of variant on genomic entity as specified at source.",
                "type": "integer"
@@ -5439,10 +5784,6 @@
                "description": "Transcript associated with variation, as specified by curator.",
                "type": "string"
             },
-            "curated_transcript_consequence": {
-               "description": "SOTerm that describes the consequence of the variant, as determined by the curator.",
-               "type": "string"
-            },
             "curated_variant_sequence": {
                "description": "Variant sequence of genome or genomic entity at position of variant, as specified by curator.",
                "type": "string"
@@ -5452,6 +5793,10 @@
             },
             "hgvs": {
                "description": "HGVS nomenclature for variant located on a genomic entity.",
+               "type": "string"
+            },
+            "source_consequence": {
+               "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference.",
                "type": "string"
             },
             "source_end_position": {
@@ -5468,10 +5813,6 @@
             },
             "source_transcript": {
                "description": "Transcript associated with variation, as specified at source.",
-               "type": "string"
-            },
-            "source_transcript_consequence": {
-               "description": "SOTerm that describes the consequence of the variant, as stated in the source reference.",
                "type": "string"
             },
             "source_variant_sequence": {
