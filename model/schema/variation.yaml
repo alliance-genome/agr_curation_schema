@@ -35,8 +35,19 @@ classes:
       - source_general_consequence
       - evidence_code
       - variant_locations
+      - source_variant_locations
     exact_mappings:
       - SO:0001059
+
+  SourceVariantLocation:
+    description:
+      Links a paper to the variant locations described in that paper
+    slots:
+      - variant_locations
+      - single_reference
+    slot_usage:
+      single_reference:
+        required: true
 
   VariantLocation:
     abstract: true
@@ -45,16 +56,11 @@ classes:
     slots:
       - evidence_code
       - hgvs
-      - source_start_position
-      - curated_start_position
-      - source_end_position
-      - curated_end_position
-      - source_reference_sequence
-      - curated_reference_sequence
-      - source_variant_sequence
-      - curated_variant_sequence
-      - source_consequence
-      - curated_consequence
+      - start_position
+      - end_position
+      - reference_sequence
+      - variant_sequence
+      - consequence
     slot_usage:
       evidence_code:
         required: false
@@ -64,28 +70,24 @@ classes:
     description: >-
       Links a variant to a genomic position.
     slots:
-      - source_assembly
-      - curated_assembly
-      - source_chromosome
-      - curated_chromosome
+      - assembly
+      - chromosome
 
   VariantTranscriptLocation:
     is_a: VariantLocation
     description: >-
       Links a variant to a position on a transcript.
     slots:
-      - source_transcript
-      - curated_transcript
+      - transcript
 
   VariantPolypeptideLocation:
     is_a: VariantLocation
     description: >-
       Links a variant to a position on a polypeptide.
     slots:
-      - source_polypeptide
-      - curated_polypeptide
-      - source_associated_transcripts
-      - curated_associated_transcripts
+      - polypeptide
+      - associated_transcripts
+
 
 # Slots
 
@@ -109,7 +111,7 @@ slots:
     domain: Variant
     range: SOTerm
 
-  source_consequence:
+  consequence:
     description: >-
       SOTerm (child of SO:0001576 - transcript_variant) that describes the
       consequence of the variant, as stated in the source reference.
@@ -118,22 +120,22 @@ slots:
     domain: VariantLocation
     range: SOTerm
 
-  curated_consequence:
-    description: >-
-      SOTerm that describes the consequence of the variant, as determined by
-      the curator.
-    required: false
-    multivalued: false
-    domain: VariantLocation
-    range: SOTerm
-
   variant_locations:
     description: >-
-      Location of the variant within genomic entities.
+      Location of the variant within genomic entities as determined by curators.
     required: true
     multivalued: true
     domain: Variant
     range: VariantLocation
+
+  source_variant_locations:
+    description: >-
+      Location of the variant within genomic entities,as described in the source
+      references.
+    required: false
+    multivalued: true
+    domain: Variant
+    range: SourceVariantLocation
 
   hgvs:
     description: >-
@@ -144,151 +146,74 @@ slots:
 
   # May want to remove domain of following 8 slots and move them to core
   # so that they can be used for alignment of other genomic entities
-  source_assembly:
+  assembly:
     description: >-
-      Assembly to which variant is aligned as specified at source.
+      Assembly to which variant is aligned.
     multivalued: false
     required: false
     domain: VariantLocation
     range: Assembly
 
-  curated_assembly:
+  chromosome:
     description: >-
-      Assembly to which variant is aligned as specified by curator.
-    multivalued: false
-    required: true
-    domain: VariantLocation
-    range: Assembly
-
-  source_chromosome:
-    description: >-
-      Chromosome to which variant is aligned as specified at source.
+      Chromosome to which variant is aligned.
     multivalued: false
     required: false
     domain: VariantLocation
     range: Chromosome
 
-  curated_chromosome:
+  start_position:
     description: >-
-      Chromosome to which variant is aligned as specified by curator.
-    multivalued: false
-    required: true
-    domain: VariantLocation
-    range: Chromosome
-
-  source_start_position:
-    description: >-
-      Start position of variant on genomic entity as specified at source.
+      Start position of variant on genomic entity.
     multivalued: false
     required: false
     domain: VariantLocation
     range: integer
 
-  curated_start_position:
+  end_position:
     description: >-
-      Start position of variant on genomic entity as specified at source.
-    multivalued: false
-    required: true
-    domain: VariantLocation
-    range: integer
-
-  source_end_position:
-    description: >-
-      End position of variant on genomic entity as specified at source.
+      End position of variant on genomic entity.
     multivalued: false
     required: false
     domain: VariantLocation
     range: integer
 
-  curated_end_position:
-    description: >-
-      End position of variant on genomic entity as specified at source.
-    multivalued: false
-    required: true
-    domain: VariantLocation
-    range: integer
-
-  source_reference_sequence:
+  reference_sequence:
     description: >-
       Reference sequence of genome or genomic entity at position of aligned
-      variant, as specified at source.
+      variant.
     multivalued: false
     required: false
     domain: VariantLocation
     range: biological_sequence
 
-  curated_reference_sequence:
+  variant_sequence:
     description: >-
-      Reference sequence of genome or genomic entity at position of aligned
-      variant, as specified by curator.
+      Variant sequence of genome or genomic entity at position of variant.
     multivalued: false
     required: false
     domain: VariantLocation
     range: biological_sequence
 
-  source_variant_sequence:
+  transcript:
     description: >-
-      Variant sequence of genome or genomic entity at position of variant,
-      as specified at source.
-    multivalued: false
-    required: false
-    domain: VariantLocation
-    range: biological_sequence
-
-  curated_variant_sequence:
-    description: >-
-      Variant sequence of genome or genomic entity at position of variant,
-      as specified by curator.
-    multivalued: false
-    required: false
-    domain: VariantLocation
-    range: biological_sequence
-
-  source_transcript:
-    description: >-
-      Transcript associated with variation, as specified at source.
+      Transcript associated with variation.
     required: false
     multivalued: false
     domain: VariantTranscriptLocation
     range: Transcript
 
-  curated_transcript:
+  polypeptide:
     description: >-
-      Transcript associated with variation, as specified by curator.
-    required: true
-    multivalued: false
-    domain: VariantTranscriptLocation
-    range: Transcript
-
-  source_polypeptide:
-    description: >-
-      Polypeptide associated with variation, as specified at source.
+      Polypeptide associated with variation.
     required: false
     multivalued: false
     domain: VariantPolypeptideLocation
     range: Protein # Do we need to distinguish polypeptide from protein?
 
-  curated_polypeptide:
-    description: >-
-      Polypeptide associated with variation, as specified by curator.
-    required: true
-    multivalued: false
-    domain: VariantPolypeptideLocation
-    range: Protein # Do we need to distinguish polypeptide from protein?
-
-  source_associated_transcripts:
+  associated_transcripts:
     description:
-      Transcript(s) associated with polypeptide to which variant is aligned,
-      as specified at source.
-    required: false
-    multivalued: true
-    domain: VariantPolypeptideLocation
-    range: Transcript
-
-  curated_associated_transcripts:
-    description:
-      Transcript(s) associated with polypeptide to which variant is aligned,
-      as specified by curator.
+      Transcript(s) associated with polypeptide to which variant is aligned.
     required: false
     multivalued: true
     domain: VariantPolypeptideLocation
