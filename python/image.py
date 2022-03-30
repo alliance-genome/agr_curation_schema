@@ -1,5 +1,5 @@
 # Auto generated from image.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-30T11:45:59
+# Generation date: 2022-03-30T12:56:07
 # Schema: image.yaml
 #
 # id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml

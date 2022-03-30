@@ -1,5 +1,5 @@
 # Auto generated from mod.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-30T11:46:32
+# Generation date: 2022-03-30T12:56:41
 # Schema: mod
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/mod
@@ -961,14 +961,19 @@ class Mod(Organization):
     class_name: ClassVar[str] = "Mod"
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/mod/Mod")
 
+    abbreviation: str = None
     date_created: Union[str, XSDDate] = None
     mod_full_name: str = None
     mod_id: int = None
     mod_short_name: str = None
-    abbreviation: Optional[str] = None
     date_updated: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.abbreviation):
+            self.MissingRequiredField("abbreviation")
+        if not isinstance(self.abbreviation, str):
+            self.abbreviation = str(self.abbreviation)
+
         if self._is_empty(self.date_created):
             self.MissingRequiredField("date_created")
         if not isinstance(self.date_created, XSDDate):
@@ -988,9 +993,6 @@ class Mod(Organization):
             self.MissingRequiredField("mod_short_name")
         if not isinstance(self.mod_short_name, str):
             self.mod_short_name = str(self.mod_short_name)
-
-        if self.abbreviation is not None and not isinstance(self.abbreviation, str):
-            self.abbreviation = str(self.abbreviation)
 
         if self.date_updated is not None and not isinstance(self.date_updated, XSDDate):
             self.date_updated = XSDDate(self.date_updated)
@@ -3081,9 +3083,6 @@ class slots:
 slots.mod_id = Slot(uri=DEFAULT_.mod_id, name="mod_id", curie=DEFAULT_.curie('mod_id'),
                    model_uri=DEFAULT_.mod_id, domain=Mod, range=int)
 
-slots.mod_abbreviation = Slot(uri=DEFAULT_.mod_abbreviation, name="mod_abbreviation", curie=DEFAULT_.curie('mod_abbreviation'),
-                   model_uri=DEFAULT_.mod_abbreviation, domain=Mod, range=str)
-
 slots.mod_short_name = Slot(uri=DEFAULT_.mod_short_name, name="mod_short_name", curie=DEFAULT_.curie('mod_short_name'),
                    model_uri=DEFAULT_.mod_short_name, domain=Mod, range=str)
 
@@ -3644,6 +3643,9 @@ slots.id = Slot(uri=DEFAULT_.id, name="id", curie=DEFAULT_.curie('id'),
 
 slots.embryonic_cell_lines = Slot(uri=DEFAULT_.embryonic_cell_lines, name="embryonic_cell_lines", curie=DEFAULT_.curie('embryonic_cell_lines'),
                    model_uri=DEFAULT_.embryonic_cell_lines, domain=None, range=Optional[str])
+
+slots.Mod_abbreviation = Slot(uri=ALLIANCE.abbreviation, name="Mod_abbreviation", curie=ALLIANCE.curie('abbreviation'),
+                   model_uri=DEFAULT_.Mod_abbreviation, domain=Mod, range=str)
 
 slots.Mod_date_created = Slot(uri="str(uriorcurie)", name="Mod_date_created", curie=None,
                    model_uri=DEFAULT_.Mod_date_created, domain=Mod, range=Union[str, XSDDate])

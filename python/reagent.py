@@ -1,5 +1,5 @@
 # Auto generated from reagent.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-30T11:45:17
+# Generation date: 2022-03-30T12:55:21
 # Schema: reagent.yaml
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml

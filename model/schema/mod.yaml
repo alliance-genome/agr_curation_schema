@@ -28,9 +28,9 @@ classes:
       - abbreviation
       - date_created
       - date_updated
-      - mod_full_name
+      - full_name
       - mod_id
-      - mod_short_name
+      - short_name
     slot_usage:
       abbreviation:
         description: >-
@@ -52,7 +52,7 @@ slots:
     domain: Mod
     required: true
 
-  mod_short_name:
+  short_name:
     description: >-
       The short name used in the Members list on the website.  e.g. MGD, FlyBase
     multivalued: false
@@ -60,7 +60,7 @@ slots:
     range: string
     required: true
 
-  mod_full_name:
+  full_name:
     description: >-
       The full name of the Model Organism Database.  
       e.g. Mouse Genome Database, FlyBase
