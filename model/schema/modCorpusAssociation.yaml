@@ -2,6 +2,8 @@ id: https://github.com/alliance-genome/agr_curation_schema/src/schema/modCorpusA
 
 imports:
   - core
+  - mod
+  - reference
   - linkml:types
   - informationContentEntity
 
@@ -21,6 +23,8 @@ classes:
       For a given reference and Mod, whether it is inside corpus,
       outside corpus, or needs review, as well as where this
       sorting came from.
+    notes: >-
+      There should be only one corpus call for any given reference-mod pair.
     slots:
       - corpus
       - date_created
@@ -29,58 +33,39 @@ classes:
       - mod_corpus_sort_source
       - mod_id
       - reference_id
+    defining_slots:
+      - reference_id
+      - mod_id
     slot_usage:
-      # use regex to constrain local id
-      id:
-        pattern: # check this add a regex - check about resourceDescriptor
+      mod_id:
+        notes: >-
+          An integer corresponding to a primary key in the mod table.
+      reference_id:
+        notes: >-
+          An integer corresponding to a primary key in the reference table.
+      date_created:
+        required: true
 
 slots:
 
   mod_corpus_association_id:
     is_a: table_key
     domain: ModCorpusAssociation
-
-  mod_id:
-    notes: >-
-      The value is the primary key for the mod table (an integer).
-    domain: ModCorpusAssociation
-    range: integer
-
-  reference_id:
-    notes: >-
-      The value is the primary key for the reference table (an integer).
-    domain: ModCorpusAssociation
-    range: integer
+    required: true
 
   corpus:
     description: in-out-review corpus status of the publication at the mod
     multivalued: false
     domain: ModCorpusAssociation
     range: corpus_enum
+    required: true
 
   mod_corpus_sort_source:
     description: origin of corpus determination for that publication and mod
     multivalued: false
     domain: ModCorpusAssociation
     range: mod_corpus_sort_source_enum
-
-  date_created:
-    description: >-
-      Date on which an entity was created in the Alliance literature database.
-    notes: >-
-      An alias of the creation_date slot of AuditedObject.
-    multivalued: false
-    range: date
-    domain: InformationContentEntity
-
-  date_updated:
-    description: >-
-      Date on which an entity was updated in the Alliance literature database.
-    notes: >-
-      An alias of the date_last_modified slot of AuditedObject.
-    multivalued: false
-    range: date
-    domain: InformationContentEntity
+    required: true
 
 enums:
 

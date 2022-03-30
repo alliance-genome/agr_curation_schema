@@ -21,7 +21,7 @@ imports:
   - linkml:types
   - reference
   - resource
-  - person
+  - agent
   - image
   - ontologyTerm
   - controlledVocabulary
