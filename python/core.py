@@ -1,5 +1,5 @@
 # Auto generated from core.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-10T12:41:27
+# Generation date: 2022-03-30T12:56:11
 # Schema: Alliance-Schema-Core
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/core.yaml
@@ -3234,7 +3234,7 @@ slots.resource_id = Slot(uri="str(uriorcurie)", name="resource_id", curie=None,
                    model_uri=ALLIANCE.resource_id, domain=Reference, range=Optional[int])
 
 slots.pubmed_type = Slot(uri="str(uriorcurie)", name="pubmed_type", curie=None,
-                   model_uri=ALLIANCE.pubmed_type, domain=InformationContentEntity, range=Optional[Union[str, List[str]]])
+                   model_uri=ALLIANCE.pubmed_type, domain=Reference, range=Optional[Union[str, List[str]]])
 
 slots.date_published = Slot(uri="str(uriorcurie)", name="date_published", curie=None,
                    model_uri=ALLIANCE.date_published, domain=InformationContentEntity, range=Optional[str])
@@ -3246,7 +3246,7 @@ slots.date_updated = Slot(uri="str(uriorcurie)", name="date_updated", curie=None
                    model_uri=ALLIANCE.date_updated, domain=InformationContentEntity, range=Optional[Union[str, XSDDate]])
 
 slots.date_arrived_in_pubmed = Slot(uri="str(uriorcurie)", name="date_arrived_in_pubmed", curie=None,
-                   model_uri=ALLIANCE.date_arrived_in_pubmed, domain=InformationContentEntity, range=Optional[Union[str, List[str]]])
+                   model_uri=ALLIANCE.date_arrived_in_pubmed, domain=Reference, range=Optional[Union[str, List[str]]])
 
 slots.date_last_modified_in_pubmed = Slot(uri="str(uriorcurie)", name="date_last_modified_in_pubmed", curie=None,
                    model_uri=ALLIANCE.date_last_modified_in_pubmed, domain=Reference, range=Optional[str])

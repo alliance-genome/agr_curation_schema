@@ -4,7 +4,8 @@ imports:
   - core
   - linkml:types
   - informationContentEntity
-  - person
+  - agent
+  - reference
 
 prefixes:
   alliance: 'http://alliancegenome.org'
@@ -19,10 +20,10 @@ classes:
   Mod:
     is_a: Organization
     description: >-
-      A Model Organism Database, member of the Alliance of Genome Resources.
+      A Model Organism Database that is a member of the Alliance of Genome Resources.
     notes: >-
       We have not modeled synonyms, e.g. Mouse Genome Informatics
-      Literature has 8 values: FB, MGI, RGD, SGD, WB, XB, ZFIN, GO 
+      Literature has 8 values: FB, MGI, RGD, SGD, WB, XB, ZFIN, GO.
     slots:
       - abbreviation
       - date_created
@@ -31,24 +32,25 @@ classes:
       - mod_id
       - short_name
     slot_usage:
-      # use regex to constrain local id
-      id:
-        pattern: # check this add a regex - check about resourceDescriptor
+      abbreviation:
+        description: >-
+          The curie prefix, or letter code used by FMS (Alliance file management
+          system).  e.g. MGI, FB
+        multivalued: false
+        domain: Mod
+        range: string
+        required: true
+      date_created:
+        required: true
 
 slots:
 
   mod_id:
-    notes: >-
+    is_a: table_key
+    description: >-
       The value is the primary key for the mod table (an integer).
     domain: Mod
-    range: integer
-
-  abbreviation:
-    description: >-
-      The curie prefix, or letter code used by FMS.  e.g. MGI, FB
-    multivalued: false
-    domain: Mod
-    range: string
+    required: true
 
   short_name:
     description: >-
@@ -56,6 +58,7 @@ slots:
     multivalued: false
     domain: Mod
     range: string
+    required: true
 
   full_name:
     description: >-
@@ -64,37 +67,4 @@ slots:
     multivalued: false
     domain: Mod
     range: string
-
-  date_created:
-    description: >-
-      Date on which an entity was created in the Alliance literature database.
-    notes: >-
-      An alias of the creation_date slot of AuditedObject.
-    multivalued: false
-    range: date
-    domain: InformationContentEntity
-
-  date_updated:
-    description: >-
-      Date on which an entity was updated in the Alliance literature database.
-    notes: >-
-      An alias of the date_last_modified slot of AuditedObject.
-    multivalued: false
-    range: date
-    domain: InformationContentEntity
-
-enums:
-
-  corpus_enum:
-    permissible_values:
-      needs_review:
-      inside_corpus:
-      outside_corpus:
-
-  mod_corpus_sort_source_enum:
-    permissible_values:
-      dqm_files:
-      mod_pubmed_search:
-      manual_creation:
-      assigned_for_review:
-
+    required: true

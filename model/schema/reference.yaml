@@ -79,10 +79,10 @@ slots:
 
   pubmed_type:
     description: >-
-      Type of InformationContentEntity as described by pub med.
+      Type of Reference as described by PubMed.
     multivalued: true
     range: string
-    domain: InformationContentEntity
+    domain: Reference
 
   date_published:
     description: >-
@@ -115,7 +115,7 @@ slots:
     description: Day in which a reference or resource was created in PUBMED. Only relevant for PUBMED references.
     multivalued: true
     range: string
-    domain: InformationContentEntity
+    domain: Reference
 
   date_last_modified_in_pubmed:
     notes: >-

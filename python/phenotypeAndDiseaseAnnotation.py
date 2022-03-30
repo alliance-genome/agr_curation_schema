@@ -1,5 +1,5 @@
 # Auto generated from phenotypeAndDiseaseAnnotation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-10T12:41:31
+# Generation date: 2022-03-30T12:55:33
 # Schema: Alliance-Schema-Prototype-Phenotype-and-Disease-Annotation
 #
 # id: https://github.com/alliance-genome/agr_persistent_schema/phenotypeAndDiseaseAnnotation.yaml
@@ -368,6 +368,8 @@ class ConditionRelation(YAMLRoot):
 
     condition_relation_type: Union[str, VocabularyTermName] = None
     unique_id: Optional[str] = None
+    handle: Optional[str] = None
+    single_reference: Optional[Union[str, ReferenceCurie]] = None
     conditions: Optional[Union[Union[dict, ExperimentalCondition], List[Union[dict, ExperimentalCondition]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -379,40 +381,15 @@ class ConditionRelation(YAMLRoot):
         if self.unique_id is not None and not isinstance(self.unique_id, str):
             self.unique_id = str(self.unique_id)
 
+        if self.handle is not None and not isinstance(self.handle, str):
+            self.handle = str(self.handle)
+
+        if self.single_reference is not None and not isinstance(self.single_reference, ReferenceCurie):
+            self.single_reference = ReferenceCurie(self.single_reference)
+
         if not isinstance(self.conditions, list):
             self.conditions = [self.conditions] if self.conditions is not None else []
         self.conditions = [v if isinstance(v, ExperimentalCondition) else ExperimentalCondition(**as_dict(v)) for v in self.conditions]
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class PaperHandle(YAMLRoot):
-    """
-    A pairing of a reference and a free text string that allows an object to have a reference-specific alias (or
-    handle). For example, used for experimental conditions from ZFIN to label (in a reference-specific manner)
-    individual experimental conditions when curating a particular reference.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = ALLIANCE.PaperHandle
-    class_class_curie: ClassVar[str] = "alliance:PaperHandle"
-    class_name: ClassVar[str] = "PaperHandle"
-    class_model_uri: ClassVar[URIRef] = ALLIANCE.PaperHandle
-
-    single_reference: Union[str, ReferenceCurie] = None
-    handle: str = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.single_reference):
-            self.MissingRequiredField("single_reference")
-        if not isinstance(self.single_reference, ReferenceCurie):
-            self.single_reference = ReferenceCurie(self.single_reference)
-
-        if self._is_empty(self.handle):
-            self.MissingRequiredField("handle")
-        if not isinstance(self.handle, str):
-            self.handle = str(self.handle)
 
         super().__post_init__(**kwargs)
 
@@ -3686,9 +3663,6 @@ slots.phenotype_term = Slot(uri=ALLIANCE.phenotype_term, name="phenotype_term", 
 slots.with = Slot(uri=ALLIANCE.with, name="with", curie=ALLIANCE.curie('with'),
                    model_uri=ALLIANCE.with, domain=None, range=Optional[Union[Union[str, GeneCurie], List[Union[str, GeneCurie]]]])
 
-slots.paper_handles = Slot(uri=ALLIANCE.paper_handles, name="paper_handles", curie=ALLIANCE.curie('paper_handles'),
-                   model_uri=ALLIANCE.paper_handles, domain=None, range=Optional[Union[Union[dict, PaperHandle], List[Union[dict, PaperHandle]]]])
-
 slots.handle = Slot(uri=ALLIANCE.handle, name="handle", curie=ALLIANCE.curie('handle'),
                    model_uri=ALLIANCE.handle, domain=None, range=Optional[str])
 
@@ -3723,7 +3697,7 @@ slots.resource_id = Slot(uri="str(uriorcurie)", name="resource_id", curie=None,
                    model_uri=ALLIANCE.resource_id, domain=Reference, range=Optional[int])
 
 slots.pubmed_type = Slot(uri="str(uriorcurie)", name="pubmed_type", curie=None,
-                   model_uri=ALLIANCE.pubmed_type, domain=InformationContentEntity, range=Optional[Union[str, List[str]]])
+                   model_uri=ALLIANCE.pubmed_type, domain=Reference, range=Optional[Union[str, List[str]]])
 
 slots.date_published = Slot(uri="str(uriorcurie)", name="date_published", curie=None,
                    model_uri=ALLIANCE.date_published, domain=InformationContentEntity, range=Optional[str])
@@ -3735,7 +3709,7 @@ slots.date_updated = Slot(uri="str(uriorcurie)", name="date_updated", curie=None
                    model_uri=ALLIANCE.date_updated, domain=InformationContentEntity, range=Optional[Union[str, XSDDate]])
 
 slots.date_arrived_in_pubmed = Slot(uri="str(uriorcurie)", name="date_arrived_in_pubmed", curie=None,
-                   model_uri=ALLIANCE.date_arrived_in_pubmed, domain=InformationContentEntity, range=Optional[Union[str, List[str]]])
+                   model_uri=ALLIANCE.date_arrived_in_pubmed, domain=Reference, range=Optional[Union[str, List[str]]])
 
 slots.date_last_modified_in_pubmed = Slot(uri="str(uriorcurie)", name="date_last_modified_in_pubmed", curie=None,
                    model_uri=ALLIANCE.date_last_modified_in_pubmed, domain=Reference, range=Optional[str])
@@ -4400,14 +4374,14 @@ slots.ExperimentalCondition_condition_chemical = Slot(uri=ALLIANCE.condition_che
 slots.ConditionRelation_unique_id = Slot(uri=ALLIANCE.unique_id, name="ConditionRelation_unique_id", curie=ALLIANCE.curie('unique_id'),
                    model_uri=ALLIANCE.ConditionRelation_unique_id, domain=ConditionRelation, range=Optional[str])
 
+slots.ConditionRelation_handle = Slot(uri=ALLIANCE.handle, name="ConditionRelation_handle", curie=ALLIANCE.curie('handle'),
+                   model_uri=ALLIANCE.ConditionRelation_handle, domain=ConditionRelation, range=Optional[str])
+
+slots.ConditionRelation_single_reference = Slot(uri=ALLIANCE.single_reference, name="ConditionRelation_single_reference", curie=ALLIANCE.curie('single_reference'),
+                   model_uri=ALLIANCE.ConditionRelation_single_reference, domain=ConditionRelation, range=Optional[Union[str, ReferenceCurie]])
+
 slots.ConditionRelation_condition_relation_type = Slot(uri=ALLIANCE.condition_relation_type, name="ConditionRelation_condition_relation_type", curie=ALLIANCE.curie('condition_relation_type'),
                    model_uri=ALLIANCE.ConditionRelation_condition_relation_type, domain=ConditionRelation, range=Union[str, VocabularyTermName])
-
-slots.PaperHandle_single_reference = Slot(uri=ALLIANCE.single_reference, name="PaperHandle_single_reference", curie=ALLIANCE.curie('single_reference'),
-                   model_uri=ALLIANCE.PaperHandle_single_reference, domain=PaperHandle, range=Union[str, ReferenceCurie])
-
-slots.PaperHandle_handle = Slot(uri=ALLIANCE.handle, name="PaperHandle_handle", curie=ALLIANCE.curie('handle'),
-                   model_uri=ALLIANCE.PaperHandle_handle, domain=PaperHandle, range=str)
 
 slots.Reference_date_last_modified = Slot(uri=ALLIANCE.date_last_modified, name="Reference_date_last_modified", curie=ALLIANCE.curie('date_last_modified'),
                    model_uri=ALLIANCE.Reference_date_last_modified, domain=Reference, range=Optional[Union[str, XSDDate]])
