@@ -1,5 +1,5 @@
 # Auto generated from ontologyTerm.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-10T12:41:12
+# Generation date: 2022-03-30T11:46:22
 # Schema: Alliance-Schema-Prototype-Ontology-Term
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml
@@ -3322,7 +3322,7 @@ slots.resource_id = Slot(uri="str(uriorcurie)", name="resource_id", curie=None,
                    model_uri=DEFAULT_.resource_id, domain=Reference, range=Optional[int])
 
 slots.pubmed_type = Slot(uri="str(uriorcurie)", name="pubmed_type", curie=None,
-                   model_uri=DEFAULT_.pubmed_type, domain=InformationContentEntity, range=Optional[Union[str, List[str]]])
+                   model_uri=DEFAULT_.pubmed_type, domain=Reference, range=Optional[Union[str, List[str]]])
 
 slots.date_published = Slot(uri="str(uriorcurie)", name="date_published", curie=None,
                    model_uri=DEFAULT_.date_published, domain=InformationContentEntity, range=Optional[str])
@@ -3334,7 +3334,7 @@ slots.date_updated = Slot(uri="str(uriorcurie)", name="date_updated", curie=None
                    model_uri=DEFAULT_.date_updated, domain=InformationContentEntity, range=Optional[Union[str, XSDDate]])
 
 slots.date_arrived_in_pubmed = Slot(uri="str(uriorcurie)", name="date_arrived_in_pubmed", curie=None,
-                   model_uri=DEFAULT_.date_arrived_in_pubmed, domain=InformationContentEntity, range=Optional[Union[str, List[str]]])
+                   model_uri=DEFAULT_.date_arrived_in_pubmed, domain=Reference, range=Optional[Union[str, List[str]]])
 
 slots.date_last_modified_in_pubmed = Slot(uri="str(uriorcurie)", name="date_last_modified_in_pubmed", curie=None,
                    model_uri=DEFAULT_.date_last_modified_in_pubmed, domain=Reference, range=Optional[str])

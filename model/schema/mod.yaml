@@ -69,19 +69,3 @@ slots:
     domain: Mod
     range: string
     required: true
-
-enums:
-
-  corpus_enum:
-    permissible_values:
-      needs_review:
-      inside_corpus:
-      outside_corpus:
-
-  mod_corpus_sort_source_enum:
-    permissible_values:
-      dqm_files:
-      mod_pubmed_search:
-      manual_creation:
-      assigned_for_review:
-
