@@ -1,0 +1,100 @@
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/mod
+
+imports:
+  - core
+  - linkml:types
+  - informationContentEntity
+  - person
+
+prefixes:
+  alliance: 'http://alliancegenome.org'
+  linkml: 'https://w3id.org/linkml/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+
+classes:
+  Mod:
+    is_a: Organization
+    description: >-
+      A Model Organism Database, member of the Alliance of Genome Resources.
+    notes: >-
+      We have not modeled synonyms, e.g. Mouse Genome Informatics
+      Literature has 8 values: FB, MGI, RGD, SGD, WB, XB, ZFIN, GO 
+    slots:
+      - abbreviation
+      - date_created
+      - date_updated
+      - full_name
+      - mod_id
+      - short_name
+    slot_usage:
+      # use regex to constrain local id
+      id:
+        pattern: # check this add a regex - check about resourceDescriptor
+
+slots:
+
+  mod_id:
+    notes: >-
+      The value is the primary key for the mod table (an integer).
+    domain: Mod
+    range: integer
+
+  abbreviation:
+    description: >-
+      The curie prefix, or letter code used by FMS.  e.g. MGI, FB
+    multivalued: false
+    domain: Mod
+    range: string
+
+  short_name:
+    description: >-
+      The short name used in the Members list on the website.  e.g. MGD, FlyBase
+    multivalued: false
+    domain: Mod
+    range: string
+
+  full_name:
+    description: >-
+      The full name of the Model Organism Database.  
+      e.g. Mouse Genome Database, FlyBase
+    multivalued: false
+    domain: Mod
+    range: string
+
+  date_created:
+    description: >-
+      Date on which an entity was created in the Alliance literature database.
+    notes: >-
+      An alias of the creation_date slot of AuditedObject.
+    multivalued: false
+    range: date
+    domain: InformationContentEntity
+
+  date_updated:
+    description: >-
+      Date on which an entity was updated in the Alliance literature database.
+    notes: >-
+      An alias of the date_last_modified slot of AuditedObject.
+    multivalued: false
+    range: date
+    domain: InformationContentEntity
+
+enums:
+
+  corpus_enum:
+    permissible_values:
+      needs_review:
+      inside_corpus:
+      outside_corpus:
+
+  mod_corpus_sort_source_enum:
+    permissible_values:
+      dqm_files:
+      mod_pubmed_search:
+      manual_creation:
+      assigned_for_review:
+

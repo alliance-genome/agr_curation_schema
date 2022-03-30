@@ -1,0 +1,99 @@
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/modCorpusAssociation
+
+imports:
+  - core
+  - linkml:types
+  - informationContentEntity
+
+prefixes:
+  alliance: 'http://alliancegenome.org'
+  linkml: 'https://w3id.org/linkml/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+
+classes:
+  ModCorpusAssociation:
+    is_a: InformationContentEntity
+    description: >-
+      For a given reference and Mod, whether it is inside corpus,
+      outside corpus, or needs review, as well as where this
+      sorting came from.
+    slots:
+      - corpus
+      - date_created
+      - date_updated
+      - mod_corpus_association_id
+      - mod_corpus_sort_source
+      - mod_id
+      - reference_id
+    slot_usage:
+      # use regex to constrain local id
+      id:
+        pattern: # check this add a regex - check about resourceDescriptor
+
+slots:
+
+  mod_corpus_association_id:
+    is_a: table_key
+    domain: ModCorpusAssociation
+
+  mod_id:
+    notes: >-
+      The value is the primary key for the mod table (an integer).
+    domain: ModCorpusAssociation
+    range: integer
+
+  reference_id:
+    notes: >-
+      The value is the primary key for the reference table (an integer).
+    domain: ModCorpusAssociation
+    range: integer
+
+  corpus:
+    description: in-out-review corpus status of the publication at the mod
+    multivalued: false
+    domain: ModCorpusAssociation
+    range: corpus_enum
+
+  mod_corpus_sort_source:
+    description: origin of corpus determination for that publication and mod
+    multivalued: false
+    domain: ModCorpusAssociation
+    range: mod_corpus_sort_source_enum
+
+  date_created:
+    description: >-
+      Date on which an entity was created in the Alliance literature database.
+    notes: >-
+      An alias of the creation_date slot of AuditedObject.
+    multivalued: false
+    range: date
+    domain: InformationContentEntity
+
+  date_updated:
+    description: >-
+      Date on which an entity was updated in the Alliance literature database.
+    notes: >-
+      An alias of the date_last_modified slot of AuditedObject.
+    multivalued: false
+    range: date
+    domain: InformationContentEntity
+
+enums:
+
+  corpus_enum:
+    permissible_values:
+      needs_review:
+      inside_corpus:
+      outside_corpus:
+
+  mod_corpus_sort_source_enum:
+    permissible_values:
+      dqm_files:
+      mod_pubmed_search:
+      manual_creation:
+      assigned_for_review:
+
