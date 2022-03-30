@@ -32,6 +32,14 @@ classes:
       - mod_id
       - mod_short_name
     slot_usage:
+      abbreviation:
+        description: >-
+          The curie prefix, or letter code used by FMS (Alliance file management
+          system).  e.g. MGI, FB
+        multivalued: false
+        domain: Mod
+        range: string
+        required: true
       date_created:
         required: true
 
@@ -42,15 +50,6 @@ slots:
     description: >-
       The value is the primary key for the mod table (an integer).
     domain: Mod
-    required: true
-
-  mod_abbreviation:
-    description: >-
-      The curie prefix, or letter code used by FMS (Alliance file management
-      system).  e.g. MGI, FB
-    multivalued: false
-    domain: Mod
-    range: string
     required: true
 
   mod_short_name:
