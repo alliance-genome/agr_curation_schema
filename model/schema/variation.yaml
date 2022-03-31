@@ -133,11 +133,6 @@ slots:
     domain: VariantLocation
     range: SOTerm
 
-
-  variant_locations:
-    description: >-
-      Location of the variant within genomic entities as determined by curators.
-
   curated_consequence:
     description: >-
       SOTerm that describes the consequence of the variant, as determined by
@@ -153,7 +148,6 @@ slots:
       Location of the variant within genomic entities. Variant_locations can include any or all of: one
       VariantGenomeLocation stanza, one or more VariantTranscriptLocation stanzas and/or one or more
       VariantPolypeptideLocation stanzas.
-
     required: true
     multivalued: true
     domain: Variant
