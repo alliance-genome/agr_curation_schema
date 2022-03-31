@@ -314,7 +314,7 @@ slots:
 
   note_type:
     description: >-
-      The type of note: e.g., cytology, comment, summary.
+      The type of note: e.g., cytology, comment, summary. Permissible values for 'note_type' currently = disease_summary, disease_note
     range: VocabularyTerm
 
   internal:
