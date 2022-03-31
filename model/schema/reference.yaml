@@ -65,17 +65,54 @@ classes:
       id:
         pattern: # check this add a regex - check about resourceDescriptor
 
+  MeshDetail:
+    description: >-
+      Medical Subject Headings information coming from PubMed.
+    notes: >-
+      In the literature database, the table is named mesh_details. 
+      In the literature API, the field is named mesh_terms.
+    is_a: InformationContentEntity
+    slots:
+      - mesh_detail_id 
+      - reference_id 
+      - heading_term
+      - qualifier_term
+
 slots:
 
   reference_id:
     is_a: table_key
     domain: Reference
+    required: true
+
+  mesh_detail_id:
+    is_a: table_key
+    domain: Reference
+    required: true
 
   resource_id:
     notes: >-
       The value is the primary key for the resources table (an integer).
     domain: Reference
     range: integer
+
+  heading_term:
+    description: >-
+      The MeSH term description or definition from PubMed.
+      e.g. Measles in a Measles/epidemiology term.
+    multivalued: false
+    domain: Reference
+    range: string
+    required: true
+
+  qualifier_term:
+    description: >-
+      The MeSH term subheading from PubMed, to narrow down the topic.
+      e.g. epidemiology in a Measles/epidemiology term.
+    multivalued: false
+    domain: Reference
+    range: string
+    required: true
 
   pubmed_type:
     description: >-
