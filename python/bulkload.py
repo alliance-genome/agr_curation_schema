@@ -1,8 +1,8 @@
-# Auto generated from variantConsequence.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-30T19:25:35
-# Schema: variantConsequence
+# Auto generated from bulkload.yaml by pythongen.py version: 0.9.0
+# Generation date: 2022-03-30T19:24:52
+# Schema: bulkload.yaml
 #
-# id: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence
+# id: https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml
 # description:
 # license: https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -22,7 +22,7 @@ from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.linkml_model.types import Boolean, Date, Float, Integer, String, Uriorcurie
+from linkml_runtime.linkml_model.types import Boolean, Date, Integer, String, Uriorcurie
 from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
@@ -50,17 +50,14 @@ ZFIN = CurieNamespace('ZFIN', 'http://identifiers.org/zfin/')
 ALLIANCE = CurieNamespace('alliance', 'http://alliancegenome.org')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
 DCT = CurieNamespace('dct', 'http://purl.org/dc/terms/')
-FALDO = CurieNamespace('faldo', 'http://biohackathon.org/resource/faldo#')
 FOAF = CurieNamespace('foaf', 'http://xmlns.com/foaf/0.1/')
-GFF = CurieNamespace('gff', 'https://w3id.org/gff')
-LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 OBOGRAPH = CurieNamespace('obograph', 'https://github.com/biodatamodels/obograph')
 OWL = CurieNamespace('owl', 'http://www.w3.org/2002/07/owl#')
 RDF = CurieNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
 RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
-DEFAULT_ = CurieNamespace('', 'https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/')
+DEFAULT_ = CurieNamespace('', 'https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/')
 
 
 # Types
@@ -68,7 +65,7 @@ class BiologicalSequence(String):
     type_class_uri = XSD.string
     type_class_curie = "xsd:string"
     type_name = "biological_sequence"
-    type_model_uri = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/BiologicalSequence")
+    type_model_uri = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/BiologicalSequence")
 
 
 # Class references
@@ -97,10 +94,6 @@ class AssemblyCurie(URIorCURIE):
 
 
 class ProteinCurie(GenomicEntityCurie):
-    pass
-
-
-class VariantCurie(GenomicEntityCurie):
     pass
 
 
@@ -248,10 +241,6 @@ class VocabularyName(extended_str):
     pass
 
 
-class AlleleCurie(GenomicEntityCurie):
-    pass
-
-
 class InformationContentEntityCurie(URIorCURIE):
     pass
 
@@ -268,159 +257,353 @@ class ResourceCurie(InformationContentEntityCurie):
     pass
 
 
+class AlleleCurie(GenomicEntityCurie):
+    pass
+
+
+class VariantCurie(GenomicEntityCurie):
+    pass
+
+
 class AffectedGenomicModelCurie(GenomicEntityCurie):
     pass
 
 
 @dataclass
-class VariantConsequence(YAMLRoot):
+class BulkLoadGroup(YAMLRoot):
     """
-    Parent class for gene- and transcript-level consequences
+    This class is use to group together bulk load_files
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/VariantConsequence")
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/BulkLoadGroup")
     class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "VariantConsequence"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/VariantConsequence")
+    class_name: ClassVar[str] = "BulkLoadGroup"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/BulkLoadGroup")
 
-    subject: Union[str, VariantCurie] = None
-    object: str = None
-    vep_consequence: Optional[Union[str, "VepConsequenceLevels"]] = None
-    vep_impact: Optional[str] = None
-    polyphen_score: Optional[float] = None
-    polyphen_prediction: Optional[Union[str, "PolyphenPredictionLevels"]] = None
-    sift_score: Optional[float] = None
-    sift_prediction: Optional[Union[str, "SiftPredictionLevels"]] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
+    name: Optional[str] = None
+    loads: Optional[Union[Union[dict, "BulkLoad"], List[Union[dict, "BulkLoad"]]]] = empty_list()
+    table_key: Optional[int] = None
+    creation_date: Optional[Union[str, XSDDate]] = None
+    date_last_modified: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.subject):
-            self.MissingRequiredField("subject")
-        if not isinstance(self.subject, VariantCurie):
-            self.subject = VariantCurie(self.subject)
+        if self._is_empty(self.created_by):
+            self.MissingRequiredField("created_by")
+        if not isinstance(self.created_by, PersonUniqueId):
+            self.created_by = PersonUniqueId(self.created_by)
 
-        if self._is_empty(self.object):
-            self.MissingRequiredField("object")
-        if not isinstance(self.object, str):
-            self.object = str(self.object)
+        if self._is_empty(self.modified_by):
+            self.MissingRequiredField("modified_by")
+        if not isinstance(self.modified_by, PersonUniqueId):
+            self.modified_by = PersonUniqueId(self.modified_by)
 
-        if self.vep_consequence is not None and not isinstance(self.vep_consequence, VepConsequenceLevels):
-            self.vep_consequence = VepConsequenceLevels(self.vep_consequence)
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
 
-        if self.vep_impact is not None and not isinstance(self.vep_impact, str):
-            self.vep_impact = str(self.vep_impact)
+        self._normalize_inlined_as_dict(slot_name="loads", slot_type=BulkLoad, key_name="created_by", keyed=False)
 
-        if self.polyphen_score is not None and not isinstance(self.polyphen_score, float):
-            self.polyphen_score = float(self.polyphen_score)
+        if self.table_key is not None and not isinstance(self.table_key, int):
+            self.table_key = int(self.table_key)
 
-        if self.polyphen_prediction is not None and not isinstance(self.polyphen_prediction, PolyphenPredictionLevels):
-            self.polyphen_prediction = PolyphenPredictionLevels(self.polyphen_prediction)
+        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
+            self.creation_date = XSDDate(self.creation_date)
 
-        if self.sift_score is not None and not isinstance(self.sift_score, float):
-            self.sift_score = float(self.sift_score)
-
-        if self.sift_prediction is not None and not isinstance(self.sift_prediction, SiftPredictionLevels):
-            self.sift_prediction = SiftPredictionLevels(self.sift_prediction)
+        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
+            self.date_last_modified = XSDDate(self.date_last_modified)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class VariantGeneConsequence(VariantConsequence):
+class BulkLoad(YAMLRoot):
     """
-    Class for gene-level VEP results
+    Base class for all loads
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/VariantGeneConsequence")
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/BulkLoad")
     class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "VariantGeneConsequence"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/VariantGeneConsequence")
+    class_name: ClassVar[str] = "BulkLoad"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/BulkLoad")
 
-    subject: Union[str, VariantCurie] = None
-    object: Union[str, GeneCurie] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
+    name: Optional[str] = None
+    bulkload_status: Optional[Union[str, "BulkLoadStatusEnum"]] = None
+    error_message: Optional[str] = None
+    backend_bulk_load_type: Optional[Union[str, "BackendBulkLoadTypeEnum"]] = None
+    ontology_type: Optional[Union[str, "OntologyBulkLoadTypeEnum"]] = None
+    bulkload_group: Optional[Union[dict, BulkLoadGroup]] = None
+    load_files: Optional[Union[Union[dict, "BulkLoadFile"], List[Union[dict, "BulkLoadFile"]]]] = empty_list()
+    table_key: Optional[int] = None
+    creation_date: Optional[Union[str, XSDDate]] = None
+    date_last_modified: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.object):
-            self.MissingRequiredField("object")
-        if not isinstance(self.object, GeneCurie):
-            self.object = GeneCurie(self.object)
+        if self._is_empty(self.created_by):
+            self.MissingRequiredField("created_by")
+        if not isinstance(self.created_by, PersonUniqueId):
+            self.created_by = PersonUniqueId(self.created_by)
+
+        if self._is_empty(self.modified_by):
+            self.MissingRequiredField("modified_by")
+        if not isinstance(self.modified_by, PersonUniqueId):
+            self.modified_by = PersonUniqueId(self.modified_by)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.bulkload_status is not None and not isinstance(self.bulkload_status, BulkLoadStatusEnum):
+            self.bulkload_status = BulkLoadStatusEnum(self.bulkload_status)
+
+        if self.error_message is not None and not isinstance(self.error_message, str):
+            self.error_message = str(self.error_message)
+
+        if self.backend_bulk_load_type is not None and not isinstance(self.backend_bulk_load_type, BackendBulkLoadTypeEnum):
+            self.backend_bulk_load_type = BackendBulkLoadTypeEnum(self.backend_bulk_load_type)
+
+        if self.ontology_type is not None and not isinstance(self.ontology_type, OntologyBulkLoadTypeEnum):
+            self.ontology_type = OntologyBulkLoadTypeEnum(self.ontology_type)
+
+        if self.bulkload_group is not None and not isinstance(self.bulkload_group, BulkLoadGroup):
+            self.bulkload_group = BulkLoadGroup(**as_dict(self.bulkload_group))
+
+        self._normalize_inlined_as_dict(slot_name="load_files", slot_type=BulkLoadFile, key_name="created_by", keyed=False)
+
+        if self.table_key is not None and not isinstance(self.table_key, int):
+            self.table_key = int(self.table_key)
+
+        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
+            self.creation_date = XSDDate(self.creation_date)
+
+        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
+            self.date_last_modified = XSDDate(self.date_last_modified)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class VariantTranscriptConsequence(VariantConsequence):
+class BulkLoadFile(YAMLRoot):
     """
-    Class for transcript-level VEP results
+    This class is used to hold version of the files being loaded
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/VariantTranscriptConsequence")
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/BulkLoadFile")
     class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "VariantTranscriptConsequence"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/VariantTranscriptConsequence")
+    class_name: ClassVar[str] = "BulkLoadFile"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/BulkLoadFile")
 
-    subject: Union[str, VariantCurie] = None
-    object: Union[str, TranscriptCurie] = None
-    amino_acid_reference: Optional[str] = None
-    amino_acid_variant: Optional[str] = None
-    codon_reference: Optional[str] = None
-    codon_variant: Optional[str] = None
-    cdna_start: Optional[int] = None
-    cdna_end: Optional[int] = None
-    cds_start: Optional[int] = None
-    cds_end: Optional[int] = None
-    protein_start: Optional[int] = None
-    protein_end: Optional[int] = None
-    hgvs_protein_nomenclature: Optional[str] = None
-    hgvs_coding_nomenclature: Optional[str] = None
-    cnda_end: Optional[str] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
+    bulkload_status: Optional[Union[str, "BulkLoadStatusEnum"]] = None
+    md5_sum: Optional[str] = None
+    local_file_path: Optional[str] = None
+    file_size: Optional[int] = None
+    s3_path: Optional[str] = None
+    s3_url: Optional[str] = None
+    record_count: Optional[int] = None
+    error_message: Optional[str] = None
+    bulk_load: Optional[Union[dict, BulkLoad]] = None
+    table_key: Optional[int] = None
+    creation_date: Optional[Union[str, XSDDate]] = None
+    date_last_modified: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.object):
-            self.MissingRequiredField("object")
-        if not isinstance(self.object, TranscriptCurie):
-            self.object = TranscriptCurie(self.object)
+        if self._is_empty(self.created_by):
+            self.MissingRequiredField("created_by")
+        if not isinstance(self.created_by, PersonUniqueId):
+            self.created_by = PersonUniqueId(self.created_by)
 
-        if self.amino_acid_reference is not None and not isinstance(self.amino_acid_reference, str):
-            self.amino_acid_reference = str(self.amino_acid_reference)
+        if self._is_empty(self.modified_by):
+            self.MissingRequiredField("modified_by")
+        if not isinstance(self.modified_by, PersonUniqueId):
+            self.modified_by = PersonUniqueId(self.modified_by)
 
-        if self.amino_acid_variant is not None and not isinstance(self.amino_acid_variant, str):
-            self.amino_acid_variant = str(self.amino_acid_variant)
+        if self.bulkload_status is not None and not isinstance(self.bulkload_status, BulkLoadStatusEnum):
+            self.bulkload_status = BulkLoadStatusEnum(self.bulkload_status)
 
-        if self.codon_reference is not None and not isinstance(self.codon_reference, str):
-            self.codon_reference = str(self.codon_reference)
+        if self.md5_sum is not None and not isinstance(self.md5_sum, str):
+            self.md5_sum = str(self.md5_sum)
 
-        if self.codon_variant is not None and not isinstance(self.codon_variant, str):
-            self.codon_variant = str(self.codon_variant)
+        if self.local_file_path is not None and not isinstance(self.local_file_path, str):
+            self.local_file_path = str(self.local_file_path)
 
-        if self.cdna_start is not None and not isinstance(self.cdna_start, int):
-            self.cdna_start = int(self.cdna_start)
+        if self.file_size is not None and not isinstance(self.file_size, int):
+            self.file_size = int(self.file_size)
 
-        if self.cdna_end is not None and not isinstance(self.cdna_end, int):
-            self.cdna_end = int(self.cdna_end)
+        if self.s3_path is not None and not isinstance(self.s3_path, str):
+            self.s3_path = str(self.s3_path)
 
-        if self.cds_start is not None and not isinstance(self.cds_start, int):
-            self.cds_start = int(self.cds_start)
+        if self.s3_url is not None and not isinstance(self.s3_url, str):
+            self.s3_url = str(self.s3_url)
 
-        if self.cds_end is not None and not isinstance(self.cds_end, int):
-            self.cds_end = int(self.cds_end)
+        if self.record_count is not None and not isinstance(self.record_count, int):
+            self.record_count = int(self.record_count)
 
-        if self.protein_start is not None and not isinstance(self.protein_start, int):
-            self.protein_start = int(self.protein_start)
+        if self.error_message is not None and not isinstance(self.error_message, str):
+            self.error_message = str(self.error_message)
 
-        if self.protein_end is not None and not isinstance(self.protein_end, int):
-            self.protein_end = int(self.protein_end)
+        if self.bulk_load is not None and not isinstance(self.bulk_load, BulkLoad):
+            self.bulk_load = BulkLoad(**as_dict(self.bulk_load))
 
-        if self.hgvs_protein_nomenclature is not None and not isinstance(self.hgvs_protein_nomenclature, str):
-            self.hgvs_protein_nomenclature = str(self.hgvs_protein_nomenclature)
+        if self.table_key is not None and not isinstance(self.table_key, int):
+            self.table_key = int(self.table_key)
 
-        if self.hgvs_coding_nomenclature is not None and not isinstance(self.hgvs_coding_nomenclature, str):
-            self.hgvs_coding_nomenclature = str(self.hgvs_coding_nomenclature)
+        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
+            self.creation_date = XSDDate(self.creation_date)
 
-        if self.cnda_end is not None and not isinstance(self.cnda_end, str):
-            self.cnda_end = str(self.cnda_end)
+        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
+            self.date_last_modified = XSDDate(self.date_last_modified)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class BulkScheduledLoad(BulkLoad):
+    """
+    This a bulk load that includes a cron scheuld
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/BulkScheduledLoad")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "BulkScheduledLoad"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/BulkScheduledLoad")
+
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
+    schedule_active: Optional[Union[bool, Bool]] = None
+    cron_schedule: Optional[str] = None
+    scheduling_error_message: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.schedule_active is not None and not isinstance(self.schedule_active, Bool):
+            self.schedule_active = Bool(self.schedule_active)
+
+        if self.cron_schedule is not None and not isinstance(self.cron_schedule, str):
+            self.cron_schedule = str(self.cron_schedule)
+
+        if self.scheduling_error_message is not None and not isinstance(self.scheduling_error_message, str):
+            self.scheduling_error_message = str(self.scheduling_error_message)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class BulkFMSLoad(BulkScheduledLoad):
+    """
+    This bulk load automatically pulls files from the BulkFMSLoad
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/BulkFMSLoad")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "BulkFMSLoad"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/BulkFMSLoad")
+
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
+    fms_data_type: Optional[str] = None
+    fms_data_sub_type: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.fms_data_type is not None and not isinstance(self.fms_data_type, str):
+            self.fms_data_type = str(self.fms_data_type)
+
+        if self.fms_data_sub_type is not None and not isinstance(self.fms_data_sub_type, str):
+            self.fms_data_sub_type = str(self.fms_data_sub_type)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class BulkURLLoad(BulkScheduledLoad):
+    """
+    This bulk load automatically pulls files from a defined BulkURLLoad
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/BulkURLLoad")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "BulkURLLoad"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/BulkURLLoad")
+
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
+    bulkload_url: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.bulkload_url is not None and not isinstance(self.bulkload_url, str):
+            self.bulkload_url = str(self.bulkload_url)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class BulkManualLoad(BulkLoad):
+    """
+    This bulk load is used by DQM's to submit their files to the curation system
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/BulkManualLoad")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "BulkManualLoad"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/BulkManualLoad")
+
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
+    backend_load_type: Optional[Union[str, "BackendBulkDataTypeEnum"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.backend_load_type is not None and not isinstance(self.backend_load_type, BackendBulkDataTypeEnum):
+            self.backend_load_type = BackendBulkDataTypeEnum(self.backend_load_type)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class BulkLoadFileHistory(YAMLRoot):
+    """
+    Object used to describe the indiviual run of this BulkLoadFile
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/BulkLoadFileHistory")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "BulkLoadFileHistory"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/BulkLoadFileHistory")
+
+    load_started: Optional[Union[str, XSDDate]] = None
+    load_finished: Optional[Union[str, XSDDate]] = None
+    total_records: Optional[int] = None
+    failed_records: Optional[int] = None
+    completed_records: Optional[str] = None
+    load_exceptions: Optional[Union[str, List[str]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.load_started is not None and not isinstance(self.load_started, XSDDate):
+            self.load_started = XSDDate(self.load_started)
+
+        if self.load_finished is not None and not isinstance(self.load_finished, XSDDate):
+            self.load_finished = XSDDate(self.load_finished)
+
+        if self.total_records is not None and not isinstance(self.total_records, int):
+            self.total_records = int(self.total_records)
+
+        if self.failed_records is not None and not isinstance(self.failed_records, int):
+            self.failed_records = int(self.failed_records)
+
+        if self.completed_records is not None and not isinstance(self.completed_records, str):
+            self.completed_records = str(self.completed_records)
+
+        if not isinstance(self.load_exceptions, list):
+            self.load_exceptions = [self.load_exceptions] if self.load_exceptions is not None else []
+        self.load_exceptions = [v if isinstance(v, str) else str(v) for v in self.load_exceptions]
 
         super().__post_init__(**kwargs)
 
@@ -431,7 +614,7 @@ class Entity(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Entity
     class_class_curie: ClassVar[str] = "alliance:Entity"
     class_name: ClassVar[str] = "Entity"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/Entity")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Entity")
 
 
 @dataclass
@@ -444,7 +627,7 @@ class BiologicalEntity(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.BiologicalEntity
     class_class_curie: ClassVar[str] = "alliance:BiologicalEntity"
     class_name: ClassVar[str] = "BiologicalEntity"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/BiologicalEntity")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/BiologicalEntity")
 
     curie: Union[str, BiologicalEntityCurie] = None
     taxon: Union[str, NCBITaxonTermCurie] = None
@@ -494,7 +677,7 @@ class GenomicEntity(BiologicalEntity):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.GenomicEntity
     class_class_curie: ClassVar[str] = "alliance:GenomicEntity"
     class_name: ClassVar[str] = "GenomicEntity"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/GenomicEntity")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/GenomicEntity")
 
     curie: Union[str, GenomicEntityCurie] = None
     taxon: Union[str, NCBITaxonTermCurie] = None
@@ -537,7 +720,7 @@ class Transcript(GenomicEntity):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Transcript
     class_class_curie: ClassVar[str] = "alliance:Transcript"
     class_name: ClassVar[str] = "Transcript"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/Transcript")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Transcript")
 
     curie: Union[str, TranscriptCurie] = None
     taxon: Union[str, NCBITaxonTermCurie] = None
@@ -563,7 +746,7 @@ class Gene(GenomicEntity):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Gene
     class_class_curie: ClassVar[str] = "alliance:Gene"
     class_name: ClassVar[str] = "Gene"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/Gene")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Gene")
 
     curie: Union[str, GeneCurie] = None
     taxon: Union[str, NCBITaxonTermCurie] = None
@@ -610,7 +793,7 @@ class Synonym(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Synonym
     class_class_curie: ClassVar[str] = "alliance:Synonym"
     class_name: ClassVar[str] = "Synonym"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/Synonym")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Synonym")
 
 
 @dataclass
@@ -623,7 +806,7 @@ class AuditedObject(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.AuditedObject
     class_class_curie: ClassVar[str] = "alliance:AuditedObject"
     class_name: ClassVar[str] = "AuditedObject"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/AuditedObject")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/AuditedObject")
 
     created_by: Union[str, PersonUniqueId] = None
     modified_by: Union[str, PersonUniqueId] = None
@@ -666,7 +849,7 @@ class Note(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Note
     class_class_curie: ClassVar[str] = "alliance:Note"
     class_name: ClassVar[str] = "Note"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/Note")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Note")
 
     free_text: str = None
     note_type: Union[str, VocabularyTermName] = None
@@ -706,7 +889,7 @@ class EntityStatement(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.EntityStatement
     class_class_curie: ClassVar[str] = "alliance:EntityStatement"
     class_name: ClassVar[str] = "EntityStatement"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/EntityStatement")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/EntityStatement")
 
     statement_subject: Optional[str] = None
     statement_type: Optional[str] = None
@@ -740,7 +923,7 @@ class Association(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Association
     class_class_curie: ClassVar[str] = "alliance:Association"
     class_name: ClassVar[str] = "Association"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/Association")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Association")
 
     subject: str = None
     predicate: str = None
@@ -775,7 +958,7 @@ class EntitySynonym(Association):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.EntitySynonym
     class_class_curie: ClassVar[str] = "alliance:EntitySynonym"
     class_name: ClassVar[str] = "EntitySynonym"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/EntitySynonym")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/EntitySynonym")
 
     subject: str = None
     object: Union[dict, Synonym] = None
@@ -811,7 +994,7 @@ class ExternalDatabaseLink(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.ExternalDatabaseLink
     class_class_curie: ClassVar[str] = "alliance:ExternalDatabaseLink"
     class_name: ClassVar[str] = "ExternalDatabaseLink"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/ExternalDatabaseLink")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/ExternalDatabaseLink")
 
     prefix: str = None
     dbkey: Optional[str] = None
@@ -854,7 +1037,7 @@ class Chromosome(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Chromosome
     class_class_curie: ClassVar[str] = "alliance:Chromosome"
     class_name: ClassVar[str] = "Chromosome"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/Chromosome")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Chromosome")
 
     curie: Union[str, ChromosomeCurie] = None
 
@@ -874,7 +1057,7 @@ class Assembly(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Assembly
     class_class_curie: ClassVar[str] = "alliance:Assembly"
     class_name: ClassVar[str] = "Assembly"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/Assembly")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Assembly")
 
     curie: Union[str, AssemblyCurie] = None
 
@@ -894,7 +1077,7 @@ class GeneGenomicLocation(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.GeneGenomicLocation
     class_class_curie: ClassVar[str] = "alliance:GeneGenomicLocation"
     class_name: ClassVar[str] = "GeneGenomicLocation"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/GeneGenomicLocation")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/GeneGenomicLocation")
 
     subject: Union[str, VariantCurie] = None
     predicate: str = None
@@ -940,7 +1123,7 @@ class Protein(GenomicEntity):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Protein
     class_class_curie: ClassVar[str] = "alliance:Protein"
     class_name: ClassVar[str] = "Protein"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/Protein")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Protein")
 
     curie: Union[str, ProteinCurie] = None
     taxon: Union[str, NCBITaxonTermCurie] = None
@@ -956,241 +1139,6 @@ class Protein(GenomicEntity):
         super().__post_init__(**kwargs)
 
 
-@dataclass
-class Variant(GenomicEntity):
-    """
-    A DNA sequence that differs relative to a designated reference sequence. The sequence occurs at a single position
-    or in contiguous nucleotides.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/Variant")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "Variant"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/Variant")
-
-    curie: Union[str, VariantCurie] = None
-    taxon: Union[str, NCBITaxonTermCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
-    variant_type: Union[str, SOTermCurie] = None
-    variant_locations: Union[Union[dict, "VariantLocation"], List[Union[dict, "VariantLocation"]]] = None
-    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
-    related_notes: Optional[Union[Union[dict, Note], List[Union[dict, Note]]]] = empty_list()
-    source_general_consequence: Optional[Union[str, SOTermCurie]] = None
-    evidence_code: Optional[Union[str, ECOTermCurie]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.curie):
-            self.MissingRequiredField("curie")
-        if not isinstance(self.curie, VariantCurie):
-            self.curie = VariantCurie(self.curie)
-
-        if self._is_empty(self.variant_type):
-            self.MissingRequiredField("variant_type")
-        if not isinstance(self.variant_type, SOTermCurie):
-            self.variant_type = SOTermCurie(self.variant_type)
-
-        if self._is_empty(self.variant_locations):
-            self.MissingRequiredField("variant_locations")
-        self._normalize_inlined_as_dict(slot_name="variant_locations", slot_type=VariantLocation, key_name="hgvs", keyed=False)
-
-        if not isinstance(self.references, list):
-            self.references = [self.references] if self.references is not None else []
-        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
-
-        self._normalize_inlined_as_dict(slot_name="related_notes", slot_type=Note, key_name="free_text", keyed=False)
-
-        if self.source_general_consequence is not None and not isinstance(self.source_general_consequence, SOTermCurie):
-            self.source_general_consequence = SOTermCurie(self.source_general_consequence)
-
-        if self.evidence_code is not None and not isinstance(self.evidence_code, ECOTermCurie):
-            self.evidence_code = ECOTermCurie(self.evidence_code)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class VariantLocation(YAMLRoot):
-    """
-    Base class linking a variant to a position on a genomic entity.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/VariantLocation")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "VariantLocation"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/VariantLocation")
-
-    hgvs: str = None
-    curated_start_position: int = None
-    curated_end_position: int = None
-    evidence_code: Optional[Union[str, ECOTermCurie]] = None
-    source_start_position: Optional[int] = None
-    source_end_position: Optional[int] = None
-    source_reference_sequence: Optional[Union[str, BiologicalSequence]] = None
-    curated_reference_sequence: Optional[Union[str, BiologicalSequence]] = None
-    source_variant_sequence: Optional[Union[str, BiologicalSequence]] = None
-    curated_variant_sequence: Optional[Union[str, BiologicalSequence]] = None
-    source_consequence: Optional[Union[str, SOTermCurie]] = None
-    curated_consequence: Optional[Union[str, SOTermCurie]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.hgvs):
-            self.MissingRequiredField("hgvs")
-        if not isinstance(self.hgvs, str):
-            self.hgvs = str(self.hgvs)
-
-        if self._is_empty(self.curated_start_position):
-            self.MissingRequiredField("curated_start_position")
-        if not isinstance(self.curated_start_position, int):
-            self.curated_start_position = int(self.curated_start_position)
-
-        if self._is_empty(self.curated_end_position):
-            self.MissingRequiredField("curated_end_position")
-        if not isinstance(self.curated_end_position, int):
-            self.curated_end_position = int(self.curated_end_position)
-
-        if self.evidence_code is not None and not isinstance(self.evidence_code, ECOTermCurie):
-            self.evidence_code = ECOTermCurie(self.evidence_code)
-
-        if self.source_start_position is not None and not isinstance(self.source_start_position, int):
-            self.source_start_position = int(self.source_start_position)
-
-        if self.source_end_position is not None and not isinstance(self.source_end_position, int):
-            self.source_end_position = int(self.source_end_position)
-
-        if self.source_reference_sequence is not None and not isinstance(self.source_reference_sequence, BiologicalSequence):
-            self.source_reference_sequence = BiologicalSequence(self.source_reference_sequence)
-
-        if self.curated_reference_sequence is not None and not isinstance(self.curated_reference_sequence, BiologicalSequence):
-            self.curated_reference_sequence = BiologicalSequence(self.curated_reference_sequence)
-
-        if self.source_variant_sequence is not None and not isinstance(self.source_variant_sequence, BiologicalSequence):
-            self.source_variant_sequence = BiologicalSequence(self.source_variant_sequence)
-
-        if self.curated_variant_sequence is not None and not isinstance(self.curated_variant_sequence, BiologicalSequence):
-            self.curated_variant_sequence = BiologicalSequence(self.curated_variant_sequence)
-
-        if self.source_consequence is not None and not isinstance(self.source_consequence, SOTermCurie):
-            self.source_consequence = SOTermCurie(self.source_consequence)
-
-        if self.curated_consequence is not None and not isinstance(self.curated_consequence, SOTermCurie):
-            self.curated_consequence = SOTermCurie(self.curated_consequence)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class VariantGenomeLocation(VariantLocation):
-    """
-    Links a variant to a genomic position.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/VariantGenomeLocation")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "VariantGenomeLocation"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/VariantGenomeLocation")
-
-    hgvs: str = None
-    curated_start_position: int = None
-    curated_end_position: int = None
-    curated_assembly: Union[str, AssemblyCurie] = None
-    curated_chromosome: Union[str, ChromosomeCurie] = None
-    source_assembly: Optional[Union[str, AssemblyCurie]] = None
-    source_chromosome: Optional[Union[str, ChromosomeCurie]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.curated_assembly):
-            self.MissingRequiredField("curated_assembly")
-        if not isinstance(self.curated_assembly, AssemblyCurie):
-            self.curated_assembly = AssemblyCurie(self.curated_assembly)
-
-        if self._is_empty(self.curated_chromosome):
-            self.MissingRequiredField("curated_chromosome")
-        if not isinstance(self.curated_chromosome, ChromosomeCurie):
-            self.curated_chromosome = ChromosomeCurie(self.curated_chromosome)
-
-        if self.source_assembly is not None and not isinstance(self.source_assembly, AssemblyCurie):
-            self.source_assembly = AssemblyCurie(self.source_assembly)
-
-        if self.source_chromosome is not None and not isinstance(self.source_chromosome, ChromosomeCurie):
-            self.source_chromosome = ChromosomeCurie(self.source_chromosome)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class VariantTranscriptLocation(VariantLocation):
-    """
-    Links a variant to a position on a transcript.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/VariantTranscriptLocation")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "VariantTranscriptLocation"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/VariantTranscriptLocation")
-
-    hgvs: str = None
-    curated_start_position: int = None
-    curated_end_position: int = None
-    curated_transcript: Union[str, TranscriptCurie] = None
-    source_transcript: Optional[Union[str, TranscriptCurie]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.curated_transcript):
-            self.MissingRequiredField("curated_transcript")
-        if not isinstance(self.curated_transcript, TranscriptCurie):
-            self.curated_transcript = TranscriptCurie(self.curated_transcript)
-
-        if self.source_transcript is not None and not isinstance(self.source_transcript, TranscriptCurie):
-            self.source_transcript = TranscriptCurie(self.source_transcript)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class VariantPolypeptideLocation(VariantLocation):
-    """
-    Links a variant to a position on a polypeptide.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/VariantPolypeptideLocation")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "VariantPolypeptideLocation"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/VariantPolypeptideLocation")
-
-    hgvs: str = None
-    curated_start_position: int = None
-    curated_end_position: int = None
-    curated_polypeptide: Union[str, ProteinCurie] = None
-    source_polypeptide: Optional[Union[str, ProteinCurie]] = None
-    source_associated_transcripts: Optional[Union[Union[str, TranscriptCurie], List[Union[str, TranscriptCurie]]]] = empty_list()
-    curated_associated_transcripts: Optional[Union[Union[str, TranscriptCurie], List[Union[str, TranscriptCurie]]]] = empty_list()
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.curated_polypeptide):
-            self.MissingRequiredField("curated_polypeptide")
-        if not isinstance(self.curated_polypeptide, ProteinCurie):
-            self.curated_polypeptide = ProteinCurie(self.curated_polypeptide)
-
-        if self.source_polypeptide is not None and not isinstance(self.source_polypeptide, ProteinCurie):
-            self.source_polypeptide = ProteinCurie(self.source_polypeptide)
-
-        if not isinstance(self.source_associated_transcripts, list):
-            self.source_associated_transcripts = [self.source_associated_transcripts] if self.source_associated_transcripts is not None else []
-        self.source_associated_transcripts = [v if isinstance(v, TranscriptCurie) else TranscriptCurie(v) for v in self.source_associated_transcripts]
-
-        if not isinstance(self.curated_associated_transcripts, list):
-            self.curated_associated_transcripts = [self.curated_associated_transcripts] if self.curated_associated_transcripts is not None else []
-        self.curated_associated_transcripts = [v if isinstance(v, TranscriptCurie) else TranscriptCurie(v) for v in self.curated_associated_transcripts]
-
-        super().__post_init__(**kwargs)
-
-
 class Agent(YAMLRoot):
     """
     An individual, group, organization or project that provides information and/or materials.
@@ -1200,7 +1148,7 @@ class Agent(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Agent
     class_class_curie: ClassVar[str] = "alliance:Agent"
     class_name: ClassVar[str] = "Agent"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/Agent")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Agent")
 
 
 class Organization(Agent):
@@ -1209,7 +1157,7 @@ class Organization(Agent):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Organization
     class_class_curie: ClassVar[str] = "alliance:Organization"
     class_name: ClassVar[str] = "Organization"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/Organization")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Organization")
 
 
 class Laboratory(Organization):
@@ -1218,7 +1166,7 @@ class Laboratory(Organization):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Laboratory
     class_class_curie: ClassVar[str] = "alliance:Laboratory"
     class_name: ClassVar[str] = "Laboratory"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/Laboratory")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Laboratory")
 
 
 class Company(Organization):
@@ -1227,7 +1175,7 @@ class Company(Organization):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Company
     class_class_curie: ClassVar[str] = "alliance:Company"
     class_name: ClassVar[str] = "Company"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/Company")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Company")
 
 
 @dataclass
@@ -1237,7 +1185,7 @@ class Person(Agent):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Person
     class_class_curie: ClassVar[str] = "alliance:Person"
     class_name: ClassVar[str] = "Person"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/Person")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Person")
 
     unique_id: Union[str, PersonUniqueId] = None
     last_name: Optional[str] = None
@@ -1287,7 +1235,7 @@ class LoggedInPerson(Person):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.LoggedInPerson
     class_class_curie: ClassVar[str] = "alliance:LoggedInPerson"
     class_name: ClassVar[str] = "LoggedInPerson"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/LoggedInPerson")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/LoggedInPerson")
 
     unique_id: Union[str, LoggedInPersonUniqueId] = None
     okta_id: str = None
@@ -1322,7 +1270,7 @@ class Figure(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/Figure")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "Figure"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/Figure")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Figure")
 
     curie: Union[str, FigureCurie] = None
     single_reference: Union[str, ReferenceCurie] = None
@@ -1387,7 +1335,7 @@ class File(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/File")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "File"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/File")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/File")
 
 
 @dataclass
@@ -1400,7 +1348,7 @@ class Image(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/Image")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "Image"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/Image")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Image")
 
     curie: Union[str, ImageCurie] = None
     associated_with_figure: Union[str, FigureCurie] = None
@@ -1504,7 +1452,7 @@ class ImagePane(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/ImagePane")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "ImagePane"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/ImagePane")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/ImagePane")
 
     from_image: Union[str, ImageCurie] = None
     width: int = None
@@ -1576,7 +1524,7 @@ class OntologyTerm(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/OntologyTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "OntologyTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/OntologyTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/OntologyTerm")
 
     curie: Union[str, OntologyTermCurie] = None
     dbkey: Optional[str] = None
@@ -1643,7 +1591,7 @@ class DOTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/DOTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "DOTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/DOTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/DOTerm")
 
     curie: Union[str, DOTermCurie] = None
 
@@ -1663,7 +1611,7 @@ class ECOTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ECOTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "ECOTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/ECOTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/ECOTerm")
 
     curie: Union[str, ECOTermCurie] = None
     abbreviation: Optional[str] = None
@@ -1687,7 +1635,7 @@ class NCBITaxonTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/NCBITaxonTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "NCBITaxonTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/NCBITaxonTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/NCBITaxonTerm")
 
     curie: Union[str, NCBITaxonTermCurie] = None
 
@@ -1707,7 +1655,7 @@ class FBCVTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/FBCVTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "FBCVTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/FBCVTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/FBCVTerm")
 
     curie: Union[str, FBCVTermCurie] = None
 
@@ -1727,7 +1675,7 @@ class GOTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/GOTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "GOTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/GOTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/GOTerm")
 
     curie: Union[str, GOTermCurie] = None
 
@@ -1747,7 +1695,7 @@ class ROTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ROTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "ROTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/ROTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/ROTerm")
 
     curie: Union[str, ROTermCurie] = None
 
@@ -1767,7 +1715,7 @@ class MITerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/MITerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "MITerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/MITerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/MITerm")
 
     curie: Union[str, MITermCurie] = None
 
@@ -1787,7 +1735,7 @@ class MMOTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/MMOTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "MMOTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/MMOTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/MMOTerm")
 
     curie: Union[str, MMOTermCurie] = None
 
@@ -1807,7 +1755,7 @@ class MMUSDVTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/MMUSDVTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "MMUSDVTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/MMUSDVTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/MMUSDVTerm")
 
     curie: Union[str, MMUSDVTermCurie] = None
 
@@ -1827,7 +1775,7 @@ class SOTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/SOTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "SOTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/SOTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/SOTerm")
 
     curie: Union[str, SOTermCurie] = None
 
@@ -1847,7 +1795,7 @@ class StageTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/StageTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "StageTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/StageTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/StageTerm")
 
     curie: Union[str, StageTermCurie] = None
 
@@ -1858,7 +1806,7 @@ class FBDVTerm(StageTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/FBDVTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "FBDVTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/FBDVTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/FBDVTerm")
 
     curie: Union[str, FBDVTermCurie] = None
 
@@ -1878,7 +1826,7 @@ class WBLSTerm(StageTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/WBLSTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "WBLSTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/WBLSTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/WBLSTerm")
 
     curie: Union[str, WBLSTermCurie] = None
 
@@ -1898,7 +1846,7 @@ class ZFSTerm(StageTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ZFSTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "ZFSTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/ZFSTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/ZFSTerm")
 
     curie: Union[str, ZFSTermCurie] = None
 
@@ -1918,7 +1866,7 @@ class ExperimentalConditionOntologyTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ExperimentalConditionOntologyTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "ExperimentalConditionOntologyTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/ExperimentalConditionOntologyTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/ExperimentalConditionOntologyTerm")
 
     curie: Union[str, ExperimentalConditionOntologyTermCurie] = None
 
@@ -1929,7 +1877,7 @@ class ZECOTerm(ExperimentalConditionOntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ZECOTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "ZECOTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/ZECOTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/ZECOTerm")
 
     curie: Union[str, ZECOTermCurie] = None
 
@@ -1949,7 +1897,7 @@ class XCOTerm(ExperimentalConditionOntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/XCOTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "XCOTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/XCOTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/XCOTerm")
 
     curie: Union[str, XCOTermCurie] = None
 
@@ -1969,7 +1917,7 @@ class AnatomicalTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/AnatomicalTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "AnatomicalTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/AnatomicalTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/AnatomicalTerm")
 
     curie: Union[str, AnatomicalTermCurie] = None
 
@@ -1980,7 +1928,7 @@ class CLTerm(AnatomicalTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/CLTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "CLTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/CLTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/CLTerm")
 
     curie: Union[str, CLTermCurie] = None
 
@@ -2000,7 +1948,7 @@ class EMAPATerm(AnatomicalTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/EMAPATerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "EMAPATerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/EMAPATerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/EMAPATerm")
 
     curie: Union[str, EMAPATermCurie] = None
 
@@ -2020,7 +1968,7 @@ class DAOTerm(AnatomicalTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/DAOTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "DAOTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/DAOTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/DAOTerm")
 
     curie: Union[str, DAOTermCurie] = None
 
@@ -2040,7 +1988,7 @@ class MATerm(AnatomicalTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/MATerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "MATerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/MATerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/MATerm")
 
     curie: Union[str, MATermCurie] = None
 
@@ -2060,7 +2008,7 @@ class UBERONTerm(AnatomicalTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/UBERONTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "UBERONTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/UBERONTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/UBERONTerm")
 
     curie: Union[str, UBERONTermCurie] = None
 
@@ -2080,7 +2028,7 @@ class WBBTTerm(AnatomicalTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/WBBTTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "WBBTTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/WBBTTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/WBBTTerm")
 
     curie: Union[str, WBBTTermCurie] = None
 
@@ -2100,7 +2048,7 @@ class ZFATerm(AnatomicalTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ZFATerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "ZFATerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/ZFATerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/ZFATerm")
 
     curie: Union[str, ZFATermCurie] = None
 
@@ -2124,7 +2072,7 @@ class PhenotypeTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/PhenotypeTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "PhenotypeTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/PhenotypeTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/PhenotypeTerm")
 
     curie: Union[str, PhenotypeTermCurie] = None
 
@@ -2147,7 +2095,7 @@ class ChemicalTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ChemicalTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "ChemicalTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/ChemicalTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/ChemicalTerm")
 
     curie: Union[str, ChemicalTermCurie] = None
     inchi: Optional[str] = None
@@ -2182,7 +2130,7 @@ class CHEBITerm(ChemicalTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/CHEBITerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "CHEBITerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/CHEBITerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/CHEBITerm")
 
     curie: Union[str, CHEBITermCurie] = None
 
@@ -2205,7 +2153,7 @@ class Molecule(ChemicalTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/Molecule")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "Molecule"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/Molecule")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Molecule")
 
     curie: Union[str, MoleculeCurie] = None
     created_by: Union[str, PersonUniqueId] = None
@@ -2252,7 +2200,7 @@ class VocabularyTerm(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/VocabularyTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "VocabularyTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/VocabularyTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/VocabularyTerm")
 
     name: Union[str, VocabularyTermName] = None
     created_by: Union[str, PersonUniqueId] = None
@@ -2316,7 +2264,7 @@ class Vocabulary(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/Vocabulary")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "Vocabulary"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/Vocabulary")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Vocabulary")
 
     name: Union[str, VocabularyName] = None
     created_by: Union[str, PersonUniqueId] = None
@@ -2367,340 +2315,6 @@ class Vocabulary(YAMLRoot):
 
 
 @dataclass
-class Allele(GenomicEntity):
-    """
-    One of multiple possible forms of a functional genomic element (most often described as a locus or gene),
-    differing from the reference DNA sequence. The genomic element can be endogenous or constructed.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/Allele")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "Allele"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/Allele")
-
-    curie: Union[str, AlleleCurie] = None
-    taxon: Union[str, NCBITaxonTermCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
-    symbol: Optional[str] = None
-    contains_constructs: Optional[Union[Union[dict, "Construct"], List[Union[dict, "Construct"]]]] = empty_list()
-    molecular_mutations: Optional[Union[str, List[str]]] = empty_list()
-    functional_impact: Optional[str] = None
-    generation_method: Optional[str] = None
-    associated_references: Optional[Union[Union[dict, "AssociatedReference"], List[Union[dict, "AssociatedReference"]]]] = empty_list()
-    related_notes: Optional[Union[Union[dict, Note], List[Union[dict, Note]]]] = empty_list()
-    germline_transmission_status: Optional[Union[str, VocabularyTermName]] = None
-    parent_cell_line: Optional[Union[dict, "CellLine"]] = None
-    mutant_cell_lines: Optional[Union[Union[dict, "CellLine"], List[Union[dict, "CellLine"]]]] = empty_list()
-    embryonic_stem_cell_lines: Optional[Union[Union[dict, "CellLine"], List[Union[dict, "CellLine"]]]] = empty_list()
-    images: Optional[Union[str, ImageCurie]] = None
-    origins: Optional[Union[Union[str, AffectedGenomicModelCurie], List[Union[str, AffectedGenomicModelCurie]]]] = empty_list()
-    database_status: Optional[Union[str, VocabularyTermName]] = None
-    inheritence_mode: Optional[Union[str, VocabularyTermName]] = None
-    in_collection: Optional[Union[str, VocabularyTermName]] = None
-    transposon_insertion: Optional[str] = None
-    aberration: Optional[str] = None
-    is_extinct: Optional[Union[bool, Bool]] = None
-    sequencing_status: Optional[Union[str, VocabularyTermName]] = None
-    synonyms: Optional[Union[Union[dict, Synonym], List[Union[dict, Synonym]]]] = empty_list()
-    embryonic_cell_lines: Optional[str] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.curie):
-            self.MissingRequiredField("curie")
-        if not isinstance(self.curie, AlleleCurie):
-            self.curie = AlleleCurie(self.curie)
-
-        if self.symbol is not None and not isinstance(self.symbol, str):
-            self.symbol = str(self.symbol)
-
-        if not isinstance(self.contains_constructs, list):
-            self.contains_constructs = [self.contains_constructs] if self.contains_constructs is not None else []
-        self.contains_constructs = [v if isinstance(v, Construct) else Construct(**as_dict(v)) for v in self.contains_constructs]
-
-        if not isinstance(self.molecular_mutations, list):
-            self.molecular_mutations = [self.molecular_mutations] if self.molecular_mutations is not None else []
-        self.molecular_mutations = [v if isinstance(v, str) else str(v) for v in self.molecular_mutations]
-
-        if self.functional_impact is not None and not isinstance(self.functional_impact, str):
-            self.functional_impact = str(self.functional_impact)
-
-        if self.generation_method is not None and not isinstance(self.generation_method, str):
-            self.generation_method = str(self.generation_method)
-
-        self._normalize_inlined_as_dict(slot_name="associated_references", slot_type=AssociatedReference, key_name="reference_type", keyed=False)
-
-        self._normalize_inlined_as_dict(slot_name="related_notes", slot_type=Note, key_name="free_text", keyed=False)
-
-        if self.germline_transmission_status is not None and not isinstance(self.germline_transmission_status, VocabularyTermName):
-            self.germline_transmission_status = VocabularyTermName(self.germline_transmission_status)
-
-        if self.parent_cell_line is not None and not isinstance(self.parent_cell_line, CellLine):
-            self.parent_cell_line = CellLine()
-
-        if not isinstance(self.mutant_cell_lines, list):
-            self.mutant_cell_lines = [self.mutant_cell_lines] if self.mutant_cell_lines is not None else []
-        self.mutant_cell_lines = [v if isinstance(v, CellLine) else CellLine(**as_dict(v)) for v in self.mutant_cell_lines]
-
-        if not isinstance(self.embryonic_stem_cell_lines, list):
-            self.embryonic_stem_cell_lines = [self.embryonic_stem_cell_lines] if self.embryonic_stem_cell_lines is not None else []
-        self.embryonic_stem_cell_lines = [v if isinstance(v, CellLine) else CellLine(**as_dict(v)) for v in self.embryonic_stem_cell_lines]
-
-        if self.images is not None and not isinstance(self.images, ImageCurie):
-            self.images = ImageCurie(self.images)
-
-        if not isinstance(self.origins, list):
-            self.origins = [self.origins] if self.origins is not None else []
-        self.origins = [v if isinstance(v, AffectedGenomicModelCurie) else AffectedGenomicModelCurie(v) for v in self.origins]
-
-        if self.database_status is not None and not isinstance(self.database_status, VocabularyTermName):
-            self.database_status = VocabularyTermName(self.database_status)
-
-        if self.inheritence_mode is not None and not isinstance(self.inheritence_mode, VocabularyTermName):
-            self.inheritence_mode = VocabularyTermName(self.inheritence_mode)
-
-        if self.in_collection is not None and not isinstance(self.in_collection, VocabularyTermName):
-            self.in_collection = VocabularyTermName(self.in_collection)
-
-        if self.transposon_insertion is not None and not isinstance(self.transposon_insertion, str):
-            self.transposon_insertion = str(self.transposon_insertion)
-
-        if self.aberration is not None and not isinstance(self.aberration, str):
-            self.aberration = str(self.aberration)
-
-        if self.is_extinct is not None and not isinstance(self.is_extinct, Bool):
-            self.is_extinct = Bool(self.is_extinct)
-
-        if self.sequencing_status is not None and not isinstance(self.sequencing_status, VocabularyTermName):
-            self.sequencing_status = VocabularyTermName(self.sequencing_status)
-
-        if not isinstance(self.synonyms, list):
-            self.synonyms = [self.synonyms] if self.synonyms is not None else []
-        self.synonyms = [v if isinstance(v, Synonym) else Synonym(**as_dict(v)) for v in self.synonyms]
-
-        if self.embryonic_cell_lines is not None and not isinstance(self.embryonic_cell_lines, str):
-            self.embryonic_cell_lines = str(self.embryonic_cell_lines)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class AlleleGenomicEntityAssociation(Association):
-    """
-    Association between an allele and a genomic entity
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AlleleGenomicEntityAssociation")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "AlleleGenomicEntityAssociation"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/AlleleGenomicEntityAssociation")
-
-    subject: Union[str, AlleleCurie] = None
-    predicate: Union[str, ROTermCurie] = None
-    object: Union[str, GenomicEntityCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
-    single_reference: Optional[Union[str, ReferenceCurie]] = None
-    evidence_code: Optional[Union[str, ECOTermCurie]] = None
-    related_note: Optional[Union[dict, Note]] = None
-    table_key: Optional[int] = None
-    creation_date: Optional[Union[str, XSDDate]] = None
-    date_last_modified: Optional[Union[str, XSDDate]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.subject):
-            self.MissingRequiredField("subject")
-        if not isinstance(self.subject, AlleleCurie):
-            self.subject = AlleleCurie(self.subject)
-
-        if self._is_empty(self.predicate):
-            self.MissingRequiredField("predicate")
-        if not isinstance(self.predicate, ROTermCurie):
-            self.predicate = ROTermCurie(self.predicate)
-
-        if self._is_empty(self.object):
-            self.MissingRequiredField("object")
-        if not isinstance(self.object, GenomicEntityCurie):
-            self.object = GenomicEntityCurie(self.object)
-
-        if self._is_empty(self.created_by):
-            self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, PersonUniqueId):
-            self.created_by = PersonUniqueId(self.created_by)
-
-        if self._is_empty(self.modified_by):
-            self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, PersonUniqueId):
-            self.modified_by = PersonUniqueId(self.modified_by)
-
-        if self.single_reference is not None and not isinstance(self.single_reference, ReferenceCurie):
-            self.single_reference = ReferenceCurie(self.single_reference)
-
-        if self.evidence_code is not None and not isinstance(self.evidence_code, ECOTermCurie):
-            self.evidence_code = ECOTermCurie(self.evidence_code)
-
-        if self.related_note is not None and not isinstance(self.related_note, Note):
-            self.related_note = Note(**as_dict(self.related_note))
-
-        if self.table_key is not None and not isinstance(self.table_key, int):
-            self.table_key = int(self.table_key)
-
-        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
-            self.creation_date = XSDDate(self.creation_date)
-
-        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
-            self.date_last_modified = XSDDate(self.date_last_modified)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class AlleleGeneAssociation(AlleleGenomicEntityAssociation):
-    """
-    Association between an allele and a gene
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AlleleGeneAssociation")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "AlleleGeneAssociation"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/AlleleGeneAssociation")
-
-    subject: Union[str, AlleleCurie] = None
-    predicate: Union[str, ROTermCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
-    object: Union[str, GeneCurie] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.object):
-            self.MissingRequiredField("object")
-        if not isinstance(self.object, GeneCurie):
-            self.object = GeneCurie(self.object)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class AlleleTranscriptAssociation(AlleleGenomicEntityAssociation):
-    """
-    Association between an allele and a transcript
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AlleleTranscriptAssociation")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "AlleleTranscriptAssociation"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/AlleleTranscriptAssociation")
-
-    subject: Union[str, AlleleCurie] = None
-    predicate: Union[str, ROTermCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
-    object: Union[str, TranscriptCurie] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.object):
-            self.MissingRequiredField("object")
-        if not isinstance(self.object, TranscriptCurie):
-            self.object = TranscriptCurie(self.object)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class AlleleProteinAssociation(AlleleGenomicEntityAssociation):
-    """
-    Association between an allele and a protein
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AlleleProteinAssociation")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "AlleleProteinAssociation"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/AlleleProteinAssociation")
-
-    subject: Union[str, AlleleCurie] = None
-    predicate: Union[str, ROTermCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
-    object: Union[str, ProteinCurie] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.object):
-            self.MissingRequiredField("object")
-        if not isinstance(self.object, ProteinCurie):
-            self.object = ProteinCurie(self.object)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class AssociatedReference(YAMLRoot):
-    """
-    Describes the relation between a reference and an object
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AssociatedReference")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "AssociatedReference"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/AssociatedReference")
-
-    reference_type: Union[str, VocabularyTermName] = None
-    single_reference: Optional[Union[str, ReferenceCurie]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.reference_type):
-            self.MissingRequiredField("reference_type")
-        if not isinstance(self.reference_type, VocabularyTermName):
-            self.reference_type = VocabularyTermName(self.reference_type)
-
-        if self.single_reference is not None and not isinstance(self.single_reference, ReferenceCurie):
-            self.single_reference = ReferenceCurie(self.single_reference)
-
-        super().__post_init__(**kwargs)
-
-
-class Construct(YAMLRoot):
-    """
-    Dummy construct class
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/Construct")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "Construct"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/Construct")
-
-
-class CellLine(YAMLRoot):
-    """
-    Dummy cell line class
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/CellLine")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "CellLine"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/CellLine")
-
-
-class SequenceTargetingReagent(YAMLRoot):
-    """
-    Dummy sequence targeting reagent class
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/SequenceTargetingReagent")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "SequenceTargetingReagent"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/SequenceTargetingReagent")
-
-
-@dataclass
 class InformationContentEntity(YAMLRoot):
     """
     a piece of information that typically describes some topic of discourse or is used as support. Precedence of
@@ -2711,7 +2325,7 @@ class InformationContentEntity(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.InformationContentEntity
     class_class_curie: ClassVar[str] = "alliance:InformationContentEntity"
     class_name: ClassVar[str] = "InformationContentEntity"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/InformationContentEntity")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/InformationContentEntity")
 
     curie: Union[str, InformationContentEntityCurie] = None
     created_by: Union[str, PersonUniqueId] = None
@@ -2755,7 +2369,7 @@ class CrossReference(InformationContentEntity):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.CrossReference
     class_class_curie: ClassVar[str] = "alliance:CrossReference"
     class_name: ClassVar[str] = "CrossReference"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/CrossReference")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/CrossReference")
 
     curie: Union[str, CrossReferenceCurie] = None
     created_by: Union[str, PersonUniqueId] = None
@@ -2796,7 +2410,7 @@ class Reference(InformationContentEntity):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/Reference")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "Reference"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/Reference")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Reference")
 
     curie: Union[str, ReferenceCurie] = None
     created_by: Union[str, PersonUniqueId] = None
@@ -2922,7 +2536,7 @@ class Resource(InformationContentEntity):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/resource/Resource")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "Resource"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/Resource")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Resource")
 
     curie: Union[str, ResourceCurie] = None
     created_by: Union[str, PersonUniqueId] = None
@@ -2999,7 +2613,7 @@ class AuthorReference(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.AuthorReference
     class_class_curie: ClassVar[str] = "alliance:AuthorReference"
     class_name: ClassVar[str] = "AuthorReference"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/AuthorReference")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/AuthorReference")
 
     corresponding_author: Optional[Union[str, InformationContentEntityCurie]] = None
     first_name: Optional[str] = None
@@ -3030,6 +2644,575 @@ class AuthorReference(YAMLRoot):
 
 
 @dataclass
+class Allele(GenomicEntity):
+    """
+    One of multiple possible forms of a functional genomic element (most often described as a locus or gene),
+    differing from the reference DNA sequence. The genomic element can be endogenous or constructed.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/Allele")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "Allele"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Allele")
+
+    curie: Union[str, AlleleCurie] = None
+    taxon: Union[str, NCBITaxonTermCurie] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
+    symbol: Optional[str] = None
+    contains_constructs: Optional[Union[Union[dict, "Construct"], List[Union[dict, "Construct"]]]] = empty_list()
+    molecular_mutations: Optional[Union[str, List[str]]] = empty_list()
+    functional_impact: Optional[str] = None
+    generation_method: Optional[str] = None
+    associated_references: Optional[Union[Union[dict, "AssociatedReference"], List[Union[dict, "AssociatedReference"]]]] = empty_list()
+    related_notes: Optional[Union[Union[dict, Note], List[Union[dict, Note]]]] = empty_list()
+    germline_transmission_status: Optional[Union[str, VocabularyTermName]] = None
+    parent_cell_line: Optional[Union[dict, "CellLine"]] = None
+    mutant_cell_lines: Optional[Union[Union[dict, "CellLine"], List[Union[dict, "CellLine"]]]] = empty_list()
+    embryonic_stem_cell_lines: Optional[Union[Union[dict, "CellLine"], List[Union[dict, "CellLine"]]]] = empty_list()
+    images: Optional[Union[str, ImageCurie]] = None
+    origins: Optional[Union[Union[str, AffectedGenomicModelCurie], List[Union[str, AffectedGenomicModelCurie]]]] = empty_list()
+    database_status: Optional[Union[str, VocabularyTermName]] = None
+    inheritence_mode: Optional[Union[str, VocabularyTermName]] = None
+    in_collection: Optional[Union[str, VocabularyTermName]] = None
+    transposon_insertion: Optional[str] = None
+    aberration: Optional[str] = None
+    is_extinct: Optional[Union[bool, Bool]] = None
+    sequencing_status: Optional[Union[str, VocabularyTermName]] = None
+    synonyms: Optional[Union[Union[dict, Synonym], List[Union[dict, Synonym]]]] = empty_list()
+    embryonic_cell_lines: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, AlleleCurie):
+            self.curie = AlleleCurie(self.curie)
+
+        if self.symbol is not None and not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        if not isinstance(self.contains_constructs, list):
+            self.contains_constructs = [self.contains_constructs] if self.contains_constructs is not None else []
+        self.contains_constructs = [v if isinstance(v, Construct) else Construct(**as_dict(v)) for v in self.contains_constructs]
+
+        if not isinstance(self.molecular_mutations, list):
+            self.molecular_mutations = [self.molecular_mutations] if self.molecular_mutations is not None else []
+        self.molecular_mutations = [v if isinstance(v, str) else str(v) for v in self.molecular_mutations]
+
+        if self.functional_impact is not None and not isinstance(self.functional_impact, str):
+            self.functional_impact = str(self.functional_impact)
+
+        if self.generation_method is not None and not isinstance(self.generation_method, str):
+            self.generation_method = str(self.generation_method)
+
+        self._normalize_inlined_as_dict(slot_name="associated_references", slot_type=AssociatedReference, key_name="reference_type", keyed=False)
+
+        self._normalize_inlined_as_dict(slot_name="related_notes", slot_type=Note, key_name="free_text", keyed=False)
+
+        if self.germline_transmission_status is not None and not isinstance(self.germline_transmission_status, VocabularyTermName):
+            self.germline_transmission_status = VocabularyTermName(self.germline_transmission_status)
+
+        if self.parent_cell_line is not None and not isinstance(self.parent_cell_line, CellLine):
+            self.parent_cell_line = CellLine()
+
+        if not isinstance(self.mutant_cell_lines, list):
+            self.mutant_cell_lines = [self.mutant_cell_lines] if self.mutant_cell_lines is not None else []
+        self.mutant_cell_lines = [v if isinstance(v, CellLine) else CellLine(**as_dict(v)) for v in self.mutant_cell_lines]
+
+        if not isinstance(self.embryonic_stem_cell_lines, list):
+            self.embryonic_stem_cell_lines = [self.embryonic_stem_cell_lines] if self.embryonic_stem_cell_lines is not None else []
+        self.embryonic_stem_cell_lines = [v if isinstance(v, CellLine) else CellLine(**as_dict(v)) for v in self.embryonic_stem_cell_lines]
+
+        if self.images is not None and not isinstance(self.images, ImageCurie):
+            self.images = ImageCurie(self.images)
+
+        if not isinstance(self.origins, list):
+            self.origins = [self.origins] if self.origins is not None else []
+        self.origins = [v if isinstance(v, AffectedGenomicModelCurie) else AffectedGenomicModelCurie(v) for v in self.origins]
+
+        if self.database_status is not None and not isinstance(self.database_status, VocabularyTermName):
+            self.database_status = VocabularyTermName(self.database_status)
+
+        if self.inheritence_mode is not None and not isinstance(self.inheritence_mode, VocabularyTermName):
+            self.inheritence_mode = VocabularyTermName(self.inheritence_mode)
+
+        if self.in_collection is not None and not isinstance(self.in_collection, VocabularyTermName):
+            self.in_collection = VocabularyTermName(self.in_collection)
+
+        if self.transposon_insertion is not None and not isinstance(self.transposon_insertion, str):
+            self.transposon_insertion = str(self.transposon_insertion)
+
+        if self.aberration is not None and not isinstance(self.aberration, str):
+            self.aberration = str(self.aberration)
+
+        if self.is_extinct is not None and not isinstance(self.is_extinct, Bool):
+            self.is_extinct = Bool(self.is_extinct)
+
+        if self.sequencing_status is not None and not isinstance(self.sequencing_status, VocabularyTermName):
+            self.sequencing_status = VocabularyTermName(self.sequencing_status)
+
+        if not isinstance(self.synonyms, list):
+            self.synonyms = [self.synonyms] if self.synonyms is not None else []
+        self.synonyms = [v if isinstance(v, Synonym) else Synonym(**as_dict(v)) for v in self.synonyms]
+
+        if self.embryonic_cell_lines is not None and not isinstance(self.embryonic_cell_lines, str):
+            self.embryonic_cell_lines = str(self.embryonic_cell_lines)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class AlleleGenomicEntityAssociation(Association):
+    """
+    Association between an allele and a genomic entity
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AlleleGenomicEntityAssociation")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "AlleleGenomicEntityAssociation"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/AlleleGenomicEntityAssociation")
+
+    subject: Union[str, AlleleCurie] = None
+    predicate: Union[str, ROTermCurie] = None
+    object: Union[str, GenomicEntityCurie] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
+    single_reference: Optional[Union[str, ReferenceCurie]] = None
+    evidence_code: Optional[Union[str, ECOTermCurie]] = None
+    related_note: Optional[Union[dict, Note]] = None
+    table_key: Optional[int] = None
+    creation_date: Optional[Union[str, XSDDate]] = None
+    date_last_modified: Optional[Union[str, XSDDate]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.subject):
+            self.MissingRequiredField("subject")
+        if not isinstance(self.subject, AlleleCurie):
+            self.subject = AlleleCurie(self.subject)
+
+        if self._is_empty(self.predicate):
+            self.MissingRequiredField("predicate")
+        if not isinstance(self.predicate, ROTermCurie):
+            self.predicate = ROTermCurie(self.predicate)
+
+        if self._is_empty(self.object):
+            self.MissingRequiredField("object")
+        if not isinstance(self.object, GenomicEntityCurie):
+            self.object = GenomicEntityCurie(self.object)
+
+        if self._is_empty(self.created_by):
+            self.MissingRequiredField("created_by")
+        if not isinstance(self.created_by, PersonUniqueId):
+            self.created_by = PersonUniqueId(self.created_by)
+
+        if self._is_empty(self.modified_by):
+            self.MissingRequiredField("modified_by")
+        if not isinstance(self.modified_by, PersonUniqueId):
+            self.modified_by = PersonUniqueId(self.modified_by)
+
+        if self.single_reference is not None and not isinstance(self.single_reference, ReferenceCurie):
+            self.single_reference = ReferenceCurie(self.single_reference)
+
+        if self.evidence_code is not None and not isinstance(self.evidence_code, ECOTermCurie):
+            self.evidence_code = ECOTermCurie(self.evidence_code)
+
+        if self.related_note is not None and not isinstance(self.related_note, Note):
+            self.related_note = Note(**as_dict(self.related_note))
+
+        if self.table_key is not None and not isinstance(self.table_key, int):
+            self.table_key = int(self.table_key)
+
+        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
+            self.creation_date = XSDDate(self.creation_date)
+
+        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
+            self.date_last_modified = XSDDate(self.date_last_modified)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class AlleleGeneAssociation(AlleleGenomicEntityAssociation):
+    """
+    Association between an allele and a gene
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AlleleGeneAssociation")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "AlleleGeneAssociation"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/AlleleGeneAssociation")
+
+    subject: Union[str, AlleleCurie] = None
+    predicate: Union[str, ROTermCurie] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
+    object: Union[str, GeneCurie] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.object):
+            self.MissingRequiredField("object")
+        if not isinstance(self.object, GeneCurie):
+            self.object = GeneCurie(self.object)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class AlleleTranscriptAssociation(AlleleGenomicEntityAssociation):
+    """
+    Association between an allele and a transcript
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AlleleTranscriptAssociation")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "AlleleTranscriptAssociation"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/AlleleTranscriptAssociation")
+
+    subject: Union[str, AlleleCurie] = None
+    predicate: Union[str, ROTermCurie] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
+    object: Union[str, TranscriptCurie] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.object):
+            self.MissingRequiredField("object")
+        if not isinstance(self.object, TranscriptCurie):
+            self.object = TranscriptCurie(self.object)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class AlleleProteinAssociation(AlleleGenomicEntityAssociation):
+    """
+    Association between an allele and a protein
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AlleleProteinAssociation")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "AlleleProteinAssociation"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/AlleleProteinAssociation")
+
+    subject: Union[str, AlleleCurie] = None
+    predicate: Union[str, ROTermCurie] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
+    object: Union[str, ProteinCurie] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.object):
+            self.MissingRequiredField("object")
+        if not isinstance(self.object, ProteinCurie):
+            self.object = ProteinCurie(self.object)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class AssociatedReference(YAMLRoot):
+    """
+    Describes the relation between a reference and an object
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AssociatedReference")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "AssociatedReference"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/AssociatedReference")
+
+    reference_type: Union[str, VocabularyTermName] = None
+    single_reference: Optional[Union[str, ReferenceCurie]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.reference_type):
+            self.MissingRequiredField("reference_type")
+        if not isinstance(self.reference_type, VocabularyTermName):
+            self.reference_type = VocabularyTermName(self.reference_type)
+
+        if self.single_reference is not None and not isinstance(self.single_reference, ReferenceCurie):
+            self.single_reference = ReferenceCurie(self.single_reference)
+
+        super().__post_init__(**kwargs)
+
+
+class Construct(YAMLRoot):
+    """
+    Dummy construct class
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/Construct")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "Construct"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Construct")
+
+
+class CellLine(YAMLRoot):
+    """
+    Dummy cell line class
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/CellLine")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "CellLine"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/CellLine")
+
+
+class SequenceTargetingReagent(YAMLRoot):
+    """
+    Dummy sequence targeting reagent class
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/SequenceTargetingReagent")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "SequenceTargetingReagent"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/SequenceTargetingReagent")
+
+
+@dataclass
+class Variant(GenomicEntity):
+    """
+    A DNA sequence that differs relative to a designated reference sequence. The sequence occurs at a single position
+    or in contiguous nucleotides.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/Variant")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "Variant"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Variant")
+
+    curie: Union[str, VariantCurie] = None
+    taxon: Union[str, NCBITaxonTermCurie] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
+    variant_type: Union[str, SOTermCurie] = None
+    variant_locations: Union[Union[dict, "VariantLocation"], List[Union[dict, "VariantLocation"]]] = None
+    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
+    related_notes: Optional[Union[Union[dict, Note], List[Union[dict, Note]]]] = empty_list()
+    source_general_consequence: Optional[Union[str, SOTermCurie]] = None
+    evidence_code: Optional[Union[str, ECOTermCurie]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, VariantCurie):
+            self.curie = VariantCurie(self.curie)
+
+        if self._is_empty(self.variant_type):
+            self.MissingRequiredField("variant_type")
+        if not isinstance(self.variant_type, SOTermCurie):
+            self.variant_type = SOTermCurie(self.variant_type)
+
+        if self._is_empty(self.variant_locations):
+            self.MissingRequiredField("variant_locations")
+        self._normalize_inlined_as_dict(slot_name="variant_locations", slot_type=VariantLocation, key_name="hgvs", keyed=False)
+
+        if not isinstance(self.references, list):
+            self.references = [self.references] if self.references is not None else []
+        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
+
+        self._normalize_inlined_as_dict(slot_name="related_notes", slot_type=Note, key_name="free_text", keyed=False)
+
+        if self.source_general_consequence is not None and not isinstance(self.source_general_consequence, SOTermCurie):
+            self.source_general_consequence = SOTermCurie(self.source_general_consequence)
+
+        if self.evidence_code is not None and not isinstance(self.evidence_code, ECOTermCurie):
+            self.evidence_code = ECOTermCurie(self.evidence_code)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class VariantLocation(YAMLRoot):
+    """
+    Base class linking a variant to a position on a genomic entity.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/VariantLocation")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "VariantLocation"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/VariantLocation")
+
+    hgvs: str = None
+    curated_start_position: int = None
+    curated_end_position: int = None
+    evidence_code: Optional[Union[str, ECOTermCurie]] = None
+    source_start_position: Optional[int] = None
+    source_end_position: Optional[int] = None
+    source_reference_sequence: Optional[Union[str, BiologicalSequence]] = None
+    curated_reference_sequence: Optional[Union[str, BiologicalSequence]] = None
+    source_variant_sequence: Optional[Union[str, BiologicalSequence]] = None
+    curated_variant_sequence: Optional[Union[str, BiologicalSequence]] = None
+    source_consequence: Optional[Union[str, SOTermCurie]] = None
+    curated_consequence: Optional[Union[str, SOTermCurie]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.hgvs):
+            self.MissingRequiredField("hgvs")
+        if not isinstance(self.hgvs, str):
+            self.hgvs = str(self.hgvs)
+
+        if self._is_empty(self.curated_start_position):
+            self.MissingRequiredField("curated_start_position")
+        if not isinstance(self.curated_start_position, int):
+            self.curated_start_position = int(self.curated_start_position)
+
+        if self._is_empty(self.curated_end_position):
+            self.MissingRequiredField("curated_end_position")
+        if not isinstance(self.curated_end_position, int):
+            self.curated_end_position = int(self.curated_end_position)
+
+        if self.evidence_code is not None and not isinstance(self.evidence_code, ECOTermCurie):
+            self.evidence_code = ECOTermCurie(self.evidence_code)
+
+        if self.source_start_position is not None and not isinstance(self.source_start_position, int):
+            self.source_start_position = int(self.source_start_position)
+
+        if self.source_end_position is not None and not isinstance(self.source_end_position, int):
+            self.source_end_position = int(self.source_end_position)
+
+        if self.source_reference_sequence is not None and not isinstance(self.source_reference_sequence, BiologicalSequence):
+            self.source_reference_sequence = BiologicalSequence(self.source_reference_sequence)
+
+        if self.curated_reference_sequence is not None and not isinstance(self.curated_reference_sequence, BiologicalSequence):
+            self.curated_reference_sequence = BiologicalSequence(self.curated_reference_sequence)
+
+        if self.source_variant_sequence is not None and not isinstance(self.source_variant_sequence, BiologicalSequence):
+            self.source_variant_sequence = BiologicalSequence(self.source_variant_sequence)
+
+        if self.curated_variant_sequence is not None and not isinstance(self.curated_variant_sequence, BiologicalSequence):
+            self.curated_variant_sequence = BiologicalSequence(self.curated_variant_sequence)
+
+        if self.source_consequence is not None and not isinstance(self.source_consequence, SOTermCurie):
+            self.source_consequence = SOTermCurie(self.source_consequence)
+
+        if self.curated_consequence is not None and not isinstance(self.curated_consequence, SOTermCurie):
+            self.curated_consequence = SOTermCurie(self.curated_consequence)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class VariantGenomeLocation(VariantLocation):
+    """
+    Links a variant to a genomic position.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/VariantGenomeLocation")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "VariantGenomeLocation"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/VariantGenomeLocation")
+
+    hgvs: str = None
+    curated_start_position: int = None
+    curated_end_position: int = None
+    curated_assembly: Union[str, AssemblyCurie] = None
+    curated_chromosome: Union[str, ChromosomeCurie] = None
+    source_assembly: Optional[Union[str, AssemblyCurie]] = None
+    source_chromosome: Optional[Union[str, ChromosomeCurie]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curated_assembly):
+            self.MissingRequiredField("curated_assembly")
+        if not isinstance(self.curated_assembly, AssemblyCurie):
+            self.curated_assembly = AssemblyCurie(self.curated_assembly)
+
+        if self._is_empty(self.curated_chromosome):
+            self.MissingRequiredField("curated_chromosome")
+        if not isinstance(self.curated_chromosome, ChromosomeCurie):
+            self.curated_chromosome = ChromosomeCurie(self.curated_chromosome)
+
+        if self.source_assembly is not None and not isinstance(self.source_assembly, AssemblyCurie):
+            self.source_assembly = AssemblyCurie(self.source_assembly)
+
+        if self.source_chromosome is not None and not isinstance(self.source_chromosome, ChromosomeCurie):
+            self.source_chromosome = ChromosomeCurie(self.source_chromosome)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class VariantTranscriptLocation(VariantLocation):
+    """
+    Links a variant to a position on a transcript.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/VariantTranscriptLocation")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "VariantTranscriptLocation"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/VariantTranscriptLocation")
+
+    hgvs: str = None
+    curated_start_position: int = None
+    curated_end_position: int = None
+    curated_transcript: Union[str, TranscriptCurie] = None
+    source_transcript: Optional[Union[str, TranscriptCurie]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curated_transcript):
+            self.MissingRequiredField("curated_transcript")
+        if not isinstance(self.curated_transcript, TranscriptCurie):
+            self.curated_transcript = TranscriptCurie(self.curated_transcript)
+
+        if self.source_transcript is not None and not isinstance(self.source_transcript, TranscriptCurie):
+            self.source_transcript = TranscriptCurie(self.source_transcript)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class VariantPolypeptideLocation(VariantLocation):
+    """
+    Links a variant to a position on a polypeptide.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/VariantPolypeptideLocation")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "VariantPolypeptideLocation"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/VariantPolypeptideLocation")
+
+    hgvs: str = None
+    curated_start_position: int = None
+    curated_end_position: int = None
+    curated_polypeptide: Union[str, ProteinCurie] = None
+    source_polypeptide: Optional[Union[str, ProteinCurie]] = None
+    source_associated_transcripts: Optional[Union[Union[str, TranscriptCurie], List[Union[str, TranscriptCurie]]]] = empty_list()
+    curated_associated_transcripts: Optional[Union[Union[str, TranscriptCurie], List[Union[str, TranscriptCurie]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curated_polypeptide):
+            self.MissingRequiredField("curated_polypeptide")
+        if not isinstance(self.curated_polypeptide, ProteinCurie):
+            self.curated_polypeptide = ProteinCurie(self.curated_polypeptide)
+
+        if self.source_polypeptide is not None and not isinstance(self.source_polypeptide, ProteinCurie):
+            self.source_polypeptide = ProteinCurie(self.source_polypeptide)
+
+        if not isinstance(self.source_associated_transcripts, list):
+            self.source_associated_transcripts = [self.source_associated_transcripts] if self.source_associated_transcripts is not None else []
+        self.source_associated_transcripts = [v if isinstance(v, TranscriptCurie) else TranscriptCurie(v) for v in self.source_associated_transcripts]
+
+        if not isinstance(self.curated_associated_transcripts, list):
+            self.curated_associated_transcripts = [self.curated_associated_transcripts] if self.curated_associated_transcripts is not None else []
+        self.curated_associated_transcripts = [v if isinstance(v, TranscriptCurie) else TranscriptCurie(v) for v in self.curated_associated_transcripts]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class AffectedGenomicModel(GenomicEntity):
     """
     Includes inbred strains, stocks, disease models and mutant genotypes
@@ -3039,7 +3222,7 @@ class AffectedGenomicModel(GenomicEntity):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/affectedGenomicModel/AffectedGenomicModel")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "AffectedGenomicModel"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/AffectedGenomicModel")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/AffectedGenomicModel")
 
     curie: Union[str, AffectedGenomicModelCurie] = None
     taxon: Union[str, NCBITaxonTermCurie] = None
@@ -3087,7 +3270,7 @@ class AffectedGenomicModelComponent(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/affectedGenomicModel/AffectedGenomicModelComponent")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "AffectedGenomicModelComponent"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/AffectedGenomicModelComponent")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/AffectedGenomicModelComponent")
 
     has_allele: Optional[Union[str, AlleleCurie]] = None
     zygosity: Optional[Union[str, "ZygosityValues"]] = None
@@ -3103,34 +3286,72 @@ class AffectedGenomicModelComponent(YAMLRoot):
 
 
 # Enumerations
-class VepConsequenceLevels(EnumDefinitionImpl):
+class BulkLoadStatusEnum(EnumDefinitionImpl):
 
-    high = PermissibleValue(text="high")
-    moderate = PermissibleValue(text="moderate")
-    low = PermissibleValue(text="low")
-    modifier = PermissibleValue(text="modifier")
+    STARTED = PermissibleValue(text="STARTED")
+    RUNNING = PermissibleValue(text="RUNNING")
+    STOPPED = PermissibleValue(text="STOPPED")
+    FINISHED = PermissibleValue(text="FINISHED")
+    PENDING = PermissibleValue(text="PENDING")
+    FAILED = PermissibleValue(text="FAILED")
+    DOWNLOADING = PermissibleValue(text="DOWNLOADING")
+    NOT_RESPONDING = PermissibleValue(text="NOT_RESPONDING")
+    ADMINISTRATIVELY_STOPPED = PermissibleValue(text="ADMINISTRATIVELY_STOPPED")
+    PAUSED = PermissibleValue(text="PAUSED")
 
     _defn = EnumDefinition(
-        name="VepConsequenceLevels",
+        name="BulkLoadStatusEnum",
     )
 
-class SiftPredictionLevels(EnumDefinitionImpl):
+class BackendBulkLoadTypeEnum(EnumDefinitionImpl):
 
-    deleterious = PermissibleValue(text="deleterious")
-    tolerated = PermissibleValue(text="tolerated")
+    GENE_DTO = PermissibleValue(text="GENE_DTO")
+    ALLELE_DTO = PermissibleValue(text="ALLELE_DTO")
+    AGM_DTO = PermissibleValue(text="AGM_DTO")
+    DISEASE_ANNOTATION_DTO = PermissibleValue(text="DISEASE_ANNOTATION_DTO")
+    GENE = PermissibleValue(text="GENE")
+    ALLELE = PermissibleValue(text="ALLELE")
+    AGM = PermissibleValue(text="AGM")
+    DISEASE_ANNOTATION = PermissibleValue(text="DISEASE_ANNOTATION")
+    ONTOLOGY = PermissibleValue(text="ONTOLOGY")
+    MOLECULE = PermissibleValue(text="MOLECULE")
 
     _defn = EnumDefinition(
-        name="SiftPredictionLevels",
+        name="BackendBulkLoadTypeEnum",
     )
 
-class PolyphenPredictionLevels(EnumDefinitionImpl):
+class OntologyBulkLoadTypeEnum(EnumDefinitionImpl):
 
-    possibly_damaging = PermissibleValue(text="possibly_damaging")
-    probably_damaging = PermissibleValue(text="probably_damaging")
-    benign = PermissibleValue(text="benign")
+    ECO = PermissibleValue(text="ECO")
+    ZFA = PermissibleValue(text="ZFA")
+    DO = PermissibleValue(text="DO")
+    MA = PermissibleValue(text="MA")
+    CHEBI = PermissibleValue(text="CHEBI")
+    XCO = PermissibleValue(text="XCO")
+    MP = PermissibleValue(text="MP")
+    DAO = PermissibleValue(text="DAO")
+    ZECO = PermissibleValue(text="ZECO")
+    WBBT = PermissibleValue(text="WBBT")
+    EMAPA = PermissibleValue(text="EMAPA")
+    GO = PermissibleValue(text="GO")
+    SO = PermissibleValue(text="SO")
 
     _defn = EnumDefinition(
-        name="PolyphenPredictionLevels",
+        name="OntologyBulkLoadTypeEnum",
+    )
+
+class BackendBulkDataTypeEnum(EnumDefinitionImpl):
+
+    RGD = PermissibleValue(text="RGD")
+    MGI = PermissibleValue(text="MGI")
+    SGD = PermissibleValue(text="SGD")
+    HUMAN = PermissibleValue(text="HUMAN")
+    ZFIN = PermissibleValue(text="ZFIN")
+    FB = PermissibleValue(text="FB")
+    WB = PermissibleValue(text="WB")
+
+    _defn = EnumDefinition(
+        name="BackendBulkDataTypeEnum",
     )
 
 class EntitySynonymTypeSet(EnumDefinitionImpl):
@@ -3213,59 +3434,86 @@ class ZygosityValues(EnumDefinitionImpl):
 class slots:
     pass
 
-slots.vep_impact = Slot(uri=DEFAULT_.vep_impact, name="vep_impact", curie=DEFAULT_.curie('vep_impact'),
-                   model_uri=DEFAULT_.vep_impact, domain=None, range=Optional[str])
+slots.loads = Slot(uri=DEFAULT_.loads, name="loads", curie=DEFAULT_.curie('loads'),
+                   model_uri=DEFAULT_.loads, domain=None, range=Optional[Union[Union[dict, BulkLoad], List[Union[dict, BulkLoad]]]])
 
-slots.vep_consequence = Slot(uri=DEFAULT_.vep_consequence, name="vep_consequence", curie=DEFAULT_.curie('vep_consequence'),
-                   model_uri=DEFAULT_.vep_consequence, domain=None, range=Optional[Union[str, "VepConsequenceLevels"]])
+slots.bulkload_status = Slot(uri=DEFAULT_.bulkload_status, name="bulkload_status", curie=DEFAULT_.curie('bulkload_status'),
+                   model_uri=DEFAULT_.bulkload_status, domain=None, range=Optional[Union[str, "BulkLoadStatusEnum"]])
 
-slots.polyphen_score = Slot(uri=DEFAULT_.polyphen_score, name="polyphen_score", curie=DEFAULT_.curie('polyphen_score'),
-                   model_uri=DEFAULT_.polyphen_score, domain=VariantGeneConsequence, range=Optional[float])
+slots.error_message = Slot(uri=DEFAULT_.error_message, name="error_message", curie=DEFAULT_.curie('error_message'),
+                   model_uri=DEFAULT_.error_message, domain=None, range=Optional[str])
 
-slots.polyphen_prediction = Slot(uri=DEFAULT_.polyphen_prediction, name="polyphen_prediction", curie=DEFAULT_.curie('polyphen_prediction'),
-                   model_uri=DEFAULT_.polyphen_prediction, domain=None, range=Optional[Union[str, "PolyphenPredictionLevels"]])
+slots.backend_bulk_load_type = Slot(uri=DEFAULT_.backend_bulk_load_type, name="backend_bulk_load_type", curie=DEFAULT_.curie('backend_bulk_load_type'),
+                   model_uri=DEFAULT_.backend_bulk_load_type, domain=None, range=Optional[Union[str, "BackendBulkLoadTypeEnum"]])
 
-slots.sift_score = Slot(uri=DEFAULT_.sift_score, name="sift_score", curie=DEFAULT_.curie('sift_score'),
-                   model_uri=DEFAULT_.sift_score, domain=VariantGeneConsequence, range=Optional[float])
+slots.ontology_type = Slot(uri=DEFAULT_.ontology_type, name="ontology_type", curie=DEFAULT_.curie('ontology_type'),
+                   model_uri=DEFAULT_.ontology_type, domain=None, range=Optional[Union[str, "OntologyBulkLoadTypeEnum"]])
 
-slots.sift_prediction = Slot(uri=DEFAULT_.sift_prediction, name="sift_prediction", curie=DEFAULT_.curie('sift_prediction'),
-                   model_uri=DEFAULT_.sift_prediction, domain=None, range=Optional[Union[str, "SiftPredictionLevels"]])
+slots.bulkload_group = Slot(uri=DEFAULT_.bulkload_group, name="bulkload_group", curie=DEFAULT_.curie('bulkload_group'),
+                   model_uri=DEFAULT_.bulkload_group, domain=None, range=Optional[Union[dict, BulkLoadGroup]])
 
-slots.amino_acid_reference = Slot(uri=DEFAULT_.amino_acid_reference, name="amino_acid_reference", curie=DEFAULT_.curie('amino_acid_reference'),
-                   model_uri=DEFAULT_.amino_acid_reference, domain=VariantTranscriptConsequence, range=Optional[str])
+slots.load_files = Slot(uri=DEFAULT_.load_files, name="load_files", curie=DEFAULT_.curie('load_files'),
+                   model_uri=DEFAULT_.load_files, domain=None, range=Optional[Union[Union[dict, BulkLoadFile], List[Union[dict, BulkLoadFile]]]])
 
-slots.amino_acid_variant = Slot(uri=DEFAULT_.amino_acid_variant, name="amino_acid_variant", curie=DEFAULT_.curie('amino_acid_variant'),
-                   model_uri=DEFAULT_.amino_acid_variant, domain=VariantTranscriptConsequence, range=Optional[str])
+slots.md5_sum = Slot(uri=DEFAULT_.md5_sum, name="md5_sum", curie=DEFAULT_.curie('md5_sum'),
+                   model_uri=DEFAULT_.md5_sum, domain=None, range=Optional[str])
 
-slots.codon_reference = Slot(uri=DEFAULT_.codon_reference, name="codon_reference", curie=DEFAULT_.curie('codon_reference'),
-                   model_uri=DEFAULT_.codon_reference, domain=VariantTranscriptConsequence, range=Optional[str])
+slots.local_file_path = Slot(uri=DEFAULT_.local_file_path, name="local_file_path", curie=DEFAULT_.curie('local_file_path'),
+                   model_uri=DEFAULT_.local_file_path, domain=None, range=Optional[str])
 
-slots.codon_variant = Slot(uri=DEFAULT_.codon_variant, name="codon_variant", curie=DEFAULT_.curie('codon_variant'),
-                   model_uri=DEFAULT_.codon_variant, domain=VariantTranscriptConsequence, range=Optional[str])
+slots.file_size = Slot(uri=DEFAULT_.file_size, name="file_size", curie=DEFAULT_.curie('file_size'),
+                   model_uri=DEFAULT_.file_size, domain=None, range=Optional[int])
 
-slots.cdna_start = Slot(uri=DEFAULT_.cdna_start, name="cdna_start", curie=DEFAULT_.curie('cdna_start'),
-                   model_uri=DEFAULT_.cdna_start, domain=VariantTranscriptConsequence, range=Optional[int])
+slots.s3_path = Slot(uri=DEFAULT_.s3_path, name="s3_path", curie=DEFAULT_.curie('s3_path'),
+                   model_uri=DEFAULT_.s3_path, domain=None, range=Optional[str])
 
-slots.cdna_end = Slot(uri=DEFAULT_.cdna_end, name="cdna_end", curie=DEFAULT_.curie('cdna_end'),
-                   model_uri=DEFAULT_.cdna_end, domain=VariantTranscriptConsequence, range=Optional[int])
+slots.s3_url = Slot(uri=DEFAULT_.s3_url, name="s3_url", curie=DEFAULT_.curie('s3_url'),
+                   model_uri=DEFAULT_.s3_url, domain=None, range=Optional[str])
 
-slots.cds_start = Slot(uri=DEFAULT_.cds_start, name="cds_start", curie=DEFAULT_.curie('cds_start'),
-                   model_uri=DEFAULT_.cds_start, domain=VariantTranscriptConsequence, range=Optional[int])
+slots.record_count = Slot(uri=DEFAULT_.record_count, name="record_count", curie=DEFAULT_.curie('record_count'),
+                   model_uri=DEFAULT_.record_count, domain=None, range=Optional[int])
 
-slots.cds_end = Slot(uri=DEFAULT_.cds_end, name="cds_end", curie=DEFAULT_.curie('cds_end'),
-                   model_uri=DEFAULT_.cds_end, domain=VariantTranscriptConsequence, range=Optional[int])
+slots.bulk_load = Slot(uri=DEFAULT_.bulk_load, name="bulk_load", curie=DEFAULT_.curie('bulk_load'),
+                   model_uri=DEFAULT_.bulk_load, domain=None, range=Optional[Union[dict, BulkLoad]])
 
-slots.protein_start = Slot(uri=DEFAULT_.protein_start, name="protein_start", curie=DEFAULT_.curie('protein_start'),
-                   model_uri=DEFAULT_.protein_start, domain=VariantTranscriptConsequence, range=Optional[int])
+slots.schedule_active = Slot(uri=DEFAULT_.schedule_active, name="schedule_active", curie=DEFAULT_.curie('schedule_active'),
+                   model_uri=DEFAULT_.schedule_active, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.protein_end = Slot(uri=DEFAULT_.protein_end, name="protein_end", curie=DEFAULT_.curie('protein_end'),
-                   model_uri=DEFAULT_.protein_end, domain=VariantTranscriptConsequence, range=Optional[int])
+slots.cron_schedule = Slot(uri=DEFAULT_.cron_schedule, name="cron_schedule", curie=DEFAULT_.curie('cron_schedule'),
+                   model_uri=DEFAULT_.cron_schedule, domain=None, range=Optional[str])
 
-slots.hgvs_protein_nomenclature = Slot(uri=DEFAULT_.hgvs_protein_nomenclature, name="hgvs_protein_nomenclature", curie=DEFAULT_.curie('hgvs_protein_nomenclature'),
-                   model_uri=DEFAULT_.hgvs_protein_nomenclature, domain=VariantTranscriptConsequence, range=Optional[str])
+slots.scheduling_error_message = Slot(uri=DEFAULT_.scheduling_error_message, name="scheduling_error_message", curie=DEFAULT_.curie('scheduling_error_message'),
+                   model_uri=DEFAULT_.scheduling_error_message, domain=None, range=Optional[str])
 
-slots.hgvs_coding_nomenclature = Slot(uri=DEFAULT_.hgvs_coding_nomenclature, name="hgvs_coding_nomenclature", curie=DEFAULT_.curie('hgvs_coding_nomenclature'),
-                   model_uri=DEFAULT_.hgvs_coding_nomenclature, domain=VariantTranscriptConsequence, range=Optional[str])
+slots.fms_data_type = Slot(uri=DEFAULT_.fms_data_type, name="fms_data_type", curie=DEFAULT_.curie('fms_data_type'),
+                   model_uri=DEFAULT_.fms_data_type, domain=None, range=Optional[str])
+
+slots.fms_data_sub_type = Slot(uri=DEFAULT_.fms_data_sub_type, name="fms_data_sub_type", curie=DEFAULT_.curie('fms_data_sub_type'),
+                   model_uri=DEFAULT_.fms_data_sub_type, domain=None, range=Optional[str])
+
+slots.bulkload_url = Slot(uri=DEFAULT_.bulkload_url, name="bulkload_url", curie=DEFAULT_.curie('bulkload_url'),
+                   model_uri=DEFAULT_.bulkload_url, domain=None, range=Optional[str])
+
+slots.backend_load_type = Slot(uri=DEFAULT_.backend_load_type, name="backend_load_type", curie=DEFAULT_.curie('backend_load_type'),
+                   model_uri=DEFAULT_.backend_load_type, domain=None, range=Optional[Union[str, "BackendBulkDataTypeEnum"]])
+
+slots.load_started = Slot(uri=DEFAULT_.load_started, name="load_started", curie=DEFAULT_.curie('load_started'),
+                   model_uri=DEFAULT_.load_started, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.load_finished = Slot(uri=DEFAULT_.load_finished, name="load_finished", curie=DEFAULT_.curie('load_finished'),
+                   model_uri=DEFAULT_.load_finished, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.total_records = Slot(uri=DEFAULT_.total_records, name="total_records", curie=DEFAULT_.curie('total_records'),
+                   model_uri=DEFAULT_.total_records, domain=None, range=Optional[int])
+
+slots.failed_records = Slot(uri=DEFAULT_.failed_records, name="failed_records", curie=DEFAULT_.curie('failed_records'),
+                   model_uri=DEFAULT_.failed_records, domain=None, range=Optional[int])
+
+slots.completed_records = Slot(uri=DEFAULT_.completed_records, name="completed_records", curie=DEFAULT_.curie('completed_records'),
+                   model_uri=DEFAULT_.completed_records, domain=None, range=Optional[str])
+
+slots.load_exceptions = Slot(uri=DEFAULT_.load_exceptions, name="load_exceptions", curie=DEFAULT_.curie('load_exceptions'),
+                   model_uri=DEFAULT_.load_exceptions, domain=None, range=Optional[Union[str, List[str]]])
 
 slots.start = Slot(uri=ALLIANCE.start, name="start", curie=ALLIANCE.curie('start'),
                    model_uri=DEFAULT_.start, domain=None, range=Optional[str])
@@ -3465,78 +3713,6 @@ slots.predicate = Slot(uri=ALLIANCE.predicate, name="predicate", curie=ALLIANCE.
 slots.related_to = Slot(uri=ALLIANCE.related_to, name="related_to", curie=ALLIANCE.curie('related_to'),
                    model_uri=DEFAULT_.related_to, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.variant_type = Slot(uri="str(uriorcurie)", name="variant_type", curie=None,
-                   model_uri=DEFAULT_.variant_type, domain=Variant, range=Union[str, SOTermCurie])
-
-slots.source_general_consequence = Slot(uri="str(uriorcurie)", name="source_general_consequence", curie=None,
-                   model_uri=DEFAULT_.source_general_consequence, domain=Variant, range=Optional[Union[str, SOTermCurie]])
-
-slots.source_consequence = Slot(uri="str(uriorcurie)", name="source_consequence", curie=None,
-                   model_uri=DEFAULT_.source_consequence, domain=VariantLocation, range=Optional[Union[str, SOTermCurie]])
-
-slots.curated_consequence = Slot(uri="str(uriorcurie)", name="curated_consequence", curie=None,
-                   model_uri=DEFAULT_.curated_consequence, domain=VariantLocation, range=Optional[Union[str, SOTermCurie]])
-
-slots.variant_locations = Slot(uri="str(uriorcurie)", name="variant_locations", curie=None,
-                   model_uri=DEFAULT_.variant_locations, domain=Variant, range=Union[Union[dict, "VariantLocation"], List[Union[dict, "VariantLocation"]]])
-
-slots.hgvs = Slot(uri="str(uriorcurie)", name="hgvs", curie=None,
-                   model_uri=DEFAULT_.hgvs, domain=VariantLocation, range=str)
-
-slots.source_assembly = Slot(uri="str(uriorcurie)", name="source_assembly", curie=None,
-                   model_uri=DEFAULT_.source_assembly, domain=VariantLocation, range=Optional[Union[str, AssemblyCurie]])
-
-slots.curated_assembly = Slot(uri="str(uriorcurie)", name="curated_assembly", curie=None,
-                   model_uri=DEFAULT_.curated_assembly, domain=VariantLocation, range=Union[str, AssemblyCurie])
-
-slots.source_chromosome = Slot(uri="str(uriorcurie)", name="source_chromosome", curie=None,
-                   model_uri=DEFAULT_.source_chromosome, domain=VariantLocation, range=Optional[Union[str, ChromosomeCurie]])
-
-slots.curated_chromosome = Slot(uri="str(uriorcurie)", name="curated_chromosome", curie=None,
-                   model_uri=DEFAULT_.curated_chromosome, domain=VariantLocation, range=Union[str, ChromosomeCurie])
-
-slots.source_start_position = Slot(uri="str(uriorcurie)", name="source_start_position", curie=None,
-                   model_uri=DEFAULT_.source_start_position, domain=VariantLocation, range=Optional[int])
-
-slots.curated_start_position = Slot(uri="str(uriorcurie)", name="curated_start_position", curie=None,
-                   model_uri=DEFAULT_.curated_start_position, domain=VariantLocation, range=int)
-
-slots.source_end_position = Slot(uri="str(uriorcurie)", name="source_end_position", curie=None,
-                   model_uri=DEFAULT_.source_end_position, domain=VariantLocation, range=Optional[int])
-
-slots.curated_end_position = Slot(uri="str(uriorcurie)", name="curated_end_position", curie=None,
-                   model_uri=DEFAULT_.curated_end_position, domain=VariantLocation, range=int)
-
-slots.source_reference_sequence = Slot(uri="str(uriorcurie)", name="source_reference_sequence", curie=None,
-                   model_uri=DEFAULT_.source_reference_sequence, domain=VariantLocation, range=Optional[Union[str, BiologicalSequence]])
-
-slots.curated_reference_sequence = Slot(uri="str(uriorcurie)", name="curated_reference_sequence", curie=None,
-                   model_uri=DEFAULT_.curated_reference_sequence, domain=VariantLocation, range=Optional[Union[str, BiologicalSequence]])
-
-slots.source_variant_sequence = Slot(uri="str(uriorcurie)", name="source_variant_sequence", curie=None,
-                   model_uri=DEFAULT_.source_variant_sequence, domain=VariantLocation, range=Optional[Union[str, BiologicalSequence]])
-
-slots.curated_variant_sequence = Slot(uri="str(uriorcurie)", name="curated_variant_sequence", curie=None,
-                   model_uri=DEFAULT_.curated_variant_sequence, domain=VariantLocation, range=Optional[Union[str, BiologicalSequence]])
-
-slots.source_transcript = Slot(uri="str(uriorcurie)", name="source_transcript", curie=None,
-                   model_uri=DEFAULT_.source_transcript, domain=VariantTranscriptLocation, range=Optional[Union[str, TranscriptCurie]])
-
-slots.curated_transcript = Slot(uri="str(uriorcurie)", name="curated_transcript", curie=None,
-                   model_uri=DEFAULT_.curated_transcript, domain=VariantTranscriptLocation, range=Union[str, TranscriptCurie])
-
-slots.source_polypeptide = Slot(uri="str(uriorcurie)", name="source_polypeptide", curie=None,
-                   model_uri=DEFAULT_.source_polypeptide, domain=VariantPolypeptideLocation, range=Optional[Union[str, ProteinCurie]])
-
-slots.curated_polypeptide = Slot(uri="str(uriorcurie)", name="curated_polypeptide", curie=None,
-                   model_uri=DEFAULT_.curated_polypeptide, domain=VariantPolypeptideLocation, range=Union[str, ProteinCurie])
-
-slots.source_associated_transcripts = Slot(uri="str(uriorcurie)", name="source_associated_transcripts", curie=None,
-                   model_uri=DEFAULT_.source_associated_transcripts, domain=VariantPolypeptideLocation, range=Optional[Union[Union[str, TranscriptCurie], List[Union[str, TranscriptCurie]]]])
-
-slots.curated_associated_transcripts = Slot(uri="str(uriorcurie)", name="curated_associated_transcripts", curie=None,
-                   model_uri=DEFAULT_.curated_associated_transcripts, domain=VariantPolypeptideLocation, range=Optional[Union[Union[str, TranscriptCurie], List[Union[str, TranscriptCurie]]]])
-
 slots.reference_id = Slot(uri="str(uriorcurie)", name="reference_id", curie=None,
                    model_uri=DEFAULT_.reference_id, domain=Reference, range=Optional[int])
 
@@ -3711,6 +3887,33 @@ slots.member_terms = Slot(uri="str(uriorcurie)", name="member_terms", curie=None
 slots.vocabulary_description = Slot(uri="str(uriorcurie)", name="vocabulary_description", curie=None,
                    model_uri=DEFAULT_.vocabulary_description, domain=None, range=Optional[str])
 
+slots.summary = Slot(uri=ALLIANCE.summary, name="summary", curie=ALLIANCE.curie('summary'),
+                   model_uri=DEFAULT_.summary, domain=InformationContentEntity, range=Optional[str])
+
+slots.copyright_date = Slot(uri=ALLIANCE.copyright_date, name="copyright_date", curie=ALLIANCE.curie('copyright_date'),
+                   model_uri=DEFAULT_.copyright_date, domain=InformationContentEntity, range=Optional[Union[str, XSDDate]])
+
+slots.authors = Slot(uri=ALLIANCE.authors, name="authors", curie=ALLIANCE.curie('authors'),
+                   model_uri=DEFAULT_.authors, domain=InformationContentEntity, range=Optional[Union[Union[dict, "AuthorReference"], List[Union[dict, "AuthorReference"]]]])
+
+slots.corresponding_author = Slot(uri=ALLIANCE.corresponding_author, name="corresponding_author", curie=ALLIANCE.curie('corresponding_author'),
+                   model_uri=DEFAULT_.corresponding_author, domain=InformationContentEntity, range=Optional[Union[str, InformationContentEntityCurie]])
+
+slots.initials = Slot(uri=ALLIANCE.initials, name="initials", curie=ALLIANCE.curie('initials'),
+                   model_uri=DEFAULT_.initials, domain=InformationContentEntity, range=Optional[Union[str, InformationContentEntityCurie]])
+
+slots.title = Slot(uri=ALLIANCE.title, name="title", curie=ALLIANCE.curie('title'),
+                   model_uri=DEFAULT_.title, domain=InformationContentEntity, range=Optional[str])
+
+slots.volume = Slot(uri=ALLIANCE.volume, name="volume", curie=ALLIANCE.curie('volume'),
+                   model_uri=DEFAULT_.volume, domain=InformationContentEntity, range=Optional[str])
+
+slots.publisher = Slot(uri=ALLIANCE.publisher, name="publisher", curie=ALLIANCE.curie('publisher'),
+                   model_uri=DEFAULT_.publisher, domain=InformationContentEntity, range=Optional[str])
+
+slots.address = Slot(uri=ALLIANCE.address, name="address", curie=ALLIANCE.curie('address'),
+                   model_uri=DEFAULT_.address, domain=None, range=Optional[str])
+
 slots.contains_constructs = Slot(uri="str(uriorcurie)", name="contains_constructs", curie=None,
                    model_uri=DEFAULT_.contains_constructs, domain=Allele, range=Optional[Union[Union[dict, "Construct"], List[Union[dict, "Construct"]]]])
 
@@ -3771,32 +3974,77 @@ slots.is_extinct = Slot(uri="str(uriorcurie)", name="is_extinct", curie=None,
 slots.sequencing_status = Slot(uri="str(uriorcurie)", name="sequencing_status", curie=None,
                    model_uri=DEFAULT_.sequencing_status, domain=Variant, range=Optional[Union[str, VocabularyTermName]])
 
-slots.summary = Slot(uri=ALLIANCE.summary, name="summary", curie=ALLIANCE.curie('summary'),
-                   model_uri=DEFAULT_.summary, domain=InformationContentEntity, range=Optional[str])
+slots.variant_type = Slot(uri="str(uriorcurie)", name="variant_type", curie=None,
+                   model_uri=DEFAULT_.variant_type, domain=Variant, range=Union[str, SOTermCurie])
 
-slots.copyright_date = Slot(uri=ALLIANCE.copyright_date, name="copyright_date", curie=ALLIANCE.curie('copyright_date'),
-                   model_uri=DEFAULT_.copyright_date, domain=InformationContentEntity, range=Optional[Union[str, XSDDate]])
+slots.source_general_consequence = Slot(uri="str(uriorcurie)", name="source_general_consequence", curie=None,
+                   model_uri=DEFAULT_.source_general_consequence, domain=Variant, range=Optional[Union[str, SOTermCurie]])
 
-slots.authors = Slot(uri=ALLIANCE.authors, name="authors", curie=ALLIANCE.curie('authors'),
-                   model_uri=DEFAULT_.authors, domain=InformationContentEntity, range=Optional[Union[Union[dict, "AuthorReference"], List[Union[dict, "AuthorReference"]]]])
+slots.source_consequence = Slot(uri="str(uriorcurie)", name="source_consequence", curie=None,
+                   model_uri=DEFAULT_.source_consequence, domain=VariantLocation, range=Optional[Union[str, SOTermCurie]])
 
-slots.corresponding_author = Slot(uri=ALLIANCE.corresponding_author, name="corresponding_author", curie=ALLIANCE.curie('corresponding_author'),
-                   model_uri=DEFAULT_.corresponding_author, domain=InformationContentEntity, range=Optional[Union[str, InformationContentEntityCurie]])
+slots.curated_consequence = Slot(uri="str(uriorcurie)", name="curated_consequence", curie=None,
+                   model_uri=DEFAULT_.curated_consequence, domain=VariantLocation, range=Optional[Union[str, SOTermCurie]])
 
-slots.initials = Slot(uri=ALLIANCE.initials, name="initials", curie=ALLIANCE.curie('initials'),
-                   model_uri=DEFAULT_.initials, domain=InformationContentEntity, range=Optional[Union[str, InformationContentEntityCurie]])
+slots.variant_locations = Slot(uri="str(uriorcurie)", name="variant_locations", curie=None,
+                   model_uri=DEFAULT_.variant_locations, domain=Variant, range=Union[Union[dict, "VariantLocation"], List[Union[dict, "VariantLocation"]]])
 
-slots.title = Slot(uri=ALLIANCE.title, name="title", curie=ALLIANCE.curie('title'),
-                   model_uri=DEFAULT_.title, domain=InformationContentEntity, range=Optional[str])
+slots.hgvs = Slot(uri="str(uriorcurie)", name="hgvs", curie=None,
+                   model_uri=DEFAULT_.hgvs, domain=VariantLocation, range=str)
 
-slots.volume = Slot(uri=ALLIANCE.volume, name="volume", curie=ALLIANCE.curie('volume'),
-                   model_uri=DEFAULT_.volume, domain=InformationContentEntity, range=Optional[str])
+slots.source_assembly = Slot(uri="str(uriorcurie)", name="source_assembly", curie=None,
+                   model_uri=DEFAULT_.source_assembly, domain=VariantLocation, range=Optional[Union[str, AssemblyCurie]])
 
-slots.publisher = Slot(uri=ALLIANCE.publisher, name="publisher", curie=ALLIANCE.curie('publisher'),
-                   model_uri=DEFAULT_.publisher, domain=InformationContentEntity, range=Optional[str])
+slots.curated_assembly = Slot(uri="str(uriorcurie)", name="curated_assembly", curie=None,
+                   model_uri=DEFAULT_.curated_assembly, domain=VariantLocation, range=Union[str, AssemblyCurie])
 
-slots.address = Slot(uri=ALLIANCE.address, name="address", curie=ALLIANCE.curie('address'),
-                   model_uri=DEFAULT_.address, domain=None, range=Optional[str])
+slots.source_chromosome = Slot(uri="str(uriorcurie)", name="source_chromosome", curie=None,
+                   model_uri=DEFAULT_.source_chromosome, domain=VariantLocation, range=Optional[Union[str, ChromosomeCurie]])
+
+slots.curated_chromosome = Slot(uri="str(uriorcurie)", name="curated_chromosome", curie=None,
+                   model_uri=DEFAULT_.curated_chromosome, domain=VariantLocation, range=Union[str, ChromosomeCurie])
+
+slots.source_start_position = Slot(uri="str(uriorcurie)", name="source_start_position", curie=None,
+                   model_uri=DEFAULT_.source_start_position, domain=VariantLocation, range=Optional[int])
+
+slots.curated_start_position = Slot(uri="str(uriorcurie)", name="curated_start_position", curie=None,
+                   model_uri=DEFAULT_.curated_start_position, domain=VariantLocation, range=int)
+
+slots.source_end_position = Slot(uri="str(uriorcurie)", name="source_end_position", curie=None,
+                   model_uri=DEFAULT_.source_end_position, domain=VariantLocation, range=Optional[int])
+
+slots.curated_end_position = Slot(uri="str(uriorcurie)", name="curated_end_position", curie=None,
+                   model_uri=DEFAULT_.curated_end_position, domain=VariantLocation, range=int)
+
+slots.source_reference_sequence = Slot(uri="str(uriorcurie)", name="source_reference_sequence", curie=None,
+                   model_uri=DEFAULT_.source_reference_sequence, domain=VariantLocation, range=Optional[Union[str, BiologicalSequence]])
+
+slots.curated_reference_sequence = Slot(uri="str(uriorcurie)", name="curated_reference_sequence", curie=None,
+                   model_uri=DEFAULT_.curated_reference_sequence, domain=VariantLocation, range=Optional[Union[str, BiologicalSequence]])
+
+slots.source_variant_sequence = Slot(uri="str(uriorcurie)", name="source_variant_sequence", curie=None,
+                   model_uri=DEFAULT_.source_variant_sequence, domain=VariantLocation, range=Optional[Union[str, BiologicalSequence]])
+
+slots.curated_variant_sequence = Slot(uri="str(uriorcurie)", name="curated_variant_sequence", curie=None,
+                   model_uri=DEFAULT_.curated_variant_sequence, domain=VariantLocation, range=Optional[Union[str, BiologicalSequence]])
+
+slots.source_transcript = Slot(uri="str(uriorcurie)", name="source_transcript", curie=None,
+                   model_uri=DEFAULT_.source_transcript, domain=VariantTranscriptLocation, range=Optional[Union[str, TranscriptCurie]])
+
+slots.curated_transcript = Slot(uri="str(uriorcurie)", name="curated_transcript", curie=None,
+                   model_uri=DEFAULT_.curated_transcript, domain=VariantTranscriptLocation, range=Union[str, TranscriptCurie])
+
+slots.source_polypeptide = Slot(uri="str(uriorcurie)", name="source_polypeptide", curie=None,
+                   model_uri=DEFAULT_.source_polypeptide, domain=VariantPolypeptideLocation, range=Optional[Union[str, ProteinCurie]])
+
+slots.curated_polypeptide = Slot(uri="str(uriorcurie)", name="curated_polypeptide", curie=None,
+                   model_uri=DEFAULT_.curated_polypeptide, domain=VariantPolypeptideLocation, range=Union[str, ProteinCurie])
+
+slots.source_associated_transcripts = Slot(uri="str(uriorcurie)", name="source_associated_transcripts", curie=None,
+                   model_uri=DEFAULT_.source_associated_transcripts, domain=VariantPolypeptideLocation, range=Optional[Union[Union[str, TranscriptCurie], List[Union[str, TranscriptCurie]]]])
+
+slots.curated_associated_transcripts = Slot(uri="str(uriorcurie)", name="curated_associated_transcripts", curie=None,
+                   model_uri=DEFAULT_.curated_associated_transcripts, domain=VariantPolypeptideLocation, range=Optional[Union[Union[str, TranscriptCurie], List[Union[str, TranscriptCurie]]]])
 
 slots.subtype = Slot(uri="str(uriorcurie)", name="subtype", curie=None,
                    model_uri=DEFAULT_.subtype, domain=AffectedGenomicModel, range=Optional[Union[str, "SubtypeValues"]])
@@ -3816,59 +4064,11 @@ slots.sequence_targeting_reagents = Slot(uri="str(uriorcurie)", name="sequence_t
 slots.parental_populations = Slot(uri="str(uriorcurie)", name="parental_populations", curie=None,
                    model_uri=DEFAULT_.parental_populations, domain=AffectedGenomicModel, range=Optional[Union[str, URIorCURIE]])
 
-slots.cnda_end = Slot(uri=DEFAULT_.cnda_end, name="cnda_end", curie=DEFAULT_.curie('cnda_end'),
-                   model_uri=DEFAULT_.cnda_end, domain=None, range=Optional[str])
-
 slots.id = Slot(uri=DEFAULT_.id, name="id", curie=DEFAULT_.curie('id'),
                    model_uri=DEFAULT_.id, domain=None, range=Optional[str])
 
 slots.embryonic_cell_lines = Slot(uri=DEFAULT_.embryonic_cell_lines, name="embryonic_cell_lines", curie=DEFAULT_.curie('embryonic_cell_lines'),
                    model_uri=DEFAULT_.embryonic_cell_lines, domain=None, range=Optional[str])
-
-slots.VariantConsequence_subject = Slot(uri=ALLIANCE.subject, name="VariantConsequence_subject", curie=ALLIANCE.curie('subject'),
-                   model_uri=DEFAULT_.VariantConsequence_subject, domain=VariantConsequence, range=Union[str, VariantCurie])
-
-slots.VariantGeneConsequence_object = Slot(uri=ALLIANCE.object, name="VariantGeneConsequence_object", curie=ALLIANCE.curie('object'),
-                   model_uri=DEFAULT_.VariantGeneConsequence_object, domain=VariantGeneConsequence, range=Union[str, GeneCurie])
-
-slots.VariantTranscriptConsequence_object = Slot(uri=ALLIANCE.object, name="VariantTranscriptConsequence_object", curie=ALLIANCE.curie('object'),
-                   model_uri=DEFAULT_.VariantTranscriptConsequence_object, domain=VariantTranscriptConsequence, range=Union[str, TranscriptCurie])
-
-slots.VariantTranscriptConsequence_amino_acid_reference = Slot(uri=DEFAULT_.amino_acid_reference, name="VariantTranscriptConsequence_amino_acid_reference", curie=DEFAULT_.curie('amino_acid_reference'),
-                   model_uri=DEFAULT_.VariantTranscriptConsequence_amino_acid_reference, domain=VariantTranscriptConsequence, range=Optional[str])
-
-slots.VariantTranscriptConsequence_amino_acid_variant = Slot(uri=DEFAULT_.amino_acid_variant, name="VariantTranscriptConsequence_amino_acid_variant", curie=DEFAULT_.curie('amino_acid_variant'),
-                   model_uri=DEFAULT_.VariantTranscriptConsequence_amino_acid_variant, domain=VariantTranscriptConsequence, range=Optional[str])
-
-slots.VariantTranscriptConsequence_codon_reference = Slot(uri=DEFAULT_.codon_reference, name="VariantTranscriptConsequence_codon_reference", curie=DEFAULT_.curie('codon_reference'),
-                   model_uri=DEFAULT_.VariantTranscriptConsequence_codon_reference, domain=VariantTranscriptConsequence, range=Optional[str])
-
-slots.VariantTranscriptConsequence_codon_variant = Slot(uri=DEFAULT_.codon_variant, name="VariantTranscriptConsequence_codon_variant", curie=DEFAULT_.curie('codon_variant'),
-                   model_uri=DEFAULT_.VariantTranscriptConsequence_codon_variant, domain=VariantTranscriptConsequence, range=Optional[str])
-
-slots.VariantTranscriptConsequence_cdna_start = Slot(uri=DEFAULT_.cdna_start, name="VariantTranscriptConsequence_cdna_start", curie=DEFAULT_.curie('cdna_start'),
-                   model_uri=DEFAULT_.VariantTranscriptConsequence_cdna_start, domain=VariantTranscriptConsequence, range=Optional[int])
-
-slots.VariantTranscriptConsequence_cnda_end = Slot(uri=DEFAULT_.cnda_end, name="VariantTranscriptConsequence_cnda_end", curie=DEFAULT_.curie('cnda_end'),
-                   model_uri=DEFAULT_.VariantTranscriptConsequence_cnda_end, domain=VariantTranscriptConsequence, range=Optional[str])
-
-slots.VariantTranscriptConsequence_cds_start = Slot(uri=DEFAULT_.cds_start, name="VariantTranscriptConsequence_cds_start", curie=DEFAULT_.curie('cds_start'),
-                   model_uri=DEFAULT_.VariantTranscriptConsequence_cds_start, domain=VariantTranscriptConsequence, range=Optional[int])
-
-slots.VariantTranscriptConsequence_cds_end = Slot(uri=DEFAULT_.cds_end, name="VariantTranscriptConsequence_cds_end", curie=DEFAULT_.curie('cds_end'),
-                   model_uri=DEFAULT_.VariantTranscriptConsequence_cds_end, domain=VariantTranscriptConsequence, range=Optional[int])
-
-slots.VariantTranscriptConsequence_protein_start = Slot(uri=DEFAULT_.protein_start, name="VariantTranscriptConsequence_protein_start", curie=DEFAULT_.curie('protein_start'),
-                   model_uri=DEFAULT_.VariantTranscriptConsequence_protein_start, domain=VariantTranscriptConsequence, range=Optional[int])
-
-slots.VariantTranscriptConsequence_protein_end = Slot(uri=DEFAULT_.protein_end, name="VariantTranscriptConsequence_protein_end", curie=DEFAULT_.curie('protein_end'),
-                   model_uri=DEFAULT_.VariantTranscriptConsequence_protein_end, domain=VariantTranscriptConsequence, range=Optional[int])
-
-slots.VariantTranscriptConsequence_hgvs_protein_nomenclature = Slot(uri=DEFAULT_.hgvs_protein_nomenclature, name="VariantTranscriptConsequence_hgvs_protein_nomenclature", curie=DEFAULT_.curie('hgvs_protein_nomenclature'),
-                   model_uri=DEFAULT_.VariantTranscriptConsequence_hgvs_protein_nomenclature, domain=VariantTranscriptConsequence, range=Optional[str])
-
-slots.VariantTranscriptConsequence_hgvs_coding_nomenclature = Slot(uri=DEFAULT_.hgvs_coding_nomenclature, name="VariantTranscriptConsequence_hgvs_coding_nomenclature", curie=DEFAULT_.curie('hgvs_coding_nomenclature'),
-                   model_uri=DEFAULT_.VariantTranscriptConsequence_hgvs_coding_nomenclature, domain=VariantTranscriptConsequence, range=Optional[str])
 
 slots.BiologicalEntity_taxon = Slot(uri=ALLIANCE.taxon, name="BiologicalEntity_taxon", curie=ALLIANCE.curie('taxon'),
                    model_uri=DEFAULT_.BiologicalEntity_taxon, domain=BiologicalEntity, range=Union[str, NCBITaxonTermCurie])
@@ -3899,9 +4099,6 @@ slots.GeneGenomicLocation_subject = Slot(uri=ALLIANCE.subject, name="GeneGenomic
 
 slots.GeneGenomicLocation_object = Slot(uri=ALLIANCE.object, name="GeneGenomicLocation_object", curie=ALLIANCE.curie('object'),
                    model_uri=DEFAULT_.GeneGenomicLocation_object, domain=GeneGenomicLocation, range=Union[str, ChromosomeCurie])
-
-slots.VariantLocation_evidence_code = Slot(uri=ALLIANCE.evidence_code, name="VariantLocation_evidence_code", curie=ALLIANCE.curie('evidence_code'),
-                   model_uri=DEFAULT_.VariantLocation_evidence_code, domain=VariantLocation, range=Optional[Union[str, ECOTermCurie]])
 
 slots.Reference_date_last_modified = Slot(uri=ALLIANCE.date_last_modified, name="Reference_date_last_modified", curie=ALLIANCE.curie('date_last_modified'),
                    model_uri=DEFAULT_.Reference_date_last_modified, domain=Reference, range=Optional[Union[str, XSDDate]])
@@ -3995,3 +4192,6 @@ slots.AlleleTranscriptAssociation_object = Slot(uri=ALLIANCE.object, name="Allel
 
 slots.AlleleProteinAssociation_object = Slot(uri=ALLIANCE.object, name="AlleleProteinAssociation_object", curie=ALLIANCE.curie('object'),
                    model_uri=DEFAULT_.AlleleProteinAssociation_object, domain=AlleleProteinAssociation, range=Union[str, ProteinCurie])
+
+slots.VariantLocation_evidence_code = Slot(uri=ALLIANCE.evidence_code, name="VariantLocation_evidence_code", curie=ALLIANCE.curie('evidence_code'),
+                   model_uri=DEFAULT_.VariantLocation_evidence_code, domain=VariantLocation, range=Optional[Union[str, ECOTermCurie]])
