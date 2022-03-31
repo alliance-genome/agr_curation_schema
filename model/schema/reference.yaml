@@ -71,7 +71,6 @@ classes:
     notes: >-
       In the literature database, the table is named mesh_details. 
       In the literature API, the field is named mesh_terms.
-    is_a: InformationContentEntity
     slots:
       - mesh_detail_id 
       - reference_id 
@@ -101,7 +100,7 @@ slots:
       The MeSH term description or definition from PubMed.
       e.g. Measles in a Measles/epidemiology term.
     multivalued: false
-    domain: Reference
+    domain: MeshDetail
     range: string
     required: true
 
@@ -110,9 +109,9 @@ slots:
       The MeSH term subheading from PubMed, to narrow down the topic.
       e.g. epidemiology in a Measles/epidemiology term.
     multivalued: false
-    domain: Reference
+    domain: MeshDetail
     range: string
-    required: true
+    required: false
 
   pubmed_type:
     description: >-
