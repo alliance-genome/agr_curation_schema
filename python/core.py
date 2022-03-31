@@ -1,5 +1,5 @@
 # Auto generated from core.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-31T17:42:25
+# Generation date: 2022-03-31T18:12:08
 # Schema: Alliance-Schema-Core
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/core.yaml
@@ -2685,8 +2685,8 @@ class SequenceTargetingReagent(YAMLRoot):
 @dataclass
 class Variant(GenomicEntity):
     """
-    A DNA sequence that differs relative to a designated reference sequence. The sequence occurs at a single position
-    or in contiguous nucleotides.
+    A DNA, RNA or protein/polypeptide sequence that differs relative to a designated reference sequence. The sequence
+    occurs at a single position or in a range of contiguous nucleotides or amino acids.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -2701,10 +2701,8 @@ class Variant(GenomicEntity):
     modified_by: Union[str, PersonUniqueId] = None
     variant_type: Union[str, SOTermCurie] = None
     variant_locations: Union[Union[dict, "VariantLocation"], List[Union[dict, "VariantLocation"]]] = None
-    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
     related_notes: Optional[Union[Union[dict, Note], List[Union[dict, Note]]]] = empty_list()
     source_general_consequence: Optional[Union[str, SOTermCurie]] = None
-    evidence_code: Optional[Union[str, ECOTermCurie]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -2721,17 +2719,10 @@ class Variant(GenomicEntity):
             self.MissingRequiredField("variant_locations")
         self._normalize_inlined_as_dict(slot_name="variant_locations", slot_type=VariantLocation, key_name="hgvs", keyed=False)
 
-        if not isinstance(self.references, list):
-            self.references = [self.references] if self.references is not None else []
-        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
-
         self._normalize_inlined_as_dict(slot_name="related_notes", slot_type=Note, key_name="free_text", keyed=False)
 
         if self.source_general_consequence is not None and not isinstance(self.source_general_consequence, SOTermCurie):
             self.source_general_consequence = SOTermCurie(self.source_general_consequence)
-
-        if self.evidence_code is not None and not isinstance(self.evidence_code, ECOTermCurie):
-            self.evidence_code = ECOTermCurie(self.evidence_code)
 
         super().__post_init__(**kwargs)
 
@@ -2739,7 +2730,13 @@ class Variant(GenomicEntity):
 @dataclass
 class VariantLocation(YAMLRoot):
     """
-    Base class linking a variant to a position on a genomic entity.
+    Base class linking a variant to a position on a genomic entity and the resulting consequence to the sequence
+    and/or function of that genomic entity. Slots are provided for data taken from a source publication or data load
+    and for data resulting from manual curation. Where the values are the same, the curator has confirmed the
+    information from the source. In other cases, the curator's analysis has resulted in different values, for
+    instance, if the assembly is different, the source did not specify the transcript or protein isoform, the
+    definition of the transcript or protein isoform used by the source has changed, or if there was an error in the
+    source data.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -2752,6 +2749,7 @@ class VariantLocation(YAMLRoot):
     curated_start_position: int = None
     curated_end_position: int = None
     evidence_code: Optional[Union[str, ECOTermCurie]] = None
+    single_reference: Optional[Union[str, ReferenceCurie]] = None
     source_start_position: Optional[int] = None
     source_end_position: Optional[int] = None
     source_reference_sequence: Optional[Union[str, BiologicalSequence]] = None
@@ -2779,6 +2777,9 @@ class VariantLocation(YAMLRoot):
 
         if self.evidence_code is not None and not isinstance(self.evidence_code, ECOTermCurie):
             self.evidence_code = ECOTermCurie(self.evidence_code)
+
+        if self.single_reference is not None and not isinstance(self.single_reference, ReferenceCurie):
+            self.single_reference = ReferenceCurie(self.single_reference)
 
         if self.source_start_position is not None and not isinstance(self.source_start_position, int):
             self.source_start_position = int(self.source_start_position)
@@ -2810,7 +2811,9 @@ class VariantLocation(YAMLRoot):
 @dataclass
 class VariantGenomeLocation(VariantLocation):
     """
-    Links a variant to a genomic position.
+    Links a variant to a genomic position and the resulting consequence to the sequence and/or function. In practice,
+    functional consequences for variants which overlap genes are not generally provided at the genome level but rather
+    are calculated and annotated relative to a specific transcript or protein isoform.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -2850,7 +2853,8 @@ class VariantGenomeLocation(VariantLocation):
 @dataclass
 class VariantTranscriptLocation(VariantLocation):
     """
-    Links a variant to a position on a transcript.
+    Links a variant to a position on a specified transcript and the resulting consequence to the sequence and/or
+    function of that transcript.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -2880,7 +2884,8 @@ class VariantTranscriptLocation(VariantLocation):
 @dataclass
 class VariantPolypeptideLocation(VariantLocation):
     """
-    Links a variant to a position on a polypeptide.
+    Links a variant to a position on a specified polypeptide and the resulting consequence to the sequence and/or
+    function of that polypeptide.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
