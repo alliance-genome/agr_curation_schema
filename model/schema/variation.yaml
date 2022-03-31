@@ -30,10 +30,8 @@ classes:
       position or in contiguous nucleotides.
     slots:
       - variant_type
-      - references
       - related_notes
       - source_general_consequence
-      - evidence_code
       - variant_locations
     exact_mappings:
       - SO:0001059
@@ -44,6 +42,7 @@ classes:
       Base class linking a variant to a position on a genomic entity.
     slots:
       - evidence_code
+      - single_reference
       - hgvs
       - source_start_position
       - curated_start_position
@@ -74,16 +73,16 @@ classes:
     description: >-
       Links a variant to a position on a transcript.
     slots:
-      - source_transcript
-      - curated_transcript
+      - source_transcript # accession number range: transcript object
+      - curated_transcript # accession number range: transcript object
 
   VariantPolypeptideLocation:
     is_a: VariantLocation
     description: >-
       Links a variant to a position on a polypeptide.
     slots:
-      - source_polypeptide
-      - curated_polypeptide
+      - source_polypeptide # accession number range: protein object
+      - curated_polypeptide # accession number range: protein object
       - source_associated_transcripts
       - curated_associated_transcripts
 
