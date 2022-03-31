@@ -13,7 +13,13 @@
             "modified_by": "SGD",
             "creation_date": "2018-04-25T14:04:15-00:00",
             "subject": "SGD:S000001671",
-            "disease_annotation_summary": "Yeast PXA2 is homologous to human ABCD1 and ABCD2, and has been used to study adrenoleukodystrophy",
+            "related_notes": [
+        {
+          "free_text": "Yeast PXA2 is homologous to human ABCD1 and ABCD2, and has been used to study adrenoleukodystrophy",
+          "note_type": "disease_summary",
+          "internal": false
+        }
+      ], 
             "predicate": "is_implicated_in",
             "with": [
                 "HGNC:61",

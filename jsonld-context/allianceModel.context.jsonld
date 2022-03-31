@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-03-15T08:43:05\n    Schema: Alliance-Schema-Prototype\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: Alliance Schema Prototype\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-03-31T08:51:20\n    Schema: Alliance-Schema-Prototype\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: Alliance Schema Prototype\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "BIOGRID": "http://identifiers.org/biogrid/",
       "DIP": "http://identifiers.org/dip/",
@@ -653,9 +653,6 @@
       "pages": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/pages"
       },
-      "paper_handles": {
-         "@type": "@id"
-      },
       "parent_cell_line": {
          "@type": "@id",
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/parent_cell_line"
@@ -712,10 +709,6 @@
       },
       "pubmed_type": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/pubmed_type"
-      },
-      "reagents_used": {
-         "@type": "@id",
-         "@id": "https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/reagents_used"
       },
       "reference_id": {
          "@type": "xsd:integer",
@@ -854,15 +847,6 @@
       "taxon": {
          "@type": "@id"
       },
-      "temporal_qualifiers": {
-         "@context": {
-            "@vocab": "@null",
-            "text": "skos:notation",
-            "description": "skos:prefLabel",
-            "meaning": "@id"
-         },
-         "@id": "https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/temporal_qualifiers"
-      },
       "text_synonyms": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/text_synonyms"
       },
@@ -911,14 +895,6 @@
          "@id": "https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/vocabulary_description"
       },
       "name": "@id",
-      "when_expressed": {
-         "@type": "@id",
-         "@id": "https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/when_expressed"
-      },
-      "where_expressed": {
-         "@type": "@id",
-         "@id": "https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/where_expressed"
-      },
       "width": {
          "@type": "xsd:integer",
          "@id": "https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/width"

@@ -887,28 +887,6 @@
          "title": "AlleleTranscriptAssociation",
          "type": "object"
       },
-      "AnatomicalSite": {
-         "additionalProperties": false,
-         "description": "The developmental stage and/or age of the specimen in an annotation.",
-         "properties": {
-            "anatomical_structure": {
-               "type": "string"
-            },
-            "anatomical_substructure": {
-               "type": "string"
-            },
-            "cellular_component": {
-               "type": "string"
-            },
-            "spatial_qualifiers": {
-               "$ref": "#/$defs/SpatialQualifierSet",
-               "description": "Qualifiers that describe the spatial characteristics of an event."
-            }
-         },
-         "required": [],
-         "title": "AnatomicalSite",
-         "type": "object"
-      },
       "Antibody": {
          "additionalProperties": false,
          "description": "Immunoglobulin proteins that bind specific molecule(s). Can be used experimentally for the purposes of detection or purification.",
@@ -1344,6 +1322,14 @@
                   "$ref": "#/$defs/ExperimentalCondition"
                },
                "type": "array"
+            },
+            "handle": {
+               "description": "A slot pointing to a free-text alias or 'handle' for a data object, such as a reference-specific alias for a data object used while curating.",
+               "type": "string"
+            },
+            "single_reference": {
+               "description": "holds between an object and a single reference",
+               "type": "string"
             },
             "unique_id": {
                "description": "Unique identifer for the condition relation.  Will be generated at AGR.",
@@ -2897,34 +2883,6 @@
          "title": "GeneDiseaseAnnotation",
          "type": "object"
       },
-      "GeneExpressionStatement": {
-         "additionalProperties": false,
-         "description": "Free-text describing some aspect(s) of a gene's expression, particularly nuanced information that is not readily captured in annotations. May summarize data from many annotations and/or many publications.",
-         "properties": {
-            "references": {
-               "description": "holds between an object and a list of references",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "statement_subject": {
-               "description": "The entity being described by the note.",
-               "type": "string"
-            },
-            "statement_text": {
-               "description": "Free-text describing some aspect of an entity.",
-               "type": "string"
-            },
-            "statement_type": {
-               "$ref": "#/$defs/ExpressionStatementTypeEnum",
-               "description": "The type of free-text statement. For example: cytology, private, curator_comments."
-            }
-         },
-         "required": [],
-         "title": "GeneExpressionStatement",
-         "type": "object"
-      },
       "GeneGeneticInteraction": {
          "additionalProperties": false,
          "description": "A genetic interaction between genes (e.g. phenotypic suppression)",
@@ -4309,26 +4267,6 @@
          "title": "Organization",
          "type": "object"
       },
-      "PaperHandle": {
-         "additionalProperties": false,
-         "description": "A pairing of a reference and a free text string that allows an object to have a reference-specific alias (or handle). For example, used for experimental conditions from ZFIN to label (in a reference-specific manner) individual experimental conditions when curating a particular reference.",
-         "properties": {
-            "handle": {
-               "description": "A slot pointing to a free-text alias or 'handle' for a data object, such as a reference-specific alias for a data object used while curating.",
-               "type": "string"
-            },
-            "single_reference": {
-               "description": "holds between an object and a single reference",
-               "type": "string"
-            }
-         },
-         "required": [
-            "single_reference",
-            "handle"
-         ],
-         "title": "PaperHandle",
-         "type": "object"
-      },
       "Person": {
          "additionalProperties": false,
          "description": "",
@@ -5168,44 +5106,6 @@
          "title": "Synonym",
          "type": "object"
       },
-      "TemporalContext": {
-         "additionalProperties": false,
-         "description": "The developmental stage and/or age of the specimen in an annotation. Developmental_stage_stop is optional. Add an uncertainty flag here?",
-         "properties": {
-            "age": {
-               "description": "The age at which an annotated event was observed.",
-               "type": "string"
-            },
-            "developmental_stage_start": {
-               "description": "The beginning developmental stage at which an annotated event was observed.",
-               "type": "string"
-            },
-            "developmental_stage_stop": {
-               "description": "The end developmental stage at which an annotated event was observed.",
-               "type": "string"
-            },
-            "stage_uncertainty": {
-               "type": "string"
-            },
-            "temporal_qualifiers": {
-               "$ref": "#/$defs/TemporalQualifierSet",
-               "description": "Qualifiers of the stage or age in an annotation."
-            }
-         },
-         "required": [],
-         "title": "TemporalContext",
-         "type": "object"
-      },
-      "TemporalQualifierSet": {
-         "description": "",
-         "enum": [
-            "progressive",
-            "throughout",
-            "sometime_during"
-         ],
-         "title": "TemporalQualifierSet",
-         "type": "string"
-      },
       "Transcript": {
          "additionalProperties": false,
          "description": "Placeholder.",
@@ -5373,9 +5273,6 @@
                "format": "date",
                "type": "string"
             },
-            "evidence_code": {
-               "type": "string"
-            },
             "modified_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
@@ -5383,13 +5280,6 @@
             "name": {
                "description": "a human-readable name for an entity",
                "type": "string"
-            },
-            "references": {
-               "description": "holds between an object and a list of references",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
             },
             "related_notes": {
                "description": "Holds between an object and a list of related Note objects.",
@@ -5542,6 +5432,10 @@
                "description": "HGVS nomenclature for variant located on a genomic entity.",
                "type": "string"
             },
+            "single_reference": {
+               "description": "holds between an object and a single reference",
+               "type": "string"
+            },
             "source_assembly": {
                "description": "Assembly to which variant is aligned as specified at source.",
                "type": "string"
@@ -5621,6 +5515,10 @@
             },
             "hgvs": {
                "description": "HGVS nomenclature for variant located on a genomic entity.",
+               "type": "string"
+            },
+            "single_reference": {
+               "description": "holds between an object and a single reference",
                "type": "string"
             },
             "source_associated_transcripts": {
@@ -5793,6 +5691,10 @@
             },
             "hgvs": {
                "description": "HGVS nomenclature for variant located on a genomic entity.",
+               "type": "string"
+            },
+            "single_reference": {
+               "description": "holds between an object and a single reference",
                "type": "string"
             },
             "source_consequence": {
