@@ -63,7 +63,7 @@ classes:
       It's unclear which of these approaches will be chosen for future Alliance
       expression curation.
     slots:
-      - belongs_to_expression_experiment
+      - belongs_to_expression_experiment # remove and model as a collection on the class.
       - when_expressed
       - where_expressed
       - expression_qualifiers

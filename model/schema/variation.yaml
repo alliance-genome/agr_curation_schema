@@ -30,10 +30,8 @@ classes:
       position or in contiguous nucleotides.
     slots:
       - variant_type
-      - references
       - related_notes
       - source_general_consequence
-      - evidence_code
       - variant_locations
       - source_variant_locations
     exact_mappings:
@@ -55,6 +53,7 @@ classes:
       Base class linking a variant to a position on a genomic entity.
     slots:
       - evidence_code
+      - single_reference
       - hgvs
       - start_position
       - end_position
@@ -87,7 +86,6 @@ classes:
     slots:
       - polypeptide
       - associated_transcripts
-
 
 # Slots
 

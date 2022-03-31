@@ -1,5 +1,5 @@
 # Auto generated from controlledVocabulary.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-23T16:40:45
+# Generation date: 2022-03-31T08:51:29
 # Schema: Alliance-Schema-Prototype-Controlled-Vocabulary
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml
@@ -26,6 +26,7 @@ from linkml_runtime.linkml_model.types import Boolean, Date, Integer, String, Ur
 from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
+version = None
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
@@ -623,37 +624,11 @@ class AuditedObject(YAMLRoot):
 
 
 @dataclass
-class Reagent(YAMLRoot):
-    """
-    A material entity used in experiments.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = ALLIANCE.Reagent
-    class_class_curie: ClassVar[str] = "alliance:Reagent"
-    class_name: ClassVar[str] = "Reagent"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/Reagent")
-
-    generated_by: Optional[Union[Union[dict, "Agent"], List[Union[dict, "Agent"]]]] = empty_list()
-    manufactured_by: Optional[Union[Union[dict, "Agent"], List[Union[dict, "Agent"]]]] = empty_list()
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if not isinstance(self.generated_by, list):
-            self.generated_by = [self.generated_by] if self.generated_by is not None else []
-        self.generated_by = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.generated_by]
-
-        if not isinstance(self.manufactured_by, list):
-            self.manufactured_by = [self.manufactured_by] if self.manufactured_by is not None else []
-        self.manufactured_by = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.manufactured_by]
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
 class Note(YAMLRoot):
     """
-    Note object for capturing free-text describing some attribute of an entity, coupled with a 'note type', private
-    boolean, and an optional list of references.
+    Note object for capturing free-text describing some attribute of an entity, coupled with a 'note type', internal
+    boolean, and an optional list of references. Permissible values for 'note_type' currently = disease_summary,
+    disease_note
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -664,7 +639,7 @@ class Note(YAMLRoot):
 
     free_text: str = None
     note_type: Union[str, VocabularyTermName] = None
-    private: Union[bool, Bool] = None
+    internal: Union[bool, Bool] = None
     references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -678,10 +653,10 @@ class Note(YAMLRoot):
         if not isinstance(self.note_type, VocabularyTermName):
             self.note_type = VocabularyTermName(self.note_type)
 
-        if self._is_empty(self.private):
-            self.MissingRequiredField("private")
-        if not isinstance(self.private, Bool):
-            self.private = Bool(self.private)
+        if self._is_empty(self.internal):
+            self.MissingRequiredField("internal")
+        if not isinstance(self.internal, Bool):
+            self.internal = Bool(self.internal)
 
         if not isinstance(self.references, list):
             self.references = [self.references] if self.references is not None else []
@@ -2019,7 +1994,6 @@ class Allele(GenomicEntity):
     created_by: Union[str, PersonUniqueId] = None
     modified_by: Union[str, PersonUniqueId] = None
     symbol: Optional[str] = None
-    affected_genes: Optional[Union[Union[str, GeneCurie], List[Union[str, GeneCurie]]]] = empty_list()
     contains_constructs: Optional[Union[Union[dict, "Construct"], List[Union[dict, "Construct"]]]] = empty_list()
     molecular_mutations: Optional[Union[str, List[str]]] = empty_list()
     functional_impact: Optional[str] = None
@@ -2050,10 +2024,6 @@ class Allele(GenomicEntity):
 
         if self.symbol is not None and not isinstance(self.symbol, str):
             self.symbol = str(self.symbol)
-
-        if not isinstance(self.affected_genes, list):
-            self.affected_genes = [self.affected_genes] if self.affected_genes is not None else []
-        self.affected_genes = [v if isinstance(v, GeneCurie) else GeneCurie(v) for v in self.affected_genes]
 
         if not isinstance(self.contains_constructs, list):
             self.contains_constructs = [self.contains_constructs] if self.contains_constructs is not None else []
@@ -2139,7 +2109,7 @@ class AlleleGenomicEntityAssociation(Association):
 
     subject: Union[str, AlleleCurie] = None
     predicate: Union[str, ROTermCurie] = None
-    object: Union[str, BiologicalEntityCurie] = None
+    object: Union[str, GenomicEntityCurie] = None
     created_by: Union[str, PersonUniqueId] = None
     modified_by: Union[str, PersonUniqueId] = None
     single_reference: Optional[Union[str, ReferenceCurie]] = None
@@ -2162,8 +2132,8 @@ class AlleleGenomicEntityAssociation(Association):
 
         if self._is_empty(self.object):
             self.MissingRequiredField("object")
-        if not isinstance(self.object, BiologicalEntityCurie):
-            self.object = BiologicalEntityCurie(self.object)
+        if not isinstance(self.object, GenomicEntityCurie):
+            self.object = GenomicEntityCurie(self.object)
 
         if self._is_empty(self.created_by):
             self.MissingRequiredField("created_by")
@@ -2199,7 +2169,7 @@ class AlleleGenomicEntityAssociation(Association):
 @dataclass
 class AlleleGeneAssociation(AlleleGenomicEntityAssociation):
     """
-    Association between an allele and a transcript
+    Association between an allele and a gene
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -2246,6 +2216,33 @@ class AlleleTranscriptAssociation(AlleleGenomicEntityAssociation):
             self.MissingRequiredField("object")
         if not isinstance(self.object, TranscriptCurie):
             self.object = TranscriptCurie(self.object)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class AlleleProteinAssociation(AlleleGenomicEntityAssociation):
+    """
+    Association between an allele and a protein
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AlleleProteinAssociation")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "AlleleProteinAssociation"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/AlleleProteinAssociation")
+
+    subject: Union[str, AlleleCurie] = None
+    predicate: Union[str, ROTermCurie] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
+    object: Union[str, ProteinCurie] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.object):
+            self.MissingRequiredField("object")
+        if not isinstance(self.object, ProteinCurie):
+            self.object = ProteinCurie(self.object)
 
         super().__post_init__(**kwargs)
 
@@ -2414,29 +2411,30 @@ class Reference(InformationContentEntity):
     curie: Union[str, ReferenceCurie] = None
     created_by: Union[str, PersonUniqueId] = None
     modified_by: Union[str, PersonUniqueId] = None
-    title: Optional[str] = None
-    alliance_category: Optional[str] = None
-    date_published: Optional[Union[str, XSDDate]] = None
-    year_published: Optional[str] = None
-    month_published: Optional[str] = None
-    day_published: Optional[str] = None
-    date_arrived_in_PubMed: Optional[Union[str, XSDDate]] = None
-    date_last_modified_in_PubMed: Optional[Union[str, XSDDate]] = None
-    volume: Optional[str] = None
-    pages: Optional[Union[str, List[str]]] = empty_list()
     abstract: Optional[str] = None
+    category: Optional[Union[str, "ReferenceCategoryEnum"]] = None
     citation: Optional[str] = None
-    PubMed_type: Optional[str] = None
+    date_arrived_in_pubmed: Optional[Union[str, List[str]]] = empty_list()
+    date_created: Optional[Union[str, XSDDate]] = None
+    date_last_modified: Optional[Union[str, XSDDate]] = None
+    date_published: Optional[str] = None
+    date_updated: Optional[Union[str, XSDDate]] = None
+    issue_date: Optional[str] = None
     issue_name: Optional[str] = None
-    issue_date: Optional[Union[str, XSDDate]] = None
-    mod_reference_types: Optional[Union[str, List[str]]] = empty_list()
-    authors: Optional[Union[Union[dict, "AuthorReference"], List[Union[dict, "AuthorReference"]]]] = empty_list()
-    tags: Optional[Union[Union[str, "TagSet"], List[Union[str, "TagSet"]]]] = empty_list()
-    topics: Optional[Union[str, URIorCURIE]] = None
-    cross_references: Optional[Union[Dict[Union[str, CrossReferenceCurie], Union[dict, CrossReference]], List[Union[dict, CrossReference]]]] = empty_dict()
-    publisher: Optional[Union[str, InformationContentEntityCurie]] = None
     keywords: Optional[Union[str, List[str]]] = empty_list()
-    from_resource: Optional[Union[str, ResourceCurie]] = None
+    language: Optional[str] = None
+    merged_into_id: Optional[Union[str, URIorCURIE]] = None
+    open_access: Optional[Union[bool, Bool]] = None
+    pages: Optional[str] = None
+    plain_language_abstract: Optional[str] = None
+    publisher: Optional[str] = None
+    pubmed_abstract_languages: Optional[Union[str, List[str]]] = empty_list()
+    pubmed_publication_status: Optional[Union[str, "PubmedPublicationStatusEnum"]] = None
+    pubmed_type: Optional[Union[str, List[str]]] = empty_list()
+    reference_id: Optional[int] = None
+    resource_id: Optional[int] = None
+    title: Optional[str] = None
+    volume: Optional[str] = None
     id: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -2445,78 +2443,81 @@ class Reference(InformationContentEntity):
         if not isinstance(self.curie, ReferenceCurie):
             self.curie = ReferenceCurie(self.curie)
 
-        if self.title is not None and not isinstance(self.title, str):
-            self.title = str(self.title)
-
-        if self.alliance_category is not None and not isinstance(self.alliance_category, str):
-            self.alliance_category = str(self.alliance_category)
-
-        if self.date_published is not None and not isinstance(self.date_published, XSDDate):
-            self.date_published = XSDDate(self.date_published)
-
-        if self.year_published is not None and not isinstance(self.year_published, str):
-            self.year_published = str(self.year_published)
-
-        if self.month_published is not None and not isinstance(self.month_published, str):
-            self.month_published = str(self.month_published)
-
-        if self.day_published is not None and not isinstance(self.day_published, str):
-            self.day_published = str(self.day_published)
-
-        if self.date_arrived_in_PubMed is not None and not isinstance(self.date_arrived_in_PubMed, XSDDate):
-            self.date_arrived_in_PubMed = XSDDate(self.date_arrived_in_PubMed)
-
-        if self.date_last_modified_in_PubMed is not None and not isinstance(self.date_last_modified_in_PubMed, XSDDate):
-            self.date_last_modified_in_PubMed = XSDDate(self.date_last_modified_in_PubMed)
-
-        if self.volume is not None and not isinstance(self.volume, str):
-            self.volume = str(self.volume)
-
-        if not isinstance(self.pages, list):
-            self.pages = [self.pages] if self.pages is not None else []
-        self.pages = [v if isinstance(v, str) else str(v) for v in self.pages]
-
         if self.abstract is not None and not isinstance(self.abstract, str):
             self.abstract = str(self.abstract)
+
+        if self.category is not None and not isinstance(self.category, ReferenceCategoryEnum):
+            self.category = ReferenceCategoryEnum(self.category)
 
         if self.citation is not None and not isinstance(self.citation, str):
             self.citation = str(self.citation)
 
-        if self.PubMed_type is not None and not isinstance(self.PubMed_type, str):
-            self.PubMed_type = str(self.PubMed_type)
+        if not isinstance(self.date_arrived_in_pubmed, list):
+            self.date_arrived_in_pubmed = [self.date_arrived_in_pubmed] if self.date_arrived_in_pubmed is not None else []
+        self.date_arrived_in_pubmed = [v if isinstance(v, str) else str(v) for v in self.date_arrived_in_pubmed]
+
+        if self.date_created is not None and not isinstance(self.date_created, XSDDate):
+            self.date_created = XSDDate(self.date_created)
+
+        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
+            self.date_last_modified = XSDDate(self.date_last_modified)
+
+        if self.date_published is not None and not isinstance(self.date_published, str):
+            self.date_published = str(self.date_published)
+
+        if self.date_updated is not None and not isinstance(self.date_updated, XSDDate):
+            self.date_updated = XSDDate(self.date_updated)
+
+        if self.issue_date is not None and not isinstance(self.issue_date, str):
+            self.issue_date = str(self.issue_date)
 
         if self.issue_name is not None and not isinstance(self.issue_name, str):
             self.issue_name = str(self.issue_name)
-
-        if self.issue_date is not None and not isinstance(self.issue_date, XSDDate):
-            self.issue_date = XSDDate(self.issue_date)
-
-        if not isinstance(self.mod_reference_types, list):
-            self.mod_reference_types = [self.mod_reference_types] if self.mod_reference_types is not None else []
-        self.mod_reference_types = [v if isinstance(v, str) else str(v) for v in self.mod_reference_types]
-
-        if not isinstance(self.authors, list):
-            self.authors = [self.authors] if self.authors is not None else []
-        self.authors = [v if isinstance(v, AuthorReference) else AuthorReference(**as_dict(v)) for v in self.authors]
-
-        if not isinstance(self.tags, list):
-            self.tags = [self.tags] if self.tags is not None else []
-        self.tags = [v if isinstance(v, TagSet) else TagSet(v) for v in self.tags]
-
-        if self.topics is not None and not isinstance(self.topics, URIorCURIE):
-            self.topics = URIorCURIE(self.topics)
-
-        self._normalize_inlined_as_list(slot_name="cross_references", slot_type=CrossReference, key_name="curie", keyed=True)
-
-        if self.publisher is not None and not isinstance(self.publisher, InformationContentEntityCurie):
-            self.publisher = InformationContentEntityCurie(self.publisher)
 
         if not isinstance(self.keywords, list):
             self.keywords = [self.keywords] if self.keywords is not None else []
         self.keywords = [v if isinstance(v, str) else str(v) for v in self.keywords]
 
-        if self.from_resource is not None and not isinstance(self.from_resource, ResourceCurie):
-            self.from_resource = ResourceCurie(self.from_resource)
+        if self.language is not None and not isinstance(self.language, str):
+            self.language = str(self.language)
+
+        if self.merged_into_id is not None and not isinstance(self.merged_into_id, URIorCURIE):
+            self.merged_into_id = URIorCURIE(self.merged_into_id)
+
+        if self.open_access is not None and not isinstance(self.open_access, Bool):
+            self.open_access = Bool(self.open_access)
+
+        if self.pages is not None and not isinstance(self.pages, str):
+            self.pages = str(self.pages)
+
+        if self.plain_language_abstract is not None and not isinstance(self.plain_language_abstract, str):
+            self.plain_language_abstract = str(self.plain_language_abstract)
+
+        if self.publisher is not None and not isinstance(self.publisher, str):
+            self.publisher = str(self.publisher)
+
+        if not isinstance(self.pubmed_abstract_languages, list):
+            self.pubmed_abstract_languages = [self.pubmed_abstract_languages] if self.pubmed_abstract_languages is not None else []
+        self.pubmed_abstract_languages = [v if isinstance(v, str) else str(v) for v in self.pubmed_abstract_languages]
+
+        if self.pubmed_publication_status is not None and not isinstance(self.pubmed_publication_status, PubmedPublicationStatusEnum):
+            self.pubmed_publication_status = PubmedPublicationStatusEnum(self.pubmed_publication_status)
+
+        if not isinstance(self.pubmed_type, list):
+            self.pubmed_type = [self.pubmed_type] if self.pubmed_type is not None else []
+        self.pubmed_type = [v if isinstance(v, str) else str(v) for v in self.pubmed_type]
+
+        if self.reference_id is not None and not isinstance(self.reference_id, int):
+            self.reference_id = int(self.reference_id)
+
+        if self.resource_id is not None and not isinstance(self.resource_id, int):
+            self.resource_id = int(self.resource_id)
+
+        if self.title is not None and not isinstance(self.title, str):
+            self.title = str(self.title)
+
+        if self.volume is not None and not isinstance(self.volume, str):
+            self.volume = str(self.volume)
 
         if self.id is not None and not isinstance(self.id, str):
             self.id = str(self.id)
@@ -2542,8 +2543,8 @@ class Resource(InformationContentEntity):
     copyright_date: Optional[Union[str, XSDDate]] = None
     print_issn: Optional[str] = None
     online_issn: Optional[str] = None
-    publisher: Optional[Union[str, InformationContentEntityCurie]] = None
-    volumes: Optional[str] = None
+    publisher: Optional[str] = None
+    volume: Optional[str] = None
     summary: Optional[str] = None
     synonyms: Optional[Union[Union[dict, Synonym], List[Union[dict, Synonym]]]] = empty_list()
     authors: Optional[Union[Union[dict, "AuthorReference"], List[Union[dict, "AuthorReference"]]]] = empty_list()
@@ -2574,11 +2575,11 @@ class Resource(InformationContentEntity):
         if self.online_issn is not None and not isinstance(self.online_issn, str):
             self.online_issn = str(self.online_issn)
 
-        if self.publisher is not None and not isinstance(self.publisher, InformationContentEntityCurie):
-            self.publisher = InformationContentEntityCurie(self.publisher)
+        if self.publisher is not None and not isinstance(self.publisher, str):
+            self.publisher = str(self.publisher)
 
-        if self.volumes is not None and not isinstance(self.volumes, str):
-            self.volumes = str(self.volumes)
+        if self.volume is not None and not isinstance(self.volume, str):
+            self.volume = str(self.volume)
 
         if self.summary is not None and not isinstance(self.summary, str):
             self.summary = str(self.summary)
@@ -2657,11 +2658,8 @@ class Variant(GenomicEntity):
     modified_by: Union[str, PersonUniqueId] = None
     variant_type: Union[str, SOTermCurie] = None
     variant_locations: Union[Union[dict, "VariantLocation"], List[Union[dict, "VariantLocation"]]] = None
-    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
     related_notes: Optional[Union[Union[dict, Note], List[Union[dict, Note]]]] = empty_list()
     source_general_consequence: Optional[Union[str, SOTermCurie]] = None
-    curated_general_consequence: Optional[Union[str, SOTermCurie]] = None
-    evidence_code: Optional[Union[str, ECOTermCurie]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -2678,20 +2676,10 @@ class Variant(GenomicEntity):
             self.MissingRequiredField("variant_locations")
         self._normalize_inlined_as_dict(slot_name="variant_locations", slot_type=VariantLocation, key_name="hgvs", keyed=False)
 
-        if not isinstance(self.references, list):
-            self.references = [self.references] if self.references is not None else []
-        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
-
         self._normalize_inlined_as_dict(slot_name="related_notes", slot_type=Note, key_name="free_text", keyed=False)
 
         if self.source_general_consequence is not None and not isinstance(self.source_general_consequence, SOTermCurie):
             self.source_general_consequence = SOTermCurie(self.source_general_consequence)
-
-        if self.curated_general_consequence is not None and not isinstance(self.curated_general_consequence, SOTermCurie):
-            self.curated_general_consequence = SOTermCurie(self.curated_general_consequence)
-
-        if self.evidence_code is not None and not isinstance(self.evidence_code, ECOTermCurie):
-            self.evidence_code = ECOTermCurie(self.evidence_code)
 
         super().__post_init__(**kwargs)
 
@@ -2712,12 +2700,15 @@ class VariantLocation(YAMLRoot):
     curated_start_position: int = None
     curated_end_position: int = None
     evidence_code: Optional[Union[str, ECOTermCurie]] = None
+    single_reference: Optional[Union[str, ReferenceCurie]] = None
     source_start_position: Optional[int] = None
     source_end_position: Optional[int] = None
     source_reference_sequence: Optional[Union[str, BiologicalSequence]] = None
     curated_reference_sequence: Optional[Union[str, BiologicalSequence]] = None
     source_variant_sequence: Optional[Union[str, BiologicalSequence]] = None
     curated_variant_sequence: Optional[Union[str, BiologicalSequence]] = None
+    source_consequence: Optional[Union[str, SOTermCurie]] = None
+    curated_consequence: Optional[Union[str, SOTermCurie]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.hgvs):
@@ -2738,6 +2729,9 @@ class VariantLocation(YAMLRoot):
         if self.evidence_code is not None and not isinstance(self.evidence_code, ECOTermCurie):
             self.evidence_code = ECOTermCurie(self.evidence_code)
 
+        if self.single_reference is not None and not isinstance(self.single_reference, ReferenceCurie):
+            self.single_reference = ReferenceCurie(self.single_reference)
+
         if self.source_start_position is not None and not isinstance(self.source_start_position, int):
             self.source_start_position = int(self.source_start_position)
 
@@ -2755,6 +2749,12 @@ class VariantLocation(YAMLRoot):
 
         if self.curated_variant_sequence is not None and not isinstance(self.curated_variant_sequence, BiologicalSequence):
             self.curated_variant_sequence = BiologicalSequence(self.curated_variant_sequence)
+
+        if self.source_consequence is not None and not isinstance(self.source_consequence, SOTermCurie):
+            self.source_consequence = SOTermCurie(self.source_consequence)
+
+        if self.curated_consequence is not None and not isinstance(self.curated_consequence, SOTermCurie):
+            self.curated_consequence = SOTermCurie(self.curated_consequence)
 
         super().__post_init__(**kwargs)
 
@@ -2816,8 +2816,6 @@ class VariantTranscriptLocation(VariantLocation):
     curated_end_position: int = None
     curated_transcript: Union[str, TranscriptCurie] = None
     source_transcript: Optional[Union[str, TranscriptCurie]] = None
-    source_transcript_consequence: Optional[Union[str, SOTermCurie]] = None
-    curated_transcript_consequence: Optional[Union[str, SOTermCurie]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curated_transcript):
@@ -2827,12 +2825,6 @@ class VariantTranscriptLocation(VariantLocation):
 
         if self.source_transcript is not None and not isinstance(self.source_transcript, TranscriptCurie):
             self.source_transcript = TranscriptCurie(self.source_transcript)
-
-        if self.source_transcript_consequence is not None and not isinstance(self.source_transcript_consequence, SOTermCurie):
-            self.source_transcript_consequence = SOTermCurie(self.source_transcript_consequence)
-
-        if self.curated_transcript_consequence is not None and not isinstance(self.curated_transcript_consequence, SOTermCurie):
-            self.curated_transcript_consequence = SOTermCurie(self.curated_transcript_consequence)
 
         super().__post_init__(**kwargs)
 
@@ -2897,7 +2889,7 @@ class AffectedGenomicModel(GenomicEntity):
     components: Optional[Union[Union[dict, "AffectedGenomicModelComponent"], List[Union[dict, "AffectedGenomicModelComponent"]]]] = empty_list()
     sequence_targeting_reagents: Optional[Union[Union[dict, SequenceTargetingReagent], List[Union[dict, SequenceTargetingReagent]]]] = empty_list()
     parental_populations: Optional[Union[str, URIorCURIE]] = None
-    data_provider: Optional[Union[str, List[str]]] = empty_list()
+    data_provider: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -2919,9 +2911,8 @@ class AffectedGenomicModel(GenomicEntity):
         if self.parental_populations is not None and not isinstance(self.parental_populations, URIorCURIE):
             self.parental_populations = URIorCURIE(self.parental_populations)
 
-        if not isinstance(self.data_provider, list):
-            self.data_provider = [self.data_provider] if self.data_provider is not None else []
-        self.data_provider = [v if isinstance(v, str) else str(v) for v in self.data_provider]
+        if self.data_provider is not None and not isinstance(self.data_provider, str):
+            self.data_provider = str(self.data_provider)
 
         super().__post_init__(**kwargs)
 
@@ -2963,13 +2954,33 @@ class EntitySynonymTypeSet(EnumDefinitionImpl):
         name="EntitySynonymTypeSet",
     )
 
-class TagSet(EnumDefinitionImpl):
+class PubmedPublicationStatusEnum(EnumDefinitionImpl):
 
-    image = PermissibleValue(text="image")
-    test = PermissibleValue(text="test")
+    ppublish = PermissibleValue(text="ppublish")
+    epublish = PermissibleValue(text="epublish")
+    aheadofprint = PermissibleValue(text="aheadofprint")
 
     _defn = EnumDefinition(
-        name="TagSet",
+        name="PubmedPublicationStatusEnum",
+    )
+
+class ReferenceCategoryEnum(EnumDefinitionImpl):
+
+    Research_Article = PermissibleValue(text="Research_Article")
+    Review_Article = PermissibleValue(text="Review_Article")
+    Thesis = PermissibleValue(text="Thesis")
+    Book = PermissibleValue(text="Book")
+    Other = PermissibleValue(text="Other")
+    Preprint = PermissibleValue(text="Preprint")
+    Conference_Publication = PermissibleValue(text="Conference_Publication")
+    Personal_Communication = PermissibleValue(text="Personal_Communication")
+    Direct_Data_Submission = PermissibleValue(text="Direct_Data_Submission")
+    Internal_Process_Reference = PermissibleValue(text="Internal_Process_Reference")
+    Unknown = PermissibleValue(text="Unknown")
+    Retraction = PermissibleValue(text="Retraction")
+
+    _defn = EnumDefinition(
+        name="ReferenceCategoryEnum",
     )
 
 class SubtypeValues(EnumDefinitionImpl):
@@ -3066,8 +3077,8 @@ slots.free_text = Slot(uri=ALLIANCE.free_text, name="free_text", curie=ALLIANCE.
 slots.note_type = Slot(uri=ALLIANCE.note_type, name="note_type", curie=ALLIANCE.curie('note_type'),
                    model_uri=DEFAULT_.note_type, domain=None, range=Optional[Union[str, VocabularyTermName]])
 
-slots.private = Slot(uri=ALLIANCE.private, name="private", curie=ALLIANCE.curie('private'),
-                   model_uri=DEFAULT_.private, domain=None, range=Optional[Union[bool, Bool]])
+slots.internal = Slot(uri=ALLIANCE.internal, name="internal", curie=ALLIANCE.curie('internal'),
+                   model_uri=DEFAULT_.internal, domain=None, range=Optional[Union[bool, Bool]])
 
 slots.related_notes = Slot(uri=ALLIANCE.related_notes, name="related_notes", curie=ALLIANCE.curie('related_notes'),
                    model_uri=DEFAULT_.related_notes, domain=None, range=Optional[Union[Union[dict, Note], List[Union[dict, Note]]]])
@@ -3139,10 +3150,10 @@ slots.release = Slot(uri=ALLIANCE.release, name="release", curie=ALLIANCE.curie(
                    model_uri=DEFAULT_.release, domain=None, range=Optional[str])
 
 slots.data_provider = Slot(uri=ALLIANCE.data_provider, name="data_provider", curie=ALLIANCE.curie('data_provider'),
-                   model_uri=DEFAULT_.data_provider, domain=None, range=Optional[Union[str, List[str]]])
+                   model_uri=DEFAULT_.data_provider, domain=None, range=Optional[str])
 
 slots.secondary_data_provider = Slot(uri=ALLIANCE.secondary_data_provider, name="secondary_data_provider", curie=ALLIANCE.curie('secondary_data_provider'),
-                   model_uri=DEFAULT_.secondary_data_provider, domain=None, range=Optional[Union[str, List[str]]])
+                   model_uri=DEFAULT_.secondary_data_provider, domain=None, range=Optional[str])
 
 slots.association_slot = Slot(uri=ALLIANCE.association_slot, name="association_slot", curie=ALLIANCE.curie('association_slot'),
                    model_uri=DEFAULT_.association_slot, domain=None, range=Optional[str])
@@ -3249,44 +3260,47 @@ slots.formula = Slot(uri="str(uriorcurie)", name="formula", curie=None,
 slots.smiles = Slot(uri="str(uriorcurie)", name="smiles", curie=None,
                    model_uri=DEFAULT_.smiles, domain=Molecule, range=Optional[str])
 
-slots.topics = Slot(uri="str(uriorcurie)", name="topics", curie=None,
-                   model_uri=DEFAULT_.topics, domain=None, range=Optional[Union[str, URIorCURIE]])
+slots.reference_id = Slot(uri="str(uriorcurie)", name="reference_id", curie=None,
+                   model_uri=DEFAULT_.reference_id, domain=Reference, range=Optional[int])
 
-slots.PubMed_type = Slot(uri="str(uriorcurie)", name="PubMed_type", curie=None,
-                   model_uri=DEFAULT_.PubMed_type, domain=InformationContentEntity, range=Optional[str])
+slots.resource_id = Slot(uri="str(uriorcurie)", name="resource_id", curie=None,
+                   model_uri=DEFAULT_.resource_id, domain=Reference, range=Optional[int])
+
+slots.pubmed_type = Slot(uri="str(uriorcurie)", name="pubmed_type", curie=None,
+                   model_uri=DEFAULT_.pubmed_type, domain=InformationContentEntity, range=Optional[Union[str, List[str]]])
 
 slots.date_published = Slot(uri="str(uriorcurie)", name="date_published", curie=None,
-                   model_uri=DEFAULT_.date_published, domain=InformationContentEntity, range=Optional[Union[str, XSDDate]])
+                   model_uri=DEFAULT_.date_published, domain=InformationContentEntity, range=Optional[str])
 
-slots.date_last_modified_in_PubMed = Slot(uri="str(uriorcurie)", name="date_last_modified_in_PubMed", curie=None,
-                   model_uri=DEFAULT_.date_last_modified_in_PubMed, domain=InformationContentEntity, range=Optional[Union[str, XSDDate]])
+slots.date_created = Slot(uri="str(uriorcurie)", name="date_created", curie=None,
+                   model_uri=DEFAULT_.date_created, domain=InformationContentEntity, range=Optional[Union[str, XSDDate]])
 
-slots.year_published = Slot(uri="str(uriorcurie)", name="year_published", curie=None,
-                   model_uri=DEFAULT_.year_published, domain=InformationContentEntity, range=Optional[str])
+slots.date_updated = Slot(uri="str(uriorcurie)", name="date_updated", curie=None,
+                   model_uri=DEFAULT_.date_updated, domain=InformationContentEntity, range=Optional[Union[str, XSDDate]])
 
-slots.month_published = Slot(uri="str(uriorcurie)", name="month_published", curie=None,
-                   model_uri=DEFAULT_.month_published, domain=InformationContentEntity, range=Optional[str])
+slots.date_arrived_in_pubmed = Slot(uri="str(uriorcurie)", name="date_arrived_in_pubmed", curie=None,
+                   model_uri=DEFAULT_.date_arrived_in_pubmed, domain=InformationContentEntity, range=Optional[Union[str, List[str]]])
 
-slots.day_published = Slot(uri="str(uriorcurie)", name="day_published", curie=None,
-                   model_uri=DEFAULT_.day_published, domain=InformationContentEntity, range=Optional[str])
-
-slots.date_arrived_in_PubMed = Slot(uri="str(uriorcurie)", name="date_arrived_in_PubMed", curie=None,
-                   model_uri=DEFAULT_.date_arrived_in_PubMed, domain=InformationContentEntity, range=Optional[Union[str, XSDDate]])
-
-slots.mod_reference_types = Slot(uri="str(uriorcurie)", name="mod_reference_types", curie=None,
-                   model_uri=DEFAULT_.mod_reference_types, domain=None, range=Optional[Union[str, List[str]]])
-
-slots.tags = Slot(uri="str(uriorcurie)", name="tags", curie=None,
-                   model_uri=DEFAULT_.tags, domain=None, range=Optional[Union[Union[str, "TagSet"], List[Union[str, "TagSet"]]]])
+slots.date_last_modified_in_pubmed = Slot(uri="str(uriorcurie)", name="date_last_modified_in_pubmed", curie=None,
+                   model_uri=DEFAULT_.date_last_modified_in_pubmed, domain=Reference, range=Optional[str])
 
 slots.issue_date = Slot(uri="str(uriorcurie)", name="issue_date", curie=None,
-                   model_uri=DEFAULT_.issue_date, domain=InformationContentEntity, range=Optional[Union[str, XSDDate]])
+                   model_uri=DEFAULT_.issue_date, domain=InformationContentEntity, range=Optional[str])
 
-slots.volume = Slot(uri="str(uriorcurie)", name="volume", curie=None,
-                   model_uri=DEFAULT_.volume, domain=InformationContentEntity, range=Optional[str])
+slots.open_access = Slot(uri="str(uriorcurie)", name="open_access", curie=None,
+                   model_uri=DEFAULT_.open_access, domain=Reference, range=Optional[Union[bool, Bool]])
 
 slots.pages = Slot(uri="str(uriorcurie)", name="pages", curie=None,
-                   model_uri=DEFAULT_.pages, domain=InformationContentEntity, range=Optional[Union[str, List[str]]])
+                   model_uri=DEFAULT_.pages, domain=InformationContentEntity, range=Optional[str])
+
+slots.plain_language_abstract = Slot(uri="str(uriorcurie)", name="plain_language_abstract", curie=None,
+                   model_uri=DEFAULT_.plain_language_abstract, domain=Reference, range=Optional[str])
+
+slots.pubmed_abstract_languages = Slot(uri="str(uriorcurie)", name="pubmed_abstract_languages", curie=None,
+                   model_uri=DEFAULT_.pubmed_abstract_languages, domain=Reference, range=Optional[Union[str, List[str]]])
+
+slots.pubmed_publication_status = Slot(uri="str(uriorcurie)", name="pubmed_publication_status", curie=None,
+                   model_uri=DEFAULT_.pubmed_publication_status, domain=Reference, range=Optional[Union[str, "PubmedPublicationStatusEnum"]])
 
 slots.abstract = Slot(uri="str(uriorcurie)", name="abstract", curie=None,
                    model_uri=DEFAULT_.abstract, domain=Reference, range=Optional[str])
@@ -3297,14 +3311,17 @@ slots.citation = Slot(uri="str(uriorcurie)", name="citation", curie=None,
 slots.issue_name = Slot(uri="str(uriorcurie)", name="issue_name", curie=None,
                    model_uri=DEFAULT_.issue_name, domain=Reference, range=Optional[str])
 
-slots.alliance_category = Slot(uri="str(uriorcurie)", name="alliance_category", curie=None,
-                   model_uri=DEFAULT_.alliance_category, domain=Reference, range=Optional[str])
+slots.category = Slot(uri="str(uriorcurie)", name="category", curie=None,
+                   model_uri=DEFAULT_.category, domain=Reference, range=Optional[Union[str, "ReferenceCategoryEnum"]])
 
 slots.keywords = Slot(uri="str(uriorcurie)", name="keywords", curie=None,
                    model_uri=DEFAULT_.keywords, domain=InformationContentEntity, range=Optional[Union[str, List[str]]])
 
-slots.from_resource = Slot(uri="str(uriorcurie)", name="from_resource", curie=None,
-                   model_uri=DEFAULT_.from_resource, domain=Reference, range=Optional[Union[str, ResourceCurie]])
+slots.language = Slot(uri="str(uriorcurie)", name="language", curie=None,
+                   model_uri=DEFAULT_.language, domain=Reference, range=Optional[str])
+
+slots.merged_into_id = Slot(uri="str(uriorcurie)", name="merged_into_id", curie=None,
+                   model_uri=DEFAULT_.merged_into_id, domain=Reference, range=Optional[Union[str, URIorCURIE]])
 
 slots.iso_abbreviation = Slot(uri="str(uriorcurie)", name="iso_abbreviation", curie=None,
                    model_uri=DEFAULT_.iso_abbreviation, domain=Resource, range=Optional[str])
@@ -3377,9 +3394,6 @@ slots.video_still = Slot(uri="str(uriorcurie)", name="video_still", curie=None,
 
 slots.width = Slot(uri="str(uriorcurie)", name="width", curie=None,
                    model_uri=DEFAULT_.width, domain=Image, range=int)
-
-slots.affected_genes = Slot(uri="str(uriorcurie)", name="affected_genes", curie=None,
-                   model_uri=DEFAULT_.affected_genes, domain=Allele, range=Optional[Union[Union[str, GeneCurie], List[Union[str, GeneCurie]]]])
 
 slots.contains_constructs = Slot(uri="str(uriorcurie)", name="contains_constructs", curie=None,
                    model_uri=DEFAULT_.contains_constructs, domain=Allele, range=Optional[Union[Union[dict, "Construct"], List[Union[dict, "Construct"]]]])
@@ -3459,11 +3473,11 @@ slots.initials = Slot(uri=ALLIANCE.initials, name="initials", curie=ALLIANCE.cur
 slots.title = Slot(uri=ALLIANCE.title, name="title", curie=ALLIANCE.curie('title'),
                    model_uri=DEFAULT_.title, domain=InformationContentEntity, range=Optional[str])
 
-slots.volumes = Slot(uri=ALLIANCE.volumes, name="volumes", curie=ALLIANCE.curie('volumes'),
-                   model_uri=DEFAULT_.volumes, domain=InformationContentEntity, range=Optional[str])
+slots.volume = Slot(uri=ALLIANCE.volume, name="volume", curie=ALLIANCE.curie('volume'),
+                   model_uri=DEFAULT_.volume, domain=InformationContentEntity, range=Optional[str])
 
 slots.publisher = Slot(uri=ALLIANCE.publisher, name="publisher", curie=ALLIANCE.curie('publisher'),
-                   model_uri=DEFAULT_.publisher, domain=InformationContentEntity, range=Optional[Union[str, InformationContentEntityCurie]])
+                   model_uri=DEFAULT_.publisher, domain=InformationContentEntity, range=Optional[str])
 
 slots.address = Slot(uri=ALLIANCE.address, name="address", curie=ALLIANCE.curie('address'),
                    model_uri=DEFAULT_.address, domain=None, range=Optional[str])
@@ -3474,14 +3488,11 @@ slots.variant_type = Slot(uri="str(uriorcurie)", name="variant_type", curie=None
 slots.source_general_consequence = Slot(uri="str(uriorcurie)", name="source_general_consequence", curie=None,
                    model_uri=DEFAULT_.source_general_consequence, domain=Variant, range=Optional[Union[str, SOTermCurie]])
 
-slots.curated_general_consequence = Slot(uri="str(uriorcurie)", name="curated_general_consequence", curie=None,
-                   model_uri=DEFAULT_.curated_general_consequence, domain=Variant, range=Optional[Union[str, SOTermCurie]])
+slots.source_consequence = Slot(uri="str(uriorcurie)", name="source_consequence", curie=None,
+                   model_uri=DEFAULT_.source_consequence, domain=VariantLocation, range=Optional[Union[str, SOTermCurie]])
 
-slots.source_transcript_consequence = Slot(uri="str(uriorcurie)", name="source_transcript_consequence", curie=None,
-                   model_uri=DEFAULT_.source_transcript_consequence, domain=Variant, range=Optional[Union[str, SOTermCurie]])
-
-slots.curated_transcript_consequence = Slot(uri="str(uriorcurie)", name="curated_transcript_consequence", curie=None,
-                   model_uri=DEFAULT_.curated_transcript_consequence, domain=Variant, range=Optional[Union[str, SOTermCurie]])
+slots.curated_consequence = Slot(uri="str(uriorcurie)", name="curated_consequence", curie=None,
+                   model_uri=DEFAULT_.curated_consequence, domain=VariantLocation, range=Optional[Union[str, SOTermCurie]])
 
 slots.variant_locations = Slot(uri="str(uriorcurie)", name="variant_locations", curie=None,
                    model_uri=DEFAULT_.variant_locations, domain=Variant, range=Union[Union[dict, "VariantLocation"], List[Union[dict, "VariantLocation"]]])
@@ -3585,8 +3596,8 @@ slots.Note_free_text = Slot(uri=ALLIANCE.free_text, name="Note_free_text", curie
 slots.Note_note_type = Slot(uri=ALLIANCE.note_type, name="Note_note_type", curie=ALLIANCE.curie('note_type'),
                    model_uri=DEFAULT_.Note_note_type, domain=Note, range=Union[str, VocabularyTermName])
 
-slots.Note_private = Slot(uri=ALLIANCE.private, name="Note_private", curie=ALLIANCE.curie('private'),
-                   model_uri=DEFAULT_.Note_private, domain=Note, range=Union[bool, Bool])
+slots.Note_internal = Slot(uri=ALLIANCE.internal, name="Note_internal", curie=ALLIANCE.curie('internal'),
+                   model_uri=DEFAULT_.Note_internal, domain=Note, range=Union[bool, Bool])
 
 slots.EntitySynonym_object = Slot(uri=ALLIANCE.object, name="EntitySynonym_object", curie=ALLIANCE.curie('object'),
                    model_uri=DEFAULT_.EntitySynonym_object, domain=EntitySynonym, range=Union[dict, Synonym])
@@ -3608,6 +3619,9 @@ slots.OntologyTerm_definition = Slot(uri="str(uriorcurie)", name="OntologyTerm_d
 
 slots.ECOTerm_abbreviation = Slot(uri=ALLIANCE.abbreviation, name="ECOTerm_abbreviation", curie=ALLIANCE.curie('abbreviation'),
                    model_uri=DEFAULT_.ECOTerm_abbreviation, domain=ECOTerm, range=Optional[str])
+
+slots.Reference_date_last_modified = Slot(uri=ALLIANCE.date_last_modified, name="Reference_date_last_modified", curie=ALLIANCE.curie('date_last_modified'),
+                   model_uri=DEFAULT_.Reference_date_last_modified, domain=Reference, range=Optional[Union[str, XSDDate]])
 
 slots.Reference_id = Slot(uri=DEFAULT_.id, name="Reference_id", curie=DEFAULT_.curie('id'),
                    model_uri=DEFAULT_.Reference_id, domain=Reference, range=Optional[str])
@@ -3676,13 +3690,16 @@ slots.AlleleGenomicEntityAssociation_predicate = Slot(uri=ALLIANCE.predicate, na
                    model_uri=DEFAULT_.AlleleGenomicEntityAssociation_predicate, domain=AlleleGenomicEntityAssociation, range=Union[str, ROTermCurie])
 
 slots.AlleleGenomicEntityAssociation_object = Slot(uri=ALLIANCE.object, name="AlleleGenomicEntityAssociation_object", curie=ALLIANCE.curie('object'),
-                   model_uri=DEFAULT_.AlleleGenomicEntityAssociation_object, domain=AlleleGenomicEntityAssociation, range=Union[str, BiologicalEntityCurie])
+                   model_uri=DEFAULT_.AlleleGenomicEntityAssociation_object, domain=AlleleGenomicEntityAssociation, range=Union[str, GenomicEntityCurie])
 
 slots.AlleleGeneAssociation_object = Slot(uri=ALLIANCE.object, name="AlleleGeneAssociation_object", curie=ALLIANCE.curie('object'),
                    model_uri=DEFAULT_.AlleleGeneAssociation_object, domain=AlleleGeneAssociation, range=Union[str, GeneCurie])
 
 slots.AlleleTranscriptAssociation_object = Slot(uri=ALLIANCE.object, name="AlleleTranscriptAssociation_object", curie=ALLIANCE.curie('object'),
                    model_uri=DEFAULT_.AlleleTranscriptAssociation_object, domain=AlleleTranscriptAssociation, range=Union[str, TranscriptCurie])
+
+slots.AlleleProteinAssociation_object = Slot(uri=ALLIANCE.object, name="AlleleProteinAssociation_object", curie=ALLIANCE.curie('object'),
+                   model_uri=DEFAULT_.AlleleProteinAssociation_object, domain=AlleleProteinAssociation, range=Union[str, ProteinCurie])
 
 slots.VariantLocation_evidence_code = Slot(uri=ALLIANCE.evidence_code, name="VariantLocation_evidence_code", curie=ALLIANCE.curie('evidence_code'),
                    model_uri=DEFAULT_.VariantLocation_evidence_code, domain=VariantLocation, range=Optional[Union[str, ECOTermCurie]])
