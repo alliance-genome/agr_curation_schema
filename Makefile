@@ -84,6 +84,13 @@ gen-jsonschema: target/jsonschema/$(SCHEMA_NAME).schema.json
 target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
 	pipenv run gen-json-schema $(GEN_OPTS) --closed -t ingest $< > $@
 
+
+###  -- SQL --
+gen-sqlddl: target/sqlddl/$(SCHEMA_NAME).sql
+.PHONY: gen-sqlddl
+target/sqlddl/%.sql: $(SCHEMA_DIR)/%.yaml tdir-sqlddl
+	pipenv run gen-sqlddl $(GEN_OPTS) $< > $@
+
 ###  -- JSONLD Context --
 gen-jsonld-context: target/jsonld-context/$(SCHEMA_NAME).context.jsonld
 .PHONY: gen-jsonld-context
