@@ -32,10 +32,15 @@ classes:
       - variant_type
       - related_notes
       - source_general_consequence
-      - variant_locations
+      - variant_genome_locations
+      - variant_polypeptide_locations
+      - variant_transcript_locations
       - source_variant_locations
     exact_mappings:
       - SO:0001059
+    slot_usage:
+      variant_genome_locations:
+        required: true
 
   SourceVariantLocation:
     description:
@@ -152,6 +157,34 @@ slots:
     multivalued: true
     domain: Variant
     range: VariantLocation
+
+  variant_genome_locations:
+    is_a: variant_locations
+    description: >-
+      Location of the variant in a genomic context.  multiple variant_genome_locations represent multiple
+      assemblies.
+    required: true
+    multivalued: true
+    domain: Variant
+    range: VariantGenomeLocation
+
+  variant_polypeptide_locations:
+    is_a: variant_locations
+    description: >-
+      Location of the variant within polypeptide entities.
+    required: false
+    multivalued: true
+    domain: Variant
+    range: VariantPolypeptideLocation
+
+  variant_transcript_locations:
+    is_a: variant_locations
+    description: >-
+      Location of the variant within transcript entities.
+    required: false
+    multivalued: true
+    domain: Variant
+    range: VariantTranscriptLocation
 
   source_variant_locations:
     description: >-
