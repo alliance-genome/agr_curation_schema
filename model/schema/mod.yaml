@@ -37,7 +37,6 @@ classes:
           The curie prefix, or letter code used by FMS (Alliance file management
           system).  e.g. MGI, FB
         multivalued: false
-        domain: Mod
         range: string
         required: true
       date_created:
