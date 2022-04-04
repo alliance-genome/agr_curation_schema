@@ -46,10 +46,12 @@ classes:
 slots:
 
   mod_id:
-    is_a: table_key
     description: >-
-      The value is the primary key for the mod table (an integer).
+      An integer referring to a Mod object in the mod database table. It's a
+      primary key in the mod table, a foreign key if used in other tables.
+    multivalued: false
     domain: Mod
+    range: integer
     required: true
 
   short_name:

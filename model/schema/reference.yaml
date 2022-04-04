@@ -68,8 +68,11 @@ classes:
 slots:
 
   reference_id:
-    is_a: table_key
-    domain: Reference
+    description: >-
+      An integer referring to a Reference object in the references table. It's
+      a primary key in the references table, a foreign key when in other tables.
+    range: integer
+    required: true
 
   resource_id:
     notes: >-
