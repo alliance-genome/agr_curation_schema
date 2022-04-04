@@ -5445,6 +5445,9 @@
                },
                "type": "array"
             },
+            "variant_status": {
+               "$ref": "#/$defs/VariantStatusEnum"
+            },
             "variant_transcript_locations": {
                "description": "Location of the variant within transcript entities.",
                "items": {
@@ -5615,6 +5618,15 @@
          ],
          "title": "VariantPolypeptideLocation",
          "type": "object"
+      },
+      "VariantStatusEnum": {
+         "description": "",
+         "enum": [
+            "public",
+            "private"
+         ],
+         "title": "VariantStatusEnum",
+         "type": "string"
       },
       "VariantTranscriptConsequence": {
          "additionalProperties": false,

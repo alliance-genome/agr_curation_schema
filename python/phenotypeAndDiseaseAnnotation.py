@@ -1,5 +1,5 @@
 # Auto generated from phenotypeAndDiseaseAnnotation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-31T10:49:23
+# Generation date: 2022-04-04T13:00:00
 # Schema: Alliance-Schema-Prototype-Phenotype-and-Disease-Annotation
 #
 # id: https://github.com/alliance-genome/agr_persistent_schema/phenotypeAndDiseaseAnnotation.yaml
@@ -3230,6 +3230,7 @@ class Variant(GenomicEntity):
     variant_polypeptide_locations: Optional[Union[Union[dict, "VariantPolypeptideLocation"], List[Union[dict, "VariantPolypeptideLocation"]]]] = empty_list()
     variant_transcript_locations: Optional[Union[Union[dict, "VariantTranscriptLocation"], List[Union[dict, "VariantTranscriptLocation"]]]] = empty_list()
     source_variant_locations: Optional[Union[Union[dict, "SourceVariantLocation"], List[Union[dict, "SourceVariantLocation"]]]] = empty_list()
+    variant_status: Optional[Union[str, "VariantStatusEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -3256,6 +3257,9 @@ class Variant(GenomicEntity):
         self._normalize_inlined_as_dict(slot_name="variant_transcript_locations", slot_type=VariantTranscriptLocation, key_name="hgvs", keyed=False)
 
         self._normalize_inlined_as_dict(slot_name="source_variant_locations", slot_type=SourceVariantLocation, key_name="variant_locations", keyed=False)
+
+        if self.variant_status is not None and not isinstance(self.variant_status, VariantStatusEnum):
+            self.variant_status = VariantStatusEnum(self.variant_status)
 
         super().__post_init__(**kwargs)
 
@@ -3538,6 +3542,15 @@ class EntitySynonymTypeSet(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="EntitySynonymTypeSet",
+    )
+
+class VariantStatusEnum(EnumDefinitionImpl):
+
+    public = PermissibleValue(text="public")
+    private = PermissibleValue(text="private")
+
+    _defn = EnumDefinition(
+        name="VariantStatusEnum",
     )
 
 class SubtypeValues(EnumDefinitionImpl):
@@ -4134,6 +4147,9 @@ slots.is_extinct = Slot(uri="str(uriorcurie)", name="is_extinct", curie=None,
 
 slots.sequencing_status = Slot(uri="str(uriorcurie)", name="sequencing_status", curie=None,
                    model_uri=ALLIANCE.sequencing_status, domain=Variant, range=Optional[Union[str, VocabularyTermName]])
+
+slots.variant_status = Slot(uri="str(uriorcurie)", name="variant_status", curie=None,
+                   model_uri=ALLIANCE.variant_status, domain=None, range=Optional[Union[str, "VariantStatusEnum"]])
 
 slots.variant_type = Slot(uri="str(uriorcurie)", name="variant_type", curie=None,
                    model_uri=ALLIANCE.variant_type, domain=Variant, range=Union[str, SOTermCurie])
