@@ -76,7 +76,6 @@ classes:
     slots:
       - evidence_code
       - single_reference
-      - hgvs
       - start_position
       - end_position
       - reference_sequence
