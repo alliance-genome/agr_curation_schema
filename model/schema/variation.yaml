@@ -32,15 +32,26 @@ classes:
       - variant_type
       - related_notes
       - source_general_consequence
-      - variant_genome_locations
+      - variant_genome_locations # assembly identifies a genome location, so a variant can have many genome locations.
       - variant_polypeptide_locations
       - variant_transcript_locations
       - source_variant_locations
+      - variant_status
     exact_mappings:
       - SO:0001059
     slot_usage:
       variant_genome_locations:
         required: true
+    rules:
+      - postconditions:
+          any_of:
+            - slot_conditions:
+                variant_genome_location:
+                  required: true
+            - slot_conditions:
+                variant_status:
+                  equals_string: private
+          description: a variant must have a genome location, or must be private
 
   SourceVariantLocation:
     description:
@@ -105,6 +116,11 @@ classes:
 # Slots
 
 slots:
+
+  variant_status:
+    description: >-
+    required: false # should this default to "public?"
+    range: variant_status_enum
 
   variant_type:
     description: >-
@@ -282,3 +298,9 @@ slots:
     multivalued: true
     domain: VariantPolypeptideLocation
     range: Transcript
+
+enums:
+  variant_status_enum:
+    permissible_values:
+      public:
+      private:

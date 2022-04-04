@@ -1,5 +1,5 @@
 # Auto generated from variantConsequence.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-31T10:48:45
+# Generation date: 2022-04-04T12:56:38
 # Schema: variantConsequence
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence
@@ -990,6 +990,7 @@ class Variant(GenomicEntity):
     variant_polypeptide_locations: Optional[Union[Union[dict, "VariantPolypeptideLocation"], List[Union[dict, "VariantPolypeptideLocation"]]]] = empty_list()
     variant_transcript_locations: Optional[Union[Union[dict, "VariantTranscriptLocation"], List[Union[dict, "VariantTranscriptLocation"]]]] = empty_list()
     source_variant_locations: Optional[Union[Union[dict, "SourceVariantLocation"], List[Union[dict, "SourceVariantLocation"]]]] = empty_list()
+    variant_status: Optional[Union[str, "VariantStatusEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -1016,6 +1017,9 @@ class Variant(GenomicEntity):
         self._normalize_inlined_as_dict(slot_name="variant_transcript_locations", slot_type=VariantTranscriptLocation, key_name="hgvs", keyed=False)
 
         self._normalize_inlined_as_dict(slot_name="source_variant_locations", slot_type=SourceVariantLocation, key_name="variant_locations", keyed=False)
+
+        if self.variant_status is not None and not isinstance(self.variant_status, VariantStatusEnum):
+            self.variant_status = VariantStatusEnum(self.variant_status)
 
         super().__post_init__(**kwargs)
 
@@ -3139,6 +3143,15 @@ class EntitySynonymTypeSet(EnumDefinitionImpl):
         name="EntitySynonymTypeSet",
     )
 
+class VariantStatusEnum(EnumDefinitionImpl):
+
+    public = PermissibleValue(text="public")
+    private = PermissibleValue(text="private")
+
+    _defn = EnumDefinition(
+        name="VariantStatusEnum",
+    )
+
 class PubmedPublicationStatusEnum(EnumDefinitionImpl):
 
     ppublish = PermissibleValue(text="ppublish")
@@ -3459,6 +3472,9 @@ slots.predicate = Slot(uri=ALLIANCE.predicate, name="predicate", curie=ALLIANCE.
 
 slots.related_to = Slot(uri=ALLIANCE.related_to, name="related_to", curie=ALLIANCE.curie('related_to'),
                    model_uri=DEFAULT_.related_to, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.variant_status = Slot(uri="str(uriorcurie)", name="variant_status", curie=None,
+                   model_uri=DEFAULT_.variant_status, domain=None, range=Optional[Union[str, "VariantStatusEnum"]])
 
 slots.variant_type = Slot(uri="str(uriorcurie)", name="variant_type", curie=None,
                    model_uri=DEFAULT_.variant_type, domain=Variant, range=Union[str, SOTermCurie])
