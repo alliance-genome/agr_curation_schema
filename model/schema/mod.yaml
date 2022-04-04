@@ -50,7 +50,6 @@ slots:
       An integer referring to a Mod object in the mod database table. It's a
       primary key in the mod table, a foreign key if used in other tables.
     multivalued: false
-    domain: Mod
     range: integer
     required: true
 

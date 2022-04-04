@@ -39,18 +39,24 @@ classes:
     slot_usage:
       mod_id:
         notes: >-
-          An integer corresponding to a primary key in the mod table.
+          An integer corresponding to a primary key in the mod table. Used here
+          as a foreign key.
       reference_id:
         notes: >-
           An integer corresponding to a primary key in the reference table.
+          Used here as a foreign key.
       date_created:
         required: true
 
 slots:
 
   mod_corpus_association_id:
-    is_a: table_key
+    description: >-
+      An integer referring to a ModCorpusAssociation object. A primary key in
+      the mod_corpus_association table, a foreign key if used in other tables.
+    multivalued: false
     domain: ModCorpusAssociation
+    range: integer
     required: true
 
   corpus:
