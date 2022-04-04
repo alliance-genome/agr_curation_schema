@@ -887,6 +887,28 @@
          "title": "AlleleTranscriptAssociation",
          "type": "object"
       },
+      "AnatomicalSite": {
+         "additionalProperties": false,
+         "description": "The developmental stage and/or age of the specimen in an annotation.",
+         "properties": {
+            "anatomical_structure": {
+               "type": "string"
+            },
+            "anatomical_substructure": {
+               "type": "string"
+            },
+            "cellular_component": {
+               "type": "string"
+            },
+            "spatial_qualifiers": {
+               "$ref": "#/$defs/SpatialQualifierSet",
+               "description": "Qualifiers that describe the spatial characteristics of an event."
+            }
+         },
+         "required": [],
+         "title": "AnatomicalSite",
+         "type": "object"
+      },
       "Antibody": {
          "additionalProperties": false,
          "description": "Immunoglobulin proteins that bind specific molecule(s). Can be used experimentally for the purposes of detection or purification.",
@@ -2078,6 +2100,276 @@
          "title": "ExperimentalCondition",
          "type": "object"
       },
+      "ExpressionAnnotation": {
+         "additionalProperties": false,
+         "description": "A description of when and where gene products are observed to be present, including experimental details, supporting evidence, and curator notes.",
+         "properties": {
+            "associated_with_figure": {
+               "description": "The figure(s) that support(s) the expression annotation.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "belongs_to_expression_experiment": {
+               "description": "Holds between an ExpressionAnnotation and an ExpressionExperiment.",
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "expression_qualifiers": {
+               "$ref": "#/$defs/ExpressionQualifierSet",
+               "description": "Qualifiers that describe additional characteristics of gene expression. For example: aint, intense, restricted."
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "negated": {
+               "description": "if set to true, then the association is negated i.e. is not true",
+               "type": "boolean"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
+            "uncertain": {
+               "description": "If set to true, then the related entity is uncertain.",
+               "type": "boolean"
+            },
+            "when_expressed": {
+               "$ref": "#/$defs/TemporalContext",
+               "description": "When a gene product is observed to be present."
+            },
+            "where_expressed": {
+               "$ref": "#/$defs/AnatomicalSite",
+               "description": "Where a gene product is observed to be present."
+            }
+         },
+         "required": [
+            "belongs_to_expression_experiment",
+            "created_by",
+            "modified_by"
+         ],
+         "title": "ExpressionAnnotation",
+         "type": "object"
+      },
+      "ExpressionAnnotationImagePane": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "object": {
+               "$ref": "#/$defs/ImagePane",
+               "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+            },
+            "predicate": {
+               "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+               "type": "string"
+            },
+            "subject": {
+               "$ref": "#/$defs/ExpressionAnnotation",
+               "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+            }
+         },
+         "required": [
+            "predicate",
+            "subject",
+            "object"
+         ],
+         "title": "ExpressionAnnotationImagePane",
+         "type": "object"
+      },
+      "ExpressionAnnotationStatement": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "statement_subject": {
+               "$ref": "#/$defs/ExpressionAnnotation",
+               "description": "The entity being described by the note."
+            },
+            "statement_text": {
+               "description": "Free-text describing some aspect of an entity.",
+               "type": "string"
+            },
+            "statement_type": {
+               "$ref": "#/$defs/ExpressionStatementTypeEnum",
+               "description": "The type of free-text statement. For example: cytology, private, curator_comments."
+            }
+         },
+         "required": [],
+         "title": "ExpressionAnnotationStatement",
+         "type": "object"
+      },
+      "ExpressionConditionRelationEnum": {
+         "description": "",
+         "enum": [
+            "has_condition",
+            "induced_by"
+         ],
+         "title": "ExpressionConditionRelationEnum",
+         "type": "string"
+      },
+      "ExpressionExperiment": {
+         "additionalProperties": false,
+         "description": "Defined by the gene of interest, the specimen, the assay, the reagents (Antibody, Probe), and the reference. It groups ExpressionAnnotations.",
+         "properties": {
+            "assay_used": {
+               "description": "The assay used to experimentally determine gene expression.",
+               "type": "string"
+            },
+            "biological_entity_assayed": {
+               "description": "Holds between a BiologicalEntity and an ExpressionExperiment that reports on its expression.",
+               "type": "string"
+            },
+            "condition_relations": {
+               "items": {
+                  "$ref": "#/$defs/ConditionRelation"
+               },
+               "type": "array"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "reagents_used": {
+               "description": "Reagents used in the expression assay: e.g., antibodies, probes.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "single_reference": {
+               "description": "holds between an object and a single reference",
+               "type": "string"
+            },
+            "specimen_alleles": {
+               "description": "The Allele(s) of the specimen assayed.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "specimen_genomic_model": {
+               "description": "The AffectedGenomicModel of the specimen assayed.",
+               "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            }
+         },
+         "required": [
+            "curie",
+            "created_by",
+            "modified_by"
+         ],
+         "title": "ExpressionExperiment",
+         "type": "object"
+      },
+      "ExpressionExperimentStatement": {
+         "additionalProperties": false,
+         "description": "Free-text describing some aspect(s) of a gene's expression, particularly nuanced information that is not readily captured in annotations. This statement's scope is limited to the associated ExpressionExperiment.",
+         "properties": {
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "statement_subject": {
+               "description": "The entity being described by the note.",
+               "type": "string"
+            },
+            "statement_text": {
+               "description": "Free-text describing some aspect of an entity.",
+               "type": "string"
+            },
+            "statement_type": {
+               "description": "The type of free-text statement. For example: cytology, private, curator_comments.",
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "ExpressionExperimentStatement",
+         "type": "object"
+      },
+      "ExpressionQualifierSet": {
+         "description": "",
+         "enum": [
+            "strong",
+            "moderate",
+            "faint",
+            "endogenous",
+            "granular",
+            "intense",
+            "punctate",
+            "uniform",
+            "non-uniform",
+            "variable",
+            "clusters",
+            "diffuse",
+            "graded",
+            "not_specified",
+            "patchy",
+            "regionally_restricted",
+            "scattered",
+            "single_cells",
+            "spotted",
+            "ubiquitous",
+            "widespread"
+         ],
+         "title": "ExpressionQualifierSet",
+         "type": "string"
+      },
+      "ExpressionStatementTypeEnum": {
+         "description": "",
+         "enum": [
+            "expression_summary",
+            "when_expressed_note",
+            "where_expressed_note",
+            "expression_annotation_note"
+         ],
+         "title": "ExpressionStatementTypeEnum",
+         "type": "string"
+      },
       "ExternalDatabaseLink": {
          "additionalProperties": false,
          "description": "Base relation that holds the identifier prefix, base url and url suffix to help in generating URLs in crossReferences.",
@@ -2611,6 +2903,34 @@
             "predicate"
          ],
          "title": "GeneDiseaseAnnotation",
+         "type": "object"
+      },
+      "GeneExpressionStatement": {
+         "additionalProperties": false,
+         "description": "Free-text describing some aspect(s) of a gene's expression, particularly nuanced information that is not readily captured in annotations. May summarize data from many annotations and/or many publications.",
+         "properties": {
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "statement_subject": {
+               "description": "The entity being described by the note.",
+               "type": "string"
+            },
+            "statement_text": {
+               "description": "Free-text describing some aspect of an entity.",
+               "type": "string"
+            },
+            "statement_type": {
+               "$ref": "#/$defs/ExpressionStatementTypeEnum",
+               "description": "The type of free-text statement. For example: cytology, private, curator_comments."
+            }
+         },
+         "required": [],
+         "title": "GeneExpressionStatement",
          "type": "object"
       },
       "GeneGeneticInteraction": {
@@ -3900,7 +4220,7 @@
                "type": "boolean"
             },
             "note_type": {
-               "description": "The type of note: e.g., cytology, comment, summary.",
+               "description": "The type of note: e.g., cytology, comment, summary. Permissible values for 'note_type' currently = disease_summary, disease_note",
                "type": "string"
             },
             "references": {
@@ -4568,7 +4888,7 @@
                "description": "status of the publication"
             },
             "pubmed_type": {
-               "description": "Type of Reference as described by PubMed.",
+               "description": "Type of InformationContentEntity as described by pub med.",
                "items": {
                   "type": "string"
                },
@@ -4798,6 +5118,50 @@
          "title": "SiftPredictionLevels",
          "type": "string"
       },
+      "SourceVariantLocation": {
+         "additionalProperties": false,
+         "description": "Links a paper to the variant locations described in that paper",
+         "properties": {
+            "single_reference": {
+               "description": "holds between an object and a single reference",
+               "type": "string"
+            },
+            "variant_locations": {
+               "description": "Location of the variant within genomic entities. Variant_locations can include any or all of: one VariantGenomeLocation stanza, one or more VariantTranscriptLocation stanzas and/or one or more VariantPolypeptideLocation stanzas.",
+               "items": {
+                  "$ref": "#/$defs/VariantLocation"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "variant_locations",
+            "single_reference"
+         ],
+         "title": "SourceVariantLocation",
+         "type": "object"
+      },
+      "SpatialQualifierSet": {
+         "description": "",
+         "enum": [
+            "anterior",
+            "anterior_posterior_gradient",
+            "apical",
+            "basal",
+            "central",
+            "distal",
+            "dorsal",
+            "dorso-lateral",
+            "egg_length",
+            "gap_expression_pattern",
+            "pair_rule_expression_pattern",
+            "segment_polarity_expression_pattern",
+            "terminal_expression_pattern",
+            "gradient"
+         ],
+         "title": "SpatialQualifierSet",
+         "type": "string"
+      },
       "SubtypeValues": {
          "description": "",
          "enum": [
@@ -4814,6 +5178,44 @@
          "required": [],
          "title": "Synonym",
          "type": "object"
+      },
+      "TemporalContext": {
+         "additionalProperties": false,
+         "description": "The developmental stage and/or age of the specimen in an annotation. Developmental_stage_stop is optional. Add an uncertainty flag here?",
+         "properties": {
+            "age": {
+               "description": "The age at which an annotated event was observed.",
+               "type": "string"
+            },
+            "developmental_stage_start": {
+               "description": "The beginning developmental stage at which an annotated event was observed.",
+               "type": "string"
+            },
+            "developmental_stage_stop": {
+               "description": "The end developmental stage at which an annotated event was observed.",
+               "type": "string"
+            },
+            "stage_uncertainty": {
+               "type": "string"
+            },
+            "temporal_qualifiers": {
+               "$ref": "#/$defs/TemporalQualifierSet",
+               "description": "Qualifiers of the stage or age in an annotation."
+            }
+         },
+         "required": [],
+         "title": "TemporalContext",
+         "type": "object"
+      },
+      "TemporalQualifierSet": {
+         "description": "",
+         "enum": [
+            "progressive",
+            "throughout",
+            "sometime_during"
+         ],
+         "title": "TemporalQualifierSet",
+         "type": "string"
       },
       "Transcript": {
          "additionalProperties": false,
@@ -4955,7 +5357,7 @@
       },
       "Variant": {
          "additionalProperties": false,
-         "description": "A DNA sequence that differs relative to a designated reference sequence.  The sequence occurs at a single position or in contiguous nucleotides.",
+         "description": "A DNA, RNA or protein/polypeptide sequence that differs relative to a designated reference sequence.  The sequence occurs at a single position or in a range of contiguous nucleotides or amino acids.",
          "properties": {
             "created_by": {
                "description": "The individual that created the entity.",
@@ -4982,9 +5384,6 @@
                "format": "date",
                "type": "string"
             },
-            "evidence_code": {
-               "type": "string"
-            },
             "modified_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
@@ -4992,13 +5391,6 @@
             "name": {
                "description": "a human-readable name for an entity",
                "type": "string"
-            },
-            "references": {
-               "description": "holds between an object and a list of references",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
             },
             "related_notes": {
                "description": "Holds between an object and a list of related Note objects.",
@@ -5014,8 +5406,15 @@
                "type": "array"
             },
             "source_general_consequence": {
-               "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference when no transcript ID is provided.",
+               "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference when no transcript ID is provided. Since a curator would determine variant location and consequences relative to at least one specific genome assembly, transcript and/or polypeptide, no slot for curated general consequence is provided.",
                "type": "string"
+            },
+            "source_variant_locations": {
+               "description": "Location of the variant within genomic entities,as described in the source references.",
+               "items": {
+                  "$ref": "#/$defs/SourceVariantLocation"
+               },
+               "type": "array"
             },
             "synonyms": {
                "description": "holds between a named thing and a synonym",
@@ -5032,15 +5431,29 @@
                "description": "The taxon from which the biological entity derives.",
                "type": "string"
             },
-            "variant_locations": {
-               "description": "Location of the variant within genomic entities.",
+            "variant_genome_locations": {
+               "description": "Location of the variant in a genomic context.  multiple variant_genome_locations represent multiple assemblies.",
                "items": {
-                  "$ref": "#/$defs/VariantLocation"
+                  "$ref": "#/$defs/VariantGenomeLocation"
+               },
+               "type": "array"
+            },
+            "variant_polypeptide_locations": {
+               "description": "Location of the variant within polypeptide entities.",
+               "items": {
+                  "$ref": "#/$defs/VariantPolypeptideLocation"
+               },
+               "type": "array"
+            },
+            "variant_transcript_locations": {
+               "description": "Location of the variant within transcript entities.",
+               "items": {
+                  "$ref": "#/$defs/VariantTranscriptLocation"
                },
                "type": "array"
             },
             "variant_type": {
-               "description": "SOTerm describing the type of variant",
+               "description": "SOTerm describing the type of variant. In practice, variant type will be limited to a subset of the SO specified in an Alliance controlled vocabulary in order to maintain consistency.",
                "type": "string"
             }
          },
@@ -5050,7 +5463,7 @@
             "created_by",
             "modified_by",
             "variant_type",
-            "variant_locations"
+            "variant_genome_locations"
          ],
          "title": "Variant",
          "type": "object"
@@ -5080,8 +5493,8 @@
                "type": "number"
             },
             "subject": {
-               "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-               "type": "string"
+               "$ref": "#/$defs/VariantGenomeLocation",
+               "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
             },
             "vep_consequence": {
                "$ref": "#/$defs/VepConsequenceLevels",
@@ -5093,169 +5506,112 @@
             }
          },
          "required": [
-            "subject",
-            "object"
+            "object",
+            "subject"
          ],
          "title": "VariantGeneConsequence",
          "type": "object"
       },
       "VariantGenomeLocation": {
          "additionalProperties": false,
-         "description": "Links a variant to a genomic position.",
+         "description": "Links a variant to a genomic position and the resulting consequence to the sequence and/or function. In practice, functional consequences for variants which overlap genes are not generally provided at the genome level but rather are calculated and annotated relative to a specific transcript or protein isoform.",
          "properties": {
-            "curated_assembly": {
-               "description": "Assembly to which variant is aligned as specified by curator.",
+            "assembly": {
+               "description": "Assembly to which variant is aligned.",
                "type": "string"
             },
-            "curated_chromosome": {
-               "description": "Chromosome to which variant is aligned as specified by curator.",
+            "chromosome": {
+               "description": "Chromosome to which variant is aligned.",
                "type": "string"
             },
-            "curated_consequence": {
-               "description": "SOTerm that describes the consequence of the variant, as determined by the curator.",
+            "consequence": {
+               "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.",
                "type": "string"
             },
-            "curated_end_position": {
-               "description": "End position of variant on genomic entity as specified at source.",
+            "end_position": {
+               "description": "End position of variant on genomic entity.",
                "type": "integer"
-            },
-            "curated_reference_sequence": {
-               "description": "Reference sequence of genome or genomic entity at position of aligned variant, as specified by curator.",
-               "type": "string"
-            },
-            "curated_start_position": {
-               "description": "Start position of variant on genomic entity as specified at source.",
-               "type": "integer"
-            },
-            "curated_variant_sequence": {
-               "description": "Variant sequence of genome or genomic entity at position of variant, as specified by curator.",
-               "type": "string"
             },
             "evidence_code": {
                "type": "string"
             },
             "hgvs": {
-               "description": "HGVS nomenclature for variant located on a genomic entity.",
+               "description": "HGVS nomenclature for variant located on a genomic entity. In practice HGVS nomenclature will be derived for any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.",
                "type": "string"
             },
-            "source_assembly": {
-               "description": "Assembly to which variant is aligned as specified at source.",
+            "reference_sequence": {
+               "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
                "type": "string"
             },
-            "source_chromosome": {
-               "description": "Chromosome to which variant is aligned as specified at source.",
+            "single_reference": {
+               "description": "holds between an object and a single reference",
                "type": "string"
             },
-            "source_consequence": {
-               "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference.",
-               "type": "string"
-            },
-            "source_end_position": {
-               "description": "End position of variant on genomic entity as specified at source.",
+            "start_position": {
+               "description": "Start position of variant on genomic entity.",
                "type": "integer"
             },
-            "source_reference_sequence": {
-               "description": "Reference sequence of genome or genomic entity at position of aligned variant, as specified at source.",
-               "type": "string"
-            },
-            "source_start_position": {
-               "description": "Start position of variant on genomic entity as specified at source.",
-               "type": "integer"
-            },
-            "source_variant_sequence": {
-               "description": "Variant sequence of genome or genomic entity at position of variant, as specified at source.",
+            "variant_sequence": {
+               "description": "Sequence that differs from the reference sequence of genome or genomic entity at position of variant, as specified by curator.",
                "type": "string"
             }
          },
          "required": [
-            "hgvs",
-            "curated_start_position",
-            "curated_end_position",
-            "curated_assembly",
-            "curated_chromosome"
+            "hgvs"
          ],
          "title": "VariantGenomeLocation",
          "type": "object"
       },
       "VariantPolypeptideLocation": {
          "additionalProperties": false,
-         "description": "Links a variant to a position on a polypeptide.",
+         "description": "Links a variant to a position on a specified polypeptide and the resulting consequence to the sequence and/or function of that polypeptide.",
          "properties": {
-            "curated_associated_transcripts": {
-               "description": "Transcript(s) associated with polypeptide to which variant is aligned, as specified by curator.",
+            "associated_transcripts": {
+               "description": "Transcript(s) associated with polypeptide to which variant is aligned.",
                "items": {
                   "type": "string"
                },
                "type": "array"
             },
-            "curated_consequence": {
-               "description": "SOTerm that describes the consequence of the variant, as determined by the curator.",
+            "consequence": {
+               "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.",
                "type": "string"
             },
-            "curated_end_position": {
-               "description": "End position of variant on genomic entity as specified at source.",
+            "end_position": {
+               "description": "End position of variant on genomic entity.",
                "type": "integer"
-            },
-            "curated_polypeptide": {
-               "description": "Polypeptide associated with variation, as specified by curator.",
-               "type": "string"
-            },
-            "curated_reference_sequence": {
-               "description": "Reference sequence of genome or genomic entity at position of aligned variant, as specified by curator.",
-               "type": "string"
-            },
-            "curated_start_position": {
-               "description": "Start position of variant on genomic entity as specified at source.",
-               "type": "integer"
-            },
-            "curated_variant_sequence": {
-               "description": "Variant sequence of genome or genomic entity at position of variant, as specified by curator.",
-               "type": "string"
             },
             "evidence_code": {
                "type": "string"
             },
             "hgvs": {
-               "description": "HGVS nomenclature for variant located on a genomic entity.",
+               "description": "HGVS nomenclature for variant located on a genomic entity. In practice HGVS nomenclature will be derived for any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.",
                "type": "string"
             },
-            "source_associated_transcripts": {
-               "description": "Transcript(s) associated with polypeptide to which variant is aligned, as specified at source.",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "source_consequence": {
-               "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference.",
+            "polypeptide": {
+               "description": "Transcript associated with variant and for which a specific location and consequence of that variant is provided, as specified by curator. Multivalued=false for this slot because although a variant can have multiple VariantTranscriptLocation stanzas, each stanza will have one and only one curated transcript ID.",
                "type": "string"
             },
-            "source_end_position": {
-               "description": "End position of variant on genomic entity as specified at source.",
+            "reference_sequence": {
+               "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
+               "type": "string"
+            },
+            "single_reference": {
+               "description": "holds between an object and a single reference",
+               "type": "string"
+            },
+            "start_position": {
+               "description": "Start position of variant on genomic entity.",
                "type": "integer"
             },
-            "source_polypeptide": {
-               "description": "Polypeptide associated with variation, as specified at source.",
-               "type": "string"
-            },
-            "source_reference_sequence": {
-               "description": "Reference sequence of genome or genomic entity at position of aligned variant, as specified at source.",
-               "type": "string"
-            },
-            "source_start_position": {
-               "description": "Start position of variant on genomic entity as specified at source.",
-               "type": "integer"
-            },
-            "source_variant_sequence": {
-               "description": "Variant sequence of genome or genomic entity at position of variant, as specified at source.",
+            "variant_sequence": {
+               "description": "Sequence that differs from the reference sequence of genome or genomic entity at position of variant, as specified by curator.",
                "type": "string"
             }
          },
          "required": [
             "hgvs",
-            "curated_start_position",
-            "curated_end_position",
-            "curated_polypeptide"
+            "polypeptide"
          ],
          "title": "VariantPolypeptideLocation",
          "type": "object"
@@ -5337,8 +5693,8 @@
                "type": "number"
             },
             "subject": {
-               "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-               "type": "string"
+               "$ref": "#/$defs/VariantTranscriptLocation",
+               "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
             },
             "vep_consequence": {
                "$ref": "#/$defs/VepConsequenceLevels",
@@ -5350,77 +5706,54 @@
             }
          },
          "required": [
-            "subject",
-            "object"
+            "object",
+            "subject"
          ],
          "title": "VariantTranscriptConsequence",
          "type": "object"
       },
       "VariantTranscriptLocation": {
          "additionalProperties": false,
-         "description": "Links a variant to a position on a transcript.",
+         "description": "Links a variant to a position on a specified transcript and the resulting consequence to the sequence and/or function of that transcript.",
          "properties": {
-            "curated_consequence": {
-               "description": "SOTerm that describes the consequence of the variant, as determined by the curator.",
+            "consequence": {
+               "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.",
                "type": "string"
             },
-            "curated_end_position": {
-               "description": "End position of variant on genomic entity as specified at source.",
+            "end_position": {
+               "description": "End position of variant on genomic entity.",
                "type": "integer"
-            },
-            "curated_reference_sequence": {
-               "description": "Reference sequence of genome or genomic entity at position of aligned variant, as specified by curator.",
-               "type": "string"
-            },
-            "curated_start_position": {
-               "description": "Start position of variant on genomic entity as specified at source.",
-               "type": "integer"
-            },
-            "curated_transcript": {
-               "description": "Transcript associated with variation, as specified by curator.",
-               "type": "string"
-            },
-            "curated_variant_sequence": {
-               "description": "Variant sequence of genome or genomic entity at position of variant, as specified by curator.",
-               "type": "string"
             },
             "evidence_code": {
                "type": "string"
             },
             "hgvs": {
-               "description": "HGVS nomenclature for variant located on a genomic entity.",
+               "description": "HGVS nomenclature for variant located on a genomic entity. In practice HGVS nomenclature will be derived for any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.",
                "type": "string"
             },
-            "source_consequence": {
-               "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference.",
+            "reference_sequence": {
+               "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
                "type": "string"
             },
-            "source_end_position": {
-               "description": "End position of variant on genomic entity as specified at source.",
+            "single_reference": {
+               "description": "holds between an object and a single reference",
+               "type": "string"
+            },
+            "start_position": {
+               "description": "Start position of variant on genomic entity.",
                "type": "integer"
             },
-            "source_reference_sequence": {
-               "description": "Reference sequence of genome or genomic entity at position of aligned variant, as specified at source.",
+            "transcript": {
+               "description": "Transcript associated with variant and for which a specific location and consequence of that variant is provided, as specified at source.  Multivalued=false for this slot because although a variant can have multiple VariantTranscriptLocation stanzas, each stanza will have one and only one source transcript ID.",
                "type": "string"
             },
-            "source_start_position": {
-               "description": "Start position of variant on genomic entity as specified at source.",
-               "type": "integer"
-            },
-            "source_transcript": {
-               "description": "Transcript associated with variation, as specified at source.",
-               "type": "string"
-            },
-            "source_variant_sequence": {
-               "description": "Variant sequence of genome or genomic entity at position of variant, as specified at source.",
+            "variant_sequence": {
+               "description": "Sequence that differs from the reference sequence of genome or genomic entity at position of variant, as specified by curator.",
                "type": "string"
             }
          },
          "required": [
-            "hgvs",
-            "curated_start_position",
-            "curated_end_position",
-            "curated_transcript"
+            "hgvs"
          ],
          "title": "VariantTranscriptLocation",
          "type": "object"
@@ -5987,6 +6320,7 @@
    "$id": "https://github.com/alliance-genome/agr_curation_schema/alliance_schema",
    "$schema": "http://json-schema.org/draft-07/schema#",
    "additionalProperties": false,
+   "metamodel_version": "1.7.0",
    "properties": {
       "allele_ingest_set": {
          "items": {
@@ -6021,6 +6355,7 @@
    },
    "required": [],
    "title": "Alliance-Schema-Prototype",
-   "type": "object"
+   "type": "object",
+   "version": "0.0.1"
 }
 
