@@ -91,7 +91,7 @@ slots:
   reference_id:
     description: >-
       An integer referring to a Reference object in the references table. It's
-      a primary key in the references table, a foreign key in other tables.
+      a primary key in the references table, a foreign key when in other tables.
     range: integer
     required: true
 
