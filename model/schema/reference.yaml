@@ -92,6 +92,7 @@ slots:
     description: >-
       An integer referring to a Reference object in the references table. It's
       a primary key in the references table, a foreign key when in other tables.
+    multivalued: false
     range: integer
     required: true
 
