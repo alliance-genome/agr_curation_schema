@@ -39,9 +39,6 @@ classes:
       - variant_status
     exact_mappings:
       - SO:0001059
-    slot_usage:
-      variant_genome_locations:
-        required: true
     rules:
       - postconditions:
           any_of:
