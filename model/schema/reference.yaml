@@ -17,6 +17,10 @@ prefixes:
 classes:
   Reference:
     is_a: InformationContentEntity
+    aliases: [ 'references', 'publication' ]
+    notes: >-
+      In the ABC literature database, the table holding Reference objects is
+      named references.
     slots:
       - abstract
       - category
@@ -56,14 +60,14 @@ classes:
       - PMC
       - DOI
     slot_usage:
+      reference_id:
+        description: >-
+          The primary key for the Reference object in the references table.
       date_last_modified:
         notes: >-
           In the literature database, the values in this column actually
           correspond to date_last_modified_in_pubmed, so the column should
           be renamed in the literature database.
-      # use regex to constrain local id
-      id:
-        pattern: # check this add a regex - check about resourceDescriptor
 
   MeshDetail:
     description: >-
@@ -71,22 +75,31 @@ classes:
     notes: >-
       In the literature database, the table is named mesh_details. 
       In the literature API, the field is named mesh_terms.
+    aliases: [ 'mesh_details', 'mesh_terms' ]
     slots:
       - mesh_detail_id 
       - reference_id 
       - heading_term
       - qualifier_term
+    slot_usage:
+      reference_id:
+        description: >-
+          Here, a foreign key referring to the references table.
 
 slots:
 
   reference_id:
-    is_a: table_key
-    domain: Reference
+    description: >-
+      An integer referring to a Reference object in the references table. It's
+      a primary key in the references table, a foreign key when in other tables.
+    range: integer
     required: true
 
   mesh_detail_id:
-    is_a: table_key
-    domain: Reference
+    description: >-
+      The primary key for a MeshDetail object.
+    domain: MeshDetail
+    range: integer
     required: true
 
   resource_id:
@@ -266,5 +279,3 @@ enums:
       Internal_Process_Reference:
       Unknown:
       Retraction:
-
-
