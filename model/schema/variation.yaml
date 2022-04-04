@@ -32,7 +32,7 @@ classes:
       - variant_type
       - related_notes
       - source_general_consequence
-      - variant_genome_locations # assembly identifies a genome location, so a variant can have many genome locations.
+      - variant_genome_locations # assembly identifies a genome location, so a variant on many assemblies can have many genome locations.
       - variant_polypeptide_locations
       - variant_transcript_locations
       - source_variant_locations
