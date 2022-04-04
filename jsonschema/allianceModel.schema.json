@@ -5538,10 +5538,6 @@
             "evidence_code": {
                "type": "string"
             },
-            "hgvs": {
-               "description": "HGVS nomenclature for variant located on a genomic entity. In practice HGVS nomenclature will be derived for any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.",
-               "type": "string"
-            },
             "reference_sequence": {
                "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
                "type": "string"
@@ -5559,9 +5555,7 @@
                "type": "string"
             }
          },
-         "required": [
-            "hgvs"
-         ],
+         "required": [],
          "title": "VariantGenomeLocation",
          "type": "object"
       },
@@ -5587,10 +5581,6 @@
             "evidence_code": {
                "type": "string"
             },
-            "hgvs": {
-               "description": "HGVS nomenclature for variant located on a genomic entity. In practice HGVS nomenclature will be derived for any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.",
-               "type": "string"
-            },
             "polypeptide": {
                "description": "Transcript associated with variant and for which a specific location and consequence of that variant is provided, as specified by curator. Multivalued=false for this slot because although a variant can have multiple VariantTranscriptLocation stanzas, each stanza will have one and only one curated transcript ID.",
                "type": "string"
@@ -5613,7 +5603,6 @@
             }
          },
          "required": [
-            "hgvs",
             "polypeptide"
          ],
          "title": "VariantPolypeptideLocation",
@@ -5739,10 +5728,6 @@
             "evidence_code": {
                "type": "string"
             },
-            "hgvs": {
-               "description": "HGVS nomenclature for variant located on a genomic entity. In practice HGVS nomenclature will be derived for any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.",
-               "type": "string"
-            },
             "reference_sequence": {
                "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
                "type": "string"
@@ -5764,9 +5749,7 @@
                "type": "string"
             }
          },
-         "required": [
-            "hgvs"
-         ],
+         "required": [],
          "title": "VariantTranscriptLocation",
          "type": "object"
       },

@@ -1,5 +1,5 @@
 # Auto generated from allele.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-04T12:58:58
+# Generation date: 2022-04-04T15:13:09
 # Schema: Alliance-Schema-Prototype-Allele
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/allele
@@ -1429,16 +1429,20 @@ class Variant(GenomicEntity):
 
         if self._is_empty(self.variant_genome_locations):
             self.MissingRequiredField("variant_genome_locations")
-        self._normalize_inlined_as_dict(slot_name="variant_genome_locations", slot_type=VariantGenomeLocation, key_name="hgvs", keyed=False)
+        if not isinstance(self.variant_genome_locations, list):
+            self.variant_genome_locations = [self.variant_genome_locations] if self.variant_genome_locations is not None else []
+        self.variant_genome_locations = [v if isinstance(v, VariantGenomeLocation) else VariantGenomeLocation(**as_dict(v)) for v in self.variant_genome_locations]
 
         self._normalize_inlined_as_dict(slot_name="related_notes", slot_type=Note, key_name="free_text", keyed=False)
 
         if self.source_general_consequence is not None and not isinstance(self.source_general_consequence, SOTermCurie):
             self.source_general_consequence = SOTermCurie(self.source_general_consequence)
 
-        self._normalize_inlined_as_dict(slot_name="variant_polypeptide_locations", slot_type=VariantPolypeptideLocation, key_name="hgvs", keyed=False)
+        self._normalize_inlined_as_dict(slot_name="variant_polypeptide_locations", slot_type=VariantPolypeptideLocation, key_name="polypeptide", keyed=False)
 
-        self._normalize_inlined_as_dict(slot_name="variant_transcript_locations", slot_type=VariantTranscriptLocation, key_name="hgvs", keyed=False)
+        if not isinstance(self.variant_transcript_locations, list):
+            self.variant_transcript_locations = [self.variant_transcript_locations] if self.variant_transcript_locations is not None else []
+        self.variant_transcript_locations = [v if isinstance(v, VariantTranscriptLocation) else VariantTranscriptLocation(**as_dict(v)) for v in self.variant_transcript_locations]
 
         self._normalize_inlined_as_dict(slot_name="source_variant_locations", slot_type=SourceVariantLocation, key_name="variant_locations", keyed=False)
 
@@ -1466,7 +1470,9 @@ class SourceVariantLocation(YAMLRoot):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.variant_locations):
             self.MissingRequiredField("variant_locations")
-        self._normalize_inlined_as_dict(slot_name="variant_locations", slot_type=VariantLocation, key_name="hgvs", keyed=False)
+        if not isinstance(self.variant_locations, list):
+            self.variant_locations = [self.variant_locations] if self.variant_locations is not None else []
+        self.variant_locations = [v if isinstance(v, VariantLocation) else VariantLocation(**as_dict(v)) for v in self.variant_locations]
 
         if self._is_empty(self.single_reference):
             self.MissingRequiredField("single_reference")
@@ -1494,7 +1500,6 @@ class VariantLocation(YAMLRoot):
     class_name: ClassVar[str] = "VariantLocation"
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/VariantLocation")
 
-    hgvs: str = None
     evidence_code: Optional[Union[str, ECOTermCurie]] = None
     single_reference: Optional[Union[str, ReferenceCurie]] = None
     start_position: Optional[int] = None
@@ -1504,11 +1509,6 @@ class VariantLocation(YAMLRoot):
     consequence: Optional[Union[str, SOTermCurie]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.hgvs):
-            self.MissingRequiredField("hgvs")
-        if not isinstance(self.hgvs, str):
-            self.hgvs = str(self.hgvs)
-
         if self.evidence_code is not None and not isinstance(self.evidence_code, ECOTermCurie):
             self.evidence_code = ECOTermCurie(self.evidence_code)
 
@@ -1547,7 +1547,6 @@ class VariantGenomeLocation(VariantLocation):
     class_name: ClassVar[str] = "VariantGenomeLocation"
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/VariantGenomeLocation")
 
-    hgvs: str = None
     assembly: Optional[Union[str, AssemblyCurie]] = None
     chromosome: Optional[Union[str, ChromosomeCurie]] = None
 
@@ -1574,7 +1573,6 @@ class VariantTranscriptLocation(VariantLocation):
     class_name: ClassVar[str] = "VariantTranscriptLocation"
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/VariantTranscriptLocation")
 
-    hgvs: str = None
     transcript: Optional[Union[str, TranscriptCurie]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -1597,7 +1595,6 @@ class VariantPolypeptideLocation(VariantLocation):
     class_name: ClassVar[str] = "VariantPolypeptideLocation"
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/VariantPolypeptideLocation")
 
-    hgvs: str = None
     polypeptide: Union[str, TranscriptCurie] = None
     associated_transcripts: Optional[Union[Union[str, TranscriptCurie], List[Union[str, TranscriptCurie]]]] = empty_list()
 
@@ -3660,9 +3657,6 @@ slots.ImagePane_image_x_origin = Slot(uri="str(uriorcurie)", name="ImagePane_ima
 
 slots.ImagePane_image_y_origin = Slot(uri="str(uriorcurie)", name="ImagePane_image_y_origin", curie=None,
                    model_uri=DEFAULT_.ImagePane_image_y_origin, domain=ImagePane, range=Optional[int])
-
-slots.Variant_variant_genome_locations = Slot(uri="str(uriorcurie)", name="Variant_variant_genome_locations", curie=None,
-                   model_uri=DEFAULT_.Variant_variant_genome_locations, domain=Variant, range=Union[Union[dict, "VariantGenomeLocation"], List[Union[dict, "VariantGenomeLocation"]]])
 
 slots.SourceVariantLocation_single_reference = Slot(uri=ALLIANCE.single_reference, name="SourceVariantLocation_single_reference", curie=ALLIANCE.curie('single_reference'),
                    model_uri=DEFAULT_.SourceVariantLocation_single_reference, domain=SourceVariantLocation, range=Union[str, ReferenceCurie])
