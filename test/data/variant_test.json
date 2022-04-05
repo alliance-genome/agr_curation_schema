@@ -1,0 +1,18 @@
+{
+  "variant_ingest_set": [
+    {
+      "cross_references": [],
+      "curie": "",
+      "name": "",
+      "related_notes":"",
+      "secondary_identifiers": [],
+      "source_general_consequence": "",
+      "source_variant_locations": [],
+      "synonyms": [],
+      "taxon": "",
+      "variant_genome_locations": [],
+      "variant_status": "public",
+      "variant_type": ""
+    }
+  ]
+}
