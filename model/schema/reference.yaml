@@ -16,7 +16,6 @@ prefixes:
 
 classes:
   Reference:
-    is_a: InformationContentEntity
     aliases: [ 'references', 'publication' ]
     notes: >-
       In the ABC literature database, the table holding Reference objects is
