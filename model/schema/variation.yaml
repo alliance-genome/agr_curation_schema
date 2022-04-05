@@ -43,7 +43,7 @@ classes:
       - postconditions:
           any_of:
             - slot_conditions:
-                variant_genome_location:
+                variant_genome_locations:
                   required: true
             - slot_conditions:
                 variant_status:
