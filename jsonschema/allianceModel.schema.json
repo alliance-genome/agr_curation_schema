@@ -3525,6 +3525,12 @@
                },
                "type": "array"
             },
+            "allele_variant_association_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AlleleVariantAssociation"
+               },
+               "type": "array"
+            },
             "disease_agm_ingest_set": {
                "items": {
                   "$ref": "#/$defs/AGMDiseaseAnnotation"
@@ -3546,6 +3552,12 @@
             "gene_ingest_set": {
                "items": {
                   "$ref": "#/$defs/Gene"
+               },
+               "type": "array"
+            },
+            "variant_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/Variant"
                },
                "type": "array"
             }
@@ -6383,6 +6395,12 @@
          },
          "type": "array"
       },
+      "allele_variant_association_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AlleleVariantAssociation"
+         },
+         "type": "array"
+      },
       "disease_agm_ingest_set": {
          "items": {
             "$ref": "#/$defs/AGMDiseaseAnnotation"
@@ -6404,6 +6422,12 @@
       "gene_ingest_set": {
          "items": {
             "$ref": "#/$defs/Gene"
+         },
+         "type": "array"
+      },
+      "variant_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/Variant"
          },
          "type": "array"
       }

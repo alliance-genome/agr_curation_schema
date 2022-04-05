@@ -1,5 +1,5 @@
 # Auto generated from allianceModel.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-05T08:11:34
+# Generation date: 2022-04-05T08:33:06
 # Schema: Alliance-Schema-Prototype
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema
@@ -3901,6 +3901,8 @@ class Ingest(YAMLRoot):
     disease_agm_ingest_set: Optional[Union[Union[dict, AGMDiseaseAnnotation], List[Union[dict, AGMDiseaseAnnotation]]]] = empty_list()
     disease_gene_ingest_set: Optional[Union[Union[dict, GeneDiseaseAnnotation], List[Union[dict, GeneDiseaseAnnotation]]]] = empty_list()
     gene_ingest_set: Optional[Union[Dict[Union[str, GeneCurie], Union[dict, Gene]], List[Union[dict, Gene]]]] = empty_dict()
+    variant_ingest_set: Optional[Union[Dict[Union[str, VariantCurie], Union[dict, Variant]], List[Union[dict, Variant]]]] = empty_dict()
+    allele_variant_association_ingest_set: Optional[Union[Union[dict, AlleleVariantAssociation], List[Union[dict, AlleleVariantAssociation]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         self._normalize_inlined_as_list(slot_name="allele_ingest_set", slot_type=Allele, key_name="curie", keyed=True)
@@ -3918,6 +3920,12 @@ class Ingest(YAMLRoot):
         self.disease_gene_ingest_set = [v if isinstance(v, GeneDiseaseAnnotation) else GeneDiseaseAnnotation(**as_dict(v)) for v in self.disease_gene_ingest_set]
 
         self._normalize_inlined_as_list(slot_name="gene_ingest_set", slot_type=Gene, key_name="curie", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="variant_ingest_set", slot_type=Variant, key_name="curie", keyed=True)
+
+        if not isinstance(self.allele_variant_association_ingest_set, list):
+            self.allele_variant_association_ingest_set = [self.allele_variant_association_ingest_set] if self.allele_variant_association_ingest_set is not None else []
+        self.allele_variant_association_ingest_set = [v if isinstance(v, AlleleVariantAssociation) else AlleleVariantAssociation(**as_dict(v)) for v in self.allele_variant_association_ingest_set]
 
         super().__post_init__(**kwargs)
 
@@ -6185,6 +6193,12 @@ slots.vocabulary_description = Slot(uri="str(uriorcurie)", name="vocabulary_desc
 
 slots.allele_ingest_set = Slot(uri="str(uriorcurie)", name="allele_ingest_set", curie=None,
                    model_uri=ALLIANCE.allele_ingest_set, domain=Ingest, range=Optional[Union[Dict[Union[str, AlleleCurie], Union[dict, Allele]], List[Union[dict, Allele]]]])
+
+slots.variant_ingest_set = Slot(uri="str(uriorcurie)", name="variant_ingest_set", curie=None,
+                   model_uri=ALLIANCE.variant_ingest_set, domain=Ingest, range=Optional[Union[Dict[Union[str, VariantCurie], Union[dict, Variant]], List[Union[dict, Variant]]]])
+
+slots.allele_variant_association_ingest_set = Slot(uri="str(uriorcurie)", name="allele_variant_association_ingest_set", curie=None,
+                   model_uri=ALLIANCE.allele_variant_association_ingest_set, domain=Ingest, range=Optional[Union[Union[dict, AlleleVariantAssociation], List[Union[dict, AlleleVariantAssociation]]]])
 
 slots.disease_allele_ingest_set = Slot(uri="str(uriorcurie)", name="disease_allele_ingest_set", curie=None,
                    model_uri=ALLIANCE.disease_allele_ingest_set, domain=Ingest, range=Optional[Union[Union[dict, AlleleDiseaseAnnotation], List[Union[dict, AlleleDiseaseAnnotation]]]])

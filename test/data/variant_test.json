@@ -1,18 +1,21 @@
 {
   "variant_ingest_set": [
     {
-      "cross_references": [],
-      "curie": "",
-      "name": "",
-      "related_notes":"",
-      "secondary_identifiers": [],
-      "source_general_consequence": "",
-      "source_variant_locations": [],
-      "synonyms": [],
-      "taxon": "",
-      "variant_genome_locations": [],
+      "taxon": "NCBITaxon:7955",
+      "variant_genome_locations": [
+        {
+          "assembly": "GRCz11",
+          "chromosome": "7",
+          "start_position": "30341642",
+          "end_position": "30341642",
+          "reference_sequence": "C",
+          "variant_sequence": "T",
+
+        }
+      ],
       "variant_status": "public",
-      "variant_type": ""
+      "variant_type": "SO:1000008"
     }
   ]
 }
+

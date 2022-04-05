@@ -38,7 +38,7 @@ slots:
     mixins:
       - object_set
 
-  allele_variant_ingest_set:
+  allele_variant_association_ingest_set:
     description: >-
     domain: Ingest
     range: AlleleVariantAssociation
@@ -98,5 +98,5 @@ classes:
       - disease_gene_ingest_set
       - gene_ingest_set
       - variant_ingest_set
-      - allele_variant_association_set
+      - allele_variant_association_ingest_set
 
