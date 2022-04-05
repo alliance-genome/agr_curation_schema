@@ -1,5 +1,5 @@
 # Auto generated from agent.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-30T12:55:36
+# Generation date: 2022-04-05T01:00:18
 # Schema: person
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/person
@@ -26,6 +26,7 @@ from linkml_runtime.linkml_model.types import Boolean, Date, Integer, String, Ur
 from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
+version = None
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
@@ -1061,6 +1062,7 @@ class Reference(InformationContentEntity):
     curie: Union[str, ReferenceCurie] = None
     created_by: Union[str, PersonUniqueId] = None
     modified_by: Union[str, PersonUniqueId] = None
+    reference_id: int = None
     abstract: Optional[str] = None
     category: Optional[Union[str, "ReferenceCategoryEnum"]] = None
     citation: Optional[str] = None
@@ -1081,7 +1083,6 @@ class Reference(InformationContentEntity):
     pubmed_abstract_languages: Optional[Union[str, List[str]]] = empty_list()
     pubmed_publication_status: Optional[Union[str, "PubmedPublicationStatusEnum"]] = None
     pubmed_type: Optional[Union[str, List[str]]] = empty_list()
-    reference_id: Optional[int] = None
     resource_id: Optional[int] = None
     title: Optional[str] = None
     volume: Optional[str] = None
@@ -1092,6 +1093,11 @@ class Reference(InformationContentEntity):
             self.MissingRequiredField("curie")
         if not isinstance(self.curie, ReferenceCurie):
             self.curie = ReferenceCurie(self.curie)
+
+        if self._is_empty(self.reference_id):
+            self.MissingRequiredField("reference_id")
+        if not isinstance(self.reference_id, int):
+            self.reference_id = int(self.reference_id)
 
         if self.abstract is not None and not isinstance(self.abstract, str):
             self.abstract = str(self.abstract)
@@ -1156,9 +1162,6 @@ class Reference(InformationContentEntity):
         if not isinstance(self.pubmed_type, list):
             self.pubmed_type = [self.pubmed_type] if self.pubmed_type is not None else []
         self.pubmed_type = [v if isinstance(v, str) else str(v) for v in self.pubmed_type]
-
-        if self.reference_id is not None and not isinstance(self.reference_id, int):
-            self.reference_id = int(self.reference_id)
 
         if self.resource_id is not None and not isinstance(self.resource_id, int):
             self.resource_id = int(self.resource_id)
@@ -3270,7 +3273,7 @@ slots.address = Slot(uri=ALLIANCE.address, name="address", curie=ALLIANCE.curie(
                    model_uri=ALLIANCE.address, domain=None, range=Optional[str])
 
 slots.reference_id = Slot(uri="str(uriorcurie)", name="reference_id", curie=None,
-                   model_uri=ALLIANCE.reference_id, domain=Reference, range=Optional[int])
+                   model_uri=ALLIANCE.reference_id, domain=None, range=int)
 
 slots.resource_id = Slot(uri="str(uriorcurie)", name="resource_id", curie=None,
                    model_uri=ALLIANCE.resource_id, domain=Reference, range=Optional[int])

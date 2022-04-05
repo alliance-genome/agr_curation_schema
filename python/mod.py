@@ -1,5 +1,5 @@
 # Auto generated from mod.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-30T12:56:41
+# Generation date: 2022-04-05T01:00:35
 # Schema: mod
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/mod
@@ -26,6 +26,7 @@ from linkml_runtime.linkml_model.types import Boolean, Date, Integer, String, Ur
 from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
+version = None
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
@@ -963,9 +964,9 @@ class Mod(Organization):
 
     abbreviation: str = None
     date_created: Union[str, XSDDate] = None
-    mod_full_name: str = None
+    full_name: str = None
     mod_id: int = None
-    mod_short_name: str = None
+    short_name: str = None
     date_updated: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -979,20 +980,20 @@ class Mod(Organization):
         if not isinstance(self.date_created, XSDDate):
             self.date_created = XSDDate(self.date_created)
 
-        if self._is_empty(self.mod_full_name):
-            self.MissingRequiredField("mod_full_name")
-        if not isinstance(self.mod_full_name, str):
-            self.mod_full_name = str(self.mod_full_name)
+        if self._is_empty(self.full_name):
+            self.MissingRequiredField("full_name")
+        if not isinstance(self.full_name, str):
+            self.full_name = str(self.full_name)
 
         if self._is_empty(self.mod_id):
             self.MissingRequiredField("mod_id")
         if not isinstance(self.mod_id, int):
             self.mod_id = int(self.mod_id)
 
-        if self._is_empty(self.mod_short_name):
-            self.MissingRequiredField("mod_short_name")
-        if not isinstance(self.mod_short_name, str):
-            self.mod_short_name = str(self.mod_short_name)
+        if self._is_empty(self.short_name):
+            self.MissingRequiredField("short_name")
+        if not isinstance(self.short_name, str):
+            self.short_name = str(self.short_name)
 
         if self.date_updated is not None and not isinstance(self.date_updated, XSDDate):
             self.date_updated = XSDDate(self.date_updated)
@@ -1112,6 +1113,7 @@ class Reference(InformationContentEntity):
     curie: Union[str, ReferenceCurie] = None
     created_by: Union[str, PersonUniqueId] = None
     modified_by: Union[str, PersonUniqueId] = None
+    reference_id: int = None
     abstract: Optional[str] = None
     category: Optional[Union[str, "ReferenceCategoryEnum"]] = None
     citation: Optional[str] = None
@@ -1132,7 +1134,6 @@ class Reference(InformationContentEntity):
     pubmed_abstract_languages: Optional[Union[str, List[str]]] = empty_list()
     pubmed_publication_status: Optional[Union[str, "PubmedPublicationStatusEnum"]] = None
     pubmed_type: Optional[Union[str, List[str]]] = empty_list()
-    reference_id: Optional[int] = None
     resource_id: Optional[int] = None
     title: Optional[str] = None
     volume: Optional[str] = None
@@ -1143,6 +1144,11 @@ class Reference(InformationContentEntity):
             self.MissingRequiredField("curie")
         if not isinstance(self.curie, ReferenceCurie):
             self.curie = ReferenceCurie(self.curie)
+
+        if self._is_empty(self.reference_id):
+            self.MissingRequiredField("reference_id")
+        if not isinstance(self.reference_id, int):
+            self.reference_id = int(self.reference_id)
 
         if self.abstract is not None and not isinstance(self.abstract, str):
             self.abstract = str(self.abstract)
@@ -1207,9 +1213,6 @@ class Reference(InformationContentEntity):
         if not isinstance(self.pubmed_type, list):
             self.pubmed_type = [self.pubmed_type] if self.pubmed_type is not None else []
         self.pubmed_type = [v if isinstance(v, str) else str(v) for v in self.pubmed_type]
-
-        if self.reference_id is not None and not isinstance(self.reference_id, int):
-            self.reference_id = int(self.reference_id)
 
         if self.resource_id is not None and not isinstance(self.resource_id, int):
             self.resource_id = int(self.resource_id)
@@ -3081,13 +3084,13 @@ class slots:
     pass
 
 slots.mod_id = Slot(uri=DEFAULT_.mod_id, name="mod_id", curie=DEFAULT_.curie('mod_id'),
-                   model_uri=DEFAULT_.mod_id, domain=Mod, range=int)
+                   model_uri=DEFAULT_.mod_id, domain=None, range=int)
 
-slots.mod_short_name = Slot(uri=DEFAULT_.mod_short_name, name="mod_short_name", curie=DEFAULT_.curie('mod_short_name'),
-                   model_uri=DEFAULT_.mod_short_name, domain=Mod, range=str)
+slots.short_name = Slot(uri=DEFAULT_.short_name, name="short_name", curie=DEFAULT_.curie('short_name'),
+                   model_uri=DEFAULT_.short_name, domain=Mod, range=str)
 
-slots.mod_full_name = Slot(uri=DEFAULT_.mod_full_name, name="mod_full_name", curie=DEFAULT_.curie('mod_full_name'),
-                   model_uri=DEFAULT_.mod_full_name, domain=Mod, range=str)
+slots.full_name = Slot(uri=DEFAULT_.full_name, name="full_name", curie=DEFAULT_.curie('full_name'),
+                   model_uri=DEFAULT_.full_name, domain=Mod, range=str)
 
 slots.start = Slot(uri=ALLIANCE.start, name="start", curie=ALLIANCE.curie('start'),
                    model_uri=DEFAULT_.start, domain=None, range=Optional[str])
@@ -3330,7 +3333,7 @@ slots.okta_email = Slot(uri=ALLIANCE.okta_email, name="okta_email", curie=ALLIAN
                    model_uri=DEFAULT_.okta_email, domain=LoggedInPerson, range=Optional[str])
 
 slots.reference_id = Slot(uri="str(uriorcurie)", name="reference_id", curie=None,
-                   model_uri=DEFAULT_.reference_id, domain=Reference, range=Optional[int])
+                   model_uri=DEFAULT_.reference_id, domain=None, range=int)
 
 slots.resource_id = Slot(uri="str(uriorcurie)", name="resource_id", curie=None,
                    model_uri=DEFAULT_.resource_id, domain=Reference, range=Optional[int])
