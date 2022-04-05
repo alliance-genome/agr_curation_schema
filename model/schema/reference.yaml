@@ -16,7 +16,6 @@ prefixes:
 
 classes:
   Reference:
-    is_a: InformationContentEntity
     slots:
       - abstract
       - category
