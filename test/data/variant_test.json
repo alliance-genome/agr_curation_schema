@@ -3,6 +3,8 @@
     {
       "curie": "ZFIN:ZDB-ALT-000412-8",
       "taxon": "NCBITaxon:7955",
+      "created_by": "ZFIN",
+      "modified_by": "ZFIN",
       "variant_genome_locations": [
         {
           "assembly": "GRCz11",
