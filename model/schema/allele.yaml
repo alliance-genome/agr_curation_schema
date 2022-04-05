@@ -25,7 +25,7 @@ prefixes:
 
 classes:
 
-
+  Allele:
     is_a: GenomicEntity
     description: >-
       One of multiple possible forms of a functional genomic
