@@ -60,11 +60,14 @@ slots:
     required: true
 
   corpus:
-    description: in-out-review corpus status of the publication at the mod
+    description: >-
+      in-out-review corpus status of the publication at the mod.
+      null means needs_review, false means outside_corpus, 
+      true means inside_corpus.
     multivalued: false
     domain: ModCorpusAssociation
-    range: corpus_enum
-    required: true
+    range: boolean
+    required: false
 
   mod_corpus_sort_source:
     description: origin of corpus determination for that publication and mod
@@ -74,12 +77,6 @@ slots:
     required: true
 
 enums:
-
-  corpus_enum:
-    permissible_values:
-      needs_review:
-      inside_corpus:
-      outside_corpus:
 
   mod_corpus_sort_source_enum:
     permissible_values:
