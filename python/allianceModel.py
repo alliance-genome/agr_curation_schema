@@ -1,5 +1,5 @@
 # Auto generated from allianceModel.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-04T12:58:39
+# Generation date: 2022-04-05T08:43:54
 # Schema: Alliance-Schema-Prototype
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema
@@ -347,7 +347,9 @@ class SourceVariantLocation(YAMLRoot):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.variant_locations):
             self.MissingRequiredField("variant_locations")
-        self._normalize_inlined_as_dict(slot_name="variant_locations", slot_type=VariantLocation, key_name="hgvs", keyed=False)
+        if not isinstance(self.variant_locations, list):
+            self.variant_locations = [self.variant_locations] if self.variant_locations is not None else []
+        self.variant_locations = [v if isinstance(v, VariantLocation) else VariantLocation(**as_dict(v)) for v in self.variant_locations]
 
         if self._is_empty(self.single_reference):
             self.MissingRequiredField("single_reference")
@@ -375,7 +377,6 @@ class VariantLocation(YAMLRoot):
     class_name: ClassVar[str] = "VariantLocation"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.VariantLocation
 
-    hgvs: str = None
     evidence_code: Optional[Union[str, ECOTermCurie]] = None
     single_reference: Optional[Union[str, ReferenceCurie]] = None
     start_position: Optional[int] = None
@@ -385,11 +386,6 @@ class VariantLocation(YAMLRoot):
     consequence: Optional[Union[str, SOTermCurie]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.hgvs):
-            self.MissingRequiredField("hgvs")
-        if not isinstance(self.hgvs, str):
-            self.hgvs = str(self.hgvs)
-
         if self.evidence_code is not None and not isinstance(self.evidence_code, ECOTermCurie):
             self.evidence_code = ECOTermCurie(self.evidence_code)
 
@@ -428,7 +424,6 @@ class VariantGenomeLocation(VariantLocation):
     class_name: ClassVar[str] = "VariantGenomeLocation"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.VariantGenomeLocation
 
-    hgvs: str = None
     assembly: Optional[Union[str, AssemblyCurie]] = None
     chromosome: Optional[Union[str, ChromosomeCurie]] = None
 
@@ -455,7 +450,6 @@ class VariantTranscriptLocation(VariantLocation):
     class_name: ClassVar[str] = "VariantTranscriptLocation"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.VariantTranscriptLocation
 
-    hgvs: str = None
     transcript: Optional[Union[str, TranscriptCurie]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -478,7 +472,6 @@ class VariantPolypeptideLocation(VariantLocation):
     class_name: ClassVar[str] = "VariantPolypeptideLocation"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.VariantPolypeptideLocation
 
-    hgvs: str = None
     polypeptide: Union[str, TranscriptCurie] = None
     associated_transcripts: Optional[Union[Union[str, TranscriptCurie], List[Union[str, TranscriptCurie]]]] = empty_list()
 
@@ -799,16 +792,20 @@ class Variant(GenomicEntity):
 
         if self._is_empty(self.variant_genome_locations):
             self.MissingRequiredField("variant_genome_locations")
-        self._normalize_inlined_as_dict(slot_name="variant_genome_locations", slot_type=VariantGenomeLocation, key_name="hgvs", keyed=False)
+        if not isinstance(self.variant_genome_locations, list):
+            self.variant_genome_locations = [self.variant_genome_locations] if self.variant_genome_locations is not None else []
+        self.variant_genome_locations = [v if isinstance(v, VariantGenomeLocation) else VariantGenomeLocation(**as_dict(v)) for v in self.variant_genome_locations]
 
         self._normalize_inlined_as_dict(slot_name="related_notes", slot_type=Note, key_name="free_text", keyed=False)
 
         if self.source_general_consequence is not None and not isinstance(self.source_general_consequence, SOTermCurie):
             self.source_general_consequence = SOTermCurie(self.source_general_consequence)
 
-        self._normalize_inlined_as_dict(slot_name="variant_polypeptide_locations", slot_type=VariantPolypeptideLocation, key_name="hgvs", keyed=False)
+        self._normalize_inlined_as_dict(slot_name="variant_polypeptide_locations", slot_type=VariantPolypeptideLocation, key_name="polypeptide", keyed=False)
 
-        self._normalize_inlined_as_dict(slot_name="variant_transcript_locations", slot_type=VariantTranscriptLocation, key_name="hgvs", keyed=False)
+        if not isinstance(self.variant_transcript_locations, list):
+            self.variant_transcript_locations = [self.variant_transcript_locations] if self.variant_transcript_locations is not None else []
+        self.variant_transcript_locations = [v if isinstance(v, VariantTranscriptLocation) else VariantTranscriptLocation(**as_dict(v)) for v in self.variant_transcript_locations]
 
         self._normalize_inlined_as_dict(slot_name="source_variant_locations", slot_type=SourceVariantLocation, key_name="variant_locations", keyed=False)
 
@@ -1964,6 +1961,39 @@ class AlleleProteinAssociation(AlleleGenomicEntityAssociation):
             self.MissingRequiredField("object")
         if not isinstance(self.object, ProteinCurie):
             self.object = ProteinCurie(self.object)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class AlleleVariantAssociation(AlleleGenomicEntityAssociation):
+    """
+    The relationship between an allele and a variant is many to many. An Allele may have many variants and a variant
+    can be present in many alleles.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AlleleVariantAssociation")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "AlleleVariantAssociation"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.AlleleVariantAssociation
+
+    predicate: Union[str, ROTermCurie] = None
+    created_by: Union[str, PersonUniqueId] = None
+    modified_by: Union[str, PersonUniqueId] = None
+    subject: Union[str, AlleleCurie] = None
+    object: Union[str, VariantCurie] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.subject):
+            self.MissingRequiredField("subject")
+        if not isinstance(self.subject, AlleleCurie):
+            self.subject = AlleleCurie(self.subject)
+
+        if self._is_empty(self.object):
+            self.MissingRequiredField("object")
+        if not isinstance(self.object, VariantCurie):
+            self.object = VariantCurie(self.object)
 
         super().__post_init__(**kwargs)
 
@@ -3871,6 +3901,8 @@ class Ingest(YAMLRoot):
     disease_agm_ingest_set: Optional[Union[Union[dict, AGMDiseaseAnnotation], List[Union[dict, AGMDiseaseAnnotation]]]] = empty_list()
     disease_gene_ingest_set: Optional[Union[Union[dict, GeneDiseaseAnnotation], List[Union[dict, GeneDiseaseAnnotation]]]] = empty_list()
     gene_ingest_set: Optional[Union[Dict[Union[str, GeneCurie], Union[dict, Gene]], List[Union[dict, Gene]]]] = empty_dict()
+    variant_ingest_set: Optional[Union[Dict[Union[str, VariantCurie], Union[dict, Variant]], List[Union[dict, Variant]]]] = empty_dict()
+    allele_variant_association_ingest_set: Optional[Union[Union[dict, AlleleVariantAssociation], List[Union[dict, AlleleVariantAssociation]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         self._normalize_inlined_as_list(slot_name="allele_ingest_set", slot_type=Allele, key_name="curie", keyed=True)
@@ -3888,6 +3920,12 @@ class Ingest(YAMLRoot):
         self.disease_gene_ingest_set = [v if isinstance(v, GeneDiseaseAnnotation) else GeneDiseaseAnnotation(**as_dict(v)) for v in self.disease_gene_ingest_set]
 
         self._normalize_inlined_as_list(slot_name="gene_ingest_set", slot_type=Gene, key_name="curie", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="variant_ingest_set", slot_type=Variant, key_name="curie", keyed=True)
+
+        if not isinstance(self.allele_variant_association_ingest_set, list):
+            self.allele_variant_association_ingest_set = [self.allele_variant_association_ingest_set] if self.allele_variant_association_ingest_set is not None else []
+        self.allele_variant_association_ingest_set = [v if isinstance(v, AlleleVariantAssociation) else AlleleVariantAssociation(**as_dict(v)) for v in self.allele_variant_association_ingest_set]
 
         super().__post_init__(**kwargs)
 
@@ -6156,6 +6194,12 @@ slots.vocabulary_description = Slot(uri="str(uriorcurie)", name="vocabulary_desc
 slots.allele_ingest_set = Slot(uri="str(uriorcurie)", name="allele_ingest_set", curie=None,
                    model_uri=ALLIANCE.allele_ingest_set, domain=Ingest, range=Optional[Union[Dict[Union[str, AlleleCurie], Union[dict, Allele]], List[Union[dict, Allele]]]])
 
+slots.variant_ingest_set = Slot(uri="str(uriorcurie)", name="variant_ingest_set", curie=None,
+                   model_uri=ALLIANCE.variant_ingest_set, domain=Ingest, range=Optional[Union[Dict[Union[str, VariantCurie], Union[dict, Variant]], List[Union[dict, Variant]]]])
+
+slots.allele_variant_association_ingest_set = Slot(uri="str(uriorcurie)", name="allele_variant_association_ingest_set", curie=None,
+                   model_uri=ALLIANCE.allele_variant_association_ingest_set, domain=Ingest, range=Optional[Union[Union[dict, AlleleVariantAssociation], List[Union[dict, AlleleVariantAssociation]]]])
+
 slots.disease_allele_ingest_set = Slot(uri="str(uriorcurie)", name="disease_allele_ingest_set", curie=None,
                    model_uri=ALLIANCE.disease_allele_ingest_set, domain=Ingest, range=Optional[Union[Union[dict, AlleleDiseaseAnnotation], List[Union[dict, AlleleDiseaseAnnotation]]]])
 
@@ -6291,9 +6335,6 @@ slots.Resource_id = Slot(uri=ALLIANCE.id, name="Resource_id", curie=ALLIANCE.cur
 slots.Resource_title = Slot(uri=ALLIANCE.title, name="Resource_title", curie=ALLIANCE.curie('title'),
                    model_uri=ALLIANCE.Resource_title, domain=Resource, range=Optional[str])
 
-slots.Variant_variant_genome_locations = Slot(uri="str(uriorcurie)", name="Variant_variant_genome_locations", curie=None,
-                   model_uri=ALLIANCE.Variant_variant_genome_locations, domain=Variant, range=Union[Union[dict, "VariantGenomeLocation"], List[Union[dict, "VariantGenomeLocation"]]])
-
 slots.SourceVariantLocation_single_reference = Slot(uri=ALLIANCE.single_reference, name="SourceVariantLocation_single_reference", curie=ALLIANCE.curie('single_reference'),
                    model_uri=ALLIANCE.SourceVariantLocation_single_reference, domain=SourceVariantLocation, range=Union[str, ReferenceCurie])
 
@@ -6425,6 +6466,12 @@ slots.AlleleTranscriptAssociation_object = Slot(uri=ALLIANCE.object, name="Allel
 
 slots.AlleleProteinAssociation_object = Slot(uri=ALLIANCE.object, name="AlleleProteinAssociation_object", curie=ALLIANCE.curie('object'),
                    model_uri=ALLIANCE.AlleleProteinAssociation_object, domain=AlleleProteinAssociation, range=Union[str, ProteinCurie])
+
+slots.AlleleVariantAssociation_subject = Slot(uri=ALLIANCE.subject, name="AlleleVariantAssociation_subject", curie=ALLIANCE.curie('subject'),
+                   model_uri=ALLIANCE.AlleleVariantAssociation_subject, domain=AlleleVariantAssociation, range=Union[str, AlleleCurie])
+
+slots.AlleleVariantAssociation_object = Slot(uri=ALLIANCE.object, name="AlleleVariantAssociation_object", curie=ALLIANCE.curie('object'),
+                   model_uri=ALLIANCE.AlleleVariantAssociation_object, domain=AlleleVariantAssociation, range=Union[str, VariantCurie])
 
 slots.Antibody_curie = Slot(uri=ALLIANCE.curie, name="Antibody_curie", curie=ALLIANCE.curie('curie'),
                    model_uri=ALLIANCE.Antibody_curie, domain=Antibody, range=Union[str, AntibodyCurie])

@@ -887,6 +887,66 @@
          "title": "AlleleTranscriptAssociation",
          "type": "object"
       },
+      "AlleleVariantAssociation": {
+         "additionalProperties": false,
+         "description": "The relationship between an allele and a variant is many to many. An Allele may have many variants and a variant can be present in many alleles.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence_code": {
+               "type": "string"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "object": {
+               "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            },
+            "predicate": {
+               "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+               "type": "string"
+            },
+            "related_note": {
+               "$ref": "#/$defs/Note",
+               "description": "Holds between an object and a Note object."
+            },
+            "single_reference": {
+               "description": "holds between an object and a single reference",
+               "type": "string"
+            },
+            "subject": {
+               "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            }
+         },
+         "required": [
+            "predicate",
+            "created_by",
+            "modified_by",
+            "subject",
+            "object"
+         ],
+         "title": "AlleleVariantAssociation",
+         "type": "object"
+      },
       "AnatomicalSite": {
          "additionalProperties": false,
          "description": "The developmental stage and/or age of the specimen in an annotation.",
@@ -3465,6 +3525,12 @@
                },
                "type": "array"
             },
+            "allele_variant_association_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AlleleVariantAssociation"
+               },
+               "type": "array"
+            },
             "disease_agm_ingest_set": {
                "items": {
                   "$ref": "#/$defs/AGMDiseaseAnnotation"
@@ -3486,6 +3552,12 @@
             "gene_ingest_set": {
                "items": {
                   "$ref": "#/$defs/Gene"
+               },
+               "type": "array"
+            },
+            "variant_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/Variant"
                },
                "type": "array"
             }
@@ -5538,10 +5610,6 @@
             "evidence_code": {
                "type": "string"
             },
-            "hgvs": {
-               "description": "HGVS nomenclature for variant located on a genomic entity. In practice HGVS nomenclature will be derived for any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.",
-               "type": "string"
-            },
             "reference_sequence": {
                "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
                "type": "string"
@@ -5559,9 +5627,7 @@
                "type": "string"
             }
          },
-         "required": [
-            "hgvs"
-         ],
+         "required": [],
          "title": "VariantGenomeLocation",
          "type": "object"
       },
@@ -5587,10 +5653,6 @@
             "evidence_code": {
                "type": "string"
             },
-            "hgvs": {
-               "description": "HGVS nomenclature for variant located on a genomic entity. In practice HGVS nomenclature will be derived for any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.",
-               "type": "string"
-            },
             "polypeptide": {
                "description": "Transcript associated with variant and for which a specific location and consequence of that variant is provided, as specified by curator. Multivalued=false for this slot because although a variant can have multiple VariantTranscriptLocation stanzas, each stanza will have one and only one curated transcript ID.",
                "type": "string"
@@ -5613,7 +5675,6 @@
             }
          },
          "required": [
-            "hgvs",
             "polypeptide"
          ],
          "title": "VariantPolypeptideLocation",
@@ -5739,10 +5800,6 @@
             "evidence_code": {
                "type": "string"
             },
-            "hgvs": {
-               "description": "HGVS nomenclature for variant located on a genomic entity. In practice HGVS nomenclature will be derived for any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.",
-               "type": "string"
-            },
             "reference_sequence": {
                "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
                "type": "string"
@@ -5764,9 +5821,7 @@
                "type": "string"
             }
          },
-         "required": [
-            "hgvs"
-         ],
+         "required": [],
          "title": "VariantTranscriptLocation",
          "type": "object"
       },
@@ -6340,6 +6395,12 @@
          },
          "type": "array"
       },
+      "allele_variant_association_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AlleleVariantAssociation"
+         },
+         "type": "array"
+      },
       "disease_agm_ingest_set": {
          "items": {
             "$ref": "#/$defs/AGMDiseaseAnnotation"
@@ -6361,6 +6422,12 @@
       "gene_ingest_set": {
          "items": {
             "$ref": "#/$defs/Gene"
+         },
+         "type": "array"
+      },
+      "variant_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/Variant"
          },
          "type": "array"
       }

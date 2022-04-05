@@ -114,6 +114,17 @@ classes:
       object:
         range: Protein
 
+  AlleleVariantAssociation:
+    is_a: AlleleGenomicEntityAssociation
+    description: >-
+      The relationship between an allele and a variant is many to many. An Allele may have many variants and a variant
+      can be present in many alleles.
+    slot_usage:
+      subject:
+        range: Allele
+      object:
+        range: Variant
+
   AssociatedReference:
     description: >-
       Describes the relation between a reference and an object
