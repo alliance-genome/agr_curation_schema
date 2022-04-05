@@ -181,10 +181,12 @@ SCHEMA_TEST_EXAMPLES := \
 	disease_gene_test \
 	gene_test \
 	wb_disease_test \
+	variant_test \
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
 	allele_invalid \
 	disease_allele_invalid \
+	variant_invalid \
 
 .PHONY: test-jsonschema
 test-jsonschema: $(foreach example, $(SCHEMA_TEST_EXAMPLES), validate-$(example))

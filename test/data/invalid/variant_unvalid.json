@@ -1,16 +1,15 @@
 {
   "variant_ingest_set": [
     {
-      "curie": "ZFIN:ZDB-ALT-000412-8",
-      "taxon": "NCBITaxon:7955",
       "variant_genome_locations": [
         {
           "assembly": "GRCz11",
           "chromosome": "7",
-          "start_position": 30341642,
-          "end_position": 30341642,
+          "start_position": "30341642",
+          "end_position": "30341642",
           "reference_sequence": "C",
-          "variant_sequence": "T"
+          "variant_sequence": "T",
+
         }
       ],
       "variant_status": "public",
@@ -18,4 +17,3 @@
     }
   ]
 }
-
