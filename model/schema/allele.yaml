@@ -25,7 +25,7 @@ prefixes:
 
 classes:
 
-  Allele:
+
     is_a: GenomicEntity
     description: >-
       One of multiple possible forms of a functional genomic
@@ -113,6 +113,17 @@ classes:
     slot_usage:
       object:
         range: Protein
+
+  AlleleVariantAssociation:
+    is_a: AlleleGenomicEntityAssociation
+    description: >-
+      The relationship between an allele and a variant is many to many. An Allele may have many variants and a variant
+      can be present in many alleles.
+    slot_usage:
+      subject:
+        range: Allele
+      object:
+        range: Variant
 
   AssociatedReference:
     description: >-
