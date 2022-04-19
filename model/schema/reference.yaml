@@ -3,7 +3,6 @@ id: https://github.com/alliance-genome/agr_curation_schema/src/schema/reference
 imports:
   - core
   - linkml:types
-  - informationContentEntity
 
 prefixes:
   alliance: 'http://alliancegenome.org'
@@ -15,6 +14,15 @@ prefixes:
   schema: 'http://schema.org/'
 
 classes:
+  AuthorReference:
+    slots:
+      - corresponding_author
+      - first_name
+      - middle_name
+      - last_name
+      - initials
+      - cross_references
+
   Reference:
     aliases: [ 'references', 'publication' ]
     notes: >-
@@ -88,13 +96,13 @@ classes:
 slots:
 
   reference_id:
-    is_a: table_key
     description: >-
       An integer referring to a Reference object in the references table. It's
       a primary key in the references table, a foreign key when in other tables.
-    multivalued: false
     range: integer
     required: true
+    is_a: table_key
+    multivalued: false
 
   mesh_detail_id:
     description: >-
@@ -129,10 +137,10 @@ slots:
 
   pubmed_type:
     description: >-
-      Type of InformationContentEntity as described by pub med.
+      Type of Reference as described by PubMed.
     multivalued: true
-    range: string
-    domain: InformationContentEntity
+    domain: Reference
+    range: pubmed_type_enum
 
   date_published:
     description: >-
@@ -141,7 +149,6 @@ slots:
       Values here can be quite variable: e.g., just a year, or a year-season, etc.
     multivalued: false
     range: string
-    domain: InformationContentEntity
   
   date_created:
     description: >-
@@ -150,7 +157,7 @@ slots:
       An alias of the creation_date slot of AuditedObject.
     multivalued: false
     range: date
-    domain: InformationContentEntity
+    is_a: creation_date
 
   date_updated:
     description: >-
@@ -159,13 +166,13 @@ slots:
       An alias of the date_last_modified slot of AuditedObject.
     multivalued: false
     range: date
-    domain: InformationContentEntity
+    is_a: date_last_modified
 
   date_arrived_in_pubmed:
     description: Day in which a reference or resource was created in PUBMED. Only relevant for PUBMED references.
     multivalued: true
     range: string
-    domain: InformationContentEntity
+    domain: Reference
 
   date_last_modified_in_pubmed:
     notes: >-
@@ -178,7 +185,6 @@ slots:
   issue_date:
     description: Date on which an entity was issued.
     multivalued: false
-    domain: InformationContentEntity
     range: string
 
   open_access:
@@ -192,7 +198,6 @@ slots:
   pages:
     description: page number of source referenced for statement or publication
     multivalued: false
-    domain: InformationContentEntity
     range: string
     exact_mappings:
       - WIKIDATA_PROPERTY:P304
@@ -243,7 +248,6 @@ slots:
   keywords:
     multivalued: true
     description: keywords tagging a publication
-    domain: InformationContentEntity
     range: string
   
   language:
@@ -258,6 +262,55 @@ slots:
     domain: Reference
     range: uriorcurie
 
+  summary:
+    description: >-
+    domain: Reference
+    range: string
+
+  copyright_date:
+    description: >-
+    domain: Reference
+    range: date
+
+  authors:
+    multivalued: true
+    domain: Reference
+    range: AuthorReference
+
+  corresponding_author:
+    description: >-
+    range: Reference
+    domain: Reference
+
+
+  initials:
+    description: >-
+    domain: Reference
+    range: Reference
+
+  title:
+    description: >-
+      A human readable title for a reference.
+    multivalued: false
+    domain: Reference
+    range: string
+
+  volume:
+    multivalued: false
+    range: string
+    domain: Reference
+    description: >-
+  publisher:
+    multivalued: false
+    domain: Reference
+    range: string
+
+  address:
+    description: >-
+      the particulars of the place where someone or an organization is situated.  For now, this slot is a
+      simple text blob containing all relevant details of the given location for fitness of purpose.
+      For the moment, this address can include other contact details such as email and phone number(?).
+
 enums:
 
   pubmed_publication_status_enum:
@@ -265,6 +318,88 @@ enums:
       ppublish:
       epublish:
       aheadofprint:
+
+  pubmed_type_enum:
+    permissible_values:
+      Adaptive Clinical Trial:
+      Address:
+      Autobiography:
+      Bibliography:
+      Biography:
+      Case Reports:
+      Classical Article:
+      Clinical Conference:
+      Clinical Study:
+      Clinical Trial:
+      Clinical Trial, Phase I:
+      Clinical Trial, Phase II:
+      Clinical Trial, Phase III:
+      Clinical Trial, Phase IV:
+      Clinical Trial Protocol:
+      Clinical Trial, Veterinary:
+      Collected Work:
+      Comment:
+      Comparative Study:
+      Congress:
+      Consensus Development Conference:
+      Consensus Development Conference, NIH:
+      Controlled Clinical Trial:
+      Corrected and Republished Article:
+      Dataset:
+      Dictionary:
+      Directory:
+      Duplicate Publication:
+      Editorial:
+      Electronic Supplementary Materials:
+      English Abstract:
+      Equivalence Trial:
+      Evaluation Study:
+      Expression of Concern:
+      Festschrift:
+      Government Publication:
+      Guideline:
+      Historical Article:
+      Interactive Tutorial:
+      Interview:
+      Introductory Journal Article:
+      Journal Article:
+      Lecture:
+      Legal Case:
+      Legislation:
+      Letter:
+      Meta-Analysis:
+      Multicenter Study:
+      News:
+      Newspaper Article:
+      Observational Study:
+      Observational Study, Veterinary:
+      Overall:
+      Patient Education Handout:
+      Periodical Index:
+      Personal Narrative:
+      Portrait:
+      Practice Guideline:
+      Preprint:
+      Pragmatic Clinical Trial:
+      Published Erratum:
+      Randomized Controlled Trial:
+      Randomized Controlled Trial, Veterinary:
+      Research Support, American Recovery and Reinvestment Act:
+      Research Support, N.I.H., Extramural:
+      Research Support, N.I.H., Intramural:
+      Research Support, Non-U.S. Gov't:
+      Research Support, U.S. Gov't, Non-P.H.S.:
+      Research Support, U.S. Gov't, P.H.S.:
+      Retracted Publication:
+      Retraction of Publication:
+      Review:
+      Scientific Integrity Review:
+      Systematic Review:
+      Technical Report:
+      Twin Study:
+      Validation Study:
+      Video-Audio Media:
+      Webcast:
 
   reference_category_enum:
     permissible_values:

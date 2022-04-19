@@ -2,7 +2,6 @@ id: https://github.com/alliance-genome/agr_curation_schema/src/schema/resource
 
 imports:
   - core
-  - informationContentEntity
 
 prefixes:
   alliance: 'http://alliancegenome.org'
@@ -15,8 +14,10 @@ prefixes:
 
 classes:
   Resource:
-    is_a: InformationContentEntity
+    mixins:
+      - AuditedObject
     slots:
+      - curie
       - title
       - iso_abbreviation
       - medline_abbreviation

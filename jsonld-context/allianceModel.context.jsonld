@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-04-19T07:31:17\n    Schema: Alliance-Schema-Prototype\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: Alliance Schema Prototype\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-04-19T13:12:54\n    Schema: Alliance-Schema-Prototype\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: Alliance Schema Prototype\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "BIOGRID": "http://identifiers.org/biogrid/",
       "DIP": "http://identifiers.org/dip/",
@@ -8,10 +8,6 @@
       "ENSEMBL": "http://identifiers.org/ensembl/",
       "FB": "http://identifiers.org/fb/",
       "HGNC": "http://identifiers.org/hgnc/",
-      "IAO": {
-         "@id": "http://purl.obolibrary.org/obo/IAO_",
-         "@prefix": true
-      },
       "IMEX": "http://identifiers.org/imex/",
       "INTACT": "http://identifiers.org/intact/",
       "MGI": "http://identifiers.org/mgi/",
@@ -63,6 +59,9 @@
       },
       "abstract": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/abstract"
+      },
+      "address": {
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/address"
       },
       "age": {
          "@id": "https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/age"
@@ -128,7 +127,8 @@
          "@id": "https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/associated_with_figure"
       },
       "authors": {
-         "@type": "@id"
+         "@type": "@id",
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/authors"
       },
       "belongs_to_expression_experiment": {
          "@type": "@id",
@@ -232,10 +232,12 @@
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/contains_constructs"
       },
       "copyright_date": {
-         "@type": "xsd:date"
+         "@type": "xsd:date",
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/copyright_date"
       },
       "corresponding_author": {
-         "@type": "@id"
+         "@type": "@id",
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/corresponding_author"
       },
       "created_by": {
          "@type": "@id"
@@ -481,7 +483,8 @@
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/inheritence_mode"
       },
       "initials": {
-         "@type": "@id"
+         "@type": "@id",
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/initials"
       },
       "interaction_data_provider": {
          "@context": {
@@ -696,6 +699,9 @@
          "@type": "xsd:integer",
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/protein_start"
       },
+      "publisher": {
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/publisher"
+      },
       "pubmed_abstract_languages": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/pubmed_abstract_languages"
       },
@@ -709,6 +715,12 @@
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/pubmed_publication_status"
       },
       "pubmed_type": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/pubmed_type"
       },
       "qualifier_term": {
@@ -819,6 +831,9 @@
          },
          "@id": "https://github.com/alliance-genome/agr_curation_schema/affectedGenomicModel/subtype"
       },
+      "summary": {
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/summary"
+      },
       "synonyms": {
          "@type": "@id"
       },
@@ -839,6 +854,9 @@
       },
       "text_synonyms": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/text_synonyms"
+      },
+      "title": {
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/title"
       },
       "transcript": {
          "@type": "@id",
@@ -909,6 +927,9 @@
          "@id": "https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/vocabulary_description"
       },
       "name": "@id",
+      "volume": {
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/volume"
+      },
       "when_expressed": {
          "@type": "@id",
          "@id": "https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/when_expressed"
@@ -968,6 +989,9 @@
       },
       "AssociatedReference": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AssociatedReference"
+      },
+      "AuthorReference": {
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/AuthorReference"
       },
       "CellLine": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/CellLine"

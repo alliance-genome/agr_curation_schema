@@ -1,0 +1,69 @@
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/mod
+
+imports:
+  - core
+  - linkml:types
+  - agent
+  - reference
+
+prefixes:
+  alliance: 'http://alliancegenome.org'
+  linkml: 'https://w3id.org/linkml/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+
+classes:
+  Mod:
+    is_a: Organization
+    description: >-
+      A Model Organism Database that is a member of the Alliance of Genome Resources.
+    notes: >-
+      We have not modeled synonyms, e.g. Mouse Genome Informatics
+      Literature has 8 values: FB, MGI, RGD, SGD, WB, XB, ZFIN, GO.
+    slots:
+      - abbreviation
+      - date_created
+      - date_updated
+      - full_name
+      - mod_id
+      - short_name
+    slot_usage:
+      abbreviation:
+        description: >-
+          The curie prefix, or letter code used by FMS (Alliance file management
+          system).  e.g. MGI, FB
+        multivalued: false
+        range: string
+        required: true
+      date_created:
+        required: true
+
+slots:
+
+  mod_id:
+    description: >-
+      An integer referring to a Mod object in the mod database table. It's a
+      primary key in the mod table, a foreign key if used in other tables.
+    multivalued: false
+    range: integer
+    required: true
+
+  short_name:
+    description: >-
+      The short name used in the Members list on the website.  e.g. MGD, FlyBase
+    multivalued: false
+    domain: Mod
+    range: string
+    required: true
+
+  full_name:
+    description: >-
+      The full name of the Model Organism Database.  
+      e.g. Mouse Genome Database, FlyBase
+    multivalued: false
+    domain: Mod
+    range: string
+    required: true
