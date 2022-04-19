@@ -1,5 +1,5 @@
 # Auto generated from resource.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-19T10:35:06
+# Generation date: 2022-04-19T10:52:04
 # Schema: resource
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/resource
@@ -1036,7 +1036,7 @@ class Reference(YAMLRoot):
     publisher: Optional[str] = None
     pubmed_abstract_languages: Optional[Union[str, List[str]]] = empty_list()
     pubmed_publication_status: Optional[Union[str, "PubmedPublicationStatusEnum"]] = None
-    pubmed_type: Optional[Union[str, List[str]]] = empty_list()
+    pubmed_type: Optional[Union[Union[str, "PubmedTypeEnum"], List[Union[str, "PubmedTypeEnum"]]]] = empty_list()
     resource_id: Optional[int] = None
     title: Optional[str] = None
     volume: Optional[str] = None
@@ -1115,7 +1115,7 @@ class Reference(YAMLRoot):
 
         if not isinstance(self.pubmed_type, list):
             self.pubmed_type = [self.pubmed_type] if self.pubmed_type is not None else []
-        self.pubmed_type = [v if isinstance(v, str) else str(v) for v in self.pubmed_type]
+        self.pubmed_type = [v if isinstance(v, PubmedTypeEnum) else PubmedTypeEnum(v) for v in self.pubmed_type]
 
         if self.resource_id is not None and not isinstance(self.resource_id, int):
             self.resource_id = int(self.resource_id)
@@ -2990,6 +2990,152 @@ class PubmedPublicationStatusEnum(EnumDefinitionImpl):
         name="PubmedPublicationStatusEnum",
     )
 
+class PubmedTypeEnum(EnumDefinitionImpl):
+
+    Address = PermissibleValue(text="Address")
+    Autobiography = PermissibleValue(text="Autobiography")
+    Bibliography = PermissibleValue(text="Bibliography")
+    Biography = PermissibleValue(text="Biography")
+    Comment = PermissibleValue(text="Comment")
+    Congress = PermissibleValue(text="Congress")
+    Dataset = PermissibleValue(text="Dataset")
+    Dictionary = PermissibleValue(text="Dictionary")
+    Directory = PermissibleValue(text="Directory")
+    Editorial = PermissibleValue(text="Editorial")
+    Festschrift = PermissibleValue(text="Festschrift")
+    Guideline = PermissibleValue(text="Guideline")
+    Interview = PermissibleValue(text="Interview")
+    Lecture = PermissibleValue(text="Lecture")
+    Legislation = PermissibleValue(text="Legislation")
+    Letter = PermissibleValue(text="Letter")
+    News = PermissibleValue(text="News")
+    Overall = PermissibleValue(text="Overall")
+    Portrait = PermissibleValue(text="Portrait")
+    Preprint = PermissibleValue(text="Preprint")
+    Review = PermissibleValue(text="Review")
+    Webcast = PermissibleValue(text="Webcast")
+
+    _defn = EnumDefinition(
+        name="PubmedTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Adaptive Clinical Trial",
+                PermissibleValue(text="Adaptive Clinical Trial") )
+        setattr(cls, "Case Reports",
+                PermissibleValue(text="Case Reports") )
+        setattr(cls, "Classical Article",
+                PermissibleValue(text="Classical Article") )
+        setattr(cls, "Clinical Conference",
+                PermissibleValue(text="Clinical Conference") )
+        setattr(cls, "Clinical Study",
+                PermissibleValue(text="Clinical Study") )
+        setattr(cls, "Clinical Trial",
+                PermissibleValue(text="Clinical Trial") )
+        setattr(cls, "Clinical Trial, Phase I",
+                PermissibleValue(text="Clinical Trial, Phase I") )
+        setattr(cls, "Clinical Trial, Phase II",
+                PermissibleValue(text="Clinical Trial, Phase II") )
+        setattr(cls, "Clinical Trial, Phase III",
+                PermissibleValue(text="Clinical Trial, Phase III") )
+        setattr(cls, "Clinical Trial, Phase IV",
+                PermissibleValue(text="Clinical Trial, Phase IV") )
+        setattr(cls, "Clinical Trial Protocol",
+                PermissibleValue(text="Clinical Trial Protocol") )
+        setattr(cls, "Clinical Trial, Veterinary",
+                PermissibleValue(text="Clinical Trial, Veterinary") )
+        setattr(cls, "Collected Work",
+                PermissibleValue(text="Collected Work") )
+        setattr(cls, "Comparative Study",
+                PermissibleValue(text="Comparative Study") )
+        setattr(cls, "Consensus Development Conference",
+                PermissibleValue(text="Consensus Development Conference") )
+        setattr(cls, "Consensus Development Conference, NIH",
+                PermissibleValue(text="Consensus Development Conference, NIH") )
+        setattr(cls, "Controlled Clinical Trial",
+                PermissibleValue(text="Controlled Clinical Trial") )
+        setattr(cls, "Corrected and Republished Article",
+                PermissibleValue(text="Corrected and Republished Article") )
+        setattr(cls, "Duplicate Publication",
+                PermissibleValue(text="Duplicate Publication") )
+        setattr(cls, "Electronic Supplementary Materials",
+                PermissibleValue(text="Electronic Supplementary Materials") )
+        setattr(cls, "English Abstract",
+                PermissibleValue(text="English Abstract") )
+        setattr(cls, "Equivalence Trial",
+                PermissibleValue(text="Equivalence Trial") )
+        setattr(cls, "Evaluation Study",
+                PermissibleValue(text="Evaluation Study") )
+        setattr(cls, "Expression of Concern",
+                PermissibleValue(text="Expression of Concern") )
+        setattr(cls, "Government Publication",
+                PermissibleValue(text="Government Publication") )
+        setattr(cls, "Historical Article",
+                PermissibleValue(text="Historical Article") )
+        setattr(cls, "Interactive Tutorial",
+                PermissibleValue(text="Interactive Tutorial") )
+        setattr(cls, "Introductory Journal Article",
+                PermissibleValue(text="Introductory Journal Article") )
+        setattr(cls, "Journal Article",
+                PermissibleValue(text="Journal Article") )
+        setattr(cls, "Legal Case",
+                PermissibleValue(text="Legal Case") )
+        setattr(cls, "Meta-Analysis",
+                PermissibleValue(text="Meta-Analysis") )
+        setattr(cls, "Multicenter Study",
+                PermissibleValue(text="Multicenter Study") )
+        setattr(cls, "Newspaper Article",
+                PermissibleValue(text="Newspaper Article") )
+        setattr(cls, "Observational Study",
+                PermissibleValue(text="Observational Study") )
+        setattr(cls, "Observational Study, Veterinary",
+                PermissibleValue(text="Observational Study, Veterinary") )
+        setattr(cls, "Patient Education Handout",
+                PermissibleValue(text="Patient Education Handout") )
+        setattr(cls, "Periodical Index",
+                PermissibleValue(text="Periodical Index") )
+        setattr(cls, "Personal Narrative",
+                PermissibleValue(text="Personal Narrative") )
+        setattr(cls, "Practice Guideline",
+                PermissibleValue(text="Practice Guideline") )
+        setattr(cls, "Pragmatic Clinical Trial",
+                PermissibleValue(text="Pragmatic Clinical Trial") )
+        setattr(cls, "Published Erratum",
+                PermissibleValue(text="Published Erratum") )
+        setattr(cls, "Randomized Controlled Trial",
+                PermissibleValue(text="Randomized Controlled Trial") )
+        setattr(cls, "Randomized Controlled Trial, Veterinary",
+                PermissibleValue(text="Randomized Controlled Trial, Veterinary") )
+        setattr(cls, "Research Support, American Recovery and Reinvestment Act",
+                PermissibleValue(text="Research Support, American Recovery and Reinvestment Act") )
+        setattr(cls, "Research Support, N.I.H., Extramural",
+                PermissibleValue(text="Research Support, N.I.H., Extramural") )
+        setattr(cls, "Research Support, N.I.H., Intramural",
+                PermissibleValue(text="Research Support, N.I.H., Intramural") )
+        setattr(cls, "Research Support, Non-U.S. Gov't",
+                PermissibleValue(text="Research Support, Non-U.S. Gov't") )
+        setattr(cls, "Research Support, U.S. Gov't, Non-P.H.S.",
+                PermissibleValue(text="Research Support, U.S. Gov't, Non-P.H.S.") )
+        setattr(cls, "Research Support, U.S. Gov't, P.H.S.",
+                PermissibleValue(text="Research Support, U.S. Gov't, P.H.S.") )
+        setattr(cls, "Retracted Publication",
+                PermissibleValue(text="Retracted Publication") )
+        setattr(cls, "Retraction of Publication",
+                PermissibleValue(text="Retraction of Publication") )
+        setattr(cls, "Scientific Integrity Review",
+                PermissibleValue(text="Scientific Integrity Review") )
+        setattr(cls, "Systematic Review",
+                PermissibleValue(text="Systematic Review") )
+        setattr(cls, "Technical Report",
+                PermissibleValue(text="Technical Report") )
+        setattr(cls, "Twin Study",
+                PermissibleValue(text="Twin Study") )
+        setattr(cls, "Validation Study",
+                PermissibleValue(text="Validation Study") )
+        setattr(cls, "Video-Audio Media",
+                PermissibleValue(text="Video-Audio Media") )
+
 class ReferenceCategoryEnum(EnumDefinitionImpl):
 
     Research_Article = PermissibleValue(text="Research_Article")
@@ -3305,7 +3451,7 @@ slots.resource_id = Slot(uri="str(uriorcurie)", name="resource_id", curie=None,
                    model_uri=DEFAULT_.resource_id, domain=Reference, range=Optional[int])
 
 slots.pubmed_type = Slot(uri="str(uriorcurie)", name="pubmed_type", curie=None,
-                   model_uri=DEFAULT_.pubmed_type, domain=Reference, range=Optional[Union[str, List[str]]])
+                   model_uri=DEFAULT_.pubmed_type, domain=Reference, range=Optional[Union[Union[str, "PubmedTypeEnum"], List[Union[str, "PubmedTypeEnum"]]]])
 
 slots.date_published = Slot(uri="str(uriorcurie)", name="date_published", curie=None,
                    model_uri=DEFAULT_.date_published, domain=InformationContentEntity, range=Optional[str])
