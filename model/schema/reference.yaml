@@ -72,6 +72,7 @@ slots:
       a primary key in the references table, a foreign key when in other tables.
     range: integer
     required: true
+    is_a: table_key
 
   resource_id:
     notes: >-
@@ -102,6 +103,7 @@ slots:
       An alias of the creation_date slot of AuditedObject.
     multivalued: false
     range: date
+    is_a: creation_date
     domain: InformationContentEntity
 
   date_updated:
@@ -112,6 +114,7 @@ slots:
     multivalued: false
     range: date
     domain: InformationContentEntity
+    is_a: date_last_modified
 
   date_arrived_in_pubmed:
     description: Day in which a reference or resource was created in PUBMED. Only relevant for PUBMED references.

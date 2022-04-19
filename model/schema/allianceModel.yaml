@@ -39,6 +39,7 @@ imports:
   - phenotypeAndDiseaseAnnotation
   - controlledVocabulary
   - ingest
+  - expression
 
 subsets:
   alliance subset:
