@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-04-19T15:25:28\n    Schema: Alliance-Schema-Prototype\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: Alliance Schema Prototype\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-04-19T16:48:15\n    Schema: Alliance-Schema-Prototype\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: Alliance Schema Prototype\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "BIOGRID": "http://identifiers.org/biogrid/",
       "DIP": "http://identifiers.org/dip/",
@@ -226,6 +226,10 @@
       "consequence": {
          "@type": "@id",
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/consequence"
+      },
+      "construct_components": {
+         "@type": "@id",
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/construct_components"
       },
       "contains_constructs": {
          "@type": "@id",
@@ -1007,6 +1011,12 @@
       },
       "Construct": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/Construct"
+      },
+      "ConstructComponent": {
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/ConstructComponent"
+      },
+      "ConstructComponentAssociation": {
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/ConstructComponentAssociation"
       },
       "DAOTerm": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/DAOTerm"

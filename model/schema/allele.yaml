@@ -148,7 +148,7 @@ classes:
 
   SequenceTargetingReagent:
     description: >-
-      Dummy sequence targeting reagent class
+    
 
   ConstructComponentAssociation:
     is_a: Association
