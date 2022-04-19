@@ -27,19 +27,18 @@ imports:
   - resource
   - variation
   - variantConsequence
-  - variantGenomicLocation
   - linkml:types
   - core
-  - informationContentEntity
-  - person
+  - agent
   - allele
   - affectedGenomicModel
-  - antibody
+  - reagent
   - geneInteraction
   - ontologyTerm
   - phenotypeAndDiseaseAnnotation
   - controlledVocabulary
   - ingest
+  - expression
 
 subsets:
   alliance subset:

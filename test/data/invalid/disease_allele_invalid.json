@@ -5,7 +5,7 @@
         "TAS"
       ],
       "single_reference": "PMID:0012345",
-      "data_provider": "ZFIN",
+      "data_provider": ["ZFIN"],
       "subjectTO": "ZFIN:ZDB-ALT-001122-1",
       "predicate": "is model of",
       "object": "DOID:0001234",

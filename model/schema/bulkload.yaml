@@ -2,6 +2,7 @@ id: https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.y
 
 imports:
   - core
+  - linkml:types
 
 classes:
 
@@ -23,7 +24,7 @@ classes:
       - error_message
       - backend_bulk_load_type
       - ontology_type
-      - group
+      - bulkload_group
       - load_files
 
   BulkLoadFile:
@@ -67,6 +68,16 @@ classes:
     description: This bulk load is used by DQM's to submit their files to the curation system
     slots:
       - backend_load_type
+
+  BulkLoadFileHistory:
+    description: Object used to describe the indiviual run of this BulkLoadFile
+    slots:
+      - load_started
+      - load_finished
+      - total_records
+      - failed_records
+      - completed_records
+      - load_exceptions
 
 slots:
 
@@ -142,6 +153,30 @@ slots:
     range: string
   backend_load_type:
     range: backend_bulk_data_type_enum
+  load_started:
+    description: >-
+      The date and time that the load started.
+    range: date
+  load_finished:
+    description: >-
+      The date and time that the load finished.
+    range: date
+  total_records:
+    description:
+      The total number of records
+    range: integer
+  failed_records:
+    description:
+      The number of failed records
+    range: integer
+  completed_records:
+    description:
+      The number of completed records
+  load_exceptions:
+    description:
+      A list of execeptions the load encountered 
+    multivalued: true
+    range: string
 
 enums:
 

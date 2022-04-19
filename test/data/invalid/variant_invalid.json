@@ -1,0 +1,19 @@
+{
+  "variant_ingest_set": [
+    {
+      "variant_genome_locations": [
+        {
+          "assembly": "GRCz11",
+          "chromosome": "7",
+          "start_position": "30341642",
+          "end_position": "30341642",
+          "reference_sequence": "C",
+          "variant_sequence": "T"
+
+        }
+      ],
+      "variant_status": "public",
+      "variant_type": "SO:1000008"
+    }
+  ]
+}

@@ -7,7 +7,6 @@ imports:
   - image
   - variation
   - linkml:types
-  - informationContentEntity
   - ontologyTerm
   - affectedGenomicModel
   - phenotypeAndDiseaseAnnotation
@@ -26,6 +25,22 @@ slots:
     description: >-
     domain: Ingest
     range: Allele
+    multivalued: true
+    mixins:
+      - object_set
+
+  variant_ingest_set:
+    description: >-
+    domain: Ingest
+    range: Variant
+    multivalued: true
+    mixins:
+      - object_set
+
+  allele_variant_association_ingest_set:
+    description: >-
+    domain: Ingest
+    range: AlleleVariantAssociation
     multivalued: true
     mixins:
       - object_set
@@ -81,4 +96,6 @@ classes:
       - disease_agm_ingest_set
       - disease_gene_ingest_set
       - gene_ingest_set
+      - variant_ingest_set
+      - allele_variant_association_ingest_set
 

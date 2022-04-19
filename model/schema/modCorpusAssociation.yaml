@@ -1,0 +1,88 @@
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/modCorpusAssociation
+
+imports:
+  - core
+  - mod
+  - reference
+  - linkml:types
+
+prefixes:
+  alliance: 'http://alliancegenome.org'
+  linkml: 'https://w3id.org/linkml/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+
+classes:
+  ModCorpusAssociation:
+    mixins:
+      - AuditedObject
+    description: >-
+      For a given reference and Mod, whether it is inside corpus,
+      outside corpus, or needs review, as well as where this
+      sorting came from.
+    notes: >-
+      There should be only one corpus call for any given reference-mod pair.
+    slots:
+      - corpus
+      - date_created
+      - date_updated
+      - mod_corpus_association_id
+      - mod_corpus_sort_source
+      - mod_id
+      - reference_id
+      - curie
+    defining_slots:
+      - reference_id
+      - mod_id
+    slot_usage:
+      mod_id:
+        notes: >-
+          An integer corresponding to a primary key in the mod table. Used here
+          as a foreign key.
+      reference_id:
+        notes: >-
+          An integer corresponding to a primary key in the reference table.
+          Used here as a foreign key.
+      date_created:
+        required: true
+
+slots:
+
+  mod_corpus_association_id:
+    description: >-
+      An integer referring to a ModCorpusAssociation object. A primary key in
+      the mod_corpus_association table, a foreign key if used in other tables.
+    multivalued: false
+    domain: ModCorpusAssociation
+    range: integer
+    required: true
+
+  corpus:
+    description: >-
+      in-out-review corpus status of the publication at the mod.
+      null means needs_review, false means outside_corpus, 
+      true means inside_corpus.
+    multivalued: false
+    domain: ModCorpusAssociation
+    range: boolean
+    required: false
+
+  mod_corpus_sort_source:
+    description: origin of corpus determination for that publication and mod
+    multivalued: false
+    domain: ModCorpusAssociation
+    range: mod_corpus_sort_source_enum
+    required: true
+
+enums:
+
+  mod_corpus_sort_source_enum:
+    permissible_values:
+      dqm_files:
+      mod_pubmed_search:
+      manual_creation:
+      assigned_for_review:
+

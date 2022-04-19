@@ -1,5 +1,9 @@
 # Auto generated from test.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-11T15:24:39
+<<<<<<< HEAD
+# Generation date: 2022-04-19T10:51:38
+=======
+# Generation date: 2022-04-19T07:31:43
+>>>>>>> main
 # Schema: resource
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/resource
@@ -26,6 +30,7 @@ from linkml_runtime.linkml_model.types import Date, String, Uriorcurie
 from linkml_runtime.utils.metamodelcore import URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
+version = None
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs

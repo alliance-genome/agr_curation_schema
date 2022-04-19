@@ -30,10 +30,7 @@ classes:
       - polyphen_prediction
       - sift_score
       - sift_prediction
-    slot_usage:
-      subject:
-        range: Variant
-    
+
   VariantGeneConsequence:
     aliases: ['GeneLevelConsequence']
     description: >-
@@ -42,7 +39,9 @@ classes:
     slot_usage:
       object:
         range: Gene
-        
+      subject:
+        range: VariantGenomeLocation
+
   VariantTranscriptConsequence:
     aliases: ['TranscriptLevelConsequence']
     is_a: VariantConsequence
@@ -64,6 +63,8 @@ classes:
     slot_usage:
       object:
         range: Transcript
+      subject:
+        range: VariantTranscriptLocation
       amino_acid_reference:
         description: >-
           Amino acid sequence encoded by codon(s) in reference genome sequence
@@ -208,4 +209,3 @@ enums:
       possibly_damaging:
       probably_damaging:
       benign:
-

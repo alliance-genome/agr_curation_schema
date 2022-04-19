@@ -3,7 +3,7 @@
     {
       "evidence_codes": ["ECO:0000305"],
       "single_reference": "PMID:0012345",
-      "data_provider": ["ZFIN"],
+      "data_provider": "ZFIN",
       "subject": "ZFIN:ZDB-ALT-001122-1",
       "predicate": "is_implicated_in",
       "object": "DOID:0001234",

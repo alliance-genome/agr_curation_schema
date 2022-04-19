@@ -21,7 +21,7 @@ imports:
   - linkml:types
   - reference
   - resource
-  - person
+  - agent
   - image
   - ontologyTerm
   - controlledVocabulary
@@ -114,8 +114,10 @@ classes:
         required: true
 
   CrossReference:
-    is_a: InformationContentEntity
+    mixins:
+      - AuditedObject
     slots:
+      - curie
       - page_areas
       - display_name
       - prefix
@@ -137,30 +139,22 @@ classes:
       - modified_by
       - date_last_modified
 
-  Reagent:
-    mixin: true
-    description: >-
-      A material entity used in experiments.
-    slots:
-      - generated_by
-      - manufactured_by
-
   Note:
     description: >-
       Note object for capturing free-text describing some attribute of an entity,
-      coupled with a 'note type', private boolean, and an optional list of
-      references.
+      coupled with a 'note type', internal boolean, and an optional list of
+      references. Permissible values for 'note_type' currently = disease_summary, disease_note
     slots:
       - free_text
       - note_type
-      - private
+      - internal
       - references
     slot_usage:
       free_text:
         required: true
-      note_type:
+      note_type:              # Permissible values currently: disease_summary, disease_note
         required: true
-      private:
+      internal:
         required: true
 
   EntityStatement:
@@ -244,6 +238,9 @@ classes:
       - start
       - end
 
+  Protein:
+    is_a: GenomicEntity
+
 ## ------------
 ## SLOTS
 ## ------------
@@ -319,10 +316,10 @@ slots:
 
   note_type:
     description: >-
-      The type of note: e.g., cytology, comment, summary.
+      The type of note: e.g., cytology, comment, summary. Permissible values for 'note_type' currently = disease_summary, disease_note
     range: VocabularyTerm
 
-  private:
+  internal:
     description: >-
       Classifies the entity as private (for internal use) or not (for public use).
     notes: >-
@@ -337,6 +334,13 @@ slots:
       hence the related_notes label used here.
     range: Note
     multivalued: true
+
+  related_note:
+    description: Holds between an object and a Note object.
+    notes: >-
+      Singular version of related_notes
+    range: Note
+    multivalued: false
 
   statement_subject:
     description: >-
@@ -437,7 +441,7 @@ slots:
     range: integer
 
   creation_date:
-    aliases: [ 'publication date' ]    # Can we revisit this? I don't think creation_date and 'publication date' are the same thing (CG)
+    aliases: [ 'date_created' ]
     description: >-
       The date on which an entity was created. This can be applied to nodes or edges.
     range: date
@@ -446,6 +450,7 @@ slots:
       - WIKIDATA_PROPERTY:P577
 
   date_last_modified:
+    aliases: ['date_updated']
     description: >-
       Date on which an entity was last modified.
     range: date
@@ -471,8 +476,13 @@ slots:
     range: string
 
   data_provider:
-    description: MOD that provided data
-    multivalued: true
+    description: Organization (e.g. MOD) from which the data was sourced
+    multivalued: false
+    range: string
+
+  secondary_data_provider:
+    description: Organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source
+    multivalued: false
     range: string
 
   association_slot:
@@ -563,7 +573,7 @@ slots:
     multivalued: false
     range: string
 
-  mod_id:
+  mod_entity_id:
     description: >-
       The model organism database (MOD) identifier/curie for the object
     range: string
@@ -580,6 +590,17 @@ slots:
   last_name:
     description: last (family) name of a person
     range: string
+
+  evidence_codes:
+    description: ECO term IDs             # this slot has also been instantiated in the orthology.yaml
+    multivalued: true
+    values_from:
+      - ECO
+    range: ECOTerm
+
+  evidence_code:
+    multivalued: false
+    range: ECOTerm
 
 
 ## --------------------

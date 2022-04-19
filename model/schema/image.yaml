@@ -21,13 +21,12 @@ classes:
       many.
     slots:
       - curie
-      - has_reference
+      - single_reference
       - label
       - caption
       - secondary_identifiers
     slot_usage:
-      has_reference:
-        multivalued: false
+      single_reference:
         required: true
 
   File:

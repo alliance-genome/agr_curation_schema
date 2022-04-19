@@ -7,7 +7,6 @@ imports:
   - image
   - variation
   - linkml:types
-  - informationContentEntity
   - ontologyTerm
   - affectedGenomicModel
 
@@ -34,13 +33,12 @@ classes:
       element can be endogenous or constructed.
     slots:
       - symbol
-      - affected_entities
-      - contains_construct
-      - molecular_mutation
+      - contains_constructs
+      - molecular_mutations
       - functional_impact
       - generation_method
       - associated_references
-      - associated_notes
+      - related_notes
       - germline_transmission_status
       - parent_cell_line
       - mutant_cell_lines
@@ -53,6 +51,7 @@ classes:
       - transposon_insertion
       - aberration
       - is_extinct
+      - sequencing_status
     exact_mappings:
       - SO:0001023
     slot_usage:
@@ -71,40 +70,70 @@ classes:
       aberration:
         notes: specific to FB
 
-  ReferenceType:
+  AlleleGenomicEntityAssociation:
+    is_a: Association
+    abstract: true
+    description: >-
+      Association between an allele and a genomic entity
+    mixins:
+      - AuditedObject
+    slots:
+      - single_reference
+      - evidence_code
+      - related_note
+    slot_usage:
+      subject:
+        range: Allele
+      predicate:
+        range: ROTerm
+      object:
+        range: GenomicEntity
+
+  AlleleGeneAssociation:
+    is_a: AlleleGenomicEntityAssociation
+    description: >-
+      Association between an allele and a gene
+    slot_usage:
+      object:
+        range: Gene
+
+  AlleleTranscriptAssociation:
+    is_a: AlleleGenomicEntityAssociation
+    description: >-
+      Association between an allele and a transcript
+    slot_usage:
+      object:
+        range: Transcript
+
+  AlleleProteinAssociation:
+    is_a: AlleleGenomicEntityAssociation
+    description: >-
+      Association between an allele and a protein
+    slot_usage:
+      object:
+        range: Protein
+
+  AlleleVariantAssociation:
+    is_a: AlleleGenomicEntityAssociation
+    description: >-
+      The relationship between an allele and a variant is many to many. An Allele may have many variants and a variant
+      can be present in many alleles.
+    slot_usage:
+      subject:
+        range: Allele
+      object:
+        range: Variant
+
+  AssociatedReference:
     description: >-
       Describes the relation between a reference and an object
     slots:
-      - reference_association
-      - references
-
-  NoteType:
-    description: >-
-      Describes the relation between a note and an object
-    slots:
-      - note_association
-      - notes
+      - reference_type
+      - single_reference
 
   Construct:
     description: >-
-    is_a: GenomicEntity
-    slots:
-      - construct_components
-
-  ConstructComponent:
-    is_a: GenomicEntity
-    slots:
-      - component_relation
-
-  MolecularMutation:
-    description: >-
-      Description of the DNA changes with unknown precise genomic location
-    slots:
-      - mutation_type
-      - mutation_description
-    slot_usage:
-      mutation_type:
-        required: true
+      Dummy construct class
 
   CellLine:
     description: >-
@@ -118,34 +147,22 @@ classes:
 
 slots:
 
-  component_relation:
-    range: component_relations_enum
-
-  construct_components:
+  contains_constructs:
     multivalued: true
-    range: ConstructComponent
-
-  affected_entities:
-    description:
-      Biological entities affected by allele
-    multivalued: true
-    domain: Allele
-    range: BiologicalEntity
-
-  contains_construct:
     domain: Allele
     range: Construct
 
-  molecular_mutation:
+  molecular_mutations:
     description: >-
       Description of the DNA changes if precise
       genomic location unknown
     domain: Allele
-    range: MolecularMutation
+    multivalued: true
+    range: string
 
   mutation_type:
     description: SO term for type of mutation
-    domain: MolecularMutation
+    domain: Allele
     range: SOTerm
 
   mutation_description:
@@ -170,34 +187,19 @@ slots:
 
   associated_references:
     description: >-
-      References associated with the entity in some way
-    range: ReferenceType
+      List of references associated with the entity in some way with a
+      description of the association.
+    range: AssociatedReference
     multivalued: true
 
-  reference_association:
+  reference_type:
     description: >-
       Description of how a reference is associated with
       an entity, e.g. molecular / origin / other
-    domain: ReferenceType
-    range: reference_association_types
-
-  has_reference:
-    description: >-
-      Associated reference
-    domain: ReferenceType
-    range: Reference
-
-  associated_notes:
-    description: >-
-      Notes associated with the entity in some way
-    range: NoteType
-
-  note_association:
-    description: >-
-      Description of how a note is associated with
-      an entity, e.g. curators comments / private / origin
-    domain: NoteType
-    range: note_association_types
+    required: true
+    multivalued: false
+    domain: AssociatedReference
+    range: VocabularyTerm
 
   origins:
     singular_name: origin
@@ -212,7 +214,7 @@ slots:
       For alleles made in cell lines, have they been
       transmitted to the germline of an animal
     domain: Allele
-    range: string
+    range: VocabularyTerm
 
   parent_cell_line:
     description: >-
@@ -241,20 +243,20 @@ slots:
   database_status:
     description: >-
       Database status of the allele
-    range: database_statuses
+    range: VocabularyTerm
 
   inheritence_mode:
     description: >-
       Mode of inheritence, e.g. dominant / semi-dominant /
       recessive / unknown
     domain: Allele
-    range: modes_of_inheritence
+    range: VocabularyTerm
 
   in_collection:
     description: >-
       Set of high-throughput alleles made by large projects
     domain: Allele
-    range: string
+    range: VocabularyTerm
 
   transposon_insertion:
     description: >-
@@ -276,42 +278,9 @@ slots:
     domain: Allele
     range: boolean
 
-
-enums:
-
-  component_relations_enum:
-    permissible_values:
-      expresses:
-      is_regulated_by:
-      targets:
-
-  database_statuses:
-    permissible_values:
-      live:
-      dead:
-      suppressed:
-      history:
-      private:
-      approved:
-
-  reference_association_types:
-    permissible_values:
-      molecular:
-      other:
-
-  note_association_types:
-    permissible_values:
-      molecular:
-      origin:
-        notes: specific to FB
-      cytology:
-        notes: specific to FB
-      private:
-      curator_comments:
-
-  modes_of_inheritence:
-    permissible_values:
-      dominant:
-      recessive:
-      semi_dominant:
-      unknown:
+  sequencing_status:
+    description: >-
+      Status of whether or not the variant genomic location has been verified
+      by sequencing
+    domain: Variant
+    range: VocabularyTerm

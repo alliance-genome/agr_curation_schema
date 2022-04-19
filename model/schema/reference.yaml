@@ -3,8 +3,6 @@ id: https://github.com/alliance-genome/agr_curation_schema/src/schema/reference
 imports:
   - core
   - linkml:types
-  - informationContentEntity
-  - image
 
 prefixes:
   alliance: 'http://alliancegenome.org'
@@ -16,33 +14,46 @@ prefixes:
   schema: 'http://schema.org/'
 
 classes:
-  Reference:
-    is_a: InformationContentEntity
+  AuthorReference:
     slots:
-      - title
-      - alliance_category
-      - date_published
-      - year_published
-      - month_published
-      - day_published
-      - date_arrived_in_PubMed
-      # date arrived in source enumeration
-      - date_last_modified_in_PubMed
-      - volume
-      - pages
-      - abstract
-      - citation
-      - PubMed_type
-      - issue_name
-      - issue_date
-      - mod_reference_types
-      - authors
-      - tags
-      - topics
+      - corresponding_author
+      - first_name
+      - middle_name
+      - last_name
+      - initials
       - cross_references
-      - publisher
+
+  Reference:
+    aliases: [ 'references', 'publication' ]
+    notes: >-
+      In the ABC literature database, the table holding Reference objects is
+      named references.
+    slots:
+      - abstract
+      - category
+      - citation
+      - curie
+      - date_arrived_in_pubmed
+      - date_created
+      - date_last_modified
+      - date_published
+      - date_updated
+      - issue_date
+      - issue_name
       - keywords
-      - from_resource
+      - language
+      - merged_into_id
+      - open_access
+      - pages
+      - plain_language_abstract
+      - publisher
+      - pubmed_abstract_languages
+      - pubmed_publication_status
+      - pubmed_type
+      - reference_id
+      - resource_id
+      - title
+      - volume
     id_prefixes:
       - PMID
       - NLMID
@@ -55,96 +66,171 @@ classes:
       - RGD
       - PMC
       - DOI
-    slot_usage: # use regex to constrain local id
-      id:
-        pattern: # check this add a regex - check about resourceDescriptor
+    slot_usage:
+      reference_id:
+        description: >-
+          The primary key for the Reference object in the references table.
+      date_last_modified:
+        notes: >-
+          In the literature database, the values in this column actually
+          correspond to date_last_modified_in_pubmed, so the column should
+          be renamed in the literature database.
+
+  MeshDetail:
+    description: >-
+      Medical Subject Headings information coming from PubMed.
+    notes: >-
+      In the literature database, the table is named mesh_details. 
+      In the literature API, the field is named mesh_terms.
+    aliases: [ 'mesh_details', 'mesh_terms' ]
+    slots:
+      - mesh_detail_id 
+      - reference_id 
+      - heading_term
+      - qualifier_term
+    slot_usage:
+      reference_id:
+        description: >-
+          Here, a foreign key referring to the references table.
 
 slots:
 
-  topics:
-    singular_name: topic
-    range: uriorcurie
-    exact_mappings:
-      - foaf:topic
-    description: Connects an object to a vocabulary term or ontology that describes some aspect of the entity.
-
-  PubMed_type:
+  reference_id:
     description: >-
-      Type of InformationContentEntity as described by pub med.
+      An integer referring to a Reference object in the references table. It's
+      a primary key in the references table, a foreign key when in other tables.
+    range: integer
+    required: true
+    is_a: table_key
+    multivalued: false
+
+  mesh_detail_id:
+    description: >-
+      The primary key for a MeshDetail object.
+    domain: MeshDetail
+    range: integer
+    required: true
+
+  resource_id:
+    notes: >-
+      The value is the primary key for the resources table (an integer).
+    domain: Reference
+    range: integer
+
+  heading_term:
+    description: >-
+      The MeSH term description or definition from PubMed.
+      e.g. Measles in a Measles/epidemiology term.
+    multivalued: false
+    domain: MeshDetail
     range: string
-    domain: InformationContentEntity
+    required: true
+
+  qualifier_term:
+    description: >-
+      The MeSH term subheading from PubMed, to narrow down the topic.
+      e.g. epidemiology in a Measles/epidemiology term.
+    multivalued: false
+    domain: MeshDetail
+    range: string
+    required: false
+
+  pubmed_type:
+    description: >-
+      Type of Reference as described by PubMed.
+    multivalued: true
+    domain: Reference
+    range: pubmed_type_enum
 
   date_published:
     description: >-
       Date on which an entity was created.
+    notes: >-
+      Values here can be quite variable: e.g., just a year, or a year-season, etc.
+    multivalued: false
+    range: string
+  
+  date_created:
+    description: >-
+      Date on which an entity was created in the Alliance literature database.
+    notes: >-
+      An alias of the creation_date slot of AuditedObject.
+    multivalued: false
     range: date
-    domain: InformationContentEntity
+    is_a: creation_date
 
-  date_last_modified_in_PubMed:
+  date_updated:
     description: >-
-      Date on which an entity was created.
+      Date on which an entity was updated in the Alliance literature database.
+    notes: >-
+      An alias of the date_last_modified slot of AuditedObject.
+    multivalued: false
     range: date
-    domain: InformationContentEntity
+    is_a: date_last_modified
 
-  year_published:
-    description: >-
-      Year in which an entity was created.
-    range: string
-    domain: InformationContentEntity
-
-  month_published:
-    description: >-
-      Month in which an entity was created.
-    range: string
-    domain: InformationContentEntity
-
-  day_published:
-    description: >-
-      Day in which an entity was created.
-    range: string
-    domain: InformationContentEntity
-
-
-  date_arrived_in_PubMed:
+  date_arrived_in_pubmed:
     description: Day in which a reference or resource was created in PUBMED. Only relevant for PUBMED references.
-    range: date
-    domain: InformationContentEntity
-
-  mod_reference_types:
-    singular_name: mod_reference_type
     multivalued: true
-    description: List of types as assigned at a MOD.
+    range: string
+    domain: Reference
 
-  tags:
-    singular_name: tag
-    description: >-
-      Optional ist of controlled vocabulary tags that give categories to each pub (ie: can show images).
-    multivalued: true
-    range: tag_set
+  date_last_modified_in_pubmed:
+    notes: >-
+      Currently values in date_last_modified slot actually correspond to date_arrived_in_pubmed.
+    description: Date on which entity was last updated at PubMed.
+    multivalued: false
+    domain: Reference
+    range: string
 
   issue_date:
     description: Date on which an entity was issued.
-    domain: InformationContentEntity
-    range: date
-
-  volume:
     multivalued: false
     range: string
-    domain: InformationContentEntity
+
+  open_access:
+    description: >-
+      Indicates if the reference is freely available for use by anyone, usually
+      with fewer copyright and licensing barriers.
+    multivalued: false
+    domain: Reference
+    range: boolean
 
   pages:
     description: page number of source referenced for statement or publication
-    domain: InformationContentEntity
-    multivalued: true
+    multivalued: false
+    range: string
     exact_mappings:
       - WIKIDATA_PROPERTY:P304
+    
+  plain_language_abstract:
+    description: Plain language abstract
+    multivalued: false
+    domain: Reference
+    range: string
+
+  pubmed_abstract_languages:
+    description: Languages for the abstract
+    multivalued: true
+    domain: Reference
+    range: string
+
+  pubmed_publication_status:
+    description: status of the publication
+    multivalued: false
+    domain: Reference
+    range: pubmed_publication_status_enum
 
   abstract:
+    description: >-
+      The author summary of the publication.
     multivalued: false
     domain: Reference
     range: string
 
   citation:
+    description: >-
+      A short form way of referring to a publication, typically consisting of
+      the first author's name, publication date, and journal (title, vol, pages).
     multivalued: false
     domain: Reference
     range: string
@@ -152,23 +238,180 @@ slots:
   issue_name:
     multivalued: false
     domain: Reference
+    range: string
 
-  alliance_category:
+  category:
     multivalued: false
     domain: Reference
+    range: reference_category_enum
 
   keywords:
     multivalued: true
     description: keywords tagging a publication
-    domain: InformationContentEntity
+    range: string
+  
+  language:
+    multivalued: false
+    description: Language of the reference
+    domain: Reference
     range: string
 
-  from_resource:
+  merged_into_id:
+    multivalued: false
+    description: ID that used to refer to this reference
     domain: Reference
-    range: Resource
+    range: uriorcurie
+
+  summary:
+    description: >-
+    domain: Reference
+    range: string
+
+  copyright_date:
+    description: >-
+    domain: Reference
+    range: date
+
+  authors:
+    multivalued: true
+    domain: Reference
+    range: AuthorReference
+
+  corresponding_author:
+    description: >-
+    range: Reference
+    domain: Reference
+
+
+  initials:
+    description: >-
+    domain: Reference
+    range: Reference
+
+  title:
+    description: >-
+      A human readable title for a reference.
+    multivalued: false
+    domain: Reference
+    range: string
+
+  volume:
+    multivalued: false
+    range: string
+    domain: Reference
+    description: >-
+  publisher:
+    multivalued: false
+    domain: Reference
+    range: string
+
+  address:
+    description: >-
+      the particulars of the place where someone or an organization is situated.  For now, this slot is a
+      simple text blob containing all relevant details of the given location for fitness of purpose.
+      For the moment, this address can include other contact details such as email and phone number(?).
 
 enums:
-  tag_set:
+
+  pubmed_publication_status_enum:
     permissible_values:
-      image:
-      test:
+      ppublish:
+      epublish:
+      aheadofprint:
+
+  pubmed_type_enum:
+    permissible_values:
+      Adaptive Clinical Trial:
+      Address:
+      Autobiography:
+      Bibliography:
+      Biography:
+      Case Reports:
+      Classical Article:
+      Clinical Conference:
+      Clinical Study:
+      Clinical Trial:
+      Clinical Trial, Phase I:
+      Clinical Trial, Phase II:
+      Clinical Trial, Phase III:
+      Clinical Trial, Phase IV:
+      Clinical Trial Protocol:
+      Clinical Trial, Veterinary:
+      Collected Work:
+      Comment:
+      Comparative Study:
+      Congress:
+      Consensus Development Conference:
+      Consensus Development Conference, NIH:
+      Controlled Clinical Trial:
+      Corrected and Republished Article:
+      Dataset:
+      Dictionary:
+      Directory:
+      Duplicate Publication:
+      Editorial:
+      Electronic Supplementary Materials:
+      English Abstract:
+      Equivalence Trial:
+      Evaluation Study:
+      Expression of Concern:
+      Festschrift:
+      Government Publication:
+      Guideline:
+      Historical Article:
+      Interactive Tutorial:
+      Interview:
+      Introductory Journal Article:
+      Journal Article:
+      Lecture:
+      Legal Case:
+      Legislation:
+      Letter:
+      Meta-Analysis:
+      Multicenter Study:
+      News:
+      Newspaper Article:
+      Observational Study:
+      Observational Study, Veterinary:
+      Overall:
+      Patient Education Handout:
+      Periodical Index:
+      Personal Narrative:
+      Portrait:
+      Practice Guideline:
+      Preprint:
+      Pragmatic Clinical Trial:
+      Published Erratum:
+      Randomized Controlled Trial:
+      Randomized Controlled Trial, Veterinary:
+      Research Support, American Recovery and Reinvestment Act:
+      Research Support, N.I.H., Extramural:
+      Research Support, N.I.H., Intramural:
+      Research Support, Non-U.S. Gov't:
+      Research Support, U.S. Gov't, Non-P.H.S.:
+      Research Support, U.S. Gov't, P.H.S.:
+      Retracted Publication:
+      Retraction of Publication:
+      Review:
+      Scientific Integrity Review:
+      Systematic Review:
+      Technical Report:
+      Twin Study:
+      Validation Study:
+      Video-Audio Media:
+      Webcast:
+
+  reference_category_enum:
+    permissible_values:
+      Research_Article:
+      Review_Article:
+      Thesis:
+      Book:
+      Other:
+      Preprint:
+      Conference_Publication:
+      Personal_Communication:
+      Direct_Data_Submission:
+      Internal_Process_Reference:
+      Unknown:
+      Retraction:
