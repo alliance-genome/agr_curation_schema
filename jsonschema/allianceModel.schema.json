@@ -4095,6 +4095,35 @@
          "title": "MMUSDVTerm",
          "type": "object"
       },
+      "MeshDetail": {
+         "additionalProperties": false,
+         "description": "Medical Subject Headings information coming from PubMed.",
+         "properties": {
+            "heading_term": {
+               "description": "The MeSH term description or definition from PubMed. e.g. Measles in a Measles/epidemiology term.",
+               "type": "string"
+            },
+            "mesh_detail_id": {
+               "description": "The primary key for a MeshDetail object.",
+               "type": "integer"
+            },
+            "qualifier_term": {
+               "description": "The MeSH term subheading from PubMed, to narrow down the topic. e.g. epidemiology in a Measles/epidemiology term.",
+               "type": "string"
+            },
+            "reference_id": {
+               "description": "Here, a foreign key referring to the references table.",
+               "type": "integer"
+            }
+         },
+         "required": [
+            "mesh_detail_id",
+            "reference_id",
+            "heading_term"
+         ],
+         "title": "MeshDetail",
+         "type": "object"
+      },
       "Molecule": {
          "additionalProperties": false,
          "description": "Molecules as described by WormBase",
@@ -4981,9 +5010,6 @@
                "format": "date",
                "type": "string"
             },
-            "id": {
-               "type": "string"
-            },
             "issue_date": {
                "description": "Date on which an entity was issued.",
                "type": "string"
@@ -5040,7 +5066,7 @@
                "type": "array"
             },
             "reference_id": {
-               "description": "An integer referring to a Reference object in the references table. It's a primary key in the references table, a foreign key when in other tables.",
+               "description": "The primary key for the Reference object in the references table.",
                "type": "integer"
             },
             "resource_id": {
