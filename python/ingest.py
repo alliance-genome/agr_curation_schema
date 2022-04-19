@@ -1,5 +1,5 @@
 # Auto generated from ingest.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-05T08:44:42
+# Generation date: 2022-04-19T07:32:06
 # Schema: Alliance-Schema-Ingest
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest
@@ -260,7 +260,7 @@ class AGMPhenotypeAnnotationCurie(PhenotypeAnnotationCurie):
     pass
 
 
-class ReferenceCurie(InformationContentEntityCurie):
+class ReferenceCurie(URIorCURIE):
     pass
 
 
@@ -2764,7 +2764,7 @@ class ConditionRelation(YAMLRoot):
 
 
 @dataclass
-class Reference(InformationContentEntity):
+class Reference(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/Reference")
@@ -2773,8 +2773,7 @@ class Reference(InformationContentEntity):
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/Reference")
 
     curie: Union[str, ReferenceCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
+    reference_id: int = None
     abstract: Optional[str] = None
     category: Optional[Union[str, "ReferenceCategoryEnum"]] = None
     citation: Optional[str] = None
@@ -2795,17 +2794,20 @@ class Reference(InformationContentEntity):
     pubmed_abstract_languages: Optional[Union[str, List[str]]] = empty_list()
     pubmed_publication_status: Optional[Union[str, "PubmedPublicationStatusEnum"]] = None
     pubmed_type: Optional[Union[str, List[str]]] = empty_list()
-    reference_id: Optional[int] = None
     resource_id: Optional[int] = None
     title: Optional[str] = None
     volume: Optional[str] = None
-    id: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
             self.MissingRequiredField("curie")
         if not isinstance(self.curie, ReferenceCurie):
             self.curie = ReferenceCurie(self.curie)
+
+        if self._is_empty(self.reference_id):
+            self.MissingRequiredField("reference_id")
+        if not isinstance(self.reference_id, int):
+            self.reference_id = int(self.reference_id)
 
         if self.abstract is not None and not isinstance(self.abstract, str):
             self.abstract = str(self.abstract)
@@ -2871,9 +2873,6 @@ class Reference(InformationContentEntity):
             self.pubmed_type = [self.pubmed_type] if self.pubmed_type is not None else []
         self.pubmed_type = [v if isinstance(v, str) else str(v) for v in self.pubmed_type]
 
-        if self.reference_id is not None and not isinstance(self.reference_id, int):
-            self.reference_id = int(self.reference_id)
-
         if self.resource_id is not None and not isinstance(self.resource_id, int):
             self.resource_id = int(self.resource_id)
 
@@ -2883,8 +2882,44 @@ class Reference(InformationContentEntity):
         if self.volume is not None and not isinstance(self.volume, str):
             self.volume = str(self.volume)
 
-        if self.id is not None and not isinstance(self.id, str):
-            self.id = str(self.id)
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class MeshDetail(YAMLRoot):
+    """
+    Medical Subject Headings information coming from PubMed.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/MeshDetail")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "MeshDetail"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/MeshDetail")
+
+    mesh_detail_id: int = None
+    reference_id: int = None
+    heading_term: str = None
+    qualifier_term: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.mesh_detail_id):
+            self.MissingRequiredField("mesh_detail_id")
+        if not isinstance(self.mesh_detail_id, int):
+            self.mesh_detail_id = int(self.mesh_detail_id)
+
+        if self._is_empty(self.reference_id):
+            self.MissingRequiredField("reference_id")
+        if not isinstance(self.reference_id, int):
+            self.reference_id = int(self.reference_id)
+
+        if self._is_empty(self.heading_term):
+            self.MissingRequiredField("heading_term")
+        if not isinstance(self.heading_term, str):
+            self.heading_term = str(self.heading_term)
+
+        if self.qualifier_term is not None and not isinstance(self.qualifier_term, str):
+            self.qualifier_term = str(self.qualifier_term)
 
         super().__post_init__(**kwargs)
 
@@ -4164,10 +4199,19 @@ slots.exacerbates = Slot(uri=ALLIANCE.exacerbates, name="exacerbates", curie=ALL
                    model_uri=DEFAULT_.exacerbates, domain=ExperimentalCondition, range=Optional[Union[Union[dict, Entity], List[Union[dict, Entity]]]])
 
 slots.reference_id = Slot(uri="str(uriorcurie)", name="reference_id", curie=None,
-                   model_uri=DEFAULT_.reference_id, domain=Reference, range=Optional[int])
+                   model_uri=DEFAULT_.reference_id, domain=None, range=int)
+
+slots.mesh_detail_id = Slot(uri="str(uriorcurie)", name="mesh_detail_id", curie=None,
+                   model_uri=DEFAULT_.mesh_detail_id, domain=MeshDetail, range=int)
 
 slots.resource_id = Slot(uri="str(uriorcurie)", name="resource_id", curie=None,
                    model_uri=DEFAULT_.resource_id, domain=Reference, range=Optional[int])
+
+slots.heading_term = Slot(uri="str(uriorcurie)", name="heading_term", curie=None,
+                   model_uri=DEFAULT_.heading_term, domain=MeshDetail, range=str)
+
+slots.qualifier_term = Slot(uri="str(uriorcurie)", name="qualifier_term", curie=None,
+                   model_uri=DEFAULT_.qualifier_term, domain=MeshDetail, range=Optional[str])
 
 slots.pubmed_type = Slot(uri="str(uriorcurie)", name="pubmed_type", curie=None,
                    model_uri=DEFAULT_.pubmed_type, domain=InformationContentEntity, range=Optional[Union[str, List[str]]])
@@ -4532,11 +4576,14 @@ slots.ConditionRelation_single_reference = Slot(uri=ALLIANCE.single_reference, n
 slots.ConditionRelation_condition_relation_type = Slot(uri=ALLIANCE.condition_relation_type, name="ConditionRelation_condition_relation_type", curie=ALLIANCE.curie('condition_relation_type'),
                    model_uri=DEFAULT_.ConditionRelation_condition_relation_type, domain=ConditionRelation, range=Union[str, VocabularyTermName])
 
+slots.Reference_reference_id = Slot(uri="str(uriorcurie)", name="Reference_reference_id", curie=None,
+                   model_uri=DEFAULT_.Reference_reference_id, domain=Reference, range=int)
+
 slots.Reference_date_last_modified = Slot(uri=ALLIANCE.date_last_modified, name="Reference_date_last_modified", curie=ALLIANCE.curie('date_last_modified'),
                    model_uri=DEFAULT_.Reference_date_last_modified, domain=Reference, range=Optional[Union[str, XSDDate]])
 
-slots.Reference_id = Slot(uri=DEFAULT_.id, name="Reference_id", curie=DEFAULT_.curie('id'),
-                   model_uri=DEFAULT_.Reference_id, domain=Reference, range=Optional[str])
+slots.MeshDetail_reference_id = Slot(uri="str(uriorcurie)", name="MeshDetail_reference_id", curie=None,
+                   model_uri=DEFAULT_.MeshDetail_reference_id, domain=MeshDetail, range=int)
 
 slots.Resource_id = Slot(uri=DEFAULT_.id, name="Resource_id", curie=DEFAULT_.curie('id'),
                    model_uri=DEFAULT_.Resource_id, domain=Resource, range=Optional[str])

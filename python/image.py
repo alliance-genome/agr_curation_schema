@@ -1,5 +1,5 @@
 # Auto generated from image.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-05T08:45:05
+# Generation date: 2022-04-19T07:32:27
 # Schema: image.yaml
 #
 # id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml
@@ -106,6 +106,10 @@ class ProteinCurie(GenomicEntityCurie):
 
 
 class AlleleCurie(GenomicEntityCurie):
+    pass
+
+
+class ReferenceCurie(URIorCURIE):
     pass
 
 
@@ -254,10 +258,6 @@ class InformationContentEntityCurie(URIorCURIE):
 
 
 class CrossReferenceCurie(InformationContentEntityCurie):
-    pass
-
-
-class ReferenceCurie(InformationContentEntityCurie):
     pass
 
 
@@ -1418,6 +1418,167 @@ class SequenceTargetingReagent(YAMLRoot):
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "SequenceTargetingReagent"
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/SequenceTargetingReagent")
+
+
+@dataclass
+class Reference(YAMLRoot):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/Reference")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "Reference"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/Reference")
+
+    curie: Union[str, ReferenceCurie] = None
+    reference_id: int = None
+    abstract: Optional[str] = None
+    category: Optional[Union[str, "ReferenceCategoryEnum"]] = None
+    citation: Optional[str] = None
+    date_arrived_in_pubmed: Optional[Union[str, List[str]]] = empty_list()
+    date_created: Optional[Union[str, XSDDate]] = None
+    date_last_modified: Optional[Union[str, XSDDate]] = None
+    date_published: Optional[str] = None
+    date_updated: Optional[Union[str, XSDDate]] = None
+    issue_date: Optional[str] = None
+    issue_name: Optional[str] = None
+    keywords: Optional[Union[str, List[str]]] = empty_list()
+    language: Optional[str] = None
+    merged_into_id: Optional[Union[str, URIorCURIE]] = None
+    open_access: Optional[Union[bool, Bool]] = None
+    pages: Optional[str] = None
+    plain_language_abstract: Optional[str] = None
+    publisher: Optional[str] = None
+    pubmed_abstract_languages: Optional[Union[str, List[str]]] = empty_list()
+    pubmed_publication_status: Optional[Union[str, "PubmedPublicationStatusEnum"]] = None
+    pubmed_type: Optional[Union[str, List[str]]] = empty_list()
+    resource_id: Optional[int] = None
+    title: Optional[str] = None
+    volume: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, ReferenceCurie):
+            self.curie = ReferenceCurie(self.curie)
+
+        if self._is_empty(self.reference_id):
+            self.MissingRequiredField("reference_id")
+        if not isinstance(self.reference_id, int):
+            self.reference_id = int(self.reference_id)
+
+        if self.abstract is not None and not isinstance(self.abstract, str):
+            self.abstract = str(self.abstract)
+
+        if self.category is not None and not isinstance(self.category, ReferenceCategoryEnum):
+            self.category = ReferenceCategoryEnum(self.category)
+
+        if self.citation is not None and not isinstance(self.citation, str):
+            self.citation = str(self.citation)
+
+        if not isinstance(self.date_arrived_in_pubmed, list):
+            self.date_arrived_in_pubmed = [self.date_arrived_in_pubmed] if self.date_arrived_in_pubmed is not None else []
+        self.date_arrived_in_pubmed = [v if isinstance(v, str) else str(v) for v in self.date_arrived_in_pubmed]
+
+        if self.date_created is not None and not isinstance(self.date_created, XSDDate):
+            self.date_created = XSDDate(self.date_created)
+
+        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
+            self.date_last_modified = XSDDate(self.date_last_modified)
+
+        if self.date_published is not None and not isinstance(self.date_published, str):
+            self.date_published = str(self.date_published)
+
+        if self.date_updated is not None and not isinstance(self.date_updated, XSDDate):
+            self.date_updated = XSDDate(self.date_updated)
+
+        if self.issue_date is not None and not isinstance(self.issue_date, str):
+            self.issue_date = str(self.issue_date)
+
+        if self.issue_name is not None and not isinstance(self.issue_name, str):
+            self.issue_name = str(self.issue_name)
+
+        if not isinstance(self.keywords, list):
+            self.keywords = [self.keywords] if self.keywords is not None else []
+        self.keywords = [v if isinstance(v, str) else str(v) for v in self.keywords]
+
+        if self.language is not None and not isinstance(self.language, str):
+            self.language = str(self.language)
+
+        if self.merged_into_id is not None and not isinstance(self.merged_into_id, URIorCURIE):
+            self.merged_into_id = URIorCURIE(self.merged_into_id)
+
+        if self.open_access is not None and not isinstance(self.open_access, Bool):
+            self.open_access = Bool(self.open_access)
+
+        if self.pages is not None and not isinstance(self.pages, str):
+            self.pages = str(self.pages)
+
+        if self.plain_language_abstract is not None and not isinstance(self.plain_language_abstract, str):
+            self.plain_language_abstract = str(self.plain_language_abstract)
+
+        if self.publisher is not None and not isinstance(self.publisher, str):
+            self.publisher = str(self.publisher)
+
+        if not isinstance(self.pubmed_abstract_languages, list):
+            self.pubmed_abstract_languages = [self.pubmed_abstract_languages] if self.pubmed_abstract_languages is not None else []
+        self.pubmed_abstract_languages = [v if isinstance(v, str) else str(v) for v in self.pubmed_abstract_languages]
+
+        if self.pubmed_publication_status is not None and not isinstance(self.pubmed_publication_status, PubmedPublicationStatusEnum):
+            self.pubmed_publication_status = PubmedPublicationStatusEnum(self.pubmed_publication_status)
+
+        if not isinstance(self.pubmed_type, list):
+            self.pubmed_type = [self.pubmed_type] if self.pubmed_type is not None else []
+        self.pubmed_type = [v if isinstance(v, str) else str(v) for v in self.pubmed_type]
+
+        if self.resource_id is not None and not isinstance(self.resource_id, int):
+            self.resource_id = int(self.resource_id)
+
+        if self.title is not None and not isinstance(self.title, str):
+            self.title = str(self.title)
+
+        if self.volume is not None and not isinstance(self.volume, str):
+            self.volume = str(self.volume)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class MeshDetail(YAMLRoot):
+    """
+    Medical Subject Headings information coming from PubMed.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/MeshDetail")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "MeshDetail"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/MeshDetail")
+
+    mesh_detail_id: int = None
+    reference_id: int = None
+    heading_term: str = None
+    qualifier_term: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.mesh_detail_id):
+            self.MissingRequiredField("mesh_detail_id")
+        if not isinstance(self.mesh_detail_id, int):
+            self.mesh_detail_id = int(self.mesh_detail_id)
+
+        if self._is_empty(self.reference_id):
+            self.MissingRequiredField("reference_id")
+        if not isinstance(self.reference_id, int):
+            self.reference_id = int(self.reference_id)
+
+        if self._is_empty(self.heading_term):
+            self.MissingRequiredField("heading_term")
+        if not isinstance(self.heading_term, str):
+            self.heading_term = str(self.heading_term)
+
+        if self.qualifier_term is not None and not isinstance(self.qualifier_term, str):
+            self.qualifier_term = str(self.qualifier_term)
+
+        super().__post_init__(**kwargs)
 
 
 class Agent(YAMLRoot):
@@ -2653,132 +2814,6 @@ class CrossReference(InformationContentEntity):
 
 
 @dataclass
-class Reference(InformationContentEntity):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/Reference")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "Reference"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/Reference")
-
-    curie: Union[str, ReferenceCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
-    abstract: Optional[str] = None
-    category: Optional[Union[str, "ReferenceCategoryEnum"]] = None
-    citation: Optional[str] = None
-    date_arrived_in_pubmed: Optional[Union[str, List[str]]] = empty_list()
-    date_created: Optional[Union[str, XSDDate]] = None
-    date_last_modified: Optional[Union[str, XSDDate]] = None
-    date_published: Optional[str] = None
-    date_updated: Optional[Union[str, XSDDate]] = None
-    issue_date: Optional[str] = None
-    issue_name: Optional[str] = None
-    keywords: Optional[Union[str, List[str]]] = empty_list()
-    language: Optional[str] = None
-    merged_into_id: Optional[Union[str, URIorCURIE]] = None
-    open_access: Optional[Union[bool, Bool]] = None
-    pages: Optional[str] = None
-    plain_language_abstract: Optional[str] = None
-    publisher: Optional[str] = None
-    pubmed_abstract_languages: Optional[Union[str, List[str]]] = empty_list()
-    pubmed_publication_status: Optional[Union[str, "PubmedPublicationStatusEnum"]] = None
-    pubmed_type: Optional[Union[str, List[str]]] = empty_list()
-    reference_id: Optional[int] = None
-    resource_id: Optional[int] = None
-    title: Optional[str] = None
-    volume: Optional[str] = None
-    id: Optional[str] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.curie):
-            self.MissingRequiredField("curie")
-        if not isinstance(self.curie, ReferenceCurie):
-            self.curie = ReferenceCurie(self.curie)
-
-        if self.abstract is not None and not isinstance(self.abstract, str):
-            self.abstract = str(self.abstract)
-
-        if self.category is not None and not isinstance(self.category, ReferenceCategoryEnum):
-            self.category = ReferenceCategoryEnum(self.category)
-
-        if self.citation is not None and not isinstance(self.citation, str):
-            self.citation = str(self.citation)
-
-        if not isinstance(self.date_arrived_in_pubmed, list):
-            self.date_arrived_in_pubmed = [self.date_arrived_in_pubmed] if self.date_arrived_in_pubmed is not None else []
-        self.date_arrived_in_pubmed = [v if isinstance(v, str) else str(v) for v in self.date_arrived_in_pubmed]
-
-        if self.date_created is not None and not isinstance(self.date_created, XSDDate):
-            self.date_created = XSDDate(self.date_created)
-
-        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
-            self.date_last_modified = XSDDate(self.date_last_modified)
-
-        if self.date_published is not None and not isinstance(self.date_published, str):
-            self.date_published = str(self.date_published)
-
-        if self.date_updated is not None and not isinstance(self.date_updated, XSDDate):
-            self.date_updated = XSDDate(self.date_updated)
-
-        if self.issue_date is not None and not isinstance(self.issue_date, str):
-            self.issue_date = str(self.issue_date)
-
-        if self.issue_name is not None and not isinstance(self.issue_name, str):
-            self.issue_name = str(self.issue_name)
-
-        if not isinstance(self.keywords, list):
-            self.keywords = [self.keywords] if self.keywords is not None else []
-        self.keywords = [v if isinstance(v, str) else str(v) for v in self.keywords]
-
-        if self.language is not None and not isinstance(self.language, str):
-            self.language = str(self.language)
-
-        if self.merged_into_id is not None and not isinstance(self.merged_into_id, URIorCURIE):
-            self.merged_into_id = URIorCURIE(self.merged_into_id)
-
-        if self.open_access is not None and not isinstance(self.open_access, Bool):
-            self.open_access = Bool(self.open_access)
-
-        if self.pages is not None and not isinstance(self.pages, str):
-            self.pages = str(self.pages)
-
-        if self.plain_language_abstract is not None and not isinstance(self.plain_language_abstract, str):
-            self.plain_language_abstract = str(self.plain_language_abstract)
-
-        if self.publisher is not None and not isinstance(self.publisher, str):
-            self.publisher = str(self.publisher)
-
-        if not isinstance(self.pubmed_abstract_languages, list):
-            self.pubmed_abstract_languages = [self.pubmed_abstract_languages] if self.pubmed_abstract_languages is not None else []
-        self.pubmed_abstract_languages = [v if isinstance(v, str) else str(v) for v in self.pubmed_abstract_languages]
-
-        if self.pubmed_publication_status is not None and not isinstance(self.pubmed_publication_status, PubmedPublicationStatusEnum):
-            self.pubmed_publication_status = PubmedPublicationStatusEnum(self.pubmed_publication_status)
-
-        if not isinstance(self.pubmed_type, list):
-            self.pubmed_type = [self.pubmed_type] if self.pubmed_type is not None else []
-        self.pubmed_type = [v if isinstance(v, str) else str(v) for v in self.pubmed_type]
-
-        if self.reference_id is not None and not isinstance(self.reference_id, int):
-            self.reference_id = int(self.reference_id)
-
-        if self.resource_id is not None and not isinstance(self.resource_id, int):
-            self.resource_id = int(self.resource_id)
-
-        if self.title is not None and not isinstance(self.title, str):
-            self.title = str(self.title)
-
-        if self.volume is not None and not isinstance(self.volume, str):
-            self.volume = str(self.volume)
-
-        if self.id is not None and not isinstance(self.id, str):
-            self.id = str(self.id)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
 class Resource(InformationContentEntity):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -3356,10 +3391,19 @@ slots.sequencing_status = Slot(uri="str(uriorcurie)", name="sequencing_status", 
                    model_uri=DEFAULT_.sequencing_status, domain=Variant, range=Optional[Union[str, VocabularyTermName]])
 
 slots.reference_id = Slot(uri="str(uriorcurie)", name="reference_id", curie=None,
-                   model_uri=DEFAULT_.reference_id, domain=Reference, range=Optional[int])
+                   model_uri=DEFAULT_.reference_id, domain=None, range=int)
+
+slots.mesh_detail_id = Slot(uri="str(uriorcurie)", name="mesh_detail_id", curie=None,
+                   model_uri=DEFAULT_.mesh_detail_id, domain=MeshDetail, range=int)
 
 slots.resource_id = Slot(uri="str(uriorcurie)", name="resource_id", curie=None,
                    model_uri=DEFAULT_.resource_id, domain=Reference, range=Optional[int])
+
+slots.heading_term = Slot(uri="str(uriorcurie)", name="heading_term", curie=None,
+                   model_uri=DEFAULT_.heading_term, domain=MeshDetail, range=str)
+
+slots.qualifier_term = Slot(uri="str(uriorcurie)", name="qualifier_term", curie=None,
+                   model_uri=DEFAULT_.qualifier_term, domain=MeshDetail, range=Optional[str])
 
 slots.pubmed_type = Slot(uri="str(uriorcurie)", name="pubmed_type", curie=None,
                    model_uri=DEFAULT_.pubmed_type, domain=InformationContentEntity, range=Optional[Union[str, List[str]]])
@@ -3694,11 +3738,14 @@ slots.AlleleVariantAssociation_subject = Slot(uri=ALLIANCE.subject, name="Allele
 slots.AlleleVariantAssociation_object = Slot(uri=ALLIANCE.object, name="AlleleVariantAssociation_object", curie=ALLIANCE.curie('object'),
                    model_uri=DEFAULT_.AlleleVariantAssociation_object, domain=AlleleVariantAssociation, range=Union[str, VariantCurie])
 
+slots.Reference_reference_id = Slot(uri="str(uriorcurie)", name="Reference_reference_id", curie=None,
+                   model_uri=DEFAULT_.Reference_reference_id, domain=Reference, range=int)
+
 slots.Reference_date_last_modified = Slot(uri=ALLIANCE.date_last_modified, name="Reference_date_last_modified", curie=ALLIANCE.curie('date_last_modified'),
                    model_uri=DEFAULT_.Reference_date_last_modified, domain=Reference, range=Optional[Union[str, XSDDate]])
 
-slots.Reference_id = Slot(uri=DEFAULT_.id, name="Reference_id", curie=DEFAULT_.curie('id'),
-                   model_uri=DEFAULT_.Reference_id, domain=Reference, range=Optional[str])
+slots.MeshDetail_reference_id = Slot(uri="str(uriorcurie)", name="MeshDetail_reference_id", curie=None,
+                   model_uri=DEFAULT_.MeshDetail_reference_id, domain=MeshDetail, range=int)
 
 slots.Resource_id = Slot(uri=DEFAULT_.id, name="Resource_id", curie=DEFAULT_.curie('id'),
                    model_uri=DEFAULT_.Resource_id, domain=Resource, range=Optional[str])

@@ -4095,6 +4095,35 @@
          "title": "MMUSDVTerm",
          "type": "object"
       },
+      "MeshDetail": {
+         "additionalProperties": false,
+         "description": "Medical Subject Headings information coming from PubMed.",
+         "properties": {
+            "heading_term": {
+               "description": "The MeSH term description or definition from PubMed. e.g. Measles in a Measles/epidemiology term.",
+               "type": "string"
+            },
+            "mesh_detail_id": {
+               "description": "The primary key for a MeshDetail object.",
+               "type": "integer"
+            },
+            "qualifier_term": {
+               "description": "The MeSH term subheading from PubMed, to narrow down the topic. e.g. epidemiology in a Measles/epidemiology term.",
+               "type": "string"
+            },
+            "reference_id": {
+               "description": "Here, a foreign key referring to the references table.",
+               "type": "integer"
+            }
+         },
+         "required": [
+            "mesh_detail_id",
+            "reference_id",
+            "heading_term"
+         ],
+         "title": "MeshDetail",
+         "type": "object"
+      },
       "Molecule": {
          "additionalProperties": false,
          "description": "Molecules as described by WormBase",
@@ -4865,15 +4894,6 @@
                "description": "A short form way of referring to a publication, typically consisting of the first author's name, publication date, and journal (title, vol, pages).",
                "type": "string"
             },
-            "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
-            },
-            "creation_date": {
-               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-               "format": "date",
-               "type": "string"
-            },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                "type": "string"
@@ -4904,9 +4924,6 @@
                "format": "date",
                "type": "string"
             },
-            "id": {
-               "type": "string"
-            },
             "issue_date": {
                "description": "Date on which an entity was issued.",
                "type": "string"
@@ -4927,10 +4944,6 @@
             },
             "merged_into_id": {
                "description": "ID that used to refer to this reference",
-               "type": "string"
-            },
-            "modified_by": {
-               "description": "The individual that last modified the entity.",
                "type": "string"
             },
             "open_access": {
@@ -4967,13 +4980,10 @@
                "type": "array"
             },
             "reference_id": {
+               "description": "The primary key for the Reference object in the references table.",
                "type": "integer"
             },
             "resource_id": {
-               "type": "integer"
-            },
-            "table_key": {
-               "description": "The primary key for a specific table entry, unique for that table.",
                "type": "integer"
             },
             "title": {
@@ -4985,9 +4995,8 @@
             }
          },
          "required": [
-            "created_by",
-            "modified_by",
-            "curie"
+            "curie",
+            "reference_id"
          ],
          "title": "Reference",
          "type": "object"
