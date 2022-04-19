@@ -1,0 +1,35 @@
+{
+  "disease_allele_ingest_set": [
+    {
+      "subject": "FB:FBal0000272",
+      "predicate": "is_implicated_in",
+      "object": "DOID:3191",
+      "negated": false,
+      "evidence_codes": ["ECO:0007013"],
+      "single_reference": "FB:FBrf0227496",
+      "annotation_type": "manually_curated",
+      "inferred_gene": "FB:FBgn0000047",
+      "data_provider": ["FB"],
+      "created_by": "FB:FB_curator",
+      "creation_date": "2022-01-12T09:57:42-05:00",
+      "modified_by": "FB:FB_curator",
+      "date_last_modified": "2022-01-12T09:57:42-05:00"
+    }
+  ],
+  "disease_gene_ingest_set": [
+    {
+      "subject": "FB:FBgn0000047",
+      "predicate": "is_implicated_in",
+      "object": "DOID:422",
+      "negated": false,
+      "evidence_codes": ["ECO:0007013"],
+      "single_reference": "FB:FBrf0211153",
+      "annotation_type": "manually_curated",
+      "data_provider": ["FB"],
+      "created_by": "FB:FB_curator",
+      "creation_date": "2022-01-12T09:57:42-05:00",
+      "modified_by": "FB:FB_curator",
+      "date_last_modified": "2022-01-12T09:57:42-05:00"
+    }
+  ]
+}

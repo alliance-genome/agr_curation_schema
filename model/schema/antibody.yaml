@@ -45,6 +45,7 @@ classes:
       - secondary_identifiers
       - references
       - original_reference
+      - related_notes
       # - disease    # Need a way to give DOID term and reference. Or a generic way to specify CV term and publication attribution.
     slot_usage:
       curie:
@@ -75,11 +76,6 @@ classes:
           The reference providing the original description of the antibody's
           generation.
 
-  AntibodyNote:
-    is_a: EntityStatement
-    slot_usage:
-      note_type:
-        range: antibody_note_type_set
 
 slots:
 

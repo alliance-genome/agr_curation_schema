@@ -23,9 +23,9 @@ clean-artifacts:
 	rm -rf target/
 
 clean-docs:
-	ls docs/*.md | egrep -v 'README.md|README.markdown' | xargs rm -f # keep readme files
-	rm -f docs/images/*
-	rm -f docs/types/*
+	rm -rf docs/images/*
+	rm -rf docs/types/*
+	rm -rf docs/
 
 t:
 	echo $(SCHEMA_NAMES)
@@ -58,8 +58,6 @@ gen-docs: target/docs/index.md copy-src-docs
 .PHONY: gen-docs
 copy-src-docs:
 	mkdir -p target/docs/images
-	cp $(SRC_DIR)/docs/*.md target/docs/
-	cp $(SRC_DIR)/docs/images/* target/docs/images/
 PHONY: copy-src-docs
 target/docs/%.md: $(SCHEMA_SRC) tdir-docs
 	pipenv run gen-markdown $(GEN_OPTS) --dir target/docs $<
@@ -175,6 +173,7 @@ SCHEMA_TEST_EXAMPLES := \
 	disease_agm_test \
 	disease_gene_test \
 	gene_test \
+	wb_disease_test \
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
 	allele_invalid \
