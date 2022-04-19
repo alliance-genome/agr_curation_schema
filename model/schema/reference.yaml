@@ -88,6 +88,7 @@ classes:
 slots:
 
   reference_id:
+    is_a: table_key
     description: >-
       An integer referring to a Reference object in the references table. It's
       a primary key in the references table, a foreign key when in other tables.
