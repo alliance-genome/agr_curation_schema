@@ -132,8 +132,15 @@ classes:
       - single_reference
 
   Construct:
+    is_a: GenomicEntity
     description: >-
-      Dummy construct class
+    slot_usage:
+      curie:
+        required: true
+      name:
+        required: true
+    slots:
+      - construct_components
 
   CellLine:
     description: >-
@@ -143,9 +150,30 @@ classes:
     description: >-
       Dummy sequence targeting reagent class
 
+  ConstructComponentAssociation:
+    is_a: Association
+    slot_usage:
+      predicate:
+        range: construct_component_relation_enum
+      subject:
+        range: Construct
+      object:
+        range: ConstructComponent
+
+  ConstructComponent:
+    is_a: GenomicEntity
+    slots:
+      - symbol
+
+
 # Slots
 
 slots:
+
+  construct_components:
+    multivalued: true
+    domain: Construct
+    range: GenomicEntity
 
   contains_constructs:
     multivalued: true
@@ -284,3 +312,13 @@ slots:
       by sequencing
     domain: Variant
     range: VocabularyTerm
+
+enums:
+  construct_component_relation_enum:
+    permissible_values:
+      expresses:
+        meaning: RO:0002292
+      is_regulated_by:
+        meaning: RO:0002334
+      targets:
+        meaning: RO:0002436
