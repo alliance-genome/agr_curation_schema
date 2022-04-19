@@ -1478,11 +1478,11 @@
          },
          "required": [
             "curie",
-            "created_by",
-            "modified_by",
             "page_areas",
             "display_name",
-            "prefix"
+            "prefix",
+            "created_by",
+            "modified_by"
          ],
          "title": "CrossReference",
          "type": "object"

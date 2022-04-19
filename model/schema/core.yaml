@@ -114,8 +114,10 @@ classes:
         required: true
 
   CrossReference:
-    is_a: InformationContentEntity
+    mixins:
+      - AuditedObject
     slots:
+      - curie
       - page_areas
       - display_name
       - prefix

@@ -3,7 +3,6 @@ id: https://github.com/alliance-genome/agr_curation_schema/src/schema/reference
 imports:
   - core
   - linkml:types
-  - informationContentEntity
 
 prefixes:
   alliance: 'http://alliancegenome.org'
@@ -15,6 +14,15 @@ prefixes:
   schema: 'http://schema.org/'
 
 classes:
+  AuthorReference:
+    slots:
+      - corresponding_author
+      - first_name
+      - middle_name
+      - last_name
+      - initials
+      - cross_references
+
   Reference:
     slots:
       - abstract
@@ -93,7 +101,6 @@ slots:
     notes: >-
       Values here can be quite variable: e.g., just a year, or a year-season, etc.
     multivalued: false
-    domain: InformationContentEntity
     range: string
   
   date_created:
@@ -104,7 +111,6 @@ slots:
     multivalued: false
     range: date
     is_a: creation_date
-    domain: InformationContentEntity
 
   date_updated:
     description: >-
@@ -113,7 +119,6 @@ slots:
       An alias of the date_last_modified slot of AuditedObject.
     multivalued: false
     range: date
-    domain: InformationContentEntity
     is_a: date_last_modified
 
   date_arrived_in_pubmed:
@@ -133,7 +138,6 @@ slots:
   issue_date:
     description: Date on which an entity was issued.
     multivalued: false
-    domain: InformationContentEntity
     range: string
 
   open_access:
@@ -147,7 +151,6 @@ slots:
   pages:
     description: page number of source referenced for statement or publication
     multivalued: false
-    domain: InformationContentEntity
     range: string
     exact_mappings:
       - WIKIDATA_PROPERTY:P304
@@ -198,7 +201,6 @@ slots:
   keywords:
     multivalued: true
     description: keywords tagging a publication
-    domain: InformationContentEntity
     range: string
   
   language:
@@ -212,6 +214,55 @@ slots:
     description: ID that used to refer to this reference
     domain: Reference
     range: uriorcurie
+
+  summary:
+    description: >-
+    domain: Reference
+    range: string
+
+  copyright_date:
+    description: >-
+    domain: Reference
+    range: date
+
+  authors:
+    multivalued: true
+    domain: Reference
+    range: AuthorReference
+
+  corresponding_author:
+    description: >-
+    range: Reference
+    domain: Reference
+
+
+  initials:
+    description: >-
+    domain: Reference
+    range: Reference
+
+  title:
+    description: >-
+      A human readable title for a reference.
+    multivalued: false
+    domain: Reference
+    range: string
+
+  volume:
+    multivalued: false
+    range: string
+    domain: Reference
+    description: >-
+  publisher:
+    multivalued: false
+    domain: Reference
+    range: string
+
+  address:
+    description: >-
+      the particulars of the place where someone or an organization is situated.  For now, this slot is a
+      simple text blob containing all relevant details of the given location for fitness of purpose.
+      For the moment, this address can include other contact details such as email and phone number(?).
 
 enums:
 

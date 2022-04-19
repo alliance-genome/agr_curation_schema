@@ -29,7 +29,6 @@ imports:
   - variantConsequence
   - linkml:types
   - core
-  - informationContentEntity
   - agent
   - allele
   - affectedGenomicModel

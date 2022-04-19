@@ -7,7 +7,6 @@ imports:
   - image
   - variation
   - linkml:types
-  - informationContentEntity
   - ontologyTerm
   - affectedGenomicModel
 

@@ -6,7 +6,6 @@ imports:
   - core
   - allele
   - linkml:types
-  - informationContentEntity
   - ontologyTerm
 
 prefixes:
