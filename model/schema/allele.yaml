@@ -141,6 +141,7 @@ classes:
         required: true
     slots:
       - construct_components
+      - references
 
   CellLine:
     description: >-
@@ -150,10 +151,13 @@ classes:
     description: >-
     is_a: GenomicEntity
     slots:
+      - references
 
   SequenceTargetingReagentToGeneAssociation:
     description: the relationship between a Sequence Targeting Reagent and its targeted genes.
     is_a: Association
+    slots:
+      - references
     slot_usage:
       predicate:
         range: sqtr_relation_enum
