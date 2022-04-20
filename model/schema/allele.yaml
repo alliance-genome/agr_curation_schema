@@ -337,5 +337,5 @@ enums:
         meaning: RO:0002436
 
   sqtr_relation_enum:
-    permissible_Values:
+    permissible_values:
       targets:
