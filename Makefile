@@ -60,7 +60,7 @@ copy-src-docs:
 	mkdir -p target/docs/images
 PHONY: copy-src-docs
 target/docs/%.md: $(SCHEMA_SRC) tdir-docs
-	pipenv run gen-markdown $(GEN_OPTS) --dir target/docs $<
+	pipenv run gen-doc $(GEN_OPTS) --dir target/docs $<
 stage-docs: gen-docs
 	cp -pr target/docs .
 
