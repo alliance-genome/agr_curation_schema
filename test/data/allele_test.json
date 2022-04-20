@@ -1,16 +1,30 @@
 {
   "allele_ingest_set": [
     {
-      "curie": "ZFIN:ZDB-ALT-123456-1",
+      "curie": "ZFIN:ZDB-ALT-130621-1",
       "taxon": "NCBITaxon:7955",
       "created_by": "ZFIN",
-      "modified_by": "ZFIN"
+      "modified_by": "ZFIN",
+      "name": "b1219",
+      "associated_references": [
+        {
+          "reference_type": "term:huh?",
+          "single_reference": "PMID:123456"
+        }
+      ]
     },
     {
-      "curie": "ZFIN:ZDB-ALT-123456-2",
+      "curie": "ZFIN:ZDB-ALT-130411-947",
       "taxon": "NCBITaxon:7955",
       "created_by": "ZFIN",
-      "modified_by": "ZFIN"
+      "modified_by": "ZFIN",
+      "name": "sa11077",
+      "associated_references": [
+        {
+          "reference_type": "term:huh?",
+          "single_reference": "PMID:123456"
+        }
+      ]
     }
   ]
 }

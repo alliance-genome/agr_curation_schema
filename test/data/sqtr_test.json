@@ -6,17 +6,17 @@
       "created_by": "ZFIN",
       "modified_by": "ZFIN",
       "name": "TALEN2-eftud2",
-      "synonyms": ["test", "synonym"],
-      "secondaryIds": ["ZFIN:ZDB-MRPHLNO-123456-1"],
-      "references": []
+      "synonyms": [{"synonym": "test"},{"synonym": "another test"}],
+      "secondary_identifiers": ["ZFIN:ZDB-MRPHLNO-123456-1"],
+      "references": [],
     },
     {
       "curie": "ZFIN:ZDB-CRISPR-220421",
       "taxon": "NCBITaxon:7955",
       "created_by": "ZFIN",
       "modified_by": "ZFIN",
-      "synonyms": ["test", "synonym"],
-      "secondaryIds": ["ZFIN:ZDB-MRPHLNO-123456-1"],
+      "synonyms": [{"synonym": "test"},{"synonym": "another test"}],
+      "secondary_identifiers": ["ZFIN:ZDB-MRPHLNO-123456-1"],
       "references": []
     },
     {
@@ -24,8 +24,8 @@
       "taxon": "NCBITaxon:7955",
       "created_by": "ZFIN",
       "modified_by": "ZFIN",
-      "synonyms": ["test", "synonym"],
-      "secondaryIds": ["ZFIN:ZDB-MRPHLNO-123456-1"],
+      "synonyms": [{"synonym": "test"},{"synonym": "another test"}],
+      "secondary_identifiers": ["ZFIN:ZDB-MRPHLNO-123456-1"],
       "references": []
     }
   ]
