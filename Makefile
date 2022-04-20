@@ -13,9 +13,9 @@ DDL_GEN_OPTS = --sqla-file target/sqla-files/
 #GEN_OPTS = --no-mergeimports
 GEN_OPTS =
 
-all: gen stage
+all: clean gen stage
 gen: $(patsubst %,gen-%,$(TGTS))
-.PHONY: all gen stage clean clean-artifacts clean-docs t echo test install docserve gh-deploy .FORCE
+.PHONY: all gen clean t echo test install gh-deploy clean-artifacts clean-doc .FORCE
 
 clean: clean-artifacts clean-docs
 
@@ -50,19 +50,15 @@ stage: $(patsubst %,stage-%,$(TGTS))
 stage-%: gen-%
 	cp -pr target/$* .
 
+gen-docs:
+	pipenv run gen-doc model/schema/allianceModel.yaml --directory target/docs --template-directory doc_templates
 
-###  -- MARKDOWN DOCS AND SLIDES --
-# Generate documentation ready for mkdocs
-# TODO: modularize imports
-gen-docs: target/docs/index.md copy-src-docs
-.PHONY: gen-docs
-copy-src-docs:
-	mkdir -p target/docs/images
-PHONY: copy-src-docs
-target/docs/%.md: $(SCHEMA_SRC) tdir-docs
-	pipenv run gen-markdown $(GEN_OPTS) --dir target/docs $<
-stage-docs: gen-docs
-	cp -pr target/docs .
+guidelines/%.md: docs/index.md
+	cp -R guidelines/* $(dir $@)
+
+# add more logging?
+# some docs pages not being created
+# usage of mkdocs.yml attributes like analytics?
 
 ###  -- PYTHON --
 gen-python: $(patsubst %, target/python/%.py, $(SCHEMA_NAMES))
@@ -132,10 +128,6 @@ gen-linkml: target/linkml/$(SCHEMA_NAME).yaml
 .PHONY: gen-linkml
 target/linkml/%.yaml: $(SCHEMA_DIR)/%.yaml tdir-limkml
 	cp $< > $@
-
-# test docs locally.
-docserve:
-	pipenv run mkdocs serve
 
 gh-deploy:
 # deploy documentation (note: requires documentation is in docs dir)

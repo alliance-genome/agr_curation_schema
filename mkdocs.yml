@@ -1,7 +1,19 @@
 site_name: "Model to describe the Alliance curation/persistence data store"
-docs_dir: target/docs
-site_dir: docs
 theme:
   name: readthedocs
+highlightjs: truechema assumes a property graph
+plugins:
+  - search
+
+docs_dir: docs
+site_dir: mkdocs_html
+
 nav:
-  - Index: index.html
+  - Browse the Model: index.md
+
+
+site_url: https://github.com/alliance-genome/agr_curation_schema
+repo_url: https://github.com/alliance-genome/agr_curation_schema
+
+extra_css:
+  - extra_css.css

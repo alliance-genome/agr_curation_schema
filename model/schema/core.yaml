@@ -1,6 +1,5 @@
 id: https://github.com/alliance-genome/agr_curation_schema/core.yaml
-name: Alliance-Schema-Core
-title: Alliance Schema Core
+name: core
 description: Alliance Schema with LinkML
 
 default_prefix: alliance

@@ -1,6 +1,6 @@
 # Auto generated from core.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-20T10:19:03
-# Schema: Alliance-Schema-Core
+# Generation date: 2022-04-20T12:41:20
+# Schema: core
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/core.yaml
 # description: Alliance Schema with LinkML

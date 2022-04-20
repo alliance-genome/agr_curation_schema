@@ -6856,7 +6856,7 @@
       }
    },
    "required": [],
-   "title": "Alliance-Schema-Prototype",
+   "title": "AllianceCurationSchema",
    "type": "object",
    "version": "0.0.1"
 }
