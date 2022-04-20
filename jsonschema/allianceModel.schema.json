@@ -305,7 +305,6 @@
             "taxon",
             "created_by",
             "modified_by",
-            "name",
             "subtype"
          ],
          "title": "AffectedGenomicModel",
@@ -1295,8 +1294,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "CHEBITerm",
          "type": "object"
@@ -1366,8 +1364,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "CLTerm",
          "type": "object"
@@ -1585,8 +1582,7 @@
             "curie",
             "taxon",
             "created_by",
-            "modified_by",
-            "name"
+            "modified_by"
          ],
          "title": "ConstructComponent",
          "type": "object"
@@ -1746,8 +1742,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "DAOTerm",
          "type": "object"
@@ -1875,8 +1870,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "DOTerm",
          "type": "object"
@@ -2148,8 +2142,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "ECOTerm",
          "type": "object"
@@ -2219,8 +2212,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "EMAPATerm",
          "type": "object"
@@ -2728,8 +2720,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "FBCVTerm",
          "type": "object"
@@ -2799,8 +2790,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "FBDVTerm",
          "type": "object"
@@ -2936,8 +2926,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "GOTerm",
          "type": "object"
@@ -3032,7 +3021,6 @@
             "taxon",
             "created_by",
             "modified_by",
-            "name",
             "symbol"
          ],
          "title": "Gene",
@@ -3534,8 +3522,7 @@
             "curie",
             "taxon",
             "created_by",
-            "modified_by",
-            "name"
+            "modified_by"
          ],
          "title": "GenomicEntity",
          "type": "object"
@@ -4095,8 +4082,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "MATerm",
          "type": "object"
@@ -4166,8 +4152,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "MITerm",
          "type": "object"
@@ -4237,8 +4222,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "MMOTerm",
          "type": "object"
@@ -4308,8 +4292,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "MMUSDVTerm",
          "type": "object"
@@ -4451,7 +4434,6 @@
          },
          "required": [
             "curie",
-            "name",
             "created_by",
             "modified_by"
          ],
@@ -4523,8 +4505,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "NCBITaxonTerm",
          "type": "object"
@@ -4626,8 +4607,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "OntologyTerm",
          "type": "object"
@@ -4822,8 +4802,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "PhenotypeTerm",
          "type": "object"
@@ -4901,8 +4880,7 @@
             "curie",
             "taxon",
             "created_by",
-            "modified_by",
-            "name"
+            "modified_by"
          ],
          "title": "Protein",
          "type": "object"
@@ -5126,8 +5104,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "ROTerm",
          "type": "object"
@@ -5488,8 +5465,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "SOTerm",
          "type": "object"
@@ -5564,8 +5540,8 @@
             "taxon",
             "created_by",
             "modified_by",
-            "name",
-            "curie"
+            "curie",
+            "name"
          ],
          "title": "SequenceTargetingReagent",
          "type": "object"
@@ -5787,8 +5763,7 @@
             "curie",
             "taxon",
             "created_by",
-            "modified_by",
-            "name"
+            "modified_by"
          ],
          "title": "Transcript",
          "type": "object"
@@ -5858,8 +5833,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "UBERONTerm",
          "type": "object"
@@ -5975,8 +5949,7 @@
             "created_by",
             "modified_by",
             "variant_type",
-            "variant_genome_locations",
-            "name"
+            "variant_genome_locations"
          ],
          "title": "Variant",
          "type": "object"
@@ -6450,8 +6423,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "WBBTTerm",
          "type": "object"
@@ -6521,8 +6493,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "WBLSTerm",
          "type": "object"
@@ -6592,8 +6563,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "XCOTerm",
          "type": "object"
@@ -6663,8 +6633,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "ZECOTerm",
          "type": "object"
@@ -6734,8 +6703,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "ZFATerm",
          "type": "object"
@@ -6805,8 +6773,7 @@
             }
          },
          "required": [
-            "curie",
-            "name"
+            "curie"
          ],
          "title": "ZFSTerm",
          "type": "object"

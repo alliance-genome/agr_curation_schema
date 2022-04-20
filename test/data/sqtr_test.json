@@ -8,7 +8,7 @@
       "name": "TALEN2-eftud2",
       "synonyms": [{"synonym": "test"},{"synonym": "another test"}],
       "secondary_identifiers": ["ZFIN:ZDB-MRPHLNO-123456-1"],
-      "references": [],
+      "references": ["PMID:12345"]
     },
     {
       "curie": "ZFIN:ZDB-CRISPR-220421",
@@ -17,7 +17,7 @@
       "modified_by": "ZFIN",
       "synonyms": [{"synonym": "test"},{"synonym": "another test"}],
       "secondary_identifiers": ["ZFIN:ZDB-MRPHLNO-123456-1"],
-      "references": []
+      "references": ["PMID:12345"]
     },
     {
       "curie": "ZFIN:ZDB-TALEN-220211",
@@ -26,7 +26,7 @@
       "modified_by": "ZFIN",
       "synonyms": [{"synonym": "test"},{"synonym": "another test"}],
       "secondary_identifiers": ["ZFIN:ZDB-MRPHLNO-123456-1"],
-      "references": []
+      "references": ["PMID:12345"]
     }
   ]
 }
