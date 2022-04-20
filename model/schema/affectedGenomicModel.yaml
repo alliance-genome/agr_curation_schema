@@ -39,6 +39,7 @@ slots:
       Subtype of affected genomic model
     domain: AffectedGenomicModel
     range: subtype_values
+    required: true
 
   components:
     singular_name: component

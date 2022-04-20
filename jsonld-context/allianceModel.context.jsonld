@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-04-20T08:35:45\n    Schema: Alliance-Schema-Prototype\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: Alliance Schema Prototype\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-04-20T09:22:54\n    Schema: Alliance-Schema-Prototype\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: Alliance Schema Prototype\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "BIOGRID": "http://identifiers.org/biogrid/",
       "DIP": "http://identifiers.org/dip/",
@@ -65,6 +65,10 @@
       },
       "age": {
          "@id": "https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/age"
+      },
+      "agm_ingest_set": {
+         "@type": "@id",
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/agm_ingest_set"
       },
       "allele_ingest_set": {
          "@type": "@id",
@@ -815,6 +819,10 @@
       "specimen_genomic_model": {
          "@type": "@id",
          "@id": "https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/specimen_genomic_model"
+      },
+      "sqtr_ingest_set": {
+         "@type": "@id",
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/sqtr_ingest_set"
       },
       "stage_uncertainty": {
          "@id": "https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml/stage_uncertainty"

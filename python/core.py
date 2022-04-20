@@ -1,5 +1,5 @@
 # Auto generated from core.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-20T08:36:55
+# Generation date: 2022-04-20T09:24:10
 # Schema: Alliance-Schema-Core
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/core.yaml
@@ -2691,6 +2691,7 @@ class Construct(GenomicEntity):
     modified_by: Union[str, PersonUniqueId] = None
     name: str = None
     construct_components: Optional[Union[Union[str, GenomicEntityCurie], List[Union[str, GenomicEntityCurie]]]] = empty_list()
+    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -2706,6 +2707,10 @@ class Construct(GenomicEntity):
         if not isinstance(self.construct_components, list):
             self.construct_components = [self.construct_components] if self.construct_components is not None else []
         self.construct_components = [v if isinstance(v, GenomicEntityCurie) else GenomicEntityCurie(v) for v in self.construct_components]
+
+        if not isinstance(self.references, list):
+            self.references = [self.references] if self.references is not None else []
+        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
 
         super().__post_init__(**kwargs)
 
@@ -2735,12 +2740,17 @@ class SequenceTargetingReagent(GenomicEntity):
     taxon: Union[str, NCBITaxonTermCurie] = None
     created_by: Union[str, PersonUniqueId] = None
     modified_by: Union[str, PersonUniqueId] = None
+    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
             self.MissingRequiredField("curie")
         if not isinstance(self.curie, SequenceTargetingReagentCurie):
             self.curie = SequenceTargetingReagentCurie(self.curie)
+
+        if not isinstance(self.references, list):
+            self.references = [self.references] if self.references is not None else []
+        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
 
         super().__post_init__(**kwargs)
 
@@ -2760,6 +2770,7 @@ class SequenceTargetingReagentToGeneAssociation(Association):
     predicate: Union[str, "SqtrRelationEnum"] = None
     subject: Union[str, SequenceTargetingReagentCurie] = None
     object: Union[str, GeneCurie] = None
+    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.predicate):
@@ -2776,6 +2787,10 @@ class SequenceTargetingReagentToGeneAssociation(Association):
             self.MissingRequiredField("object")
         if not isinstance(self.object, GeneCurie):
             self.object = GeneCurie(self.object)
+
+        if not isinstance(self.references, list):
+            self.references = [self.references] if self.references is not None else []
+        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
 
         super().__post_init__(**kwargs)
 
@@ -3078,7 +3093,7 @@ class AffectedGenomicModel(GenomicEntity):
     modified_by: Union[str, PersonUniqueId] = None
     subtype: Optional[Union[str, "SubtypeValues"]] = None
     components: Optional[Union[Union[dict, "AffectedGenomicModelComponent"], List[Union[dict, "AffectedGenomicModelComponent"]]]] = empty_list()
-    sequence_targeting_reagents: Optional[Union[Union[str, SequenceTargetingReagentCurie], List[Union[str, SequenceTargetingReagentCurie]]]] = empty_list()
+    sequence_targeting_reagents: Optional[Union[Dict[Union[str, SequenceTargetingReagentCurie], Union[dict, SequenceTargetingReagent]], List[Union[dict, SequenceTargetingReagent]]]] = empty_dict()
     parental_populations: Optional[Union[str, URIorCURIE]] = None
     data_provider: Optional[str] = None
 
@@ -3095,9 +3110,7 @@ class AffectedGenomicModel(GenomicEntity):
             self.components = [self.components] if self.components is not None else []
         self.components = [v if isinstance(v, AffectedGenomicModelComponent) else AffectedGenomicModelComponent(**as_dict(v)) for v in self.components]
 
-        if not isinstance(self.sequence_targeting_reagents, list):
-            self.sequence_targeting_reagents = [self.sequence_targeting_reagents] if self.sequence_targeting_reagents is not None else []
-        self.sequence_targeting_reagents = [v if isinstance(v, SequenceTargetingReagentCurie) else SequenceTargetingReagentCurie(v) for v in self.sequence_targeting_reagents]
+        self._normalize_inlined_as_dict(slot_name="sequence_targeting_reagents", slot_type=SequenceTargetingReagent, key_name="curie", keyed=True)
 
         if self.parental_populations is not None and not isinstance(self.parental_populations, URIorCURIE):
             self.parental_populations = URIorCURIE(self.parental_populations)
@@ -3934,7 +3947,7 @@ slots.zygosity = Slot(uri="str(uriorcurie)", name="zygosity", curie=None,
                    model_uri=ALLIANCE.zygosity, domain=AffectedGenomicModelComponent, range=Optional[Union[str, "ZygosityValues"]])
 
 slots.sequence_targeting_reagents = Slot(uri="str(uriorcurie)", name="sequence_targeting_reagents", curie=None,
-                   model_uri=ALLIANCE.sequence_targeting_reagents, domain=AffectedGenomicModel, range=Optional[Union[Union[str, SequenceTargetingReagentCurie], List[Union[str, SequenceTargetingReagentCurie]]]])
+                   model_uri=ALLIANCE.sequence_targeting_reagents, domain=AffectedGenomicModel, range=Optional[Union[Dict[Union[str, SequenceTargetingReagentCurie], Union[dict, SequenceTargetingReagent]], List[Union[dict, SequenceTargetingReagent]]]])
 
 slots.parental_populations = Slot(uri="str(uriorcurie)", name="parental_populations", curie=None,
                    model_uri=ALLIANCE.parental_populations, domain=AffectedGenomicModel, range=Optional[Union[str, URIorCURIE]])

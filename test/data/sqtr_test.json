@@ -7,7 +7,8 @@
       "modified_by": "ZFIN",
       "name": "TALEN2-eftud2",
       "synonyms": ["test", "synonym"],
-      "secondaryIds": ["ZFIN:ZDB-MRPHLNO-123456-1", ""]
+      "secondaryIds": ["ZFIN:ZDB-MRPHLNO-123456-1"],
+      "references": []
     },
     {
       "curie": "ZFIN:ZDB-CRISPR-220421",
@@ -15,7 +16,8 @@
       "created_by": "ZFIN",
       "modified_by": "ZFIN",
       "synonyms": ["test", "synonym"],
-      "secondaryIds": ["ZFIN:ZDB-MRPHLNO-123456-1", ""]
+      "secondaryIds": ["ZFIN:ZDB-MRPHLNO-123456-1"],
+      "references": []
     },
     {
       "curie": "ZFIN:ZDB-TALEN-220211",
@@ -23,7 +25,8 @@
       "created_by": "ZFIN",
       "modified_by": "ZFIN",
       "synonyms": ["test", "synonym"],
-      "secondaryIds": ["ZFIN:ZDB-MRPHLNO-123456-1", ""]
+      "secondaryIds": ["ZFIN:ZDB-MRPHLNO-123456-1"],
+      "references": []
     }
   ]
 }
