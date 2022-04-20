@@ -17,8 +17,8 @@ URI: {{ schema.id }}
 ## Slots
 
 | Property | Description |
-{% for np in schemaview.all_slots().values() -%}
 | --- | --- |
+{% for np in schemaview.all_slots().values() -%}
 | {{gen.link(np)}} | {{np.description}} |
 {% endfor %}
 

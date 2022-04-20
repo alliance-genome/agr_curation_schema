@@ -17,8 +17,8 @@ nav:
   - FAQ: guidelines/faq.md
 
 
-site_url: https://sierra-moxon.github.io/biolink-model/
-repo_url: https://github.com/sierra-moxon/biolink-model/
+site_url: https://github.com/alliance-genome/agr_curation_schema
+repo_url: https://github.com/alliance-genome/agr_curation_schema
 
 extra_css:
   - extra_css.css
