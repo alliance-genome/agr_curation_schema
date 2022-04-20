@@ -15,13 +15,15 @@
       "taxon": "NCBITaxon:7955",
       "created_by": "ZFIN",
       "modified_by": "ZFIN",
+      "name": "CRISPR-eftud2",
       "synonyms": [{"synonym": "test"},{"synonym": "another test"}],
       "secondary_identifiers": ["ZFIN:ZDB-MRPHLNO-123456-1"],
       "references": ["PMID:12345"]
     },
     {
-      "curie": "ZFIN:ZDB-TALEN-220211",
+      "curie": "ZFIN:ZDB-MRPHLNO-220211",
       "taxon": "NCBITaxon:7955",
+      "name": "MRPHLNO-eftud2",
       "created_by": "ZFIN",
       "modified_by": "ZFIN",
       "synonyms": [{"synonym": "test"},{"synonym": "another test"}],
