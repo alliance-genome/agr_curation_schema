@@ -9,12 +9,7 @@ docs_dir: docs
 site_dir: mkdocs_html
 
 nav:
-  - Overview: guidelines/understanding-the-model.md
   - Browse the Model: index.md
-  - Working With The Model: guidelines/working-with-the-model.md
-  - Updating: guidelines/curating-the-model.md
-  - Maintaining The Model: guidelines/maintaining-the-model.md
-  - FAQ: guidelines/faq.md
 
 
 site_url: https://github.com/alliance-genome/agr_curation_schema
