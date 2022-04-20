@@ -1,5 +1,5 @@
 # Auto generated from modCorpusAssociation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-20T09:32:25
+# Generation date: 2022-04-20T09:40:39
 # Schema: modCorpusAssociation
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/modCorpusAssociation
@@ -611,6 +611,7 @@ class CrossReference(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
+@dataclass
 class Synonym(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -618,6 +619,14 @@ class Synonym(YAMLRoot):
     class_class_curie: ClassVar[str] = "alliance:Synonym"
     class_name: ClassVar[str] = "Synonym"
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/modCorpusAssociation/Synonym")
+
+    synonym: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.synonym is not None and not isinstance(self.synonym, str):
+            self.synonym = str(self.synonym)
+
+        super().__post_init__(**kwargs)
 
 
 @dataclass
@@ -793,7 +802,7 @@ class EntitySynonym(Association):
         if self._is_empty(self.object):
             self.MissingRequiredField("object")
         if not isinstance(self.object, Synonym):
-            self.object = Synonym()
+            self.object = Synonym(**as_dict(self.object))
 
         if self._is_empty(self.predicate):
             self.MissingRequiredField("predicate")
@@ -3237,6 +3246,7 @@ class AffectedGenomicModel(GenomicEntity):
     sequence_targeting_reagents: Optional[Union[Union[str, SequenceTargetingReagentCurie], List[Union[str, SequenceTargetingReagentCurie]]]] = empty_list()
     parental_populations: Optional[Union[str, URIorCURIE]] = None
     data_provider: Optional[str] = None
+    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -3262,6 +3272,10 @@ class AffectedGenomicModel(GenomicEntity):
 
         if self.data_provider is not None and not isinstance(self.data_provider, str):
             self.data_provider = str(self.data_provider)
+
+        if not isinstance(self.references, list):
+            self.references = [self.references] if self.references is not None else []
+        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
 
         super().__post_init__(**kwargs)
 
@@ -3523,6 +3537,7 @@ class SubtypeValues(EnumDefinitionImpl):
 
     strain = PermissibleValue(text="strain")
     genotype = PermissibleValue(text="genotype")
+    fish = PermissibleValue(text="fish")
 
     _defn = EnumDefinition(
         name="SubtypeValues",
@@ -3567,6 +3582,9 @@ slots.corpus = Slot(uri=DEFAULT_.corpus, name="corpus", curie=DEFAULT_.curie('co
 
 slots.mod_corpus_sort_source = Slot(uri=DEFAULT_.mod_corpus_sort_source, name="mod_corpus_sort_source", curie=DEFAULT_.curie('mod_corpus_sort_source'),
                    model_uri=DEFAULT_.mod_corpus_sort_source, domain=ModCorpusAssociation, range=Union[str, "ModCorpusSortSourceEnum"])
+
+slots.synonym = Slot(uri=ALLIANCE.synonym, name="synonym", curie=ALLIANCE.curie('synonym'),
+                   model_uri=DEFAULT_.synonym, domain=None, range=Optional[str])
 
 slots.start = Slot(uri=ALLIANCE.start, name="start", curie=ALLIANCE.curie('start'),
                    model_uri=DEFAULT_.start, domain=None, range=Optional[str])

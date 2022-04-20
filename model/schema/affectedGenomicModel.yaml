@@ -24,6 +24,7 @@ classes:
       - sequence_targeting_reagents
       - parental_populations
       - data_provider
+      - references
 
   AffectedGenomicModelComponent:
     description: >-

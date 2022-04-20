@@ -261,6 +261,13 @@
             "parental_populations": {
                "type": "string"
             },
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "secondary_identifiers": {
                "items": {
                   "type": "string"
@@ -5634,7 +5641,8 @@
          "description": "",
          "enum": [
             "strain",
-            "genotype"
+            "genotype",
+            "fish"
          ],
          "title": "SubtypeValues",
          "type": "string"
@@ -5642,7 +5650,12 @@
       "Synonym": {
          "additionalProperties": false,
          "description": "",
-         "properties": {},
+         "properties": {
+            "synonym": {
+               "description": "the text string of the synonym",
+               "type": "string"
+            }
+         },
          "required": [],
          "title": "Synonym",
          "type": "object"

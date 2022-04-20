@@ -6,8 +6,8 @@
       "created_by": "ZFIN",
       "modified_by": "ZFIN",
       "name": "TL + MO1-hars",
-      "synonyms": ["test", "synonym"],
-      "secondaryIds": ["ZFIN:ZDB-FISH-123456-1"],
+      "synonyms": [{"synonym": "test"},{"synonym": "another test"}],
+      "secondary_identifiers": ["ZFIN:ZDB-FISH-123456-1"],
       "references": [],
       "sequence_targeting_reagents": ["ZFIN:ZDB-MRPHLNO-191104-1"],
       "subtype": "fish"
@@ -18,13 +18,13 @@
       "created_by": "ZFIN",
       "modified_by": "ZFIN",
       "name": "pax2a<sup>tb21/tb21</sup>",
-      "synonyms": ["test", "synonym"],
-      "secondaryIds": ["ZFIN:ZDB-FISH-123456-1"],
+      "synonyms": [{"synonym": "test"},{"synonym": "another test"}],
+      "secondary_identifiers": ["ZFIN:ZDB-FISH-123456-1"],
       "references": [],
       "components": [
         {
           "has_allele": "ZFIN:ZDB-ALT-980203-1593",
-          "zygosity": "homozygous"
+          "zygosity": "GENO:0000136"
         }
       ],
       "subtype": "fish"
