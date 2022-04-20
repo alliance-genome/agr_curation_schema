@@ -148,7 +148,20 @@ classes:
 
   SequenceTargetingReagent:
     description: >-
-    
+    is_a: GenomicEntity
+    slots:
+
+  SequenceTargetingReagentToGeneAssociation:
+    description: the relationship between a Sequence Targeting Reagent and its targeted genes.
+    is_a: Association
+    slot_usage:
+      predicate:
+        range: sqtr_relation_enum
+      subject:
+        range: SequenceTargetingReagent
+      object:
+        range: Gene
+
 
   ConstructComponentAssociation:
     is_a: Association
@@ -322,3 +335,7 @@ enums:
         meaning: RO:0002334
       targets:
         meaning: RO:0002436
+
+  sqtr_relation_enum:
+    permissible_Values:
+      targets:
