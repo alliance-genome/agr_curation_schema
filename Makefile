@@ -50,19 +50,24 @@ stage: $(patsubst %,stage-%,$(TGTS))
 stage-%: gen-%
 	cp -pr target/$* .
 
+gendoc:
+	pipenv run gen-doc model/schema/allianceModel.yaml --directory docs --template-directory doc_templates
 
-###  -- MARKDOWN DOCS AND SLIDES --
-# Generate documentation ready for mkdocs
-# TODO: modularize imports
-gen-docs: target/docs/index.md copy-src-docs
-.PHONY: gen-docs
-copy-src-docs:
-	mkdir -p target/docs/images
-PHONY: copy-src-docs
-target/docs/%.md: $(SCHEMA_SRC) tdir-docs
-	pipenv run gen-doc $(GEN_OPTS) --dir target/docs $<
-stage-docs: gen-docs
-	cp -pr target/docs .
+guidelines/%.md: docs/index.md
+	cp -R guidelines/* $(dir $@)
+
+# add more logging?
+# some docs pages not being created
+# usage of mkdocs.yml attributes like analytics?
+
+mkdocs_html/index.html: generated/docs/index.md
+	pipenv run mkdocs build
+
+# test docs locally.
+# repeats build
+docserve:
+	$(RUN) mkdocs serve
+
 
 ###  -- PYTHON --
 gen-python: $(patsubst %, target/python/%.py, $(SCHEMA_NAMES))
