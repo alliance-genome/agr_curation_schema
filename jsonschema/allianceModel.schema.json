@@ -268,9 +268,10 @@
                "type": "array"
             },
             "sequence_targeting_reagents": {
-               "additionalProperties": {
-                  "$ref": "#/$defs/SequenceTargetingReagent__identifier_optional"
-               }
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "subtype": {
                "$ref": "#/$defs/SubtypeValues",
@@ -296,7 +297,8 @@
             "curie",
             "taxon",
             "created_by",
-            "modified_by"
+            "modified_by",
+            "subtype"
          ],
          "title": "AffectedGenomicModel",
          "type": "object"
@@ -5527,10 +5529,10 @@
             }
          },
          "required": [
-            "curie",
             "taxon",
             "created_by",
-            "modified_by"
+            "modified_by",
+            "curie"
          ],
          "title": "SequenceTargetingReagent",
          "type": "object"
@@ -5565,80 +5567,6 @@
             "object"
          ],
          "title": "SequenceTargetingReagentToGeneAssociation",
-         "type": "object"
-      },
-      "SequenceTargetingReagent__identifier_optional": {
-         "additionalProperties": false,
-         "description": "",
-         "properties": {
-            "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
-            },
-            "creation_date": {
-               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-               "format": "date",
-               "type": "string"
-            },
-            "cross_references": {
-               "description": "Holds between an object and its CrossReferences.",
-               "items": {
-                  "$ref": "#/$defs/CrossReference"
-               },
-               "type": "array"
-            },
-            "curie": {
-               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-               "type": "string"
-            },
-            "date_last_modified": {
-               "description": "Date on which an entity was last modified.",
-               "format": "date",
-               "type": "string"
-            },
-            "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
-            },
-            "name": {
-               "description": "a human-readable name for an entity",
-               "type": "string"
-            },
-            "references": {
-               "description": "holds between an object and a list of references",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "secondary_identifiers": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "synonyms": {
-               "description": "holds between a named thing and a synonym",
-               "items": {
-                  "$ref": "#/$defs/Synonym"
-               },
-               "type": "array"
-            },
-            "table_key": {
-               "description": "The primary key for a specific table entry, unique for that table.",
-               "type": "integer"
-            },
-            "taxon": {
-               "description": "The taxon from which the biological entity derives.",
-               "type": "string"
-            }
-         },
-         "required": [
-            "taxon",
-            "created_by",
-            "modified_by"
-         ],
-         "title": "SequenceTargetingReagent",
          "type": "object"
       },
       "SiftPredictionLevels": {

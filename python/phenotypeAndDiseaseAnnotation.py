@@ -1,5 +1,5 @@
 # Auto generated from phenotypeAndDiseaseAnnotation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-20T09:24:21
+# Generation date: 2022-04-20T09:33:02
 # Schema: Alliance-Schema-Prototype-Phenotype-and-Disease-Annotation
 #
 # id: https://github.com/alliance-genome/agr_persistent_schema/phenotypeAndDiseaseAnnotation.yaml
@@ -3656,9 +3656,9 @@ class AffectedGenomicModel(GenomicEntity):
     taxon: Union[str, NCBITaxonTermCurie] = None
     created_by: Union[str, PersonUniqueId] = None
     modified_by: Union[str, PersonUniqueId] = None
-    subtype: Optional[Union[str, "SubtypeValues"]] = None
+    subtype: Union[str, "SubtypeValues"] = None
     components: Optional[Union[Union[dict, "AffectedGenomicModelComponent"], List[Union[dict, "AffectedGenomicModelComponent"]]]] = empty_list()
-    sequence_targeting_reagents: Optional[Union[Dict[Union[str, SequenceTargetingReagentCurie], Union[dict, SequenceTargetingReagent]], List[Union[dict, SequenceTargetingReagent]]]] = empty_dict()
+    sequence_targeting_reagents: Optional[Union[Union[str, SequenceTargetingReagentCurie], List[Union[str, SequenceTargetingReagentCurie]]]] = empty_list()
     parental_populations: Optional[Union[str, URIorCURIE]] = None
     data_provider: Optional[str] = None
 
@@ -3668,14 +3668,18 @@ class AffectedGenomicModel(GenomicEntity):
         if not isinstance(self.curie, AffectedGenomicModelCurie):
             self.curie = AffectedGenomicModelCurie(self.curie)
 
-        if self.subtype is not None and not isinstance(self.subtype, SubtypeValues):
+        if self._is_empty(self.subtype):
+            self.MissingRequiredField("subtype")
+        if not isinstance(self.subtype, SubtypeValues):
             self.subtype = SubtypeValues(self.subtype)
 
         if not isinstance(self.components, list):
             self.components = [self.components] if self.components is not None else []
         self.components = [v if isinstance(v, AffectedGenomicModelComponent) else AffectedGenomicModelComponent(**as_dict(v)) for v in self.components]
 
-        self._normalize_inlined_as_dict(slot_name="sequence_targeting_reagents", slot_type=SequenceTargetingReagent, key_name="curie", keyed=True)
+        if not isinstance(self.sequence_targeting_reagents, list):
+            self.sequence_targeting_reagents = [self.sequence_targeting_reagents] if self.sequence_targeting_reagents is not None else []
+        self.sequence_targeting_reagents = [v if isinstance(v, SequenceTargetingReagentCurie) else SequenceTargetingReagentCurie(v) for v in self.sequence_targeting_reagents]
 
         if self.parental_populations is not None and not isinstance(self.parental_populations, URIorCURIE):
             self.parental_populations = URIorCURIE(self.parental_populations)
@@ -4596,7 +4600,7 @@ slots.associated_transcripts = Slot(uri="str(uriorcurie)", name="associated_tran
                    model_uri=ALLIANCE.associated_transcripts, domain=VariantPolypeptideLocation, range=Optional[Union[Union[str, TranscriptCurie], List[Union[str, TranscriptCurie]]]])
 
 slots.subtype = Slot(uri="str(uriorcurie)", name="subtype", curie=None,
-                   model_uri=ALLIANCE.subtype, domain=AffectedGenomicModel, range=Optional[Union[str, "SubtypeValues"]])
+                   model_uri=ALLIANCE.subtype, domain=AffectedGenomicModel, range=Union[str, "SubtypeValues"])
 
 slots.components = Slot(uri="str(uriorcurie)", name="components", curie=None,
                    model_uri=ALLIANCE.components, domain=AffectedGenomicModel, range=Optional[Union[Union[dict, "AffectedGenomicModelComponent"], List[Union[dict, "AffectedGenomicModelComponent"]]]])
@@ -4608,7 +4612,7 @@ slots.zygosity = Slot(uri="str(uriorcurie)", name="zygosity", curie=None,
                    model_uri=ALLIANCE.zygosity, domain=AffectedGenomicModelComponent, range=Optional[Union[str, "ZygosityValues"]])
 
 slots.sequence_targeting_reagents = Slot(uri="str(uriorcurie)", name="sequence_targeting_reagents", curie=None,
-                   model_uri=ALLIANCE.sequence_targeting_reagents, domain=AffectedGenomicModel, range=Optional[Union[Dict[Union[str, SequenceTargetingReagentCurie], Union[dict, SequenceTargetingReagent]], List[Union[dict, SequenceTargetingReagent]]]])
+                   model_uri=ALLIANCE.sequence_targeting_reagents, domain=AffectedGenomicModel, range=Optional[Union[Union[str, SequenceTargetingReagentCurie], List[Union[str, SequenceTargetingReagentCurie]]]])
 
 slots.parental_populations = Slot(uri="str(uriorcurie)", name="parental_populations", curie=None,
                    model_uri=ALLIANCE.parental_populations, domain=AffectedGenomicModel, range=Optional[Union[str, URIorCURIE]])
@@ -4894,6 +4898,9 @@ slots.Construct_curie = Slot(uri=ALLIANCE.curie, name="Construct_curie", curie=A
 
 slots.Construct_name = Slot(uri=ALLIANCE.name, name="Construct_name", curie=ALLIANCE.curie('name'),
                    model_uri=ALLIANCE.Construct_name, domain=Construct, range=str)
+
+slots.SequenceTargetingReagent_curie = Slot(uri=ALLIANCE.curie, name="SequenceTargetingReagent_curie", curie=ALLIANCE.curie('curie'),
+                   model_uri=ALLIANCE.SequenceTargetingReagent_curie, domain=SequenceTargetingReagent, range=Union[str, SequenceTargetingReagentCurie])
 
 slots.SequenceTargetingReagentToGeneAssociation_predicate = Slot(uri=ALLIANCE.predicate, name="SequenceTargetingReagentToGeneAssociation_predicate", curie=ALLIANCE.curie('predicate'),
                    model_uri=ALLIANCE.SequenceTargetingReagentToGeneAssociation_predicate, domain=SequenceTargetingReagentToGeneAssociation, range=Union[str, "SqtrRelationEnum"])
