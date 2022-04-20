@@ -1,5 +1,5 @@
 # Auto generated from affectedGenomicModel.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-20T08:36:05
+# Generation date: 2022-04-20T10:18:11
 # Schema: Alliance-Schema-Prototype-Affected-Genomic-Model
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/affectedGenomicModel
@@ -420,11 +420,12 @@ class AffectedGenomicModel(GenomicEntity):
     taxon: Union[str, NCBITaxonTermCurie] = None
     created_by: Union[str, PersonUniqueId] = None
     modified_by: Union[str, PersonUniqueId] = None
-    subtype: Optional[Union[str, "SubtypeValues"]] = None
+    subtype: Union[str, "SubtypeValues"] = None
     components: Optional[Union[Union[dict, "AffectedGenomicModelComponent"], List[Union[dict, "AffectedGenomicModelComponent"]]]] = empty_list()
     sequence_targeting_reagents: Optional[Union[Union[str, SequenceTargetingReagentCurie], List[Union[str, SequenceTargetingReagentCurie]]]] = empty_list()
     parental_populations: Optional[Union[str, URIorCURIE]] = None
     data_provider: Optional[str] = None
+    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -432,7 +433,9 @@ class AffectedGenomicModel(GenomicEntity):
         if not isinstance(self.curie, AffectedGenomicModelCurie):
             self.curie = AffectedGenomicModelCurie(self.curie)
 
-        if self.subtype is not None and not isinstance(self.subtype, SubtypeValues):
+        if self._is_empty(self.subtype):
+            self.MissingRequiredField("subtype")
+        if not isinstance(self.subtype, SubtypeValues):
             self.subtype = SubtypeValues(self.subtype)
 
         if not isinstance(self.components, list):
@@ -448,6 +451,10 @@ class AffectedGenomicModel(GenomicEntity):
 
         if self.data_provider is not None and not isinstance(self.data_provider, str):
             self.data_provider = str(self.data_provider)
+
+        if not isinstance(self.references, list):
+            self.references = [self.references] if self.references is not None else []
+        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
 
         super().__post_init__(**kwargs)
 
@@ -592,6 +599,7 @@ class CrossReference(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
+@dataclass
 class Synonym(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -599,6 +607,14 @@ class Synonym(YAMLRoot):
     class_class_curie: ClassVar[str] = "alliance:Synonym"
     class_name: ClassVar[str] = "Synonym"
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/affectedGenomicModel/Synonym")
+
+    synonym: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.synonym is not None and not isinstance(self.synonym, str):
+            self.synonym = str(self.synonym)
+
+        super().__post_init__(**kwargs)
 
 
 @dataclass
@@ -774,7 +790,7 @@ class EntitySynonym(Association):
         if self._is_empty(self.object):
             self.MissingRequiredField("object")
         if not isinstance(self.object, Synonym):
-            self.object = Synonym()
+            self.object = Synonym(**as_dict(self.object))
 
         if self._is_empty(self.predicate):
             self.MissingRequiredField("predicate")
@@ -961,6 +977,7 @@ class Allele(GenomicEntity):
     taxon: Union[str, NCBITaxonTermCurie] = None
     created_by: Union[str, PersonUniqueId] = None
     modified_by: Union[str, PersonUniqueId] = None
+    name: str = None
     symbol: Optional[str] = None
     contains_constructs: Optional[Union[Union[str, ConstructCurie], List[Union[str, ConstructCurie]]]] = empty_list()
     molecular_mutations: Optional[Union[str, List[str]]] = empty_list()
@@ -989,6 +1006,11 @@ class Allele(GenomicEntity):
             self.MissingRequiredField("curie")
         if not isinstance(self.curie, AlleleCurie):
             self.curie = AlleleCurie(self.curie)
+
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
 
         if self.symbol is not None and not isinstance(self.symbol, str):
             self.symbol = str(self.symbol)
@@ -1290,6 +1312,7 @@ class Construct(GenomicEntity):
     modified_by: Union[str, PersonUniqueId] = None
     name: str = None
     construct_components: Optional[Union[Union[str, GenomicEntityCurie], List[Union[str, GenomicEntityCurie]]]] = empty_list()
+    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -1305,6 +1328,10 @@ class Construct(GenomicEntity):
         if not isinstance(self.construct_components, list):
             self.construct_components = [self.construct_components] if self.construct_components is not None else []
         self.construct_components = [v if isinstance(v, GenomicEntityCurie) else GenomicEntityCurie(v) for v in self.construct_components]
+
+        if not isinstance(self.references, list):
+            self.references = [self.references] if self.references is not None else []
+        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
 
         super().__post_init__(**kwargs)
 
@@ -1334,12 +1361,23 @@ class SequenceTargetingReagent(GenomicEntity):
     taxon: Union[str, NCBITaxonTermCurie] = None
     created_by: Union[str, PersonUniqueId] = None
     modified_by: Union[str, PersonUniqueId] = None
+    name: str = None
+    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
             self.MissingRequiredField("curie")
         if not isinstance(self.curie, SequenceTargetingReagentCurie):
             self.curie = SequenceTargetingReagentCurie(self.curie)
+
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if not isinstance(self.references, list):
+            self.references = [self.references] if self.references is not None else []
+        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
 
         super().__post_init__(**kwargs)
 
@@ -1359,6 +1397,7 @@ class SequenceTargetingReagentToGeneAssociation(Association):
     predicate: Union[str, "SqtrRelationEnum"] = None
     subject: Union[str, SequenceTargetingReagentCurie] = None
     object: Union[str, GeneCurie] = None
+    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.predicate):
@@ -1375,6 +1414,10 @@ class SequenceTargetingReagentToGeneAssociation(Association):
             self.MissingRequiredField("object")
         if not isinstance(self.object, GeneCurie):
             self.object = GeneCurie(self.object)
+
+        if not isinstance(self.references, list):
+            self.references = [self.references] if self.references is not None else []
+        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
 
         super().__post_init__(**kwargs)
 
@@ -3136,6 +3179,7 @@ class SubtypeValues(EnumDefinitionImpl):
 
     strain = PermissibleValue(text="strain")
     genotype = PermissibleValue(text="genotype")
+    fish = PermissibleValue(text="fish")
 
     _defn = EnumDefinition(
         name="SubtypeValues",
@@ -3389,7 +3433,7 @@ class slots:
     pass
 
 slots.subtype = Slot(uri=DEFAULT_.subtype, name="subtype", curie=DEFAULT_.curie('subtype'),
-                   model_uri=DEFAULT_.subtype, domain=AffectedGenomicModel, range=Optional[Union[str, "SubtypeValues"]])
+                   model_uri=DEFAULT_.subtype, domain=AffectedGenomicModel, range=Union[str, "SubtypeValues"])
 
 slots.components = Slot(uri=DEFAULT_.components, name="components", curie=DEFAULT_.curie('components'),
                    model_uri=DEFAULT_.components, domain=AffectedGenomicModel, range=Optional[Union[Union[dict, "AffectedGenomicModelComponent"], List[Union[dict, "AffectedGenomicModelComponent"]]]])
@@ -3405,6 +3449,9 @@ slots.sequence_targeting_reagents = Slot(uri=DEFAULT_.sequence_targeting_reagent
 
 slots.parental_populations = Slot(uri=DEFAULT_.parental_populations, name="parental_populations", curie=DEFAULT_.curie('parental_populations'),
                    model_uri=DEFAULT_.parental_populations, domain=AffectedGenomicModel, range=Optional[Union[str, URIorCURIE]])
+
+slots.synonym = Slot(uri=ALLIANCE.synonym, name="synonym", curie=ALLIANCE.curie('synonym'),
+                   model_uri=DEFAULT_.synonym, domain=None, range=Optional[str])
 
 slots.start = Slot(uri=ALLIANCE.start, name="start", curie=ALLIANCE.curie('start'),
                    model_uri=DEFAULT_.start, domain=None, range=Optional[str])
@@ -3994,6 +4041,9 @@ slots.Allele_transposon_insertion = Slot(uri="str(uriorcurie)", name="Allele_tra
 slots.Allele_aberration = Slot(uri="str(uriorcurie)", name="Allele_aberration", curie=None,
                    model_uri=DEFAULT_.Allele_aberration, domain=Allele, range=Optional[str])
 
+slots.Allele_name = Slot(uri=ALLIANCE.name, name="Allele_name", curie=ALLIANCE.curie('name'),
+                   model_uri=DEFAULT_.Allele_name, domain=Allele, range=str)
+
 slots.AlleleGenomicEntityAssociation_subject = Slot(uri=ALLIANCE.subject, name="AlleleGenomicEntityAssociation_subject", curie=ALLIANCE.curie('subject'),
                    model_uri=DEFAULT_.AlleleGenomicEntityAssociation_subject, domain=AlleleGenomicEntityAssociation, range=Union[str, AlleleCurie])
 
@@ -4023,6 +4073,12 @@ slots.Construct_curie = Slot(uri=ALLIANCE.curie, name="Construct_curie", curie=A
 
 slots.Construct_name = Slot(uri=ALLIANCE.name, name="Construct_name", curie=ALLIANCE.curie('name'),
                    model_uri=DEFAULT_.Construct_name, domain=Construct, range=str)
+
+slots.SequenceTargetingReagent_curie = Slot(uri=ALLIANCE.curie, name="SequenceTargetingReagent_curie", curie=ALLIANCE.curie('curie'),
+                   model_uri=DEFAULT_.SequenceTargetingReagent_curie, domain=SequenceTargetingReagent, range=Union[str, SequenceTargetingReagentCurie])
+
+slots.SequenceTargetingReagent_name = Slot(uri=ALLIANCE.name, name="SequenceTargetingReagent_name", curie=ALLIANCE.curie('name'),
+                   model_uri=DEFAULT_.SequenceTargetingReagent_name, domain=SequenceTargetingReagent, range=str)
 
 slots.SequenceTargetingReagentToGeneAssociation_predicate = Slot(uri=ALLIANCE.predicate, name="SequenceTargetingReagentToGeneAssociation_predicate", curie=ALLIANCE.curie('predicate'),
                    model_uri=DEFAULT_.SequenceTargetingReagentToGeneAssociation_predicate, domain=SequenceTargetingReagentToGeneAssociation, range=Union[str, "SqtrRelationEnum"])

@@ -29,6 +29,22 @@ slots:
     mixins:
       - object_set
 
+  agm_ingest_set:
+    description: >-
+    domain: Ingest
+    range: AffectedGenomicModel
+    multivalued: true
+    mixins:
+      - object_set
+
+  sqtr_ingest_set:
+    description: >-
+    domain: Ingest
+    range: SequenceTargetingReagent
+    multivalued: true
+    mixins:
+      - object_set
+
   variant_ingest_set:
     description: >-
     domain: Ingest
@@ -98,4 +114,6 @@ classes:
       - gene_ingest_set
       - variant_ingest_set
       - allele_variant_association_ingest_set
+      - agm_ingest_set
+      - sqtr_ingest_set
 

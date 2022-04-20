@@ -261,6 +261,13 @@
             "parental_populations": {
                "type": "string"
             },
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "secondary_identifiers": {
                "items": {
                   "type": "string"
@@ -297,7 +304,8 @@
             "curie",
             "taxon",
             "created_by",
-            "modified_by"
+            "modified_by",
+            "subtype"
          ],
          "title": "AffectedGenomicModel",
          "type": "object"
@@ -500,7 +508,8 @@
             "curie",
             "taxon",
             "created_by",
-            "modified_by"
+            "modified_by",
+            "name"
          ],
          "title": "Allele",
          "type": "object"
@@ -1466,6 +1475,13 @@
             "name": {
                "description": "a human-readable name for an entity",
                "type": "string"
+            },
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "secondary_identifiers": {
                "items": {
@@ -3693,6 +3709,12 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "agm_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AffectedGenomicModel"
+               },
+               "type": "array"
+            },
             "allele_ingest_set": {
                "items": {
                   "$ref": "#/$defs/Allele"
@@ -3726,6 +3748,12 @@
             "gene_ingest_set": {
                "items": {
                   "$ref": "#/$defs/Gene"
+               },
+               "type": "array"
+            },
+            "sqtr_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/SequenceTargetingReagent"
                },
                "type": "array"
             },
@@ -5479,6 +5507,13 @@
                "description": "a human-readable name for an entity",
                "type": "string"
             },
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "secondary_identifiers": {
                "items": {
                   "type": "string"
@@ -5502,10 +5537,11 @@
             }
          },
          "required": [
-            "curie",
             "taxon",
             "created_by",
-            "modified_by"
+            "modified_by",
+            "curie",
+            "name"
          ],
          "title": "SequenceTargetingReagent",
          "type": "object"
@@ -5521,6 +5557,13 @@
             "predicate": {
                "$ref": "#/$defs/SqtrRelationEnum",
                "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type."
+            },
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "subject": {
                "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
@@ -5600,7 +5643,8 @@
          "description": "",
          "enum": [
             "strain",
-            "genotype"
+            "genotype",
+            "fish"
          ],
          "title": "SubtypeValues",
          "type": "string"
@@ -5608,7 +5652,12 @@
       "Synonym": {
          "additionalProperties": false,
          "description": "",
-         "properties": {},
+         "properties": {
+            "synonym": {
+               "description": "the text string of the synonym",
+               "type": "string"
+            }
+         },
          "required": [],
          "title": "Synonym",
          "type": "object"
@@ -6751,6 +6800,12 @@
    "additionalProperties": false,
    "metamodel_version": "1.7.0",
    "properties": {
+      "agm_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AffectedGenomicModel"
+         },
+         "type": "array"
+      },
       "allele_ingest_set": {
          "items": {
             "$ref": "#/$defs/Allele"
@@ -6784,6 +6839,12 @@
       "gene_ingest_set": {
          "items": {
             "$ref": "#/$defs/Gene"
+         },
+         "type": "array"
+      },
+      "sqtr_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/SequenceTargetingReagent"
          },
          "type": "array"
       },
