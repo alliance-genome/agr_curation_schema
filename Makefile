@@ -182,6 +182,9 @@ SCHEMA_TEST_EXAMPLES := \
 	gene_test \
 	wb_disease_test \
 	variant_test \
+	agm_test \
+	sqtr_test \
+
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
 	allele_invalid \
