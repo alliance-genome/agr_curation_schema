@@ -1,9 +1,9 @@
 # Auto generated from allianceModel.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-20T10:17:55
-# Schema: Alliance-Schema-Prototype
+# Generation date: 2022-04-20T12:40:11
+# Schema: AllianceCurationSchema
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema
-# description: Alliance Schema Prototype
+# description:
 # license: https://creativecommons.org/publicdomain/zero/1.0/
 
 import dataclasses
