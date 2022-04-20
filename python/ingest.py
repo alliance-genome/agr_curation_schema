@@ -1,5 +1,5 @@
 # Auto generated from ingest.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-20T08:20:26
+# Generation date: 2022-04-20T08:36:38
 # Schema: Alliance-Schema-Ingest
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest
