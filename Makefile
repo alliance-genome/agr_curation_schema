@@ -6,7 +6,7 @@ SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
 SCHEMA_NAME = allianceModel
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
 #TGTS = graphql jsonschema docs shex owl csv  python
-TGTS = jsonschema jsonld-context python docs
+TGTS = jsonschema docs
 JAVA_GEN_OPTS = --output_directory org/alliancegenome/curation/model --package org.alliancegenome.curation.model
 DDL_GEN_OPTS = --sqla-file target/sqla-files/
 
