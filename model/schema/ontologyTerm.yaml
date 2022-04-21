@@ -140,6 +140,14 @@ classes:
   WBLSTerm:
     is_a: StageTerm
 
+  XBSTerm:
+    is_a: StageTerm
+    description: >-
+      The Xenbase anatomy ontology XAO is home to Xenopus anatomy terms as well as
+      Xenopus developmental life stage terms, differentiated by namespace. The
+      anatomy term class in LinkML will be named 'XBATerm' for Xenbase Anatomy Term
+      and life stage terms will be named 'XBSTerm' for Xenbase Stage Term.
+
   ZFSTerm:
     is_a: StageTerm
 
@@ -175,6 +183,14 @@ classes:
 
   WBBTTerm:
     is_a: AnatomicalTerm
+
+  XBATerm:
+    is_a: AnatomicalTerm
+    description: >-
+      The Xenbase anatomy ontology XAO is home to Xenopus anatomy terms as well as
+      Xenopus developmental life stage terms, differentiated by namespace. The
+      anatomy term class in LinkML will be named 'XBATerm' for Xenbase Anatomy Term
+      and life stage terms will be named 'XBSTerm' for Xenbase Stage Term.
 
   ZFATerm:
     is_a: AnatomicalTerm
