@@ -35,6 +35,7 @@ jobs:
       - run: |
           mkdir docs
           cp css/extra_css.css docs
+          cp README.md docs
           pipenv run gen-doc model/schema/allianceModel.yaml --directory docs --template-directory doc_templates
 
       # deploy documentation (note: requires documentation is in docs dir)
