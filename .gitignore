@@ -1,11 +1,5 @@
 # artifacts
 target/**
-python/**
-shex/**
-sqlddl/**
-jsonld-context/**
-org/**
-owl/**
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
