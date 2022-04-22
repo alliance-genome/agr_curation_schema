@@ -1,5 +1,5 @@
 # Auto generated from variantConsequence.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-22T11:33:13
+# Generation date: 2022-04-22T15:52:21
 # Schema: variantConsequence
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence

@@ -1,5 +1,5 @@
 # Auto generated from allianceModel.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-22T11:32:26
+# Generation date: 2022-04-22T15:51:36
 # Schema: AllianceCurationSchema
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema
