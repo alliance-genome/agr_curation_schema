@@ -20,7 +20,7 @@ jobs:
     - name: Setup Python Environment
       uses: actions/setup-python@v2
       with:
-        python-version: 3.7
+          python-version: 3.9
 
     - name: Setup build environment
       run: |
