@@ -9,14 +9,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-
-    - name: Setup Python Environment
-      uses: actions/setup-python@v2
-      with:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
           python-version: 3.9
 
       #----------------------------------------------
