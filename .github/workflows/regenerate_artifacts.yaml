@@ -6,8 +6,6 @@ on:
     - master
     paths:
     - 'biolink-model.yaml'
-  repository_dispatch:
-    types: trigger-build-artifacts
 
 jobs:
   build:
