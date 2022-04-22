@@ -6,20 +6,25 @@ SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
 SCHEMA_NAME = allianceModel
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
 #TGTS = graphql jsonschema docs shex owl csv  python
-TGTS = jsonschema docs
-ARTIFACT-TGTS = python jsonschema jsonld-context python sqlddl rdf owl shex
+TGTS = jsonschema
+ARTIFACT_TGTS = python jsonschema jsonld-context python sqlddl owl shex
 JAVA_GEN_OPTS = --output_directory org/alliancegenome/curation/model --package org.alliancegenome.curation.model
 DDL_GEN_OPTS = --sqla-file target/sqla-files/
 
-all: clean gen stage
+all: clean-jsonschema gen stage
 artifacts: clean gen-artifacts
 gen: $(patsubst %,gen-%,$(TGTS))
 .PHONY: all gen clean t echo test install gh-deploy clean-artifacts clean-doc .FORCE
 
-gen-artifacts: $(patsubst %,gen-%,$(ARTIFACT-TGTS))
-.PHONY: all gen clean t echo test install gh-deploy clean-artifacts clean-doc .FORCE
+gen-artifacts: $(patsubst %,gen-%,$(ARTIFACT_TGTS))
+.PHONY: gen clean-artifacts t echo test install gh-deploy clean-artifacts clean-doc .FORCE
+	cp -pr target/$* .
 
-clean: clean-artifacts
+clean: clean-jsonschema
+
+clean-jsonschema:
+	rm -rf target/*
+	rm -rf jsonschema/*
 
 clean-artifacts:
 	rm -rf target/*
@@ -27,7 +32,6 @@ clean-artifacts:
 	rm -rf jsonld-context/*
 	rm -rf jsonschema/*
 	rm -rf sqlddl/*
-	rm -rf org/*
 	rm -rf rdf/*
 
 clean-docs:
