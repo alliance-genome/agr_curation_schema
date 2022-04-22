@@ -1,5 +1,5 @@
 # Auto generated from bulkload.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-22T15:52:43
+# Generation date: 2022-04-22T16:37:27
 # Schema: bulkload.yaml
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml

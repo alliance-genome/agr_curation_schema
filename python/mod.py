@@ -1,5 +1,5 @@
 # Auto generated from mod.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-22T15:51:41
+# Generation date: 2022-04-22T16:36:19
 # Schema: mod
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/mod

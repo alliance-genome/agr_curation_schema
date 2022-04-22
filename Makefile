@@ -17,7 +17,7 @@ gen: $(patsubst %,gen-%,$(TGTS))
 .PHONY: all gen clean t echo test install gh-deploy clean-artifacts clean-doc clean-artifacts gen-artifacts clean-docs .FORCE
 
 gen-artifacts: $(patsubst %,gen-%,$(ARTIFACT_TGTS))
-	cp -pr target/$* .
+	cp -pr target/* .
 
 clean: clean-jsonschema
 
