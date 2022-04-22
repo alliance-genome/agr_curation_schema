@@ -11,7 +11,7 @@ ARTIFACT_TGTS = python jsonschema jsonld-context python sqlddl owl shex
 JAVA_GEN_OPTS = --output_directory org/alliancegenome/curation/model --package org.alliancegenome.curation.model
 DDL_GEN_OPTS = --sqla-file target/sqla-files/
 
-all: clean-jsonschema gen stage
+all: clean gen stage
 artifacts: clean-artifacts gen-artifacts stage-artifacts
 gen: $(patsubst %,gen-%,$(TGTS))
 .PHONY: all gen clean t echo test install gh-deploy clean-artifacts clean-doc clean-artifacts gen-artifacts clean-docs .FORCE
