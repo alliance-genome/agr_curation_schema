@@ -12,12 +12,11 @@ JAVA_GEN_OPTS = --output_directory org/alliancegenome/curation/model --package o
 DDL_GEN_OPTS = --sqla-file target/sqla-files/
 
 all: clean-jsonschema gen stage
-artifacts: clean gen-artifacts
+artifacts: clean-artifacts gen-artifacts stage-artifacts
 gen: $(patsubst %,gen-%,$(TGTS))
-.PHONY: all gen clean t echo test install gh-deploy clean-artifacts clean-doc .FORCE
+.PHONY: all gen clean t echo test install gh-deploy clean-artifacts clean-doc clean-artifacts gen-artifacts clean-docs .FORCE
 
 gen-artifacts: $(patsubst %,gen-%,$(ARTIFACT_TGTS))
-.PHONY: gen clean-artifacts t echo test install gh-deploy clean-artifacts clean-doc .FORCE
 	cp -pr target/$* .
 
 clean: clean-jsonschema
@@ -58,6 +57,9 @@ docs:
 	mkdir -p $@/images
 
 stage: $(patsubst %,stage-%,$(TGTS))
+
+stage-artifacts: $(patsubst %,stage-%,$(ARTIFACT_TGTS))
+
 stage-%: gen-%
 	cp -pr target/$* .
 

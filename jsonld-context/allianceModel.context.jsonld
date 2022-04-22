@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-04-20T12:40:07\n    Schema: AllianceCurationSchema\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: \n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-04-22T11:34:06\n    Schema: AllianceCurationSchema\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: \n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "BIOGRID": "http://identifiers.org/biogrid/",
       "DIP": "http://identifiers.org/dip/",
@@ -1185,8 +1185,23 @@
       "WBLSTerm": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/WBLSTerm"
       },
+      "XBATerm": {
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/XBATerm"
+      },
+      "XBEDTerm": {
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/XBEDTerm"
+      },
+      "XBSTerm": {
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/XBSTerm"
+      },
       "XCOTerm": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/XCOTerm"
+      },
+      "XPOTerm": {
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/XPOTerm"
+      },
+      "XSMOTerm": {
+         "@id": "https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/XSMOTerm"
       },
       "ZECOTerm": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ZECOTerm"
