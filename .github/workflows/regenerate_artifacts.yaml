@@ -51,7 +51,7 @@ jobs:
       run: poetry install --no-interaction
 
 
-    - name: Generate Biolink Model artifacts
+    - name: Generate AGR Curation Model artifacts
       run: |
         export PATH=$PATH:`pwd`/jsonschema2pojo-1.0.2/bin
         make clean-artifacts
@@ -59,16 +59,14 @@ jobs:
         if [ $? -eq 0 ]; then
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add biolink-model.*
-          git add biolink-modeln.*
-          git add context*
-          git add biolink/model.py
-          git add java/BiolinkModel.java
-          git add graphviz/*
-          git add golr-views/*
-          git add json-schema/biolink-model.json
-          git add prefix-map/biolink-model-prefix-map.json
-          git commit -m "Regenerate artifacts from biolink-model.yaml"
+          git add jsonld-context/*
+          git add owl/*
+          git add shex/*
+          git add sqlddl/*
+          git add jsonschema/*
+          git add python/*
+          git add org/*
+          git commit -m "Regenerate artifacts"
           git push
         else
           echo "'make' failed to finish successfully"
