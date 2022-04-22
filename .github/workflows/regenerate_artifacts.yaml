@@ -3,9 +3,9 @@ name: Regenerate Biolink Model Artifacts
 on:
   push:
     branches:
-    - master
-    paths:
-    - 'biolink-model.yaml'
+      - master
+      - main
+      - poetry_updates
 
 jobs:
   build:
