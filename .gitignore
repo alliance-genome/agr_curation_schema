@@ -1,6 +1,10 @@
-# Make artifacts
+# artifacts
 target/
-
+python/
+shex/
+sqlddl/
+jsonld-context
+org/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -74,8 +78,6 @@ instance/
 
 # PyBuilder
 .pybuilder/
-target/
-python/
 
 # Jupyter Notebook
 .ipynb_checkpoints
