@@ -7,20 +7,28 @@ SCHEMA_NAME = allianceModel
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
 #TGTS = graphql jsonschema docs shex owl csv  python
 TGTS = jsonschema docs
+ARTIFACT-TGTS = python jsonschema jsonld-context python sqlddl rdf owl shex
 JAVA_GEN_OPTS = --output_directory org/alliancegenome/curation/model --package org.alliancegenome.curation.model
 DDL_GEN_OPTS = --sqla-file target/sqla-files/
 
-#GEN_OPTS = --no-mergeimports
-GEN_OPTS =
-
 all: clean gen stage
+artifacts: clean gen-artifacts
 gen: $(patsubst %,gen-%,$(TGTS))
 .PHONY: all gen clean t echo test install gh-deploy clean-artifacts clean-doc .FORCE
 
-clean: clean-artifacts clean-docs
+gen-artifacts: $(patsubst %,gen-%,$(ARTIFACT-TGTS))
+.PHONY: all gen clean t echo test install gh-deploy clean-artifacts clean-doc .FORCE
+
+clean: clean-artifacts
 
 clean-artifacts:
-	rm -rf target/
+	rm -rf target/*
+	rm -rf python/*
+	rm -rf jsonld-context/*
+	rm -rf jsonschema/*
+	rm -rf sqlddl/*
+	rm -rf org/*
+	rm -rf rdf/*
 
 clean-docs:
 	rm -rf docs/images/*
@@ -36,8 +44,7 @@ echo:
 test: all test-jsonschema test-jsonschema_invalid
 
 install:
-#	. environment.sh
-	pipenv install -r requirements.txt
+	poetry install
 
 tdir-%:
 	mkdir -p target/$*
@@ -51,7 +58,7 @@ stage-%: gen-%
 	cp -pr target/$* .
 
 gen-docs:
-	pipenv run gen-doc model/schema/allianceModel.yaml --directory target/docs --template-directory doc_templates
+	poetry run gen-doc model/schema/allianceModel.yaml --directory target/docs --template-directory doc_templates
 
 guidelines/%.md: docs/index.md
 	cp -R guidelines/* $(dir $@)
@@ -66,60 +73,60 @@ gen-python: $(patsubst %, target/python/%.py, $(SCHEMA_NAMES))
 target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python
 # --no-mergeimports was causing an import error
 #	gen-py-classes --no-mergeimports $(GEN_OPTS) $< > $@
-	pipenv run gen-py-classes --mergeimports $(GEN_OPTS) $< > $@
+	poetry run gen-py-classes --mergeimports $(GEN_OPTS) $< > $@
 
 ###  -- GRAPHQL --
 gen-graphql:target/graphql/$(SCHEMA_NAME).graphql
 .PHONY: gen-graphql
 target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
-	pipenv run gen-graphql $(GEN_OPTS) $< > $@
+	poetry run gen-graphql $(GEN_OPTS) $< > $@
 
 ###  -- JSON SCHEMA --
 gen-jsonschema: target/jsonschema/$(SCHEMA_NAME).schema.json
 .PHONY: gen-jsonschema
 target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
-	pipenv run gen-json-schema $(GEN_OPTS) --closed -t ingest $< > $@
+	poetry run gen-json-schema $(GEN_OPTS) --closed -t ingest $< > $@
 
 
 ###  -- SQL --
 gen-sqlddl: target/sqlddl/$(SCHEMA_NAME).sql
 .PHONY: gen-sqlddl
 target/sqlddl/%.sql: $(SCHEMA_DIR)/%.yaml tdir-sqlddl
-	pipenv run gen-sqlddl $(GEN_OPTS) $< > $@
+	poetry run gen-sqlddl $(GEN_OPTS) $< > $@
 
 ###  -- JSONLD Context --
 gen-jsonld-context: target/jsonld-context/$(SCHEMA_NAME).context.jsonld
 .PHONY: gen-jsonld-context
 target/jsonld-context/%.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld-context
-	pipenv run gen-jsonld-context $(GEN_OPTS) $< > $@
+	poetry run gen-jsonld-context $(GEN_OPTS) $< > $@
 
 ###  -- SHEX --
 # one file per module
 gen-shex: $(patsubst %, target/shex/%.shex, $(SCHEMA_NAMES))
 .PHONY: gen-shex
 target/shex/%.shex: $(SCHEMA_DIR)/%.yaml tdir-shex
-	pipenv run gen-shex --no-mergeimports $(GEN_OPTS) $< > $@
+	poetry run gen-shex --no-mergeimports $(GEN_OPTS) $< > $@
 
 ###  -- CSV --
 # one file per module
 gen-csv: $(patsubst %, target/csv/%.csv, $(SCHEMA_NAMES))
 .PHONY: gen-csv
 target/csv/%.csv: $(SCHEMA_DIR)/%.yaml tdir-csv
-	pipenv run gen-csv $(GEN_OPTS) $< > $@
+	poetry run gen-csv $(GEN_OPTS) $< > $@
 
 ###  -- OWL --
 # TODO: modularize imports. For now imports are merged.
 gen-owl: target/owl/$(SCHEMA_NAME).owl.ttl
 .PHONY: gen-owl
 target/owl/%.owl.ttl: $(SCHEMA_DIR)/%.yaml tdir-owl
-	pipenv run gen-owl $(GEN_OPTS) $< > $@
+	poetry run gen-owl $(GEN_OPTS) $< > $@
 
 ###  -- RDF (direct mapping) --
 # TODO: modularize imports. For now imports are merged.
 gen-rdf: target/rdf/$(SCHEMA_NAME).ttl
 .PHONY: gen-rdf
 target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml tdir-rdf
-	pipenv run gen-rdf $(GEN_OPTS) $< > $@
+	poetry run gen-rdf $(GEN_OPTS) $< > $@
 
 ###  -- LINKML --
 # linkml (copy)
@@ -131,7 +138,7 @@ target/linkml/%.yaml: $(SCHEMA_DIR)/%.yaml tdir-limkml
 
 gh-deploy:
 # deploy documentation (note: requires documentation is in docs dir)
-	pipenv run mkdocs gh-deploy --remote-branch gh-pages --force --theme readthedocs
+	poetry run mkdocs gh-deploy --remote-branch gh-pages --force --theme readthedocs
 
 ###  -- PYPI TARGETS
 # Use the build-package target to build a PYPI package locally
@@ -191,10 +198,10 @@ test-jsonschema_invalid: $(foreach example, $(SCHEMA_TEST_EXAMPLES_INVALID), val
 
 validate-%: test/data/%.json jsonschema/allianceModel.schema.json
 # util/validate_allianceModel_json.py -i $< # example of validating data using the cli
-	pipenv run jsonschema -i $< $(word 2, $^)
+	poetry run jsonschema -i $< $(word 2, $^)
 
 validate-invalid-%: test/data/invalid/%.json jsonschema/allianceModel.schema.json
-	! pipenv run jsonschema -i $< $(word 2, $^)
+	! poetry run jsonschema -i $< $(word 2, $^)
 
 # ---------------------------------------
 # Java
@@ -203,4 +210,4 @@ gen-java: $(patsubst %, target/java/%.java, $(SCHEMA_NAMES))
 .PHONY: gen-java
 
 target/java/%.java: $(SCHEMA_DIR)/%.yaml tdir-java
-	pipenv run gen-java $(JAVA_GEN_OPTS)  $< > $@
+	poetry run gen-java $(JAVA_GEN_OPTS)  $< > $@
