@@ -1,4 +1,4 @@
-name: Regenerate Biolink Model Artifacts
+name: Regenerate Alliance Schema Model Artifacts
 
 on:
   push:
