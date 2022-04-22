@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - disabled
+
 name: Upload Python Package
 
 jobs:
