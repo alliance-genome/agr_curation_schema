@@ -127,12 +127,18 @@ classes:
   SOTerm:
     is_a: OntologyTerm
 
+  XBEDTerm:
+    is_a: OntologyTerm
+
+
+
   CHEBITerm:
     is_a: ChemicalTerm
 
   StageTerm:
     is_a: OntologyTerm
     abstract: true
+
 
   FBDVTerm:
     is_a: StageTerm
@@ -201,6 +207,9 @@ classes:
       An ontology term representing a characteristic of an organism. This may or may not be
       expressed as a difference in comparison to a reference organism.
 
+  XPOTerm:
+    is_a: PhenotypeTerm
+
   ChemicalTerm:
     is_a: OntologyTerm
     abstract: true
@@ -212,6 +221,9 @@ classes:
       - iupac
       - formula
       - smiles
+
+  XSMOTerm:
+    is_a: ChemicalTerm
 
   Molecule:
     is_a: ChemicalTerm
