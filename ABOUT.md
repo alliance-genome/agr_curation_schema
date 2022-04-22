@@ -9,7 +9,7 @@
 * __GNU make__ - A command line gnu make process (Windows users can use [cygwin](https://www.cygwin.com/) - make comes built in on a Mac)
 * __pip__ - comes with most python distros - you should be ok
 * __virtualenv__ - can be added via `pip install virtualenv`
-* __pipenv__ - can be added via `pip install pipenv`
+* __poetry__ - can be added via `pip install poetry`
 * 
 
 ## What is this?

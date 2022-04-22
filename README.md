@@ -191,7 +191,7 @@ note: it's good practice to use a python virtual environment when running comman
 pyvenv venv
 source venv/bin/activate
 export PYTHONPATH=.:$PYTHONPATH
-pip install pipenv
+pip install poetry
 pip install -e .
 ```
 

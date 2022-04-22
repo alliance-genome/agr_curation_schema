@@ -19,9 +19,9 @@ jobs:
       with:
         python-version: 3.7
 
-    # Install pipenv
-    - name: Install pipenv
-      run: python3 -m pip install pipenv
+    # Install poetry
+    - name: Install poetry
+      run: python3 -m pip install poetry
 
     - name: Install dependencies
       run: |
