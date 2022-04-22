@@ -5,7 +5,7 @@ on:
     branches:
       - master
       - main
-      - poetry_updates
+      - poetry_update
 
 jobs:
   build:
