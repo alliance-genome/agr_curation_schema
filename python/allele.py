@@ -1,5 +1,5 @@
 # Auto generated from allele.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-20T12:40:31
+# Generation date: 2022-04-23T00:01:51
 # Schema: Alliance-Schema-Prototype-Allele
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/allele
@@ -175,6 +175,10 @@ class SOTermCurie(OntologyTermCurie):
     pass
 
 
+class XBEDTermCurie(OntologyTermCurie):
+    pass
+
+
 class StageTermCurie(OntologyTermCurie):
     pass
 
@@ -184,6 +188,10 @@ class FBDVTermCurie(StageTermCurie):
 
 
 class WBLSTermCurie(StageTermCurie):
+    pass
+
+
+class XBSTermCurie(StageTermCurie):
     pass
 
 
@@ -231,6 +239,10 @@ class WBBTTermCurie(AnatomicalTermCurie):
     pass
 
 
+class XBATermCurie(AnatomicalTermCurie):
+    pass
+
+
 class ZFATermCurie(AnatomicalTermCurie):
     pass
 
@@ -239,11 +251,19 @@ class PhenotypeTermCurie(OntologyTermCurie):
     pass
 
 
+class XPOTermCurie(PhenotypeTermCurie):
+    pass
+
+
 class ChemicalTermCurie(OntologyTermCurie):
     pass
 
 
 class CHEBITermCurie(ChemicalTermCurie):
+    pass
+
+
+class XSMOTermCurie(ChemicalTermCurie):
     pass
 
 
@@ -2153,6 +2173,26 @@ class SOTerm(OntologyTerm):
 
 
 @dataclass
+class XBEDTerm(OntologyTerm):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/XBEDTerm")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "XBEDTerm"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/XBEDTerm")
+
+    curie: Union[str, XBEDTermCurie] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, XBEDTermCurie):
+            self.curie = XBEDTermCurie(self.curie)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class StageTerm(OntologyTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -2199,6 +2239,31 @@ class WBLSTerm(StageTerm):
             self.MissingRequiredField("curie")
         if not isinstance(self.curie, WBLSTermCurie):
             self.curie = WBLSTermCurie(self.curie)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class XBSTerm(StageTerm):
+    """
+    The Xenbase anatomy ontology XAO is home to Xenopus anatomy terms as well as Xenopus developmental life stage
+    terms, differentiated by namespace. The anatomy term class in LinkML will be named 'XBATerm' for Xenbase Anatomy
+    Term and life stage terms will be named 'XBSTerm' for Xenbase Stage Term.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/XBSTerm")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "XBSTerm"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/XBSTerm")
+
+    curie: Union[str, XBSTermCurie] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, XBSTermCurie):
+            self.curie = XBSTermCurie(self.curie)
 
         super().__post_init__(**kwargs)
 
@@ -2406,6 +2471,31 @@ class WBBTTerm(AnatomicalTerm):
 
 
 @dataclass
+class XBATerm(AnatomicalTerm):
+    """
+    The Xenbase anatomy ontology XAO is home to Xenopus anatomy terms as well as Xenopus developmental life stage
+    terms, differentiated by namespace. The anatomy term class in LinkML will be named 'XBATerm' for Xenbase Anatomy
+    Term and life stage terms will be named 'XBSTerm' for Xenbase Stage Term.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/XBATerm")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "XBATerm"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/XBATerm")
+
+    curie: Union[str, XBATermCurie] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, XBATermCurie):
+            self.curie = XBATermCurie(self.curie)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class ZFATerm(AnatomicalTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -2445,6 +2535,26 @@ class PhenotypeTerm(OntologyTerm):
             self.MissingRequiredField("curie")
         if not isinstance(self.curie, PhenotypeTermCurie):
             self.curie = PhenotypeTermCurie(self.curie)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class XPOTerm(PhenotypeTerm):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/XPOTerm")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "XPOTerm"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/XPOTerm")
+
+    curie: Union[str, XPOTermCurie] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, XPOTermCurie):
+            self.curie = XPOTermCurie(self.curie)
 
         super().__post_init__(**kwargs)
 
@@ -2503,6 +2613,26 @@ class CHEBITerm(ChemicalTerm):
             self.MissingRequiredField("curie")
         if not isinstance(self.curie, CHEBITermCurie):
             self.curie = CHEBITermCurie(self.curie)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class XSMOTerm(ChemicalTerm):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/XSMOTerm")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "XSMOTerm"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/XSMOTerm")
+
+    curie: Union[str, XSMOTermCurie] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, XSMOTermCurie):
+            self.curie = XSMOTermCurie(self.curie)
 
         super().__post_init__(**kwargs)
 

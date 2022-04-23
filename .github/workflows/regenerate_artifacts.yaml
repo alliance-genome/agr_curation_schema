@@ -1,0 +1,74 @@
+name: Regenerate Alliance Schema Model Artifacts
+
+on:
+  push:
+    branches:
+      - master
+      - main
+      - poetry_update
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Python Environment
+      uses: actions/setup-python@v2
+      with:
+          python-version: 3.9
+
+    - name: Setup build environment
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential git wget curl
+        sudo apt-get install -y openjdk-8-jre
+        sudo apt-get install -y graphviz
+        wget https://github.com/joelittlejohn/jsonschema2pojo/releases/download/jsonschema2pojo-1.0.2/jsonschema2pojo-1.0.2.tar.gz
+        tar -xvzf jsonschema2pojo-1.0.2.tar.gz
+
+      #----------------------------------------------
+      #          install & configure poetry
+      #----------------------------------------------
+    - name: Install Poetry
+      uses: snok/install-poetry@v1.3
+      with:
+        virtualenvs-create: true
+        virtualenvs-in-project: true
+
+      #----------------------------------------------
+      # install dependencies if cache does not exist
+      #----------------------------------------------
+    - name: Install dependencies
+      if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+      run: poetry install --no-interaction --no-root
+
+      #----------------------------------------------
+      #    install your root project, if required
+      #----------------------------------------------
+    - name: Install library
+      run: poetry install --no-interaction
+
+
+    - name: Generate AGR Curation Model artifacts
+      run: |
+        export PATH=$PATH:`pwd`/jsonschema2pojo-1.0.2/bin
+        make clean-artifacts
+        make -B gen-artifacts
+        if [ $? -eq 0 ]; then
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add jsonld-context/*
+          git add owl/*
+          git add shex/*
+          git add sqlddl/*
+          git add jsonschema/*
+          git add python/*
+          git add org/*
+          git commit -m "Regenerate artifacts"
+          git push
+        else
+          echo "'make' failed to finish successfully"
+        fi
