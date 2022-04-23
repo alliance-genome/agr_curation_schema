@@ -1,5 +1,5 @@
 # Auto generated from core.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-23T00:01:48
+# Generation date: 2022-04-23T19:23:12
 # Schema: core
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/core.yaml
