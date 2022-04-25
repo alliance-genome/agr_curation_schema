@@ -27,6 +27,7 @@ classes:
       - references
 
   AffectedGenomicModelComponent:
+    is_a: AuditedObject
     description: >-
       Allele that affects the model and its zygosity
     slots:

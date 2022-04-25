@@ -14,8 +14,7 @@ prefixes:
 
 classes:
   Resource:
-    mixins:
-      - AuditedObject
+    is_a: AuditedObject
     slots:
       - curie
       - title

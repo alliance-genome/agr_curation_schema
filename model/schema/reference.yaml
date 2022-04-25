@@ -15,6 +15,7 @@ prefixes:
 
 classes:
   AuthorReference:
+    is_a: AuditedObject
     slots:
       - corresponding_author
       - first_name
@@ -24,6 +25,7 @@ classes:
       - cross_references
 
   Reference:
+    is_a: AuditedObject
     aliases: [ 'references', 'publication' ]
     notes: >-
       In the ABC literature database, the table holding Reference objects is
@@ -77,6 +79,7 @@ classes:
           be renamed in the literature database.
 
   MeshDetail:
+    is_a: AuditedObject
     description: >-
       Medical Subject Headings information coming from PubMed.
     notes: >-

@@ -52,11 +52,24 @@ types:
 
 classes:
 
-  Entity:
+  AuditedObject:
+    description: >-
+      Base class for all other LinkML classes. Some entity for which changes are tracked,
+      including date/time of change, the agent responsible for the change, and whether
+      the entity is internal (private).
+    slots:
+      - table_key
+      - created_by
+      - creation_date
+      - modified_by
+      - date_last_modified
+      - internal
+    slot_usage:
+      internal:
+        required: true
 
   BiologicalEntity:
-    mixins:
-      - AuditedObject
+    is_a: AuditedObject
     description: >-
       A high-level entity comprising .
     abstract: true
@@ -113,8 +126,7 @@ classes:
         required: true
 
   CrossReference:
-    mixins:
-      - AuditedObject
+    is_a: AuditedObject
     slots:
       - curie
       - page_areas
@@ -125,22 +137,12 @@ classes:
       - page_areas
 
   Synonym:
+    is_a: AuditedObject
     slots:
       - synonym
 
-  AuditedObject:
-    mixin: true
-    description: >-
-      Some entity for which changes are tracked, including date/time of change
-      and the agent responsible for the change.
-    slots:
-      - table_key
-      - created_by
-      - creation_date
-      - modified_by
-      - date_last_modified
-
   Note:
+    is_a: AuditedObject
     description: >-
       Note object for capturing free-text describing some attribute of an entity,
       coupled with a 'note type', internal boolean, and an optional list of
@@ -148,17 +150,15 @@ classes:
     slots:
       - free_text
       - note_type
-      - internal
       - references
     slot_usage:
       free_text:
         required: true
       note_type:              # Permissible values currently: disease_summary, disease_note
         required: true
-      internal:
-        required: true
 
-  EntityStatement:
+  EntityStatement:    # to be deprecated in favor of Note class?
+    is_a: AuditedObject
     description: >-
       Free-text describing some aspect of an entity.
     slots:
@@ -168,6 +168,7 @@ classes:
       - references
 
   Association:
+    is_a: AuditedObject
     description: >-
       A typed association between two entities, supported by evidence.
     close_mappings:
@@ -194,6 +195,7 @@ classes:
           The references in which the synonym is used to refer to the entity.
 
   ExternalDatabaseLink:
+    is_a: AuditedObject
     description: >-
       Base relation that holds the identifier prefix, base url and url suffix to help in generating
       URLs in crossReferences.
@@ -206,15 +208,18 @@ classes:
       - prefix_order
 
   Chromosome:
+    is_a: AuditedObject
     description: The ID of the landmark used to establish the coordinate system for the current feature.
     slots:
       - curie
 
   Assembly:
+    is_a: AuditedObject
     slots:
       - curie
 
   GeneGenomicLocation:
+    is_a: AuditedObject
     slots:
       - subject
       - predicate

@@ -38,8 +38,6 @@ classes:
 
   PhenotypeAnnotation:
     is_a: Association
-    mixins:
-      - AuditedObject
     description: >-
       An annotation asserting an association between a biological entity and a phenotype supported by evidence.
     slots:
@@ -156,8 +154,6 @@ classes:
   DiseaseAnnotation:
     is_a: Association
     abstract: true
-    mixins:
-      - AuditedObject
     description: >-
       An annotation asserting an association between a biological entity and a disease supported by evidence.
     slots:
@@ -305,6 +301,7 @@ classes:
         range: Allele
 
   ExperimentalCondition:
+    is_a: AuditedObject
     description: >-
       The environmental context in which an experiment is carried out. This may (e.g. drug treatment)
       or may not (e.g. standard conditions) directly influence the outcome of the experiment.
@@ -373,6 +370,7 @@ classes:
 
 
   ConditionRelation:
+    is_a: AuditedObject
     description: >-
       A pairing of an experimental condition relation (i.e. has_condition) with a list of 1 or more
       ExperimentalCondition objects. Annotation objects can connect directly to a set of 0 or more

@@ -17,6 +17,7 @@ prefixes:
 classes:
 
   VariantConsequence:
+    is_a: AuditedObject
     description: >-
       Parent class for gene- and transcript-level
       consequences
