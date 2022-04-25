@@ -15,10 +15,12 @@
       "condition_relations": [
         {
           "condition_relation_type": "has_condition",
+          "internal": false,
           "conditions": [
             {
               "condition_statement": "standard conditions",
-              "condition_class": "ZECO:0000103"
+              "condition_class": "ZECO:0000103",
+              "internal": false
             }
           ]
         }
