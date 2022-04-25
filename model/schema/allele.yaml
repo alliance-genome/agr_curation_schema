@@ -127,6 +127,7 @@ classes:
         range: Variant
 
   AssociatedReference:
+    is_a: AuditedObject
     description: >-
       Describes the relation between a reference and an object
     slots:
@@ -148,6 +149,7 @@ classes:
 
 
   CellLine:
+    is_a: AuditedObject
     description: >-
       Dummy cell line class
 

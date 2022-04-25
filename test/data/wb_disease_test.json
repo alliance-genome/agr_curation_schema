@@ -4,11 +4,13 @@
       "condition_relations": [
         {
           "condition_relation_type": "induced_by",
+          "internal": false,
           "conditions": [
             {
               "condition_chemical": "CHEBI:6432",
               "condition_class": "ZECO:0000111",
-              "condition_statement": "chemical treatment:levamisole"
+              "condition_statement": "chemical treatment:levamisole",
+              "internal": false
             }
           ]
         }
@@ -30,6 +32,7 @@
       "genetic_sex": "hermaphrodite",
       "mod_entity_id": "WBDOannot00001032",
       "modified_by": "WB:WBPerson324",
+      "internal": false,
       "negated": false,
       "object": "DOID:11724",
       "predicate": "is_implicated_in",
@@ -42,11 +45,13 @@
       "condition_relations": [
         {
           "condition_relation_type": "induced_by",
+          "internal": false,
           "conditions": [
             {
               "condition_chemical": "CHEBI:34910",
               "condition_class": "ZECO:0000111",
-              "condition_statement": "chemical treatment:pentylenetetrazole"
+              "condition_statement": "chemical treatment:pentylenetetrazole",
+              "internal": false
             }
           ]
         }
@@ -71,6 +76,7 @@
       "mod_entity_id": "WBDOannot00001014",
       "modified_by": "WB:WBPerson324",
       "negated": false,
+      "internal": false,
       "object": "DOID:1826",
       "predicate": "is_implicated_in",
       "single_reference": "PMID:16996038",
@@ -91,6 +97,7 @@
       "genetic_sex": "hermaphrodite",
       "mod_entity_id": "WBDOannot00000109",
       "modified_by": "WB:WBPerson324",
+      "internal": false,
       "object": "DOID:10652",
       "predicate": "is_model_of",
       "single_reference": "PMID:22220943",
@@ -100,16 +107,19 @@
       "condition_relations": [
         {
           "condition_relation_type": "ameliorated_by",
+          "internal": false,
           "conditions": [
             {
               "condition_chemical": "CHEBI:30052",
               "condition_class": "ZECO:0000111",
-              "condition_statement": "chemical treatment:Copper"
+              "condition_statement": "chemical treatment:Copper",
+              "internal": false
             },
             {
               "condition_chemical": "WB:WBMol:00004976",
               "condition_class": "ZECO:0000111",
-              "condition_statement": "chemical treatment:Methazolamide"
+              "condition_statement": "chemical treatment:Methazolamide",
+              "internal": false
             }
           ]
         }
@@ -131,6 +141,7 @@
       "genetic_sex": "hermaphrodite",
       "mod_entity_id": "WBDOannot00000110",
       "modified_by": "WB:WBPerson324",
+      "internal": false,
       "object": "DOID:11723",
       "predicate": "is_model_of",
       "single_reference": "PMID:19648295",

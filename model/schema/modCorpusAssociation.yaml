@@ -17,8 +17,7 @@ prefixes:
 
 classes:
   ModCorpusAssociation:
-    mixins:
-      - AuditedObject
+    is_a: AuditedObject
     description: >-
       For a given reference and Mod, whether it is inside corpus,
       outside corpus, or needs review, as well as where this

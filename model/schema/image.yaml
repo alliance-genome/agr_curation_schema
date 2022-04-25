@@ -8,8 +8,7 @@ imports:
 classes:
 
   Figure:
-    mixins:
-      - AuditedObject
+    is_a: AuditedObject
     description: >-
       An entity representing a figure or table in a publication.
     notes: >-
@@ -30,12 +29,12 @@ classes:
         required: true
 
   File:
+    is_a: AuditedObject
     description: >-
       A dummy object.
 
   Image:
-    mixins:
-      - AuditedObject
+    is_a: AuditedObject
     description: >-
       The set of files and metadata that constitute an image.
     notes: >-
@@ -70,8 +69,7 @@ classes:
         domain: Image
 
   ImagePane:
-    mixins:
-      - AuditedObject
+    is_a: AuditedObject
     description: >-
       Part of an Image that is relevant to some annotation. An annotation may
       reference many panes of an Image.
