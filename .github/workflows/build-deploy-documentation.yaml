@@ -5,38 +5,53 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'mkdocs.yml'
-      - 'model/schema/*.yaml'
-
-  repository_dispatch:
-    types: trigger-build-deploy-documentation
+      - master
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   github-pages:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+
+      #----------------------------------------------
+      #       check-out repo and set-up python
+      #----------------------------------------------
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
         with:
           python-version: 3.9
 
-      # Install pipenv
-      - name: Install pipenv
-        run: python3 -m pip install --no-cache-dir pipenv
+      #----------------------------------------------
+      #          install & configure poetry
+      #----------------------------------------------
+      - name: Install Poetry
+        uses: snok/install-poetry@v1.3
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
 
-      # If cache was not loaded, install dependencies
+      #----------------------------------------------
+      # install dependencies if cache does not exist
+      #----------------------------------------------
       - name: Install dependencies
-        # if: steps.cache-pipenv.outputs.cache-hit != 'true'
-        run: pipenv install -d
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install --no-interaction --no-root
 
-      # generate markdown files
-      - run: |
+      #----------------------------------------------
+      #    install your root project, if required
+      #----------------------------------------------
+      - name: Install library
+        run: poetry install --no-interaction
+
+      - name: Generate markdown files
+        run: |
           mkdir docs
           cp css/extra_css.css docs
           cp README.md docs
-          pipenv run gen-doc model/schema/allianceModel.yaml --directory docs --template-directory doc_templates
+          poetry run gen-doc model/schema/allianceModel.yaml --directory docs --template-directory doc_templates
 
-      # deploy documentation (note: requires documentation is in docs dir)
-      - run: make gh-deploy
+      - name: Deploy documentation (requires documentation is in docs dir)
+        run: make gh-deploy
