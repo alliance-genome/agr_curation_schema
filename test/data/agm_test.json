@@ -7,7 +7,16 @@
       "modified_by": "ZFIN",
       "internal": false,
       "name": "TL + MO1-hars",
-      "synonyms": [{"synonym": "test","internal": false},{"synonym": "another test","internal": false}],
+      "synonyms": [
+        {
+          "synonym": "test",
+          "internal": false
+        },
+        {
+          "synonym": "another test",
+          "internal": false
+        }
+      ],
       "secondary_identifiers": ["ZFIN:ZDB-FISH-123456-1"],
       "references": [],
       "sequence_targeting_reagents": ["ZFIN:ZDB-MRPHLNO-191104-1"],
@@ -20,7 +29,15 @@
       "modified_by": "ZFIN",
       "internal": false,
       "name": "pax2a<sup>tb21/tb21</sup>",
-      "synonyms": [{"synonym": "test","internal": false},{"synonym": "another test","internal": false}],
+      "synonyms": [
+        {
+          "synonym": "test",
+          "internal": false
+        },{
+          "synonym": "another test",
+          "internal": false
+        }
+      ],
       "secondary_identifiers": ["ZFIN:ZDB-FISH-123456-1"],
       "references": [],
       "components": [
