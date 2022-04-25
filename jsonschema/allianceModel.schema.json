@@ -66,6 +66,10 @@
                "description": "The gene to which the disease is inferred to be associated.",
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "mod_entity_id": {
                "description": "The model organism database (MOD) identifier/curie for the disease annotation. Currently only used by WormBase for disease annotations, e.g. \"WBDOannot00000907\"",
                "type": "string"
@@ -122,12 +126,11 @@
             }
          },
          "required": [
+            "internal",
             "evidence_codes",
             "single_reference",
             "data_provider",
             "object",
-            "created_by",
-            "modified_by",
             "subject",
             "predicate"
          ],
@@ -170,6 +173,10 @@
                "description": "The gene to which the phenotype is inferred to be associated.",
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "modified_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
@@ -199,12 +206,11 @@
             }
          },
          "required": [
+            "internal",
             "predicate",
             "curie",
             "object",
             "creation_date",
-            "created_by",
-            "modified_by",
             "subject"
          ],
          "title": "AGMPhenotypeAnnotation",
@@ -249,6 +255,10 @@
                "description": "Date on which an entity was last modified.",
                "format": "date",
                "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
             },
             "modified_by": {
                "description": "The individual that last modified the entity.",
@@ -301,10 +311,9 @@
             }
          },
          "required": [
+            "internal",
             "curie",
             "taxon",
-            "created_by",
-            "modified_by",
             "subtype"
          ],
          "title": "AffectedGenomicModel",
@@ -314,23 +323,80 @@
          "additionalProperties": false,
          "description": "Allele that affects the model and its zygosity",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
             "has_allele": {
                "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
             },
             "zygosity": {
                "$ref": "#/$defs/ZygosityValues",
                "description": "GENO onotology ID for allele zygosity"
             }
          },
-         "required": [],
+         "required": [
+            "internal"
+         ],
          "title": "AffectedGenomicModelComponent",
          "type": "object"
       },
       "Agent": {
          "additionalProperties": false,
          "description": "An individual, group, organization or project that provides information and/or materials.",
-         "properties": {},
-         "required": [],
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            }
+         },
+         "required": [
+            "internal"
+         ],
          "title": "Agent",
          "type": "object"
       },
@@ -426,6 +492,10 @@
                "description": "Mode of inheritence, e.g. dominant / semi-dominant / recessive / unknown",
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_extinct": {
                "description": "Does the allele still exist in a population somewhere?",
                "type": "boolean"
@@ -505,10 +575,9 @@
             }
          },
          "required": [
+            "internal",
             "curie",
             "taxon",
-            "created_by",
-            "modified_by",
             "name"
          ],
          "title": "Allele",
@@ -576,6 +645,10 @@
                "description": "The gene to which the disease is inferred to be associated.",
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "mod_entity_id": {
                "description": "The model organism database (MOD) identifier/curie for the disease annotation. Currently only used by WormBase for disease annotations, e.g. \"WBDOannot00000907\"",
                "type": "string"
@@ -632,12 +705,11 @@
             }
          },
          "required": [
+            "internal",
             "evidence_codes",
             "single_reference",
             "data_provider",
             "object",
-            "created_by",
-            "modified_by",
             "subject",
             "predicate"
          ],
@@ -664,6 +736,10 @@
             },
             "evidence_code": {
                "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
             },
             "modified_by": {
                "description": "The individual that last modified the entity.",
@@ -695,10 +771,9 @@
             }
          },
          "required": [
+            "internal",
             "subject",
             "predicate",
-            "created_by",
-            "modified_by",
             "object"
          ],
          "title": "AlleleGeneAssociation",
@@ -736,6 +811,10 @@
                "description": "The gene to which the phenotype is inferred to be associated.",
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "modified_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
@@ -765,12 +844,11 @@
             }
          },
          "required": [
+            "internal",
             "predicate",
             "curie",
             "object",
             "creation_date",
-            "created_by",
-            "modified_by",
             "subject"
          ],
          "title": "AllelePhenotypeAnnotation",
@@ -797,6 +875,10 @@
             "evidence_code": {
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "modified_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
@@ -827,10 +909,9 @@
             }
          },
          "required": [
+            "internal",
             "subject",
             "predicate",
-            "created_by",
-            "modified_by",
             "object"
          ],
          "title": "AlleleProteinAssociation",
@@ -857,6 +938,10 @@
             "evidence_code": {
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "modified_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
@@ -887,10 +972,9 @@
             }
          },
          "required": [
+            "internal",
             "subject",
             "predicate",
-            "created_by",
-            "modified_by",
             "object"
          ],
          "title": "AlleleTranscriptAssociation",
@@ -917,6 +1001,10 @@
             "evidence_code": {
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "modified_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
@@ -947,9 +1035,8 @@
             }
          },
          "required": [
+            "internal",
             "predicate",
-            "created_by",
-            "modified_by",
             "subject",
             "object"
          ],
@@ -969,12 +1056,40 @@
             "cellular_component": {
                "type": "string"
             },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
             "spatial_qualifiers": {
                "$ref": "#/$defs/SpatialQualifierSet",
                "description": "Qualifiers that describe the spatial characteristics of an event."
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
             }
          },
-         "required": [],
+         "required": [
+            "internal"
+         ],
          "title": "AnatomicalSite",
          "type": "object"
       },
@@ -1033,6 +1148,10 @@
                "$ref": "#/$defs/HeavyChainIsotypeSet",
                "description": "The isotype of the antibody heavy chain: e.g., IgA."
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "light_chain_isotype": {
                "$ref": "#/$defs/LightChainIsotypeSet",
                "description": "The isotype of the antibody light chain: e.g., i4."
@@ -1086,8 +1205,7 @@
             }
          },
          "required": [
-            "created_by",
-            "modified_by",
+            "internal",
             "name",
             "clonality",
             "curie"
@@ -1120,12 +1238,39 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "Assembly",
@@ -1135,6 +1280,28 @@
          "additionalProperties": false,
          "description": "Describes the relation between a reference and an object",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
             "reference_type": {
                "description": "Description of how a reference is associated with an entity, e.g. molecular / origin / other",
                "type": "string"
@@ -1142,9 +1309,14 @@
             "single_reference": {
                "description": "holds between an object and a single reference",
                "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
             }
          },
          "required": [
+            "internal",
             "reference_type"
          ],
          "title": "AssociatedReference",
@@ -1154,6 +1326,28 @@
          "additionalProperties": false,
          "description": "A typed association between two entities, supported by evidence.",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
             "object": {
                "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
                "type": "string"
@@ -1165,14 +1359,56 @@
             "subject": {
                "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
                "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
             }
          },
          "required": [
+            "internal",
             "subject",
             "predicate",
             "object"
          ],
          "title": "Association",
+         "type": "object"
+      },
+      "AuditedObject": {
+         "additionalProperties": false,
+         "description": "Base class for all other LinkML classes. Some entity for which changes are tracked, including date/time of change, the agent responsible for the change, and whether the entity is internal (private).",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AuditedObject",
          "type": "object"
       },
       "AuthorReference": {
@@ -1182,12 +1418,26 @@
             "corresponding_author": {
                "type": "string"
             },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
                   "$ref": "#/$defs/CrossReference"
                },
                "type": "array"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
             },
             "first_name": {
                "description": "first name of a person",
@@ -1196,6 +1446,10 @@
             "initials": {
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "last_name": {
                "description": "last (family) name of a person",
                "type": "string"
@@ -1203,9 +1457,19 @@
             "middle_name": {
                "description": "middle names of a person",
                "type": "string"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
             }
          },
-         "required": [],
+         "required": [
+            "internal"
+         ],
          "title": "AuthorReference",
          "type": "object"
       },
@@ -1213,6 +1477,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -1222,6 +1495,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -1250,12 +1528,20 @@
                "description": "InChi key description of the molecule",
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
             },
             "iupac": {
                "description": "IUPAC name of the molecule",
+               "type": "string"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
                "type": "string"
             },
             "name": {
@@ -1289,11 +1575,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "CHEBITerm",
@@ -1303,6 +1594,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -1312,6 +1612,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -1328,9 +1633,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -1359,11 +1672,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "CLTerm",
@@ -1372,8 +1690,37 @@
       "CellLine": {
          "additionalProperties": false,
          "description": "Dummy cell line class",
-         "properties": {},
-         "required": [],
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            }
+         },
+         "required": [
+            "internal"
+         ],
          "title": "CellLine",
          "type": "object"
       },
@@ -1381,12 +1728,39 @@
          "additionalProperties": false,
          "description": "The ID of the landmark used to establish the coordinate system for the current feature.",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "Chromosome",
@@ -1395,8 +1769,37 @@
       "Company": {
          "additionalProperties": false,
          "description": "",
-         "properties": {},
-         "required": [],
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            }
+         },
+         "required": [
+            "internal"
+         ],
          "title": "Company",
          "type": "object"
       },
@@ -1414,13 +1817,39 @@
                },
                "type": "array"
             },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
             "handle": {
                "description": "A slot pointing to a free-text alias or 'handle' for a data object, such as a reference-specific alias for a data object used while curating.",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
                "type": "string"
             },
             "single_reference": {
                "description": "holds between an object and a single reference",
                "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
             },
             "unique_id": {
                "description": "Unique identifer for the condition relation.  Will be generated at AGR.",
@@ -1428,6 +1857,7 @@
             }
          },
          "required": [
+            "internal",
             "condition_relation_type"
          ],
          "title": "ConditionRelation",
@@ -1468,6 +1898,10 @@
                "format": "date",
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "modified_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
@@ -1506,9 +1940,8 @@
             }
          },
          "required": [
+            "internal",
             "taxon",
-            "created_by",
-            "modified_by",
             "curie",
             "name"
          ],
@@ -1543,6 +1976,10 @@
                "description": "Date on which an entity was last modified.",
                "format": "date",
                "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
             },
             "modified_by": {
                "description": "The individual that last modified the entity.",
@@ -1579,10 +2016,9 @@
             }
          },
          "required": [
+            "internal",
             "curie",
-            "taxon",
-            "created_by",
-            "modified_by"
+            "taxon"
          ],
          "title": "ConstructComponent",
          "type": "object"
@@ -1591,6 +2027,28 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
             "object": {
                "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
                "type": "string"
@@ -1602,9 +2060,14 @@
             "subject": {
                "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
                "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
             }
          },
          "required": [
+            "internal",
             "predicate",
             "subject",
             "object"
@@ -1647,6 +2110,10 @@
             "display_name": {
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "modified_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
@@ -1667,12 +2134,11 @@
             }
          },
          "required": [
+            "internal",
             "curie",
             "page_areas",
             "display_name",
-            "prefix",
-            "created_by",
-            "modified_by"
+            "prefix"
          ],
          "title": "CrossReference",
          "type": "object"
@@ -1681,6 +2147,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -1690,6 +2165,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -1706,9 +2186,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -1737,11 +2225,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "DAOTerm",
@@ -1776,6 +2269,10 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "manufactured_by": {
                "description": "Holds between a material entity and an Agent that has manufactured it: e.g., Molecular Probes.",
                "items": {
@@ -1797,10 +2294,9 @@
             }
          },
          "required": [
+            "internal",
             "curie",
-            "taxon",
-            "created_by",
-            "modified_by"
+            "taxon"
          ],
          "title": "DNAClone",
          "type": "object"
@@ -1809,6 +2305,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -1818,6 +2323,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -1834,9 +2344,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -1865,11 +2383,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "DOTerm",
@@ -2081,6 +2604,15 @@
                "description": "Letter code used by curators to refer to the ECO term.",
                "type": "string"
             },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -2090,6 +2622,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -2106,9 +2643,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -2137,11 +2682,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "ECOTerm",
@@ -2151,6 +2701,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -2160,6 +2719,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -2176,9 +2740,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -2207,28 +2779,47 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "EMAPATerm",
-         "type": "object"
-      },
-      "Entity": {
-         "additionalProperties": false,
-         "description": "",
-         "properties": {},
-         "required": [],
-         "title": "Entity",
          "type": "object"
       },
       "EntityStatement": {
          "additionalProperties": false,
          "description": "Free-text describing some aspect of an entity.",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
             "references": {
                "description": "holds between an object and a list of references",
                "items": {
@@ -2247,9 +2838,15 @@
             "statement_type": {
                "description": "The type of free-text statement. For example: cytology, private, curator_comments.",
                "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
             }
          },
-         "required": [],
+         "required": [
+            "internal"
+         ],
          "title": "EntityStatement",
          "type": "object"
       },
@@ -2257,6 +2854,28 @@
          "additionalProperties": false,
          "description": "A relationship between an entity and a synonym.",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
             "object": {
                "$ref": "#/$defs/Synonym",
                "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
@@ -2275,9 +2894,14 @@
             "subject": {
                "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
                "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
             }
          },
          "required": [
+            "internal",
             "subject",
             "object",
             "predicate"
@@ -2338,12 +2962,39 @@
                "description": "NCBITaxon ontology id used in subset of condition types like 'bacterial infection'.",
                "type": "string"
             },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "unique_id": {
                "description": "Unique identifer for the experimental condition.  Will be generated at AGR.",
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "condition_class",
             "condition_statement"
          ],
@@ -2383,6 +3034,10 @@
                "$ref": "#/$defs/ExpressionQualifierSet",
                "description": "Qualifiers that describe additional characteristics of gene expression. For example: aint, intense, restricted."
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "modified_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
@@ -2409,9 +3064,8 @@
             }
          },
          "required": [
-            "belongs_to_expression_experiment",
-            "created_by",
-            "modified_by"
+            "internal",
+            "belongs_to_expression_experiment"
          ],
          "title": "ExpressionAnnotation",
          "type": "object"
@@ -2420,6 +3074,28 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
             "object": {
                "$ref": "#/$defs/ImagePane",
                "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
@@ -2431,9 +3107,14 @@
             "subject": {
                "$ref": "#/$defs/ExpressionAnnotation",
                "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
             }
          },
          "required": [
+            "internal",
             "predicate",
             "subject",
             "object"
@@ -2445,6 +3126,28 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
             "references": {
                "description": "holds between an object and a list of references",
                "items": {
@@ -2463,9 +3166,15 @@
             "statement_type": {
                "$ref": "#/$defs/ExpressionStatementTypeEnum",
                "description": "The type of free-text statement. For example: cytology, private, curator_comments."
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
             }
          },
-         "required": [],
+         "required": [
+            "internal"
+         ],
          "title": "ExpressionAnnotationStatement",
          "type": "object"
       },
@@ -2514,6 +3223,10 @@
                "format": "date",
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "modified_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
@@ -2546,9 +3259,8 @@
             }
          },
          "required": [
-            "curie",
-            "created_by",
-            "modified_by"
+            "internal",
+            "curie"
          ],
          "title": "ExpressionExperiment",
          "type": "object"
@@ -2557,6 +3269,28 @@
          "additionalProperties": false,
          "description": "Free-text describing some aspect(s) of a gene's expression, particularly nuanced information that is not readily captured in annotations. This statement's scope is limited to the associated ExpressionExperiment.",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
             "references": {
                "description": "holds between an object and a list of references",
                "items": {
@@ -2575,9 +3309,15 @@
             "statement_type": {
                "description": "The type of free-text statement. For example: cytology, private, curator_comments.",
                "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
             }
          },
-         "required": [],
+         "required": [
+            "internal"
+         ],
          "title": "ExpressionExperimentStatement",
          "type": "object"
       },
@@ -2624,8 +3364,30 @@
          "additionalProperties": false,
          "description": "Base relation that holds the identifier prefix, base url and url suffix to help in generating URLs in crossReferences.",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
                "type": "string"
             },
             "prefix": {
@@ -2640,6 +3402,10 @@
                "description": "The cateogry of pages the resource in the context of the URL associated with the crossReference provides.  Equivalent to the 'page' attribute in the Alliance resourceDescriptor file.",
                "type": "string"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "url_prefix": {
                "description": "The prefix of the url before the accession number.",
                "type": "string"
@@ -2650,6 +3416,7 @@
             }
          },
          "required": [
+            "internal",
             "prefix"
          ],
          "title": "ExternalDatabaseLink",
@@ -2659,6 +3426,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -2668,6 +3444,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -2684,9 +3465,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -2715,11 +3504,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "FBCVTerm",
@@ -2729,6 +3523,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -2738,6 +3541,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -2754,9 +3562,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -2785,11 +3601,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "FBDVTerm",
@@ -2821,6 +3642,10 @@
                "format": "date",
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "label": {
                "description": "A short display name for the figure. For example: Figure 2, Figure 3B",
                "type": "string"
@@ -2845,10 +3670,9 @@
             }
          },
          "required": [
+            "internal",
             "curie",
-            "single_reference",
-            "created_by",
-            "modified_by"
+            "single_reference"
          ],
          "title": "Figure",
          "type": "object"
@@ -2856,8 +3680,37 @@
       "File": {
          "additionalProperties": false,
          "description": "A dummy object.",
-         "properties": {},
-         "required": [],
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            }
+         },
+         "required": [
+            "internal"
+         ],
          "title": "File",
          "type": "object"
       },
@@ -2865,6 +3718,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -2874,6 +3736,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -2890,9 +3757,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -2921,11 +3796,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "GOTerm",
@@ -2982,6 +3862,10 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "modified_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
@@ -3017,10 +3901,9 @@
             }
          },
          "required": [
+            "internal",
             "curie",
             "taxon",
-            "created_by",
-            "modified_by",
             "symbol"
          ],
          "title": "Gene",
@@ -3084,6 +3967,10 @@
                "description": "Submitted value should be a vocabulary term from the 'Genetic sexes' vocabulary",
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "mod_entity_id": {
                "description": "The model organism database (MOD) identifier/curie for the disease annotation. Currently only used by WormBase for disease annotations, e.g. \"WBDOannot00000907\"",
                "type": "string"
@@ -3143,12 +4030,11 @@
             }
          },
          "required": [
+            "internal",
             "evidence_codes",
             "single_reference",
             "data_provider",
             "object",
-            "created_by",
-            "modified_by",
             "subject",
             "predicate"
          ],
@@ -3159,6 +4045,28 @@
          "additionalProperties": false,
          "description": "Free-text describing some aspect(s) of a gene's expression, particularly nuanced information that is not readily captured in annotations. May summarize data from many annotations and/or many publications.",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
             "references": {
                "description": "holds between an object and a list of references",
                "items": {
@@ -3177,9 +4085,15 @@
             "statement_type": {
                "$ref": "#/$defs/ExpressionStatementTypeEnum",
                "description": "The type of free-text statement. For example: cytology, private, curator_comments."
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
             }
          },
-         "required": [],
+         "required": [
+            "internal"
+         ],
          "title": "GeneExpressionStatement",
          "type": "object"
       },
@@ -3187,6 +4101,15 @@
          "additionalProperties": false,
          "description": "A genetic interaction between genes (e.g. phenotypic suppression)",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Additional identifier(s) of the interaction annotation other than the primary id.",
                "items": {
@@ -3196,6 +4119,11 @@
             },
             "curie": {
                "description": "The unique primary identifier for the interaction. This should be the source (curation) database identifier, or if that is not available then the aggregation database identifier (e.g. IMEx)",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "interaction_data_provider": {
@@ -3230,6 +4158,14 @@
             "interactor_B_type": {
                "$ref": "#/$defs/InteractorTypeEnum"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
             "object": {
                "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
                "type": "string"
@@ -3254,9 +4190,14 @@
             "subject": {
                "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
                "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
             }
          },
          "required": [
+            "internal",
             "curie",
             "interaction_data_provider",
             "interaction_type",
@@ -3273,11 +4214,33 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
             "end": {
                "description": "The end of the feature in positive 1-based integer coordinates",
                "type": "string"
             },
             "has_assembly": {
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
                "type": "string"
             },
             "object": {
@@ -3295,9 +4258,14 @@
             "subject": {
                "description": "subject should be the gene identifier",
                "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
             }
          },
          "required": [
+            "internal",
             "subject",
             "predicate",
             "object",
@@ -3314,6 +4282,15 @@
                "$ref": "#/$defs/AggregationDatabaseEnum",
                "description": "The database that collected the interaction annotation from another resource and aggregated it into a consolidated resource. e.g. IMEx"
             },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Additional identifier(s) of the interaction annotation other than the primary id.",
                "items": {
@@ -3323,6 +4300,11 @@
             },
             "curie": {
                "description": "The unique primary identifier for the interaction. This should be the source (curation) database identifier, or if that is not available then the aggregation database identifier (e.g. IMEx)",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "detection_method": {
@@ -3355,6 +4337,14 @@
             "interactor_B_type": {
                "$ref": "#/$defs/InteractorTypeEnum"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
             "object": {
                "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
                "type": "string"
@@ -3373,9 +4363,14 @@
             "subject": {
                "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
                "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
             }
          },
          "required": [
+            "internal",
             "curie",
             "interaction_data_provider",
             "interaction_type",
@@ -3416,6 +4411,10 @@
                "format": "date",
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "modified_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
@@ -3448,12 +4447,11 @@
             }
          },
          "required": [
+            "internal",
             "predicate",
             "curie",
             "object",
             "creation_date",
-            "created_by",
-            "modified_by",
             "subject"
          ],
          "title": "GenePhenotypeAnnotation",
@@ -3488,6 +4486,10 @@
                "format": "date",
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "modified_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
@@ -3519,10 +4521,9 @@
             }
          },
          "required": [
+            "internal",
             "curie",
-            "taxon",
-            "created_by",
-            "modified_by"
+            "taxon"
          ],
          "title": "GenomicEntity",
          "type": "object"
@@ -3607,6 +4608,10 @@
                "description": "The y coordinate within a larger source image from which the crop begins.",
                "type": "integer"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "modified_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
@@ -3631,15 +4636,14 @@
             }
          },
          "required": [
+            "internal",
             "curie",
             "associated_with_figure",
             "width",
             "height",
             "image_file",
             "image_medium_file",
-            "image_thumbnail_file",
-            "created_by",
-            "modified_by"
+            "image_thumbnail_file"
          ],
          "title": "Image",
          "type": "object"
@@ -3678,6 +4682,10 @@
                "description": "The y coordinate within a larger source image from which the pane begins.",
                "type": "integer"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "label": {
                "description": "A short display name for the figure. For example: Figure 2, Figure 3B",
                "type": "string"
@@ -3696,11 +4704,10 @@
             }
          },
          "required": [
+            "internal",
             "from_image",
             "width",
-            "height",
-            "created_by",
-            "modified_by"
+            "height"
          ],
          "title": "ImagePane",
          "type": "object"
@@ -3933,8 +4940,37 @@
       "Laboratory": {
          "additionalProperties": false,
          "description": "",
-         "properties": {},
-         "required": [],
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            }
+         },
+         "required": [
+            "internal"
+         ],
          "title": "Laboratory",
          "type": "object"
       },
@@ -3962,6 +4998,20 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
             "emails": {
                "description": "list of emails for a person",
                "items": {
@@ -3973,6 +5023,10 @@
                "description": "first name of a person",
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "last_name": {
                "description": "last (family) name of a person",
                "type": "string"
@@ -3983,6 +5037,10 @@
             },
             "mod_entity_id": {
                "description": "The model organism database (MOD) identifier/curie for the object",
+               "type": "string"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
                "type": "string"
             },
             "okta_email": {
@@ -4004,12 +5062,17 @@
                "description": "Open Researcher and Contributor ID",
                "type": "string"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "unique_id": {
                "description": "A non-curie unique identifier for a thing.",
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "unique_id",
             "okta_id",
             "okta_email"
@@ -4021,6 +5084,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -4030,6 +5102,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -4046,9 +5123,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -4077,11 +5162,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "MATerm",
@@ -4091,6 +5181,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -4100,6 +5199,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -4116,9 +5220,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -4147,11 +5259,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "MITerm",
@@ -4161,6 +5278,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -4170,6 +5296,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -4186,9 +5317,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -4217,11 +5356,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "MMOTerm",
@@ -4231,6 +5375,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -4240,6 +5393,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -4256,9 +5414,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -4287,11 +5453,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "MMUSDVTerm",
@@ -4301,13 +5472,35 @@
          "additionalProperties": false,
          "description": "Medical Subject Headings information coming from PubMed.",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
             "heading_term": {
                "description": "The MeSH term description or definition from PubMed. e.g. Measles in a Measles/epidemiology term.",
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "mesh_detail_id": {
                "description": "The primary key for a MeshDetail object.",
                "type": "integer"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "qualifier_term": {
                "description": "The MeSH term subheading from PubMed, to narrow down the topic. e.g. epidemiology in a Measles/epidemiology term.",
@@ -4316,9 +5509,14 @@
             "reference_id": {
                "description": "Here, a foreign key referring to the references table.",
                "type": "integer"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
             }
          },
          "required": [
+            "internal",
             "mesh_detail_id",
             "reference_id",
             "heading_term"
@@ -4381,6 +5579,10 @@
                "description": "InChi key description of the molecule",
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
@@ -4433,9 +5635,8 @@
             }
          },
          "required": [
-            "curie",
-            "created_by",
-            "modified_by"
+            "internal",
+            "curie"
          ],
          "title": "Molecule",
          "type": "object"
@@ -4444,6 +5645,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -4453,6 +5663,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -4469,9 +5684,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -4500,11 +5723,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "NCBITaxonTerm",
@@ -4514,6 +5742,20 @@
          "additionalProperties": false,
          "description": "Note object for capturing free-text describing some attribute of an entity, coupled with a 'note type', internal boolean, and an optional list of references. Permissible values for 'note_type' currently = disease_summary, disease_note",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
             "free_text": {
                "description": "A free text string that describes some aspect of an entity.",
                "type": "string"
@@ -4521,6 +5763,10 @@
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "note_type": {
                "description": "The type of note: e.g., cytology, comment, summary. Permissible values for 'note_type' currently = disease_summary, disease_note",
@@ -4532,12 +5778,16 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
             }
          },
          "required": [
+            "internal",
             "free_text",
-            "note_type",
-            "internal"
+            "note_type"
          ],
          "title": "Note",
          "type": "object"
@@ -4546,6 +5796,15 @@
          "additionalProperties": false,
          "description": "A concept or class in an ontology, vocabulary or thesaurus. Note, ontology terms can be found in multiple ontologies (ie: mireoting). defining_slots helps define an alternative key for ontology terms.",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -4555,6 +5814,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -4571,9 +5835,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -4602,11 +5874,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "OntologyTerm",
@@ -4615,8 +5892,37 @@
       "Organization": {
          "additionalProperties": false,
          "description": "",
-         "properties": {},
-         "required": [],
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            }
+         },
+         "required": [
+            "internal"
+         ],
          "title": "Organization",
          "type": "object"
       },
@@ -4624,6 +5930,20 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
             "emails": {
                "description": "list of emails for a person",
                "items": {
@@ -4634,6 +5954,10 @@
             "first_name": {
                "description": "first name of a person",
                "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
             },
             "last_name": {
                "description": "last (family) name of a person",
@@ -4647,6 +5971,10 @@
                "description": "The model organism database (MOD) identifier/curie for the object",
                "type": "string"
             },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
             "old_emails": {
                "description": "list of old (outdated) emails for a person",
                "items": {
@@ -4658,12 +5986,17 @@
                "description": "Open Researcher and Contributor ID",
                "type": "string"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "unique_id": {
                "description": "A non-curie unique identifier for a thing.",
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "unique_id"
          ],
          "title": "Person",
@@ -4697,6 +6030,10 @@
                "format": "date",
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "modified_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
@@ -4726,13 +6063,12 @@
             }
          },
          "required": [
+            "internal",
             "predicate",
             "curie",
             "subject",
             "object",
-            "creation_date",
-            "created_by",
-            "modified_by"
+            "creation_date"
          ],
          "title": "PhenotypeAnnotation",
          "type": "object"
@@ -4741,6 +6077,15 @@
          "additionalProperties": false,
          "description": "An ontology term representing a characteristic of an organism. This may or may not be expressed as a difference in comparison to a reference organism.",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -4750,6 +6095,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -4766,9 +6116,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -4797,11 +6155,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "PhenotypeTerm",
@@ -4846,6 +6209,10 @@
                "format": "date",
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "modified_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
@@ -4877,10 +6244,9 @@
             }
          },
          "required": [
+            "internal",
             "curie",
-            "taxon",
-            "created_by",
-            "modified_by"
+            "taxon"
          ],
          "title": "Protein",
          "type": "object"
@@ -5010,6 +6376,10 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "manufactured_by": {
                "description": "Holds between a material entity and an Agent that has manufactured it: e.g., Molecular Probes.",
                "items": {
@@ -5031,10 +6401,9 @@
             }
          },
          "required": [
+            "internal",
             "curie",
-            "taxon",
-            "created_by",
-            "modified_by"
+            "taxon"
          ],
          "title": "RNAClone",
          "type": "object"
@@ -5043,6 +6412,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -5052,6 +6430,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -5068,9 +6451,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -5099,11 +6490,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "ROTerm",
@@ -5138,6 +6534,10 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "manufactured_by": {
                "description": "Holds between a material entity and an Agent that has manufactured it: e.g., Molecular Probes.",
                "items": {
@@ -5159,10 +6559,9 @@
             }
          },
          "required": [
+            "internal",
             "curie",
-            "taxon",
-            "created_by",
-            "modified_by"
+            "taxon"
          ],
          "title": "Reagent",
          "type": "object"
@@ -5180,6 +6579,15 @@
             },
             "citation": {
                "description": "A short form way of referring to a publication, typically consisting of the first author's name, publication date, and journal (title, vol, pages).",
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
                "type": "string"
             },
             "curie": {
@@ -5212,6 +6620,10 @@
                "format": "date",
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "issue_date": {
                "description": "Date on which an entity was issued.",
                "type": "string"
@@ -5232,6 +6644,10 @@
             },
             "merged_into_id": {
                "description": "ID that used to refer to this reference",
+               "type": "string"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
                "type": "string"
             },
             "open_access": {
@@ -5274,6 +6690,10 @@
             "resource_id": {
                "type": "integer"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "title": {
                "description": "A human readable title for a reference.",
                "type": "string"
@@ -5283,6 +6703,7 @@
             }
          },
          "required": [
+            "internal",
             "curie",
             "reference_id"
          ],
@@ -5351,6 +6772,10 @@
                "description": "Precedence of identifiers for references is as follows: PMID if available; DOI if not; actual alternate CURIE otherwise.",
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "iso_abbreviation": {
                "type": "string"
             },
@@ -5393,9 +6818,8 @@
             }
          },
          "required": [
-            "curie",
-            "created_by",
-            "modified_by"
+            "internal",
+            "curie"
          ],
          "title": "Resource",
          "type": "object"
@@ -5404,6 +6828,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -5413,6 +6846,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -5429,9 +6867,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -5460,11 +6906,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "SOTerm",
@@ -5498,6 +6949,10 @@
                "description": "Date on which an entity was last modified.",
                "format": "date",
                "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
             },
             "modified_by": {
                "description": "The individual that last modified the entity.",
@@ -5537,9 +6992,8 @@
             }
          },
          "required": [
+            "internal",
             "taxon",
-            "created_by",
-            "modified_by",
             "curie",
             "name"
          ],
@@ -5550,6 +7004,28 @@
          "additionalProperties": false,
          "description": "the relationship between a Sequence Targeting Reagent and its targeted genes.",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
             "object": {
                "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
                "type": "string"
@@ -5568,9 +7044,14 @@
             "subject": {
                "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
                "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
             }
          },
          "required": [
+            "internal",
             "predicate",
             "subject",
             "object"
@@ -5591,9 +7072,35 @@
          "additionalProperties": false,
          "description": "Links a paper to the variant locations described in that paper",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
             "single_reference": {
                "description": "holds between an object and a single reference",
                "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
             },
             "variant_locations": {
                "description": "Location of the variant within genomic entities. Variant_locations can include any or all of: one VariantGenomeLocation stanza, one or more VariantTranscriptLocation stanzas and/or one or more VariantPolypeptideLocation stanzas.",
@@ -5604,6 +7111,7 @@
             }
          },
          "required": [
+            "internal",
             "variant_locations",
             "single_reference"
          ],
@@ -5653,12 +7161,40 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
             "synonym": {
                "description": "the text string of the synonym",
                "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
             }
          },
-         "required": [],
+         "required": [
+            "internal"
+         ],
          "title": "Synonym",
          "type": "object"
       },
@@ -5670,6 +7206,20 @@
                "description": "The age at which an annotated event was observed.",
                "type": "string"
             },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
             "developmental_stage_start": {
                "description": "The beginning developmental stage at which an annotated event was observed.",
                "type": "string"
@@ -5678,15 +7228,29 @@
                "description": "The end developmental stage at which an annotated event was observed.",
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
             "stage_uncertainty": {
                "type": "string"
+            },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
             },
             "temporal_qualifiers": {
                "$ref": "#/$defs/TemporalQualifierSet",
                "description": "Qualifiers of the stage or age in an annotation."
             }
          },
-         "required": [],
+         "required": [
+            "internal"
+         ],
          "title": "TemporalContext",
          "type": "object"
       },
@@ -5729,6 +7293,10 @@
                "format": "date",
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "modified_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
@@ -5760,10 +7328,9 @@
             }
          },
          "required": [
+            "internal",
             "curie",
-            "taxon",
-            "created_by",
-            "modified_by"
+            "taxon"
          ],
          "title": "Transcript",
          "type": "object"
@@ -5772,6 +7339,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -5781,6 +7357,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -5797,9 +7378,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -5828,11 +7417,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "UBERONTerm",
@@ -5866,6 +7460,10 @@
                "description": "Date on which an entity was last modified.",
                "format": "date",
                "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
             },
             "modified_by": {
                "description": "The individual that last modified the entity.",
@@ -5944,10 +7542,9 @@
             }
          },
          "required": [
+            "internal",
             "curie",
             "taxon",
-            "created_by",
-            "modified_by",
             "variant_type",
             "variant_genome_locations"
          ],
@@ -5958,6 +7555,28 @@
          "additionalProperties": false,
          "description": "Class for gene-level VEP results",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
             "object": {
                "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
                "type": "string"
@@ -5982,6 +7601,10 @@
                "$ref": "#/$defs/VariantGenomeLocation",
                "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "vep_consequence": {
                "$ref": "#/$defs/VepConsequenceLevels",
                "description": "VEP consequence"
@@ -5992,6 +7615,7 @@
             }
          },
          "required": [
+            "internal",
             "object",
             "subject"
          ],
@@ -6014,11 +7638,33 @@
                "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.",
                "type": "string"
             },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
             "end_position": {
                "description": "End position of variant on genomic entity.",
                "type": "integer"
             },
             "evidence_code": {
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
                "type": "string"
             },
             "reference_sequence": {
@@ -6033,12 +7679,18 @@
                "description": "Start position of variant on genomic entity.",
                "type": "integer"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "variant_sequence": {
                "description": "Sequence that differs from the reference sequence of genome or genomic entity at position of variant, as specified by curator.",
                "type": "string"
             }
          },
-         "required": [],
+         "required": [
+            "internal"
+         ],
          "title": "VariantGenomeLocation",
          "type": "object"
       },
@@ -6057,11 +7709,33 @@
                "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.",
                "type": "string"
             },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
             "end_position": {
                "description": "End position of variant on genomic entity.",
                "type": "integer"
             },
             "evidence_code": {
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
                "type": "string"
             },
             "polypeptide": {
@@ -6080,12 +7754,17 @@
                "description": "Start position of variant on genomic entity.",
                "type": "integer"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "variant_sequence": {
                "description": "Sequence that differs from the reference sequence of genome or genomic entity at position of variant, as specified by curator.",
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "polypeptide"
          ],
          "title": "VariantPolypeptideLocation",
@@ -6140,12 +7819,34 @@
                "description": "Sequence of codon(s) in variant sequence altered by the variant. Bases affected by the variant are given in upper case, bases flanking the variation are given in lower case",
                "type": "string"
             },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
             "hgvs_coding_nomenclature": {
                "description": "HGVS coding sequence (HGVSc) name",
                "type": "string"
             },
             "hgvs_protein_nomenclature": {
                "description": "HGVS protein sequence (HGVSp) name",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
                "type": "string"
             },
             "object": {
@@ -6180,6 +7881,10 @@
                "$ref": "#/$defs/VariantTranscriptLocation",
                "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "vep_consequence": {
                "$ref": "#/$defs/VepConsequenceLevels",
                "description": "VEP consequence"
@@ -6190,6 +7895,7 @@
             }
          },
          "required": [
+            "internal",
             "object",
             "subject"
          ],
@@ -6204,11 +7910,33 @@
                "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.",
                "type": "string"
             },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
             "end_position": {
                "description": "End position of variant on genomic entity.",
                "type": "integer"
             },
             "evidence_code": {
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
                "type": "string"
             },
             "reference_sequence": {
@@ -6223,6 +7951,10 @@
                "description": "Start position of variant on genomic entity.",
                "type": "integer"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "transcript": {
                "description": "Transcript associated with variant and for which a specific location and consequence of that variant is provided, as specified at source.  Multivalued=false for this slot because although a variant can have multiple VariantTranscriptLocation stanzas, each stanza will have one and only one source transcript ID.",
                "type": "string"
@@ -6232,7 +7964,9 @@
                "type": "string"
             }
          },
-         "required": [],
+         "required": [
+            "internal"
+         ],
          "title": "VariantTranscriptLocation",
          "type": "object"
       },
@@ -6265,6 +7999,10 @@
                "format": "date",
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
@@ -6294,9 +8032,8 @@
             }
          },
          "required": [
-            "name",
-            "created_by",
-            "modified_by"
+            "internal",
+            "name"
          ],
          "title": "Vocabulary",
          "type": "object"
@@ -6326,6 +8063,10 @@
                "description": "The explanation of the meaning of a term.",
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
@@ -6351,9 +8092,8 @@
             }
          },
          "required": [
-            "name",
-            "created_by",
-            "modified_by"
+            "internal",
+            "name"
          ],
          "title": "VocabularyTerm",
          "type": "object"
@@ -6362,6 +8102,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -6371,6 +8120,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -6387,9 +8141,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -6418,11 +8180,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "WBBTTerm",
@@ -6432,6 +8199,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -6441,6 +8217,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -6457,9 +8238,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -6488,11 +8277,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "WBLSTerm",
@@ -6502,6 +8296,15 @@
          "additionalProperties": false,
          "description": "The Xenbase anatomy ontology XAO is home to Xenopus anatomy terms as well as Xenopus developmental life stage terms, differentiated by namespace. The anatomy term class in LinkML will be named 'XBATerm' for Xenbase Anatomy Term and life stage terms will be named 'XBSTerm' for Xenbase Stage Term.",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -6511,6 +8314,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -6527,9 +8335,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -6558,11 +8374,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "XBATerm",
@@ -6572,6 +8393,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -6581,6 +8411,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -6597,9 +8432,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -6628,11 +8471,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "XBEDTerm",
@@ -6642,6 +8490,15 @@
          "additionalProperties": false,
          "description": "The Xenbase anatomy ontology XAO is home to Xenopus anatomy terms as well as Xenopus developmental life stage terms, differentiated by namespace. The anatomy term class in LinkML will be named 'XBATerm' for Xenbase Anatomy Term and life stage terms will be named 'XBSTerm' for Xenbase Stage Term.",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -6651,6 +8508,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -6667,9 +8529,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -6698,11 +8568,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "XBSTerm",
@@ -6712,6 +8587,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -6721,6 +8605,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -6737,9 +8626,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -6768,11 +8665,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "XCOTerm",
@@ -6782,6 +8684,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -6791,6 +8702,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -6807,9 +8723,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -6838,11 +8762,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "XPOTerm",
@@ -6852,6 +8781,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -6861,6 +8799,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -6889,12 +8832,20 @@
                "description": "InChi key description of the molecule",
                "type": "string"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
             },
             "iupac": {
                "description": "IUPAC name of the molecule",
+               "type": "string"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
                "type": "string"
             },
             "name": {
@@ -6928,11 +8879,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "XSMOTerm",
@@ -6942,6 +8898,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -6951,6 +8916,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -6967,9 +8937,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -6998,11 +8976,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "ZECOTerm",
@@ -7012,6 +8995,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -7021,6 +9013,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -7037,9 +9034,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -7068,11 +9073,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "ZFATerm",
@@ -7082,6 +9092,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "creation_date": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
             "cross_references": {
                "description": "Holds between an object and its CrossReferences.",
                "items": {
@@ -7091,6 +9110,11 @@
             },
             "curie": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_last_modified": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
                "type": "string"
             },
             "dbkey": {
@@ -7107,9 +9131,17 @@
                },
                "type": "array"
             },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
             "is_obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
             },
             "name": {
                "description": "a human-readable name for an entity",
@@ -7138,11 +9170,16 @@
                },
                "type": "array"
             },
+            "table_key": {
+               "description": "The primary key for a specific table entry, unique for that table.",
+               "type": "integer"
+            },
             "type": {
                "type": "string"
             }
          },
          "required": [
+            "internal",
             "curie"
          ],
          "title": "ZFSTerm",
