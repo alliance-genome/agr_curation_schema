@@ -56,6 +56,8 @@ linkml:Nodeidentifier NONLITERAL
 
 <https://github.com/alliance-genome/agr_curation_schema/affectedGenomicModel/AffectedGenomicModelComponent> CLOSED {
     (  $<https://github.com/alliance-genome/agr_curation_schema/affectedGenomicModel/AffectedGenomicModelComponent_tes> ( 
+          &<http://alliancegenome.orgAuditedObject_tes> ;
+          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
           <https://github.com/alliance-genome/agr_curation_schema/affectedGenomicModel/has_allele>
           @<https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/Allele> ? ;
           <https://github.com/alliance-genome/agr_curation_schema/affectedGenomicModel/zygosity>
@@ -67,7 +69,9 @@ linkml:Nodeidentifier NONLITERAL
 
 <http://alliancegenome.orgAgent>  (
     CLOSED {
-       (  $<http://alliancegenome.orgAgent_tes> rdf:type . * ;
+       (  $<http://alliancegenome.orgAgent_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
+             rdf:type [ <http://alliancegenome.orgAuditedObject> ] ?
+          ) ;
           rdf:type [ <http://alliancegenome.orgAgent> ] ?
        )
     } OR @<http://alliancegenome.orgOrganization> OR @<http://alliancegenome.orgPerson>
@@ -148,12 +152,7 @@ linkml:Nodeidentifier NONLITERAL
           <http://alliancegenome.orgrelated_note> @<http://alliancegenome.orgNote> ? ;
           <http://alliancegenome.orgsubject> @<https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/Allele> ;
           <http://alliancegenome.orgpredicate> @<https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ROTerm> ;
-          <http://alliancegenome.orgobject> @<http://alliancegenome.orgGenomicEntity> ;
-          <http://alliancegenome.orgtable_key> @linkml:Integer ? ;
-          <http://alliancegenome.orgcreated_by> @<http://alliancegenome.orgPerson> ;
-          <http://alliancegenome.orgcreation_date> @linkml:Date ? ;
-          <http://alliancegenome.orgmodified_by> @<http://alliancegenome.orgPerson> ;
-          <http://alliancegenome.orgdate_last_modified> @linkml:Date ?
+          <http://alliancegenome.orgobject> @<http://alliancegenome.orgGenomicEntity>
        ) ;
        rdf:type [ <https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AlleleGenomicEntityAssociation> ] ?
     )
@@ -214,13 +213,17 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <http://alliancegenome.orgAssembly> CLOSED {
-    (  $<http://alliancegenome.orgAssembly_tes> rdf:type . * ;
+    (  $<http://alliancegenome.orgAssembly_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
+          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ?
+       ) ;
        rdf:type [ <http://alliancegenome.orgAssembly> ]
     )
 }
 
 <https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AssociatedReference> CLOSED {
     (  $<https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AssociatedReference_tes> ( 
+          &<http://alliancegenome.orgAuditedObject_tes> ;
+          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
           <https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/reference_type>
           @<https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/VocabularyTerm> ;
           <http://alliancegenome.orgsingle_reference>
@@ -232,7 +235,9 @@ linkml:Nodeidentifier NONLITERAL
 
 <http://alliancegenome.orgAssociation>  (
     CLOSED {
-       (  $<http://alliancegenome.orgAssociation_tes> (  <http://alliancegenome.orgsubject> @linkml:String ;
+       (  $<http://alliancegenome.orgAssociation_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
+             rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
+             <http://alliancegenome.orgsubject> @linkml:String ;
              <http://alliancegenome.orgpredicate> @linkml:String ;
              <http://alliancegenome.orgobject> @linkml:String
           ) ;
@@ -244,19 +249,46 @@ linkml:Nodeidentifier NONLITERAL
     @<https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/SequenceTargetingReagentToGeneAssociation>
 )
 
-<http://alliancegenome.orgAuditedObject> {
-    (  $<http://alliancegenome.orgAuditedObject_tes> (  <http://alliancegenome.orgtable_key> @linkml:Integer ? ;
-          <http://alliancegenome.orgcreated_by> @<http://alliancegenome.orgPerson> ;
-          <http://alliancegenome.orgcreation_date> @linkml:Date ? ;
-          <http://alliancegenome.orgmodified_by> @<http://alliancegenome.orgPerson> ;
-          <http://alliancegenome.orgdate_last_modified> @linkml:Date ?
-       ) ;
-       rdf:type [ <http://alliancegenome.orgAuditedObject> ] ?
-    )
-}
+<http://alliancegenome.orgAuditedObject>  (
+    CLOSED {
+       (  $<http://alliancegenome.orgAuditedObject_tes> (  <http://alliancegenome.orgtable_key> @linkml:Integer ? ;
+             <http://alliancegenome.orgcreated_by> @<http://alliancegenome.orgPerson> ? ;
+             <http://alliancegenome.orgcreation_date> @linkml:Date ? ;
+             <http://alliancegenome.orgmodified_by> @<http://alliancegenome.orgPerson> ? ;
+             <http://alliancegenome.orgdate_last_modified> @linkml:Date ? ;
+             <http://alliancegenome.orginternal> @linkml:Boolean
+          ) ;
+          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ?
+       )
+    } OR @<https://github.com/alliance-genome/agr_curation_schema/affectedGenomicModel/AffectedGenomicModelComponent> OR
+    @<http://alliancegenome.orgAgent> OR @<http://alliancegenome.orgAssembly> OR
+    @<https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AssociatedReference> OR
+    @<http://alliancegenome.orgAssociation> OR
+    @<https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/AuthorReference> OR
+    @<http://alliancegenome.orgBiologicalEntity> OR
+    @<https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/CellLine> OR @<http://alliancegenome.orgChromosome>
+    OR @<http://alliancegenome.orgCrossReference> OR @<http://alliancegenome.orgEntityStatement> OR
+    @<http://alliancegenome.orgExternalDatabaseLink> OR
+    @<https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/Figure> OR
+    @<https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/File> OR
+    @<http://alliancegenome.orgGeneGenomicLocation> OR
+    @<https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/Image> OR
+    @<https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/ImagePane> OR
+    @<https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/MeshDetail> OR @<http://alliancegenome.orgNote>
+    OR @<https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/OntologyTerm> OR
+    @<https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/Reference> OR
+    @<https://github.com/alliance-genome/agr_curation_schema/src/schema/resource/Resource> OR
+    @<https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/SourceVariantLocation> OR
+    @<http://alliancegenome.orgSynonym> OR
+    @<https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/VariantLocation> OR
+    @<https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/Vocabulary> OR
+    @<https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/VocabularyTerm>
+)
 
 <https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/AuthorReference> CLOSED {
     (  $<https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/AuthorReference_tes> ( 
+          &<http://alliancegenome.orgAuditedObject_tes> ;
+          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
           <https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/corresponding_author>
           @<https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/Reference> ? ;
           <http://alliancegenome.orgfirst_name> @linkml:String ? ;
@@ -275,12 +307,7 @@ linkml:Nodeidentifier NONLITERAL
        (  $<http://alliancegenome.orgBiologicalEntity_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
              rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
              <http://alliancegenome.orgtaxon>
-             @<https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/NCBITaxonTerm> ;
-             <http://alliancegenome.orgtable_key> @linkml:Integer ? ;
-             <http://alliancegenome.orgcreated_by> @<http://alliancegenome.orgPerson> ;
-             <http://alliancegenome.orgcreation_date> @linkml:Date ? ;
-             <http://alliancegenome.orgmodified_by> @<http://alliancegenome.orgPerson> ;
-             <http://alliancegenome.orgdate_last_modified> @linkml:Date ?
+             @<https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/NCBITaxonTerm>
           ) ;
           rdf:type [ <http://alliancegenome.orgBiologicalEntity> ]
        )
@@ -288,7 +315,10 @@ linkml:Nodeidentifier NONLITERAL
 )
 
 <https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/CellLine> CLOSED {
-    (  $<https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/CellLine_tes> rdf:type . * ;
+    (  $<https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/CellLine_tes> ( 
+          &<http://alliancegenome.orgAuditedObject_tes> ;
+          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ?
+       ) ;
        rdf:type [ <https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/CellLine> ] ?
     )
 }
@@ -323,7 +353,9 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <http://alliancegenome.orgChromosome> CLOSED {
-    (  $<http://alliancegenome.orgChromosome_tes> rdf:type . * ;
+    (  $<http://alliancegenome.orgChromosome_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
+          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ?
+       ) ;
        rdf:type [ <http://alliancegenome.orgChromosome> ]
     )
 }
@@ -389,12 +421,7 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
           <http://alliancegenome.orgpage_areas> @linkml:String + ;
           <http://alliancegenome.orgdisplay_name> @linkml:String ;
-          <http://alliancegenome.orgprefix> @linkml:String ;
-          <http://alliancegenome.orgtable_key> @linkml:Integer ? ;
-          <http://alliancegenome.orgcreated_by> @<http://alliancegenome.orgPerson> ;
-          <http://alliancegenome.orgcreation_date> @linkml:Date ? ;
-          <http://alliancegenome.orgmodified_by> @<http://alliancegenome.orgPerson> ;
-          <http://alliancegenome.orgdate_last_modified> @linkml:Date ?
+          <http://alliancegenome.orgprefix> @linkml:String
        ) ;
        rdf:type [ <http://alliancegenome.orgCrossReference> ]
     )
@@ -437,14 +464,10 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
-<http://alliancegenome.orgEntity> CLOSED {
-    (  $<http://alliancegenome.orgEntity_tes> rdf:type . * ;
-       rdf:type [ <http://alliancegenome.orgEntity> ] ?
-    )
-}
-
 <http://alliancegenome.orgEntityStatement> CLOSED {
-    (  $<http://alliancegenome.orgEntityStatement_tes> (  <http://alliancegenome.orgstatement_subject> @linkml:String ? ;
+    (  $<http://alliancegenome.orgEntityStatement_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
+          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
+          <http://alliancegenome.orgstatement_subject> @linkml:String ? ;
           <http://alliancegenome.orgstatement_type> @linkml:String ? ;
           <http://alliancegenome.orgstatement_text> @linkml:String ? ;
           <http://alliancegenome.orgreferences>
@@ -481,7 +504,9 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <http://alliancegenome.orgExternalDatabaseLink> CLOSED {
-    (  $<http://alliancegenome.orgExternalDatabaseLink_tes> (  <http://alliancegenome.orgdbkey> @linkml:String ? ;
+    (  $<http://alliancegenome.orgExternalDatabaseLink_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
+          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
+          <http://alliancegenome.orgdbkey> @linkml:String ? ;
           <http://alliancegenome.orgprefix> @linkml:String ;
           <http://alliancegenome.orgurl_prefix> @linkml:String ? ;
           <http://alliancegenome.orgurl_suffix> @linkml:String ? ;
@@ -518,19 +543,17 @@ linkml:Nodeidentifier NONLITERAL
           @<https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/Reference> ;
           <https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/label> @linkml:String ? ;
           <https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/caption> @linkml:String ? ;
-          <http://alliancegenome.orgsecondary_identifiers> @linkml:Uriorcurie * ;
-          <http://alliancegenome.orgtable_key> @linkml:Integer ? ;
-          <http://alliancegenome.orgcreated_by> @<http://alliancegenome.orgPerson> ;
-          <http://alliancegenome.orgcreation_date> @linkml:Date ? ;
-          <http://alliancegenome.orgmodified_by> @<http://alliancegenome.orgPerson> ;
-          <http://alliancegenome.orgdate_last_modified> @linkml:Date ?
+          <http://alliancegenome.orgsecondary_identifiers> @linkml:Uriorcurie *
        ) ;
        rdf:type [ <https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/Figure> ]
     )
 }
 
 <https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/File> CLOSED {
-    (  $<https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/File_tes> rdf:type . * ;
+    (  $<https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/File_tes> ( 
+          &<http://alliancegenome.orgAuditedObject_tes> ;
+          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ?
+       ) ;
        rdf:type [ <https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/File> ] ?
     )
 }
@@ -551,8 +574,10 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <http://alliancegenome.orgGeneGenomicLocation> CLOSED {
-    (  $<http://alliancegenome.orgGeneGenomicLocation_tes> (  <http://alliancegenome.orgsubject>
-          @<https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/Variant> ;
+    (  $<http://alliancegenome.orgGeneGenomicLocation_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
+          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
+          <http://alliancegenome.orgsubject> @<https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/Variant>
+          ;
           <http://alliancegenome.orgpredicate> @linkml:String ;
           <http://alliancegenome.orgobject> @<http://alliancegenome.orgChromosome> ;
           <http://alliancegenome.orghas_assembly> @<http://alliancegenome.orgChromosome> ;
@@ -612,12 +637,7 @@ linkml:Nodeidentifier NONLITERAL
           <https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/image_x_origin> @linkml:Integer ? ;
           <https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/image_y_origin> @linkml:Integer ? ;
           <https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/video_still> @linkml:Boolean ? ;
-          <http://alliancegenome.orgsecondary_identifiers> @linkml:Uriorcurie * ;
-          <http://alliancegenome.orgtable_key> @linkml:Integer ? ;
-          <http://alliancegenome.orgcreated_by> @<http://alliancegenome.orgPerson> ;
-          <http://alliancegenome.orgcreation_date> @linkml:Date ? ;
-          <http://alliancegenome.orgmodified_by> @<http://alliancegenome.orgPerson> ;
-          <http://alliancegenome.orgdate_last_modified> @linkml:Date ?
+          <http://alliancegenome.orgsecondary_identifiers> @linkml:Uriorcurie *
        ) ;
        rdf:type [ <https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/Image> ]
     )
@@ -633,12 +653,7 @@ linkml:Nodeidentifier NONLITERAL
           <https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/width> @linkml:Integer ;
           <https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/height> @linkml:Integer ;
           <https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/image_x_origin> @linkml:Integer ? ;
-          <https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/image_y_origin> @linkml:Integer ? ;
-          <http://alliancegenome.orgtable_key> @linkml:Integer ? ;
-          <http://alliancegenome.orgcreated_by> @<http://alliancegenome.orgPerson> ;
-          <http://alliancegenome.orgcreation_date> @linkml:Date ? ;
-          <http://alliancegenome.orgmodified_by> @<http://alliancegenome.orgPerson> ;
-          <http://alliancegenome.orgdate_last_modified> @linkml:Date ?
+          <https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/image_y_origin> @linkml:Integer ?
        ) ;
        rdf:type [ <https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/ImagePane> ] ?
     )
@@ -673,6 +688,8 @@ linkml:Nodeidentifier NONLITERAL
 
 <https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/MeshDetail> CLOSED {
     (  $<https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/MeshDetail_tes> ( 
+          &<http://alliancegenome.orgAuditedObject_tes> ;
+          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
           <https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/mesh_detail_id> @linkml:Integer ;
           <https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/reference_id> @linkml:Integer ;
           <https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/heading_term> @linkml:String ;
@@ -728,12 +745,7 @@ linkml:Nodeidentifier NONLITERAL
           &<https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ChemicalTerm_tes> ;
           rdf:type [ <https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ChemicalTerm> ] ? ;
           &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgtable_key> @linkml:Integer ? ;
-          <http://alliancegenome.orgcreated_by> @<http://alliancegenome.orgPerson> ;
-          <http://alliancegenome.orgcreation_date> @linkml:Date ? ;
-          <http://alliancegenome.orgmodified_by> @<http://alliancegenome.orgPerson> ;
-          <http://alliancegenome.orgdate_last_modified> @linkml:Date ?
+          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ?
        ) ;
        rdf:type [ <https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/Molecule> ]
     )
@@ -749,10 +761,11 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <http://alliancegenome.orgNote> CLOSED {
-    (  $<http://alliancegenome.orgNote_tes> (  <http://alliancegenome.orgfree_text> @linkml:String ;
+    (  $<http://alliancegenome.orgNote_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
+          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
+          <http://alliancegenome.orgfree_text> @linkml:String ;
           <http://alliancegenome.orgnote_type>
           @<https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/VocabularyTerm> ;
-          <http://alliancegenome.orginternal> @linkml:Boolean ;
           <http://alliancegenome.orgreferences>
           @<https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/Reference> *
        ) ;
@@ -763,6 +776,8 @@ linkml:Nodeidentifier NONLITERAL
 <https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/OntologyTerm>  (
     CLOSED {
        (  $<https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/OntologyTerm_tes> ( 
+             &<http://alliancegenome.orgAuditedObject_tes> ;
+             rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
              <http://alliancegenome.orgdbkey> @linkml:String ? ;
              <http://alliancegenome.orgname> @linkml:String ? ;
              <https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/definition> @linkml:String ? ;
@@ -843,6 +858,8 @@ linkml:Nodeidentifier NONLITERAL
 
 <https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/Reference> CLOSED {
     (  $<https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/Reference_tes> ( 
+          &<http://alliancegenome.orgAuditedObject_tes> ;
+          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
           <https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/abstract> @linkml:String ? ;
           <https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/category>
           @<https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/ReferenceCategoryEnum> ? ;
@@ -894,12 +911,7 @@ linkml:Nodeidentifier NONLITERAL
           @<https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/AuthorReference> * ;
           <https://github.com/alliance-genome/agr_curation_schema/src/schema/resource/editors>
           @<https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/AuthorReference> * ;
-          <id> @linkml:String ? ;
-          <http://alliancegenome.orgtable_key> @linkml:Integer ? ;
-          <http://alliancegenome.orgcreated_by> @<http://alliancegenome.orgPerson> ;
-          <http://alliancegenome.orgcreation_date> @linkml:Date ? ;
-          <http://alliancegenome.orgmodified_by> @<http://alliancegenome.orgPerson> ;
-          <http://alliancegenome.orgdate_last_modified> @linkml:Date ?
+          <id> @linkml:String ?
        ) ;
        rdf:type [ <https://github.com/alliance-genome/agr_curation_schema/src/schema/resource/Resource> ]
     )
@@ -954,6 +966,8 @@ linkml:Nodeidentifier NONLITERAL
 
 <https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/SourceVariantLocation> CLOSED {
     (  $<https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/SourceVariantLocation_tes> ( 
+          &<http://alliancegenome.orgAuditedObject_tes> ;
+          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
           <https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/variant_locations>
           @<https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/VariantLocation> + ;
           <http://alliancegenome.orgsingle_reference>
@@ -980,7 +994,10 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <http://alliancegenome.orgSynonym> CLOSED {
-    (  $<http://alliancegenome.orgSynonym_tes> <http://alliancegenome.orgsynonym> @linkml:String ? ;
+    (  $<http://alliancegenome.orgSynonym_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
+          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
+          <http://alliancegenome.orgsynonym> @linkml:String ?
+       ) ;
        rdf:type [ <http://alliancegenome.orgSynonym> ] ?
     )
 }
@@ -1047,6 +1064,8 @@ linkml:Nodeidentifier NONLITERAL
 
 <https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/VariantLocation_struct> {
     (  $<https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/VariantLocation_tes> ( 
+          &<http://alliancegenome.orgAuditedObject_tes> ;
+          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
           <http://alliancegenome.orgevidence_code>
           @<https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ECOTerm> ? ;
           <http://alliancegenome.orgsingle_reference>
@@ -1096,12 +1115,7 @@ linkml:Nodeidentifier NONLITERAL
           ? ;
           <http://alliancegenome.orgis_obsolete> @linkml:Boolean ? ;
           <https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/member_terms>
-          @<https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/VocabularyTerm> * ;
-          <http://alliancegenome.orgtable_key> @linkml:Integer ? ;
-          <http://alliancegenome.orgcreated_by> @<http://alliancegenome.orgPerson> ;
-          <http://alliancegenome.orgcreation_date> @linkml:Date ? ;
-          <http://alliancegenome.orgmodified_by> @<http://alliancegenome.orgPerson> ;
-          <http://alliancegenome.orgdate_last_modified> @linkml:Date ?
+          @<https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/VocabularyTerm> *
        ) ;
        rdf:type [ <https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/Vocabulary> ]
     )
@@ -1114,12 +1128,7 @@ linkml:Nodeidentifier NONLITERAL
           <http://alliancegenome.orgabbreviation> @linkml:String ? ;
           <https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/definition> @linkml:String ? ;
           <http://alliancegenome.orgis_obsolete> @linkml:Boolean ? ;
-          <https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/text_synonyms> @linkml:String * ;
-          <http://alliancegenome.orgtable_key> @linkml:Integer ? ;
-          <http://alliancegenome.orgcreated_by> @<http://alliancegenome.orgPerson> ;
-          <http://alliancegenome.orgcreation_date> @linkml:Date ? ;
-          <http://alliancegenome.orgmodified_by> @<http://alliancegenome.orgPerson> ;
-          <http://alliancegenome.orgdate_last_modified> @linkml:Date ?
+          <https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/text_synonyms> @linkml:String *
        ) ;
        rdf:type [ <https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/VocabularyTerm> ]
     )

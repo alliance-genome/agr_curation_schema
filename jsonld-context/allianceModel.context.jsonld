@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-04-23T19:23:34\n    Schema: AllianceCurationSchema\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: \n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-04-25T22:21:29\n    Schema: AllianceCurationSchema\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: \n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "BIOGRID": "http://identifiers.org/biogrid/",
       "DIP": "http://identifiers.org/dip/",
@@ -77,12 +77,6 @@
       "allele_variant_association_ingest_set": {
          "@type": "@id",
          "@id": "https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/allele_variant_association_ingest_set"
-      },
-      "ameliorated_by": {
-         "@type": "@id"
-      },
-      "ameliorates": {
-         "@type": "@id"
       },
       "amino_acid_reference": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/variantConsequence/amino_acid_reference"
@@ -350,12 +344,6 @@
       "evidence_codes": {
          "@type": "@id"
       },
-      "exacerbated_by": {
-         "@type": "@id"
-      },
-      "exacerbates": {
-         "@type": "@id"
-      },
       "expression_qualifiers": {
          "@context": {
             "@vocab": "@null",
@@ -406,9 +394,6 @@
          "@id": "https://github.com/alliance-genome/agr_curation_schema/affectedGenomicModel/has_allele"
       },
       "has_assembly": {
-         "@type": "@id"
-      },
-      "has_condition": {
          "@type": "@id"
       },
       "heading_term": {
@@ -473,12 +458,6 @@
       },
       "inchi_key": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/inchi_key"
-      },
-      "induced_by": {
-         "@type": "@id"
-      },
-      "induces": {
-         "@type": "@id"
       },
       "inferred_allele": {
          "@type": "@id"
@@ -553,9 +532,6 @@
       },
       "internal": {
          "@type": "xsd:boolean"
-      },
-      "is_condition_in": {
-         "@type": "@id"
       },
       "is_extinct": {
          "@type": "xsd:boolean",

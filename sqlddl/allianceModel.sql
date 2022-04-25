@@ -9,6 +9,7 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "ExpressionAnnotation" Description: "A description of when and where gene products are observed to be present, including experimental details, supporting evidence, and curator notes."
 --     * Slot: id Description: 
 --     * Slot: belongs_to_expression_experiment Description: Holds between an ExpressionAnnotation and an ExpressionExperiment.
@@ -20,6 +21,7 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: when_expressed_id Description: When a gene product is observed to be present.
 --     * Slot: where_expressed_id Description: Where a gene product is observed to be present.
 -- # Class: "TemporalContext" Description: "The developmental stage and/or age of the specimen in an annotation. Developmental_stage_stop is optional. Add an uncertainty flag here?"
@@ -29,15 +31,33 @@
 --     * Slot: age Description: The age at which an annotated event was observed.
 --     * Slot: temporal_qualifiers Description: Qualifiers of the stage or age in an annotation.
 --     * Slot: stage_uncertainty Description: 
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "AnatomicalSite" Description: "The developmental stage and/or age of the specimen in an annotation."
 --     * Slot: id Description: 
 --     * Slot: anatomical_structure Description: 
 --     * Slot: anatomical_substructure Description: 
 --     * Slot: cellular_component Description: 
 --     * Slot: spatial_qualifiers Description: Qualifiers that describe the spatial characteristics of an event.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "ExpressionAnnotationImagePane" Description: ""
 --     * Slot: id Description: 
 --     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: subject_id Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: object_id Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 -- # Class: "GeneExpressionStatement" Description: "Free-text describing some aspect(s) of a gene's expression, particularly nuanced information that is not readily captured in annotations. May summarize data from many annotations and/or many publications."
@@ -45,15 +65,33 @@
 --     * Slot: statement_subject Description: The entity being described by the note.
 --     * Slot: statement_type Description: The type of free-text statement. For example: cytology, private, curator_comments.
 --     * Slot: statement_text Description: Free-text describing some aspect of an entity.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "ExpressionExperimentStatement" Description: "Free-text describing some aspect(s) of a gene's expression, particularly nuanced information that is not readily captured in annotations. This statement's scope is limited to the associated ExpressionExperiment."
 --     * Slot: id Description: 
 --     * Slot: statement_subject Description: The entity being described by the note.
 --     * Slot: statement_type Description: The type of free-text statement. For example: cytology, private, curator_comments.
 --     * Slot: statement_text Description: Free-text describing some aspect of an entity.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "ExpressionAnnotationStatement" Description: ""
 --     * Slot: id Description: 
 --     * Slot: statement_type Description: The type of free-text statement. For example: cytology, private, curator_comments.
 --     * Slot: statement_text Description: Free-text describing some aspect of an entity.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: statement_subject_id Description: The entity being described by the note.
 -- # Class: "AuthorReference" Description: ""
 --     * Slot: id Description: 
@@ -62,6 +100,12 @@
 --     * Slot: middle_name Description: middle names of a person
 --     * Slot: last_name Description: last (family) name of a person
 --     * Slot: initials Description: 
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "Reference" Description: ""
 --     * Slot: abstract Description: The author summary of the publication.
 --     * Slot: category Description: 
@@ -84,14 +128,31 @@
 --     * Slot: resource_id Description: 
 --     * Slot: title Description: A human readable title for a reference.
 --     * Slot: volume Description: 
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "MeshDetail" Description: "Medical Subject Headings information coming from PubMed."
 --     * Slot: id Description: 
 --     * Slot: mesh_detail_id Description: The primary key for a MeshDetail object.
 --     * Slot: reference_id Description: Here, a foreign key referring to the references table.
 --     * Slot: heading_term Description: The MeSH term description or definition from PubMed. e.g. Measles in a Measles/epidemiology term.
 --     * Slot: qualifier_term Description: The MeSH term subheading from PubMed, to narrow down the topic. e.g. epidemiology in a Measles/epidemiology term.
--- # Class: "Entity" Description: ""
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
+-- # Class: "AuditedObject" Description: "Base class for all other LinkML classes. Some entity for which changes are tracked, including date/time of change, the agent responsible for the change, and whether the entity is internal (private)."
 --     * Slot: id Description: 
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "BiologicalEntity" Description: "A high-level entity comprising ."
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: taxon Description: The taxon from which the biological entity derives.
@@ -100,6 +161,7 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "GenomicEntity" Description: ""
 --     * Slot: name Description: a human-readable name for an entity
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
@@ -109,6 +171,7 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "Transcript" Description: "Placeholder."
 --     * Slot: name Description: a human-readable name for an entity
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
@@ -118,6 +181,7 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "Gene" Description: "Placeholder."
 --     * Slot: symbol Description: Symbol for a particular thing
 --     * Slot: gene_synopsis Description: Gene description provided by source resource (ie: MOD gene description that is curated or automated via MOD internal processes).
@@ -132,6 +196,7 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: Ingest_id Description: Autocreated FK slot
 -- # Class: "CrossReference" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
@@ -142,6 +207,7 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: AuthorReference_id Description: Autocreated FK slot
 --     * Slot: GenomicEntity_curie Description: Autocreated FK slot
 --     * Slot: Transcript_curie Description: Autocreated FK slot
@@ -195,32 +261,54 @@
 -- # Class: "Synonym" Description: ""
 --     * Slot: id Description: 
 --     * Slot: synonym Description: the text string of the synonym
--- # Class: "AuditedObject" Description: "Some entity for which changes are tracked, including date/time of change and the agent responsible for the change."
---     * Slot: id Description: 
 --     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "Note" Description: "Note object for capturing free-text describing some attribute of an entity, coupled with a 'note type', internal boolean, and an optional list of references. Permissible values for 'note_type' currently = disease_summary, disease_note"
 --     * Slot: id Description: 
 --     * Slot: free_text Description: A free text string that describes some aspect of an entity.
 --     * Slot: note_type Description: The type of note: e.g., cytology, comment, summary. Permissible values for 'note_type' currently = disease_summary, disease_note
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "EntityStatement" Description: "Free-text describing some aspect of an entity."
 --     * Slot: id Description: 
 --     * Slot: statement_subject Description: The entity being described by the note.
 --     * Slot: statement_type Description: The type of free-text statement. For example: cytology, private, curator_comments.
 --     * Slot: statement_text Description: Free-text describing some aspect of an entity.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "Association" Description: "A typed association between two entities, supported by evidence."
 --     * Slot: id Description: 
 --     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "EntitySynonym" Description: "A relationship between an entity and a synonym."
 --     * Slot: id Description: 
 --     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: object_id Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 -- # Class: "ExternalDatabaseLink" Description: "Base relation that holds the identifier prefix, base url and url suffix to help in generating URLs in crossReferences."
 --     * Slot: id Description: 
@@ -230,10 +318,28 @@
 --     * Slot: url_suffix Description: The suffix of the url after the accession number.
 --     * Slot: prefix_page Description: The cateogry of pages the resource in the context of the URL associated with the crossReference provides.  Equivalent to the 'page' attribute in the Alliance resourceDescriptor file.
 --     * Slot: prefix_order Description: The relative order of the resource when listed with other crossReferences.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "Chromosome" Description: "The ID of the landmark used to establish the coordinate system for the current feature."
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "Assembly" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "GeneGenomicLocation" Description: ""
 --     * Slot: id Description: 
 --     * Slot: subject Description: subject should be the gene identifier
@@ -242,6 +348,12 @@
 --     * Slot: has_assembly Description: 
 --     * Slot: start Description: The start of the feature in positive 1-based integer coordinates
 --     * Slot: end Description: The end of the feature in positive 1-based integer coordinates
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "Protein" Description: ""
 --     * Slot: name Description: a human-readable name for an entity
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
@@ -251,6 +363,7 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "VocabularyTerm" Description: "A concept or class in a simple vocabulary."
 --     * Slot: name Description: a human-readable name for an entity
 --     * Slot: abbreviation Description: 
@@ -261,6 +374,7 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "Vocabulary" Description: "A set of VocabularyTerm objects."
 --     * Slot: name Description: a human-readable name for an entity
 --     * Slot: vocabulary_description Description: The free text description of a Vocabulary including its intended use.
@@ -270,6 +384,7 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "OntologyTerm" Description: "A concept or class in an ontology, vocabulary or thesaurus. Note, ontology terms can be found in multiple ontologies (ie: mireoting). defining_slots helps define an alternative key for ontology terms."
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -278,6 +393,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "DOTerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -286,6 +407,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "ECOTerm" Description: ""
 --     * Slot: abbreviation Description: Letter code used by curators to refer to the ECO term.
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
@@ -295,6 +422,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "NCBITaxonTerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -303,6 +436,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "FBCVTerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -311,6 +450,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "GOTerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -319,6 +464,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "ROTerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -327,6 +478,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "MITerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -335,6 +492,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "MMOTerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -343,6 +506,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "MMUSDVTerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -351,6 +520,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "SOTerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -359,6 +534,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "XBEDTerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -367,6 +548,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "CHEBITerm" Description: ""
 --     * Slot: inchi Description: InChi style description of the molecule
 --     * Slot: inchi_key Description: InChi key description of the molecule
@@ -380,6 +567,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "StageTerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -388,6 +581,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "FBDVTerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -396,6 +595,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "WBLSTerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -404,6 +609,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "XBSTerm" Description: "The Xenbase anatomy ontology XAO is home to Xenopus anatomy terms as well as Xenopus developmental life stage terms, differentiated by namespace. The anatomy term class in LinkML will be named 'XBATerm' for Xenbase Anatomy Term and life stage terms will be named 'XBSTerm' for Xenbase Stage Term."
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -412,6 +623,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "ZFSTerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -420,6 +637,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "ExperimentalConditionOntologyTerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -428,6 +651,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "ZECOTerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -436,6 +665,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "XCOTerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -444,6 +679,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "AnatomicalTerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -452,6 +693,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "CLTerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -460,6 +707,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "EMAPATerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -468,6 +721,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "DAOTerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -476,6 +735,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "MATerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -484,6 +749,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "UBERONTerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -492,6 +763,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "WBBTTerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -500,6 +777,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "XBATerm" Description: "The Xenbase anatomy ontology XAO is home to Xenopus anatomy terms as well as Xenopus developmental life stage terms, differentiated by namespace. The anatomy term class in LinkML will be named 'XBATerm' for Xenbase Anatomy Term and life stage terms will be named 'XBSTerm' for Xenbase Stage Term."
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -508,6 +791,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "ZFATerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -516,6 +805,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "PhenotypeTerm" Description: "An ontology term representing a characteristic of an organism. This may or may not be expressed as a difference in comparison to a reference organism."
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -524,6 +819,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "XPOTerm" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
@@ -532,6 +833,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "ChemicalTerm" Description: "An ontology term representing a chemical or molecule"
 --     * Slot: inchi Description: InChi style description of the molecule
 --     * Slot: inchi_key Description: InChi key description of the molecule
@@ -545,6 +852,12 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "XSMOTerm" Description: ""
 --     * Slot: inchi Description: InChi style description of the molecule
 --     * Slot: inchi_key Description: InChi key description of the molecule
@@ -558,12 +871,19 @@
 --     * Slot: type Description: 
 --     * Slot: is_obsolete Description: Entity is no longer current.
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "Molecule" Description: "Molecules as described by WormBase"
 --     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: inchi Description: InChi style description of the molecule
 --     * Slot: inchi_key Description: InChi key description of the molecule
 --     * Slot: iupac Description: IUPAC name of the molecule
@@ -597,6 +917,7 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: Ingest_id Description: Autocreated FK slot
 --     * Slot: parent_cell_line_id Description: Parental cell line of alleles made in embryonic stem cells
 -- # Class: "AlleleGenomicEntityAssociation" Description: "Association between an allele and a genomic entity"
@@ -608,6 +929,7 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
@@ -621,6 +943,7 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
@@ -634,6 +957,7 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
@@ -647,6 +971,7 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
@@ -660,6 +985,7 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
@@ -669,6 +995,12 @@
 --     * Slot: id Description: 
 --     * Slot: reference_type Description: Description of how a reference is associated with an entity, e.g. molecular / origin / other
 --     * Slot: single_reference Description: holds between an object and a single reference
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "Construct" Description: ""
 --     * Slot: name Description: a human-readable name for an entity
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
@@ -678,8 +1010,15 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "CellLine" Description: "Dummy cell line class"
 --     * Slot: id Description: 
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "SequenceTargetingReagent" Description: ""
 --     * Slot: name Description: a human-readable name for an entity
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
@@ -689,17 +1028,30 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: Ingest_id Description: Autocreated FK slot
 -- # Class: "SequenceTargetingReagentToGeneAssociation" Description: "the relationship between a Sequence Targeting Reagent and its targeted genes."
 --     * Slot: id Description: 
 --     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "ConstructComponentAssociation" Description: ""
 --     * Slot: id Description: 
 --     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "ConstructComponent" Description: ""
 --     * Slot: symbol Description: Symbol for a particular thing
 --     * Slot: name Description: a human-readable name for an entity
@@ -710,6 +1062,7 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "AffectedGenomicModel" Description: "Includes inbred strains, stocks, disease models and mutant genotypes"
 --     * Slot: subtype Description: Subtype of affected genomic model
 --     * Slot: parental_populations Description: 
@@ -722,11 +1075,18 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: Ingest_id Description: Autocreated FK slot
 -- # Class: "AffectedGenomicModelComponent" Description: "Allele that affects the model and its zygosity"
 --     * Slot: id Description: 
 --     * Slot: has_allele Description: 
 --     * Slot: zygosity Description: GENO onotology ID for allele zygosity
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "Variant" Description: "A DNA, RNA or protein/polypeptide sequence that differs relative to a designated reference sequence.  The sequence occurs at a single position or in a range of contiguous nucleotides or amino acids."
 --     * Slot: variant_type Description: SOTerm describing the type of variant. In practice, variant type will be limited to a subset of the SO specified in an Alliance controlled vocabulary in order to maintain consistency.
 --     * Slot: source_general_consequence Description: SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference when no transcript ID is provided. Since a curator would determine variant location and consequences relative to at least one specific genome assembly, transcript and/or polypeptide, no slot for curated general consequence is provided.
@@ -739,10 +1099,17 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: Ingest_id Description: Autocreated FK slot
 -- # Class: "SourceVariantLocation" Description: "Links a paper to the variant locations described in that paper"
 --     * Slot: id Description: 
 --     * Slot: single_reference Description: holds between an object and a single reference
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "VariantLocation" Description: "Base class linking a variant to a position on a genomic entity and the resulting consequence to the sequence and/or function of that genomic entity. Slots are provided for data taken from a source publication or data load and for data resulting from manual curation. Where the values are the same, the curator has confirmed the information from the source.  In other cases, the curator's analysis has resulted in different values, for instance, if the assembly is different, the source did not specify the transcript or protein isoform, the definition of the transcript or protein isoform used by the source has changed, or if there was an error in the source data."
 --     * Slot: id Description: 
 --     * Slot: evidence_code Description: 
@@ -752,6 +1119,12 @@
 --     * Slot: reference_sequence Description: Reference sequence of genome or genomic entity at position of aligned variant.
 --     * Slot: variant_sequence Description: Sequence that differs from the reference sequence of genome or genomic entity at position of variant, as specified by curator.
 --     * Slot: consequence Description: SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "VariantGenomeLocation" Description: "Links a variant to a genomic position and the resulting consequence to the sequence and/or function. In practice, functional consequences for variants which overlap genes are not generally provided at the genome level but rather are calculated and annotated relative to a specific transcript or protein isoform."
 --     * Slot: id Description: 
 --     * Slot: assembly Description: Assembly to which variant is aligned.
@@ -763,6 +1136,12 @@
 --     * Slot: reference_sequence Description: Reference sequence of genome or genomic entity at position of aligned variant.
 --     * Slot: variant_sequence Description: Sequence that differs from the reference sequence of genome or genomic entity at position of variant, as specified by curator.
 --     * Slot: consequence Description: SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "VariantTranscriptLocation" Description: "Links a variant to a position on a specified transcript and the resulting consequence to the sequence and/or function of that transcript."
 --     * Slot: id Description: 
 --     * Slot: transcript Description: Transcript associated with variant and for which a specific location and consequence of that variant is provided, as specified at source.  Multivalued=false for this slot because although a variant can have multiple VariantTranscriptLocation stanzas, each stanza will have one and only one source transcript ID.
@@ -773,6 +1152,12 @@
 --     * Slot: reference_sequence Description: Reference sequence of genome or genomic entity at position of aligned variant.
 --     * Slot: variant_sequence Description: Sequence that differs from the reference sequence of genome or genomic entity at position of variant, as specified by curator.
 --     * Slot: consequence Description: SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "VariantPolypeptideLocation" Description: "Links a variant to a position on a specified polypeptide and the resulting consequence to the sequence and/or function of that polypeptide."
 --     * Slot: id Description: 
 --     * Slot: polypeptide Description: Transcript associated with variant and for which a specific location and consequence of that variant is provided, as specified by curator. Multivalued=false for this slot because although a variant can have multiple VariantTranscriptLocation stanzas, each stanza will have one and only one curated transcript ID.
@@ -783,6 +1168,12 @@
 --     * Slot: reference_sequence Description: Reference sequence of genome or genomic entity at position of aligned variant.
 --     * Slot: variant_sequence Description: Sequence that differs from the reference sequence of genome or genomic entity at position of variant, as specified by curator.
 --     * Slot: consequence Description: SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "Figure" Description: "An entity representing a figure or table in a publication."
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: single_reference Description: holds between an object and a single reference
@@ -793,8 +1184,15 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "File" Description: "A dummy object."
 --     * Slot: id Description: 
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "Image" Description: "The set of files and metadata that constitute an image."
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: associated_with_figure Description: The figure to which the image belongs.
@@ -809,6 +1207,7 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: image_file_id Description: The file representing the full-sized version of this image.
 --     * Slot: image_medium_file_id Description: The file representing a medium-sized version of this image.
 --     * Slot: image_thumbnail_file_id Description: The file representing the thumbnail of this image.
@@ -825,14 +1224,39 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "Agent" Description: "An individual, group, organization or project that provides information and/or materials."
 --     * Slot: id Description: 
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "Organization" Description: ""
 --     * Slot: id Description: 
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "Laboratory" Description: ""
 --     * Slot: id Description: 
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "Company" Description: ""
 --     * Slot: id Description: 
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "Person" Description: ""
 --     * Slot: last_name Description: last (family) name of a person
 --     * Slot: middle_name Description: middle names of a person
@@ -840,6 +1264,12 @@
 --     * Slot: orcid Description: Open Researcher and Contributor ID
 --     * Slot: mod_entity_id Description: The model organism database (MOD) identifier/curie for the object
 --     * Slot: unique_id Description: A non-curie unique identifier for a thing.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "LoggedInPerson" Description: ""
 --     * Slot: okta_id Description: The Okta identifier for the person registered in Okta for user authentication
 --     * Slot: okta_email Description: The email address of the LoggedInPerson registered with Okta for user authentication
@@ -849,6 +1279,12 @@
 --     * Slot: orcid Description: Open Researcher and Contributor ID
 --     * Slot: mod_entity_id Description: The model organism database (MOD) identifier/curie for the object
 --     * Slot: unique_id Description: A non-curie unique identifier for a thing.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "Resource" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: title Description: the title of the publication
@@ -865,58 +1301,63 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "PhenotypeAnnotation" Description: "An annotation asserting an association between a biological entity and a phenotype supported by evidence."
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: single_reference Description: The reference in which the phenotype association was asserted/reported.
 --     * Slot: phenotype_term Description: 
+--     * Slot: subject Description: The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, by direct curation.
+--     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
+--     * Slot: object Description: phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed statement of the phenotype from a post-composed terminology
 --     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: creation_date Description: The date of curation at the source (MOD) database.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
---     * Slot: subject Description: The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, by direct curation.
---     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
---     * Slot: object Description: phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed statement of the phenotype from a post-composed terminology
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "GenePhenotypeAnnotation" Description: "An annotation asserting an association between a gene and a phenotype supported by evidence."
 --     * Slot: sgd_strain_background Description: 
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: single_reference Description: holds between an object and a single reference
 --     * Slot: phenotype_term Description: 
+--     * Slot: subject Description: The gene to which the phenotype ontology term is associated.
+--     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
+--     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
---     * Slot: subject Description: The gene to which the phenotype ontology term is associated.
---     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
---     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "AllelePhenotypeAnnotation" Description: "An annotation asserting an association between an allele and a phenotype supported by evidence."
 --     * Slot: inferred_gene Description: The gene to which the phenotype is inferred to be associated.
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: single_reference Description: holds between an object and a single reference
 --     * Slot: phenotype_term Description: 
+--     * Slot: subject Description: The allele to which the phenotype ontology term is associated.
+--     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
+--     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
---     * Slot: subject Description: The allele to which the phenotype ontology term is associated.
---     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
---     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "AGMPhenotypeAnnotation" Description: "An annotation asserting an association between an AGM and a phenotype supported by evidence."
 --     * Slot: inferred_allele Description: The allele to which the phenotype is inferred to be associated.
 --     * Slot: inferred_gene Description: The gene to which the phenotype is inferred to be associated.
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: single_reference Description: holds between an object and a single reference
 --     * Slot: phenotype_term Description: 
+--     * Slot: subject Description: The AGM to which the phenotype ontology term is associated.
+--     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
+--     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
---     * Slot: subject Description: The AGM to which the phenotype ontology term is associated.
---     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
---     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "DiseaseAnnotation" Description: "An annotation asserting an association between a biological entity and a disease supported by evidence."
 --     * Slot: id Description: 
 --     * Slot: unique_id Description: Unique identifer for the disease annotation.  Will be generated at AGR if not submitted by the MOD.
@@ -929,14 +1370,15 @@
 --     * Slot: secondary_data_provider Description: Organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source
 --     * Slot: disease_genetic_modifier Description: Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
 --     * Slot: disease_genetic_modifier_relation Description: A relation describing how the genetic modifier modifies the disease model. Submitted value should be a vocabulary term from the 'Disease genetic modifiers' vocabulary
+--     * Slot: subject Description: The biological entity to which the disease ontology term is associated.
+--     * Slot: predicate Description: Constrains the disease subject, associationType and inferredGeneAssociation.
+--     * Slot: object Description: The disease ontology term.
 --     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
---     * Slot: subject Description: The biological entity to which the disease ontology term is associated.
---     * Slot: predicate Description: Constrains the disease subject, associationType and inferredGeneAssociation.
---     * Slot: object Description: The disease ontology term.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "GeneDiseaseAnnotation" Description: "An annotation asserting an association between a gene and a disease supported by evidence."
 --     * Slot: id Description: 
 --     * Slot: sgd_strain_background Description: 
@@ -950,14 +1392,15 @@
 --     * Slot: secondary_data_provider Description: Organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source
 --     * Slot: disease_genetic_modifier Description: Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
 --     * Slot: disease_genetic_modifier_relation Description: A relation describing how the genetic modifier modifies the disease model. Submitted value should be a vocabulary term from the 'Disease genetic modifiers' vocabulary
+--     * Slot: subject Description: The gene to which the disease ontology term is associated.
+--     * Slot: predicate Description: The relationship between gene and disease. Submitted value should be a vocabulary term from the 'Gene disease relations' vocabulary
+--     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
---     * Slot: subject Description: The gene to which the disease ontology term is associated.
---     * Slot: predicate Description: The relationship between gene and disease. Submitted value should be a vocabulary term from the 'Gene disease relations' vocabulary
---     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: Ingest_id Description: Autocreated FK slot
 -- # Class: "AlleleDiseaseAnnotation" Description: "An annotation asserting an association between an allele and a disease supported by evidence."
 --     * Slot: id Description: 
@@ -972,14 +1415,15 @@
 --     * Slot: secondary_data_provider Description: Organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source
 --     * Slot: disease_genetic_modifier Description: Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
 --     * Slot: disease_genetic_modifier_relation Description: A relation describing how the genetic modifier modifies the disease model. Submitted value should be a vocabulary term from the 'Disease genetic modifiers' vocabulary
+--     * Slot: subject Description: The allele to which the disease ontology term is associated.
+--     * Slot: predicate Description: The relationship between allele and disease. Submitted value should be a vocabulary term from the 'Allele disease relations' vocabulary
+--     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
---     * Slot: subject Description: The allele to which the disease ontology term is associated.
---     * Slot: predicate Description: The relationship between allele and disease. Submitted value should be a vocabulary term from the 'Allele disease relations' vocabulary
---     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: Ingest_id Description: Autocreated FK slot
 -- # Class: "AGMDiseaseAnnotation" Description: "An annotation asserting an association between an AGM and a disease supported by evidence."
 --     * Slot: id Description: 
@@ -995,14 +1439,15 @@
 --     * Slot: secondary_data_provider Description: Organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source
 --     * Slot: disease_genetic_modifier Description: Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
 --     * Slot: disease_genetic_modifier_relation Description: A relation describing how the genetic modifier modifies the disease model. Submitted value should be a vocabulary term from the 'Disease genetic modifiers' vocabulary
+--     * Slot: subject Description: The AGM to which the disease ontology term is associated.
+--     * Slot: predicate Description: The relationship between AGM and disease. Submitted value should be a vocabulary term from the 'AGM disease relations' vocabulary
+--     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
---     * Slot: subject Description: The AGM to which the disease ontology term is associated.
---     * Slot: predicate Description: The relationship between AGM and disease. Submitted value should be a vocabulary term from the 'AGM disease relations' vocabulary
---     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: Ingest_id Description: Autocreated FK slot
 -- # Class: "ExperimentalCondition" Description: "The environmental context in which an experiment is carried out. This may (e.g. drug treatment) or may not (e.g. standard conditions) directly influence the outcome of the experiment."
 --     * Slot: id Description: 
@@ -1017,6 +1462,12 @@
 --     * Slot: condition_gene_ontology Description: Gene Ontology id used in subset of condition types.
 --     * Slot: condition_taxon Description: NCBITaxon ontology id used in subset of condition types like 'bacterial infection'.
 --     * Slot: condition_chemical Description: ChEBI or molecular ontology id used in subset of condition terms.  ie: the specific chemcial used in conjunction with 'chemical condition'.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: ConditionRelation_id Description: Autocreated FK slot
 -- # Class: "ConditionRelation" Description: "A pairing of an experimental condition relation (i.e. has_condition) with a list of 1 or more ExperimentalCondition objects. Annotation objects can connect directly to a set of 0 or more of these ConditionRelation objects via a 'condition_relations' slot to express the experimental conditions relevant to the annotation."
 --     * Slot: id Description: 
@@ -1024,6 +1475,12 @@
 --     * Slot: handle Description: A slot pointing to a free-text alias or 'handle' for a data object, such as a reference-specific alias for a data object used while curating.
 --     * Slot: single_reference Description: holds between an object and a single reference
 --     * Slot: condition_relation_type Description: Submitted value should be a vocabulary term from the 'Condition relation types' vocabulary
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: ExpressionExperiment_curie Description: Autocreated FK slot
 --     * Slot: PhenotypeAnnotation_curie Description: Autocreated FK slot
 --     * Slot: GenePhenotypeAnnotation_curie Description: Autocreated FK slot
@@ -1041,19 +1498,21 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "Antibody" Description: "Immunoglobulin proteins that bind specific molecule(s). Can be used experimentally for the purposes of detection or purification."
 --     * Slot: name Description: Publicly displayed name of the antibody. It often includes the name of the antibody target: e.g., anti-WNT-4. It may also include the host species and antibody clonality.
 --     * Slot: antigen_taxon Description: Holds between an Antibody and the species from which the antigen originates (as represented by taxon).
 --     * Slot: clonality Description: The clonality of the antibody: e.g., monoclonal.
 --     * Slot: heavy_chain_isotype Description: The isotype of the antibody heavy chain: e.g., IgA.
 --     * Slot: light_chain_isotype Description: The isotype of the antibody light chain: e.g., i4.
+--     * Slot: curie Description: A unique identifier for the antibody: e.g., WBAntibody0000001.
+--     * Slot: taxon Description: The species in which the antibody was raised: e.g., mouse, rabbit, guinea pig, goat, camel, etc.
 --     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
---     * Slot: curie Description: A unique identifier for the antibody: e.g., WBAntibody0000001.
---     * Slot: taxon Description: The species in which the antibody was raised: e.g., mouse, rabbit, guinea pig, goat, camel, etc.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "DNAClone" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: taxon Description: The taxon from which the biological entity derives.
@@ -1062,6 +1521,7 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "RNAClone" Description: ""
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: taxon Description: The taxon from which the biological entity derives.
@@ -1070,6 +1530,7 @@
 --     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "Ingest" Description: ""
 --     * Slot: id Description: 
 -- # Class: "GeneToGeneAssociation" Description: "abstract parent class for different kinds of gene-gene or gene product to gene product relationships. Includes homology and interaction."
@@ -1077,6 +1538,12 @@
 --     * Slot: subject Description: the subject gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa.
 --     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
 --     * Slot: object Description: the object gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "GeneInteraction" Description: "An interaction between two genes or gene products; this may be a physical molecular interaction between gene products (e.g. protein-protein interactions), or may be a genetic interaction between genes (e.g. phenotypic suppression)"
 --     * Slot: curie Description: The unique primary identifier for the interaction. This should be the source (curation) database identifier, or if that is not available then the aggregation database identifier (e.g. IMEx)
 --     * Slot: interaction_data_provider Description: The interaction database that curated the interaction. e.g. BioGRID
@@ -1086,6 +1553,12 @@
 --     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "GeneMolecularInteraction" Description: "A physical molecular interaction between gene products (e.g. protein-protein interactions or protein-RNA interactions) or between genes and DNA-binding factors (e.g. protein-DNA interactions)"
 --     * Slot: aggregation_database Description: The database that collected the interaction annotation from another resource and aggregated it into a consolidated resource. e.g. IMEx
 --     * Slot: detection_method Description: The experimental method used to identify the physical interaction between two molecules
@@ -1097,6 +1570,12 @@
 --     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "GeneGeneticInteraction" Description: "A genetic interaction between genes (e.g. phenotypic suppression)"
 --     * Slot: interactor_A_genetic_perturbation Description: 
 --     * Slot: interactor_B_genetic_perturbation Description: 
@@ -1108,6 +1587,12 @@
 --     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "VariantConsequence" Description: "Parent class for gene- and transcript-level consequences"
 --     * Slot: id Description: 
 --     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
@@ -1118,6 +1603,12 @@
 --     * Slot: polyphen_prediction Description: PolyPhen-2 prediction
 --     * Slot: sift_score Description: SIFT score between 0 and 1
 --     * Slot: sift_prediction Description: SIFT prediction
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 -- # Class: "VariantGeneConsequence" Description: "Class for gene-level VEP results"
 --     * Slot: id Description: 
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
@@ -1127,6 +1618,12 @@
 --     * Slot: polyphen_prediction Description: PolyPhen-2 prediction
 --     * Slot: sift_score Description: SIFT score between 0 and 1
 --     * Slot: sift_prediction Description: SIFT prediction
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: subject_id Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 -- # Class: "VariantTranscriptConsequence" Description: "Class for transcript-level VEP results"
 --     * Slot: id Description: 
@@ -1149,6 +1646,12 @@
 --     * Slot: polyphen_prediction Description: PolyPhen-2 prediction
 --     * Slot: sift_score Description: SIFT score between 0 and 1
 --     * Slot: sift_prediction Description: SIFT prediction
+--     * Slot: table_key Description: The primary key for a specific table entry, unique for that table.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: creation_date Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_last_modified Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: subject_id Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 -- # Class: "ExpressionExperiment_reagents_used" Description: ""
 --     * Slot: ExpressionExperiment_curie Description: Autocreated FK slot
@@ -1877,6 +2380,27 @@
 --     * Slot: GeneGeneticInteraction_curie Description: Autocreated FK slot
 --     * Slot: interactor_B_role Description: 
 
+CREATE TABLE "Person" (
+	last_name TEXT, 
+	middle_name TEXT, 
+	first_name TEXT, 
+	orcid TEXT, 
+	mod_entity_id TEXT, 
+	unique_id TEXT, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (unique_id), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "Ingest" (
+	id INTEGER, 
+	PRIMARY KEY (id)
+);
 CREATE TABLE "Reference" (
 	abstract TEXT, 
 	category VARCHAR(26), 
@@ -1899,7 +2423,14 @@ CREATE TABLE "Reference" (
 	resource_id INTEGER, 
 	title TEXT, 
 	volume TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "MeshDetail" (
 	id INTEGER, 
@@ -1907,30 +2438,70 @@ CREATE TABLE "MeshDetail" (
 	reference_id INTEGER NOT NULL, 
 	heading_term TEXT NOT NULL, 
 	qualifier_term TEXT, 
-	PRIMARY KEY (id)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
-CREATE TABLE "Entity" (
+CREATE TABLE "AuditedObject" (
 	id INTEGER, 
-	PRIMARY KEY (id)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Synonym" (
 	id INTEGER, 
 	synonym TEXT, 
-	PRIMARY KEY (id)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "EntityStatement" (
 	id INTEGER, 
 	statement_subject TEXT, 
 	statement_type TEXT, 
 	statement_text TEXT, 
-	PRIMARY KEY (id)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Association" (
 	id INTEGER, 
 	subject TEXT NOT NULL, 
 	predicate TEXT NOT NULL, 
 	object TEXT NOT NULL, 
-	PRIMARY KEY (id)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "ExternalDatabaseLink" (
 	id INTEGER, 
@@ -1940,15 +2511,68 @@ CREATE TABLE "ExternalDatabaseLink" (
 	url_suffix TEXT, 
 	prefix_page TEXT, 
 	prefix_order TEXT, 
-	PRIMARY KEY (id)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Chromosome" (
 	curie TEXT NOT NULL, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Assembly" (
 	curie TEXT NOT NULL, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "VocabularyTerm" (
+	name TEXT NOT NULL, 
+	abbreviation TEXT, 
+	definition TEXT, 
+	is_obsolete BOOLEAN, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (name), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "Vocabulary" (
+	name TEXT NOT NULL, 
+	vocabulary_description TEXT, 
+	is_obsolete BOOLEAN, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (name), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "OntologyTerm" (
 	curie TEXT NOT NULL, 
@@ -1958,7 +2582,15 @@ CREATE TABLE "OntologyTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "DOTerm" (
 	curie TEXT NOT NULL, 
@@ -1968,7 +2600,15 @@ CREATE TABLE "DOTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "ECOTerm" (
 	abbreviation TEXT, 
@@ -1979,7 +2619,15 @@ CREATE TABLE "ECOTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "NCBITaxonTerm" (
 	curie TEXT NOT NULL, 
@@ -1989,7 +2637,15 @@ CREATE TABLE "NCBITaxonTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "FBCVTerm" (
 	curie TEXT NOT NULL, 
@@ -1999,7 +2655,15 @@ CREATE TABLE "FBCVTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "GOTerm" (
 	curie TEXT NOT NULL, 
@@ -2009,7 +2673,15 @@ CREATE TABLE "GOTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "ROTerm" (
 	curie TEXT NOT NULL, 
@@ -2019,7 +2691,15 @@ CREATE TABLE "ROTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "MITerm" (
 	curie TEXT NOT NULL, 
@@ -2029,7 +2709,15 @@ CREATE TABLE "MITerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "MMOTerm" (
 	curie TEXT NOT NULL, 
@@ -2039,7 +2727,15 @@ CREATE TABLE "MMOTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "MMUSDVTerm" (
 	curie TEXT NOT NULL, 
@@ -2049,7 +2745,15 @@ CREATE TABLE "MMUSDVTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "SOTerm" (
 	curie TEXT NOT NULL, 
@@ -2059,7 +2763,15 @@ CREATE TABLE "SOTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "XBEDTerm" (
 	curie TEXT NOT NULL, 
@@ -2069,7 +2781,15 @@ CREATE TABLE "XBEDTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "CHEBITerm" (
 	inchi TEXT, 
@@ -2084,7 +2804,15 @@ CREATE TABLE "CHEBITerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "StageTerm" (
 	curie TEXT NOT NULL, 
@@ -2094,7 +2822,15 @@ CREATE TABLE "StageTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "FBDVTerm" (
 	curie TEXT NOT NULL, 
@@ -2104,7 +2840,15 @@ CREATE TABLE "FBDVTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "WBLSTerm" (
 	curie TEXT NOT NULL, 
@@ -2114,7 +2858,15 @@ CREATE TABLE "WBLSTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "XBSTerm" (
 	curie TEXT NOT NULL, 
@@ -2124,7 +2876,15 @@ CREATE TABLE "XBSTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "ZFSTerm" (
 	curie TEXT NOT NULL, 
@@ -2134,7 +2894,15 @@ CREATE TABLE "ZFSTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "ExperimentalConditionOntologyTerm" (
 	curie TEXT NOT NULL, 
@@ -2144,7 +2912,15 @@ CREATE TABLE "ExperimentalConditionOntologyTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "ZECOTerm" (
 	curie TEXT NOT NULL, 
@@ -2154,7 +2930,15 @@ CREATE TABLE "ZECOTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "XCOTerm" (
 	curie TEXT NOT NULL, 
@@ -2164,7 +2948,15 @@ CREATE TABLE "XCOTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "AnatomicalTerm" (
 	curie TEXT NOT NULL, 
@@ -2174,7 +2966,15 @@ CREATE TABLE "AnatomicalTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "CLTerm" (
 	curie TEXT NOT NULL, 
@@ -2184,7 +2984,15 @@ CREATE TABLE "CLTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "EMAPATerm" (
 	curie TEXT NOT NULL, 
@@ -2194,7 +3002,15 @@ CREATE TABLE "EMAPATerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "DAOTerm" (
 	curie TEXT NOT NULL, 
@@ -2204,7 +3020,15 @@ CREATE TABLE "DAOTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "MATerm" (
 	curie TEXT NOT NULL, 
@@ -2214,7 +3038,15 @@ CREATE TABLE "MATerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "UBERONTerm" (
 	curie TEXT NOT NULL, 
@@ -2224,7 +3056,15 @@ CREATE TABLE "UBERONTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "WBBTTerm" (
 	curie TEXT NOT NULL, 
@@ -2234,7 +3074,15 @@ CREATE TABLE "WBBTTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "XBATerm" (
 	curie TEXT NOT NULL, 
@@ -2244,7 +3092,15 @@ CREATE TABLE "XBATerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "ZFATerm" (
 	curie TEXT NOT NULL, 
@@ -2254,7 +3110,15 @@ CREATE TABLE "ZFATerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "PhenotypeTerm" (
 	curie TEXT NOT NULL, 
@@ -2264,7 +3128,15 @@ CREATE TABLE "PhenotypeTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "XPOTerm" (
 	curie TEXT NOT NULL, 
@@ -2274,7 +3146,15 @@ CREATE TABLE "XPOTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "ChemicalTerm" (
 	inchi TEXT, 
@@ -2289,7 +3169,15 @@ CREATE TABLE "ChemicalTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "XSMOTerm" (
 	inchi TEXT, 
@@ -2304,230 +3192,23 @@ CREATE TABLE "XSMOTerm" (
 	type TEXT, 
 	is_obsolete BOOLEAN, 
 	namespace TEXT, 
-	PRIMARY KEY (curie)
-);
-CREATE TABLE "CellLine" (
-	id INTEGER, 
-	PRIMARY KEY (id)
-);
-CREATE TABLE "File" (
-	id INTEGER, 
-	PRIMARY KEY (id)
-);
-CREATE TABLE "Agent" (
-	id INTEGER, 
-	PRIMARY KEY (id)
-);
-CREATE TABLE "Organization" (
-	id INTEGER, 
-	PRIMARY KEY (id)
-);
-CREATE TABLE "Laboratory" (
-	id INTEGER, 
-	PRIMARY KEY (id)
-);
-CREATE TABLE "Company" (
-	id INTEGER, 
-	PRIMARY KEY (id)
-);
-CREATE TABLE "Person" (
-	last_name TEXT, 
-	middle_name TEXT, 
-	first_name TEXT, 
-	orcid TEXT, 
-	mod_entity_id TEXT, 
-	unique_id TEXT, 
-	PRIMARY KEY (unique_id)
-);
-CREATE TABLE "LoggedInPerson" (
-	okta_id TEXT NOT NULL, 
-	okta_email TEXT NOT NULL, 
-	last_name TEXT, 
-	middle_name TEXT, 
-	first_name TEXT, 
-	orcid TEXT, 
-	mod_entity_id TEXT, 
-	unique_id TEXT, 
-	PRIMARY KEY (unique_id)
-);
-CREATE TABLE "Ingest" (
-	id INTEGER, 
-	PRIMARY KEY (id)
-);
-CREATE TABLE "VariantConsequence" (
-	id INTEGER, 
-	subject TEXT NOT NULL, 
-	object TEXT NOT NULL, 
-	vep_consequence VARCHAR(8), 
-	vep_impact TEXT, 
-	polyphen_score FLOAT, 
-	polyphen_prediction VARCHAR(17), 
-	sift_score FLOAT, 
-	sift_prediction VARCHAR(11), 
-	PRIMARY KEY (id)
-);
-CREATE TABLE "TemporalContext" (
-	id INTEGER, 
-	developmental_stage_start TEXT, 
-	developmental_stage_stop TEXT, 
-	age TEXT, 
-	temporal_qualifiers VARCHAR(15), 
-	stage_uncertainty TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(developmental_stage_start) REFERENCES "StageTerm" (curie), 
-	FOREIGN KEY(developmental_stage_stop) REFERENCES "StageTerm" (curie)
-);
-CREATE TABLE "AnatomicalSite" (
-	id INTEGER, 
-	anatomical_structure TEXT, 
-	anatomical_substructure TEXT, 
-	cellular_component TEXT, 
-	spatial_qualifiers VARCHAR(35), 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(anatomical_structure) REFERENCES "AnatomicalTerm" (curie), 
-	FOREIGN KEY(anatomical_substructure) REFERENCES "AnatomicalTerm" (curie), 
-	FOREIGN KEY(cellular_component) REFERENCES "GOTerm" (curie)
-);
-CREATE TABLE "AuthorReference" (
-	id INTEGER, 
-	corresponding_author TEXT, 
-	first_name TEXT, 
-	middle_name TEXT, 
-	last_name TEXT, 
-	initials TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(corresponding_author) REFERENCES "Reference" (curie), 
-	FOREIGN KEY(initials) REFERENCES "Reference" (curie)
-);
-CREATE TABLE "BiologicalEntity" (
-	curie TEXT NOT NULL, 
-	taxon TEXT NOT NULL, 
 	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
+	created_by TEXT, 
 	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
+	modified_by TEXT, 
 	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (curie), 
-	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
-	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
-);
-CREATE TABLE "GenomicEntity" (
-	name TEXT, 
-	curie TEXT NOT NULL, 
-	taxon TEXT NOT NULL, 
-	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
-	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
-	date_last_modified DATE, 
-	PRIMARY KEY (curie), 
-	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
-	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
-);
-CREATE TABLE "Transcript" (
-	name TEXT, 
-	curie TEXT NOT NULL, 
-	taxon TEXT NOT NULL, 
-	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
-	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
-	date_last_modified DATE, 
-	PRIMARY KEY (curie), 
-	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
-	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
-);
-CREATE TABLE "Gene" (
-	symbol TEXT NOT NULL, 
-	gene_synopsis TEXT, 
-	"gene_synopsis_URL" TEXT, 
-	gene_type TEXT, 
-	automated_gene_description TEXT, 
-	name TEXT, 
-	curie TEXT NOT NULL, 
-	taxon TEXT NOT NULL, 
-	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
-	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
-	date_last_modified DATE, 
-	"Ingest_id" TEXT, 
-	PRIMARY KEY (curie), 
-	FOREIGN KEY(gene_type) REFERENCES "SOTerm" (curie), 
-	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
-	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY("Ingest_id") REFERENCES "Ingest" (id)
-);
-CREATE TABLE "AuditedObject" (
-	id INTEGER, 
-	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
-	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
-	date_last_modified DATE, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
-);
-CREATE TABLE "EntitySynonym" (
-	id INTEGER, 
-	subject TEXT NOT NULL, 
-	predicate VARCHAR(7) NOT NULL, 
-	object_id TEXT NOT NULL, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(object_id) REFERENCES "Synonym" (id)
-);
-CREATE TABLE "Protein" (
-	name TEXT, 
-	curie TEXT NOT NULL, 
-	taxon TEXT NOT NULL, 
-	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
-	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
-	date_last_modified DATE, 
-	PRIMARY KEY (curie), 
-	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
-	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
-);
-CREATE TABLE "VocabularyTerm" (
-	name TEXT NOT NULL, 
-	abbreviation TEXT, 
-	definition TEXT, 
-	is_obsolete BOOLEAN, 
-	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
-	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
-	date_last_modified DATE, 
-	PRIMARY KEY (name), 
-	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
-);
-CREATE TABLE "Vocabulary" (
-	name TEXT NOT NULL, 
-	vocabulary_description TEXT, 
-	is_obsolete BOOLEAN, 
-	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
-	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
-	date_last_modified DATE, 
-	PRIMARY KEY (name), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Molecule" (
 	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
+	created_by TEXT, 
 	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
+	modified_by TEXT, 
 	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	inchi TEXT, 
 	inchi_key TEXT, 
 	iupac TEXT, 
@@ -2544,141 +3225,94 @@ CREATE TABLE "Molecule" (
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
-CREATE TABLE "Construct" (
-	name TEXT NOT NULL, 
-	curie TEXT NOT NULL, 
-	taxon TEXT NOT NULL, 
+CREATE TABLE "CellLine" (
+	id INTEGER, 
 	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
+	created_by TEXT, 
 	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
+	modified_by TEXT, 
 	date_last_modified DATE, 
-	PRIMARY KEY (curie), 
-	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (id), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
-CREATE TABLE "SequenceTargetingReagent" (
-	name TEXT NOT NULL, 
-	curie TEXT NOT NULL, 
-	taxon TEXT NOT NULL, 
+CREATE TABLE "File" (
+	id INTEGER, 
 	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
+	created_by TEXT, 
 	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
+	modified_by TEXT, 
 	date_last_modified DATE, 
-	"Ingest_id" TEXT, 
-	PRIMARY KEY (curie), 
-	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
-	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY("Ingest_id") REFERENCES "Ingest" (id)
-);
-CREATE TABLE "ConstructComponent" (
-	symbol TEXT, 
-	name TEXT, 
-	curie TEXT NOT NULL, 
-	taxon TEXT NOT NULL, 
-	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
-	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
-	date_last_modified DATE, 
-	PRIMARY KEY (curie), 
-	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (id), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
-CREATE TABLE "AffectedGenomicModel" (
-	subtype VARCHAR(8) NOT NULL, 
-	parental_populations TEXT, 
-	data_provider TEXT, 
-	name TEXT, 
-	curie TEXT NOT NULL, 
-	taxon TEXT NOT NULL, 
+CREATE TABLE "Agent" (
+	id INTEGER, 
 	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
+	created_by TEXT, 
 	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
+	modified_by TEXT, 
 	date_last_modified DATE, 
-	"Ingest_id" TEXT, 
-	PRIMARY KEY (curie), 
-	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (id), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY("Ingest_id") REFERENCES "Ingest" (id)
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
-CREATE TABLE "Variant" (
-	variant_type TEXT NOT NULL, 
-	source_general_consequence TEXT, 
-	variant_status VARCHAR(7), 
-	name TEXT, 
-	curie TEXT NOT NULL, 
-	taxon TEXT NOT NULL, 
+CREATE TABLE "Organization" (
+	id INTEGER, 
 	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
+	created_by TEXT, 
 	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
+	modified_by TEXT, 
 	date_last_modified DATE, 
-	"Ingest_id" TEXT, 
-	PRIMARY KEY (curie), 
-	FOREIGN KEY(variant_type) REFERENCES "SOTerm" (curie), 
-	FOREIGN KEY(source_general_consequence) REFERENCES "SOTerm" (curie), 
-	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (id), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY("Ingest_id") REFERENCES "Ingest" (id)
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
-CREATE TABLE "SourceVariantLocation" (
+CREATE TABLE "Laboratory" (
 	id INTEGER, 
-	single_reference TEXT NOT NULL, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie)
-);
-CREATE TABLE "VariantLocation" (
-	id INTEGER, 
-	evidence_code TEXT, 
-	single_reference TEXT, 
-	start_position INTEGER, 
-	end_position INTEGER, 
-	reference_sequence TEXT, 
-	variant_sequence TEXT, 
-	consequence TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(evidence_code) REFERENCES "ECOTerm" (curie), 
-	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
-	FOREIGN KEY(consequence) REFERENCES "SOTerm" (curie)
-);
-CREATE TABLE "VariantGenomeLocation" (
-	id INTEGER, 
-	assembly TEXT, 
-	chromosome TEXT, 
-	evidence_code TEXT, 
-	single_reference TEXT, 
-	start_position INTEGER, 
-	end_position INTEGER, 
-	reference_sequence TEXT, 
-	variant_sequence TEXT, 
-	consequence TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(assembly) REFERENCES "Assembly" (curie), 
-	FOREIGN KEY(chromosome) REFERENCES "Chromosome" (curie), 
-	FOREIGN KEY(evidence_code) REFERENCES "ECOTerm" (curie), 
-	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
-	FOREIGN KEY(consequence) REFERENCES "SOTerm" (curie)
-);
-CREATE TABLE "Figure" (
-	curie TEXT NOT NULL, 
-	single_reference TEXT NOT NULL, 
-	label TEXT, 
-	caption TEXT, 
 	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
+	created_by TEXT, 
 	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
+	modified_by TEXT, 
 	date_last_modified DATE, 
-	PRIMARY KEY (curie), 
-	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "Company" (
+	id INTEGER, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "LoggedInPerson" (
+	okta_id TEXT NOT NULL, 
+	okta_email TEXT NOT NULL, 
+	last_name TEXT, 
+	middle_name TEXT, 
+	first_name TEXT, 
+	orcid TEXT, 
+	mod_entity_id TEXT, 
+	unique_id TEXT, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (unique_id), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
@@ -2694,11 +3328,398 @@ CREATE TABLE "Resource" (
 	volume TEXT, 
 	summary TEXT, 
 	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
+	created_by TEXT, 
 	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
+	modified_by TEXT, 
 	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "VariantConsequence" (
+	id INTEGER, 
+	subject TEXT NOT NULL, 
+	object TEXT NOT NULL, 
+	vep_consequence VARCHAR(8), 
+	vep_impact TEXT, 
+	polyphen_score FLOAT, 
+	polyphen_prediction VARCHAR(17), 
+	sift_score FLOAT, 
+	sift_prediction VARCHAR(11), 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "Person_emails" (
+	"Person_unique_id" TEXT, 
+	emails TEXT, 
+	PRIMARY KEY ("Person_unique_id", emails), 
+	FOREIGN KEY("Person_unique_id") REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "Person_old_emails" (
+	"Person_unique_id" TEXT, 
+	old_emails TEXT, 
+	PRIMARY KEY ("Person_unique_id", old_emails), 
+	FOREIGN KEY("Person_unique_id") REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "TemporalContext" (
+	id INTEGER, 
+	developmental_stage_start TEXT, 
+	developmental_stage_stop TEXT, 
+	age TEXT, 
+	temporal_qualifiers VARCHAR(15), 
+	stage_uncertainty TEXT, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(developmental_stage_start) REFERENCES "StageTerm" (curie), 
+	FOREIGN KEY(developmental_stage_stop) REFERENCES "StageTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "AnatomicalSite" (
+	id INTEGER, 
+	anatomical_structure TEXT, 
+	anatomical_substructure TEXT, 
+	cellular_component TEXT, 
+	spatial_qualifiers VARCHAR(35), 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(anatomical_structure) REFERENCES "AnatomicalTerm" (curie), 
+	FOREIGN KEY(anatomical_substructure) REFERENCES "AnatomicalTerm" (curie), 
+	FOREIGN KEY(cellular_component) REFERENCES "GOTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "AuthorReference" (
+	id INTEGER, 
+	corresponding_author TEXT, 
+	first_name TEXT, 
+	middle_name TEXT, 
+	last_name TEXT, 
+	initials TEXT, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(corresponding_author) REFERENCES "Reference" (curie), 
+	FOREIGN KEY(initials) REFERENCES "Reference" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "BiologicalEntity" (
+	curie TEXT NOT NULL, 
+	taxon TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "GenomicEntity" (
+	name TEXT, 
+	curie TEXT NOT NULL, 
+	taxon TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "Transcript" (
+	name TEXT, 
+	curie TEXT NOT NULL, 
+	taxon TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "Gene" (
+	symbol TEXT NOT NULL, 
+	gene_synopsis TEXT, 
+	"gene_synopsis_URL" TEXT, 
+	gene_type TEXT, 
+	automated_gene_description TEXT, 
+	name TEXT, 
+	curie TEXT NOT NULL, 
+	taxon TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	"Ingest_id" TEXT, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(gene_type) REFERENCES "SOTerm" (curie), 
+	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY("Ingest_id") REFERENCES "Ingest" (id)
+);
+CREATE TABLE "Note" (
+	id INTEGER, 
+	free_text TEXT NOT NULL, 
+	note_type TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(note_type) REFERENCES "VocabularyTerm" (name), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "EntitySynonym" (
+	id INTEGER, 
+	subject TEXT NOT NULL, 
+	predicate VARCHAR(7) NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	object_id TEXT NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(object_id) REFERENCES "Synonym" (id)
+);
+CREATE TABLE "Protein" (
+	name TEXT, 
+	curie TEXT NOT NULL, 
+	taxon TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "AssociatedReference" (
+	id INTEGER, 
+	reference_type TEXT NOT NULL, 
+	single_reference TEXT, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(reference_type) REFERENCES "VocabularyTerm" (name), 
+	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "Construct" (
+	name TEXT NOT NULL, 
+	curie TEXT NOT NULL, 
+	taxon TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "SequenceTargetingReagent" (
+	name TEXT NOT NULL, 
+	curie TEXT NOT NULL, 
+	taxon TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	"Ingest_id" TEXT, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY("Ingest_id") REFERENCES "Ingest" (id)
+);
+CREATE TABLE "ConstructComponent" (
+	symbol TEXT, 
+	name TEXT, 
+	curie TEXT NOT NULL, 
+	taxon TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "AffectedGenomicModel" (
+	subtype VARCHAR(8) NOT NULL, 
+	parental_populations TEXT, 
+	data_provider TEXT, 
+	name TEXT, 
+	curie TEXT NOT NULL, 
+	taxon TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	"Ingest_id" TEXT, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY("Ingest_id") REFERENCES "Ingest" (id)
+);
+CREATE TABLE "Variant" (
+	variant_type TEXT NOT NULL, 
+	source_general_consequence TEXT, 
+	variant_status VARCHAR(7), 
+	name TEXT, 
+	curie TEXT NOT NULL, 
+	taxon TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	"Ingest_id" TEXT, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(variant_type) REFERENCES "SOTerm" (curie), 
+	FOREIGN KEY(source_general_consequence) REFERENCES "SOTerm" (curie), 
+	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY("Ingest_id") REFERENCES "Ingest" (id)
+);
+CREATE TABLE "SourceVariantLocation" (
+	id INTEGER, 
+	single_reference TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "VariantLocation" (
+	id INTEGER, 
+	evidence_code TEXT, 
+	single_reference TEXT, 
+	start_position INTEGER, 
+	end_position INTEGER, 
+	reference_sequence TEXT, 
+	variant_sequence TEXT, 
+	consequence TEXT, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(evidence_code) REFERENCES "ECOTerm" (curie), 
+	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
+	FOREIGN KEY(consequence) REFERENCES "SOTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "VariantGenomeLocation" (
+	id INTEGER, 
+	assembly TEXT, 
+	chromosome TEXT, 
+	evidence_code TEXT, 
+	single_reference TEXT, 
+	start_position INTEGER, 
+	end_position INTEGER, 
+	reference_sequence TEXT, 
+	variant_sequence TEXT, 
+	consequence TEXT, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(assembly) REFERENCES "Assembly" (curie), 
+	FOREIGN KEY(chromosome) REFERENCES "Chromosome" (curie), 
+	FOREIGN KEY(evidence_code) REFERENCES "ECOTerm" (curie), 
+	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
+	FOREIGN KEY(consequence) REFERENCES "SOTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "Figure" (
+	curie TEXT NOT NULL, 
+	single_reference TEXT NOT NULL, 
+	label TEXT, 
+	caption TEXT, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
@@ -2706,10 +3727,11 @@ CREATE TABLE "Reagent" (
 	curie TEXT NOT NULL, 
 	taxon TEXT NOT NULL, 
 	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
+	created_by TEXT, 
 	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
+	modified_by TEXT, 
 	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
@@ -2721,27 +3743,29 @@ CREATE TABLE "Antibody" (
 	clonality VARCHAR(11) NOT NULL, 
 	heavy_chain_isotype VARCHAR(5), 
 	light_chain_isotype VARCHAR(2), 
-	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
-	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
-	date_last_modified DATE, 
 	curie TEXT NOT NULL, 
 	taxon TEXT, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(antigen_taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie)
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "DNAClone" (
 	curie TEXT NOT NULL, 
 	taxon TEXT NOT NULL, 
 	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
+	created_by TEXT, 
 	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
+	modified_by TEXT, 
 	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
@@ -2751,10 +3775,11 @@ CREATE TABLE "RNAClone" (
 	curie TEXT NOT NULL, 
 	taxon TEXT NOT NULL, 
 	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
+	created_by TEXT, 
 	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
+	modified_by TEXT, 
 	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
@@ -2790,6 +3815,19 @@ CREATE TABLE "EntityStatement_reference" (
 	PRIMARY KEY ("EntityStatement_id", reference), 
 	FOREIGN KEY("EntityStatement_id") REFERENCES "EntityStatement" (id), 
 	FOREIGN KEY(reference) REFERENCES "Reference" (curie)
+);
+CREATE TABLE "VocabularyTerm_text_synonyms" (
+	"VocabularyTerm_name" TEXT, 
+	text_synonyms TEXT, 
+	PRIMARY KEY ("VocabularyTerm_name", text_synonyms), 
+	FOREIGN KEY("VocabularyTerm_name") REFERENCES "VocabularyTerm" (name)
+);
+CREATE TABLE "Vocabulary_member_terms" (
+	"Vocabulary_name" TEXT, 
+	member_terms TEXT, 
+	PRIMARY KEY ("Vocabulary_name", member_terms), 
+	FOREIGN KEY("Vocabulary_name") REFERENCES "Vocabulary" (name), 
+	FOREIGN KEY(member_terms) REFERENCES "VocabularyTerm" (name)
 );
 CREATE TABLE "OntologyTerm_definition_urls" (
 	"OntologyTerm_curie" TEXT, 
@@ -3641,17 +4679,30 @@ CREATE TABLE "XSMOTerm_secondary_identifiers" (
 	PRIMARY KEY ("XSMOTerm_curie", secondary_identifiers), 
 	FOREIGN KEY("XSMOTerm_curie") REFERENCES "XSMOTerm" (curie)
 );
-CREATE TABLE "Person_emails" (
-	"Person_unique_id" TEXT, 
-	emails TEXT, 
-	PRIMARY KEY ("Person_unique_id", emails), 
-	FOREIGN KEY("Person_unique_id") REFERENCES "Person" (unique_id)
+CREATE TABLE "Molecule_definition_urls" (
+	"Molecule_curie" TEXT, 
+	definition_urls TEXT, 
+	PRIMARY KEY ("Molecule_curie", definition_urls), 
+	FOREIGN KEY("Molecule_curie") REFERENCES "Molecule" (curie)
 );
-CREATE TABLE "Person_old_emails" (
-	"Person_unique_id" TEXT, 
-	old_emails TEXT, 
-	PRIMARY KEY ("Person_unique_id", old_emails), 
-	FOREIGN KEY("Person_unique_id") REFERENCES "Person" (unique_id)
+CREATE TABLE "Molecule_synonym" (
+	"Molecule_curie" TEXT, 
+	synonym_id TEXT, 
+	PRIMARY KEY ("Molecule_curie", synonym_id), 
+	FOREIGN KEY("Molecule_curie") REFERENCES "Molecule" (curie), 
+	FOREIGN KEY(synonym_id) REFERENCES "Synonym" (id)
+);
+CREATE TABLE "Molecule_subsets" (
+	"Molecule_curie" TEXT, 
+	subsets TEXT, 
+	PRIMARY KEY ("Molecule_curie", subsets), 
+	FOREIGN KEY("Molecule_curie") REFERENCES "Molecule" (curie)
+);
+CREATE TABLE "Molecule_secondary_identifiers" (
+	"Molecule_curie" TEXT, 
+	secondary_identifiers TEXT, 
+	PRIMARY KEY ("Molecule_curie", secondary_identifiers), 
+	FOREIGN KEY("Molecule_curie") REFERENCES "Molecule" (curie)
 );
 CREATE TABLE "LoggedInPerson_emails" (
 	"LoggedInPerson_unique_id" TEXT, 
@@ -3665,6 +4716,13 @@ CREATE TABLE "LoggedInPerson_old_emails" (
 	PRIMARY KEY ("LoggedInPerson_unique_id", old_emails), 
 	FOREIGN KEY("LoggedInPerson_unique_id") REFERENCES "LoggedInPerson" (unique_id)
 );
+CREATE TABLE "Resource_synonym" (
+	"Resource_curie" TEXT, 
+	synonym_id TEXT, 
+	PRIMARY KEY ("Resource_curie", synonym_id), 
+	FOREIGN KEY("Resource_curie") REFERENCES "Resource" (curie), 
+	FOREIGN KEY(synonym_id) REFERENCES "Synonym" (id)
+);
 CREATE TABLE "ExpressionExperiment" (
 	curie TEXT NOT NULL, 
 	single_reference TEXT, 
@@ -3672,10 +4730,11 @@ CREATE TABLE "ExpressionExperiment" (
 	assay_used TEXT, 
 	specimen_genomic_model TEXT, 
 	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
+	created_by TEXT, 
 	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
+	modified_by TEXT, 
 	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(biological_entity_assayed) REFERENCES "BiologicalEntity" (curie), 
@@ -3689,16 +4748,16 @@ CREATE TABLE "GeneExpressionStatement" (
 	statement_subject TEXT, 
 	statement_type VARCHAR(26), 
 	statement_text TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(statement_subject) REFERENCES "Gene" (curie)
-);
-CREATE TABLE "Note" (
-	id INTEGER, 
-	free_text TEXT NOT NULL, 
-	note_type TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
 	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(note_type) REFERENCES "VocabularyTerm" (name)
+	FOREIGN KEY(statement_subject) REFERENCES "Gene" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "GeneGenomicLocation" (
 	id INTEGER, 
@@ -3708,36 +4767,52 @@ CREATE TABLE "GeneGenomicLocation" (
 	has_assembly TEXT NOT NULL, 
 	start TEXT, 
 	"end" TEXT, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(subject) REFERENCES "Variant" (curie), 
 	FOREIGN KEY(object) REFERENCES "Chromosome" (curie), 
-	FOREIGN KEY(has_assembly) REFERENCES "Chromosome" (curie)
-);
-CREATE TABLE "AssociatedReference" (
-	id INTEGER, 
-	reference_type TEXT NOT NULL, 
-	single_reference TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(reference_type) REFERENCES "VocabularyTerm" (name), 
-	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie)
+	FOREIGN KEY(has_assembly) REFERENCES "Chromosome" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "SequenceTargetingReagentToGeneAssociation" (
 	id INTEGER, 
 	subject TEXT NOT NULL, 
 	predicate VARCHAR(7) NOT NULL, 
 	object TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(subject) REFERENCES "SequenceTargetingReagent" (curie), 
-	FOREIGN KEY(object) REFERENCES "Gene" (curie)
+	FOREIGN KEY(object) REFERENCES "Gene" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "ConstructComponentAssociation" (
 	id INTEGER, 
 	subject TEXT NOT NULL, 
 	predicate VARCHAR(15) NOT NULL, 
 	object TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(subject) REFERENCES "Construct" (curie), 
-	FOREIGN KEY(object) REFERENCES "ConstructComponent" (curie)
+	FOREIGN KEY(object) REFERENCES "ConstructComponent" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "VariantTranscriptLocation" (
 	id INTEGER, 
@@ -3749,11 +4824,19 @@ CREATE TABLE "VariantTranscriptLocation" (
 	reference_sequence TEXT, 
 	variant_sequence TEXT, 
 	consequence TEXT, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(transcript) REFERENCES "Transcript" (curie), 
 	FOREIGN KEY(evidence_code) REFERENCES "ECOTerm" (curie), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
-	FOREIGN KEY(consequence) REFERENCES "SOTerm" (curie)
+	FOREIGN KEY(consequence) REFERENCES "SOTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "VariantPolypeptideLocation" (
 	id INTEGER, 
@@ -3765,11 +4848,19 @@ CREATE TABLE "VariantPolypeptideLocation" (
 	reference_sequence TEXT, 
 	variant_sequence TEXT, 
 	consequence TEXT, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(polypeptide) REFERENCES "Transcript" (curie), 
 	FOREIGN KEY(evidence_code) REFERENCES "ECOTerm" (curie), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
-	FOREIGN KEY(consequence) REFERENCES "SOTerm" (curie)
+	FOREIGN KEY(consequence) REFERENCES "SOTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Image" (
 	curie TEXT NOT NULL, 
@@ -3781,10 +4872,11 @@ CREATE TABLE "Image" (
 	image_y_origin INTEGER, 
 	video_still BOOLEAN, 
 	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
+	created_by TEXT, 
 	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
+	modified_by TEXT, 
 	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	image_file_id TEXT NOT NULL, 
 	image_medium_file_id TEXT NOT NULL, 
 	image_thumbnail_file_id TEXT NOT NULL, 
@@ -3801,41 +4893,43 @@ CREATE TABLE "PhenotypeAnnotation" (
 	curie TEXT NOT NULL, 
 	single_reference TEXT, 
 	phenotype_term TEXT, 
-	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
-	creation_date DATE NOT NULL, 
-	modified_by TEXT NOT NULL, 
-	date_last_modified DATE, 
 	subject TEXT NOT NULL, 
 	predicate TEXT NOT NULL, 
 	object TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE NOT NULL, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(phenotype_term) REFERENCES "PhenotypeTerm" (curie), 
+	FOREIGN KEY(subject) REFERENCES "BiologicalEntity" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(subject) REFERENCES "BiologicalEntity" (curie)
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "GenePhenotypeAnnotation" (
 	sgd_strain_background TEXT, 
 	curie TEXT NOT NULL, 
 	single_reference TEXT, 
 	phenotype_term TEXT, 
-	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
-	creation_date DATE NOT NULL, 
-	modified_by TEXT NOT NULL, 
-	date_last_modified DATE, 
 	subject TEXT NOT NULL, 
 	predicate TEXT NOT NULL, 
 	object TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE NOT NULL, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(sgd_strain_background) REFERENCES "AffectedGenomicModel" (curie), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(phenotype_term) REFERENCES "PhenotypeTerm" (curie), 
+	FOREIGN KEY(subject) REFERENCES "Gene" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(subject) REFERENCES "Gene" (curie)
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "DiseaseAnnotation" (
 	id INTEGER, 
@@ -3849,24 +4943,25 @@ CREATE TABLE "DiseaseAnnotation" (
 	secondary_data_provider TEXT, 
 	disease_genetic_modifier TEXT, 
 	disease_genetic_modifier_relation TEXT, 
-	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
-	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
-	date_last_modified DATE, 
 	subject TEXT NOT NULL, 
 	predicate TEXT NOT NULL, 
 	object TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(annotation_type) REFERENCES "VocabularyTerm" (name), 
 	FOREIGN KEY(genetic_sex) REFERENCES "VocabularyTerm" (name), 
 	FOREIGN KEY(disease_genetic_modifier) REFERENCES "BiologicalEntity" (curie), 
 	FOREIGN KEY(disease_genetic_modifier_relation) REFERENCES "VocabularyTerm" (name), 
-	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(subject) REFERENCES "BiologicalEntity" (curie), 
-	FOREIGN KEY(object) REFERENCES "DOTerm" (curie)
+	FOREIGN KEY(object) REFERENCES "DOTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "GeneDiseaseAnnotation" (
 	id INTEGER, 
@@ -3881,14 +4976,15 @@ CREATE TABLE "GeneDiseaseAnnotation" (
 	secondary_data_provider TEXT, 
 	disease_genetic_modifier TEXT, 
 	disease_genetic_modifier_relation TEXT, 
-	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
-	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
-	date_last_modified DATE, 
 	subject TEXT NOT NULL, 
 	predicate TEXT NOT NULL, 
 	object TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	"Ingest_id" TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(sgd_strain_background) REFERENCES "AffectedGenomicModel" (curie), 
@@ -3897,11 +4993,11 @@ CREATE TABLE "GeneDiseaseAnnotation" (
 	FOREIGN KEY(genetic_sex) REFERENCES "VocabularyTerm" (name), 
 	FOREIGN KEY(disease_genetic_modifier) REFERENCES "BiologicalEntity" (curie), 
 	FOREIGN KEY(disease_genetic_modifier_relation) REFERENCES "VocabularyTerm" (name), 
-	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(subject) REFERENCES "Gene" (curie), 
 	FOREIGN KEY(predicate) REFERENCES "VocabularyTerm" (name), 
 	FOREIGN KEY(object) REFERENCES "DOTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY("Ingest_id") REFERENCES "Ingest" (id)
 );
 CREATE TABLE "GeneToGeneAssociation" (
@@ -3909,9 +5005,17 @@ CREATE TABLE "GeneToGeneAssociation" (
 	subject TEXT NOT NULL, 
 	predicate TEXT NOT NULL, 
 	object TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(subject) REFERENCES "Gene" (curie), 
-	FOREIGN KEY(object) REFERENCES "Gene" (curie)
+	FOREIGN KEY(object) REFERENCES "Gene" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "GeneInteraction" (
 	curie TEXT NOT NULL, 
@@ -3922,9 +5026,17 @@ CREATE TABLE "GeneInteraction" (
 	subject TEXT NOT NULL, 
 	predicate TEXT NOT NULL, 
 	object TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(subject) REFERENCES "Gene" (curie), 
-	FOREIGN KEY(object) REFERENCES "Gene" (curie)
+	FOREIGN KEY(object) REFERENCES "Gene" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "GeneMolecularInteraction" (
 	aggregation_database VARCHAR(7), 
@@ -3937,9 +5049,17 @@ CREATE TABLE "GeneMolecularInteraction" (
 	subject TEXT NOT NULL, 
 	predicate TEXT NOT NULL, 
 	object TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(subject) REFERENCES "Gene" (curie), 
-	FOREIGN KEY(object) REFERENCES "Gene" (curie)
+	FOREIGN KEY(object) REFERENCES "Gene" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "VariantGeneConsequence" (
 	id INTEGER, 
@@ -3950,9 +5070,17 @@ CREATE TABLE "VariantGeneConsequence" (
 	polyphen_prediction VARCHAR(17), 
 	sift_score FLOAT, 
 	sift_prediction VARCHAR(11), 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	subject_id TEXT NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(object) REFERENCES "Gene" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(subject_id) REFERENCES "VariantGenomeLocation" (id)
 );
 CREATE TABLE "GenomicEntity_synonym" (
@@ -3994,6 +5122,13 @@ CREATE TABLE "Gene_secondary_identifiers" (
 	PRIMARY KEY ("Gene_curie", secondary_identifiers), 
 	FOREIGN KEY("Gene_curie") REFERENCES "Gene" (curie)
 );
+CREATE TABLE "Note_reference" (
+	"Note_id" TEXT, 
+	reference TEXT, 
+	PRIMARY KEY ("Note_id", reference), 
+	FOREIGN KEY("Note_id") REFERENCES "Note" (id), 
+	FOREIGN KEY(reference) REFERENCES "Reference" (curie)
+);
 CREATE TABLE "Protein_synonym" (
 	"Protein_curie" TEXT, 
 	synonym_id TEXT, 
@@ -4006,44 +5141,6 @@ CREATE TABLE "Protein_secondary_identifiers" (
 	secondary_identifiers TEXT, 
 	PRIMARY KEY ("Protein_curie", secondary_identifiers), 
 	FOREIGN KEY("Protein_curie") REFERENCES "Protein" (curie)
-);
-CREATE TABLE "VocabularyTerm_text_synonyms" (
-	"VocabularyTerm_name" TEXT, 
-	text_synonyms TEXT, 
-	PRIMARY KEY ("VocabularyTerm_name", text_synonyms), 
-	FOREIGN KEY("VocabularyTerm_name") REFERENCES "VocabularyTerm" (name)
-);
-CREATE TABLE "Vocabulary_member_terms" (
-	"Vocabulary_name" TEXT, 
-	member_terms TEXT, 
-	PRIMARY KEY ("Vocabulary_name", member_terms), 
-	FOREIGN KEY("Vocabulary_name") REFERENCES "Vocabulary" (name), 
-	FOREIGN KEY(member_terms) REFERENCES "VocabularyTerm" (name)
-);
-CREATE TABLE "Molecule_definition_urls" (
-	"Molecule_curie" TEXT, 
-	definition_urls TEXT, 
-	PRIMARY KEY ("Molecule_curie", definition_urls), 
-	FOREIGN KEY("Molecule_curie") REFERENCES "Molecule" (curie)
-);
-CREATE TABLE "Molecule_synonym" (
-	"Molecule_curie" TEXT, 
-	synonym_id TEXT, 
-	PRIMARY KEY ("Molecule_curie", synonym_id), 
-	FOREIGN KEY("Molecule_curie") REFERENCES "Molecule" (curie), 
-	FOREIGN KEY(synonym_id) REFERENCES "Synonym" (id)
-);
-CREATE TABLE "Molecule_subsets" (
-	"Molecule_curie" TEXT, 
-	subsets TEXT, 
-	PRIMARY KEY ("Molecule_curie", subsets), 
-	FOREIGN KEY("Molecule_curie") REFERENCES "Molecule" (curie)
-);
-CREATE TABLE "Molecule_secondary_identifiers" (
-	"Molecule_curie" TEXT, 
-	secondary_identifiers TEXT, 
-	PRIMARY KEY ("Molecule_curie", secondary_identifiers), 
-	FOREIGN KEY("Molecule_curie") REFERENCES "Molecule" (curie)
 );
 CREATE TABLE "Construct_construct_components" (
 	"Construct_curie" TEXT, 
@@ -4132,6 +5229,13 @@ CREATE TABLE "AffectedGenomicModel_secondary_identifiers" (
 	PRIMARY KEY ("AffectedGenomicModel_curie", secondary_identifiers), 
 	FOREIGN KEY("AffectedGenomicModel_curie") REFERENCES "AffectedGenomicModel" (curie)
 );
+CREATE TABLE "Variant_related_notes" (
+	"Variant_curie" TEXT, 
+	related_notes_id TEXT, 
+	PRIMARY KEY ("Variant_curie", related_notes_id), 
+	FOREIGN KEY("Variant_curie") REFERENCES "Variant" (curie), 
+	FOREIGN KEY(related_notes_id) REFERENCES "Note" (id)
+);
 CREATE TABLE "Variant_variant_genome_locations" (
 	"Variant_curie" TEXT, 
 	variant_genome_locations_id TEXT NOT NULL, 
@@ -4171,13 +5275,6 @@ CREATE TABLE "Figure_secondary_identifiers" (
 	secondary_identifiers TEXT, 
 	PRIMARY KEY ("Figure_curie", secondary_identifiers), 
 	FOREIGN KEY("Figure_curie") REFERENCES "Figure" (curie)
-);
-CREATE TABLE "Resource_synonym" (
-	"Resource_curie" TEXT, 
-	synonym_id TEXT, 
-	PRIMARY KEY ("Resource_curie", synonym_id), 
-	FOREIGN KEY("Resource_curie") REFERENCES "Resource" (curie), 
-	FOREIGN KEY(synonym_id) REFERENCES "Synonym" (id)
 );
 CREATE TABLE "Resource_authors" (
 	"Resource_curie" TEXT, 
@@ -4234,6 +5331,13 @@ CREATE TABLE "Antibody_original_reference" (
 	FOREIGN KEY("Antibody_curie") REFERENCES "Antibody" (curie), 
 	FOREIGN KEY(original_reference) REFERENCES "Reference" (curie)
 );
+CREATE TABLE "Antibody_related_notes" (
+	"Antibody_curie" TEXT, 
+	related_notes_id TEXT, 
+	PRIMARY KEY ("Antibody_curie", related_notes_id), 
+	FOREIGN KEY("Antibody_curie") REFERENCES "Antibody" (curie), 
+	FOREIGN KEY(related_notes_id) REFERENCES "Note" (id)
+);
 CREATE TABLE "Antibody_generated_by" (
 	"Antibody_curie" TEXT, 
 	generated_by_id TEXT, 
@@ -4283,10 +5387,11 @@ CREATE TABLE "ExpressionAnnotation" (
 	negated BOOLEAN, 
 	uncertain BOOLEAN, 
 	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
+	created_by TEXT, 
 	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
+	modified_by TEXT, 
 	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	when_expressed_id TEXT, 
 	where_expressed_id TEXT, 
 	PRIMARY KEY (id), 
@@ -4301,8 +5406,16 @@ CREATE TABLE "ExpressionExperimentStatement" (
 	statement_subject TEXT, 
 	statement_type TEXT, 
 	statement_text TEXT, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(statement_subject) REFERENCES "ExpressionExperiment" (curie)
+	FOREIGN KEY(statement_subject) REFERENCES "ExpressionExperiment" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Allele" (
 	symbol TEXT, 
@@ -4321,10 +5434,11 @@ CREATE TABLE "Allele" (
 	curie TEXT NOT NULL, 
 	taxon TEXT NOT NULL, 
 	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
+	created_by TEXT, 
 	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
+	modified_by TEXT, 
 	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	"Ingest_id" TEXT, 
 	parent_cell_line_id TEXT, 
 	PRIMARY KEY (curie), 
@@ -4349,10 +5463,11 @@ CREATE TABLE "ImagePane" (
 	image_x_origin INTEGER, 
 	image_y_origin INTEGER, 
 	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
+	created_by TEXT, 
 	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
+	modified_by TEXT, 
 	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(from_image) REFERENCES "Image" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
@@ -4379,9 +5494,17 @@ CREATE TABLE "VariantTranscriptConsequence" (
 	polyphen_prediction VARCHAR(17), 
 	sift_score FLOAT, 
 	sift_prediction VARCHAR(11), 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	subject_id TEXT NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(object) REFERENCES "Transcript" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(subject_id) REFERENCES "VariantTranscriptLocation" (id)
 );
 CREATE TABLE "ExpressionExperiment_reagents_used" (
@@ -4405,26 +5528,12 @@ CREATE TABLE "Gene_genomic_locations" (
 	FOREIGN KEY("Gene_curie") REFERENCES "Gene" (curie), 
 	FOREIGN KEY(genomic_locations_id) REFERENCES "GeneGenomicLocation" (id)
 );
-CREATE TABLE "Note_reference" (
-	"Note_id" TEXT, 
-	reference TEXT, 
-	PRIMARY KEY ("Note_id", reference), 
-	FOREIGN KEY("Note_id") REFERENCES "Note" (id), 
-	FOREIGN KEY(reference) REFERENCES "Reference" (curie)
-);
 CREATE TABLE "SequenceTargetingReagentToGeneAssociation_reference" (
 	"SequenceTargetingReagentToGeneAssociation_id" TEXT, 
 	reference TEXT, 
 	PRIMARY KEY ("SequenceTargetingReagentToGeneAssociation_id", reference), 
 	FOREIGN KEY("SequenceTargetingReagentToGeneAssociation_id") REFERENCES "SequenceTargetingReagentToGeneAssociation" (id), 
 	FOREIGN KEY(reference) REFERENCES "Reference" (curie)
-);
-CREATE TABLE "Variant_related_notes" (
-	"Variant_curie" TEXT, 
-	related_notes_id TEXT, 
-	PRIMARY KEY ("Variant_curie", related_notes_id), 
-	FOREIGN KEY("Variant_curie") REFERENCES "Variant" (curie), 
-	FOREIGN KEY(related_notes_id) REFERENCES "Note" (id)
 );
 CREATE TABLE "Variant_variant_polypeptide_locations" (
 	"Variant_curie" TEXT, 
@@ -4509,13 +5618,6 @@ CREATE TABLE "GeneDiseaseAnnotation_related_notes" (
 	FOREIGN KEY("GeneDiseaseAnnotation_id") REFERENCES "GeneDiseaseAnnotation" (id), 
 	FOREIGN KEY(related_notes_id) REFERENCES "Note" (id)
 );
-CREATE TABLE "Antibody_related_notes" (
-	"Antibody_curie" TEXT, 
-	related_notes_id TEXT, 
-	PRIMARY KEY ("Antibody_curie", related_notes_id), 
-	FOREIGN KEY("Antibody_curie") REFERENCES "Antibody" (curie), 
-	FOREIGN KEY(related_notes_id) REFERENCES "Note" (id)
-);
 CREATE TABLE "GeneInteraction_interactor_A_role" (
 	"GeneInteraction_curie" TEXT, 
 	"interactor_A_role" VARCHAR(7), 
@@ -4543,9 +5645,17 @@ CREATE TABLE "GeneMolecularInteraction_interactor_B_role" (
 CREATE TABLE "ExpressionAnnotationImagePane" (
 	id INTEGER, 
 	predicate TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	subject_id TEXT NOT NULL, 
 	object_id TEXT NOT NULL, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(subject_id) REFERENCES "ExpressionAnnotation" (id), 
 	FOREIGN KEY(object_id) REFERENCES "ImagePane" (id)
 );
@@ -4553,8 +5663,16 @@ CREATE TABLE "ExpressionAnnotationStatement" (
 	id INTEGER, 
 	statement_type VARCHAR(26), 
 	statement_text TEXT, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	statement_subject_id TEXT, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(statement_subject_id) REFERENCES "ExpressionAnnotation" (id)
 );
 CREATE TABLE "AlleleGenomicEntityAssociation" (
@@ -4562,10 +5680,11 @@ CREATE TABLE "AlleleGenomicEntityAssociation" (
 	single_reference TEXT, 
 	evidence_code TEXT, 
 	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
+	created_by TEXT, 
 	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
+	modified_by TEXT, 
 	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	subject TEXT NOT NULL, 
 	predicate TEXT NOT NULL, 
 	object TEXT NOT NULL, 
@@ -4585,10 +5704,11 @@ CREATE TABLE "AlleleGeneAssociation" (
 	single_reference TEXT, 
 	evidence_code TEXT, 
 	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
+	created_by TEXT, 
 	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
+	modified_by TEXT, 
 	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	subject TEXT NOT NULL, 
 	predicate TEXT NOT NULL, 
 	object TEXT NOT NULL, 
@@ -4608,10 +5728,11 @@ CREATE TABLE "AlleleTranscriptAssociation" (
 	single_reference TEXT, 
 	evidence_code TEXT, 
 	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
+	created_by TEXT, 
 	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
+	modified_by TEXT, 
 	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	subject TEXT NOT NULL, 
 	predicate TEXT NOT NULL, 
 	object TEXT NOT NULL, 
@@ -4631,10 +5752,11 @@ CREATE TABLE "AlleleProteinAssociation" (
 	single_reference TEXT, 
 	evidence_code TEXT, 
 	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
+	created_by TEXT, 
 	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
+	modified_by TEXT, 
 	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	subject TEXT NOT NULL, 
 	predicate TEXT NOT NULL, 
 	object TEXT NOT NULL, 
@@ -4654,10 +5776,11 @@ CREATE TABLE "AlleleVariantAssociation" (
 	single_reference TEXT, 
 	evidence_code TEXT, 
 	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
+	created_by TEXT, 
 	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
+	modified_by TEXT, 
 	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	subject TEXT NOT NULL, 
 	predicate TEXT NOT NULL, 
 	object TEXT NOT NULL, 
@@ -4678,29 +5801,38 @@ CREATE TABLE "AffectedGenomicModelComponent" (
 	id INTEGER, 
 	has_allele TEXT, 
 	zygosity VARCHAR(12), 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(has_allele) REFERENCES "Allele" (curie)
+	FOREIGN KEY(has_allele) REFERENCES "Allele" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "AllelePhenotypeAnnotation" (
 	inferred_gene TEXT, 
 	curie TEXT NOT NULL, 
 	single_reference TEXT, 
 	phenotype_term TEXT, 
-	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
-	creation_date DATE NOT NULL, 
-	modified_by TEXT NOT NULL, 
-	date_last_modified DATE, 
 	subject TEXT NOT NULL, 
 	predicate TEXT NOT NULL, 
 	object TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE NOT NULL, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(inferred_gene) REFERENCES "Gene" (curie), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(phenotype_term) REFERENCES "PhenotypeTerm" (curie), 
+	FOREIGN KEY(subject) REFERENCES "Allele" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(subject) REFERENCES "Allele" (curie)
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "AGMPhenotypeAnnotation" (
 	inferred_allele TEXT, 
@@ -4708,22 +5840,23 @@ CREATE TABLE "AGMPhenotypeAnnotation" (
 	curie TEXT NOT NULL, 
 	single_reference TEXT, 
 	phenotype_term TEXT, 
-	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
-	creation_date DATE NOT NULL, 
-	modified_by TEXT NOT NULL, 
-	date_last_modified DATE, 
 	subject TEXT NOT NULL, 
 	predicate TEXT NOT NULL, 
 	object TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE NOT NULL, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(inferred_allele) REFERENCES "Allele" (curie), 
 	FOREIGN KEY(inferred_gene) REFERENCES "Gene" (curie), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(phenotype_term) REFERENCES "PhenotypeTerm" (curie), 
+	FOREIGN KEY(subject) REFERENCES "AffectedGenomicModel" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(subject) REFERENCES "AffectedGenomicModel" (curie)
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "AlleleDiseaseAnnotation" (
 	id INTEGER, 
@@ -4738,14 +5871,15 @@ CREATE TABLE "AlleleDiseaseAnnotation" (
 	secondary_data_provider TEXT, 
 	disease_genetic_modifier TEXT, 
 	disease_genetic_modifier_relation TEXT, 
-	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
-	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
-	date_last_modified DATE, 
 	subject TEXT NOT NULL, 
 	predicate TEXT NOT NULL, 
 	object TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	"Ingest_id" TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(inferred_gene) REFERENCES "Gene" (curie), 
@@ -4754,11 +5888,11 @@ CREATE TABLE "AlleleDiseaseAnnotation" (
 	FOREIGN KEY(genetic_sex) REFERENCES "VocabularyTerm" (name), 
 	FOREIGN KEY(disease_genetic_modifier) REFERENCES "BiologicalEntity" (curie), 
 	FOREIGN KEY(disease_genetic_modifier_relation) REFERENCES "VocabularyTerm" (name), 
-	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(subject) REFERENCES "Allele" (curie), 
 	FOREIGN KEY(predicate) REFERENCES "VocabularyTerm" (name), 
 	FOREIGN KEY(object) REFERENCES "DOTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY("Ingest_id") REFERENCES "Ingest" (id)
 );
 CREATE TABLE "AGMDiseaseAnnotation" (
@@ -4775,14 +5909,15 @@ CREATE TABLE "AGMDiseaseAnnotation" (
 	secondary_data_provider TEXT, 
 	disease_genetic_modifier TEXT, 
 	disease_genetic_modifier_relation TEXT, 
-	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
-	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
-	date_last_modified DATE, 
 	subject TEXT NOT NULL, 
 	predicate TEXT NOT NULL, 
 	object TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	"Ingest_id" TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(inferred_allele) REFERENCES "Allele" (curie), 
@@ -4792,11 +5927,11 @@ CREATE TABLE "AGMDiseaseAnnotation" (
 	FOREIGN KEY(genetic_sex) REFERENCES "VocabularyTerm" (name), 
 	FOREIGN KEY(disease_genetic_modifier) REFERENCES "BiologicalEntity" (curie), 
 	FOREIGN KEY(disease_genetic_modifier_relation) REFERENCES "VocabularyTerm" (name), 
-	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(subject) REFERENCES "AffectedGenomicModel" (curie), 
 	FOREIGN KEY(predicate) REFERENCES "VocabularyTerm" (name), 
 	FOREIGN KEY(object) REFERENCES "DOTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY("Ingest_id") REFERENCES "Ingest" (id)
 );
 CREATE TABLE "GeneGeneticInteraction" (
@@ -4810,11 +5945,19 @@ CREATE TABLE "GeneGeneticInteraction" (
 	subject TEXT NOT NULL, 
 	predicate TEXT NOT NULL, 
 	object TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY("interactor_A_genetic_perturbation") REFERENCES "Allele" (curie), 
 	FOREIGN KEY("interactor_B_genetic_perturbation") REFERENCES "Allele" (curie), 
 	FOREIGN KEY(subject) REFERENCES "Gene" (curie), 
-	FOREIGN KEY(object) REFERENCES "Gene" (curie)
+	FOREIGN KEY(object) REFERENCES "Gene" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "ExpressionExperiment_specimen_alleles" (
 	"ExpressionExperiment_curie" TEXT, 
@@ -4903,10 +6046,11 @@ CREATE TABLE "CrossReference" (
 	display_name TEXT NOT NULL, 
 	prefix TEXT NOT NULL, 
 	table_key INTEGER, 
-	created_by TEXT NOT NULL, 
+	created_by TEXT, 
 	creation_date DATE, 
-	modified_by TEXT NOT NULL, 
+	modified_by TEXT, 
 	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	"AuthorReference_id" TEXT, 
 	"GenomicEntity_curie" TEXT, 
 	"Transcript_curie" TEXT, 
@@ -5017,6 +6161,12 @@ CREATE TABLE "ConditionRelation" (
 	handle TEXT, 
 	single_reference TEXT, 
 	condition_relation_type TEXT NOT NULL, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	"ExpressionExperiment_curie" TEXT, 
 	"PhenotypeAnnotation_curie" TEXT, 
 	"GenePhenotypeAnnotation_curie" TEXT, 
@@ -5029,6 +6179,8 @@ CREATE TABLE "ConditionRelation" (
 	PRIMARY KEY (id), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(condition_relation_type) REFERENCES "VocabularyTerm" (name), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY("ExpressionExperiment_curie") REFERENCES "ExpressionExperiment" (curie), 
 	FOREIGN KEY("PhenotypeAnnotation_curie") REFERENCES "PhenotypeAnnotation" (curie), 
 	FOREIGN KEY("GenePhenotypeAnnotation_curie") REFERENCES "GenePhenotypeAnnotation" (curie), 
@@ -5140,6 +6292,12 @@ CREATE TABLE "ExperimentalCondition" (
 	condition_gene_ontology TEXT, 
 	condition_taxon TEXT, 
 	condition_chemical TEXT, 
+	table_key INTEGER, 
+	created_by TEXT, 
+	creation_date DATE, 
+	modified_by TEXT, 
+	date_last_modified DATE, 
+	internal BOOLEAN NOT NULL, 
 	"ConditionRelation_id" TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(condition_class) REFERENCES "ZECOTerm" (curie), 
@@ -5148,6 +6306,8 @@ CREATE TABLE "ExperimentalCondition" (
 	FOREIGN KEY(condition_gene_ontology) REFERENCES "GOTerm" (curie), 
 	FOREIGN KEY(condition_taxon) REFERENCES "NCBITaxonTerm" (curie), 
 	FOREIGN KEY(condition_chemical) REFERENCES "ChemicalTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY("ConditionRelation_id") REFERENCES "ConditionRelation" (id)
 );
 CREATE TABLE "CrossReference_page_areas" (
