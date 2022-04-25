@@ -552,7 +552,7 @@ slots:
   has_condition:
     is_a: related_to
     symmetric: false
-    domain: Entity
+    domain: Association
     range: ExperimentalCondition
 
   is_condition_in:
@@ -560,12 +560,12 @@ slots:
     symmetric: false
     inverse: has_condition
     domain: ExperimentalCondition
-    range: Entity
+    range: Association
 
   induced_by:
     is_a: related_to
     symmetric: false
-    domain: Entity
+    domain: Association
     range: ExperimentalCondition
 
   induces:
@@ -573,12 +573,12 @@ slots:
     symmetric: false
     inverse: induced_by
     domain: ExperimentalCondition
-    range: Entity
+    range: Association
 
   ameliorated_by:
     is_a: related_to
     symmetric: false
-    domain: Entity
+    domain: Association
     range: ExperimentalCondition
 
   ameliorates:
@@ -586,12 +586,12 @@ slots:
     symmetric: false
     inverse: ameliorated_by
     domain: ExperimentalCondition
-    range: Entity
+    range: Association
 
   exacerbated_by:
     is_a: related_to
     symmetric: false
-    domain: Entity
+    domain: Association
     range: ExperimentalCondition
 
   exacerbates:
@@ -599,4 +599,4 @@ slots:
     symmetric: false
     inverse: exacerbated_by
     domain: ExperimentalCondition
-    range: Entity
+    range: Association
