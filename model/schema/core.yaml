@@ -64,9 +64,6 @@ classes:
       - modified_by
       - date_last_modified
       - internal
-    slot_usage:
-      internal:
-        required: true
 
   BiologicalEntity:
     is_a: AuditedObject
@@ -334,6 +331,7 @@ slots:
     notes: >-
       Default value is true.
     range: boolean
+    required: true
 
   related_notes:
     description: Holds between an object and a list of related Note objects.
@@ -467,7 +465,6 @@ slots:
   created_by:
     description: >-
       The individual that created the entity.
-    required: true
     multivalued: false
     domain: AuditedObject
     range: Person
@@ -475,7 +472,6 @@ slots:
   modified_by:
     description: >-
       The individual that last modified the entity.
-    required: true
     multivalued: false
     domain: AuditedObject
     range: Person
