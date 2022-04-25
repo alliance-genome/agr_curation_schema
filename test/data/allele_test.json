@@ -10,7 +10,8 @@
       "associated_references": [
         {
           "reference_type": "term:huh?",
-          "single_reference": "PMID:123456"
+          "single_reference": "PMID:123456",
+          "internal": false
         }
       ]
     },
@@ -24,7 +25,8 @@
       "associated_references": [
         {
           "reference_type": "term:huh?",
-          "single_reference": "PMID:123456"
+          "single_reference": "PMID:123456",
+          "internal": false
         }
       ]
     }
