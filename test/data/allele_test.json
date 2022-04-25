@@ -5,6 +5,7 @@
       "taxon": "NCBITaxon:7955",
       "created_by": "ZFIN",
       "modified_by": "ZFIN",
+      "internal": false,
       "name": "b1219",
       "associated_references": [
         {
@@ -18,6 +19,7 @@
       "taxon": "NCBITaxon:7955",
       "created_by": "ZFIN",
       "modified_by": "ZFIN",
+      "internal": false,
       "name": "sa11077",
       "associated_references": [
         {

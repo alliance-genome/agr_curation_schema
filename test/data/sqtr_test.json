@@ -5,6 +5,7 @@
       "taxon": "NCBITaxon:7955",
       "created_by": "ZFIN",
       "modified_by": "ZFIN",
+      "internal": false,
       "name": "TALEN2-eftud2",
       "synonyms": [{"synonym": "test"},{"synonym": "another test"}],
       "secondary_identifiers": ["ZFIN:ZDB-MRPHLNO-123456-1"],
@@ -15,6 +16,7 @@
       "taxon": "NCBITaxon:7955",
       "created_by": "ZFIN",
       "modified_by": "ZFIN",
+      "internal": false,
       "name": "CRISPR-eftud2",
       "synonyms": [{"synonym": "test"},{"synonym": "another test"}],
       "secondary_identifiers": ["ZFIN:ZDB-MRPHLNO-123456-1"],
@@ -26,6 +28,7 @@
       "name": "MRPHLNO-eftud2",
       "created_by": "ZFIN",
       "modified_by": "ZFIN",
+      "internal": false,
       "synonyms": [{"synonym": "test"},{"synonym": "another test"}],
       "secondary_identifiers": ["ZFIN:ZDB-MRPHLNO-123456-1"],
       "references": ["PMID:12345"]
