@@ -58,17 +58,18 @@ classes:
       including date/time of change, the agent responsible for the change, and whether
       the entity is internal (private).
     slots:
-      - table_key
       - created_by
-      - creation_date
+      - date_created
       - modified_by
-      - date_last_modified
+      - date_updated
       - internal
+      - is_obsolete
 
   BiologicalEntity:
     is_a: AuditedObject
     description: >-
-      A high-level entity comprising .
+      An entity of biological origin that can be unambiguously attributed to
+      a single species.
     abstract: true
     slots:
       - curie
@@ -79,11 +80,17 @@ classes:
 
   GenomicEntity:
     is_a: BiologicalEntity
+    description: >-   # tentative
+      An entity that is part of a genome (i.e. segment of the DNA molecule),
+      is derived directly from the genome (i.e. RNA transcript molecule), or
+      is derived indirectly from the genome (i.e. polypeptide or protein via
+      RNA transcript translation).
     slots:
       - name
       - synonyms
       - cross_references
       - secondary_identifiers
+      - genomic_locations
 
   Transcript:
     is_a: GenomicEntity
@@ -100,10 +107,14 @@ classes:
 
   Gene:
     description: >-
-      Placeholder.
+      A DNA genomic entity from which one or more functional* RNA transcript molecules
+      are transcribed, along with cis-regulatory elements responsible for regulating
+      expression (transcription) of the gene. * A functional RNA molecule
+      here can mean one that is directly responsible for the gene's function (e.g. catalysis,
+      structure, etc.) or one that is translated to produce a functional polypeptide/protein.
+      A pseudogene may be considered a gene under this definition, albeit no longer functional.
     is_a: GenomicEntity
     slots:
-      - genomic_locations
       - symbol
       - gene_synopsis
       - gene_synopsis_URL
@@ -215,20 +226,20 @@ classes:
     slots:
       - curie
 
-  GeneGenomicLocation:
+  GenomicLocation:
     is_a: AuditedObject
     slots:
       - subject
-      - predicate
+      - predicate   # what should the predicate range be for this class? CG
       - object
       - has_assembly
       - start
       - end
     slot_usage:
       subject:
-        range: Variant
+        range: GenomicEntity
         description: >-
-          subject should be the gene identifier
+          subject should be a genomic entity
       object:
         range: Chromosome
         description: >-
@@ -262,9 +273,10 @@ slots:
     description: The end of the feature in positive 1-based integer coordinates
 
   has_assembly:
-    domain: GenomicEntity
+    domain: GenomicLocation
     required: true
-    range: Chromosome
+    range: Assembly
+
   prefix:
     required: true
     multivalued: false
@@ -436,7 +448,7 @@ slots:
 
   genomic_locations:
     domain: GenomicEntity
-    range: GeneGenomicLocation
+    range: GenomicLocation
     multivalued: true
 
   table_key:
@@ -447,8 +459,8 @@ slots:
     multivalued: false
     range: integer
 
-  creation_date:
-    aliases: [ 'date_created' ]
+  date_created:
+    aliases: [ 'creation_date' ]
     description: >-
       The date on which an entity was created. This can be applied to nodes or edges.
     range: date
@@ -456,8 +468,8 @@ slots:
       - dct:createdOn
       - WIKIDATA_PROPERTY:P577
 
-  date_last_modified:
-    aliases: ['date_updated']
+  date_updated:
+    aliases: ['date_last_modified']
     description: >-
       Date on which an entity was last modified.
     range: date

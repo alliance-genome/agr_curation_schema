@@ -75,7 +75,6 @@ classes:
       - definition
       - definition_urls
       - type
-      - is_obsolete
       - cross_references
       - synonyms
       - namespace
