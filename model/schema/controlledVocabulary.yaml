@@ -41,7 +41,6 @@ classes:
       - name
       - abbreviation
       - definition
-      - is_obsolete
       - text_synonyms
     slot_usage:
       name:
@@ -55,7 +54,6 @@ classes:
     slots:
       - name
       - vocabulary_description
-      - is_obsolete
       - member_terms
     slot_usage:
       name:

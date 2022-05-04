@@ -26,8 +26,6 @@ classes:
       There should be only one corpus call for any given reference-mod pair.
     slots:
       - corpus
-      - date_created
-      - date_updated
       - mod_corpus_association_id
       - mod_corpus_sort_source
       - mod_id

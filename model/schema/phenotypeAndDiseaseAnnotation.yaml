@@ -76,7 +76,7 @@ classes:
       single_reference:
         description: >-
           The reference in which the phenotype association was asserted/reported.
-      creation_date:
+      date_created:
         description: >-
           The date of curation at the source (MOD) database.
         required: true
