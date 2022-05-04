@@ -63,7 +63,7 @@ classes:
       - modified_by
       - date_updated
       - internal
-      - is_obsolete
+      - obsolete
 
   BiologicalEntity:
     is_a: AuditedObject
@@ -578,7 +578,7 @@ slots:
     multivalued: false
     range: Reference
 
-  is_obsolete:
+  obsolete:
     description: >-
       Entity is no longer current.
     notes: >-
