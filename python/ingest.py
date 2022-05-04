@@ -1,5 +1,5 @@
 # Auto generated from ingest.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-25T22:20:25
+# Generation date: 2022-05-04T18:30:40
 # Schema: Alliance-Schema-Ingest
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest
@@ -378,11 +378,11 @@ class AuditedObject(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/AuditedObject")
 
     internal: Union[bool, Bool] = None
-    table_key: Optional[int] = None
     created_by: Optional[Union[str, PersonUniqueId]] = None
-    creation_date: Optional[Union[str, XSDDate]] = None
+    date_created: Optional[Union[str, XSDDate]] = None
     modified_by: Optional[Union[str, PersonUniqueId]] = None
-    date_last_modified: Optional[Union[str, XSDDate]] = None
+    date_updated: Optional[Union[str, XSDDate]] = None
+    obsolete: Optional[Union[bool, Bool]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.internal):
@@ -390,20 +390,20 @@ class AuditedObject(YAMLRoot):
         if not isinstance(self.internal, Bool):
             self.internal = Bool(self.internal)
 
-        if self.table_key is not None and not isinstance(self.table_key, int):
-            self.table_key = int(self.table_key)
-
         if self.created_by is not None and not isinstance(self.created_by, PersonUniqueId):
             self.created_by = PersonUniqueId(self.created_by)
 
-        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
-            self.creation_date = XSDDate(self.creation_date)
+        if self.date_created is not None and not isinstance(self.date_created, XSDDate):
+            self.date_created = XSDDate(self.date_created)
 
         if self.modified_by is not None and not isinstance(self.modified_by, PersonUniqueId):
             self.modified_by = PersonUniqueId(self.modified_by)
 
-        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
-            self.date_last_modified = XSDDate(self.date_last_modified)
+        if self.date_updated is not None and not isinstance(self.date_updated, XSDDate):
+            self.date_updated = XSDDate(self.date_updated)
+
+        if self.obsolete is not None and not isinstance(self.obsolete, Bool):
+            self.obsolete = Bool(self.obsolete)
 
         super().__post_init__(**kwargs)
 
@@ -411,7 +411,7 @@ class AuditedObject(YAMLRoot):
 @dataclass
 class BiologicalEntity(AuditedObject):
     """
-    A high-level entity comprising .
+    An entity of biological origin that can be unambiguously attributed to a single species.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -440,6 +440,11 @@ class BiologicalEntity(AuditedObject):
 
 @dataclass
 class GenomicEntity(BiologicalEntity):
+    """
+    An entity that is part of a genome (i.e. segment of the DNA molecule), is derived directly from the genome (i.e.
+    RNA transcript molecule), or is derived indirectly from the genome (i.e. polypeptide or protein via RNA transcript
+    translation).
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ALLIANCE.GenomicEntity
@@ -454,6 +459,7 @@ class GenomicEntity(BiologicalEntity):
     synonyms: Optional[Union[Union[dict, "Synonym"], List[Union[dict, "Synonym"]]]] = empty_list()
     cross_references: Optional[Union[Dict[Union[str, CrossReferenceCurie], Union[dict, "CrossReference"]], List[Union[dict, "CrossReference"]]]] = empty_dict()
     secondary_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    genomic_locations: Optional[Union[Union[dict, "GenomicLocation"], List[Union[dict, "GenomicLocation"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -471,6 +477,8 @@ class GenomicEntity(BiologicalEntity):
         if not isinstance(self.secondary_identifiers, list):
             self.secondary_identifiers = [self.secondary_identifiers] if self.secondary_identifiers is not None else []
         self.secondary_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.secondary_identifiers]
+
+        self._normalize_inlined_as_dict(slot_name="genomic_locations", slot_type=GenomicLocation, key_name="internal", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -503,7 +511,11 @@ class Transcript(GenomicEntity):
 @dataclass
 class Gene(GenomicEntity):
     """
-    Placeholder.
+    A DNA genomic entity from which one or more functional* RNA transcript molecules are transcribed, along with
+    cis-regulatory elements responsible for regulating expression (transcription) of the gene. * A functional RNA
+    molecule here can mean one that is directly responsible for the gene's function (e.g. catalysis, structure, etc.)
+    or one that is translated to produce a functional polypeptide/protein. A pseudogene may be considered a gene under
+    this definition, albeit no longer functional.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -516,7 +528,6 @@ class Gene(GenomicEntity):
     internal: Union[bool, Bool] = None
     taxon: Union[str, NCBITaxonTermCurie] = None
     symbol: str = None
-    genomic_locations: Optional[Union[Union[dict, "GeneGenomicLocation"], List[Union[dict, "GeneGenomicLocation"]]]] = empty_list()
     gene_synopsis: Optional[str] = None
     gene_synopsis_URL: Optional[str] = None
     gene_type: Optional[Union[str, SOTermCurie]] = None
@@ -532,8 +543,6 @@ class Gene(GenomicEntity):
             self.MissingRequiredField("symbol")
         if not isinstance(self.symbol, str):
             self.symbol = str(self.symbol)
-
-        self._normalize_inlined_as_dict(slot_name="genomic_locations", slot_type=GeneGenomicLocation, key_name="internal", keyed=False)
 
         if self.gene_synopsis is not None and not isinstance(self.gene_synopsis, str):
             self.gene_synopsis = str(self.gene_synopsis)
@@ -844,27 +853,27 @@ class Assembly(AuditedObject):
 
 
 @dataclass
-class GeneGenomicLocation(AuditedObject):
+class GenomicLocation(AuditedObject):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ALLIANCE.GeneGenomicLocation
-    class_class_curie: ClassVar[str] = "alliance:GeneGenomicLocation"
-    class_name: ClassVar[str] = "GeneGenomicLocation"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/GeneGenomicLocation")
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.GenomicLocation
+    class_class_curie: ClassVar[str] = "alliance:GenomicLocation"
+    class_name: ClassVar[str] = "GenomicLocation"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/GenomicLocation")
 
     internal: Union[bool, Bool] = None
-    subject: Union[str, VariantCurie] = None
+    subject: Union[str, GenomicEntityCurie] = None
     predicate: str = None
     object: Union[str, ChromosomeCurie] = None
-    has_assembly: Union[str, ChromosomeCurie] = None
+    has_assembly: Union[str, AssemblyCurie] = None
     start: Optional[str] = None
     end: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.subject):
             self.MissingRequiredField("subject")
-        if not isinstance(self.subject, VariantCurie):
-            self.subject = VariantCurie(self.subject)
+        if not isinstance(self.subject, GenomicEntityCurie):
+            self.subject = GenomicEntityCurie(self.subject)
 
         if self._is_empty(self.predicate):
             self.MissingRequiredField("predicate")
@@ -878,8 +887,8 @@ class GeneGenomicLocation(AuditedObject):
 
         if self._is_empty(self.has_assembly):
             self.MissingRequiredField("has_assembly")
-        if not isinstance(self.has_assembly, ChromosomeCurie):
-            self.has_assembly = ChromosomeCurie(self.has_assembly)
+        if not isinstance(self.has_assembly, AssemblyCurie):
+            self.has_assembly = AssemblyCurie(self.has_assembly)
 
         if self.start is not None and not isinstance(self.start, str):
             self.start = str(self.start)
@@ -1337,7 +1346,6 @@ class OntologyTerm(AuditedObject):
     definition: Optional[str] = None
     definition_urls: Optional[Union[str, List[str]]] = empty_list()
     type: Optional[Union[str, URIorCURIE]] = None
-    is_obsolete: Optional[Union[bool, Bool]] = None
     cross_references: Optional[Union[Dict[Union[str, CrossReferenceCurie], Union[dict, CrossReference]], List[Union[dict, CrossReference]]]] = empty_dict()
     synonyms: Optional[Union[Union[dict, Synonym], List[Union[dict, Synonym]]]] = empty_list()
     namespace: Optional[str] = None
@@ -1365,9 +1373,6 @@ class OntologyTerm(AuditedObject):
 
         if self.type is not None and not isinstance(self.type, URIorCURIE):
             self.type = URIorCURIE(self.type)
-
-        if self.is_obsolete is not None and not isinstance(self.is_obsolete, Bool):
-            self.is_obsolete = Bool(self.is_obsolete)
 
         self._normalize_inlined_as_list(slot_name="cross_references", slot_type=CrossReference, key_name="curie", keyed=True)
 
@@ -2103,11 +2108,11 @@ class Molecule(ChemicalTerm):
 
     curie: Union[str, MoleculeCurie] = None
     internal: Union[bool, Bool] = None
-    table_key: Optional[int] = None
     created_by: Optional[Union[str, PersonUniqueId]] = None
-    creation_date: Optional[Union[str, XSDDate]] = None
+    date_created: Optional[Union[str, XSDDate]] = None
     modified_by: Optional[Union[str, PersonUniqueId]] = None
-    date_last_modified: Optional[Union[str, XSDDate]] = None
+    date_updated: Optional[Union[str, XSDDate]] = None
+    obsolete: Optional[Union[bool, Bool]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -2120,20 +2125,20 @@ class Molecule(ChemicalTerm):
         if not isinstance(self.internal, Bool):
             self.internal = Bool(self.internal)
 
-        if self.table_key is not None and not isinstance(self.table_key, int):
-            self.table_key = int(self.table_key)
-
         if self.created_by is not None and not isinstance(self.created_by, PersonUniqueId):
             self.created_by = PersonUniqueId(self.created_by)
 
-        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
-            self.creation_date = XSDDate(self.creation_date)
+        if self.date_created is not None and not isinstance(self.date_created, XSDDate):
+            self.date_created = XSDDate(self.date_created)
 
         if self.modified_by is not None and not isinstance(self.modified_by, PersonUniqueId):
             self.modified_by = PersonUniqueId(self.modified_by)
 
-        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
-            self.date_last_modified = XSDDate(self.date_last_modified)
+        if self.date_updated is not None and not isinstance(self.date_updated, XSDDate):
+            self.date_updated = XSDDate(self.date_updated)
+
+        if self.obsolete is not None and not isinstance(self.obsolete, Bool):
+            self.obsolete = Bool(self.obsolete)
 
         super().__post_init__(**kwargs)
 
@@ -2233,7 +2238,7 @@ class PhenotypeAnnotation(Association):
     predicate: str = None
     subject: Union[str, BiologicalEntityCurie] = None
     object: str = None
-    creation_date: Union[str, XSDDate] = None
+    date_created: Union[str, XSDDate] = None
     single_reference: Optional[Union[str, ReferenceCurie]] = None
     phenotype_term: Optional[Union[str, PhenotypeTermCurie]] = None
     condition_relations: Optional[Union[Union[dict, "ConditionRelation"], List[Union[dict, "ConditionRelation"]]]] = empty_list()
@@ -2254,10 +2259,10 @@ class PhenotypeAnnotation(Association):
         if not isinstance(self.object, str):
             self.object = str(self.object)
 
-        if self._is_empty(self.creation_date):
-            self.MissingRequiredField("creation_date")
-        if not isinstance(self.creation_date, XSDDate):
-            self.creation_date = XSDDate(self.creation_date)
+        if self._is_empty(self.date_created):
+            self.MissingRequiredField("date_created")
+        if not isinstance(self.date_created, XSDDate):
+            self.date_created = XSDDate(self.date_created)
 
         if self.single_reference is not None and not isinstance(self.single_reference, ReferenceCurie):
             self.single_reference = ReferenceCurie(self.single_reference)
@@ -2288,7 +2293,7 @@ class GenePhenotypeAnnotation(PhenotypeAnnotation):
     internal: Union[bool, Bool] = None
     predicate: str = None
     object: str = None
-    creation_date: Union[str, XSDDate] = None
+    date_created: Union[str, XSDDate] = None
     subject: Union[str, GeneCurie] = None
     sgd_strain_background: Optional[Union[str, AffectedGenomicModelCurie]] = None
 
@@ -2325,7 +2330,7 @@ class AllelePhenotypeAnnotation(PhenotypeAnnotation):
     internal: Union[bool, Bool] = None
     predicate: str = None
     object: str = None
-    creation_date: Union[str, XSDDate] = None
+    date_created: Union[str, XSDDate] = None
     subject: Union[str, AlleleCurie] = None
     inferred_gene: Optional[Union[str, GeneCurie]] = None
 
@@ -2362,7 +2367,7 @@ class AGMPhenotypeAnnotation(PhenotypeAnnotation):
     internal: Union[bool, Bool] = None
     predicate: str = None
     object: str = None
-    creation_date: Union[str, XSDDate] = None
+    date_created: Union[str, XSDDate] = None
     subject: Union[str, AffectedGenomicModelCurie] = None
     inferred_allele: Optional[Union[str, AlleleCurie]] = None
     inferred_gene: Optional[Union[str, GeneCurie]] = None
@@ -2775,10 +2780,7 @@ class Reference(AuditedObject):
     category: Optional[Union[str, "ReferenceCategoryEnum"]] = None
     citation: Optional[str] = None
     date_arrived_in_pubmed: Optional[Union[str, List[str]]] = empty_list()
-    date_created: Optional[Union[str, XSDDate]] = None
-    date_last_modified: Optional[Union[str, XSDDate]] = None
     date_published: Optional[str] = None
-    date_updated: Optional[Union[str, XSDDate]] = None
     issue_date: Optional[str] = None
     issue_name: Optional[str] = None
     keywords: Optional[Union[str, List[str]]] = empty_list()
@@ -2794,6 +2796,7 @@ class Reference(AuditedObject):
     resource_id: Optional[int] = None
     title: Optional[str] = None
     volume: Optional[str] = None
+    date_updated: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -2819,17 +2822,8 @@ class Reference(AuditedObject):
             self.date_arrived_in_pubmed = [self.date_arrived_in_pubmed] if self.date_arrived_in_pubmed is not None else []
         self.date_arrived_in_pubmed = [v if isinstance(v, str) else str(v) for v in self.date_arrived_in_pubmed]
 
-        if self.date_created is not None and not isinstance(self.date_created, XSDDate):
-            self.date_created = XSDDate(self.date_created)
-
-        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
-            self.date_last_modified = XSDDate(self.date_last_modified)
-
         if self.date_published is not None and not isinstance(self.date_published, str):
             self.date_published = str(self.date_published)
-
-        if self.date_updated is not None and not isinstance(self.date_updated, XSDDate):
-            self.date_updated = XSDDate(self.date_updated)
 
         if self.issue_date is not None and not isinstance(self.issue_date, str):
             self.issue_date = str(self.issue_date)
@@ -2878,6 +2872,9 @@ class Reference(AuditedObject):
 
         if self.volume is not None and not isinstance(self.volume, str):
             self.volume = str(self.volume)
+
+        if self.date_updated is not None and not isinstance(self.date_updated, XSDDate):
+            self.date_updated = XSDDate(self.date_updated)
 
         super().__post_init__(**kwargs)
 
@@ -3139,7 +3136,6 @@ class VocabularyTerm(AuditedObject):
     internal: Union[bool, Bool] = None
     abbreviation: Optional[str] = None
     definition: Optional[str] = None
-    is_obsolete: Optional[Union[bool, Bool]] = None
     text_synonyms: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -3153,9 +3149,6 @@ class VocabularyTerm(AuditedObject):
 
         if self.definition is not None and not isinstance(self.definition, str):
             self.definition = str(self.definition)
-
-        if self.is_obsolete is not None and not isinstance(self.is_obsolete, Bool):
-            self.is_obsolete = Bool(self.is_obsolete)
 
         if not isinstance(self.text_synonyms, list):
             self.text_synonyms = [self.text_synonyms] if self.text_synonyms is not None else []
@@ -3179,7 +3172,6 @@ class Vocabulary(AuditedObject):
     name: Union[str, VocabularyName] = None
     internal: Union[bool, Bool] = None
     vocabulary_description: Optional[str] = None
-    is_obsolete: Optional[Union[bool, Bool]] = None
     member_terms: Optional[Union[Union[str, VocabularyTermName], List[Union[str, VocabularyTermName]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -3190,9 +3182,6 @@ class Vocabulary(AuditedObject):
 
         if self.vocabulary_description is not None and not isinstance(self.vocabulary_description, str):
             self.vocabulary_description = str(self.vocabulary_description)
-
-        if self.is_obsolete is not None and not isinstance(self.is_obsolete, Bool):
-            self.is_obsolete = Bool(self.is_obsolete)
 
         if not isinstance(self.member_terms, list):
             self.member_terms = [self.member_terms] if self.member_terms is not None else []
@@ -3335,11 +3324,11 @@ class AlleleGenomicEntityAssociation(Association):
     subject: Union[str, AlleleCurie] = None
     predicate: Union[str, ROTermCurie] = None
     object: Union[str, GenomicEntityCurie] = None
-    table_key: Optional[int] = None
     created_by: Optional[Union[str, PersonUniqueId]] = None
-    creation_date: Optional[Union[str, XSDDate]] = None
+    date_created: Optional[Union[str, XSDDate]] = None
     modified_by: Optional[Union[str, PersonUniqueId]] = None
-    date_last_modified: Optional[Union[str, XSDDate]] = None
+    date_updated: Optional[Union[str, XSDDate]] = None
+    obsolete: Optional[Union[bool, Bool]] = None
     single_reference: Optional[Union[str, ReferenceCurie]] = None
     evidence_code: Optional[Union[str, ECOTermCurie]] = None
     related_note: Optional[Union[dict, Note]] = None
@@ -3365,20 +3354,20 @@ class AlleleGenomicEntityAssociation(Association):
         if not isinstance(self.object, GenomicEntityCurie):
             self.object = GenomicEntityCurie(self.object)
 
-        if self.table_key is not None and not isinstance(self.table_key, int):
-            self.table_key = int(self.table_key)
-
         if self.created_by is not None and not isinstance(self.created_by, PersonUniqueId):
             self.created_by = PersonUniqueId(self.created_by)
 
-        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
-            self.creation_date = XSDDate(self.creation_date)
+        if self.date_created is not None and not isinstance(self.date_created, XSDDate):
+            self.date_created = XSDDate(self.date_created)
 
         if self.modified_by is not None and not isinstance(self.modified_by, PersonUniqueId):
             self.modified_by = PersonUniqueId(self.modified_by)
 
-        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
-            self.date_last_modified = XSDDate(self.date_last_modified)
+        if self.date_updated is not None and not isinstance(self.date_updated, XSDDate):
+            self.date_updated = XSDDate(self.date_updated)
+
+        if self.obsolete is not None and not isinstance(self.obsolete, Bool):
+            self.obsolete = Bool(self.obsolete)
 
         if self.single_reference is not None and not isinstance(self.single_reference, ReferenceCurie):
             self.single_reference = ReferenceCurie(self.single_reference)
@@ -4013,7 +4002,7 @@ slots.end = Slot(uri=ALLIANCE.end, name="end", curie=ALLIANCE.curie('end'),
                    model_uri=DEFAULT_.end, domain=None, range=Optional[str])
 
 slots.has_assembly = Slot(uri=ALLIANCE.has_assembly, name="has_assembly", curie=ALLIANCE.curie('has_assembly'),
-                   model_uri=DEFAULT_.has_assembly, domain=GenomicEntity, range=Union[str, ChromosomeCurie])
+                   model_uri=DEFAULT_.has_assembly, domain=GenomicLocation, range=Union[str, AssemblyCurie])
 
 slots.prefix = Slot(uri=ALLIANCE.prefix, name="prefix", curie=ALLIANCE.curie('prefix'),
                    model_uri=DEFAULT_.prefix, domain=None, range=str)
@@ -4103,16 +4092,16 @@ slots.automated_gene_description = Slot(uri=ALLIANCE.automated_gene_description,
                    model_uri=DEFAULT_.automated_gene_description, domain=None, range=Optional[str])
 
 slots.genomic_locations = Slot(uri=ALLIANCE.genomic_locations, name="genomic_locations", curie=ALLIANCE.curie('genomic_locations'),
-                   model_uri=DEFAULT_.genomic_locations, domain=GenomicEntity, range=Optional[Union[Union[dict, "GeneGenomicLocation"], List[Union[dict, "GeneGenomicLocation"]]]])
+                   model_uri=DEFAULT_.genomic_locations, domain=GenomicEntity, range=Optional[Union[Union[dict, "GenomicLocation"], List[Union[dict, "GenomicLocation"]]]])
 
 slots.table_key = Slot(uri=ALLIANCE.table_key, name="table_key", curie=ALLIANCE.curie('table_key'),
                    model_uri=DEFAULT_.table_key, domain=None, range=Optional[int])
 
-slots.creation_date = Slot(uri=ALLIANCE.creation_date, name="creation_date", curie=ALLIANCE.curie('creation_date'),
-                   model_uri=DEFAULT_.creation_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.date_created = Slot(uri=ALLIANCE.date_created, name="date_created", curie=ALLIANCE.curie('date_created'),
+                   model_uri=DEFAULT_.date_created, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.date_last_modified = Slot(uri=ALLIANCE.date_last_modified, name="date_last_modified", curie=ALLIANCE.curie('date_last_modified'),
-                   model_uri=DEFAULT_.date_last_modified, domain=None, range=Optional[Union[str, XSDDate]])
+slots.date_updated = Slot(uri=ALLIANCE.date_updated, name="date_updated", curie=ALLIANCE.curie('date_updated'),
+                   model_uri=DEFAULT_.date_updated, domain=None, range=Optional[Union[str, XSDDate]])
 
 slots.created_by = Slot(uri=ALLIANCE.created_by, name="created_by", curie=ALLIANCE.curie('created_by'),
                    model_uri=DEFAULT_.created_by, domain=AuditedObject, range=Optional[Union[str, PersonUniqueId]])
@@ -4168,8 +4157,8 @@ slots.single_reference = Slot(uri=ALLIANCE.single_reference, name="single_refere
 slots.original_reference = Slot(uri=ALLIANCE.original_reference, name="original_reference", curie=ALLIANCE.curie('original_reference'),
                    model_uri=DEFAULT_.original_reference, domain=None, range=Optional[Union[str, ReferenceCurie]])
 
-slots.is_obsolete = Slot(uri=ALLIANCE.is_obsolete, name="is_obsolete", curie=ALLIANCE.curie('is_obsolete'),
-                   model_uri=DEFAULT_.is_obsolete, domain=None, range=Optional[Union[bool, Bool]])
+slots.obsolete = Slot(uri=ALLIANCE.obsolete, name="obsolete", curie=ALLIANCE.curie('obsolete'),
+                   model_uri=DEFAULT_.obsolete, domain=None, range=Optional[Union[bool, Bool]])
 
 slots.abbreviation = Slot(uri=ALLIANCE.abbreviation, name="abbreviation", curie=ALLIANCE.curie('abbreviation'),
                    model_uri=DEFAULT_.abbreviation, domain=None, range=Optional[str])
@@ -4447,12 +4436,6 @@ slots.pubmed_type = Slot(uri="str(uriorcurie)", name="pubmed_type", curie=None,
 slots.date_published = Slot(uri="str(uriorcurie)", name="date_published", curie=None,
                    model_uri=DEFAULT_.date_published, domain=None, range=Optional[str])
 
-slots.date_created = Slot(uri="str(uriorcurie)", name="date_created", curie=None,
-                   model_uri=DEFAULT_.date_created, domain=None, range=Optional[Union[str, XSDDate]])
-
-slots.date_updated = Slot(uri="str(uriorcurie)", name="date_updated", curie=None,
-                   model_uri=DEFAULT_.date_updated, domain=None, range=Optional[Union[str, XSDDate]])
-
 slots.date_arrived_in_pubmed = Slot(uri="str(uriorcurie)", name="date_arrived_in_pubmed", curie=None,
                    model_uri=DEFAULT_.date_arrived_in_pubmed, domain=Reference, range=Optional[Union[str, List[str]]])
 
@@ -4654,11 +4637,11 @@ slots.EntitySynonym_predicate = Slot(uri=ALLIANCE.predicate, name="EntitySynonym
 slots.EntitySynonym_references = Slot(uri=ALLIANCE.references, name="EntitySynonym_references", curie=ALLIANCE.curie('references'),
                    model_uri=DEFAULT_.EntitySynonym_references, domain=EntitySynonym, range=Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]])
 
-slots.GeneGenomicLocation_subject = Slot(uri=ALLIANCE.subject, name="GeneGenomicLocation_subject", curie=ALLIANCE.curie('subject'),
-                   model_uri=DEFAULT_.GeneGenomicLocation_subject, domain=GeneGenomicLocation, range=Union[str, VariantCurie])
+slots.GenomicLocation_subject = Slot(uri=ALLIANCE.subject, name="GenomicLocation_subject", curie=ALLIANCE.curie('subject'),
+                   model_uri=DEFAULT_.GenomicLocation_subject, domain=GenomicLocation, range=Union[str, GenomicEntityCurie])
 
-slots.GeneGenomicLocation_object = Slot(uri=ALLIANCE.object, name="GeneGenomicLocation_object", curie=ALLIANCE.curie('object'),
-                   model_uri=DEFAULT_.GeneGenomicLocation_object, domain=GeneGenomicLocation, range=Union[str, ChromosomeCurie])
+slots.GenomicLocation_object = Slot(uri=ALLIANCE.object, name="GenomicLocation_object", curie=ALLIANCE.curie('object'),
+                   model_uri=DEFAULT_.GenomicLocation_object, domain=GenomicLocation, range=Union[str, ChromosomeCurie])
 
 slots.Figure_single_reference = Slot(uri=ALLIANCE.single_reference, name="Figure_single_reference", curie=ALLIANCE.curie('single_reference'),
                    model_uri=DEFAULT_.Figure_single_reference, domain=Figure, range=Union[str, ReferenceCurie])
@@ -4705,8 +4688,8 @@ slots.PhenotypeAnnotation_object = Slot(uri=ALLIANCE.object, name="PhenotypeAnno
 slots.PhenotypeAnnotation_single_reference = Slot(uri=ALLIANCE.single_reference, name="PhenotypeAnnotation_single_reference", curie=ALLIANCE.curie('single_reference'),
                    model_uri=DEFAULT_.PhenotypeAnnotation_single_reference, domain=PhenotypeAnnotation, range=Optional[Union[str, ReferenceCurie]])
 
-slots.PhenotypeAnnotation_creation_date = Slot(uri=ALLIANCE.creation_date, name="PhenotypeAnnotation_creation_date", curie=ALLIANCE.curie('creation_date'),
-                   model_uri=DEFAULT_.PhenotypeAnnotation_creation_date, domain=PhenotypeAnnotation, range=Union[str, XSDDate])
+slots.PhenotypeAnnotation_date_created = Slot(uri=ALLIANCE.date_created, name="PhenotypeAnnotation_date_created", curie=ALLIANCE.curie('date_created'),
+                   model_uri=DEFAULT_.PhenotypeAnnotation_date_created, domain=PhenotypeAnnotation, range=Union[str, XSDDate])
 
 slots.GenePhenotypeAnnotation_subject = Slot(uri=ALLIANCE.subject, name="GenePhenotypeAnnotation_subject", curie=ALLIANCE.curie('subject'),
                    model_uri=DEFAULT_.GenePhenotypeAnnotation_subject, domain=GenePhenotypeAnnotation, range=Union[str, GeneCurie])
@@ -4834,8 +4817,8 @@ slots.ConditionRelation_condition_relation_type = Slot(uri=ALLIANCE.condition_re
 slots.Reference_reference_id = Slot(uri="str(uriorcurie)", name="Reference_reference_id", curie=None,
                    model_uri=DEFAULT_.Reference_reference_id, domain=Reference, range=int)
 
-slots.Reference_date_last_modified = Slot(uri=ALLIANCE.date_last_modified, name="Reference_date_last_modified", curie=ALLIANCE.curie('date_last_modified'),
-                   model_uri=DEFAULT_.Reference_date_last_modified, domain=Reference, range=Optional[Union[str, XSDDate]])
+slots.Reference_date_updated = Slot(uri=ALLIANCE.date_updated, name="Reference_date_updated", curie=ALLIANCE.curie('date_updated'),
+                   model_uri=DEFAULT_.Reference_date_updated, domain=Reference, range=Optional[Union[str, XSDDate]])
 
 slots.MeshDetail_reference_id = Slot(uri="str(uriorcurie)", name="MeshDetail_reference_id", curie=None,
                    model_uri=DEFAULT_.MeshDetail_reference_id, domain=MeshDetail, range=int)

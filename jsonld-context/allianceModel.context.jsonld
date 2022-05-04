@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-04-25T22:21:29\n    Schema: AllianceCurationSchema\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: \n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-05-04T18:31:01\n    Schema: AllianceCurationSchema\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: \n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "BIOGRID": "http://identifiers.org/biogrid/",
       "DIP": "http://identifiers.org/dip/",
@@ -244,9 +244,6 @@
       "created_by": {
          "@type": "@id"
       },
-      "creation_date": {
-         "@type": "xsd:date"
-      },
       "cropped_from": {
          "@type": "@id",
          "@id": "https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/cropped_from"
@@ -269,10 +266,6 @@
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/date_arrived_in_pubmed"
       },
       "date_created": {
-         "@type": "xsd:date",
-         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/date_created"
-      },
-      "date_last_modified": {
          "@type": "xsd:date"
       },
       "date_last_modified_in_pubmed": {
@@ -282,8 +275,7 @@
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/date_published"
       },
       "date_updated": {
-         "@type": "xsd:date",
-         "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/date_updated"
+         "@type": "xsd:date"
       },
       "definition": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/definition"
@@ -537,9 +529,6 @@
          "@type": "xsd:boolean",
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/is_extinct"
       },
-      "is_obsolete": {
-         "@type": "xsd:boolean"
-      },
       "iso_abbreviation": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/resource/iso_abbreviation"
       },
@@ -616,6 +605,9 @@
       },
       "object_set": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest/object_set"
+      },
+      "obsolete": {
+         "@type": "xsd:boolean"
       },
       "online_issn": {
          "@id": "https://github.com/alliance-genome/agr_curation_schema/src/schema/resource/online_issn"
