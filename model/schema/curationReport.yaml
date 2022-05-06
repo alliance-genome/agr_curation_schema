@@ -62,24 +62,9 @@ slots:
 
   curation_report_status:
     description: Describes the status of the curation report
-    range: curation_report_status_enum
+    range: string
 
   curation_report_timestamp:
     description: Timestamp for creation of BIRT report file
     domain: CurationReportHistory
     range: date
-
-enums:
-
-  curation_report_status_enum:
-    permissible_values:
-      STARTED:
-      RUNNING:
-      STOPPED:
-      FINISHED:
-      PENDING:
-      FAILED:
-      DOWNLOADING:
-      NOT_RESPONDING:
-      ADMINISTRATIVELY_STOPPED:
-      PAUSED:
