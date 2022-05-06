@@ -344,6 +344,7 @@ slots:
       Default value is true.
     range: boolean
     required: true
+    ifabsent: false
 
   related_notes:
     description: Holds between an object and a list of related Note objects.
