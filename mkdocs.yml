@@ -1,9 +1,10 @@
 site_name: "Model to describe the Alliance curation/persistence data store"
 theme:
-  name: readthedocs
+  name: material
 highlightjs: truechema assumes a property graph
 plugins:
   - search
+  - mermaid2
 
 docs_dir: docs
 site_dir: mkdocs_html

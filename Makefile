@@ -19,6 +19,7 @@ gen: $(patsubst %,gen-%,$(TGTS))
 gen-artifacts: $(patsubst %,gen-%,$(ARTIFACT_TGTS))
 	cp -pr target/* .
 
+
 clean: clean-jsonschema
 
 clean-jsonschema:
@@ -55,6 +56,7 @@ tdir-%:
 docs:
 	mkdir -p $@
 	mkdir -p $@/images
+	mkdir -p $@/types
 
 stage: $(patsubst %,stage-%,$(TGTS))
 
@@ -65,6 +67,8 @@ stage-%: gen-%
 
 gen-docs:
 	poetry run gen-doc model/schema/allianceModel.yaml --directory target/docs --template-directory doc_templates
+	cp css/extra_css.css docs/
+	cp README.md docs/
 
 guidelines/%.md: docs/index.md
 	cp -R guidelines/* $(dir $@)
