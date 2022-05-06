@@ -5,6 +5,7 @@
       "taxon": "NCBITaxon:7955",
       "created_by": "ZFIN",
       "modified_by": "ZFIN",
+      "internal": false,
       "symbol": "gdnfa",
       "name": "glial cell derived neurotrophic factor a",
       "cross_references": [
@@ -13,6 +14,7 @@
           "created_by": "ZFIN",
           "display_name": "",
           "modified_by": "ZFIN",
+          "internal": false,
           "page_areas": [
             "gene",
             "gene/expression",
@@ -26,6 +28,7 @@
           "curie": "NCBI_Gene:79379",
           "created_by": "ZFIN",
           "modified_by": "ZFIN",
+          "internal": false,
           "page_areas": [
           ],
           "prefix": "NCBI_Gene",

@@ -17,8 +17,7 @@ prefixes:
 
 classes:
   ModCorpusAssociation:
-    mixins:
-      - AuditedObject
+    is_a: AuditedObject
     description: >-
       For a given reference and Mod, whether it is inside corpus,
       outside corpus, or needs review, as well as where this
@@ -27,8 +26,6 @@ classes:
       There should be only one corpus call for any given reference-mod pair.
     slots:
       - corpus
-      - date_created
-      - date_updated
       - mod_corpus_association_id
       - mod_corpus_sort_source
       - mod_id

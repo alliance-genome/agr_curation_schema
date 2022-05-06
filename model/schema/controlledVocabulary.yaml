@@ -34,15 +34,13 @@ slots:
 classes:
 
   VocabularyTerm:
+    is_a: AuditedObject
     description: >-
       A concept or class in a simple vocabulary.
-    mixins:
-      - AuditedObject
     slots:
       - name
       - abbreviation
       - definition
-      - is_obsolete
       - text_synonyms
     slot_usage:
       name:
@@ -52,12 +50,10 @@ classes:
   Vocabulary:
     description: >-
       A set of VocabularyTerm objects.
-    mixins:
-      - AuditedObject
+    is_a: AuditedObject
     slots:
       - name
       - vocabulary_description
-      - is_obsolete
       - member_terms
     slot_usage:
       name:

@@ -30,6 +30,7 @@ prefixes:
 classes:
 
   Agent:
+    is_a: AuditedObject
     description: >-
       An individual, group, organization or project that provides information
       and/or materials.

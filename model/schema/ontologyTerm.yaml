@@ -61,6 +61,7 @@ slots:
 classes:
 
   OntologyTerm:
+    is_a: AuditedObject
     description: >-
       A concept or class in an ontology, vocabulary or thesaurus. Note, ontology terms
       can be found in multiple ontologies (ie: mireoting). defining_slots helps define
@@ -74,7 +75,6 @@ classes:
       - definition
       - definition_urls
       - type
-      - is_obsolete
       - cross_references
       - synonyms
       - namespace

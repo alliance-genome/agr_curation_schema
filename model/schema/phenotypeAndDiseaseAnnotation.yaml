@@ -38,8 +38,6 @@ classes:
 
   PhenotypeAnnotation:
     is_a: Association
-    mixins:
-      - AuditedObject
     description: >-
       An annotation asserting an association between a biological entity and a phenotype supported by evidence.
     slots:
@@ -78,7 +76,7 @@ classes:
       single_reference:
         description: >-
           The reference in which the phenotype association was asserted/reported.
-      creation_date:
+      date_created:
         description: >-
           The date of curation at the source (MOD) database.
         required: true
@@ -156,8 +154,6 @@ classes:
   DiseaseAnnotation:
     is_a: Association
     abstract: true
-    mixins:
-      - AuditedObject
     description: >-
       An annotation asserting an association between a biological entity and a disease supported by evidence.
     slots:
@@ -305,6 +301,7 @@ classes:
         range: Allele
 
   ExperimentalCondition:
+    is_a: AuditedObject
     description: >-
       The environmental context in which an experiment is carried out. This may (e.g. drug treatment)
       or may not (e.g. standard conditions) directly influence the outcome of the experiment.
@@ -373,6 +370,7 @@ classes:
 
 
   ConditionRelation:
+    is_a: AuditedObject
     description: >-
       A pairing of an experimental condition relation (i.e. has_condition) with a list of 1 or more
       ExperimentalCondition objects. Annotation objects can connect directly to a set of 0 or more
@@ -547,58 +545,3 @@ slots:
       a reference-specific alias for a data object used while curating.
     range: string
 
-## ----------
-## PREDICATES
-## ----------
-
-  has_condition:
-    is_a: related_to
-    symmetric: false
-    domain: Entity
-    range: ExperimentalCondition
-
-  is_condition_in:
-    is_a: related_to
-    symmetric: false
-    inverse: has_condition
-    domain: ExperimentalCondition
-    range: Entity
-
-  induced_by:
-    is_a: related_to
-    symmetric: false
-    domain: Entity
-    range: ExperimentalCondition
-
-  induces:
-    is_a: related_to
-    symmetric: false
-    inverse: induced_by
-    domain: ExperimentalCondition
-    range: Entity
-
-  ameliorated_by:
-    is_a: related_to
-    symmetric: false
-    domain: Entity
-    range: ExperimentalCondition
-
-  ameliorates:
-    is_a: related_to
-    symmetric: false
-    inverse: ameliorated_by
-    domain: ExperimentalCondition
-    range: Entity
-
-  exacerbated_by:
-    is_a: related_to
-    symmetric: false
-    domain: Entity
-    range: ExperimentalCondition
-
-  exacerbates:
-    is_a: related_to
-    symmetric: false
-    inverse: exacerbated_by
-    domain: ExperimentalCondition
-    range: Entity

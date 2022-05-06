@@ -5,11 +5,13 @@
       "taxon": "NCBITaxon:7955",
       "created_by": "ZFIN",
       "modified_by": "ZFIN",
+      "internal": false,
       "name": "b1219",
       "associated_references": [
         {
           "reference_type": "term:huh?",
-          "single_reference": "PMID:123456"
+          "single_reference": "PMID:123456",
+          "internal": false
         }
       ]
     },
@@ -18,11 +20,13 @@
       "taxon": "NCBITaxon:7955",
       "created_by": "ZFIN",
       "modified_by": "ZFIN",
+      "internal": false,
       "name": "sa11077",
       "associated_references": [
         {
           "reference_type": "term:huh?",
-          "single_reference": "PMID:123456"
+          "single_reference": "PMID:123456",
+          "internal": false
         }
       ]
     }

@@ -50,6 +50,7 @@ classes:
           description: a variant must have a genome location, or must be private
 
   SourceVariantLocation:
+    is_a: AuditedObject
     description:
       Links a paper to the variant locations described in that paper
     slots:
@@ -60,6 +61,7 @@ classes:
         required: true
 
   VariantLocation:
+    is_a: AuditedObject
     abstract: true
     description: >-
       Base class linking a variant to a position on a genomic entity and the resulting consequence to the sequence

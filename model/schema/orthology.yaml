@@ -14,6 +14,7 @@ prefixes:
 
 classes:
   GeneToGeneOrthology:
+    is_a: AuditedObject
     description: >-
     slots:
       - gene_subject

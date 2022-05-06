@@ -4,18 +4,20 @@
       "condition_relations": [
         {
           "condition_relation_type": "induced_by",
+          "internal": false,
           "conditions": [
             {
               "condition_chemical": "CHEBI:6432",
               "condition_class": "ZECO:0000111",
-              "condition_statement": "chemical treatment:levamisole"
+              "condition_statement": "chemical treatment:levamisole",
+              "internal": false
             }
           ]
         }
       ],
       "data_provider": "WB",
       "created_by": "WB:WBPerson324",
-      "date_last_modified": "2021-09-01T00:00:00+00:00",
+      "date_updated": "2021-09-01T00:00:00+00:00",
       "related_notes": [
         {
           "free_text": "summary statement",
@@ -30,6 +32,7 @@
       "genetic_sex": "hermaphrodite",
       "mod_entity_id": "WBDOannot00001032",
       "modified_by": "WB:WBPerson324",
+      "internal": false,
       "negated": false,
       "object": "DOID:11724",
       "predicate": "is_implicated_in",
@@ -42,18 +45,20 @@
       "condition_relations": [
         {
           "condition_relation_type": "induced_by",
+          "internal": false,
           "conditions": [
             {
               "condition_chemical": "CHEBI:34910",
               "condition_class": "ZECO:0000111",
-              "condition_statement": "chemical treatment:pentylenetetrazole"
+              "condition_statement": "chemical treatment:pentylenetetrazole",
+              "internal": false
             }
           ]
         }
       ],
       "data_provider": "WB",
       "created_by": "WB:WBPerson324",
-      "date_last_modified": "2021-08-24T00:00:00+00:00",
+      "date_updated": "2021-08-24T00:00:00+00:00",
       "related_notes": [
         {
           "free_text": "summary statement",
@@ -71,6 +76,7 @@
       "mod_entity_id": "WBDOannot00001014",
       "modified_by": "WB:WBPerson324",
       "negated": false,
+      "internal": false,
       "object": "DOID:1826",
       "predicate": "is_implicated_in",
       "single_reference": "PMID:16996038",
@@ -81,7 +87,7 @@
     {
       "created_by": "WB:WBPerson324",
       "data_provider": "WB",
-      "date_last_modified": "2019-03-08T00:00:00+00:00",
+      "date_updated": "2019-03-08T00:00:00+00:00",
       "disease_genetic_modifier": "WB:WBVar00250993",
       "disease_genetic_modifier_relation": "exacerbated_by",
       "evidence_codes": [
@@ -91,6 +97,7 @@
       "genetic_sex": "hermaphrodite",
       "mod_entity_id": "WBDOannot00000109",
       "modified_by": "WB:WBPerson324",
+      "internal": false,
       "object": "DOID:10652",
       "predicate": "is_model_of",
       "single_reference": "PMID:22220943",
@@ -100,23 +107,26 @@
       "condition_relations": [
         {
           "condition_relation_type": "ameliorated_by",
+          "internal": false,
           "conditions": [
             {
               "condition_chemical": "CHEBI:30052",
               "condition_class": "ZECO:0000111",
-              "condition_statement": "chemical treatment:Copper"
+              "condition_statement": "chemical treatment:Copper",
+              "internal": false
             },
             {
               "condition_chemical": "WB:WBMol:00004976",
               "condition_class": "ZECO:0000111",
-              "condition_statement": "chemical treatment:Methazolamide"
+              "condition_statement": "chemical treatment:Methazolamide",
+              "internal": false
             }
           ]
         }
       ],
       "created_by": "WB:WBPerson324",
       "data_provider": "WB",
-      "date_last_modified": "2017-05-22T00:00:00+00:00",
+      "date_updated": "2017-05-22T00:00:00+00:00",
       "related_notes": [
         {
           "free_text": "Mutations in human dystrophin are associated with the Duchenne and Becker types of muscular dystrophy, that affect skeletal muscles used for movement, and heart (cardiac) muscle; the genetic model for progressive myopathy in C. elegans is a mutant of the elegans dystrophin ortholog, dys-1, combined with a mutation in hlh-1, the MyoD ortholog, (dys-1(cx18);hlh-1(cc561ts), these animals display time-dependent muscle degeneration; a screen of approximately 1000 compounds on the dys-1(cx18),hlh-1(cc561) model, identified several substances that ameliorated the dystrophic phenotype, with the top hits being the sulfonamides, methazolamide (MTZ) and dichlorphenamide (DCPM), known inhibitors of carbonic anydrase (CA) enymes; knock-down of the elegans CA ortholog, cah-4, via RNAi interference, significantly reduced muscle degeneration in the dys-1(cx18),hlh-1(cc561) strain; further, the effects of MTZ and DCPM have been validated in the mdx mouse model for Duchenne muscular dystrophy (DMD).",
@@ -131,6 +141,7 @@
       "genetic_sex": "hermaphrodite",
       "mod_entity_id": "WBDOannot00000110",
       "modified_by": "WB:WBPerson324",
+      "internal": false,
       "object": "DOID:11723",
       "predicate": "is_model_of",
       "single_reference": "PMID:19648295",

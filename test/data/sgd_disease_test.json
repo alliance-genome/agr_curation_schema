@@ -11,7 +11,8 @@
             "object": "DOID:10588",
             "created_by": "SGD",
             "modified_by": "SGD",
-            "creation_date": "2018-04-25T14:04:15-00:00",
+            "internal": false,
+            "date_created": "2018-04-25T14:04:15-00:00",
             "subject": "SGD:S000001671",
             "related_notes": [
         {

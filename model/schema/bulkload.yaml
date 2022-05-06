@@ -7,16 +7,14 @@ imports:
 classes:
 
   BulkLoadGroup:
-    mixins:
-      - AuditedObject
+    is_a: AuditedObject
     description: This class is use to group together bulk load_files
     slots:
       - name
       - loads
 
   BulkLoad:
-    mixins:
-      - AuditedObject
+    is_a: AuditedObject
     description: Base class for all loads
     slots:
       - name
@@ -28,8 +26,7 @@ classes:
       - load_files
 
   BulkLoadFile:
-    mixins:
-      - AuditedObject
+    is_a: AuditedObject
     description: This class is used to hold version of the files being loaded
     slots:
       - bulkload_status
@@ -70,6 +67,7 @@ classes:
       - backend_load_type
 
   BulkLoadFileHistory:
+    is_a: AuditedObject
     description: Object used to describe the indiviual run of this BulkLoadFile
     slots:
       - load_started
