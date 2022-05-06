@@ -619,6 +619,13 @@ slots:
     multivalued: false
     range: ECOTerm
 
+  cron_schedule:
+    description: A string describing the cron syntax for the schedule
+    range: string
+
+  schedule_active:
+    description: This determines if the the schedule is active or not
+    range: boolean
 
 ## --------------------
 ## ASSOCIATION SLOTS
