@@ -5,7 +5,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX linkml: <https://w3id.org/linkml/>
 
 
-<http://alliancegenome.orgBiologicalSequence> xsd:string
+<BiologicalSequence> xsd:string
 
 linkml:String xsd:string
 
@@ -35,1296 +35,1269 @@ linkml:Objectidentifier IRI
 
 linkml:Nodeidentifier NONLITERAL
 
-<http://alliancegenome.orgAffectedGenomicModel> CLOSED {
-    (  $<http://alliancegenome.orgAffectedGenomicModel_tes> (  &<http://alliancegenome.orgGenomicEntity_tes> ;
-          rdf:type [ <http://alliancegenome.orgGenomicEntity> ] ? ;
-          <http://alliancegenome.orgsubtype> @<http://alliancegenome.orgSubtypeValues> ;
-          <http://alliancegenome.orgcomponents> @<http://alliancegenome.orgAffectedGenomicModelComponent> * ;
-          <http://alliancegenome.orgsequence_targeting_reagents> @<http://alliancegenome.orgSequenceTargetingReagent> * ;
-          <http://alliancegenome.orgparental_populations> @linkml:Uriorcurie ? ;
-          <http://alliancegenome.orgdata_provider> @linkml:String ? ;
-          <http://alliancegenome.orgreferences> @<http://alliancegenome.orgReference> *
+<AffectedGenomicModel> CLOSED {
+    (  $<AffectedGenomicModel_tes> (  &<GenomicEntity_tes> ;
+          rdf:type [ <GenomicEntity> ] ? ;
+          <subtype> @<SubtypeValues> ;
+          <components> @<AffectedGenomicModelComponent> * ;
+          <sequence_targeting_reagents> @<SequenceTargetingReagent> * ;
+          <parental_populations> @linkml:Uriorcurie ? ;
+          <data_provider> @linkml:String ? ;
+          <references> @<Reference> *
        ) ;
-       rdf:type [ <http://alliancegenome.orgAffectedGenomicModel> ]
+       rdf:type [ <AffectedGenomicModel> ]
     )
 }
 
-<http://alliancegenome.orgAffectedGenomicModelComponent> CLOSED {
-    (  $<http://alliancegenome.orgAffectedGenomicModelComponent_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orghas_allele> @<http://alliancegenome.orgAllele> ? ;
-          <http://alliancegenome.orgzygosity> @<http://alliancegenome.orgZygosityValues> ?
+<AffectedGenomicModelComponent> CLOSED {
+    (  $<AffectedGenomicModelComponent_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <has_allele> @<Allele> ? ;
+          <zygosity> @<ZygosityValues> ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgAffectedGenomicModelComponent> ] ?
+       rdf:type [ <AffectedGenomicModelComponent> ] ?
     )
 }
 
-<http://alliancegenome.orgAgent>  (
+<Agent>  (
     CLOSED {
-       (  $<http://alliancegenome.orgAgent_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-             rdf:type [ <http://alliancegenome.orgAuditedObject> ] ?
+       (  $<Agent_tes> (  &<AuditedObject_tes> ;
+             rdf:type [ <AuditedObject> ] ?
           ) ;
-          rdf:type [ <http://alliancegenome.orgAgent> ] ?
+          rdf:type [ <Agent> ] ?
        )
-    } OR @<http://alliancegenome.orgOrganization> OR @<http://alliancegenome.orgPerson>
+    } OR @<Organization> OR @<Person>
 )
 
-<http://alliancegenome.orgAGMDiseaseAnnotation> CLOSED {
-    (  $<http://alliancegenome.orgAGMDiseaseAnnotation_tes> (  &<http://alliancegenome.orgDiseaseAnnotation_tes> ;
-          rdf:type [ <http://alliancegenome.orgDiseaseAnnotation> ] ? ;
-          <http://alliancegenome.orginferred_allele> @<http://alliancegenome.orgAllele> ? ;
-          <http://alliancegenome.orginferred_gene> @<http://alliancegenome.orgGene> ? ;
-          <http://alliancegenome.orgsubject> @<http://alliancegenome.orgAffectedGenomicModel> ;
-          <http://alliancegenome.orgpredicate> @<http://alliancegenome.orgVocabularyTerm>
+<AGMDiseaseAnnotation> CLOSED {
+    (  $<AGMDiseaseAnnotation_tes> (  &<DiseaseAnnotation_tes> ;
+          rdf:type [ <DiseaseAnnotation> ] ? ;
+          <inferred_allele> @<Allele> ? ;
+          <inferred_gene> @<Gene> ? ;
+          <subject> @<AffectedGenomicModel> ;
+          <predicate> @<VocabularyTerm>
        ) ;
-       rdf:type [ <http://alliancegenome.orgAGMDiseaseAnnotation> ] ?
+       rdf:type [ <AGMDiseaseAnnotation> ] ?
     )
 }
 
-<http://alliancegenome.orgAGMPhenotypeAnnotation> CLOSED {
-    (  $<http://alliancegenome.orgAGMPhenotypeAnnotation_tes> (  &<http://alliancegenome.orgPhenotypeAnnotation_tes> ;
-          rdf:type [ <http://alliancegenome.orgPhenotypeAnnotation> ] ? ;
-          <http://alliancegenome.orginferred_allele> @<http://alliancegenome.orgAllele> ? ;
-          <http://alliancegenome.orginferred_gene> @<http://alliancegenome.orgGene> ? ;
-          <http://alliancegenome.orgsubject> @<http://alliancegenome.orgAffectedGenomicModel>
+<AGMPhenotypeAnnotation> CLOSED {
+    (  $<AGMPhenotypeAnnotation_tes> (  &<PhenotypeAnnotation_tes> ;
+          rdf:type [ <PhenotypeAnnotation> ] ? ;
+          <inferred_allele> @<Allele> ? ;
+          <inferred_gene> @<Gene> ? ;
+          <subject> @<AffectedGenomicModel>
        ) ;
-       rdf:type [ <http://alliancegenome.orgAGMPhenotypeAnnotation> ]
+       rdf:type [ <AGMPhenotypeAnnotation> ]
     )
 }
 
-<http://alliancegenome.orgAllele> CLOSED {
-    (  $<http://alliancegenome.orgAllele_tes> (  &<http://alliancegenome.orgGenomicEntity_tes> ;
-          rdf:type [ <http://alliancegenome.orgGenomicEntity> ] ? ;
-          <http://alliancegenome.orgsymbol> @linkml:String ? ;
-          <http://alliancegenome.orgcontains_constructs> @<http://alliancegenome.orgConstruct> * ;
-          <http://alliancegenome.orgmolecular_mutations> @linkml:String * ;
-          <http://alliancegenome.orgfunctional_impact> @linkml:String ? ;
-          <http://alliancegenome.orggeneration_method> @linkml:String ? ;
-          <http://alliancegenome.orgassociated_references> @<http://alliancegenome.orgAssociatedReference> * ;
-          <http://alliancegenome.orgrelated_notes> @<http://alliancegenome.orgNote> * ;
-          <http://alliancegenome.orggermline_transmission_status> @<http://alliancegenome.orgVocabularyTerm> ? ;
-          <http://alliancegenome.orgparent_cell_line> @<http://alliancegenome.orgCellLine> ? ;
-          <http://alliancegenome.orgmutant_cell_lines> @<http://alliancegenome.orgCellLine> * ;
-          <http://alliancegenome.orgembryonic_stem_cell_lines> @<http://alliancegenome.orgCellLine> * ;
-          <http://alliancegenome.orgimages> @<http://alliancegenome.orgImage> ? ;
-          <http://alliancegenome.orgorigins> @<http://alliancegenome.orgAffectedGenomicModel> * ;
-          <http://alliancegenome.orgdatabase_status> @<http://alliancegenome.orgVocabularyTerm> ? ;
-          <http://alliancegenome.orginheritence_mode> @<http://alliancegenome.orgVocabularyTerm> ? ;
-          <http://alliancegenome.orgin_collection> @<http://alliancegenome.orgVocabularyTerm> ? ;
-          <http://alliancegenome.orgtransposon_insertion> @linkml:String ? ;
-          <http://alliancegenome.orgaberration> @linkml:String ? ;
-          <http://alliancegenome.orgis_extinct> @linkml:Boolean ? ;
-          <http://alliancegenome.orgsequencing_status> @<http://alliancegenome.orgVocabularyTerm> ? ;
-          <http://alliancegenome.orgsynonyms> @<http://alliancegenome.orgSynonym> * ;
-          <http://alliancegenome.orgname> @linkml:String
+<Allele> CLOSED {
+    (  $<Allele_tes> (  &<GenomicEntity_tes> ;
+          rdf:type [ <GenomicEntity> ] ? ;
+          <symbol> @linkml:String ? ;
+          <contains_constructs> @<Construct> * ;
+          <molecular_mutations> @linkml:String * ;
+          <functional_impact> @linkml:String ? ;
+          <generation_method> @linkml:String ? ;
+          <associated_references> @<AssociatedReference> * ;
+          <related_notes> @<Note> * ;
+          <germline_transmission_status> @<VocabularyTerm> ? ;
+          <parent_cell_line> @<CellLine> ? ;
+          <mutant_cell_lines> @<CellLine> * ;
+          <embryonic_stem_cell_lines> @<CellLine> * ;
+          <images> @<Image> ? ;
+          <origins> @<AffectedGenomicModel> * ;
+          <database_status> @<VocabularyTerm> ? ;
+          <inheritence_mode> @<VocabularyTerm> ? ;
+          <in_collection> @<VocabularyTerm> ? ;
+          <transposon_insertion> @linkml:String ? ;
+          <aberration> @linkml:String ? ;
+          <is_extinct> @linkml:Boolean ? ;
+          <sequencing_status> @<VocabularyTerm> ? ;
+          <synonyms> @<Synonym> * ;
+          <name> @linkml:String
        ) ;
-       rdf:type [ <http://alliancegenome.orgAllele> ]
+       rdf:type [ <Allele> ]
     )
 }
 
-<http://alliancegenome.orgAlleleDiseaseAnnotation> CLOSED {
-    (  $<http://alliancegenome.orgAlleleDiseaseAnnotation_tes> (  &<http://alliancegenome.orgDiseaseAnnotation_tes> ;
-          rdf:type [ <http://alliancegenome.orgDiseaseAnnotation> ] ? ;
-          <http://alliancegenome.orginferred_gene> @<http://alliancegenome.orgGene> ? ;
-          <http://alliancegenome.orgsubject> @<http://alliancegenome.orgAllele> ;
-          <http://alliancegenome.orgpredicate> @<http://alliancegenome.orgVocabularyTerm>
+<AlleleDiseaseAnnotation> CLOSED {
+    (  $<AlleleDiseaseAnnotation_tes> (  &<DiseaseAnnotation_tes> ;
+          rdf:type [ <DiseaseAnnotation> ] ? ;
+          <inferred_gene> @<Gene> ? ;
+          <subject> @<Allele> ;
+          <predicate> @<VocabularyTerm>
        ) ;
-       rdf:type [ <http://alliancegenome.orgAlleleDiseaseAnnotation> ] ?
+       rdf:type [ <AlleleDiseaseAnnotation> ] ?
     )
 }
 
-<http://alliancegenome.orgAlleleGeneAssociation> CLOSED {
-    (  $<http://alliancegenome.orgAlleleGeneAssociation_tes> (  &<http://alliancegenome.orgAlleleGenomicEntityAssociation_tes> ;
-          rdf:type [ <http://alliancegenome.orgAlleleGenomicEntityAssociation> ] ? ;
-          <http://alliancegenome.orgobject> @<http://alliancegenome.orgGene>
+<AlleleGeneAssociation> CLOSED {
+    (  $<AlleleGeneAssociation_tes> (  &<AlleleGenomicEntityAssociation_tes> ;
+          rdf:type [ <AlleleGenomicEntityAssociation> ] ? ;
+          <object> @<Gene>
        ) ;
-       rdf:type [ <http://alliancegenome.orgAlleleGeneAssociation> ] ?
+       rdf:type [ <AlleleGeneAssociation> ] ?
     )
 }
 
-<http://alliancegenome.orgAlleleGenomicEntityAssociation>  (
-    @<http://alliancegenome.orgAlleleGeneAssociation> OR @<http://alliancegenome.orgAlleleProteinAssociation> OR
-    @<http://alliancegenome.orgAlleleTranscriptAssociation> OR @<http://alliancegenome.orgAlleleVariantAssociation>
+<AlleleGenomicEntityAssociation>  (
+    @<AlleleGeneAssociation> OR @<AlleleProteinAssociation> OR @<AlleleTranscriptAssociation> OR @<AlleleVariantAssociation>
 )
 
-<http://alliancegenome.orgAlleleGenomicEntityAssociation_struct> {
-    (  $<http://alliancegenome.orgAlleleGenomicEntityAssociation_tes> (  &<http://alliancegenome.orgAssociation_tes> ;
-          rdf:type [ <http://alliancegenome.orgAssociation> ] ? ;
-          &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgsingle_reference> @<http://alliancegenome.orgReference> ? ;
-          <http://alliancegenome.orgevidence_code> @<http://alliancegenome.orgECOTerm> ? ;
-          <http://alliancegenome.orgrelated_note> @<http://alliancegenome.orgNote> ? ;
-          <http://alliancegenome.orgsubject> @<http://alliancegenome.orgAllele> ;
-          <http://alliancegenome.orgpredicate> @<http://alliancegenome.orgROTerm> ;
-          <http://alliancegenome.orgobject> @<http://alliancegenome.orgGenomicEntity>
+<AlleleGenomicEntityAssociation_struct> {
+    (  $<AlleleGenomicEntityAssociation_tes> (  &<Association_tes> ;
+          rdf:type [ <Association> ] ? ;
+          &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <single_reference> @<Reference> ? ;
+          <evidence_code> @<ECOTerm> ? ;
+          <related_note> @<Note> ? ;
+          <subject> @<Allele> ;
+          <predicate> @<ROTerm> ;
+          <object> @<GenomicEntity>
        ) ;
-       rdf:type [ <http://alliancegenome.orgAlleleGenomicEntityAssociation> ] ?
+       rdf:type [ <AlleleGenomicEntityAssociation> ] ?
     )
 }
 
-<http://alliancegenome.orgAllelePhenotypeAnnotation> CLOSED {
-    (  $<http://alliancegenome.orgAllelePhenotypeAnnotation_tes> (  &<http://alliancegenome.orgPhenotypeAnnotation_tes> ;
-          rdf:type [ <http://alliancegenome.orgPhenotypeAnnotation> ] ? ;
-          <http://alliancegenome.orginferred_gene> @<http://alliancegenome.orgGene> ? ;
-          <http://alliancegenome.orgsubject> @<http://alliancegenome.orgAllele>
+<AllelePhenotypeAnnotation> CLOSED {
+    (  $<AllelePhenotypeAnnotation_tes> (  &<PhenotypeAnnotation_tes> ;
+          rdf:type [ <PhenotypeAnnotation> ] ? ;
+          <inferred_gene> @<Gene> ? ;
+          <subject> @<Allele>
        ) ;
-       rdf:type [ <http://alliancegenome.orgAllelePhenotypeAnnotation> ]
+       rdf:type [ <AllelePhenotypeAnnotation> ]
     )
 }
 
-<http://alliancegenome.orgAlleleProteinAssociation> CLOSED {
-    (  $<http://alliancegenome.orgAlleleProteinAssociation_tes> (  &<http://alliancegenome.orgAlleleGenomicEntityAssociation_tes> ;
-          rdf:type [ <http://alliancegenome.orgAlleleGenomicEntityAssociation> ] ? ;
-          <http://alliancegenome.orgobject> @<http://alliancegenome.orgProtein>
+<AlleleProteinAssociation> CLOSED {
+    (  $<AlleleProteinAssociation_tes> (  &<AlleleGenomicEntityAssociation_tes> ;
+          rdf:type [ <AlleleGenomicEntityAssociation> ] ? ;
+          <object> @<Protein>
        ) ;
-       rdf:type [ <http://alliancegenome.orgAlleleProteinAssociation> ] ?
+       rdf:type [ <AlleleProteinAssociation> ] ?
     )
 }
 
-<http://alliancegenome.orgAlleleTranscriptAssociation> CLOSED {
-    (  $<http://alliancegenome.orgAlleleTranscriptAssociation_tes> ( 
-          &<http://alliancegenome.orgAlleleGenomicEntityAssociation_tes> ;
-          rdf:type [ <http://alliancegenome.orgAlleleGenomicEntityAssociation> ] ? ;
-          <http://alliancegenome.orgobject> @<http://alliancegenome.orgTranscript>
+<AlleleTranscriptAssociation> CLOSED {
+    (  $<AlleleTranscriptAssociation_tes> (  &<AlleleGenomicEntityAssociation_tes> ;
+          rdf:type [ <AlleleGenomicEntityAssociation> ] ? ;
+          <object> @<Transcript>
        ) ;
-       rdf:type [ <http://alliancegenome.orgAlleleTranscriptAssociation> ] ?
+       rdf:type [ <AlleleTranscriptAssociation> ] ?
     )
 }
 
-<http://alliancegenome.orgAlleleVariantAssociation> CLOSED {
-    (  $<http://alliancegenome.orgAlleleVariantAssociation_tes> (  &<http://alliancegenome.orgAlleleGenomicEntityAssociation_tes> ;
-          rdf:type [ <http://alliancegenome.orgAlleleGenomicEntityAssociation> ] ? ;
-          <http://alliancegenome.orgsubject> @<http://alliancegenome.orgAllele> ;
-          <http://alliancegenome.orgobject> @<http://alliancegenome.orgVariant>
+<AlleleVariantAssociation> CLOSED {
+    (  $<AlleleVariantAssociation_tes> (  &<AlleleGenomicEntityAssociation_tes> ;
+          rdf:type [ <AlleleGenomicEntityAssociation> ] ? ;
+          <subject> @<Allele> ;
+          <object> @<Variant>
        ) ;
-       rdf:type [ <http://alliancegenome.orgAlleleVariantAssociation> ] ?
+       rdf:type [ <AlleleVariantAssociation> ] ?
     )
 }
 
-<http://alliancegenome.orgAnatomicalSite> CLOSED {
-    (  $<http://alliancegenome.orgAnatomicalSite_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.organatomical_structure> @<http://alliancegenome.orgAnatomicalTerm> ? ;
-          <http://alliancegenome.organatomical_substructure> @<http://alliancegenome.orgAnatomicalTerm> ? ;
-          <http://alliancegenome.orgcellular_component> @<http://alliancegenome.orgGOTerm> ? ;
-          <http://alliancegenome.orgspatial_qualifiers> @<http://alliancegenome.orgSpatialQualifierSet> ?
+<AnatomicalSite> CLOSED {
+    (  $<AnatomicalSite_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <anatomical_structure> @<AnatomicalTerm> ? ;
+          <anatomical_substructure> @<AnatomicalTerm> ? ;
+          <cellular_component> @<GOTerm> ? ;
+          <spatial_qualifiers> @<SpatialQualifierSet> ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgAnatomicalSite> ] ?
+       rdf:type [ <AnatomicalSite> ] ?
     )
 }
 
-<http://alliancegenome.orgAnatomicalTerm>  (
-    @<http://alliancegenome.orgCLTerm> OR @<http://alliancegenome.orgDAOTerm> OR @<http://alliancegenome.orgEMAPATerm> OR
-    @<http://alliancegenome.orgMATerm> OR @<http://alliancegenome.orgUBERONTerm> OR @<http://alliancegenome.orgWBBTTerm> OR
-    @<http://alliancegenome.orgXBATerm> OR @<http://alliancegenome.orgZFATerm>
+<AnatomicalTerm>  (
+    @<CLTerm> OR @<DAOTerm> OR @<EMAPATerm> OR @<MATerm> OR @<UBERONTerm> OR @<WBBTTerm> OR @<XBATerm> OR @<ZFATerm>
 )
 
-<http://alliancegenome.orgAnatomicalTerm_struct> {
-    (  $<http://alliancegenome.orgAnatomicalTerm_tes> (  &<http://alliancegenome.orgOntologyTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgOntologyTerm> ] ?
+<AnatomicalTerm_struct> {
+    (  $<AnatomicalTerm_tes> (  &<OntologyTerm_tes> ;
+          rdf:type [ <OntologyTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgAnatomicalTerm> ]
+       rdf:type [ <AnatomicalTerm> ]
     )
 }
 
-<http://alliancegenome.orgAntibody> CLOSED {
-    (  $<http://alliancegenome.orgAntibody_tes> (  &<http://alliancegenome.orgReagent_tes> ;
-          rdf:type [ <http://alliancegenome.orgReagent> ] ? ;
-          <http://alliancegenome.orgname> @linkml:String ;
-          <http://alliancegenome.organtigen_taxon> @<http://alliancegenome.orgNCBITaxonTerm> ? ;
-          <http://alliancegenome.orgclonality> @<http://alliancegenome.orgAntibodyClonalitySet> ;
-          <http://alliancegenome.orgheavy_chain_isotype> @<http://alliancegenome.orgHeavyChainIsotypeSet> ? ;
-          <http://alliancegenome.orglight_chain_isotype> @<http://alliancegenome.orgLightChainIsotypeSet> ? ;
-          <http://alliancegenome.organtibody_target_genes> @<http://alliancegenome.orgGene> * ;
-          <http://alliancegenome.orgcross_references> @<http://alliancegenome.orgCrossReference> * ;
-          <http://alliancegenome.orgsecondary_identifiers> @linkml:Uriorcurie * ;
-          <http://alliancegenome.orgreferences> @<http://alliancegenome.orgReference> * ;
-          <http://alliancegenome.orgoriginal_reference> @<http://alliancegenome.orgReference> ? ;
-          <http://alliancegenome.orgrelated_notes> @<http://alliancegenome.orgNote> * ;
-          <http://alliancegenome.orgtaxon> @<http://alliancegenome.orgNCBITaxonTerm> ?
+<Antibody> CLOSED {
+    (  $<Antibody_tes> (  &<Reagent_tes> ;
+          rdf:type [ <Reagent> ] ? ;
+          <name> @linkml:String ;
+          <antigen_taxon> @<NCBITaxonTerm> ? ;
+          <clonality> @<AntibodyClonalitySet> ;
+          <heavy_chain_isotype> @<HeavyChainIsotypeSet> ? ;
+          <light_chain_isotype> @<LightChainIsotypeSet> ? ;
+          <antibody_target_genes> @<Gene> * ;
+          <cross_references> @<CrossReference> * ;
+          <secondary_identifiers> @linkml:Uriorcurie * ;
+          <references> @<Reference> * ;
+          <original_reference> @<Reference> ? ;
+          <related_notes> @<Note> * ;
+          <taxon> @<NCBITaxonTerm> ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgAntibody> ]
+       rdf:type [ <Antibody> ]
     )
 }
 
-<http://alliancegenome.orgAssembly> CLOSED {
-    (  $<http://alliancegenome.orgAssembly_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ?
+<Assembly> CLOSED {
+    (  $<Assembly_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgAssembly> ]
+       rdf:type [ <Assembly> ]
     )
 }
 
-<http://alliancegenome.orgAssociatedReference> CLOSED {
-    (  $<http://alliancegenome.orgAssociatedReference_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgreference_type> @<http://alliancegenome.orgVocabularyTerm> ;
-          <http://alliancegenome.orgsingle_reference> @<http://alliancegenome.orgReference> ?
+<AssociatedReference> CLOSED {
+    (  $<AssociatedReference_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <reference_type> @<VocabularyTerm> ;
+          <single_reference> @<Reference> ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgAssociatedReference> ] ?
+       rdf:type [ <AssociatedReference> ] ?
     )
 }
 
-<http://alliancegenome.orgAssociation>  (
+<Association>  (
     CLOSED {
-       (  $<http://alliancegenome.orgAssociation_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-             rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-             <http://alliancegenome.orgsubject> @linkml:String ;
-             <http://alliancegenome.orgpredicate> @linkml:String ;
-             <http://alliancegenome.orgobject> @linkml:String
+       (  $<Association_tes> (  &<AuditedObject_tes> ;
+             rdf:type [ <AuditedObject> ] ? ;
+             <subject> @linkml:String ;
+             <predicate> @linkml:String ;
+             <object> @linkml:String
           ) ;
-          rdf:type [ <http://alliancegenome.orgAssociation> ] ?
+          rdf:type [ <Association> ] ?
        )
-    } OR @<http://alliancegenome.orgAlleleGenomicEntityAssociation> OR @<http://alliancegenome.orgConstructComponentAssociation> OR
-    @<http://alliancegenome.orgDiseaseAnnotation> OR @<http://alliancegenome.orgEntitySynonym> OR
-    @<http://alliancegenome.orgExpressionAnnotationImagePane> OR @<http://alliancegenome.orgPhenotypeAnnotation> OR
-    @<http://alliancegenome.orgSequenceTargetingReagentToGeneAssociation>
+    } OR @<AlleleGenomicEntityAssociation> OR @<ConstructComponentAssociation> OR @<DiseaseAnnotation> OR @<EntitySynonym> OR
+    @<ExpressionAnnotationImagePane> OR @<PhenotypeAnnotation> OR @<SequenceTargetingReagentToGeneAssociation>
 )
 
-<http://alliancegenome.orgAuditedObject>  (
+<AuditedObject>  (
     CLOSED {
-       (  $<http://alliancegenome.orgAuditedObject_tes> (  <http://alliancegenome.orgcreated_by> @<http://alliancegenome.orgPerson>
-             ? ;
-             <http://alliancegenome.orgdate_created> @linkml:Date ? ;
-             <http://alliancegenome.orgmodified_by> @<http://alliancegenome.orgPerson> ? ;
-             <http://alliancegenome.orgdate_updated> @linkml:Date ? ;
-             <http://alliancegenome.orginternal> @linkml:Boolean ;
-             <http://alliancegenome.orgobsolete> @linkml:Boolean ?
+       (  $<AuditedObject_tes> (  <created_by> @<Person> ? ;
+             <date_created> @linkml:Date ? ;
+             <modified_by> @<Person> ? ;
+             <date_updated> @linkml:Date ? ;
+             <internal> @linkml:Boolean ;
+             <obsolete> @linkml:Boolean ?
           ) ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ?
+          rdf:type [ <AuditedObject> ] ?
        )
-    } OR @<http://alliancegenome.orgAffectedGenomicModelComponent> OR @<http://alliancegenome.orgAgent> OR
-    @<http://alliancegenome.orgAnatomicalSite> OR @<http://alliancegenome.orgAssembly> OR
-    @<http://alliancegenome.orgAssociatedReference> OR @<http://alliancegenome.orgAssociation> OR
-    @<http://alliancegenome.orgAuthorReference> OR @<http://alliancegenome.orgBiologicalEntity> OR
-    @<http://alliancegenome.orgCellLine> OR @<http://alliancegenome.orgChromosome> OR @<http://alliancegenome.orgConditionRelation>
-    OR @<http://alliancegenome.orgCrossReference> OR @<http://alliancegenome.orgEntityStatement> OR
-    @<http://alliancegenome.orgExperimentalCondition> OR @<http://alliancegenome.orgExpressionAnnotation> OR
-    @<http://alliancegenome.orgExpressionExperiment> OR @<http://alliancegenome.orgExternalDatabaseLink> OR
-    @<http://alliancegenome.orgFigure> OR @<http://alliancegenome.orgFile> OR @<http://alliancegenome.orgGenomicLocation> OR
-    @<http://alliancegenome.orgImage> OR @<http://alliancegenome.orgImagePane> OR @<http://alliancegenome.orgMeshDetail> OR
-    @<http://alliancegenome.orgNote> OR @<http://alliancegenome.orgOntologyTerm> OR @<http://alliancegenome.orgReference> OR
-    @<http://alliancegenome.orgResource> OR @<http://alliancegenome.orgSourceVariantLocation> OR
-    @<http://alliancegenome.orgSynonym> OR @<http://alliancegenome.orgTemporalContext> OR
-    @<http://alliancegenome.orgVariantLocation> OR @<http://alliancegenome.orgVocabulary> OR
-    @<http://alliancegenome.orgVocabularyTerm>
+    } OR @<AffectedGenomicModelComponent> OR @<Agent> OR @<AnatomicalSite> OR @<Assembly> OR @<AssociatedReference> OR
+    @<Association> OR @<AuthorReference> OR @<BiologicalEntity> OR @<CellLine> OR @<Chromosome> OR @<ConditionRelation> OR
+    @<CrossReference> OR @<EntityStatement> OR @<ExperimentalCondition> OR @<ExpressionAnnotation> OR @<ExpressionExperiment> OR
+    @<ExternalDatabaseLink> OR @<Figure> OR @<File> OR @<GenomicLocation> OR @<Image> OR @<ImagePane> OR @<MeshDetail> OR @<Note>
+    OR @<OntologyTerm> OR @<Reference> OR @<Resource> OR @<SourceVariantLocation> OR @<Synonym> OR @<TemporalContext> OR
+    @<VariantLocation> OR @<Vocabulary> OR @<VocabularyTerm>
 )
 
-<http://alliancegenome.orgAuthorReference> CLOSED {
-    (  $<http://alliancegenome.orgAuthorReference_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgcorresponding_author> @<http://alliancegenome.orgReference> ? ;
-          <http://alliancegenome.orgfirst_name> @linkml:String ? ;
-          <http://alliancegenome.orgmiddle_name> @linkml:String ? ;
-          <http://alliancegenome.orglast_name> @linkml:String ? ;
-          <http://alliancegenome.orginitials> @<http://alliancegenome.orgReference> ? ;
-          <http://alliancegenome.orgcross_references> @<http://alliancegenome.orgCrossReference> *
+<AuthorReference> CLOSED {
+    (  $<AuthorReference_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <corresponding_author> @<Reference> ? ;
+          <first_name> @linkml:String ? ;
+          <middle_name> @linkml:String ? ;
+          <last_name> @linkml:String ? ;
+          <initials> @<Reference> ? ;
+          <cross_references> @<CrossReference> *
        ) ;
-       rdf:type [ <http://alliancegenome.orgAuthorReference> ] ?
+       rdf:type [ <AuthorReference> ] ?
     )
 }
 
-<http://alliancegenome.orgBiologicalEntity>  (
-    @<http://alliancegenome.orgGenomicEntity> OR @<http://alliancegenome.orgReagent>
+<BiologicalEntity>  (
+    @<GenomicEntity> OR @<Reagent>
 )
 
-<http://alliancegenome.orgBiologicalEntity_struct> {
-    (  $<http://alliancegenome.orgBiologicalEntity_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgtaxon> @<http://alliancegenome.orgNCBITaxonTerm>
+<BiologicalEntity_struct> {
+    (  $<BiologicalEntity_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <taxon> @<NCBITaxonTerm>
        ) ;
-       rdf:type [ <http://alliancegenome.orgBiologicalEntity> ]
+       rdf:type [ <BiologicalEntity> ]
     )
 }
 
-<http://alliancegenome.orgCellLine> CLOSED {
-    (  $<http://alliancegenome.orgCellLine_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ?
+<CellLine> CLOSED {
+    (  $<CellLine_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgCellLine> ] ?
+       rdf:type [ <CellLine> ] ?
     )
 }
 
-<http://alliancegenome.orgCHEBITerm> CLOSED {
-    (  $<http://alliancegenome.orgCHEBITerm_tes> (  &<http://alliancegenome.orgChemicalTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgChemicalTerm> ] ?
+<CHEBITerm> CLOSED {
+    (  $<CHEBITerm_tes> (  &<ChemicalTerm_tes> ;
+          rdf:type [ <ChemicalTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgCHEBITerm> ]
+       rdf:type [ <CHEBITerm> ]
     )
 }
 
-<http://alliancegenome.orgChemicalTerm>  (
-    @<http://alliancegenome.orgCHEBITerm> OR @<http://alliancegenome.orgMolecule> OR @<http://alliancegenome.orgXSMOTerm>
+<ChemicalTerm>  (
+    @<CHEBITerm> OR @<Molecule> OR @<XSMOTerm>
 )
 
-<http://alliancegenome.orgChemicalTerm_struct> {
-    (  $<http://alliancegenome.orgChemicalTerm_tes> (  &<http://alliancegenome.orgOntologyTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgOntologyTerm> ] ? ;
-          <http://alliancegenome.orginchi> @linkml:String ? ;
-          <http://alliancegenome.orginchi_key> @linkml:String ? ;
-          <http://alliancegenome.orgiupac> @linkml:String ? ;
-          <http://alliancegenome.orgformula> @linkml:String ? ;
-          <http://alliancegenome.orgsmiles> @linkml:String ?
+<ChemicalTerm_struct> {
+    (  $<ChemicalTerm_tes> (  &<OntologyTerm_tes> ;
+          rdf:type [ <OntologyTerm> ] ? ;
+          <inchi> @linkml:String ? ;
+          <inchi_key> @linkml:String ? ;
+          <iupac> @linkml:String ? ;
+          <formula> @linkml:String ? ;
+          <smiles> @linkml:String ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgChemicalTerm> ]
+       rdf:type [ <ChemicalTerm> ]
     )
 }
 
-<http://alliancegenome.orgChromosome> CLOSED {
-    (  $<http://alliancegenome.orgChromosome_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ?
+<Chromosome> CLOSED {
+    (  $<Chromosome_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgChromosome> ]
+       rdf:type [ <Chromosome> ]
     )
 }
 
-<http://alliancegenome.orgCLTerm> CLOSED {
-    (  $<http://alliancegenome.orgCLTerm_tes> (  &<http://alliancegenome.orgAnatomicalTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgAnatomicalTerm> ] ?
+<CLTerm> CLOSED {
+    (  $<CLTerm_tes> (  &<AnatomicalTerm_tes> ;
+          rdf:type [ <AnatomicalTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgCLTerm> ]
+       rdf:type [ <CLTerm> ]
     )
 }
 
-<http://alliancegenome.orgCompany> CLOSED {
-    (  $<http://alliancegenome.orgCompany_tes> (  &<http://alliancegenome.orgOrganization_tes> ;
-          rdf:type [ <http://alliancegenome.orgOrganization> ] ?
+<Company> CLOSED {
+    (  $<Company_tes> (  &<Organization_tes> ;
+          rdf:type [ <Organization> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgCompany> ] ?
+       rdf:type [ <Company> ] ?
     )
 }
 
-<http://alliancegenome.orgConditionRelation> CLOSED {
-    (  $<http://alliancegenome.orgConditionRelation_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgunique_id> @linkml:String ? ;
-          <http://alliancegenome.orghandle> @linkml:String ? ;
-          <http://alliancegenome.orgsingle_reference> @<http://alliancegenome.orgReference> ? ;
-          <http://alliancegenome.orgcondition_relation_type> @<http://alliancegenome.orgVocabularyTerm> ;
-          <http://alliancegenome.orgconditions> @<http://alliancegenome.orgExperimentalCondition> *
+<ConditionRelation> CLOSED {
+    (  $<ConditionRelation_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <unique_id> @linkml:String ? ;
+          <handle> @linkml:String ? ;
+          <single_reference> @<Reference> ? ;
+          <condition_relation_type> @<VocabularyTerm> ;
+          <conditions> @<ExperimentalCondition> *
        ) ;
-       rdf:type [ <http://alliancegenome.orgConditionRelation> ] ?
+       rdf:type [ <ConditionRelation> ] ?
     )
 }
 
-<http://alliancegenome.orgConstruct> CLOSED {
-    (  $<http://alliancegenome.orgConstruct_tes> (  &<http://alliancegenome.orgGenomicEntity_tes> ;
-          rdf:type [ <http://alliancegenome.orgGenomicEntity> ] ? ;
-          <http://alliancegenome.orgconstruct_components> @<http://alliancegenome.orgGenomicEntity> * ;
-          <http://alliancegenome.orgreferences> @<http://alliancegenome.orgReference> * ;
-          <http://alliancegenome.orgname> @linkml:String
+<Construct> CLOSED {
+    (  $<Construct_tes> (  &<GenomicEntity_tes> ;
+          rdf:type [ <GenomicEntity> ] ? ;
+          <construct_components> @<GenomicEntity> * ;
+          <references> @<Reference> * ;
+          <name> @linkml:String
        ) ;
-       rdf:type [ <http://alliancegenome.orgConstruct> ]
+       rdf:type [ <Construct> ]
     )
 }
 
-<http://alliancegenome.orgConstructComponent> CLOSED {
-    (  $<http://alliancegenome.orgConstructComponent_tes> (  &<http://alliancegenome.orgGenomicEntity_tes> ;
-          rdf:type [ <http://alliancegenome.orgGenomicEntity> ] ? ;
-          <http://alliancegenome.orgsymbol> @linkml:String ?
+<ConstructComponent> CLOSED {
+    (  $<ConstructComponent_tes> (  &<GenomicEntity_tes> ;
+          rdf:type [ <GenomicEntity> ] ? ;
+          <symbol> @linkml:String ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgConstructComponent> ]
+       rdf:type [ <ConstructComponent> ]
     )
 }
 
-<http://alliancegenome.orgConstructComponentAssociation> CLOSED {
-    (  $<http://alliancegenome.orgConstructComponentAssociation_tes> (  &<http://alliancegenome.orgAssociation_tes> ;
-          rdf:type [ <http://alliancegenome.orgAssociation> ] ? ;
-          <http://alliancegenome.orgpredicate> @<http://alliancegenome.orgConstructComponentRelationEnum> ;
-          <http://alliancegenome.orgsubject> @<http://alliancegenome.orgConstruct> ;
-          <http://alliancegenome.orgobject> @<http://alliancegenome.orgConstructComponent>
+<ConstructComponentAssociation> CLOSED {
+    (  $<ConstructComponentAssociation_tes> (  &<Association_tes> ;
+          rdf:type [ <Association> ] ? ;
+          <predicate> @<ConstructComponentRelationEnum> ;
+          <subject> @<Construct> ;
+          <object> @<ConstructComponent>
        ) ;
-       rdf:type [ <http://alliancegenome.orgConstructComponentAssociation> ] ?
+       rdf:type [ <ConstructComponentAssociation> ] ?
     )
 }
 
-<http://alliancegenome.orgCrossReference> CLOSED {
-    (  $<http://alliancegenome.orgCrossReference_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgpage_areas> @linkml:String + ;
-          <http://alliancegenome.orgdisplay_name> @linkml:String ;
-          <http://alliancegenome.orgprefix> @linkml:String
+<CrossReference> CLOSED {
+    (  $<CrossReference_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <page_areas> @linkml:String + ;
+          <display_name> @linkml:String ;
+          <prefix> @linkml:String
        ) ;
-       rdf:type [ <http://alliancegenome.orgCrossReference> ]
+       rdf:type [ <CrossReference> ]
     )
 }
 
-<http://alliancegenome.orgDAOTerm> CLOSED {
-    (  $<http://alliancegenome.orgDAOTerm_tes> (  &<http://alliancegenome.orgAnatomicalTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgAnatomicalTerm> ] ?
+<DAOTerm> CLOSED {
+    (  $<DAOTerm_tes> (  &<AnatomicalTerm_tes> ;
+          rdf:type [ <AnatomicalTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgDAOTerm> ]
+       rdf:type [ <DAOTerm> ]
     )
 }
 
-<http://alliancegenome.orgDiseaseAnnotation>  (
-    @<http://alliancegenome.orgAGMDiseaseAnnotation> OR @<http://alliancegenome.orgAlleleDiseaseAnnotation> OR
-    @<http://alliancegenome.orgGeneDiseaseAnnotation>
+<DiseaseAnnotation>  (
+    @<AGMDiseaseAnnotation> OR @<AlleleDiseaseAnnotation> OR @<GeneDiseaseAnnotation>
 )
 
-<http://alliancegenome.orgDiseaseAnnotation_struct> {
-    (  $<http://alliancegenome.orgDiseaseAnnotation_tes> (  &<http://alliancegenome.orgAssociation_tes> ;
-          rdf:type [ <http://alliancegenome.orgAssociation> ] ? ;
-          <http://alliancegenome.orgunique_id> @linkml:String ? ;
-          <http://alliancegenome.orgmod_entity_id> @linkml:String ? ;
-          <http://alliancegenome.orgnegated> @linkml:Boolean ? ;
-          <http://alliancegenome.orgevidence_codes> @<http://alliancegenome.orgECOTerm> + ;
-          <http://alliancegenome.orgsingle_reference> @<http://alliancegenome.orgReference> ;
-          <http://alliancegenome.organnotation_type> @<http://alliancegenome.orgVocabularyTerm> ? ;
-          <http://alliancegenome.orgwith> @<http://alliancegenome.orgGene> * ;
-          <http://alliancegenome.orgdisease_qualifiers> @<http://alliancegenome.orgVocabularyTerm> * ;
-          <http://alliancegenome.orgcondition_relations> @<http://alliancegenome.orgConditionRelation> * ;
-          <http://alliancegenome.orggenetic_sex> @<http://alliancegenome.orgVocabularyTerm> ? ;
-          <http://alliancegenome.orgrelated_notes> @<http://alliancegenome.orgNote> * ;
-          <http://alliancegenome.orgdata_provider> @linkml:String ;
-          <http://alliancegenome.orgsecondary_data_provider> @linkml:String ? ;
-          <http://alliancegenome.orgdisease_genetic_modifier> @<http://alliancegenome.orgBiologicalEntity> ? ;
-          <http://alliancegenome.orgdisease_genetic_modifier_relation> @<http://alliancegenome.orgVocabularyTerm> ? ;
-          <http://alliancegenome.orgsubject> @<http://alliancegenome.orgBiologicalEntity> ;
-          <http://alliancegenome.orgpredicate> @linkml:String ;
-          <http://alliancegenome.orgobject> @<http://alliancegenome.orgDOTerm>
+<DiseaseAnnotation_struct> {
+    (  $<DiseaseAnnotation_tes> (  &<Association_tes> ;
+          rdf:type [ <Association> ] ? ;
+          <unique_id> @linkml:String ? ;
+          <mod_entity_id> @linkml:String ? ;
+          <negated> @linkml:Boolean ? ;
+          <evidence_codes> @<ECOTerm> + ;
+          <single_reference> @<Reference> ;
+          <annotation_type> @<VocabularyTerm> ? ;
+          <with> @<Gene> * ;
+          <disease_qualifiers> @<VocabularyTerm> * ;
+          <condition_relations> @<ConditionRelation> * ;
+          <genetic_sex> @<VocabularyTerm> ? ;
+          <related_notes> @<Note> * ;
+          <data_provider> @linkml:String ;
+          <secondary_data_provider> @linkml:String ? ;
+          <disease_genetic_modifier> @<BiologicalEntity> ? ;
+          <disease_genetic_modifier_relation> @<VocabularyTerm> ? ;
+          <subject> @<BiologicalEntity> ;
+          <predicate> @linkml:String ;
+          <object> @<DOTerm>
        ) ;
-       rdf:type [ <http://alliancegenome.orgDiseaseAnnotation> ] ?
+       rdf:type [ <DiseaseAnnotation> ] ?
     )
 }
 
-<http://alliancegenome.orgDNAClone> CLOSED {
-    (  $<http://alliancegenome.orgDNAClone_tes> (  &<http://alliancegenome.orgReagent_tes> ;
-          rdf:type [ <http://alliancegenome.orgReagent> ] ?
+<DNAClone> CLOSED {
+    (  $<DNAClone_tes> (  &<Reagent_tes> ;
+          rdf:type [ <Reagent> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgDNAClone> ]
+       rdf:type [ <DNAClone> ]
     )
 }
 
-<http://alliancegenome.orgDOTerm> CLOSED {
-    (  $<http://alliancegenome.orgDOTerm_tes> (  &<http://alliancegenome.orgOntologyTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgOntologyTerm> ] ?
+<DOTerm> CLOSED {
+    (  $<DOTerm_tes> (  &<OntologyTerm_tes> ;
+          rdf:type [ <OntologyTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgDOTerm> ]
+       rdf:type [ <DOTerm> ]
     )
 }
 
-<http://alliancegenome.orgECOTerm> CLOSED {
-    (  $<http://alliancegenome.orgECOTerm_tes> (  &<http://alliancegenome.orgOntologyTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgOntologyTerm> ] ? ;
-          <http://alliancegenome.orgabbreviation> @linkml:String ?
+<ECOTerm> CLOSED {
+    (  $<ECOTerm_tes> (  &<OntologyTerm_tes> ;
+          rdf:type [ <OntologyTerm> ] ? ;
+          <abbreviation> @linkml:String ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgECOTerm> ]
+       rdf:type [ <ECOTerm> ]
     )
 }
 
-<http://alliancegenome.orgEMAPATerm> CLOSED {
-    (  $<http://alliancegenome.orgEMAPATerm_tes> (  &<http://alliancegenome.orgAnatomicalTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgAnatomicalTerm> ] ?
+<EMAPATerm> CLOSED {
+    (  $<EMAPATerm_tes> (  &<AnatomicalTerm_tes> ;
+          rdf:type [ <AnatomicalTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgEMAPATerm> ]
+       rdf:type [ <EMAPATerm> ]
     )
 }
 
-<http://alliancegenome.orgEntityStatement>  (
+<EntityStatement>  (
     CLOSED {
-       (  $<http://alliancegenome.orgEntityStatement_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-             rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-             <http://alliancegenome.orgstatement_subject> @linkml:String ? ;
-             <http://alliancegenome.orgstatement_type> @linkml:String ? ;
-             <http://alliancegenome.orgstatement_text> @linkml:String ? ;
-             <http://alliancegenome.orgreferences> @<http://alliancegenome.orgReference> *
+       (  $<EntityStatement_tes> (  &<AuditedObject_tes> ;
+             rdf:type [ <AuditedObject> ] ? ;
+             <statement_subject> @linkml:String ? ;
+             <statement_type> @linkml:String ? ;
+             <statement_text> @linkml:String ? ;
+             <references> @<Reference> *
           ) ;
-          rdf:type [ <http://alliancegenome.orgEntityStatement> ] ?
+          rdf:type [ <EntityStatement> ] ?
        )
-    } OR @<http://alliancegenome.orgExpressionAnnotationStatement> OR @<http://alliancegenome.orgExpressionExperimentStatement> OR
-    @<http://alliancegenome.orgGeneExpressionStatement>
+    } OR @<ExpressionAnnotationStatement> OR @<ExpressionExperimentStatement> OR @<GeneExpressionStatement>
 )
 
-<http://alliancegenome.orgEntitySynonym> CLOSED {
-    (  $<http://alliancegenome.orgEntitySynonym_tes> (  &<http://alliancegenome.orgAssociation_tes> ;
-          rdf:type [ <http://alliancegenome.orgAssociation> ] ? ;
-          <http://alliancegenome.orgobject> @<http://alliancegenome.orgSynonym> ;
-          <http://alliancegenome.orgpredicate> @<http://alliancegenome.orgEntitySynonymTypeSet> ;
-          <http://alliancegenome.orgreferences> @<http://alliancegenome.orgReference> *
+<EntitySynonym> CLOSED {
+    (  $<EntitySynonym_tes> (  &<Association_tes> ;
+          rdf:type [ <Association> ] ? ;
+          <object> @<Synonym> ;
+          <predicate> @<EntitySynonymTypeSet> ;
+          <references> @<Reference> *
        ) ;
-       rdf:type [ <http://alliancegenome.orgEntitySynonym> ] ?
+       rdf:type [ <EntitySynonym> ] ?
     )
 }
 
-<http://alliancegenome.orgExperimentalCondition> CLOSED {
-    (  $<http://alliancegenome.orgExperimentalCondition_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgunique_id> @linkml:String ? ;
-          <http://alliancegenome.orgcondition_class> @<http://alliancegenome.orgZECOTerm> ;
-          <http://alliancegenome.orgcondition_summary> @linkml:String ? ;
-          <http://alliancegenome.orgcondition_statement> @linkml:String ;
-          <http://alliancegenome.orgcondition_id> @<http://alliancegenome.orgExperimentalConditionOntologyTerm> ? ;
-          <http://alliancegenome.orgcondition_free_text> @linkml:String ? ;
-          <http://alliancegenome.orgcondition_quantity> @linkml:String ? ;
-          <http://alliancegenome.orgcondition_anatomy> @<http://alliancegenome.orgAnatomicalTerm> ? ;
-          <http://alliancegenome.orgcondition_gene_ontology> @<http://alliancegenome.orgGOTerm> ? ;
-          <http://alliancegenome.orgcondition_taxon> @<http://alliancegenome.orgNCBITaxonTerm> ? ;
-          <http://alliancegenome.orgcondition_chemical> @<http://alliancegenome.orgChemicalTerm> ?
+<ExperimentalCondition> CLOSED {
+    (  $<ExperimentalCondition_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <unique_id> @linkml:String ? ;
+          <condition_class> @<ZECOTerm> ;
+          <condition_summary> @linkml:String ? ;
+          <condition_statement> @linkml:String ;
+          <condition_id> @<ExperimentalConditionOntologyTerm> ? ;
+          <condition_free_text> @linkml:String ? ;
+          <condition_quantity> @linkml:String ? ;
+          <condition_anatomy> @<AnatomicalTerm> ? ;
+          <condition_gene_ontology> @<GOTerm> ? ;
+          <condition_taxon> @<NCBITaxonTerm> ? ;
+          <condition_chemical> @<ChemicalTerm> ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgExperimentalCondition> ] ?
+       rdf:type [ <ExperimentalCondition> ] ?
     )
 }
 
-<http://alliancegenome.orgExperimentalConditionOntologyTerm>  (
-    @<http://alliancegenome.orgXCOTerm> OR @<http://alliancegenome.orgZECOTerm>
+<ExperimentalConditionOntologyTerm>  (
+    @<XCOTerm> OR @<ZECOTerm>
 )
 
-<http://alliancegenome.orgExperimentalConditionOntologyTerm_struct> {
-    (  $<http://alliancegenome.orgExperimentalConditionOntologyTerm_tes> (  &<http://alliancegenome.orgOntologyTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgOntologyTerm> ] ?
+<ExperimentalConditionOntologyTerm_struct> {
+    (  $<ExperimentalConditionOntologyTerm_tes> (  &<OntologyTerm_tes> ;
+          rdf:type [ <OntologyTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgExperimentalConditionOntologyTerm> ]
+       rdf:type [ <ExperimentalConditionOntologyTerm> ]
     )
 }
 
-<http://alliancegenome.orgExpressionAnnotation> CLOSED {
-    (  $<http://alliancegenome.orgExpressionAnnotation_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgbelongs_to_expression_experiment> @<http://alliancegenome.orgExpressionExperiment> ;
-          <http://alliancegenome.orgwhen_expressed> @<http://alliancegenome.orgTemporalContext> ? ;
-          <http://alliancegenome.orgwhere_expressed> @<http://alliancegenome.orgAnatomicalSite> ? ;
-          <http://alliancegenome.orgexpression_qualifiers> @<http://alliancegenome.orgExpressionQualifierSet> ? ;
-          <http://alliancegenome.orgnegated> @linkml:Boolean ? ;
-          <http://alliancegenome.orguncertain> @linkml:Boolean ? ;
-          <http://alliancegenome.orgassociated_with_figure> @<http://alliancegenome.orgFigure> *
+<ExpressionAnnotation> CLOSED {
+    (  $<ExpressionAnnotation_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <belongs_to_expression_experiment> @<ExpressionExperiment> ;
+          <when_expressed> @<TemporalContext> ? ;
+          <where_expressed> @<AnatomicalSite> ? ;
+          <expression_qualifiers> @<ExpressionQualifierSet> ? ;
+          <negated> @linkml:Boolean ? ;
+          <uncertain> @linkml:Boolean ? ;
+          <associated_with_figure> @<Figure> *
        ) ;
-       rdf:type [ <http://alliancegenome.orgExpressionAnnotation> ] ?
+       rdf:type [ <ExpressionAnnotation> ] ?
     )
 }
 
-<http://alliancegenome.orgExpressionAnnotationImagePane> CLOSED {
-    (  $<http://alliancegenome.orgExpressionAnnotationImagePane_tes> (  &<http://alliancegenome.orgAssociation_tes> ;
-          rdf:type [ <http://alliancegenome.orgAssociation> ] ? ;
-          <http://alliancegenome.orgsubject> @<http://alliancegenome.orgExpressionAnnotation> ;
-          <http://alliancegenome.orgobject> @<http://alliancegenome.orgImagePane>
+<ExpressionAnnotationImagePane> CLOSED {
+    (  $<ExpressionAnnotationImagePane_tes> (  &<Association_tes> ;
+          rdf:type [ <Association> ] ? ;
+          <subject> @<ExpressionAnnotation> ;
+          <object> @<ImagePane>
        ) ;
-       rdf:type [ <http://alliancegenome.orgExpressionAnnotationImagePane> ] ?
+       rdf:type [ <ExpressionAnnotationImagePane> ] ?
     )
 }
 
-<http://alliancegenome.orgExpressionAnnotationStatement> CLOSED {
-    (  $<http://alliancegenome.orgExpressionAnnotationStatement_tes> (  &<http://alliancegenome.orgEntityStatement_tes> ;
-          rdf:type [ <http://alliancegenome.orgEntityStatement> ] ? ;
-          <http://alliancegenome.orgstatement_subject> @<http://alliancegenome.orgExpressionAnnotation> ? ;
-          <http://alliancegenome.orgstatement_type> @<http://alliancegenome.orgExpressionStatementTypeEnum> ?
+<ExpressionAnnotationStatement> CLOSED {
+    (  $<ExpressionAnnotationStatement_tes> (  &<EntityStatement_tes> ;
+          rdf:type [ <EntityStatement> ] ? ;
+          <statement_subject> @<ExpressionAnnotation> ? ;
+          <statement_type> @<ExpressionStatementTypeEnum> ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgExpressionAnnotationStatement> ] ?
+       rdf:type [ <ExpressionAnnotationStatement> ] ?
     )
 }
 
-<http://alliancegenome.orgExpressionExperiment> CLOSED {
-    (  $<http://alliancegenome.orgExpressionExperiment_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgsingle_reference> @<http://alliancegenome.orgReference> ? ;
-          <http://alliancegenome.orgbiological_entity_assayed> @<http://alliancegenome.orgBiologicalEntity> ? ;
-          <http://alliancegenome.orgassay_used> @<http://alliancegenome.orgMMOTerm> ? ;
-          <http://alliancegenome.orgreagents_used> @<http://alliancegenome.orgReagent> * ;
-          <http://alliancegenome.orgspecimen_genomic_model> @<http://alliancegenome.orgAffectedGenomicModel> ? ;
-          <http://alliancegenome.orgspecimen_alleles> @<http://alliancegenome.orgAllele> * ;
-          <http://alliancegenome.orgcondition_relations> @<http://alliancegenome.orgConditionRelation> *
+<ExpressionExperiment> CLOSED {
+    (  $<ExpressionExperiment_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <single_reference> @<Reference> ? ;
+          <biological_entity_assayed> @<BiologicalEntity> ? ;
+          <assay_used> @<MMOTerm> ? ;
+          <reagents_used> @<Reagent> * ;
+          <specimen_genomic_model> @<AffectedGenomicModel> ? ;
+          <specimen_alleles> @<Allele> * ;
+          <condition_relations> @<ConditionRelation> *
        ) ;
-       rdf:type [ <http://alliancegenome.orgExpressionExperiment> ]
+       rdf:type [ <ExpressionExperiment> ]
     )
 }
 
-<http://alliancegenome.orgExpressionExperimentStatement> CLOSED {
-    (  $<http://alliancegenome.orgExpressionExperimentStatement_tes> (  &<http://alliancegenome.orgEntityStatement_tes> ;
-          rdf:type [ <http://alliancegenome.orgEntityStatement> ] ? ;
-          <http://alliancegenome.orgstatement_subject> @<http://alliancegenome.orgExpressionExperiment> ?
+<ExpressionExperimentStatement> CLOSED {
+    (  $<ExpressionExperimentStatement_tes> (  &<EntityStatement_tes> ;
+          rdf:type [ <EntityStatement> ] ? ;
+          <statement_subject> @<ExpressionExperiment> ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgExpressionExperimentStatement> ] ?
+       rdf:type [ <ExpressionExperimentStatement> ] ?
     )
 }
 
-<http://alliancegenome.orgExternalDatabaseLink> CLOSED {
-    (  $<http://alliancegenome.orgExternalDatabaseLink_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgdbkey> @linkml:String ? ;
-          <http://alliancegenome.orgprefix> @linkml:String ;
-          <http://alliancegenome.orgurl_prefix> @linkml:String ? ;
-          <http://alliancegenome.orgurl_suffix> @linkml:String ? ;
-          <http://alliancegenome.orgprefix_page> @linkml:String ? ;
-          <http://alliancegenome.orgprefix_order> @linkml:String ?
+<ExternalDatabaseLink> CLOSED {
+    (  $<ExternalDatabaseLink_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <dbkey> @linkml:String ? ;
+          <prefix> @linkml:String ;
+          <url_prefix> @linkml:String ? ;
+          <url_suffix> @linkml:String ? ;
+          <prefix_page> @linkml:String ? ;
+          <prefix_order> @linkml:String ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgExternalDatabaseLink> ] ?
+       rdf:type [ <ExternalDatabaseLink> ] ?
     )
 }
 
-<http://alliancegenome.orgFBCVTerm> CLOSED {
-    (  $<http://alliancegenome.orgFBCVTerm_tes> (  &<http://alliancegenome.orgOntologyTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgOntologyTerm> ] ?
+<FBCVTerm> CLOSED {
+    (  $<FBCVTerm_tes> (  &<OntologyTerm_tes> ;
+          rdf:type [ <OntologyTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgFBCVTerm> ]
+       rdf:type [ <FBCVTerm> ]
     )
 }
 
-<http://alliancegenome.orgFBDVTerm> CLOSED {
-    (  $<http://alliancegenome.orgFBDVTerm_tes> (  &<http://alliancegenome.orgStageTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgStageTerm> ] ?
+<FBDVTerm> CLOSED {
+    (  $<FBDVTerm_tes> (  &<StageTerm_tes> ;
+          rdf:type [ <StageTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgFBDVTerm> ]
+       rdf:type [ <FBDVTerm> ]
     )
 }
 
-<http://alliancegenome.orgFigure> CLOSED {
-    (  $<http://alliancegenome.orgFigure_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgsingle_reference> @<http://alliancegenome.orgReference> ;
-          <http://alliancegenome.orglabel> @linkml:String ? ;
-          <http://alliancegenome.orgcaption> @linkml:String ? ;
-          <http://alliancegenome.orgsecondary_identifiers> @linkml:Uriorcurie *
+<Figure> CLOSED {
+    (  $<Figure_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <single_reference> @<Reference> ;
+          <label> @linkml:String ? ;
+          <caption> @linkml:String ? ;
+          <secondary_identifiers> @linkml:Uriorcurie *
        ) ;
-       rdf:type [ <http://alliancegenome.orgFigure> ]
+       rdf:type [ <Figure> ]
     )
 }
 
-<http://alliancegenome.orgFile> CLOSED {
-    (  $<http://alliancegenome.orgFile_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ?
+<File> CLOSED {
+    (  $<File_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgFile> ] ?
+       rdf:type [ <File> ] ?
     )
 }
 
-<http://alliancegenome.orgGene> CLOSED {
-    (  $<http://alliancegenome.orgGene_tes> (  &<http://alliancegenome.orgGenomicEntity_tes> ;
-          rdf:type [ <http://alliancegenome.orgGenomicEntity> ] ? ;
-          <http://alliancegenome.orgsymbol> @linkml:String ;
-          <http://alliancegenome.orggene_synopsis> @linkml:String ? ;
-          <http://alliancegenome.orggene_synopsis_URL> @linkml:String ? ;
-          <http://alliancegenome.orggene_type> @<http://alliancegenome.orgSOTerm> ? ;
-          <http://alliancegenome.orgautomated_gene_description> @linkml:String ?
+<Gene> CLOSED {
+    (  $<Gene_tes> (  &<GenomicEntity_tes> ;
+          rdf:type [ <GenomicEntity> ] ? ;
+          <symbol> @linkml:String ;
+          <gene_synopsis> @linkml:String ? ;
+          <gene_synopsis_URL> @linkml:String ? ;
+          <gene_type> @<SOTerm> ? ;
+          <automated_gene_description> @linkml:String ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgGene> ]
+       rdf:type [ <Gene> ]
     )
 }
 
-<http://alliancegenome.orgGeneDiseaseAnnotation> CLOSED {
-    (  $<http://alliancegenome.orgGeneDiseaseAnnotation_tes> (  &<http://alliancegenome.orgDiseaseAnnotation_tes> ;
-          rdf:type [ <http://alliancegenome.orgDiseaseAnnotation> ] ? ;
-          <http://alliancegenome.orgsgd_strain_background> @<http://alliancegenome.orgAffectedGenomicModel> ? ;
-          <http://alliancegenome.orgsubject> @<http://alliancegenome.orgGene> ;
-          <http://alliancegenome.orgpredicate> @<http://alliancegenome.orgVocabularyTerm>
+<GeneDiseaseAnnotation> CLOSED {
+    (  $<GeneDiseaseAnnotation_tes> (  &<DiseaseAnnotation_tes> ;
+          rdf:type [ <DiseaseAnnotation> ] ? ;
+          <sgd_strain_background> @<AffectedGenomicModel> ? ;
+          <subject> @<Gene> ;
+          <predicate> @<VocabularyTerm>
        ) ;
-       rdf:type [ <http://alliancegenome.orgGeneDiseaseAnnotation> ] ?
+       rdf:type [ <GeneDiseaseAnnotation> ] ?
     )
 }
 
-<http://alliancegenome.orgGeneExpressionStatement> CLOSED {
-    (  $<http://alliancegenome.orgGeneExpressionStatement_tes> (  &<http://alliancegenome.orgEntityStatement_tes> ;
-          rdf:type [ <http://alliancegenome.orgEntityStatement> ] ? ;
-          <http://alliancegenome.orgstatement_subject> @<http://alliancegenome.orgGene> ? ;
-          <http://alliancegenome.orgstatement_type> @<http://alliancegenome.orgExpressionStatementTypeEnum> ?
+<GeneExpressionStatement> CLOSED {
+    (  $<GeneExpressionStatement_tes> (  &<EntityStatement_tes> ;
+          rdf:type [ <EntityStatement> ] ? ;
+          <statement_subject> @<Gene> ? ;
+          <statement_type> @<ExpressionStatementTypeEnum> ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgGeneExpressionStatement> ] ?
+       rdf:type [ <GeneExpressionStatement> ] ?
     )
 }
 
-<http://alliancegenome.orgGenePhenotypeAnnotation> CLOSED {
-    (  $<http://alliancegenome.orgGenePhenotypeAnnotation_tes> (  &<http://alliancegenome.orgPhenotypeAnnotation_tes> ;
-          rdf:type [ <http://alliancegenome.orgPhenotypeAnnotation> ] ? ;
-          <http://alliancegenome.orgsgd_strain_background> @<http://alliancegenome.orgAffectedGenomicModel> ? ;
-          <http://alliancegenome.orgsubject> @<http://alliancegenome.orgGene>
+<GenePhenotypeAnnotation> CLOSED {
+    (  $<GenePhenotypeAnnotation_tes> (  &<PhenotypeAnnotation_tes> ;
+          rdf:type [ <PhenotypeAnnotation> ] ? ;
+          <sgd_strain_background> @<AffectedGenomicModel> ? ;
+          <subject> @<Gene>
        ) ;
-       rdf:type [ <http://alliancegenome.orgGenePhenotypeAnnotation> ]
+       rdf:type [ <GenePhenotypeAnnotation> ]
     )
 }
 
-<http://alliancegenome.orgGenomicEntity>  (
+<GenomicEntity>  (
     CLOSED {
-       (  $<http://alliancegenome.orgGenomicEntity_tes> (  &<http://alliancegenome.orgBiologicalEntity_tes> ;
-             rdf:type [ <http://alliancegenome.orgBiologicalEntity> ] ? ;
-             <http://alliancegenome.orgname> @linkml:String ? ;
-             <http://alliancegenome.orgsynonyms> @<http://alliancegenome.orgSynonym> * ;
-             <http://alliancegenome.orgcross_references> @<http://alliancegenome.orgCrossReference> * ;
-             <http://alliancegenome.orgsecondary_identifiers> @linkml:Uriorcurie * ;
-             <http://alliancegenome.orggenomic_locations> @<http://alliancegenome.orgGenomicLocation> *
+       (  $<GenomicEntity_tes> (  &<BiologicalEntity_tes> ;
+             rdf:type [ <BiologicalEntity> ] ? ;
+             <name> @linkml:String ? ;
+             <synonyms> @<Synonym> * ;
+             <cross_references> @<CrossReference> * ;
+             <secondary_identifiers> @linkml:Uriorcurie * ;
+             <genomic_locations> @<GenomicLocation> *
           ) ;
-          rdf:type [ <http://alliancegenome.orgGenomicEntity> ]
+          rdf:type [ <GenomicEntity> ]
        )
-    } OR @<http://alliancegenome.orgAffectedGenomicModel> OR @<http://alliancegenome.orgAllele> OR
-    @<http://alliancegenome.orgConstruct> OR @<http://alliancegenome.orgConstructComponent> OR @<http://alliancegenome.orgGene> OR
-    @<http://alliancegenome.orgProtein> OR @<http://alliancegenome.orgSequenceTargetingReagent> OR
-    @<http://alliancegenome.orgTranscript> OR @<http://alliancegenome.orgVariant>
+    } OR @<AffectedGenomicModel> OR @<Allele> OR @<Construct> OR @<ConstructComponent> OR @<Gene> OR @<Protein> OR
+    @<SequenceTargetingReagent> OR @<Transcript> OR @<Variant>
 )
 
-<http://alliancegenome.orgGenomicLocation> CLOSED {
-    (  $<http://alliancegenome.orgGenomicLocation_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgsubject> @<http://alliancegenome.orgGenomicEntity> ;
-          <http://alliancegenome.orgpredicate> @linkml:String ;
-          <http://alliancegenome.orgobject> @<http://alliancegenome.orgChromosome> ;
-          <http://alliancegenome.orghas_assembly> @<http://alliancegenome.orgAssembly> ;
-          <http://alliancegenome.orgstart> @linkml:String ? ;
-          <http://alliancegenome.orgend> @linkml:String ?
+<GenomicLocation> CLOSED {
+    (  $<GenomicLocation_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <subject> @<GenomicEntity> ;
+          <predicate> @linkml:String ;
+          <object> @<Chromosome> ;
+          <has_assembly> @<Assembly> ;
+          <start> @linkml:String ? ;
+          <end> @linkml:String ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgGenomicLocation> ] ?
+       rdf:type [ <GenomicLocation> ] ?
     )
 }
 
-<http://alliancegenome.orgGOTerm> CLOSED {
-    (  $<http://alliancegenome.orgGOTerm_tes> (  &<http://alliancegenome.orgOntologyTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgOntologyTerm> ] ?
+<GOTerm> CLOSED {
+    (  $<GOTerm_tes> (  &<OntologyTerm_tes> ;
+          rdf:type [ <OntologyTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgGOTerm> ]
+       rdf:type [ <GOTerm> ]
     )
 }
 
-<http://alliancegenome.orgImage> CLOSED {
-    (  $<http://alliancegenome.orgImage_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgassociated_with_figure> @<http://alliancegenome.orgFigure> ;
-          <http://alliancegenome.orgwidth> @linkml:Integer ;
-          <http://alliancegenome.orgheight> @linkml:Integer ;
-          <http://alliancegenome.orgimage_file> @<http://alliancegenome.orgFile> ;
-          <http://alliancegenome.orgimage_medium_file> @<http://alliancegenome.orgFile> ;
-          <http://alliancegenome.orgimage_thumbnail_file> @<http://alliancegenome.orgFile> ;
-          <http://alliancegenome.orgcropped_from> @<http://alliancegenome.orgImage> ? ;
-          <http://alliancegenome.orgimage_x_origin> @linkml:Integer ? ;
-          <http://alliancegenome.orgimage_y_origin> @linkml:Integer ? ;
-          <http://alliancegenome.orgvideo_still> @linkml:Boolean ? ;
-          <http://alliancegenome.orgsecondary_identifiers> @linkml:Uriorcurie *
+<Image> CLOSED {
+    (  $<Image_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <associated_with_figure> @<Figure> ;
+          <width> @linkml:Integer ;
+          <height> @linkml:Integer ;
+          <image_file> @<File> ;
+          <image_medium_file> @<File> ;
+          <image_thumbnail_file> @<File> ;
+          <cropped_from> @<Image> ? ;
+          <image_x_origin> @linkml:Integer ? ;
+          <image_y_origin> @linkml:Integer ? ;
+          <video_still> @linkml:Boolean ? ;
+          <secondary_identifiers> @linkml:Uriorcurie *
        ) ;
-       rdf:type [ <http://alliancegenome.orgImage> ]
+       rdf:type [ <Image> ]
     )
 }
 
-<http://alliancegenome.orgImagePane> CLOSED {
-    (  $<http://alliancegenome.orgImagePane_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgfrom_image> @<http://alliancegenome.orgImage> ;
-          <http://alliancegenome.orglabel> @linkml:String ? ;
-          <http://alliancegenome.orgwidth> @linkml:Integer ;
-          <http://alliancegenome.orgheight> @linkml:Integer ;
-          <http://alliancegenome.orgimage_x_origin> @linkml:Integer ? ;
-          <http://alliancegenome.orgimage_y_origin> @linkml:Integer ?
+<ImagePane> CLOSED {
+    (  $<ImagePane_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <from_image> @<Image> ;
+          <label> @linkml:String ? ;
+          <width> @linkml:Integer ;
+          <height> @linkml:Integer ;
+          <image_x_origin> @linkml:Integer ? ;
+          <image_y_origin> @linkml:Integer ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgImagePane> ] ?
+       rdf:type [ <ImagePane> ] ?
     )
 }
 
-<http://alliancegenome.orgLaboratory> CLOSED {
-    (  $<http://alliancegenome.orgLaboratory_tes> (  &<http://alliancegenome.orgOrganization_tes> ;
-          rdf:type [ <http://alliancegenome.orgOrganization> ] ?
+<Laboratory> CLOSED {
+    (  $<Laboratory_tes> (  &<Organization_tes> ;
+          rdf:type [ <Organization> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgLaboratory> ] ?
+       rdf:type [ <Laboratory> ] ?
     )
 }
 
-<http://alliancegenome.orgLoggedInPerson> CLOSED {
-    (  $<http://alliancegenome.orgLoggedInPerson_tes> (  &<http://alliancegenome.orgPerson_tes> ;
-          rdf:type [ <http://alliancegenome.orgPerson> ] ? ;
-          <http://alliancegenome.orgokta_id> @linkml:String ;
-          <http://alliancegenome.orgokta_email> @linkml:String
+<LoggedInPerson> CLOSED {
+    (  $<LoggedInPerson_tes> (  &<Person_tes> ;
+          rdf:type [ <Person> ] ? ;
+          <okta_id> @linkml:String ;
+          <okta_email> @linkml:String
        ) ;
-       rdf:type [ <http://alliancegenome.orgLoggedInPerson> ]
+       rdf:type [ <LoggedInPerson> ]
     )
 }
 
-<http://alliancegenome.orgMATerm> CLOSED {
-    (  $<http://alliancegenome.orgMATerm_tes> (  &<http://alliancegenome.orgAnatomicalTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgAnatomicalTerm> ] ?
+<MATerm> CLOSED {
+    (  $<MATerm_tes> (  &<AnatomicalTerm_tes> ;
+          rdf:type [ <AnatomicalTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgMATerm> ]
+       rdf:type [ <MATerm> ]
     )
 }
 
-<http://alliancegenome.orgMeshDetail> CLOSED {
-    (  $<http://alliancegenome.orgMeshDetail_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgmesh_detail_id> @linkml:Integer ;
-          <http://alliancegenome.orgreference_id> @linkml:Integer ;
-          <http://alliancegenome.orgheading_term> @linkml:String ;
-          <http://alliancegenome.orgqualifier_term> @linkml:String ?
+<MeshDetail> CLOSED {
+    (  $<MeshDetail_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <mesh_detail_id> @linkml:Integer ;
+          <reference_id> @linkml:Integer ;
+          <heading_term> @linkml:String ;
+          <qualifier_term> @linkml:String ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgMeshDetail> ] ?
+       rdf:type [ <MeshDetail> ] ?
     )
 }
 
-<http://alliancegenome.orgMITerm> CLOSED {
-    (  $<http://alliancegenome.orgMITerm_tes> (  &<http://alliancegenome.orgOntologyTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgOntologyTerm> ] ?
+<MITerm> CLOSED {
+    (  $<MITerm_tes> (  &<OntologyTerm_tes> ;
+          rdf:type [ <OntologyTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgMITerm> ]
+       rdf:type [ <MITerm> ]
     )
 }
 
-<http://alliancegenome.orgMMOTerm> CLOSED {
-    (  $<http://alliancegenome.orgMMOTerm_tes> (  &<http://alliancegenome.orgOntologyTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgOntologyTerm> ] ?
+<MMOTerm> CLOSED {
+    (  $<MMOTerm_tes> (  &<OntologyTerm_tes> ;
+          rdf:type [ <OntologyTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgMMOTerm> ]
+       rdf:type [ <MMOTerm> ]
     )
 }
 
-<http://alliancegenome.orgMMUSDVTerm> CLOSED {
-    (  $<http://alliancegenome.orgMMUSDVTerm_tes> (  &<http://alliancegenome.orgOntologyTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgOntologyTerm> ] ?
+<MMUSDVTerm> CLOSED {
+    (  $<MMUSDVTerm_tes> (  &<OntologyTerm_tes> ;
+          rdf:type [ <OntologyTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgMMUSDVTerm> ]
+       rdf:type [ <MMUSDVTerm> ]
     )
 }
 
-<http://alliancegenome.orgMolecule> CLOSED {
-    (  $<http://alliancegenome.orgMolecule_tes> (  &<http://alliancegenome.orgChemicalTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgChemicalTerm> ] ? ;
-          &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ?
+<Molecule> CLOSED {
+    (  $<Molecule_tes> (  &<ChemicalTerm_tes> ;
+          rdf:type [ <ChemicalTerm> ] ? ;
+          &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgMolecule> ]
+       rdf:type [ <Molecule> ]
     )
 }
 
-<http://alliancegenome.orgNCBITaxonTerm> CLOSED {
-    (  $<http://alliancegenome.orgNCBITaxonTerm_tes> (  &<http://alliancegenome.orgOntologyTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgOntologyTerm> ] ?
+<NCBITaxonTerm> CLOSED {
+    (  $<NCBITaxonTerm_tes> (  &<OntologyTerm_tes> ;
+          rdf:type [ <OntologyTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgNCBITaxonTerm> ]
+       rdf:type [ <NCBITaxonTerm> ]
     )
 }
 
-<http://alliancegenome.orgNote> CLOSED {
-    (  $<http://alliancegenome.orgNote_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgfree_text> @linkml:String ;
-          <http://alliancegenome.orgnote_type> @<http://alliancegenome.orgVocabularyTerm> ;
-          <http://alliancegenome.orgreferences> @<http://alliancegenome.orgReference> *
+<Note> CLOSED {
+    (  $<Note_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <free_text> @linkml:String ;
+          <note_type> @<VocabularyTerm> ;
+          <references> @<Reference> *
        ) ;
-       rdf:type [ <http://alliancegenome.orgNote> ] ?
+       rdf:type [ <Note> ] ?
     )
 }
 
-<http://alliancegenome.orgOntologyTerm>  (
+<OntologyTerm>  (
     CLOSED {
-       (  $<http://alliancegenome.orgOntologyTerm_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-             rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-             <http://alliancegenome.orgdbkey> @linkml:String ? ;
-             <http://alliancegenome.orgname> @linkml:String ? ;
-             <http://alliancegenome.orgdefinition> @linkml:String ? ;
-             <http://alliancegenome.orgdefinition_urls> @linkml:String * ;
-             <http://alliancegenome.orgtype> @linkml:Uriorcurie ? ;
-             <http://alliancegenome.orgcross_references> @<http://alliancegenome.orgCrossReference> * ;
-             <http://alliancegenome.orgsynonyms> @<http://alliancegenome.orgSynonym> * ;
-             <http://alliancegenome.orgnamespace> @linkml:String ? ;
-             <http://alliancegenome.orgsubsets> @linkml:String * ;
-             <http://alliancegenome.orgsecondary_identifiers> @linkml:Uriorcurie *
+       (  $<OntologyTerm_tes> (  &<AuditedObject_tes> ;
+             rdf:type [ <AuditedObject> ] ? ;
+             <dbkey> @linkml:String ? ;
+             <name> @linkml:String ? ;
+             <definition> @linkml:String ? ;
+             <definition_urls> @linkml:String * ;
+             <type> @linkml:Uriorcurie ? ;
+             <cross_references> @<CrossReference> * ;
+             <synonyms> @<Synonym> * ;
+             <namespace> @linkml:String ? ;
+             <subsets> @linkml:String * ;
+             <secondary_identifiers> @linkml:Uriorcurie *
           ) ;
-          rdf:type [ <http://alliancegenome.orgOntologyTerm> ]
+          rdf:type [ <OntologyTerm> ]
        )
-    } OR @<http://alliancegenome.orgAnatomicalTerm> OR @<http://alliancegenome.orgChemicalTerm> OR
-    @<http://alliancegenome.orgDOTerm> OR @<http://alliancegenome.orgECOTerm> OR
-    @<http://alliancegenome.orgExperimentalConditionOntologyTerm> OR @<http://alliancegenome.orgFBCVTerm> OR
-    @<http://alliancegenome.orgGOTerm> OR @<http://alliancegenome.orgMITerm> OR @<http://alliancegenome.orgMMOTerm> OR
-    @<http://alliancegenome.orgMMUSDVTerm> OR @<http://alliancegenome.orgNCBITaxonTerm> OR
-    @<http://alliancegenome.orgPhenotypeTerm> OR @<http://alliancegenome.orgROTerm> OR @<http://alliancegenome.orgSOTerm> OR
-    @<http://alliancegenome.orgStageTerm> OR @<http://alliancegenome.orgXBEDTerm>
+    } OR @<AnatomicalTerm> OR @<ChemicalTerm> OR @<DOTerm> OR @<ECOTerm> OR @<ExperimentalConditionOntologyTerm> OR @<FBCVTerm> OR
+    @<GOTerm> OR @<MITerm> OR @<MMOTerm> OR @<MMUSDVTerm> OR @<NCBITaxonTerm> OR @<PhenotypeTerm> OR @<ROTerm> OR @<SOTerm> OR
+    @<StageTerm> OR @<XBEDTerm>
 )
 
-<http://alliancegenome.orgOrganization>  (
+<Organization>  (
     CLOSED {
-       (  $<http://alliancegenome.orgOrganization_tes> (  &<http://alliancegenome.orgAgent_tes> ;
-             rdf:type [ <http://alliancegenome.orgAgent> ] ?
+       (  $<Organization_tes> (  &<Agent_tes> ;
+             rdf:type [ <Agent> ] ?
           ) ;
-          rdf:type [ <http://alliancegenome.orgOrganization> ] ?
+          rdf:type [ <Organization> ] ?
        )
-    } OR @<http://alliancegenome.orgCompany> OR @<http://alliancegenome.orgLaboratory>
+    } OR @<Company> OR @<Laboratory>
 )
 
-<http://alliancegenome.orgPerson>  (
+<Person>  (
     CLOSED {
-       (  $<http://alliancegenome.orgPerson_tes> (  &<http://alliancegenome.orgAgent_tes> ;
-             rdf:type [ <http://alliancegenome.orgAgent> ] ? ;
-             <http://alliancegenome.orglast_name> @linkml:String ? ;
-             <http://alliancegenome.orgmiddle_name> @linkml:String ? ;
-             <http://alliancegenome.orgfirst_name> @linkml:String ? ;
-             <http://alliancegenome.orgorcid> @linkml:Uriorcurie ? ;
-             <http://alliancegenome.orgemails> @linkml:String * ;
-             <http://alliancegenome.orgold_emails> @linkml:String * ;
-             <http://alliancegenome.orgmod_entity_id> @linkml:String ?
+       (  $<Person_tes> (  &<Agent_tes> ;
+             rdf:type [ <Agent> ] ? ;
+             <last_name> @linkml:String ? ;
+             <middle_name> @linkml:String ? ;
+             <first_name> @linkml:String ? ;
+             <orcid> @linkml:Uriorcurie ? ;
+             <emails> @linkml:String * ;
+             <old_emails> @linkml:String * ;
+             <mod_entity_id> @linkml:String ?
           ) ;
-          rdf:type [ <http://alliancegenome.orgPerson> ]
+          rdf:type [ <Person> ]
        )
-    } OR @<http://alliancegenome.orgLoggedInPerson>
+    } OR @<LoggedInPerson>
 )
 
-<http://alliancegenome.orgPhenotypeAnnotation>  (
+<PhenotypeAnnotation>  (
     CLOSED {
-       (  $<http://alliancegenome.orgPhenotypeAnnotation_tes> (  &<http://alliancegenome.orgAssociation_tes> ;
-             rdf:type [ <http://alliancegenome.orgAssociation> ] ? ;
-             <http://alliancegenome.orgsingle_reference> @<http://alliancegenome.orgReference> ? ;
-             <http://alliancegenome.orgphenotype_term> @<http://alliancegenome.orgPhenotypeTerm> ? ;
-             <http://alliancegenome.orgcondition_relations> @<http://alliancegenome.orgConditionRelation> * ;
-             <http://alliancegenome.orgsubject> @<http://alliancegenome.orgBiologicalEntity> ;
-             <http://alliancegenome.orgobject> @linkml:String ;
-             <http://alliancegenome.orgdate_created> @linkml:Date
+       (  $<PhenotypeAnnotation_tes> (  &<Association_tes> ;
+             rdf:type [ <Association> ] ? ;
+             <single_reference> @<Reference> ? ;
+             <phenotype_term> @<PhenotypeTerm> ? ;
+             <condition_relations> @<ConditionRelation> * ;
+             <subject> @<BiologicalEntity> ;
+             <object> @linkml:String ;
+             <date_created> @linkml:Date
           ) ;
-          rdf:type [ <http://alliancegenome.orgPhenotypeAnnotation> ]
+          rdf:type [ <PhenotypeAnnotation> ]
        )
-    } OR @<http://alliancegenome.orgAGMPhenotypeAnnotation> OR @<http://alliancegenome.orgAllelePhenotypeAnnotation> OR
-    @<http://alliancegenome.orgGenePhenotypeAnnotation>
+    } OR @<AGMPhenotypeAnnotation> OR @<AllelePhenotypeAnnotation> OR @<GenePhenotypeAnnotation>
 )
 
-<http://alliancegenome.orgPhenotypeTerm>  (
+<PhenotypeTerm>  (
     CLOSED {
-       (  $<http://alliancegenome.orgPhenotypeTerm_tes> (  &<http://alliancegenome.orgOntologyTerm_tes> ;
-             rdf:type [ <http://alliancegenome.orgOntologyTerm> ] ?
+       (  $<PhenotypeTerm_tes> (  &<OntologyTerm_tes> ;
+             rdf:type [ <OntologyTerm> ] ?
           ) ;
-          rdf:type [ <http://alliancegenome.orgPhenotypeTerm> ]
+          rdf:type [ <PhenotypeTerm> ]
        )
-    } OR @<http://alliancegenome.orgXPOTerm>
+    } OR @<XPOTerm>
 )
 
-<http://alliancegenome.orgProtein> CLOSED {
-    (  $<http://alliancegenome.orgProtein_tes> (  &<http://alliancegenome.orgGenomicEntity_tes> ;
-          rdf:type [ <http://alliancegenome.orgGenomicEntity> ] ?
+<Protein> CLOSED {
+    (  $<Protein_tes> (  &<GenomicEntity_tes> ;
+          rdf:type [ <GenomicEntity> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgProtein> ]
+       rdf:type [ <Protein> ]
     )
 }
 
-<http://alliancegenome.orgReagent>  (
+<Reagent>  (
     CLOSED {
-       (  $<http://alliancegenome.orgReagent_tes> (  &<http://alliancegenome.orgBiologicalEntity_tes> ;
-             rdf:type [ <http://alliancegenome.orgBiologicalEntity> ] ? ;
-             <http://alliancegenome.orggenerated_by> @<http://alliancegenome.orgAgent> * ;
-             <http://alliancegenome.orgmanufactured_by> @<http://alliancegenome.orgAgent> *
+       (  $<Reagent_tes> (  &<BiologicalEntity_tes> ;
+             rdf:type [ <BiologicalEntity> ] ? ;
+             <generated_by> @<Agent> * ;
+             <manufactured_by> @<Agent> *
           ) ;
-          rdf:type [ <http://alliancegenome.orgReagent> ]
+          rdf:type [ <Reagent> ]
        )
-    } OR @<http://alliancegenome.orgAntibody> OR @<http://alliancegenome.orgDNAClone> OR @<http://alliancegenome.orgRNAClone>
+    } OR @<Antibody> OR @<DNAClone> OR @<RNAClone>
 )
 
-<http://alliancegenome.orgReference> CLOSED {
-    (  $<http://alliancegenome.orgReference_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgabstract> @linkml:String ? ;
-          <http://alliancegenome.orgcategory> @<http://alliancegenome.orgReferenceCategoryEnum> ? ;
-          <http://alliancegenome.orgcitation> @linkml:String ? ;
-          <http://alliancegenome.orgdate_arrived_in_pubmed> @linkml:String * ;
-          <http://alliancegenome.orgdate_published> @linkml:String ? ;
-          <http://alliancegenome.orgissue_date> @linkml:String ? ;
-          <http://alliancegenome.orgissue_name> @linkml:String ? ;
-          <http://alliancegenome.orgkeywords> @linkml:String * ;
-          <http://alliancegenome.orglanguage> @linkml:String ? ;
-          <http://alliancegenome.orgmerged_into_id> @linkml:Uriorcurie ? ;
-          <http://alliancegenome.orgopen_access> @linkml:Boolean ? ;
-          <http://alliancegenome.orgpages> @linkml:String ? ;
-          <http://alliancegenome.orgplain_language_abstract> @linkml:String ? ;
-          <http://alliancegenome.orgpublisher> @linkml:String ? ;
-          <http://alliancegenome.orgpubmed_abstract_languages> @linkml:String * ;
-          <http://alliancegenome.orgpubmed_publication_status> @<http://alliancegenome.orgPubmedPublicationStatusEnum> ? ;
-          <http://alliancegenome.orgpubmed_type> @<http://alliancegenome.orgPubmedTypeEnum> * ;
-          <http://alliancegenome.orgreference_id> @linkml:Integer ;
-          <http://alliancegenome.orgresource_id> @linkml:Integer ? ;
-          <http://alliancegenome.orgtitle> @linkml:String ? ;
-          <http://alliancegenome.orgvolume> @linkml:String ? ;
-          <http://alliancegenome.orgdate_updated> @linkml:Date ?
+<Reference> CLOSED {
+    (  $<Reference_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <abstract> @linkml:String ? ;
+          <category> @<ReferenceCategoryEnum> ? ;
+          <citation> @linkml:String ? ;
+          <date_arrived_in_pubmed> @linkml:String * ;
+          <date_published> @linkml:String ? ;
+          <issue_date> @linkml:String ? ;
+          <issue_name> @linkml:String ? ;
+          <keywords> @linkml:String * ;
+          <language> @linkml:String ? ;
+          <merged_into_id> @linkml:Uriorcurie ? ;
+          <open_access> @linkml:Boolean ? ;
+          <pages> @linkml:String ? ;
+          <plain_language_abstract> @linkml:String ? ;
+          <publisher> @linkml:String ? ;
+          <pubmed_abstract_languages> @linkml:String * ;
+          <pubmed_publication_status> @<PubmedPublicationStatusEnum> ? ;
+          <pubmed_type> @<PubmedTypeEnum> * ;
+          <reference_id> @linkml:Integer ;
+          <resource_id> @linkml:Integer ? ;
+          <title> @linkml:String ? ;
+          <volume> @linkml:String ? ;
+          <date_updated> @linkml:Date ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgReference> ]
+       rdf:type [ <Reference> ]
     )
 }
 
-<http://alliancegenome.orgResource> CLOSED {
-    (  $<http://alliancegenome.orgResource_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgtitle> @linkml:String ? ;
-          <http://alliancegenome.orgiso_abbreviation> @linkml:String ? ;
-          <http://alliancegenome.orgmedline_abbreviation> @linkml:String ? ;
-          <http://alliancegenome.orgcopyright_date> @linkml:Date ? ;
-          <http://alliancegenome.orgprint_issn> @linkml:String ? ;
-          <http://alliancegenome.orgonline_issn> @linkml:String ? ;
-          <http://alliancegenome.orgpublisher> @linkml:String ? ;
-          <http://alliancegenome.orgvolume> @linkml:String ? ;
-          <http://alliancegenome.orgsummary> @linkml:String ? ;
-          <http://alliancegenome.orgsynonyms> @<http://alliancegenome.orgSynonym> * ;
-          <http://alliancegenome.orgauthors> @<http://alliancegenome.orgAuthorReference> * ;
-          <http://alliancegenome.orgeditors> @<http://alliancegenome.orgAuthorReference> * ;
-          <http://alliancegenome.orgid> @linkml:String ?
+<Resource> CLOSED {
+    (  $<Resource_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <title> @linkml:String ? ;
+          <iso_abbreviation> @linkml:String ? ;
+          <medline_abbreviation> @linkml:String ? ;
+          <copyright_date> @linkml:Date ? ;
+          <print_issn> @linkml:String ? ;
+          <online_issn> @linkml:String ? ;
+          <publisher> @linkml:String ? ;
+          <volume> @linkml:String ? ;
+          <summary> @linkml:String ? ;
+          <synonyms> @<Synonym> * ;
+          <authors> @<AuthorReference> * ;
+          <editors> @<AuthorReference> * ;
+          <id> @linkml:String ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgResource> ]
+       rdf:type [ <Resource> ]
     )
 }
 
-<http://alliancegenome.orgRNAClone> CLOSED {
-    (  $<http://alliancegenome.orgRNAClone_tes> (  &<http://alliancegenome.orgReagent_tes> ;
-          rdf:type [ <http://alliancegenome.orgReagent> ] ?
+<RNAClone> CLOSED {
+    (  $<RNAClone_tes> (  &<Reagent_tes> ;
+          rdf:type [ <Reagent> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgRNAClone> ]
+       rdf:type [ <RNAClone> ]
     )
 }
 
-<http://alliancegenome.orgROTerm> CLOSED {
-    (  $<http://alliancegenome.orgROTerm_tes> (  &<http://alliancegenome.orgOntologyTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgOntologyTerm> ] ?
+<ROTerm> CLOSED {
+    (  $<ROTerm_tes> (  &<OntologyTerm_tes> ;
+          rdf:type [ <OntologyTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgROTerm> ]
+       rdf:type [ <ROTerm> ]
     )
 }
 
-<http://alliancegenome.orgSequenceTargetingReagent> CLOSED {
-    (  $<http://alliancegenome.orgSequenceTargetingReagent_tes> (  &<http://alliancegenome.orgGenomicEntity_tes> ;
-          rdf:type [ <http://alliancegenome.orgGenomicEntity> ] ? ;
-          <http://alliancegenome.orgreferences> @<http://alliancegenome.orgReference> * ;
-          <http://alliancegenome.orgname> @linkml:String
+<SequenceTargetingReagent> CLOSED {
+    (  $<SequenceTargetingReagent_tes> (  &<GenomicEntity_tes> ;
+          rdf:type [ <GenomicEntity> ] ? ;
+          <references> @<Reference> * ;
+          <name> @linkml:String
        ) ;
-       rdf:type [ <http://alliancegenome.orgSequenceTargetingReagent> ]
+       rdf:type [ <SequenceTargetingReagent> ]
     )
 }
 
-<http://alliancegenome.orgSequenceTargetingReagentToGeneAssociation> CLOSED {
-    (  $<http://alliancegenome.orgSequenceTargetingReagentToGeneAssociation_tes> (  &<http://alliancegenome.orgAssociation_tes> ;
-          rdf:type [ <http://alliancegenome.orgAssociation> ] ? ;
-          <http://alliancegenome.orgreferences> @<http://alliancegenome.orgReference> * ;
-          <http://alliancegenome.orgpredicate> @<http://alliancegenome.orgSqtrRelationEnum> ;
-          <http://alliancegenome.orgsubject> @<http://alliancegenome.orgSequenceTargetingReagent> ;
-          <http://alliancegenome.orgobject> @<http://alliancegenome.orgGene>
+<SequenceTargetingReagentToGeneAssociation> CLOSED {
+    (  $<SequenceTargetingReagentToGeneAssociation_tes> (  &<Association_tes> ;
+          rdf:type [ <Association> ] ? ;
+          <references> @<Reference> * ;
+          <predicate> @<SqtrRelationEnum> ;
+          <subject> @<SequenceTargetingReagent> ;
+          <object> @<Gene>
        ) ;
-       rdf:type [ <http://alliancegenome.orgSequenceTargetingReagentToGeneAssociation> ] ?
+       rdf:type [ <SequenceTargetingReagentToGeneAssociation> ] ?
     )
 }
 
-<http://alliancegenome.orgSOTerm> CLOSED {
-    (  $<http://alliancegenome.orgSOTerm_tes> (  &<http://alliancegenome.orgOntologyTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgOntologyTerm> ] ?
+<SOTerm> CLOSED {
+    (  $<SOTerm_tes> (  &<OntologyTerm_tes> ;
+          rdf:type [ <OntologyTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgSOTerm> ]
+       rdf:type [ <SOTerm> ]
     )
 }
 
-<http://alliancegenome.orgSourceVariantLocation> CLOSED {
-    (  $<http://alliancegenome.orgSourceVariantLocation_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgvariant_locations> @<http://alliancegenome.orgVariantLocation> + ;
-          <http://alliancegenome.orgsingle_reference> @<http://alliancegenome.orgReference>
+<SourceVariantLocation> CLOSED {
+    (  $<SourceVariantLocation_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <variant_locations> @<VariantLocation> + ;
+          <single_reference> @<Reference>
        ) ;
-       rdf:type [ <http://alliancegenome.orgSourceVariantLocation> ] ?
+       rdf:type [ <SourceVariantLocation> ] ?
     )
 }
 
-<http://alliancegenome.orgStageTerm>  (
-    @<http://alliancegenome.orgFBDVTerm> OR @<http://alliancegenome.orgWBLSTerm> OR @<http://alliancegenome.orgXBSTerm> OR
-    @<http://alliancegenome.orgZFSTerm>
+<StageTerm>  (
+    @<FBDVTerm> OR @<WBLSTerm> OR @<XBSTerm> OR @<ZFSTerm>
 )
 
-<http://alliancegenome.orgStageTerm_struct> {
-    (  $<http://alliancegenome.orgStageTerm_tes> (  &<http://alliancegenome.orgOntologyTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgOntologyTerm> ] ?
+<StageTerm_struct> {
+    (  $<StageTerm_tes> (  &<OntologyTerm_tes> ;
+          rdf:type [ <OntologyTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgStageTerm> ]
+       rdf:type [ <StageTerm> ]
     )
 }
 
-<http://alliancegenome.orgSynonym> CLOSED {
-    (  $<http://alliancegenome.orgSynonym_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgsynonym> @linkml:String ?
+<Synonym> CLOSED {
+    (  $<Synonym_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <synonym> @linkml:String ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgSynonym> ] ?
+       rdf:type [ <Synonym> ] ?
     )
 }
 
-<http://alliancegenome.orgTemporalContext> CLOSED {
-    (  $<http://alliancegenome.orgTemporalContext_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgdevelopmental_stage_start> @<http://alliancegenome.orgStageTerm> ? ;
-          <http://alliancegenome.orgdevelopmental_stage_stop> @<http://alliancegenome.orgStageTerm> ? ;
-          <http://alliancegenome.orgage> @linkml:String ? ;
-          <http://alliancegenome.orgtemporal_qualifiers> @<http://alliancegenome.orgTemporalQualifierSet> ? ;
-          <http://alliancegenome.orgstage_uncertainty> @linkml:String ?
+<TemporalContext> CLOSED {
+    (  $<TemporalContext_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <developmental_stage_start> @<StageTerm> ? ;
+          <developmental_stage_stop> @<StageTerm> ? ;
+          <age> @linkml:String ? ;
+          <temporal_qualifiers> @<TemporalQualifierSet> ? ;
+          <stage_uncertainty> @linkml:String ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgTemporalContext> ] ?
+       rdf:type [ <TemporalContext> ] ?
     )
 }
 
-<http://alliancegenome.orgTranscript> CLOSED {
-    (  $<http://alliancegenome.orgTranscript_tes> (  &<http://alliancegenome.orgGenomicEntity_tes> ;
-          rdf:type [ <http://alliancegenome.orgGenomicEntity> ] ?
+<Transcript> CLOSED {
+    (  $<Transcript_tes> (  &<GenomicEntity_tes> ;
+          rdf:type [ <GenomicEntity> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgTranscript> ]
+       rdf:type [ <Transcript> ]
     )
 }
 
-<http://alliancegenome.orgUBERONTerm> CLOSED {
-    (  $<http://alliancegenome.orgUBERONTerm_tes> (  &<http://alliancegenome.orgAnatomicalTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgAnatomicalTerm> ] ?
+<UBERONTerm> CLOSED {
+    (  $<UBERONTerm_tes> (  &<AnatomicalTerm_tes> ;
+          rdf:type [ <AnatomicalTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgUBERONTerm> ]
+       rdf:type [ <UBERONTerm> ]
     )
 }
 
-<http://alliancegenome.orgVariant> CLOSED {
-    (  $<http://alliancegenome.orgVariant_tes> (  &<http://alliancegenome.orgGenomicEntity_tes> ;
-          rdf:type [ <http://alliancegenome.orgGenomicEntity> ] ? ;
-          <http://alliancegenome.orgvariant_type> @<http://alliancegenome.orgSOTerm> ;
-          <http://alliancegenome.orgrelated_notes> @<http://alliancegenome.orgNote> * ;
-          <http://alliancegenome.orgsource_general_consequence> @<http://alliancegenome.orgSOTerm> ? ;
-          <http://alliancegenome.orgvariant_genome_locations> @<http://alliancegenome.orgVariantGenomeLocation> + ;
-          <http://alliancegenome.orgvariant_polypeptide_locations> @<http://alliancegenome.orgVariantPolypeptideLocation> * ;
-          <http://alliancegenome.orgvariant_transcript_locations> @<http://alliancegenome.orgVariantTranscriptLocation> * ;
-          <http://alliancegenome.orgsource_variant_locations> @<http://alliancegenome.orgSourceVariantLocation> * ;
-          <http://alliancegenome.orgvariant_status> @<http://alliancegenome.orgVariantStatusEnum> ?
+<Variant> CLOSED {
+    (  $<Variant_tes> (  &<GenomicEntity_tes> ;
+          rdf:type [ <GenomicEntity> ] ? ;
+          <variant_type> @<SOTerm> ;
+          <related_notes> @<Note> * ;
+          <source_general_consequence> @<SOTerm> ? ;
+          <variant_genome_locations> @<VariantGenomeLocation> + ;
+          <variant_polypeptide_locations> @<VariantPolypeptideLocation> * ;
+          <variant_transcript_locations> @<VariantTranscriptLocation> * ;
+          <source_variant_locations> @<SourceVariantLocation> * ;
+          <variant_status> @<VariantStatusEnum> ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgVariant> ]
+       rdf:type [ <Variant> ]
     )
 }
 
-<http://alliancegenome.orgVariantGenomeLocation> CLOSED {
-    (  $<http://alliancegenome.orgVariantGenomeLocation_tes> (  &<http://alliancegenome.orgVariantLocation_tes> ;
-          rdf:type [ <http://alliancegenome.orgVariantLocation> ] ? ;
-          <http://alliancegenome.orgassembly> @<http://alliancegenome.orgAssembly> ? ;
-          <http://alliancegenome.orgchromosome> @<http://alliancegenome.orgChromosome> ?
+<VariantGenomeLocation> CLOSED {
+    (  $<VariantGenomeLocation_tes> (  &<VariantLocation_tes> ;
+          rdf:type [ <VariantLocation> ] ? ;
+          <assembly> @<Assembly> ? ;
+          <chromosome> @<Chromosome> ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgVariantGenomeLocation> ] ?
+       rdf:type [ <VariantGenomeLocation> ] ?
     )
 }
 
-<http://alliancegenome.orgVariantLocation>  (
-    @<http://alliancegenome.orgVariantGenomeLocation> OR @<http://alliancegenome.orgVariantPolypeptideLocation> OR
-    @<http://alliancegenome.orgVariantTranscriptLocation>
+<VariantLocation>  (
+    @<VariantGenomeLocation> OR @<VariantPolypeptideLocation> OR @<VariantTranscriptLocation>
 )
 
-<http://alliancegenome.orgVariantLocation_struct> {
-    (  $<http://alliancegenome.orgVariantLocation_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgevidence_code> @<http://alliancegenome.orgECOTerm> ? ;
-          <http://alliancegenome.orgsingle_reference> @<http://alliancegenome.orgReference> ? ;
-          <http://alliancegenome.orgstart_position> @linkml:Integer ? ;
-          <http://alliancegenome.orgend_position> @linkml:Integer ? ;
-          <http://alliancegenome.orgreference_sequence> @<http://alliancegenome.orgBiologicalSequence> ? ;
-          <http://alliancegenome.orgvariant_sequence> @<http://alliancegenome.orgBiologicalSequence> ? ;
-          <http://alliancegenome.orgconsequence> @<http://alliancegenome.orgSOTerm> ?
+<VariantLocation_struct> {
+    (  $<VariantLocation_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <evidence_code> @<ECOTerm> ? ;
+          <single_reference> @<Reference> ? ;
+          <start_position> @linkml:Integer ? ;
+          <end_position> @linkml:Integer ? ;
+          <reference_sequence> @<BiologicalSequence> ? ;
+          <variant_sequence> @<BiologicalSequence> ? ;
+          <consequence> @<SOTerm> ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgVariantLocation> ] ?
+       rdf:type [ <VariantLocation> ] ?
     )
 }
 
-<http://alliancegenome.orgVariantPolypeptideLocation> CLOSED {
-    (  $<http://alliancegenome.orgVariantPolypeptideLocation_tes> (  &<http://alliancegenome.orgVariantLocation_tes> ;
-          rdf:type [ <http://alliancegenome.orgVariantLocation> ] ? ;
-          <http://alliancegenome.orgpolypeptide> @<http://alliancegenome.orgTranscript> ;
-          <http://alliancegenome.orgassociated_transcripts> @<http://alliancegenome.orgTranscript> *
+<VariantPolypeptideLocation> CLOSED {
+    (  $<VariantPolypeptideLocation_tes> (  &<VariantLocation_tes> ;
+          rdf:type [ <VariantLocation> ] ? ;
+          <polypeptide> @<Transcript> ;
+          <associated_transcripts> @<Transcript> *
        ) ;
-       rdf:type [ <http://alliancegenome.orgVariantPolypeptideLocation> ] ?
+       rdf:type [ <VariantPolypeptideLocation> ] ?
     )
 }
 
-<http://alliancegenome.orgVariantTranscriptLocation> CLOSED {
-    (  $<http://alliancegenome.orgVariantTranscriptLocation_tes> (  &<http://alliancegenome.orgVariantLocation_tes> ;
-          rdf:type [ <http://alliancegenome.orgVariantLocation> ] ? ;
-          <http://alliancegenome.orgtranscript> @<http://alliancegenome.orgTranscript> ?
+<VariantTranscriptLocation> CLOSED {
+    (  $<VariantTranscriptLocation_tes> (  &<VariantLocation_tes> ;
+          rdf:type [ <VariantLocation> ] ? ;
+          <transcript> @<Transcript> ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgVariantTranscriptLocation> ] ?
+       rdf:type [ <VariantTranscriptLocation> ] ?
     )
 }
 
-<http://alliancegenome.orgVocabulary> CLOSED {
-    (  $<http://alliancegenome.orgVocabulary_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgvocabulary_description> @linkml:String ? ;
-          <http://alliancegenome.orgmember_terms> @<http://alliancegenome.orgVocabularyTerm> *
+<Vocabulary> CLOSED {
+    (  $<Vocabulary_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <vocabulary_description> @linkml:String ? ;
+          <member_terms> @<VocabularyTerm> *
        ) ;
-       rdf:type [ <http://alliancegenome.orgVocabulary> ]
+       rdf:type [ <Vocabulary> ]
     )
 }
 
-<http://alliancegenome.orgVocabularyTerm> CLOSED {
-    (  $<http://alliancegenome.orgVocabularyTerm_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgabbreviation> @linkml:String ? ;
-          <http://alliancegenome.orgdefinition> @linkml:String ? ;
-          <http://alliancegenome.orgtext_synonyms> @linkml:String *
+<VocabularyTerm> CLOSED {
+    (  $<VocabularyTerm_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <abbreviation> @linkml:String ? ;
+          <definition> @linkml:String ? ;
+          <text_synonyms> @linkml:String *
        ) ;
-       rdf:type [ <http://alliancegenome.orgVocabularyTerm> ]
+       rdf:type [ <VocabularyTerm> ]
     )
 }
 
-<http://alliancegenome.orgWBBTTerm> CLOSED {
-    (  $<http://alliancegenome.orgWBBTTerm_tes> (  &<http://alliancegenome.orgAnatomicalTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgAnatomicalTerm> ] ?
+<WBBTTerm> CLOSED {
+    (  $<WBBTTerm_tes> (  &<AnatomicalTerm_tes> ;
+          rdf:type [ <AnatomicalTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgWBBTTerm> ]
+       rdf:type [ <WBBTTerm> ]
     )
 }
 
-<http://alliancegenome.orgWBLSTerm> CLOSED {
-    (  $<http://alliancegenome.orgWBLSTerm_tes> (  &<http://alliancegenome.orgStageTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgStageTerm> ] ?
+<WBLSTerm> CLOSED {
+    (  $<WBLSTerm_tes> (  &<StageTerm_tes> ;
+          rdf:type [ <StageTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgWBLSTerm> ]
+       rdf:type [ <WBLSTerm> ]
     )
 }
 
-<http://alliancegenome.orgXBATerm> CLOSED {
-    (  $<http://alliancegenome.orgXBATerm_tes> (  &<http://alliancegenome.orgAnatomicalTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgAnatomicalTerm> ] ?
+<XBATerm> CLOSED {
+    (  $<XBATerm_tes> (  &<AnatomicalTerm_tes> ;
+          rdf:type [ <AnatomicalTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgXBATerm> ]
+       rdf:type [ <XBATerm> ]
     )
 }
 
-<http://alliancegenome.orgXBEDTerm> CLOSED {
-    (  $<http://alliancegenome.orgXBEDTerm_tes> (  &<http://alliancegenome.orgOntologyTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgOntologyTerm> ] ?
+<XBEDTerm> CLOSED {
+    (  $<XBEDTerm_tes> (  &<OntologyTerm_tes> ;
+          rdf:type [ <OntologyTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgXBEDTerm> ]
+       rdf:type [ <XBEDTerm> ]
     )
 }
 
-<http://alliancegenome.orgXBSTerm> CLOSED {
-    (  $<http://alliancegenome.orgXBSTerm_tes> (  &<http://alliancegenome.orgStageTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgStageTerm> ] ?
+<XBSTerm> CLOSED {
+    (  $<XBSTerm_tes> (  &<StageTerm_tes> ;
+          rdf:type [ <StageTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgXBSTerm> ]
+       rdf:type [ <XBSTerm> ]
     )
 }
 
-<http://alliancegenome.orgXCOTerm> CLOSED {
-    (  $<http://alliancegenome.orgXCOTerm_tes> (  &<http://alliancegenome.orgExperimentalConditionOntologyTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgExperimentalConditionOntologyTerm> ] ?
+<XCOTerm> CLOSED {
+    (  $<XCOTerm_tes> (  &<ExperimentalConditionOntologyTerm_tes> ;
+          rdf:type [ <ExperimentalConditionOntologyTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgXCOTerm> ]
+       rdf:type [ <XCOTerm> ]
     )
 }
 
-<http://alliancegenome.orgXPOTerm> CLOSED {
-    (  $<http://alliancegenome.orgXPOTerm_tes> (  &<http://alliancegenome.orgPhenotypeTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgPhenotypeTerm> ] ?
+<XPOTerm> CLOSED {
+    (  $<XPOTerm_tes> (  &<PhenotypeTerm_tes> ;
+          rdf:type [ <PhenotypeTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgXPOTerm> ]
+       rdf:type [ <XPOTerm> ]
     )
 }
 
-<http://alliancegenome.orgXSMOTerm> CLOSED {
-    (  $<http://alliancegenome.orgXSMOTerm_tes> (  &<http://alliancegenome.orgChemicalTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgChemicalTerm> ] ?
+<XSMOTerm> CLOSED {
+    (  $<XSMOTerm_tes> (  &<ChemicalTerm_tes> ;
+          rdf:type [ <ChemicalTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgXSMOTerm> ]
+       rdf:type [ <XSMOTerm> ]
     )
 }
 
-<http://alliancegenome.orgZECOTerm> CLOSED {
-    (  $<http://alliancegenome.orgZECOTerm_tes> (  &<http://alliancegenome.orgExperimentalConditionOntologyTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgExperimentalConditionOntologyTerm> ] ?
+<ZECOTerm> CLOSED {
+    (  $<ZECOTerm_tes> (  &<ExperimentalConditionOntologyTerm_tes> ;
+          rdf:type [ <ExperimentalConditionOntologyTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgZECOTerm> ]
+       rdf:type [ <ZECOTerm> ]
     )
 }
 
-<http://alliancegenome.orgZFATerm> CLOSED {
-    (  $<http://alliancegenome.orgZFATerm_tes> (  &<http://alliancegenome.orgAnatomicalTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgAnatomicalTerm> ] ?
+<ZFATerm> CLOSED {
+    (  $<ZFATerm_tes> (  &<AnatomicalTerm_tes> ;
+          rdf:type [ <AnatomicalTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgZFATerm> ]
+       rdf:type [ <ZFATerm> ]
     )
 }
 
-<http://alliancegenome.orgZFSTerm> CLOSED {
-    (  $<http://alliancegenome.orgZFSTerm_tes> (  &<http://alliancegenome.orgStageTerm_tes> ;
-          rdf:type [ <http://alliancegenome.orgStageTerm> ] ?
+<ZFSTerm> CLOSED {
+    (  $<ZFSTerm_tes> (  &<StageTerm_tes> ;
+          rdf:type [ <StageTerm> ] ?
        ) ;
-       rdf:type [ <http://alliancegenome.orgZFSTerm> ]
+       rdf:type [ <ZFSTerm> ]
     )
 }
 

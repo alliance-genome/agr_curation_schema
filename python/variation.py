@@ -1,5 +1,5 @@
 # Auto generated from variation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-05-09T20:34:37
+# Generation date: 2022-05-09T20:42:59
 # Schema: Alliance-Schema-Prototype-Variation
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/variation
@@ -49,7 +49,7 @@ WB = CurieNamespace('WB', 'http://identifiers.org/wb/')
 WIKIDATA_PROPERTY = CurieNamespace('WIKIDATA_PROPERTY', 'https://www.wikidata.org/wiki/Property:')
 WWPDB = CurieNamespace('WWPDB', 'https://www.rcsb.org/structure/')
 ZFIN = CurieNamespace('ZFIN', 'http://identifiers.org/zfin/')
-ALLIANCE = CurieNamespace('alliance', 'http://alliancegenome.org')
+ALLIANCE = CurieNamespace('alliance', 'http://alliancegenome.org/')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
 DCT = CurieNamespace('dct', 'http://purl.org/dc/terms/')
 FALDO = CurieNamespace('faldo', 'http://biohackathon.org/resource/faldo#')

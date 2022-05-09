@@ -1,5 +1,5 @@
 # Auto generated from expression.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-05-09T20:34:13
+# Generation date: 2022-05-09T20:42:36
 # Schema: expression.yaml
 #
 # id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml
@@ -46,7 +46,7 @@ SO = CurieNamespace('SO', 'http://purl.obolibrary.org/obo/SO_')
 WB = CurieNamespace('WB', 'http://identifiers.org/wb/')
 WIKIDATA_PROPERTY = CurieNamespace('WIKIDATA_PROPERTY', 'https://www.wikidata.org/wiki/Property:')
 ZFIN = CurieNamespace('ZFIN', 'http://identifiers.org/zfin/')
-ALLIANCE = CurieNamespace('alliance', 'http://alliancegenome.org')
+ALLIANCE = CurieNamespace('alliance', 'http://alliancegenome.org/')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
 DCT = CurieNamespace('dct', 'http://purl.org/dc/terms/')
 FALDO = CurieNamespace('faldo', 'http://biohackathon.org/resource/faldo#')
