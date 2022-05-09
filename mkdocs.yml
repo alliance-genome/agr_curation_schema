@@ -1,4 +1,4 @@
-site_name: "Model to describe the Alliance curation/persistence data store"
+site_name: "Alliance Persistent Store"
 theme:
   name: material
 plugins:
