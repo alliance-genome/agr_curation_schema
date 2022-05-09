@@ -1,5 +1,5 @@
 id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema
-name: AllianceCurationSchema
+name: AllianceModel
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
 version: 0.0.1
@@ -15,6 +15,12 @@ prefixes:
 
 default_prefix: alliance
 default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
 
 emit_prefixes:
   - rdf
