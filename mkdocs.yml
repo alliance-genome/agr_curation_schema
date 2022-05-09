@@ -14,9 +14,5 @@ nav:
   - Developing the Alliance Model: README.md
   - LinkML Tutorial: https://linkml.io/linkml/intro/tutorial.html
 
-
 site_url: https://github.com/alliance-genome/agr_curation_schema
 repo_url: https://github.com/alliance-genome/agr_curation_schema
-
-extra_css:
-  - extra_css.css
