@@ -35,6 +35,7 @@ prefixes:
   schema: 'http://schema.org/'
   dct: 'http://purl.org/dc/terms/'
   WIKIDATA_PROPERTY: 'https://www.wikidata.org/wiki/Property:'
+  obograph: 'https://github.com/biodatamodels/obograph'
 
 ## ------------
 ## TYPES

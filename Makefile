@@ -66,6 +66,12 @@ stage-%: gen-%
 gen-docs:
 	poetry run gen-doc model/schema/allianceModel.yaml --directory target/docs --template-directory doc_templates
 
+stage-docs:
+	cp -pr target/$* .
+	cp css/extra_css.css docs/
+	cp README.md docs/developing-the-model.md
+	poetry run mkdocs serve
+
 guidelines/%.md: docs/index.md
 	cp -R guidelines/* $(dir $@)
 
