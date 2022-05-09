@@ -24,7 +24,7 @@ emit_prefixes:
 
 
 prefixes:
-  alliance: 'http://alliancegenome.org'
+  alliance: 'http://alliancegenome.org/'
   linkml: 'https://w3id.org/linkml/'
   obograph: 'https://github.com/biodatamodels/obograph'
   gff: 'https://w3id.org/gff'

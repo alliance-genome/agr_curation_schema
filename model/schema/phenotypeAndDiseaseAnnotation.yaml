@@ -14,7 +14,7 @@ imports:
 
 
 prefixes:
-  alliance: 'http://alliancegenome.org'
+  alliance: 'http://alliancegenome.org/'
   linkml: 'https://w3id.org/linkml/'
   PDBE: 'https://www.ebi.ac.uk/pdbe/entry/pdb/'
   RCSB_PDB: 'https://www.rcsb.org/structure/'

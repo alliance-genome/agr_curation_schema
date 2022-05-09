@@ -12,7 +12,7 @@ imports:
   - reference
 
 prefixes:
-  alliance: 'http://alliancegenome.org'
+  alliance: 'http://alliancegenome.org/'
   linkml: 'https://w3id.org/linkml/'
   gff: 'https://w3id.org/gff'
   faldo: 'http://biohackathon.org/resource/faldo#'
