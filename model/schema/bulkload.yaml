@@ -128,14 +128,6 @@ slots:
     description: A link back to the parent bulk load
     range: BulkLoad
 
-  schedule_active:
-    description: This determines if the the schedule is active or not
-    range: boolean
-
-  cron_schedule:
-    description: A string describing the cron syntax for the schedule
-    range: string
-
   scheduling_error_message:
     description: Any errors in syntax on the cron_schedule
     range: string
@@ -172,7 +164,7 @@ slots:
       The number of completed records
   load_exceptions:
     description:
-      A list of execeptions the load encountered 
+      A list of execeptions the load encountered
     multivalued: true
     range: string
 
