@@ -1,5 +1,5 @@
 # Auto generated from bulkload.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-05-04T18:29:25
+# Generation date: 2022-05-09T12:56:54
 # Schema: bulkload.yaml
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml
@@ -3766,12 +3766,6 @@ slots.record_count = Slot(uri=DEFAULT_.record_count, name="record_count", curie=
 slots.bulk_load = Slot(uri=DEFAULT_.bulk_load, name="bulk_load", curie=DEFAULT_.curie('bulk_load'),
                    model_uri=DEFAULT_.bulk_load, domain=None, range=Optional[Union[dict, BulkLoad]])
 
-slots.schedule_active = Slot(uri=DEFAULT_.schedule_active, name="schedule_active", curie=DEFAULT_.curie('schedule_active'),
-                   model_uri=DEFAULT_.schedule_active, domain=None, range=Optional[Union[bool, Bool]])
-
-slots.cron_schedule = Slot(uri=DEFAULT_.cron_schedule, name="cron_schedule", curie=DEFAULT_.curie('cron_schedule'),
-                   model_uri=DEFAULT_.cron_schedule, domain=None, range=Optional[str])
-
 slots.scheduling_error_message = Slot(uri=DEFAULT_.scheduling_error_message, name="scheduling_error_message", curie=DEFAULT_.curie('scheduling_error_message'),
                    model_uri=DEFAULT_.scheduling_error_message, domain=None, range=Optional[str])
 
@@ -3993,6 +3987,12 @@ slots.evidence_codes = Slot(uri=ALLIANCE.evidence_codes, name="evidence_codes", 
 
 slots.evidence_code = Slot(uri=ALLIANCE.evidence_code, name="evidence_code", curie=ALLIANCE.curie('evidence_code'),
                    model_uri=DEFAULT_.evidence_code, domain=None, range=Optional[Union[str, ECOTermCurie]])
+
+slots.cron_schedule = Slot(uri=ALLIANCE.cron_schedule, name="cron_schedule", curie=ALLIANCE.curie('cron_schedule'),
+                   model_uri=DEFAULT_.cron_schedule, domain=None, range=Optional[str])
+
+slots.schedule_active = Slot(uri=ALLIANCE.schedule_active, name="schedule_active", curie=ALLIANCE.curie('schedule_active'),
+                   model_uri=DEFAULT_.schedule_active, domain=None, range=Optional[Union[bool, Bool]])
 
 slots.subject = Slot(uri=ALLIANCE.subject, name="subject", curie=ALLIANCE.curie('subject'),
                    model_uri=DEFAULT_.subject, domain=None, range=str)

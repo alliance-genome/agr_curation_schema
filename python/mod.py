@@ -1,5 +1,5 @@
 # Auto generated from mod.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-05-04T18:29:44
+# Generation date: 2022-05-09T12:57:08
 # Schema: mod
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/mod
@@ -3637,6 +3637,12 @@ slots.evidence_codes = Slot(uri=ALLIANCE.evidence_codes, name="evidence_codes", 
 
 slots.evidence_code = Slot(uri=ALLIANCE.evidence_code, name="evidence_code", curie=ALLIANCE.curie('evidence_code'),
                    model_uri=DEFAULT_.evidence_code, domain=None, range=Optional[Union[str, ECOTermCurie]])
+
+slots.cron_schedule = Slot(uri=ALLIANCE.cron_schedule, name="cron_schedule", curie=ALLIANCE.curie('cron_schedule'),
+                   model_uri=DEFAULT_.cron_schedule, domain=None, range=Optional[str])
+
+slots.schedule_active = Slot(uri=ALLIANCE.schedule_active, name="schedule_active", curie=ALLIANCE.curie('schedule_active'),
+                   model_uri=DEFAULT_.schedule_active, domain=None, range=Optional[Union[bool, Bool]])
 
 slots.subject = Slot(uri=ALLIANCE.subject, name="subject", curie=ALLIANCE.curie('subject'),
                    model_uri=DEFAULT_.subject, domain=None, range=str)

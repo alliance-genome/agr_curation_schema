@@ -1,8 +1,8 @@
-# Auto generated from reagent.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-05-09T12:56:51
-# Schema: reagent.yaml
+# Auto generated from curationReport.yaml by pythongen.py version: 0.9.0
+# Generation date: 2022-05-09T12:56:47
+# Schema: bulkload.yaml
 #
-# id: https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml
+# id: https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml
 # description:
 # license: https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -49,17 +49,14 @@ ZFIN = CurieNamespace('ZFIN', 'http://identifiers.org/zfin/')
 ALLIANCE = CurieNamespace('alliance', 'http://alliancegenome.org')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
 DCT = CurieNamespace('dct', 'http://purl.org/dc/terms/')
-FALDO = CurieNamespace('faldo', 'http://biohackathon.org/resource/faldo#')
 FOAF = CurieNamespace('foaf', 'http://xmlns.com/foaf/0.1/')
-GFF = CurieNamespace('gff', 'https://w3id.org/gff')
-LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 OBOGRAPH = CurieNamespace('obograph', 'https://github.com/biodatamodels/obograph')
 OWL = CurieNamespace('owl', 'http://www.w3.org/2002/07/owl#')
 RDF = CurieNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
 RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
-DEFAULT_ = CurieNamespace('', 'https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/')
+DEFAULT_ = CurieNamespace('', 'https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/')
 
 
 # Types
@@ -67,27 +64,11 @@ class BiologicalSequence(String):
     type_class_uri = XSD.string
     type_class_curie = "xsd:string"
     type_name = "biological_sequence"
-    type_model_uri = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/BiologicalSequence")
+    type_model_uri = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/BiologicalSequence")
 
 
 # Class references
 class BiologicalEntityCurie(URIorCURIE):
-    pass
-
-
-class ReagentCurie(BiologicalEntityCurie):
-    pass
-
-
-class AntibodyCurie(ReagentCurie):
-    pass
-
-
-class DNACloneCurie(ReagentCurie):
-    pass
-
-
-class RNACloneCurie(ReagentCurie):
     pass
 
 
@@ -326,7 +307,7 @@ class AuditedObject(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.AuditedObject
     class_class_curie: ClassVar[str] = "alliance:AuditedObject"
     class_name: ClassVar[str] = "AuditedObject"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/AuditedObject")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/AuditedObject")
 
     internal: Union[bool, Bool] = None
     created_by: Optional[Union[str, PersonUniqueId]] = None
@@ -360,6 +341,108 @@ class AuditedObject(YAMLRoot):
 
 
 @dataclass
+class CurationReportGroup(AuditedObject):
+    """
+    This class is use to group together curation reports
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/CurationReportGroup")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "CurationReportGroup"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/CurationReportGroup")
+
+    internal: Union[bool, Bool] = None
+    name: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class CurationReport(AuditedObject):
+    """
+    Base class for all curation reports
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/CurationReport")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "CurationReport"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/CurationReport")
+
+    internal: Union[bool, Bool] = None
+    name: Optional[str] = None
+    birt_report_file_path: Optional[str] = None
+    schedule_active: Optional[Union[bool, Bool]] = None
+    cron_schedule: Optional[str] = None
+    curation_report_status: Optional[str] = None
+    curation_report_group: Optional[Union[dict, CurationReportGroup]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.birt_report_file_path is not None and not isinstance(self.birt_report_file_path, str):
+            self.birt_report_file_path = str(self.birt_report_file_path)
+
+        if self.schedule_active is not None and not isinstance(self.schedule_active, Bool):
+            self.schedule_active = Bool(self.schedule_active)
+
+        if self.cron_schedule is not None and not isinstance(self.cron_schedule, str):
+            self.cron_schedule = str(self.cron_schedule)
+
+        if self.curation_report_status is not None and not isinstance(self.curation_report_status, str):
+            self.curation_report_status = str(self.curation_report_status)
+
+        if self.curation_report_group is not None and not isinstance(self.curation_report_group, CurationReportGroup):
+            self.curation_report_group = CurationReportGroup(**as_dict(self.curation_report_group))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class CurationReportHistory(AuditedObject):
+    """
+    Object used to describe the indiviual run of this curation report
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/CurationReportHistory")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "CurationReportHistory"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/CurationReportHistory")
+
+    internal: Union[bool, Bool] = None
+    curation_report: Optional[Union[dict, CurationReport]] = None
+    curation_report_timestamp: Optional[Union[str, XSDDate]] = None
+    pdf_file_path: Optional[str] = None
+    xlsx_file_path: Optional[str] = None
+    curation_report_status: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.curation_report is not None and not isinstance(self.curation_report, CurationReport):
+            self.curation_report = CurationReport(**as_dict(self.curation_report))
+
+        if self.curation_report_timestamp is not None and not isinstance(self.curation_report_timestamp, XSDDate):
+            self.curation_report_timestamp = XSDDate(self.curation_report_timestamp)
+
+        if self.pdf_file_path is not None and not isinstance(self.pdf_file_path, str):
+            self.pdf_file_path = str(self.pdf_file_path)
+
+        if self.xlsx_file_path is not None and not isinstance(self.xlsx_file_path, str):
+            self.xlsx_file_path = str(self.xlsx_file_path)
+
+        if self.curation_report_status is not None and not isinstance(self.curation_report_status, str):
+            self.curation_report_status = str(self.curation_report_status)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class BiologicalEntity(AuditedObject):
     """
     An entity of biological origin that can be unambiguously attributed to a single species.
@@ -369,7 +452,7 @@ class BiologicalEntity(AuditedObject):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.BiologicalEntity
     class_class_curie: ClassVar[str] = "alliance:BiologicalEntity"
     class_name: ClassVar[str] = "BiologicalEntity"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/BiologicalEntity")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/BiologicalEntity")
 
     curie: Union[str, BiologicalEntityCurie] = None
     internal: Union[bool, Bool] = None
@@ -390,159 +473,6 @@ class BiologicalEntity(AuditedObject):
 
 
 @dataclass
-class Reagent(BiologicalEntity):
-    """
-    A material entity used in experiments.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Reagent")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "Reagent"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Reagent")
-
-    curie: Union[str, ReagentCurie] = None
-    internal: Union[bool, Bool] = None
-    taxon: Union[str, NCBITaxonTermCurie] = None
-    generated_by: Optional[Union[Union[dict, "Agent"], List[Union[dict, "Agent"]]]] = empty_list()
-    manufactured_by: Optional[Union[Union[dict, "Agent"], List[Union[dict, "Agent"]]]] = empty_list()
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.curie):
-            self.MissingRequiredField("curie")
-        if not isinstance(self.curie, ReagentCurie):
-            self.curie = ReagentCurie(self.curie)
-
-        self._normalize_inlined_as_dict(slot_name="generated_by", slot_type=Agent, key_name="internal", keyed=False)
-
-        self._normalize_inlined_as_dict(slot_name="manufactured_by", slot_type=Agent, key_name="internal", keyed=False)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class Antibody(Reagent):
-    """
-    Immunoglobulin proteins that bind specific molecule(s). Can be used experimentally for the purposes of detection
-    or purification.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Antibody")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "Antibody"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Antibody")
-
-    curie: Union[str, AntibodyCurie] = None
-    internal: Union[bool, Bool] = None
-    name: str = None
-    clonality: Union[str, "AntibodyClonalitySet"] = None
-    antigen_taxon: Optional[Union[str, NCBITaxonTermCurie]] = None
-    heavy_chain_isotype: Optional[Union[str, "HeavyChainIsotypeSet"]] = None
-    light_chain_isotype: Optional[Union[str, "LightChainIsotypeSet"]] = None
-    antibody_target_genes: Optional[Union[Union[str, GeneCurie], List[Union[str, GeneCurie]]]] = empty_list()
-    cross_references: Optional[Union[Dict[Union[str, CrossReferenceCurie], Union[dict, "CrossReference"]], List[Union[dict, "CrossReference"]]]] = empty_dict()
-    secondary_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
-    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
-    original_reference: Optional[Union[str, ReferenceCurie]] = None
-    related_notes: Optional[Union[Union[dict, "Note"], List[Union[dict, "Note"]]]] = empty_list()
-    taxon: Optional[Union[str, NCBITaxonTermCurie]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.curie):
-            self.MissingRequiredField("curie")
-        if not isinstance(self.curie, AntibodyCurie):
-            self.curie = AntibodyCurie(self.curie)
-
-        if self._is_empty(self.name):
-            self.MissingRequiredField("name")
-        if not isinstance(self.name, str):
-            self.name = str(self.name)
-
-        if self._is_empty(self.clonality):
-            self.MissingRequiredField("clonality")
-        if not isinstance(self.clonality, AntibodyClonalitySet):
-            self.clonality = AntibodyClonalitySet(self.clonality)
-
-        if self.antigen_taxon is not None and not isinstance(self.antigen_taxon, NCBITaxonTermCurie):
-            self.antigen_taxon = NCBITaxonTermCurie(self.antigen_taxon)
-
-        if self.heavy_chain_isotype is not None and not isinstance(self.heavy_chain_isotype, HeavyChainIsotypeSet):
-            self.heavy_chain_isotype = HeavyChainIsotypeSet(self.heavy_chain_isotype)
-
-        if self.light_chain_isotype is not None and not isinstance(self.light_chain_isotype, LightChainIsotypeSet):
-            self.light_chain_isotype = LightChainIsotypeSet(self.light_chain_isotype)
-
-        if not isinstance(self.antibody_target_genes, list):
-            self.antibody_target_genes = [self.antibody_target_genes] if self.antibody_target_genes is not None else []
-        self.antibody_target_genes = [v if isinstance(v, GeneCurie) else GeneCurie(v) for v in self.antibody_target_genes]
-
-        self._normalize_inlined_as_list(slot_name="cross_references", slot_type=CrossReference, key_name="curie", keyed=True)
-
-        if not isinstance(self.secondary_identifiers, list):
-            self.secondary_identifiers = [self.secondary_identifiers] if self.secondary_identifiers is not None else []
-        self.secondary_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.secondary_identifiers]
-
-        if not isinstance(self.references, list):
-            self.references = [self.references] if self.references is not None else []
-        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
-
-        if self.original_reference is not None and not isinstance(self.original_reference, ReferenceCurie):
-            self.original_reference = ReferenceCurie(self.original_reference)
-
-        self._normalize_inlined_as_dict(slot_name="related_notes", slot_type=Note, key_name="internal", keyed=False)
-
-        if self.taxon is not None and not isinstance(self.taxon, NCBITaxonTermCurie):
-            self.taxon = NCBITaxonTermCurie(self.taxon)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class DNAClone(Reagent):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/DNAClone")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "DNAClone"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/DNAClone")
-
-    curie: Union[str, DNACloneCurie] = None
-    internal: Union[bool, Bool] = None
-    taxon: Union[str, NCBITaxonTermCurie] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.curie):
-            self.MissingRequiredField("curie")
-        if not isinstance(self.curie, DNACloneCurie):
-            self.curie = DNACloneCurie(self.curie)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class RNAClone(Reagent):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/RNAClone")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "RNAClone"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/RNAClone")
-
-    curie: Union[str, RNACloneCurie] = None
-    internal: Union[bool, Bool] = None
-    taxon: Union[str, NCBITaxonTermCurie] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.curie):
-            self.MissingRequiredField("curie")
-        if not isinstance(self.curie, RNACloneCurie):
-            self.curie = RNACloneCurie(self.curie)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
 class GenomicEntity(BiologicalEntity):
     """
     An entity that is part of a genome (i.e. segment of the DNA molecule), is derived directly from the genome (i.e.
@@ -554,7 +484,7 @@ class GenomicEntity(BiologicalEntity):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.GenomicEntity
     class_class_curie: ClassVar[str] = "alliance:GenomicEntity"
     class_name: ClassVar[str] = "GenomicEntity"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/GenomicEntity")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/GenomicEntity")
 
     curie: Union[str, GenomicEntityCurie] = None
     internal: Union[bool, Bool] = None
@@ -597,7 +527,7 @@ class Transcript(GenomicEntity):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Transcript
     class_class_curie: ClassVar[str] = "alliance:Transcript"
     class_name: ClassVar[str] = "Transcript"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Transcript")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Transcript")
 
     curie: Union[str, TranscriptCurie] = None
     internal: Union[bool, Bool] = None
@@ -626,7 +556,7 @@ class Gene(GenomicEntity):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Gene
     class_class_curie: ClassVar[str] = "alliance:Gene"
     class_name: ClassVar[str] = "Gene"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Gene")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Gene")
 
     curie: Union[str, GeneCurie] = None
     internal: Union[bool, Bool] = None
@@ -670,7 +600,7 @@ class CrossReference(AuditedObject):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.CrossReference
     class_class_curie: ClassVar[str] = "alliance:CrossReference"
     class_name: ClassVar[str] = "CrossReference"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/CrossReference")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/CrossReference")
 
     curie: Union[str, CrossReferenceCurie] = None
     internal: Union[bool, Bool] = None
@@ -710,7 +640,7 @@ class Synonym(AuditedObject):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Synonym
     class_class_curie: ClassVar[str] = "alliance:Synonym"
     class_name: ClassVar[str] = "Synonym"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Synonym")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Synonym")
 
     internal: Union[bool, Bool] = None
     synonym: Optional[str] = None
@@ -734,7 +664,7 @@ class Note(AuditedObject):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Note
     class_class_curie: ClassVar[str] = "alliance:Note"
     class_name: ClassVar[str] = "Note"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Note")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Note")
 
     internal: Union[bool, Bool] = None
     free_text: str = None
@@ -769,7 +699,7 @@ class EntityStatement(AuditedObject):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.EntityStatement
     class_class_curie: ClassVar[str] = "alliance:EntityStatement"
     class_name: ClassVar[str] = "EntityStatement"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/EntityStatement")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/EntityStatement")
 
     internal: Union[bool, Bool] = None
     statement_subject: Optional[str] = None
@@ -804,7 +734,7 @@ class Association(AuditedObject):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Association
     class_class_curie: ClassVar[str] = "alliance:Association"
     class_name: ClassVar[str] = "Association"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Association")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Association")
 
     internal: Union[bool, Bool] = None
     subject: str = None
@@ -840,7 +770,7 @@ class EntitySynonym(Association):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.EntitySynonym
     class_class_curie: ClassVar[str] = "alliance:EntitySynonym"
     class_name: ClassVar[str] = "EntitySynonym"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/EntitySynonym")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/EntitySynonym")
 
     internal: Union[bool, Bool] = None
     subject: str = None
@@ -877,7 +807,7 @@ class ExternalDatabaseLink(AuditedObject):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.ExternalDatabaseLink
     class_class_curie: ClassVar[str] = "alliance:ExternalDatabaseLink"
     class_name: ClassVar[str] = "ExternalDatabaseLink"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/ExternalDatabaseLink")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/ExternalDatabaseLink")
 
     internal: Union[bool, Bool] = None
     prefix: str = None
@@ -921,7 +851,7 @@ class Chromosome(AuditedObject):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Chromosome
     class_class_curie: ClassVar[str] = "alliance:Chromosome"
     class_name: ClassVar[str] = "Chromosome"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Chromosome")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Chromosome")
 
     curie: Union[str, ChromosomeCurie] = None
     internal: Union[bool, Bool] = None
@@ -942,7 +872,7 @@ class Assembly(AuditedObject):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Assembly
     class_class_curie: ClassVar[str] = "alliance:Assembly"
     class_name: ClassVar[str] = "Assembly"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Assembly")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Assembly")
 
     curie: Union[str, AssemblyCurie] = None
     internal: Union[bool, Bool] = None
@@ -963,7 +893,7 @@ class GenomicLocation(AuditedObject):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.GenomicLocation
     class_class_curie: ClassVar[str] = "alliance:GenomicLocation"
     class_name: ClassVar[str] = "GenomicLocation"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/GenomicLocation")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/GenomicLocation")
 
     internal: Union[bool, Bool] = None
     subject: Union[str, GenomicEntityCurie] = None
@@ -1010,7 +940,7 @@ class Protein(GenomicEntity):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Protein
     class_class_curie: ClassVar[str] = "alliance:Protein"
     class_name: ClassVar[str] = "Protein"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Protein")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Protein")
 
     curie: Union[str, ProteinCurie] = None
     internal: Union[bool, Bool] = None
@@ -1032,7 +962,7 @@ class AuthorReference(AuditedObject):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/AuthorReference")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "AuthorReference"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/AuthorReference")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/AuthorReference")
 
     internal: Union[bool, Bool] = None
     corresponding_author: Optional[Union[str, ReferenceCurie]] = None
@@ -1070,7 +1000,7 @@ class Reference(AuditedObject):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/Reference")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "Reference"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Reference")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Reference")
 
     curie: Union[str, ReferenceCurie] = None
     internal: Union[bool, Bool] = None
@@ -1188,7 +1118,7 @@ class MeshDetail(AuditedObject):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/MeshDetail")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "MeshDetail"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/MeshDetail")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/MeshDetail")
 
     internal: Union[bool, Bool] = None
     mesh_detail_id: int = None
@@ -1225,7 +1155,7 @@ class Resource(AuditedObject):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/resource/Resource")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "Resource"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Resource")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Resource")
 
     curie: Union[str, ResourceCurie] = None
     internal: Union[bool, Bool] = None
@@ -1298,7 +1228,7 @@ class Agent(AuditedObject):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Agent
     class_class_curie: ClassVar[str] = "alliance:Agent"
     class_name: ClassVar[str] = "Agent"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Agent")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Agent")
 
     internal: Union[bool, Bool] = None
 
@@ -1309,7 +1239,7 @@ class Organization(Agent):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Organization
     class_class_curie: ClassVar[str] = "alliance:Organization"
     class_name: ClassVar[str] = "Organization"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Organization")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Organization")
 
     internal: Union[bool, Bool] = None
 
@@ -1320,7 +1250,7 @@ class Laboratory(Organization):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Laboratory
     class_class_curie: ClassVar[str] = "alliance:Laboratory"
     class_name: ClassVar[str] = "Laboratory"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Laboratory")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Laboratory")
 
     internal: Union[bool, Bool] = None
 
@@ -1331,7 +1261,7 @@ class Company(Organization):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Company
     class_class_curie: ClassVar[str] = "alliance:Company"
     class_name: ClassVar[str] = "Company"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Company")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Company")
 
     internal: Union[bool, Bool] = None
 
@@ -1342,7 +1272,7 @@ class Person(Agent):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Person
     class_class_curie: ClassVar[str] = "alliance:Person"
     class_name: ClassVar[str] = "Person"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Person")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Person")
 
     unique_id: Union[str, PersonUniqueId] = None
     internal: Union[bool, Bool] = None
@@ -1393,7 +1323,7 @@ class LoggedInPerson(Person):
     class_class_uri: ClassVar[URIRef] = ALLIANCE.LoggedInPerson
     class_class_curie: ClassVar[str] = "alliance:LoggedInPerson"
     class_name: ClassVar[str] = "LoggedInPerson"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/LoggedInPerson")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/LoggedInPerson")
 
     unique_id: Union[str, LoggedInPersonUniqueId] = None
     internal: Union[bool, Bool] = None
@@ -1429,7 +1359,7 @@ class Figure(AuditedObject):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/Figure")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "Figure"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Figure")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Figure")
 
     curie: Union[str, FigureCurie] = None
     internal: Union[bool, Bool] = None
@@ -1472,7 +1402,7 @@ class File(AuditedObject):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/File")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "File"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/File")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/File")
 
     internal: Union[bool, Bool] = None
 
@@ -1486,7 +1416,7 @@ class Image(AuditedObject):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/Image")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "Image"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Image")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Image")
 
     curie: Union[str, ImageCurie] = None
     internal: Union[bool, Bool] = None
@@ -1567,7 +1497,7 @@ class ImagePane(AuditedObject):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/ImagePane")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "ImagePane"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/ImagePane")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/ImagePane")
 
     internal: Union[bool, Bool] = None
     from_image: Union[str, ImageCurie] = None
@@ -1616,7 +1546,7 @@ class OntologyTerm(AuditedObject):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/OntologyTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "OntologyTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/OntologyTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/OntologyTerm")
 
     curie: Union[str, OntologyTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -1678,7 +1608,7 @@ class DOTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/DOTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "DOTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/DOTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/DOTerm")
 
     curie: Union[str, DOTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -1699,7 +1629,7 @@ class ECOTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ECOTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "ECOTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/ECOTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/ECOTerm")
 
     curie: Union[str, ECOTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -1724,7 +1654,7 @@ class NCBITaxonTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/NCBITaxonTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "NCBITaxonTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/NCBITaxonTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/NCBITaxonTerm")
 
     curie: Union[str, NCBITaxonTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -1745,7 +1675,7 @@ class FBCVTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/FBCVTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "FBCVTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/FBCVTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/FBCVTerm")
 
     curie: Union[str, FBCVTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -1766,7 +1696,7 @@ class GOTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/GOTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "GOTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/GOTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/GOTerm")
 
     curie: Union[str, GOTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -1787,7 +1717,7 @@ class ROTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ROTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "ROTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/ROTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/ROTerm")
 
     curie: Union[str, ROTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -1808,7 +1738,7 @@ class MITerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/MITerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "MITerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/MITerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/MITerm")
 
     curie: Union[str, MITermCurie] = None
     internal: Union[bool, Bool] = None
@@ -1829,7 +1759,7 @@ class MMOTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/MMOTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "MMOTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/MMOTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/MMOTerm")
 
     curie: Union[str, MMOTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -1850,7 +1780,7 @@ class MMUSDVTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/MMUSDVTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "MMUSDVTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/MMUSDVTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/MMUSDVTerm")
 
     curie: Union[str, MMUSDVTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -1871,7 +1801,7 @@ class SOTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/SOTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "SOTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/SOTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/SOTerm")
 
     curie: Union[str, SOTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -1892,7 +1822,7 @@ class XBEDTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/XBEDTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "XBEDTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/XBEDTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/XBEDTerm")
 
     curie: Union[str, XBEDTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -1913,7 +1843,7 @@ class StageTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/StageTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "StageTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/StageTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/StageTerm")
 
     curie: Union[str, StageTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -1925,7 +1855,7 @@ class FBDVTerm(StageTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/FBDVTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "FBDVTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/FBDVTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/FBDVTerm")
 
     curie: Union[str, FBDVTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -1946,7 +1876,7 @@ class WBLSTerm(StageTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/WBLSTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "WBLSTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/WBLSTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/WBLSTerm")
 
     curie: Union[str, WBLSTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -1972,7 +1902,7 @@ class XBSTerm(StageTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/XBSTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "XBSTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/XBSTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/XBSTerm")
 
     curie: Union[str, XBSTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -1993,7 +1923,7 @@ class ZFSTerm(StageTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ZFSTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "ZFSTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/ZFSTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/ZFSTerm")
 
     curie: Union[str, ZFSTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -2014,7 +1944,7 @@ class ExperimentalConditionOntologyTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ExperimentalConditionOntologyTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "ExperimentalConditionOntologyTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/ExperimentalConditionOntologyTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/ExperimentalConditionOntologyTerm")
 
     curie: Union[str, ExperimentalConditionOntologyTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -2026,7 +1956,7 @@ class ZECOTerm(ExperimentalConditionOntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ZECOTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "ZECOTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/ZECOTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/ZECOTerm")
 
     curie: Union[str, ZECOTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -2047,7 +1977,7 @@ class XCOTerm(ExperimentalConditionOntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/XCOTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "XCOTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/XCOTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/XCOTerm")
 
     curie: Union[str, XCOTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -2068,7 +1998,7 @@ class AnatomicalTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/AnatomicalTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "AnatomicalTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/AnatomicalTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/AnatomicalTerm")
 
     curie: Union[str, AnatomicalTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -2080,7 +2010,7 @@ class CLTerm(AnatomicalTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/CLTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "CLTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/CLTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/CLTerm")
 
     curie: Union[str, CLTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -2101,7 +2031,7 @@ class EMAPATerm(AnatomicalTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/EMAPATerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "EMAPATerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/EMAPATerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/EMAPATerm")
 
     curie: Union[str, EMAPATermCurie] = None
     internal: Union[bool, Bool] = None
@@ -2122,7 +2052,7 @@ class DAOTerm(AnatomicalTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/DAOTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "DAOTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/DAOTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/DAOTerm")
 
     curie: Union[str, DAOTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -2143,7 +2073,7 @@ class MATerm(AnatomicalTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/MATerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "MATerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/MATerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/MATerm")
 
     curie: Union[str, MATermCurie] = None
     internal: Union[bool, Bool] = None
@@ -2164,7 +2094,7 @@ class UBERONTerm(AnatomicalTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/UBERONTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "UBERONTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/UBERONTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/UBERONTerm")
 
     curie: Union[str, UBERONTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -2185,7 +2115,7 @@ class WBBTTerm(AnatomicalTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/WBBTTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "WBBTTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/WBBTTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/WBBTTerm")
 
     curie: Union[str, WBBTTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -2211,7 +2141,7 @@ class XBATerm(AnatomicalTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/XBATerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "XBATerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/XBATerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/XBATerm")
 
     curie: Union[str, XBATermCurie] = None
     internal: Union[bool, Bool] = None
@@ -2232,7 +2162,7 @@ class ZFATerm(AnatomicalTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ZFATerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "ZFATerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/ZFATerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/ZFATerm")
 
     curie: Union[str, ZFATermCurie] = None
     internal: Union[bool, Bool] = None
@@ -2257,7 +2187,7 @@ class PhenotypeTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/PhenotypeTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "PhenotypeTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/PhenotypeTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/PhenotypeTerm")
 
     curie: Union[str, PhenotypeTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -2278,7 +2208,7 @@ class XPOTerm(PhenotypeTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/XPOTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "XPOTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/XPOTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/XPOTerm")
 
     curie: Union[str, XPOTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -2302,7 +2232,7 @@ class ChemicalTerm(OntologyTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ChemicalTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "ChemicalTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/ChemicalTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/ChemicalTerm")
 
     curie: Union[str, ChemicalTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -2338,7 +2268,7 @@ class CHEBITerm(ChemicalTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/CHEBITerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "CHEBITerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/CHEBITerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/CHEBITerm")
 
     curie: Union[str, CHEBITermCurie] = None
     internal: Union[bool, Bool] = None
@@ -2359,7 +2289,7 @@ class XSMOTerm(ChemicalTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/XSMOTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "XSMOTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/XSMOTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/XSMOTerm")
 
     curie: Union[str, XSMOTermCurie] = None
     internal: Union[bool, Bool] = None
@@ -2383,7 +2313,7 @@ class Molecule(ChemicalTerm):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/Molecule")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "Molecule"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Molecule")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Molecule")
 
     curie: Union[str, MoleculeCurie] = None
     internal: Union[bool, Bool] = None
@@ -2432,7 +2362,7 @@ class VocabularyTerm(AuditedObject):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/VocabularyTerm")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "VocabularyTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/VocabularyTerm")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/VocabularyTerm")
 
     name: Union[str, VocabularyTermName] = None
     internal: Union[bool, Bool] = None
@@ -2469,7 +2399,7 @@ class Vocabulary(AuditedObject):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/Vocabulary")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "Vocabulary"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Vocabulary")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Vocabulary")
 
     name: Union[str, VocabularyName] = None
     internal: Union[bool, Bool] = None
@@ -2503,7 +2433,7 @@ class Allele(GenomicEntity):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/Allele")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "Allele"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Allele")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Allele")
 
     curie: Union[str, AlleleCurie] = None
     internal: Union[bool, Bool] = None
@@ -2620,7 +2550,7 @@ class AlleleGenomicEntityAssociation(Association):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AlleleGenomicEntityAssociation")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "AlleleGenomicEntityAssociation"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/AlleleGenomicEntityAssociation")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/AlleleGenomicEntityAssociation")
 
     internal: Union[bool, Bool] = None
     subject: Union[str, AlleleCurie] = None
@@ -2693,7 +2623,7 @@ class AlleleGeneAssociation(AlleleGenomicEntityAssociation):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AlleleGeneAssociation")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "AlleleGeneAssociation"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/AlleleGeneAssociation")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/AlleleGeneAssociation")
 
     internal: Union[bool, Bool] = None
     subject: Union[str, AlleleCurie] = None
@@ -2719,7 +2649,7 @@ class AlleleTranscriptAssociation(AlleleGenomicEntityAssociation):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AlleleTranscriptAssociation")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "AlleleTranscriptAssociation"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/AlleleTranscriptAssociation")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/AlleleTranscriptAssociation")
 
     internal: Union[bool, Bool] = None
     subject: Union[str, AlleleCurie] = None
@@ -2745,7 +2675,7 @@ class AlleleProteinAssociation(AlleleGenomicEntityAssociation):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AlleleProteinAssociation")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "AlleleProteinAssociation"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/AlleleProteinAssociation")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/AlleleProteinAssociation")
 
     internal: Union[bool, Bool] = None
     subject: Union[str, AlleleCurie] = None
@@ -2772,7 +2702,7 @@ class AlleleVariantAssociation(AlleleGenomicEntityAssociation):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AlleleVariantAssociation")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "AlleleVariantAssociation"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/AlleleVariantAssociation")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/AlleleVariantAssociation")
 
     internal: Union[bool, Bool] = None
     predicate: Union[str, ROTermCurie] = None
@@ -2803,7 +2733,7 @@ class AssociatedReference(AuditedObject):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AssociatedReference")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "AssociatedReference"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/AssociatedReference")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/AssociatedReference")
 
     internal: Union[bool, Bool] = None
     reference_type: Union[str, VocabularyTermName] = None
@@ -2828,7 +2758,7 @@ class Construct(GenomicEntity):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/Construct")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "Construct"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Construct")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Construct")
 
     curie: Union[str, ConstructCurie] = None
     internal: Union[bool, Bool] = None
@@ -2869,7 +2799,7 @@ class CellLine(AuditedObject):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/CellLine")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "CellLine"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/CellLine")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/CellLine")
 
     internal: Union[bool, Bool] = None
 
@@ -2880,7 +2810,7 @@ class SequenceTargetingReagent(GenomicEntity):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/SequenceTargetingReagent")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "SequenceTargetingReagent"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/SequenceTargetingReagent")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/SequenceTargetingReagent")
 
     curie: Union[str, SequenceTargetingReagentCurie] = None
     internal: Union[bool, Bool] = None
@@ -2916,7 +2846,7 @@ class SequenceTargetingReagentToGeneAssociation(Association):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/SequenceTargetingReagentToGeneAssociation")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "SequenceTargetingReagentToGeneAssociation"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/SequenceTargetingReagentToGeneAssociation")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/SequenceTargetingReagentToGeneAssociation")
 
     internal: Union[bool, Bool] = None
     predicate: Union[str, "SqtrRelationEnum"] = None
@@ -2954,7 +2884,7 @@ class ConstructComponentAssociation(Association):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/ConstructComponentAssociation")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "ConstructComponentAssociation"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/ConstructComponentAssociation")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/ConstructComponentAssociation")
 
     internal: Union[bool, Bool] = None
     predicate: Union[str, "ConstructComponentRelationEnum"] = None
@@ -2987,7 +2917,7 @@ class ConstructComponent(GenomicEntity):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/ConstructComponent")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "ConstructComponent"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/ConstructComponent")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/ConstructComponent")
 
     curie: Union[str, ConstructComponentCurie] = None
     internal: Union[bool, Bool] = None
@@ -3017,7 +2947,7 @@ class Variant(GenomicEntity):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/Variant")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "Variant"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/Variant")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/Variant")
 
     curie: Union[str, VariantCurie] = None
     internal: Union[bool, Bool] = None
@@ -3073,7 +3003,7 @@ class SourceVariantLocation(AuditedObject):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/SourceVariantLocation")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "SourceVariantLocation"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/SourceVariantLocation")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/SourceVariantLocation")
 
     internal: Union[bool, Bool] = None
     variant_locations: Union[Union[dict, "VariantLocation"], List[Union[dict, "VariantLocation"]]] = None
@@ -3108,7 +3038,7 @@ class VariantLocation(AuditedObject):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/VariantLocation")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "VariantLocation"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/VariantLocation")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/VariantLocation")
 
     internal: Union[bool, Bool] = None
     evidence_code: Optional[Union[str, ECOTermCurie]] = None
@@ -3156,7 +3086,7 @@ class VariantGenomeLocation(VariantLocation):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/VariantGenomeLocation")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "VariantGenomeLocation"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/VariantGenomeLocation")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/VariantGenomeLocation")
 
     internal: Union[bool, Bool] = None
     assembly: Optional[Union[str, AssemblyCurie]] = None
@@ -3183,7 +3113,7 @@ class VariantTranscriptLocation(VariantLocation):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/VariantTranscriptLocation")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "VariantTranscriptLocation"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/VariantTranscriptLocation")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/VariantTranscriptLocation")
 
     internal: Union[bool, Bool] = None
     transcript: Optional[Union[str, TranscriptCurie]] = None
@@ -3206,7 +3136,7 @@ class VariantPolypeptideLocation(VariantLocation):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/VariantPolypeptideLocation")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "VariantPolypeptideLocation"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/VariantPolypeptideLocation")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/VariantPolypeptideLocation")
 
     internal: Union[bool, Bool] = None
     polypeptide: Union[str, TranscriptCurie] = None
@@ -3235,7 +3165,7 @@ class AffectedGenomicModel(GenomicEntity):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/affectedGenomicModel/AffectedGenomicModel")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "AffectedGenomicModel"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/AffectedGenomicModel")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/AffectedGenomicModel")
 
     curie: Union[str, AffectedGenomicModelCurie] = None
     internal: Union[bool, Bool] = None
@@ -3287,7 +3217,7 @@ class AffectedGenomicModelComponent(AuditedObject):
     class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/affectedGenomicModel/AffectedGenomicModelComponent")
     class_class_curie: ClassVar[str] = None
     class_name: ClassVar[str] = "AffectedGenomicModelComponent"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml/AffectedGenomicModelComponent")
+    class_model_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml/AffectedGenomicModelComponent")
 
     internal: Union[bool, Bool] = None
     has_allele: Optional[Union[str, AlleleCurie]] = None
@@ -3304,77 +3234,6 @@ class AffectedGenomicModelComponent(AuditedObject):
 
 
 # Enumerations
-class AntibodyClonalitySet(EnumDefinitionImpl):
-
-    monoclonal = PermissibleValue(text="monoclonal")
-    polyclonal = PermissibleValue(text="polyclonal")
-    unspecified = PermissibleValue(text="unspecified")
-
-    _defn = EnumDefinition(
-        name="AntibodyClonalitySet",
-    )
-
-class HeavyChainIsotypeSet(EnumDefinitionImpl):
-
-    IgA = PermissibleValue(text="IgA")
-    IgA1 = PermissibleValue(text="IgA1")
-    IgA2 = PermissibleValue(text="IgA2")
-    IgD = PermissibleValue(text="IgD")
-    IgE = PermissibleValue(text="IgE")
-    IgG = PermissibleValue(text="IgG")
-    IgG1 = PermissibleValue(text="IgG1")
-    IgG2 = PermissibleValue(text="IgG2")
-    IgG2a = PermissibleValue(text="IgG2a")
-    IgG2b = PermissibleValue(text="IgG2b")
-    IgG2c = PermissibleValue(text="IgG2c")
-    IgG3 = PermissibleValue(text="IgG3")
-    IgG4 = PermissibleValue(text="IgG4")
-    IgM = PermissibleValue(text="IgM")
-    IgN = PermissibleValue(text="IgN")
-    IgR = PermissibleValue(text="IgR")
-    IgW = PermissibleValue(text="IgW")
-    IgX = PermissibleValue(text="IgX")
-    IgY = PermissibleValue(text="IgY")
-
-    _defn = EnumDefinition(
-        name="HeavyChainIsotypeSet",
-    )
-
-class LightChainIsotypeSet(EnumDefinitionImpl):
-
-    k = PermissibleValue(text="k")
-    l = PermissibleValue(text="l")
-    l1 = PermissibleValue(text="l1")
-    l2 = PermissibleValue(text="l2")
-    l3 = PermissibleValue(text="l3")
-    l4 = PermissibleValue(text="l4")
-    r = PermissibleValue(text="r")
-    s = PermissibleValue(text="s")
-    i = PermissibleValue(text="i")
-    i1 = PermissibleValue(text="i1")
-    i2 = PermissibleValue(text="i2")
-    i3 = PermissibleValue(text="i3")
-    i4 = PermissibleValue(text="i4")
-
-    _defn = EnumDefinition(
-        name="LightChainIsotypeSet",
-    )
-
-class AntibodyNoteTypeSet(EnumDefinitionImpl):
-
-    antibody_description = PermissibleValue(text="antibody_description",
-                                                               description="A high level summary of the antibody intended for prominent display e.g., Antibodies against SEIP-1 were raised by injection of the peptide 261KKEEPGLLDLRKRK, corresponding to the C-terminus of SEIP-1, into rabbits.")
-    antigen_description = PermissibleValue(text="antigen_description",
-                                                             description="A description about the antigen used to generate the antibody e.g., N-terminal peptide (SQFRPEKKEKSTCSIC) full length ceKDM1A (amino acids 1-897).")
-    remark = PermissibleValue(text="remark",
-                                   description="Information pertaining to the antibody that is not covered by other fields e.g., Possible pseudonym 7G1, High level of background, Works well for immunoprecipitation.")
-    private = PermissibleValue(text="private",
-                                     description="Information intended for internal use, generally regarding aspects of curation.")
-
-    _defn = EnumDefinition(
-        name="AntibodyNoteTypeSet",
-    )
-
 class EntitySynonymTypeSet(EnumDefinitionImpl):
 
     current = PermissibleValue(text="current",
@@ -3632,20 +3491,26 @@ class ZygosityValues(EnumDefinitionImpl):
 class slots:
     pass
 
-slots.antibody_target_genes = Slot(uri=DEFAULT_.antibody_target_genes, name="antibody_target_genes", curie=DEFAULT_.curie('antibody_target_genes'),
-                   model_uri=DEFAULT_.antibody_target_genes, domain=Antibody, range=Optional[Union[Union[str, GeneCurie], List[Union[str, GeneCurie]]]])
+slots.birt_report_file_path = Slot(uri=DEFAULT_.birt_report_file_path, name="birt_report_file_path", curie=DEFAULT_.curie('birt_report_file_path'),
+                   model_uri=DEFAULT_.birt_report_file_path, domain=None, range=Optional[str])
 
-slots.antigen_taxon = Slot(uri=DEFAULT_.antigen_taxon, name="antigen_taxon", curie=DEFAULT_.curie('antigen_taxon'),
-                   model_uri=DEFAULT_.antigen_taxon, domain=Antibody, range=Optional[Union[str, NCBITaxonTermCurie]])
+slots.pdf_file_path = Slot(uri=DEFAULT_.pdf_file_path, name="pdf_file_path", curie=DEFAULT_.curie('pdf_file_path'),
+                   model_uri=DEFAULT_.pdf_file_path, domain=None, range=Optional[str])
 
-slots.clonality = Slot(uri=DEFAULT_.clonality, name="clonality", curie=DEFAULT_.curie('clonality'),
-                   model_uri=DEFAULT_.clonality, domain=Antibody, range=Union[str, "AntibodyClonalitySet"])
+slots.xlsx_file_path = Slot(uri=DEFAULT_.xlsx_file_path, name="xlsx_file_path", curie=DEFAULT_.curie('xlsx_file_path'),
+                   model_uri=DEFAULT_.xlsx_file_path, domain=None, range=Optional[str])
 
-slots.heavy_chain_isotype = Slot(uri=DEFAULT_.heavy_chain_isotype, name="heavy_chain_isotype", curie=DEFAULT_.curie('heavy_chain_isotype'),
-                   model_uri=DEFAULT_.heavy_chain_isotype, domain=Antibody, range=Optional[Union[str, "HeavyChainIsotypeSet"]])
+slots.curation_report_group = Slot(uri=DEFAULT_.curation_report_group, name="curation_report_group", curie=DEFAULT_.curie('curation_report_group'),
+                   model_uri=DEFAULT_.curation_report_group, domain=CurationReport, range=Optional[Union[dict, CurationReportGroup]])
 
-slots.light_chain_isotype = Slot(uri=DEFAULT_.light_chain_isotype, name="light_chain_isotype", curie=DEFAULT_.curie('light_chain_isotype'),
-                   model_uri=DEFAULT_.light_chain_isotype, domain=Antibody, range=Optional[Union[str, "LightChainIsotypeSet"]])
+slots.curation_report = Slot(uri=DEFAULT_.curation_report, name="curation_report", curie=DEFAULT_.curie('curation_report'),
+                   model_uri=DEFAULT_.curation_report, domain=CurationReportHistory, range=Optional[Union[dict, CurationReport]])
+
+slots.curation_report_status = Slot(uri=DEFAULT_.curation_report_status, name="curation_report_status", curie=DEFAULT_.curie('curation_report_status'),
+                   model_uri=DEFAULT_.curation_report_status, domain=None, range=Optional[str])
+
+slots.curation_report_timestamp = Slot(uri=DEFAULT_.curation_report_timestamp, name="curation_report_timestamp", curie=DEFAULT_.curie('curation_report_timestamp'),
+                   model_uri=DEFAULT_.curation_report_timestamp, domain=CurationReportHistory, range=Optional[Union[str, XSDDate]])
 
 slots.synonym = Slot(uri=ALLIANCE.synonym, name="synonym", curie=ALLIANCE.curie('synonym'),
                    model_uri=DEFAULT_.synonym, domain=None, range=Optional[str])
@@ -4204,18 +4069,6 @@ slots.id = Slot(uri=DEFAULT_.id, name="id", curie=DEFAULT_.curie('id'),
 
 slots.embryonic_cell_lines = Slot(uri=DEFAULT_.embryonic_cell_lines, name="embryonic_cell_lines", curie=DEFAULT_.curie('embryonic_cell_lines'),
                    model_uri=DEFAULT_.embryonic_cell_lines, domain=None, range=Optional[str])
-
-slots.Antibody_curie = Slot(uri=ALLIANCE.curie, name="Antibody_curie", curie=ALLIANCE.curie('curie'),
-                   model_uri=DEFAULT_.Antibody_curie, domain=Antibody, range=Union[str, AntibodyCurie])
-
-slots.Antibody_name = Slot(uri=ALLIANCE.name, name="Antibody_name", curie=ALLIANCE.curie('name'),
-                   model_uri=DEFAULT_.Antibody_name, domain=Antibody, range=str)
-
-slots.Antibody_taxon = Slot(uri=ALLIANCE.taxon, name="Antibody_taxon", curie=ALLIANCE.curie('taxon'),
-                   model_uri=DEFAULT_.Antibody_taxon, domain=Antibody, range=Optional[Union[str, NCBITaxonTermCurie]])
-
-slots.Antibody_original_reference = Slot(uri=ALLIANCE.original_reference, name="Antibody_original_reference", curie=ALLIANCE.curie('original_reference'),
-                   model_uri=DEFAULT_.Antibody_original_reference, domain=Antibody, range=Optional[Union[str, ReferenceCurie]])
 
 slots.BiologicalEntity_taxon = Slot(uri=ALLIANCE.taxon, name="BiologicalEntity_taxon", curie=ALLIANCE.curie('taxon'),
                    model_uri=DEFAULT_.BiologicalEntity_taxon, domain=BiologicalEntity, range=Union[str, NCBITaxonTermCurie])

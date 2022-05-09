@@ -266,10 +266,10 @@ linkml:Nodeidentifier NONLITERAL
     @<https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AssociatedReference> OR
     @<http://alliancegenome.orgAssociation> OR
     @<https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/AuthorReference> OR
-    @<http://alliancegenome.orgBiologicalEntity> OR @<BulkLoad> OR @<BulkLoadFile> OR @<BulkLoadFileHistory> OR @<BulkLoadGroup> OR
+    @<http://alliancegenome.orgBiologicalEntity> OR
     @<https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/CellLine> OR @<http://alliancegenome.orgChromosome>
-    OR @<http://alliancegenome.orgCrossReference> OR @<http://alliancegenome.orgEntityStatement> OR
-    @<http://alliancegenome.orgExternalDatabaseLink> OR
+    OR @<http://alliancegenome.orgCrossReference> OR @<CurationReport> OR @<CurationReportGroup> OR @<CurationReportHistory> OR
+    @<http://alliancegenome.orgEntityStatement> OR @<http://alliancegenome.orgExternalDatabaseLink> OR
     @<https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/Figure> OR
     @<https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/File> OR
     @<http://alliancegenome.orgGenomicLocation> OR
@@ -314,105 +314,6 @@ linkml:Nodeidentifier NONLITERAL
        )
     } OR @<http://alliancegenome.orgGenomicEntity>
 )
-
-<BulkFMSLoad> CLOSED {
-    (  $<BulkFMSLoad_tes> (  &<BulkScheduledLoad_tes> ;
-          rdf:type [ <BulkScheduledLoad> ] ? ;
-          <fms_data_type> @linkml:String ? ;
-          <fms_data_sub_type> @linkml:String ?
-       ) ;
-       rdf:type [ <BulkFMSLoad> ] ?
-    )
-}
-
-<BulkLoad>  (
-    CLOSED {
-       (  $<BulkLoad_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-             rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-             <http://alliancegenome.orgname> @linkml:String ? ;
-             <bulkload_status> @<BulkLoadStatusEnum> ? ;
-             <error_message> @linkml:String ? ;
-             <backend_bulk_load_type> @<BackendBulkLoadTypeEnum> ? ;
-             <ontology_type> @<OntologyBulkLoadTypeEnum> ? ;
-             <bulkload_group> @<BulkLoadGroup> ? ;
-             <load_files> @<BulkLoadFile> *
-          ) ;
-          rdf:type [ <BulkLoad> ] ?
-       )
-    } OR @<BulkManualLoad> OR @<BulkScheduledLoad>
-)
-
-<BulkLoadFile> CLOSED {
-    (  $<BulkLoadFile_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <bulkload_status> @<BulkLoadStatusEnum> ? ;
-          <md5_sum> @linkml:String ? ;
-          <local_file_path> @linkml:String ? ;
-          <file_size> @linkml:Integer ? ;
-          <s3_path> @linkml:String ? ;
-          <s3_url> @linkml:String ? ;
-          <record_count> @linkml:Integer ? ;
-          <error_message> @linkml:String ? ;
-          <bulk_load> @<BulkLoad> ?
-       ) ;
-       rdf:type [ <BulkLoadFile> ] ?
-    )
-}
-
-<BulkLoadFileHistory> CLOSED {
-    (  $<BulkLoadFileHistory_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <load_started> @linkml:Date ? ;
-          <load_finished> @linkml:Date ? ;
-          <total_records> @linkml:Integer ? ;
-          <failed_records> @linkml:Integer ? ;
-          <completed_records> @linkml:String ? ;
-          <load_exceptions> @linkml:String *
-       ) ;
-       rdf:type [ <BulkLoadFileHistory> ] ?
-    )
-}
-
-<BulkLoadGroup> CLOSED {
-    (  $<BulkLoadGroup_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
-          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
-          <http://alliancegenome.orgname> @linkml:String ? ;
-          <loads> @<BulkLoad> *
-       ) ;
-       rdf:type [ <BulkLoadGroup> ] ?
-    )
-}
-
-<BulkManualLoad> CLOSED {
-    (  $<BulkManualLoad_tes> (  &<BulkLoad_tes> ;
-          rdf:type [ <BulkLoad> ] ? ;
-          <backend_load_type> @<BackendBulkDataTypeEnum> ?
-       ) ;
-       rdf:type [ <BulkManualLoad> ] ?
-    )
-}
-
-<BulkScheduledLoad>  (
-    CLOSED {
-       (  $<BulkScheduledLoad_tes> (  &<BulkLoad_tes> ;
-             rdf:type [ <BulkLoad> ] ? ;
-             <http://alliancegenome.orgschedule_active> @linkml:Boolean ? ;
-             <http://alliancegenome.orgcron_schedule> @linkml:String ? ;
-             <scheduling_error_message> @linkml:String ?
-          ) ;
-          rdf:type [ <BulkScheduledLoad> ] ?
-       )
-    } OR @<BulkFMSLoad> OR @<BulkURLLoad>
-)
-
-<BulkURLLoad> CLOSED {
-    (  $<BulkURLLoad_tes> (  &<BulkScheduledLoad_tes> ;
-          rdf:type [ <BulkScheduledLoad> ] ? ;
-          <bulkload_url> @linkml:String ?
-       ) ;
-       rdf:type [ <BulkURLLoad> ] ?
-    )
-}
 
 <https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/CellLine> CLOSED {
     (  $<https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/CellLine_tes> ( 
@@ -524,6 +425,42 @@ linkml:Nodeidentifier NONLITERAL
           <http://alliancegenome.orgprefix> @linkml:String
        ) ;
        rdf:type [ <http://alliancegenome.orgCrossReference> ]
+    )
+}
+
+<CurationReport> CLOSED {
+    (  $<CurationReport_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
+          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
+          <http://alliancegenome.orgname> @linkml:String ? ;
+          <birt_report_file_path> @linkml:String ? ;
+          <http://alliancegenome.orgschedule_active> @linkml:Boolean ? ;
+          <http://alliancegenome.orgcron_schedule> @linkml:String ? ;
+          <curation_report_status> @linkml:String ? ;
+          <curation_report_group> @<CurationReportGroup> ?
+       ) ;
+       rdf:type [ <CurationReport> ] ?
+    )
+}
+
+<CurationReportGroup> CLOSED {
+    (  $<CurationReportGroup_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
+          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
+          <http://alliancegenome.orgname> @linkml:String ?
+       ) ;
+       rdf:type [ <CurationReportGroup> ] ?
+    )
+}
+
+<CurationReportHistory> CLOSED {
+    (  $<CurationReportHistory_tes> (  &<http://alliancegenome.orgAuditedObject_tes> ;
+          rdf:type [ <http://alliancegenome.orgAuditedObject> ] ? ;
+          <curation_report> @<CurationReport> ? ;
+          <curation_report_timestamp> @linkml:Date ? ;
+          <pdf_file_path> @linkml:String ? ;
+          <xlsx_file_path> @linkml:String ? ;
+          <curation_report_status> @linkml:String ?
+       ) ;
+       rdf:type [ <CurationReportHistory> ] ?
     )
 }
 
