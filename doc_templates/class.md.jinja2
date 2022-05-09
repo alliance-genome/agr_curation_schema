@@ -81,3 +81,26 @@ URI: {{ gen.uri_link(element) }}
 
 {% include "common_metadata.md.jinja2" %}
 
+## LinkML Specification
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+{{gen.yaml(element)}}
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+{{gen.yaml(element, inferred=True)}}
+```
+</details>
+
+{%- if footer -%}
+{{footer}}
+{%- endif -%}
