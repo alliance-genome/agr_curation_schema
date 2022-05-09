@@ -144,7 +144,7 @@ target/linkml/%.yaml: $(SCHEMA_DIR)/%.yaml tdir-limkml
 
 gh-deploy:
 # deploy documentation (note: requires documentation is in docs dir)
-	poetry run mkdocs gh-deploy --remote-branch gh-pages --force --theme readthedocs
+	poetry run mkdocs gh-deploy --remote-branch gh-pages --force
 
 ###  -- PYPI TARGETS
 # Use the build-package target to build a PYPI package locally
