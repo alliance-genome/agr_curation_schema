@@ -464,9 +464,6 @@
                "format": "date",
                "type": "string"
             },
-            "embryonic_cell_lines": {
-               "type": "string"
-            },
             "embryonic_stem_cell_lines": {
                "description": "Embryonic stem cell lines known to carry the allele",
                "items": {
@@ -7756,7 +7753,7 @@
                "type": "string"
             },
             "cdna_end": {
-               "description": "end position of variation in cDNA coordinates",
+               "description": "End position of variant in cDNA coordinates",
                "type": "integer"
             },
             "cdna_start": {
@@ -7770,10 +7767,6 @@
             "cds_start": {
                "description": "Start position of variant in CDS coordinates",
                "type": "integer"
-            },
-            "cnda_end": {
-               "description": "End position of variant in cDNA coordinates",
-               "type": "string"
             },
             "codon_reference": {
                "description": "Reference genome sequence of codon(s) altered by the variant.  Bases affected by the variant are given in upper case, bases flanking the variation are given in lower case",
@@ -9175,7 +9168,7 @@
       }
    },
    "required": [],
-   "title": "AllianceCurationSchema",
+   "title": "AllianceModel",
    "type": "object",
    "version": "0.0.1"
 }
