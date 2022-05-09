@@ -2,9 +2,9 @@
 
 {{ element.description }}
 
-{% if element.comments -%}}
+{% if element.comments -%}
 {{element.comments}}
-{% endif -%}}
+{% endif -%}
 
 {% if schemaview.class_parents(element.name) %}
 ```mermaid
@@ -45,7 +45,6 @@ URI: {{ gen.uri_link(element) }}
 {% if schemaview.class_parents(element.name) %}
 {{ gen.inheritance_tree(element, mixins=True) }}
 {% else %}
-None
 {% endif %}
 
 {% if schemaview.class_children(element.name, mixins=False) %}

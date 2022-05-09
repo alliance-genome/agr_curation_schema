@@ -11,7 +11,7 @@ site_dir: mkdocs_html
 
 nav:
   - Browse the Model: index.md
-  - Developing the Alliance Model: README.md
+  - Developing the Alliance Model: developing-the-model.md
   - LinkML Tutorial: https://linkml.io/linkml/intro/tutorial.html
 
 site_url: https://github.com/alliance-genome/agr_curation_schema

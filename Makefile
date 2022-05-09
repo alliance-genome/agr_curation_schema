@@ -62,7 +62,8 @@ stage-artifacts: $(patsubst %,stage-%,$(ARTIFACT_TGTS))
 
 stage-%: gen-%
 	cp -pr target/$* .
-
+	cp css/extra_css.css docs/
+	cp README.md docs/developing-the-model.md
 gen-docs:
 	poetry run gen-doc model/schema/allianceModel.yaml --directory target/docs --template-directory doc_templates
 
