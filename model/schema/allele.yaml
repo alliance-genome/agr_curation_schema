@@ -19,6 +19,21 @@ prefixes:
   NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
   schema: 'http://schema.org/'
 
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - owl
+
 # Classes
 
 
@@ -63,7 +78,7 @@ classes:
         notes: specific to MGI
       mutant_cell_lines:
         notes: specific to MGI
-      embryonic_cell_lines:
+      embryonic_stem_cell_lines:
         notes: specific to MGI
       transposon_insertion:
         notes: specific to FB

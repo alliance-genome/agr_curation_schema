@@ -1593,7 +1593,7 @@
 --     * Slot: codon_reference Description: Reference genome sequence of codon(s) altered by the variant.  Bases affected by the variant are given in upper case, bases flanking the variation are given in lower case
 --     * Slot: codon_variant Description: Sequence of codon(s) in variant sequence altered by the variant. Bases affected by the variant are given in upper case, bases flanking the variation are given in lower case
 --     * Slot: cdna_start Description: Start position of variant in cDNA coordinates
---     * Slot: cdna_end Description: end position of variation in cDNA coordinates
+--     * Slot: cdna_end Description: End position of variant in cDNA coordinates
 --     * Slot: cds_start Description: Start position of variant in CDS coordinates
 --     * Slot: cds_end Description: End position of variant in CDS coordinates
 --     * Slot: protein_start Description: Start position of variant in amino acid sequence
