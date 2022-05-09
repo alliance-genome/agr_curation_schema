@@ -49,9 +49,9 @@ jobs:
       - name: Generate markdown files
         run: |
           mkdir docs
+          poetry run gen-doc model/schema/allianceModel.yaml --directory docs --template-directory doc_templates
           cp css/extra_css.css docs
           cp README.md docs
-          poetry run gen-doc model/schema/allianceModel.yaml --directory docs --template-directory doc_templates
 
       - name: Deploy documentation (requires documentation is in docs dir)
         run: make gh-deploy

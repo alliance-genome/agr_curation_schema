@@ -8,6 +8,7 @@ authors = ["Alliance of Genome Resources"]
 python = "^3.8"
 linkml = "^1.2.4"
 tox = "^3.25.0"
+mkdocs-mermaid2-plugin = "^0.6.0"
 
 [tool.poetry.dev-dependencies]
 linkml = "^1.2.4"
