@@ -234,7 +234,7 @@ slots:
 
   issue_name:
     description: >-
-      The issue name.
+      The number of the journal issue in which the article was published.
       From PubMed otherwise from Mod or manual reference creation.
     multivalued: false
     domain: Reference

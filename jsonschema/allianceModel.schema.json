@@ -6582,7 +6582,7 @@
                "type": "boolean"
             },
             "issue_name": {
-               "description": "The issue name. From PubMed otherwise from Mod or manual reference creation.",
+               "description": "The number of the journal issue in which the article was published. From PubMed otherwise from Mod or manual reference creation.",
                "type": "string"
             },
             "keywords": {
