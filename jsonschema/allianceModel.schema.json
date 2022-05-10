@@ -1425,7 +1425,8 @@
          "description": "",
          "properties": {
             "corresponding_author": {
-               "type": "string"
+               "description": "Indicates if the author is a corresponding author.",
+               "type": "boolean"
             },
             "created_by": {
                "description": "The individual that created the entity.",
@@ -1448,11 +1449,12 @@
                "format": "date",
                "type": "string"
             },
+            "first_author": {
+               "description": "Indicates if the author is a first author.",
+               "type": "boolean"
+            },
             "first_name": {
                "description": "first name of a person",
-               "type": "string"
-            },
-            "initials": {
                "type": "string"
             },
             "internal": {
@@ -1461,10 +1463,6 @@
             },
             "last_name": {
                "description": "last (family) name of a person",
-               "type": "string"
-            },
-            "middle_name": {
-               "description": "middle names of a person",
                "type": "string"
             },
             "modified_by": {
@@ -6532,15 +6530,19 @@
          "description": "",
          "properties": {
             "abstract": {
-               "description": "The author summary of the publication.",
+               "description": "The author summary of the publication. From PubMed otherwise from Mod or manual reference creation.",
                "type": "string"
+            },
+            "authors": {
+               "description": "Ordered author entities for this publication.  An Author is associated with only one publication.  A Person can be associated with multiple  publications.",
+               "items": {
+                  "$ref": "#/$defs/AuthorReference"
+               },
+               "type": "array"
             },
             "category": {
-               "$ref": "#/$defs/ReferenceCategoryEnum"
-            },
-            "citation": {
-               "description": "A short form way of referring to a publication, typically consisting of the first author's name, publication date, and journal (title, vol, pages).",
-               "type": "string"
+               "$ref": "#/$defs/ReferenceCategoryEnum",
+               "description": "The alliance category type.  Only relevant at Alliance."
             },
             "created_by": {
                "description": "The individual that created the entity.",
@@ -6551,7 +6553,7 @@
                "type": "string"
             },
             "date_arrived_in_pubmed": {
-               "description": "Day in which a reference or resource was created in PUBMED. Only relevant for PUBMED references.",
+               "description": "Day in which a reference or resource was created in PubMed. Only relevant for PubMed references.",
                "items": {
                   "type": "string"
                },
@@ -6562,8 +6564,12 @@
                "format": "date",
                "type": "string"
             },
+            "date_last_modified_in_pubmed": {
+               "description": "Date on which entity was last updated at PubMed. Only relevant for PubMed references.",
+               "type": "string"
+            },
             "date_published": {
-               "description": "Date on which an entity was created.",
+               "description": "Date on which an entity was published.  From PubMed otherwise from Mod or manual reference creation.",
                "type": "string"
             },
             "date_updated": {
@@ -6575,22 +6581,19 @@
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
             },
-            "issue_date": {
-               "description": "Date on which an entity was issued.",
-               "type": "string"
-            },
             "issue_name": {
+               "description": "The issue name. From PubMed otherwise from Mod or manual reference creation.",
                "type": "string"
             },
             "keywords": {
-               "description": "keywords tagging a publication",
+               "description": "Keywords tagging a publication.  Aggregation of PubMed and ZFIN, editable at Alliance.",
                "items": {
                   "type": "string"
                },
                "type": "array"
             },
             "language": {
-               "description": "Language of the reference",
+               "description": "Language of the reference.  Aggregation of PubMed and FlyBase, editable at Alliance.",
                "type": "string"
             },
             "merged_into_id": {
@@ -6609,19 +6612,20 @@
                "description": "Indicates if the reference is freely available for use by anyone, usually with fewer copyright and licensing barriers.",
                "type": "boolean"
             },
-            "pages": {
-               "description": "page number of source referenced for statement or publication",
+            "page_range": {
+               "description": "Page numbers of source referenced for statement or publication. From PubMed otherwise from Mod or manual reference creation.",
                "type": "string"
             },
             "plain_language_abstract": {
-               "description": "Plain language abstract",
+               "description": "Plain language abstract. Only relevant for PubMed references.",
                "type": "string"
             },
             "publisher": {
+               "description": "Publisher associated with a reference or resource. From PubMed otherwise from Mod or manual reference creation.",
                "type": "string"
             },
             "pubmed_abstract_languages": {
-               "description": "Languages for the abstract",
+               "description": "Languages for the abstract. Only relevant for PubMed references.",
                "items": {
                   "type": "string"
                },
@@ -6629,10 +6633,10 @@
             },
             "pubmed_publication_status": {
                "$ref": "#/$defs/PubmedPublicationStatusEnum",
-               "description": "status of the publication"
+               "description": "Status of the publication at PubMed. Only relevant for PubMed references."
             },
             "pubmed_type": {
-               "description": "Type of Reference as described by PubMed.",
+               "description": "Type of Reference as described by PubMed. Only relevant for PubMed references.",
                "items": {
                   "$ref": "#/$defs/PubmedTypeEnum"
                },
@@ -6646,10 +6650,11 @@
                "type": "integer"
             },
             "title": {
-               "description": "A human readable title for a reference.",
+               "description": "A human readable title for a reference. From PubMed otherwise from Mod or manual reference creation.",
                "type": "string"
             },
             "volume": {
+               "description": "Volume associated with a reference. From PubMed otherwise from Mod or manual reference creation.",
                "type": "string"
             }
          },
@@ -6685,6 +6690,7 @@
          "description": "",
          "properties": {
             "authors": {
+               "description": "Ordered author entities for this publication.  An Author is associated with only one publication.  A Person can be associated with multiple  publications.",
                "items": {
                   "$ref": "#/$defs/AuthorReference"
                },
@@ -6748,6 +6754,7 @@
                "type": "string"
             },
             "publisher": {
+               "description": "Publisher associated with a reference or resource. From PubMed otherwise from Mod or manual reference creation.",
                "type": "string"
             },
             "summary": {
@@ -6765,6 +6772,7 @@
                "type": "string"
             },
             "volume": {
+               "description": "Volume associated with a reference. From PubMed otherwise from Mod or manual reference creation.",
                "type": "string"
             }
          },
