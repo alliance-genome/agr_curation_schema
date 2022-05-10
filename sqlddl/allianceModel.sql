@@ -95,11 +95,10 @@
 --     * Slot: statement_subject_id Description: The entity being described by the note.
 -- # Class: "AuthorReference" Description: ""
 --     * Slot: id Description: 
---     * Slot: corresponding_author Description: 
+--     * Slot: corresponding_author Description: Indicates if the author is a corresponding author.
+--     * Slot: first_author Description: Indicates if the author is a first author.
 --     * Slot: first_name Description: first name of a person
---     * Slot: middle_name Description: middle names of a person
 --     * Slot: last_name Description: last (family) name of a person
---     * Slot: initials Description: 
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
@@ -107,24 +106,23 @@
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
 -- # Class: "Reference" Description: ""
---     * Slot: abstract Description: The author summary of the publication.
---     * Slot: category Description: 
---     * Slot: citation Description: A short form way of referring to a publication, typically consisting of the first author's name, publication date, and journal (title, vol, pages).
+--     * Slot: abstract Description: The author summary of the publication. From PubMed otherwise from Mod or manual reference creation.
+--     * Slot: category Description: The alliance category type.  Only relevant at Alliance.
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
---     * Slot: date_published Description: Date on which an entity was created.
---     * Slot: issue_date Description: Date on which an entity was issued.
---     * Slot: issue_name Description: 
---     * Slot: language Description: Language of the reference
+--     * Slot: date_last_modified_in_pubmed Description: Date on which entity was last updated at PubMed. Only relevant for PubMed references.
+--     * Slot: date_published Description: Date on which an entity was published.  From PubMed otherwise from Mod or manual reference creation.
+--     * Slot: issue_name Description: The number of the journal issue in which the article was published. From PubMed otherwise from Mod or manual reference creation.
+--     * Slot: language Description: Language of the reference.  Aggregation of PubMed and FlyBase, editable at Alliance.
 --     * Slot: merged_into_id Description: ID that used to refer to this reference
 --     * Slot: open_access Description: Indicates if the reference is freely available for use by anyone, usually with fewer copyright and licensing barriers.
---     * Slot: pages Description: page number of source referenced for statement or publication
---     * Slot: plain_language_abstract Description: Plain language abstract
---     * Slot: publisher Description: 
---     * Slot: pubmed_publication_status Description: status of the publication
+--     * Slot: page_range Description: Page numbers of source referenced for statement or publication. From PubMed otherwise from Mod or manual reference creation.
+--     * Slot: plain_language_abstract Description: Lay person, readable version of the abstract. Only relevant for PubMed references.
+--     * Slot: publisher Description: Publisher associated with a reference or resource. From PubMed otherwise from Mod or manual reference creation.
+--     * Slot: pubmed_publication_status Description: Status of the publication at PubMed. Only relevant for PubMed references.
 --     * Slot: reference_id Description: The primary key for the Reference object in the references table.
 --     * Slot: resource_id Description: 
---     * Slot: title Description: A human readable title for a reference.
---     * Slot: volume Description: 
+--     * Slot: title Description: A human readable title for a reference. From PubMed otherwise from Mod or manual reference creation.
+--     * Slot: volume Description: Volume associated with a reference. From PubMed otherwise from Mod or manual reference creation.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
@@ -1254,8 +1252,8 @@
 --     * Slot: copyright_date Description: 
 --     * Slot: print_issn Description: 
 --     * Slot: online_issn Description: 
---     * Slot: publisher Description: 
---     * Slot: volume Description: 
+--     * Slot: publisher Description: Publisher associated with a reference or resource. From PubMed otherwise from Mod or manual reference creation.
+--     * Slot: volume Description: Volume associated with a reference. From PubMed otherwise from Mod or manual reference creation.
 --     * Slot: summary Description: 
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
@@ -1632,18 +1630,21 @@
 -- # Class: "ExpressionAnnotationStatement_reference" Description: ""
 --     * Slot: ExpressionAnnotationStatement_id Description: Autocreated FK slot
 --     * Slot: reference Description: holds between an object and a list of references
+-- # Class: "Reference_authors" Description: ""
+--     * Slot: Reference_curie Description: Autocreated FK slot
+--     * Slot: authors_id Description: Ordered author entities for this publication.  An Author is associated with only one publication.  A Person can be associated with multiple  publications.
 -- # Class: "Reference_date_arrived_in_pubmed" Description: ""
 --     * Slot: Reference_curie Description: Autocreated FK slot
---     * Slot: date_arrived_in_pubmed Description: Day in which a reference or resource was created in PUBMED. Only relevant for PUBMED references.
+--     * Slot: date_arrived_in_pubmed Description: Day in which a reference or resource was created in PubMed. Only relevant for PubMed references.
 -- # Class: "Reference_keywords" Description: ""
 --     * Slot: Reference_curie Description: Autocreated FK slot
---     * Slot: keywords Description: keywords tagging a publication
+--     * Slot: keywords Description: Keywords tagging a publication.  Aggregation of PubMed and ZFIN, editable at Alliance.
 -- # Class: "Reference_pubmed_abstract_languages" Description: ""
 --     * Slot: Reference_curie Description: Autocreated FK slot
---     * Slot: pubmed_abstract_languages Description: Languages for the abstract
+--     * Slot: pubmed_abstract_languages Description: Languages for the abstract. Only relevant for PubMed references.
 -- # Class: "Reference_pubmed_type" Description: ""
 --     * Slot: Reference_curie Description: Autocreated FK slot
---     * Slot: pubmed_type Description: Type of Reference as described by PubMed.
+--     * Slot: pubmed_type Description: Type of Reference as described by PubMed. Only relevant for PubMed references.
 -- # Class: "GenomicEntity_synonym" Description: ""
 --     * Slot: GenomicEntity_curie Description: Autocreated FK slot
 --     * Slot: synonym_id Description: holds between a named thing and a synonym
@@ -2255,7 +2256,7 @@
 --     * Slot: synonym_id Description: holds between a named thing and a synonym
 -- # Class: "Resource_authors" Description: ""
 --     * Slot: Resource_curie Description: Autocreated FK slot
---     * Slot: authors_id Description: 
+--     * Slot: authors_id Description: Ordered author entities for this publication.  An Author is associated with only one publication.  A Person can be associated with multiple  publications.
 -- # Class: "Resource_editor" Description: ""
 --     * Slot: Resource_curie Description: Autocreated FK slot
 --     * Slot: editor_id Description: holds between a resource and a editor_resource
@@ -2389,18 +2390,33 @@ CREATE TABLE "Ingest" (
 	id INTEGER, 
 	PRIMARY KEY (id)
 );
+CREATE TABLE "AuthorReference" (
+	id INTEGER, 
+	corresponding_author BOOLEAN, 
+	first_author BOOLEAN, 
+	first_name TEXT, 
+	last_name TEXT, 
+	created_by TEXT, 
+	date_created DATE, 
+	modified_by TEXT, 
+	date_updated DATE, 
+	internal BOOLEAN NOT NULL, 
+	obsolete BOOLEAN, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+);
 CREATE TABLE "Reference" (
 	abstract TEXT, 
 	category VARCHAR(26), 
-	citation TEXT, 
 	curie TEXT NOT NULL, 
+	date_last_modified_in_pubmed TEXT, 
 	date_published TEXT, 
-	issue_date TEXT, 
 	issue_name TEXT, 
 	language TEXT, 
 	merged_into_id TEXT, 
 	open_access BOOLEAN, 
-	pages TEXT, 
+	page_range TEXT, 
 	plain_language_abstract TEXT, 
 	publisher TEXT, 
 	pubmed_publication_status VARCHAR(12), 
@@ -3356,25 +3372,6 @@ CREATE TABLE "AnatomicalSite" (
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
-CREATE TABLE "AuthorReference" (
-	id INTEGER, 
-	corresponding_author TEXT, 
-	first_name TEXT, 
-	middle_name TEXT, 
-	last_name TEXT, 
-	initials TEXT, 
-	created_by TEXT, 
-	date_created DATE, 
-	modified_by TEXT, 
-	date_updated DATE, 
-	internal BOOLEAN NOT NULL, 
-	obsolete BOOLEAN, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(corresponding_author) REFERENCES "Reference" (curie), 
-	FOREIGN KEY(initials) REFERENCES "Reference" (curie), 
-	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
-);
 CREATE TABLE "BiologicalEntity" (
 	curie TEXT NOT NULL, 
 	taxon TEXT NOT NULL, 
@@ -3733,6 +3730,13 @@ CREATE TABLE "RNAClone" (
 	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "Reference_authors" (
+	"Reference_curie" TEXT, 
+	authors_id TEXT, 
+	PRIMARY KEY ("Reference_curie", authors_id), 
+	FOREIGN KEY("Reference_curie") REFERENCES "Reference" (curie), 
+	FOREIGN KEY(authors_id) REFERENCES "AuthorReference" (id)
 );
 CREATE TABLE "Reference_date_arrived_in_pubmed" (
 	"Reference_curie" TEXT, 
@@ -4672,6 +4676,20 @@ CREATE TABLE "Resource_synonym" (
 	FOREIGN KEY("Resource_curie") REFERENCES "Resource" (curie), 
 	FOREIGN KEY(synonym_id) REFERENCES "Synonym" (id)
 );
+CREATE TABLE "Resource_authors" (
+	"Resource_curie" TEXT, 
+	authors_id TEXT, 
+	PRIMARY KEY ("Resource_curie", authors_id), 
+	FOREIGN KEY("Resource_curie") REFERENCES "Resource" (curie), 
+	FOREIGN KEY(authors_id) REFERENCES "AuthorReference" (id)
+);
+CREATE TABLE "Resource_editor" (
+	"Resource_curie" TEXT, 
+	editor_id TEXT, 
+	PRIMARY KEY ("Resource_curie", editor_id), 
+	FOREIGN KEY("Resource_curie") REFERENCES "Resource" (curie), 
+	FOREIGN KEY(editor_id) REFERENCES "AuthorReference" (id)
+);
 CREATE TABLE "ExpressionExperiment" (
 	curie TEXT NOT NULL, 
 	single_reference TEXT, 
@@ -5224,20 +5242,6 @@ CREATE TABLE "Figure_secondary_identifiers" (
 	secondary_identifiers TEXT, 
 	PRIMARY KEY ("Figure_curie", secondary_identifiers), 
 	FOREIGN KEY("Figure_curie") REFERENCES "Figure" (curie)
-);
-CREATE TABLE "Resource_authors" (
-	"Resource_curie" TEXT, 
-	authors_id TEXT, 
-	PRIMARY KEY ("Resource_curie", authors_id), 
-	FOREIGN KEY("Resource_curie") REFERENCES "Resource" (curie), 
-	FOREIGN KEY(authors_id) REFERENCES "AuthorReference" (id)
-);
-CREATE TABLE "Resource_editor" (
-	"Resource_curie" TEXT, 
-	editor_id TEXT, 
-	PRIMARY KEY ("Resource_curie", editor_id), 
-	FOREIGN KEY("Resource_curie") REFERENCES "Resource" (curie), 
-	FOREIGN KEY(editor_id) REFERENCES "AuthorReference" (id)
 );
 CREATE TABLE "Reagent_generated_by" (
 	"Reagent_curie" TEXT, 

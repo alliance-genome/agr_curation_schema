@@ -221,11 +221,10 @@ linkml:Nodeidentifier NONLITERAL
 <AuthorReference> CLOSED {
     (  $<AuthorReference_tes> (  &<AuditedObject_tes> ;
           rdf:type [ <AuditedObject> ] ? ;
-          <corresponding_author> @<Reference> ? ;
+          <corresponding_author> @linkml:Boolean ? ;
+          <first_author> @linkml:Boolean ? ;
           <first_name> @linkml:String ? ;
-          <middle_name> @linkml:String ? ;
           <last_name> @linkml:String ? ;
-          <initials> @<Reference> ? ;
           <cross_references> @<CrossReference> *
        ) ;
        rdf:type [ <AuthorReference> ] ?
@@ -706,17 +705,17 @@ linkml:Nodeidentifier NONLITERAL
     (  $<Reference_tes> (  &<AuditedObject_tes> ;
           rdf:type [ <AuditedObject> ] ? ;
           <abstract> @linkml:String ? ;
+          <authors> @<AuthorReference> * ;
           <category> @<ReferenceCategoryEnum> ? ;
-          <citation> @linkml:String ? ;
           <date_arrived_in_pubmed> @linkml:String * ;
+          <date_last_modified_in_pubmed> @linkml:String ? ;
           <date_published> @linkml:String ? ;
-          <issue_date> @linkml:String ? ;
           <issue_name> @linkml:String ? ;
           <keywords> @linkml:String * ;
           <language> @linkml:String ? ;
           <merged_into_id> @linkml:Uriorcurie ? ;
           <open_access> @linkml:Boolean ? ;
-          <pages> @linkml:String ? ;
+          <page_range> @linkml:String ? ;
           <plain_language_abstract> @linkml:String ? ;
           <publisher> @linkml:String ? ;
           <pubmed_abstract_languages> @linkml:String * ;
@@ -725,8 +724,7 @@ linkml:Nodeidentifier NONLITERAL
           <reference_id> @linkml:Integer ;
           <resource_id> @linkml:Integer ? ;
           <title> @linkml:String ? ;
-          <volume> @linkml:String ? ;
-          <date_updated> @linkml:Date ?
+          <volume> @linkml:String ?
        ) ;
        rdf:type [ <Reference> ]
     )

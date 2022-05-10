@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-05-09T22:04:35\n    Schema: AllianceModel\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: \n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-05-10T16:17:46\n    Schema: AllianceModel\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: \n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "BIOGRID": "http://identifiers.org/biogrid/",
       "DIP": "http://identifiers.org/dip/",
@@ -177,7 +177,7 @@
          "@type": "xsd:date"
       },
       "corresponding_author": {
-         "@type": "@id"
+         "@type": "xsd:boolean"
       },
       "created_by": {
          "@type": "@id"
@@ -253,6 +253,9 @@
             "meaning": "@id"
          }
       },
+      "first_author": {
+         "@type": "xsd:boolean"
+      },
       "from_image": {
          "@type": "@id"
       },
@@ -325,9 +328,6 @@
          "@type": "@id"
       },
       "inheritence_mode": {
-         "@type": "@id"
-      },
-      "initials": {
          "@type": "@id"
       },
       "interaction_data_provider": {

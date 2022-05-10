@@ -1,5 +1,5 @@
 # Auto generated from expression.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-05-09T22:03:43
+# Generation date: 2022-05-10T16:16:56
 # Schema: expression.yaml
 #
 # id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml
@@ -3431,28 +3431,24 @@ class AuthorReference(AuditedObject):
     class_model_uri: ClassVar[URIRef] = ALLIANCE.AuthorReference
 
     internal: Union[bool, Bool] = None
-    corresponding_author: Optional[Union[str, ReferenceCurie]] = None
+    corresponding_author: Optional[Union[bool, Bool]] = None
+    first_author: Optional[Union[bool, Bool]] = None
     first_name: Optional[str] = None
-    middle_name: Optional[str] = None
     last_name: Optional[str] = None
-    initials: Optional[Union[str, ReferenceCurie]] = None
     cross_references: Optional[Union[Dict[Union[str, CrossReferenceCurie], Union[dict, CrossReference]], List[Union[dict, CrossReference]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.corresponding_author is not None and not isinstance(self.corresponding_author, ReferenceCurie):
-            self.corresponding_author = ReferenceCurie(self.corresponding_author)
+        if self.corresponding_author is not None and not isinstance(self.corresponding_author, Bool):
+            self.corresponding_author = Bool(self.corresponding_author)
+
+        if self.first_author is not None and not isinstance(self.first_author, Bool):
+            self.first_author = Bool(self.first_author)
 
         if self.first_name is not None and not isinstance(self.first_name, str):
             self.first_name = str(self.first_name)
 
-        if self.middle_name is not None and not isinstance(self.middle_name, str):
-            self.middle_name = str(self.middle_name)
-
         if self.last_name is not None and not isinstance(self.last_name, str):
             self.last_name = str(self.last_name)
-
-        if self.initials is not None and not isinstance(self.initials, ReferenceCurie):
-            self.initials = ReferenceCurie(self.initials)
 
         self._normalize_inlined_as_list(slot_name="cross_references", slot_type=CrossReference, key_name="curie", keyed=True)
 
@@ -3472,17 +3468,17 @@ class Reference(AuditedObject):
     internal: Union[bool, Bool] = None
     reference_id: int = None
     abstract: Optional[str] = None
+    authors: Optional[Union[Union[dict, AuthorReference], List[Union[dict, AuthorReference]]]] = empty_list()
     category: Optional[Union[str, "ReferenceCategoryEnum"]] = None
-    citation: Optional[str] = None
     date_arrived_in_pubmed: Optional[Union[str, List[str]]] = empty_list()
+    date_last_modified_in_pubmed: Optional[str] = None
     date_published: Optional[str] = None
-    issue_date: Optional[str] = None
     issue_name: Optional[str] = None
     keywords: Optional[Union[str, List[str]]] = empty_list()
     language: Optional[str] = None
     merged_into_id: Optional[Union[str, URIorCURIE]] = None
     open_access: Optional[Union[bool, Bool]] = None
-    pages: Optional[str] = None
+    page_range: Optional[str] = None
     plain_language_abstract: Optional[str] = None
     publisher: Optional[str] = None
     pubmed_abstract_languages: Optional[Union[str, List[str]]] = empty_list()
@@ -3491,7 +3487,6 @@ class Reference(AuditedObject):
     resource_id: Optional[int] = None
     title: Optional[str] = None
     volume: Optional[str] = None
-    date_updated: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -3507,21 +3502,20 @@ class Reference(AuditedObject):
         if self.abstract is not None and not isinstance(self.abstract, str):
             self.abstract = str(self.abstract)
 
+        self._normalize_inlined_as_dict(slot_name="authors", slot_type=AuthorReference, key_name="internal", keyed=False)
+
         if self.category is not None and not isinstance(self.category, ReferenceCategoryEnum):
             self.category = ReferenceCategoryEnum(self.category)
-
-        if self.citation is not None and not isinstance(self.citation, str):
-            self.citation = str(self.citation)
 
         if not isinstance(self.date_arrived_in_pubmed, list):
             self.date_arrived_in_pubmed = [self.date_arrived_in_pubmed] if self.date_arrived_in_pubmed is not None else []
         self.date_arrived_in_pubmed = [v if isinstance(v, str) else str(v) for v in self.date_arrived_in_pubmed]
 
+        if self.date_last_modified_in_pubmed is not None and not isinstance(self.date_last_modified_in_pubmed, str):
+            self.date_last_modified_in_pubmed = str(self.date_last_modified_in_pubmed)
+
         if self.date_published is not None and not isinstance(self.date_published, str):
             self.date_published = str(self.date_published)
-
-        if self.issue_date is not None and not isinstance(self.issue_date, str):
-            self.issue_date = str(self.issue_date)
 
         if self.issue_name is not None and not isinstance(self.issue_name, str):
             self.issue_name = str(self.issue_name)
@@ -3539,8 +3533,8 @@ class Reference(AuditedObject):
         if self.open_access is not None and not isinstance(self.open_access, Bool):
             self.open_access = Bool(self.open_access)
 
-        if self.pages is not None and not isinstance(self.pages, str):
-            self.pages = str(self.pages)
+        if self.page_range is not None and not isinstance(self.page_range, str):
+            self.page_range = str(self.page_range)
 
         if self.plain_language_abstract is not None and not isinstance(self.plain_language_abstract, str):
             self.plain_language_abstract = str(self.plain_language_abstract)
@@ -3567,9 +3561,6 @@ class Reference(AuditedObject):
 
         if self.volume is not None and not isinstance(self.volume, str):
             self.volume = str(self.volume)
-
-        if self.date_updated is not None and not isinstance(self.date_updated, XSDDate):
-            self.date_updated = XSDDate(self.date_updated)
 
         super().__post_init__(**kwargs)
 
@@ -5058,14 +5049,11 @@ slots.date_arrived_in_pubmed = Slot(uri=ALLIANCE.date_arrived_in_pubmed, name="d
 slots.date_last_modified_in_pubmed = Slot(uri=ALLIANCE.date_last_modified_in_pubmed, name="date_last_modified_in_pubmed", curie=ALLIANCE.curie('date_last_modified_in_pubmed'),
                    model_uri=ALLIANCE.date_last_modified_in_pubmed, domain=Reference, range=Optional[str])
 
-slots.issue_date = Slot(uri=ALLIANCE.issue_date, name="issue_date", curie=ALLIANCE.curie('issue_date'),
-                   model_uri=ALLIANCE.issue_date, domain=None, range=Optional[str])
-
 slots.open_access = Slot(uri=ALLIANCE.open_access, name="open_access", curie=ALLIANCE.curie('open_access'),
                    model_uri=ALLIANCE.open_access, domain=Reference, range=Optional[Union[bool, Bool]])
 
-slots.pages = Slot(uri=ALLIANCE.pages, name="pages", curie=ALLIANCE.curie('pages'),
-                   model_uri=ALLIANCE.pages, domain=None, range=Optional[str])
+slots.page_range = Slot(uri=ALLIANCE.page_range, name="page_range", curie=ALLIANCE.curie('page_range'),
+                   model_uri=ALLIANCE.page_range, domain=None, range=Optional[str])
 
 slots.plain_language_abstract = Slot(uri=ALLIANCE.plain_language_abstract, name="plain_language_abstract", curie=ALLIANCE.curie('plain_language_abstract'),
                    model_uri=ALLIANCE.plain_language_abstract, domain=Reference, range=Optional[str])
@@ -5078,9 +5066,6 @@ slots.pubmed_publication_status = Slot(uri=ALLIANCE.pubmed_publication_status, n
 
 slots.abstract = Slot(uri=ALLIANCE.abstract, name="abstract", curie=ALLIANCE.curie('abstract'),
                    model_uri=ALLIANCE.abstract, domain=Reference, range=Optional[str])
-
-slots.citation = Slot(uri=ALLIANCE.citation, name="citation", curie=ALLIANCE.curie('citation'),
-                   model_uri=ALLIANCE.citation, domain=Reference, range=Optional[str])
 
 slots.issue_name = Slot(uri=ALLIANCE.issue_name, name="issue_name", curie=ALLIANCE.curie('issue_name'),
                    model_uri=ALLIANCE.issue_name, domain=Reference, range=Optional[str])
@@ -5097,20 +5082,14 @@ slots.language = Slot(uri=ALLIANCE.language, name="language", curie=ALLIANCE.cur
 slots.merged_into_id = Slot(uri=ALLIANCE.merged_into_id, name="merged_into_id", curie=ALLIANCE.curie('merged_into_id'),
                    model_uri=ALLIANCE.merged_into_id, domain=Reference, range=Optional[Union[str, URIorCURIE]])
 
-slots.summary = Slot(uri=ALLIANCE.summary, name="summary", curie=ALLIANCE.curie('summary'),
-                   model_uri=ALLIANCE.summary, domain=Reference, range=Optional[str])
-
-slots.copyright_date = Slot(uri=ALLIANCE.copyright_date, name="copyright_date", curie=ALLIANCE.curie('copyright_date'),
-                   model_uri=ALLIANCE.copyright_date, domain=Reference, range=Optional[Union[str, XSDDate]])
-
 slots.authors = Slot(uri=ALLIANCE.authors, name="authors", curie=ALLIANCE.curie('authors'),
                    model_uri=ALLIANCE.authors, domain=Reference, range=Optional[Union[Union[dict, AuthorReference], List[Union[dict, AuthorReference]]]])
 
 slots.corresponding_author = Slot(uri=ALLIANCE.corresponding_author, name="corresponding_author", curie=ALLIANCE.curie('corresponding_author'),
-                   model_uri=ALLIANCE.corresponding_author, domain=Reference, range=Optional[Union[str, ReferenceCurie]])
+                   model_uri=ALLIANCE.corresponding_author, domain=AuthorReference, range=Optional[Union[bool, Bool]])
 
-slots.initials = Slot(uri=ALLIANCE.initials, name="initials", curie=ALLIANCE.curie('initials'),
-                   model_uri=ALLIANCE.initials, domain=Reference, range=Optional[Union[str, ReferenceCurie]])
+slots.first_author = Slot(uri=ALLIANCE.first_author, name="first_author", curie=ALLIANCE.curie('first_author'),
+                   model_uri=ALLIANCE.first_author, domain=AuthorReference, range=Optional[Union[bool, Bool]])
 
 slots.title = Slot(uri=ALLIANCE.title, name="title", curie=ALLIANCE.curie('title'),
                    model_uri=ALLIANCE.title, domain=Reference, range=Optional[str])
@@ -5120,9 +5099,6 @@ slots.volume = Slot(uri=ALLIANCE.volume, name="volume", curie=ALLIANCE.curie('vo
 
 slots.publisher = Slot(uri=ALLIANCE.publisher, name="publisher", curie=ALLIANCE.curie('publisher'),
                    model_uri=ALLIANCE.publisher, domain=Reference, range=Optional[str])
-
-slots.address = Slot(uri=ALLIANCE.address, name="address", curie=ALLIANCE.curie('address'),
-                   model_uri=ALLIANCE.address, domain=None, range=Optional[str])
 
 slots.variant_status = Slot(uri=ALLIANCE.variant_status, name="variant_status", curie=ALLIANCE.curie('variant_status'),
                    model_uri=ALLIANCE.variant_status, domain=None, range=Optional[Union[str, "VariantStatusEnum"]])
@@ -5193,11 +5169,17 @@ slots.iso_abbreviation = Slot(uri=ALLIANCE.iso_abbreviation, name="iso_abbreviat
 slots.medline_abbreviation = Slot(uri=ALLIANCE.medline_abbreviation, name="medline_abbreviation", curie=ALLIANCE.curie('medline_abbreviation'),
                    model_uri=ALLIANCE.medline_abbreviation, domain=Resource, range=Optional[str])
 
+slots.copyright_date = Slot(uri=ALLIANCE.copyright_date, name="copyright_date", curie=ALLIANCE.curie('copyright_date'),
+                   model_uri=ALLIANCE.copyright_date, domain=Resource, range=Optional[Union[str, XSDDate]])
+
 slots.print_issn = Slot(uri=ALLIANCE.print_issn, name="print_issn", curie=ALLIANCE.curie('print_issn'),
                    model_uri=ALLIANCE.print_issn, domain=Resource, range=Optional[str])
 
 slots.online_issn = Slot(uri=ALLIANCE.online_issn, name="online_issn", curie=ALLIANCE.curie('online_issn'),
                    model_uri=ALLIANCE.online_issn, domain=Resource, range=Optional[str])
+
+slots.summary = Slot(uri=ALLIANCE.summary, name="summary", curie=ALLIANCE.curie('summary'),
+                   model_uri=ALLIANCE.summary, domain=Resource, range=Optional[str])
 
 slots.editors = Slot(uri=ALLIANCE.editors, name="editors", curie=ALLIANCE.curie('editors'),
                    model_uri=ALLIANCE.editors, domain=Resource, range=Optional[Union[Union[dict, AuthorReference], List[Union[dict, AuthorReference]]]])
@@ -5534,9 +5516,6 @@ slots.ConditionRelation_condition_relation_type = Slot(uri=ALLIANCE.condition_re
 
 slots.Reference_reference_id = Slot(uri=ALLIANCE.reference_id, name="Reference_reference_id", curie=ALLIANCE.curie('reference_id'),
                    model_uri=ALLIANCE.Reference_reference_id, domain=Reference, range=int)
-
-slots.Reference_date_updated = Slot(uri=ALLIANCE.date_updated, name="Reference_date_updated", curie=ALLIANCE.curie('date_updated'),
-                   model_uri=ALLIANCE.Reference_date_updated, domain=Reference, range=Optional[Union[str, XSDDate]])
 
 slots.MeshDetail_reference_id = Slot(uri=ALLIANCE.reference_id, name="MeshDetail_reference_id", curie=ALLIANCE.curie('reference_id'),
                    model_uri=ALLIANCE.MeshDetail_reference_id, domain=MeshDetail, range=int)
