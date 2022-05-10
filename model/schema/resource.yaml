@@ -87,12 +87,22 @@ slots:
     domain: Resource
     range: string
 
+  copyright_date:
+    description: >-
+    domain: Resource
+    range: date
+
   print_issn:
     description: >-
     domain: Resource
     range: string
 
   online_issn:
+    description: >-
+    domain: Resource
+    range: string
+
+  summary:
     description: >-
     domain: Resource
     range: string

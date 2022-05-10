@@ -40,10 +40,9 @@ classes:
     is_a: AuditedObject
     slots:
       - corresponding_author
+      - first_author
       - first_name
-      - middle_name
       - last_name
-      - initials
       - cross_references
 
   Reference:
@@ -54,18 +53,18 @@ classes:
       named references.
     slots:
       - abstract
+      - authors
       - category
-      - citation
       - curie
       - date_arrived_in_pubmed
+      - date_last_modified_in_pubmed
       - date_published
-      - issue_date
       - issue_name
       - keywords
       - language
       - merged_into_id
       - open_access
-      - pages
+      - page_range
       - plain_language_abstract
       - publisher
       - pubmed_abstract_languages
@@ -91,11 +90,6 @@ classes:
       reference_id:
         description: >-
           The primary key for the Reference object in the references table.
-      date_updated:
-        notes: >-
-          In the literature database, the values in this column actually
-          correspond to date_last_modified_in_pubmed, so the column should
-          be renamed in the literature database.
 
   MeshDetail:
     is_a: AuditedObject
@@ -160,35 +154,33 @@ slots:
   pubmed_type:
     description: >-
       Type of Reference as described by PubMed.
+      Only relevant for PubMed references.
     multivalued: true
     domain: Reference
     range: pubmed_type_enum
 
   date_published:
     description: >-
-      Date on which an entity was created.
+      Date on which an entity was published.  From PubMed otherwise from Mod
+      or manual reference creation.
     notes: >-
       Values here can be quite variable: e.g., just a year, or a year-season, etc.
     multivalued: false
     range: string
 
   date_arrived_in_pubmed:
-    description: Day in which a reference or resource was created in PUBMED. Only relevant for PUBMED references.
+    description: >-
+      Day in which a reference or resource was created in PubMed.
+      Only relevant for PubMed references.
     multivalued: true
-    range: string
     domain: Reference
+    range: string
 
   date_last_modified_in_pubmed:
-    notes: >-
-      Currently values in date_updated slot actually correspond to date_arrived_in_pubmed.
     description: Date on which entity was last updated at PubMed.
+      Only relevant for PubMed references.
     multivalued: false
     domain: Reference
-    range: string
-
-  issue_date:
-    description: Date on which an entity was issued.
-    multivalued: false
     range: string
 
   open_access:
@@ -199,27 +191,35 @@ slots:
     domain: Reference
     range: boolean
 
-  pages:
-    description: page number of source referenced for statement or publication
+  page_range:
+    description: >-
+      Page numbers of source referenced for statement or publication.
+      From PubMed otherwise from Mod or manual reference creation.
     multivalued: false
     range: string
-    exact_mappings:
+    close_mappings:
       - WIKIDATA_PROPERTY:P304
     
   plain_language_abstract:
-    description: Plain language abstract
+    description: >-
+      Lay person, readable version of the abstract.
+      Only relevant for PubMed references.
     multivalued: false
     domain: Reference
     range: string
 
   pubmed_abstract_languages:
-    description: Languages for the abstract
+    description: >-
+      Languages for the abstract.
+      Only relevant for PubMed references.
     multivalued: true
     domain: Reference
     range: string
 
   pubmed_publication_status:
-    description: status of the publication
+    description: >-
+      Status of the publication at PubMed.
+      Only relevant for PubMed references.
     multivalued: false
     domain: Reference
     range: pubmed_publication_status_enum
@@ -227,93 +227,88 @@ slots:
   abstract:
     description: >-
       The author summary of the publication.
-    multivalued: false
-    domain: Reference
-    range: string
-
-  citation:
-    description: >-
-      A short form way of referring to a publication, typically consisting of
-      the first author's name, publication date, and journal (title, vol, pages).
+      From PubMed otherwise from Mod or manual reference creation.
     multivalued: false
     domain: Reference
     range: string
 
   issue_name:
+    description: >-
+      The number of the journal issue in which the article was published.
+      From PubMed otherwise from Mod or manual reference creation.
     multivalued: false
     domain: Reference
     range: string
 
   category:
+    description: >-
+      The alliance category type.  Only relevant at Alliance.
     multivalued: false
     domain: Reference
     range: reference_category_enum
 
   keywords:
+    description: >-
+      Keywords tagging a publication.  Aggregation of PubMed and ZFIN,
+      editable at Alliance.
     multivalued: true
-    description: keywords tagging a publication
     range: string
   
   language:
+    description: Language of the reference.  Aggregation of PubMed and FlyBase,
+      editable at Alliance.
     multivalued: false
-    description: Language of the reference
     domain: Reference
     range: string
 
   merged_into_id:
-    multivalued: false
     description: ID that used to refer to this reference
+    multivalued: false
     domain: Reference
     range: uriorcurie
 
-  summary:
-    description: >-
-    domain: Reference
-    range: string
-
-  copyright_date:
-    description: >-
-    domain: Reference
-    range: date
-
   authors:
+    description: >-
+      Ordered author entities for this publication.  An Author is associated
+      with only one publication.  A Person can be associated with multiple 
+      publications.
     multivalued: true
     domain: Reference
     range: AuthorReference
 
   corresponding_author:
-    description: >-
-    range: Reference
-    domain: Reference
+    description: Indicates if the author is a corresponding author.
+    range: boolean
+    domain: AuthorReference
 
-
-  initials:
-    description: >-
-    domain: Reference
-    range: Reference
+  first_author:
+    description: Indicates if the author is a first author.
+    range: boolean
+    domain: AuthorReference
 
   title:
     description: >-
       A human readable title for a reference.
+      From PubMed otherwise from Mod or manual reference creation.
     multivalued: false
     domain: Reference
     range: string
 
   volume:
-    multivalued: false
-    range: string
-    domain: Reference
     description: >-
-  publisher:
+      Volume associated with a reference.
+      From PubMed otherwise from Mod or manual reference creation.
     multivalued: false
-    domain: Reference
     range: string
+    domain: Reference
 
-  address:
+  publisher:
     description: >-
-      the particulars of the place where someone or an organization is situated.  For now, this slot is a
-      simple text blob containing all relevant details of the given location for fitness of purpose.
-      For the moment, this address can include other contact details such as email and phone number(?).
+      Publisher associated with a reference or resource.
+      From PubMed otherwise from Mod or manual reference creation.
+    multivalued: false
+    domain: Reference
+    range: string
 
 enums:
 
