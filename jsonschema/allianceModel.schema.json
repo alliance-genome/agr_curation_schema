@@ -6617,7 +6617,7 @@
                "type": "string"
             },
             "plain_language_abstract": {
-               "description": "Plain language abstract. Only relevant for PubMed references.",
+               "description": "Lay person, readable version of the abstract. Only relevant for PubMed references.",
                "type": "string"
             },
             "publisher": {

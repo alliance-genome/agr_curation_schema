@@ -197,12 +197,12 @@ slots:
       From PubMed otherwise from Mod or manual reference creation.
     multivalued: false
     range: string
-    exact_mappings:
+    close_mappings:
       - WIKIDATA_PROPERTY:P304
     
   plain_language_abstract:
     description: >-
-      Plain language abstract.
+      Lay person, readable version of the abstract.
       Only relevant for PubMed references.
     multivalued: false
     domain: Reference
@@ -279,12 +279,12 @@ slots:
   corresponding_author:
     description: Indicates if the author is a corresponding author.
     range: boolean
-    domain: Reference
+    domain: AuthorReference
 
   first_author:
     description: Indicates if the author is a first author.
     range: boolean
-    domain: Reference
+    domain: AuthorReference
 
   title:
     description: >-
