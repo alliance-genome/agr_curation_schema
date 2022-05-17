@@ -58,7 +58,7 @@ classes:
       - parent_cell_line
       - mutant_cell_lines
       - embryonic_stem_cell_lines
-      - images
+      - associated_with_figure
       - origins
       - database_status
       - inheritence_mode

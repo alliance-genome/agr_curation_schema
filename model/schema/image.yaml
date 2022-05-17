@@ -142,10 +142,11 @@ slots:
     required: false
     multivalued: false
 
-  associated_with_figure:
+  associated_with_figures:
     description: >-
       Holds between an entity and a Figure.
     range: Figure
+
 
   from_image:
     description: >-
@@ -212,6 +213,7 @@ slots:
     description: >-
       Any associated image
     range: Image
+    multivalued: True
 
   label:
     description: >-
