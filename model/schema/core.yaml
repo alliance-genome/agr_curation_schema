@@ -189,6 +189,7 @@ classes:
       - subject
       - predicate
       - object
+      - references
 
   EntitySynonym:
     is_a: Association
