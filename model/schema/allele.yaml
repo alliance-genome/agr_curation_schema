@@ -49,13 +49,10 @@ classes:
     slots:
       - symbol
       - associated_references
+      - associated_figures
       - related_notes
       - germline_transmission_status
-      - parent_cell_line
-      - mutant_cell_lines
-      - embryonic_stem_cell_lines
       - associated_with_figure
-      - origins
       - database_status
       - inheritence_mode
       - in_collection
@@ -182,7 +179,28 @@ classes:
   CellLine:
     is_a: AuditedObject
     description: >-
-      Dummy cell line class
+    slots:
+      - name
+      - strain
+      - type
+      - mutant_cell_lines
+      - creator
+      - notes
+      - vector_name
+      - vectory_type
+
+  MutantCellLine:
+    is_a: CellLine
+    slots:
+      - parent_cell_line
+      - derivation_type
+      # - associated_alleles
+
+  EmbryonicCellLine:
+    is_a: CellLine
+    slots:
+      - library_name
+      - parent_cell_line
 
   SequenceTargetingReagent:
     description: >-
@@ -232,6 +250,7 @@ classes:
       - notes
       - curator_confirmed
       - referenced_allele
+
 
 # Slots
 
