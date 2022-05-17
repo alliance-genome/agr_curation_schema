@@ -732,3 +732,9 @@ enums:
           SGD: systematic_name (e.g., YHR084W)
           WB: Sequence_name (e.g., R09F10.2)
           FB: Annotation symbol (e.g., CG4889)
+      # Other SGD alias types: distinct from above types?
+      NCBI protein name:
+      Uniform:
+      Non-uniform:
+      Retired name:
+      SGDID Secondary:
