@@ -48,9 +48,6 @@ classes:
       element can be endogenous or constructed.
     slots:
       - symbol
-      - contains_constructs
-      - molecular_mutations
-      - functional_impact
       - associated_references
       - related_notes
       - germline_transmission_status
@@ -89,7 +86,7 @@ classes:
   AlleleGenerationMethod:
     is_a: AuditedObject
     slots:
-      - generated_allele
+      - referenced_allele
       - mutagen
       - mutagenesis_method
 
@@ -175,6 +172,12 @@ classes:
       - construct_components
       - references
 
+  AlleleFunctionalImpact:
+    is_a: AuditedObject
+    slots:
+      - referenced_allele
+      - functional_impact
+      - reference
 
   CellLine:
     is_a: AuditedObject
@@ -205,7 +208,6 @@ classes:
       object:
         range: Gene
 
-
   ConstructComponentAssociation:
     is_a: Association
     slot_usage:
@@ -221,12 +223,29 @@ classes:
     slots:
       - symbol
 
+  MolecularMutation:
+    is_a: AuditedObject
+    slots:
+      - reference
+      - evidence_type
+      - date_updated
+      - notes
+      - curator_confirmed
+      - referenced_allele
 
 # Slots
 
 slots:
 
-  generated_allele:
+  evidence_type:
+    domain: MolecularMutation
+    range: evidence_type_enum
+
+  curator_confirmed:
+    domain: MolecularMutation
+    range: boolean
+
+  referenced_allele:
     domain: AlleleGenerationMethod
     range: Allele
 
@@ -239,14 +258,6 @@ slots:
     multivalued: true
     domain: Allele
     range: Construct
-
-  molecular_mutations:
-    description: >-
-      Description of the DNA changes if precise
-      genomic location unknown
-    domain: Allele
-    multivalued: true
-    range: string
 
   mutation_type:
     description: SO term for type of mutation
@@ -272,8 +283,8 @@ slots:
     description: >-
       Experimentally assessed functional impact of the
       allele, e.g. knockout / amorphic
-    domain: Allele
-    range: string
+    domain: AlleleFunctionalImpact
+    range: functional_impact_enum
 
   generation_method:
     description: >-
@@ -419,3 +430,8 @@ enums:
       embryos:
       not specified:
       sperm:
+
+  functional_impact_enum:
+    permissible_values:
+      amorphic:
+      knockout:
