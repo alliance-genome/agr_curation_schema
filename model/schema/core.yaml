@@ -145,10 +145,17 @@ classes:
       - curie
       - page_areas
 
+  # SYNONYM DEV
   Synonym:
     is_a: AuditedObject
+    description: >-
+      A current or alternate name for an object.
+    notes: >-
+      These related slots need to be considered: name, display_name, symbol, synonym.
     slots:
-      - synonym
+      - synonym_type
+      - synonym_ascii_string
+      - synonym_display_string
 
   Note:
     is_a: AuditedObject
@@ -190,10 +197,16 @@ classes:
       - predicate
       - object
 
+  # SYNONYM DEV
   EntitySynonym:
     is_a: Association
     description: >-
       A relationship between an entity and a synonym.
+    notes: >-
+      This is suggested as an alternative to the synonyms slot.
+      It is not clear what the predicate should be. Currently there is the
+      entity_synonym_type_set enum with current or alias as options, but we may
+      not want to do that.
     slot_usage:
       object:
         range: Synonym
@@ -264,8 +277,44 @@ classes:
 
 slots:
 
+  # SYNONYM DEV
   synonym:
     description: the text string of the synonym
+
+  synonym_ascii_string:
+    description: >-
+      A version of a synonym using only ASCII characters that is easier to type,
+      print and parse. For example, Greek characters would be transliterated.
+    notes: >-
+      This slot, with synonym_display_string, is suggested as a replacement for
+      the existing synonym slot.
+      This is analogous to the Alliance agr_schemas symbolText attribute for
+      alleles.
+      FlyBase has both ASCII and UTF8 versions of text for all synonyms. Maybe
+      this would be helpful.
+    domain: Synonym
+    range: string
+    multivalued: false
+    required: true
+
+  synonym_display_string:
+    description: >-
+      A version of a synonym name for display. Any UTF8 character is permitted.
+      Use HTML to represent sub/superscripts.
+    notes: >-
+      This slot, with synonym_ascii_string, is suggested as a replacement for
+      the existing synonym slot.
+      This slot might be redundant with existing name and display_name slots.
+    domain: Synonym
+    range: string
+    multivalued: false
+    required: true
+
+  synonym_type:
+    domain: Synonym
+    range: synonym_type_set
+    multivalued: false
+    required: true
 
   start:
     description: The start of the feature in positive 1-based integer coordinates
@@ -674,6 +723,40 @@ slots:
 
 enums:
 
+# SYNONYM DEV
+  synonym_type_set:
+    permissible_values:
+      symbol:
+        description: >-
+          A short string representing an entity, usually an abbreviation.
+        notes: >-
+          SGD: gene_name (e.g., ABC1)
+          WB: Public_name (e.g., abu-9)
+          FB: symbol (e.g., wg)
+          ZFIN: Symbol (e.g., pax6a)
+          MGI: Symbol (e.g., Ace)
+          RGD: (e.g., Abat)
+      name:
+        description: >-
+          A longer string representing an entity name in which words usally spelled out in full.
+        notes: >-
+          If this is implemented, the current name slot might be supplanted by Synonyms of type name.
+          SGD's NCBI protein name might fit in as simply a name-type synonym (attributed to NCBI somehow).
+          SGD:
+          WB:
+          FB: fullname (e.g., wingless)
+          ZFIN: name (e.g., paired box 6a)
+          MGI: Name (e.g., angiotensin I converting enzyme (peptidyl-dipeptidase A) 1)
+          RGD: Name (e.g., 4-aminobutyrate aminotransferase)
+      systematic_name:
+        notes: >-
+          It seems like a few MODS have systematic names, perhaps coming from
+          the early days of full genome sequencing.
+          Do we want to group them into one type?
+          SGD: systematic_name (e.g., YHR084W)
+          WB: Sequence_name (e.g., R09F10.2)
+          FB: Annotation symbol (e.g., CG4889)
+
   entity_synonym_type_set:
     permissible_values:
       current:
@@ -685,3 +768,10 @@ enums:
         description: >-
           The synonym is an alternate symbol or name for the entity. It is not
           the currently preferred symbol/name for the entity.
+        notes: >-
+          SGD: alias
+          WB: Other_name
+          FB: is_current BOOLEAN
+          ZFIN: Previous Names
+          MGI: Synonyms
+          RGD: other unapproved/deprecated
