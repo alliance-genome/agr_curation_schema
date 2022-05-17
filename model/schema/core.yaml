@@ -87,6 +87,7 @@ classes:
       is derived indirectly from the genome (i.e. polypeptide or protein via
       RNA transcript translation).
     slots:
+      - symbol
       - name
       - synonyms
       - cross_references
@@ -116,7 +117,6 @@ classes:
       A pseudogene may be considered a gene under this definition, albeit no longer functional.
     is_a: GenomicEntity
     slots:
-      - symbol
       - gene_synopsis
       - gene_synopsis_URL
       - gene_type
@@ -145,17 +145,15 @@ classes:
       - curie
       - page_areas
 
-  # SYNONYM DEV
   Synonym:
     is_a: AuditedObject
     description: >-
-      A current or alternate name for an object.
-    notes: >-
-      These related slots need to be considered: name, display_name, symbol, synonym.
+      Some symbol or name that is used to refer to an object. It can be the
+      primary/current/accepted symbol/name, or an alias.
     slots:
       - synonym_type
-      - synonym_ascii_string
-      - synonym_display_string
+      - format_name
+      - display_name
 
   Note:
     is_a: AuditedObject
@@ -203,15 +201,12 @@ classes:
     description: >-
       A relationship between an entity and a synonym.
     notes: >-
-      This is suggested as an alternative to the synonyms slot.
-      It is not clear what the predicate should be. Currently there is the
-      entity_synonym_type_set enum with current or alias as options, but we may
-      not want to do that.
+      An alternative to the synonyms slot that allows for evidence in support
+      of the entity-synonym association.
+      It is not clear what the predicate should be.
     slot_usage:
       object:
         range: Synonym
-      predicate:
-        range: entity_synonym_type_set
       references:
         description: >-
           The references in which the synonym is used to refer to the entity.
@@ -278,37 +273,23 @@ classes:
 slots:
 
   # SYNONYM DEV
-  synonym:
-    description: the text string of the synonym
-
-  synonym_ascii_string:
+  format_name:
     description: >-
-      A version of a synonym using only ASCII characters that is easier to type,
-      print and parse. For example, Greek characters would be transliterated.
-    notes: >-
-      This slot, with synonym_display_string, is suggested as a replacement for
-      the existing synonym slot.
-      This is analogous to the Alliance agr_schemas symbolText attribute for
-      alleles.
-      FlyBase has both ASCII and UTF8 versions of text for all synonyms. Maybe
-      this would be helpful.
+      A version of a symbol/name string using only ASCII characters that is
+      easier to type, print and parse. For example, Greek characters would be
+      transliterated.
     domain: Synonym
     range: string
-    multivalued: false
     required: true
+    multivalued: false
 
-  synonym_display_string:
+  display_name:
     description: >-
-      A version of a synonym name for display. Any UTF8 character is permitted.
-      Use HTML to represent sub/superscripts.
-    notes: >-
-      This slot, with synonym_ascii_string, is suggested as a replacement for
-      the existing synonym slot.
-      This slot might be redundant with existing name and display_name slots.
-    domain: Synonym
+      A version of a symbol/name string for display. Any UTF8 character is
+      permitted. Use HTML to represent sub/superscripts.
     range: string
-    multivalued: false
     required: true
+    multivalued: false
 
   synonym_type:
     domain: Synonym
@@ -337,11 +318,6 @@ slots:
   page_areas:
     required: true
     multivalued: true
-    range: string
-
-  display_name:
-    required: true
-    multivalued: false
     range: string
 
   curator_comment:
@@ -567,9 +543,17 @@ slots:
 
   name:
     description: >-
-      a human-readable name for an entity
+      The current/approved full name for a particular thing.
+    range: Synonym
     multivalued: false
-    range: string
+
+  symbol:
+    description: >-
+      The current/approved symbol for a particular thing.
+    range: Synonym
+    multivalued: false
+    exact_mappings:
+      - biolink:symbol
 
   cross_references:
     singular_name: cross_reference
@@ -580,12 +564,6 @@ slots:
     range: CrossReference
     inlined: true
     inlined_as_list: true
-
-  symbol:
-    description: >-
-      Symbol for a particular thing
-    exact_mappings:
-      - biolink:symbol
 
   synonyms:
     singular_name: synonym
@@ -723,7 +701,6 @@ slots:
 
 enums:
 
-# SYNONYM DEV
   synonym_type_set:
     permissible_values:
       symbol:
@@ -741,8 +718,7 @@ enums:
           A longer string representing an entity name in which words usally spelled out in full.
         notes: >-
           If this is implemented, the current name slot might be supplanted by Synonyms of type name.
-          SGD's NCBI protein name might fit in as simply a name-type synonym (attributed to NCBI somehow).
-          SGD:
+          SGD: name description
           WB:
           FB: fullname (e.g., wingless)
           ZFIN: name (e.g., paired box 6a)
@@ -756,22 +732,3 @@ enums:
           SGD: systematic_name (e.g., YHR084W)
           WB: Sequence_name (e.g., R09F10.2)
           FB: Annotation symbol (e.g., CG4889)
-
-  entity_synonym_type_set:
-    permissible_values:
-      current:
-        description: >-
-          The synonym is an officially accepted synonym for an entity.
-          An entity should have only one current synonym of a give type.
-          For example, only one current symbol and one current full name.
-      alias:
-        description: >-
-          The synonym is an alternate symbol or name for the entity. It is not
-          the currently preferred symbol/name for the entity.
-        notes: >-
-          SGD: alias
-          WB: Other_name
-          FB: is_current BOOLEAN
-          ZFIN: Previous Names
-          MGI: Synonyms
-          RGD: other unapproved/deprecated

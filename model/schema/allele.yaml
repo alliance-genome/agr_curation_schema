@@ -47,7 +47,6 @@ classes:
       differing from the reference DNA sequence.  The genomic
       element can be endogenous or constructed.
     slots:
-      - symbol
       - contains_constructs
       - molecular_mutations
       - functional_impact
@@ -205,9 +204,6 @@ classes:
 
   ConstructComponent:
     is_a: GenomicEntity
-    slots:
-      - symbol
-
 
 # Slots
 
