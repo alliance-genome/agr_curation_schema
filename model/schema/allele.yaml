@@ -49,7 +49,7 @@ classes:
     slots:
       - symbol
       - associated_references
-      - associated_figures
+      - associated_with_figure
       - related_notes
       - germline_transmission_status
       - associated_with_figure
@@ -174,20 +174,20 @@ classes:
     slots:
       - referenced_allele
       - functional_impact
-      - reference
+      - single_reference
 
   CellLine:
     is_a: AuditedObject
     description: >-
     slots:
       - name
-      - strain
+      - affected_genomic_model
       - type
       - mutant_cell_lines
-      - creator
-      - notes
+      - created_by
+      - related_notes
       - vector_name
-      - vectory_type
+      - vector_type
 
   MutantCellLine:
     is_a: CellLine
@@ -244,10 +244,10 @@ classes:
   MolecularMutation:
     is_a: AuditedObject
     slots:
-      - reference
+      - single_reference
       - evidence_type
       - date_updated
-      - notes
+      - related_notes
       - curator_confirmed
       - referenced_allele
 
@@ -255,6 +255,11 @@ classes:
 # Slots
 
 slots:
+
+  vector_name:
+  vector_type:
+  derivation_type:
+  library_name:
 
   evidence_type:
     domain: MolecularMutation
@@ -454,3 +459,10 @@ enums:
     permissible_values:
       amorphic:
       knockout:
+
+  evidence_type_enum:
+    permissible_values:
+      paper_evidence:
+      laboratory_evidence:
+      person_evidence:
+      author_evidence:

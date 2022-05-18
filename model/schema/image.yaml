@@ -233,3 +233,8 @@ slots:
     range: integer
     required: true
     multivalued: false
+
+  associated_with_figure:
+    range: Figure
+    description: >-
+      placeholder

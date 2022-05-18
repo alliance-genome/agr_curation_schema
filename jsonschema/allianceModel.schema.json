@@ -94,6 +94,13 @@
                "description": "The relationship between AGM and disease. Submitted value should be a vocabulary term from the 'AGM disease relations' vocabulary",
                "type": "string"
             },
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "related_notes": {
                "description": "Holds between an object and a list of related Note objects.",
                "items": {
@@ -195,6 +202,13 @@
             "predicate": {
                "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                "type": "string"
+            },
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "single_reference": {
                "description": "The reference in which the phenotype association was asserted/reported.",
@@ -429,11 +443,9 @@
                },
                "type": "array"
             },
-            "contains_constructs": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
+            "associated_with_figure": {
+               "description": "placeholder",
+               "type": "string"
             },
             "created_by": {
                "description": "The individual that created the entity.",
@@ -471,14 +483,6 @@
                },
                "type": "array"
             },
-            "functional_impact": {
-               "description": "Experimentally assessed functional impact of the allele, e.g. knockout / amorphic",
-               "type": "string"
-            },
-            "generation_method": {
-               "description": "Technique used to create the allele, e.g. spontaneous / naturally occuring / radiation",
-               "type": "string"
-            },
             "genomic_locations": {
                "items": {
                   "$ref": "#/$defs/GenomicLocation"
@@ -487,10 +491,6 @@
             },
             "germline_transmission_status": {
                "description": "For alleles made in cell lines, have they been transmitted to the germline of an animal",
-               "type": "string"
-            },
-            "images": {
-               "description": "Any associated image",
                "type": "string"
             },
             "in_collection": {
@@ -513,13 +513,6 @@
                "description": "The individual that last modified the entity.",
                "type": "string"
             },
-            "molecular_mutations": {
-               "description": "Description of the DNA changes if precise genomic location unknown",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
             "mutant_cell_lines": {
                "description": "Mutant cell lines known to carry the allele",
                "items": {
@@ -534,13 +527,6 @@
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
-            },
-            "origins": {
-               "description": "Affected genomic models that the allele was introduced in",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
             },
             "parent_cell_line": {
                "$ref": "#/$defs/CellLine",
@@ -590,6 +576,76 @@
             "name"
          ],
          "title": "Allele",
+         "type": "object"
+      },
+      "AlleleConstructAssociation": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence_code": {
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "object": {
+               "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "predicate": {
+               "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+               "type": "string"
+            },
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "related_note": {
+               "$ref": "#/$defs/Note",
+               "description": "Holds between an object and a Note object."
+            },
+            "single_reference": {
+               "description": "holds between an object and a single reference",
+               "type": "string"
+            },
+            "subject": {
+               "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "subject",
+            "predicate",
+            "object"
+         ],
+         "title": "AlleleConstructAssociation",
          "type": "object"
       },
       "AlleleDiseaseAnnotation": {
@@ -682,6 +738,13 @@
                "description": "The relationship between allele and disease. Submitted value should be a vocabulary term from the 'Allele disease relations' vocabulary",
                "type": "string"
             },
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "related_notes": {
                "description": "Holds between an object and a list of related Note objects.",
                "items": {
@@ -725,6 +788,54 @@
          "title": "AlleleDiseaseAnnotation",
          "type": "object"
       },
+      "AlleleFunctionalImpact": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "functional_impact": {
+               "$ref": "#/$defs/FunctionalImpactEnum",
+               "description": "Experimentally assessed functional impact of the allele, e.g. knockout / amorphic"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "referenced_allele": {
+               "type": "string"
+            },
+            "single_reference": {
+               "description": "holds between an object and a single reference",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AlleleFunctionalImpact",
+         "type": "object"
+      },
       "AlleleGeneAssociation": {
          "additionalProperties": false,
          "description": "Association between an allele and a gene",
@@ -766,6 +877,13 @@
                "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                "type": "string"
             },
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "related_note": {
                "$ref": "#/$defs/Note",
                "description": "Holds between an object and a Note object."
@@ -786,6 +904,52 @@
             "object"
          ],
          "title": "AlleleGeneAssociation",
+         "type": "object"
+      },
+      "AlleleGenerationMethod": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "mutagen": {
+               "$ref": "#/$defs/MutagenEnum"
+            },
+            "mutagenesis_method": {
+               "$ref": "#/$defs/MutagenesisMethodEnum"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "referenced_allele": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AlleleGenerationMethod",
          "type": "object"
       },
       "AllelePhenotypeAnnotation": {
@@ -842,6 +1006,13 @@
             "predicate": {
                "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                "type": "string"
+            },
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "single_reference": {
                "description": "The reference in which the phenotype association was asserted/reported.",
@@ -903,6 +1074,13 @@
             "predicate": {
                "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                "type": "string"
+            },
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "related_note": {
                "$ref": "#/$defs/Note",
@@ -967,6 +1145,13 @@
                "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                "type": "string"
             },
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "related_note": {
                "$ref": "#/$defs/Note",
                "description": "Holds between an object and a Note object."
@@ -1029,6 +1214,13 @@
             "predicate": {
                "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                "type": "string"
+            },
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "related_note": {
                "$ref": "#/$defs/Note",
@@ -1369,6 +1561,13 @@
                "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                "type": "string"
             },
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "subject": {
                "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
                "type": "string"
@@ -1690,8 +1889,11 @@
       },
       "CellLine": {
          "additionalProperties": false,
-         "description": "Dummy cell line class",
+         "description": "",
          "properties": {
+            "affected_genomic_model": {
+               "type": "string"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -1714,9 +1916,36 @@
                "description": "The individual that last modified the entity.",
                "type": "string"
             },
+            "mutant_cell_lines": {
+               "description": "Mutant cell lines known to carry the allele",
+               "items": {
+                  "$ref": "#/$defs/CellLine"
+               },
+               "type": "array"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "related_notes": {
+               "description": "Holds between an object and a list of related Note objects.",
+               "items": {
+                  "$ref": "#/$defs/Note"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            },
+            "vector_name": {
+               "type": "string"
+            },
+            "vector_type": {
+               "type": "string"
             }
          },
          "required": [
@@ -2073,6 +2302,13 @@
             "predicate": {
                "$ref": "#/$defs/ConstructComponentRelationEnum",
                "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type."
+            },
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "subject": {
                "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
@@ -2791,6 +3027,80 @@
          "title": "EMAPATerm",
          "type": "object"
       },
+      "EmbryonicCellLine": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "affected_genomic_model": {
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "library_name": {
+               "type": "string"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "mutant_cell_lines": {
+               "description": "Mutant cell lines known to carry the allele",
+               "items": {
+                  "$ref": "#/$defs/CellLine"
+               },
+               "type": "array"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "parent_cell_line": {
+               "$ref": "#/$defs/CellLine",
+               "description": "Parental cell line of alleles made in embryonic stem cells"
+            },
+            "related_notes": {
+               "description": "Holds between an object and a list of related Note objects.",
+               "items": {
+                  "$ref": "#/$defs/Note"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            },
+            "vector_name": {
+               "type": "string"
+            },
+            "vector_type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "EmbryonicCellLine",
+         "type": "object"
+      },
       "EntityStatement": {
          "additionalProperties": false,
          "description": "Free-text describing some aspect of an entity.",
@@ -2913,6 +3223,17 @@
             "alias"
          ],
          "title": "EntitySynonymTypeSet",
+         "type": "string"
+      },
+      "EvidenceTypeEnum": {
+         "description": "",
+         "enum": [
+            "paper_evidence",
+            "laboratory_evidence",
+            "person_evidence",
+            "author_evidence"
+         ],
+         "title": "EvidenceTypeEnum",
          "type": "string"
       },
       "ExperimentalCondition": {
@@ -3104,6 +3425,13 @@
             "predicate": {
                "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                "type": "string"
+            },
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "subject": {
                "$ref": "#/$defs/ExpressionAnnotation",
@@ -3703,6 +4031,15 @@
          "title": "File",
          "type": "object"
       },
+      "FunctionalImpactEnum": {
+         "description": "",
+         "enum": [
+            "amorphic",
+            "knockout"
+         ],
+         "title": "FunctionalImpactEnum",
+         "type": "string"
+      },
       "GOTerm": {
          "additionalProperties": false,
          "description": "",
@@ -3979,6 +4316,13 @@
             "predicate": {
                "description": "The relationship between gene and disease. Submitted value should be a vocabulary term from the 'Gene disease relations' vocabulary",
                "type": "string"
+            },
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "related_notes": {
                "description": "Holds between an object and a list of related Note objects.",
@@ -4354,6 +4698,13 @@
             "predicate": {
                "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                "type": "string"
+            },
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "sgd_strain_background": {
                "type": "string"
@@ -5499,6 +5850,63 @@
          "title": "MeshDetail",
          "type": "object"
       },
+      "MolecularMutation": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "curator_confirmed": {
+               "type": "boolean"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence_type": {
+               "$ref": "#/$defs/EvidenceTypeEnum"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "referenced_allele": {
+               "type": "string"
+            },
+            "related_notes": {
+               "description": "Holds between an object and a list of related Note objects.",
+               "items": {
+                  "$ref": "#/$defs/Note"
+               },
+               "type": "array"
+            },
+            "single_reference": {
+               "description": "holds between an object and a single reference",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "MolecularMutation",
+         "type": "object"
+      },
       "Molecule": {
          "additionalProperties": false,
          "description": "Molecules as described by WormBase",
@@ -5610,6 +6018,111 @@
             "curie"
          ],
          "title": "Molecule",
+         "type": "object"
+      },
+      "MutagenEnum": {
+         "description": "",
+         "enum": [
+            "CRISPR",
+            "DNA",
+            "DNA and CRISPR",
+            "DNA and TALEN",
+            "EMS",
+            "ENU",
+            "TALEN",
+            "TMP",
+            "g-rays",
+            "not specified",
+            "spontaneous",
+            "zinc finger nuclease"
+         ],
+         "title": "MutagenEnum",
+         "type": "string"
+      },
+      "MutagenesisMethodEnum": {
+         "description": "",
+         "enum": [
+            "adult females",
+            "adult males",
+            "embryos",
+            "not specified",
+            "sperm"
+         ],
+         "title": "MutagenesisMethodEnum",
+         "type": "string"
+      },
+      "MutantCellLine": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "affected_genomic_model": {
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "derivation_type": {
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "mutant_cell_lines": {
+               "description": "Mutant cell lines known to carry the allele",
+               "items": {
+                  "$ref": "#/$defs/CellLine"
+               },
+               "type": "array"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "parent_cell_line": {
+               "$ref": "#/$defs/CellLine",
+               "description": "Parental cell line of alleles made in embryonic stem cells"
+            },
+            "related_notes": {
+               "description": "Holds between an object and a list of related Note objects.",
+               "items": {
+                  "$ref": "#/$defs/Note"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            },
+            "vector_name": {
+               "type": "string"
+            },
+            "vector_type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "MutantCellLine",
          "type": "object"
       },
       "NCBITaxonTerm": {
@@ -6015,6 +6528,13 @@
             "predicate": {
                "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                "type": "string"
+            },
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "single_reference": {
                "description": "The reference in which the phenotype association was asserted/reported.",
