@@ -52,7 +52,6 @@ classes:
       - associated_with_figure
       - related_notes
       - germline_transmission_status
-      - associated_with_figure
       - database_status
       - inheritence_mode
       - in_collection
