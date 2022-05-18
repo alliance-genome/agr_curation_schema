@@ -596,9 +596,6 @@
                "format": "date",
                "type": "string"
             },
-            "evidence_code": {
-               "type": "string"
-            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -616,23 +613,8 @@
                "type": "boolean"
             },
             "predicate": {
-               "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
-               "type": "string"
-            },
-            "references": {
-               "description": "holds between an object and a list of references",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "related_note": {
-               "$ref": "#/$defs/Note",
-               "description": "Holds between an object and a Note object."
-            },
-            "single_reference": {
-               "description": "holds between an object and a single reference",
-               "type": "string"
+               "$ref": "#/$defs/AlleleConstructRelationshipEnum",
+               "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type."
             },
             "subject": {
                "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
@@ -642,11 +624,19 @@
          "required": [
             "internal",
             "subject",
-            "predicate",
-            "object"
+            "object",
+            "predicate"
          ],
          "title": "AlleleConstructAssociation",
          "type": "object"
+      },
+      "AlleleConstructRelationshipEnum": {
+         "description": "",
+         "enum": [
+            "contains"
+         ],
+         "title": "AlleleConstructRelationshipEnum",
+         "type": "string"
       },
       "AlleleDiseaseAnnotation": {
          "additionalProperties": false,

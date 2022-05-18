@@ -106,11 +106,16 @@ classes:
         range: GenomicEntity
 
   AlleleConstructAssociation:
-    is_a: AlleleGenomicEntityAssociation
+    is_a: AuditedObject
     description: >-
     slot_usage:
+      subject:
+        range: Allele
       object:
         range: Construct
+      predicate:
+        range: allele_construct_relationship_enum
+        # TODO: try ifAbsent
 
   AlleleGeneAssociation:
     is_a: AlleleGenomicEntityAssociation
@@ -465,3 +470,8 @@ enums:
       laboratory_evidence:
       person_evidence:
       author_evidence:
+
+  allele_construct_relationship_enum:
+    permissible_values:
+      contains:
+        meaning: RO:0001019
