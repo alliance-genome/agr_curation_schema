@@ -69,6 +69,7 @@ classes:
     slots:
       - okta_id
       - okta_email
+      - user_settings
     slot_usage:
       okta_id:
         required: true
@@ -101,6 +102,12 @@ slots:
 
   okta_email:
     description: The email address of the LoggedInPerson registered with Okta for user authentication
+    domain: LoggedInPerson
+    range: string
+    multivalued: false
+
+  user_settings:
+    description: JSON Blob containing details of UI settings for LoggedInPerson
     domain: LoggedInPerson
     range: string
     multivalued: false
