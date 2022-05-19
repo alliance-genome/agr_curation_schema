@@ -1232,6 +1232,7 @@
 -- # Class: "LoggedInPerson" Description: ""
 --     * Slot: okta_id Description: The Okta identifier for the person registered in Okta for user authentication
 --     * Slot: okta_email Description: The email address of the LoggedInPerson registered with Okta for user authentication
+--     * Slot: user_settings Description: JSON Blob containing details of UI settings for LoggedInPerson
 --     * Slot: last_name Description: last (family) name of a person
 --     * Slot: middle_name Description: middle names of a person
 --     * Slot: first_name Description: first name of a person
@@ -3265,6 +3266,7 @@ CREATE TABLE "Company" (
 CREATE TABLE "LoggedInPerson" (
 	okta_id TEXT NOT NULL, 
 	okta_email TEXT NOT NULL, 
+	user_settings TEXT, 
 	last_name TEXT, 
 	middle_name TEXT, 
 	first_name TEXT, 

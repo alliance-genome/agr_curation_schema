@@ -5058,6 +5058,10 @@
             "unique_id": {
                "description": "A non-curie unique identifier for a thing.",
                "type": "string"
+            },
+            "user_settings": {
+               "description": "JSON Blob containing details of UI settings for LoggedInPerson",
+               "type": "string"
             }
          },
          "required": [

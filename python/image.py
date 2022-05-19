@@ -1,5 +1,5 @@
 # Auto generated from image.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-05-10T16:17:04
+# Generation date: 2022-05-19T15:52:44
 # Schema: image.yaml
 #
 # id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml
@@ -1920,6 +1920,7 @@ class LoggedInPerson(Person):
     internal: Union[bool, Bool] = None
     okta_id: str = None
     okta_email: str = None
+    user_settings: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.unique_id):
@@ -1936,6 +1937,9 @@ class LoggedInPerson(Person):
             self.MissingRequiredField("okta_email")
         if not isinstance(self.okta_email, str):
             self.okta_email = str(self.okta_email)
+
+        if self.user_settings is not None and not isinstance(self.user_settings, str):
+            self.user_settings = str(self.user_settings)
 
         super().__post_init__(**kwargs)
 
@@ -3810,6 +3814,9 @@ slots.okta_id = Slot(uri=ALLIANCE.okta_id, name="okta_id", curie=ALLIANCE.curie(
 
 slots.okta_email = Slot(uri=ALLIANCE.okta_email, name="okta_email", curie=ALLIANCE.curie('okta_email'),
                    model_uri=ALLIANCE.okta_email, domain=LoggedInPerson, range=Optional[str])
+
+slots.user_settings = Slot(uri=ALLIANCE.user_settings, name="user_settings", curie=ALLIANCE.curie('user_settings'),
+                   model_uri=ALLIANCE.user_settings, domain=LoggedInPerson, range=Optional[str])
 
 slots.definition = Slot(uri=ALLIANCE.definition, name="definition", curie=ALLIANCE.curie('definition'),
                    model_uri=ALLIANCE.definition, domain=None, range=Optional[str])

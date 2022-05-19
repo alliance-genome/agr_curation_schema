@@ -697,7 +697,8 @@ linkml:Nodeidentifier NONLITERAL
     (  $<LoggedInPerson_tes> (  &<Person_tes> ;
           rdf:type [ <Person> ] ? ;
           <okta_id> @linkml:String ;
-          <okta_email> @linkml:String
+          <okta_email> @linkml:String ;
+          <user_settings> @linkml:String ?
        ) ;
        rdf:type [ <LoggedInPerson> ]
     )
