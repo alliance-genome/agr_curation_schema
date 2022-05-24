@@ -5,6 +5,7 @@ imports:
   - allele
   - reagent
   - core
+  - gene
   - image
   - linkml:types
   - ontologyTerm

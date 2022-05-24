@@ -2,6 +2,7 @@ id: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantCon
 
 imports:
   - core
+  - gene
   - linkml:types
   - variation
 

@@ -5,6 +5,7 @@ title: Alliance Schema Orthology Term
 imports:
   - core
   - allele
+  - gene
   - linkml:types
 
 prefixes:

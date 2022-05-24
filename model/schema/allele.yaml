@@ -5,6 +5,7 @@ title: Alliance Schema Prototype Allele
 imports:
   - core
   - image
+  - Gene
   - variation
   - linkml:types
   - ontologyTerm
