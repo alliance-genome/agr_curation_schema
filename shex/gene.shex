@@ -1,5 +1,4 @@
 # metamodel_version: 1.7.0
-# version: 0.0.1
 BASE <http://alliancegenome.org/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -70,29 +69,6 @@ linkml:Nodeidentifier NONLITERAL
     } OR @<Organization> OR @<Person>
 )
 
-<AGMDiseaseAnnotation> CLOSED {
-    (  $<AGMDiseaseAnnotation_tes> (  &<DiseaseAnnotation_tes> ;
-          rdf:type [ <DiseaseAnnotation> ] ? ;
-          <inferred_allele> @<Allele> ? ;
-          <inferred_gene> @<Gene> ? ;
-          <subject> @<AffectedGenomicModel> ;
-          <predicate> @<VocabularyTerm>
-       ) ;
-       rdf:type [ <AGMDiseaseAnnotation> ] ?
-    )
-}
-
-<AGMPhenotypeAnnotation> CLOSED {
-    (  $<AGMPhenotypeAnnotation_tes> (  &<PhenotypeAnnotation_tes> ;
-          rdf:type [ <PhenotypeAnnotation> ] ? ;
-          <inferred_allele> @<Allele> ? ;
-          <inferred_gene> @<Gene> ? ;
-          <subject> @<AffectedGenomicModel>
-       ) ;
-       rdf:type [ <AGMPhenotypeAnnotation> ]
-    )
-}
-
 <Allele> CLOSED {
     (  $<Allele_tes> (  &<GenomicEntity_tes> ;
           rdf:type [ <GenomicEntity> ] ? ;
@@ -120,17 +96,6 @@ linkml:Nodeidentifier NONLITERAL
           <name> @linkml:String
        ) ;
        rdf:type [ <Allele> ]
-    )
-}
-
-<AlleleDiseaseAnnotation> CLOSED {
-    (  $<AlleleDiseaseAnnotation_tes> (  &<DiseaseAnnotation_tes> ;
-          rdf:type [ <DiseaseAnnotation> ] ? ;
-          <inferred_gene> @<Gene> ? ;
-          <subject> @<Allele> ;
-          <predicate> @<VocabularyTerm>
-       ) ;
-       rdf:type [ <AlleleDiseaseAnnotation> ] ?
     )
 }
 
@@ -163,16 +128,6 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
-<AllelePhenotypeAnnotation> CLOSED {
-    (  $<AllelePhenotypeAnnotation_tes> (  &<PhenotypeAnnotation_tes> ;
-          rdf:type [ <PhenotypeAnnotation> ] ? ;
-          <inferred_gene> @<Gene> ? ;
-          <subject> @<Allele>
-       ) ;
-       rdf:type [ <AllelePhenotypeAnnotation> ]
-    )
-}
-
 <AlleleProteinAssociation> CLOSED {
     (  $<AlleleProteinAssociation_tes> (  &<AlleleGenomicEntityAssociation_tes> ;
           rdf:type [ <AlleleGenomicEntityAssociation> ] ? ;
@@ -201,18 +156,6 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
-<AnatomicalSite> CLOSED {
-    (  $<AnatomicalSite_tes> (  &<AuditedObject_tes> ;
-          rdf:type [ <AuditedObject> ] ? ;
-          <anatomical_structure> @<AnatomicalTerm> ? ;
-          <anatomical_substructure> @<AnatomicalTerm> ? ;
-          <cellular_component> @<GOTerm> ? ;
-          <spatial_qualifiers> @<SpatialQualifierSet> ?
-       ) ;
-       rdf:type [ <AnatomicalSite> ] ?
-    )
-}
-
 <AnatomicalTerm>  (
     @<CLTerm> OR @<DAOTerm> OR @<EMAPATerm> OR @<MATerm> OR @<UBERONTerm> OR @<WBBTTerm> OR @<XBATerm> OR @<ZFATerm>
 )
@@ -222,26 +165,6 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <OntologyTerm> ] ?
        ) ;
        rdf:type [ <AnatomicalTerm> ]
-    )
-}
-
-<Antibody> CLOSED {
-    (  $<Antibody_tes> (  &<Reagent_tes> ;
-          rdf:type [ <Reagent> ] ? ;
-          <name> @linkml:String ;
-          <antigen_taxon> @<NCBITaxonTerm> ? ;
-          <clonality> @<AntibodyClonalitySet> ;
-          <heavy_chain_isotype> @<HeavyChainIsotypeSet> ? ;
-          <light_chain_isotype> @<LightChainIsotypeSet> ? ;
-          <antibody_target_genes> @<Gene> * ;
-          <cross_references> @<CrossReference> * ;
-          <secondary_identifiers> @linkml:Uriorcurie * ;
-          <references> @<Reference> * ;
-          <original_reference> @<Reference> ? ;
-          <related_notes> @<Note> * ;
-          <taxon> @<NCBITaxonTerm> ?
-       ) ;
-       rdf:type [ <Antibody> ]
     )
 }
 
@@ -273,8 +196,7 @@ linkml:Nodeidentifier NONLITERAL
           ) ;
           rdf:type [ <Association> ] ?
        )
-    } OR @<AlleleGenomicEntityAssociation> OR @<ConstructComponentAssociation> OR @<DiseaseAnnotation> OR @<EntitySynonym> OR
-    @<ExpressionAnnotationImagePane> OR @<GeneToGeneAssociation> OR @<PhenotypeAnnotation> OR
+    } OR @<AlleleGenomicEntityAssociation> OR @<ConstructComponentAssociation> OR @<EntitySynonym> OR
     @<SequenceTargetingReagentToGeneAssociation>
 )
 
@@ -289,12 +211,11 @@ linkml:Nodeidentifier NONLITERAL
           ) ;
           rdf:type [ <AuditedObject> ] ?
        )
-    } OR @<AffectedGenomicModelComponent> OR @<Agent> OR @<AnatomicalSite> OR @<Assembly> OR @<AssociatedReference> OR
-    @<Association> OR @<AuthorReference> OR @<BiologicalEntity> OR @<CellLine> OR @<Chromosome> OR @<ConditionRelation> OR
-    @<CrossReference> OR @<EntityStatement> OR @<ExperimentalCondition> OR @<ExpressionAnnotation> OR @<ExpressionExperiment> OR
+    } OR @<AffectedGenomicModelComponent> OR @<Agent> OR @<Assembly> OR @<AssociatedReference> OR @<Association> OR
+    @<AuthorReference> OR @<BiologicalEntity> OR @<CellLine> OR @<Chromosome> OR @<CrossReference> OR @<EntityStatement> OR
     @<ExternalDatabaseLink> OR @<Figure> OR @<File> OR @<GenomicLocation> OR @<Image> OR @<ImagePane> OR @<MeshDetail> OR @<Note>
-    OR @<OntologyTerm> OR @<Reference> OR @<Resource> OR @<SourceVariantLocation> OR @<Synonym> OR @<TemporalContext> OR
-    @<VariantConsequence> OR @<VariantLocation> OR @<Vocabulary> OR @<VocabularyTerm>
+    OR @<OntologyTerm> OR @<Reference> OR @<Resource> OR @<SourceVariantLocation> OR @<Synonym> OR @<VariantLocation> OR
+    @<Vocabulary> OR @<VocabularyTerm>
 )
 
 <AuthorReference> CLOSED {
@@ -311,17 +232,15 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <BiologicalEntity>  (
-    @<GenomicEntity> OR @<Reagent>
+    {
+       (  $<BiologicalEntity_tes> (  &<AuditedObject_tes> ;
+             rdf:type [ <AuditedObject> ] ? ;
+             <taxon> @<NCBITaxonTerm>
+          ) ;
+          rdf:type [ <BiologicalEntity> ]
+       )
+    } OR @<GenomicEntity>
 )
-
-<BiologicalEntity_struct> {
-    (  $<BiologicalEntity_tes> (  &<AuditedObject_tes> ;
-          rdf:type [ <AuditedObject> ] ? ;
-          <taxon> @<NCBITaxonTerm>
-       ) ;
-       rdf:type [ <BiologicalEntity> ]
-    )
-}
 
 <CellLine> CLOSED {
     (  $<CellLine_tes> (  &<AuditedObject_tes> ;
@@ -380,19 +299,6 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
-<ConditionRelation> CLOSED {
-    (  $<ConditionRelation_tes> (  &<AuditedObject_tes> ;
-          rdf:type [ <AuditedObject> ] ? ;
-          <unique_id> @linkml:String ? ;
-          <handle> @linkml:String ? ;
-          <single_reference> @<Reference> ? ;
-          <condition_relation_type> @<VocabularyTerm> ;
-          <conditions> @<ExperimentalCondition> *
-       ) ;
-       rdf:type [ <ConditionRelation> ] ?
-    )
-}
-
 <Construct> CLOSED {
     (  $<Construct_tes> (  &<GenomicEntity_tes> ;
           rdf:type [ <GenomicEntity> ] ? ;
@@ -443,44 +349,6 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
-<DiseaseAnnotation>  (
-    @<AGMDiseaseAnnotation> OR @<AlleleDiseaseAnnotation> OR @<GeneDiseaseAnnotation>
-)
-
-<DiseaseAnnotation_struct> {
-    (  $<DiseaseAnnotation_tes> (  &<Association_tes> ;
-          rdf:type [ <Association> ] ? ;
-          <unique_id> @linkml:String ? ;
-          <mod_entity_id> @linkml:String ? ;
-          <negated> @linkml:Boolean ? ;
-          <evidence_codes> @<ECOTerm> + ;
-          <single_reference> @<Reference> ;
-          <annotation_type> @<VocabularyTerm> ? ;
-          <with> @<Gene> * ;
-          <disease_qualifiers> @<VocabularyTerm> * ;
-          <condition_relations> @<ConditionRelation> * ;
-          <genetic_sex> @<VocabularyTerm> ? ;
-          <related_notes> @<Note> * ;
-          <data_provider> @linkml:String ;
-          <secondary_data_provider> @linkml:String ? ;
-          <disease_genetic_modifier> @<BiologicalEntity> ? ;
-          <disease_genetic_modifier_relation> @<VocabularyTerm> ? ;
-          <subject> @<BiologicalEntity> ;
-          <predicate> @linkml:String ;
-          <object> @<DOTerm>
-       ) ;
-       rdf:type [ <DiseaseAnnotation> ] ?
-    )
-}
-
-<DNAClone> CLOSED {
-    (  $<DNAClone_tes> (  &<Reagent_tes> ;
-          rdf:type [ <Reagent> ] ?
-       ) ;
-       rdf:type [ <DNAClone> ]
-    )
-}
-
 <DOTerm> CLOSED {
     (  $<DOTerm_tes> (  &<OntologyTerm_tes> ;
           rdf:type [ <OntologyTerm> ] ?
@@ -506,19 +374,17 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
-<EntityStatement>  (
-    CLOSED {
-       (  $<EntityStatement_tes> (  &<AuditedObject_tes> ;
-             rdf:type [ <AuditedObject> ] ? ;
-             <statement_subject> @linkml:String ? ;
-             <statement_type> @linkml:String ? ;
-             <statement_text> @linkml:String ? ;
-             <references> @<Reference> *
-          ) ;
-          rdf:type [ <EntityStatement> ] ?
-       )
-    } OR @<ExpressionAnnotationStatement> OR @<ExpressionExperimentStatement> OR @<GeneExpressionStatement>
-)
+<EntityStatement> CLOSED {
+    (  $<EntityStatement_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <statement_subject> @linkml:String ? ;
+          <statement_type> @linkml:String ? ;
+          <statement_text> @linkml:String ? ;
+          <references> @<Reference> *
+       ) ;
+       rdf:type [ <EntityStatement> ] ?
+    )
+}
 
 <EntitySynonym> CLOSED {
     (  $<EntitySynonym_tes> (  &<Association_tes> ;
@@ -531,25 +397,6 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
-<ExperimentalCondition> CLOSED {
-    (  $<ExperimentalCondition_tes> (  &<AuditedObject_tes> ;
-          rdf:type [ <AuditedObject> ] ? ;
-          <unique_id> @linkml:String ? ;
-          <condition_class> @<ZECOTerm> ;
-          <condition_summary> @linkml:String ? ;
-          <condition_statement> @linkml:String ;
-          <condition_id> @<ExperimentalConditionOntologyTerm> ? ;
-          <condition_free_text> @linkml:String ? ;
-          <condition_quantity> @linkml:String ? ;
-          <condition_anatomy> @<AnatomicalTerm> ? ;
-          <condition_gene_ontology> @<GOTerm> ? ;
-          <condition_taxon> @<NCBITaxonTerm> ? ;
-          <condition_chemical> @<ChemicalTerm> ?
-       ) ;
-       rdf:type [ <ExperimentalCondition> ] ?
-    )
-}
-
 <ExperimentalConditionOntologyTerm>  (
     @<XCOTerm> OR @<ZECOTerm>
 )
@@ -559,65 +406,6 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <OntologyTerm> ] ?
        ) ;
        rdf:type [ <ExperimentalConditionOntologyTerm> ]
-    )
-}
-
-<ExpressionAnnotation> CLOSED {
-    (  $<ExpressionAnnotation_tes> (  &<AuditedObject_tes> ;
-          rdf:type [ <AuditedObject> ] ? ;
-          <belongs_to_expression_experiment> @<ExpressionExperiment> ;
-          <when_expressed> @<TemporalContext> ? ;
-          <where_expressed> @<AnatomicalSite> ? ;
-          <expression_qualifiers> @<ExpressionQualifierSet> ? ;
-          <negated> @linkml:Boolean ? ;
-          <uncertain> @linkml:Boolean ? ;
-          <associated_with_figure> @<Figure> *
-       ) ;
-       rdf:type [ <ExpressionAnnotation> ] ?
-    )
-}
-
-<ExpressionAnnotationImagePane> CLOSED {
-    (  $<ExpressionAnnotationImagePane_tes> (  &<Association_tes> ;
-          rdf:type [ <Association> ] ? ;
-          <subject> @<ExpressionAnnotation> ;
-          <object> @<ImagePane>
-       ) ;
-       rdf:type [ <ExpressionAnnotationImagePane> ] ?
-    )
-}
-
-<ExpressionAnnotationStatement> CLOSED {
-    (  $<ExpressionAnnotationStatement_tes> (  &<EntityStatement_tes> ;
-          rdf:type [ <EntityStatement> ] ? ;
-          <statement_subject> @<ExpressionAnnotation> ? ;
-          <statement_type> @<ExpressionStatementTypeEnum> ?
-       ) ;
-       rdf:type [ <ExpressionAnnotationStatement> ] ?
-    )
-}
-
-<ExpressionExperiment> CLOSED {
-    (  $<ExpressionExperiment_tes> (  &<AuditedObject_tes> ;
-          rdf:type [ <AuditedObject> ] ? ;
-          <single_reference> @<Reference> ? ;
-          <biological_entity_assayed> @<BiologicalEntity> ? ;
-          <assay_used> @<MMOTerm> ? ;
-          <reagents_used> @<Reagent> * ;
-          <specimen_genomic_model> @<AffectedGenomicModel> ? ;
-          <specimen_alleles> @<Allele> * ;
-          <condition_relations> @<ConditionRelation> *
-       ) ;
-       rdf:type [ <ExpressionExperiment> ]
-    )
-}
-
-<ExpressionExperimentStatement> CLOSED {
-    (  $<ExpressionExperimentStatement_tes> (  &<EntityStatement_tes> ;
-          rdf:type [ <EntityStatement> ] ? ;
-          <statement_subject> @<ExpressionExperiment> ?
-       ) ;
-       rdf:type [ <ExpressionExperimentStatement> ] ?
     )
 }
 
@@ -681,95 +469,6 @@ linkml:Nodeidentifier NONLITERAL
        rdf:type [ <Gene> ]
     )
 }
-
-<GeneDiseaseAnnotation> CLOSED {
-    (  $<GeneDiseaseAnnotation_tes> (  &<DiseaseAnnotation_tes> ;
-          rdf:type [ <DiseaseAnnotation> ] ? ;
-          <sgd_strain_background> @<AffectedGenomicModel> ? ;
-          <subject> @<Gene> ;
-          <predicate> @<VocabularyTerm>
-       ) ;
-       rdf:type [ <GeneDiseaseAnnotation> ] ?
-    )
-}
-
-<GeneExpressionStatement> CLOSED {
-    (  $<GeneExpressionStatement_tes> (  &<EntityStatement_tes> ;
-          rdf:type [ <EntityStatement> ] ? ;
-          <statement_subject> @<Gene> ? ;
-          <statement_type> @<ExpressionStatementTypeEnum> ?
-       ) ;
-       rdf:type [ <GeneExpressionStatement> ] ?
-    )
-}
-
-<GeneGeneticInteraction> CLOSED {
-    (  $<GeneGeneticInteraction_tes> (  &<GeneInteraction_tes> ;
-          rdf:type [ <GeneInteraction> ] ? ;
-          <interactor_A_genetic_perturbation> @<Allele> ? ;
-          <interactor_B_genetic_perturbation> @<Allele> ? ;
-          <phenotype_or_trait> @linkml:String * ;
-          <predicate> @linkml:String
-       ) ;
-       rdf:type [ <GeneGeneticInteraction> ]
-    )
-}
-
-<GeneInteraction>  (
-    @<GeneGeneticInteraction> OR @<GeneMolecularInteraction>
-)
-
-<GeneInteraction_struct> {
-    (  $<GeneInteraction_tes> (  &<GeneToGeneAssociation_tes> ;
-          rdf:type [ <GeneToGeneAssociation> ] ? ;
-          <cross_references> @<CrossReference> * ;
-          <interaction_data_provider> @<InteractionSourceEnum> ;
-          <interaction_type> @<InteractionTypeEnum> ;
-          <interactor_A_role> @<InteractorARoleEnum> * ;
-          <interactor_B_role> @<InteractorBRoleEnum> * ;
-          <interactor_A_type> @<InteractorTypeEnum> ;
-          <interactor_B_type> @<InteractorTypeEnum> ;
-          <subject> @<Gene> ;
-          <predicate> @linkml:String ;
-          <object> @<Gene> ;
-          <references> @<Reference> *
-       ) ;
-       rdf:type [ <GeneInteraction> ]
-    )
-}
-
-<GeneMolecularInteraction> CLOSED {
-    (  $<GeneMolecularInteraction_tes> (  &<GeneInteraction_tes> ;
-          rdf:type [ <GeneInteraction> ] ? ;
-          <aggregation_database> @<AggregationDatabaseEnum> ? ;
-          <detection_method> @<DetectionMethodsEnum> ? ;
-          <predicate> @linkml:String
-       ) ;
-       rdf:type [ <GeneMolecularInteraction> ]
-    )
-}
-
-<GenePhenotypeAnnotation> CLOSED {
-    (  $<GenePhenotypeAnnotation_tes> (  &<PhenotypeAnnotation_tes> ;
-          rdf:type [ <PhenotypeAnnotation> ] ? ;
-          <sgd_strain_background> @<AffectedGenomicModel> ? ;
-          <subject> @<Gene>
-       ) ;
-       rdf:type [ <GenePhenotypeAnnotation> ]
-    )
-}
-
-<GeneToGeneAssociation>  (
-    {
-       (  $<GeneToGeneAssociation_tes> (  &<Association_tes> ;
-             rdf:type [ <Association> ] ? ;
-             <subject> @<Gene> ;
-             <object> @<Gene>
-          ) ;
-          rdf:type [ <GeneToGeneAssociation> ] ?
-       )
-    } OR @<GeneInteraction>
-)
 
 <GenomicEntity>  (
     CLOSED {
@@ -839,21 +538,6 @@ linkml:Nodeidentifier NONLITERAL
           <image_y_origin> @linkml:Integer ?
        ) ;
        rdf:type [ <ImagePane> ] ?
-    )
-}
-
-<Ingest> CLOSED {
-    (  $<Ingest_tes> (  <allele_ingest_set> @<Allele> * ;
-          <disease_allele_ingest_set> @<AlleleDiseaseAnnotation> * ;
-          <disease_agm_ingest_set> @<AGMDiseaseAnnotation> * ;
-          <disease_gene_ingest_set> @<GeneDiseaseAnnotation> * ;
-          <gene_ingest_set> @<Gene> * ;
-          <variant_ingest_set> @<Variant> * ;
-          <allele_variant_association_ingest_set> @<AlleleVariantAssociation> * ;
-          <agm_ingest_set> @<AffectedGenomicModel> * ;
-          <sqtr_ingest_set> @<SequenceTargetingReagent> *
-       ) ;
-       rdf:type [ <Ingest> ] ?
     )
 }
 
@@ -998,22 +682,6 @@ linkml:Nodeidentifier NONLITERAL
     } OR @<LoggedInPerson>
 )
 
-<PhenotypeAnnotation>  (
-    CLOSED {
-       (  $<PhenotypeAnnotation_tes> (  &<Association_tes> ;
-             rdf:type [ <Association> ] ? ;
-             <single_reference> @<Reference> ? ;
-             <phenotype_term> @<PhenotypeTerm> ? ;
-             <condition_relations> @<ConditionRelation> * ;
-             <subject> @<BiologicalEntity> ;
-             <object> @linkml:String ;
-             <date_created> @linkml:Date
-          ) ;
-          rdf:type [ <PhenotypeAnnotation> ]
-       )
-    } OR @<AGMPhenotypeAnnotation> OR @<AllelePhenotypeAnnotation> OR @<GenePhenotypeAnnotation>
-)
-
 <PhenotypeTerm>  (
     CLOSED {
        (  $<PhenotypeTerm_tes> (  &<OntologyTerm_tes> ;
@@ -1031,18 +699,6 @@ linkml:Nodeidentifier NONLITERAL
        rdf:type [ <Protein> ]
     )
 }
-
-<Reagent>  (
-    CLOSED {
-       (  $<Reagent_tes> (  &<BiologicalEntity_tes> ;
-             rdf:type [ <BiologicalEntity> ] ? ;
-             <generated_by> @<Agent> * ;
-             <manufactured_by> @<Agent> *
-          ) ;
-          rdf:type [ <Reagent> ]
-       )
-    } OR @<Antibody> OR @<DNAClone> OR @<RNAClone>
-)
 
 <Reference> CLOSED {
     (  $<Reference_tes> (  &<AuditedObject_tes> ;
@@ -1091,14 +747,6 @@ linkml:Nodeidentifier NONLITERAL
           <id> @linkml:String ?
        ) ;
        rdf:type [ <Resource> ]
-    )
-}
-
-<RNAClone> CLOSED {
-    (  $<RNAClone_tes> (  &<Reagent_tes> ;
-          rdf:type [ <Reagent> ] ?
-       ) ;
-       rdf:type [ <RNAClone> ]
     )
 }
 
@@ -1171,19 +819,6 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
-<TemporalContext> CLOSED {
-    (  $<TemporalContext_tes> (  &<AuditedObject_tes> ;
-          rdf:type [ <AuditedObject> ] ? ;
-          <developmental_stage_start> @<StageTerm> ? ;
-          <developmental_stage_stop> @<StageTerm> ? ;
-          <age> @linkml:String ? ;
-          <temporal_qualifiers> @<TemporalQualifierSet> ? ;
-          <stage_uncertainty> @linkml:String ?
-       ) ;
-       rdf:type [ <TemporalContext> ] ?
-    )
-}
-
 <Transcript> CLOSED {
     (  $<Transcript_tes> (  &<GenomicEntity_tes> ;
           rdf:type [ <GenomicEntity> ] ?
@@ -1213,36 +848,6 @@ linkml:Nodeidentifier NONLITERAL
           <variant_status> @<VariantStatusEnum> ?
        ) ;
        rdf:type [ <Variant> ]
-    )
-}
-
-<VariantConsequence>  (
-    @<VariantGeneConsequence> OR @<VariantTranscriptConsequence>
-)
-
-<VariantConsequence_struct> {
-    (  $<VariantConsequence_tes> (  &<AuditedObject_tes> ;
-          rdf:type [ <AuditedObject> ] ? ;
-          <subject> @linkml:String ;
-          <object> @linkml:String ;
-          <vep_consequence> @<VepConsequenceLevels> ? ;
-          <vep_impact> @linkml:String ? ;
-          <polyphen_score> @linkml:Float ? ;
-          <polyphen_prediction> @<PolyphenPredictionLevels> ? ;
-          <sift_score> @linkml:Float ? ;
-          <sift_prediction> @<SiftPredictionLevels> ?
-       ) ;
-       rdf:type [ <VariantConsequence> ] ?
-    )
-}
-
-<VariantGeneConsequence> CLOSED {
-    (  $<VariantGeneConsequence_tes> (  &<VariantConsequence_tes> ;
-          rdf:type [ <VariantConsequence> ] ? ;
-          <object> @<Gene> ;
-          <subject> @<VariantGenomeLocation>
-       ) ;
-       rdf:type [ <VariantGeneConsequence> ] ?
     )
 }
 
@@ -1282,28 +887,6 @@ linkml:Nodeidentifier NONLITERAL
           <associated_transcripts> @<Transcript> *
        ) ;
        rdf:type [ <VariantPolypeptideLocation> ] ?
-    )
-}
-
-<VariantTranscriptConsequence> CLOSED {
-    (  $<VariantTranscriptConsequence_tes> (  &<VariantConsequence_tes> ;
-          rdf:type [ <VariantConsequence> ] ? ;
-          <amino_acid_reference> @linkml:String ? ;
-          <amino_acid_variant> @linkml:String ? ;
-          <codon_reference> @linkml:String ? ;
-          <codon_variant> @linkml:String ? ;
-          <cdna_start> @linkml:Integer ? ;
-          <cdna_end> @linkml:Integer ? ;
-          <cds_start> @linkml:Integer ? ;
-          <cds_end> @linkml:Integer ? ;
-          <protein_start> @linkml:Integer ? ;
-          <protein_end> @linkml:Integer ? ;
-          <hgvs_protein_nomenclature> @linkml:String ? ;
-          <hgvs_coding_nomenclature> @linkml:String ? ;
-          <object> @<Transcript> ;
-          <subject> @<VariantTranscriptLocation>
-       ) ;
-       rdf:type [ <VariantTranscriptConsequence> ] ?
     )
 }
 

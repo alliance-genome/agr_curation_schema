@@ -1,5 +1,5 @@
 # Auto generated from allele.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-05-24T19:03:36
+# Generation date: 2022-05-24T19:21:06
 # Schema: Alliance-Schema-Prototype-Allele
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/allele
@@ -99,10 +99,6 @@ class TranscriptCurie(GenomicEntityCurie):
     pass
 
 
-class GeneCurie(GenomicEntityCurie):
-    pass
-
-
 class CrossReferenceCurie(URIorCURIE):
     pass
 
@@ -124,6 +120,10 @@ class FigureCurie(URIorCURIE):
 
 
 class ImageCurie(URIorCURIE):
+    pass
+
+
+class GeneCurie(GenomicEntityCurie):
     pass
 
 
@@ -692,48 +692,6 @@ class Transcript(GenomicEntity):
             self.MissingRequiredField("curie")
         if not isinstance(self.curie, TranscriptCurie):
             self.curie = TranscriptCurie(self.curie)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class Gene(GenomicEntity):
-    """
-    A DNA genomic entity from which one or more functional* RNA transcript molecules are transcribed, along with
-    cis-regulatory elements responsible for regulating expression (transcription) of the gene. * A functional RNA
-    molecule here can mean one that is directly responsible for the gene's function (e.g. catalysis, structure, etc.)
-    or one that is translated to produce a functional polypeptide/protein. A pseudogene may be considered a gene under
-    this definition, albeit no longer functional.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = ALLIANCE.Gene
-    class_class_curie: ClassVar[str] = "alliance:Gene"
-    class_name: ClassVar[str] = "Gene"
-    class_model_uri: ClassVar[URIRef] = ALLIANCE.Gene
-
-    curie: Union[str, GeneCurie] = None
-    internal: Union[bool, Bool] = None
-    taxon: Union[str, NCBITaxonTermCurie] = None
-    symbol: str = None
-    related_notes: Optional[Union[Union[dict, "Note"], List[Union[dict, "Note"]]]] = empty_list()
-    gene_type: Optional[Union[str, SOTermCurie]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.curie):
-            self.MissingRequiredField("curie")
-        if not isinstance(self.curie, GeneCurie):
-            self.curie = GeneCurie(self.curie)
-
-        if self._is_empty(self.symbol):
-            self.MissingRequiredField("symbol")
-        if not isinstance(self.symbol, str):
-            self.symbol = str(self.symbol)
-
-        self._normalize_inlined_as_dict(slot_name="related_notes", slot_type=Note, key_name="internal", keyed=False)
-
-        if self.gene_type is not None and not isinstance(self.gene_type, SOTermCurie):
-            self.gene_type = SOTermCurie(self.gene_type)
 
         super().__post_init__(**kwargs)
 
@@ -1539,6 +1497,48 @@ class ImagePane(AuditedObject):
 
         if self.image_y_origin is not None and not isinstance(self.image_y_origin, int):
             self.image_y_origin = int(self.image_y_origin)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Gene(GenomicEntity):
+    """
+    A DNA genomic entity from which one or more functional* RNA transcript molecules are transcribed, along with
+    cis-regulatory elements responsible for regulating expression (transcription) of the gene. * A functional RNA
+    molecule here can mean one that is directly responsible for the gene's function (e.g. catalysis, structure, etc.)
+    or one that is translated to produce a functional polypeptide/protein. A pseudogene may be considered a gene under
+    this definition, albeit no longer functional.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.Gene
+    class_class_curie: ClassVar[str] = "alliance:Gene"
+    class_name: ClassVar[str] = "Gene"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.Gene
+
+    curie: Union[str, GeneCurie] = None
+    internal: Union[bool, Bool] = None
+    taxon: Union[str, NCBITaxonTermCurie] = None
+    symbol: str = None
+    related_notes: Optional[Union[Union[dict, Note], List[Union[dict, Note]]]] = empty_list()
+    gene_type: Optional[Union[str, SOTermCurie]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, GeneCurie):
+            self.curie = GeneCurie(self.curie)
+
+        if self._is_empty(self.symbol):
+            self.MissingRequiredField("symbol")
+        if not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        self._normalize_inlined_as_dict(slot_name="related_notes", slot_type=Note, key_name="internal", keyed=False)
+
+        if self.gene_type is not None and not isinstance(self.gene_type, SOTermCurie):
+            self.gene_type = SOTermCurie(self.gene_type)
 
         super().__post_init__(**kwargs)
 
@@ -3581,9 +3581,6 @@ slots.qualifiers = Slot(uri=ALLIANCE.qualifiers, name="qualifiers", curie=ALLIAN
 slots.type = Slot(uri=ALLIANCE.type, name="type", curie=ALLIANCE.curie('type'),
                    model_uri=ALLIANCE.type, domain=None, range=Optional[Union[str, URIorCURIE]])
 
-slots.gene_type = Slot(uri=ALLIANCE.gene_type, name="gene_type", curie=ALLIANCE.curie('gene_type'),
-                   model_uri=ALLIANCE.gene_type, domain=Gene, range=Optional[Union[str, SOTermCurie]])
-
 slots.references = Slot(uri=ALLIANCE.references, name="references", curie=ALLIANCE.curie('references'),
                    model_uri=ALLIANCE.references, domain=None, range=Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]])
 
@@ -3676,6 +3673,9 @@ slots.video_still = Slot(uri=ALLIANCE.video_still, name="video_still", curie=ALL
 
 slots.width = Slot(uri=ALLIANCE.width, name="width", curie=ALLIANCE.curie('width'),
                    model_uri=ALLIANCE.width, domain=Image, range=int)
+
+slots.gene_type = Slot(uri=ALLIANCE.gene_type, name="gene_type", curie=ALLIANCE.curie('gene_type'),
+                   model_uri=ALLIANCE.gene_type, domain=Gene, range=Optional[Union[str, SOTermCurie]])
 
 slots.variant_status = Slot(uri=ALLIANCE.variant_status, name="variant_status", curie=ALLIANCE.curie('variant_status'),
                    model_uri=ALLIANCE.variant_status, domain=None, range=Optional[Union[str, "VariantStatusEnum"]])
@@ -3995,12 +3995,6 @@ slots.ConstructComponentAssociation_object = Slot(uri=ALLIANCE.object, name="Con
 slots.BiologicalEntity_taxon = Slot(uri=ALLIANCE.taxon, name="BiologicalEntity_taxon", curie=ALLIANCE.curie('taxon'),
                    model_uri=ALLIANCE.BiologicalEntity_taxon, domain=BiologicalEntity, range=Union[str, NCBITaxonTermCurie])
 
-slots.Gene_symbol = Slot(uri=ALLIANCE.symbol, name="Gene_symbol", curie=ALLIANCE.curie('symbol'),
-                   model_uri=ALLIANCE.Gene_symbol, domain=Gene, range=str)
-
-slots.Gene_related_notes = Slot(uri=ALLIANCE.related_notes, name="Gene_related_notes", curie=ALLIANCE.curie('related_notes'),
-                   model_uri=ALLIANCE.Gene_related_notes, domain=Gene, range=Optional[Union[Union[dict, "Note"], List[Union[dict, "Note"]]]])
-
 slots.Note_free_text = Slot(uri=ALLIANCE.free_text, name="Note_free_text", curie=ALLIANCE.curie('free_text'),
                    model_uri=ALLIANCE.Note_free_text, domain=Note, range=str)
 
@@ -4042,6 +4036,12 @@ slots.ImagePane_image_x_origin = Slot(uri=ALLIANCE.image_x_origin, name="ImagePa
 
 slots.ImagePane_image_y_origin = Slot(uri=ALLIANCE.image_y_origin, name="ImagePane_image_y_origin", curie=ALLIANCE.curie('image_y_origin'),
                    model_uri=ALLIANCE.ImagePane_image_y_origin, domain=ImagePane, range=Optional[int])
+
+slots.Gene_symbol = Slot(uri=ALLIANCE.symbol, name="Gene_symbol", curie=ALLIANCE.curie('symbol'),
+                   model_uri=ALLIANCE.Gene_symbol, domain=Gene, range=str)
+
+slots.Gene_related_notes = Slot(uri=ALLIANCE.related_notes, name="Gene_related_notes", curie=ALLIANCE.curie('related_notes'),
+                   model_uri=ALLIANCE.Gene_related_notes, domain=Gene, range=Optional[Union[Union[dict, Note], List[Union[dict, Note]]]])
 
 slots.SourceVariantLocation_single_reference = Slot(uri=ALLIANCE.single_reference, name="SourceVariantLocation_single_reference", curie=ALLIANCE.curie('single_reference'),
                    model_uri=ALLIANCE.SourceVariantLocation_single_reference, domain=SourceVariantLocation, range=Union[str, ReferenceCurie])
