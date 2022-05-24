@@ -180,10 +180,7 @@
 --     * Slot: obsolete Description: Entity is no longer current.
 -- # Class: "Gene" Description: "A DNA genomic entity from which one or more functional* RNA transcript molecules are transcribed, along with cis-regulatory elements responsible for regulating expression (transcription) of the gene. * A functional RNA molecule here can mean one that is directly responsible for the gene's function (e.g. catalysis, structure, etc.) or one that is translated to produce a functional polypeptide/protein. A pseudogene may be considered a gene under this definition, albeit no longer functional."
 --     * Slot: symbol Description: Symbol for a particular thing
---     * Slot: gene_synopsis Description: Gene description provided by source resource (ie: MOD gene description that is curated or automated via MOD internal processes).
---     * Slot: gene_synopsis_URL Description: Gene description reference URL provided by source resource (aka: MOD) in the case where the curated gene_synopsis has a reference URL outside of the MOD.
 --     * Slot: gene_type Description: SOTerm describing gene type
---     * Slot: automated_gene_description Description: Gene description generated via algorithm developed at the alliance.
 --     * Slot: name Description: a human-readable name for an entity
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: taxon Description: The taxon from which the biological entity derives.
@@ -263,7 +260,7 @@
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
--- # Class: "Note" Description: "Note object for capturing free-text describing some attribute of an entity, coupled with a 'note type', internal boolean, and an optional list of references. Permissible values for 'note_type' currently = disease_summary, disease_note"
+-- # Class: "Note" Description: "Note object for capturing free-text describing some attribute of an entity, coupled with a 'note type', internal boolean, and an optional list of references. Permissible values for note_type can be viewed and managed in the A-Team curation UI Controlled Vocabulary Terms Table."
 --     * Slot: id Description: 
 --     * Slot: free_text Description: A free text string that describes some aspect of an entity.
 --     * Slot: note_type Description: The type of note: e.g., cytology, comment, summary. Permissible values for 'note_type' currently = disease_summary, disease_note
@@ -1664,6 +1661,9 @@
 -- # Class: "Transcript_genomic_locations" Description: ""
 --     * Slot: Transcript_curie Description: Autocreated FK slot
 --     * Slot: genomic_locations_id Description: 
+-- # Class: "Gene_related_notes" Description: ""
+--     * Slot: Gene_curie Description: Autocreated FK slot
+--     * Slot: related_notes_id Description: Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the "Gene note types" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.
 -- # Class: "Gene_synonym" Description: ""
 --     * Slot: Gene_curie Description: Autocreated FK slot
 --     * Slot: synonym_id Description: holds between a named thing and a synonym
@@ -2272,7 +2272,7 @@
 --     * Slot: disease_qualifiers Description: Submitted values should be vocabulary terms from the 'Disease Qualifiers' vocabulary
 -- # Class: "DiseaseAnnotation_related_notes" Description: ""
 --     * Slot: DiseaseAnnotation_id Description: Autocreated FK slot
---     * Slot: related_notes_id Description: Holds between an object and a list of related Note objects.
+--     * Slot: related_notes_id Description: Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the "Disease annotation note types" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.
 -- # Class: "GeneDiseaseAnnotation_evidence_codes" Description: ""
 --     * Slot: GeneDiseaseAnnotation_id Description: Autocreated FK slot
 --     * Slot: evidence_codes Description: ECO term IDs
@@ -3420,10 +3420,7 @@ CREATE TABLE "Transcript" (
 );
 CREATE TABLE "Gene" (
 	symbol TEXT NOT NULL, 
-	gene_synopsis TEXT, 
-	"gene_synopsis_URL" TEXT, 
 	gene_type TEXT, 
-	automated_gene_description TEXT, 
 	name TEXT, 
 	curie TEXT NOT NULL, 
 	taxon TEXT NOT NULL, 
@@ -5077,6 +5074,13 @@ CREATE TABLE "Transcript_secondary_identifiers" (
 	secondary_identifiers TEXT, 
 	PRIMARY KEY ("Transcript_curie", secondary_identifiers), 
 	FOREIGN KEY("Transcript_curie") REFERENCES "Transcript" (curie)
+);
+CREATE TABLE "Gene_related_notes" (
+	"Gene_curie" TEXT, 
+	related_notes_id TEXT, 
+	PRIMARY KEY ("Gene_curie", related_notes_id), 
+	FOREIGN KEY("Gene_curie") REFERENCES "Gene" (curie), 
+	FOREIGN KEY(related_notes_id) REFERENCES "Note" (id)
 );
 CREATE TABLE "Gene_synonym" (
 	"Gene_curie" TEXT, 
