@@ -95,7 +95,7 @@
                "type": "string"
             },
             "related_notes": {
-               "description": "Holds between an object and a list of related Note objects.",
+               "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Disease annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
                "items": {
                   "$ref": "#/$defs/Note"
                },
@@ -683,7 +683,7 @@
                "type": "string"
             },
             "related_notes": {
-               "description": "Holds between an object and a list of related Note objects.",
+               "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Disease annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
                "items": {
                   "$ref": "#/$defs/Note"
                },
@@ -3798,10 +3798,6 @@
          "additionalProperties": false,
          "description": "A DNA genomic entity from which one or more functional* RNA transcript molecules are transcribed, along with cis-regulatory elements responsible for regulating expression (transcription) of the gene. * A functional RNA molecule here can mean one that is directly responsible for the gene's function (e.g. catalysis, structure, etc.) or one that is translated to produce a functional polypeptide/protein. A pseudogene may be considered a gene under this definition, albeit no longer functional.",
          "properties": {
-            "automated_gene_description": {
-               "description": "Gene description generated via algorithm developed at the alliance.",
-               "type": "string"
-            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -3825,14 +3821,6 @@
             "date_updated": {
                "description": "Date on which an entity was last modified.",
                "format": "date",
-               "type": "string"
-            },
-            "gene_synopsis": {
-               "description": "Gene description provided by source resource (ie: MOD gene description that is curated or automated via MOD internal processes).",
-               "type": "string"
-            },
-            "gene_synopsis_URL": {
-               "description": "Gene description reference URL provided by source resource (aka: MOD) in the case where the curated gene_synopsis has a reference URL outside of the MOD.",
                "type": "string"
             },
             "gene_type": {
@@ -3860,6 +3848,13 @@
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "related_notes": {
+               "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Gene note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
+               "items": {
+                  "$ref": "#/$defs/Note"
+               },
+               "type": "array"
             },
             "secondary_identifiers": {
                "items": {
@@ -3979,7 +3974,7 @@
                "type": "string"
             },
             "related_notes": {
-               "description": "Holds between an object and a list of related Note objects.",
+               "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Disease annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
                "items": {
                   "$ref": "#/$defs/Note"
                },
@@ -5709,7 +5704,7 @@
       },
       "Note": {
          "additionalProperties": false,
-         "description": "Note object for capturing free-text describing some attribute of an entity, coupled with a 'note type', internal boolean, and an optional list of references. Permissible values for 'note_type' currently = disease_summary, disease_note",
+         "description": "Note object for capturing free-text describing some attribute of an entity, coupled with a 'note type', internal boolean, and an optional list of references. Permissible values for note_type can be viewed and managed in the A-Team curation UI Controlled Vocabulary Terms Table.",
          "properties": {
             "created_by": {
                "description": "The individual that created the entity.",

@@ -1,5 +1,5 @@
 # Auto generated from core.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-05-19T15:52:48
+# Generation date: 2022-05-24T19:03:53
 # Schema: core
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/core.yaml
@@ -463,10 +463,8 @@ class Gene(GenomicEntity):
     internal: Union[bool, Bool] = None
     taxon: Union[str, NCBITaxonTermCurie] = None
     symbol: str = None
-    gene_synopsis: Optional[str] = None
-    gene_synopsis_URL: Optional[str] = None
+    related_notes: Optional[Union[Union[dict, "Note"], List[Union[dict, "Note"]]]] = empty_list()
     gene_type: Optional[Union[str, SOTermCurie]] = None
-    automated_gene_description: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -479,17 +477,10 @@ class Gene(GenomicEntity):
         if not isinstance(self.symbol, str):
             self.symbol = str(self.symbol)
 
-        if self.gene_synopsis is not None and not isinstance(self.gene_synopsis, str):
-            self.gene_synopsis = str(self.gene_synopsis)
-
-        if self.gene_synopsis_URL is not None and not isinstance(self.gene_synopsis_URL, str):
-            self.gene_synopsis_URL = str(self.gene_synopsis_URL)
+        self._normalize_inlined_as_dict(slot_name="related_notes", slot_type=Note, key_name="internal", keyed=False)
 
         if self.gene_type is not None and not isinstance(self.gene_type, SOTermCurie):
             self.gene_type = SOTermCurie(self.gene_type)
-
-        if self.automated_gene_description is not None and not isinstance(self.automated_gene_description, str):
-            self.automated_gene_description = str(self.automated_gene_description)
 
         super().__post_init__(**kwargs)
 
@@ -557,8 +548,8 @@ class Synonym(AuditedObject):
 class Note(AuditedObject):
     """
     Note object for capturing free-text describing some attribute of an entity, coupled with a 'note type', internal
-    boolean, and an optional list of references. Permissible values for 'note_type' currently = disease_summary,
-    disease_note
+    boolean, and an optional list of references. Permissible values for note_type can be viewed and managed in the
+    A-Team curation UI Controlled Vocabulary Terms Table.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -3473,15 +3464,6 @@ slots.taxon = Slot(uri=ALLIANCE.taxon, name="taxon", curie=ALLIANCE.curie('taxon
 slots.secondary_identifiers = Slot(uri=ALLIANCE.secondary_identifiers, name="secondary_identifiers", curie=ALLIANCE.curie('secondary_identifiers'),
                    model_uri=ALLIANCE.secondary_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]])
 
-slots.gene_synopsis = Slot(uri=ALLIANCE.gene_synopsis, name="gene_synopsis", curie=ALLIANCE.curie('gene_synopsis'),
-                   model_uri=ALLIANCE.gene_synopsis, domain=None, range=Optional[str])
-
-slots.gene_synopsis_URL = Slot(uri=ALLIANCE.gene_synopsis_URL, name="gene_synopsis_URL", curie=ALLIANCE.curie('gene_synopsis_URL'),
-                   model_uri=ALLIANCE.gene_synopsis_URL, domain=None, range=Optional[str])
-
-slots.automated_gene_description = Slot(uri=ALLIANCE.automated_gene_description, name="automated_gene_description", curie=ALLIANCE.curie('automated_gene_description'),
-                   model_uri=ALLIANCE.automated_gene_description, domain=None, range=Optional[str])
-
 slots.genomic_locations = Slot(uri=ALLIANCE.genomic_locations, name="genomic_locations", curie=ALLIANCE.curie('genomic_locations'),
                    model_uri=ALLIANCE.genomic_locations, domain=GenomicEntity, range=Optional[Union[Union[dict, "GenomicLocation"], List[Union[dict, "GenomicLocation"]]]])
 
@@ -3937,6 +3919,9 @@ slots.BiologicalEntity_taxon = Slot(uri=ALLIANCE.taxon, name="BiologicalEntity_t
 
 slots.Gene_symbol = Slot(uri=ALLIANCE.symbol, name="Gene_symbol", curie=ALLIANCE.curie('symbol'),
                    model_uri=ALLIANCE.Gene_symbol, domain=Gene, range=str)
+
+slots.Gene_related_notes = Slot(uri=ALLIANCE.related_notes, name="Gene_related_notes", curie=ALLIANCE.curie('related_notes'),
+                   model_uri=ALLIANCE.Gene_related_notes, domain=Gene, range=Optional[Union[Union[dict, "Note"], List[Union[dict, "Note"]]]])
 
 slots.Note_free_text = Slot(uri=ALLIANCE.free_text, name="Note_free_text", curie=ALLIANCE.curie('free_text'),
                    model_uri=ALLIANCE.Note_free_text, domain=Note, range=str)

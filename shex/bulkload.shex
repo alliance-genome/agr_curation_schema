@@ -562,10 +562,8 @@ linkml:Nodeidentifier NONLITERAL
     (  $<Gene_tes> (  &<GenomicEntity_tes> ;
           rdf:type [ <GenomicEntity> ] ? ;
           <symbol> @linkml:String ;
-          <gene_synopsis> @linkml:String ? ;
-          <gene_synopsis_URL> @linkml:String ? ;
-          <gene_type> @<SOTerm> ? ;
-          <automated_gene_description> @linkml:String ?
+          <related_notes> @<Note> * ;
+          <gene_type> @<SOTerm> ?
        ) ;
        rdf:type [ <Gene> ]
     )
