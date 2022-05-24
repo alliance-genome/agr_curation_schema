@@ -106,39 +106,6 @@ classes:
       - SGD
       - ZFIN
 
-  Gene:
-    description: >-
-      A DNA genomic entity from which one or more functional* RNA transcript molecules
-      are transcribed, along with cis-regulatory elements responsible for regulating
-      expression (transcription) of the gene. * A functional RNA molecule
-      here can mean one that is directly responsible for the gene's function (e.g. catalysis,
-      structure, etc.) or one that is translated to produce a functional polypeptide/protein.
-      A pseudogene may be considered a gene under this definition, albeit no longer functional.
-    is_a: GenomicEntity
-    slots:
-      - symbol
-      - related_notes
-      - gene_type
-    id_prefixes:
-      - ENSEMBL
-      - HGNC
-      - FB
-      - MGI
-      - RGD
-      - SGD
-      - WB
-      - ZFIN
-    slot_usage:
-      symbol:
-        required: true
-      related_notes:
-        description: >-
-          Valid note types are available for viewing in the A-Team curation tool
-          Controlled Vocabulary Terms Table (in the "Gene note types" vocabulary)
-          on the production environment (curation.alliancegenome.org). New terms
-          can be added as needed.
-
-
   CrossReference:
     is_a: AuditedObject
     slots:
@@ -555,11 +522,6 @@ slots:
 
   type:
     range: uriorcurie
-
-  gene_type:
-    description: SOTerm describing gene type
-    domain: Gene
-    range: SOTerm
 
   references:
     singular_name: reference
