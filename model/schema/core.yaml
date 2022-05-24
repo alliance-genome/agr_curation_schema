@@ -137,12 +137,7 @@ classes:
           Controlled Vocabulary Terms Table (in the "Gene note types" vocabulary)
           on the production environment (curation.alliancegenome.org). New terms
           can be added as needed.
-        examples:
-          - value: automated_gene_description
-          - value: MOD_provided_gene_description
-          - value: gene_disease_summary
-          - value: gene_function_summary
-          - value: gene_phenotype_summary
+
 
   CrossReference:
     is_a: AuditedObject
@@ -165,7 +160,8 @@ classes:
     description: >-
       Note object for capturing free-text describing some attribute of an entity,
       coupled with a 'note type', internal boolean, and an optional list of
-      references. Permissible values for 'note_type' currently = disease_summary, disease_note
+      references. Permissible values for note_type can be viewed and managed in the
+      A-Team curation UI Controlled Vocabulary Terms Table.
     slots:
       - free_text
       - note_type
@@ -173,8 +169,16 @@ classes:
     slot_usage:
       free_text:
         required: true
-      note_type:              # Permissible values currently: disease_summary, disease_note
+      note_type:           # Permissible values currently visible in A-Team curation UI CV table
         required: true
+        examples:
+          - value: disease_summary
+          - value: disease_note
+          - value: automated_gene_description
+          - value: MOD_provided_gene_description
+          - value: gene_disease_summary
+          - value: gene_function_summary
+          - value: gene_phenotype_summary
 
   EntityStatement:    # to be deprecated in favor of Note class?
     is_a: AuditedObject
