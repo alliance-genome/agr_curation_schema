@@ -106,6 +106,34 @@ classes:
       - SGD
       - ZFIN
 
+  Gene:
+    description: >-
+      A DNA genomic entity from which one or more functional* RNA transcript molecules
+      are transcribed, along with cis-regulatory elements responsible for regulating
+      expression (transcription) of the gene. * A functional RNA molecule
+      here can mean one that is directly responsible for the gene's function (e.g. catalysis,
+      structure, etc.) or one that is translated to produce a functional polypeptide/protein.
+      A pseudogene may be considered a gene under this definition, albeit no longer functional.
+    is_a: GenomicEntity
+    slots:
+      - symbol
+      - gene_synopsis
+      - gene_synopsis_URL
+      - gene_type
+      - automated_gene_description
+    id_prefixes:
+      - ENSEMBL
+      - HGNC
+      - FB
+      - MGI
+      - RGD
+      - SGD
+      - WB
+      - ZFIN
+    slot_usage:
+      symbol:
+        required: true
+
   CrossReference:
     is_a: AuditedObject
     slots:
@@ -405,6 +433,20 @@ slots:
     multivalued: true
     range: uriorcurie
 
+  gene_synopsis:
+    description: >-
+      Gene description provided by source resource (ie: MOD gene description that is curated or
+      automated via MOD internal processes).
+
+  gene_synopsis_URL:
+    description: >-
+      Gene description reference URL provided by source resource (aka: MOD) in the case
+      where the curated gene_synopsis has a reference URL outside of the MOD.
+
+  automated_gene_description:
+    description: >-
+      Gene description generated via algorithm developed at the alliance.
+
   genomic_locations:
     domain: GenomicEntity
     range: GenomicLocation
@@ -513,6 +555,11 @@ slots:
 
   type:
     range: uriorcurie
+
+  gene_type:
+    description: SOTerm describing gene type
+    domain: Gene
+    range: SOTerm
 
   references:
     singular_name: reference

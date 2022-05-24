@@ -28,22 +28,23 @@ emit_prefixes:
   - xsd
 
 imports:
-  - reference
-  - resource
-  - variation
-  - variantConsequence
-  - linkml:types
-  - core
+  - affectedGenomicModel
   - agent
   - allele
-  - affectedGenomicModel
-  - reagent
+  - controlledVocabulary
+  - core
+  - expression
+  - gene
   - geneInteraction
+  - ingest
+  - linkml:types
   - ontologyTerm
   - phenotypeAndDiseaseAnnotation
-  - controlledVocabulary
-  - ingest
-  - expression
+  - reagent
+  - reference
+  - resource
+  - variantConsequence
+  - variation
 
 subsets:
   alliance subset:
