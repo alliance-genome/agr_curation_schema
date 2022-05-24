@@ -3798,10 +3798,6 @@
          "additionalProperties": false,
          "description": "A DNA genomic entity from which one or more functional* RNA transcript molecules are transcribed, along with cis-regulatory elements responsible for regulating expression (transcription) of the gene. * A functional RNA molecule here can mean one that is directly responsible for the gene's function (e.g. catalysis, structure, etc.) or one that is translated to produce a functional polypeptide/protein. A pseudogene may be considered a gene under this definition, albeit no longer functional.",
          "properties": {
-            "automated_gene_description": {
-               "description": "Gene description generated via algorithm developed at the alliance.",
-               "type": "string"
-            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -3825,14 +3821,6 @@
             "date_updated": {
                "description": "Date on which an entity was last modified.",
                "format": "date",
-               "type": "string"
-            },
-            "gene_synopsis": {
-               "description": "Gene description provided by source resource (ie: MOD gene description that is curated or automated via MOD internal processes).",
-               "type": "string"
-            },
-            "gene_synopsis_URL": {
-               "description": "Gene description reference URL provided by source resource (aka: MOD) in the case where the curated gene_synopsis has a reference URL outside of the MOD.",
                "type": "string"
             },
             "gene_type": {
@@ -3860,6 +3848,13 @@
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "related_notes": {
+               "description": "Holds between an object and a list of related Note objects.",
+               "items": {
+                  "$ref": "#/$defs/Note"
+               },
+               "type": "array"
             },
             "secondary_identifiers": {
                "items": {
@@ -9122,7 +9117,6 @@
    "$id": "https://github.com/alliance-genome/agr_curation_schema/alliance_schema",
    "$schema": "http://json-schema.org/draft-07/schema#",
    "additionalProperties": false,
-   "metamodel_version": "1.7.0",
    "properties": {
       "agm_ingest_set": {
          "items": {
@@ -9181,7 +9175,6 @@
    },
    "required": [],
    "title": "AllianceModel",
-   "type": "object",
-   "version": "0.0.1"
+   "type": "object"
 }
 

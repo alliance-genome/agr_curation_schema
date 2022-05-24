@@ -1,5 +1,5 @@
-id: https://github.com/alliance-genome/agr_curation_schema/core.yaml
-name: core
+id: https://github.com/alliance-genome/agr_curation_schema/gene.yaml
+name: gene
 description: Alliance Schema with LinkML
 
 default_prefix: alliance
@@ -17,13 +17,9 @@ emit_prefixes:
   - xsd
 
 imports:
+  - core
   - linkml:types
-  - reference
-  - resource
-  - agent
-  - image
   - ontologyTerm
-  - controlledVocabulary
 
 prefixes:
   alliance: 'http://alliancegenome.org/'
