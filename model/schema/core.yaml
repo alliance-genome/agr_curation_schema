@@ -117,10 +117,8 @@ classes:
     is_a: GenomicEntity
     slots:
       - symbol
-      - gene_synopsis
-      - gene_synopsis_URL
+      - related_notes
       - gene_type
-      - automated_gene_description
     id_prefixes:
       - ENSEMBL
       - HGNC
@@ -133,6 +131,13 @@ classes:
     slot_usage:
       symbol:
         required: true
+      related_notes:
+        description: >-
+          Valid note types are available for viewing in the A-Team curation tool
+          Controlled Vocabulary Terms Table (in the "Gene note types" vocabulary)
+          on the production environment (curation.alliancegenome.org). New terms
+          can be added as needed.
+
 
   CrossReference:
     is_a: AuditedObject
@@ -155,7 +160,8 @@ classes:
     description: >-
       Note object for capturing free-text describing some attribute of an entity,
       coupled with a 'note type', internal boolean, and an optional list of
-      references. Permissible values for 'note_type' currently = disease_summary, disease_note
+      references. Permissible values for note_type can be viewed and managed in the
+      A-Team curation UI Controlled Vocabulary Terms Table.
     slots:
       - free_text
       - note_type
@@ -163,8 +169,16 @@ classes:
     slot_usage:
       free_text:
         required: true
-      note_type:              # Permissible values currently: disease_summary, disease_note
+      note_type:           # Permissible values currently visible in A-Team curation UI CV table
         required: true
+        examples:
+          - value: disease_summary
+          - value: disease_note
+          - value: automated_gene_description
+          - value: MOD_provided_gene_description
+          - value: gene_disease_summary
+          - value: gene_function_summary
+          - value: gene_phenotype_summary
 
   EntityStatement:    # to be deprecated in favor of Note class?
     is_a: AuditedObject
@@ -432,20 +446,6 @@ slots:
     aliases: ['secondary_ids']
     multivalued: true
     range: uriorcurie
-
-  gene_synopsis:
-    description: >-
-      Gene description provided by source resource (ie: MOD gene description that is curated or
-      automated via MOD internal processes).
-
-  gene_synopsis_URL:
-    description: >-
-      Gene description reference URL provided by source resource (aka: MOD) in the case
-      where the curated gene_synopsis has a reference URL outside of the MOD.
-
-  automated_gene_description:
-    description: >-
-      Gene description generated via algorithm developed at the alliance.
 
   genomic_locations:
     domain: GenomicEntity

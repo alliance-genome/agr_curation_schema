@@ -235,6 +235,12 @@ classes:
           vocabulary
         range: VocabularyTerm
         required: false
+      related_notes:
+        description: >-
+          Valid note types are available for viewing in the A-Team curation tool
+          Controlled Vocabulary Terms Table (in the "Disease annotation note types" vocabulary)
+          on the production environment (curation.alliancegenome.org). New terms
+          can be added as needed.
 
   GeneDiseaseAnnotation:
     description: >-
