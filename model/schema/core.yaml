@@ -734,7 +734,14 @@ enums:
           FB: Annotation symbol (e.g., CG4889)
       # Other SGD alias types: distinct from above types?
       NCBI protein name:
+        notes: >-
+          Synonyms developed by SGD and NCBI curators for proteins, conforming
+          to UniProt and NCBI rules. They are displayed on protein pages, and
+          used for naming of fungal orthologs.
       Uniform:
+        notes: SGD-specific
       Non-uniform:
+        notes: SGD-specific
       Retired name:
-      SGDID Secondary:
+        notes: >-
+          Synonyms that were once reserved but have been abandoned for a year or more.
