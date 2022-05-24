@@ -117,10 +117,8 @@ classes:
     is_a: GenomicEntity
     slots:
       - symbol
-      - gene_synopsis
-      - gene_synopsis_URL
+      - related_notes
       - gene_type
-      - automated_gene_description
     id_prefixes:
       - ENSEMBL
       - HGNC
@@ -133,6 +131,12 @@ classes:
     slot_usage:
       symbol:
         required: true
+      related_notes:
+        description: >-
+          Two valid note types: automated_gene_description and MOD_provided_gene_description.
+          Additional note types (or edits to these note types) can be made in the A-Team
+          curation tool Controlled Vocabulary Terms Table on the production environment
+          (curation.alliancegenome.org).
 
   CrossReference:
     is_a: AuditedObject
@@ -432,20 +436,6 @@ slots:
     aliases: ['secondary_ids']
     multivalued: true
     range: uriorcurie
-
-  gene_synopsis:
-    description: >-
-      Gene description provided by source resource (ie: MOD gene description that is curated or
-      automated via MOD internal processes).
-
-  gene_synopsis_URL:
-    description: >-
-      Gene description reference URL provided by source resource (aka: MOD) in the case
-      where the curated gene_synopsis has a reference URL outside of the MOD.
-
-  automated_gene_description:
-    description: >-
-      Gene description generated via algorithm developed at the alliance.
 
   genomic_locations:
     domain: GenomicEntity
