@@ -133,10 +133,16 @@ classes:
         required: true
       related_notes:
         description: >-
-          Two valid note types: automated_gene_description and MOD_provided_gene_description.
-          Additional note types (or edits to these note types) can be made in the A-Team
-          curation tool Controlled Vocabulary Terms Table on the production environment
-          (curation.alliancegenome.org).
+          Valid note types are available for viewing in the A-Team curation tool
+          Controlled Vocabulary Terms Table (in the "Gene note types" vocabulary)
+          on the production environment (curation.alliancegenome.org). New terms
+          can be added as needed.
+        examples:
+          - value: automated_gene_description
+          - value: MOD_provided_gene_description
+          - value: gene_disease_summary
+          - value: gene_function_summary
+          - value: gene_phenotype_summary
 
   CrossReference:
     is_a: AuditedObject
