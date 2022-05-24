@@ -56,6 +56,7 @@ classes:
     slots:
       - symbol
       - gene_synopsis
+      - gene_synopsis_URL
       - gene_type
       - automated_gene_description
     id_prefixes:
@@ -79,14 +80,19 @@ classes:
 
 slots:
 
+  automated_gene_description:
+    description: >-
+      Gene description generated via algorithm developed at the alliance.
+
   gene_synopsis:
     description: >-
       Gene description provided by source resource (ie: MOD gene description that is curated or
       automated via MOD internal processes).
 
-  automated_gene_description:
+  gene_synopsis_URL:
     description: >-
-      Gene description generated via algorithm developed at the alliance.
+      Gene description reference URL provided by source resource (aka: MOD) in the case
+      where the curated gene_synopsis has a reference URL outside of the MOD.
 
   gene_type:
     description: SOTerm describing gene type
