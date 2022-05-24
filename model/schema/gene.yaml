@@ -51,8 +51,8 @@ classes:
     is_a: GenomicEntity
     slots:
       - symbol
-      - gene_type
       - related_notes
+      - gene_type
     id_prefixes:
       - ENSEMBL
       - HGNC
@@ -65,6 +65,14 @@ classes:
     slot_usage:
       symbol:
         required: true
+      related_notes:
+        description: >-
+          Valid note types are available for viewing in the A-Team curation tool
+          Controlled Vocabulary Terms Table (in the "Gene note types" vocabulary)
+          on the production environment (curation.alliancegenome.org). New terms
+          can be added as needed.
+
+
 
 ## ------------
 ## SLOTS
