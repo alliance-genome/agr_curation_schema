@@ -3850,7 +3850,7 @@
                "type": "boolean"
             },
             "related_notes": {
-               "description": "Holds between an object and a list of related Note objects.",
+               "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Gene note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
                "items": {
                   "$ref": "#/$defs/Note"
                },
