@@ -72,6 +72,29 @@ classes:
           on the production environment (curation.alliancegenome.org). New terms
           can be added as needed.
 
+  Set:
+    description: >-
+      A set of objects which are grouped together
+    is_a: BiologicalEntity
+
+
+  Gene_set:
+    description: >-
+      A gene set is a set of genes which have been grouped together
+    is_a: Set
+    slots:
+
+  Gene_cluster:
+    description: >-
+      A gene cluster is a set of genes which is of biological significance, and which is clustered together on the genone
+      is_a: Gene_set    
+    
+
+  Operon:
+    description: >-
+      The DNA region of a group of adjacent genes whose transcription is coordinated onB one or several mutually overlapping transcription units transcribed in the same direction and sharing at least one gene. SO:0000178 
+    is_a: Gene_set
+    
 
 
 ## ------------
@@ -86,3 +109,6 @@ slots:
     description: SOTerm describing gene type
     domain: Gene
     range: SOTerm
+
+
+
