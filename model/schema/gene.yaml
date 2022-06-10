@@ -74,28 +74,30 @@ classes:
 
   Set:
     description: >-
-      A set of objects which are grouped together
+      A set of objects which are grouped together.
     is_a: BiologicalEntity
 
 
   Gene_set:
     description: >-
-      A gene set is a set of genes which have been grouped together
+      A gene set is a set of genes which have been grouped together.
     is_a: Set
     slots:
 
   Gene_cluster:
     description: >-
-      A gene cluster is a set of genes which is of biological significance, and which is clustered together on the genone
-      is_a: Gene_set    
-    
+      A gene cluster is a set of genes which is of biological significance, and
+      which is clustered together on the genome.
+    is_a: Gene_set
 
   Operon:
     description: >-
-      The DNA region of a group of adjacent genes whose transcription is coordinated onB one or several mutually overlapping transcription units transcribed in the same direction and sharing at least one gene. SO:0000178 
+      The DNA region of a group of adjacent genes whose transcription is
+      coordinated on one or several mutually overlapping transcription
+      units transcribed in the same direction and sharing at least one gene.
     is_a: Gene_set
-    
-
+    exact_mappings:
+      - SO:0000178
 
 ## ------------
 ## SLOTS
@@ -110,5 +112,17 @@ slots:
     domain: Gene
     range: SOTerm
 
-
-
+  set_members:
+    description: >-
+      The list of members in a set.
+    notes: >-
+      This is the simplest way to link set members to the set. If additional
+      metadata is needed to describe the association between the set and each
+      member (e.g., evidence, type), we would need to model an Association
+      object for each set-member association.
+      This has been set as a required slot for sets, on the assumption that
+      there would never be a set created without members.
+    domain: Set
+    range: BiologicalEntity
+    required: true
+    multivalued: true

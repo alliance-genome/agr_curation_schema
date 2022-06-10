@@ -3887,6 +3887,53 @@
          "title": "Gene",
          "type": "object"
       },
+      "GeneCluster": {
+         "additionalProperties": false,
+         "description": "A gene cluster is a set of genes which is of biological significance, and which is clustered together on the genome.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "taxon": {
+               "description": "The taxon from which the biological entity derives.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "curie",
+            "taxon"
+         ],
+         "title": "GeneCluster",
+         "type": "object"
+      },
       "GeneDiseaseAnnotation": {
          "additionalProperties": false,
          "description": "An annotation asserting an association between a gene and a disease supported by evidence.",
@@ -4369,6 +4416,53 @@
             "subject"
          ],
          "title": "GenePhenotypeAnnotation",
+         "type": "object"
+      },
+      "GeneSet": {
+         "additionalProperties": false,
+         "description": "A gene set is a set of genes which have been grouped together.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "taxon": {
+               "description": "The taxon from which the biological entity derives.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "curie",
+            "taxon"
+         ],
+         "title": "GeneSet",
          "type": "object"
       },
       "GenomicEntity": {
@@ -5849,6 +5943,53 @@
          "title": "OntologyTerm",
          "type": "object"
       },
+      "Operon": {
+         "additionalProperties": false,
+         "description": "The DNA region of a group of adjacent genes whose transcription is coordinated on one or several mutually overlapping transcription units transcribed in the same direction and sharing at least one gene.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "taxon": {
+               "description": "The taxon from which the biological entity derives.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "curie",
+            "taxon"
+         ],
+         "title": "Operon",
+         "type": "object"
+      },
       "Organization": {
          "additionalProperties": false,
          "description": "",
@@ -7017,6 +7158,53 @@
             "object"
          ],
          "title": "SequenceTargetingReagentToGeneAssociation",
+         "type": "object"
+      },
+      "Set": {
+         "additionalProperties": false,
+         "description": "A set of objects which are grouped together.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "taxon": {
+               "description": "The taxon from which the biological entity derives.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "curie",
+            "taxon"
+         ],
+         "title": "Set",
          "type": "object"
       },
       "SiftPredictionLevels": {
@@ -9117,7 +9305,6 @@
    "$id": "https://github.com/alliance-genome/agr_curation_schema/alliance_schema",
    "$schema": "http://json-schema.org/draft-07/schema#",
    "additionalProperties": false,
-   "metamodel_version": "1.7.0",
    "properties": {
       "agm_ingest_set": {
          "items": {
@@ -9176,7 +9363,6 @@
    },
    "required": [],
    "title": "AllianceModel",
-   "type": "object",
-   "version": "0.0.1"
+   "type": "object"
 }
 
