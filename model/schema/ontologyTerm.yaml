@@ -255,5 +255,4 @@ classes:
     is_a: ChemicalTerm
     description: >-
       Molecules as described by WormBase
-    mixins:
-      - AuditedObject
+
