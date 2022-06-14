@@ -72,32 +72,55 @@ classes:
           on the production environment (curation.alliancegenome.org). New terms
           can be added as needed.
 
-  Set:
-    description: >-
-      A set of objects which are grouped together.
-    is_a: BiologicalEntity
+# Do BiologicalEntitySets have unique identifier or unique name?
+#   If not, do these sets have a set of identifying slots that determine uniqueness of the set.
+# Metadata for Feature-BiologicalEntitySets relationship?
+# Types of BiologicalEntitySets
+# Attributes shared/specific to each type of BiologicalEntitySets.
 
-
-  Gene_set:
+  BiologicalEntitySet:
     description: >-
-      A gene set is a set of genes which have been grouped together.
-    is_a: Set
+      A set of BiologicalEntity objects.
+    is_a: AuditedObject
     slots:
+      - curie
+      - biological_entity_set_members
+      - biological_entity_set_type
 
-  Gene_cluster:
+  GeneSet:
+    description: >-
+      A set of genes which have been grouped together.
+    is_a: BiologicalEntitySet
+    slot_usage:
+      biological_entity_set_members:
+        range: Gene
+
+  GeneCluster:
     description: >-
       A gene cluster is a set of genes which is of biological significance, and
       which is clustered together on the genome.
-    is_a: Gene_set
+    is_a: GeneSet
+
+  FunctionalGeneSet:
+    is_a: GeneSet
 
   Operon:
     description: >-
       The DNA region of a group of adjacent genes whose transcription is
       coordinated on one or several mutually overlapping transcription
       units transcribed in the same direction and sharing at least one gene.
-    is_a: Gene_set
+    is_a: GeneSet
     exact_mappings:
       - SO:0000178
+
+  PathwayGeneSet:
+    is_a: GeneSet
+
+  ParalogGeneSet:
+    is_a: GeneSet
+
+  ProteinComplex:
+    is_a: BiologicalEntitySet
 
 ## ------------
 ## SLOTS
@@ -112,17 +135,24 @@ slots:
     domain: Gene
     range: SOTerm
 
-  set_members:
+  biological_entity_set_type:
     description: >-
-      The list of members in a set.
+      The type of BiologicalEntitySet.
     notes: >-
-      This is the simplest way to link set members to the set. If additional
-      metadata is needed to describe the association between the set and each
+      We may choose to distinguish types of BiologicalEntitySet objects
+      using this slot, rather than having different kinds of child objects
+      like ParalogGeneSet, etc. This may depend on the extent to which different
+      set types have distinct attributes.
+
+  biological_entity_set_members:
+    description: >-
+      The list of members in a BiologicalEntitySet.
+    notes: >-
+      This is the simplest way to link members to the set. If additional
+      metadata are needed to describe the association between the set and each
       member (e.g., evidence, type), we would need to model an Association
       object for each set-member association.
-      This has been set as a required slot for sets, on the assumption that
-      there would never be a set created without members.
-    domain: Set
+    domain: BiologicalEntitySet
     range: BiologicalEntity
     required: true
     multivalued: true
