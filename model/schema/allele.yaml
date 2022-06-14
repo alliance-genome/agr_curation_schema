@@ -93,8 +93,6 @@ classes:
     abstract: true
     description: >-
       Association between an allele and a genomic entity
-    mixins:
-      - AuditedObject
     slots:
       - single_reference
       - evidence_code
