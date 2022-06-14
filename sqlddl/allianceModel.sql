@@ -544,12 +544,6 @@
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
 -- # Class: "Molecule" Description: "Molecules as described by WormBase"
---     * Slot: created_by Description: The individual that created the entity.
---     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
---     * Slot: date_updated Description: Date on which an entity was last modified.
---     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
---     * Slot: obsolete Description: Entity is no longer current.
 --     * Slot: inchi Description: InChi style description of the molecule
 --     * Slot: inchi_key Description: InChi key description of the molecule
 --     * Slot: iupac Description: IUPAC name of the molecule
@@ -561,6 +555,12 @@
 --     * Slot: definition Description: The explanation of the meaning of a term.
 --     * Slot: type Description: 
 --     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: date_updated Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
+--     * Slot: obsolete Description: Entity is no longer current.
 -- # Class: "Allele" Description: "One of multiple possible forms of a functional genomic element (most often described as a locus or gene), differing from the reference DNA sequence.  The genomic element can be endogenous or constructed."
 --     * Slot: symbol Description: Symbol for a particular thing
 --     * Slot: functional_impact Description: Experimentally assessed functional impact of the allele, e.g. knockout / amorphic
@@ -589,71 +589,71 @@
 --     * Slot: id Description: 
 --     * Slot: single_reference Description: holds between an object and a single reference
 --     * Slot: evidence_code Description: 
+--     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
+--     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
+--     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
---     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
---     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
---     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: related_note_id Description: Holds between an object and a Note object.
 -- # Class: "AlleleGeneAssociation" Description: "Association between an allele and a gene"
 --     * Slot: id Description: 
 --     * Slot: single_reference Description: holds between an object and a single reference
 --     * Slot: evidence_code Description: 
+--     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
+--     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
+--     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
---     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
---     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
---     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: related_note_id Description: Holds between an object and a Note object.
 -- # Class: "AlleleTranscriptAssociation" Description: "Association between an allele and a transcript"
 --     * Slot: id Description: 
 --     * Slot: single_reference Description: holds between an object and a single reference
 --     * Slot: evidence_code Description: 
+--     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
+--     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
+--     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
---     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
---     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
---     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: related_note_id Description: Holds between an object and a Note object.
 -- # Class: "AlleleProteinAssociation" Description: "Association between an allele and a protein"
 --     * Slot: id Description: 
 --     * Slot: single_reference Description: holds between an object and a single reference
 --     * Slot: evidence_code Description: 
+--     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
+--     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
+--     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
---     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
---     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
---     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: related_note_id Description: Holds between an object and a Note object.
 -- # Class: "AlleleVariantAssociation" Description: "The relationship between an allele and a variant is many to many. An Allele may have many variants and a variant can be present in many alleles."
 --     * Slot: id Description: 
 --     * Slot: single_reference Description: holds between an object and a single reference
 --     * Slot: evidence_code Description: 
+--     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
+--     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
+--     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: modified_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
---     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
---     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
---     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: Ingest_id Description: Autocreated FK slot
 --     * Slot: related_note_id Description: Holds between an object and a Note object.
 -- # Class: "AssociatedReference" Description: "Describes the relation between a reference and an object"
@@ -2986,12 +2986,6 @@ CREATE TABLE "XSMOTerm" (
 	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Molecule" (
-	created_by TEXT, 
-	date_created DATE, 
-	modified_by TEXT, 
-	date_updated DATE, 
-	internal BOOLEAN NOT NULL, 
-	obsolete BOOLEAN, 
 	inchi TEXT, 
 	inchi_key TEXT, 
 	iupac TEXT, 
@@ -3003,6 +2997,12 @@ CREATE TABLE "Molecule" (
 	definition TEXT, 
 	type TEXT, 
 	namespace TEXT, 
+	created_by TEXT, 
+	date_created DATE, 
+	modified_by TEXT, 
+	date_updated DATE, 
+	internal BOOLEAN NOT NULL, 
+	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
@@ -5661,121 +5661,121 @@ CREATE TABLE "AlleleGenomicEntityAssociation" (
 	id INTEGER, 
 	single_reference TEXT, 
 	evidence_code TEXT, 
+	subject TEXT NOT NULL, 
+	predicate TEXT NOT NULL, 
+	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
 	modified_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
-	subject TEXT NOT NULL, 
-	predicate TEXT NOT NULL, 
-	object TEXT NOT NULL, 
 	related_note_id TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(evidence_code) REFERENCES "ECOTerm" (curie), 
-	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(subject) REFERENCES "Allele" (curie), 
 	FOREIGN KEY(predicate) REFERENCES "ROTerm" (curie), 
 	FOREIGN KEY(object) REFERENCES "GenomicEntity" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(related_note_id) REFERENCES "Note" (id)
 );
 CREATE TABLE "AlleleGeneAssociation" (
 	id INTEGER, 
 	single_reference TEXT, 
 	evidence_code TEXT, 
+	subject TEXT NOT NULL, 
+	predicate TEXT NOT NULL, 
+	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
 	modified_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
-	subject TEXT NOT NULL, 
-	predicate TEXT NOT NULL, 
-	object TEXT NOT NULL, 
 	related_note_id TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(evidence_code) REFERENCES "ECOTerm" (curie), 
-	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(subject) REFERENCES "Allele" (curie), 
 	FOREIGN KEY(predicate) REFERENCES "ROTerm" (curie), 
 	FOREIGN KEY(object) REFERENCES "Gene" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(related_note_id) REFERENCES "Note" (id)
 );
 CREATE TABLE "AlleleTranscriptAssociation" (
 	id INTEGER, 
 	single_reference TEXT, 
 	evidence_code TEXT, 
+	subject TEXT NOT NULL, 
+	predicate TEXT NOT NULL, 
+	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
 	modified_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
-	subject TEXT NOT NULL, 
-	predicate TEXT NOT NULL, 
-	object TEXT NOT NULL, 
 	related_note_id TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(evidence_code) REFERENCES "ECOTerm" (curie), 
-	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(subject) REFERENCES "Allele" (curie), 
 	FOREIGN KEY(predicate) REFERENCES "ROTerm" (curie), 
 	FOREIGN KEY(object) REFERENCES "Transcript" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(related_note_id) REFERENCES "Note" (id)
 );
 CREATE TABLE "AlleleProteinAssociation" (
 	id INTEGER, 
 	single_reference TEXT, 
 	evidence_code TEXT, 
+	subject TEXT NOT NULL, 
+	predicate TEXT NOT NULL, 
+	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
 	modified_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
-	subject TEXT NOT NULL, 
-	predicate TEXT NOT NULL, 
-	object TEXT NOT NULL, 
 	related_note_id TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(evidence_code) REFERENCES "ECOTerm" (curie), 
-	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(subject) REFERENCES "Allele" (curie), 
 	FOREIGN KEY(predicate) REFERENCES "ROTerm" (curie), 
 	FOREIGN KEY(object) REFERENCES "Protein" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(related_note_id) REFERENCES "Note" (id)
 );
 CREATE TABLE "AlleleVariantAssociation" (
 	id INTEGER, 
 	single_reference TEXT, 
 	evidence_code TEXT, 
+	subject TEXT NOT NULL, 
+	predicate TEXT NOT NULL, 
+	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
 	modified_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
-	subject TEXT NOT NULL, 
-	predicate TEXT NOT NULL, 
-	object TEXT NOT NULL, 
 	"Ingest_id" TEXT, 
 	related_note_id TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(evidence_code) REFERENCES "ECOTerm" (curie), 
-	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(subject) REFERENCES "Allele" (curie), 
 	FOREIGN KEY(predicate) REFERENCES "ROTerm" (curie), 
 	FOREIGN KEY(object) REFERENCES "Variant" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY("Ingest_id") REFERENCES "Ingest" (id), 
 	FOREIGN KEY(related_note_id) REFERENCES "Note" (id)
 );

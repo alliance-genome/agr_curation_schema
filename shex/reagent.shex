@@ -115,8 +115,6 @@ linkml:Nodeidentifier NONLITERAL
 <AlleleGenomicEntityAssociation_struct> {
     (  $<AlleleGenomicEntityAssociation_tes> (  &<Association_tes> ;
           rdf:type [ <Association> ] ? ;
-          &<AuditedObject_tes> ;
-          rdf:type [ <AuditedObject> ] ? ;
           <single_reference> @<Reference> ? ;
           <evidence_code> @<ECOTerm> ? ;
           <related_note> @<Note> ? ;
@@ -636,9 +634,7 @@ linkml:Nodeidentifier NONLITERAL
 
 <Molecule> CLOSED {
     (  $<Molecule_tes> (  &<ChemicalTerm_tes> ;
-          rdf:type [ <ChemicalTerm> ] ? ;
-          &<AuditedObject_tes> ;
-          rdf:type [ <AuditedObject> ] ?
+          rdf:type [ <ChemicalTerm> ] ?
        ) ;
        rdf:type [ <Molecule> ]
     )

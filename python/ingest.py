@@ -1,5 +1,5 @@
 # Auto generated from ingest.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-05-24T19:20:54
+# Generation date: 2022-06-14T13:51:22
 # Schema: Alliance-Schema-Ingest
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest
@@ -2102,37 +2102,12 @@ class Molecule(ChemicalTerm):
 
     curie: Union[str, MoleculeCurie] = None
     internal: Union[bool, Bool] = None
-    created_by: Optional[Union[str, PersonUniqueId]] = None
-    date_created: Optional[Union[str, XSDDate]] = None
-    modified_by: Optional[Union[str, PersonUniqueId]] = None
-    date_updated: Optional[Union[str, XSDDate]] = None
-    obsolete: Optional[Union[bool, Bool]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
             self.MissingRequiredField("curie")
         if not isinstance(self.curie, MoleculeCurie):
             self.curie = MoleculeCurie(self.curie)
-
-        if self._is_empty(self.internal):
-            self.MissingRequiredField("internal")
-        if not isinstance(self.internal, Bool):
-            self.internal = Bool(self.internal)
-
-        if self.created_by is not None and not isinstance(self.created_by, PersonUniqueId):
-            self.created_by = PersonUniqueId(self.created_by)
-
-        if self.date_created is not None and not isinstance(self.date_created, XSDDate):
-            self.date_created = XSDDate(self.date_created)
-
-        if self.modified_by is not None and not isinstance(self.modified_by, PersonUniqueId):
-            self.modified_by = PersonUniqueId(self.modified_by)
-
-        if self.date_updated is not None and not isinstance(self.date_updated, XSDDate):
-            self.date_updated = XSDDate(self.date_updated)
-
-        if self.obsolete is not None and not isinstance(self.obsolete, Bool):
-            self.obsolete = Bool(self.obsolete)
 
         super().__post_init__(**kwargs)
 
@@ -3309,21 +3284,11 @@ class AlleleGenomicEntityAssociation(Association):
     subject: Union[str, AlleleCurie] = None
     predicate: Union[str, ROTermCurie] = None
     object: Union[str, GenomicEntityCurie] = None
-    created_by: Optional[Union[str, PersonUniqueId]] = None
-    date_created: Optional[Union[str, XSDDate]] = None
-    modified_by: Optional[Union[str, PersonUniqueId]] = None
-    date_updated: Optional[Union[str, XSDDate]] = None
-    obsolete: Optional[Union[bool, Bool]] = None
     single_reference: Optional[Union[str, ReferenceCurie]] = None
     evidence_code: Optional[Union[str, ECOTermCurie]] = None
     related_note: Optional[Union[dict, Note]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.internal):
-            self.MissingRequiredField("internal")
-        if not isinstance(self.internal, Bool):
-            self.internal = Bool(self.internal)
-
         if self._is_empty(self.subject):
             self.MissingRequiredField("subject")
         if not isinstance(self.subject, AlleleCurie):
@@ -3338,21 +3303,6 @@ class AlleleGenomicEntityAssociation(Association):
             self.MissingRequiredField("object")
         if not isinstance(self.object, GenomicEntityCurie):
             self.object = GenomicEntityCurie(self.object)
-
-        if self.created_by is not None and not isinstance(self.created_by, PersonUniqueId):
-            self.created_by = PersonUniqueId(self.created_by)
-
-        if self.date_created is not None and not isinstance(self.date_created, XSDDate):
-            self.date_created = XSDDate(self.date_created)
-
-        if self.modified_by is not None and not isinstance(self.modified_by, PersonUniqueId):
-            self.modified_by = PersonUniqueId(self.modified_by)
-
-        if self.date_updated is not None and not isinstance(self.date_updated, XSDDate):
-            self.date_updated = XSDDate(self.date_updated)
-
-        if self.obsolete is not None and not isinstance(self.obsolete, Bool):
-            self.obsolete = Bool(self.obsolete)
 
         if self.single_reference is not None and not isinstance(self.single_reference, ReferenceCurie):
             self.single_reference = ReferenceCurie(self.single_reference)
