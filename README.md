@@ -8,11 +8,10 @@ Model to describe the Alliance curation/persistence data store
 The Alliance schema is stored in a series of interconnected YAML files in the `model/schema` directory written using
 [LinkML syntax](https://linkml.io/linkml/intro/tutorial.html). LinkML is an object-oriented modeling language, tutorial 
 [here](https://linkml.io/linkml/intro/tutorial.html) with tooling that can convert simple, easy to author YAML into 
-validatable artifacts such as: JSON schemas, SQL DDL, python and java classes, markdown documentation and others.  
+validatable artifacts such as: JSON schemas, SQL DDL, python and java classes, markdown documentation and others.
+  
 Some of these artifact types and generated and stored in this repository as well including JSON schemas that are used
-to submit data.  
-
-The main modeling components of any LinkML model are: classes, slots, enumerations and types.  
+to submit data.  The main modeling components of any LinkML model are: classes, slots, enumerations and types.  
 
 ### Classes 
 
