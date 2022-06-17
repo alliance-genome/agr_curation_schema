@@ -1,5 +1,5 @@
 # Auto generated from modCorpusAssociation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-06-14T13:51:34
+# Generation date: 2022-06-17T21:51:55
 # Schema: modCorpusAssociation
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/modCorpusAssociation
