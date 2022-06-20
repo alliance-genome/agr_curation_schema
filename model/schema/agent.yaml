@@ -111,3 +111,9 @@ slots:
     domain: LoggedInPerson
     range: string
     multivalued: false
+
+  persons:
+    description: >-
+      A collection of people, not necessarily related in any
+    multivalued: true
+    range: Person

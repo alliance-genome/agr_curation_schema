@@ -24,6 +24,7 @@ imports:
   - image
   - ontologyTerm
   - controlledVocabulary
+  - evidence
 
 prefixes:
   alliance: 'http://alliancegenome.org/'
@@ -121,6 +122,7 @@ classes:
     is_a: AuditedObject
     slots:
       - synonym
+      - evidence
 
   Note:
     is_a: AuditedObject
@@ -133,6 +135,7 @@ classes:
       - free_text
       - note_type
       - references
+      - evidence
     slot_usage:
       free_text:
         required: true
@@ -247,6 +250,11 @@ slots:
 
   synonym:
     description: the text string of the synonym
+
+  evidence:
+    description: evidence associated with a property
+    range: Evidence
+    multivalued: false
 
   start:
     description: The start of the feature in positive 1-based integer coordinates

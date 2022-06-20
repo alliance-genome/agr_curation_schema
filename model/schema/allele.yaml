@@ -10,6 +10,7 @@ imports:
   - linkml:types
   - ontologyTerm
   - affectedGenomicModel
+  - evidence
 
 prefixes:
   alliance: 'http://alliancegenome.org/'
@@ -140,6 +141,43 @@ classes:
       object:
         range: Variant
 
+  FunctionalImpact:
+    is_a: AuditedObject
+    description: >-
+      Functional impact of allele and related evidence
+    slots:
+      - functional_impact_description
+      - evidence
+
+  GenerationMethod:
+    is_a: AuditedObject
+    description:
+      Generation method of allele and related evidence
+    slots:
+      - generation_method_description
+      - evidence
+
+  Origin:
+    is_a: AuditedObject
+    description: >-
+      Affected genomic models that the allele was introduced in and associated
+      evidence
+    slots:
+      - origin
+      - evidence
+      - analyses
+    slot_usage:
+      analyses:
+        description: Analyses providing evidence for AGM of origin
+
+  DatabaseStatus:
+    is_a: AuditedObject
+    description: >-
+      Database status of the allele and associated evidence
+    slots:
+      - database_status_term
+      - evidence
+
   AssociatedReference:
     is_a: AuditedObject
     description: >-
@@ -166,6 +204,11 @@ classes:
     is_a: AuditedObject
     description: >-
       Dummy cell line class
+
+  Analysis:
+    is_a: AuditedObject
+    description: >-
+      Dummy analysis class
 
   SequenceTargetingReagent:
     description: >-
@@ -242,18 +285,34 @@ slots:
 
   functional_impact:
     description: >-
+      Experimentally assessed functional impact of the allele and associated
+      evidence
+    domain: Allele
+    range: FunctionalImpact
+
+  functional_impact_description:
+    description: >-
       Experimentally assessed functional impact of the
       allele, e.g. knockout / amorphic
-    domain: Allele
+    domain: FunctionalImpact
     range: string
+    multivalued: false
+    required: true
 
   generation_method:
     description: >-
+      Technique used to create the allele and associated evidence
+    domain: Allele
+    range: GenerationMethod
+
+  generation_method_description:
+    description: >-
       Technique used to create the allele, e.g.
       spontaneous / naturally occuring / radiation
-    domain: Allele
+    domain: GenerationMethod
     range: string
     multivalued: false
+    required: true
 
   associated_references:
     description: >-
@@ -272,12 +331,20 @@ slots:
     range: VocabularyTerm
 
   origins:
-    singular_name: origin
     description: >-
-      Affected genomic models that the allele was introduced in
+      Affected genomic models that the allele was introduced in and associated
+      evidence
     multivalued: true
     domain: Allele
+    range: Origin
+
+  origin:
+    description: >-
+      Affected genomic models that the allele was introduced in
+    domain: Origin
     range: AffectedGenomicModel
+    multivalued: false
+    required: true
 
   germline_transmission_status:
     description: >-
@@ -312,8 +379,14 @@ slots:
 
   database_status:
     description: >-
+      Database status of the allele and associated evidence
+    range: DatabaseStatus
+
+  database_status_term:
+    description: >-
       Database status of the allele
     range: VocabularyTerm
+    required: true
 
   inheritence_mode:
     description: >-
@@ -354,6 +427,11 @@ slots:
       by sequencing
     domain: Variant
     range: VocabularyTerm
+
+  analyses:
+    description: holds between an object and a list of references
+    multivalued: true
+    range: Analysis
 
 enums:
   construct_component_relation_enum:
