@@ -114,6 +114,6 @@ slots:
 
   persons:
     description: >-
-      A collection of people, not necessarily related in any
+      A collection of people, not necessarily related in any way
     multivalued: true
     range: Person
