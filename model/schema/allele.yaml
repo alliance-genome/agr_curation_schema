@@ -49,18 +49,10 @@ classes:
       element can be endogenous or constructed.
     slots:
       - symbol
-      - contains_constructs
-      - molecular_mutations
-      - functional_impact
-      - generation_method
       - associated_references
+      - associated_with_figure
       - related_notes
       - germline_transmission_status
-      - parent_cell_line
-      - mutant_cell_lines
-      - embryonic_stem_cell_lines
-      - images
-      - origins
       - database_status
       - inheritence_mode
       - in_collection
@@ -88,6 +80,13 @@ classes:
       name:
         required: true
 
+  AlleleGenerationMethod:
+    is_a: AuditedObject
+    slots:
+      - referenced_allele
+      - mutagen
+      - mutagenesis_method
+
   AlleleGenomicEntityAssociation:
     is_a: Association
     abstract: true
@@ -104,6 +103,18 @@ classes:
         range: ROTerm
       object:
         range: GenomicEntity
+
+  AlleleConstructAssociation:
+    is_a: AuditedObject
+    description: >-
+    slot_usage:
+      subject:
+        range: Allele
+      object:
+        range: Construct
+      predicate:
+        range: allele_construct_relationship_enum
+        # TODO: try ifAbsent
 
   AlleleGeneAssociation:
     is_a: AlleleGenomicEntityAssociation
@@ -161,11 +172,38 @@ classes:
       - construct_components
       - references
 
+  AlleleFunctionalImpact:
+    is_a: AuditedObject
+    slots:
+      - referenced_allele
+      - functional_impact
+      - single_reference
 
   CellLine:
     is_a: AuditedObject
     description: >-
-      Dummy cell line class
+    slots:
+      - name
+      - affected_genomic_model
+      - type
+      - mutant_cell_lines
+      - created_by
+      - related_notes
+      - vector_name
+      - vector_type
+
+  MutantCellLine:
+    is_a: CellLine
+    slots:
+      - parent_cell_line
+      - derivation_type
+      # - associated_alleles
+
+  EmbryonicCellLine:
+    is_a: CellLine
+    slots:
+      - library_name
+      - parent_cell_line
 
   SequenceTargetingReagent:
     description: >-
@@ -191,7 +229,6 @@ classes:
       object:
         range: Gene
 
-
   ConstructComponentAssociation:
     is_a: Association
     slot_usage:
@@ -207,10 +244,37 @@ classes:
     slots:
       - symbol
 
+  MolecularMutation:
+    is_a: AuditedObject
+    slots:
+      - single_reference
+      - evidence_type
+      - date_updated
+      - related_notes
+      - curator_confirmed
+      - referenced_allele
+
 
 # Slots
 
 slots:
+
+  vector_name:
+  vector_type:
+  derivation_type:
+  library_name:
+
+  evidence_type:
+    domain: MolecularMutation
+    range: evidence_type_enum
+
+  curator_confirmed:
+    domain: MolecularMutation
+    range: boolean
+
+  referenced_allele:
+    domain: AlleleGenerationMethod
+    range: Allele
 
   construct_components:
     multivalued: true
@@ -222,18 +286,20 @@ slots:
     domain: Allele
     range: Construct
 
-  molecular_mutations:
-    description: >-
-      Description of the DNA changes if precise
-      genomic location unknown
-    domain: Allele
-    multivalued: true
-    range: string
-
   mutation_type:
     description: SO term for type of mutation
     domain: Allele
     range: SOTerm
+
+  mutagen:
+    description: >-
+    domain: Allele
+    range: mutagen_enum
+
+  mutagenesis_method:
+    description: >-
+    domain: Allele
+    range: mutagenesis_method_enum
 
   mutation_description:
     description: >-
@@ -244,8 +310,8 @@ slots:
     description: >-
       Experimentally assessed functional impact of the
       allele, e.g. knockout / amorphic
-    domain: Allele
-    range: string
+    domain: AlleleFunctionalImpact
+    range: functional_impact_enum
 
   generation_method:
     description: >-
@@ -368,3 +434,43 @@ enums:
   sqtr_relation_enum:
     permissible_values:
       targets:
+
+  mutagen_enum:
+    permissible_values:
+      CRISPR:
+      DNA:
+      DNA and CRISPR:
+      DNA and TALEN:
+      EMS:
+      ENU:
+      TALEN:
+      TMP:
+      g-rays:
+      not specified:
+      spontaneous:
+      zinc finger nuclease:
+
+  mutagenesis_method_enum:
+    permissible_values:
+      adult females:
+      adult males:
+      embryos:
+      not specified:
+      sperm:
+
+  functional_impact_enum:
+    permissible_values:
+      amorphic:
+      knockout:
+
+  evidence_type_enum:
+    permissible_values:
+      paper_evidence:
+      laboratory_evidence:
+      person_evidence:
+      author_evidence:
+
+  allele_construct_relationship_enum:
+    permissible_values:
+      contains:
+        meaning: RO:0001019

@@ -57,6 +57,10 @@ classes:
 
 slots:
 
+  affected_genomic_model:
+    domain: Allele
+    range: AffectedGenomicModel
+
   subtype:
     description: >-
       Subtype of affected genomic model

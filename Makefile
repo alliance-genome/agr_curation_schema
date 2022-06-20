@@ -99,6 +99,11 @@ gen-jsonschema: target/jsonschema/$(SCHEMA_NAME).schema.json
 target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
 	poetry run gen-json-schema $(GEN_OPTS) --closed -t ingest $< > $@
 
+###  -- JSON SCHEMA --
+gen-proto: target/protobuff/$(SCHEMA_NAME).schema.proto
+.PHONY: gen-protobuff
+target/protobuff/%.schema.proto: $(SCHEMA_DIR)/%.yaml tdir-protobuff
+	poetry run gen-proto --no-mergeimports --closed -t ingest $< > $@
 
 ###  -- SQL --
 gen-sqlddl: target/sqlddl/$(SCHEMA_NAME).sql
