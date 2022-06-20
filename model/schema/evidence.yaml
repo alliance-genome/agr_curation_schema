@@ -1,0 +1,31 @@
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/evidence
+name: Alliance-Schema-Prototype-Evidence
+title: Alliance Schema Prototype Evidence
+
+imports:
+  - core
+  - agent
+
+classes:
+
+  Evidence:
+    is_a: AuditedObject
+    description: >-
+      Evidence associated with a class Property
+    slots:
+      - references
+      - persons
+      - authors # probably need new slot for this due to different intent of use
+      - curator_confirmed
+      - related_notes
+
+
+# Slots
+
+slots:
+
+  curator_confirmed:
+    description: >-
+      Confirmation of the annotation/association by a curator
+    domain: Evidence
+    range: Person
