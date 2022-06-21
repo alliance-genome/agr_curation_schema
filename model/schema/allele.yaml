@@ -69,6 +69,7 @@ classes:
       - aberration
       - is_extinct
       - sequencing_status
+      - rflp_experiments
     exact_mappings:
       - SO:0001023
     slot_usage:
@@ -250,10 +251,58 @@ classes:
     slots:
       - symbol
 
+  RFLPExperiment:
+    description: >-
+      Details of RFLP analysis results
+    slots:
+      - restriction_site
+      - restriction_enzymes
+      - reference_strain_bands
+      - polymorphic_strain_bands
+
 
 # Slots
 
 slots:
+
+  rflp_experiments:
+    description: >-
+      RFLP experiments used to identify allele
+    domain: Allele
+    range: RFLPExperiment
+    multivalued: true
+
+  restriction_site:
+    description: >-
+      RFLP experiment restriction site
+    domain: RFLPExperiment
+    range: biological_sequence
+    multivalued: false
+    required: true
+
+  restriction_enzymes:
+    description: >-
+      Restriction enzymes used in RFLP experiment
+    domain: RFLPExperiment
+    range: string
+    required: true
+    multivalued: false
+
+  reference_strain_bands:
+    description: >-
+      Sizes of RFLP bands produced in RFLP experiment for reference strain
+    domain: RFLPExperiment
+    range: integer
+    required: false
+    multivalued: true
+
+  polymorphic_strain_bands:
+    description: >-
+      Sizes of RFLP bands produced in RFLP experiment for polymorphic strain
+    domain: RFLPExperiment
+    range: integer
+    required: false
+    multivalued: true
 
   construct_components:
     multivalued: true
