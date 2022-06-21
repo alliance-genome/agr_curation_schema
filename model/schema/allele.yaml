@@ -70,6 +70,7 @@ classes:
       - is_extinct
       - sequencing_status
       - rflp_experiments
+      - evidence # overlap with associated_references
     exact_mappings:
       - SO:0001023
     slot_usage:
