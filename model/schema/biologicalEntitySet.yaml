@@ -1,0 +1,122 @@
+id: https://github.com/alliance-genome/agr_curation_schema/biologicalEntitySet.yaml
+name: Alliance-Schema-Prototype-Biological-Entity-Set
+title: Alliance Schema Prototype Biological Entity Set
+description: Alliance Biological Entity Set Prototype with LinkML
+
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+
+imports:
+  - core
+  - linkml:types
+
+prefixes:
+  alliance: 'http://alliancegenome.org/'
+  linkml: 'https://w3id.org/linkml/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+  dct: 'http://purl.org/dc/terms/'
+  WIKIDATA_PROPERTY: 'https://www.wikidata.org/wiki/Property:'
+  obograph: 'https://github.com/biodatamodels/obograph'
+
+## ------------
+## CLASSES
+## ------------
+
+
+
+classes:
+
+# Do BiologicalEntitySets have unique identifier or unique name?
+#   If not, do these sets have a set of identifying slots that determine uniqueness of the set.
+# Metadata for Feature-BiologicalEntitySets relationship?
+# Types of BiologicalEntitySets
+# Attributes shared/specific to each type of BiologicalEntitySets.
+
+  BiologicalEntitySet:
+    description: >-
+      A set of BiologicalEntity objects.
+    is_a: AuditedObject
+    slots:
+      - curie
+      - biological_entity_set_members
+      - biological_entity_set_type
+
+  GeneSet:
+    description: >-
+      A set of genes which have been grouped together.
+    is_a: BiologicalEntitySet
+    slot_usage:
+      biological_entity_set_members:
+        range: Gene
+
+  GeneCluster:
+    description: >-
+      A gene cluster is a set of genes which is of biological significance, and
+      which is clustered together on the genome.
+    is_a: GeneSet
+
+  FunctionalGeneSet:
+    is_a: GeneSet
+
+  Operon:
+    description: >-
+      The DNA region of a group of adjacent genes whose transcription is
+      coordinated on one or several mutually overlapping transcription
+      units transcribed in the same direction and sharing at least one gene.
+    is_a: GeneSet
+    exact_mappings:
+      - SO:0000178
+
+  PathwayGeneSet:
+    is_a: GeneSet
+
+  ParalogGeneSet:
+    is_a: GeneSet
+
+  ProteinComplex:
+    is_a: BiologicalEntitySet
+
+## ------------
+## SLOTS
+## ------------
+
+
+
+slots:
+
+  biological_entity_set_type:
+    description: >-
+      The type of BiologicalEntitySet.
+    notes: >-
+      We may choose to distinguish types of BiologicalEntitySet objects
+      using this slot, rather than having different kinds of child objects
+      like ParalogGeneSet, etc. This may depend on the extent to which different
+      set types have distinct attributes.
+
+  biological_entity_set_members:
+    description: >-
+      The list of members in a BiologicalEntitySet.
+    notes: >-
+      This is the simplest way to link members to the set. If additional
+      metadata are needed to describe the association between the set and each
+      member (e.g., evidence, type), we would need to model an Association
+      object for each set-member association.
+    domain: BiologicalEntitySet
+    range: BiologicalEntity
+    required: true
+    multivalued: true
