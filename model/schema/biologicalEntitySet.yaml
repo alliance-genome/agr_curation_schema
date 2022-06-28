@@ -68,6 +68,11 @@ classes:
     exact_mappings:
       - SO:0000178
 
+  FunctionalGeneSet:
+    is_a: BiologicalEntity
+    slots:
+      - single_reference
+
   Pathway:
     is_a: BiologicalEntity # gets all the audit fields from its parent AuditedObject
     exact_mappings:
@@ -122,9 +127,6 @@ slots:
   # Would you have an object for a set of orthologous genes?  Or leave these to be generated
   # from code that says: get me all the orthologs of geneX where geneX is a member of GeneToGeneOrthology Association
   paralogous_genes:
-    is_a: genes
-
-  functional_genes:
     is_a: genes
 
   has_participant:
