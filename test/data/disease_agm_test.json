@@ -8,7 +8,7 @@
       "data_provider": "ZFIN",
       "object": "DOID:9452",
       "created_by": "ZFIN",
-      "modified_by": "ZFIN",
+      "updated_by": "ZFIN",
       "internal": false,
       "subject": "ZFIN:ZDB-FISH-180912-16",
       "predicate": "is_model_of",
