@@ -1480,60 +1480,6 @@
          "title": "AuthorReference",
          "type": "object"
       },
-      "BiologicalEntitySet": {
-         "additionalProperties": false,
-         "description": "A set of BiologicalEntity objects.",
-         "properties": {
-            "biological_entity_set_members": {
-               "description": "The list of members in a BiologicalEntitySet.",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "biological_entity_set_type": {
-               "description": "The type of BiologicalEntitySet.",
-               "type": "string"
-            },
-            "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
-            },
-            "curie": {
-               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-               "type": "string"
-            },
-            "date_created": {
-               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-               "format": "date",
-               "type": "string"
-            },
-            "date_updated": {
-               "description": "Date on which an entity was last modified.",
-               "format": "date",
-               "type": "string"
-            },
-            "internal": {
-               "description": "Classifies the entity as private (for internal use) or not (for public use).",
-               "type": "boolean"
-            },
-            "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
-            },
-            "obsolete": {
-               "description": "Entity is no longer current.",
-               "type": "boolean"
-            }
-         },
-         "required": [
-            "internal",
-            "curie",
-            "biological_entity_set_members"
-         ],
-         "title": "BiologicalEntitySet",
-         "type": "object"
-      },
       "CHEBITerm": {
          "additionalProperties": false,
          "description": "",
@@ -3755,60 +3701,6 @@
          "title": "File",
          "type": "object"
       },
-      "FunctionalGeneSet": {
-         "additionalProperties": false,
-         "description": "",
-         "properties": {
-            "biological_entity_set_members": {
-               "description": "The list of members in a BiologicalEntitySet.",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "biological_entity_set_type": {
-               "description": "The type of BiologicalEntitySet.",
-               "type": "string"
-            },
-            "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
-            },
-            "curie": {
-               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-               "type": "string"
-            },
-            "date_created": {
-               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-               "format": "date",
-               "type": "string"
-            },
-            "date_updated": {
-               "description": "Date on which an entity was last modified.",
-               "format": "date",
-               "type": "string"
-            },
-            "internal": {
-               "description": "Classifies the entity as private (for internal use) or not (for public use).",
-               "type": "boolean"
-            },
-            "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
-            },
-            "obsolete": {
-               "description": "Entity is no longer current.",
-               "type": "boolean"
-            }
-         },
-         "required": [
-            "internal",
-            "curie",
-            "biological_entity_set_members"
-         ],
-         "title": "FunctionalGeneSet",
-         "type": "object"
-      },
       "GOTerm": {
          "additionalProperties": false,
          "description": "",
@@ -3999,17 +3891,6 @@
          "additionalProperties": false,
          "description": "A gene cluster is a set of genes which is of biological significance, and which is clustered together on the genome.",
          "properties": {
-            "biological_entity_set_members": {
-               "description": "The list of members in a BiologicalEntitySet.",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "biological_entity_set_type": {
-               "description": "The type of BiologicalEntitySet.",
-               "type": "string"
-            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -4028,6 +3909,12 @@
                "format": "date",
                "type": "string"
             },
+            "genes": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -4039,12 +3926,16 @@
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "taxon": {
+               "description": "The taxon from which the biological entity derives.",
+               "type": "string"
             }
          },
          "required": [
             "internal",
             "curie",
-            "biological_entity_set_members"
+            "taxon"
          ],
          "title": "GeneCluster",
          "type": "object"
@@ -4533,27 +4424,12 @@
          "title": "GenePhenotypeAnnotation",
          "type": "object"
       },
-      "GeneSet": {
+      "GeneToPathwayAssociation": {
          "additionalProperties": false,
-         "description": "A set of genes which have been grouped together.",
+         "description": "",
          "properties": {
-            "biological_entity_set_members": {
-               "description": "The list of members in a BiologicalEntitySet.",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "biological_entity_set_type": {
-               "description": "The type of BiologicalEntitySet.",
-               "type": "string"
-            },
             "created_by": {
                "description": "The individual that created the entity.",
-               "type": "string"
-            },
-            "curie": {
-               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                "type": "string"
             },
             "date_created": {
@@ -4574,17 +4450,30 @@
                "description": "The individual that last modified the entity.",
                "type": "string"
             },
+            "object": {
+               "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            },
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "predicate": {
+               "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+               "type": "string"
+            },
+            "subject": {
+               "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
             }
          },
          "required": [
             "internal",
-            "curie",
-            "biological_entity_set_members"
+            "predicate",
+            "subject",
+            "object"
          ],
-         "title": "GeneSet",
+         "title": "GeneToPathwayAssociation",
          "type": "object"
       },
       "GenomicEntity": {
@@ -6069,17 +5958,6 @@
          "additionalProperties": false,
          "description": "The DNA region of a group of adjacent genes whose transcription is coordinated on one or several mutually overlapping transcription units transcribed in the same direction and sharing at least one gene.",
          "properties": {
-            "biological_entity_set_members": {
-               "description": "The list of members in a BiologicalEntitySet.",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "biological_entity_set_type": {
-               "description": "The type of BiologicalEntitySet.",
-               "type": "string"
-            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -6098,6 +5976,12 @@
                "format": "date",
                "type": "string"
             },
+            "genes": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -6109,12 +5993,16 @@
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "taxon": {
+               "description": "The taxon from which the biological entity derives.",
+               "type": "string"
             }
          },
          "required": [
             "internal",
             "curie",
-            "biological_entity_set_members"
+            "taxon"
          ],
          "title": "Operon",
          "type": "object"
@@ -6156,21 +6044,10 @@
          "title": "Organization",
          "type": "object"
       },
-      "ParalogGeneSet": {
+      "Pathway": {
          "additionalProperties": false,
          "description": "",
          "properties": {
-            "biological_entity_set_members": {
-               "description": "The list of members in a BiologicalEntitySet.",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "biological_entity_set_type": {
-               "description": "The type of BiologicalEntitySet.",
-               "type": "string"
-            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -6200,68 +6077,18 @@
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "taxon": {
+               "description": "The taxon from which the biological entity derives.",
+               "type": "string"
             }
          },
          "required": [
             "internal",
             "curie",
-            "biological_entity_set_members"
+            "taxon"
          ],
-         "title": "ParalogGeneSet",
-         "type": "object"
-      },
-      "PathwayGeneSet": {
-         "additionalProperties": false,
-         "description": "",
-         "properties": {
-            "biological_entity_set_members": {
-               "description": "The list of members in a BiologicalEntitySet.",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "biological_entity_set_type": {
-               "description": "The type of BiologicalEntitySet.",
-               "type": "string"
-            },
-            "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
-            },
-            "curie": {
-               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-               "type": "string"
-            },
-            "date_created": {
-               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-               "format": "date",
-               "type": "string"
-            },
-            "date_updated": {
-               "description": "Date on which an entity was last modified.",
-               "format": "date",
-               "type": "string"
-            },
-            "internal": {
-               "description": "Classifies the entity as private (for internal use) or not (for public use).",
-               "type": "boolean"
-            },
-            "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
-            },
-            "obsolete": {
-               "description": "Entity is no longer current.",
-               "type": "boolean"
-            }
-         },
-         "required": [
-            "internal",
-            "curie",
-            "biological_entity_set_members"
-         ],
-         "title": "PathwayGeneSet",
+         "title": "Pathway",
          "type": "object"
       },
       "Person": {
@@ -6595,17 +6422,6 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
-            "biological_entity_set_members": {
-               "description": "The list of members in a BiologicalEntitySet.",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "biological_entity_set_type": {
-               "description": "The type of BiologicalEntitySet.",
-               "type": "string"
-            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -6635,12 +6451,22 @@
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "proteins": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "taxon": {
+               "description": "The taxon from which the biological entity derives.",
+               "type": "string"
             }
          },
          "required": [
             "internal",
             "curie",
-            "biological_entity_set_members"
+            "taxon"
          ],
          "title": "ProteinComplex",
          "type": "object"
@@ -9549,6 +9375,7 @@
    "$id": "https://github.com/alliance-genome/agr_curation_schema/alliance_schema",
    "$schema": "http://json-schema.org/draft-07/schema#",
    "additionalProperties": false,
+   "metamodel_version": "1.7.0",
    "properties": {
       "agm_ingest_set": {
          "items": {
@@ -9607,6 +9434,7 @@
    },
    "required": [],
    "title": "AllianceModel",
-   "type": "object"
+   "type": "object",
+   "version": "0.0.1"
 }
 

@@ -69,10 +69,6 @@ classes:
 
   Pathway:
     is_a: BiologicalEntity # gets all the audit fields from its parent AuditedObject
-    slots:
-      - has_input
-      - has_output
-      - enabled_by
     exact_mappings:
       - biolink:Pathway
       - PW:0000001
@@ -91,6 +87,8 @@ classes:
 
   ProteinComplex:
     is_a: BiologicalEntity
+    slots:
+      - proteins
 
 
   GeneToPathwayAssociation:
@@ -111,6 +109,10 @@ classes:
 
 
 slots:
+
+  proteins:
+    multivalued: true
+    range: Protein
 
   genes:
     multivalued: true
@@ -137,24 +139,3 @@ slots:
   enables:
     is_a: has_participant
 
-  biological_entity_set_type:
-    description: >-
-      The type of BiologicalEntitySet.
-    notes: >-
-      We may choose to distinguish types of BiologicalEntitySet objects
-      using this slot, rather than having different kinds of child objects
-      like ParalogGeneSet, etc. This may depend on the extent to which different
-      set types have distinct attributes.
-
-  biological_entity_set_members:
-    description: >-
-      The list of members in a BiologicalEntitySet.
-    notes: >-
-      This is the simplest way to link members to the set. If additional
-      metadata are needed to describe the association between the set and each
-      member (e.g., evidence, type), we would need to model an Association
-      object for each set-member association.
-    domain: BiologicalEntitySet
-    range: BiologicalEntity
-    required: true
-    multivalued: true
