@@ -47,49 +47,62 @@ classes:
 # Types of BiologicalEntitySets
 # Attributes shared/specific to each type of BiologicalEntitySets.
 
-  BiologicalEntitySet:
-    description: >-
-      A set of BiologicalEntity objects.
-    is_a: AuditedObject
-    slots:
-      - curie
-      - biological_entity_set_members
-      - biological_entity_set_type
-
-  GeneSet:
-    description: >-
-      A set of genes which have been grouped together.
-    is_a: BiologicalEntitySet
-    slot_usage:
-      biological_entity_set_members:
-        range: Gene
 
   GeneCluster:
     description: >-
       A gene cluster is a set of genes which is of biological significance, and
       which is clustered together on the genome.
-    is_a: GeneSet
-
-  FunctionalGeneSet:
-    is_a: GeneSet
+    is_a: BiologicalEntity
+    slots:
+      - genes
 
   Operon:
     description: >-
       The DNA region of a group of adjacent genes whose transcription is
       coordinated on one or several mutually overlapping transcription
       units transcribed in the same direction and sharing at least one gene.
-    is_a: GeneSet
+    is_a: BiologicalEntity
+    slots:
+      - genes
     exact_mappings:
       - SO:0000178
 
-  PathwayGeneSet:
-    is_a: GeneSet
-
-  ParalogGeneSet:
-    is_a: GeneSet
+  Pathway:
+    is_a: BiologicalEntity # gets all the audit fields from its parent AuditedObject
+    slots:
+      - has_input
+      - has_output
+      - enabled_by
+    exact_mappings:
+      - biolink:Pathway
+      - PW:0000001
+      - WIKIDATA:Q4915012
+    id_prefixes:
+      - GO
+      - REACT
+      - KEGG
+      - SMPDB
+      - MSigDB
+      - PHARMGKB.PATHWAYS
+      - WIKIPATHWAYS
+      - FB  # FlyBase FBgg*
+      - PANTHER.PATHWAY
+      - KEGG.PATHWAY
 
   ProteinComplex:
-    is_a: BiologicalEntitySet
+    is_a: BiologicalEntity
+
+
+  GeneToPathwayAssociation:
+    is_a: Association
+    slot_usage:
+      predicate:
+        subproperty_of: has_participant
+      subject:
+        range: Gene
+      object:
+        range: Pathway
+
 
 ## ------------
 ## SLOTS
@@ -98,6 +111,31 @@ classes:
 
 
 slots:
+
+  genes:
+    multivalued: true
+    range: Gene
+
+  # Would you have an object for a set of orthologous genes?  Or leave these to be generated
+  # from code that says: get me all the orthologs of geneX where geneX is a member of GeneToGeneOrthology Association
+  paralogous_genes:
+    is_a: genes
+
+  functional_genes:
+    is_a: genes
+
+  has_participant:
+    exact_mappings:
+      - RO:0000057
+
+  has_input:
+    is_a: has_participant
+
+  has_output:
+    is_a: has_participant
+
+  enables:
+    is_a: has_participant
 
   biological_entity_set_type:
     description: >-
