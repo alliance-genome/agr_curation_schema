@@ -63,6 +63,7 @@ classes:
       units transcribed in the same direction and sharing at least one gene.
     is_a: BiologicalEntity
     slots:
+      # alternatively, this could be biological_entities if there were more than just genes in an operon
       - genes
     exact_mappings:
       - SO:0000178
