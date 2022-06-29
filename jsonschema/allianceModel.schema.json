@@ -451,8 +451,8 @@
                "type": "string"
             },
             "database_status": {
-               "description": "Database status of the allele",
-               "type": "string"
+               "$ref": "#/$defs/DatabaseStatus",
+               "description": "Database status of the allele and associated evidence"
             },
             "date_created": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -471,13 +471,17 @@
                },
                "type": "array"
             },
+            "evidence": {
+               "$ref": "#/$defs/Evidence",
+               "description": "evidence associated with a property"
+            },
             "functional_impact": {
-               "description": "Experimentally assessed functional impact of the allele, e.g. knockout / amorphic",
-               "type": "string"
+               "$ref": "#/$defs/FunctionalImpact",
+               "description": "Experimentally assessed functional impact of the allele and associated evidence"
             },
             "generation_method": {
-               "description": "Technique used to create the allele, e.g. spontaneous / naturally occuring / radiation",
-               "type": "string"
+               "$ref": "#/$defs/GenerationMethod",
+               "description": "Technique used to create the allele and associated evidence"
             },
             "genomic_locations": {
                "items": {
@@ -536,9 +540,9 @@
                "type": "boolean"
             },
             "origins": {
-               "description": "Affected genomic models that the allele was introduced in",
+               "description": "Affected genomic models that the allele was introduced in and associated evidence",
                "items": {
-                  "type": "string"
+                  "$ref": "#/$defs/Origin"
                },
                "type": "array"
             },
@@ -550,6 +554,13 @@
                "description": "Holds between an object and a list of related Note objects.",
                "items": {
                   "$ref": "#/$defs/Note"
+               },
+               "type": "array"
+            },
+            "rflp_experiments": {
+               "description": "RFLP experiments used to identify allele",
+               "items": {
+                  "$ref": "#/$defs/RFLPExperiment"
                },
                "type": "array"
             },
@@ -1050,6 +1061,43 @@
             "object"
          ],
          "title": "AlleleVariantAssociation",
+         "type": "object"
+      },
+      "Analysis": {
+         "additionalProperties": false,
+         "description": "Dummy analysis class",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "Analysis",
          "type": "object"
       },
       "AnatomicalSite": {
@@ -2401,6 +2449,52 @@
          "title": "DOTerm",
          "type": "object"
       },
+      "DatabaseStatus": {
+         "additionalProperties": false,
+         "description": "Database status of the allele and associated evidence",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "database_status_term": {
+               "description": "Database status of the allele",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "$ref": "#/$defs/Evidence",
+               "description": "evidence associated with a property"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            }
+         },
+         "required": [
+            "internal",
+            "database_status_term"
+         ],
+         "title": "DatabaseStatus",
+         "type": "object"
+      },
       "DetectionMethodsEnum": {
          "description": "",
          "enum": [
@@ -2912,6 +3006,75 @@
          ],
          "title": "EntitySynonymTypeSet",
          "type": "string"
+      },
+      "Evidence": {
+         "additionalProperties": false,
+         "description": "Evidence associated with a class Property",
+         "properties": {
+            "authors": {
+               "description": "Ordered author entities for this publication.  An Author is associated with only one publication.  A Person can be associated with multiple  publications.",
+               "items": {
+                  "$ref": "#/$defs/AuthorReference"
+               },
+               "type": "array"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "curator_confirmed": {
+               "description": "Confirmation of the annotation/association by a curator",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "persons": {
+               "description": "A collection of people, not necessarily related in any way",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "references": {
+               "description": "holds between an object and a list of references",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "related_notes": {
+               "description": "Holds between an object and a list of related Note objects.",
+               "items": {
+                  "$ref": "#/$defs/Note"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "Evidence",
+         "type": "object"
       },
       "ExperimentalCondition": {
          "additionalProperties": false,
@@ -3701,6 +3864,52 @@
          "title": "File",
          "type": "object"
       },
+      "FunctionalImpact": {
+         "additionalProperties": false,
+         "description": "Functional impact of allele and related evidence",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "$ref": "#/$defs/Evidence",
+               "description": "evidence associated with a property"
+            },
+            "functional_impact_description": {
+               "description": "Experimentally assessed functional impact of the allele, e.g. knockout / amorphic",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            }
+         },
+         "required": [
+            "internal",
+            "functional_impact_description"
+         ],
+         "title": "FunctionalImpact",
+         "type": "object"
+      },
       "GOTerm": {
          "additionalProperties": false,
          "description": "",
@@ -4369,6 +4578,52 @@
             "subject"
          ],
          "title": "GenePhenotypeAnnotation",
+         "type": "object"
+      },
+      "GenerationMethod": {
+         "additionalProperties": false,
+         "description": "Generation method of allele and related evidence",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "$ref": "#/$defs/Evidence",
+               "description": "evidence associated with a property"
+            },
+            "generation_method_description": {
+               "description": "Technique used to create the allele, e.g. spontaneous / naturally occuring / radiation",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            }
+         },
+         "required": [
+            "internal",
+            "generation_method_description"
+         ],
+         "title": "GenerationMethod",
          "type": "object"
       },
       "GenomicEntity": {
@@ -5720,6 +5975,10 @@
                "format": "date",
                "type": "string"
             },
+            "evidence": {
+               "$ref": "#/$defs/Evidence",
+               "description": "evidence associated with a property"
+            },
             "free_text": {
                "description": "A free text string that describes some aspect of an entity.",
                "type": "string"
@@ -5739,13 +5998,6 @@
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
-            },
-            "references": {
-               "description": "holds between an object and a list of references",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
             }
          },
          "required": [
@@ -5884,6 +6136,59 @@
             "internal"
          ],
          "title": "Organization",
+         "type": "object"
+      },
+      "Origin": {
+         "additionalProperties": false,
+         "description": "Affected genomic models that the allele was introduced in and associated evidence",
+         "properties": {
+            "analyses": {
+               "description": "Analyses providing evidence for AGM of origin",
+               "items": {
+                  "$ref": "#/$defs/Analysis"
+               },
+               "type": "array"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "$ref": "#/$defs/Evidence",
+               "description": "evidence associated with a property"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "origin": {
+               "description": "Affected genomic models that the allele was introduced in",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "origin"
+         ],
+         "title": "Origin",
          "type": "object"
       },
       "Person": {
@@ -6308,6 +6613,40 @@
          ],
          "title": "PubmedTypeEnum",
          "type": "string"
+      },
+      "RFLPExperiment": {
+         "additionalProperties": false,
+         "description": "Details of RFLP analysis results",
+         "properties": {
+            "polymorphic_strain_bands": {
+               "description": "Sizes of RFLP bands produced in RFLP experiment for polymorphic strain",
+               "items": {
+                  "type": "integer"
+               },
+               "type": "array"
+            },
+            "reference_strain_bands": {
+               "description": "Sizes of RFLP bands produced in RFLP experiment for reference strain",
+               "items": {
+                  "type": "integer"
+               },
+               "type": "array"
+            },
+            "restriction_enzymes": {
+               "description": "Restriction enzymes used in RFLP experiment",
+               "type": "string"
+            },
+            "restriction_site": {
+               "description": "RFLP experiment restriction site",
+               "type": "string"
+            }
+         },
+         "required": [
+            "restriction_site",
+            "restriction_enzymes"
+         ],
+         "title": "RFLPExperiment",
+         "type": "object"
       },
       "RNAClone": {
          "additionalProperties": false,
@@ -7134,6 +7473,10 @@
                "description": "Date on which an entity was last modified.",
                "format": "date",
                "type": "string"
+            },
+            "evidence": {
+               "$ref": "#/$defs/Evidence",
+               "description": "evidence associated with a property"
             },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
