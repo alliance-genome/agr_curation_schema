@@ -4,7 +4,7 @@
       "curie": "ZFIN:ZDB-GENE-010226-1",
       "taxon": "NCBITaxon:7955",
       "created_by": "ZFIN",
-      "modified_by": "ZFIN",
+      "updated_by": "ZFIN",
       "internal": false,
       "symbol": "gdnfa",
       "name": "glial cell derived neurotrophic factor a",
@@ -13,7 +13,7 @@
           "curie": "ZFIN:ZDB-GENE-010226-1",
           "created_by": "ZFIN",
           "display_name": "",
-          "modified_by": "ZFIN",
+          "updated_by": "ZFIN",
           "internal": false,
           "page_areas": [
             "gene",
@@ -27,7 +27,7 @@
         {
           "curie": "NCBI_Gene:79379",
           "created_by": "ZFIN",
-          "modified_by": "ZFIN",
+          "updated_by": "ZFIN",
           "internal": false,
           "page_areas": [
           ],
