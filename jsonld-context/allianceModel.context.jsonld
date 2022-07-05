@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-06-17T21:53:44\n    Schema: AllianceModel\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: \n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-07-05T22:21:28\n    Schema: AllianceModel\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: \n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "BIOGRID": "http://identifiers.org/biogrid/",
       "DIP": "http://identifiers.org/dip/",
@@ -413,9 +413,6 @@
       "mesh_detail_id": {
          "@type": "xsd:integer"
       },
-      "modified_by": {
-         "@type": "@id"
-      },
       "mutant_cell_lines": {
          "@type": "@id"
       },
@@ -601,6 +598,9 @@
       },
       "uncertain": {
          "@type": "xsd:boolean"
+      },
+      "updated_by": {
+         "@type": "@id"
       },
       "variant_genome_locations": {
          "@type": "@id"

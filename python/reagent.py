@@ -1,5 +1,5 @@
 # Auto generated from reagent.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-06-17T21:53:26
+# Generation date: 2022-07-05T22:20:21
 # Schema: reagent.yaml
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml
@@ -334,7 +334,7 @@ class AuditedObject(YAMLRoot):
     internal: Union[bool, Bool] = None
     created_by: Optional[Union[str, PersonUniqueId]] = None
     date_created: Optional[Union[str, XSDDate]] = None
-    modified_by: Optional[Union[str, PersonUniqueId]] = None
+    updated_by: Optional[Union[str, PersonUniqueId]] = None
     date_updated: Optional[Union[str, XSDDate]] = None
     obsolete: Optional[Union[bool, Bool]] = None
 
@@ -350,8 +350,8 @@ class AuditedObject(YAMLRoot):
         if self.date_created is not None and not isinstance(self.date_created, XSDDate):
             self.date_created = XSDDate(self.date_created)
 
-        if self.modified_by is not None and not isinstance(self.modified_by, PersonUniqueId):
-            self.modified_by = PersonUniqueId(self.modified_by)
+        if self.updated_by is not None and not isinstance(self.updated_by, PersonUniqueId):
+            self.updated_by = PersonUniqueId(self.updated_by)
 
         if self.date_updated is not None and not isinstance(self.date_updated, XSDDate):
             self.date_updated = XSDDate(self.date_updated)
@@ -3687,8 +3687,8 @@ slots.date_updated = Slot(uri=ALLIANCE.date_updated, name="date_updated", curie=
 slots.created_by = Slot(uri=ALLIANCE.created_by, name="created_by", curie=ALLIANCE.curie('created_by'),
                    model_uri=ALLIANCE.created_by, domain=AuditedObject, range=Optional[Union[str, PersonUniqueId]])
 
-slots.modified_by = Slot(uri=ALLIANCE.modified_by, name="modified_by", curie=ALLIANCE.curie('modified_by'),
-                   model_uri=ALLIANCE.modified_by, domain=AuditedObject, range=Optional[Union[str, PersonUniqueId]])
+slots.updated_by = Slot(uri=ALLIANCE.updated_by, name="updated_by", curie=ALLIANCE.curie('updated_by'),
+                   model_uri=ALLIANCE.updated_by, domain=AuditedObject, range=Optional[Union[str, PersonUniqueId]])
 
 slots.release = Slot(uri=ALLIANCE.release, name="release", curie=ALLIANCE.curie('release'),
                    model_uri=ALLIANCE.release, domain=None, range=Optional[str])
