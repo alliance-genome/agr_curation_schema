@@ -1610,6 +1610,63 @@
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
 --     * Slot: statement_subject_id Description: The entity being described by the note.
+-- # Class: "GeneCluster" Description: "A gene cluster is a set of genes which is of biological significance, and which is clustered together on the genome."
+--     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
+--     * Slot: taxon Description: The taxon from which the biological entity derives.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: updated_by Description: The individual that last modified the entity.
+--     * Slot: date_updated Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
+--     * Slot: obsolete Description: Entity is no longer current.
+-- # Class: "Operon" Description: "The DNA region of a group of adjacent genes whose transcription is coordinated on one or several mutually overlapping transcription units transcribed in the same direction and sharing at least one gene."
+--     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
+--     * Slot: taxon Description: The taxon from which the biological entity derives.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: updated_by Description: The individual that last modified the entity.
+--     * Slot: date_updated Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
+--     * Slot: obsolete Description: Entity is no longer current.
+-- # Class: "FunctionalGeneSet" Description: ""
+--     * Slot: single_reference Description: holds between an object and a single reference
+--     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
+--     * Slot: taxon Description: The taxon from which the biological entity derives.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: updated_by Description: The individual that last modified the entity.
+--     * Slot: date_updated Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
+--     * Slot: obsolete Description: Entity is no longer current.
+-- # Class: "Pathway" Description: ""
+--     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
+--     * Slot: taxon Description: The taxon from which the biological entity derives.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: updated_by Description: The individual that last modified the entity.
+--     * Slot: date_updated Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
+--     * Slot: obsolete Description: Entity is no longer current.
+-- # Class: "ProteinComplex" Description: ""
+--     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
+--     * Slot: taxon Description: The taxon from which the biological entity derives.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: updated_by Description: The individual that last modified the entity.
+--     * Slot: date_updated Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
+--     * Slot: obsolete Description: Entity is no longer current.
+-- # Class: "GeneToPathwayAssociation" Description: ""
+--     * Slot: id Description: 
+--     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
+--     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
+--     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: updated_by Description: The individual that last modified the entity.
+--     * Slot: date_updated Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
+--     * Slot: obsolete Description: Entity is no longer current.
 -- # Class: "Variant_related_notes" Description: ""
 --     * Slot: Variant_curie Description: Autocreated FK slot
 --     * Slot: related_notes_id Description: Holds between an object and a list of related Note objects.
@@ -2369,6 +2426,15 @@
 -- # Class: "ExpressionAnnotationStatement_reference" Description: ""
 --     * Slot: ExpressionAnnotationStatement_id Description: Autocreated FK slot
 --     * Slot: reference Description: holds between an object and a list of references
+-- # Class: "GeneCluster_genes" Description: ""
+--     * Slot: GeneCluster_curie Description: Autocreated FK slot
+--     * Slot: genes Description: 
+-- # Class: "Operon_genes" Description: ""
+--     * Slot: Operon_curie Description: Autocreated FK slot
+--     * Slot: genes Description: 
+-- # Class: "ProteinComplex_proteins" Description: ""
+--     * Slot: ProteinComplex_curie Description: Autocreated FK slot
+--     * Slot: proteins Description: 
 
 CREATE TABLE "Person" (
 	last_name TEXT, 
@@ -3730,6 +3796,78 @@ CREATE TABLE "AnatomicalSite" (
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
+CREATE TABLE "GeneCluster" (
+	curie TEXT NOT NULL, 
+	taxon TEXT NOT NULL, 
+	created_by TEXT, 
+	date_created DATE, 
+	updated_by TEXT, 
+	date_updated DATE, 
+	internal BOOLEAN NOT NULL, 
+	obsolete BOOLEAN, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "Operon" (
+	curie TEXT NOT NULL, 
+	taxon TEXT NOT NULL, 
+	created_by TEXT, 
+	date_created DATE, 
+	updated_by TEXT, 
+	date_updated DATE, 
+	internal BOOLEAN NOT NULL, 
+	obsolete BOOLEAN, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "FunctionalGeneSet" (
+	single_reference TEXT, 
+	curie TEXT NOT NULL, 
+	taxon TEXT NOT NULL, 
+	created_by TEXT, 
+	date_created DATE, 
+	updated_by TEXT, 
+	date_updated DATE, 
+	internal BOOLEAN NOT NULL, 
+	obsolete BOOLEAN, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
+	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "Pathway" (
+	curie TEXT NOT NULL, 
+	taxon TEXT NOT NULL, 
+	created_by TEXT, 
+	date_created DATE, 
+	updated_by TEXT, 
+	date_updated DATE, 
+	internal BOOLEAN NOT NULL, 
+	obsolete BOOLEAN, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "ProteinComplex" (
+	curie TEXT NOT NULL, 
+	taxon TEXT NOT NULL, 
+	created_by TEXT, 
+	date_created DATE, 
+	updated_by TEXT, 
+	date_updated DATE, 
+	internal BOOLEAN NOT NULL, 
+	obsolete BOOLEAN, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
+);
 CREATE TABLE "OntologyTerm_definition_urls" (
 	"OntologyTerm_curie" TEXT, 
 	definition_urls TEXT, 
@@ -5049,6 +5187,23 @@ CREATE TABLE "GeneExpressionStatement" (
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
+CREATE TABLE "GeneToPathwayAssociation" (
+	id INTEGER, 
+	subject TEXT NOT NULL, 
+	predicate TEXT NOT NULL, 
+	object TEXT NOT NULL, 
+	created_by TEXT, 
+	date_created DATE, 
+	updated_by TEXT, 
+	date_updated DATE, 
+	internal BOOLEAN NOT NULL, 
+	obsolete BOOLEAN, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(subject) REFERENCES "Gene" (curie), 
+	FOREIGN KEY(object) REFERENCES "Pathway" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
+);
 CREATE TABLE "Variant_related_notes" (
 	"Variant_curie" TEXT, 
 	related_notes_id TEXT, 
@@ -5338,6 +5493,27 @@ CREATE TABLE "RNAClone_manufactured_by" (
 	PRIMARY KEY ("RNAClone_curie", manufactured_by_id), 
 	FOREIGN KEY("RNAClone_curie") REFERENCES "RNAClone" (curie), 
 	FOREIGN KEY(manufactured_by_id) REFERENCES "Agent" (id)
+);
+CREATE TABLE "GeneCluster_genes" (
+	"GeneCluster_curie" TEXT, 
+	genes TEXT, 
+	PRIMARY KEY ("GeneCluster_curie", genes), 
+	FOREIGN KEY("GeneCluster_curie") REFERENCES "GeneCluster" (curie), 
+	FOREIGN KEY(genes) REFERENCES "Gene" (curie)
+);
+CREATE TABLE "Operon_genes" (
+	"Operon_curie" TEXT, 
+	genes TEXT, 
+	PRIMARY KEY ("Operon_curie", genes), 
+	FOREIGN KEY("Operon_curie") REFERENCES "Operon" (curie), 
+	FOREIGN KEY(genes) REFERENCES "Gene" (curie)
+);
+CREATE TABLE "ProteinComplex_proteins" (
+	"ProteinComplex_curie" TEXT, 
+	proteins TEXT, 
+	PRIMARY KEY ("ProteinComplex_curie", proteins), 
+	FOREIGN KEY("ProteinComplex_curie") REFERENCES "ProteinComplex" (curie), 
+	FOREIGN KEY(proteins) REFERENCES "Protein" (curie)
 );
 CREATE TABLE "Allele" (
 	symbol TEXT, 

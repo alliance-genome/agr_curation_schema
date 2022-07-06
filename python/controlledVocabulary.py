@@ -1,5 +1,5 @@
 # Auto generated from controlledVocabulary.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-07-05T22:21:07
+# Generation date: 2022-07-06T15:40:21
 # Schema: Alliance-Schema-Prototype-Controlled-Vocabulary
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml

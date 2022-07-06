@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-07-05T22:21:28\n    Schema: AllianceModel\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: \n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-07-06T15:40:43\n    Schema: AllianceModel\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: \n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "BIOGRID": "http://identifiers.org/biogrid/",
       "DIP": "http://identifiers.org/dip/",
@@ -7,27 +7,48 @@
       "EMDB": "http://identifiers.org/emdb/",
       "ENSEMBL": "http://identifiers.org/ensembl/",
       "FB": "http://identifiers.org/fb/",
+      "GO": {
+         "@id": "http://purl.obolibrary.org/obo/GO_",
+         "@prefix": true
+      },
       "HGNC": "http://identifiers.org/hgnc/",
       "IMEX": "http://identifiers.org/imex/",
       "INTACT": "http://identifiers.org/intact/",
+      "KEGG": "http://identifiers.org/kegg/",
+      "KEGG.PATHWAY": "http://identifiers.org/kegg.pathway/",
       "MGI": "http://identifiers.org/mgi/",
       "MINT": "http://identifiers.org/mint/",
+      "MSigDB": "http://example.org/UNKNOWN/MSigDB/",
       "NLMID": {
          "@id": "https://www.ncbi.nlm.nih.gov/nlmcatalog/?term=",
          "@prefix": true
       },
+      "PANTHER.PATHWAY": "http://identifiers.org/panther.pathway/",
       "PDBE": "https://www.ebi.ac.uk/pdbe/entry/pdb/",
+      "PHARMGKB.PATHWAYS": "http://identifiers.org/pharmgkb.pathways/",
       "PMC": "http://identifiers.org/pmc/",
       "PMID": "http://www.ncbi.nlm.nih.gov/pubmed/",
+      "PW": {
+         "@id": "http://purl.obolibrary.org/obo/PW_",
+         "@prefix": true
+      },
       "RCSB_PDB": "https://www.rcsb.org/structure/",
+      "REACT": "http://www.reactome.org/PathwayBrowser/#/",
       "RGD": "http://identifiers.org/rgd/",
+      "RO": {
+         "@id": "http://purl.obolibrary.org/obo/RO_",
+         "@prefix": true
+      },
       "SGD": "http://identifiers.org/sgd/",
+      "SMPDB": "http://identifiers.org/smpdb/",
       "SO": {
          "@id": "http://purl.obolibrary.org/obo/SO_",
          "@prefix": true
       },
       "WB": "http://identifiers.org/wb/",
+      "WIKIDATA": "http://identifiers.org/wikidata/",
       "WIKIDATA_PROPERTY": "https://www.wikidata.org/wiki/Property:",
+      "WIKIPATHWAYS": "http://identifiers.org/wikipathways/",
       "WWPDB": "https://www.rcsb.org/structure/",
       "ZFIN": "http://identifiers.org/zfin/",
       "alliance": "http://alliancegenome.org/",
@@ -268,6 +289,9 @@
       "generated_by": {
          "@type": "@id"
       },
+      "genes": {
+         "@type": "@id"
+      },
       "genetic_sex": {
          "@type": "@id"
       },
@@ -440,6 +464,9 @@
       "origins": {
          "@type": "@id"
       },
+      "paralogous_genes": {
+         "@type": "@id"
+      },
       "parent_cell_line": {
          "@type": "@id"
       },
@@ -472,6 +499,9 @@
       },
       "protein_start": {
          "@type": "xsd:integer"
+      },
+      "proteins": {
+         "@type": "@id"
       },
       "pubmed_publication_status": {
          "@context": {

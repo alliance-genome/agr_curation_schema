@@ -3727,10 +3727,6 @@
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
             },
-            "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
-            },
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
@@ -3741,6 +3737,10 @@
             },
             "taxon": {
                "description": "The taxon from which the biological entity derives.",
+               "type": "string"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
                "type": "string"
             }
          },
@@ -3970,16 +3970,16 @@
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
             },
-            "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
-            },
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
             },
             "taxon": {
                "description": "The taxon from which the biological entity derives.",
+               "type": "string"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
                "type": "string"
             }
          },
@@ -4497,10 +4497,6 @@
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
             },
-            "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
-            },
             "object": {
                "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
                "type": "string"
@@ -4515,6 +4511,10 @@
             },
             "subject": {
                "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
                "type": "string"
             }
          },
@@ -6037,16 +6037,16 @@
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
             },
-            "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
-            },
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
             },
             "taxon": {
                "description": "The taxon from which the biological entity derives.",
+               "type": "string"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
                "type": "string"
             }
          },
@@ -6121,16 +6121,16 @@
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
             },
-            "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
-            },
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
             },
             "taxon": {
                "description": "The taxon from which the biological entity derives.",
+               "type": "string"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
                "type": "string"
             }
          },
@@ -6495,10 +6495,6 @@
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
             },
-            "modified_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
-            },
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
@@ -6511,6 +6507,10 @@
             },
             "taxon": {
                "description": "The taxon from which the biological entity derives.",
+               "type": "string"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
                "type": "string"
             }
          },

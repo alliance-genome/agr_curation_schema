@@ -1,5 +1,5 @@
 # Auto generated from allianceModel.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-07-05T22:20:40
+# Generation date: 2022-07-06T15:39:52
 # Schema: AllianceModel
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema
@@ -38,21 +38,33 @@ DOI = CurieNamespace('DOI', 'http://identifiers.org/doi/')
 EMDB = CurieNamespace('EMDB', 'http://identifiers.org/emdb/')
 ENSEMBL = CurieNamespace('ENSEMBL', 'http://identifiers.org/ensembl/')
 FB = CurieNamespace('FB', 'http://identifiers.org/fb/')
+GO = CurieNamespace('GO', 'http://purl.obolibrary.org/obo/GO_')
 HGNC = CurieNamespace('HGNC', 'http://identifiers.org/hgnc/')
 IMEX = CurieNamespace('IMEX', 'http://identifiers.org/imex/')
 INTACT = CurieNamespace('INTACT', 'http://identifiers.org/intact/')
+KEGG = CurieNamespace('KEGG', 'http://identifiers.org/kegg/')
+KEGG_PATHWAY = CurieNamespace('KEGG_PATHWAY', 'http://identifiers.org/kegg.pathway/')
 MGI = CurieNamespace('MGI', 'http://identifiers.org/mgi/')
 MINT = CurieNamespace('MINT', 'http://identifiers.org/mint/')
+MSIGDB = CurieNamespace('MSigDB', 'http://example.org/UNKNOWN/MSigDB/')
 NLMID = CurieNamespace('NLMID', 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term=')
+PANTHER_PATHWAY = CurieNamespace('PANTHER_PATHWAY', 'http://identifiers.org/panther.pathway/')
 PDBE = CurieNamespace('PDBE', 'https://www.ebi.ac.uk/pdbe/entry/pdb/')
+PHARMGKB_PATHWAYS = CurieNamespace('PHARMGKB_PATHWAYS', 'http://identifiers.org/pharmgkb.pathways/')
 PMC = CurieNamespace('PMC', 'http://identifiers.org/pmc/')
 PMID = CurieNamespace('PMID', 'http://www.ncbi.nlm.nih.gov/pubmed/')
+PW = CurieNamespace('PW', 'http://purl.obolibrary.org/obo/PW_')
 RCSB_PDB = CurieNamespace('RCSB_PDB', 'https://www.rcsb.org/structure/')
+REACT = CurieNamespace('REACT', 'http://www.reactome.org/PathwayBrowser/#/')
 RGD = CurieNamespace('RGD', 'http://identifiers.org/rgd/')
+RO = CurieNamespace('RO', 'http://purl.obolibrary.org/obo/RO_')
 SGD = CurieNamespace('SGD', 'http://identifiers.org/sgd/')
+SMPDB = CurieNamespace('SMPDB', 'http://identifiers.org/smpdb/')
 SO = CurieNamespace('SO', 'http://purl.obolibrary.org/obo/SO_')
 WB = CurieNamespace('WB', 'http://identifiers.org/wb/')
+WIKIDATA = CurieNamespace('WIKIDATA', 'http://identifiers.org/wikidata/')
 WIKIDATA_PROPERTY = CurieNamespace('WIKIDATA_PROPERTY', 'https://www.wikidata.org/wiki/Property:')
+WIKIPATHWAYS = CurieNamespace('WIKIPATHWAYS', 'http://identifiers.org/wikipathways/')
 WWPDB = CurieNamespace('WWPDB', 'https://www.rcsb.org/structure/')
 ZFIN = CurieNamespace('ZFIN', 'http://identifiers.org/zfin/')
 ALLIANCE = CurieNamespace('alliance', 'http://alliancegenome.org/')
@@ -97,6 +109,26 @@ class VocabularyName(extended_str):
 
 
 class BiologicalEntityCurie(URIorCURIE):
+    pass
+
+
+class GeneClusterCurie(BiologicalEntityCurie):
+    pass
+
+
+class OperonCurie(BiologicalEntityCurie):
+    pass
+
+
+class FunctionalGeneSetCurie(BiologicalEntityCurie):
+    pass
+
+
+class PathwayCurie(BiologicalEntityCurie):
+    pass
+
+
+class ProteinComplexCurie(BiologicalEntityCurie):
     pass
 
 
@@ -699,6 +731,143 @@ class BiologicalEntity(AuditedObject):
             self.MissingRequiredField("taxon")
         if not isinstance(self.taxon, NCBITaxonTermCurie):
             self.taxon = NCBITaxonTermCurie(self.taxon)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class GeneCluster(BiologicalEntity):
+    """
+    A gene cluster is a set of genes which is of biological significance, and which is clustered together on the
+    genome.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.GeneCluster
+    class_class_curie: ClassVar[str] = "alliance:GeneCluster"
+    class_name: ClassVar[str] = "GeneCluster"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.GeneCluster
+
+    curie: Union[str, GeneClusterCurie] = None
+    internal: Union[bool, Bool] = None
+    taxon: Union[str, NCBITaxonTermCurie] = None
+    genes: Optional[Union[Union[str, GeneCurie], List[Union[str, GeneCurie]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, GeneClusterCurie):
+            self.curie = GeneClusterCurie(self.curie)
+
+        if not isinstance(self.genes, list):
+            self.genes = [self.genes] if self.genes is not None else []
+        self.genes = [v if isinstance(v, GeneCurie) else GeneCurie(v) for v in self.genes]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Operon(BiologicalEntity):
+    """
+    The DNA region of a group of adjacent genes whose transcription is coordinated on one or several mutually
+    overlapping transcription units transcribed in the same direction and sharing at least one gene.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.Operon
+    class_class_curie: ClassVar[str] = "alliance:Operon"
+    class_name: ClassVar[str] = "Operon"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.Operon
+
+    curie: Union[str, OperonCurie] = None
+    internal: Union[bool, Bool] = None
+    taxon: Union[str, NCBITaxonTermCurie] = None
+    genes: Optional[Union[Union[str, GeneCurie], List[Union[str, GeneCurie]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, OperonCurie):
+            self.curie = OperonCurie(self.curie)
+
+        if not isinstance(self.genes, list):
+            self.genes = [self.genes] if self.genes is not None else []
+        self.genes = [v if isinstance(v, GeneCurie) else GeneCurie(v) for v in self.genes]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class FunctionalGeneSet(BiologicalEntity):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.FunctionalGeneSet
+    class_class_curie: ClassVar[str] = "alliance:FunctionalGeneSet"
+    class_name: ClassVar[str] = "FunctionalGeneSet"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.FunctionalGeneSet
+
+    curie: Union[str, FunctionalGeneSetCurie] = None
+    internal: Union[bool, Bool] = None
+    taxon: Union[str, NCBITaxonTermCurie] = None
+    single_reference: Optional[Union[str, ReferenceCurie]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, FunctionalGeneSetCurie):
+            self.curie = FunctionalGeneSetCurie(self.curie)
+
+        if self.single_reference is not None and not isinstance(self.single_reference, ReferenceCurie):
+            self.single_reference = ReferenceCurie(self.single_reference)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Pathway(BiologicalEntity):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.Pathway
+    class_class_curie: ClassVar[str] = "alliance:Pathway"
+    class_name: ClassVar[str] = "Pathway"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.Pathway
+
+    curie: Union[str, PathwayCurie] = None
+    internal: Union[bool, Bool] = None
+    taxon: Union[str, NCBITaxonTermCurie] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, PathwayCurie):
+            self.curie = PathwayCurie(self.curie)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class ProteinComplex(BiologicalEntity):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.ProteinComplex
+    class_class_curie: ClassVar[str] = "alliance:ProteinComplex"
+    class_name: ClassVar[str] = "ProteinComplex"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.ProteinComplex
+
+    curie: Union[str, ProteinComplexCurie] = None
+    internal: Union[bool, Bool] = None
+    taxon: Union[str, NCBITaxonTermCurie] = None
+    proteins: Optional[Union[Union[str, ProteinCurie], List[Union[str, ProteinCurie]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, ProteinComplexCurie):
+            self.curie = ProteinComplexCurie(self.curie)
+
+        if not isinstance(self.proteins, list):
+            self.proteins = [self.proteins] if self.proteins is not None else []
+        self.proteins = [v if isinstance(v, ProteinCurie) else ProteinCurie(v) for v in self.proteins]
 
         super().__post_init__(**kwargs)
 
@@ -1431,6 +1600,39 @@ class ConstructComponentAssociation(Association):
             self.MissingRequiredField("object")
         if not isinstance(self.object, ConstructComponentCurie):
             self.object = ConstructComponentCurie(self.object)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class GeneToPathwayAssociation(Association):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.GeneToPathwayAssociation
+    class_class_curie: ClassVar[str] = "alliance:GeneToPathwayAssociation"
+    class_name: ClassVar[str] = "GeneToPathwayAssociation"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.GeneToPathwayAssociation
+
+    internal: Union[bool, Bool] = None
+    predicate: str = None
+    subject: Union[str, GeneCurie] = None
+    object: Union[str, PathwayCurie] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.predicate):
+            self.MissingRequiredField("predicate")
+        if not isinstance(self.predicate, str):
+            self.predicate = str(self.predicate)
+
+        if self._is_empty(self.subject):
+            self.MissingRequiredField("subject")
+        if not isinstance(self.subject, GeneCurie):
+            self.subject = GeneCurie(self.subject)
+
+        if self._is_empty(self.object):
+            self.MissingRequiredField("object")
+        if not isinstance(self.object, PathwayCurie):
+            self.object = PathwayCurie(self.object)
 
         super().__post_init__(**kwargs)
 
@@ -5737,6 +5939,27 @@ slots.is_extinct = Slot(uri=ALLIANCE.is_extinct, name="is_extinct", curie=ALLIAN
 slots.sequencing_status = Slot(uri=ALLIANCE.sequencing_status, name="sequencing_status", curie=ALLIANCE.curie('sequencing_status'),
                    model_uri=ALLIANCE.sequencing_status, domain=Variant, range=Optional[Union[str, VocabularyTermName]])
 
+slots.proteins = Slot(uri=ALLIANCE.proteins, name="proteins", curie=ALLIANCE.curie('proteins'),
+                   model_uri=ALLIANCE.proteins, domain=None, range=Optional[Union[Union[str, ProteinCurie], List[Union[str, ProteinCurie]]]])
+
+slots.genes = Slot(uri=ALLIANCE.genes, name="genes", curie=ALLIANCE.curie('genes'),
+                   model_uri=ALLIANCE.genes, domain=None, range=Optional[Union[Union[str, GeneCurie], List[Union[str, GeneCurie]]]])
+
+slots.paralogous_genes = Slot(uri=ALLIANCE.paralogous_genes, name="paralogous_genes", curie=ALLIANCE.curie('paralogous_genes'),
+                   model_uri=ALLIANCE.paralogous_genes, domain=None, range=Optional[Union[Union[str, GeneCurie], List[Union[str, GeneCurie]]]])
+
+slots.has_participant = Slot(uri=ALLIANCE.has_participant, name="has_participant", curie=ALLIANCE.curie('has_participant'),
+                   model_uri=ALLIANCE.has_participant, domain=None, range=Optional[str])
+
+slots.has_input = Slot(uri=ALLIANCE.has_input, name="has_input", curie=ALLIANCE.curie('has_input'),
+                   model_uri=ALLIANCE.has_input, domain=None, range=Optional[str])
+
+slots.has_output = Slot(uri=ALLIANCE.has_output, name="has_output", curie=ALLIANCE.curie('has_output'),
+                   model_uri=ALLIANCE.has_output, domain=None, range=Optional[str])
+
+slots.enables = Slot(uri=ALLIANCE.enables, name="enables", curie=ALLIANCE.curie('enables'),
+                   model_uri=ALLIANCE.enables, domain=None, range=Optional[str])
+
 slots.text_synonyms = Slot(uri=ALLIANCE.text_synonyms, name="text_synonyms", curie=ALLIANCE.curie('text_synonyms'),
                    model_uri=ALLIANCE.text_synonyms, domain=None, range=Optional[Union[str, List[str]]])
 
@@ -6534,6 +6757,15 @@ slots.ConstructComponentAssociation_subject = Slot(uri=ALLIANCE.subject, name="C
 
 slots.ConstructComponentAssociation_object = Slot(uri=ALLIANCE.object, name="ConstructComponentAssociation_object", curie=ALLIANCE.curie('object'),
                    model_uri=ALLIANCE.ConstructComponentAssociation_object, domain=ConstructComponentAssociation, range=Union[str, ConstructComponentCurie])
+
+slots.GeneToPathwayAssociation_predicate = Slot(uri=ALLIANCE.predicate, name="GeneToPathwayAssociation_predicate", curie=ALLIANCE.curie('predicate'),
+                   model_uri=ALLIANCE.GeneToPathwayAssociation_predicate, domain=GeneToPathwayAssociation, range=str)
+
+slots.GeneToPathwayAssociation_subject = Slot(uri=ALLIANCE.subject, name="GeneToPathwayAssociation_subject", curie=ALLIANCE.curie('subject'),
+                   model_uri=ALLIANCE.GeneToPathwayAssociation_subject, domain=GeneToPathwayAssociation, range=Union[str, GeneCurie])
+
+slots.GeneToPathwayAssociation_object = Slot(uri=ALLIANCE.object, name="GeneToPathwayAssociation_object", curie=ALLIANCE.curie('object'),
+                   model_uri=ALLIANCE.GeneToPathwayAssociation_object, domain=GeneToPathwayAssociation, range=Union[str, PathwayCurie])
 
 slots.VocabularyTerm_name = Slot(uri=ALLIANCE.name, name="VocabularyTerm_name", curie=ALLIANCE.curie('name'),
                    model_uri=ALLIANCE.VocabularyTerm_name, domain=VocabularyTerm, range=Union[str, VocabularyTermName])
