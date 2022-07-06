@@ -8,7 +8,7 @@
       "predicate": "is_implicated_in",
       "object": "DOID:0001234",
       "created_by": "ZFIN",
-      "modified_by": "ZFIN",
+      "updated_by": "ZFIN",
       "internal": false
     }
   ]

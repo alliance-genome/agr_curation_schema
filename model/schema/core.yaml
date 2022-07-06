@@ -61,7 +61,7 @@ classes:
     slots:
       - created_by
       - date_created
-      - modified_by
+      - updated_by
       - date_updated
       - internal
       - obsolete
@@ -418,7 +418,7 @@ slots:
     domain: AuditedObject
     range: Person
 
-  modified_by:
+  updated_by:
     description: >-
       The individual that last modified the entity.
     multivalued: false

@@ -25,6 +25,8 @@ linkml:Date xsd:date
 
 linkml:Datetime xsd:dateTime
 
+linkml:DateOrDatetime linkml:DateOrDatetime
+
 linkml:Uriorcurie IRI
 
 linkml:Uri IRI
@@ -202,7 +204,7 @@ linkml:Nodeidentifier NONLITERAL
     CLOSED {
        (  $<AuditedObject_tes> (  <created_by> @<Person> ? ;
              <date_created> @linkml:Date ? ;
-             <modified_by> @<Person> ? ;
+             <updated_by> @<Person> ? ;
              <date_updated> @linkml:Date ? ;
              <internal> @linkml:Boolean ;
              <obsolete> @linkml:Boolean ?

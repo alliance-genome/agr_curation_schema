@@ -7,7 +7,7 @@
 --     * Slot: taxon Description: The taxon from which the biological entity derives.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -17,7 +17,7 @@
 --     * Slot: single_reference Description: holds between an object and a single reference
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -32,7 +32,7 @@
 --     * Slot: consequence Description: SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -49,7 +49,7 @@
 --     * Slot: consequence Description: SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -65,7 +65,7 @@
 --     * Slot: consequence Description: SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -81,7 +81,7 @@
 --     * Slot: consequence Description: SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -94,7 +94,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -107,7 +107,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -121,7 +121,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -134,7 +134,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -147,7 +147,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -160,7 +160,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -173,7 +173,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -186,7 +186,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -199,7 +199,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -212,7 +212,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -225,7 +225,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -238,7 +238,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -256,7 +256,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -269,7 +269,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -282,7 +282,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -295,7 +295,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -308,7 +308,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -321,7 +321,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -334,7 +334,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -347,7 +347,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -360,7 +360,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -373,7 +373,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -386,7 +386,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -399,7 +399,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -412,7 +412,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -425,7 +425,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -438,7 +438,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -451,7 +451,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -464,7 +464,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -477,7 +477,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -490,7 +490,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -503,7 +503,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -521,7 +521,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -539,7 +539,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -557,7 +557,7 @@
 --     * Slot: namespace Description: the namespace of the ontology.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -579,7 +579,7 @@
 --     * Slot: taxon Description: The taxon from which the biological entity derives.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -594,7 +594,7 @@
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -608,7 +608,7 @@
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -622,7 +622,7 @@
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -636,7 +636,7 @@
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -650,7 +650,7 @@
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -662,7 +662,7 @@
 --     * Slot: single_reference Description: holds between an object and a single reference
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -672,7 +672,7 @@
 --     * Slot: taxon Description: The taxon from which the biological entity derives.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -680,7 +680,7 @@
 --     * Slot: id Description: 
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -690,7 +690,7 @@
 --     * Slot: taxon Description: The taxon from which the biological entity derives.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -702,7 +702,7 @@
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -713,7 +713,7 @@
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -724,7 +724,7 @@
 --     * Slot: taxon Description: The taxon from which the biological entity derives.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -737,7 +737,7 @@
 --     * Slot: taxon Description: The taxon from which the biological entity derives.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -748,7 +748,7 @@
 --     * Slot: zygosity Description: GENO onotology ID for allele zygosity
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -756,7 +756,7 @@
 --     * Slot: id Description: 
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -765,7 +765,7 @@
 --     * Slot: taxon Description: The taxon from which the biological entity derives.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -775,7 +775,7 @@
 --     * Slot: taxon Description: The taxon from which the biological entity derives.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -785,7 +785,7 @@
 --     * Slot: taxon Description: The taxon from which the biological entity derives.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -795,7 +795,7 @@
 --     * Slot: prefix Description: Denormalization to help with classifying types of crossReferences, distinguishing DOIs from PMC ids, etc.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -854,7 +854,7 @@
 --     * Slot: synonym Description: the text string of the synonym
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -864,7 +864,7 @@
 --     * Slot: note_type Description: The type of note: e.g., cytology, comment, summary. Permissible values for 'note_type' currently = disease_summary, disease_note
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -875,7 +875,7 @@
 --     * Slot: statement_text Description: Free-text describing some aspect of an entity.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -886,7 +886,7 @@
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -896,7 +896,7 @@
 --     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -911,7 +911,7 @@
 --     * Slot: prefix_order Description: The relative order of the resource when listed with other crossReferences.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -919,7 +919,7 @@
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -927,7 +927,7 @@
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -941,7 +941,7 @@
 --     * Slot: end Description: The end of the feature in positive 1-based integer coordinates
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -951,7 +951,7 @@
 --     * Slot: taxon Description: The taxon from which the biological entity derives.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -961,7 +961,7 @@
 --     * Slot: definition Description: The explanation of the meaning of a term.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -970,7 +970,7 @@
 --     * Slot: vocabulary_description Description: The free text description of a Vocabulary including its intended use.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -981,7 +981,7 @@
 --     * Slot: caption Description: Text describing the contents of a figure or table in a publication.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -989,7 +989,7 @@
 --     * Slot: id Description: 
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1004,7 +1004,7 @@
 --     * Slot: video_still Description: An image represents a video still.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1021,7 +1021,7 @@
 --     * Slot: image_y_origin Description: The y coordinate within a larger source image from which the pane begins.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1029,7 +1029,7 @@
 --     * Slot: id Description: 
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1037,7 +1037,7 @@
 --     * Slot: id Description: 
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1045,7 +1045,7 @@
 --     * Slot: id Description: 
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1053,7 +1053,7 @@
 --     * Slot: id Description: 
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1066,7 +1066,7 @@
 --     * Slot: unique_id Description: A non-curie unique identifier for a thing.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1082,7 +1082,7 @@
 --     * Slot: unique_id Description: A non-curie unique identifier for a thing.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1099,7 +1099,7 @@
 --     * Slot: summary Description: 
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1111,7 +1111,7 @@
 --     * Slot: last_name Description: last (family) name of a person
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1135,7 +1135,7 @@
 --     * Slot: volume Description: Volume associated with a reference. From PubMed otherwise from Mod or manual reference creation.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1147,7 +1147,7 @@
 --     * Slot: qualifier_term Description: The MeSH term subheading from PubMed, to narrow down the topic. e.g. epidemiology in a Measles/epidemiology term.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1159,7 +1159,7 @@
 --     * Slot: taxon Description: The taxon from which the biological entity derives.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1176,7 +1176,7 @@
 --     * Slot: sift_prediction Description: SIFT prediction
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1191,7 +1191,7 @@
 --     * Slot: sift_prediction Description: SIFT prediction
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1219,7 +1219,7 @@
 --     * Slot: sift_prediction Description: SIFT prediction
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1229,7 +1229,7 @@
 --     * Slot: taxon Description: The taxon from which the biological entity derives.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1243,7 +1243,7 @@
 --     * Slot: taxon Description: The species in which the antibody was raised: e.g., mouse, rabbit, guinea pig, goat, camel, etc.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1252,7 +1252,7 @@
 --     * Slot: taxon Description: The taxon from which the biological entity derives.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1261,7 +1261,7 @@
 --     * Slot: taxon Description: The taxon from which the biological entity derives.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1274,7 +1274,7 @@
 --     * Slot: object Description: phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed statement of the phenotype from a post-composed terminology
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date of curation at the source (MOD) database.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1288,7 +1288,7 @@
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1302,7 +1302,7 @@
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1317,7 +1317,7 @@
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1338,7 +1338,7 @@
 --     * Slot: object Description: The disease ontology term.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1360,7 +1360,7 @@
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1383,7 +1383,7 @@
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1407,7 +1407,7 @@
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1427,7 +1427,7 @@
 --     * Slot: condition_chemical Description: ChEBI or molecular ontology id used in subset of condition terms.  ie: the specific chemcial used in conjunction with 'chemical condition'.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1440,7 +1440,7 @@
 --     * Slot: condition_relation_type Description: Submitted value should be a vocabulary term from the 'Condition relation types' vocabulary
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1462,7 +1462,7 @@
 --     * Slot: object Description: the object gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1477,7 +1477,7 @@
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1494,7 +1494,7 @@
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1511,7 +1511,7 @@
 --     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1523,7 +1523,7 @@
 --     * Slot: specimen_genomic_model Description: The AffectedGenomicModel of the specimen assayed.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1535,7 +1535,7 @@
 --     * Slot: uncertain Description: If set to true, then the related entity is uncertain.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1550,7 +1550,7 @@
 --     * Slot: stage_uncertainty Description: 
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1562,7 +1562,7 @@
 --     * Slot: spatial_qualifiers Description: Qualifiers that describe the spatial characteristics of an event.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1571,7 +1571,7 @@
 --     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1584,7 +1584,7 @@
 --     * Slot: statement_text Description: Free-text describing some aspect of an entity.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1595,7 +1595,7 @@
 --     * Slot: statement_text Description: Free-text describing some aspect of an entity.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -1605,7 +1605,7 @@
 --     * Slot: statement_text Description: Free-text describing some aspect of an entity.
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
---     * Slot: modified_by Description: The individual that last modified the entity.
+--     * Slot: updated_by Description: The individual that last modified the entity.
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
@@ -2379,13 +2379,13 @@ CREATE TABLE "Person" (
 	unique_id TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (unique_id), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Ingest" (
 	id INTEGER, 
@@ -2400,13 +2400,13 @@ CREATE TABLE "OntologyTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "DOTerm" (
 	curie TEXT NOT NULL, 
@@ -2417,13 +2417,13 @@ CREATE TABLE "DOTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "ECOTerm" (
 	abbreviation TEXT, 
@@ -2435,13 +2435,13 @@ CREATE TABLE "ECOTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "NCBITaxonTerm" (
 	curie TEXT NOT NULL, 
@@ -2452,13 +2452,13 @@ CREATE TABLE "NCBITaxonTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "FBCVTerm" (
 	curie TEXT NOT NULL, 
@@ -2469,13 +2469,13 @@ CREATE TABLE "FBCVTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "GOTerm" (
 	curie TEXT NOT NULL, 
@@ -2486,13 +2486,13 @@ CREATE TABLE "GOTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "ROTerm" (
 	curie TEXT NOT NULL, 
@@ -2503,13 +2503,13 @@ CREATE TABLE "ROTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "MITerm" (
 	curie TEXT NOT NULL, 
@@ -2520,13 +2520,13 @@ CREATE TABLE "MITerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "MMOTerm" (
 	curie TEXT NOT NULL, 
@@ -2537,13 +2537,13 @@ CREATE TABLE "MMOTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "MMUSDVTerm" (
 	curie TEXT NOT NULL, 
@@ -2554,13 +2554,13 @@ CREATE TABLE "MMUSDVTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "SOTerm" (
 	curie TEXT NOT NULL, 
@@ -2571,13 +2571,13 @@ CREATE TABLE "SOTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "XBEDTerm" (
 	curie TEXT NOT NULL, 
@@ -2588,13 +2588,13 @@ CREATE TABLE "XBEDTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "CHEBITerm" (
 	inchi TEXT, 
@@ -2610,13 +2610,13 @@ CREATE TABLE "CHEBITerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "StageTerm" (
 	curie TEXT NOT NULL, 
@@ -2627,13 +2627,13 @@ CREATE TABLE "StageTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "FBDVTerm" (
 	curie TEXT NOT NULL, 
@@ -2644,13 +2644,13 @@ CREATE TABLE "FBDVTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "WBLSTerm" (
 	curie TEXT NOT NULL, 
@@ -2661,13 +2661,13 @@ CREATE TABLE "WBLSTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "XBSTerm" (
 	curie TEXT NOT NULL, 
@@ -2678,13 +2678,13 @@ CREATE TABLE "XBSTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "ZFSTerm" (
 	curie TEXT NOT NULL, 
@@ -2695,13 +2695,13 @@ CREATE TABLE "ZFSTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "ExperimentalConditionOntologyTerm" (
 	curie TEXT NOT NULL, 
@@ -2712,13 +2712,13 @@ CREATE TABLE "ExperimentalConditionOntologyTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "ZECOTerm" (
 	curie TEXT NOT NULL, 
@@ -2729,13 +2729,13 @@ CREATE TABLE "ZECOTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "XCOTerm" (
 	curie TEXT NOT NULL, 
@@ -2746,13 +2746,13 @@ CREATE TABLE "XCOTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "AnatomicalTerm" (
 	curie TEXT NOT NULL, 
@@ -2763,13 +2763,13 @@ CREATE TABLE "AnatomicalTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "CLTerm" (
 	curie TEXT NOT NULL, 
@@ -2780,13 +2780,13 @@ CREATE TABLE "CLTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "EMAPATerm" (
 	curie TEXT NOT NULL, 
@@ -2797,13 +2797,13 @@ CREATE TABLE "EMAPATerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "DAOTerm" (
 	curie TEXT NOT NULL, 
@@ -2814,13 +2814,13 @@ CREATE TABLE "DAOTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "MATerm" (
 	curie TEXT NOT NULL, 
@@ -2831,13 +2831,13 @@ CREATE TABLE "MATerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "UBERONTerm" (
 	curie TEXT NOT NULL, 
@@ -2848,13 +2848,13 @@ CREATE TABLE "UBERONTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "WBBTTerm" (
 	curie TEXT NOT NULL, 
@@ -2865,13 +2865,13 @@ CREATE TABLE "WBBTTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "XBATerm" (
 	curie TEXT NOT NULL, 
@@ -2882,13 +2882,13 @@ CREATE TABLE "XBATerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "ZFATerm" (
 	curie TEXT NOT NULL, 
@@ -2899,13 +2899,13 @@ CREATE TABLE "ZFATerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "PhenotypeTerm" (
 	curie TEXT NOT NULL, 
@@ -2916,13 +2916,13 @@ CREATE TABLE "PhenotypeTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "XPOTerm" (
 	curie TEXT NOT NULL, 
@@ -2933,13 +2933,13 @@ CREATE TABLE "XPOTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "ChemicalTerm" (
 	inchi TEXT, 
@@ -2955,13 +2955,13 @@ CREATE TABLE "ChemicalTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "XSMOTerm" (
 	inchi TEXT, 
@@ -2977,13 +2977,13 @@ CREATE TABLE "XSMOTerm" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Molecule" (
 	inchi TEXT, 
@@ -2999,50 +2999,50 @@ CREATE TABLE "Molecule" (
 	namespace TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "CellLine" (
 	id INTEGER, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "AuditedObject" (
 	id INTEGER, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Synonym" (
 	id INTEGER, 
 	synonym TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "EntityStatement" (
 	id INTEGER, 
@@ -3051,13 +3051,13 @@ CREATE TABLE "EntityStatement" (
 	statement_text TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Association" (
 	id INTEGER, 
@@ -3066,13 +3066,13 @@ CREATE TABLE "Association" (
 	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "ExternalDatabaseLink" (
 	id INTEGER, 
@@ -3084,37 +3084,37 @@ CREATE TABLE "ExternalDatabaseLink" (
 	prefix_order TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Chromosome" (
 	curie TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Assembly" (
 	curie TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "VocabularyTerm" (
 	name TEXT NOT NULL, 
@@ -3122,86 +3122,86 @@ CREATE TABLE "VocabularyTerm" (
 	definition TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (name), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Vocabulary" (
 	name TEXT NOT NULL, 
 	vocabulary_description TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (name), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "File" (
 	id INTEGER, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Agent" (
 	id INTEGER, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Organization" (
 	id INTEGER, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Laboratory" (
 	id INTEGER, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Company" (
 	id INTEGER, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "LoggedInPerson" (
 	okta_id TEXT NOT NULL, 
@@ -3215,13 +3215,13 @@ CREATE TABLE "LoggedInPerson" (
 	unique_id TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (unique_id), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Resource" (
 	curie TEXT NOT NULL, 
@@ -3236,13 +3236,13 @@ CREATE TABLE "Resource" (
 	summary TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "AuthorReference" (
 	id INTEGER, 
@@ -3252,13 +3252,13 @@ CREATE TABLE "AuthorReference" (
 	last_name TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Reference" (
 	abstract TEXT, 
@@ -3280,13 +3280,13 @@ CREATE TABLE "Reference" (
 	volume TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "MeshDetail" (
 	id INTEGER, 
@@ -3296,13 +3296,13 @@ CREATE TABLE "MeshDetail" (
 	qualifier_term TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "VariantConsequence" (
 	id INTEGER, 
@@ -3316,13 +3316,13 @@ CREATE TABLE "VariantConsequence" (
 	sift_prediction VARCHAR(11), 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Person_emails" (
 	"Person_unique_id" TEXT, 
@@ -3345,7 +3345,7 @@ CREATE TABLE "Variant" (
 	taxon TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -3355,7 +3355,7 @@ CREATE TABLE "Variant" (
 	FOREIGN KEY(source_general_consequence) REFERENCES "SOTerm" (curie), 
 	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY("Ingest_id") REFERENCES "Ingest" (id)
 );
 CREATE TABLE "SourceVariantLocation" (
@@ -3363,14 +3363,14 @@ CREATE TABLE "SourceVariantLocation" (
 	single_reference TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "VariantLocation" (
 	id INTEGER, 
@@ -3383,7 +3383,7 @@ CREATE TABLE "VariantLocation" (
 	consequence TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -3392,7 +3392,7 @@ CREATE TABLE "VariantLocation" (
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(consequence) REFERENCES "SOTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "VariantGenomeLocation" (
 	id INTEGER, 
@@ -3407,7 +3407,7 @@ CREATE TABLE "VariantGenomeLocation" (
 	consequence TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -3418,7 +3418,7 @@ CREATE TABLE "VariantGenomeLocation" (
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(consequence) REFERENCES "SOTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "AssociatedReference" (
 	id INTEGER, 
@@ -3426,7 +3426,7 @@ CREATE TABLE "AssociatedReference" (
 	single_reference TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -3434,7 +3434,7 @@ CREATE TABLE "AssociatedReference" (
 	FOREIGN KEY(reference_type) REFERENCES "VocabularyTerm" (name), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Construct" (
 	name TEXT NOT NULL, 
@@ -3442,14 +3442,14 @@ CREATE TABLE "Construct" (
 	taxon TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "SequenceTargetingReagent" (
 	name TEXT NOT NULL, 
@@ -3457,7 +3457,7 @@ CREATE TABLE "SequenceTargetingReagent" (
 	taxon TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -3465,7 +3465,7 @@ CREATE TABLE "SequenceTargetingReagent" (
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY("Ingest_id") REFERENCES "Ingest" (id)
 );
 CREATE TABLE "ConstructComponent" (
@@ -3475,14 +3475,14 @@ CREATE TABLE "ConstructComponent" (
 	taxon TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "AffectedGenomicModel" (
 	subtype VARCHAR(8) NOT NULL, 
@@ -3493,7 +3493,7 @@ CREATE TABLE "AffectedGenomicModel" (
 	taxon TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -3501,7 +3501,7 @@ CREATE TABLE "AffectedGenomicModel" (
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY("Ingest_id") REFERENCES "Ingest" (id)
 );
 CREATE TABLE "BiologicalEntity" (
@@ -3509,14 +3509,14 @@ CREATE TABLE "BiologicalEntity" (
 	taxon TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "GenomicEntity" (
 	name TEXT, 
@@ -3524,14 +3524,14 @@ CREATE TABLE "GenomicEntity" (
 	taxon TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Transcript" (
 	name TEXT, 
@@ -3539,14 +3539,14 @@ CREATE TABLE "Transcript" (
 	taxon TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Note" (
 	id INTEGER, 
@@ -3554,14 +3554,14 @@ CREATE TABLE "Note" (
 	note_type TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(note_type) REFERENCES "VocabularyTerm" (name), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "EntitySynonym" (
 	id INTEGER, 
@@ -3569,14 +3569,14 @@ CREATE TABLE "EntitySynonym" (
 	predicate VARCHAR(7) NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	object_id TEXT NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(object_id) REFERENCES "Synonym" (id)
 );
 CREATE TABLE "Protein" (
@@ -3585,14 +3585,14 @@ CREATE TABLE "Protein" (
 	taxon TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Figure" (
 	curie TEXT NOT NULL, 
@@ -3601,14 +3601,14 @@ CREATE TABLE "Figure" (
 	caption TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Gene" (
 	symbol TEXT NOT NULL, 
@@ -3618,7 +3618,7 @@ CREATE TABLE "Gene" (
 	taxon TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -3627,7 +3627,7 @@ CREATE TABLE "Gene" (
 	FOREIGN KEY(gene_type) REFERENCES "SOTerm" (curie), 
 	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY("Ingest_id") REFERENCES "Ingest" (id)
 );
 CREATE TABLE "Reagent" (
@@ -3635,14 +3635,14 @@ CREATE TABLE "Reagent" (
 	taxon TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Antibody" (
 	name TEXT NOT NULL, 
@@ -3654,7 +3654,7 @@ CREATE TABLE "Antibody" (
 	taxon TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -3662,35 +3662,35 @@ CREATE TABLE "Antibody" (
 	FOREIGN KEY(antigen_taxon) REFERENCES "NCBITaxonTerm" (curie), 
 	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "DNAClone" (
 	curie TEXT NOT NULL, 
 	taxon TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "RNAClone" (
 	curie TEXT NOT NULL, 
 	taxon TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "TemporalContext" (
 	id INTEGER, 
@@ -3701,7 +3701,7 @@ CREATE TABLE "TemporalContext" (
 	stage_uncertainty TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -3709,7 +3709,7 @@ CREATE TABLE "TemporalContext" (
 	FOREIGN KEY(developmental_stage_start) REFERENCES "StageTerm" (curie), 
 	FOREIGN KEY(developmental_stage_stop) REFERENCES "StageTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "AnatomicalSite" (
 	id INTEGER, 
@@ -3719,7 +3719,7 @@ CREATE TABLE "AnatomicalSite" (
 	spatial_qualifiers VARCHAR(35), 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -3728,7 +3728,7 @@ CREATE TABLE "AnatomicalSite" (
 	FOREIGN KEY(anatomical_substructure) REFERENCES "AnatomicalTerm" (curie), 
 	FOREIGN KEY(cellular_component) REFERENCES "GOTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "OntologyTerm_definition_urls" (
 	"OntologyTerm_curie" TEXT, 
@@ -4701,7 +4701,7 @@ CREATE TABLE "VariantTranscriptLocation" (
 	consequence TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -4711,7 +4711,7 @@ CREATE TABLE "VariantTranscriptLocation" (
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(consequence) REFERENCES "SOTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "VariantPolypeptideLocation" (
 	id INTEGER, 
@@ -4725,7 +4725,7 @@ CREATE TABLE "VariantPolypeptideLocation" (
 	consequence TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -4735,7 +4735,7 @@ CREATE TABLE "VariantPolypeptideLocation" (
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(consequence) REFERENCES "SOTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "SequenceTargetingReagentToGeneAssociation" (
 	id INTEGER, 
@@ -4744,7 +4744,7 @@ CREATE TABLE "SequenceTargetingReagentToGeneAssociation" (
 	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -4752,7 +4752,7 @@ CREATE TABLE "SequenceTargetingReagentToGeneAssociation" (
 	FOREIGN KEY(subject) REFERENCES "SequenceTargetingReagent" (curie), 
 	FOREIGN KEY(object) REFERENCES "Gene" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "ConstructComponentAssociation" (
 	id INTEGER, 
@@ -4761,7 +4761,7 @@ CREATE TABLE "ConstructComponentAssociation" (
 	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -4769,7 +4769,7 @@ CREATE TABLE "ConstructComponentAssociation" (
 	FOREIGN KEY(subject) REFERENCES "Construct" (curie), 
 	FOREIGN KEY(object) REFERENCES "ConstructComponent" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "GenomicLocation" (
 	id INTEGER, 
@@ -4781,7 +4781,7 @@ CREATE TABLE "GenomicLocation" (
 	"end" TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -4790,7 +4790,7 @@ CREATE TABLE "GenomicLocation" (
 	FOREIGN KEY(object) REFERENCES "Chromosome" (curie), 
 	FOREIGN KEY(has_assembly) REFERENCES "Assembly" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Image" (
 	curie TEXT NOT NULL, 
@@ -4803,7 +4803,7 @@ CREATE TABLE "Image" (
 	video_still BOOLEAN, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -4814,7 +4814,7 @@ CREATE TABLE "Image" (
 	FOREIGN KEY(associated_with_figure) REFERENCES "Figure" (curie), 
 	FOREIGN KEY(cropped_from) REFERENCES "Image" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(image_file_id) REFERENCES "File" (id), 
 	FOREIGN KEY(image_medium_file_id) REFERENCES "File" (id), 
 	FOREIGN KEY(image_thumbnail_file_id) REFERENCES "File" (id)
@@ -4830,7 +4830,7 @@ CREATE TABLE "VariantGeneConsequence" (
 	sift_prediction VARCHAR(11), 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -4838,7 +4838,7 @@ CREATE TABLE "VariantGeneConsequence" (
 	PRIMARY KEY (id), 
 	FOREIGN KEY(object) REFERENCES "Gene" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(subject_id) REFERENCES "VariantGenomeLocation" (id)
 );
 CREATE TABLE "PhenotypeAnnotation" (
@@ -4850,7 +4850,7 @@ CREATE TABLE "PhenotypeAnnotation" (
 	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE NOT NULL, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -4859,7 +4859,7 @@ CREATE TABLE "PhenotypeAnnotation" (
 	FOREIGN KEY(phenotype_term) REFERENCES "PhenotypeTerm" (curie), 
 	FOREIGN KEY(subject) REFERENCES "BiologicalEntity" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "GenePhenotypeAnnotation" (
 	sgd_strain_background TEXT, 
@@ -4871,7 +4871,7 @@ CREATE TABLE "GenePhenotypeAnnotation" (
 	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE NOT NULL, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -4881,7 +4881,7 @@ CREATE TABLE "GenePhenotypeAnnotation" (
 	FOREIGN KEY(phenotype_term) REFERENCES "PhenotypeTerm" (curie), 
 	FOREIGN KEY(subject) REFERENCES "Gene" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "DiseaseAnnotation" (
 	id INTEGER, 
@@ -4900,7 +4900,7 @@ CREATE TABLE "DiseaseAnnotation" (
 	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -4913,7 +4913,7 @@ CREATE TABLE "DiseaseAnnotation" (
 	FOREIGN KEY(subject) REFERENCES "BiologicalEntity" (curie), 
 	FOREIGN KEY(object) REFERENCES "DOTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "GeneDiseaseAnnotation" (
 	id INTEGER, 
@@ -4933,7 +4933,7 @@ CREATE TABLE "GeneDiseaseAnnotation" (
 	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -4949,7 +4949,7 @@ CREATE TABLE "GeneDiseaseAnnotation" (
 	FOREIGN KEY(predicate) REFERENCES "VocabularyTerm" (name), 
 	FOREIGN KEY(object) REFERENCES "DOTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY("Ingest_id") REFERENCES "Ingest" (id)
 );
 CREATE TABLE "GeneToGeneAssociation" (
@@ -4959,7 +4959,7 @@ CREATE TABLE "GeneToGeneAssociation" (
 	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -4967,7 +4967,7 @@ CREATE TABLE "GeneToGeneAssociation" (
 	FOREIGN KEY(subject) REFERENCES "Gene" (curie), 
 	FOREIGN KEY(object) REFERENCES "Gene" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "GeneInteraction" (
 	curie TEXT NOT NULL, 
@@ -4980,7 +4980,7 @@ CREATE TABLE "GeneInteraction" (
 	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -4988,7 +4988,7 @@ CREATE TABLE "GeneInteraction" (
 	FOREIGN KEY(subject) REFERENCES "Gene" (curie), 
 	FOREIGN KEY(object) REFERENCES "Gene" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "GeneMolecularInteraction" (
 	aggregation_database VARCHAR(7), 
@@ -5003,7 +5003,7 @@ CREATE TABLE "GeneMolecularInteraction" (
 	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -5011,7 +5011,7 @@ CREATE TABLE "GeneMolecularInteraction" (
 	FOREIGN KEY(subject) REFERENCES "Gene" (curie), 
 	FOREIGN KEY(object) REFERENCES "Gene" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "ExpressionExperiment" (
 	curie TEXT NOT NULL, 
@@ -5021,7 +5021,7 @@ CREATE TABLE "ExpressionExperiment" (
 	specimen_genomic_model TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -5031,7 +5031,7 @@ CREATE TABLE "ExpressionExperiment" (
 	FOREIGN KEY(assay_used) REFERENCES "MMOTerm" (curie), 
 	FOREIGN KEY(specimen_genomic_model) REFERENCES "AffectedGenomicModel" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "GeneExpressionStatement" (
 	id INTEGER, 
@@ -5040,14 +5040,14 @@ CREATE TABLE "GeneExpressionStatement" (
 	statement_text TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(statement_subject) REFERENCES "Gene" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Variant_related_notes" (
 	"Variant_curie" TEXT, 
@@ -5357,7 +5357,7 @@ CREATE TABLE "Allele" (
 	taxon TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -5372,7 +5372,7 @@ CREATE TABLE "Allele" (
 	FOREIGN KEY(sequencing_status) REFERENCES "VocabularyTerm" (name), 
 	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY("Ingest_id") REFERENCES "Ingest" (id), 
 	FOREIGN KEY(parent_cell_line_id) REFERENCES "CellLine" (id)
 );
@@ -5386,14 +5386,14 @@ CREATE TABLE "ImagePane" (
 	image_y_origin INTEGER, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(from_image) REFERENCES "Image" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "VariantTranscriptConsequence" (
 	id INTEGER, 
@@ -5418,7 +5418,7 @@ CREATE TABLE "VariantTranscriptConsequence" (
 	sift_prediction VARCHAR(11), 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -5426,7 +5426,7 @@ CREATE TABLE "VariantTranscriptConsequence" (
 	PRIMARY KEY (id), 
 	FOREIGN KEY(object) REFERENCES "Transcript" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(subject_id) REFERENCES "VariantTranscriptLocation" (id)
 );
 CREATE TABLE "ExpressionAnnotation" (
@@ -5437,7 +5437,7 @@ CREATE TABLE "ExpressionAnnotation" (
 	uncertain BOOLEAN, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -5446,7 +5446,7 @@ CREATE TABLE "ExpressionAnnotation" (
 	PRIMARY KEY (id), 
 	FOREIGN KEY(belongs_to_expression_experiment) REFERENCES "ExpressionExperiment" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(when_expressed_id) REFERENCES "TemporalContext" (id), 
 	FOREIGN KEY(where_expressed_id) REFERENCES "AnatomicalSite" (id)
 );
@@ -5457,14 +5457,14 @@ CREATE TABLE "ExpressionExperimentStatement" (
 	statement_text TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(statement_subject) REFERENCES "ExpressionExperiment" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Variant_variant_polypeptide_locations" (
 	"Variant_curie" TEXT, 
@@ -5666,7 +5666,7 @@ CREATE TABLE "AlleleGenomicEntityAssociation" (
 	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -5678,7 +5678,7 @@ CREATE TABLE "AlleleGenomicEntityAssociation" (
 	FOREIGN KEY(predicate) REFERENCES "ROTerm" (curie), 
 	FOREIGN KEY(object) REFERENCES "GenomicEntity" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(related_note_id) REFERENCES "Note" (id)
 );
 CREATE TABLE "AlleleGeneAssociation" (
@@ -5690,7 +5690,7 @@ CREATE TABLE "AlleleGeneAssociation" (
 	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -5702,7 +5702,7 @@ CREATE TABLE "AlleleGeneAssociation" (
 	FOREIGN KEY(predicate) REFERENCES "ROTerm" (curie), 
 	FOREIGN KEY(object) REFERENCES "Gene" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(related_note_id) REFERENCES "Note" (id)
 );
 CREATE TABLE "AlleleTranscriptAssociation" (
@@ -5714,7 +5714,7 @@ CREATE TABLE "AlleleTranscriptAssociation" (
 	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -5726,7 +5726,7 @@ CREATE TABLE "AlleleTranscriptAssociation" (
 	FOREIGN KEY(predicate) REFERENCES "ROTerm" (curie), 
 	FOREIGN KEY(object) REFERENCES "Transcript" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(related_note_id) REFERENCES "Note" (id)
 );
 CREATE TABLE "AlleleProteinAssociation" (
@@ -5738,7 +5738,7 @@ CREATE TABLE "AlleleProteinAssociation" (
 	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -5750,7 +5750,7 @@ CREATE TABLE "AlleleProteinAssociation" (
 	FOREIGN KEY(predicate) REFERENCES "ROTerm" (curie), 
 	FOREIGN KEY(object) REFERENCES "Protein" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(related_note_id) REFERENCES "Note" (id)
 );
 CREATE TABLE "AlleleVariantAssociation" (
@@ -5762,7 +5762,7 @@ CREATE TABLE "AlleleVariantAssociation" (
 	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -5775,7 +5775,7 @@ CREATE TABLE "AlleleVariantAssociation" (
 	FOREIGN KEY(predicate) REFERENCES "ROTerm" (curie), 
 	FOREIGN KEY(object) REFERENCES "Variant" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY("Ingest_id") REFERENCES "Ingest" (id), 
 	FOREIGN KEY(related_note_id) REFERENCES "Note" (id)
 );
@@ -5785,14 +5785,14 @@ CREATE TABLE "AffectedGenomicModelComponent" (
 	zygosity VARCHAR(12), 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(has_allele) REFERENCES "Allele" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "AllelePhenotypeAnnotation" (
 	inferred_gene TEXT, 
@@ -5804,7 +5804,7 @@ CREATE TABLE "AllelePhenotypeAnnotation" (
 	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE NOT NULL, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -5814,7 +5814,7 @@ CREATE TABLE "AllelePhenotypeAnnotation" (
 	FOREIGN KEY(phenotype_term) REFERENCES "PhenotypeTerm" (curie), 
 	FOREIGN KEY(subject) REFERENCES "Allele" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "AGMPhenotypeAnnotation" (
 	inferred_allele TEXT, 
@@ -5827,7 +5827,7 @@ CREATE TABLE "AGMPhenotypeAnnotation" (
 	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE NOT NULL, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -5838,7 +5838,7 @@ CREATE TABLE "AGMPhenotypeAnnotation" (
 	FOREIGN KEY(phenotype_term) REFERENCES "PhenotypeTerm" (curie), 
 	FOREIGN KEY(subject) REFERENCES "AffectedGenomicModel" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "AlleleDiseaseAnnotation" (
 	id INTEGER, 
@@ -5858,7 +5858,7 @@ CREATE TABLE "AlleleDiseaseAnnotation" (
 	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -5874,7 +5874,7 @@ CREATE TABLE "AlleleDiseaseAnnotation" (
 	FOREIGN KEY(predicate) REFERENCES "VocabularyTerm" (name), 
 	FOREIGN KEY(object) REFERENCES "DOTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY("Ingest_id") REFERENCES "Ingest" (id)
 );
 CREATE TABLE "AGMDiseaseAnnotation" (
@@ -5896,7 +5896,7 @@ CREATE TABLE "AGMDiseaseAnnotation" (
 	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -5913,7 +5913,7 @@ CREATE TABLE "AGMDiseaseAnnotation" (
 	FOREIGN KEY(predicate) REFERENCES "VocabularyTerm" (name), 
 	FOREIGN KEY(object) REFERENCES "DOTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY("Ingest_id") REFERENCES "Ingest" (id)
 );
 CREATE TABLE "GeneGeneticInteraction" (
@@ -5929,7 +5929,7 @@ CREATE TABLE "GeneGeneticInteraction" (
 	object TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -5939,14 +5939,14 @@ CREATE TABLE "GeneGeneticInteraction" (
 	FOREIGN KEY(subject) REFERENCES "Gene" (curie), 
 	FOREIGN KEY(object) REFERENCES "Gene" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id)
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "ExpressionAnnotationImagePane" (
 	id INTEGER, 
 	predicate TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -5954,7 +5954,7 @@ CREATE TABLE "ExpressionAnnotationImagePane" (
 	object_id TEXT NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(subject_id) REFERENCES "ExpressionAnnotation" (id), 
 	FOREIGN KEY(object_id) REFERENCES "ImagePane" (id)
 );
@@ -5964,14 +5964,14 @@ CREATE TABLE "ExpressionAnnotationStatement" (
 	statement_text TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
 	statement_subject_id TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(statement_subject_id) REFERENCES "ExpressionAnnotation" (id)
 );
 CREATE TABLE "Allele_contains_constructs" (
@@ -6069,7 +6069,7 @@ CREATE TABLE "CrossReference" (
 	prefix TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -6125,7 +6125,7 @@ CREATE TABLE "CrossReference" (
 	"GeneGeneticInteraction_curie" TEXT, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY("Variant_curie") REFERENCES "Variant" (curie), 
 	FOREIGN KEY("OntologyTerm_curie") REFERENCES "OntologyTerm" (curie), 
 	FOREIGN KEY("DOTerm_curie") REFERENCES "DOTerm" (curie), 
@@ -6185,7 +6185,7 @@ CREATE TABLE "ConditionRelation" (
 	condition_relation_type TEXT NOT NULL, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -6202,7 +6202,7 @@ CREATE TABLE "ConditionRelation" (
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(condition_relation_type) REFERENCES "VocabularyTerm" (name), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY("PhenotypeAnnotation_curie") REFERENCES "PhenotypeAnnotation" (curie), 
 	FOREIGN KEY("GenePhenotypeAnnotation_curie") REFERENCES "GenePhenotypeAnnotation" (curie), 
 	FOREIGN KEY("AllelePhenotypeAnnotation_curie") REFERENCES "AllelePhenotypeAnnotation" (curie), 
@@ -6316,7 +6316,7 @@ CREATE TABLE "ExperimentalCondition" (
 	condition_chemical TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
-	modified_by TEXT, 
+	updated_by TEXT, 
 	date_updated DATE, 
 	internal BOOLEAN NOT NULL, 
 	obsolete BOOLEAN, 
@@ -6329,7 +6329,7 @@ CREATE TABLE "ExperimentalCondition" (
 	FOREIGN KEY(condition_taxon) REFERENCES "NCBITaxonTerm" (curie), 
 	FOREIGN KEY(condition_chemical) REFERENCES "ChemicalTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
-	FOREIGN KEY(modified_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY("ConditionRelation_id") REFERENCES "ConditionRelation" (id)
 );
 CREATE TABLE "CrossReference_page_areas" (
