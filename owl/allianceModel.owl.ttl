@@ -17,8 +17,12 @@ alliance:AGMPhenotypeAnnotation a owl:Class,
     rdfs:label "AGMPhenotypeAnnotation" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:Allele ;
+            owl:onProperty alliance:asserted_allele ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:Gene ;
-            owl:onProperty alliance:inferred_gene ],
+            owl:onProperty alliance:asserted_gene ],
         [ a owl:Restriction ;
             owl:onClass alliance:AffectedGenomicModel ;
             owl:onProperty alliance:subject ;
@@ -27,6 +31,10 @@ alliance:AGMPhenotypeAnnotation a owl:Class,
             owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:Allele ;
             owl:onProperty alliance:inferred_allele ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:Gene ;
+            owl:onProperty alliance:inferred_gene ],
         alliance:PhenotypeAnnotation ;
     skos:definition "An annotation asserting an association between an AGM and a phenotype supported by evidence." .
 
@@ -51,6 +59,14 @@ alliance:AllelePhenotypeAnnotation a owl:Class,
             owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:Gene ;
             owl:onProperty alliance:inferred_gene ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:Gene ;
+            owl:onProperty alliance:asserted_gene ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:Allele ;
+            owl:onProperty alliance:asserted_allele ],
         alliance:PhenotypeAnnotation ;
     skos:definition "An annotation asserting an association between an allele and a phenotype supported by evidence." .
 
@@ -157,12 +173,12 @@ alliance:ExpressionAnnotationStatement a owl:Class,
     rdfs:label "ExpressionAnnotationStatement" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:ExpressionStatementTypeEnum ;
-            owl:onProperty alliance:statement_type ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:ExpressionAnnotation ;
             owl:onProperty alliance:statement_subject ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:ExpressionStatementTypeEnum ;
+            owl:onProperty alliance:statement_type ],
         alliance:EntityStatement .
 
 alliance:ExpressionExperimentStatement a owl:Class,
@@ -182,7 +198,7 @@ alliance:ExternalDatabaseLink a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:prefix_page ],
+            owl:onProperty alliance:dbkey ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -194,15 +210,15 @@ alliance:ExternalDatabaseLink a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:url_suffix ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:dbkey ],
+            owl:onProperty alliance:prefix_page ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty alliance:prefix_order ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:url_suffix ],
         alliance:AuditedObject ;
     skos:definition "Base relation that holds the identifier prefix, base url and url suffix to help in generating URLs in crossReferences." .
 
@@ -285,12 +301,12 @@ alliance:GeneToPathwayAssociation a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "GeneToPathwayAssociation" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass alliance:Gene ;
-            owl:onProperty alliance:subject ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:onClass alliance:Pathway ;
             owl:onProperty alliance:object ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass alliance:Gene ;
+            owl:onProperty alliance:subject ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
@@ -345,20 +361,20 @@ alliance:SequenceTargetingReagentToGeneAssociation a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "SequenceTargetingReagentToGeneAssociation" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass alliance:SequenceTargetingReagent ;
+            owl:onProperty alliance:subject ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass alliance:Gene ;
+            owl:onProperty alliance:object ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
             owl:onClass alliance:SqtrRelationEnum ;
             owl:onProperty alliance:predicate ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:allValuesFrom alliance:Reference ;
             owl:onProperty alliance:references ],
-        [ a owl:Restriction ;
-            owl:onClass alliance:Gene ;
-            owl:onProperty alliance:object ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass alliance:SequenceTargetingReagent ;
-            owl:onProperty alliance:subject ;
-            owl:qualifiedCardinality 1 ],
         alliance:Association ;
     skos:definition "the relationship between a Sequence Targeting Reagent and its targeted genes." .
 
@@ -371,9 +387,6 @@ alliance:Vocabulary a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Vocabulary" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom alliance:VocabularyTerm ;
-            owl:onProperty alliance:member_terms ],
-        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty alliance:name ;
             owl:qualifiedCardinality 1 ],
@@ -381,6 +394,9 @@ alliance:Vocabulary a owl:Class,
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty alliance:vocabulary_description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alliance:VocabularyTerm ;
+            owl:onProperty alliance:member_terms ],
         alliance:AuditedObject ;
     skos:definition "A set of VocabularyTerm objects." .
 
@@ -571,10 +587,10 @@ alliance:schedule_active a owl:ObjectProperty,
         alliance:Ingest ;
     dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
     pav:version "0.0.1" ;
-    linkml:generation_date "2022-07-06T15:41:04" ;
+    linkml:generation_date "2022-07-06T23:42:40" ;
     linkml:metamodel_version "1.7.0" ;
     linkml:source_file "allianceModel.yaml" ;
-    linkml:source_file_date "2022-07-06T15:36:35" ;
+    linkml:source_file_date "2022-07-06T23:38:30" ;
     linkml:source_file_size 1074 .
 
 linkml:SubsetDefinition a owl:Class ;
@@ -2020,16 +2036,24 @@ alliance:AGMDiseaseAnnotation a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "AGMDiseaseAnnotation" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass alliance:AffectedGenomicModel ;
+            owl:onProperty alliance:subject ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:Allele ;
+            owl:onProperty alliance:asserted_allele ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:Allele ;
             owl:onProperty alliance:inferred_allele ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:Gene ;
+            owl:onProperty alliance:asserted_gene ],
+        [ a owl:Restriction ;
             owl:onClass alliance:VocabularyTerm ;
             owl:onProperty alliance:predicate ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass alliance:AffectedGenomicModel ;
-            owl:onProperty alliance:subject ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
@@ -2058,11 +2082,15 @@ alliance:AlleleDiseaseAnnotation a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:Gene ;
-            owl:onProperty alliance:inferred_gene ],
+            owl:onProperty alliance:asserted_gene ],
         [ a owl:Restriction ;
             owl:onClass alliance:VocabularyTerm ;
             owl:onProperty alliance:predicate ;
             owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:Gene ;
+            owl:onProperty alliance:inferred_gene ],
         alliance:DiseaseAnnotation ;
     skos:definition "An annotation asserting an association between an allele and a disease supported by evidence." .
 
@@ -3005,13 +3033,13 @@ alliance:GeneDiseaseAnnotation a owl:Class,
             owl:onProperty alliance:predicate ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:onClass alliance:Gene ;
-            owl:onProperty alliance:subject ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:AffectedGenomicModel ;
             owl:onProperty alliance:sgd_strain_background ],
+        [ a owl:Restriction ;
+            owl:onClass alliance:Gene ;
+            owl:onProperty alliance:subject ;
+            owl:qualifiedCardinality 1 ],
         alliance:DiseaseAnnotation ;
     skos:definition "An annotation asserting an association between a gene and a disease supported by evidence." .
 
@@ -3095,25 +3123,25 @@ alliance:ImagePane a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ImagePane" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:Image ;
+            owl:onProperty alliance:from_image ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
             owl:onClass linkml:Integer ;
-            owl:onProperty alliance:image_y_origin ],
+            owl:onProperty alliance:height ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:Integer ;
             owl:onProperty alliance:width ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:onClass alliance:Image ;
-            owl:onProperty alliance:from_image ;
-            owl:qualifiedCardinality 1 ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty alliance:image_y_origin ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
             owl:onProperty alliance:image_x_origin ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty alliance:height ;
-            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -4091,16 +4119,16 @@ alliance:Organization a owl:Class,
 alliance:SourceVariantLocation a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "SourceVariantLocation" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass alliance:Reference ;
-            owl:onProperty alliance:single_reference ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Class ;
+    rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:allValuesFrom alliance:VariantLocation ;
                         owl:onProperty alliance:variant_locations ] [ a owl:Restriction ;
                         owl:onProperty alliance:variant_locations ;
                         owl:someValuesFrom alliance:VariantLocation ] ) ],
+        [ a owl:Restriction ;
+            owl:onClass alliance:Reference ;
+            owl:onProperty alliance:single_reference ;
+            owl:qualifiedCardinality 1 ],
         alliance:AuditedObject ;
     skos:definition "Links a paper to the variant locations described in that paper" .
 
@@ -4198,37 +4226,37 @@ alliance:VariantConsequence a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "VariantConsequence" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:SiftPredictionLevels ;
-            owl:onProperty alliance:sift_prediction ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:vep_impact ],
+            owl:onProperty alliance:subject ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty alliance:object ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Float ;
-            owl:onProperty alliance:polyphen_score ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:PolyphenPredictionLevels ;
             owl:onProperty alliance:polyphen_prediction ],
         [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:subject ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:VepConsequenceLevels ;
-            owl:onProperty alliance:vep_consequence ],
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:vep_impact ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Float ;
             owl:onProperty alliance:sift_score ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:SiftPredictionLevels ;
+            owl:onProperty alliance:sift_prediction ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Float ;
+            owl:onProperty alliance:polyphen_score ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:VepConsequenceLevels ;
+            owl:onProperty alliance:vep_consequence ],
         alliance:AuditedObject ;
     skos:definition "Parent class for gene- and transcript-level consequences" .
 
@@ -4236,12 +4264,12 @@ alliance:VariantGeneConsequence a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "VariantGeneConsequence" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass alliance:VariantGenomeLocation ;
-            owl:onProperty alliance:subject ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:onClass alliance:Gene ;
             owl:onProperty alliance:object ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass alliance:VariantGenomeLocation ;
+            owl:onProperty alliance:subject ;
             owl:qualifiedCardinality 1 ],
         alliance:VariantConsequence ;
     skos:altLabel "GeneLevelConsequence" ;
@@ -4515,13 +4543,13 @@ alliance:AssociatedReference a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "AssociatedReference" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass alliance:VocabularyTerm ;
-            owl:onProperty alliance:reference_type ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:Reference ;
             owl:onProperty alliance:single_reference ],
+        [ a owl:Restriction ;
+            owl:onClass alliance:VocabularyTerm ;
+            owl:onProperty alliance:reference_type ;
+            owl:qualifiedCardinality 1 ],
         alliance:AuditedObject ;
     skos:definition "Describes the relation between a reference and an object" .
 
@@ -4546,10 +4574,6 @@ alliance:GeneGeneticInteraction a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "GeneGeneticInteraction" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:predicate ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:Allele ;
             owl:onProperty alliance:interactor_A_genetic_perturbation ],
@@ -4560,6 +4584,10 @@ alliance:GeneGeneticInteraction a owl:Class,
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty alliance:phenotype_or_trait ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:predicate ;
+            owl:qualifiedCardinality 1 ],
         alliance:GeneInteraction ;
     skos:definition "A genetic interaction between genes (e.g. phenotypic suppression)" .
 
@@ -4567,20 +4595,12 @@ alliance:GenomicLocation a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "GenomicLocation" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:start ],
-        [ a owl:Restriction ;
-            owl:onClass alliance:GenomicEntity ;
-            owl:onProperty alliance:subject ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty alliance:predicate ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:onClass alliance:Assembly ;
-            owl:onProperty alliance:has_assembly ;
+            owl:onClass alliance:GenomicEntity ;
+            owl:onProperty alliance:subject ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass alliance:Chromosome ;
@@ -4590,6 +4610,14 @@ alliance:GenomicLocation a owl:Class,
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty alliance:end ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:start ],
+        [ a owl:Restriction ;
+            owl:onClass alliance:Assembly ;
+            owl:onProperty alliance:has_assembly ;
+            owl:qualifiedCardinality 1 ],
         alliance:AuditedObject .
 
 alliance:LoggedInPerson a owl:Class,
@@ -4601,11 +4629,11 @@ alliance:LoggedInPerson a owl:Class,
             owl:onProperty alliance:user_settings ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:okta_email ;
+            owl:onProperty alliance:okta_id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:okta_id ;
+            owl:onProperty alliance:okta_email ;
             owl:qualifiedCardinality 1 ],
         alliance:Person .
 
@@ -4614,11 +4642,11 @@ alliance:MeshDetail a owl:Class,
     rdfs:label "MeshDetail" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:Integer ;
-            owl:onProperty alliance:mesh_detail_id ;
+            owl:onProperty alliance:reference_id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:Integer ;
-            owl:onProperty alliance:reference_id ;
+            owl:onProperty alliance:mesh_detail_id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
@@ -4643,6 +4671,14 @@ alliance:PhenotypeAnnotation a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:PhenotypeTerm ;
+            owl:onProperty alliance:phenotype_term ],
+        [ a owl:Restriction ;
+            owl:onClass alliance:BiologicalEntity ;
+            owl:onProperty alliance:subject ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:Reference ;
             owl:onProperty alliance:single_reference ],
         [ a owl:Restriction ;
@@ -4650,20 +4686,12 @@ alliance:PhenotypeAnnotation a owl:Class,
             owl:onProperty alliance:curie ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:allValuesFrom alliance:ConditionRelation ;
-            owl:onProperty alliance:condition_relations ],
-        [ a owl:Restriction ;
-            owl:onClass alliance:BiologicalEntity ;
-            owl:onProperty alliance:subject ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:PhenotypeTerm ;
-            owl:onProperty alliance:phenotype_term ],
-        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty alliance:object ;
             owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alliance:ConditionRelation ;
+            owl:onProperty alliance:condition_relations ],
         alliance:Association ;
     skos:definition "An annotation asserting an association between a biological entity and a phenotype supported by evidence." .
 
@@ -4682,14 +4710,20 @@ alliance:VariantPolypeptideLocation a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "VariantPolypeptideLocation" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom alliance:Transcript ;
+            owl:onProperty alliance:associated_transcripts ],
+        [ a owl:Restriction ;
             owl:onClass alliance:Transcript ;
             owl:onProperty alliance:polypeptide ;
             owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom alliance:Transcript ;
-            owl:onProperty alliance:associated_transcripts ],
         alliance:VariantLocation ;
     skos:definition "Links a variant to a position on a specified polypeptide and the resulting consequence to the sequence and/or function of that polypeptide." .
+
+alliance:asserted_allele a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "asserted_allele" ;
+    rdfs:range alliance:Allele ;
+    skos:definition "The allele to which something is manually asserted to be associated." .
 
 alliance:condition_relations a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -4727,12 +4761,12 @@ alliance:AffectedGenomicModelComponent a owl:Class,
     rdfs:label "AffectedGenomicModelComponent" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:ZygosityValues ;
-            owl:onProperty alliance:zygosity ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:Allele ;
             owl:onProperty alliance:has_allele ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:ZygosityValues ;
+            owl:onProperty alliance:zygosity ],
         alliance:AuditedObject ;
     skos:definition "Allele that affects the model and its zygosity" .
 
@@ -4740,29 +4774,29 @@ alliance:AlleleGenomicEntityAssociation a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "AlleleGenomicEntityAssociation" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:Reference ;
-            owl:onProperty alliance:single_reference ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:Note ;
-            owl:onProperty alliance:related_note ],
-        [ a owl:Restriction ;
-            owl:onClass alliance:ROTerm ;
-            owl:onProperty alliance:predicate ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass alliance:Allele ;
-            owl:onProperty alliance:subject ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:onClass alliance:GenomicEntity ;
             owl:onProperty alliance:object ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:Note ;
+            owl:onProperty alliance:related_note ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:ECOTerm ;
             owl:onProperty alliance:evidence_code ],
+        [ a owl:Restriction ;
+            owl:onClass alliance:Allele ;
+            owl:onProperty alliance:subject ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass alliance:ROTerm ;
+            owl:onProperty alliance:predicate ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:Reference ;
+            owl:onProperty alliance:single_reference ],
         alliance:Association ;
     skos:definition "Association between an allele and a genomic entity" .
 
@@ -4772,19 +4806,19 @@ alliance:AnatomicalSite a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:AnatomicalTerm ;
-            owl:onProperty alliance:anatomical_structure ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:SpatialQualifierSet ;
-            owl:onProperty alliance:spatial_qualifiers ],
+            owl:onProperty alliance:anatomical_substructure ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:GOTerm ;
             owl:onProperty alliance:cellular_component ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:SpatialQualifierSet ;
+            owl:onProperty alliance:spatial_qualifiers ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:AnatomicalTerm ;
-            owl:onProperty alliance:anatomical_substructure ],
+            owl:onProperty alliance:anatomical_structure ],
         alliance:AuditedObject ;
     skos:definition "The developmental stage and/or age of the specimen in an annotation." .
 
@@ -4821,11 +4855,11 @@ alliance:ChemicalTerm a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:formula ],
+            owl:onProperty alliance:smiles ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:smiles ],
+            owl:onProperty alliance:formula ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -4844,12 +4878,12 @@ alliance:Construct a owl:Class,
             owl:allValuesFrom alliance:Reference ;
             owl:onProperty alliance:references ],
         [ a owl:Restriction ;
-            owl:allValuesFrom alliance:GenomicEntity ;
-            owl:onProperty alliance:construct_components ],
-        [ a owl:Restriction ;
             owl:onClass linkml:Uriorcurie ;
             owl:onProperty alliance:curie ;
             owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alliance:GenomicEntity ;
+            owl:onProperty alliance:construct_components ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty alliance:name ;
@@ -4869,32 +4903,56 @@ alliance:DiseaseAnnotation a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "DiseaseAnnotation" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass alliance:Reference ;
+            owl:onProperty alliance:single_reference ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:data_provider ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:VocabularyTerm ;
+            owl:onProperty alliance:disease_genetic_modifier_relation ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:allValuesFrom alliance:ECOTerm ;
+                        owl:onProperty alliance:evidence_codes ] [ a owl:Restriction ;
+                        owl:onProperty alliance:evidence_codes ;
+                        owl:someValuesFrom alliance:ECOTerm ] ) ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:VocabularyTerm ;
             owl:onProperty alliance:annotation_type ],
         [ a owl:Restriction ;
-            owl:allValuesFrom alliance:VocabularyTerm ;
-            owl:onProperty alliance:disease_qualifiers ],
-        [ a owl:Restriction ;
-            owl:onClass alliance:DOTerm ;
-            owl:onProperty alliance:object ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:mod_entity_id ],
+            owl:allValuesFrom alliance:Gene ;
+            owl:onProperty alliance:with ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty alliance:unique_id ],
         [ a owl:Restriction ;
+            owl:allValuesFrom alliance:ConditionRelation ;
+            owl:onProperty alliance:condition_relations ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty alliance:negated ],
+        [ a owl:Restriction ;
+            owl:onClass alliance:DOTerm ;
+            owl:onProperty alliance:object ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alliance:Note ;
+            owl:onProperty alliance:related_notes ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:VocabularyTerm ;
-            owl:onProperty alliance:disease_genetic_modifier_relation ],
+            owl:onProperty alliance:genetic_sex ],
         [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:data_provider ;
-            owl:qualifiedCardinality 1 ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:BiologicalEntity ;
+            owl:onProperty alliance:disease_genetic_modifier ],
         [ a owl:Restriction ;
             owl:onClass alliance:BiologicalEntity ;
             owl:onProperty alliance:subject ;
@@ -4904,40 +4962,16 @@ alliance:DiseaseAnnotation a owl:Class,
             owl:onClass linkml:String ;
             owl:onProperty alliance:secondary_data_provider ],
         [ a owl:Restriction ;
-            owl:allValuesFrom alliance:Note ;
-            owl:onProperty alliance:related_notes ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom alliance:Gene ;
-            owl:onProperty alliance:with ],
-        [ a owl:Restriction ;
-            owl:onClass alliance:Reference ;
-            owl:onProperty alliance:single_reference ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty alliance:predicate ;
             owl:qualifiedCardinality 1 ],
-        [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:allValuesFrom alliance:ECOTerm ;
-                        owl:onProperty alliance:evidence_codes ] [ a owl:Restriction ;
-                        owl:onProperty alliance:evidence_codes ;
-                        owl:someValuesFrom alliance:ECOTerm ] ) ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty alliance:negated ],
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:mod_entity_id ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:BiologicalEntity ;
-            owl:onProperty alliance:disease_genetic_modifier ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom alliance:ConditionRelation ;
-            owl:onProperty alliance:condition_relations ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:VocabularyTerm ;
-            owl:onProperty alliance:genetic_sex ],
+            owl:allValuesFrom alliance:VocabularyTerm ;
+            owl:onProperty alliance:disease_qualifiers ],
         alliance:Association ;
     skos:definition "An annotation asserting an association between a biological entity and a disease supported by evidence." .
 
@@ -4954,9 +4988,9 @@ alliance:Figure a owl:Class,
             owl:onClass linkml:String ;
             owl:onProperty alliance:caption ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:label ],
+            owl:onClass alliance:Reference ;
+            owl:onProperty alliance:single_reference ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Uriorcurie ;
             owl:onProperty alliance:secondary_identifiers ],
@@ -4965,9 +4999,9 @@ alliance:Figure a owl:Class,
             owl:onProperty alliance:curie ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:onClass alliance:Reference ;
-            owl:onProperty alliance:single_reference ;
-            owl:qualifiedCardinality 1 ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:label ],
         alliance:AuditedObject ;
     skos:definition "An entity representing a figure or table in a publication." ;
     skos:editorialNote "Ideally, a Figure entity represents an entire figure (or table). However, in some cases, a Figure entity may represent only a part of some figure. For example, when importing an old cropped image of Figure 2B, it may be simpler to simply create a Figure entity representing that 2B part. A Figure will usually have one related Image, but it can sometimes have many." .
@@ -4989,12 +5023,12 @@ alliance:VariantGenomeLocation a owl:Class,
     rdfs:label "VariantGenomeLocation" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:Assembly ;
-            owl:onProperty alliance:assembly ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:Chromosome ;
             owl:onProperty alliance:chromosome ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:Assembly ;
+            owl:onProperty alliance:assembly ],
         alliance:VariantLocation ;
     skos:definition "Links a variant to a genomic position and the resulting consequence to the sequence and/or function. In practice, functional consequences for variants which overlap genes are not generally provided at the genome level but rather are calculated and annotated relative to a specific transcript or protein isoform." .
 
@@ -5004,6 +5038,12 @@ alliance:VariantStatusEnum a owl:Class,
     owl:unionOf ( <http://alliancegenome.org/VariantStatusEnum#public> <http://alliancegenome.org/VariantStatusEnum#private> ) ;
     linkml:permissible_values <http://alliancegenome.org/VariantStatusEnum#private>,
         <http://alliancegenome.org/VariantStatusEnum#public> .
+
+alliance:asserted_gene a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "asserted_gene" ;
+    rdfs:range alliance:Gene ;
+    skos:definition "The gene to which something is manually asserted to be associated." .
 
 alliance:inferred_gene a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -5034,52 +5074,52 @@ alliance:Antibody a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Antibody" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:NCBITaxonTerm ;
-            owl:onProperty alliance:antigen_taxon ],
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty alliance:curie ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:NCBITaxonTerm ;
-            owl:onProperty alliance:taxon ],
+            owl:allValuesFrom alliance:Gene ;
+            owl:onProperty alliance:antibody_target_genes ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:LightChainIsotypeSet ;
             owl:onProperty alliance:light_chain_isotype ],
         [ a owl:Restriction ;
-            owl:allValuesFrom alliance:CrossReference ;
-            owl:onProperty alliance:cross_references ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:NCBITaxonTerm ;
+            owl:onProperty alliance:taxon ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty alliance:secondary_identifiers ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:Reference ;
+            owl:onProperty alliance:original_reference ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alliance:Note ;
+            owl:onProperty alliance:related_notes ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:HeavyChainIsotypeSet ;
             owl:onProperty alliance:heavy_chain_isotype ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:Reference ;
-            owl:onProperty alliance:original_reference ],
+            owl:onClass alliance:NCBITaxonTerm ;
+            owl:onProperty alliance:antigen_taxon ],
         [ a owl:Restriction ;
-            owl:onClass alliance:AntibodyClonalitySet ;
-            owl:onProperty alliance:clonality ;
-            owl:qualifiedCardinality 1 ],
+            owl:allValuesFrom alliance:CrossReference ;
+            owl:onProperty alliance:cross_references ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alliance:Reference ;
+            owl:onProperty alliance:references ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty alliance:name ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty alliance:secondary_identifiers ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom alliance:Note ;
-            owl:onProperty alliance:related_notes ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty alliance:curie ;
+            owl:onClass alliance:AntibodyClonalitySet ;
+            owl:onProperty alliance:clonality ;
             owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom alliance:Reference ;
-            owl:onProperty alliance:references ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom alliance:Gene ;
-            owl:onProperty alliance:antibody_target_genes ],
         alliance:Reagent ;
     skos:altLabel "antibodies",
         "antibody",
@@ -5100,9 +5140,9 @@ alliance:ConditionRelation a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ConditionRelation" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass alliance:VocabularyTerm ;
-            owl:onProperty alliance:condition_relation_type ;
-            owl:qualifiedCardinality 1 ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:unique_id ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:Reference ;
@@ -5110,14 +5150,14 @@ alliance:ConditionRelation a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:unique_id ],
+            owl:onProperty alliance:handle ],
+        [ a owl:Restriction ;
+            owl:onClass alliance:VocabularyTerm ;
+            owl:onProperty alliance:condition_relation_type ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:allValuesFrom alliance:ExperimentalCondition ;
             owl:onProperty alliance:conditions ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:handle ],
         alliance:AuditedObject ;
     skos:definition "A pairing of an experimental condition relation (i.e. has_condition) with a list of 1 or more ExperimentalCondition objects. Annotation objects can connect directly to a set of 0 or more of these ConditionRelation objects via a 'condition_relations' slot to express the experimental conditions relevant to the annotation." .
 
@@ -5243,10 +5283,6 @@ alliance:CrossReference a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "CrossReference" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty alliance:curie ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty alliance:prefix ;
             owl:qualifiedCardinality 1 ],
@@ -5260,6 +5296,10 @@ alliance:CrossReference a owl:Class,
                         owl:onProperty alliance:page_areas ] [ a owl:Restriction ;
                         owl:onProperty alliance:page_areas ;
                         owl:someValuesFrom linkml:String ] ) ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty alliance:curie ;
+            owl:qualifiedCardinality 1 ],
         alliance:AuditedObject .
 
 alliance:ECOTerm a owl:Class,
@@ -5277,10 +5317,6 @@ alliance:EntityStatement a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:statement_type ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
             owl:onProperty alliance:statement_subject ],
         [ a owl:Restriction ;
             owl:allValuesFrom alliance:Reference ;
@@ -5289,6 +5325,10 @@ alliance:EntityStatement a owl:Class,
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty alliance:statement_text ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:statement_type ],
         alliance:AuditedObject ;
     skos:definition "Free-text describing some aspect of an entity." .
 
@@ -5296,32 +5336,32 @@ alliance:ExpressionAnnotation a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ExpressionAnnotation" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom alliance:Figure ;
-            owl:onProperty alliance:associated_with_figure ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:AnatomicalSite ;
             owl:onProperty alliance:where_expressed ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:TemporalContext ;
+            owl:onProperty alliance:when_expressed ],
         [ a owl:Restriction ;
             owl:onClass alliance:ExpressionExperiment ;
             owl:onProperty alliance:belongs_to_expression_experiment ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:ExpressionQualifierSet ;
+            owl:onProperty alliance:expression_qualifiers ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alliance:Figure ;
+            owl:onProperty alliance:associated_with_figure ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Boolean ;
             owl:onProperty alliance:uncertain ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:ExpressionQualifierSet ;
-            owl:onProperty alliance:expression_qualifiers ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Boolean ;
             owl:onProperty alliance:negated ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:TemporalContext ;
-            owl:onProperty alliance:when_expressed ],
         alliance:AuditedObject ;
     skos:definition "A description of when and where gene products are observed to be present, including experimental details, supporting evidence, and curator notes." ;
     skos:editorialNote "Curators can provide several levels of evidence for an annotation, in an attempt to offer support the annotation schema at various MODs. A curator can provide a Figure within that reference (ZFIN). Also, a curator can provide an ImagePane within some Figure (MGI). It's unclear which of these approaches will be chosen for future Alliance expression curation." .
@@ -5346,17 +5386,6 @@ alliance:Person a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Person" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:first_name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty alliance:old_emails ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:middle_name ],
-        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty alliance:unique_id ;
             owl:qualifiedCardinality 1 ],
@@ -5370,11 +5399,22 @@ alliance:Person a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:mod_entity_id ],
+            owl:onProperty alliance:middle_name ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty alliance:last_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty alliance:old_emails ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:mod_entity_id ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:first_name ],
         alliance:Agent ;
     skos:exactMatch schema1:person,
         foaf:Person .
@@ -5401,14 +5441,6 @@ alliance:AuthorReference a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "AuthorReference" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty alliance:corresponding_author ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty alliance:first_author ],
-        [ a owl:Restriction ;
             owl:allValuesFrom alliance:CrossReference ;
             owl:onProperty alliance:cross_references ],
         [ a owl:Restriction ;
@@ -5419,29 +5451,42 @@ alliance:AuthorReference a owl:Class,
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty alliance:first_name ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty alliance:corresponding_author ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty alliance:first_author ],
         alliance:AuditedObject .
 
 alliance:GeneInteraction a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "GeneInteraction" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom alliance:InteractorBRoleEnum ;
-            owl:onProperty alliance:interactor_B_role ],
-        [ a owl:Restriction ;
             owl:onClass alliance:Gene ;
             owl:onProperty alliance:subject ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:allValuesFrom alliance:Reference ;
-            owl:onProperty alliance:references ],
+            owl:onClass alliance:InteractorTypeEnum ;
+            owl:onProperty alliance:interactor_B_type ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:predicate ;
+            owl:onClass alliance:InteractionSourceEnum ;
+            owl:onProperty alliance:interaction_data_provider ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass alliance:InteractorTypeEnum ;
+            owl:onProperty alliance:interactor_A_type ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass alliance:InteractionTypeEnum ;
             owl:onProperty alliance:interaction_type ;
             owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alliance:InteractorARoleEnum ;
+            owl:onProperty alliance:interactor_A_role ],
         [ a owl:Restriction ;
             owl:onClass alliance:Gene ;
             owl:onProperty alliance:object ;
@@ -5450,23 +5495,18 @@ alliance:GeneInteraction a owl:Class,
             owl:allValuesFrom alliance:CrossReference ;
             owl:onProperty alliance:cross_references ],
         [ a owl:Restriction ;
-            owl:onClass alliance:InteractorTypeEnum ;
-            owl:onProperty alliance:interactor_A_type ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:onClass linkml:Uriorcurie ;
             owl:onProperty alliance:curie ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:allValuesFrom alliance:InteractorARoleEnum ;
-            owl:onProperty alliance:interactor_A_role ],
+            owl:allValuesFrom alliance:Reference ;
+            owl:onProperty alliance:references ],
         [ a owl:Restriction ;
-            owl:onClass alliance:InteractionSourceEnum ;
-            owl:onProperty alliance:interaction_data_provider ;
-            owl:qualifiedCardinality 1 ],
+            owl:allValuesFrom alliance:InteractorBRoleEnum ;
+            owl:onProperty alliance:interactor_B_role ],
         [ a owl:Restriction ;
-            owl:onClass alliance:InteractorTypeEnum ;
-            owl:onProperty alliance:interactor_B_type ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:predicate ;
             owl:qualifiedCardinality 1 ],
         alliance:GeneToGeneAssociation ;
     skos:definition "An interaction between two genes or gene products; this may be a physical molecular interaction between gene products (e.g. protein-protein interactions), or may be a genetic interaction between genes (e.g. phenotypic suppression)" .
@@ -5481,22 +5521,8 @@ alliance:Resource a owl:Class,
     rdfs:label "Resource" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Date ;
-            owl:onProperty alliance:copyright_date ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:medline_abbreviation ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom alliance:Synonym ;
-            owl:onProperty alliance:synonyms ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom alliance:AuthorReference ;
-            owl:onProperty alliance:authors ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:id ],
+            owl:onProperty alliance:summary ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -5504,15 +5530,19 @@ alliance:Resource a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:publisher ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
             owl:onProperty alliance:print_issn ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:title ],
+            owl:onProperty alliance:id ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty alliance:curie ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:publisher ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -5521,13 +5551,23 @@ alliance:Resource a owl:Class,
             owl:allValuesFrom alliance:AuthorReference ;
             owl:onProperty alliance:editors ],
         [ a owl:Restriction ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty alliance:curie ;
-            owl:qualifiedCardinality 1 ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:medline_abbreviation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alliance:AuthorReference ;
+            owl:onProperty alliance:authors ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Date ;
+            owl:onProperty alliance:copyright_date ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:summary ],
+            owl:onProperty alliance:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alliance:Synonym ;
+            owl:onProperty alliance:synonyms ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -5538,10 +5578,6 @@ alliance:TemporalContext a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "TemporalContext" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:stage_uncertainty ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:TemporalQualifierSet ;
             owl:onProperty alliance:temporal_qualifiers ],
@@ -5557,6 +5593,10 @@ alliance:TemporalContext a owl:Class,
             owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:StageTerm ;
             owl:onProperty alliance:developmental_stage_start ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:stage_uncertainty ],
         alliance:AuditedObject ;
     skos:definition "The developmental stage and/or age of the specimen in an annotation. Developmental_stage_stop is optional. Add an uncertainty flag here?" .
 
@@ -5564,34 +5604,34 @@ alliance:ExpressionExperiment a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ExpressionExperiment" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:MMOTerm ;
-            owl:onProperty alliance:assay_used ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:AffectedGenomicModel ;
-            owl:onProperty alliance:specimen_genomic_model ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom alliance:ConditionRelation ;
-            owl:onProperty alliance:condition_relations ],
+            owl:allValuesFrom alliance:Allele ;
+            owl:onProperty alliance:specimen_alleles ],
         [ a owl:Restriction ;
             owl:allValuesFrom alliance:Reagent ;
             owl:onProperty alliance:reagents_used ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:BiologicalEntity ;
-            owl:onProperty alliance:biological_entity_assayed ],
+            owl:onClass alliance:Reference ;
+            owl:onProperty alliance:single_reference ],
         [ a owl:Restriction ;
-            owl:allValuesFrom alliance:Allele ;
-            owl:onProperty alliance:specimen_alleles ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:MMOTerm ;
+            owl:onProperty alliance:assay_used ],
         [ a owl:Restriction ;
             owl:onClass linkml:Uriorcurie ;
             owl:onProperty alliance:curie ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:Reference ;
-            owl:onProperty alliance:single_reference ],
+            owl:onClass alliance:BiologicalEntity ;
+            owl:onProperty alliance:biological_entity_assayed ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alliance:ConditionRelation ;
+            owl:onProperty alliance:condition_relations ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:AffectedGenomicModel ;
+            owl:onProperty alliance:specimen_genomic_model ],
         alliance:AuditedObject ;
     skos:definition "Defined by the gene of interest, the specimen, the assay, the reagents (Antibody, Probe), and the reference. It groups ExpressionAnnotations." ;
     skos:editorialNote "Specimens are defined by their AGM and/or alleles (or gel lane at MGI)." .
@@ -5604,12 +5644,12 @@ alliance:Note a owl:Class,
             owl:onProperty alliance:free_text ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:allValuesFrom alliance:Reference ;
-            owl:onProperty alliance:references ],
-        [ a owl:Restriction ;
             owl:onClass alliance:VocabularyTerm ;
             owl:onProperty alliance:note_type ;
             owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alliance:Reference ;
+            owl:onProperty alliance:references ],
         alliance:AuditedObject ;
     skos:definition "Note object for capturing free-text describing some attribute of an entity, coupled with a 'note type', internal boolean, and an optional list of references. Permissible values for note_type can be viewed and managed in the A-Team curation UI Controlled Vocabulary Terms Table." .
 
@@ -5635,11 +5675,11 @@ alliance:Association a owl:Class,
     rdfs:label "Association" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:subject ;
+            owl:onProperty alliance:predicate ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:predicate ;
+            owl:onProperty alliance:subject ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
@@ -5687,17 +5727,20 @@ alliance:Ingest a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Ingest" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom alliance:Allele ;
-            owl:onProperty alliance:allele_ingest_set ],
+            owl:allValuesFrom alliance:AlleleVariantAssociation ;
+            owl:onProperty alliance:allele_variant_association_ingest_set ],
         [ a owl:Restriction ;
             owl:allValuesFrom alliance:GeneDiseaseAnnotation ;
             owl:onProperty alliance:disease_gene_ingest_set ],
         [ a owl:Restriction ;
-            owl:allValuesFrom alliance:AlleleDiseaseAnnotation ;
-            owl:onProperty alliance:disease_allele_ingest_set ],
+            owl:allValuesFrom alliance:SequenceTargetingReagent ;
+            owl:onProperty alliance:sqtr_ingest_set ],
         [ a owl:Restriction ;
-            owl:allValuesFrom alliance:AlleleVariantAssociation ;
-            owl:onProperty alliance:allele_variant_association_ingest_set ],
+            owl:allValuesFrom alliance:AffectedGenomicModel ;
+            owl:onProperty alliance:agm_ingest_set ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alliance:Allele ;
+            owl:onProperty alliance:allele_ingest_set ],
         [ a owl:Restriction ;
             owl:allValuesFrom alliance:Variant ;
             owl:onProperty alliance:variant_ingest_set ],
@@ -5705,31 +5748,26 @@ alliance:Ingest a owl:Class,
             owl:allValuesFrom alliance:Gene ;
             owl:onProperty alliance:gene_ingest_set ],
         [ a owl:Restriction ;
-            owl:allValuesFrom alliance:SequenceTargetingReagent ;
-            owl:onProperty alliance:sqtr_ingest_set ],
+            owl:allValuesFrom alliance:AlleleDiseaseAnnotation ;
+            owl:onProperty alliance:disease_allele_ingest_set ],
         [ a owl:Restriction ;
             owl:allValuesFrom alliance:AGMDiseaseAnnotation ;
-            owl:onProperty alliance:disease_agm_ingest_set ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom alliance:AffectedGenomicModel ;
-            owl:onProperty alliance:agm_ingest_set ] .
+            owl:onProperty alliance:disease_agm_ingest_set ] .
 
 alliance:Variant a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Variant" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom alliance:Note ;
-            owl:onProperty alliance:related_notes ],
+            owl:onClass alliance:SOTerm ;
+            owl:onProperty alliance:variant_type ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:SOTerm ;
             owl:onProperty alliance:source_general_consequence ],
         [ a owl:Restriction ;
-            owl:allValuesFrom alliance:VariantTranscriptLocation ;
-            owl:onProperty alliance:variant_transcript_locations ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom alliance:VariantPolypeptideLocation ;
-            owl:onProperty alliance:variant_polypeptide_locations ],
+            owl:allValuesFrom alliance:SourceVariantLocation ;
+            owl:onProperty alliance:source_variant_locations ],
         [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:allValuesFrom alliance:VariantGenomeLocation ;
@@ -5737,16 +5775,18 @@ alliance:Variant a owl:Class,
                         owl:onProperty alliance:variant_genome_locations ;
                         owl:someValuesFrom alliance:VariantGenomeLocation ] ) ],
         [ a owl:Restriction ;
+            owl:allValuesFrom alliance:VariantPolypeptideLocation ;
+            owl:onProperty alliance:variant_polypeptide_locations ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:VariantStatusEnum ;
             owl:onProperty alliance:variant_status ],
         [ a owl:Restriction ;
-            owl:allValuesFrom alliance:SourceVariantLocation ;
-            owl:onProperty alliance:source_variant_locations ],
+            owl:allValuesFrom alliance:VariantTranscriptLocation ;
+            owl:onProperty alliance:variant_transcript_locations ],
         [ a owl:Restriction ;
-            owl:onClass alliance:SOTerm ;
-            owl:onProperty alliance:variant_type ;
-            owl:qualifiedCardinality 1 ],
+            owl:allValuesFrom alliance:Note ;
+            owl:onProperty alliance:related_notes ],
         alliance:GenomicEntity ;
     skos:definition "A DNA, RNA or protein/polypeptide sequence that differs relative to a designated reference sequence.  The sequence occurs at a single position or in a range of contiguous nucleotides or amino acids." ;
     skos:exactMatch <http://purl.obolibrary.org/obo/SO_0001059> .
@@ -5770,16 +5810,20 @@ alliance:ExperimentalCondition a owl:Class,
     rdfs:label "ExperimentalCondition" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:NCBITaxonTerm ;
-            owl:onProperty alliance:condition_taxon ],
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:condition_free_text ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:condition_summary ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty alliance:unique_id ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:ChemicalTerm ;
-            owl:onProperty alliance:condition_chemical ],
+            owl:onClass alliance:ZECOTerm ;
+            owl:onProperty alliance:condition_class ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:AnatomicalTerm ;
@@ -5795,19 +5839,15 @@ alliance:ExperimentalCondition a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:condition_summary ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
             owl:onProperty alliance:condition_quantity ],
         [ a owl:Restriction ;
-            owl:onClass alliance:ZECOTerm ;
-            owl:onProperty alliance:condition_class ;
-            owl:qualifiedCardinality 1 ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:NCBITaxonTerm ;
+            owl:onProperty alliance:condition_taxon ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:condition_free_text ],
+            owl:onClass alliance:ChemicalTerm ;
+            owl:onProperty alliance:condition_chemical ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:GOTerm ;
@@ -5821,23 +5861,11 @@ alliance:VariantTranscriptConsequence a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
-            owl:onProperty alliance:protein_start ],
-        [ a owl:Restriction ;
-            owl:onClass alliance:Transcript ;
-            owl:onProperty alliance:object ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
             owl:onProperty alliance:protein_end ],
-        [ a owl:Restriction ;
-            owl:onClass alliance:VariantTranscriptLocation ;
-            owl:onProperty alliance:subject ;
-            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:codon_variant ],
+            owl:onProperty alliance:amino_acid_reference ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
@@ -5845,19 +5873,19 @@ alliance:VariantTranscriptConsequence a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:amino_acid_reference ],
+            owl:onProperty alliance:hgvs_protein_nomenclature ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:hgvs_coding_nomenclature ],
+            owl:onProperty alliance:codon_reference ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
             owl:onProperty alliance:cdna_end ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:codon_reference ],
+            owl:onClass alliance:VariantTranscriptLocation ;
+            owl:onProperty alliance:subject ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -5865,15 +5893,27 @@ alliance:VariantTranscriptConsequence a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
-            owl:onProperty alliance:cdna_start ],
+            owl:onProperty alliance:cds_start ],
+        [ a owl:Restriction ;
+            owl:onClass alliance:Transcript ;
+            owl:onProperty alliance:object ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
-            owl:onProperty alliance:cds_start ],
+            owl:onProperty alliance:cdna_start ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:hgvs_protein_nomenclature ],
+            owl:onProperty alliance:hgvs_coding_nomenclature ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty alliance:protein_start ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:codon_variant ],
         alliance:VariantConsequence ;
     skos:altLabel "TranscriptLevelConsequence" ;
     skos:definition "Class for transcript-level VEP results" .
@@ -5896,21 +5936,21 @@ alliance:GenomicEntity a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "GenomicEntity" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom alliance:GenomicLocation ;
+            owl:onProperty alliance:genomic_locations ],
+        [ a owl:Restriction ;
             owl:allValuesFrom alliance:Synonym ;
             owl:onProperty alliance:synonyms ],
         [ a owl:Restriction ;
-            owl:allValuesFrom alliance:GenomicLocation ;
-            owl:onProperty alliance:genomic_locations ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:name ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Uriorcurie ;
             owl:onProperty alliance:secondary_identifiers ],
         [ a owl:Restriction ;
             owl:allValuesFrom alliance:CrossReference ;
             owl:onProperty alliance:cross_references ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:name ],
         alliance:BiologicalEntity ;
     skos:definition "An entity that is part of a genome (i.e. segment of the DNA molecule), is derived directly from the genome (i.e. RNA transcript molecule), or is derived indirectly from the genome (i.e. polypeptide or protein via RNA transcript translation)." .
 
@@ -5918,8 +5958,8 @@ alliance:Image a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Image" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty alliance:width ;
+            owl:onClass alliance:Figure ;
+            owl:onProperty alliance:associated_with_figure ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:Uriorcurie ;
@@ -5927,43 +5967,43 @@ alliance:Image a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty alliance:video_still ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
             owl:onProperty alliance:image_y_origin ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:Image ;
+            owl:onProperty alliance:cropped_from ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty alliance:video_still ],
+        [ a owl:Restriction ;
             owl:onClass alliance:File ;
             owl:onProperty alliance:image_file ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass alliance:File ;
-            owl:onProperty alliance:image_thumbnail_file ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty alliance:height ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty alliance:secondary_identifiers ],
-        [ a owl:Restriction ;
-            owl:onClass alliance:File ;
-            owl:onProperty alliance:image_medium_file ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass alliance:Figure ;
-            owl:onProperty alliance:associated_with_figure ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
             owl:onProperty alliance:image_x_origin ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:Image ;
-            owl:onProperty alliance:cropped_from ],
+            owl:onClass alliance:File ;
+            owl:onProperty alliance:image_medium_file ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass alliance:File ;
+            owl:onProperty alliance:image_thumbnail_file ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty alliance:secondary_identifiers ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty alliance:width ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty alliance:height ;
+            owl:qualifiedCardinality 1 ],
         alliance:AuditedObject ;
     skos:definition "The set of files and metadata that constitute an image." ;
     skos:editorialNote "Do we need a separate Image.label, or can it just use the label from the parent Figure entity?" .
@@ -5997,26 +6037,26 @@ alliance:AffectedGenomicModel a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "AffectedGenomicModel" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty alliance:parental_populations ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom alliance:SequenceTargetingReagent ;
-            owl:onProperty alliance:sequence_targeting_reagents ],
-        [ a owl:Restriction ;
-            owl:onClass alliance:SubtypeValues ;
-            owl:onProperty alliance:subtype ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom alliance:Reference ;
-            owl:onProperty alliance:references ],
-        [ a owl:Restriction ;
             owl:allValuesFrom alliance:AffectedGenomicModelComponent ;
             owl:onProperty alliance:components ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty alliance:data_provider ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alliance:Reference ;
+            owl:onProperty alliance:references ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty alliance:parental_populations ],
+        [ a owl:Restriction ;
+            owl:onClass alliance:SubtypeValues ;
+            owl:onProperty alliance:subtype ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alliance:SequenceTargetingReagent ;
+            owl:onProperty alliance:sequence_targeting_reagents ],
         alliance:GenomicEntity ;
     skos:definition "Includes inbred strains, stocks, disease models and mutant genotypes" .
 
@@ -6043,8 +6083,12 @@ alliance:VariantLocation a owl:Class,
     rdfs:label "VariantLocation" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty alliance:start_position ],
+            owl:onClass alliance:BiologicalSequence ;
+            owl:onProperty alliance:reference_sequence ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:BiologicalSequence ;
+            owl:onProperty alliance:variant_sequence ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
@@ -6055,20 +6099,16 @@ alliance:VariantLocation a owl:Class,
             owl:onProperty alliance:consequence ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:Reference ;
+            owl:onProperty alliance:single_reference ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:ECOTerm ;
             owl:onProperty alliance:evidence_code ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:BiologicalSequence ;
-            owl:onProperty alliance:variant_sequence ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:BiologicalSequence ;
-            owl:onProperty alliance:reference_sequence ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:Reference ;
-            owl:onProperty alliance:single_reference ],
+            owl:onClass linkml:Integer ;
+            owl:onProperty alliance:start_position ],
         alliance:AuditedObject ;
     skos:definition "Base class linking a variant to a position on a genomic entity and the resulting consequence to the sequence and/or function of that genomic entity. Slots are provided for data taken from a source publication or data load and for data resulting from manual curation. Where the values are the same, the curator has confirmed the information from the source.  In other cases, the curator's analysis has resulted in different values, for instance, if the assembly is different, the source did not specify the transcript or protein isoform, the definition of the transcript or protein isoform used by the source has changed, or if there was an error in the source data." .
 
@@ -6161,32 +6201,6 @@ alliance:OntologyTerm a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "OntologyTerm" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom alliance:Synonym ;
-            owl:onProperty alliance:synonyms ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:name ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:dbkey ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty alliance:definition_urls ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty alliance:curie ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:definition ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty alliance:type ],
-        [ a owl:Restriction ;
             owl:allValuesFrom alliance:CrossReference ;
             owl:onProperty alliance:cross_references ],
         [ a owl:Restriction ;
@@ -6194,11 +6208,37 @@ alliance:OntologyTerm a owl:Class,
             owl:onProperty alliance:secondary_identifiers ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty alliance:subsets ],
+            owl:onProperty alliance:definition_urls ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty alliance:namespace ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:dbkey ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty alliance:curie ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty alliance:subsets ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:name ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty alliance:type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alliance:Synonym ;
+            owl:onProperty alliance:synonyms ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:definition ],
         alliance:AuditedObject ;
     skos:closeMatch <https://github.com/biodatamodels/obographnode> ;
     skos:definition "A concept or class in an ontology, vocabulary or thesaurus. Note, ontology terms can be found in multiple ontologies (ie: mireoting). defining_slots helps define an alternative key for ontology terms." .
@@ -6292,29 +6332,16 @@ alliance:ExpressionQualifierSet a owl:Class,
         <http://alliancegenome.org/ExpressionQualifierSet#variable>,
         <http://alliancegenome.org/ExpressionQualifierSet#widespread> .
 
-alliance:Gene a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Gene" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:symbol ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom alliance:Note ;
-            owl:onProperty alliance:related_notes ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:SOTerm ;
-            owl:onProperty alliance:gene_type ],
-        alliance:GenomicEntity ;
-    skos:definition "A DNA genomic entity from which one or more functional* RNA transcript molecules are transcribed, along with cis-regulatory elements responsible for regulating expression (transcription) of the gene. * A functional RNA molecule here can mean one that is directly responsible for the gene's function (e.g. catalysis, structure, etc.) or one that is translated to produce a functional polypeptide/protein. A pseudogene may be considered a gene under this definition, albeit no longer functional." .
-
 alliance:VocabularyTerm a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "VocabularyTerm" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty alliance:text_synonyms ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:name ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -6323,12 +6350,25 @@ alliance:VocabularyTerm a owl:Class,
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty alliance:definition ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:name ;
-            owl:qualifiedCardinality 1 ],
         alliance:AuditedObject ;
     skos:definition "A concept or class in a simple vocabulary." .
+
+alliance:Gene a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Gene" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:symbol ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:SOTerm ;
+            owl:onProperty alliance:gene_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alliance:Note ;
+            owl:onProperty alliance:related_notes ],
+        alliance:GenomicEntity ;
+    skos:definition "A DNA genomic entity from which one or more functional* RNA transcript molecules are transcribed, along with cis-regulatory elements responsible for regulating expression (transcription) of the gene. * A functional RNA molecule here can mean one that is directly responsible for the gene's function (e.g. catalysis, structure, etc.) or one that is translated to produce a functional polypeptide/protein. A pseudogene may be considered a gene under this definition, albeit no longer functional." .
 
 alliance:Allele a owl:Class,
         linkml:ClassDefinition ;
@@ -6336,83 +6376,83 @@ alliance:Allele a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:transposon_insertion ],
+            owl:onProperty alliance:functional_impact ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:VocabularyTerm ;
-            owl:onProperty alliance:in_collection ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:VocabularyTerm ;
-            owl:onProperty alliance:germline_transmission_status ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:symbol ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:CellLine ;
-            owl:onProperty alliance:parent_cell_line ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom alliance:CellLine ;
-            owl:onProperty alliance:embryonic_stem_cell_lines ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:generation_method ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom alliance:Construct ;
-            owl:onProperty alliance:contains_constructs ],
+            owl:onClass alliance:Image ;
+            owl:onProperty alliance:images ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty alliance:molecular_mutations ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty alliance:is_extinct ],
+            owl:onClass alliance:VocabularyTerm ;
+            owl:onProperty alliance:inheritence_mode ],
         [ a owl:Restriction ;
-            owl:allValuesFrom alliance:AssociatedReference ;
-            owl:onProperty alliance:associated_references ],
+            owl:allValuesFrom alliance:CellLine ;
+            owl:onProperty alliance:mutant_cell_lines ],
         [ a owl:Restriction ;
             owl:allValuesFrom alliance:Synonym ;
             owl:onProperty alliance:synonyms ],
         [ a owl:Restriction ;
-            owl:allValuesFrom alliance:Note ;
-            owl:onProperty alliance:related_notes ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:VocabularyTerm ;
-            owl:onProperty alliance:inheritence_mode ],
+            owl:allValuesFrom alliance:Construct ;
+            owl:onProperty alliance:contains_constructs ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:functional_impact ],
+            owl:onProperty alliance:generation_method ],
         [ a owl:Restriction ;
-            owl:allValuesFrom alliance:AffectedGenomicModel ;
-            owl:onProperty alliance:origins ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:symbol ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty alliance:name ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:CellLine ;
+            owl:onProperty alliance:parent_cell_line ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alliance:AssociatedReference ;
+            owl:onProperty alliance:associated_references ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alliance:Note ;
+            owl:onProperty alliance:related_notes ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty alliance:is_extinct ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:VocabularyTerm ;
-            owl:onProperty alliance:database_status ],
+            owl:onProperty alliance:in_collection ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:transposon_insertion ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alliance:CellLine ;
+            owl:onProperty alliance:embryonic_stem_cell_lines ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:VocabularyTerm ;
             owl:onProperty alliance:sequencing_status ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom alliance:CellLine ;
-            owl:onProperty alliance:mutant_cell_lines ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty alliance:aberration ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:Image ;
-            owl:onProperty alliance:images ],
+            owl:onClass alliance:VocabularyTerm ;
+            owl:onProperty alliance:database_status ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alliance:AffectedGenomicModel ;
+            owl:onProperty alliance:origins ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:VocabularyTerm ;
+            owl:onProperty alliance:germline_transmission_status ],
         alliance:GenomicEntity ;
     skos:definition "One of multiple possible forms of a functional genomic element (most often described as a locus or gene), differing from the reference DNA sequence.  The genomic element can be endogenous or constructed." ;
     skos:exactMatch <http://purl.obolibrary.org/obo/SO_0001023> .
@@ -6421,14 +6461,6 @@ alliance:AuditedObject a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "AuditedObject" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Date ;
-            owl:onProperty alliance:date_created ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty alliance:obsolete ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:Person ;
             owl:onProperty alliance:created_by ],
@@ -6443,7 +6475,15 @@ alliance:AuditedObject a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Date ;
-            owl:onProperty alliance:date_updated ] ;
+            owl:onProperty alliance:date_updated ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Date ;
+            owl:onProperty alliance:date_created ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty alliance:obsolete ] ;
     skos:definition "Base class for all other LinkML classes. Some entity for which changes are tracked, including date/time of change, the agent responsible for the change, and whether the entity is internal (private)." .
 
 alliance:Reference a owl:Class,
@@ -6452,7 +6492,11 @@ alliance:Reference a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:date_published ],
+            owl:onProperty alliance:volume ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty alliance:reference_id ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -6460,11 +6504,14 @@ alliance:Reference a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:title ],
+            owl:onProperty alliance:date_last_modified_in_pubmed ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:page_range ],
+            owl:onProperty alliance:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alliance:PubmedTypeEnum ;
+            owl:onProperty alliance:pubmed_type ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -6472,66 +6519,59 @@ alliance:Reference a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:abstract ],
+            owl:onProperty alliance:page_range ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty alliance:curie ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty alliance:resource_id ],
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:abstract ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass alliance:PubmedPublicationStatusEnum ;
             owl:onProperty alliance:pubmed_publication_status ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty alliance:merged_into_id ],
+            owl:onClass linkml:Boolean ;
+            owl:onProperty alliance:open_access ],
         [ a owl:Restriction ;
             owl:allValuesFrom alliance:AuthorReference ;
             owl:onProperty alliance:authors ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:date_last_modified_in_pubmed ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass alliance:ReferenceCategoryEnum ;
-            owl:onProperty alliance:category ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty alliance:pubmed_abstract_languages ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:issue_name ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty alliance:reference_id ;
-            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty alliance:keywords ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty alliance:publisher ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom alliance:PubmedTypeEnum ;
-            owl:onProperty alliance:pubmed_type ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty alliance:volume ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty alliance:open_access ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty alliance:curie ;
-            owl:qualifiedCardinality 1 ],
+            owl:onProperty alliance:date_published ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty alliance:date_arrived_in_pubmed ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:issue_name ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty alliance:merged_into_id ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty alliance:resource_id ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty alliance:publisher ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty alliance:pubmed_abstract_languages ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass alliance:ReferenceCategoryEnum ;
+            owl:onProperty alliance:category ],
         alliance:AuditedObject ;
     skos:altLabel "publication",
         "references" ;

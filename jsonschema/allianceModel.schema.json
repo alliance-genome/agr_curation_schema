@@ -8,6 +8,14 @@
                "description": "The type of annotation classified according to curation method. Submitted value should be a vocabulary term from the 'Annotation types' vocabulary",
                "type": "string"
             },
+            "asserted_allele": {
+               "description": "The allele to which something is manually asserted to be associated.",
+               "type": "string"
+            },
+            "asserted_gene": {
+               "description": "The gene to which something is manually asserted to be associated.",
+               "type": "string"
+            },
             "condition_relations": {
                "items": {
                   "$ref": "#/$defs/ConditionRelation"
@@ -141,6 +149,14 @@
          "additionalProperties": false,
          "description": "An annotation asserting an association between an AGM and a phenotype supported by evidence.",
          "properties": {
+            "asserted_allele": {
+               "description": "The allele to which something is manually asserted to be associated.",
+               "type": "string"
+            },
+            "asserted_gene": {
+               "description": "The gene to which something is manually asserted to be associated.",
+               "type": "string"
+            },
             "condition_relations": {
                "items": {
                   "$ref": "#/$defs/ConditionRelation"
@@ -600,6 +616,10 @@
                "description": "The type of annotation classified according to curation method. Submitted value should be a vocabulary term from the 'Annotation types' vocabulary",
                "type": "string"
             },
+            "asserted_gene": {
+               "description": "The gene to which something is manually asserted to be associated.",
+               "type": "string"
+            },
             "condition_relations": {
                "items": {
                   "$ref": "#/$defs/ConditionRelation"
@@ -792,6 +812,14 @@
          "additionalProperties": false,
          "description": "An annotation asserting an association between an allele and a phenotype supported by evidence.",
          "properties": {
+            "asserted_allele": {
+               "description": "The allele to which something is manually asserted to be associated.",
+               "type": "string"
+            },
+            "asserted_gene": {
+               "description": "The gene to which something is manually asserted to be associated.",
+               "type": "string"
+            },
             "condition_relations": {
                "items": {
                   "$ref": "#/$defs/ConditionRelation"

@@ -76,6 +76,8 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <DiseaseAnnotation> ] ? ;
           <inferred_allele> @<Allele> ? ;
           <inferred_gene> @<Gene> ? ;
+          <asserted_gene> @<Gene> ? ;
+          <asserted_allele> @<Allele> ? ;
           <subject> @<AffectedGenomicModel> ;
           <predicate> @<VocabularyTerm>
        ) ;
@@ -88,6 +90,8 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <PhenotypeAnnotation> ] ? ;
           <inferred_allele> @<Allele> ? ;
           <inferred_gene> @<Gene> ? ;
+          <asserted_gene> @<Gene> ? ;
+          <asserted_allele> @<Allele> ? ;
           <subject> @<AffectedGenomicModel>
        ) ;
        rdf:type [ <AGMPhenotypeAnnotation> ]
@@ -128,6 +132,7 @@ linkml:Nodeidentifier NONLITERAL
     (  $<AlleleDiseaseAnnotation_tes> (  &<DiseaseAnnotation_tes> ;
           rdf:type [ <DiseaseAnnotation> ] ? ;
           <inferred_gene> @<Gene> ? ;
+          <asserted_gene> @<Gene> ? ;
           <subject> @<Allele> ;
           <predicate> @<VocabularyTerm>
        ) ;
@@ -166,7 +171,9 @@ linkml:Nodeidentifier NONLITERAL
     (  $<AllelePhenotypeAnnotation_tes> (  &<PhenotypeAnnotation_tes> ;
           rdf:type [ <PhenotypeAnnotation> ] ? ;
           <inferred_gene> @<Gene> ? ;
-          <subject> @<Allele>
+          <asserted_gene> @<Gene> ? ;
+          <subject> @<Allele> ;
+          <asserted_allele> @<Allele> ?
        ) ;
        rdf:type [ <AllelePhenotypeAnnotation> ]
     )

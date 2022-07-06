@@ -1294,6 +1294,7 @@
 --     * Slot: obsolete Description: Entity is no longer current.
 -- # Class: "AllelePhenotypeAnnotation" Description: "An annotation asserting an association between an allele and a phenotype supported by evidence."
 --     * Slot: inferred_gene Description: The gene to which the phenotype is inferred to be associated.
+--     * Slot: asserted_gene Description: The gene to which something is manually asserted to be associated.
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: single_reference Description: holds between an object and a single reference
 --     * Slot: phenotype_term Description: 
@@ -1309,6 +1310,8 @@
 -- # Class: "AGMPhenotypeAnnotation" Description: "An annotation asserting an association between an AGM and a phenotype supported by evidence."
 --     * Slot: inferred_allele Description: The allele to which the phenotype is inferred to be associated.
 --     * Slot: inferred_gene Description: The gene to which the phenotype is inferred to be associated.
+--     * Slot: asserted_gene Description: The gene to which something is manually asserted to be associated.
+--     * Slot: asserted_allele Description: The allele to which something is manually asserted to be associated.
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: single_reference Description: holds between an object and a single reference
 --     * Slot: phenotype_term Description: 
@@ -1368,6 +1371,7 @@
 -- # Class: "AlleleDiseaseAnnotation" Description: "An annotation asserting an association between an allele and a disease supported by evidence."
 --     * Slot: id Description: 
 --     * Slot: inferred_gene Description: The gene to which the disease is inferred to be associated.
+--     * Slot: asserted_gene Description: The gene to which something is manually asserted to be associated.
 --     * Slot: unique_id Description: A non-curie unique identifier for a thing.
 --     * Slot: mod_entity_id Description: The model organism database (MOD) identifier/curie for the object
 --     * Slot: negated Description: if set to true, then the association is negated i.e. is not true
@@ -1392,6 +1396,8 @@
 --     * Slot: id Description: 
 --     * Slot: inferred_allele Description: The allele to which the disease is inferred to be associated.
 --     * Slot: inferred_gene Description: The gene to which the disease is inferred to be associated.
+--     * Slot: asserted_gene Description: The gene to which something is manually asserted to be associated.
+--     * Slot: asserted_allele Description: The allele to which something is manually asserted to be associated.
 --     * Slot: unique_id Description: A non-curie unique identifier for a thing.
 --     * Slot: mod_entity_id Description: The model organism database (MOD) identifier/curie for the object
 --     * Slot: negated Description: if set to true, then the association is negated i.e. is not true
@@ -5972,6 +5978,7 @@ CREATE TABLE "AffectedGenomicModelComponent" (
 );
 CREATE TABLE "AllelePhenotypeAnnotation" (
 	inferred_gene TEXT, 
+	asserted_gene TEXT, 
 	curie TEXT NOT NULL, 
 	single_reference TEXT, 
 	phenotype_term TEXT, 
@@ -5986,6 +5993,7 @@ CREATE TABLE "AllelePhenotypeAnnotation" (
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(inferred_gene) REFERENCES "Gene" (curie), 
+	FOREIGN KEY(asserted_gene) REFERENCES "Gene" (curie), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(phenotype_term) REFERENCES "PhenotypeTerm" (curie), 
 	FOREIGN KEY(subject) REFERENCES "Allele" (curie), 
@@ -5995,6 +6003,8 @@ CREATE TABLE "AllelePhenotypeAnnotation" (
 CREATE TABLE "AGMPhenotypeAnnotation" (
 	inferred_allele TEXT, 
 	inferred_gene TEXT, 
+	asserted_gene TEXT, 
+	asserted_allele TEXT, 
 	curie TEXT NOT NULL, 
 	single_reference TEXT, 
 	phenotype_term TEXT, 
@@ -6010,6 +6020,8 @@ CREATE TABLE "AGMPhenotypeAnnotation" (
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(inferred_allele) REFERENCES "Allele" (curie), 
 	FOREIGN KEY(inferred_gene) REFERENCES "Gene" (curie), 
+	FOREIGN KEY(asserted_gene) REFERENCES "Gene" (curie), 
+	FOREIGN KEY(asserted_allele) REFERENCES "Allele" (curie), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(phenotype_term) REFERENCES "PhenotypeTerm" (curie), 
 	FOREIGN KEY(subject) REFERENCES "AffectedGenomicModel" (curie), 
@@ -6019,6 +6031,7 @@ CREATE TABLE "AGMPhenotypeAnnotation" (
 CREATE TABLE "AlleleDiseaseAnnotation" (
 	id INTEGER, 
 	inferred_gene TEXT, 
+	asserted_gene TEXT, 
 	unique_id TEXT, 
 	mod_entity_id TEXT, 
 	negated BOOLEAN, 
@@ -6041,6 +6054,7 @@ CREATE TABLE "AlleleDiseaseAnnotation" (
 	"Ingest_id" TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(inferred_gene) REFERENCES "Gene" (curie), 
+	FOREIGN KEY(asserted_gene) REFERENCES "Gene" (curie), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(annotation_type) REFERENCES "VocabularyTerm" (name), 
 	FOREIGN KEY(genetic_sex) REFERENCES "VocabularyTerm" (name), 
@@ -6057,6 +6071,8 @@ CREATE TABLE "AGMDiseaseAnnotation" (
 	id INTEGER, 
 	inferred_allele TEXT, 
 	inferred_gene TEXT, 
+	asserted_gene TEXT, 
+	asserted_allele TEXT, 
 	unique_id TEXT, 
 	mod_entity_id TEXT, 
 	negated BOOLEAN, 
@@ -6080,6 +6096,8 @@ CREATE TABLE "AGMDiseaseAnnotation" (
 	PRIMARY KEY (id), 
 	FOREIGN KEY(inferred_allele) REFERENCES "Allele" (curie), 
 	FOREIGN KEY(inferred_gene) REFERENCES "Gene" (curie), 
+	FOREIGN KEY(asserted_gene) REFERENCES "Gene" (curie), 
+	FOREIGN KEY(asserted_allele) REFERENCES "Allele" (curie), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(annotation_type) REFERENCES "VocabularyTerm" (name), 
 	FOREIGN KEY(genetic_sex) REFERENCES "VocabularyTerm" (name), 

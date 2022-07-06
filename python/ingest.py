@@ -1,5 +1,5 @@
 # Auto generated from ingest.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-07-06T15:40:01
+# Generation date: 2022-07-06T23:41:43
 # Schema: Alliance-Schema-Ingest
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/model/schema/ingest
@@ -2302,6 +2302,8 @@ class AllelePhenotypeAnnotation(PhenotypeAnnotation):
     date_created: Union[str, XSDDate] = None
     subject: Union[str, AlleleCurie] = None
     inferred_gene: Optional[Union[str, GeneCurie]] = None
+    asserted_gene: Optional[Union[str, GeneCurie]] = None
+    asserted_allele: Optional[Union[str, AlleleCurie]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -2316,6 +2318,12 @@ class AllelePhenotypeAnnotation(PhenotypeAnnotation):
 
         if self.inferred_gene is not None and not isinstance(self.inferred_gene, GeneCurie):
             self.inferred_gene = GeneCurie(self.inferred_gene)
+
+        if self.asserted_gene is not None and not isinstance(self.asserted_gene, GeneCurie):
+            self.asserted_gene = GeneCurie(self.asserted_gene)
+
+        if self.asserted_allele is not None and not isinstance(self.asserted_allele, AlleleCurie):
+            self.asserted_allele = AlleleCurie(self.asserted_allele)
 
         super().__post_init__(**kwargs)
 
@@ -2340,6 +2348,8 @@ class AGMPhenotypeAnnotation(PhenotypeAnnotation):
     subject: Union[str, AffectedGenomicModelCurie] = None
     inferred_allele: Optional[Union[str, AlleleCurie]] = None
     inferred_gene: Optional[Union[str, GeneCurie]] = None
+    asserted_gene: Optional[Union[str, GeneCurie]] = None
+    asserted_allele: Optional[Union[str, AlleleCurie]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -2357,6 +2367,12 @@ class AGMPhenotypeAnnotation(PhenotypeAnnotation):
 
         if self.inferred_gene is not None and not isinstance(self.inferred_gene, GeneCurie):
             self.inferred_gene = GeneCurie(self.inferred_gene)
+
+        if self.asserted_gene is not None and not isinstance(self.asserted_gene, GeneCurie):
+            self.asserted_gene = GeneCurie(self.asserted_gene)
+
+        if self.asserted_allele is not None and not isinstance(self.asserted_allele, AlleleCurie):
+            self.asserted_allele = AlleleCurie(self.asserted_allele)
 
         super().__post_init__(**kwargs)
 
@@ -2524,6 +2540,7 @@ class AlleleDiseaseAnnotation(DiseaseAnnotation):
     subject: Union[str, AlleleCurie] = None
     predicate: Union[str, VocabularyTermName] = None
     inferred_gene: Optional[Union[str, GeneCurie]] = None
+    asserted_gene: Optional[Union[str, GeneCurie]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.subject):
@@ -2538,6 +2555,9 @@ class AlleleDiseaseAnnotation(DiseaseAnnotation):
 
         if self.inferred_gene is not None and not isinstance(self.inferred_gene, GeneCurie):
             self.inferred_gene = GeneCurie(self.inferred_gene)
+
+        if self.asserted_gene is not None and not isinstance(self.asserted_gene, GeneCurie):
+            self.asserted_gene = GeneCurie(self.asserted_gene)
 
         super().__post_init__(**kwargs)
 
@@ -2563,6 +2583,8 @@ class AGMDiseaseAnnotation(DiseaseAnnotation):
     predicate: Union[str, VocabularyTermName] = None
     inferred_allele: Optional[Union[str, AlleleCurie]] = None
     inferred_gene: Optional[Union[str, GeneCurie]] = None
+    asserted_gene: Optional[Union[str, GeneCurie]] = None
+    asserted_allele: Optional[Union[str, AlleleCurie]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.subject):
@@ -2580,6 +2602,12 @@ class AGMDiseaseAnnotation(DiseaseAnnotation):
 
         if self.inferred_gene is not None and not isinstance(self.inferred_gene, GeneCurie):
             self.inferred_gene = GeneCurie(self.inferred_gene)
+
+        if self.asserted_gene is not None and not isinstance(self.asserted_gene, GeneCurie):
+            self.asserted_gene = GeneCurie(self.asserted_gene)
+
+        if self.asserted_allele is not None and not isinstance(self.asserted_allele, AlleleCurie):
+            self.asserted_allele = AlleleCurie(self.asserted_allele)
 
         super().__post_init__(**kwargs)
 
@@ -4320,6 +4348,12 @@ slots.inferred_gene = Slot(uri=ALLIANCE.inferred_gene, name="inferred_gene", cur
 slots.inferred_allele = Slot(uri=ALLIANCE.inferred_allele, name="inferred_allele", curie=ALLIANCE.curie('inferred_allele'),
                    model_uri=ALLIANCE.inferred_allele, domain=None, range=Optional[Union[str, AlleleCurie]])
 
+slots.asserted_gene = Slot(uri=ALLIANCE.asserted_gene, name="asserted_gene", curie=ALLIANCE.curie('asserted_gene'),
+                   model_uri=ALLIANCE.asserted_gene, domain=None, range=Optional[Union[str, GeneCurie]])
+
+slots.asserted_allele = Slot(uri=ALLIANCE.asserted_allele, name="asserted_allele", curie=ALLIANCE.curie('asserted_allele'),
+                   model_uri=ALLIANCE.asserted_allele, domain=None, range=Optional[Union[str, AlleleCurie]])
+
 slots.disease_qualifiers = Slot(uri=ALLIANCE.disease_qualifiers, name="disease_qualifiers", curie=ALLIANCE.curie('disease_qualifiers'),
                    model_uri=ALLIANCE.disease_qualifiers, domain=DiseaseAnnotation, range=Optional[Union[Union[str, VocabularyTermName], List[Union[str, VocabularyTermName]]]])
 
@@ -4626,6 +4660,12 @@ slots.AllelePhenotypeAnnotation_subject = Slot(uri=ALLIANCE.subject, name="Allel
 slots.AllelePhenotypeAnnotation_inferred_gene = Slot(uri=ALLIANCE.inferred_gene, name="AllelePhenotypeAnnotation_inferred_gene", curie=ALLIANCE.curie('inferred_gene'),
                    model_uri=ALLIANCE.AllelePhenotypeAnnotation_inferred_gene, domain=AllelePhenotypeAnnotation, range=Optional[Union[str, GeneCurie]])
 
+slots.AllelePhenotypeAnnotation_asserted_gene = Slot(uri=ALLIANCE.asserted_gene, name="AllelePhenotypeAnnotation_asserted_gene", curie=ALLIANCE.curie('asserted_gene'),
+                   model_uri=ALLIANCE.AllelePhenotypeAnnotation_asserted_gene, domain=AllelePhenotypeAnnotation, range=Optional[Union[str, GeneCurie]])
+
+slots.AllelePhenotypeAnnotation_asserted_allele = Slot(uri=ALLIANCE.asserted_allele, name="AllelePhenotypeAnnotation_asserted_allele", curie=ALLIANCE.curie('asserted_allele'),
+                   model_uri=ALLIANCE.AllelePhenotypeAnnotation_asserted_allele, domain=AllelePhenotypeAnnotation, range=Optional[Union[str, AlleleCurie]])
+
 slots.AGMPhenotypeAnnotation_subject = Slot(uri=ALLIANCE.subject, name="AGMPhenotypeAnnotation_subject", curie=ALLIANCE.curie('subject'),
                    model_uri=ALLIANCE.AGMPhenotypeAnnotation_subject, domain=AGMPhenotypeAnnotation, range=Union[str, AffectedGenomicModelCurie])
 
@@ -4634,6 +4674,12 @@ slots.AGMPhenotypeAnnotation_inferred_gene = Slot(uri=ALLIANCE.inferred_gene, na
 
 slots.AGMPhenotypeAnnotation_inferred_allele = Slot(uri=ALLIANCE.inferred_allele, name="AGMPhenotypeAnnotation_inferred_allele", curie=ALLIANCE.curie('inferred_allele'),
                    model_uri=ALLIANCE.AGMPhenotypeAnnotation_inferred_allele, domain=AGMPhenotypeAnnotation, range=Optional[Union[str, AlleleCurie]])
+
+slots.AGMPhenotypeAnnotation_asserted_gene = Slot(uri=ALLIANCE.asserted_gene, name="AGMPhenotypeAnnotation_asserted_gene", curie=ALLIANCE.curie('asserted_gene'),
+                   model_uri=ALLIANCE.AGMPhenotypeAnnotation_asserted_gene, domain=AGMPhenotypeAnnotation, range=Optional[Union[str, GeneCurie]])
+
+slots.AGMPhenotypeAnnotation_asserted_allele = Slot(uri=ALLIANCE.asserted_allele, name="AGMPhenotypeAnnotation_asserted_allele", curie=ALLIANCE.curie('asserted_allele'),
+                   model_uri=ALLIANCE.AGMPhenotypeAnnotation_asserted_allele, domain=AGMPhenotypeAnnotation, range=Optional[Union[str, AlleleCurie]])
 
 slots.DiseaseAnnotation_unique_id = Slot(uri=ALLIANCE.unique_id, name="DiseaseAnnotation_unique_id", curie=ALLIANCE.curie('unique_id'),
                    model_uri=ALLIANCE.DiseaseAnnotation_unique_id, domain=DiseaseAnnotation, range=Optional[str])
@@ -4689,6 +4735,9 @@ slots.AlleleDiseaseAnnotation_predicate = Slot(uri=ALLIANCE.predicate, name="All
 slots.AlleleDiseaseAnnotation_inferred_gene = Slot(uri=ALLIANCE.inferred_gene, name="AlleleDiseaseAnnotation_inferred_gene", curie=ALLIANCE.curie('inferred_gene'),
                    model_uri=ALLIANCE.AlleleDiseaseAnnotation_inferred_gene, domain=AlleleDiseaseAnnotation, range=Optional[Union[str, GeneCurie]])
 
+slots.AlleleDiseaseAnnotation_asserted_gene = Slot(uri=ALLIANCE.asserted_gene, name="AlleleDiseaseAnnotation_asserted_gene", curie=ALLIANCE.curie('asserted_gene'),
+                   model_uri=ALLIANCE.AlleleDiseaseAnnotation_asserted_gene, domain=AlleleDiseaseAnnotation, range=Optional[Union[str, GeneCurie]])
+
 slots.AGMDiseaseAnnotation_subject = Slot(uri=ALLIANCE.subject, name="AGMDiseaseAnnotation_subject", curie=ALLIANCE.curie('subject'),
                    model_uri=ALLIANCE.AGMDiseaseAnnotation_subject, domain=AGMDiseaseAnnotation, range=Union[str, AffectedGenomicModelCurie])
 
@@ -4700,6 +4749,12 @@ slots.AGMDiseaseAnnotation_inferred_gene = Slot(uri=ALLIANCE.inferred_gene, name
 
 slots.AGMDiseaseAnnotation_inferred_allele = Slot(uri=ALLIANCE.inferred_allele, name="AGMDiseaseAnnotation_inferred_allele", curie=ALLIANCE.curie('inferred_allele'),
                    model_uri=ALLIANCE.AGMDiseaseAnnotation_inferred_allele, domain=AGMDiseaseAnnotation, range=Optional[Union[str, AlleleCurie]])
+
+slots.AGMDiseaseAnnotation_asserted_gene = Slot(uri=ALLIANCE.asserted_gene, name="AGMDiseaseAnnotation_asserted_gene", curie=ALLIANCE.curie('asserted_gene'),
+                   model_uri=ALLIANCE.AGMDiseaseAnnotation_asserted_gene, domain=AGMDiseaseAnnotation, range=Optional[Union[str, GeneCurie]])
+
+slots.AGMDiseaseAnnotation_asserted_allele = Slot(uri=ALLIANCE.asserted_allele, name="AGMDiseaseAnnotation_asserted_allele", curie=ALLIANCE.curie('asserted_allele'),
+                   model_uri=ALLIANCE.AGMDiseaseAnnotation_asserted_allele, domain=AGMDiseaseAnnotation, range=Optional[Union[str, AlleleCurie]])
 
 slots.ExperimentalCondition_unique_id = Slot(uri=ALLIANCE.unique_id, name="ExperimentalCondition_unique_id", curie=ALLIANCE.curie('unique_id'),
                    model_uri=ALLIANCE.ExperimentalCondition_unique_id, domain=ExperimentalCondition, range=Optional[str])

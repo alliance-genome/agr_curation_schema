@@ -1,5 +1,5 @@
 # Auto generated from biologicalEntitySet.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-07-06T15:39:13
+# Generation date: 2022-07-06T23:40:57
 # Schema: Alliance-Schema-Prototype-Biological-Entity-Set
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/biologicalEntitySet.yaml
