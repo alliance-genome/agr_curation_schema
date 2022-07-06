@@ -118,6 +118,7 @@ classes:
     is_a: PhenotypeAnnotation
     slots:
       - inferred_gene
+      - asserted_gene
     slot_usage:
       subject:
         description: >-
@@ -132,6 +133,10 @@ classes:
           The gene to which the phenotype is inferred to be associated.
         required: false
         range: Gene
+      asserted_gene:
+        required: false
+      asserted_allele:
+        required: false
 
   AGMPhenotypeAnnotation:
     description: >-
@@ -141,6 +146,8 @@ classes:
     slots:
       - inferred_allele
       - inferred_gene
+      - asserted_gene
+      - asserted_allele
     slot_usage:
       subject:
         description: >-
@@ -160,6 +167,10 @@ classes:
           The allele to which the phenotype is inferred to be associated.
         required: false
         range: Allele
+      asserted_gene:
+        required: false
+      asserted_allele:
+        required: false
 
 
   DiseaseAnnotation:
@@ -270,6 +281,7 @@ classes:
     is_a: DiseaseAnnotation
     slots:
       - inferred_gene
+      - asserted_gene
     slot_usage:
       subject:
         description: >-
@@ -286,6 +298,8 @@ classes:
           The gene to which the disease is inferred to be associated.
         required: false
         range: Gene
+      asserted_gene:
+        required: false
 
   AGMDiseaseAnnotation:
     description: >-
@@ -295,6 +309,8 @@ classes:
     slots:
       - inferred_allele
       - inferred_gene
+      - asserted_gene
+      - asserted_allele
     slot_usage:
       subject:
         description: >-
@@ -316,6 +332,10 @@ classes:
           The allele to which the disease is inferred to be associated.
         required: false
         range: Allele
+      asserted_gene:
+        required: false
+      asserted_allele:
+        required: false
 
   ExperimentalCondition:
     is_a: AuditedObject
@@ -509,6 +529,16 @@ slots:
   inferred_allele:
     description: >-
       The allele to which something is inferred to be associated.
+    range: Allele
+
+  asserted_gene:
+    description: >-
+      The gene to which something is manually asserted to be associated.
+    range: Gene
+
+  asserted_allele:
+    description: >-
+      The allele to which something is manually asserted to be associated.
     range: Allele
 
   disease_qualifiers:
