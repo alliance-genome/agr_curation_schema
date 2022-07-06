@@ -1,0 +1,144 @@
+id: https://github.com/alliance-genome/agr_curation_schema/biologicalEntitySet.yaml
+name: Alliance-Schema-Prototype-Biological-Entity-Set
+title: Alliance Schema Prototype Biological Entity Set
+description: Alliance Biological Entity Set Prototype with LinkML
+
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+
+imports:
+  - core
+  - linkml:types
+
+prefixes:
+  alliance: 'http://alliancegenome.org/'
+  linkml: 'https://w3id.org/linkml/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+  dct: 'http://purl.org/dc/terms/'
+  WIKIDATA_PROPERTY: 'https://www.wikidata.org/wiki/Property:'
+  obograph: 'https://github.com/biodatamodels/obograph'
+
+## ------------
+## CLASSES
+## ------------
+
+
+
+classes:
+
+# Do BiologicalEntitySets have unique identifier or unique name?
+#   If not, do these sets have a set of identifying slots that determine uniqueness of the set.
+# Metadata for Feature-BiologicalEntitySets relationship?
+# Types of BiologicalEntitySets
+# Attributes shared/specific to each type of BiologicalEntitySets.
+
+
+  GeneCluster:
+    description: >-
+      A gene cluster is a set of genes which is of biological significance, and
+      which is clustered together on the genome.
+    is_a: BiologicalEntity
+    slots:
+      - genes
+
+  Operon:
+    description: >-
+      The DNA region of a group of adjacent genes whose transcription is
+      coordinated on one or several mutually overlapping transcription
+      units transcribed in the same direction and sharing at least one gene.
+    is_a: BiologicalEntity
+    slots:
+      # alternatively, this could be biological_entities if there were more than just genes in an operon
+      - genes
+    exact_mappings:
+      - SO:0000178
+
+  FunctionalGeneSet:
+    is_a: BiologicalEntity
+    slots:
+      - single_reference
+
+  Pathway:
+    is_a: BiologicalEntity # gets all the audit fields from its parent AuditedObject
+    exact_mappings:
+      - biolink:Pathway
+      - PW:0000001
+      - WIKIDATA:Q4915012
+    id_prefixes:
+      - GO
+      - REACT
+      - KEGG
+      - SMPDB
+      - MSigDB
+      - PHARMGKB.PATHWAYS
+      - WIKIPATHWAYS
+      - FB  # FlyBase FBgg*
+      - PANTHER.PATHWAY
+      - KEGG.PATHWAY
+
+  ProteinComplex:
+    is_a: BiologicalEntity
+    slots:
+      - proteins
+
+
+  GeneToPathwayAssociation:
+    is_a: Association
+    slot_usage:
+      predicate:
+        subproperty_of: has_participant
+      subject:
+        range: Gene
+      object:
+        range: Pathway
+
+
+## ------------
+## SLOTS
+## ------------
+
+
+
+slots:
+
+  proteins:
+    multivalued: true
+    range: Protein
+
+  genes:
+    multivalued: true
+    range: Gene
+
+  # Would you have an object for a set of orthologous genes?  Or leave these to be generated
+  # from code that says: get me all the orthologs of geneX where geneX is a member of GeneToGeneOrthology Association
+  paralogous_genes:
+    is_a: genes
+
+  has_participant:
+    exact_mappings:
+      - RO:0000057
+
+  has_input:
+    is_a: has_participant
+
+  has_output:
+    is_a: has_participant
+
+  enables:
+    is_a: has_participant
+

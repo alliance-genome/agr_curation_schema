@@ -3701,6 +3701,57 @@
          "title": "File",
          "type": "object"
       },
+      "FunctionalGeneSet": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "single_reference": {
+               "description": "holds between an object and a single reference",
+               "type": "string"
+            },
+            "taxon": {
+               "description": "The taxon from which the biological entity derives.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "curie",
+            "taxon"
+         ],
+         "title": "FunctionalGeneSet",
+         "type": "object"
+      },
       "GOTerm": {
          "additionalProperties": false,
          "description": "",
@@ -3885,6 +3936,59 @@
             "symbol"
          ],
          "title": "Gene",
+         "type": "object"
+      },
+      "GeneCluster": {
+         "additionalProperties": false,
+         "description": "A gene cluster is a set of genes which is of biological significance, and which is clustered together on the genome.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "genes": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "taxon": {
+               "description": "The taxon from which the biological entity derives.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "curie",
+            "taxon"
+         ],
+         "title": "GeneCluster",
          "type": "object"
       },
       "GeneDiseaseAnnotation": {
@@ -4369,6 +4473,58 @@
             "subject"
          ],
          "title": "GenePhenotypeAnnotation",
+         "type": "object"
+      },
+      "GeneToPathwayAssociation": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "object": {
+               "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "predicate": {
+               "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+               "type": "string"
+            },
+            "subject": {
+               "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "predicate",
+            "subject",
+            "object"
+         ],
+         "title": "GeneToPathwayAssociation",
          "type": "object"
       },
       "GenomicEntity": {
@@ -5849,6 +6005,59 @@
          "title": "OntologyTerm",
          "type": "object"
       },
+      "Operon": {
+         "additionalProperties": false,
+         "description": "The DNA region of a group of adjacent genes whose transcription is coordinated on one or several mutually overlapping transcription units transcribed in the same direction and sharing at least one gene.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "genes": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "taxon": {
+               "description": "The taxon from which the biological entity derives.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "curie",
+            "taxon"
+         ],
+         "title": "Operon",
+         "type": "object"
+      },
       "Organization": {
          "additionalProperties": false,
          "description": "",
@@ -5884,6 +6093,53 @@
             "internal"
          ],
          "title": "Organization",
+         "type": "object"
+      },
+      "Pathway": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "taxon": {
+               "description": "The taxon from which the biological entity derives.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "curie",
+            "taxon"
+         ],
+         "title": "Pathway",
          "type": "object"
       },
       "Person": {
@@ -6211,6 +6467,59 @@
             "taxon"
          ],
          "title": "Protein",
+         "type": "object"
+      },
+      "ProteinComplex": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "modified_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "proteins": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "taxon": {
+               "description": "The taxon from which the biological entity derives.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "curie",
+            "taxon"
+         ],
+         "title": "ProteinComplex",
          "type": "object"
       },
       "PubmedPublicationStatusEnum": {
