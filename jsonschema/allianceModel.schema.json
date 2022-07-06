@@ -8907,6 +8907,7 @@
    "$id": "https://github.com/alliance-genome/agr_curation_schema/alliance_schema",
    "$schema": "http://json-schema.org/draft-07/schema#",
    "additionalProperties": false,
+   "metamodel_version": "1.7.0",
    "properties": {
       "agm_ingest_set": {
          "items": {
@@ -8965,6 +8966,7 @@
    },
    "required": [],
    "title": "AllianceModel",
-   "type": "object"
+   "type": "object",
+   "version": "0.0.1"
 }
 
