@@ -1539,6 +1539,7 @@
 --     * Slot: expression_qualifiers Description: Qualifiers that describe additional characteristics of gene expression. For example: aint, intense, restricted.
 --     * Slot: negated Description: if set to true, then the association is negated i.e. is not true
 --     * Slot: uncertain Description: If set to true, then the related entity is uncertain.
+--     * Slot: assay_notes Description: 
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: updated_by Description: The individual that last modified the entity.
@@ -1553,7 +1554,6 @@
 --     * Slot: developmental_stage_stop Description: The end developmental stage at which an annotated event was observed.
 --     * Slot: age Description: The age at which an annotated event was observed.
 --     * Slot: temporal_qualifiers Description: Qualifiers of the stage or age in an annotation.
---     * Slot: stage_uncertainty Description: 
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: updated_by Description: The individual that last modified the entity.
@@ -1583,7 +1583,7 @@
 --     * Slot: obsolete Description: Entity is no longer current.
 --     * Slot: subject_id Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: object_id Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
--- # Class: "GeneExpressionStatement" Description: "Free-text describing some aspect(s) of a gene's expression, particularly nuanced information that is not readily captured in annotations. May summarize data from many annotations and/or many publications."
+-- # Class: "GeneExpressionStatement" Description: "Free-text describing some aspect(s) of a gene's expression, particularly nuanced information that is not readily captured in annotations. May summarize data from many annotations and/or many experiments."
 --     * Slot: id Description: 
 --     * Slot: statement_subject Description: The entity being described by the note.
 --     * Slot: statement_type Description: The type of free-text statement. For example: cytology, private, curator_comments.
@@ -3770,7 +3770,6 @@ CREATE TABLE "TemporalContext" (
 	developmental_stage_stop TEXT, 
 	age TEXT, 
 	temporal_qualifiers VARCHAR(15), 
-	stage_uncertainty TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
 	updated_by TEXT, 
@@ -5617,6 +5616,7 @@ CREATE TABLE "ExpressionAnnotation" (
 	expression_qualifiers VARCHAR(21), 
 	negated BOOLEAN, 
 	uncertain BOOLEAN, 
+	assay_notes TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
 	updated_by TEXT, 

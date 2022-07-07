@@ -578,7 +578,8 @@ linkml:Nodeidentifier NONLITERAL
           <expression_qualifiers> @<ExpressionQualifierSet> ? ;
           <negated> @linkml:Boolean ? ;
           <uncertain> @linkml:Boolean ? ;
-          <associated_with_figure> @<Figure> *
+          <associated_with_figure> @<Figure> * ;
+          <assay_notes> @linkml:String ?
        ) ;
        rdf:type [ <ExpressionAnnotation> ] ?
     )
@@ -1237,8 +1238,7 @@ linkml:Nodeidentifier NONLITERAL
           <developmental_stage_start> @<StageTerm> ? ;
           <developmental_stage_stop> @<StageTerm> ? ;
           <age> @linkml:String ? ;
-          <temporal_qualifiers> @<TemporalQualifierSet> ? ;
-          <stage_uncertainty> @linkml:String ?
+          <temporal_qualifiers> @<TemporalQualifierSet> ?
        ) ;
        rdf:type [ <TemporalContext> ] ?
     )

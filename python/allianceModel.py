@@ -1,5 +1,5 @@
 # Auto generated from allianceModel.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-07-06T23:41:34
+# Generation date: 2022-07-07T00:34:03
 # Schema: AllianceModel
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema
@@ -1909,6 +1909,7 @@ class ExpressionAnnotation(AuditedObject):
     negated: Optional[Union[bool, Bool]] = None
     uncertain: Optional[Union[bool, Bool]] = None
     associated_with_figure: Optional[Union[Union[str, FigureCurie], List[Union[str, FigureCurie]]]] = empty_list()
+    assay_notes: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.belongs_to_expression_experiment):
@@ -1935,6 +1936,9 @@ class ExpressionAnnotation(AuditedObject):
             self.associated_with_figure = [self.associated_with_figure] if self.associated_with_figure is not None else []
         self.associated_with_figure = [v if isinstance(v, FigureCurie) else FigureCurie(v) for v in self.associated_with_figure]
 
+        if self.assay_notes is not None and not isinstance(self.assay_notes, str):
+            self.assay_notes = str(self.assay_notes)
+
         super().__post_init__(**kwargs)
 
 
@@ -1956,7 +1960,6 @@ class TemporalContext(AuditedObject):
     developmental_stage_stop: Optional[Union[str, StageTermCurie]] = None
     age: Optional[str] = None
     temporal_qualifiers: Optional[Union[str, "TemporalQualifierSet"]] = None
-    stage_uncertainty: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.developmental_stage_start is not None and not isinstance(self.developmental_stage_start, StageTermCurie):
@@ -1970,9 +1973,6 @@ class TemporalContext(AuditedObject):
 
         if self.temporal_qualifiers is not None and not isinstance(self.temporal_qualifiers, TemporalQualifierSet):
             self.temporal_qualifiers = TemporalQualifierSet(self.temporal_qualifiers)
-
-        if self.stage_uncertainty is not None and not isinstance(self.stage_uncertainty, str):
-            self.stage_uncertainty = str(self.stage_uncertainty)
 
         super().__post_init__(**kwargs)
 
@@ -2043,7 +2043,7 @@ class ExpressionAnnotationImagePane(Association):
 class GeneExpressionStatement(EntityStatement):
     """
     Free-text describing some aspect(s) of a gene's expression, particularly nuanced information that is not readily
-    captured in annotations. May summarize data from many annotations and/or many publications.
+    captured in annotations. May summarize data from many annotations and/or many experiments.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -4843,8 +4843,6 @@ class ExpressionQualifierSet(EnumDefinitionImpl):
 
 class TemporalQualifierSet(EnumDefinitionImpl):
 
-    progressive = PermissibleValue(text="progressive",
-                                             description="An event that gets more pronounced with time.")
     throughout = PermissibleValue(text="throughout",
                                            description="An event that happens from start to end times included in the annotation")
     sometime_during = PermissibleValue(text="sometime_during",
@@ -4867,8 +4865,6 @@ class ExpressionStatementTypeEnum(EnumDefinitionImpl):
 
     expression_summary = PermissibleValue(text="expression_summary",
                                                            description="Free-text that summarizes expression across many annotations, experiments or publictaions.")
-    when_expressed_note = PermissibleValue(text="when_expressed_note",
-                                                             description="Additional free-text describing the stage/age of expression in an expression annotation.")
     where_expressed_note = PermissibleValue(text="where_expressed_note",
                                                                description="Additional free-text describing the anatomical site of expression in an expression annotation.")
     expression_annotation_note = PermissibleValue(text="expression_annotation_note",
@@ -6237,9 +6233,6 @@ slots.specimen_alleles = Slot(uri=ALLIANCE.specimen_alleles, name="specimen_alle
 slots.specimen_genomic_model = Slot(uri=ALLIANCE.specimen_genomic_model, name="specimen_genomic_model", curie=ALLIANCE.curie('specimen_genomic_model'),
                    model_uri=ALLIANCE.specimen_genomic_model, domain=ExpressionExperiment, range=Optional[Union[str, AffectedGenomicModelCurie]])
 
-slots.stage_uncertainty = Slot(uri=ALLIANCE.stage_uncertainty, name="stage_uncertainty", curie=ALLIANCE.curie('stage_uncertainty'),
-                   model_uri=ALLIANCE.stage_uncertainty, domain=TemporalContext, range=Optional[str])
-
 slots.temporal_qualifiers = Slot(uri=ALLIANCE.temporal_qualifiers, name="temporal_qualifiers", curie=ALLIANCE.curie('temporal_qualifiers'),
                    model_uri=ALLIANCE.temporal_qualifiers, domain=TemporalContext, range=Optional[Union[str, "TemporalQualifierSet"]])
 
@@ -6248,6 +6241,9 @@ slots.when_expressed = Slot(uri=ALLIANCE.when_expressed, name="when_expressed", 
 
 slots.where_expressed = Slot(uri=ALLIANCE.where_expressed, name="where_expressed", curie=ALLIANCE.curie('where_expressed'),
                    model_uri=ALLIANCE.where_expressed, domain=ExpressionAnnotation, range=Optional[Union[dict, "AnatomicalSite"]])
+
+slots.assay_notes = Slot(uri=ALLIANCE.assay_notes, name="assay_notes", curie=ALLIANCE.curie('assay_notes'),
+                   model_uri=ALLIANCE.assay_notes, domain=None, range=Optional[str])
 
 slots.gene_type = Slot(uri=ALLIANCE.gene_type, name="gene_type", curie=ALLIANCE.curie('gene_type'),
                    model_uri=ALLIANCE.gene_type, domain=Gene, range=Optional[Union[str, SOTermCurie]])
