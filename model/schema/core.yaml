@@ -1,6 +1,5 @@
 id: https://github.com/alliance-genome/agr_curation_schema/core.yaml
-name: Alliance-Schema-Core
-title: Alliance Schema Core
+name: core
 description: Alliance Schema with LinkML
 
 default_prefix: alliance
@@ -27,7 +26,7 @@ imports:
   - controlledVocabulary
 
 prefixes:
-  alliance: 'http://alliancegenome.org'
+  alliance: 'http://alliancegenome.org/'
   linkml: 'https://w3id.org/linkml/'
   gff: 'https://w3id.org/gff'
   faldo: 'http://biohackathon.org/resource/faldo#'
@@ -36,6 +35,7 @@ prefixes:
   schema: 'http://schema.org/'
   dct: 'http://purl.org/dc/terms/'
   WIKIDATA_PROPERTY: 'https://www.wikidata.org/wiki/Property:'
+  obograph: 'https://github.com/biodatamodels/obograph'
 
 ## ------------
 ## TYPES
@@ -53,13 +53,24 @@ types:
 
 classes:
 
-  Entity:
+  AuditedObject:
+    description: >-
+      Base class for all other LinkML classes. Some entity for which changes are tracked,
+      including date/time of change, the agent responsible for the change, and whether
+      the entity is internal (private).
+    slots:
+      - created_by
+      - date_created
+      - updated_by
+      - date_updated
+      - internal
+      - obsolete
 
   BiologicalEntity:
-    mixins:
-      - AuditedObject
+    is_a: AuditedObject
     description: >-
-      A high-level entity comprising .
+      An entity of biological origin that can be unambiguously attributed to
+      a single species.
     abstract: true
     slots:
       - curie
@@ -70,11 +81,17 @@ classes:
 
   GenomicEntity:
     is_a: BiologicalEntity
+    description: >-   # tentative
+      An entity that is part of a genome (i.e. segment of the DNA molecule),
+      is derived directly from the genome (i.e. RNA transcript molecule), or
+      is derived indirectly from the genome (i.e. polypeptide or protein via
+      RNA transcript translation).
     slots:
       - name
       - synonyms
       - cross_references
       - secondary_identifiers
+      - genomic_locations
 
   Transcript:
     is_a: GenomicEntity
@@ -89,33 +106,8 @@ classes:
       - SGD
       - ZFIN
 
-  Gene:
-    description: >-
-      Placeholder.
-    is_a: GenomicEntity
-    slots:
-      - genomic_locations
-      - symbol
-      - gene_synopsis
-      - gene_synopsis_URL
-      - gene_type
-      - automated_gene_description
-    id_prefixes:
-      - ENSEMBL
-      - HGNC
-      - FB
-      - MGI
-      - RGD
-      - SGD
-      - WB
-      - ZFIN
-    slot_usage:
-      symbol:
-        required: true
-
   CrossReference:
-    mixins:
-      - AuditedObject
+    is_a: AuditedObject
     slots:
       - curie
       - page_areas
@@ -126,38 +118,37 @@ classes:
       - page_areas
 
   Synonym:
-
-  AuditedObject:
-    mixin: true
-    description: >-
-      Some entity for which changes are tracked, including date/time of change
-      and the agent responsible for the change.
+    is_a: AuditedObject
     slots:
-      - table_key
-      - created_by
-      - creation_date
-      - modified_by
-      - date_last_modified
+      - synonym
 
   Note:
+    is_a: AuditedObject
     description: >-
       Note object for capturing free-text describing some attribute of an entity,
       coupled with a 'note type', internal boolean, and an optional list of
-      references. Permissible values for 'note_type' currently = disease_summary, disease_note
+      references. Permissible values for note_type can be viewed and managed in the
+      A-Team curation UI Controlled Vocabulary Terms Table.
     slots:
       - free_text
       - note_type
-      - internal
       - references
     slot_usage:
       free_text:
         required: true
-      note_type:              # Permissible values currently: disease_summary, disease_note
+      note_type:           # Permissible values currently visible in A-Team curation UI CV table
         required: true
-      internal:
-        required: true
+        examples:
+          - value: disease_summary
+          - value: disease_note
+          - value: automated_gene_description
+          - value: MOD_provided_gene_description
+          - value: gene_disease_summary
+          - value: gene_function_summary
+          - value: gene_phenotype_summary
 
-  EntityStatement:
+  EntityStatement:    # to be deprecated in favor of Note class?
+    is_a: AuditedObject
     description: >-
       Free-text describing some aspect of an entity.
     slots:
@@ -167,6 +158,7 @@ classes:
       - references
 
   Association:
+    is_a: AuditedObject
     description: >-
       A typed association between two entities, supported by evidence.
     close_mappings:
@@ -193,6 +185,7 @@ classes:
           The references in which the synonym is used to refer to the entity.
 
   ExternalDatabaseLink:
+    is_a: AuditedObject
     description: >-
       Base relation that holds the identifier prefix, base url and url suffix to help in generating
       URLs in crossReferences.
@@ -205,27 +198,30 @@ classes:
       - prefix_order
 
   Chromosome:
+    is_a: AuditedObject
     description: The ID of the landmark used to establish the coordinate system for the current feature.
     slots:
       - curie
 
   Assembly:
+    is_a: AuditedObject
     slots:
       - curie
 
-  GeneGenomicLocation:
+  GenomicLocation:
+    is_a: AuditedObject
     slots:
       - subject
-      - predicate
+      - predicate   # what should the predicate range be for this class? CG
       - object
       - has_assembly
       - start
       - end
     slot_usage:
       subject:
-        range: Variant
+        range: GenomicEntity
         description: >-
-          subject should be the gene identifier
+          subject should be a genomic entity
       object:
         range: Chromosome
         description: >-
@@ -249,6 +245,9 @@ classes:
 
 slots:
 
+  synonym:
+    description: the text string of the synonym
+
   start:
     description: The start of the feature in positive 1-based integer coordinates
 
@@ -256,9 +255,10 @@ slots:
     description: The end of the feature in positive 1-based integer coordinates
 
   has_assembly:
-    domain: GenomicEntity
+    domain: GenomicLocation
     required: true
-    range: Chromosome
+    range: Assembly
+
   prefix:
     required: true
     multivalued: false
@@ -325,6 +325,7 @@ slots:
     notes: >-
       Default value is true.
     range: boolean
+    required: true
 
   related_notes:
     description: Holds between an object and a list of related Note objects.
@@ -413,23 +414,9 @@ slots:
     multivalued: true
     range: uriorcurie
 
-  gene_synopsis:
-    description: >-
-      Gene description provided by source resource (ie: MOD gene description that is curated or
-      automated via MOD internal processes).
-
-  gene_synopsis_URL:
-    description: >-
-      Gene description reference URL provided by source resource (aka: MOD) in the case
-      where the curated gene_synopsis has a reference URL outside of the MOD.
-
-  automated_gene_description:
-    description: >-
-      Gene description generated via algorithm developed at the alliance.
-
   genomic_locations:
     domain: GenomicEntity
-    range: GeneGenomicLocation
+    range: GenomicLocation
     multivalued: true
 
   table_key:
@@ -440,8 +427,8 @@ slots:
     multivalued: false
     range: integer
 
-  creation_date:
-    aliases: [ 'date_created' ]
+  date_created:
+    aliases: [ 'creation_date' ]
     description: >-
       The date on which an entity was created. This can be applied to nodes or edges.
     range: date
@@ -449,8 +436,8 @@ slots:
       - dct:createdOn
       - WIKIDATA_PROPERTY:P577
 
-  date_last_modified:
-    aliases: ['date_updated']
+  date_updated:
+    aliases: ['date_last_modified']
     description: >-
       Date on which an entity was last modified.
     range: date
@@ -458,15 +445,13 @@ slots:
   created_by:
     description: >-
       The individual that created the entity.
-    required: true
     multivalued: false
     domain: AuditedObject
     range: Person
 
-  modified_by:
+  updated_by:
     description: >-
       The individual that last modified the entity.
-    required: true
     multivalued: false
     domain: AuditedObject
     range: Person
@@ -538,11 +523,6 @@ slots:
   type:
     range: uriorcurie
 
-  gene_type:
-    description: SOTerm describing gene type
-    domain: Gene
-    range: SOTerm
-
   references:
     singular_name: reference
     description: holds between an object and a list of references
@@ -561,7 +541,7 @@ slots:
     multivalued: false
     range: Reference
 
-  is_obsolete:
+  obsolete:
     description: >-
       Entity is no longer current.
     notes: >-
@@ -602,6 +582,13 @@ slots:
     multivalued: false
     range: ECOTerm
 
+  cron_schedule:
+    description: A string describing the cron syntax for the schedule
+    range: string
+
+  schedule_active:
+    description: This determines if the the schedule is active or not
+    range: boolean
 
 ## --------------------
 ## ASSOCIATION SLOTS

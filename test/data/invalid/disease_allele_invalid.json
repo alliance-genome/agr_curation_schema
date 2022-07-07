@@ -10,7 +10,7 @@
       "predicate": "is model of",
       "object": "DOID:0001234",
       "created_by": "ZFIN",
-      "modified_by": "ZFIN"
+      "updated_by": "ZFIN"
     }
   ]
 }

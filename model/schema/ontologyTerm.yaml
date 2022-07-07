@@ -8,9 +8,35 @@ imports:
   - linkml:types
 
 prefixes:
-  alliance: 'http://alliancegenome.org'
+  alliance: 'http://alliancegenome.org/'
   linkml: 'https://w3id.org/linkml/'
+  PDBE: 'https://www.ebi.ac.uk/pdbe/entry/pdb/'
+  RCSB_PDB: 'https://www.rcsb.org/structure/'
+  WWPDB: 'https://www.rcsb.org/structure/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+  dct: 'http://purl.org/dc/terms/'
+  WIKIDATA_PROPERTY: 'https://www.wikidata.org/wiki/Property:'
   obograph: 'https://github.com/biodatamodels/obograph'
+
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - owl
+
 
 slots:
   definition:
@@ -61,6 +87,7 @@ slots:
 classes:
 
   OntologyTerm:
+    is_a: AuditedObject
     description: >-
       A concept or class in an ontology, vocabulary or thesaurus. Note, ontology terms
       can be found in multiple ontologies (ie: mireoting). defining_slots helps define
@@ -74,7 +101,6 @@ classes:
       - definition
       - definition_urls
       - type
-      - is_obsolete
       - cross_references
       - synonyms
       - namespace
@@ -127,6 +153,11 @@ classes:
   SOTerm:
     is_a: OntologyTerm
 
+  XBEDTerm:
+    is_a: OntologyTerm
+
+
+
   CHEBITerm:
     is_a: ChemicalTerm
 
@@ -134,11 +165,20 @@ classes:
     is_a: OntologyTerm
     abstract: true
 
+
   FBDVTerm:
     is_a: StageTerm
 
   WBLSTerm:
     is_a: StageTerm
+
+  XBSTerm:
+    is_a: StageTerm
+    description: >-
+      The Xenbase anatomy ontology XAO is home to Xenopus anatomy terms as well as
+      Xenopus developmental life stage terms, differentiated by namespace. The
+      anatomy term class in LinkML will be named 'XBATerm' for Xenbase Anatomy Term
+      and life stage terms will be named 'XBSTerm' for Xenbase Stage Term.
 
   ZFSTerm:
     is_a: StageTerm
@@ -176,6 +216,14 @@ classes:
   WBBTTerm:
     is_a: AnatomicalTerm
 
+  XBATerm:
+    is_a: AnatomicalTerm
+    description: >-
+      The Xenbase anatomy ontology XAO is home to Xenopus anatomy terms as well as
+      Xenopus developmental life stage terms, differentiated by namespace. The
+      anatomy term class in LinkML will be named 'XBATerm' for Xenbase Anatomy Term
+      and life stage terms will be named 'XBSTerm' for Xenbase Stage Term.
+
   ZFATerm:
     is_a: AnatomicalTerm
 
@@ -184,6 +232,9 @@ classes:
     description: >-
       An ontology term representing a characteristic of an organism. This may or may not be
       expressed as a difference in comparison to a reference organism.
+
+  XPOTerm:
+    is_a: PhenotypeTerm
 
   ChemicalTerm:
     is_a: OntologyTerm
@@ -197,9 +248,11 @@ classes:
       - formula
       - smiles
 
+  XSMOTerm:
+    is_a: ChemicalTerm
+
   Molecule:
     is_a: ChemicalTerm
     description: >-
       Molecules as described by WormBase
-    mixins:
-      - AuditedObject
+

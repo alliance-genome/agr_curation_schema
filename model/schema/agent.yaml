@@ -19,7 +19,7 @@ imports:
   - core
 
 prefixes:
-  alliance: 'http://alliancegenome.org'
+  alliance: 'http://alliancegenome.org/'
   linkml: 'https://w3id.org/linkml/'
   gff: 'https://w3id.org/gff'
   faldo: 'http://biohackathon.org/resource/faldo#'
@@ -30,6 +30,7 @@ prefixes:
 classes:
 
   Agent:
+    is_a: AuditedObject
     description: >-
       An individual, group, organization or project that provides information
       and/or materials.
@@ -68,6 +69,7 @@ classes:
     slots:
       - okta_id
       - okta_email
+      - user_settings
     slot_usage:
       okta_id:
         required: true
@@ -100,6 +102,12 @@ slots:
 
   okta_email:
     description: The email address of the LoggedInPerson registered with Okta for user authentication
+    domain: LoggedInPerson
+    range: string
+    multivalued: false
+
+  user_settings:
+    description: JSON Blob containing details of UI settings for LoggedInPerson
     domain: LoggedInPerson
     range: string
     multivalued: false

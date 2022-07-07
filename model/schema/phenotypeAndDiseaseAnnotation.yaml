@@ -6,6 +6,29 @@ description: Alliance Phenotype and Disease Annotation Schema Prototype with Lin
 default_prefix: alliance
 default_range: string
 
+imports:
+  - linkml:types
+  - reference
+  - core
+  - gene
+  - ontologyTerm
+
+
+prefixes:
+  alliance: 'http://alliancegenome.org/'
+  linkml: 'https://w3id.org/linkml/'
+  PDBE: 'https://www.ebi.ac.uk/pdbe/entry/pdb/'
+  RCSB_PDB: 'https://www.rcsb.org/structure/'
+  WWPDB: 'https://www.rcsb.org/structure/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+  dct: 'http://purl.org/dc/terms/'
+  WIKIDATA_PROPERTY: 'https://www.wikidata.org/wiki/Property:'
+  obograph: 'https://github.com/biodatamodels/obograph'
+
 default_curi_maps:
   - obo_context
   - idot_context
@@ -18,18 +41,6 @@ emit_prefixes:
   - xsd
   - owl
 
-imports:
-  - linkml:types
-  - reference
-  - core
-  - ontologyTerm
-
-
-prefixes:
-  alliance: 'http://alliancegenome.org'
-  linkml: 'https://w3id.org/linkml/'
-
-
 ## ------------
 ## CLASSES
 ## ------------
@@ -38,8 +49,6 @@ classes:
 
   PhenotypeAnnotation:
     is_a: Association
-    mixins:
-      - AuditedObject
     description: >-
       An annotation asserting an association between a biological entity and a phenotype supported by evidence.
     slots:
@@ -78,7 +87,7 @@ classes:
       single_reference:
         description: >-
           The reference in which the phenotype association was asserted/reported.
-      creation_date:
+      date_created:
         description: >-
           The date of curation at the source (MOD) database.
         required: true
@@ -109,6 +118,7 @@ classes:
     is_a: PhenotypeAnnotation
     slots:
       - inferred_gene
+      - asserted_gene
     slot_usage:
       subject:
         description: >-
@@ -123,6 +133,10 @@ classes:
           The gene to which the phenotype is inferred to be associated.
         required: false
         range: Gene
+      asserted_gene:
+        required: false
+      asserted_allele:
+        required: false
 
   AGMPhenotypeAnnotation:
     description: >-
@@ -132,6 +146,8 @@ classes:
     slots:
       - inferred_allele
       - inferred_gene
+      - asserted_gene
+      - asserted_allele
     slot_usage:
       subject:
         description: >-
@@ -151,13 +167,15 @@ classes:
           The allele to which the phenotype is inferred to be associated.
         required: false
         range: Allele
+      asserted_gene:
+        required: false
+      asserted_allele:
+        required: false
 
 
   DiseaseAnnotation:
     is_a: Association
     abstract: true
-    mixins:
-      - AuditedObject
     description: >-
       An annotation asserting an association between a biological entity and a disease supported by evidence.
     slots:
@@ -229,6 +247,12 @@ classes:
           vocabulary
         range: VocabularyTerm
         required: false
+      related_notes:
+        description: >-
+          Valid note types are available for viewing in the A-Team curation tool
+          Controlled Vocabulary Terms Table (in the "Disease annotation note types" vocabulary)
+          on the production environment (curation.alliancegenome.org). New terms
+          can be added as needed.
 
   GeneDiseaseAnnotation:
     description: >-
@@ -257,6 +281,7 @@ classes:
     is_a: DiseaseAnnotation
     slots:
       - inferred_gene
+      - asserted_gene
     slot_usage:
       subject:
         description: >-
@@ -273,6 +298,8 @@ classes:
           The gene to which the disease is inferred to be associated.
         required: false
         range: Gene
+      asserted_gene:
+        required: false
 
   AGMDiseaseAnnotation:
     description: >-
@@ -282,6 +309,8 @@ classes:
     slots:
       - inferred_allele
       - inferred_gene
+      - asserted_gene
+      - asserted_allele
     slot_usage:
       subject:
         description: >-
@@ -303,8 +332,13 @@ classes:
           The allele to which the disease is inferred to be associated.
         required: false
         range: Allele
+      asserted_gene:
+        required: false
+      asserted_allele:
+        required: false
 
   ExperimentalCondition:
+    is_a: AuditedObject
     description: >-
       The environmental context in which an experiment is carried out. This may (e.g. drug treatment)
       or may not (e.g. standard conditions) directly influence the outcome of the experiment.
@@ -373,6 +407,7 @@ classes:
 
 
   ConditionRelation:
+    is_a: AuditedObject
     description: >-
       A pairing of an experimental condition relation (i.e. has_condition) with a list of 1 or more
       ExperimentalCondition objects. Annotation objects can connect directly to a set of 0 or more
@@ -496,6 +531,16 @@ slots:
       The allele to which something is inferred to be associated.
     range: Allele
 
+  asserted_gene:
+    description: >-
+      The gene to which something is manually asserted to be associated.
+    range: Gene
+
+  asserted_allele:
+    description: >-
+      The allele to which something is manually asserted to be associated.
+    range: Allele
+
   disease_qualifiers:
     description: >-
       Submitted values should be vocabulary terms from the 'Disease Qualifiers'
@@ -547,58 +592,3 @@ slots:
       a reference-specific alias for a data object used while curating.
     range: string
 
-## ----------
-## PREDICATES
-## ----------
-
-  has_condition:
-    is_a: related_to
-    symmetric: false
-    domain: Entity
-    range: ExperimentalCondition
-
-  is_condition_in:
-    is_a: related_to
-    symmetric: false
-    inverse: has_condition
-    domain: ExperimentalCondition
-    range: Entity
-
-  induced_by:
-    is_a: related_to
-    symmetric: false
-    domain: Entity
-    range: ExperimentalCondition
-
-  induces:
-    is_a: related_to
-    symmetric: false
-    inverse: induced_by
-    domain: ExperimentalCondition
-    range: Entity
-
-  ameliorated_by:
-    is_a: related_to
-    symmetric: false
-    domain: Entity
-    range: ExperimentalCondition
-
-  ameliorates:
-    is_a: related_to
-    symmetric: false
-    inverse: ameliorated_by
-    domain: ExperimentalCondition
-    range: Entity
-
-  exacerbated_by:
-    is_a: related_to
-    symmetric: false
-    domain: Entity
-    range: ExperimentalCondition
-
-  exacerbates:
-    is_a: related_to
-    symmetric: false
-    inverse: exacerbated_by
-    domain: ExperimentalCondition
-    range: Entity

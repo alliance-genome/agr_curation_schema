@@ -1,0 +1,39 @@
+# {{ schema.name }}
+
+{{ schema.description }}
+
+URI: {{ schema.id }}
+
+## Classes
+
+| Class | Description |
+{% for c in schemaview.all_classes().values()|sort(attribute='name') -%}
+{%- if 'association' not in schemaview.class_ancestors(c.name) and not schemaview.is_mixin(c.name) -%}
+| --- | --- |
+| {{gen.link(c)}} | {{c.description}} |
+{%- endif -%}
+{% endfor %}
+
+## Slots
+
+| Property | Description |
+| --- | --- |
+{% for np in schemaview.all_slots().values()|sort(attribute='name') -%}
+| {{gen.link(np)}} | {{np.description}} |
+{% endfor %}
+
+## Enumerations
+
+| Enumeration | Description |
+| --- | --- |
+{% for e in schemaview.all_enums().values()|sort(attribute='name') -%}
+| {{gen.link(e)}} | {{e.description}} |
+{% endfor %}
+
+## Subsets
+
+| Subset | Description |
+| --- | --- |
+{% for ss in schemaview.all_subsets().values()|sort(attribute='name') -%}
+| {{gen.link(ss)}} | {{ss.description}} |
+{% endfor %}

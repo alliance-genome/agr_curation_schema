@@ -1,0 +1,106 @@
+# {{ gen.name(element) }}
+
+{{ element.description }}
+
+{% if element.comments -%}
+{{element.comments}}
+{% endif -%}
+
+{% if schemaview.class_parents(element.name) %}
+```mermaid
+ classDiagram
+      {% for s in schemaview.class_parents(element.name)|sort(attribute='name') -%}
+        {{ gen.name(schemaview.get_element(s)) }} <|-- {{ gen.name(element) }}
+      {% endfor %}
+      {% for s in schemaview.class_induced_slots(element.name)|sort(attribute='name') -%}
+        {{ gen.name(element) }} : {{gen.name(s)}}
+      {% endfor %}
+
+```
+{% elif schemaview.class_children(element.name)  %}
+```mermaid
+ classDiagram
+      {% for s in schemaview.class_children(element.name)|sort(attribute='name') -%}
+        {{ gen.name(element) }} <|-- {{ gen.name(schemaview.get_element(s)) }}
+      {% endfor %}
+      {% for s in schemaview.class_induced_slots(element.name)|sort(attribute='name') -%}
+        {{ gen.name(element) }} : {{gen.name(s)}}
+      {% endfor %}
+```
+{% else %}
+```mermaid
+ classDiagram
+    class {{ gen.name(element) }}
+      {% for s in schemaview.class_induced_slots(element.name)|sort(attribute='name') -%}
+        {{ gen.name(element) }} : {{gen.name(s)}}
+      {% endfor %}
+
+{% endif %}
+
+
+URI: {{ gen.uri_link(element) }}
+
+
+## Parent Classes
+{% if schemaview.class_parents(element.name) %}
+{{ gen.inheritance_tree(element, mixins=True) }}
+{% else %}
+{% endif %}
+
+{% if schemaview.class_children(element.name, mixins=False) %}
+
+## Children
+
+{{ gen.inheritance_tree(element, mixins=True) }}
+{% else %}
+<!-- no inheritance hierarchy -->
+{% endif %}
+
+## Slots
+
+| Name | Description  |
+| ---  | ---  |
+{% for s in schemaview.class_induced_slots(element.name)|sort(attribute='name') -%}
+| {{gen.link(s)}} | {{ s.description }} |
+{% endfor %}
+
+{% if schemaview.get_mappings(element.name).items() -%}
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+{% for m, mt in schemaview.get_mappings(element.name).items() -%}
+{% if mt|length > 0 -%}
+| {{ m }} | {{ mt }} |
+{% endif -%}
+{% endfor %}
+
+{% endif -%}
+
+
+{% include "common_metadata.md.jinja2" %}
+
+## LinkML Specification
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+{{gen.yaml(element)}}
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+{{gen.yaml(element, inferred=True)}}
+```
+</details>
+
+{%- if footer -%}
+{{footer}}
+{%- endif -%}

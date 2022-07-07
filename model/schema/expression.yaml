@@ -5,17 +5,45 @@ imports:
   - allele
   - reagent
   - core
+  - gene
   - image
   - linkml:types
   - ontologyTerm
   - phenotypeAndDiseaseAnnotation
   - reference
 
+prefixes:
+  alliance: 'http://alliancegenome.org/'
+  linkml: 'https://w3id.org/linkml/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+  dct: 'http://purl.org/dc/terms/'
+  WIKIDATA_PROPERTY: 'https://www.wikidata.org/wiki/Property:'
+  obograph: 'https://github.com/biodatamodels/obograph'
+
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - owl
+
+
 classes:
 
   ExpressionExperiment:
-    mixins:
-      - AuditedObject
+    is_a: AuditedObject
     description: >-
       Defined by the gene of interest, the specimen, the assay, the reagents
       (Antibody, Probe), and the reference. It groups ExpressionAnnotations.
@@ -50,8 +78,7 @@ classes:
 # - What if MODs do NOT have object IDs for Experiments or Expression annotations
 
   ExpressionAnnotation:
-    mixins:
-      - AuditedObject
+    is_a: AuditedObject
     description: >-
       A description of when and where gene products are observed to be present,
       including experimental details, supporting evidence, and curator notes.
@@ -85,6 +112,7 @@ classes:
         multivalued: true
 
   TemporalContext:
+    is_a: AuditedObject
     description: >-
       The developmental stage and/or age of the specimen in an annotation. Developmental_stage_stop is optional. Add an uncertainty flag here?
     slots:
@@ -94,6 +122,7 @@ classes:
       - temporal_qualifiers
 
   AnatomicalSite:
+    is_a: AuditedObject
     description: >-
       The developmental stage and/or age of the specimen in an annotation.
     slots:
@@ -115,7 +144,7 @@ classes:
         range: ImagePane
 
   GeneExpressionStatement:
-    is_a: EntityStatement
+    is_a: EntityStatement     # Update to use Note class instead?
     description: >-
       Free-text describing some aspect(s) of a gene's expression, particularly
       nuanced information that is not readily captured in annotations.
@@ -130,7 +159,7 @@ classes:
         range: expression_statement_type_enum
 
   ExpressionExperimentStatement:
-    is_a: EntityStatement
+    is_a: EntityStatement     # Update to use Note class instead?
     description: >-
       Free-text describing some aspect(s) of a gene's expression, particularly
       nuanced information that is not readily captured in annotations.
@@ -143,7 +172,7 @@ classes:
         range: ExpressionExperiment
 
   ExpressionAnnotationStatement:
-    is_a: EntityStatement
+    is_a: EntityStatement     # Update to use Note class instead?
     slot_usage:
       statement_subject:
         range: ExpressionAnnotation

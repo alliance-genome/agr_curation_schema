@@ -1,12 +1,11 @@
 id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema
-name: Alliance-Schema-Prototype
-description: Alliance Schema Prototype
+name: AllianceModel
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
 version: 0.0.1
 
 prefixes:
-  alliance: 'http://alliancegenome.org'
+  alliance: 'http://alliancegenome.org/'
   linkml: 'https://w3id.org/linkml/'
   gff: 'https://w3id.org/gff'
   faldo: 'http://biohackathon.org/resource/faldo#'
@@ -17,28 +16,36 @@ prefixes:
 default_prefix: alliance
 default_range: string
 
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
 emit_prefixes:
   - rdf
   - rdfs
   - xsd
 
 imports:
-  - reference
-  - resource
-  - variation
-  - variantConsequence
-  - linkml:types
-  - core
+  - affectedGenomicModel
   - agent
   - allele
-  - affectedGenomicModel
-  - reagent
+  - biologicalEntitySet
+  - controlledVocabulary
+  - core
+  - expression
+  - gene
   - geneInteraction
+  - ingest
+  - linkml:types
   - ontologyTerm
   - phenotypeAndDiseaseAnnotation
-  - controlledVocabulary
-  - ingest
-  - expression
+  - reagent
+  - reference
+  - resource
+  - variantConsequence
+  - variation
 
 subsets:
   alliance subset:

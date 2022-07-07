@@ -1,5 +1,5 @@
 # Auto generated from phenotypeAndDiseaseAnnotation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-19T13:14:16
+# Generation date: 2022-07-06T23:40:54
 # Schema: Alliance-Schema-Prototype-Phenotype-and-Disease-Annotation
 #
 # id: https://github.com/alliance-genome/agr_persistent_schema/phenotypeAndDiseaseAnnotation.yaml
@@ -38,18 +38,23 @@ FB = CurieNamespace('FB', 'http://identifiers.org/fb/')
 HGNC = CurieNamespace('HGNC', 'http://identifiers.org/hgnc/')
 MGI = CurieNamespace('MGI', 'http://identifiers.org/mgi/')
 NLMID = CurieNamespace('NLMID', 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term=')
+PDBE = CurieNamespace('PDBE', 'https://www.ebi.ac.uk/pdbe/entry/pdb/')
 PMC = CurieNamespace('PMC', 'http://identifiers.org/pmc/')
 PMID = CurieNamespace('PMID', 'http://www.ncbi.nlm.nih.gov/pubmed/')
+RCSB_PDB = CurieNamespace('RCSB_PDB', 'https://www.rcsb.org/structure/')
 RGD = CurieNamespace('RGD', 'http://identifiers.org/rgd/')
 SGD = CurieNamespace('SGD', 'http://identifiers.org/sgd/')
 SO = CurieNamespace('SO', 'http://purl.obolibrary.org/obo/SO_')
 WB = CurieNamespace('WB', 'http://identifiers.org/wb/')
 WIKIDATA_PROPERTY = CurieNamespace('WIKIDATA_PROPERTY', 'https://www.wikidata.org/wiki/Property:')
+WWPDB = CurieNamespace('WWPDB', 'https://www.rcsb.org/structure/')
 ZFIN = CurieNamespace('ZFIN', 'http://identifiers.org/zfin/')
-ALLIANCE = CurieNamespace('alliance', 'http://alliancegenome.org')
+ALLIANCE = CurieNamespace('alliance', 'http://alliancegenome.org/')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
 DCT = CurieNamespace('dct', 'http://purl.org/dc/terms/')
+FALDO = CurieNamespace('faldo', 'http://biohackathon.org/resource/faldo#')
 FOAF = CurieNamespace('foaf', 'http://xmlns.com/foaf/0.1/')
+GFF = CurieNamespace('gff', 'https://w3id.org/gff')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 OBOGRAPH = CurieNamespace('obograph', 'https://github.com/biodatamodels/obograph')
 OWL = CurieNamespace('owl', 'http://www.w3.org/2002/07/owl#')
@@ -85,10 +90,6 @@ class TranscriptCurie(GenomicEntityCurie):
     pass
 
 
-class GeneCurie(GenomicEntityCurie):
-    pass
-
-
 class CrossReferenceCurie(URIorCURIE):
     pass
 
@@ -118,6 +119,10 @@ class AssemblyCurie(URIorCURIE):
 
 
 class ProteinCurie(GenomicEntityCurie):
+    pass
+
+
+class GeneCurie(GenomicEntityCurie):
     pass
 
 
@@ -165,6 +170,10 @@ class SOTermCurie(OntologyTermCurie):
     pass
 
 
+class XBEDTermCurie(OntologyTermCurie):
+    pass
+
+
 class StageTermCurie(OntologyTermCurie):
     pass
 
@@ -174,6 +183,10 @@ class FBDVTermCurie(StageTermCurie):
 
 
 class WBLSTermCurie(StageTermCurie):
+    pass
+
+
+class XBSTermCurie(StageTermCurie):
     pass
 
 
@@ -221,6 +234,10 @@ class WBBTTermCurie(AnatomicalTermCurie):
     pass
 
 
+class XBATermCurie(AnatomicalTermCurie):
+    pass
+
+
 class ZFATermCurie(AnatomicalTermCurie):
     pass
 
@@ -229,11 +246,19 @@ class PhenotypeTermCurie(OntologyTermCurie):
     pass
 
 
+class XPOTermCurie(PhenotypeTermCurie):
+    pass
+
+
 class ChemicalTermCurie(OntologyTermCurie):
     pass
 
 
 class CHEBITermCurie(ChemicalTermCurie):
+    pass
+
+
+class XSMOTermCurie(ChemicalTermCurie):
     pass
 
 
@@ -273,6 +298,18 @@ class AlleleCurie(GenomicEntityCurie):
     pass
 
 
+class ConstructCurie(GenomicEntityCurie):
+    pass
+
+
+class SequenceTargetingReagentCurie(GenomicEntityCurie):
+    pass
+
+
+class ConstructComponentCurie(GenomicEntityCurie):
+    pass
+
+
 class VariantCurie(GenomicEntityCurie):
     pass
 
@@ -282,7 +319,51 @@ class AffectedGenomicModelCurie(GenomicEntityCurie):
 
 
 @dataclass
-class ExperimentalCondition(YAMLRoot):
+class AuditedObject(YAMLRoot):
+    """
+    Base class for all other LinkML classes. Some entity for which changes are tracked, including date/time of change,
+    the agent responsible for the change, and whether the entity is internal (private).
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.AuditedObject
+    class_class_curie: ClassVar[str] = "alliance:AuditedObject"
+    class_name: ClassVar[str] = "AuditedObject"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.AuditedObject
+
+    internal: Union[bool, Bool] = None
+    created_by: Optional[Union[str, PersonUniqueId]] = None
+    date_created: Optional[Union[str, XSDDate]] = None
+    updated_by: Optional[Union[str, PersonUniqueId]] = None
+    date_updated: Optional[Union[str, XSDDate]] = None
+    obsolete: Optional[Union[bool, Bool]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.internal):
+            self.MissingRequiredField("internal")
+        if not isinstance(self.internal, Bool):
+            self.internal = Bool(self.internal)
+
+        if self.created_by is not None and not isinstance(self.created_by, PersonUniqueId):
+            self.created_by = PersonUniqueId(self.created_by)
+
+        if self.date_created is not None and not isinstance(self.date_created, XSDDate):
+            self.date_created = XSDDate(self.date_created)
+
+        if self.updated_by is not None and not isinstance(self.updated_by, PersonUniqueId):
+            self.updated_by = PersonUniqueId(self.updated_by)
+
+        if self.date_updated is not None and not isinstance(self.date_updated, XSDDate):
+            self.date_updated = XSDDate(self.date_updated)
+
+        if self.obsolete is not None and not isinstance(self.obsolete, Bool):
+            self.obsolete = Bool(self.obsolete)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class ExperimentalCondition(AuditedObject):
     """
     The environmental context in which an experiment is carried out. This may (e.g. drug treatment) or may not (e.g.
     standard conditions) directly influence the outcome of the experiment.
@@ -294,6 +375,7 @@ class ExperimentalCondition(YAMLRoot):
     class_name: ClassVar[str] = "ExperimentalCondition"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.ExperimentalCondition
 
+    internal: Union[bool, Bool] = None
     condition_class: Union[str, ZECOTermCurie] = None
     condition_statement: str = None
     unique_id: Optional[str] = None
@@ -348,7 +430,7 @@ class ExperimentalCondition(YAMLRoot):
 
 
 @dataclass
-class ConditionRelation(YAMLRoot):
+class ConditionRelation(AuditedObject):
     """
     A pairing of an experimental condition relation (i.e. has_condition) with a list of 1 or more
     ExperimentalCondition objects. Annotation objects can connect directly to a set of 0 or more of these
@@ -362,6 +444,7 @@ class ConditionRelation(YAMLRoot):
     class_name: ClassVar[str] = "ConditionRelation"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.ConditionRelation
 
+    internal: Union[bool, Bool] = None
     condition_relation_type: Union[str, VocabularyTermName] = None
     unique_id: Optional[str] = None
     handle: Optional[str] = None
@@ -391,36 +474,33 @@ class ConditionRelation(YAMLRoot):
 
 
 @dataclass
-class AuthorReference(YAMLRoot):
+class AuthorReference(AuditedObject):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/AuthorReference")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.AuthorReference
+    class_class_curie: ClassVar[str] = "alliance:AuthorReference"
     class_name: ClassVar[str] = "AuthorReference"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.AuthorReference
 
-    corresponding_author: Optional[Union[str, ReferenceCurie]] = None
+    internal: Union[bool, Bool] = None
+    corresponding_author: Optional[Union[bool, Bool]] = None
+    first_author: Optional[Union[bool, Bool]] = None
     first_name: Optional[str] = None
-    middle_name: Optional[str] = None
     last_name: Optional[str] = None
-    initials: Optional[Union[str, ReferenceCurie]] = None
     cross_references: Optional[Union[Dict[Union[str, CrossReferenceCurie], Union[dict, "CrossReference"]], List[Union[dict, "CrossReference"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.corresponding_author is not None and not isinstance(self.corresponding_author, ReferenceCurie):
-            self.corresponding_author = ReferenceCurie(self.corresponding_author)
+        if self.corresponding_author is not None and not isinstance(self.corresponding_author, Bool):
+            self.corresponding_author = Bool(self.corresponding_author)
+
+        if self.first_author is not None and not isinstance(self.first_author, Bool):
+            self.first_author = Bool(self.first_author)
 
         if self.first_name is not None and not isinstance(self.first_name, str):
             self.first_name = str(self.first_name)
 
-        if self.middle_name is not None and not isinstance(self.middle_name, str):
-            self.middle_name = str(self.middle_name)
-
         if self.last_name is not None and not isinstance(self.last_name, str):
             self.last_name = str(self.last_name)
-
-        if self.initials is not None and not isinstance(self.initials, ReferenceCurie):
-            self.initials = ReferenceCurie(self.initials)
 
         self._normalize_inlined_as_list(slot_name="cross_references", slot_type=CrossReference, key_name="curie", keyed=True)
 
@@ -428,31 +508,29 @@ class AuthorReference(YAMLRoot):
 
 
 @dataclass
-class Reference(YAMLRoot):
+class Reference(AuditedObject):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/Reference")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.Reference
+    class_class_curie: ClassVar[str] = "alliance:Reference"
     class_name: ClassVar[str] = "Reference"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Reference
 
     curie: Union[str, ReferenceCurie] = None
+    internal: Union[bool, Bool] = None
     reference_id: int = None
     abstract: Optional[str] = None
+    authors: Optional[Union[Union[dict, AuthorReference], List[Union[dict, AuthorReference]]]] = empty_list()
     category: Optional[Union[str, "ReferenceCategoryEnum"]] = None
-    citation: Optional[str] = None
     date_arrived_in_pubmed: Optional[Union[str, List[str]]] = empty_list()
-    date_created: Optional[Union[str, XSDDate]] = None
-    date_last_modified: Optional[Union[str, XSDDate]] = None
+    date_last_modified_in_pubmed: Optional[str] = None
     date_published: Optional[str] = None
-    date_updated: Optional[Union[str, XSDDate]] = None
-    issue_date: Optional[str] = None
     issue_name: Optional[str] = None
     keywords: Optional[Union[str, List[str]]] = empty_list()
     language: Optional[str] = None
     merged_into_id: Optional[Union[str, URIorCURIE]] = None
     open_access: Optional[Union[bool, Bool]] = None
-    pages: Optional[str] = None
+    page_range: Optional[str] = None
     plain_language_abstract: Optional[str] = None
     publisher: Optional[str] = None
     pubmed_abstract_languages: Optional[Union[str, List[str]]] = empty_list()
@@ -476,30 +554,20 @@ class Reference(YAMLRoot):
         if self.abstract is not None and not isinstance(self.abstract, str):
             self.abstract = str(self.abstract)
 
+        self._normalize_inlined_as_dict(slot_name="authors", slot_type=AuthorReference, key_name="internal", keyed=False)
+
         if self.category is not None and not isinstance(self.category, ReferenceCategoryEnum):
             self.category = ReferenceCategoryEnum(self.category)
-
-        if self.citation is not None and not isinstance(self.citation, str):
-            self.citation = str(self.citation)
 
         if not isinstance(self.date_arrived_in_pubmed, list):
             self.date_arrived_in_pubmed = [self.date_arrived_in_pubmed] if self.date_arrived_in_pubmed is not None else []
         self.date_arrived_in_pubmed = [v if isinstance(v, str) else str(v) for v in self.date_arrived_in_pubmed]
 
-        if self.date_created is not None and not isinstance(self.date_created, XSDDate):
-            self.date_created = XSDDate(self.date_created)
-
-        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
-            self.date_last_modified = XSDDate(self.date_last_modified)
+        if self.date_last_modified_in_pubmed is not None and not isinstance(self.date_last_modified_in_pubmed, str):
+            self.date_last_modified_in_pubmed = str(self.date_last_modified_in_pubmed)
 
         if self.date_published is not None and not isinstance(self.date_published, str):
             self.date_published = str(self.date_published)
-
-        if self.date_updated is not None and not isinstance(self.date_updated, XSDDate):
-            self.date_updated = XSDDate(self.date_updated)
-
-        if self.issue_date is not None and not isinstance(self.issue_date, str):
-            self.issue_date = str(self.issue_date)
 
         if self.issue_name is not None and not isinstance(self.issue_name, str):
             self.issue_name = str(self.issue_name)
@@ -517,8 +585,8 @@ class Reference(YAMLRoot):
         if self.open_access is not None and not isinstance(self.open_access, Bool):
             self.open_access = Bool(self.open_access)
 
-        if self.pages is not None and not isinstance(self.pages, str):
-            self.pages = str(self.pages)
+        if self.page_range is not None and not isinstance(self.page_range, str):
+            self.page_range = str(self.page_range)
 
         if self.plain_language_abstract is not None and not isinstance(self.plain_language_abstract, str):
             self.plain_language_abstract = str(self.plain_language_abstract)
@@ -550,17 +618,18 @@ class Reference(YAMLRoot):
 
 
 @dataclass
-class MeshDetail(YAMLRoot):
+class MeshDetail(AuditedObject):
     """
     Medical Subject Headings information coming from PubMed.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/reference/MeshDetail")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.MeshDetail
+    class_class_curie: ClassVar[str] = "alliance:MeshDetail"
     class_name: ClassVar[str] = "MeshDetail"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.MeshDetail
 
+    internal: Union[bool, Bool] = None
     mesh_detail_id: int = None
     reference_id: int = None
     heading_term: str = None
@@ -588,19 +657,10 @@ class MeshDetail(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-class Entity(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = ALLIANCE.Entity
-    class_class_curie: ClassVar[str] = "alliance:Entity"
-    class_name: ClassVar[str] = "Entity"
-    class_model_uri: ClassVar[URIRef] = ALLIANCE.Entity
-
-
 @dataclass
-class BiologicalEntity(YAMLRoot):
+class BiologicalEntity(AuditedObject):
     """
-    A high-level entity comprising .
+    An entity of biological origin that can be unambiguously attributed to a single species.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -610,12 +670,8 @@ class BiologicalEntity(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = ALLIANCE.BiologicalEntity
 
     curie: Union[str, BiologicalEntityCurie] = None
+    internal: Union[bool, Bool] = None
     taxon: Union[str, NCBITaxonTermCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
-    table_key: Optional[int] = None
-    creation_date: Optional[Union[str, XSDDate]] = None
-    date_last_modified: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -628,30 +684,16 @@ class BiologicalEntity(YAMLRoot):
         if not isinstance(self.taxon, NCBITaxonTermCurie):
             self.taxon = NCBITaxonTermCurie(self.taxon)
 
-        if self._is_empty(self.created_by):
-            self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, PersonUniqueId):
-            self.created_by = PersonUniqueId(self.created_by)
-
-        if self._is_empty(self.modified_by):
-            self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, PersonUniqueId):
-            self.modified_by = PersonUniqueId(self.modified_by)
-
-        if self.table_key is not None and not isinstance(self.table_key, int):
-            self.table_key = int(self.table_key)
-
-        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
-            self.creation_date = XSDDate(self.creation_date)
-
-        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
-            self.date_last_modified = XSDDate(self.date_last_modified)
-
         super().__post_init__(**kwargs)
 
 
 @dataclass
 class GenomicEntity(BiologicalEntity):
+    """
+    An entity that is part of a genome (i.e. segment of the DNA molecule), is derived directly from the genome (i.e.
+    RNA transcript molecule), or is derived indirectly from the genome (i.e. polypeptide or protein via RNA transcript
+    translation).
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ALLIANCE.GenomicEntity
@@ -660,13 +702,13 @@ class GenomicEntity(BiologicalEntity):
     class_model_uri: ClassVar[URIRef] = ALLIANCE.GenomicEntity
 
     curie: Union[str, GenomicEntityCurie] = None
+    internal: Union[bool, Bool] = None
     taxon: Union[str, NCBITaxonTermCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
     name: Optional[str] = None
     synonyms: Optional[Union[Union[dict, "Synonym"], List[Union[dict, "Synonym"]]]] = empty_list()
     cross_references: Optional[Union[Dict[Union[str, CrossReferenceCurie], Union[dict, "CrossReference"]], List[Union[dict, "CrossReference"]]]] = empty_dict()
     secondary_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    genomic_locations: Optional[Union[Union[dict, "GenomicLocation"], List[Union[dict, "GenomicLocation"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -677,15 +719,15 @@ class GenomicEntity(BiologicalEntity):
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if not isinstance(self.synonyms, list):
-            self.synonyms = [self.synonyms] if self.synonyms is not None else []
-        self.synonyms = [v if isinstance(v, Synonym) else Synonym(**as_dict(v)) for v in self.synonyms]
+        self._normalize_inlined_as_dict(slot_name="synonyms", slot_type=Synonym, key_name="internal", keyed=False)
 
         self._normalize_inlined_as_list(slot_name="cross_references", slot_type=CrossReference, key_name="curie", keyed=True)
 
         if not isinstance(self.secondary_identifiers, list):
             self.secondary_identifiers = [self.secondary_identifiers] if self.secondary_identifiers is not None else []
         self.secondary_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.secondary_identifiers]
+
+        self._normalize_inlined_as_dict(slot_name="genomic_locations", slot_type=GenomicLocation, key_name="internal", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -703,9 +745,8 @@ class Transcript(GenomicEntity):
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Transcript
 
     curie: Union[str, TranscriptCurie] = None
+    internal: Union[bool, Bool] = None
     taxon: Union[str, NCBITaxonTermCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -717,58 +758,7 @@ class Transcript(GenomicEntity):
 
 
 @dataclass
-class Gene(GenomicEntity):
-    """
-    Placeholder.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = ALLIANCE.Gene
-    class_class_curie: ClassVar[str] = "alliance:Gene"
-    class_name: ClassVar[str] = "Gene"
-    class_model_uri: ClassVar[URIRef] = ALLIANCE.Gene
-
-    curie: Union[str, GeneCurie] = None
-    taxon: Union[str, NCBITaxonTermCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
-    symbol: str = None
-    genomic_locations: Optional[Union[Union[dict, "GeneGenomicLocation"], List[Union[dict, "GeneGenomicLocation"]]]] = empty_list()
-    gene_synopsis: Optional[str] = None
-    gene_synopsis_URL: Optional[str] = None
-    gene_type: Optional[Union[str, SOTermCurie]] = None
-    automated_gene_description: Optional[str] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.curie):
-            self.MissingRequiredField("curie")
-        if not isinstance(self.curie, GeneCurie):
-            self.curie = GeneCurie(self.curie)
-
-        if self._is_empty(self.symbol):
-            self.MissingRequiredField("symbol")
-        if not isinstance(self.symbol, str):
-            self.symbol = str(self.symbol)
-
-        self._normalize_inlined_as_dict(slot_name="genomic_locations", slot_type=GeneGenomicLocation, key_name="subject", keyed=False)
-
-        if self.gene_synopsis is not None and not isinstance(self.gene_synopsis, str):
-            self.gene_synopsis = str(self.gene_synopsis)
-
-        if self.gene_synopsis_URL is not None and not isinstance(self.gene_synopsis_URL, str):
-            self.gene_synopsis_URL = str(self.gene_synopsis_URL)
-
-        if self.gene_type is not None and not isinstance(self.gene_type, SOTermCurie):
-            self.gene_type = SOTermCurie(self.gene_type)
-
-        if self.automated_gene_description is not None and not isinstance(self.automated_gene_description, str):
-            self.automated_gene_description = str(self.automated_gene_description)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class CrossReference(YAMLRoot):
+class CrossReference(AuditedObject):
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ALLIANCE.CrossReference
@@ -777,14 +767,10 @@ class CrossReference(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = ALLIANCE.CrossReference
 
     curie: Union[str, CrossReferenceCurie] = None
+    internal: Union[bool, Bool] = None
     page_areas: Union[str, List[str]] = None
     display_name: str = None
     prefix: str = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
-    table_key: Optional[int] = None
-    creation_date: Optional[Union[str, XSDDate]] = None
-    date_last_modified: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -808,29 +794,11 @@ class CrossReference(YAMLRoot):
         if not isinstance(self.prefix, str):
             self.prefix = str(self.prefix)
 
-        if self._is_empty(self.created_by):
-            self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, PersonUniqueId):
-            self.created_by = PersonUniqueId(self.created_by)
-
-        if self._is_empty(self.modified_by):
-            self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, PersonUniqueId):
-            self.modified_by = PersonUniqueId(self.modified_by)
-
-        if self.table_key is not None and not isinstance(self.table_key, int):
-            self.table_key = int(self.table_key)
-
-        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
-            self.creation_date = XSDDate(self.creation_date)
-
-        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
-            self.date_last_modified = XSDDate(self.date_last_modified)
-
         super().__post_init__(**kwargs)
 
 
-class Synonym(YAMLRoot):
+@dataclass
+class Synonym(AuditedObject):
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Synonym
@@ -838,54 +806,22 @@ class Synonym(YAMLRoot):
     class_name: ClassVar[str] = "Synonym"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Synonym
 
-
-@dataclass
-class AuditedObject(YAMLRoot):
-    """
-    Some entity for which changes are tracked, including date/time of change and the agent responsible for the change.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = ALLIANCE.AuditedObject
-    class_class_curie: ClassVar[str] = "alliance:AuditedObject"
-    class_name: ClassVar[str] = "AuditedObject"
-    class_model_uri: ClassVar[URIRef] = ALLIANCE.AuditedObject
-
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
-    table_key: Optional[int] = None
-    creation_date: Optional[Union[str, XSDDate]] = None
-    date_last_modified: Optional[Union[str, XSDDate]] = None
+    internal: Union[bool, Bool] = None
+    synonym: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.created_by):
-            self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, PersonUniqueId):
-            self.created_by = PersonUniqueId(self.created_by)
-
-        if self._is_empty(self.modified_by):
-            self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, PersonUniqueId):
-            self.modified_by = PersonUniqueId(self.modified_by)
-
-        if self.table_key is not None and not isinstance(self.table_key, int):
-            self.table_key = int(self.table_key)
-
-        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
-            self.creation_date = XSDDate(self.creation_date)
-
-        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
-            self.date_last_modified = XSDDate(self.date_last_modified)
+        if self.synonym is not None and not isinstance(self.synonym, str):
+            self.synonym = str(self.synonym)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class Note(YAMLRoot):
+class Note(AuditedObject):
     """
     Note object for capturing free-text describing some attribute of an entity, coupled with a 'note type', internal
-    boolean, and an optional list of references. Permissible values for 'note_type' currently = disease_summary,
-    disease_note
+    boolean, and an optional list of references. Permissible values for note_type can be viewed and managed in the
+    A-Team curation UI Controlled Vocabulary Terms Table.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -894,9 +830,9 @@ class Note(YAMLRoot):
     class_name: ClassVar[str] = "Note"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Note
 
+    internal: Union[bool, Bool] = None
     free_text: str = None
     note_type: Union[str, VocabularyTermName] = None
-    internal: Union[bool, Bool] = None
     references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -910,11 +846,6 @@ class Note(YAMLRoot):
         if not isinstance(self.note_type, VocabularyTermName):
             self.note_type = VocabularyTermName(self.note_type)
 
-        if self._is_empty(self.internal):
-            self.MissingRequiredField("internal")
-        if not isinstance(self.internal, Bool):
-            self.internal = Bool(self.internal)
-
         if not isinstance(self.references, list):
             self.references = [self.references] if self.references is not None else []
         self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
@@ -923,7 +854,7 @@ class Note(YAMLRoot):
 
 
 @dataclass
-class EntityStatement(YAMLRoot):
+class EntityStatement(AuditedObject):
     """
     Free-text describing some aspect of an entity.
     """
@@ -934,6 +865,7 @@ class EntityStatement(YAMLRoot):
     class_name: ClassVar[str] = "EntityStatement"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.EntityStatement
 
+    internal: Union[bool, Bool] = None
     statement_subject: Optional[str] = None
     statement_type: Optional[str] = None
     statement_text: Optional[str] = None
@@ -957,7 +889,7 @@ class EntityStatement(YAMLRoot):
 
 
 @dataclass
-class Association(YAMLRoot):
+class Association(AuditedObject):
     """
     A typed association between two entities, supported by evidence.
     """
@@ -968,6 +900,7 @@ class Association(YAMLRoot):
     class_name: ClassVar[str] = "Association"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Association
 
+    internal: Union[bool, Bool] = None
     subject: str = None
     predicate: str = None
     object: str = None
@@ -1004,17 +937,14 @@ class PhenotypeAnnotation(Association):
     class_model_uri: ClassVar[URIRef] = ALLIANCE.PhenotypeAnnotation
 
     curie: Union[str, PhenotypeAnnotationCurie] = None
+    internal: Union[bool, Bool] = None
     predicate: str = None
     subject: Union[str, BiologicalEntityCurie] = None
     object: str = None
-    creation_date: Union[str, XSDDate] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
+    date_created: Union[str, XSDDate] = None
     single_reference: Optional[Union[str, ReferenceCurie]] = None
     phenotype_term: Optional[Union[str, PhenotypeTermCurie]] = None
     condition_relations: Optional[Union[Union[dict, "ConditionRelation"], List[Union[dict, "ConditionRelation"]]]] = empty_list()
-    table_key: Optional[int] = None
-    date_last_modified: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -1032,20 +962,10 @@ class PhenotypeAnnotation(Association):
         if not isinstance(self.object, str):
             self.object = str(self.object)
 
-        if self._is_empty(self.creation_date):
-            self.MissingRequiredField("creation_date")
-        if not isinstance(self.creation_date, XSDDate):
-            self.creation_date = XSDDate(self.creation_date)
-
-        if self._is_empty(self.created_by):
-            self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, PersonUniqueId):
-            self.created_by = PersonUniqueId(self.created_by)
-
-        if self._is_empty(self.modified_by):
-            self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, PersonUniqueId):
-            self.modified_by = PersonUniqueId(self.modified_by)
+        if self._is_empty(self.date_created):
+            self.MissingRequiredField("date_created")
+        if not isinstance(self.date_created, XSDDate):
+            self.date_created = XSDDate(self.date_created)
 
         if self.single_reference is not None and not isinstance(self.single_reference, ReferenceCurie):
             self.single_reference = ReferenceCurie(self.single_reference)
@@ -1056,12 +976,6 @@ class PhenotypeAnnotation(Association):
         if not isinstance(self.condition_relations, list):
             self.condition_relations = [self.condition_relations] if self.condition_relations is not None else []
         self.condition_relations = [v if isinstance(v, ConditionRelation) else ConditionRelation(**as_dict(v)) for v in self.condition_relations]
-
-        if self.table_key is not None and not isinstance(self.table_key, int):
-            self.table_key = int(self.table_key)
-
-        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
-            self.date_last_modified = XSDDate(self.date_last_modified)
 
         super().__post_init__(**kwargs)
 
@@ -1079,11 +993,10 @@ class GenePhenotypeAnnotation(PhenotypeAnnotation):
     class_model_uri: ClassVar[URIRef] = ALLIANCE.GenePhenotypeAnnotation
 
     curie: Union[str, GenePhenotypeAnnotationCurie] = None
+    internal: Union[bool, Bool] = None
     predicate: str = None
     object: str = None
-    creation_date: Union[str, XSDDate] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
+    date_created: Union[str, XSDDate] = None
     subject: Union[str, GeneCurie] = None
     sgd_strain_background: Optional[Union[str, AffectedGenomicModelCurie]] = None
 
@@ -1117,13 +1030,14 @@ class AllelePhenotypeAnnotation(PhenotypeAnnotation):
     class_model_uri: ClassVar[URIRef] = ALLIANCE.AllelePhenotypeAnnotation
 
     curie: Union[str, AllelePhenotypeAnnotationCurie] = None
+    internal: Union[bool, Bool] = None
     predicate: str = None
     object: str = None
-    creation_date: Union[str, XSDDate] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
+    date_created: Union[str, XSDDate] = None
     subject: Union[str, AlleleCurie] = None
     inferred_gene: Optional[Union[str, GeneCurie]] = None
+    asserted_gene: Optional[Union[str, GeneCurie]] = None
+    asserted_allele: Optional[Union[str, AlleleCurie]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -1138,6 +1052,12 @@ class AllelePhenotypeAnnotation(PhenotypeAnnotation):
 
         if self.inferred_gene is not None and not isinstance(self.inferred_gene, GeneCurie):
             self.inferred_gene = GeneCurie(self.inferred_gene)
+
+        if self.asserted_gene is not None and not isinstance(self.asserted_gene, GeneCurie):
+            self.asserted_gene = GeneCurie(self.asserted_gene)
+
+        if self.asserted_allele is not None and not isinstance(self.asserted_allele, AlleleCurie):
+            self.asserted_allele = AlleleCurie(self.asserted_allele)
 
         super().__post_init__(**kwargs)
 
@@ -1155,14 +1075,15 @@ class AGMPhenotypeAnnotation(PhenotypeAnnotation):
     class_model_uri: ClassVar[URIRef] = ALLIANCE.AGMPhenotypeAnnotation
 
     curie: Union[str, AGMPhenotypeAnnotationCurie] = None
+    internal: Union[bool, Bool] = None
     predicate: str = None
     object: str = None
-    creation_date: Union[str, XSDDate] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
+    date_created: Union[str, XSDDate] = None
     subject: Union[str, AffectedGenomicModelCurie] = None
     inferred_allele: Optional[Union[str, AlleleCurie]] = None
     inferred_gene: Optional[Union[str, GeneCurie]] = None
+    asserted_gene: Optional[Union[str, GeneCurie]] = None
+    asserted_allele: Optional[Union[str, AlleleCurie]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -1181,6 +1102,12 @@ class AGMPhenotypeAnnotation(PhenotypeAnnotation):
         if self.inferred_gene is not None and not isinstance(self.inferred_gene, GeneCurie):
             self.inferred_gene = GeneCurie(self.inferred_gene)
 
+        if self.asserted_gene is not None and not isinstance(self.asserted_gene, GeneCurie):
+            self.asserted_gene = GeneCurie(self.asserted_gene)
+
+        if self.asserted_allele is not None and not isinstance(self.asserted_allele, AlleleCurie):
+            self.asserted_allele = AlleleCurie(self.asserted_allele)
+
         super().__post_init__(**kwargs)
 
 
@@ -1196,14 +1123,13 @@ class DiseaseAnnotation(Association):
     class_name: ClassVar[str] = "DiseaseAnnotation"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.DiseaseAnnotation
 
+    internal: Union[bool, Bool] = None
     evidence_codes: Union[Union[str, ECOTermCurie], List[Union[str, ECOTermCurie]]] = None
     single_reference: Union[str, ReferenceCurie] = None
     data_provider: str = None
     subject: Union[str, BiologicalEntityCurie] = None
     predicate: str = None
     object: Union[str, DOTermCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
     unique_id: Optional[str] = None
     mod_entity_id: Optional[str] = None
     negated: Optional[Union[bool, Bool]] = None
@@ -1216,9 +1142,6 @@ class DiseaseAnnotation(Association):
     secondary_data_provider: Optional[str] = None
     disease_genetic_modifier: Optional[Union[str, BiologicalEntityCurie]] = None
     disease_genetic_modifier_relation: Optional[Union[str, VocabularyTermName]] = None
-    table_key: Optional[int] = None
-    creation_date: Optional[Union[str, XSDDate]] = None
-    date_last_modified: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.evidence_codes):
@@ -1252,16 +1175,6 @@ class DiseaseAnnotation(Association):
         if not isinstance(self.object, DOTermCurie):
             self.object = DOTermCurie(self.object)
 
-        if self._is_empty(self.created_by):
-            self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, PersonUniqueId):
-            self.created_by = PersonUniqueId(self.created_by)
-
-        if self._is_empty(self.modified_by):
-            self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, PersonUniqueId):
-            self.modified_by = PersonUniqueId(self.modified_by)
-
         if self.unique_id is not None and not isinstance(self.unique_id, str):
             self.unique_id = str(self.unique_id)
 
@@ -1289,7 +1202,7 @@ class DiseaseAnnotation(Association):
         if self.genetic_sex is not None and not isinstance(self.genetic_sex, VocabularyTermName):
             self.genetic_sex = VocabularyTermName(self.genetic_sex)
 
-        self._normalize_inlined_as_dict(slot_name="related_notes", slot_type=Note, key_name="free_text", keyed=False)
+        self._normalize_inlined_as_dict(slot_name="related_notes", slot_type=Note, key_name="internal", keyed=False)
 
         if self.secondary_data_provider is not None and not isinstance(self.secondary_data_provider, str):
             self.secondary_data_provider = str(self.secondary_data_provider)
@@ -1299,15 +1212,6 @@ class DiseaseAnnotation(Association):
 
         if self.disease_genetic_modifier_relation is not None and not isinstance(self.disease_genetic_modifier_relation, VocabularyTermName):
             self.disease_genetic_modifier_relation = VocabularyTermName(self.disease_genetic_modifier_relation)
-
-        if self.table_key is not None and not isinstance(self.table_key, int):
-            self.table_key = int(self.table_key)
-
-        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
-            self.creation_date = XSDDate(self.creation_date)
-
-        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
-            self.date_last_modified = XSDDate(self.date_last_modified)
 
         super().__post_init__(**kwargs)
 
@@ -1324,12 +1228,11 @@ class GeneDiseaseAnnotation(DiseaseAnnotation):
     class_name: ClassVar[str] = "GeneDiseaseAnnotation"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.GeneDiseaseAnnotation
 
+    internal: Union[bool, Bool] = None
     evidence_codes: Union[Union[str, ECOTermCurie], List[Union[str, ECOTermCurie]]] = None
     single_reference: Union[str, ReferenceCurie] = None
     data_provider: str = None
     object: Union[str, DOTermCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
     subject: Union[str, GeneCurie] = None
     predicate: Union[str, VocabularyTermName] = None
     sgd_strain_background: Optional[Union[str, AffectedGenomicModelCurie]] = None
@@ -1363,15 +1266,15 @@ class AlleleDiseaseAnnotation(DiseaseAnnotation):
     class_name: ClassVar[str] = "AlleleDiseaseAnnotation"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.AlleleDiseaseAnnotation
 
+    internal: Union[bool, Bool] = None
     evidence_codes: Union[Union[str, ECOTermCurie], List[Union[str, ECOTermCurie]]] = None
     single_reference: Union[str, ReferenceCurie] = None
     data_provider: str = None
     object: Union[str, DOTermCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
     subject: Union[str, AlleleCurie] = None
     predicate: Union[str, VocabularyTermName] = None
     inferred_gene: Optional[Union[str, GeneCurie]] = None
+    asserted_gene: Optional[Union[str, GeneCurie]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.subject):
@@ -1386,6 +1289,9 @@ class AlleleDiseaseAnnotation(DiseaseAnnotation):
 
         if self.inferred_gene is not None and not isinstance(self.inferred_gene, GeneCurie):
             self.inferred_gene = GeneCurie(self.inferred_gene)
+
+        if self.asserted_gene is not None and not isinstance(self.asserted_gene, GeneCurie):
+            self.asserted_gene = GeneCurie(self.asserted_gene)
 
         super().__post_init__(**kwargs)
 
@@ -1402,16 +1308,17 @@ class AGMDiseaseAnnotation(DiseaseAnnotation):
     class_name: ClassVar[str] = "AGMDiseaseAnnotation"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.AGMDiseaseAnnotation
 
+    internal: Union[bool, Bool] = None
     evidence_codes: Union[Union[str, ECOTermCurie], List[Union[str, ECOTermCurie]]] = None
     single_reference: Union[str, ReferenceCurie] = None
     data_provider: str = None
     object: Union[str, DOTermCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
     subject: Union[str, AffectedGenomicModelCurie] = None
     predicate: Union[str, VocabularyTermName] = None
     inferred_allele: Optional[Union[str, AlleleCurie]] = None
     inferred_gene: Optional[Union[str, GeneCurie]] = None
+    asserted_gene: Optional[Union[str, GeneCurie]] = None
+    asserted_allele: Optional[Union[str, AlleleCurie]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.subject):
@@ -1430,6 +1337,12 @@ class AGMDiseaseAnnotation(DiseaseAnnotation):
         if self.inferred_gene is not None and not isinstance(self.inferred_gene, GeneCurie):
             self.inferred_gene = GeneCurie(self.inferred_gene)
 
+        if self.asserted_gene is not None and not isinstance(self.asserted_gene, GeneCurie):
+            self.asserted_gene = GeneCurie(self.asserted_gene)
+
+        if self.asserted_allele is not None and not isinstance(self.asserted_allele, AlleleCurie):
+            self.asserted_allele = AlleleCurie(self.asserted_allele)
+
         super().__post_init__(**kwargs)
 
 
@@ -1445,6 +1358,7 @@ class EntitySynonym(Association):
     class_name: ClassVar[str] = "EntitySynonym"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.EntitySynonym
 
+    internal: Union[bool, Bool] = None
     subject: str = None
     object: Union[dict, Synonym] = None
     predicate: Union[str, "EntitySynonymTypeSet"] = None
@@ -1454,7 +1368,7 @@ class EntitySynonym(Association):
         if self._is_empty(self.object):
             self.MissingRequiredField("object")
         if not isinstance(self.object, Synonym):
-            self.object = Synonym()
+            self.object = Synonym(**as_dict(self.object))
 
         if self._is_empty(self.predicate):
             self.MissingRequiredField("predicate")
@@ -1469,7 +1383,7 @@ class EntitySynonym(Association):
 
 
 @dataclass
-class ExternalDatabaseLink(YAMLRoot):
+class ExternalDatabaseLink(AuditedObject):
     """
     Base relation that holds the identifier prefix, base url and url suffix to help in generating URLs in
     crossReferences.
@@ -1481,6 +1395,7 @@ class ExternalDatabaseLink(YAMLRoot):
     class_name: ClassVar[str] = "ExternalDatabaseLink"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.ExternalDatabaseLink
 
+    internal: Union[bool, Bool] = None
     prefix: str = None
     dbkey: Optional[str] = None
     url_prefix: Optional[str] = None
@@ -1513,7 +1428,7 @@ class ExternalDatabaseLink(YAMLRoot):
 
 
 @dataclass
-class Chromosome(YAMLRoot):
+class Chromosome(AuditedObject):
     """
     The ID of the landmark used to establish the coordinate system for the current feature.
     """
@@ -1525,6 +1440,7 @@ class Chromosome(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Chromosome
 
     curie: Union[str, ChromosomeCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -1536,7 +1452,7 @@ class Chromosome(YAMLRoot):
 
 
 @dataclass
-class Assembly(YAMLRoot):
+class Assembly(AuditedObject):
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ALLIANCE.Assembly
@@ -1545,6 +1461,7 @@ class Assembly(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Assembly
 
     curie: Union[str, AssemblyCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -1556,26 +1473,27 @@ class Assembly(YAMLRoot):
 
 
 @dataclass
-class GeneGenomicLocation(YAMLRoot):
+class GenomicLocation(AuditedObject):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ALLIANCE.GeneGenomicLocation
-    class_class_curie: ClassVar[str] = "alliance:GeneGenomicLocation"
-    class_name: ClassVar[str] = "GeneGenomicLocation"
-    class_model_uri: ClassVar[URIRef] = ALLIANCE.GeneGenomicLocation
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.GenomicLocation
+    class_class_curie: ClassVar[str] = "alliance:GenomicLocation"
+    class_name: ClassVar[str] = "GenomicLocation"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.GenomicLocation
 
-    subject: Union[str, VariantCurie] = None
+    internal: Union[bool, Bool] = None
+    subject: Union[str, GenomicEntityCurie] = None
     predicate: str = None
     object: Union[str, ChromosomeCurie] = None
-    has_assembly: Union[str, ChromosomeCurie] = None
+    has_assembly: Union[str, AssemblyCurie] = None
     start: Optional[str] = None
     end: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.subject):
             self.MissingRequiredField("subject")
-        if not isinstance(self.subject, VariantCurie):
-            self.subject = VariantCurie(self.subject)
+        if not isinstance(self.subject, GenomicEntityCurie):
+            self.subject = GenomicEntityCurie(self.subject)
 
         if self._is_empty(self.predicate):
             self.MissingRequiredField("predicate")
@@ -1589,8 +1507,8 @@ class GeneGenomicLocation(YAMLRoot):
 
         if self._is_empty(self.has_assembly):
             self.MissingRequiredField("has_assembly")
-        if not isinstance(self.has_assembly, ChromosomeCurie):
-            self.has_assembly = ChromosomeCurie(self.has_assembly)
+        if not isinstance(self.has_assembly, AssemblyCurie):
+            self.has_assembly = AssemblyCurie(self.has_assembly)
 
         if self.start is not None and not isinstance(self.start, str):
             self.start = str(self.start)
@@ -1611,9 +1529,8 @@ class Protein(GenomicEntity):
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Protein
 
     curie: Union[str, ProteinCurie] = None
+    internal: Union[bool, Bool] = None
     taxon: Union[str, NCBITaxonTermCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -1625,25 +1542,67 @@ class Protein(GenomicEntity):
 
 
 @dataclass
-class OntologyTerm(YAMLRoot):
+class Gene(GenomicEntity):
+    """
+    A DNA genomic entity from which one or more functional* RNA transcript molecules are transcribed, along with
+    cis-regulatory elements responsible for regulating expression (transcription) of the gene. * A functional RNA
+    molecule here can mean one that is directly responsible for the gene's function (e.g. catalysis, structure, etc.)
+    or one that is translated to produce a functional polypeptide/protein. A pseudogene may be considered a gene under
+    this definition, albeit no longer functional.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.Gene
+    class_class_curie: ClassVar[str] = "alliance:Gene"
+    class_name: ClassVar[str] = "Gene"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.Gene
+
+    curie: Union[str, GeneCurie] = None
+    internal: Union[bool, Bool] = None
+    taxon: Union[str, NCBITaxonTermCurie] = None
+    symbol: str = None
+    related_notes: Optional[Union[Union[dict, Note], List[Union[dict, Note]]]] = empty_list()
+    gene_type: Optional[Union[str, SOTermCurie]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, GeneCurie):
+            self.curie = GeneCurie(self.curie)
+
+        if self._is_empty(self.symbol):
+            self.MissingRequiredField("symbol")
+        if not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        self._normalize_inlined_as_dict(slot_name="related_notes", slot_type=Note, key_name="internal", keyed=False)
+
+        if self.gene_type is not None and not isinstance(self.gene_type, SOTermCurie):
+            self.gene_type = SOTermCurie(self.gene_type)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class OntologyTerm(AuditedObject):
     """
     A concept or class in an ontology, vocabulary or thesaurus. Note, ontology terms can be found in multiple
     ontologies (ie: mireoting). defining_slots helps define an alternative key for ontology terms.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/OntologyTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.OntologyTerm
+    class_class_curie: ClassVar[str] = "alliance:OntologyTerm"
     class_name: ClassVar[str] = "OntologyTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.OntologyTerm
 
     curie: Union[str, OntologyTermCurie] = None
+    internal: Union[bool, Bool] = None
     dbkey: Optional[str] = None
     name: Optional[str] = None
     definition: Optional[str] = None
     definition_urls: Optional[Union[str, List[str]]] = empty_list()
     type: Optional[Union[str, URIorCURIE]] = None
-    is_obsolete: Optional[Union[bool, Bool]] = None
     cross_references: Optional[Union[Dict[Union[str, CrossReferenceCurie], Union[dict, CrossReference]], List[Union[dict, CrossReference]]]] = empty_dict()
     synonyms: Optional[Union[Union[dict, Synonym], List[Union[dict, Synonym]]]] = empty_list()
     namespace: Optional[str] = None
@@ -1672,14 +1631,9 @@ class OntologyTerm(YAMLRoot):
         if self.type is not None and not isinstance(self.type, URIorCURIE):
             self.type = URIorCURIE(self.type)
 
-        if self.is_obsolete is not None and not isinstance(self.is_obsolete, Bool):
-            self.is_obsolete = Bool(self.is_obsolete)
-
         self._normalize_inlined_as_list(slot_name="cross_references", slot_type=CrossReference, key_name="curie", keyed=True)
 
-        if not isinstance(self.synonyms, list):
-            self.synonyms = [self.synonyms] if self.synonyms is not None else []
-        self.synonyms = [v if isinstance(v, Synonym) else Synonym(**as_dict(v)) for v in self.synonyms]
+        self._normalize_inlined_as_dict(slot_name="synonyms", slot_type=Synonym, key_name="internal", keyed=False)
 
         if self.namespace is not None and not isinstance(self.namespace, str):
             self.namespace = str(self.namespace)
@@ -1699,12 +1653,13 @@ class OntologyTerm(YAMLRoot):
 class DOTerm(OntologyTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/DOTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.DOTerm
+    class_class_curie: ClassVar[str] = "alliance:DOTerm"
     class_name: ClassVar[str] = "DOTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.DOTerm
 
     curie: Union[str, DOTermCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -1719,12 +1674,13 @@ class DOTerm(OntologyTerm):
 class ECOTerm(OntologyTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ECOTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.ECOTerm
+    class_class_curie: ClassVar[str] = "alliance:ECOTerm"
     class_name: ClassVar[str] = "ECOTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.ECOTerm
 
     curie: Union[str, ECOTermCurie] = None
+    internal: Union[bool, Bool] = None
     abbreviation: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -1743,12 +1699,13 @@ class ECOTerm(OntologyTerm):
 class NCBITaxonTerm(OntologyTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/NCBITaxonTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.NCBITaxonTerm
+    class_class_curie: ClassVar[str] = "alliance:NCBITaxonTerm"
     class_name: ClassVar[str] = "NCBITaxonTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.NCBITaxonTerm
 
     curie: Union[str, NCBITaxonTermCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -1763,12 +1720,13 @@ class NCBITaxonTerm(OntologyTerm):
 class FBCVTerm(OntologyTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/FBCVTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.FBCVTerm
+    class_class_curie: ClassVar[str] = "alliance:FBCVTerm"
     class_name: ClassVar[str] = "FBCVTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.FBCVTerm
 
     curie: Union[str, FBCVTermCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -1783,12 +1741,13 @@ class FBCVTerm(OntologyTerm):
 class GOTerm(OntologyTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/GOTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.GOTerm
+    class_class_curie: ClassVar[str] = "alliance:GOTerm"
     class_name: ClassVar[str] = "GOTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.GOTerm
 
     curie: Union[str, GOTermCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -1803,12 +1762,13 @@ class GOTerm(OntologyTerm):
 class ROTerm(OntologyTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ROTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.ROTerm
+    class_class_curie: ClassVar[str] = "alliance:ROTerm"
     class_name: ClassVar[str] = "ROTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.ROTerm
 
     curie: Union[str, ROTermCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -1823,12 +1783,13 @@ class ROTerm(OntologyTerm):
 class MITerm(OntologyTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/MITerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.MITerm
+    class_class_curie: ClassVar[str] = "alliance:MITerm"
     class_name: ClassVar[str] = "MITerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.MITerm
 
     curie: Union[str, MITermCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -1843,12 +1804,13 @@ class MITerm(OntologyTerm):
 class MMOTerm(OntologyTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/MMOTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.MMOTerm
+    class_class_curie: ClassVar[str] = "alliance:MMOTerm"
     class_name: ClassVar[str] = "MMOTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.MMOTerm
 
     curie: Union[str, MMOTermCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -1863,12 +1825,13 @@ class MMOTerm(OntologyTerm):
 class MMUSDVTerm(OntologyTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/MMUSDVTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.MMUSDVTerm
+    class_class_curie: ClassVar[str] = "alliance:MMUSDVTerm"
     class_name: ClassVar[str] = "MMUSDVTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.MMUSDVTerm
 
     curie: Union[str, MMUSDVTermCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -1883,12 +1846,13 @@ class MMUSDVTerm(OntologyTerm):
 class SOTerm(OntologyTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/SOTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.SOTerm
+    class_class_curie: ClassVar[str] = "alliance:SOTerm"
     class_name: ClassVar[str] = "SOTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.SOTerm
 
     curie: Union[str, SOTermCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -1900,26 +1864,49 @@ class SOTerm(OntologyTerm):
 
 
 @dataclass
+class XBEDTerm(OntologyTerm):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.XBEDTerm
+    class_class_curie: ClassVar[str] = "alliance:XBEDTerm"
+    class_name: ClassVar[str] = "XBEDTerm"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.XBEDTerm
+
+    curie: Union[str, XBEDTermCurie] = None
+    internal: Union[bool, Bool] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, XBEDTermCurie):
+            self.curie = XBEDTermCurie(self.curie)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class StageTerm(OntologyTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/StageTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.StageTerm
+    class_class_curie: ClassVar[str] = "alliance:StageTerm"
     class_name: ClassVar[str] = "StageTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.StageTerm
 
     curie: Union[str, StageTermCurie] = None
+    internal: Union[bool, Bool] = None
 
 @dataclass
 class FBDVTerm(StageTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/FBDVTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.FBDVTerm
+    class_class_curie: ClassVar[str] = "alliance:FBDVTerm"
     class_name: ClassVar[str] = "FBDVTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.FBDVTerm
 
     curie: Union[str, FBDVTermCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -1934,12 +1921,13 @@ class FBDVTerm(StageTerm):
 class WBLSTerm(StageTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/WBLSTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.WBLSTerm
+    class_class_curie: ClassVar[str] = "alliance:WBLSTerm"
     class_name: ClassVar[str] = "WBLSTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.WBLSTerm
 
     curie: Union[str, WBLSTermCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -1951,15 +1939,42 @@ class WBLSTerm(StageTerm):
 
 
 @dataclass
+class XBSTerm(StageTerm):
+    """
+    The Xenbase anatomy ontology XAO is home to Xenopus anatomy terms as well as Xenopus developmental life stage
+    terms, differentiated by namespace. The anatomy term class in LinkML will be named 'XBATerm' for Xenbase Anatomy
+    Term and life stage terms will be named 'XBSTerm' for Xenbase Stage Term.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.XBSTerm
+    class_class_curie: ClassVar[str] = "alliance:XBSTerm"
+    class_name: ClassVar[str] = "XBSTerm"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.XBSTerm
+
+    curie: Union[str, XBSTermCurie] = None
+    internal: Union[bool, Bool] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, XBSTermCurie):
+            self.curie = XBSTermCurie(self.curie)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class ZFSTerm(StageTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ZFSTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.ZFSTerm
+    class_class_curie: ClassVar[str] = "alliance:ZFSTerm"
     class_name: ClassVar[str] = "ZFSTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.ZFSTerm
 
     curie: Union[str, ZFSTermCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -1974,23 +1989,25 @@ class ZFSTerm(StageTerm):
 class ExperimentalConditionOntologyTerm(OntologyTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ExperimentalConditionOntologyTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.ExperimentalConditionOntologyTerm
+    class_class_curie: ClassVar[str] = "alliance:ExperimentalConditionOntologyTerm"
     class_name: ClassVar[str] = "ExperimentalConditionOntologyTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.ExperimentalConditionOntologyTerm
 
     curie: Union[str, ExperimentalConditionOntologyTermCurie] = None
+    internal: Union[bool, Bool] = None
 
 @dataclass
 class ZECOTerm(ExperimentalConditionOntologyTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ZECOTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.ZECOTerm
+    class_class_curie: ClassVar[str] = "alliance:ZECOTerm"
     class_name: ClassVar[str] = "ZECOTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.ZECOTerm
 
     curie: Union[str, ZECOTermCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -2005,12 +2022,13 @@ class ZECOTerm(ExperimentalConditionOntologyTerm):
 class XCOTerm(ExperimentalConditionOntologyTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/XCOTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.XCOTerm
+    class_class_curie: ClassVar[str] = "alliance:XCOTerm"
     class_name: ClassVar[str] = "XCOTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.XCOTerm
 
     curie: Union[str, XCOTermCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -2025,23 +2043,25 @@ class XCOTerm(ExperimentalConditionOntologyTerm):
 class AnatomicalTerm(OntologyTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/AnatomicalTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.AnatomicalTerm
+    class_class_curie: ClassVar[str] = "alliance:AnatomicalTerm"
     class_name: ClassVar[str] = "AnatomicalTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.AnatomicalTerm
 
     curie: Union[str, AnatomicalTermCurie] = None
+    internal: Union[bool, Bool] = None
 
 @dataclass
 class CLTerm(AnatomicalTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/CLTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.CLTerm
+    class_class_curie: ClassVar[str] = "alliance:CLTerm"
     class_name: ClassVar[str] = "CLTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.CLTerm
 
     curie: Union[str, CLTermCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -2056,12 +2076,13 @@ class CLTerm(AnatomicalTerm):
 class EMAPATerm(AnatomicalTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/EMAPATerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.EMAPATerm
+    class_class_curie: ClassVar[str] = "alliance:EMAPATerm"
     class_name: ClassVar[str] = "EMAPATerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.EMAPATerm
 
     curie: Union[str, EMAPATermCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -2076,12 +2097,13 @@ class EMAPATerm(AnatomicalTerm):
 class DAOTerm(AnatomicalTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/DAOTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.DAOTerm
+    class_class_curie: ClassVar[str] = "alliance:DAOTerm"
     class_name: ClassVar[str] = "DAOTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.DAOTerm
 
     curie: Union[str, DAOTermCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -2096,12 +2118,13 @@ class DAOTerm(AnatomicalTerm):
 class MATerm(AnatomicalTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/MATerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.MATerm
+    class_class_curie: ClassVar[str] = "alliance:MATerm"
     class_name: ClassVar[str] = "MATerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.MATerm
 
     curie: Union[str, MATermCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -2116,12 +2139,13 @@ class MATerm(AnatomicalTerm):
 class UBERONTerm(AnatomicalTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/UBERONTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.UBERONTerm
+    class_class_curie: ClassVar[str] = "alliance:UBERONTerm"
     class_name: ClassVar[str] = "UBERONTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.UBERONTerm
 
     curie: Union[str, UBERONTermCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -2136,12 +2160,13 @@ class UBERONTerm(AnatomicalTerm):
 class WBBTTerm(AnatomicalTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/WBBTTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.WBBTTerm
+    class_class_curie: ClassVar[str] = "alliance:WBBTTerm"
     class_name: ClassVar[str] = "WBBTTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.WBBTTerm
 
     curie: Union[str, WBBTTermCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -2153,15 +2178,42 @@ class WBBTTerm(AnatomicalTerm):
 
 
 @dataclass
+class XBATerm(AnatomicalTerm):
+    """
+    The Xenbase anatomy ontology XAO is home to Xenopus anatomy terms as well as Xenopus developmental life stage
+    terms, differentiated by namespace. The anatomy term class in LinkML will be named 'XBATerm' for Xenbase Anatomy
+    Term and life stage terms will be named 'XBSTerm' for Xenbase Stage Term.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.XBATerm
+    class_class_curie: ClassVar[str] = "alliance:XBATerm"
+    class_name: ClassVar[str] = "XBATerm"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.XBATerm
+
+    curie: Union[str, XBATermCurie] = None
+    internal: Union[bool, Bool] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, XBATermCurie):
+            self.curie = XBATermCurie(self.curie)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class ZFATerm(AnatomicalTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ZFATerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.ZFATerm
+    class_class_curie: ClassVar[str] = "alliance:ZFATerm"
     class_name: ClassVar[str] = "ZFATerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.ZFATerm
 
     curie: Union[str, ZFATermCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -2180,12 +2232,13 @@ class PhenotypeTerm(OntologyTerm):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/PhenotypeTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.PhenotypeTerm
+    class_class_curie: ClassVar[str] = "alliance:PhenotypeTerm"
     class_name: ClassVar[str] = "PhenotypeTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.PhenotypeTerm
 
     curie: Union[str, PhenotypeTermCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -2197,18 +2250,40 @@ class PhenotypeTerm(OntologyTerm):
 
 
 @dataclass
+class XPOTerm(PhenotypeTerm):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.XPOTerm
+    class_class_curie: ClassVar[str] = "alliance:XPOTerm"
+    class_name: ClassVar[str] = "XPOTerm"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.XPOTerm
+
+    curie: Union[str, XPOTermCurie] = None
+    internal: Union[bool, Bool] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, XPOTermCurie):
+            self.curie = XPOTermCurie(self.curie)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class ChemicalTerm(OntologyTerm):
     """
     An ontology term representing a chemical or molecule
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/ChemicalTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.ChemicalTerm
+    class_class_curie: ClassVar[str] = "alliance:ChemicalTerm"
     class_name: ClassVar[str] = "ChemicalTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.ChemicalTerm
 
     curie: Union[str, ChemicalTermCurie] = None
+    internal: Union[bool, Bool] = None
     inchi: Optional[str] = None
     inchi_key: Optional[str] = None
     iupac: Optional[str] = None
@@ -2238,12 +2313,13 @@ class ChemicalTerm(OntologyTerm):
 class CHEBITerm(ChemicalTerm):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/CHEBITerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.CHEBITerm
+    class_class_curie: ClassVar[str] = "alliance:CHEBITerm"
     class_name: ClassVar[str] = "CHEBITerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.CHEBITerm
 
     curie: Union[str, CHEBITermCurie] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -2255,23 +2331,40 @@ class CHEBITerm(ChemicalTerm):
 
 
 @dataclass
+class XSMOTerm(ChemicalTerm):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.XSMOTerm
+    class_class_curie: ClassVar[str] = "alliance:XSMOTerm"
+    class_name: ClassVar[str] = "XSMOTerm"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.XSMOTerm
+
+    curie: Union[str, XSMOTermCurie] = None
+    internal: Union[bool, Bool] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, XSMOTermCurie):
+            self.curie = XSMOTermCurie(self.curie)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class Molecule(ChemicalTerm):
     """
     Molecules as described by WormBase
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/ontologyTerm.yaml/Molecule")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.Molecule
+    class_class_curie: ClassVar[str] = "alliance:Molecule"
     class_name: ClassVar[str] = "Molecule"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Molecule
 
     curie: Union[str, MoleculeCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
-    table_key: Optional[int] = None
-    creation_date: Optional[Union[str, XSDDate]] = None
-    date_last_modified: Optional[Union[str, XSDDate]] = None
+    internal: Union[bool, Bool] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -2279,40 +2372,20 @@ class Molecule(ChemicalTerm):
         if not isinstance(self.curie, MoleculeCurie):
             self.curie = MoleculeCurie(self.curie)
 
-        if self._is_empty(self.created_by):
-            self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, PersonUniqueId):
-            self.created_by = PersonUniqueId(self.created_by)
-
-        if self._is_empty(self.modified_by):
-            self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, PersonUniqueId):
-            self.modified_by = PersonUniqueId(self.modified_by)
-
-        if self.table_key is not None and not isinstance(self.table_key, int):
-            self.table_key = int(self.table_key)
-
-        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
-            self.creation_date = XSDDate(self.creation_date)
-
-        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
-            self.date_last_modified = XSDDate(self.date_last_modified)
-
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class Resource(YAMLRoot):
+class Resource(AuditedObject):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/resource/Resource")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.Resource
+    class_class_curie: ClassVar[str] = "alliance:Resource"
     class_name: ClassVar[str] = "Resource"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Resource
 
     curie: Union[str, ResourceCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
+    internal: Union[bool, Bool] = None
     title: Optional[str] = None
     iso_abbreviation: Optional[str] = None
     medline_abbreviation: Optional[str] = None
@@ -2326,25 +2399,12 @@ class Resource(YAMLRoot):
     authors: Optional[Union[Union[dict, AuthorReference], List[Union[dict, AuthorReference]]]] = empty_list()
     editors: Optional[Union[Union[dict, AuthorReference], List[Union[dict, AuthorReference]]]] = empty_list()
     id: Optional[str] = None
-    table_key: Optional[int] = None
-    creation_date: Optional[Union[str, XSDDate]] = None
-    date_last_modified: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
             self.MissingRequiredField("curie")
         if not isinstance(self.curie, ResourceCurie):
             self.curie = ResourceCurie(self.curie)
-
-        if self._is_empty(self.created_by):
-            self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, PersonUniqueId):
-            self.created_by = PersonUniqueId(self.created_by)
-
-        if self._is_empty(self.modified_by):
-            self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, PersonUniqueId):
-            self.modified_by = PersonUniqueId(self.modified_by)
 
         if self.title is not None and not isinstance(self.title, str):
             self.title = str(self.title)
@@ -2373,34 +2433,20 @@ class Resource(YAMLRoot):
         if self.summary is not None and not isinstance(self.summary, str):
             self.summary = str(self.summary)
 
-        if not isinstance(self.synonyms, list):
-            self.synonyms = [self.synonyms] if self.synonyms is not None else []
-        self.synonyms = [v if isinstance(v, Synonym) else Synonym(**as_dict(v)) for v in self.synonyms]
+        self._normalize_inlined_as_dict(slot_name="synonyms", slot_type=Synonym, key_name="internal", keyed=False)
 
-        if not isinstance(self.authors, list):
-            self.authors = [self.authors] if self.authors is not None else []
-        self.authors = [v if isinstance(v, AuthorReference) else AuthorReference(**as_dict(v)) for v in self.authors]
+        self._normalize_inlined_as_dict(slot_name="authors", slot_type=AuthorReference, key_name="internal", keyed=False)
 
-        if not isinstance(self.editors, list):
-            self.editors = [self.editors] if self.editors is not None else []
-        self.editors = [v if isinstance(v, AuthorReference) else AuthorReference(**as_dict(v)) for v in self.editors]
+        self._normalize_inlined_as_dict(slot_name="editors", slot_type=AuthorReference, key_name="internal", keyed=False)
 
         if self.id is not None and not isinstance(self.id, str):
             self.id = str(self.id)
 
-        if self.table_key is not None and not isinstance(self.table_key, int):
-            self.table_key = int(self.table_key)
-
-        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
-            self.creation_date = XSDDate(self.creation_date)
-
-        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
-            self.date_last_modified = XSDDate(self.date_last_modified)
-
         super().__post_init__(**kwargs)
 
 
-class Agent(YAMLRoot):
+@dataclass
+class Agent(AuditedObject):
     """
     An individual, group, organization or project that provides information and/or materials.
     """
@@ -2411,7 +2457,9 @@ class Agent(YAMLRoot):
     class_name: ClassVar[str] = "Agent"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Agent
 
+    internal: Union[bool, Bool] = None
 
+@dataclass
 class Organization(Agent):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -2420,7 +2468,9 @@ class Organization(Agent):
     class_name: ClassVar[str] = "Organization"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Organization
 
+    internal: Union[bool, Bool] = None
 
+@dataclass
 class Laboratory(Organization):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -2429,7 +2479,9 @@ class Laboratory(Organization):
     class_name: ClassVar[str] = "Laboratory"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Laboratory
 
+    internal: Union[bool, Bool] = None
 
+@dataclass
 class Company(Organization):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -2438,6 +2490,7 @@ class Company(Organization):
     class_name: ClassVar[str] = "Company"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Company
 
+    internal: Union[bool, Bool] = None
 
 @dataclass
 class Person(Agent):
@@ -2449,6 +2502,7 @@ class Person(Agent):
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Person
 
     unique_id: Union[str, PersonUniqueId] = None
+    internal: Union[bool, Bool] = None
     last_name: Optional[str] = None
     middle_name: Optional[str] = None
     first_name: Optional[str] = None
@@ -2499,8 +2553,10 @@ class LoggedInPerson(Person):
     class_model_uri: ClassVar[URIRef] = ALLIANCE.LoggedInPerson
 
     unique_id: Union[str, LoggedInPersonUniqueId] = None
+    internal: Union[bool, Bool] = None
     okta_id: str = None
     okta_email: str = None
+    user_settings: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.unique_id):
@@ -2518,31 +2574,30 @@ class LoggedInPerson(Person):
         if not isinstance(self.okta_email, str):
             self.okta_email = str(self.okta_email)
 
+        if self.user_settings is not None and not isinstance(self.user_settings, str):
+            self.user_settings = str(self.user_settings)
+
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class Figure(YAMLRoot):
+class Figure(AuditedObject):
     """
     An entity representing a figure or table in a publication.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/Figure")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.Figure
+    class_class_curie: ClassVar[str] = "alliance:Figure"
     class_name: ClassVar[str] = "Figure"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Figure
 
     curie: Union[str, FigureCurie] = None
+    internal: Union[bool, Bool] = None
     single_reference: Union[str, ReferenceCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
     label: Optional[str] = None
     caption: Optional[str] = None
     secondary_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
-    table_key: Optional[int] = None
-    creation_date: Optional[Union[str, XSDDate]] = None
-    date_last_modified: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -2555,16 +2610,6 @@ class Figure(YAMLRoot):
         if not isinstance(self.single_reference, ReferenceCurie):
             self.single_reference = ReferenceCurie(self.single_reference)
 
-        if self._is_empty(self.created_by):
-            self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, PersonUniqueId):
-            self.created_by = PersonUniqueId(self.created_by)
-
-        if self._is_empty(self.modified_by):
-            self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, PersonUniqueId):
-            self.modified_by = PersonUniqueId(self.modified_by)
-
         if self.label is not None and not isinstance(self.label, str):
             self.label = str(self.label)
 
@@ -2575,59 +2620,48 @@ class Figure(YAMLRoot):
             self.secondary_identifiers = [self.secondary_identifiers] if self.secondary_identifiers is not None else []
         self.secondary_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.secondary_identifiers]
 
-        if self.table_key is not None and not isinstance(self.table_key, int):
-            self.table_key = int(self.table_key)
-
-        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
-            self.creation_date = XSDDate(self.creation_date)
-
-        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
-            self.date_last_modified = XSDDate(self.date_last_modified)
-
         super().__post_init__(**kwargs)
 
 
-class File(YAMLRoot):
+@dataclass
+class File(AuditedObject):
     """
     A dummy object.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/File")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.File
+    class_class_curie: ClassVar[str] = "alliance:File"
     class_name: ClassVar[str] = "File"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.File
 
+    internal: Union[bool, Bool] = None
 
 @dataclass
-class Image(YAMLRoot):
+class Image(AuditedObject):
     """
     The set of files and metadata that constitute an image.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/Image")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.Image
+    class_class_curie: ClassVar[str] = "alliance:Image"
     class_name: ClassVar[str] = "Image"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Image
 
     curie: Union[str, ImageCurie] = None
+    internal: Union[bool, Bool] = None
     associated_with_figure: Union[str, FigureCurie] = None
     width: int = None
     height: int = None
     image_file: Union[dict, File] = None
     image_medium_file: Union[dict, File] = None
     image_thumbnail_file: Union[dict, File] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
     cropped_from: Optional[Union[str, ImageCurie]] = None
     image_x_origin: Optional[int] = None
     image_y_origin: Optional[int] = None
     video_still: Optional[Union[bool, Bool]] = None
     secondary_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
-    table_key: Optional[int] = None
-    creation_date: Optional[Union[str, XSDDate]] = None
-    date_last_modified: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -2653,27 +2687,17 @@ class Image(YAMLRoot):
         if self._is_empty(self.image_file):
             self.MissingRequiredField("image_file")
         if not isinstance(self.image_file, File):
-            self.image_file = File()
+            self.image_file = File(**as_dict(self.image_file))
 
         if self._is_empty(self.image_medium_file):
             self.MissingRequiredField("image_medium_file")
         if not isinstance(self.image_medium_file, File):
-            self.image_medium_file = File()
+            self.image_medium_file = File(**as_dict(self.image_medium_file))
 
         if self._is_empty(self.image_thumbnail_file):
             self.MissingRequiredField("image_thumbnail_file")
         if not isinstance(self.image_thumbnail_file, File):
-            self.image_thumbnail_file = File()
-
-        if self._is_empty(self.created_by):
-            self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, PersonUniqueId):
-            self.created_by = PersonUniqueId(self.created_by)
-
-        if self._is_empty(self.modified_by):
-            self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, PersonUniqueId):
-            self.modified_by = PersonUniqueId(self.modified_by)
+            self.image_thumbnail_file = File(**as_dict(self.image_thumbnail_file))
 
         if self.cropped_from is not None and not isinstance(self.cropped_from, ImageCurie):
             self.cropped_from = ImageCurie(self.cropped_from)
@@ -2691,41 +2715,28 @@ class Image(YAMLRoot):
             self.secondary_identifiers = [self.secondary_identifiers] if self.secondary_identifiers is not None else []
         self.secondary_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.secondary_identifiers]
 
-        if self.table_key is not None and not isinstance(self.table_key, int):
-            self.table_key = int(self.table_key)
-
-        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
-            self.creation_date = XSDDate(self.creation_date)
-
-        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
-            self.date_last_modified = XSDDate(self.date_last_modified)
-
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class ImagePane(YAMLRoot):
+class ImagePane(AuditedObject):
     """
     Part of an Image that is relevant to some annotation. An annotation may reference many panes of an Image.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_persistent_schema/src/schema/image.yaml/ImagePane")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.ImagePane
+    class_class_curie: ClassVar[str] = "alliance:ImagePane"
     class_name: ClassVar[str] = "ImagePane"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.ImagePane
 
+    internal: Union[bool, Bool] = None
     from_image: Union[str, ImageCurie] = None
     width: int = None
     height: int = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
     label: Optional[str] = None
     image_x_origin: Optional[int] = None
     image_y_origin: Optional[int] = None
-    table_key: Optional[int] = None
-    creation_date: Optional[Union[str, XSDDate]] = None
-    date_last_modified: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.from_image):
@@ -2743,16 +2754,6 @@ class ImagePane(YAMLRoot):
         if not isinstance(self.height, int):
             self.height = int(self.height)
 
-        if self._is_empty(self.created_by):
-            self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, PersonUniqueId):
-            self.created_by = PersonUniqueId(self.created_by)
-
-        if self._is_empty(self.modified_by):
-            self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, PersonUniqueId):
-            self.modified_by = PersonUniqueId(self.modified_by)
-
         if self.label is not None and not isinstance(self.label, str):
             self.label = str(self.label)
 
@@ -2762,40 +2763,26 @@ class ImagePane(YAMLRoot):
         if self.image_y_origin is not None and not isinstance(self.image_y_origin, int):
             self.image_y_origin = int(self.image_y_origin)
 
-        if self.table_key is not None and not isinstance(self.table_key, int):
-            self.table_key = int(self.table_key)
-
-        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
-            self.creation_date = XSDDate(self.creation_date)
-
-        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
-            self.date_last_modified = XSDDate(self.date_last_modified)
-
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class VocabularyTerm(YAMLRoot):
+class VocabularyTerm(AuditedObject):
     """
     A concept or class in a simple vocabulary.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/VocabularyTerm")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.VocabularyTerm
+    class_class_curie: ClassVar[str] = "alliance:VocabularyTerm"
     class_name: ClassVar[str] = "VocabularyTerm"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.VocabularyTerm
 
     name: Union[str, VocabularyTermName] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
+    internal: Union[bool, Bool] = None
     abbreviation: Optional[str] = None
     definition: Optional[str] = None
-    is_obsolete: Optional[Union[bool, Bool]] = None
     text_synonyms: Optional[Union[str, List[str]]] = empty_list()
-    table_key: Optional[int] = None
-    creation_date: Optional[Union[str, XSDDate]] = None
-    date_last_modified: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.name):
@@ -2803,62 +2790,35 @@ class VocabularyTerm(YAMLRoot):
         if not isinstance(self.name, VocabularyTermName):
             self.name = VocabularyTermName(self.name)
 
-        if self._is_empty(self.created_by):
-            self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, PersonUniqueId):
-            self.created_by = PersonUniqueId(self.created_by)
-
-        if self._is_empty(self.modified_by):
-            self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, PersonUniqueId):
-            self.modified_by = PersonUniqueId(self.modified_by)
-
         if self.abbreviation is not None and not isinstance(self.abbreviation, str):
             self.abbreviation = str(self.abbreviation)
 
         if self.definition is not None and not isinstance(self.definition, str):
             self.definition = str(self.definition)
 
-        if self.is_obsolete is not None and not isinstance(self.is_obsolete, Bool):
-            self.is_obsolete = Bool(self.is_obsolete)
-
         if not isinstance(self.text_synonyms, list):
             self.text_synonyms = [self.text_synonyms] if self.text_synonyms is not None else []
         self.text_synonyms = [v if isinstance(v, str) else str(v) for v in self.text_synonyms]
-
-        if self.table_key is not None and not isinstance(self.table_key, int):
-            self.table_key = int(self.table_key)
-
-        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
-            self.creation_date = XSDDate(self.creation_date)
-
-        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
-            self.date_last_modified = XSDDate(self.date_last_modified)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class Vocabulary(YAMLRoot):
+class Vocabulary(AuditedObject):
     """
     A set of VocabularyTerm objects.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/controlledVocabulary.yaml/Vocabulary")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.Vocabulary
+    class_class_curie: ClassVar[str] = "alliance:Vocabulary"
     class_name: ClassVar[str] = "Vocabulary"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Vocabulary
 
     name: Union[str, VocabularyName] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
+    internal: Union[bool, Bool] = None
     vocabulary_description: Optional[str] = None
-    is_obsolete: Optional[Union[bool, Bool]] = None
     member_terms: Optional[Union[Union[str, VocabularyTermName], List[Union[str, VocabularyTermName]]]] = empty_list()
-    table_key: Optional[int] = None
-    creation_date: Optional[Union[str, XSDDate]] = None
-    date_last_modified: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.name):
@@ -2866,34 +2826,12 @@ class Vocabulary(YAMLRoot):
         if not isinstance(self.name, VocabularyName):
             self.name = VocabularyName(self.name)
 
-        if self._is_empty(self.created_by):
-            self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, PersonUniqueId):
-            self.created_by = PersonUniqueId(self.created_by)
-
-        if self._is_empty(self.modified_by):
-            self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, PersonUniqueId):
-            self.modified_by = PersonUniqueId(self.modified_by)
-
         if self.vocabulary_description is not None and not isinstance(self.vocabulary_description, str):
             self.vocabulary_description = str(self.vocabulary_description)
-
-        if self.is_obsolete is not None and not isinstance(self.is_obsolete, Bool):
-            self.is_obsolete = Bool(self.is_obsolete)
 
         if not isinstance(self.member_terms, list):
             self.member_terms = [self.member_terms] if self.member_terms is not None else []
         self.member_terms = [v if isinstance(v, VocabularyTermName) else VocabularyTermName(v) for v in self.member_terms]
-
-        if self.table_key is not None and not isinstance(self.table_key, int):
-            self.table_key = int(self.table_key)
-
-        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
-            self.creation_date = XSDDate(self.creation_date)
-
-        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
-            self.date_last_modified = XSDDate(self.date_last_modified)
 
         super().__post_init__(**kwargs)
 
@@ -2906,17 +2844,17 @@ class Allele(GenomicEntity):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/Allele")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.Allele
+    class_class_curie: ClassVar[str] = "alliance:Allele"
     class_name: ClassVar[str] = "Allele"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Allele
 
     curie: Union[str, AlleleCurie] = None
+    internal: Union[bool, Bool] = None
     taxon: Union[str, NCBITaxonTermCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
+    name: str = None
     symbol: Optional[str] = None
-    contains_constructs: Optional[Union[Union[dict, "Construct"], List[Union[dict, "Construct"]]]] = empty_list()
+    contains_constructs: Optional[Union[Union[str, ConstructCurie], List[Union[str, ConstructCurie]]]] = empty_list()
     molecular_mutations: Optional[Union[str, List[str]]] = empty_list()
     functional_impact: Optional[str] = None
     generation_method: Optional[str] = None
@@ -2936,7 +2874,6 @@ class Allele(GenomicEntity):
     is_extinct: Optional[Union[bool, Bool]] = None
     sequencing_status: Optional[Union[str, VocabularyTermName]] = None
     synonyms: Optional[Union[Union[dict, Synonym], List[Union[dict, Synonym]]]] = empty_list()
-    embryonic_cell_lines: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -2944,12 +2881,17 @@ class Allele(GenomicEntity):
         if not isinstance(self.curie, AlleleCurie):
             self.curie = AlleleCurie(self.curie)
 
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
+
         if self.symbol is not None and not isinstance(self.symbol, str):
             self.symbol = str(self.symbol)
 
         if not isinstance(self.contains_constructs, list):
             self.contains_constructs = [self.contains_constructs] if self.contains_constructs is not None else []
-        self.contains_constructs = [v if isinstance(v, Construct) else Construct(**as_dict(v)) for v in self.contains_constructs]
+        self.contains_constructs = [v if isinstance(v, ConstructCurie) else ConstructCurie(v) for v in self.contains_constructs]
 
         if not isinstance(self.molecular_mutations, list):
             self.molecular_mutations = [self.molecular_mutations] if self.molecular_mutations is not None else []
@@ -2961,23 +2903,19 @@ class Allele(GenomicEntity):
         if self.generation_method is not None and not isinstance(self.generation_method, str):
             self.generation_method = str(self.generation_method)
 
-        self._normalize_inlined_as_dict(slot_name="associated_references", slot_type=AssociatedReference, key_name="reference_type", keyed=False)
+        self._normalize_inlined_as_dict(slot_name="associated_references", slot_type=AssociatedReference, key_name="internal", keyed=False)
 
-        self._normalize_inlined_as_dict(slot_name="related_notes", slot_type=Note, key_name="free_text", keyed=False)
+        self._normalize_inlined_as_dict(slot_name="related_notes", slot_type=Note, key_name="internal", keyed=False)
 
         if self.germline_transmission_status is not None and not isinstance(self.germline_transmission_status, VocabularyTermName):
             self.germline_transmission_status = VocabularyTermName(self.germline_transmission_status)
 
         if self.parent_cell_line is not None and not isinstance(self.parent_cell_line, CellLine):
-            self.parent_cell_line = CellLine()
+            self.parent_cell_line = CellLine(**as_dict(self.parent_cell_line))
 
-        if not isinstance(self.mutant_cell_lines, list):
-            self.mutant_cell_lines = [self.mutant_cell_lines] if self.mutant_cell_lines is not None else []
-        self.mutant_cell_lines = [v if isinstance(v, CellLine) else CellLine(**as_dict(v)) for v in self.mutant_cell_lines]
+        self._normalize_inlined_as_dict(slot_name="mutant_cell_lines", slot_type=CellLine, key_name="internal", keyed=False)
 
-        if not isinstance(self.embryonic_stem_cell_lines, list):
-            self.embryonic_stem_cell_lines = [self.embryonic_stem_cell_lines] if self.embryonic_stem_cell_lines is not None else []
-        self.embryonic_stem_cell_lines = [v if isinstance(v, CellLine) else CellLine(**as_dict(v)) for v in self.embryonic_stem_cell_lines]
+        self._normalize_inlined_as_dict(slot_name="embryonic_stem_cell_lines", slot_type=CellLine, key_name="internal", keyed=False)
 
         if self.images is not None and not isinstance(self.images, ImageCurie):
             self.images = ImageCurie(self.images)
@@ -3007,12 +2945,7 @@ class Allele(GenomicEntity):
         if self.sequencing_status is not None and not isinstance(self.sequencing_status, VocabularyTermName):
             self.sequencing_status = VocabularyTermName(self.sequencing_status)
 
-        if not isinstance(self.synonyms, list):
-            self.synonyms = [self.synonyms] if self.synonyms is not None else []
-        self.synonyms = [v if isinstance(v, Synonym) else Synonym(**as_dict(v)) for v in self.synonyms]
-
-        if self.embryonic_cell_lines is not None and not isinstance(self.embryonic_cell_lines, str):
-            self.embryonic_cell_lines = str(self.embryonic_cell_lines)
+        self._normalize_inlined_as_dict(slot_name="synonyms", slot_type=Synonym, key_name="internal", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -3024,22 +2957,18 @@ class AlleleGenomicEntityAssociation(Association):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AlleleGenomicEntityAssociation")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.AlleleGenomicEntityAssociation
+    class_class_curie: ClassVar[str] = "alliance:AlleleGenomicEntityAssociation"
     class_name: ClassVar[str] = "AlleleGenomicEntityAssociation"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.AlleleGenomicEntityAssociation
 
+    internal: Union[bool, Bool] = None
     subject: Union[str, AlleleCurie] = None
     predicate: Union[str, ROTermCurie] = None
     object: Union[str, GenomicEntityCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
     single_reference: Optional[Union[str, ReferenceCurie]] = None
     evidence_code: Optional[Union[str, ECOTermCurie]] = None
     related_note: Optional[Union[dict, Note]] = None
-    table_key: Optional[int] = None
-    creation_date: Optional[Union[str, XSDDate]] = None
-    date_last_modified: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.subject):
@@ -3057,16 +2986,6 @@ class AlleleGenomicEntityAssociation(Association):
         if not isinstance(self.object, GenomicEntityCurie):
             self.object = GenomicEntityCurie(self.object)
 
-        if self._is_empty(self.created_by):
-            self.MissingRequiredField("created_by")
-        if not isinstance(self.created_by, PersonUniqueId):
-            self.created_by = PersonUniqueId(self.created_by)
-
-        if self._is_empty(self.modified_by):
-            self.MissingRequiredField("modified_by")
-        if not isinstance(self.modified_by, PersonUniqueId):
-            self.modified_by = PersonUniqueId(self.modified_by)
-
         if self.single_reference is not None and not isinstance(self.single_reference, ReferenceCurie):
             self.single_reference = ReferenceCurie(self.single_reference)
 
@@ -3075,15 +2994,6 @@ class AlleleGenomicEntityAssociation(Association):
 
         if self.related_note is not None and not isinstance(self.related_note, Note):
             self.related_note = Note(**as_dict(self.related_note))
-
-        if self.table_key is not None and not isinstance(self.table_key, int):
-            self.table_key = int(self.table_key)
-
-        if self.creation_date is not None and not isinstance(self.creation_date, XSDDate):
-            self.creation_date = XSDDate(self.creation_date)
-
-        if self.date_last_modified is not None and not isinstance(self.date_last_modified, XSDDate):
-            self.date_last_modified = XSDDate(self.date_last_modified)
 
         super().__post_init__(**kwargs)
 
@@ -3095,15 +3005,14 @@ class AlleleGeneAssociation(AlleleGenomicEntityAssociation):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AlleleGeneAssociation")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.AlleleGeneAssociation
+    class_class_curie: ClassVar[str] = "alliance:AlleleGeneAssociation"
     class_name: ClassVar[str] = "AlleleGeneAssociation"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.AlleleGeneAssociation
 
+    internal: Union[bool, Bool] = None
     subject: Union[str, AlleleCurie] = None
     predicate: Union[str, ROTermCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
     object: Union[str, GeneCurie] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -3122,15 +3031,14 @@ class AlleleTranscriptAssociation(AlleleGenomicEntityAssociation):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AlleleTranscriptAssociation")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.AlleleTranscriptAssociation
+    class_class_curie: ClassVar[str] = "alliance:AlleleTranscriptAssociation"
     class_name: ClassVar[str] = "AlleleTranscriptAssociation"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.AlleleTranscriptAssociation
 
+    internal: Union[bool, Bool] = None
     subject: Union[str, AlleleCurie] = None
     predicate: Union[str, ROTermCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
     object: Union[str, TranscriptCurie] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -3149,15 +3057,14 @@ class AlleleProteinAssociation(AlleleGenomicEntityAssociation):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AlleleProteinAssociation")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.AlleleProteinAssociation
+    class_class_curie: ClassVar[str] = "alliance:AlleleProteinAssociation"
     class_name: ClassVar[str] = "AlleleProteinAssociation"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.AlleleProteinAssociation
 
+    internal: Union[bool, Bool] = None
     subject: Union[str, AlleleCurie] = None
     predicate: Union[str, ROTermCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
     object: Union[str, ProteinCurie] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -3177,14 +3084,13 @@ class AlleleVariantAssociation(AlleleGenomicEntityAssociation):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AlleleVariantAssociation")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.AlleleVariantAssociation
+    class_class_curie: ClassVar[str] = "alliance:AlleleVariantAssociation"
     class_name: ClassVar[str] = "AlleleVariantAssociation"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.AlleleVariantAssociation
 
+    internal: Union[bool, Bool] = None
     predicate: Union[str, ROTermCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
     subject: Union[str, AlleleCurie] = None
     object: Union[str, VariantCurie] = None
 
@@ -3203,17 +3109,18 @@ class AlleleVariantAssociation(AlleleGenomicEntityAssociation):
 
 
 @dataclass
-class AssociatedReference(YAMLRoot):
+class AssociatedReference(AuditedObject):
     """
     Describes the relation between a reference and an object
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/AssociatedReference")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.AssociatedReference
+    class_class_curie: ClassVar[str] = "alliance:AssociatedReference"
     class_name: ClassVar[str] = "AssociatedReference"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.AssociatedReference
 
+    internal: Union[bool, Bool] = None
     reference_type: Union[str, VocabularyTermName] = None
     single_reference: Optional[Union[str, ReferenceCurie]] = None
 
@@ -3229,40 +3136,189 @@ class AssociatedReference(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-class Construct(YAMLRoot):
-    """
-    Dummy construct class
-    """
+@dataclass
+class Construct(GenomicEntity):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/Construct")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.Construct
+    class_class_curie: ClassVar[str] = "alliance:Construct"
     class_name: ClassVar[str] = "Construct"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Construct
 
+    curie: Union[str, ConstructCurie] = None
+    internal: Union[bool, Bool] = None
+    taxon: Union[str, NCBITaxonTermCurie] = None
+    name: str = None
+    construct_components: Optional[Union[Union[str, GenomicEntityCurie], List[Union[str, GenomicEntityCurie]]]] = empty_list()
+    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
 
-class CellLine(YAMLRoot):
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, ConstructCurie):
+            self.curie = ConstructCurie(self.curie)
+
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if not isinstance(self.construct_components, list):
+            self.construct_components = [self.construct_components] if self.construct_components is not None else []
+        self.construct_components = [v if isinstance(v, GenomicEntityCurie) else GenomicEntityCurie(v) for v in self.construct_components]
+
+        if not isinstance(self.references, list):
+            self.references = [self.references] if self.references is not None else []
+        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class CellLine(AuditedObject):
     """
     Dummy cell line class
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/CellLine")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.CellLine
+    class_class_curie: ClassVar[str] = "alliance:CellLine"
     class_name: ClassVar[str] = "CellLine"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.CellLine
 
+    internal: Union[bool, Bool] = None
 
-class SequenceTargetingReagent(YAMLRoot):
+@dataclass
+class SequenceTargetingReagent(GenomicEntity):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.SequenceTargetingReagent
+    class_class_curie: ClassVar[str] = "alliance:SequenceTargetingReagent"
+    class_name: ClassVar[str] = "SequenceTargetingReagent"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.SequenceTargetingReagent
+
+    curie: Union[str, SequenceTargetingReagentCurie] = None
+    internal: Union[bool, Bool] = None
+    taxon: Union[str, NCBITaxonTermCurie] = None
+    name: str = None
+    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, SequenceTargetingReagentCurie):
+            self.curie = SequenceTargetingReagentCurie(self.curie)
+
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if not isinstance(self.references, list):
+            self.references = [self.references] if self.references is not None else []
+        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class SequenceTargetingReagentToGeneAssociation(Association):
     """
-    Dummy sequence targeting reagent class
+    the relationship between a Sequence Targeting Reagent and its targeted genes.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/allele/SequenceTargetingReagent")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "SequenceTargetingReagent"
-    class_model_uri: ClassVar[URIRef] = ALLIANCE.SequenceTargetingReagent
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.SequenceTargetingReagentToGeneAssociation
+    class_class_curie: ClassVar[str] = "alliance:SequenceTargetingReagentToGeneAssociation"
+    class_name: ClassVar[str] = "SequenceTargetingReagentToGeneAssociation"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.SequenceTargetingReagentToGeneAssociation
+
+    internal: Union[bool, Bool] = None
+    predicate: Union[str, "SqtrRelationEnum"] = None
+    subject: Union[str, SequenceTargetingReagentCurie] = None
+    object: Union[str, GeneCurie] = None
+    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.predicate):
+            self.MissingRequiredField("predicate")
+        if not isinstance(self.predicate, SqtrRelationEnum):
+            self.predicate = SqtrRelationEnum(self.predicate)
+
+        if self._is_empty(self.subject):
+            self.MissingRequiredField("subject")
+        if not isinstance(self.subject, SequenceTargetingReagentCurie):
+            self.subject = SequenceTargetingReagentCurie(self.subject)
+
+        if self._is_empty(self.object):
+            self.MissingRequiredField("object")
+        if not isinstance(self.object, GeneCurie):
+            self.object = GeneCurie(self.object)
+
+        if not isinstance(self.references, list):
+            self.references = [self.references] if self.references is not None else []
+        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class ConstructComponentAssociation(Association):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.ConstructComponentAssociation
+    class_class_curie: ClassVar[str] = "alliance:ConstructComponentAssociation"
+    class_name: ClassVar[str] = "ConstructComponentAssociation"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.ConstructComponentAssociation
+
+    internal: Union[bool, Bool] = None
+    predicate: Union[str, "ConstructComponentRelationEnum"] = None
+    subject: Union[str, ConstructCurie] = None
+    object: Union[str, ConstructComponentCurie] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.predicate):
+            self.MissingRequiredField("predicate")
+        if not isinstance(self.predicate, ConstructComponentRelationEnum):
+            self.predicate = ConstructComponentRelationEnum(self.predicate)
+
+        if self._is_empty(self.subject):
+            self.MissingRequiredField("subject")
+        if not isinstance(self.subject, ConstructCurie):
+            self.subject = ConstructCurie(self.subject)
+
+        if self._is_empty(self.object):
+            self.MissingRequiredField("object")
+        if not isinstance(self.object, ConstructComponentCurie):
+            self.object = ConstructComponentCurie(self.object)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class ConstructComponent(GenomicEntity):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.ConstructComponent
+    class_class_curie: ClassVar[str] = "alliance:ConstructComponent"
+    class_name: ClassVar[str] = "ConstructComponent"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.ConstructComponent
+
+    curie: Union[str, ConstructComponentCurie] = None
+    internal: Union[bool, Bool] = None
+    taxon: Union[str, NCBITaxonTermCurie] = None
+    symbol: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, ConstructComponentCurie):
+            self.curie = ConstructComponentCurie(self.curie)
+
+        if self.symbol is not None and not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        super().__post_init__(**kwargs)
 
 
 @dataclass
@@ -3273,15 +3329,14 @@ class Variant(GenomicEntity):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/Variant")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.Variant
+    class_class_curie: ClassVar[str] = "alliance:Variant"
     class_name: ClassVar[str] = "Variant"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.Variant
 
     curie: Union[str, VariantCurie] = None
+    internal: Union[bool, Bool] = None
     taxon: Union[str, NCBITaxonTermCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
     variant_type: Union[str, SOTermCurie] = None
     variant_genome_locations: Union[Union[dict, "VariantGenomeLocation"], List[Union[dict, "VariantGenomeLocation"]]] = None
     related_notes: Optional[Union[Union[dict, Note], List[Union[dict, Note]]]] = empty_list()
@@ -3304,22 +3359,18 @@ class Variant(GenomicEntity):
 
         if self._is_empty(self.variant_genome_locations):
             self.MissingRequiredField("variant_genome_locations")
-        if not isinstance(self.variant_genome_locations, list):
-            self.variant_genome_locations = [self.variant_genome_locations] if self.variant_genome_locations is not None else []
-        self.variant_genome_locations = [v if isinstance(v, VariantGenomeLocation) else VariantGenomeLocation(**as_dict(v)) for v in self.variant_genome_locations]
+        self._normalize_inlined_as_dict(slot_name="variant_genome_locations", slot_type=VariantGenomeLocation, key_name="internal", keyed=False)
 
-        self._normalize_inlined_as_dict(slot_name="related_notes", slot_type=Note, key_name="free_text", keyed=False)
+        self._normalize_inlined_as_dict(slot_name="related_notes", slot_type=Note, key_name="internal", keyed=False)
 
         if self.source_general_consequence is not None and not isinstance(self.source_general_consequence, SOTermCurie):
             self.source_general_consequence = SOTermCurie(self.source_general_consequence)
 
-        self._normalize_inlined_as_dict(slot_name="variant_polypeptide_locations", slot_type=VariantPolypeptideLocation, key_name="polypeptide", keyed=False)
+        self._normalize_inlined_as_dict(slot_name="variant_polypeptide_locations", slot_type=VariantPolypeptideLocation, key_name="internal", keyed=False)
 
-        if not isinstance(self.variant_transcript_locations, list):
-            self.variant_transcript_locations = [self.variant_transcript_locations] if self.variant_transcript_locations is not None else []
-        self.variant_transcript_locations = [v if isinstance(v, VariantTranscriptLocation) else VariantTranscriptLocation(**as_dict(v)) for v in self.variant_transcript_locations]
+        self._normalize_inlined_as_dict(slot_name="variant_transcript_locations", slot_type=VariantTranscriptLocation, key_name="internal", keyed=False)
 
-        self._normalize_inlined_as_dict(slot_name="source_variant_locations", slot_type=SourceVariantLocation, key_name="variant_locations", keyed=False)
+        self._normalize_inlined_as_dict(slot_name="source_variant_locations", slot_type=SourceVariantLocation, key_name="internal", keyed=False)
 
         if self.variant_status is not None and not isinstance(self.variant_status, VariantStatusEnum):
             self.variant_status = VariantStatusEnum(self.variant_status)
@@ -3328,26 +3379,25 @@ class Variant(GenomicEntity):
 
 
 @dataclass
-class SourceVariantLocation(YAMLRoot):
+class SourceVariantLocation(AuditedObject):
     """
     Links a paper to the variant locations described in that paper
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/SourceVariantLocation")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.SourceVariantLocation
+    class_class_curie: ClassVar[str] = "alliance:SourceVariantLocation"
     class_name: ClassVar[str] = "SourceVariantLocation"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.SourceVariantLocation
 
+    internal: Union[bool, Bool] = None
     variant_locations: Union[Union[dict, "VariantLocation"], List[Union[dict, "VariantLocation"]]] = None
     single_reference: Union[str, ReferenceCurie] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.variant_locations):
             self.MissingRequiredField("variant_locations")
-        if not isinstance(self.variant_locations, list):
-            self.variant_locations = [self.variant_locations] if self.variant_locations is not None else []
-        self.variant_locations = [v if isinstance(v, VariantLocation) else VariantLocation(**as_dict(v)) for v in self.variant_locations]
+        self._normalize_inlined_as_dict(slot_name="variant_locations", slot_type=VariantLocation, key_name="internal", keyed=False)
 
         if self._is_empty(self.single_reference):
             self.MissingRequiredField("single_reference")
@@ -3358,7 +3408,7 @@ class SourceVariantLocation(YAMLRoot):
 
 
 @dataclass
-class VariantLocation(YAMLRoot):
+class VariantLocation(AuditedObject):
     """
     Base class linking a variant to a position on a genomic entity and the resulting consequence to the sequence
     and/or function of that genomic entity. Slots are provided for data taken from a source publication or data load
@@ -3370,11 +3420,12 @@ class VariantLocation(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/VariantLocation")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.VariantLocation
+    class_class_curie: ClassVar[str] = "alliance:VariantLocation"
     class_name: ClassVar[str] = "VariantLocation"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.VariantLocation
 
+    internal: Union[bool, Bool] = None
     evidence_code: Optional[Union[str, ECOTermCurie]] = None
     single_reference: Optional[Union[str, ReferenceCurie]] = None
     start_position: Optional[int] = None
@@ -3417,11 +3468,12 @@ class VariantGenomeLocation(VariantLocation):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/VariantGenomeLocation")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.VariantGenomeLocation
+    class_class_curie: ClassVar[str] = "alliance:VariantGenomeLocation"
     class_name: ClassVar[str] = "VariantGenomeLocation"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.VariantGenomeLocation
 
+    internal: Union[bool, Bool] = None
     assembly: Optional[Union[str, AssemblyCurie]] = None
     chromosome: Optional[Union[str, ChromosomeCurie]] = None
 
@@ -3443,11 +3495,12 @@ class VariantTranscriptLocation(VariantLocation):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/VariantTranscriptLocation")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.VariantTranscriptLocation
+    class_class_curie: ClassVar[str] = "alliance:VariantTranscriptLocation"
     class_name: ClassVar[str] = "VariantTranscriptLocation"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.VariantTranscriptLocation
 
+    internal: Union[bool, Bool] = None
     transcript: Optional[Union[str, TranscriptCurie]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -3465,11 +3518,12 @@ class VariantPolypeptideLocation(VariantLocation):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/src/schema/variation/VariantPolypeptideLocation")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.VariantPolypeptideLocation
+    class_class_curie: ClassVar[str] = "alliance:VariantPolypeptideLocation"
     class_name: ClassVar[str] = "VariantPolypeptideLocation"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.VariantPolypeptideLocation
 
+    internal: Union[bool, Bool] = None
     polypeptide: Union[str, TranscriptCurie] = None
     associated_transcripts: Optional[Union[Union[str, TranscriptCurie], List[Union[str, TranscriptCurie]]]] = empty_list()
 
@@ -3493,20 +3547,20 @@ class AffectedGenomicModel(GenomicEntity):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/affectedGenomicModel/AffectedGenomicModel")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.AffectedGenomicModel
+    class_class_curie: ClassVar[str] = "alliance:AffectedGenomicModel"
     class_name: ClassVar[str] = "AffectedGenomicModel"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.AffectedGenomicModel
 
     curie: Union[str, AffectedGenomicModelCurie] = None
+    internal: Union[bool, Bool] = None
     taxon: Union[str, NCBITaxonTermCurie] = None
-    created_by: Union[str, PersonUniqueId] = None
-    modified_by: Union[str, PersonUniqueId] = None
-    subtype: Optional[Union[str, "SubtypeValues"]] = None
+    subtype: Union[str, "SubtypeValues"] = None
     components: Optional[Union[Union[dict, "AffectedGenomicModelComponent"], List[Union[dict, "AffectedGenomicModelComponent"]]]] = empty_list()
-    sequence_targeting_reagents: Optional[Union[Union[dict, SequenceTargetingReagent], List[Union[dict, SequenceTargetingReagent]]]] = empty_list()
+    sequence_targeting_reagents: Optional[Union[Union[str, SequenceTargetingReagentCurie], List[Union[str, SequenceTargetingReagentCurie]]]] = empty_list()
     parental_populations: Optional[Union[str, URIorCURIE]] = None
     data_provider: Optional[str] = None
+    references: Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.curie):
@@ -3514,16 +3568,16 @@ class AffectedGenomicModel(GenomicEntity):
         if not isinstance(self.curie, AffectedGenomicModelCurie):
             self.curie = AffectedGenomicModelCurie(self.curie)
 
-        if self.subtype is not None and not isinstance(self.subtype, SubtypeValues):
+        if self._is_empty(self.subtype):
+            self.MissingRequiredField("subtype")
+        if not isinstance(self.subtype, SubtypeValues):
             self.subtype = SubtypeValues(self.subtype)
 
-        if not isinstance(self.components, list):
-            self.components = [self.components] if self.components is not None else []
-        self.components = [v if isinstance(v, AffectedGenomicModelComponent) else AffectedGenomicModelComponent(**as_dict(v)) for v in self.components]
+        self._normalize_inlined_as_dict(slot_name="components", slot_type=AffectedGenomicModelComponent, key_name="internal", keyed=False)
 
         if not isinstance(self.sequence_targeting_reagents, list):
             self.sequence_targeting_reagents = [self.sequence_targeting_reagents] if self.sequence_targeting_reagents is not None else []
-        self.sequence_targeting_reagents = [v if isinstance(v, SequenceTargetingReagent) else SequenceTargetingReagent(**as_dict(v)) for v in self.sequence_targeting_reagents]
+        self.sequence_targeting_reagents = [v if isinstance(v, SequenceTargetingReagentCurie) else SequenceTargetingReagentCurie(v) for v in self.sequence_targeting_reagents]
 
         if self.parental_populations is not None and not isinstance(self.parental_populations, URIorCURIE):
             self.parental_populations = URIorCURIE(self.parental_populations)
@@ -3531,21 +3585,26 @@ class AffectedGenomicModel(GenomicEntity):
         if self.data_provider is not None and not isinstance(self.data_provider, str):
             self.data_provider = str(self.data_provider)
 
+        if not isinstance(self.references, list):
+            self.references = [self.references] if self.references is not None else []
+        self.references = [v if isinstance(v, ReferenceCurie) else ReferenceCurie(v) for v in self.references]
+
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class AffectedGenomicModelComponent(YAMLRoot):
+class AffectedGenomicModelComponent(AuditedObject):
     """
     Allele that affects the model and its zygosity
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://github.com/alliance-genome/agr_curation_schema/affectedGenomicModel/AffectedGenomicModelComponent")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.AffectedGenomicModelComponent
+    class_class_curie: ClassVar[str] = "alliance:AffectedGenomicModelComponent"
     class_name: ClassVar[str] = "AffectedGenomicModelComponent"
     class_model_uri: ClassVar[URIRef] = ALLIANCE.AffectedGenomicModelComponent
 
+    internal: Union[bool, Bool] = None
     has_allele: Optional[Union[str, AlleleCurie]] = None
     zygosity: Optional[Union[str, "ZygosityValues"]] = None
 
@@ -3746,6 +3805,27 @@ class EntitySynonymTypeSet(EnumDefinitionImpl):
         name="EntitySynonymTypeSet",
     )
 
+class ConstructComponentRelationEnum(EnumDefinitionImpl):
+
+    expresses = PermissibleValue(text="expresses",
+                                         meaning=RO["0002292"])
+    is_regulated_by = PermissibleValue(text="is_regulated_by",
+                                                     meaning=RO["0002334"])
+    targets = PermissibleValue(text="targets",
+                                     meaning=RO["0002436"])
+
+    _defn = EnumDefinition(
+        name="ConstructComponentRelationEnum",
+    )
+
+class SqtrRelationEnum(EnumDefinitionImpl):
+
+    targets = PermissibleValue(text="targets")
+
+    _defn = EnumDefinition(
+        name="SqtrRelationEnum",
+    )
+
 class VariantStatusEnum(EnumDefinitionImpl):
 
     public = PermissibleValue(text="public")
@@ -3759,6 +3839,7 @@ class SubtypeValues(EnumDefinitionImpl):
 
     strain = PermissibleValue(text="strain")
     genotype = PermissibleValue(text="genotype")
+    fish = PermissibleValue(text="fish")
 
     _defn = EnumDefinition(
         name="SubtypeValues",
@@ -3840,6 +3921,12 @@ slots.inferred_gene = Slot(uri=ALLIANCE.inferred_gene, name="inferred_gene", cur
 slots.inferred_allele = Slot(uri=ALLIANCE.inferred_allele, name="inferred_allele", curie=ALLIANCE.curie('inferred_allele'),
                    model_uri=ALLIANCE.inferred_allele, domain=None, range=Optional[Union[str, AlleleCurie]])
 
+slots.asserted_gene = Slot(uri=ALLIANCE.asserted_gene, name="asserted_gene", curie=ALLIANCE.curie('asserted_gene'),
+                   model_uri=ALLIANCE.asserted_gene, domain=None, range=Optional[Union[str, GeneCurie]])
+
+slots.asserted_allele = Slot(uri=ALLIANCE.asserted_allele, name="asserted_allele", curie=ALLIANCE.curie('asserted_allele'),
+                   model_uri=ALLIANCE.asserted_allele, domain=None, range=Optional[Union[str, AlleleCurie]])
+
 slots.disease_qualifiers = Slot(uri=ALLIANCE.disease_qualifiers, name="disease_qualifiers", curie=ALLIANCE.curie('disease_qualifiers'),
                    model_uri=ALLIANCE.disease_qualifiers, domain=DiseaseAnnotation, range=Optional[Union[Union[str, VocabularyTermName], List[Union[str, VocabularyTermName]]]])
 
@@ -3867,128 +3954,86 @@ slots.with = Slot(uri=ALLIANCE.with, name="with", curie=ALLIANCE.curie('with'),
 slots.handle = Slot(uri=ALLIANCE.handle, name="handle", curie=ALLIANCE.curie('handle'),
                    model_uri=ALLIANCE.handle, domain=None, range=Optional[str])
 
-slots.has_condition = Slot(uri=ALLIANCE.has_condition, name="has_condition", curie=ALLIANCE.curie('has_condition'),
-                   model_uri=ALLIANCE.has_condition, domain=Entity, range=Optional[Union[Union[dict, ExperimentalCondition], List[Union[dict, ExperimentalCondition]]]])
-
-slots.is_condition_in = Slot(uri=ALLIANCE.is_condition_in, name="is_condition_in", curie=ALLIANCE.curie('is_condition_in'),
-                   model_uri=ALLIANCE.is_condition_in, domain=ExperimentalCondition, range=Optional[Union[Union[dict, "Entity"], List[Union[dict, "Entity"]]]])
-
-slots.induced_by = Slot(uri=ALLIANCE.induced_by, name="induced_by", curie=ALLIANCE.curie('induced_by'),
-                   model_uri=ALLIANCE.induced_by, domain=Entity, range=Optional[Union[Union[dict, ExperimentalCondition], List[Union[dict, ExperimentalCondition]]]])
-
-slots.induces = Slot(uri=ALLIANCE.induces, name="induces", curie=ALLIANCE.curie('induces'),
-                   model_uri=ALLIANCE.induces, domain=ExperimentalCondition, range=Optional[Union[Union[dict, "Entity"], List[Union[dict, "Entity"]]]])
-
-slots.ameliorated_by = Slot(uri=ALLIANCE.ameliorated_by, name="ameliorated_by", curie=ALLIANCE.curie('ameliorated_by'),
-                   model_uri=ALLIANCE.ameliorated_by, domain=Entity, range=Optional[Union[Union[dict, ExperimentalCondition], List[Union[dict, ExperimentalCondition]]]])
-
-slots.ameliorates = Slot(uri=ALLIANCE.ameliorates, name="ameliorates", curie=ALLIANCE.curie('ameliorates'),
-                   model_uri=ALLIANCE.ameliorates, domain=ExperimentalCondition, range=Optional[Union[Union[dict, "Entity"], List[Union[dict, "Entity"]]]])
-
-slots.exacerbated_by = Slot(uri=ALLIANCE.exacerbated_by, name="exacerbated_by", curie=ALLIANCE.curie('exacerbated_by'),
-                   model_uri=ALLIANCE.exacerbated_by, domain=Entity, range=Optional[Union[Union[dict, ExperimentalCondition], List[Union[dict, ExperimentalCondition]]]])
-
-slots.exacerbates = Slot(uri=ALLIANCE.exacerbates, name="exacerbates", curie=ALLIANCE.curie('exacerbates'),
-                   model_uri=ALLIANCE.exacerbates, domain=ExperimentalCondition, range=Optional[Union[Union[dict, "Entity"], List[Union[dict, "Entity"]]]])
-
-slots.reference_id = Slot(uri="str(uriorcurie)", name="reference_id", curie=None,
+slots.reference_id = Slot(uri=ALLIANCE.reference_id, name="reference_id", curie=ALLIANCE.curie('reference_id'),
                    model_uri=ALLIANCE.reference_id, domain=None, range=int)
 
-slots.mesh_detail_id = Slot(uri="str(uriorcurie)", name="mesh_detail_id", curie=None,
+slots.mesh_detail_id = Slot(uri=ALLIANCE.mesh_detail_id, name="mesh_detail_id", curie=ALLIANCE.curie('mesh_detail_id'),
                    model_uri=ALLIANCE.mesh_detail_id, domain=MeshDetail, range=int)
 
-slots.resource_id = Slot(uri="str(uriorcurie)", name="resource_id", curie=None,
+slots.resource_id = Slot(uri=ALLIANCE.resource_id, name="resource_id", curie=ALLIANCE.curie('resource_id'),
                    model_uri=ALLIANCE.resource_id, domain=Reference, range=Optional[int])
 
-slots.heading_term = Slot(uri="str(uriorcurie)", name="heading_term", curie=None,
+slots.heading_term = Slot(uri=ALLIANCE.heading_term, name="heading_term", curie=ALLIANCE.curie('heading_term'),
                    model_uri=ALLIANCE.heading_term, domain=MeshDetail, range=str)
 
-slots.qualifier_term = Slot(uri="str(uriorcurie)", name="qualifier_term", curie=None,
+slots.qualifier_term = Slot(uri=ALLIANCE.qualifier_term, name="qualifier_term", curie=ALLIANCE.curie('qualifier_term'),
                    model_uri=ALLIANCE.qualifier_term, domain=MeshDetail, range=Optional[str])
 
-slots.pubmed_type = Slot(uri="str(uriorcurie)", name="pubmed_type", curie=None,
+slots.pubmed_type = Slot(uri=ALLIANCE.pubmed_type, name="pubmed_type", curie=ALLIANCE.curie('pubmed_type'),
                    model_uri=ALLIANCE.pubmed_type, domain=Reference, range=Optional[Union[Union[str, "PubmedTypeEnum"], List[Union[str, "PubmedTypeEnum"]]]])
 
-slots.date_published = Slot(uri="str(uriorcurie)", name="date_published", curie=None,
+slots.date_published = Slot(uri=ALLIANCE.date_published, name="date_published", curie=ALLIANCE.curie('date_published'),
                    model_uri=ALLIANCE.date_published, domain=None, range=Optional[str])
 
-slots.date_created = Slot(uri="str(uriorcurie)", name="date_created", curie=None,
-                   model_uri=ALLIANCE.date_created, domain=None, range=Optional[Union[str, XSDDate]])
-
-slots.date_updated = Slot(uri="str(uriorcurie)", name="date_updated", curie=None,
-                   model_uri=ALLIANCE.date_updated, domain=None, range=Optional[Union[str, XSDDate]])
-
-slots.date_arrived_in_pubmed = Slot(uri="str(uriorcurie)", name="date_arrived_in_pubmed", curie=None,
+slots.date_arrived_in_pubmed = Slot(uri=ALLIANCE.date_arrived_in_pubmed, name="date_arrived_in_pubmed", curie=ALLIANCE.curie('date_arrived_in_pubmed'),
                    model_uri=ALLIANCE.date_arrived_in_pubmed, domain=Reference, range=Optional[Union[str, List[str]]])
 
-slots.date_last_modified_in_pubmed = Slot(uri="str(uriorcurie)", name="date_last_modified_in_pubmed", curie=None,
+slots.date_last_modified_in_pubmed = Slot(uri=ALLIANCE.date_last_modified_in_pubmed, name="date_last_modified_in_pubmed", curie=ALLIANCE.curie('date_last_modified_in_pubmed'),
                    model_uri=ALLIANCE.date_last_modified_in_pubmed, domain=Reference, range=Optional[str])
 
-slots.issue_date = Slot(uri="str(uriorcurie)", name="issue_date", curie=None,
-                   model_uri=ALLIANCE.issue_date, domain=None, range=Optional[str])
-
-slots.open_access = Slot(uri="str(uriorcurie)", name="open_access", curie=None,
+slots.open_access = Slot(uri=ALLIANCE.open_access, name="open_access", curie=ALLIANCE.curie('open_access'),
                    model_uri=ALLIANCE.open_access, domain=Reference, range=Optional[Union[bool, Bool]])
 
-slots.pages = Slot(uri="str(uriorcurie)", name="pages", curie=None,
-                   model_uri=ALLIANCE.pages, domain=None, range=Optional[str])
+slots.page_range = Slot(uri=ALLIANCE.page_range, name="page_range", curie=ALLIANCE.curie('page_range'),
+                   model_uri=ALLIANCE.page_range, domain=None, range=Optional[str])
 
-slots.plain_language_abstract = Slot(uri="str(uriorcurie)", name="plain_language_abstract", curie=None,
+slots.plain_language_abstract = Slot(uri=ALLIANCE.plain_language_abstract, name="plain_language_abstract", curie=ALLIANCE.curie('plain_language_abstract'),
                    model_uri=ALLIANCE.plain_language_abstract, domain=Reference, range=Optional[str])
 
-slots.pubmed_abstract_languages = Slot(uri="str(uriorcurie)", name="pubmed_abstract_languages", curie=None,
+slots.pubmed_abstract_languages = Slot(uri=ALLIANCE.pubmed_abstract_languages, name="pubmed_abstract_languages", curie=ALLIANCE.curie('pubmed_abstract_languages'),
                    model_uri=ALLIANCE.pubmed_abstract_languages, domain=Reference, range=Optional[Union[str, List[str]]])
 
-slots.pubmed_publication_status = Slot(uri="str(uriorcurie)", name="pubmed_publication_status", curie=None,
+slots.pubmed_publication_status = Slot(uri=ALLIANCE.pubmed_publication_status, name="pubmed_publication_status", curie=ALLIANCE.curie('pubmed_publication_status'),
                    model_uri=ALLIANCE.pubmed_publication_status, domain=Reference, range=Optional[Union[str, "PubmedPublicationStatusEnum"]])
 
-slots.abstract = Slot(uri="str(uriorcurie)", name="abstract", curie=None,
+slots.abstract = Slot(uri=ALLIANCE.abstract, name="abstract", curie=ALLIANCE.curie('abstract'),
                    model_uri=ALLIANCE.abstract, domain=Reference, range=Optional[str])
 
-slots.citation = Slot(uri="str(uriorcurie)", name="citation", curie=None,
-                   model_uri=ALLIANCE.citation, domain=Reference, range=Optional[str])
-
-slots.issue_name = Slot(uri="str(uriorcurie)", name="issue_name", curie=None,
+slots.issue_name = Slot(uri=ALLIANCE.issue_name, name="issue_name", curie=ALLIANCE.curie('issue_name'),
                    model_uri=ALLIANCE.issue_name, domain=Reference, range=Optional[str])
 
-slots.category = Slot(uri="str(uriorcurie)", name="category", curie=None,
+slots.category = Slot(uri=ALLIANCE.category, name="category", curie=ALLIANCE.curie('category'),
                    model_uri=ALLIANCE.category, domain=Reference, range=Optional[Union[str, "ReferenceCategoryEnum"]])
 
-slots.keywords = Slot(uri="str(uriorcurie)", name="keywords", curie=None,
+slots.keywords = Slot(uri=ALLIANCE.keywords, name="keywords", curie=ALLIANCE.curie('keywords'),
                    model_uri=ALLIANCE.keywords, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.language = Slot(uri="str(uriorcurie)", name="language", curie=None,
+slots.language = Slot(uri=ALLIANCE.language, name="language", curie=ALLIANCE.curie('language'),
                    model_uri=ALLIANCE.language, domain=Reference, range=Optional[str])
 
-slots.merged_into_id = Slot(uri="str(uriorcurie)", name="merged_into_id", curie=None,
+slots.merged_into_id = Slot(uri=ALLIANCE.merged_into_id, name="merged_into_id", curie=ALLIANCE.curie('merged_into_id'),
                    model_uri=ALLIANCE.merged_into_id, domain=Reference, range=Optional[Union[str, URIorCURIE]])
 
-slots.summary = Slot(uri="str(uriorcurie)", name="summary", curie=None,
-                   model_uri=ALLIANCE.summary, domain=Reference, range=Optional[str])
-
-slots.copyright_date = Slot(uri="str(uriorcurie)", name="copyright_date", curie=None,
-                   model_uri=ALLIANCE.copyright_date, domain=Reference, range=Optional[Union[str, XSDDate]])
-
-slots.authors = Slot(uri="str(uriorcurie)", name="authors", curie=None,
+slots.authors = Slot(uri=ALLIANCE.authors, name="authors", curie=ALLIANCE.curie('authors'),
                    model_uri=ALLIANCE.authors, domain=Reference, range=Optional[Union[Union[dict, AuthorReference], List[Union[dict, AuthorReference]]]])
 
-slots.corresponding_author = Slot(uri="str(uriorcurie)", name="corresponding_author", curie=None,
-                   model_uri=ALLIANCE.corresponding_author, domain=Reference, range=Optional[Union[str, ReferenceCurie]])
+slots.corresponding_author = Slot(uri=ALLIANCE.corresponding_author, name="corresponding_author", curie=ALLIANCE.curie('corresponding_author'),
+                   model_uri=ALLIANCE.corresponding_author, domain=AuthorReference, range=Optional[Union[bool, Bool]])
 
-slots.initials = Slot(uri="str(uriorcurie)", name="initials", curie=None,
-                   model_uri=ALLIANCE.initials, domain=Reference, range=Optional[Union[str, ReferenceCurie]])
+slots.first_author = Slot(uri=ALLIANCE.first_author, name="first_author", curie=ALLIANCE.curie('first_author'),
+                   model_uri=ALLIANCE.first_author, domain=AuthorReference, range=Optional[Union[bool, Bool]])
 
-slots.title = Slot(uri="str(uriorcurie)", name="title", curie=None,
+slots.title = Slot(uri=ALLIANCE.title, name="title", curie=ALLIANCE.curie('title'),
                    model_uri=ALLIANCE.title, domain=Reference, range=Optional[str])
 
-slots.volume = Slot(uri="str(uriorcurie)", name="volume", curie=None,
+slots.volume = Slot(uri=ALLIANCE.volume, name="volume", curie=ALLIANCE.curie('volume'),
                    model_uri=ALLIANCE.volume, domain=Reference, range=Optional[str])
 
-slots.publisher = Slot(uri="str(uriorcurie)", name="publisher", curie=None,
+slots.publisher = Slot(uri=ALLIANCE.publisher, name="publisher", curie=ALLIANCE.curie('publisher'),
                    model_uri=ALLIANCE.publisher, domain=Reference, range=Optional[str])
 
-slots.address = Slot(uri="str(uriorcurie)", name="address", curie=None,
-                   model_uri=ALLIANCE.address, domain=None, range=Optional[str])
+slots.synonym = Slot(uri=ALLIANCE.synonym, name="synonym", curie=ALLIANCE.curie('synonym'),
+                   model_uri=ALLIANCE.synonym, domain=None, range=Optional[str])
 
 slots.start = Slot(uri=ALLIANCE.start, name="start", curie=ALLIANCE.curie('start'),
                    model_uri=ALLIANCE.start, domain=None, range=Optional[str])
@@ -3997,7 +4042,7 @@ slots.end = Slot(uri=ALLIANCE.end, name="end", curie=ALLIANCE.curie('end'),
                    model_uri=ALLIANCE.end, domain=None, range=Optional[str])
 
 slots.has_assembly = Slot(uri=ALLIANCE.has_assembly, name="has_assembly", curie=ALLIANCE.curie('has_assembly'),
-                   model_uri=ALLIANCE.has_assembly, domain=GenomicEntity, range=Union[str, ChromosomeCurie])
+                   model_uri=ALLIANCE.has_assembly, domain=GenomicLocation, range=Union[str, AssemblyCurie])
 
 slots.prefix = Slot(uri=ALLIANCE.prefix, name="prefix", curie=ALLIANCE.curie('prefix'),
                    model_uri=ALLIANCE.prefix, domain=None, range=str)
@@ -4036,7 +4081,7 @@ slots.note_type = Slot(uri=ALLIANCE.note_type, name="note_type", curie=ALLIANCE.
                    model_uri=ALLIANCE.note_type, domain=None, range=Optional[Union[str, VocabularyTermName]])
 
 slots.internal = Slot(uri=ALLIANCE.internal, name="internal", curie=ALLIANCE.curie('internal'),
-                   model_uri=ALLIANCE.internal, domain=None, range=Optional[Union[bool, Bool]])
+                   model_uri=ALLIANCE.internal, domain=None, range=Union[bool, Bool])
 
 slots.related_notes = Slot(uri=ALLIANCE.related_notes, name="related_notes", curie=ALLIANCE.curie('related_notes'),
                    model_uri=ALLIANCE.related_notes, domain=None, range=Optional[Union[Union[dict, Note], List[Union[dict, Note]]]])
@@ -4077,32 +4122,23 @@ slots.taxon = Slot(uri=ALLIANCE.taxon, name="taxon", curie=ALLIANCE.curie('taxon
 slots.secondary_identifiers = Slot(uri=ALLIANCE.secondary_identifiers, name="secondary_identifiers", curie=ALLIANCE.curie('secondary_identifiers'),
                    model_uri=ALLIANCE.secondary_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]])
 
-slots.gene_synopsis = Slot(uri=ALLIANCE.gene_synopsis, name="gene_synopsis", curie=ALLIANCE.curie('gene_synopsis'),
-                   model_uri=ALLIANCE.gene_synopsis, domain=None, range=Optional[str])
-
-slots.gene_synopsis_URL = Slot(uri=ALLIANCE.gene_synopsis_URL, name="gene_synopsis_URL", curie=ALLIANCE.curie('gene_synopsis_URL'),
-                   model_uri=ALLIANCE.gene_synopsis_URL, domain=None, range=Optional[str])
-
-slots.automated_gene_description = Slot(uri=ALLIANCE.automated_gene_description, name="automated_gene_description", curie=ALLIANCE.curie('automated_gene_description'),
-                   model_uri=ALLIANCE.automated_gene_description, domain=None, range=Optional[str])
-
 slots.genomic_locations = Slot(uri=ALLIANCE.genomic_locations, name="genomic_locations", curie=ALLIANCE.curie('genomic_locations'),
-                   model_uri=ALLIANCE.genomic_locations, domain=GenomicEntity, range=Optional[Union[Union[dict, "GeneGenomicLocation"], List[Union[dict, "GeneGenomicLocation"]]]])
+                   model_uri=ALLIANCE.genomic_locations, domain=GenomicEntity, range=Optional[Union[Union[dict, "GenomicLocation"], List[Union[dict, "GenomicLocation"]]]])
 
 slots.table_key = Slot(uri=ALLIANCE.table_key, name="table_key", curie=ALLIANCE.curie('table_key'),
                    model_uri=ALLIANCE.table_key, domain=None, range=Optional[int])
 
-slots.creation_date = Slot(uri=ALLIANCE.creation_date, name="creation_date", curie=ALLIANCE.curie('creation_date'),
-                   model_uri=ALLIANCE.creation_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.date_created = Slot(uri=ALLIANCE.date_created, name="date_created", curie=ALLIANCE.curie('date_created'),
+                   model_uri=ALLIANCE.date_created, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.date_last_modified = Slot(uri=ALLIANCE.date_last_modified, name="date_last_modified", curie=ALLIANCE.curie('date_last_modified'),
-                   model_uri=ALLIANCE.date_last_modified, domain=None, range=Optional[Union[str, XSDDate]])
+slots.date_updated = Slot(uri=ALLIANCE.date_updated, name="date_updated", curie=ALLIANCE.curie('date_updated'),
+                   model_uri=ALLIANCE.date_updated, domain=None, range=Optional[Union[str, XSDDate]])
 
 slots.created_by = Slot(uri=ALLIANCE.created_by, name="created_by", curie=ALLIANCE.curie('created_by'),
-                   model_uri=ALLIANCE.created_by, domain=None, range=Union[str, PersonUniqueId])
+                   model_uri=ALLIANCE.created_by, domain=AuditedObject, range=Optional[Union[str, PersonUniqueId]])
 
-slots.modified_by = Slot(uri=ALLIANCE.modified_by, name="modified_by", curie=ALLIANCE.curie('modified_by'),
-                   model_uri=ALLIANCE.modified_by, domain=None, range=Union[str, PersonUniqueId])
+slots.updated_by = Slot(uri=ALLIANCE.updated_by, name="updated_by", curie=ALLIANCE.curie('updated_by'),
+                   model_uri=ALLIANCE.updated_by, domain=AuditedObject, range=Optional[Union[str, PersonUniqueId]])
 
 slots.release = Slot(uri=ALLIANCE.release, name="release", curie=ALLIANCE.curie('release'),
                    model_uri=ALLIANCE.release, domain=None, range=Optional[str])
@@ -4140,9 +4176,6 @@ slots.qualifiers = Slot(uri=ALLIANCE.qualifiers, name="qualifiers", curie=ALLIAN
 slots.type = Slot(uri=ALLIANCE.type, name="type", curie=ALLIANCE.curie('type'),
                    model_uri=ALLIANCE.type, domain=None, range=Optional[Union[str, URIorCURIE]])
 
-slots.gene_type = Slot(uri=ALLIANCE.gene_type, name="gene_type", curie=ALLIANCE.curie('gene_type'),
-                   model_uri=ALLIANCE.gene_type, domain=Gene, range=Optional[Union[str, SOTermCurie]])
-
 slots.references = Slot(uri=ALLIANCE.references, name="references", curie=ALLIANCE.curie('references'),
                    model_uri=ALLIANCE.references, domain=None, range=Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]])
 
@@ -4152,8 +4185,8 @@ slots.single_reference = Slot(uri=ALLIANCE.single_reference, name="single_refere
 slots.original_reference = Slot(uri=ALLIANCE.original_reference, name="original_reference", curie=ALLIANCE.curie('original_reference'),
                    model_uri=ALLIANCE.original_reference, domain=None, range=Optional[Union[str, ReferenceCurie]])
 
-slots.is_obsolete = Slot(uri=ALLIANCE.is_obsolete, name="is_obsolete", curie=ALLIANCE.curie('is_obsolete'),
-                   model_uri=ALLIANCE.is_obsolete, domain=None, range=Optional[Union[bool, Bool]])
+slots.obsolete = Slot(uri=ALLIANCE.obsolete, name="obsolete", curie=ALLIANCE.curie('obsolete'),
+                   model_uri=ALLIANCE.obsolete, domain=None, range=Optional[Union[bool, Bool]])
 
 slots.abbreviation = Slot(uri=ALLIANCE.abbreviation, name="abbreviation", curie=ALLIANCE.curie('abbreviation'),
                    model_uri=ALLIANCE.abbreviation, domain=None, range=Optional[str])
@@ -4176,6 +4209,12 @@ slots.evidence_codes = Slot(uri=ALLIANCE.evidence_codes, name="evidence_codes", 
 slots.evidence_code = Slot(uri=ALLIANCE.evidence_code, name="evidence_code", curie=ALLIANCE.curie('evidence_code'),
                    model_uri=ALLIANCE.evidence_code, domain=None, range=Optional[Union[str, ECOTermCurie]])
 
+slots.cron_schedule = Slot(uri=ALLIANCE.cron_schedule, name="cron_schedule", curie=ALLIANCE.curie('cron_schedule'),
+                   model_uri=ALLIANCE.cron_schedule, domain=None, range=Optional[str])
+
+slots.schedule_active = Slot(uri=ALLIANCE.schedule_active, name="schedule_active", curie=ALLIANCE.curie('schedule_active'),
+                   model_uri=ALLIANCE.schedule_active, domain=None, range=Optional[Union[bool, Bool]])
+
 slots.subject = Slot(uri=ALLIANCE.subject, name="subject", curie=ALLIANCE.curie('subject'),
                    model_uri=ALLIANCE.subject, domain=None, range=str)
 
@@ -4188,49 +4227,61 @@ slots.predicate = Slot(uri=ALLIANCE.predicate, name="predicate", curie=ALLIANCE.
 slots.related_to = Slot(uri=ALLIANCE.related_to, name="related_to", curie=ALLIANCE.curie('related_to'),
                    model_uri=ALLIANCE.related_to, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.definition = Slot(uri="str(uriorcurie)", name="definition", curie=None,
+slots.gene_type = Slot(uri=ALLIANCE.gene_type, name="gene_type", curie=ALLIANCE.curie('gene_type'),
+                   model_uri=ALLIANCE.gene_type, domain=Gene, range=Optional[Union[str, SOTermCurie]])
+
+slots.definition = Slot(uri=ALLIANCE.definition, name="definition", curie=ALLIANCE.curie('definition'),
                    model_uri=ALLIANCE.definition, domain=None, range=Optional[str])
 
-slots.display_synonym = Slot(uri="str(uriorcurie)", name="display_synonym", curie=None,
+slots.display_synonym = Slot(uri=ALLIANCE.display_synonym, name="display_synonym", curie=ALLIANCE.curie('display_synonym'),
                    model_uri=ALLIANCE.display_synonym, domain=None, range=Optional[str])
 
-slots.namespace = Slot(uri="str(uriorcurie)", name="namespace", curie=None,
+slots.namespace = Slot(uri=ALLIANCE.namespace, name="namespace", curie=ALLIANCE.curie('namespace'),
                    model_uri=ALLIANCE.namespace, domain=None, range=Optional[str])
 
-slots.subsets = Slot(uri="str(uriorcurie)", name="subsets", curie=None,
+slots.subsets = Slot(uri=ALLIANCE.subsets, name="subsets", curie=ALLIANCE.curie('subsets'),
                    model_uri=ALLIANCE.subsets, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.definition_urls = Slot(uri="str(uriorcurie)", name="definition_urls", curie=None,
+slots.definition_urls = Slot(uri=ALLIANCE.definition_urls, name="definition_urls", curie=ALLIANCE.curie('definition_urls'),
                    model_uri=ALLIANCE.definition_urls, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.inchi = Slot(uri="str(uriorcurie)", name="inchi", curie=None,
+slots.inchi = Slot(uri=ALLIANCE.inchi, name="inchi", curie=ALLIANCE.curie('inchi'),
                    model_uri=ALLIANCE.inchi, domain=Molecule, range=Optional[str])
 
-slots.inchi_key = Slot(uri="str(uriorcurie)", name="inchi_key", curie=None,
+slots.inchi_key = Slot(uri=ALLIANCE.inchi_key, name="inchi_key", curie=ALLIANCE.curie('inchi_key'),
                    model_uri=ALLIANCE.inchi_key, domain=Molecule, range=Optional[str])
 
-slots.iupac = Slot(uri="str(uriorcurie)", name="iupac", curie=None,
+slots.iupac = Slot(uri=ALLIANCE.iupac, name="iupac", curie=ALLIANCE.curie('iupac'),
                    model_uri=ALLIANCE.iupac, domain=Molecule, range=Optional[str])
 
-slots.formula = Slot(uri="str(uriorcurie)", name="formula", curie=None,
+slots.formula = Slot(uri=ALLIANCE.formula, name="formula", curie=ALLIANCE.curie('formula'),
                    model_uri=ALLIANCE.formula, domain=Molecule, range=Optional[str])
 
-slots.smiles = Slot(uri="str(uriorcurie)", name="smiles", curie=None,
+slots.smiles = Slot(uri=ALLIANCE.smiles, name="smiles", curie=ALLIANCE.curie('smiles'),
                    model_uri=ALLIANCE.smiles, domain=Molecule, range=Optional[str])
 
-slots.iso_abbreviation = Slot(uri="str(uriorcurie)", name="iso_abbreviation", curie=None,
+slots.id = Slot(uri=ALLIANCE.id, name="id", curie=ALLIANCE.curie('id'),
+                   model_uri=ALLIANCE.id, domain=None, range=Optional[str])
+
+slots.iso_abbreviation = Slot(uri=ALLIANCE.iso_abbreviation, name="iso_abbreviation", curie=ALLIANCE.curie('iso_abbreviation'),
                    model_uri=ALLIANCE.iso_abbreviation, domain=Resource, range=Optional[str])
 
-slots.medline_abbreviation = Slot(uri="str(uriorcurie)", name="medline_abbreviation", curie=None,
+slots.medline_abbreviation = Slot(uri=ALLIANCE.medline_abbreviation, name="medline_abbreviation", curie=ALLIANCE.curie('medline_abbreviation'),
                    model_uri=ALLIANCE.medline_abbreviation, domain=Resource, range=Optional[str])
 
-slots.print_issn = Slot(uri="str(uriorcurie)", name="print_issn", curie=None,
+slots.copyright_date = Slot(uri=ALLIANCE.copyright_date, name="copyright_date", curie=ALLIANCE.curie('copyright_date'),
+                   model_uri=ALLIANCE.copyright_date, domain=Resource, range=Optional[Union[str, XSDDate]])
+
+slots.print_issn = Slot(uri=ALLIANCE.print_issn, name="print_issn", curie=ALLIANCE.curie('print_issn'),
                    model_uri=ALLIANCE.print_issn, domain=Resource, range=Optional[str])
 
-slots.online_issn = Slot(uri="str(uriorcurie)", name="online_issn", curie=None,
+slots.online_issn = Slot(uri=ALLIANCE.online_issn, name="online_issn", curie=ALLIANCE.curie('online_issn'),
                    model_uri=ALLIANCE.online_issn, domain=Resource, range=Optional[str])
 
-slots.editors = Slot(uri="str(uriorcurie)", name="editors", curie=None,
+slots.summary = Slot(uri=ALLIANCE.summary, name="summary", curie=ALLIANCE.curie('summary'),
+                   model_uri=ALLIANCE.summary, domain=Resource, range=Optional[str])
+
+slots.editors = Slot(uri=ALLIANCE.editors, name="editors", curie=ALLIANCE.curie('editors'),
                    model_uri=ALLIANCE.editors, domain=Resource, range=Optional[Union[Union[dict, AuthorReference], List[Union[dict, AuthorReference]]]])
 
 slots.orcid = Slot(uri=ALLIANCE.orcid, name="orcid", curie=ALLIANCE.curie('orcid'),
@@ -4248,200 +4299,200 @@ slots.okta_id = Slot(uri=ALLIANCE.okta_id, name="okta_id", curie=ALLIANCE.curie(
 slots.okta_email = Slot(uri=ALLIANCE.okta_email, name="okta_email", curie=ALLIANCE.curie('okta_email'),
                    model_uri=ALLIANCE.okta_email, domain=LoggedInPerson, range=Optional[str])
 
-slots.caption = Slot(uri="str(uriorcurie)", name="caption", curie=None,
+slots.user_settings = Slot(uri=ALLIANCE.user_settings, name="user_settings", curie=ALLIANCE.curie('user_settings'),
+                   model_uri=ALLIANCE.user_settings, domain=LoggedInPerson, range=Optional[str])
+
+slots.caption = Slot(uri=ALLIANCE.caption, name="caption", curie=ALLIANCE.curie('caption'),
                    model_uri=ALLIANCE.caption, domain=Figure, range=Optional[str])
 
-slots.cropped_from = Slot(uri="str(uriorcurie)", name="cropped_from", curie=None,
+slots.cropped_from = Slot(uri=ALLIANCE.cropped_from, name="cropped_from", curie=ALLIANCE.curie('cropped_from'),
                    model_uri=ALLIANCE.cropped_from, domain=Image, range=Optional[Union[str, ImageCurie]])
 
-slots.associated_with_figure = Slot(uri="str(uriorcurie)", name="associated_with_figure", curie=None,
+slots.associated_with_figure = Slot(uri=ALLIANCE.associated_with_figure, name="associated_with_figure", curie=ALLIANCE.curie('associated_with_figure'),
                    model_uri=ALLIANCE.associated_with_figure, domain=None, range=Optional[Union[str, FigureCurie]])
 
-slots.from_image = Slot(uri="str(uriorcurie)", name="from_image", curie=None,
+slots.from_image = Slot(uri=ALLIANCE.from_image, name="from_image", curie=ALLIANCE.curie('from_image'),
                    model_uri=ALLIANCE.from_image, domain=ImagePane, range=Optional[Union[str, ImageCurie]])
 
-slots.height = Slot(uri="str(uriorcurie)", name="height", curie=None,
+slots.height = Slot(uri=ALLIANCE.height, name="height", curie=ALLIANCE.curie('height'),
                    model_uri=ALLIANCE.height, domain=Image, range=int)
 
-slots.image_file = Slot(uri="str(uriorcurie)", name="image_file", curie=None,
+slots.image_file = Slot(uri=ALLIANCE.image_file, name="image_file", curie=ALLIANCE.curie('image_file'),
                    model_uri=ALLIANCE.image_file, domain=Image, range=Union[dict, File])
 
-slots.image_medium_file = Slot(uri="str(uriorcurie)", name="image_medium_file", curie=None,
+slots.image_medium_file = Slot(uri=ALLIANCE.image_medium_file, name="image_medium_file", curie=ALLIANCE.curie('image_medium_file'),
                    model_uri=ALLIANCE.image_medium_file, domain=Image, range=Union[dict, File])
 
-slots.image_thumbnail_file = Slot(uri="str(uriorcurie)", name="image_thumbnail_file", curie=None,
+slots.image_thumbnail_file = Slot(uri=ALLIANCE.image_thumbnail_file, name="image_thumbnail_file", curie=ALLIANCE.curie('image_thumbnail_file'),
                    model_uri=ALLIANCE.image_thumbnail_file, domain=Image, range=Union[dict, File])
 
-slots.image_x_origin = Slot(uri="str(uriorcurie)", name="image_x_origin", curie=None,
+slots.image_x_origin = Slot(uri=ALLIANCE.image_x_origin, name="image_x_origin", curie=ALLIANCE.curie('image_x_origin'),
                    model_uri=ALLIANCE.image_x_origin, domain=None, range=Optional[int])
 
-slots.image_y_origin = Slot(uri="str(uriorcurie)", name="image_y_origin", curie=None,
+slots.image_y_origin = Slot(uri=ALLIANCE.image_y_origin, name="image_y_origin", curie=ALLIANCE.curie('image_y_origin'),
                    model_uri=ALLIANCE.image_y_origin, domain=None, range=Optional[int])
 
-slots.images = Slot(uri="str(uriorcurie)", name="images", curie=None,
+slots.images = Slot(uri=ALLIANCE.images, name="images", curie=ALLIANCE.curie('images'),
                    model_uri=ALLIANCE.images, domain=None, range=Optional[Union[str, ImageCurie]])
 
-slots.label = Slot(uri="str(uriorcurie)", name="label", curie=None,
+slots.label = Slot(uri=ALLIANCE.label, name="label", curie=ALLIANCE.curie('label'),
                    model_uri=ALLIANCE.label, domain=None, range=Optional[str])
 
-slots.video_still = Slot(uri="str(uriorcurie)", name="video_still", curie=None,
+slots.video_still = Slot(uri=ALLIANCE.video_still, name="video_still", curie=ALLIANCE.curie('video_still'),
                    model_uri=ALLIANCE.video_still, domain=Image, range=Optional[Union[bool, Bool]])
 
-slots.width = Slot(uri="str(uriorcurie)", name="width", curie=None,
+slots.width = Slot(uri=ALLIANCE.width, name="width", curie=ALLIANCE.curie('width'),
                    model_uri=ALLIANCE.width, domain=Image, range=int)
 
-slots.text_synonyms = Slot(uri="str(uriorcurie)", name="text_synonyms", curie=None,
+slots.text_synonyms = Slot(uri=ALLIANCE.text_synonyms, name="text_synonyms", curie=ALLIANCE.curie('text_synonyms'),
                    model_uri=ALLIANCE.text_synonyms, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.member_terms = Slot(uri="str(uriorcurie)", name="member_terms", curie=None,
+slots.member_terms = Slot(uri=ALLIANCE.member_terms, name="member_terms", curie=ALLIANCE.curie('member_terms'),
                    model_uri=ALLIANCE.member_terms, domain=None, range=Optional[Union[Union[str, VocabularyTermName], List[Union[str, VocabularyTermName]]]])
 
-slots.vocabulary_description = Slot(uri="str(uriorcurie)", name="vocabulary_description", curie=None,
+slots.vocabulary_description = Slot(uri=ALLIANCE.vocabulary_description, name="vocabulary_description", curie=ALLIANCE.curie('vocabulary_description'),
                    model_uri=ALLIANCE.vocabulary_description, domain=None, range=Optional[str])
 
-slots.contains_constructs = Slot(uri="str(uriorcurie)", name="contains_constructs", curie=None,
-                   model_uri=ALLIANCE.contains_constructs, domain=Allele, range=Optional[Union[Union[dict, "Construct"], List[Union[dict, "Construct"]]]])
+slots.construct_components = Slot(uri=ALLIANCE.construct_components, name="construct_components", curie=ALLIANCE.curie('construct_components'),
+                   model_uri=ALLIANCE.construct_components, domain=Construct, range=Optional[Union[Union[str, GenomicEntityCurie], List[Union[str, GenomicEntityCurie]]]])
 
-slots.molecular_mutations = Slot(uri="str(uriorcurie)", name="molecular_mutations", curie=None,
+slots.contains_constructs = Slot(uri=ALLIANCE.contains_constructs, name="contains_constructs", curie=ALLIANCE.curie('contains_constructs'),
+                   model_uri=ALLIANCE.contains_constructs, domain=Allele, range=Optional[Union[Union[str, ConstructCurie], List[Union[str, ConstructCurie]]]])
+
+slots.molecular_mutations = Slot(uri=ALLIANCE.molecular_mutations, name="molecular_mutations", curie=ALLIANCE.curie('molecular_mutations'),
                    model_uri=ALLIANCE.molecular_mutations, domain=Allele, range=Optional[Union[str, List[str]]])
 
-slots.mutation_type = Slot(uri="str(uriorcurie)", name="mutation_type", curie=None,
+slots.mutation_type = Slot(uri=ALLIANCE.mutation_type, name="mutation_type", curie=ALLIANCE.curie('mutation_type'),
                    model_uri=ALLIANCE.mutation_type, domain=Allele, range=Optional[Union[str, SOTermCurie]])
 
-slots.mutation_description = Slot(uri="str(uriorcurie)", name="mutation_description", curie=None,
+slots.mutation_description = Slot(uri=ALLIANCE.mutation_description, name="mutation_description", curie=ALLIANCE.curie('mutation_description'),
                    model_uri=ALLIANCE.mutation_description, domain=None, range=Optional[str])
 
-slots.functional_impact = Slot(uri="str(uriorcurie)", name="functional_impact", curie=None,
+slots.functional_impact = Slot(uri=ALLIANCE.functional_impact, name="functional_impact", curie=ALLIANCE.curie('functional_impact'),
                    model_uri=ALLIANCE.functional_impact, domain=Allele, range=Optional[str])
 
-slots.generation_method = Slot(uri="str(uriorcurie)", name="generation_method", curie=None,
+slots.generation_method = Slot(uri=ALLIANCE.generation_method, name="generation_method", curie=ALLIANCE.curie('generation_method'),
                    model_uri=ALLIANCE.generation_method, domain=Allele, range=Optional[str])
 
-slots.associated_references = Slot(uri="str(uriorcurie)", name="associated_references", curie=None,
+slots.associated_references = Slot(uri=ALLIANCE.associated_references, name="associated_references", curie=ALLIANCE.curie('associated_references'),
                    model_uri=ALLIANCE.associated_references, domain=None, range=Optional[Union[Union[dict, AssociatedReference], List[Union[dict, AssociatedReference]]]])
 
-slots.reference_type = Slot(uri="str(uriorcurie)", name="reference_type", curie=None,
+slots.reference_type = Slot(uri=ALLIANCE.reference_type, name="reference_type", curie=ALLIANCE.curie('reference_type'),
                    model_uri=ALLIANCE.reference_type, domain=AssociatedReference, range=Union[str, VocabularyTermName])
 
-slots.origins = Slot(uri="str(uriorcurie)", name="origins", curie=None,
+slots.origins = Slot(uri=ALLIANCE.origins, name="origins", curie=ALLIANCE.curie('origins'),
                    model_uri=ALLIANCE.origins, domain=Allele, range=Optional[Union[Union[str, AffectedGenomicModelCurie], List[Union[str, AffectedGenomicModelCurie]]]])
 
-slots.germline_transmission_status = Slot(uri="str(uriorcurie)", name="germline_transmission_status", curie=None,
+slots.germline_transmission_status = Slot(uri=ALLIANCE.germline_transmission_status, name="germline_transmission_status", curie=ALLIANCE.curie('germline_transmission_status'),
                    model_uri=ALLIANCE.germline_transmission_status, domain=Allele, range=Optional[Union[str, VocabularyTermName]])
 
-slots.parent_cell_line = Slot(uri="str(uriorcurie)", name="parent_cell_line", curie=None,
+slots.parent_cell_line = Slot(uri=ALLIANCE.parent_cell_line, name="parent_cell_line", curie=ALLIANCE.curie('parent_cell_line'),
                    model_uri=ALLIANCE.parent_cell_line, domain=Allele, range=Optional[Union[dict, "CellLine"]])
 
-slots.mutant_cell_lines = Slot(uri="str(uriorcurie)", name="mutant_cell_lines", curie=None,
+slots.mutant_cell_lines = Slot(uri=ALLIANCE.mutant_cell_lines, name="mutant_cell_lines", curie=ALLIANCE.curie('mutant_cell_lines'),
                    model_uri=ALLIANCE.mutant_cell_lines, domain=Allele, range=Optional[Union[Union[dict, "CellLine"], List[Union[dict, "CellLine"]]]])
 
-slots.embryonic_stem_cell_lines = Slot(uri="str(uriorcurie)", name="embryonic_stem_cell_lines", curie=None,
+slots.embryonic_stem_cell_lines = Slot(uri=ALLIANCE.embryonic_stem_cell_lines, name="embryonic_stem_cell_lines", curie=ALLIANCE.curie('embryonic_stem_cell_lines'),
                    model_uri=ALLIANCE.embryonic_stem_cell_lines, domain=Allele, range=Optional[Union[Union[dict, "CellLine"], List[Union[dict, "CellLine"]]]])
 
-slots.database_status = Slot(uri="str(uriorcurie)", name="database_status", curie=None,
+slots.database_status = Slot(uri=ALLIANCE.database_status, name="database_status", curie=ALLIANCE.curie('database_status'),
                    model_uri=ALLIANCE.database_status, domain=None, range=Optional[Union[str, VocabularyTermName]])
 
-slots.inheritence_mode = Slot(uri="str(uriorcurie)", name="inheritence_mode", curie=None,
+slots.inheritence_mode = Slot(uri=ALLIANCE.inheritence_mode, name="inheritence_mode", curie=ALLIANCE.curie('inheritence_mode'),
                    model_uri=ALLIANCE.inheritence_mode, domain=Allele, range=Optional[Union[str, VocabularyTermName]])
 
-slots.in_collection = Slot(uri="str(uriorcurie)", name="in_collection", curie=None,
+slots.in_collection = Slot(uri=ALLIANCE.in_collection, name="in_collection", curie=ALLIANCE.curie('in_collection'),
                    model_uri=ALLIANCE.in_collection, domain=Allele, range=Optional[Union[str, VocabularyTermName]])
 
-slots.transposon_insertion = Slot(uri="str(uriorcurie)", name="transposon_insertion", curie=None,
+slots.transposon_insertion = Slot(uri=ALLIANCE.transposon_insertion, name="transposon_insertion", curie=ALLIANCE.curie('transposon_insertion'),
                    model_uri=ALLIANCE.transposon_insertion, domain=Allele, range=Optional[str])
 
-slots.aberration = Slot(uri="str(uriorcurie)", name="aberration", curie=None,
+slots.aberration = Slot(uri=ALLIANCE.aberration, name="aberration", curie=ALLIANCE.curie('aberration'),
                    model_uri=ALLIANCE.aberration, domain=Allele, range=Optional[str])
 
-slots.is_extinct = Slot(uri="str(uriorcurie)", name="is_extinct", curie=None,
+slots.is_extinct = Slot(uri=ALLIANCE.is_extinct, name="is_extinct", curie=ALLIANCE.curie('is_extinct'),
                    model_uri=ALLIANCE.is_extinct, domain=Allele, range=Optional[Union[bool, Bool]])
 
-slots.sequencing_status = Slot(uri="str(uriorcurie)", name="sequencing_status", curie=None,
+slots.sequencing_status = Slot(uri=ALLIANCE.sequencing_status, name="sequencing_status", curie=ALLIANCE.curie('sequencing_status'),
                    model_uri=ALLIANCE.sequencing_status, domain=Variant, range=Optional[Union[str, VocabularyTermName]])
 
-slots.variant_status = Slot(uri="str(uriorcurie)", name="variant_status", curie=None,
+slots.variant_status = Slot(uri=ALLIANCE.variant_status, name="variant_status", curie=ALLIANCE.curie('variant_status'),
                    model_uri=ALLIANCE.variant_status, domain=None, range=Optional[Union[str, "VariantStatusEnum"]])
 
-slots.variant_type = Slot(uri="str(uriorcurie)", name="variant_type", curie=None,
+slots.variant_type = Slot(uri=ALLIANCE.variant_type, name="variant_type", curie=ALLIANCE.curie('variant_type'),
                    model_uri=ALLIANCE.variant_type, domain=Variant, range=Union[str, SOTermCurie])
 
-slots.source_general_consequence = Slot(uri="str(uriorcurie)", name="source_general_consequence", curie=None,
+slots.source_general_consequence = Slot(uri=ALLIANCE.source_general_consequence, name="source_general_consequence", curie=ALLIANCE.curie('source_general_consequence'),
                    model_uri=ALLIANCE.source_general_consequence, domain=Variant, range=Optional[Union[str, SOTermCurie]])
 
-slots.consequence = Slot(uri="str(uriorcurie)", name="consequence", curie=None,
+slots.consequence = Slot(uri=ALLIANCE.consequence, name="consequence", curie=ALLIANCE.curie('consequence'),
                    model_uri=ALLIANCE.consequence, domain=VariantLocation, range=Optional[Union[str, SOTermCurie]])
 
-slots.curated_consequence = Slot(uri="str(uriorcurie)", name="curated_consequence", curie=None,
+slots.curated_consequence = Slot(uri=ALLIANCE.curated_consequence, name="curated_consequence", curie=ALLIANCE.curie('curated_consequence'),
                    model_uri=ALLIANCE.curated_consequence, domain=VariantLocation, range=Optional[Union[str, SOTermCurie]])
 
-slots.variant_locations = Slot(uri="str(uriorcurie)", name="variant_locations", curie=None,
+slots.variant_locations = Slot(uri=ALLIANCE.variant_locations, name="variant_locations", curie=ALLIANCE.curie('variant_locations'),
                    model_uri=ALLIANCE.variant_locations, domain=Variant, range=Union[Union[dict, "VariantLocation"], List[Union[dict, "VariantLocation"]]])
 
-slots.variant_genome_locations = Slot(uri="str(uriorcurie)", name="variant_genome_locations", curie=None,
+slots.variant_genome_locations = Slot(uri=ALLIANCE.variant_genome_locations, name="variant_genome_locations", curie=ALLIANCE.curie('variant_genome_locations'),
                    model_uri=ALLIANCE.variant_genome_locations, domain=Variant, range=Union[Union[dict, "VariantGenomeLocation"], List[Union[dict, "VariantGenomeLocation"]]])
 
-slots.variant_polypeptide_locations = Slot(uri="str(uriorcurie)", name="variant_polypeptide_locations", curie=None,
+slots.variant_polypeptide_locations = Slot(uri=ALLIANCE.variant_polypeptide_locations, name="variant_polypeptide_locations", curie=ALLIANCE.curie('variant_polypeptide_locations'),
                    model_uri=ALLIANCE.variant_polypeptide_locations, domain=Variant, range=Optional[Union[Union[dict, "VariantPolypeptideLocation"], List[Union[dict, "VariantPolypeptideLocation"]]]])
 
-slots.variant_transcript_locations = Slot(uri="str(uriorcurie)", name="variant_transcript_locations", curie=None,
+slots.variant_transcript_locations = Slot(uri=ALLIANCE.variant_transcript_locations, name="variant_transcript_locations", curie=ALLIANCE.curie('variant_transcript_locations'),
                    model_uri=ALLIANCE.variant_transcript_locations, domain=Variant, range=Optional[Union[Union[dict, "VariantTranscriptLocation"], List[Union[dict, "VariantTranscriptLocation"]]]])
 
-slots.source_variant_locations = Slot(uri="str(uriorcurie)", name="source_variant_locations", curie=None,
+slots.source_variant_locations = Slot(uri=ALLIANCE.source_variant_locations, name="source_variant_locations", curie=ALLIANCE.curie('source_variant_locations'),
                    model_uri=ALLIANCE.source_variant_locations, domain=Variant, range=Optional[Union[Union[dict, "SourceVariantLocation"], List[Union[dict, "SourceVariantLocation"]]]])
 
-slots.hgvs = Slot(uri="str(uriorcurie)", name="hgvs", curie=None,
+slots.hgvs = Slot(uri=ALLIANCE.hgvs, name="hgvs", curie=ALLIANCE.curie('hgvs'),
                    model_uri=ALLIANCE.hgvs, domain=VariantLocation, range=str)
 
-slots.assembly = Slot(uri="str(uriorcurie)", name="assembly", curie=None,
+slots.assembly = Slot(uri=ALLIANCE.assembly, name="assembly", curie=ALLIANCE.curie('assembly'),
                    model_uri=ALLIANCE.assembly, domain=VariantLocation, range=Optional[Union[str, AssemblyCurie]])
 
-slots.chromosome = Slot(uri="str(uriorcurie)", name="chromosome", curie=None,
+slots.chromosome = Slot(uri=ALLIANCE.chromosome, name="chromosome", curie=ALLIANCE.curie('chromosome'),
                    model_uri=ALLIANCE.chromosome, domain=VariantLocation, range=Optional[Union[str, ChromosomeCurie]])
 
-slots.start_position = Slot(uri="str(uriorcurie)", name="start_position", curie=None,
+slots.start_position = Slot(uri=ALLIANCE.start_position, name="start_position", curie=ALLIANCE.curie('start_position'),
                    model_uri=ALLIANCE.start_position, domain=VariantLocation, range=Optional[int])
 
-slots.end_position = Slot(uri="str(uriorcurie)", name="end_position", curie=None,
+slots.end_position = Slot(uri=ALLIANCE.end_position, name="end_position", curie=ALLIANCE.curie('end_position'),
                    model_uri=ALLIANCE.end_position, domain=VariantLocation, range=Optional[int])
 
-slots.reference_sequence = Slot(uri="str(uriorcurie)", name="reference_sequence", curie=None,
+slots.reference_sequence = Slot(uri=ALLIANCE.reference_sequence, name="reference_sequence", curie=ALLIANCE.curie('reference_sequence'),
                    model_uri=ALLIANCE.reference_sequence, domain=VariantLocation, range=Optional[Union[str, BiologicalSequence]])
 
-slots.variant_sequence = Slot(uri="str(uriorcurie)", name="variant_sequence", curie=None,
+slots.variant_sequence = Slot(uri=ALLIANCE.variant_sequence, name="variant_sequence", curie=ALLIANCE.curie('variant_sequence'),
                    model_uri=ALLIANCE.variant_sequence, domain=VariantLocation, range=Optional[Union[str, BiologicalSequence]])
 
-slots.transcript = Slot(uri="str(uriorcurie)", name="transcript", curie=None,
+slots.transcript = Slot(uri=ALLIANCE.transcript, name="transcript", curie=ALLIANCE.curie('transcript'),
                    model_uri=ALLIANCE.transcript, domain=VariantTranscriptLocation, range=Optional[Union[str, TranscriptCurie]])
 
-slots.polypeptide = Slot(uri="str(uriorcurie)", name="polypeptide", curie=None,
+slots.polypeptide = Slot(uri=ALLIANCE.polypeptide, name="polypeptide", curie=ALLIANCE.curie('polypeptide'),
                    model_uri=ALLIANCE.polypeptide, domain=VariantTranscriptLocation, range=Union[str, TranscriptCurie])
 
-slots.associated_transcripts = Slot(uri="str(uriorcurie)", name="associated_transcripts", curie=None,
+slots.associated_transcripts = Slot(uri=ALLIANCE.associated_transcripts, name="associated_transcripts", curie=ALLIANCE.curie('associated_transcripts'),
                    model_uri=ALLIANCE.associated_transcripts, domain=VariantPolypeptideLocation, range=Optional[Union[Union[str, TranscriptCurie], List[Union[str, TranscriptCurie]]]])
 
-slots.subtype = Slot(uri="str(uriorcurie)", name="subtype", curie=None,
-                   model_uri=ALLIANCE.subtype, domain=AffectedGenomicModel, range=Optional[Union[str, "SubtypeValues"]])
+slots.subtype = Slot(uri=ALLIANCE.subtype, name="subtype", curie=ALLIANCE.curie('subtype'),
+                   model_uri=ALLIANCE.subtype, domain=AffectedGenomicModel, range=Union[str, "SubtypeValues"])
 
-slots.components = Slot(uri="str(uriorcurie)", name="components", curie=None,
+slots.components = Slot(uri=ALLIANCE.components, name="components", curie=ALLIANCE.curie('components'),
                    model_uri=ALLIANCE.components, domain=AffectedGenomicModel, range=Optional[Union[Union[dict, "AffectedGenomicModelComponent"], List[Union[dict, "AffectedGenomicModelComponent"]]]])
 
-slots.has_allele = Slot(uri="str(uriorcurie)", name="has_allele", curie=None,
+slots.has_allele = Slot(uri=ALLIANCE.has_allele, name="has_allele", curie=ALLIANCE.curie('has_allele'),
                    model_uri=ALLIANCE.has_allele, domain=AffectedGenomicModelComponent, range=Optional[Union[str, AlleleCurie]])
 
-slots.zygosity = Slot(uri="str(uriorcurie)", name="zygosity", curie=None,
+slots.zygosity = Slot(uri=ALLIANCE.zygosity, name="zygosity", curie=ALLIANCE.curie('zygosity'),
                    model_uri=ALLIANCE.zygosity, domain=AffectedGenomicModelComponent, range=Optional[Union[str, "ZygosityValues"]])
 
-slots.sequence_targeting_reagents = Slot(uri="str(uriorcurie)", name="sequence_targeting_reagents", curie=None,
-                   model_uri=ALLIANCE.sequence_targeting_reagents, domain=AffectedGenomicModel, range=Optional[Union[Union[dict, SequenceTargetingReagent], List[Union[dict, SequenceTargetingReagent]]]])
+slots.sequence_targeting_reagents = Slot(uri=ALLIANCE.sequence_targeting_reagents, name="sequence_targeting_reagents", curie=ALLIANCE.curie('sequence_targeting_reagents'),
+                   model_uri=ALLIANCE.sequence_targeting_reagents, domain=AffectedGenomicModel, range=Optional[Union[Union[str, SequenceTargetingReagentCurie], List[Union[str, SequenceTargetingReagentCurie]]]])
 
-slots.parental_populations = Slot(uri="str(uriorcurie)", name="parental_populations", curie=None,
+slots.parental_populations = Slot(uri=ALLIANCE.parental_populations, name="parental_populations", curie=ALLIANCE.curie('parental_populations'),
                    model_uri=ALLIANCE.parental_populations, domain=AffectedGenomicModel, range=Optional[Union[str, URIorCURIE]])
-
-slots.id = Slot(uri=ALLIANCE.id, name="id", curie=ALLIANCE.curie('id'),
-                   model_uri=ALLIANCE.id, domain=None, range=Optional[str])
-
-slots.embryonic_cell_lines = Slot(uri=ALLIANCE.embryonic_cell_lines, name="embryonic_cell_lines", curie=ALLIANCE.curie('embryonic_cell_lines'),
-                   model_uri=ALLIANCE.embryonic_cell_lines, domain=None, range=Optional[str])
 
 slots.PhenotypeAnnotation_subject = Slot(uri=ALLIANCE.subject, name="PhenotypeAnnotation_subject", curie=ALLIANCE.curie('subject'),
                    model_uri=ALLIANCE.PhenotypeAnnotation_subject, domain=PhenotypeAnnotation, range=Union[str, BiologicalEntityCurie])
@@ -4455,8 +4506,8 @@ slots.PhenotypeAnnotation_object = Slot(uri=ALLIANCE.object, name="PhenotypeAnno
 slots.PhenotypeAnnotation_single_reference = Slot(uri=ALLIANCE.single_reference, name="PhenotypeAnnotation_single_reference", curie=ALLIANCE.curie('single_reference'),
                    model_uri=ALLIANCE.PhenotypeAnnotation_single_reference, domain=PhenotypeAnnotation, range=Optional[Union[str, ReferenceCurie]])
 
-slots.PhenotypeAnnotation_creation_date = Slot(uri=ALLIANCE.creation_date, name="PhenotypeAnnotation_creation_date", curie=ALLIANCE.curie('creation_date'),
-                   model_uri=ALLIANCE.PhenotypeAnnotation_creation_date, domain=PhenotypeAnnotation, range=Union[str, XSDDate])
+slots.PhenotypeAnnotation_date_created = Slot(uri=ALLIANCE.date_created, name="PhenotypeAnnotation_date_created", curie=ALLIANCE.curie('date_created'),
+                   model_uri=ALLIANCE.PhenotypeAnnotation_date_created, domain=PhenotypeAnnotation, range=Union[str, XSDDate])
 
 slots.GenePhenotypeAnnotation_subject = Slot(uri=ALLIANCE.subject, name="GenePhenotypeAnnotation_subject", curie=ALLIANCE.curie('subject'),
                    model_uri=ALLIANCE.GenePhenotypeAnnotation_subject, domain=GenePhenotypeAnnotation, range=Union[str, GeneCurie])
@@ -4467,6 +4518,12 @@ slots.AllelePhenotypeAnnotation_subject = Slot(uri=ALLIANCE.subject, name="Allel
 slots.AllelePhenotypeAnnotation_inferred_gene = Slot(uri=ALLIANCE.inferred_gene, name="AllelePhenotypeAnnotation_inferred_gene", curie=ALLIANCE.curie('inferred_gene'),
                    model_uri=ALLIANCE.AllelePhenotypeAnnotation_inferred_gene, domain=AllelePhenotypeAnnotation, range=Optional[Union[str, GeneCurie]])
 
+slots.AllelePhenotypeAnnotation_asserted_gene = Slot(uri=ALLIANCE.asserted_gene, name="AllelePhenotypeAnnotation_asserted_gene", curie=ALLIANCE.curie('asserted_gene'),
+                   model_uri=ALLIANCE.AllelePhenotypeAnnotation_asserted_gene, domain=AllelePhenotypeAnnotation, range=Optional[Union[str, GeneCurie]])
+
+slots.AllelePhenotypeAnnotation_asserted_allele = Slot(uri=ALLIANCE.asserted_allele, name="AllelePhenotypeAnnotation_asserted_allele", curie=ALLIANCE.curie('asserted_allele'),
+                   model_uri=ALLIANCE.AllelePhenotypeAnnotation_asserted_allele, domain=AllelePhenotypeAnnotation, range=Optional[Union[str, AlleleCurie]])
+
 slots.AGMPhenotypeAnnotation_subject = Slot(uri=ALLIANCE.subject, name="AGMPhenotypeAnnotation_subject", curie=ALLIANCE.curie('subject'),
                    model_uri=ALLIANCE.AGMPhenotypeAnnotation_subject, domain=AGMPhenotypeAnnotation, range=Union[str, AffectedGenomicModelCurie])
 
@@ -4475,6 +4532,12 @@ slots.AGMPhenotypeAnnotation_inferred_gene = Slot(uri=ALLIANCE.inferred_gene, na
 
 slots.AGMPhenotypeAnnotation_inferred_allele = Slot(uri=ALLIANCE.inferred_allele, name="AGMPhenotypeAnnotation_inferred_allele", curie=ALLIANCE.curie('inferred_allele'),
                    model_uri=ALLIANCE.AGMPhenotypeAnnotation_inferred_allele, domain=AGMPhenotypeAnnotation, range=Optional[Union[str, AlleleCurie]])
+
+slots.AGMPhenotypeAnnotation_asserted_gene = Slot(uri=ALLIANCE.asserted_gene, name="AGMPhenotypeAnnotation_asserted_gene", curie=ALLIANCE.curie('asserted_gene'),
+                   model_uri=ALLIANCE.AGMPhenotypeAnnotation_asserted_gene, domain=AGMPhenotypeAnnotation, range=Optional[Union[str, GeneCurie]])
+
+slots.AGMPhenotypeAnnotation_asserted_allele = Slot(uri=ALLIANCE.asserted_allele, name="AGMPhenotypeAnnotation_asserted_allele", curie=ALLIANCE.curie('asserted_allele'),
+                   model_uri=ALLIANCE.AGMPhenotypeAnnotation_asserted_allele, domain=AGMPhenotypeAnnotation, range=Optional[Union[str, AlleleCurie]])
 
 slots.DiseaseAnnotation_unique_id = Slot(uri=ALLIANCE.unique_id, name="DiseaseAnnotation_unique_id", curie=ALLIANCE.curie('unique_id'),
                    model_uri=ALLIANCE.DiseaseAnnotation_unique_id, domain=DiseaseAnnotation, range=Optional[str])
@@ -4512,6 +4575,9 @@ slots.DiseaseAnnotation_evidence_codes = Slot(uri=ALLIANCE.evidence_codes, name=
 slots.DiseaseAnnotation_genetic_sex = Slot(uri=ALLIANCE.genetic_sex, name="DiseaseAnnotation_genetic_sex", curie=ALLIANCE.curie('genetic_sex'),
                    model_uri=ALLIANCE.DiseaseAnnotation_genetic_sex, domain=DiseaseAnnotation, range=Optional[Union[str, VocabularyTermName]])
 
+slots.DiseaseAnnotation_related_notes = Slot(uri=ALLIANCE.related_notes, name="DiseaseAnnotation_related_notes", curie=ALLIANCE.curie('related_notes'),
+                   model_uri=ALLIANCE.DiseaseAnnotation_related_notes, domain=DiseaseAnnotation, range=Optional[Union[Union[dict, "Note"], List[Union[dict, "Note"]]]])
+
 slots.GeneDiseaseAnnotation_subject = Slot(uri=ALLIANCE.subject, name="GeneDiseaseAnnotation_subject", curie=ALLIANCE.curie('subject'),
                    model_uri=ALLIANCE.GeneDiseaseAnnotation_subject, domain=GeneDiseaseAnnotation, range=Union[str, GeneCurie])
 
@@ -4527,6 +4593,9 @@ slots.AlleleDiseaseAnnotation_predicate = Slot(uri=ALLIANCE.predicate, name="All
 slots.AlleleDiseaseAnnotation_inferred_gene = Slot(uri=ALLIANCE.inferred_gene, name="AlleleDiseaseAnnotation_inferred_gene", curie=ALLIANCE.curie('inferred_gene'),
                    model_uri=ALLIANCE.AlleleDiseaseAnnotation_inferred_gene, domain=AlleleDiseaseAnnotation, range=Optional[Union[str, GeneCurie]])
 
+slots.AlleleDiseaseAnnotation_asserted_gene = Slot(uri=ALLIANCE.asserted_gene, name="AlleleDiseaseAnnotation_asserted_gene", curie=ALLIANCE.curie('asserted_gene'),
+                   model_uri=ALLIANCE.AlleleDiseaseAnnotation_asserted_gene, domain=AlleleDiseaseAnnotation, range=Optional[Union[str, GeneCurie]])
+
 slots.AGMDiseaseAnnotation_subject = Slot(uri=ALLIANCE.subject, name="AGMDiseaseAnnotation_subject", curie=ALLIANCE.curie('subject'),
                    model_uri=ALLIANCE.AGMDiseaseAnnotation_subject, domain=AGMDiseaseAnnotation, range=Union[str, AffectedGenomicModelCurie])
 
@@ -4538,6 +4607,12 @@ slots.AGMDiseaseAnnotation_inferred_gene = Slot(uri=ALLIANCE.inferred_gene, name
 
 slots.AGMDiseaseAnnotation_inferred_allele = Slot(uri=ALLIANCE.inferred_allele, name="AGMDiseaseAnnotation_inferred_allele", curie=ALLIANCE.curie('inferred_allele'),
                    model_uri=ALLIANCE.AGMDiseaseAnnotation_inferred_allele, domain=AGMDiseaseAnnotation, range=Optional[Union[str, AlleleCurie]])
+
+slots.AGMDiseaseAnnotation_asserted_gene = Slot(uri=ALLIANCE.asserted_gene, name="AGMDiseaseAnnotation_asserted_gene", curie=ALLIANCE.curie('asserted_gene'),
+                   model_uri=ALLIANCE.AGMDiseaseAnnotation_asserted_gene, domain=AGMDiseaseAnnotation, range=Optional[Union[str, GeneCurie]])
+
+slots.AGMDiseaseAnnotation_asserted_allele = Slot(uri=ALLIANCE.asserted_allele, name="AGMDiseaseAnnotation_asserted_allele", curie=ALLIANCE.curie('asserted_allele'),
+                   model_uri=ALLIANCE.AGMDiseaseAnnotation_asserted_allele, domain=AGMDiseaseAnnotation, range=Optional[Union[str, AlleleCurie]])
 
 slots.ExperimentalCondition_unique_id = Slot(uri=ALLIANCE.unique_id, name="ExperimentalCondition_unique_id", curie=ALLIANCE.curie('unique_id'),
                    model_uri=ALLIANCE.ExperimentalCondition_unique_id, domain=ExperimentalCondition, range=Optional[str])
@@ -4581,29 +4656,20 @@ slots.ConditionRelation_single_reference = Slot(uri=ALLIANCE.single_reference, n
 slots.ConditionRelation_condition_relation_type = Slot(uri=ALLIANCE.condition_relation_type, name="ConditionRelation_condition_relation_type", curie=ALLIANCE.curie('condition_relation_type'),
                    model_uri=ALLIANCE.ConditionRelation_condition_relation_type, domain=ConditionRelation, range=Union[str, VocabularyTermName])
 
-slots.Reference_reference_id = Slot(uri="str(uriorcurie)", name="Reference_reference_id", curie=None,
+slots.Reference_reference_id = Slot(uri=ALLIANCE.reference_id, name="Reference_reference_id", curie=ALLIANCE.curie('reference_id'),
                    model_uri=ALLIANCE.Reference_reference_id, domain=Reference, range=int)
 
-slots.Reference_date_last_modified = Slot(uri=ALLIANCE.date_last_modified, name="Reference_date_last_modified", curie=ALLIANCE.curie('date_last_modified'),
-                   model_uri=ALLIANCE.Reference_date_last_modified, domain=Reference, range=Optional[Union[str, XSDDate]])
-
-slots.MeshDetail_reference_id = Slot(uri="str(uriorcurie)", name="MeshDetail_reference_id", curie=None,
+slots.MeshDetail_reference_id = Slot(uri=ALLIANCE.reference_id, name="MeshDetail_reference_id", curie=ALLIANCE.curie('reference_id'),
                    model_uri=ALLIANCE.MeshDetail_reference_id, domain=MeshDetail, range=int)
 
 slots.BiologicalEntity_taxon = Slot(uri=ALLIANCE.taxon, name="BiologicalEntity_taxon", curie=ALLIANCE.curie('taxon'),
                    model_uri=ALLIANCE.BiologicalEntity_taxon, domain=BiologicalEntity, range=Union[str, NCBITaxonTermCurie])
-
-slots.Gene_symbol = Slot(uri=ALLIANCE.symbol, name="Gene_symbol", curie=ALLIANCE.curie('symbol'),
-                   model_uri=ALLIANCE.Gene_symbol, domain=Gene, range=str)
 
 slots.Note_free_text = Slot(uri=ALLIANCE.free_text, name="Note_free_text", curie=ALLIANCE.curie('free_text'),
                    model_uri=ALLIANCE.Note_free_text, domain=Note, range=str)
 
 slots.Note_note_type = Slot(uri=ALLIANCE.note_type, name="Note_note_type", curie=ALLIANCE.curie('note_type'),
                    model_uri=ALLIANCE.Note_note_type, domain=Note, range=Union[str, VocabularyTermName])
-
-slots.Note_internal = Slot(uri=ALLIANCE.internal, name="Note_internal", curie=ALLIANCE.curie('internal'),
-                   model_uri=ALLIANCE.Note_internal, domain=Note, range=Union[bool, Bool])
 
 slots.EntitySynonym_object = Slot(uri=ALLIANCE.object, name="EntitySynonym_object", curie=ALLIANCE.curie('object'),
                    model_uri=ALLIANCE.EntitySynonym_object, domain=EntitySynonym, range=Union[dict, Synonym])
@@ -4614,13 +4680,19 @@ slots.EntitySynonym_predicate = Slot(uri=ALLIANCE.predicate, name="EntitySynonym
 slots.EntitySynonym_references = Slot(uri=ALLIANCE.references, name="EntitySynonym_references", curie=ALLIANCE.curie('references'),
                    model_uri=ALLIANCE.EntitySynonym_references, domain=EntitySynonym, range=Optional[Union[Union[str, ReferenceCurie], List[Union[str, ReferenceCurie]]]])
 
-slots.GeneGenomicLocation_subject = Slot(uri=ALLIANCE.subject, name="GeneGenomicLocation_subject", curie=ALLIANCE.curie('subject'),
-                   model_uri=ALLIANCE.GeneGenomicLocation_subject, domain=GeneGenomicLocation, range=Union[str, VariantCurie])
+slots.GenomicLocation_subject = Slot(uri=ALLIANCE.subject, name="GenomicLocation_subject", curie=ALLIANCE.curie('subject'),
+                   model_uri=ALLIANCE.GenomicLocation_subject, domain=GenomicLocation, range=Union[str, GenomicEntityCurie])
 
-slots.GeneGenomicLocation_object = Slot(uri=ALLIANCE.object, name="GeneGenomicLocation_object", curie=ALLIANCE.curie('object'),
-                   model_uri=ALLIANCE.GeneGenomicLocation_object, domain=GeneGenomicLocation, range=Union[str, ChromosomeCurie])
+slots.GenomicLocation_object = Slot(uri=ALLIANCE.object, name="GenomicLocation_object", curie=ALLIANCE.curie('object'),
+                   model_uri=ALLIANCE.GenomicLocation_object, domain=GenomicLocation, range=Union[str, ChromosomeCurie])
 
-slots.OntologyTerm_definition = Slot(uri="str(uriorcurie)", name="OntologyTerm_definition", curie=None,
+slots.Gene_symbol = Slot(uri=ALLIANCE.symbol, name="Gene_symbol", curie=ALLIANCE.curie('symbol'),
+                   model_uri=ALLIANCE.Gene_symbol, domain=Gene, range=str)
+
+slots.Gene_related_notes = Slot(uri=ALLIANCE.related_notes, name="Gene_related_notes", curie=ALLIANCE.curie('related_notes'),
+                   model_uri=ALLIANCE.Gene_related_notes, domain=Gene, range=Optional[Union[Union[dict, Note], List[Union[dict, Note]]]])
+
+slots.OntologyTerm_definition = Slot(uri=ALLIANCE.definition, name="OntologyTerm_definition", curie=ALLIANCE.curie('definition'),
                    model_uri=ALLIANCE.OntologyTerm_definition, domain=OntologyTerm, range=Optional[str])
 
 slots.ECOTerm_abbreviation = Slot(uri=ALLIANCE.abbreviation, name="ECOTerm_abbreviation", curie=ALLIANCE.curie('abbreviation'),
@@ -4629,7 +4701,7 @@ slots.ECOTerm_abbreviation = Slot(uri=ALLIANCE.abbreviation, name="ECOTerm_abbre
 slots.Resource_id = Slot(uri=ALLIANCE.id, name="Resource_id", curie=ALLIANCE.curie('id'),
                    model_uri=ALLIANCE.Resource_id, domain=Resource, range=Optional[str])
 
-slots.Resource_title = Slot(uri="str(uriorcurie)", name="Resource_title", curie=None,
+slots.Resource_title = Slot(uri=ALLIANCE.title, name="Resource_title", curie=ALLIANCE.curie('title'),
                    model_uri=ALLIANCE.Resource_title, domain=Resource, range=Optional[str])
 
 slots.Person_unique_id = Slot(uri=ALLIANCE.unique_id, name="Person_unique_id", curie=ALLIANCE.curie('unique_id'),
@@ -4644,22 +4716,22 @@ slots.LoggedInPerson_okta_email = Slot(uri=ALLIANCE.okta_email, name="LoggedInPe
 slots.Figure_single_reference = Slot(uri=ALLIANCE.single_reference, name="Figure_single_reference", curie=ALLIANCE.curie('single_reference'),
                    model_uri=ALLIANCE.Figure_single_reference, domain=Figure, range=Union[str, ReferenceCurie])
 
-slots.Image_associated_with_figure = Slot(uri="str(uriorcurie)", name="Image_associated_with_figure", curie=None,
+slots.Image_associated_with_figure = Slot(uri=ALLIANCE.associated_with_figure, name="Image_associated_with_figure", curie=ALLIANCE.curie('associated_with_figure'),
                    model_uri=ALLIANCE.Image_associated_with_figure, domain=Image, range=Union[str, FigureCurie])
 
-slots.Image_image_x_origin = Slot(uri="str(uriorcurie)", name="Image_image_x_origin", curie=None,
+slots.Image_image_x_origin = Slot(uri=ALLIANCE.image_x_origin, name="Image_image_x_origin", curie=ALLIANCE.curie('image_x_origin'),
                    model_uri=ALLIANCE.Image_image_x_origin, domain=Image, range=Optional[int])
 
-slots.Image_image_y_origin = Slot(uri="str(uriorcurie)", name="Image_image_y_origin", curie=None,
+slots.Image_image_y_origin = Slot(uri=ALLIANCE.image_y_origin, name="Image_image_y_origin", curie=ALLIANCE.curie('image_y_origin'),
                    model_uri=ALLIANCE.Image_image_y_origin, domain=Image, range=Optional[int])
 
-slots.ImagePane_from_image = Slot(uri="str(uriorcurie)", name="ImagePane_from_image", curie=None,
+slots.ImagePane_from_image = Slot(uri=ALLIANCE.from_image, name="ImagePane_from_image", curie=ALLIANCE.curie('from_image'),
                    model_uri=ALLIANCE.ImagePane_from_image, domain=ImagePane, range=Union[str, ImageCurie])
 
-slots.ImagePane_image_x_origin = Slot(uri="str(uriorcurie)", name="ImagePane_image_x_origin", curie=None,
+slots.ImagePane_image_x_origin = Slot(uri=ALLIANCE.image_x_origin, name="ImagePane_image_x_origin", curie=ALLIANCE.curie('image_x_origin'),
                    model_uri=ALLIANCE.ImagePane_image_x_origin, domain=ImagePane, range=Optional[int])
 
-slots.ImagePane_image_y_origin = Slot(uri="str(uriorcurie)", name="ImagePane_image_y_origin", curie=None,
+slots.ImagePane_image_y_origin = Slot(uri=ALLIANCE.image_y_origin, name="ImagePane_image_y_origin", curie=ALLIANCE.curie('image_y_origin'),
                    model_uri=ALLIANCE.ImagePane_image_y_origin, domain=ImagePane, range=Optional[int])
 
 slots.VocabularyTerm_name = Slot(uri=ALLIANCE.name, name="VocabularyTerm_name", curie=ALLIANCE.curie('name'),
@@ -4671,23 +4743,26 @@ slots.Vocabulary_name = Slot(uri=ALLIANCE.name, name="Vocabulary_name", curie=AL
 slots.Allele_synonyms = Slot(uri=ALLIANCE.synonyms, name="Allele_synonyms", curie=ALLIANCE.curie('synonyms'),
                    model_uri=ALLIANCE.Allele_synonyms, domain=Allele, range=Optional[Union[Union[dict, Synonym], List[Union[dict, Synonym]]]])
 
-slots.Allele_germline_transmission_status = Slot(uri="str(uriorcurie)", name="Allele_germline_transmission_status", curie=None,
+slots.Allele_germline_transmission_status = Slot(uri=ALLIANCE.germline_transmission_status, name="Allele_germline_transmission_status", curie=ALLIANCE.curie('germline_transmission_status'),
                    model_uri=ALLIANCE.Allele_germline_transmission_status, domain=Allele, range=Optional[Union[str, VocabularyTermName]])
 
-slots.Allele_parent_cell_line = Slot(uri="str(uriorcurie)", name="Allele_parent_cell_line", curie=None,
+slots.Allele_parent_cell_line = Slot(uri=ALLIANCE.parent_cell_line, name="Allele_parent_cell_line", curie=ALLIANCE.curie('parent_cell_line'),
                    model_uri=ALLIANCE.Allele_parent_cell_line, domain=Allele, range=Optional[Union[dict, "CellLine"]])
 
-slots.Allele_mutant_cell_lines = Slot(uri="str(uriorcurie)", name="Allele_mutant_cell_lines", curie=None,
+slots.Allele_mutant_cell_lines = Slot(uri=ALLIANCE.mutant_cell_lines, name="Allele_mutant_cell_lines", curie=ALLIANCE.curie('mutant_cell_lines'),
                    model_uri=ALLIANCE.Allele_mutant_cell_lines, domain=Allele, range=Optional[Union[Union[dict, "CellLine"], List[Union[dict, "CellLine"]]]])
 
-slots.Allele_embryonic_cell_lines = Slot(uri=ALLIANCE.embryonic_cell_lines, name="Allele_embryonic_cell_lines", curie=ALLIANCE.curie('embryonic_cell_lines'),
-                   model_uri=ALLIANCE.Allele_embryonic_cell_lines, domain=Allele, range=Optional[str])
+slots.Allele_embryonic_stem_cell_lines = Slot(uri=ALLIANCE.embryonic_stem_cell_lines, name="Allele_embryonic_stem_cell_lines", curie=ALLIANCE.curie('embryonic_stem_cell_lines'),
+                   model_uri=ALLIANCE.Allele_embryonic_stem_cell_lines, domain=Allele, range=Optional[Union[Union[dict, "CellLine"], List[Union[dict, "CellLine"]]]])
 
-slots.Allele_transposon_insertion = Slot(uri="str(uriorcurie)", name="Allele_transposon_insertion", curie=None,
+slots.Allele_transposon_insertion = Slot(uri=ALLIANCE.transposon_insertion, name="Allele_transposon_insertion", curie=ALLIANCE.curie('transposon_insertion'),
                    model_uri=ALLIANCE.Allele_transposon_insertion, domain=Allele, range=Optional[str])
 
-slots.Allele_aberration = Slot(uri="str(uriorcurie)", name="Allele_aberration", curie=None,
+slots.Allele_aberration = Slot(uri=ALLIANCE.aberration, name="Allele_aberration", curie=ALLIANCE.curie('aberration'),
                    model_uri=ALLIANCE.Allele_aberration, domain=Allele, range=Optional[str])
+
+slots.Allele_name = Slot(uri=ALLIANCE.name, name="Allele_name", curie=ALLIANCE.curie('name'),
+                   model_uri=ALLIANCE.Allele_name, domain=Allele, range=str)
 
 slots.AlleleGenomicEntityAssociation_subject = Slot(uri=ALLIANCE.subject, name="AlleleGenomicEntityAssociation_subject", curie=ALLIANCE.curie('subject'),
                    model_uri=ALLIANCE.AlleleGenomicEntityAssociation_subject, domain=AlleleGenomicEntityAssociation, range=Union[str, AlleleCurie])
@@ -4712,6 +4787,36 @@ slots.AlleleVariantAssociation_subject = Slot(uri=ALLIANCE.subject, name="Allele
 
 slots.AlleleVariantAssociation_object = Slot(uri=ALLIANCE.object, name="AlleleVariantAssociation_object", curie=ALLIANCE.curie('object'),
                    model_uri=ALLIANCE.AlleleVariantAssociation_object, domain=AlleleVariantAssociation, range=Union[str, VariantCurie])
+
+slots.Construct_curie = Slot(uri=ALLIANCE.curie, name="Construct_curie", curie=ALLIANCE.curie('curie'),
+                   model_uri=ALLIANCE.Construct_curie, domain=Construct, range=Union[str, ConstructCurie])
+
+slots.Construct_name = Slot(uri=ALLIANCE.name, name="Construct_name", curie=ALLIANCE.curie('name'),
+                   model_uri=ALLIANCE.Construct_name, domain=Construct, range=str)
+
+slots.SequenceTargetingReagent_curie = Slot(uri=ALLIANCE.curie, name="SequenceTargetingReagent_curie", curie=ALLIANCE.curie('curie'),
+                   model_uri=ALLIANCE.SequenceTargetingReagent_curie, domain=SequenceTargetingReagent, range=Union[str, SequenceTargetingReagentCurie])
+
+slots.SequenceTargetingReagent_name = Slot(uri=ALLIANCE.name, name="SequenceTargetingReagent_name", curie=ALLIANCE.curie('name'),
+                   model_uri=ALLIANCE.SequenceTargetingReagent_name, domain=SequenceTargetingReagent, range=str)
+
+slots.SequenceTargetingReagentToGeneAssociation_predicate = Slot(uri=ALLIANCE.predicate, name="SequenceTargetingReagentToGeneAssociation_predicate", curie=ALLIANCE.curie('predicate'),
+                   model_uri=ALLIANCE.SequenceTargetingReagentToGeneAssociation_predicate, domain=SequenceTargetingReagentToGeneAssociation, range=Union[str, "SqtrRelationEnum"])
+
+slots.SequenceTargetingReagentToGeneAssociation_subject = Slot(uri=ALLIANCE.subject, name="SequenceTargetingReagentToGeneAssociation_subject", curie=ALLIANCE.curie('subject'),
+                   model_uri=ALLIANCE.SequenceTargetingReagentToGeneAssociation_subject, domain=SequenceTargetingReagentToGeneAssociation, range=Union[str, SequenceTargetingReagentCurie])
+
+slots.SequenceTargetingReagentToGeneAssociation_object = Slot(uri=ALLIANCE.object, name="SequenceTargetingReagentToGeneAssociation_object", curie=ALLIANCE.curie('object'),
+                   model_uri=ALLIANCE.SequenceTargetingReagentToGeneAssociation_object, domain=SequenceTargetingReagentToGeneAssociation, range=Union[str, GeneCurie])
+
+slots.ConstructComponentAssociation_predicate = Slot(uri=ALLIANCE.predicate, name="ConstructComponentAssociation_predicate", curie=ALLIANCE.curie('predicate'),
+                   model_uri=ALLIANCE.ConstructComponentAssociation_predicate, domain=ConstructComponentAssociation, range=Union[str, "ConstructComponentRelationEnum"])
+
+slots.ConstructComponentAssociation_subject = Slot(uri=ALLIANCE.subject, name="ConstructComponentAssociation_subject", curie=ALLIANCE.curie('subject'),
+                   model_uri=ALLIANCE.ConstructComponentAssociation_subject, domain=ConstructComponentAssociation, range=Union[str, ConstructCurie])
+
+slots.ConstructComponentAssociation_object = Slot(uri=ALLIANCE.object, name="ConstructComponentAssociation_object", curie=ALLIANCE.curie('object'),
+                   model_uri=ALLIANCE.ConstructComponentAssociation_object, domain=ConstructComponentAssociation, range=Union[str, ConstructComponentCurie])
 
 slots.SourceVariantLocation_single_reference = Slot(uri=ALLIANCE.single_reference, name="SourceVariantLocation_single_reference", curie=ALLIANCE.curie('single_reference'),
                    model_uri=ALLIANCE.SourceVariantLocation_single_reference, domain=SourceVariantLocation, range=Union[str, ReferenceCurie])

@@ -1,0 +1,98 @@
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.yaml
+
+imports:
+  - core
+  - linkml:types
+
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - owl
+
+
+prefixes:
+  alliance: 'http://alliancegenome.org/'
+  linkml: 'https://w3id.org/linkml/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+  dct: 'http://purl.org/dc/terms/'
+  WIKIDATA_PROPERTY: 'https://www.wikidata.org/wiki/Property:'
+  obograph: 'https://github.com/biodatamodels/obograph'
+
+classes:
+
+  CurationReportGroup:
+    is_a: AuditedObject
+    description: This class is use to group together curation reports
+    slots:
+      - name
+
+  CurationReport:
+    is_a: AuditedObject
+    description: Base class for all curation reports
+    slots:
+      - name
+      - birt_report_file_path
+      - schedule_active
+      - cron_schedule
+      - curation_report_status
+      - curation_report_group
+
+  CurationReportHistory:
+    is_a: AuditedObject
+    description: >-
+      Object used to describe the indiviual run of this curation report
+    slots:
+      - curation_report
+      - curation_report_timestamp
+      - pdf_file_path
+      - xlsx_file_path
+      - curation_report_status
+
+
+slots:
+
+  birt_report_file_path:
+    description: File path to where the BIRT file has been saved
+    range: string
+
+  pdf_file_path:
+    description: File path of the PDF file generated from the BIRT report
+    range: string
+
+  xlsx_file_path:
+    description: >-
+      File path of the Excel file generated from the BIRT report
+    range: string
+
+  curation_report_group:
+    description: Links a curation report to its report group
+    domain: CurationReport
+    range: CurationReportGroup
+
+  curation_report:
+    description: Links a report history to its associated report
+    domain: CurationReportHistory
+    range: CurationReport
+
+  curation_report_status:
+    description: Describes the status of the curation report
+    range: string
+
+  curation_report_timestamp:
+    description: Timestamp for creation of BIRT report file
+    domain: CurationReportHistory
+    range: date

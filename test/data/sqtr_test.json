@@ -1,0 +1,37 @@
+{
+  "sqtr_ingest_set": [
+    {
+      "curie": "ZFIN:ZDB-TALEN-200601-1",
+      "taxon": "NCBITaxon:7955",
+      "created_by": "ZFIN",
+      "updated_by": "ZFIN",
+      "internal": false,
+      "name": "TALEN2-eftud2",
+      "synonyms": [{"synonym": "test", "internal": false},{"synonym": "another test", "internal": false}],
+      "secondary_identifiers": ["ZFIN:ZDB-MRPHLNO-123456-1"],
+      "references": ["PMID:12345"]
+    },
+    {
+      "curie": "ZFIN:ZDB-CRISPR-220421",
+      "taxon": "NCBITaxon:7955",
+      "created_by": "ZFIN",
+      "updated_by": "ZFIN",
+      "internal": false,
+      "name": "CRISPR-eftud2",
+      "synonyms": [{"synonym": "test", "internal": false},{"synonym": "another test", "internal": false}],
+      "secondary_identifiers": ["ZFIN:ZDB-MRPHLNO-123456-1"],
+      "references": ["PMID:12345"]
+    },
+    {
+      "curie": "ZFIN:ZDB-MRPHLNO-220211",
+      "taxon": "NCBITaxon:7955",
+      "name": "MRPHLNO-eftud2",
+      "created_by": "ZFIN",
+      "updated_by": "ZFIN",
+      "internal": false,
+      "synonyms": [{"synonym": "test", "internal": false},{"synonym": "another test", "internal": false}],
+      "secondary_identifiers": ["ZFIN:ZDB-MRPHLNO-123456-1"],
+      "references": ["PMID:12345"]
+    }
+  ]
+}

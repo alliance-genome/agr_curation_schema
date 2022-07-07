@@ -5,19 +5,35 @@ title: Alliance Schema Prototype Allele
 imports:
   - core
   - image
+  - gene
   - variation
   - linkml:types
   - ontologyTerm
   - affectedGenomicModel
 
 prefixes:
-  alliance: 'http://alliancegenome.org'
+  alliance: 'http://alliancegenome.org/'
   linkml: 'https://w3id.org/linkml/'
   gff: 'https://w3id.org/gff'
   faldo: 'http://biohackathon.org/resource/faldo#'
   biolink: 'https://w3id.org/biolink/vocab/'
   NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
   schema: 'http://schema.org/'
+
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - owl
 
 # Classes
 
@@ -63,20 +79,20 @@ classes:
         notes: specific to MGI
       mutant_cell_lines:
         notes: specific to MGI
-      embryonic_cell_lines:
+      embryonic_stem_cell_lines:
         notes: specific to MGI
       transposon_insertion:
         notes: specific to FB
       aberration:
         notes: specific to FB
+      name:
+        required: true
 
   AlleleGenomicEntityAssociation:
     is_a: Association
     abstract: true
     description: >-
       Association between an allele and a genomic entity
-    mixins:
-      - AuditedObject
     slots:
       - single_reference
       - evidence_code
@@ -125,6 +141,7 @@ classes:
         range: Variant
 
   AssociatedReference:
+    is_a: AuditedObject
     description: >-
       Describes the relation between a reference and an object
     slots:
@@ -132,20 +149,73 @@ classes:
       - single_reference
 
   Construct:
+    is_a: GenomicEntity
     description: >-
-      Dummy construct class
+    slot_usage:
+      curie:
+        required: true
+        identifier: true
+      name:
+        required: true
+    slots:
+      - construct_components
+      - references
+
 
   CellLine:
+    is_a: AuditedObject
     description: >-
       Dummy cell line class
 
   SequenceTargetingReagent:
     description: >-
-      Dummy sequence targeting reagent class
+    is_a: GenomicEntity
+    slots:
+      - references
+    slot_usage:
+      curie:
+        identifier: true
+      name:
+        required: true
+
+  SequenceTargetingReagentToGeneAssociation:
+    description: the relationship between a Sequence Targeting Reagent and its targeted genes.
+    is_a: Association
+    slots:
+      - references
+    slot_usage:
+      predicate:
+        range: sqtr_relation_enum
+      subject:
+        range: SequenceTargetingReagent
+      object:
+        range: Gene
+
+
+  ConstructComponentAssociation:
+    is_a: Association
+    slot_usage:
+      predicate:
+        range: construct_component_relation_enum
+      subject:
+        range: Construct
+      object:
+        range: ConstructComponent
+
+  ConstructComponent:
+    is_a: GenomicEntity
+    slots:
+      - symbol
+
 
 # Slots
 
 slots:
+
+  construct_components:
+    multivalued: true
+    domain: Construct
+    range: GenomicEntity
 
   contains_constructs:
     multivalued: true
@@ -284,3 +354,17 @@ slots:
       by sequencing
     domain: Variant
     range: VocabularyTerm
+
+enums:
+  construct_component_relation_enum:
+    permissible_values:
+      expresses:
+        meaning: RO:0002292
+      is_regulated_by:
+        meaning: RO:0002334
+      targets:
+        meaning: RO:0002436
+
+  sqtr_relation_enum:
+    permissible_values:
+      targets:

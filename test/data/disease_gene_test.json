@@ -5,16 +5,11 @@
         "ECO:0000305"
       ],
       "single_reference": "PMID:0012345",
-<<<<<<< HEAD
-      "data_provider": [
-        "ZFIN"
-      ],
-=======
       "data_provider": "ZFIN",
->>>>>>> main
       "object": "DOID:9452",
       "created_by": "ZFIN",
-      "modified_by": "ZFIN",
+      "updated_by": "ZFIN",
+      "internal": false,
       "subject": "ZFIN:ZDB-GENE-060503-338",
       "predicate": "is_implicated_in"
     }

@@ -4,18 +4,39 @@ imports:
   - core
 
 prefixes:
-  alliance: 'http://alliancegenome.org'
+  alliance: 'http://alliancegenome.org/'
   linkml: 'https://w3id.org/linkml/'
+  PDBE: 'https://www.ebi.ac.uk/pdbe/entry/pdb/'
+  RCSB_PDB: 'https://www.rcsb.org/structure/'
+  WWPDB: 'https://www.rcsb.org/structure/'
   gff: 'https://w3id.org/gff'
   faldo: 'http://biohackathon.org/resource/faldo#'
   biolink: 'https://w3id.org/biolink/vocab/'
   NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
   schema: 'http://schema.org/'
+  dct: 'http://purl.org/dc/terms/'
+  WIKIDATA_PROPERTY: 'https://www.wikidata.org/wiki/Property:'
+  obograph: 'https://github.com/biodatamodels/obograph'
+
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - owl
+
 
 classes:
   Resource:
-    mixins:
-      - AuditedObject
+    is_a: AuditedObject
     slots:
       - curie
       - title
@@ -51,6 +72,10 @@ classes:
 
 slots:
 
+  id:
+    description: >-
+      Precedence of identifiers for references is as follows: PMID if available; DOI if not; actual
+      alternate CURIE otherwise.
 
   iso_abbreviation:
     description: >-
@@ -62,12 +87,22 @@ slots:
     domain: Resource
     range: string
 
+  copyright_date:
+    description: >-
+    domain: Resource
+    range: date
+
   print_issn:
     description: >-
     domain: Resource
     range: string
 
   online_issn:
+    description: >-
+    domain: Resource
+    range: string
+
+  summary:
     description: >-
     domain: Resource
     range: string

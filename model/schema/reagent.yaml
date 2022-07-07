@@ -2,22 +2,45 @@ id: https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.ya
 
 imports:
   - core
+  - gene
   - reference
   - linkml:types
 
 prefixes:
-  alliance: 'http://alliancegenome.org'
+  alliance: 'http://alliancegenome.org/'
   linkml: 'https://w3id.org/linkml/'
+  PDBE: 'https://www.ebi.ac.uk/pdbe/entry/pdb/'
+  RCSB_PDB: 'https://www.rcsb.org/structure/'
+  WWPDB: 'https://www.rcsb.org/structure/'
   gff: 'https://w3id.org/gff'
   faldo: 'http://biohackathon.org/resource/faldo#'
   biolink: 'https://w3id.org/biolink/vocab/'
   NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
   schema: 'http://schema.org/'
+  dct: 'http://purl.org/dc/terms/'
+  WIKIDATA_PROPERTY: 'https://www.wikidata.org/wiki/Property:'
+  obograph: 'https://github.com/biodatamodels/obograph'
+
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - owl
+
 
 classes:
 
   Reagent:
-    is_a: BiologicalEntity
+    is_a: BiologicalEntity     # I don't think this is an appropriate super class (CG)
     description: >-
       A material entity used in experiments.
     slots:
@@ -26,9 +49,6 @@ classes:
 
   Antibody:
     is_a: Reagent
-    mixins:
-      - AuditedObject
-      - Reagent
     description: >-
       Immunoglobulin proteins that bind specific molecule(s). Can be used
       experimentally for the purposes of detection or purification.

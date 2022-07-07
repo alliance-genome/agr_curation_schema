@@ -1,0 +1,88 @@
+id: https://github.com/alliance-genome/agr_curation_schema/gene.yaml
+name: gene
+description: Alliance Schema with LinkML
+
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+
+imports:
+  - core
+  - linkml:types
+  - ontologyTerm
+
+prefixes:
+  alliance: 'http://alliancegenome.org/'
+  linkml: 'https://w3id.org/linkml/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+  dct: 'http://purl.org/dc/terms/'
+  WIKIDATA_PROPERTY: 'https://www.wikidata.org/wiki/Property:'
+  obograph: 'https://github.com/biodatamodels/obograph'
+
+## ------------
+## CLASSES
+## ------------
+
+
+classes:
+
+  Gene:
+    description: >-
+      A DNA genomic entity from which one or more functional* RNA transcript molecules
+      are transcribed, along with cis-regulatory elements responsible for regulating
+      expression (transcription) of the gene. * A functional RNA molecule
+      here can mean one that is directly responsible for the gene's function (e.g. catalysis,
+      structure, etc.) or one that is translated to produce a functional polypeptide/protein.
+      A pseudogene may be considered a gene under this definition, albeit no longer functional.
+    is_a: GenomicEntity
+    slots:
+      - symbol
+      - related_notes
+      - gene_type
+    id_prefixes:
+      - ENSEMBL
+      - HGNC
+      - FB
+      - MGI
+      - RGD
+      - SGD
+      - WB
+      - ZFIN
+    slot_usage:
+      symbol:
+        required: true
+      related_notes:
+        description: >-
+          Valid note types are available for viewing in the A-Team curation tool
+          Controlled Vocabulary Terms Table (in the "Gene note types" vocabulary)
+          on the production environment (curation.alliancegenome.org). New terms
+          can be added as needed.
+
+
+
+## ------------
+## SLOTS
+## ------------
+
+
+
+slots:
+
+  gene_type:
+    description: SOTerm describing gene type
+    domain: Gene
+    range: SOTerm

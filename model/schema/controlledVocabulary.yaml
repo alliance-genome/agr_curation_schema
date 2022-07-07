@@ -7,10 +7,31 @@ imports:
   - linkml:types
   - ontologyTerm
 
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - owl
+
+
 prefixes:
-  alliance: 'http://alliancegenome.org'
+  alliance: 'http://alliancegenome.org/'
   linkml: 'https://w3id.org/linkml/'
   obograph: 'https://github.com/biodatamodels/obograph'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
 
 slots:
   text_synonyms:
@@ -34,15 +55,13 @@ slots:
 classes:
 
   VocabularyTerm:
+    is_a: AuditedObject
     description: >-
       A concept or class in a simple vocabulary.
-    mixins:
-      - AuditedObject
     slots:
       - name
       - abbreviation
       - definition
-      - is_obsolete
       - text_synonyms
     slot_usage:
       name:
@@ -52,12 +71,10 @@ classes:
   Vocabulary:
     description: >-
       A set of VocabularyTerm objects.
-    mixins:
-      - AuditedObject
+    is_a: AuditedObject
     slots:
       - name
       - vocabulary_description
-      - is_obsolete
       - member_terms
     slot_usage:
       name:

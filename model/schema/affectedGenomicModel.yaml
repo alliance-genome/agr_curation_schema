@@ -7,9 +7,30 @@ imports:
   - allele
   - linkml:types
 
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - owl
+
+
 prefixes:
-  alliance: 'http://alliancegenome.org'
+  alliance: 'http://alliancegenome.org/'
   linkml: 'https://w3id.org/linkml/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
 
 classes:
 
@@ -24,8 +45,10 @@ classes:
       - sequence_targeting_reagents
       - parental_populations
       - data_provider
+      - references
 
   AffectedGenomicModelComponent:
+    is_a: AuditedObject
     description: >-
       Allele that affects the model and its zygosity
     slots:
@@ -39,6 +62,7 @@ slots:
       Subtype of affected genomic model
     domain: AffectedGenomicModel
     range: subtype_values
+    required: true
 
   components:
     singular_name: component
@@ -76,6 +100,7 @@ enums:
     permissible_values:
       strain:
       genotype:
+      fish:
 
   zygosity_values:
     permissible_values:

@@ -6,23 +6,39 @@ description: Alliance Gene Interaction Schema Prototype with LinkML
 default_prefix: alliance
 default_range: string
 
+imports:
+  - linkml:types
+  - allele
+  - core
+  - gene
+  - reference
+
+prefixes:
+  alliance: 'http://alliancegenome.org/'
+  linkml: 'https://w3id.org/linkml/'
+  PDBE: 'https://www.ebi.ac.uk/pdbe/entry/pdb/'
+  RCSB_PDB: 'https://www.rcsb.org/structure/'
+  WWPDB: 'https://www.rcsb.org/structure/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+  dct: 'http://purl.org/dc/terms/'
+  WIKIDATA_PROPERTY: 'https://www.wikidata.org/wiki/Property:'
+  obograph: 'https://github.com/biodatamodels/obograph'
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
 emit_prefixes:
   - rdf
   - rdfs
   - xsd
   - owl
-
-imports:
-  - linkml:types
-  - core
-  - reference
-
-prefixes:
-  alliance: 'http://alliancegenome.org'
-  linkml: 'https://w3id.org/linkml/'
-  PDBE: 'https://www.ebi.ac.uk/pdbe/entry/pdb/'
-  RCSB_PDB: 'https://www.rcsb.org/structure/'
-  WWPDB: 'https://www.rcsb.org/structure/'
 
 ## ----------
 ## CLASSES
