@@ -97,6 +97,8 @@ classes:
       - negated
       - uncertain
       - associated_with_figure    # this is often redundant
+      - assay_notes
+
     slot_usage:
       associated_with_figure:
         description: >-
@@ -118,7 +120,6 @@ classes:
       - developmental_stage_stop
       - age
       - temporal_qualifiers
-      - stage_uncertainty
 
   AnatomicalSite:
     is_a: AuditedObject
@@ -147,7 +148,7 @@ classes:
     description: >-
       Free-text describing some aspect(s) of a gene's expression, particularly
       nuanced information that is not readily captured in annotations.
-      May summarize data from many annotations and/or many publications.
+      May summarize data from many annotations and/or many experiments.
     notes: >-
       Inherits: statement_subject, statement_type, statement_text, references.
       Not sure if/how to use the statement_type slot - seems redundant.
@@ -268,7 +269,7 @@ slots:
     description: >-
       Qualifiers that describe the spatial characteristics of an event.
     domain: AnatomicalSite
-    range: spatial_qualifier_set
+    range: spatial_qualifier_set  #BSPO
 
   reagents_used:
     description: >-
@@ -294,13 +295,6 @@ slots:
     range: AffectedGenomicModel
     multivalued: false
 
-  stage_uncertainty:
-    notes: >-
-      Flag for whether or not the temporal stage is certain or uncertain. Boolean true/false?
-    domain: TemporalContext
-    range: string
-    multivalued: false
-
   temporal_qualifiers:
     description: >-
       Qualifiers of the stage or age in an annotation.
@@ -322,6 +316,8 @@ slots:
     domain: ExpressionAnnotation
     range: AnatomicalSite
     multivalued: false
+
+  assay_notes:
 
 enums:
 
@@ -380,9 +376,6 @@ enums:
       We need to get a set of relevant qualifiers used across the MODs.
       Filled in with a FB qualifier for now. MGI, WB, ZFIN don't use this.
     permissible_values:
-      progressive:
-        description: >-
-          An event that gets more pronounced with time.
       throughout:
         description: >-
           An event that happens from start to end times included in the annotation
@@ -402,9 +395,6 @@ enums:
       expression_summary:
         description: >-
           Free-text that summarizes expression across many annotations, experiments or publictaions.
-      when_expressed_note:
-        description: >-
-          Additional free-text describing the stage/age of expression in an expression annotation.
       where_expressed_note:
         description: >-
           Additional free-text describing the anatomical site of expression in an expression annotation.
@@ -413,3 +403,4 @@ enums:
           Additional free-text describing other aspects of an expression annotation.
           For example, only in the head neurons, only when JNK is activated, etc.
           Corresponds to note type #1 of AGR-1407.
+

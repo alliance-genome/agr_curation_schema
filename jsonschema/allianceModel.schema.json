@@ -3028,6 +3028,9 @@
          "additionalProperties": false,
          "description": "A description of when and where gene products are observed to be present, including experimental details, supporting evidence, and curator notes.",
          "properties": {
+            "assay_notes": {
+               "type": "string"
+            },
             "associated_with_figure": {
                "description": "The figure(s) that support(s) the expression annotation.",
                "items": {
@@ -3376,7 +3379,6 @@
          "description": "",
          "enum": [
             "expression_summary",
-            "when_expressed_note",
             "where_expressed_note",
             "expression_annotation_note"
          ],
@@ -4153,7 +4155,7 @@
       },
       "GeneExpressionStatement": {
          "additionalProperties": false,
-         "description": "Free-text describing some aspect(s) of a gene's expression, particularly nuanced information that is not readily captured in annotations. May summarize data from many annotations and/or many publications.",
+         "description": "Free-text describing some aspect(s) of a gene's expression, particularly nuanced information that is not readily captured in annotations. May summarize data from many annotations and/or many experiments.",
          "properties": {
             "created_by": {
                "description": "The individual that created the entity.",
@@ -7533,9 +7535,6 @@
                "description": "Entity is no longer current.",
                "type": "boolean"
             },
-            "stage_uncertainty": {
-               "type": "string"
-            },
             "temporal_qualifiers": {
                "$ref": "#/$defs/TemporalQualifierSet",
                "description": "Qualifiers of the stage or age in an annotation."
@@ -7554,7 +7553,6 @@
       "TemporalQualifierSet": {
          "description": "",
          "enum": [
-            "progressive",
             "throughout",
             "sometime_during"
          ],
