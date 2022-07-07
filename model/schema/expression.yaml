@@ -58,6 +58,7 @@ classes:
       - specimen_genomic_model
       - specimen_alleles
       - condition_relations
+      - related_notes
     rules:
       - postconditions:
           any_of:
@@ -97,6 +98,7 @@ classes:
       - negated
       - uncertain
       - associated_with_figure    # this is often redundant
+      - related_notes
     slot_usage:
       associated_with_figure:
         description: >-
@@ -142,41 +144,41 @@ classes:
       object:
         range: ImagePane
 
-  GeneExpressionStatement:
-    is_a: EntityStatement     # Update to use Note class instead?
-    description: >-
-      Free-text describing some aspect(s) of a gene's expression, particularly
-      nuanced information that is not readily captured in annotations.
-      May summarize data from many annotations and/or many publications.
-    notes: >-
-      Inherits: statement_subject, statement_type, statement_text, references.
-      Not sure if/how to use the statement_type slot - seems redundant.
-    slot_usage:
-      statement_subject:
-        range: Gene
-      statement_type:
-        range: expression_statement_type_enum
+  # GeneExpressionStatement:
+  #   is_a: EntityStatement     # Update to use Note class instead?
+  #   description: >-
+  #     Free-text describing some aspect(s) of a gene's expression, particularly
+  #     nuanced information that is not readily captured in annotations.
+  #     May summarize data from many annotations and/or many publications.
+  #   notes: >-
+  #     Inherits: statement_subject, statement_type, statement_text, references.
+  #     Not sure if/how to use the statement_type slot - seems redundant.
+  #   slot_usage:
+  #     statement_subject:
+  #       range: Gene
+  #     statement_type:
+  #       range: expression_statement_type_enum
 
-  ExpressionExperimentStatement:
-    is_a: EntityStatement     # Update to use Note class instead?
-    description: >-
-      Free-text describing some aspect(s) of a gene's expression, particularly
-      nuanced information that is not readily captured in annotations.
-      This statement's scope is limited to the associated ExpressionExperiment.
-    notes: >-
-      Inherits: statement_subject, statement_type, statement_text, references.
-      Not sure if/how to use the statement_type slot - seems redundant.
-    slot_usage:
-      statement_subject:
-        range: ExpressionExperiment
+  # ExpressionExperimentStatement:
+  #   is_a: EntityStatement     # Update to use Note class instead?
+  #   description: >-
+  #     Free-text describing some aspect(s) of a gene's expression, particularly
+  #     nuanced information that is not readily captured in annotations.
+  #     This statement's scope is limited to the associated ExpressionExperiment.
+  #   notes: >-
+  #     Inherits: statement_subject, statement_type, statement_text, references.
+  #     Not sure if/how to use the statement_type slot - seems redundant.
+  #   slot_usage:
+  #     statement_subject:
+  #       range: ExpressionExperiment
 
-  ExpressionAnnotationStatement:
-    is_a: EntityStatement     # Update to use Note class instead?
-    slot_usage:
-      statement_subject:
-        range: ExpressionAnnotation
-      statement_type:
-        range: expression_statement_type_enum
+  # ExpressionAnnotationStatement:
+  #   is_a: EntityStatement     # Update to use Note class instead?
+  #   slot_usage:
+  #     statement_subject:
+  #       range: ExpressionAnnotation
+  #     statement_type:
+  #       range: expression_statement_type_enum
 
 slots:
 
@@ -395,9 +397,14 @@ enums:
       has_condition:
       induced_by:
 
+  # This enum should be replaced by adding new note type CV terms.
+  # e.g., expression_summary, etc.
+  # Leaving this enum in place now until that happens.
   expression_statement_type_enum:
     notes: >-
       Types of free-text statements associated with an expression annotation.
+      This enum should be replaced by adding terms to the notes type controlled
+      vocabulary: e.g., expression_summary, when_expressed, where_expressed, etc.
     permissible_values:
       expression_summary:
         description: >-
