@@ -295,13 +295,6 @@ slots:
     range: AffectedGenomicModel
     multivalued: false
 
-  stage_uncertainty:
-    notes: >-
-      Flag for whether or not the temporal stage is certain or uncertain. Boolean true/false?
-    domain: TemporalContext
-    range: string
-    multivalued: false
-
   temporal_qualifiers:
     description: >-
       Qualifiers of the stage or age in an annotation.
