@@ -294,8 +294,6 @@ slots:
     domain: ExpressionExperiment
     range: AffectedGenomicModel
     multivalued: false
-<<<<<<< HEAD
-=======
 
   stage_uncertainty:
     notes: >-
@@ -303,7 +301,6 @@ slots:
     domain: TemporalContext
     range: string
     multivalued: false
->>>>>>> main
 
   temporal_qualifiers:
     description: >-
@@ -326,6 +323,8 @@ slots:
     domain: ExpressionAnnotation
     range: AnatomicalSite
     multivalued: false
+
+  assay_notes:
 
 enums:
 
@@ -411,3 +410,4 @@ enums:
           Additional free-text describing other aspects of an expression annotation.
           For example, only in the head neurons, only when JNK is activated, etc.
           Corresponds to note type #1 of AGR-1407.
+
