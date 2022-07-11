@@ -56,6 +56,18 @@ classes:
     slots:
       - genes
 
+  GeneClass:
+    description: >-
+      A gene class is a set of genes which is of biological significance, and
+      which share nomenclature.
+    is_a: BiologicalEntity
+    slots:
+      - genes
+      - phenotype
+      - designating_laboratory
+      - old_members
+      - synonym 
+
   Operon:
     description: >-
       The DNA region of a group of adjacent genes whose transcription is
@@ -63,10 +75,12 @@ classes:
       units transcribed in the same direction and sharing at least one gene.
     is_a: BiologicalEntity
     slots:
-      # alternatively, this could be biological_entities if there were more than just genes in an operon
       - genes
+      - note  # This should be a core.yaml note object
+      - history # Tracking the history of merges/splits/previous members
     exact_mappings:
       - SO:0000178
+
 
   FunctionalGeneSet:
     is_a: BiologicalEntity
@@ -141,4 +155,41 @@ slots:
 
   enables:
     is_a: has_participant
+
+
+  note:
+    description: >-
+      A free-text curator note about this object
+    required: false
+    multivalued: false
+    domain: Note
+    range: ?
+
+
+  phenotype:
+    description: >-
+      A free-text curator note about this object
+    required: false
+    multivalued: false
+    domain: Note
+    range: ?
+  
+  designating_laboratory:
+      description: >-
+      A laboratory which designated this gene class
+    required: true
+    multivalued: false
+    domain: Laboratory
+    range: ?
+  
+  old_members:
+    description: >-
+      Gene which were formerly members of this class
+    required: false
+    multivalued: true
+    domain: Gene
+    range: ?
+
+
+
 
