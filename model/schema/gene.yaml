@@ -55,12 +55,17 @@ classes:
       - gene_type
       - gene_designating_laboratory
       - designating_person
-      - splice_leader
+      - trans_splice_leader
       - contig
       - biotype
       - anatomy_function
       - product_binds_matrix
       - wbprocess
+      - genetic_map_chromosome
+      - genetic_map_band
+      - genetic_map_position_centimorgan
+      - genetic_map_position_radiation 
+
 
     id_prefixes:
       - ENSEMBL
@@ -117,13 +122,13 @@ slots:
     domain: Gene
     range: string # should be changed to Person object, when Person exists
 
-  splice_leader:
+  trans_splice_leader:
     description: >-
-      Trans-splicing splice leaders observed to operate on this gene 
+      Trans-splicing splice leaders observed to operate on this gene, in species which have spliced leader trans-splicing 
     required: false
     multivalued: true
     domain: Gene
-    range: string
+    range: string # string could be replaced with a set of splice leaders, if-when they are modelled
 
   contig:
     description: >-
@@ -141,7 +146,6 @@ slots:
     domain: Gene
     range: string  # this should be changed to a SO-term/special dictionary
 
-
   anatomy_function:
     description: >-
       WB specific. Allow the connection between Anatomy_term, Phenotype (proxy of biological function), and Gene and still give some information about the experiment itself. Eg WBbtf0001 
@@ -149,7 +153,6 @@ slots:
     multivalued: true
     domain: Gene
     range: string  # this should be changed to WBAnatomy term
-
 
   product_binds_matrix:
     description: >-
@@ -159,7 +162,6 @@ slots:
     domain: Gene
     range: string  # this should be changed to a position matrix object, once that class is modelled
 
-
   wbprocess:
     description: >-
       WB specific. Eg WBbiopr:00000015 (Corpse engulfment) 
@@ -168,6 +170,37 @@ slots:
     domain: Gene
     range: string  # this should be changed to a WBbiopr term
 
+  genetic_map_chromosome:
+    description: >-
+      Chromosome or contig to which the gene has been genetically mapped
+    required: false
+    multivalued: false
+    domain: Gene
+    range: Chromosome 
+
+  genetic_map_band:
+    description: >-
+      Genetic map predicted chromosome location eg 10q12
+    required: false
+    multivalued: false
+    domain: Gene
+    range: string  
+
+  genetic_map_position_centimorgan:
+    description: >-
+      Genetic map predicted chromosome location in centimorgans eg 22.3366 cM
+    required: false
+    multivalued: true
+    domain: Gene
+    range: float 
+
+  genetic_map_position_radiation: 
+    description: >-
+      Radiation hybrid map predicted chromosome location eg 66.5 cR
+    required: false
+    multivalued: true
+    domain: Gene
+    range: float
 
 
 
