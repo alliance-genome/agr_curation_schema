@@ -56,6 +56,8 @@ classes:
       - gene_designating_laboratory
       - designating_person
       - splice_leader
+      - contig
+      - biotype
     id_prefixes:
       - ENSEMBL
       - HGNC
@@ -100,7 +102,7 @@ slots:
       A laboratory which designated this gene
     required: false
     multivalued: false
-    domain: GeneClass
+    domain: Gene
     range: Laboratory
 
   designating_person:
@@ -108,16 +110,35 @@ slots:
       A person/persons who designated this gene
     required: false
     multivalued: true
-    domain: GeneClass
-    range: Laboratory
+    domain: Gene
+    range: string # should be changed to Person object, when Person exists
 
   splice_leader:
     description: >-
       Trans-splicing splice leaders observed to operate on this gene 
     required: false
     multivalued: true
-    domain: GeneClass
+    domain: Gene
     range: string
+
+  contig:
+    description: >-
+      Contig or clone this gene is located to 
+    required: false
+    multivalued: false
+    domain: Gene
+    range: string
+
+  biotype:
+    description: >-
+      Overall biotype of this gene 
+    required: false
+    multivalued: true
+    domain: Gene
+    range: string  # this should be changed to a SO-term/special dictionary
+
+
+
 
 
 
