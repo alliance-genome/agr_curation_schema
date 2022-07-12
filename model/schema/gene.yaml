@@ -53,6 +53,9 @@ classes:
       - symbol
       - related_notes
       - gene_type
+      - designating_laboratory
+      - designating_person
+      - splice_leader
     id_prefixes:
       - ENSEMBL
       - HGNC
@@ -74,6 +77,11 @@ classes:
 
 
 
+
+
+
+
+
 ## ------------
 ## SLOTS
 ## ------------
@@ -86,3 +94,31 @@ slots:
     description: SOTerm describing gene type
     domain: Gene
     range: SOTerm
+
+  designating_laboratory:
+    description: >-
+      A laboratory which designated this gene
+    required: false
+    multivalued: false
+    domain: GeneClass
+    range: Laboratory
+
+  designating_person:
+    description: >-
+      A person/persons who designated this gene
+    required: false
+    multivalued: true
+    domain: GeneClass
+    range: Laboratory
+
+  splice_leader:
+    description: >-
+      Trans-splicing splice leaders observed to operate on this gene 
+    required: false
+    multivalued: true
+    domain: GeneClass
+    range: string
+
+
+
+
