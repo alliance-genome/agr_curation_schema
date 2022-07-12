@@ -54,8 +54,8 @@ classes:
       - related_notes
       - gene_type
       - gene_designating_laboratory
-      - designating_person
-      - trans_splice_leader
+      - designating_persons
+      - trans_splice_leaders
       - contig
       - biotype
       - anatomy_function
@@ -114,7 +114,7 @@ slots:
     domain: Gene
     range: Laboratory
 
-  designating_person:
+  designating_persons:
     description: >-
       A person/persons who designated this gene
     required: false
@@ -122,7 +122,7 @@ slots:
     domain: Gene
     range: string # should be changed to Person object, when Person exists
 
-  trans_splice_leader:
+  trans_splice_leaders:
     description: >-
       Trans-splicing splice leaders observed to operate on this gene, in species which have spliced leader trans-splicing 
     required: false
