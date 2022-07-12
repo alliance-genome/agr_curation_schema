@@ -60,7 +60,7 @@ classes:
   GeneClass:
     description: >-
       A gene class is a set of genes which share nomenclature, belonging to the same gene class.
-    is_a: BiologicalEntity
+    is_a: AuditedObject
     slots:
       - genes
       - designating_laboratory
