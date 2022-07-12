@@ -77,7 +77,7 @@ classes:
     slots:
       - genes
       - related_note
-      - history # Tracking the history of merges/splits/previous members
+      # - history # Tracking the history of merges/splits/previous members - deal with later
     exact_mappings:
       - SO:0000178
 
