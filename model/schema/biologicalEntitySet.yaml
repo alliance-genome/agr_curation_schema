@@ -57,12 +57,13 @@ classes:
       - genes
       - related_note
 
-  GeneClass:
+  GeneNomenclatureSet:
     description: >-
-      A gene class is a set of genes which share nomenclature, belonging to the same gene class.
+      WB specific. A gene class is a set of genes which share nomenclature, belonging to the same gene class.
     is_a: AuditedObject
     slots:
       - genes
+      - curie
       - designating_laboratory
       - old_members
       - synonym 
@@ -161,7 +162,7 @@ slots:
       A laboratory which designated this gene class
     required: true
     multivalued: false
-    domain: GeneClass
+    domain: GeneNomenclatureSet
     range: Laboratory
   
   old_members:
@@ -169,7 +170,7 @@ slots:
       Gene which were formerly members of this GeneClass
     required: false
     multivalued: true
-    domain: GeneClass
+    domain: GeneNomenclatureSet
     range: Gene
 
 
