@@ -50,23 +50,23 @@ classes:
 
   GeneCluster:
     description: >-
-      A gene cluster is a set of genes which is of biological significance, and
-      which is clustered together on the genome.
+      A gene cluster is a set of genes which have a biological significance, and
+      which are clustered together on the genome.
     is_a: BiologicalEntity
     slots:
       - genes
+      - related_note
 
   GeneClass:
     description: >-
-      A gene class is a set of genes which is of biological significance, and
-      which share nomenclature.
+      A gene class is a set of genes which share nomenclature, belonging to the same gene class.
     is_a: BiologicalEntity
     slots:
       - genes
-      - phenotype
       - designating_laboratory
       - old_members
       - synonym 
+      - related_note
 
   Operon:
     description: >-
@@ -76,7 +76,7 @@ classes:
     is_a: BiologicalEntity
     slots:
       - genes
-      - note  # This should be a core.yaml note object
+      - related_note
       - history # Tracking the history of merges/splits/previous members
     exact_mappings:
       - SO:0000178
@@ -156,39 +156,22 @@ slots:
   enables:
     is_a: has_participant
 
-
-  note:
-    description: >-
-      A free-text curator note about this object
-    required: false
-    multivalued: false
-    domain: Note
-    range: ?
-
-
-  phenotype:
-    description: >-
-      A free-text curator note about this object
-    required: false
-    multivalued: false
-    domain: Note
-    range: ?
   
   designating_laboratory:
       description: >-
       A laboratory which designated this gene class
     required: true
     multivalued: false
-    domain: Laboratory
-    range: ?
+    domain: GeneClass
+    range: Laboratory
   
   old_members:
     description: >-
-      Gene which were formerly members of this class
+      Gene which were formerly members of this GeneClass
     required: false
     multivalued: true
-    domain: Gene
-    range: ?
+    domain: GeneClass
+    range: Gene
 
 
 
