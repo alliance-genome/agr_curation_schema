@@ -57,7 +57,6 @@ classes:
       - designating_persons
       - trans_splice_leaders
       - contig
-      - biotype
       - anatomy_function
       - product_binds_matrix
       - wbprocess
@@ -137,14 +136,6 @@ slots:
     multivalued: false
     domain: Gene
     range: string
-
-  biotype:
-    description: >-
-      Overall biotype of this gene 
-    required: false
-    multivalued: true
-    domain: Gene
-    range: string  # this should be changed to a SO-term/special dictionary
 
   anatomy_function:
     description: >-
