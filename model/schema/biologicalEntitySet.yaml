@@ -155,10 +155,9 @@ slots:
 
   enables:
     is_a: has_participant
-
-  
+ 
   designating_laboratory:
-      description: >-
+    description: >-
       A laboratory which designated this gene class
     required: true
     multivalued: false
