@@ -20,6 +20,7 @@ emit_prefixes:
 imports:
   - core
   - linkml:types
+  - gene
 
 prefixes:
   alliance: 'http://alliancegenome.org/'
@@ -51,11 +52,22 @@ classes:
   GeneCluster:
     description: >-
       A gene cluster is a set of genes which have a biological significance, and
-      which are clustered together on the genome.
+      which are probably clustered together on the genome, like histones and miRNAs
     is_a: BiologicalEntity
     slots:
       - genes
       - related_note
+
+  GeneCollection:
+    description: >-
+      A gene collection is a set of genes which have been grouped based on experimental evidence, for example a set of interacting genes, genes in expression cluster, or a set of ChIP binding peaks
+    is_a: BiologicalEntity
+    slots:
+      - genes
+      - related_note
+      - experiment_type
+      # maybe we want a slot for a GO evidence code here?
+
 
   GeneNomenclatureSet:
     description: >-
@@ -86,6 +98,7 @@ classes:
   FunctionalGeneSet:
     is_a: BiologicalEntity
     slots:
+      - genes
       - single_reference
 
   Pathway:
@@ -121,6 +134,8 @@ classes:
         range: Gene
       object:
         range: Pathway
+
+
 
 
 ## ------------
@@ -162,7 +177,7 @@ slots:
       A laboratory which designated this gene class
     required: true
     multivalued: false
-    domain: GeneNomenclatureSet
+    domain: Gene
     range: Laboratory
   
   old_members:
@@ -173,6 +188,13 @@ slots:
     domain: GeneNomenclatureSet
     range: Gene
 
+  experiment_type:
+    description: >-
+      Type of experiment by which these genes were collated eg chip-seq, interaction, expression
+    required: false
+    multivalued: true
+    domain: GeneCollection
+    range: string  # should maybe be replaced by a vocabulary
 
 
 
