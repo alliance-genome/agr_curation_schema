@@ -78,6 +78,9 @@ classes:
     slot_usage:
       taxon:
         required: true
+      curie:
+        required: true
+
 
   GenomicEntity:
     is_a: BiologicalEntity
@@ -116,6 +119,10 @@ classes:
     defining_slots:
       - curie
       - page_areas
+    slot_usage:
+      curie:
+        required: true
+
 
   Synonym:
     is_a: AuditedObject
@@ -202,11 +209,17 @@ classes:
     description: The ID of the landmark used to establish the coordinate system for the current feature.
     slots:
       - curie
+    slot_usage:
+      curie:
+        required: true
 
   Assembly:
     is_a: AuditedObject
     slots:
       - curie
+    slot_usage:
+      curie:
+        required: true
 
   GenomicLocation:
     is_a: AuditedObject
@@ -385,7 +398,6 @@ slots:
 
   curie:
     identifier: true
-    required: true
     multivalued: false
     description: >-
       A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
