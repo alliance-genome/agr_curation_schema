@@ -39,7 +39,6 @@ prefixes:
 ## ------------
 
 
-
 classes:
 
 # Do BiologicalEntitySets have unique identifier or unique name?

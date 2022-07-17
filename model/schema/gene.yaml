@@ -33,6 +33,7 @@ prefixes:
   WIKIDATA_PROPERTY: 'https://www.wikidata.org/wiki/Property:'
   obograph: 'https://github.com/biodatamodels/obograph'
 
+
 ## ------------
 ## CLASSES
 ## ------------
