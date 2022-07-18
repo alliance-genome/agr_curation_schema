@@ -1,7 +1,7 @@
 id: https://github.com/alliance-genome/agr_curation_schema/biologicalEntitySet.yaml
 name: Alliance-Schema-Prototype-Biological-Entity-Set
 title: Alliance Schema Prototype Biological Entity Set
-#description: Alliance Biological Entity Set Prototype with LinkML
+description: Alliance Biological Entity Set Prototype with LinkML
 
 default_prefix: alliance
 default_range: string
@@ -20,7 +20,6 @@ emit_prefixes:
 imports:
   - core
   - linkml:types
-  - gene
 
 prefixes:
   alliance: 'http://alliancegenome.org/'
@@ -39,6 +38,7 @@ prefixes:
 ## ------------
 
 
+
 classes:
 
 # Do BiologicalEntitySets have unique identifier or unique name?
@@ -50,35 +50,11 @@ classes:
 
   GeneCluster:
     description: >-
-      A gene cluster is a set of genes which have a biological significance, and
-      which are probably clustered together on the genome, like histones and miRNAs
+      A gene cluster is a set of genes which is of biological significance, and
+      which is clustered together on the genome.
     is_a: BiologicalEntity
     slots:
       - genes
-      - related_note
-
-  GeneCollection:
-    description: >-
-      A gene collection is a set of genes which have been grouped based on experimental evidence, for example a set of interacting genes, genes in expression cluster, or a set of ChIP binding peaks
-    is_a: BiologicalEntity
-    slots:
-      - genes
-      - related_note
-      - experiment_type
-      # maybe we want a slot for a GO evidence code here?
-
-
-  GeneNomenclatureSet:
-    description: >-
-      WB specific. A gene class is a set of genes which share nomenclature, belonging to the same gene class.
-    is_a: AuditedObject
-    slots:
-      - genes
-      - curie
-      - designating_laboratory
-      - old_members
-      - synonym 
-      - related_note
 
   Operon:
     description: >-
@@ -87,17 +63,14 @@ classes:
       units transcribed in the same direction and sharing at least one gene.
     is_a: BiologicalEntity
     slots:
+      # alternatively, this could be biological_entities if there were more than just genes in an operon
       - genes
-      - related_note
-      # - history # Tracking the history of merges/splits/previous members - deal with later
     exact_mappings:
       - SO:0000178
-
 
   FunctionalGeneSet:
     is_a: BiologicalEntity
     slots:
-      - genes
       - single_reference
 
   Pathway:
@@ -135,8 +108,6 @@ classes:
         range: Pathway
 
 
-
-
 ## ------------
 ## SLOTS
 ## ------------
@@ -170,29 +141,4 @@ slots:
 
   enables:
     is_a: has_participant
- 
-  designating_laboratory:
-    #description: >-
-    #  A laboratory which designated this gene class
-    required: true
-    multivalued: false
-    domain: Gene
-    range: Laboratory
-  
-  old_members:
-    #description: >-
-    #  Gene which were formerly members of this GeneClass
-    required: false
-    multivalued: true
-    domain: GeneNomenclatureSet
-    range: Gene
-
-  experiment_type:
-    #description: >-
-    #  Type of experiment by which these genes were collated eg chip-seq, interaction, expression
-    required: false
-    multivalued: true
-    domain: GeneCollection
-    range: string  # should maybe be replaced by a vocabulary
-
 

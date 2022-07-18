@@ -1,6 +1,6 @@
 id: https://github.com/alliance-genome/agr_curation_schema/gene.yaml
 name: gene
-#description: Alliance Schema with LinkML
+description: Alliance Schema with LinkML
 
 default_prefix: alliance
 default_range: string
@@ -33,7 +33,6 @@ prefixes:
   WIKIDATA_PROPERTY: 'https://www.wikidata.org/wiki/Property:'
   obograph: 'https://github.com/biodatamodels/obograph'
 
-
 ## ------------
 ## CLASSES
 ## ------------
@@ -53,17 +52,7 @@ classes:
     slots:
       - symbol
       - related_notes
-        #- gene_type
-        #- gene_types_secondary
-      - designating_laboratories
-      - designating_persons
-      - trans_splice_leaders
-      - contig
-      - anatomy_function
-      - product_binds_matrix
-      - wbprocess
-      - transposon_origin
-
+      - gene_type
     id_prefixes:
       - ENSEMBL
       - HGNC
@@ -84,29 +73,6 @@ classes:
           can be added as needed.
 
 
-  GeneticMapPosition:
-    description: >-
-      A genetic map position.
-    is_a: GenomicEntity
-    slots:
-      - genetic_map_chromosome
-      - genetic_map_band
-      - genetic_map_position_centimorgan
-      - genetic_map_position_radiation 
-
-
-  GeneHistory:
-    description: >-
-      The history of a gene
-    is_a: AuditedObject
-    slots:
-      - current_status
-      - current_version
-      - merged_into
-      - acquires_merge
-      - split_from
-      - split_into
-    
 
 ## ------------
 ## SLOTS
@@ -116,178 +82,7 @@ classes:
 
 slots:
 
-#  gene_type:
-#    description: >- 
-#      SOTerm describing gene type
-#    required: true
-#    multivalued: false
-#    domain: Gene
-#    range: SOTerm
-
-#  gene_types_secondary:
-#    description: >- 
-#      SOTerm describing alternate gene types
-#    required: false
-#    multivalued: true
-#    domain: Gene
-#    range: SOTerm
-
-  designating_laboratories:
-    description: >-
-      A laboratory, rarely laboratories, which designated this gene
-    required: false
-    multivalued: true
+  gene_type:
+    description: SOTerm describing gene type
     domain: Gene
-    range: Laboratory
-
-  designating_persons:
-    description: >-
-      A person/persons who designated this gene
-    required: false
-    multivalued: true
-    domain: Gene
-    range: string # should be changed to Person object, when Person exists
-
-  trans_splice_leaders:
-    description: >-
-      Trans-splicing splice leaders observed to operate on this gene, in species which have spliced leader trans-splicing 
-    required: false
-    multivalued: true
-    domain: Gene
-    range: string # string could be replaced with a set of splice leaders, if-when they are modelled
-
-  contig:
-    description: >-
-      Contig or clone this gene is located to 
-    required: false
-    multivalued: true
-    domain: Gene
-    range: string
-
-  anatomy_function:
-    description: >-
-      WB specific. Allow the connection between Anatomy_term, Phenotype (proxy of biological function), and Gene and still give some information about the experiment itself. Eg WBbtf0001 
-    required: false
-    multivalued: true
-    domain: Gene
-    range: string  # this should be changed to WBAnatomy term
-
-  product_binds_matrix:
-    description: >-
-      WB specific. ID of position matrix object 
-    required: false
-    multivalued: true
-    domain: Gene
-    range: string  # this should be changed to a position matrix object, once that class is modelled
-
-  wbprocess:
-    description: >-
-      WB specific. Eg WBbiopr:00000015 (Corpse engulfment) 
-    required: false
-    multivalued: true
-    domain: Gene
-    range: string  # this should be changed to a WBbiopr term
-
-  transposon_origin:
-    description: >-
-      If this gene contains or is originating from a transposon 
-    required: false
-    multivalued: false
-    domain: Gene
-    range: boolean  
-
-
-
-  genetic_map_chromosome:
-    description: >-
-      Chromosome or contig to which the gene has been genetically mapped
-    required: false
-    multivalued: false
-    domain: GeneticMapPosition
-    range: Chromosome 
-
-  genetic_map_band:
-    description: >-
-      Genetic map predicted chromosome location eg 10q12
-    required: false
-    multivalued: false
-    domain: GeneticMapPosition
-    range: string  
-
-  genetic_map_position_centimorgan:
-    description: >-
-      Genetic map predicted chromosome location in centimorgans eg 22.3366 cM
-    required: false
-    multivalued: true
-    domain: GeneticMapPosition
-    range: float 
-
-    genetic_map_position_centimorgan_error:
-    description: >-
-      Genetic map calculated error in the predicted chromosome location in centimorgans eg 0.045 cM
-    required: false
-    multivalued: true
-    domain: GeneticMapPosition
-    range: float 
-
-  genetic_map_position_radiation: 
-    description: >-
-      Radiation hybrid map predicted chromosome location eg 66.5 cR
-    required: false
-    multivalued: true
-    domain: GeneticMapPosition
-    range: float
-
-
-
-  current_status:
-    description: >-
-      Current status of this object
-    required: false
-    multivalued: true
-    domain: GeneHistory
-    range: string  # change to a controlled vocab, like live/dead/suppressed...
-
-  current_version:
-    description: >-
-      Current version of this object with each version eg 1,2,3 describing major updates
-    required: false
-    multivalued: false
-    domain: GeneHistory
-    range: integer 
-
-  merged_into:
-    description: >-
-      This gene has been merged into
-    required: false
-    multivalued: true
-    domain: GeneHistory
-    range: Gene 
-
-  acquires_merge:
-    description: >-
-      Genes which have been merged into this gene 
-    required: false
-    multivalued: true
-    domain: GeneHistory
-    range: Gene 
-
-  split_from:
-    description: >-
-      This gene exists because it has been split from this gene
-    required: false
-    multivalued: true
-    domain: GeneHistory
-    range: Gene
-
-  split_into:
-    description: >-
-      This gene has been split into these genes
-    required: false
-    multivalued: true
-    domain: GeneHistory
-    range: Gene 
-
-
-
-
+    range: SOTerm
