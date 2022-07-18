@@ -53,6 +53,8 @@ classes:
       - symbol
       - related_notes
       - gene_type
+      - designating_laboratories
+      - designating_persons
     id_prefixes:
       - ENSEMBL
       - HGNC
@@ -86,3 +88,23 @@ slots:
     description: SOTerm describing gene type
     domain: Gene
     range: SOTerm
+
+  designating_laboratories:
+    description: >-
+      A laboratory, rarely laboratories, which designated this gene
+    required: false
+    multivalued: true
+    domain: Gene
+    range: Laboratory
+
+  designating_persons:
+    description: >-
+      A person/persons who designated this gene
+    required: false
+    multivalued: true
+    domain: Gene
+    range: string # should be changed to Person object, when Person exists
+
+
+
+
