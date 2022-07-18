@@ -137,9 +137,9 @@ slots:
     domain: Gene
     range: string
 
-anatomy_function:
+  anatomy_function:
     description: >-
-      WB specific. Allow the connection between Anatomy_term, Phenotype proxy of biological function, and Gene and still give some information about the experiment itself. Eg WBbtf0001
+      WB specific. Allow the connection between Anatomy_term, Phenotype and gene Eg WBbtf0001
     required: false
     multivalued: true
     domain: Gene
@@ -151,11 +151,11 @@ anatomy_function:
     required: false
     multivalued: true
     domain: Gene
-    range: string  # this should be changed to a position matrix object, once that class is modelled
+    range: string  # this should be changed to a position matrix object once that class is modelled
 
   wbprocess:
     description: >-
-      WB specific. Eg WBbiopr:00000015 Corpse engulfment
+      WB specific. Eg WBbiop00000015 Corpse engulfment
     required: false
     multivalued: true
     domain: Gene
