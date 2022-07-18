@@ -55,6 +55,8 @@ classes:
       - gene_type
       - designating_laboratories
       - designating_persons
+      - trans_splice_leaders
+      - contig
     id_prefixes:
       - ENSEMBL
       - HGNC
@@ -105,6 +107,24 @@ slots:
     domain: Gene
     range: string # should be changed to Person object, when Person exists
 
+  trans_splice_leaders:
+    description: >-
+      Trans-splicing splice leaders observed to operate on this gene, in species which have spliced leader trans-splicing
+    required: false
+    multivalued: true
+    domain: Gene
+    range: string # string could be replaced with a set of splice leaders, if-when they are modelled
 
+  contig:
+    description: >-
+      Contig or clone this gene is located to
+    required: false
+    multivalued: true
+    domain: Gene
+    range: string
+
+
+     
+      
 
 
