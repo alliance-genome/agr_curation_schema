@@ -20,6 +20,7 @@ emit_prefixes:
 imports:
   - core
   - linkml:types
+  - gene
 
 prefixes:
   alliance: 'http://alliancegenome.org/'
@@ -47,14 +48,14 @@ classes:
 # Types of BiologicalEntitySets
 # Attributes shared/specific to each type of BiologicalEntitySets.
 
-
   GeneCluster:
     description: >-
-      A gene cluster is a set of genes which is of biological significance, and
-      which is clustered together on the genome.
+      A gene cluster is a set of genes which have a biological significance, and
+      which are probably clustered together on the genome, like histones and miRNAs
     is_a: BiologicalEntity
     slots:
       - genes
+      - related_note
 
   Operon:
     description: >-
