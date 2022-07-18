@@ -123,9 +123,8 @@ slots:
   genes:
     multivalued: true
     range: Gene
-
-  # Would you have an object for a set of orthologous genes?  Or leave these to be generated
-  # from code that says: get me all the orthologs of geneX where geneX is a member of GeneToGeneOrthology Association
+    # Would you have an object for a set of orthologous genes?  Or leave these to be generated
+    # from code that says: get me all the orthologs of geneX where geneX is a member of GeneToGeneOrthology Association
   paralogous_genes:
     is_a: genes
 
