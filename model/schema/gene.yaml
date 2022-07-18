@@ -84,7 +84,6 @@ classes:
           can be added as needed.
 
 
-
   GeneticMapPosition:
     description: >-
       A genetic map position.
