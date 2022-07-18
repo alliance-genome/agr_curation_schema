@@ -53,6 +53,7 @@ classes:
       - symbol
       - related_notes
       - gene_type
+      - gene_types_secondary    
       - designating_laboratories
       - designating_persons
       - trans_splice_leaders
@@ -95,6 +96,14 @@ slots:
     domain: Gene
     range: SOTerm
 
+  gene_types_secondary:
+    description: >-
+      SOTerm describing alternate gene types
+    required: false
+    multivalued: true
+    domain: Gene
+    range: SOTerm
+        
   designating_laboratories:
     description: >-
       A laboratory, rarely laboratories, which designated this gene
@@ -127,10 +136,9 @@ slots:
     domain: Gene
     range: string
 
-
 anatomy_function:
     description: >-
-      WB specific. Allow the connection between Anatomy_term, Phenotype (proxy of biological function), and Gene and still give some information about the experiment itself. Eg WBbtf0001
+      WB specific. Allow the connection between Anatomy_term, Phenotype - proxy of biological function- , and Gene and still give some information about the experiment itself. Eg WBbtf0001
     required: false
     multivalued: true
     domain: Gene
@@ -146,7 +154,7 @@ anatomy_function:
 
   wbprocess:
     description: >-
-      WB specific. Eg WBbiopr:00000015 (Corpse engulfment)
+      WB specific. Eg WBbiopr:00000015 Corpse engulfment
     required: false
     multivalued: true
     domain: Gene
