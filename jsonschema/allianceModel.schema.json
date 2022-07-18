@@ -3753,6 +3753,12 @@
                "format": "date",
                "type": "string"
             },
+            "genes": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -3879,6 +3885,20 @@
          "additionalProperties": false,
          "description": "A DNA genomic entity from which one or more functional* RNA transcript molecules are transcribed, along with cis-regulatory elements responsible for regulating expression (transcription) of the gene. * A functional RNA molecule here can mean one that is directly responsible for the gene's function (e.g. catalysis, structure, etc.) or one that is translated to produce a functional polypeptide/protein. A pseudogene may be considered a gene under this definition, albeit no longer functional.",
          "properties": {
+            "anatomy_function": {
+               "description": "WB specific. Allow the connection between Anatomy_term, Phenotype and gene Eg WBbtf0001",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "contig": {
+               "description": "Contig or clone this gene is located to",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -3904,9 +3924,30 @@
                "format": "date",
                "type": "string"
             },
+            "designating_laboratories": {
+               "description": "A laboratory, rarely laboratories, which designated this gene",
+               "items": {
+                  "$ref": "#/$defs/Laboratory"
+               },
+               "type": "array"
+            },
+            "designating_persons": {
+               "description": "A person/persons who designated this gene",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "gene_type": {
                "description": "SOTerm describing gene type",
                "type": "string"
+            },
+            "gene_types_secondary": {
+               "description": "SOTerm describing alternate gene types",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "genomic_locations": {
                "items": {
@@ -3925,6 +3966,13 @@
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "product_binds_matrix": {
+               "description": "WB specific. ID of position matrix object",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "related_notes": {
                "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Gene note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
@@ -3954,9 +4002,27 @@
                "description": "The taxon from which the biological entity derives.",
                "type": "string"
             },
+            "trans_splice_leaders": {
+               "description": "Trans-splicing splice leaders observed to operate on this gene, in species which have spliced leader trans-splicing",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "transposon_origin": {
+               "description": "If this gene contains or is originating from a transposon",
+               "type": "boolean"
+            },
             "updated_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
+            },
+            "wbprocess": {
+               "description": "WB specific. Eg WBbiop00000015 Corpse engulfment",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -3970,7 +4036,7 @@
       },
       "GeneCluster": {
          "additionalProperties": false,
-         "description": "A gene cluster is a set of genes which is of biological significance, and which is clustered together on the genome.",
+         "description": "A gene cluster is a set of genes which have a biological significance, and which are probably clustered together on the genome, like histones and miRNAs",
          "properties": {
             "created_by": {
                "description": "The individual that created the entity.",
@@ -4004,6 +4070,10 @@
                "description": "Entity is no longer current.",
                "type": "boolean"
             },
+            "related_note": {
+               "$ref": "#/$defs/Note",
+               "description": "Holds between an object and a Note object."
+            },
             "taxon": {
                "description": "The taxon from which the biological entity derives.",
                "type": "string"
@@ -4019,6 +4089,70 @@
             "taxon"
          ],
          "title": "GeneCluster",
+         "type": "object"
+      },
+      "GeneCollection": {
+         "additionalProperties": false,
+         "description": "A gene collection is a set of genes which have been grouped based on experimental evidence, for example a set of interacting genes, genes in expression cluster, or a set of ChIP binding peaks",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "experiment_type": {
+               "description": "Type of experiment by which these genes were collated eg chip-seq, interaction, expression",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "genes": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "related_note": {
+               "$ref": "#/$defs/Note",
+               "description": "Holds between an object and a Note object."
+            },
+            "taxon": {
+               "description": "The taxon from which the biological entity derives.",
+               "type": "string"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "curie",
+            "taxon"
+         ],
+         "title": "GeneCollection",
          "type": "object"
       },
       "GeneDiseaseAnnotation": {
@@ -4322,6 +4456,82 @@
          "title": "GeneGeneticInteraction",
          "type": "object"
       },
+      "GeneHistory": {
+         "additionalProperties": false,
+         "description": "The history of a gene",
+         "properties": {
+            "acquires_merge": {
+               "description": "Genes which have been merged into this gene",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "current_status": {
+               "description": "Current status of this object",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "current_version": {
+               "description": "Current version of this object with each version eg 1,2,3 describing major updates",
+               "type": "integer"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "merged_into": {
+               "description": "This gene has been merged into",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "split_from": {
+               "description": "This gene exists because it has been split from this gene",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "split_into": {
+               "description": "This gene has been split into these genes",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "GeneHistory",
+         "type": "object"
+      },
       "GeneMolecularInteraction": {
          "additionalProperties": false,
          "description": "A physical molecular interaction between gene products (e.g. protein-protein interactions or protein-RNA interactions) or between genes and DNA-binding factors (e.g. protein-DNA interactions)",
@@ -4429,6 +4639,74 @@
             "predicate"
          ],
          "title": "GeneMolecularInteraction",
+         "type": "object"
+      },
+      "GeneNomenclatureSet": {
+         "additionalProperties": false,
+         "description": "WB specific. A gene class is a set of genes which share nomenclature, belonging to the same gene class.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "designating_laboratory": {
+               "$ref": "#/$defs/Laboratory",
+               "description": "A laboratory which designated this gene class"
+            },
+            "genes": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "old_members": {
+               "description": "Gene which were formerly members of this GeneClass",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "related_note": {
+               "$ref": "#/$defs/Note",
+               "description": "Holds between an object and a Note object."
+            },
+            "synonym": {
+               "description": "the text string of the synonym",
+               "type": "string"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "curie",
+            "designating_laboratory"
+         ],
+         "title": "GeneNomenclatureSet",
          "type": "object"
       },
       "GenePhenotypeAnnotation": {
@@ -4555,6 +4833,112 @@
             "object"
          ],
          "title": "GeneToPathwayAssociation",
+         "type": "object"
+      },
+      "GeneticMapPosition": {
+         "additionalProperties": false,
+         "description": "A genetic map position.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/$defs/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "genetic_map_band": {
+               "description": "Genetic map predicted chromosome location eg 10q12",
+               "type": "string"
+            },
+            "genetic_map_chromosome": {
+               "description": "Chromosome or contig to which the gene has been genetically mapped",
+               "type": "string"
+            },
+            "genetic_map_position_centimorgan": {
+               "description": "Genetic map predicted chromosome location in centimorgans eg 22.3366 cM",
+               "items": {
+                  "type": "number"
+               },
+               "type": "array"
+            },
+            "genetic_map_position_centimorgan_error": {
+               "description": "Genetic map calculated error in the predicted chromosome location in centimorgans eg 0.045 cM",
+               "items": {
+                  "type": "number"
+               },
+               "type": "array"
+            },
+            "genetic_map_position_radiation": {
+               "description": "Radiation hybrid map predicted chromosome location eg 66.5 cR",
+               "items": {
+                  "type": "number"
+               },
+               "type": "array"
+            },
+            "genomic_locations": {
+               "items": {
+                  "$ref": "#/$defs/GenomicLocation"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/$defs/Synonym"
+               },
+               "type": "array"
+            },
+            "taxon": {
+               "description": "The taxon from which the biological entity derives.",
+               "type": "string"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "curie",
+            "taxon"
+         ],
+         "title": "GeneticMapPosition",
          "type": "object"
       },
       "GenomicEntity": {
@@ -6070,6 +6454,10 @@
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "related_note": {
+               "$ref": "#/$defs/Note",
+               "description": "Holds between an object and a Note object."
             },
             "taxon": {
                "description": "The taxon from which the biological entity derives.",

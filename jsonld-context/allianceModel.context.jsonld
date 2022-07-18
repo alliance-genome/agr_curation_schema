@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-07-07T00:34:53\n    Schema: AllianceModel\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: \n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from allianceModel.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-07-18T14:38:19\n    Schema: AllianceModel\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/alliance-genome/agr_curation_schema/alliance_schema\n    description: \n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "BIOGRID": "http://identifiers.org/biogrid/",
       "DIP": "http://identifiers.org/dip/",
@@ -72,6 +72,9 @@
       "skos": "http://www.w3.org/2004/02/skos/core#",
       "xsd": "http://www.w3.org/2001/XMLSchema#",
       "@vocab": "http://alliancegenome.org/",
+      "acquires_merge": {
+         "@type": "@id"
+      },
       "agm_ingest_set": {
          "@type": "@id"
       },
@@ -221,6 +224,9 @@
       "current": {
          "@type": "xsd:boolean"
       },
+      "current_version": {
+         "@type": "xsd:integer"
+      },
       "database_status": {
          "@type": "@id"
       },
@@ -229,6 +235,12 @@
       },
       "date_updated": {
          "@type": "xsd:date"
+      },
+      "designating_laboratories": {
+         "@type": "@id"
+      },
+      "designating_laboratory": {
+         "@type": "@id"
       },
       "detection_method": {
          "@type": "@id"
@@ -292,11 +304,26 @@
       "gene_type": {
          "@type": "@id"
       },
+      "gene_types_secondary": {
+         "@type": "@id"
+      },
       "generated_by": {
          "@type": "@id"
       },
       "genes": {
          "@type": "@id"
+      },
+      "genetic_map_chromosome": {
+         "@type": "@id"
+      },
+      "genetic_map_position_centimorgan": {
+         "@type": "xsd:float"
+      },
+      "genetic_map_position_centimorgan_error": {
+         "@type": "xsd:float"
+      },
+      "genetic_map_position_radiation": {
+         "@type": "xsd:float"
       },
       "genetic_sex": {
          "@type": "@id"
@@ -437,6 +464,9 @@
       "member_terms": {
          "@type": "@id"
       },
+      "merged_into": {
+         "@type": "@id"
+      },
       "merged_into_id": {
          "@type": "@id"
       },
@@ -457,6 +487,9 @@
       },
       "obsolete": {
          "@type": "xsd:boolean"
+      },
+      "old_members": {
+         "@type": "@id"
       },
       "open_access": {
          "@type": "xsd:boolean"
@@ -595,6 +628,12 @@
       "specimen_genomic_model": {
          "@type": "@id"
       },
+      "split_from": {
+         "@type": "@id"
+      },
+      "split_into": {
+         "@type": "@id"
+      },
       "sqtr_ingest_set": {
          "@type": "@id"
       },
@@ -628,6 +667,9 @@
       },
       "transcript": {
          "@type": "@id"
+      },
+      "transposon_origin": {
+         "@type": "xsd:boolean"
       },
       "type": {
          "@type": "@id"
