@@ -98,6 +98,11 @@ classes:
     is_a: AuditedObject
     slots:
       - current_status
+      - current_version
+      - merged_into
+      - acquires_merge
+      - split_from
+      - split_into
 
 
 ## ------------
@@ -233,5 +238,43 @@ slots:
     domain: GeneHistory
     range: string  # change to a controlled vocab, like live-dead-suppressed...
 
+  current_version:
+    description: >-
+      Current version of this object with each version eg 1,2,3 describing major updates
+    required: false
+    multivalued: false
+    domain: GeneHistory
+    range: integer
 
-     
+  merged_into:
+    description: >-
+      This gene has been merged into
+    required: false
+    multivalued: true
+    domain: GeneHistory
+    range: Gene
+
+  acquires_merge:
+    description: >-
+      Genes which have been merged into this gene
+    required: false
+    multivalued: true
+    domain: GeneHistory
+    range: Gene
+
+  split_from:
+    description: >-
+      This gene exists because it has been split from this gene
+    required: false
+    multivalued: true
+    domain: GeneHistory
+    range: Gene
+
+  split_into:
+    description: >-
+      This gene has been split into these genes
+    required: false
+    multivalued: true
+    domain: GeneHistory
+    range: Gene
+
