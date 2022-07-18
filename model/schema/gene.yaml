@@ -82,16 +82,6 @@ classes:
           can be added as needed.
 
 
-  GeneticMapPosition:
-    description: >-
-      A genetic map position.
-    is_a: GenomicEntity
-    slots:
-      - genetic_map_chromosome
-      - genetic_map_band
-      - genetic_map_position_centimorgan
-      - genetic_map_position_centimorgan_error
-      - genetic_map_position_radiation
 
 
 ## ------------
@@ -178,46 +168,6 @@ anatomy_function:
     multivalued: false
     domain: Gene
     range: boolean
-
-  genetic_map_chromosome:
-    description: >-
-      Chromosome or contig to which the gene has been genetically mapped
-    required: false
-    multivalued: false
-    domain: GeneticMapPosition
-    range: Chromosome
-
-  genetic_map_band:
-    description: >-
-      Genetic map predicted chromosome location eg 10q12
-    required: false
-    multivalued: false
-    domain: GeneticMapPosition
-    range: string
-
-  genetic_map_position_centimorgan:
-    description: >-
-      Genetic map predicted chromosome location in centimorgans eg 22.3366 cM
-    required: false
-    multivalued: true
-    domain: GeneticMapPosition
-    range: float
-
-    genetic_map_position_centimorgan_error:
-    description: >-
-      Genetic map calculated error in the predicted chromosome location in centimorgans eg 0.045 cM
-    required: false
-    multivalued: true
-    domain: GeneticMapPosition
-    range: float
-
-  genetic_map_position_radiation:
-    description: >-
-      Radiation hybrid map predicted chromosome location eg 66.5 cR
-    required: false
-    multivalued: true
-    domain: GeneticMapPosition
-    range: float
 
 
 
