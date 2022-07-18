@@ -95,6 +95,7 @@ classes:
   FunctionalGeneSet:
     is_a: BiologicalEntity
     slots:
+      - genes
       - single_reference
 
   Pathway:
@@ -182,4 +183,11 @@ slots:
     domain: GeneNomenclatureSet
     range: Gene  
 
-      
+  experiment_type:
+    description: >-
+      Type of experiment by which these genes were collated eg chip-seq, interaction, expression
+    required: false
+    multivalued: true
+    domain: GeneCollection
+    range: string  # should maybe be replaced by a vocabulary
+
