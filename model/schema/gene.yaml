@@ -1,6 +1,6 @@
 id: https://github.com/alliance-genome/agr_curation_schema/gene.yaml
 name: gene
-description: Alliance Schema with LinkML
+#description: Alliance Schema with LinkML
 
 default_prefix: alliance
 default_range: string

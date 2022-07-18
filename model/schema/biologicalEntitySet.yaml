@@ -1,7 +1,7 @@
 id: https://github.com/alliance-genome/agr_curation_schema/biologicalEntitySet.yaml
 name: Alliance-Schema-Prototype-Biological-Entity-Set
 title: Alliance Schema Prototype Biological Entity Set
-description: Alliance Biological Entity Set Prototype with LinkML
+#description: Alliance Biological Entity Set Prototype with LinkML
 
 default_prefix: alliance
 default_range: string
@@ -172,24 +172,24 @@ slots:
     is_a: has_participant
  
   designating_laboratory:
-    description: >-
-      A laboratory which designated this gene class
+    #description: >-
+    #  A laboratory which designated this gene class
     required: true
     multivalued: false
     domain: Gene
     range: Laboratory
   
   old_members:
-    description: >-
-      Gene which were formerly members of this GeneClass
+    #description: >-
+    #  Gene which were formerly members of this GeneClass
     required: false
     multivalued: true
     domain: GeneNomenclatureSet
     range: Gene
 
   experiment_type:
-    description: >-
-      Type of experiment by which these genes were collated eg chip-seq, interaction, expression
+    #description: >-
+    #  Type of experiment by which these genes were collated eg chip-seq, interaction, expression
     required: false
     multivalued: true
     domain: GeneCollection
