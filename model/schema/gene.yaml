@@ -117,12 +117,14 @@ classes:
 slots:
 
   gene_type:
-    description: SOTerm describing gene type
+    description: >- 
+      SOTerm describing gene type
     domain: Gene
     range: SOTerm
 
   gene_types_secondary:
-    description: SOTerm describing alternate gene types
+    description: >- 
+      SOTerm describing alternate gene types
     required: false
     multivalued: true
     domain: Gene
