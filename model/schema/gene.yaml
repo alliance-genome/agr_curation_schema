@@ -119,6 +119,8 @@ slots:
   gene_type:
     description: >- 
       SOTerm describing gene type
+    required: true
+    multivalued: false
     domain: Gene
     range: SOTerm
 
