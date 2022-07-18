@@ -1,0 +1,2318 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.com/alliance-genome/agr_curation_schema/">
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.14">
+    
+    
+      
+        <title>Alliance Persistent Store</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.3de6f41f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#alliancemodel" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Alliance Persistent Store" class="md-header__button md-logo" aria-label="Alliance Persistent Store" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Alliance Persistent Store
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Browse the Model
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/alliance-genome/agr_curation_schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Alliance Persistent Store" class="md-nav__button md-logo" aria-label="Alliance Persistent Store" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Alliance Persistent Store
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/alliance-genome/agr_curation_schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Browse the Model
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        Browse the Model
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slots" class="md-nav__link">
+    Slots
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    Enumerations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsets" class="md-nav__link">
+    Subsets
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="developing-the-model/" class="md-nav__link">
+        Developing the Alliance Model
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://linkml.io/linkml/intro/tutorial.html" class="md-nav__link">
+        LinkML Tutorial
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slots" class="md-nav__link">
+    Slots
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    Enumerations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsets" class="md-nav__link">
+    Subsets
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/alliance-genome/agr_curation_schema/edit/master/docs/index.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="alliancemodel">AllianceModel</h1>
+<p>None</p>
+<p>URI: https://github.com/alliance-genome/agr_curation_schema/alliance_schema</p>
+<h2 id="classes">Classes</h2>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="AffectedGenomicModel/">AffectedGenomicModel</a></td>
+<td>Includes inbred strains, stocks, disease models and mutant genotypes</td>
+</tr>
+<tr>
+<td><a href="AffectedGenomicModelComponent/">AffectedGenomicModelComponent</a></td>
+<td>Allele that affects the model and its zygosity</td>
+</tr>
+<tr>
+<td><a href="Agent/">Agent</a></td>
+<td>An individual, group, organization or project that provides information and/or materials.</td>
+</tr>
+<tr>
+<td><a href="AGMDiseaseAnnotation/">AGMDiseaseAnnotation</a></td>
+<td>An annotation asserting an association between an AGM and a disease supported by evidence.</td>
+</tr>
+<tr>
+<td><a href="AGMPhenotypeAnnotation/">AGMPhenotypeAnnotation</a></td>
+<td>An annotation asserting an association between an AGM and a phenotype supported by evidence.</td>
+</tr>
+<tr>
+<td><a href="Allele/">Allele</a></td>
+<td>One of multiple possible forms of a functional genomic element (most often described as a locus or gene), differing from the reference DNA sequence.  The genomic element can be endogenous or constructed.</td>
+</tr>
+<tr>
+<td><a href="AlleleDiseaseAnnotation/">AlleleDiseaseAnnotation</a></td>
+<td>An annotation asserting an association between an allele and a disease supported by evidence.</td>
+</tr>
+<tr>
+<td><a href="AlleleGeneAssociation/">AlleleGeneAssociation</a></td>
+<td>Association between an allele and a gene</td>
+</tr>
+<tr>
+<td><a href="AlleleGenomicEntityAssociation/">AlleleGenomicEntityAssociation</a></td>
+<td>Association between an allele and a genomic entity</td>
+</tr>
+<tr>
+<td><a href="AllelePhenotypeAnnotation/">AllelePhenotypeAnnotation</a></td>
+<td>An annotation asserting an association between an allele and a phenotype supported by evidence.</td>
+</tr>
+<tr>
+<td><a href="AlleleProteinAssociation/">AlleleProteinAssociation</a></td>
+<td>Association between an allele and a protein</td>
+</tr>
+<tr>
+<td><a href="AlleleTranscriptAssociation/">AlleleTranscriptAssociation</a></td>
+<td>Association between an allele and a transcript</td>
+</tr>
+<tr>
+<td><a href="AlleleVariantAssociation/">AlleleVariantAssociation</a></td>
+<td>The relationship between an allele and a variant is many to many. An Allele may have many variants and a variant can be present in many alleles.</td>
+</tr>
+<tr>
+<td><a href="AnatomicalSite/">AnatomicalSite</a></td>
+<td>The developmental stage and/or age of the specimen in an annotation.</td>
+</tr>
+<tr>
+<td><a href="AnatomicalTerm/">AnatomicalTerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="Antibody/">Antibody</a></td>
+<td>Immunoglobulin proteins that bind specific molecule(s). Can be used experimentally for the purposes of detection or purification.</td>
+</tr>
+<tr>
+<td><a href="Assembly/">Assembly</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="AssociatedReference/">AssociatedReference</a></td>
+<td>Describes the relation between a reference and an object</td>
+</tr>
+<tr>
+<td><a href="Association/">Association</a></td>
+<td>A typed association between two entities, supported by evidence.</td>
+</tr>
+<tr>
+<td><a href="AuditedObject/">AuditedObject</a></td>
+<td>Base class for all other LinkML classes. Some entity for which changes are tracked, including date/time of change, the agent responsible for the change, and whether the entity is internal (private).</td>
+</tr>
+<tr>
+<td><a href="AuthorReference/">AuthorReference</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="BiologicalEntity/">BiologicalEntity</a></td>
+<td>An entity of biological origin that can be unambiguously attributed to a single species.</td>
+</tr>
+<tr>
+<td><a href="CellLine/">CellLine</a></td>
+<td>Dummy cell line class</td>
+</tr>
+<tr>
+<td><a href="CHEBITerm/">CHEBITerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="ChemicalTerm/">ChemicalTerm</a></td>
+<td>An ontology term representing a chemical or molecule</td>
+</tr>
+<tr>
+<td><a href="Chromosome/">Chromosome</a></td>
+<td>The ID of the landmark used to establish the coordinate system for the current feature.</td>
+</tr>
+<tr>
+<td><a href="CLTerm/">CLTerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="Company/">Company</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="ConditionRelation/">ConditionRelation</a></td>
+<td>A pairing of an experimental condition relation (i.e. has_condition) with a list of 1 or more ExperimentalCondition objects. Annotation objects can connect directly to a set of 0 or more of these ConditionRelation objects via a 'condition_relations' slot to express the experimental conditions relevant to the annotation.</td>
+</tr>
+<tr>
+<td><a href="Construct/">Construct</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="ConstructComponent/">ConstructComponent</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="ConstructComponentAssociation/">ConstructComponentAssociation</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="CrossReference/">CrossReference</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="DAOTerm/">DAOTerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="DiseaseAnnotation/">DiseaseAnnotation</a></td>
+<td>An annotation asserting an association between a biological entity and a disease supported by evidence.</td>
+</tr>
+<tr>
+<td><a href="DNAClone/">DNAClone</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="DOTerm/">DOTerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="ECOTerm/">ECOTerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="EMAPATerm/">EMAPATerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="EntityStatement/">EntityStatement</a></td>
+<td>Free-text describing some aspect of an entity.</td>
+</tr>
+<tr>
+<td><a href="EntitySynonym/">EntitySynonym</a></td>
+<td>A relationship between an entity and a synonym.</td>
+</tr>
+<tr>
+<td><a href="ExperimentalCondition/">ExperimentalCondition</a></td>
+<td>The environmental context in which an experiment is carried out. This may (e.g. drug treatment) or may not (e.g. standard conditions) directly influence the outcome of the experiment.</td>
+</tr>
+<tr>
+<td><a href="ExperimentalConditionOntologyTerm/">ExperimentalConditionOntologyTerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="ExpressionAnnotation/">ExpressionAnnotation</a></td>
+<td>A description of when and where gene products are observed to be present, including experimental details, supporting evidence, and curator notes.</td>
+</tr>
+<tr>
+<td><a href="ExpressionAnnotationImagePane/">ExpressionAnnotationImagePane</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="ExpressionAnnotationStatement/">ExpressionAnnotationStatement</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="ExpressionExperiment/">ExpressionExperiment</a></td>
+<td>Defined by the gene of interest, the specimen, the assay, the reagents (Antibody, Probe), and the reference. It groups ExpressionAnnotations.</td>
+</tr>
+<tr>
+<td><a href="ExpressionExperimentStatement/">ExpressionExperimentStatement</a></td>
+<td>Free-text describing some aspect(s) of a gene's expression, particularly nuanced information that is not readily captured in annotations. This statement's scope is limited to the associated ExpressionExperiment.</td>
+</tr>
+<tr>
+<td><a href="ExternalDatabaseLink/">ExternalDatabaseLink</a></td>
+<td>Base relation that holds the identifier prefix, base url and url suffix to help in generating URLs in crossReferences.</td>
+</tr>
+<tr>
+<td><a href="FBCVTerm/">FBCVTerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="FBDVTerm/">FBDVTerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="Figure/">Figure</a></td>
+<td>An entity representing a figure or table in a publication.</td>
+</tr>
+<tr>
+<td><a href="File/">File</a></td>
+<td>A dummy object.</td>
+</tr>
+<tr>
+<td><a href="FunctionalGeneSet/">FunctionalGeneSet</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="Gene/">Gene</a></td>
+<td>A DNA genomic entity from which one or more functional* RNA transcript molecules are transcribed, along with cis-regulatory elements responsible for regulating expression (transcription) of the gene. * A functional RNA molecule here can mean one that is directly responsible for the gene's function (e.g. catalysis, structure, etc.) or one that is translated to produce a functional polypeptide/protein. A pseudogene may be considered a gene under this definition, albeit no longer functional.</td>
+</tr>
+<tr>
+<td><a href="GeneCluster/">GeneCluster</a></td>
+<td>A gene cluster is a set of genes which have a biological significance, and which are probably clustered together on the genome, like histones and miRNAs</td>
+</tr>
+<tr>
+<td><a href="GeneCollection/">GeneCollection</a></td>
+<td>A gene collection is a set of genes which have been grouped based on experimental evidence, for example a set of interacting genes, genes in expression cluster, or a set of ChIP binding peaks</td>
+</tr>
+<tr>
+<td><a href="GeneDiseaseAnnotation/">GeneDiseaseAnnotation</a></td>
+<td>An annotation asserting an association between a gene and a disease supported by evidence.</td>
+</tr>
+<tr>
+<td><a href="GeneExpressionStatement/">GeneExpressionStatement</a></td>
+<td>Free-text describing some aspect(s) of a gene's expression, particularly nuanced information that is not readily captured in annotations. May summarize data from many annotations and/or many experiments.</td>
+</tr>
+<tr>
+<td><a href="GeneGeneticInteraction/">GeneGeneticInteraction</a></td>
+<td>A genetic interaction between genes (e.g. phenotypic suppression)</td>
+</tr>
+<tr>
+<td><a href="GeneHistory/">GeneHistory</a></td>
+<td>The history of a gene</td>
+</tr>
+<tr>
+<td><a href="GeneInteraction/">GeneInteraction</a></td>
+<td>An interaction between two genes or gene products; this may be a physical molecular interaction between gene products (e.g. protein-protein interactions), or may be a genetic interaction between genes (e.g. phenotypic suppression)</td>
+</tr>
+<tr>
+<td><a href="GeneMolecularInteraction/">GeneMolecularInteraction</a></td>
+<td>A physical molecular interaction between gene products (e.g. protein-protein interactions or protein-RNA interactions) or between genes and DNA-binding factors (e.g. protein-DNA interactions)</td>
+</tr>
+<tr>
+<td><a href="GeneNomenclatureSet/">GeneNomenclatureSet</a></td>
+<td>WB specific. A gene class is a set of genes which share nomenclature, belonging to the same gene class.</td>
+</tr>
+<tr>
+<td><a href="GenePhenotypeAnnotation/">GenePhenotypeAnnotation</a></td>
+<td>An annotation asserting an association between a gene and a phenotype supported by evidence.</td>
+</tr>
+<tr>
+<td><a href="GeneticMapPosition/">GeneticMapPosition</a></td>
+<td>A genetic map position.</td>
+</tr>
+<tr>
+<td><a href="GeneToGeneAssociation/">GeneToGeneAssociation</a></td>
+<td>abstract parent class for different kinds of gene-gene or gene product to gene product relationships. Includes homology and interaction.</td>
+</tr>
+<tr>
+<td><a href="GeneToPathwayAssociation/">GeneToPathwayAssociation</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="GenomicEntity/">GenomicEntity</a></td>
+<td>An entity that is part of a genome (i.e. segment of the DNA molecule), is derived directly from the genome (i.e. RNA transcript molecule), or is derived indirectly from the genome (i.e. polypeptide or protein via RNA transcript translation).</td>
+</tr>
+<tr>
+<td><a href="GenomicLocation/">GenomicLocation</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="GOTerm/">GOTerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="Image/">Image</a></td>
+<td>The set of files and metadata that constitute an image.</td>
+</tr>
+<tr>
+<td><a href="ImagePane/">ImagePane</a></td>
+<td>Part of an Image that is relevant to some annotation. An annotation may reference many panes of an Image.</td>
+</tr>
+<tr>
+<td><a href="Ingest/">Ingest</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="Laboratory/">Laboratory</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="LoggedInPerson/">LoggedInPerson</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="MATerm/">MATerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="MeshDetail/">MeshDetail</a></td>
+<td>Medical Subject Headings information coming from PubMed.</td>
+</tr>
+<tr>
+<td><a href="MITerm/">MITerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="MMOTerm/">MMOTerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="MMUSDVTerm/">MMUSDVTerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="Molecule/">Molecule</a></td>
+<td>Molecules as described by WormBase</td>
+</tr>
+<tr>
+<td><a href="NCBITaxonTerm/">NCBITaxonTerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="Note/">Note</a></td>
+<td>Note object for capturing free-text describing some attribute of an entity, coupled with a 'note type', internal boolean, and an optional list of references. Permissible values for note_type can be viewed and managed in the A-Team curation UI Controlled Vocabulary Terms Table.</td>
+</tr>
+<tr>
+<td><a href="OntologyTerm/">OntologyTerm</a></td>
+<td>A concept or class in an ontology, vocabulary or thesaurus. Note, ontology terms can be found in multiple ontologies (ie: mireoting). defining_slots helps define an alternative key for ontology terms.</td>
+</tr>
+<tr>
+<td><a href="Operon/">Operon</a></td>
+<td>The DNA region of a group of adjacent genes whose transcription is coordinated on one or several mutually overlapping transcription units transcribed in the same direction and sharing at least one gene.</td>
+</tr>
+<tr>
+<td><a href="Organization/">Organization</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="Pathway/">Pathway</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="Person/">Person</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="PhenotypeAnnotation/">PhenotypeAnnotation</a></td>
+<td>An annotation asserting an association between a biological entity and a phenotype supported by evidence.</td>
+</tr>
+<tr>
+<td><a href="PhenotypeTerm/">PhenotypeTerm</a></td>
+<td>An ontology term representing a characteristic of an organism. This may or may not be expressed as a difference in comparison to a reference organism.</td>
+</tr>
+<tr>
+<td><a href="Protein/">Protein</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="ProteinComplex/">ProteinComplex</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="Reagent/">Reagent</a></td>
+<td>A material entity used in experiments.</td>
+</tr>
+<tr>
+<td><a href="Reference/">Reference</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="Resource/">Resource</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="RNAClone/">RNAClone</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="ROTerm/">ROTerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="SequenceTargetingReagent/">SequenceTargetingReagent</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="SequenceTargetingReagentToGeneAssociation/">SequenceTargetingReagentToGeneAssociation</a></td>
+<td>the relationship between a Sequence Targeting Reagent and its targeted genes.</td>
+</tr>
+<tr>
+<td><a href="SOTerm/">SOTerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="SourceVariantLocation/">SourceVariantLocation</a></td>
+<td>Links a paper to the variant locations described in that paper</td>
+</tr>
+<tr>
+<td><a href="StageTerm/">StageTerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="Synonym/">Synonym</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="TemporalContext/">TemporalContext</a></td>
+<td>The developmental stage and/or age of the specimen in an annotation. Developmental_stage_stop is optional. Add an uncertainty flag here?</td>
+</tr>
+<tr>
+<td><a href="Transcript/">Transcript</a></td>
+<td>Placeholder.</td>
+</tr>
+<tr>
+<td><a href="UBERONTerm/">UBERONTerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="Variant/">Variant</a></td>
+<td>A DNA, RNA or protein/polypeptide sequence that differs relative to a designated reference sequence.  The sequence occurs at a single position or in a range of contiguous nucleotides or amino acids.</td>
+</tr>
+<tr>
+<td><a href="VariantConsequence/">VariantConsequence</a></td>
+<td>Parent class for gene- and transcript-level consequences</td>
+</tr>
+<tr>
+<td><a href="VariantGeneConsequence/">VariantGeneConsequence</a></td>
+<td>Class for gene-level VEP results</td>
+</tr>
+<tr>
+<td><a href="VariantGenomeLocation/">VariantGenomeLocation</a></td>
+<td>Links a variant to a genomic position and the resulting consequence to the sequence and/or function. In practice, functional consequences for variants which overlap genes are not generally provided at the genome level but rather are calculated and annotated relative to a specific transcript or protein isoform.</td>
+</tr>
+<tr>
+<td><a href="VariantLocation/">VariantLocation</a></td>
+<td>Base class linking a variant to a position on a genomic entity and the resulting consequence to the sequence and/or function of that genomic entity. Slots are provided for data taken from a source publication or data load and for data resulting from manual curation. Where the values are the same, the curator has confirmed the information from the source.  In other cases, the curator's analysis has resulted in different values, for instance, if the assembly is different, the source did not specify the transcript or protein isoform, the definition of the transcript or protein isoform used by the source has changed, or if there was an error in the source data.</td>
+</tr>
+<tr>
+<td><a href="VariantPolypeptideLocation/">VariantPolypeptideLocation</a></td>
+<td>Links a variant to a position on a specified polypeptide and the resulting consequence to the sequence and/or function of that polypeptide.</td>
+</tr>
+<tr>
+<td><a href="VariantTranscriptConsequence/">VariantTranscriptConsequence</a></td>
+<td>Class for transcript-level VEP results</td>
+</tr>
+<tr>
+<td><a href="VariantTranscriptLocation/">VariantTranscriptLocation</a></td>
+<td>Links a variant to a position on a specified transcript and the resulting consequence to the sequence and/or function of that transcript.</td>
+</tr>
+<tr>
+<td><a href="Vocabulary/">Vocabulary</a></td>
+<td>A set of VocabularyTerm objects.</td>
+</tr>
+<tr>
+<td><a href="VocabularyTerm/">VocabularyTerm</a></td>
+<td>A concept or class in a simple vocabulary.</td>
+</tr>
+<tr>
+<td><a href="WBBTTerm/">WBBTTerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="WBLSTerm/">WBLSTerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="XBATerm/">XBATerm</a></td>
+<td>The Xenbase anatomy ontology XAO is home to Xenopus anatomy terms as well as Xenopus developmental life stage terms, differentiated by namespace. The anatomy term class in LinkML will be named 'XBATerm' for Xenbase Anatomy Term and life stage terms will be named 'XBSTerm' for Xenbase Stage Term.</td>
+</tr>
+<tr>
+<td><a href="XBEDTerm/">XBEDTerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="XBSTerm/">XBSTerm</a></td>
+<td>The Xenbase anatomy ontology XAO is home to Xenopus anatomy terms as well as Xenopus developmental life stage terms, differentiated by namespace. The anatomy term class in LinkML will be named 'XBATerm' for Xenbase Anatomy Term and life stage terms will be named 'XBSTerm' for Xenbase Stage Term.</td>
+</tr>
+<tr>
+<td><a href="XCOTerm/">XCOTerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="XPOTerm/">XPOTerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="XSMOTerm/">XSMOTerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="ZECOTerm/">ZECOTerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="ZFATerm/">ZFATerm</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="ZFSTerm/">ZFSTerm</a></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="abbreviation/">abbreviation</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="aberration/">aberration</a></td>
+<td>Associated deficiency (etc.) whose breakpoint causes the mutation</td>
+</tr>
+<tr>
+<td><a href="abstract/">abstract</a></td>
+<td>The author summary of the publication. From PubMed otherwise from Mod or manual reference creation.</td>
+</tr>
+<tr>
+<td><a href="acquires_merge/">acquires_merge</a></td>
+<td>Genes which have been merged into this gene</td>
+</tr>
+<tr>
+<td><a href="age/">age</a></td>
+<td>The age at which an annotated event was observed.</td>
+</tr>
+<tr>
+<td><a href="aggregation_database/">aggregation_database</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="agm_ingest_set/">agm_ingest_set</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="allele_ingest_set/">allele_ingest_set</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="allele_variant_association_ingest_set/">allele_variant_association_ingest_set</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="amino_acid_reference/">amino_acid_reference</a></td>
+<td>reference genome amino acid sequence at variant position</td>
+</tr>
+<tr>
+<td><a href="amino_acid_variant/">amino_acid_variant</a></td>
+<td>variant amino acid sequence at variant position</td>
+</tr>
+<tr>
+<td><a href="anatomical_structure/">anatomical_structure</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="anatomical_substructure/">anatomical_substructure</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="anatomy_function/">anatomy_function</a></td>
+<td>WB specific. Allow the connection between Anatomy_term, Phenotype and gene Eg WBbtf0001</td>
+</tr>
+<tr>
+<td><a href="annotation_type/">annotation_type</a></td>
+<td>The type of annotation classified according to curation method. Submitted value should be a vocabulary term from the 'Annotation types' vocabulary</td>
+</tr>
+<tr>
+<td><a href="antibody_target_genes/">antibody_target_genes</a></td>
+<td>The genes whose gene products are recognized by the antibody.</td>
+</tr>
+<tr>
+<td><a href="antigen_taxon/">antigen_taxon</a></td>
+<td>Holds between an Antibody and the species from which the antigen originates (as represented by taxon).</td>
+</tr>
+<tr>
+<td><a href="assay_notes/">assay_notes</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="assay_used/">assay_used</a></td>
+<td>The assay used to experimentally determine gene expression.</td>
+</tr>
+<tr>
+<td><a href="assembly/">assembly</a></td>
+<td>Assembly to which variant is aligned.</td>
+</tr>
+<tr>
+<td><a href="asserted_allele/">asserted_allele</a></td>
+<td>The allele to which something is manually asserted to be associated.</td>
+</tr>
+<tr>
+<td><a href="asserted_gene/">asserted_gene</a></td>
+<td>The gene to which something is manually asserted to be associated.</td>
+</tr>
+<tr>
+<td><a href="associated_references/">associated_references</a></td>
+<td>List of references associated with the entity in some way with a description of the association.</td>
+</tr>
+<tr>
+<td><a href="associated_transcripts/">associated_transcripts</a></td>
+<td>Transcript(s) associated with polypeptide to which variant is aligned.</td>
+</tr>
+<tr>
+<td><a href="associated_with_figure/">associated_with_figure</a></td>
+<td>Holds between an entity and a Figure.</td>
+</tr>
+<tr>
+<td><a href="association_slot/">association_slot</a></td>
+<td>any slot that relates an association to another entity</td>
+</tr>
+<tr>
+<td><a href="authors/">authors</a></td>
+<td>Ordered author entities for this publication.  An Author is associated with only one publication.  A Person can be associated with multiple  publications.</td>
+</tr>
+<tr>
+<td><a href="belongs_to_expression_experiment/">belongs_to_expression_experiment</a></td>
+<td>Holds between an ExpressionAnnotation and an ExpressionExperiment.</td>
+</tr>
+<tr>
+<td><a href="biological_entity_assayed/">biological_entity_assayed</a></td>
+<td>Holds between a BiologicalEntity and an ExpressionExperiment that reports on its expression.</td>
+</tr>
+<tr>
+<td><a href="caption/">caption</a></td>
+<td>Text describing the contents of a figure or table in a publication.</td>
+</tr>
+<tr>
+<td><a href="category/">category</a></td>
+<td>The alliance category type.  Only relevant at Alliance.</td>
+</tr>
+<tr>
+<td><a href="cdna_end/">cdna_end</a></td>
+<td>end position of variation in cDNA coordinates</td>
+</tr>
+<tr>
+<td><a href="cdna_start/">cdna_start</a></td>
+<td>start position of variation in cDNA coordinates</td>
+</tr>
+<tr>
+<td><a href="cds_end/">cds_end</a></td>
+<td>end position of variation in CDS coordinates</td>
+</tr>
+<tr>
+<td><a href="cds_start/">cds_start</a></td>
+<td>start position of variation in CDS coordinates</td>
+</tr>
+<tr>
+<td><a href="cellular_component/">cellular_component</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="chromosome/">chromosome</a></td>
+<td>Chromosome to which variant is aligned.</td>
+</tr>
+<tr>
+<td><a href="clonality/">clonality</a></td>
+<td>The clonality of the antibody: e.g., monoclonal.</td>
+</tr>
+<tr>
+<td><a href="codon_reference/">codon_reference</a></td>
+<td>reference sequence of codon(s) affected by variation - bases outside of the variant region are in lower case, those within are in upper case (e.g. cTa)</td>
+</tr>
+<tr>
+<td><a href="codon_variant/">codon_variant</a></td>
+<td>variant sequence of codon(s) affected by variation - bases outside of the variant region are in lower case, those within are in upper case (e.g. cAa)</td>
+</tr>
+<tr>
+<td><a href="components/">components</a></td>
+<td>Collection of genomic components that make up a model, i.e. 'allele', each with a zygosity</td>
+</tr>
+<tr>
+<td><a href="condition_anatomy/">condition_anatomy</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="condition_chemical/">condition_chemical</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="condition_class/">condition_class</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="condition_free_text/">condition_free_text</a></td>
+<td>Free-text description of the experimental condition</td>
+</tr>
+<tr>
+<td><a href="condition_gene_ontology/">condition_gene_ontology</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="condition_id/">condition_id</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="condition_quantity/">condition_quantity</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="condition_relation_type/">condition_relation_type</a></td>
+<td>Submitted value should be a vocabulary term from the 'Condition relation types' vocabulary</td>
+</tr>
+<tr>
+<td><a href="condition_relations/">condition_relations</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="condition_statement/">condition_statement</a></td>
+<td>A human-readable summary of the experimental condition accounting for all ontology terms and free-text components of the ExperimentalCondition object. To be generated and submitted by DQMs</td>
+</tr>
+<tr>
+<td><a href="condition_summary/">condition_summary</a></td>
+<td>A human-readable summary of the experimental condition accounting for all ontology terms and free-text components of the ExperimentalCondition object. Not generated or submitted by DQMs, but generated at the Alliance after ingest only (or generated/updated in the curation interface).</td>
+</tr>
+<tr>
+<td><a href="condition_taxon/">condition_taxon</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="conditions/">conditions</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="consequence/">consequence</a></td>
+<td>SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.</td>
+</tr>
+<tr>
+<td><a href="construct_components/">construct_components</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="contains_constructs/">contains_constructs</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="contig/">contig</a></td>
+<td>Contig or clone this gene is located to</td>
+</tr>
+<tr>
+<td><a href="copyright_date/">copyright_date</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="corresponding_author/">corresponding_author</a></td>
+<td>Indicates if the author is a corresponding author.</td>
+</tr>
+<tr>
+<td><a href="created_by/">created_by</a></td>
+<td>The individual that created the entity.</td>
+</tr>
+<tr>
+<td><a href="cron_schedule/">cron_schedule</a></td>
+<td>A string describing the cron syntax for the schedule</td>
+</tr>
+<tr>
+<td><a href="cropped_from/">cropped_from</a></td>
+<td>Another larger image from which this image was cropped.</td>
+</tr>
+<tr>
+<td><a href="cross_references/">cross_references</a></td>
+<td>Holds between an object and its CrossReferences.</td>
+</tr>
+<tr>
+<td><a href="curated_consequence/">curated_consequence</a></td>
+<td>SOTerm that describes the consequence of the variant, as determined by the curator. In practice curated consequence will be associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.</td>
+</tr>
+<tr>
+<td><a href="curator_comment/">curator_comment</a></td>
+<td>A publicly visible explanatory note from curators about some entity.</td>
+</tr>
+<tr>
+<td><a href="curie/">curie</a></td>
+<td>A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI</td>
+</tr>
+<tr>
+<td><a href="current/">current</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="current_status/">current_status</a></td>
+<td>Current status of this object</td>
+</tr>
+<tr>
+<td><a href="current_version/">current_version</a></td>
+<td>Current version of this object with each version eg 1,2,3 describing major updates</td>
+</tr>
+<tr>
+<td><a href="data_provider/">data_provider</a></td>
+<td>Organization (e.g. MOD) from which the data was sourced</td>
+</tr>
+<tr>
+<td><a href="database_status/">database_status</a></td>
+<td>Database status of the allele</td>
+</tr>
+<tr>
+<td><a href="date_arrived_in_pubmed/">date_arrived_in_pubmed</a></td>
+<td>Day in which a reference or resource was created in PubMed. Only relevant for PubMed references.</td>
+</tr>
+<tr>
+<td><a href="date_created/">date_created</a></td>
+<td>The date on which an entity was created. This can be applied to nodes or edges.</td>
+</tr>
+<tr>
+<td><a href="date_last_modified_in_pubmed/">date_last_modified_in_pubmed</a></td>
+<td>Date on which entity was last updated at PubMed. Only relevant for PubMed references.</td>
+</tr>
+<tr>
+<td><a href="date_published/">date_published</a></td>
+<td>Date on which an entity was published.  From PubMed otherwise from Mod or manual reference creation.</td>
+</tr>
+<tr>
+<td><a href="date_updated/">date_updated</a></td>
+<td>Date on which an entity was last modified.</td>
+</tr>
+<tr>
+<td><a href="dbkey/">dbkey</a></td>
+<td>Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.</td>
+</tr>
+<tr>
+<td><a href="definition/">definition</a></td>
+<td>The explanation of the meaning of a term.</td>
+</tr>
+<tr>
+<td><a href="definition_urls/">definition_urls</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="description/">description</a></td>
+<td>a human-readable description of an entity</td>
+</tr>
+<tr>
+<td><a href="designating_laboratories/">designating_laboratories</a></td>
+<td>A laboratory, rarely laboratories, which designated this gene</td>
+</tr>
+<tr>
+<td><a href="designating_laboratory/">designating_laboratory</a></td>
+<td>A laboratory which designated this gene class</td>
+</tr>
+<tr>
+<td><a href="designating_persons/">designating_persons</a></td>
+<td>A person/persons who designated this gene</td>
+</tr>
+<tr>
+<td><a href="detection_method/">detection_method</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="developmental_stage_start/">developmental_stage_start</a></td>
+<td>The beginning developmental stage at which an annotated event was observed.</td>
+</tr>
+<tr>
+<td><a href="developmental_stage_stop/">developmental_stage_stop</a></td>
+<td>The end developmental stage at which an annotated event was observed.</td>
+</tr>
+<tr>
+<td><a href="disease_agm_ingest_set/">disease_agm_ingest_set</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="disease_allele_ingest_set/">disease_allele_ingest_set</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="disease_gene_ingest_set/">disease_gene_ingest_set</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="disease_genetic_modifier/">disease_genetic_modifier</a></td>
+<td>Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.</td>
+</tr>
+<tr>
+<td><a href="disease_genetic_modifier_relation/">disease_genetic_modifier_relation</a></td>
+<td>A relation describing how the genetic modifier modifies the disease model. Submitted value should be a vocabulary term from the 'Disease genetic modifiers' vocabulary</td>
+</tr>
+<tr>
+<td><a href="disease_qualifiers/">disease_qualifiers</a></td>
+<td>Submitted values should be vocabulary terms from the 'Disease Qualifiers' vocabulary</td>
+</tr>
+<tr>
+<td><a href="display_name/">display_name</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="display_synonym/">display_synonym</a></td>
+<td>Placeholder.</td>
+</tr>
+<tr>
+<td><a href="editors/">editors</a></td>
+<td>holds between a resource and a editor_resource</td>
+</tr>
+<tr>
+<td><a href="emails/">emails</a></td>
+<td>list of emails for a person</td>
+</tr>
+<tr>
+<td><a href="embryonic_stem_cell_lines/">embryonic_stem_cell_lines</a></td>
+<td>Embryonic stem cell lines known to carry the allele</td>
+</tr>
+<tr>
+<td><a href="enables/">enables</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="end/">end</a></td>
+<td>The end of the feature in positive 1-based integer coordinates</td>
+</tr>
+<tr>
+<td><a href="end_position/">end_position</a></td>
+<td>End position of variant on genomic entity.</td>
+</tr>
+<tr>
+<td><a href="evidence_code/">evidence_code</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="evidence_codes/">evidence_codes</a></td>
+<td>ECO term IDs</td>
+</tr>
+<tr>
+<td><a href="experiment_type/">experiment_type</a></td>
+<td>Type of experiment by which these genes were collated eg chip-seq, interaction, expression</td>
+</tr>
+<tr>
+<td><a href="expression_qualifiers/">expression_qualifiers</a></td>
+<td>Qualifiers that describe additional characteristics of gene expression. For example: aint, intense, restricted.</td>
+</tr>
+<tr>
+<td><a href="first_author/">first_author</a></td>
+<td>Indicates if the author is a first author.</td>
+</tr>
+<tr>
+<td><a href="first_name/">first_name</a></td>
+<td>first name of a person</td>
+</tr>
+<tr>
+<td><a href="formula/">formula</a></td>
+<td>Formula of the molecule</td>
+</tr>
+<tr>
+<td><a href="free_text/">free_text</a></td>
+<td>A free text string that describes some aspect of an entity.</td>
+</tr>
+<tr>
+<td><a href="from_image/">from_image</a></td>
+<td>Holds between an ImagePane and an Image.</td>
+</tr>
+<tr>
+<td><a href="functional_impact/">functional_impact</a></td>
+<td>Experimentally assessed functional impact of the allele, e.g. knockout / amorphic</td>
+</tr>
+<tr>
+<td><a href="gene_ingest_set/">gene_ingest_set</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="gene_type/">gene_type</a></td>
+<td>SOTerm describing gene type</td>
+</tr>
+<tr>
+<td><a href="gene_types_secondary/">gene_types_secondary</a></td>
+<td>SOTerm describing alternate gene types</td>
+</tr>
+<tr>
+<td><a href="generated_by/">generated_by</a></td>
+<td>Holds between a material entity and an Agent that generated it: e.g., Thomas Blumenthal, Kornberg Laboratory.</td>
+</tr>
+<tr>
+<td><a href="generation_method/">generation_method</a></td>
+<td>Technique used to create the allele, e.g. spontaneous / naturally occuring / radiation</td>
+</tr>
+<tr>
+<td><a href="genes/">genes</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="genetic_map_band/">genetic_map_band</a></td>
+<td>Genetic map predicted chromosome location eg 10q12</td>
+</tr>
+<tr>
+<td><a href="genetic_map_chromosome/">genetic_map_chromosome</a></td>
+<td>Chromosome or contig to which the gene has been genetically mapped</td>
+</tr>
+<tr>
+<td><a href="genetic_map_position_centimorgan/">genetic_map_position_centimorgan</a></td>
+<td>Genetic map predicted chromosome location in centimorgans eg 22.3366 cM</td>
+</tr>
+<tr>
+<td><a href="genetic_map_position_centimorgan_error/">genetic_map_position_centimorgan_error</a></td>
+<td>Genetic map calculated error in the predicted chromosome location in centimorgans eg 0.045 cM</td>
+</tr>
+<tr>
+<td><a href="genetic_map_position_radiation/">genetic_map_position_radiation</a></td>
+<td>Radiation hybrid map predicted chromosome location eg 66.5 cR</td>
+</tr>
+<tr>
+<td><a href="genetic_sex/">genetic_sex</a></td>
+<td>Submitted value should be a vocabulary term from the 'Genetic sexes' vocabulary</td>
+</tr>
+<tr>
+<td><a href="genetically_interacts_with/">genetically_interacts_with</a></td>
+<td>holds between two genes whose phenotypic effects are dependent on each other in some way - such that their combined phenotypic effects are the result of some interaction between the activity of their gene products. Examples include epistasis and synthetic lethality.</td>
+</tr>
+<tr>
+<td><a href="genomic_locations/">genomic_locations</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="germline_transmission_status/">germline_transmission_status</a></td>
+<td>For alleles made in cell lines, have they been transmitted to the germline of an animal</td>
+</tr>
+<tr>
+<td><a href="handle/">handle</a></td>
+<td>A slot pointing to a free-text alias or 'handle' for a data object, such as a reference-specific alias for a data object used while curating.</td>
+</tr>
+<tr>
+<td><a href="has_allele/">has_allele</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="has_assembly/">has_assembly</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="has_input/">has_input</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="has_output/">has_output</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="has_participant/">has_participant</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="heading_term/">heading_term</a></td>
+<td>The MeSH term description or definition from PubMed. e.g. Measles in a Measles/epidemiology term.</td>
+</tr>
+<tr>
+<td><a href="heavy_chain_isotype/">heavy_chain_isotype</a></td>
+<td>The isotype of the antibody heavy chain: e.g., IgA.</td>
+</tr>
+<tr>
+<td><a href="height/">height</a></td>
+<td>The height of the image (pixels).</td>
+</tr>
+<tr>
+<td><a href="hgvs/">hgvs</a></td>
+<td>HGVS nomenclature for variant located on a genomic entity. In practice HGVS nomenclature will be derived for any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.</td>
+</tr>
+<tr>
+<td><a href="hgvs_coding_nomenclature/">hgvs_coding_nomenclature</a></td>
+<td>HGVSc nomenclature for variation in coding sequence</td>
+</tr>
+<tr>
+<td><a href="hgvs_protein_nomenclature/">hgvs_protein_nomenclature</a></td>
+<td>HGVSp nomenclature for variation in protein</td>
+</tr>
+<tr>
+<td><a href="id/">id</a></td>
+<td>Precedence of identifiers for references is as follows: PMID if available; DOI if not; actual alternate CURIE otherwise.</td>
+</tr>
+<tr>
+<td><a href="image/">image</a></td>
+<td>The image associated with the object.</td>
+</tr>
+<tr>
+<td><a href="image_file/">image_file</a></td>
+<td>The file representing the full-sized version of this image.</td>
+</tr>
+<tr>
+<td><a href="image_medium_file/">image_medium_file</a></td>
+<td>The file representing a medium-sized version of this image.</td>
+</tr>
+<tr>
+<td><a href="image_thumbnail_file/">image_thumbnail_file</a></td>
+<td>The file representing the thumbnail of this image.</td>
+</tr>
+<tr>
+<td><a href="image_x_origin/">image_x_origin</a></td>
+<td>The x coordinate start point when specifying a spatial section within a larger image.</td>
+</tr>
+<tr>
+<td><a href="image_y_origin/">image_y_origin</a></td>
+<td>The y coordinate start point when specifying a spatial section within a larger image.</td>
+</tr>
+<tr>
+<td><a href="images/">images</a></td>
+<td>Any associated image</td>
+</tr>
+<tr>
+<td><a href="in_collection/">in_collection</a></td>
+<td>Set of high-throughput alleles made by large projects</td>
+</tr>
+<tr>
+<td><a href="inchi/">inchi</a></td>
+<td>InChi style description of the molecule</td>
+</tr>
+<tr>
+<td><a href="inchi_key/">inchi_key</a></td>
+<td>InChi key description of the molecule</td>
+</tr>
+<tr>
+<td><a href="inferred_allele/">inferred_allele</a></td>
+<td>The allele to which something is inferred to be associated.</td>
+</tr>
+<tr>
+<td><a href="inferred_gene/">inferred_gene</a></td>
+<td>The gene to which something is inferred to be associated.</td>
+</tr>
+<tr>
+<td><a href="inheritence_mode/">inheritence_mode</a></td>
+<td>Mode of inheritence, e.g. dominant / semi-dominant / recessive / unknown</td>
+</tr>
+<tr>
+<td><a href="interaction_data_provider/">interaction_data_provider</a></td>
+<td>The interaction database that curated the interaction. e.g. BioGRID</td>
+</tr>
+<tr>
+<td><a href="interaction_type/">interaction_type</a></td>
+<td>The type of interaction between the two genes or gene products. e.g. physical association</td>
+</tr>
+<tr>
+<td><a href="interactor_A_genetic_perturbation/">interactor_A_genetic_perturbation</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="interactor_A_role/">interactor_A_role</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="interactor_A_type/">interactor_A_type</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="interactor_B_genetic_perturbation/">interactor_B_genetic_perturbation</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="interactor_B_role/">interactor_B_role</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="interactor_B_type/">interactor_B_type</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="interacts_with/">interacts_with</a></td>
+<td>holds between any two entities that directly or indirectly interact with each other</td>
+</tr>
+<tr>
+<td><a href="internal/">internal</a></td>
+<td>Classifies the entity as private (for internal use) or not (for public use).</td>
+</tr>
+<tr>
+<td><a href="is_extinct/">is_extinct</a></td>
+<td>Does the allele still exist in a population somewhere?</td>
+</tr>
+<tr>
+<td><a href="iso_abbreviation/">iso_abbreviation</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="issue_name/">issue_name</a></td>
+<td>The number of the journal issue in which the article was published. From PubMed otherwise from Mod or manual reference creation.</td>
+</tr>
+<tr>
+<td><a href="iupac/">iupac</a></td>
+<td>IUPAC name of the molecule</td>
+</tr>
+<tr>
+<td><a href="keywords/">keywords</a></td>
+<td>Keywords tagging a publication.  Aggregation of PubMed and ZFIN, editable at Alliance.</td>
+</tr>
+<tr>
+<td><a href="label/">label</a></td>
+<td>A short display name for the figure. For example: Figure 2, Figure 3B</td>
+</tr>
+<tr>
+<td><a href="language/">language</a></td>
+<td>Language of the reference.  Aggregation of PubMed and FlyBase, editable at Alliance.</td>
+</tr>
+<tr>
+<td><a href="last_name/">last_name</a></td>
+<td>last (family) name of a person</td>
+</tr>
+<tr>
+<td><a href="light_chain_isotype/">light_chain_isotype</a></td>
+<td>The isotype of the antibody light chain: e.g., i4.</td>
+</tr>
+<tr>
+<td><a href="manufactured_by/">manufactured_by</a></td>
+<td>Holds between a material entity and an Agent that has manufactured it: e.g., Molecular Probes.</td>
+</tr>
+<tr>
+<td><a href="medline_abbreviation/">medline_abbreviation</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="member_terms/">member_terms</a></td>
+<td>Set of VocabularyTerm objects in a Vocabulary object set</td>
+</tr>
+<tr>
+<td><a href="merged_into/">merged_into</a></td>
+<td>This gene has been merged into</td>
+</tr>
+<tr>
+<td><a href="merged_into_id/">merged_into_id</a></td>
+<td>ID that used to refer to this reference</td>
+</tr>
+<tr>
+<td><a href="mesh_detail_id/">mesh_detail_id</a></td>
+<td>The primary key for a MeshDetail object.</td>
+</tr>
+<tr>
+<td><a href="middle_name/">middle_name</a></td>
+<td>middle names of a person</td>
+</tr>
+<tr>
+<td><a href="mod_entity_id/">mod_entity_id</a></td>
+<td>The model organism database (MOD) identifier/curie for the object</td>
+</tr>
+<tr>
+<td><a href="molecular_mutations/">molecular_mutations</a></td>
+<td>Description of the DNA changes if precise genomic location unknown</td>
+</tr>
+<tr>
+<td><a href="mutant_cell_lines/">mutant_cell_lines</a></td>
+<td>Mutant cell lines known to carry the allele</td>
+</tr>
+<tr>
+<td><a href="mutation_description/">mutation_description</a></td>
+<td>Additional information about the nature of the mutation not captured by the SOTerm</td>
+</tr>
+<tr>
+<td><a href="mutation_type/">mutation_type</a></td>
+<td>SO term for type of mutation</td>
+</tr>
+<tr>
+<td><a href="name/">name</a></td>
+<td>a human-readable name for an entity</td>
+</tr>
+<tr>
+<td><a href="namespace/">namespace</a></td>
+<td>the namespace of the ontology.</td>
+</tr>
+<tr>
+<td><a href="negated/">negated</a></td>
+<td>if set to true, then the association is negated i.e. is not true</td>
+</tr>
+<tr>
+<td><a href="note_type/">note_type</a></td>
+<td>The type of note: e.g., cytology, comment, summary. Permissible values for 'note_type' currently = disease_summary, disease_note</td>
+</tr>
+<tr>
+<td><a href="object/">object</a></td>
+<td>connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.</td>
+</tr>
+<tr>
+<td><a href="object_set/">object_set</a></td>
+<td>Applies to a property that links a ingest object to a set of objects. This is necessary in a json document to provide context for a list, and to allow for a single json object that combines multiple object types</td>
+</tr>
+<tr>
+<td><a href="obsolete/">obsolete</a></td>
+<td>Entity is no longer current.</td>
+</tr>
+<tr>
+<td><a href="okta_email/">okta_email</a></td>
+<td>The email address of the LoggedInPerson registered with Okta for user authentication</td>
+</tr>
+<tr>
+<td><a href="okta_id/">okta_id</a></td>
+<td>The Okta identifier for the person registered in Okta for user authentication</td>
+</tr>
+<tr>
+<td><a href="old_emails/">old_emails</a></td>
+<td>list of old (outdated) emails for a person</td>
+</tr>
+<tr>
+<td><a href="old_members/">old_members</a></td>
+<td>Gene which were formerly members of this GeneClass</td>
+</tr>
+<tr>
+<td><a href="online_issn/">online_issn</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="open_access/">open_access</a></td>
+<td>Indicates if the reference is freely available for use by anyone, usually with fewer copyright and licensing barriers.</td>
+</tr>
+<tr>
+<td><a href="orcid/">orcid</a></td>
+<td>Open Researcher and Contributor ID</td>
+</tr>
+<tr>
+<td><a href="original_reference/">original_reference</a></td>
+<td>Holds between an entity and the first reference to describe that entity.</td>
+</tr>
+<tr>
+<td><a href="origins/">origins</a></td>
+<td>Affected genomic models that the allele was introduced in</td>
+</tr>
+<tr>
+<td><a href="page_areas/">page_areas</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="page_range/">page_range</a></td>
+<td>Page numbers of source referenced for statement or publication. From PubMed otherwise from Mod or manual reference creation.</td>
+</tr>
+<tr>
+<td><a href="paralogous_genes/">paralogous_genes</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="parent_cell_line/">parent_cell_line</a></td>
+<td>Parental cell line of alleles made in embryonic stem cells</td>
+</tr>
+<tr>
+<td><a href="parental_populations/">parental_populations</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="phenotype_or_trait/">phenotype_or_trait</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="phenotype_term/">phenotype_term</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="physically_interacts_with/">physically_interacts_with</a></td>
+<td>holds between two entities that make physical contact as part of some interaction</td>
+</tr>
+<tr>
+<td><a href="plain_language_abstract/">plain_language_abstract</a></td>
+<td>Lay person, readable version of the abstract. Only relevant for PubMed references.</td>
+</tr>
+<tr>
+<td><a href="polypeptide/">polypeptide</a></td>
+<td>Transcript associated with variant and for which a specific location and consequence of that variant is provided, as specified by curator. Multivalued=false for this slot because although a variant can have multiple VariantTranscriptLocation stanzas, each stanza will have one and only one curated transcript ID.</td>
+</tr>
+<tr>
+<td><a href="polyphen_prediction/">polyphen_prediction</a></td>
+<td>PolyPhen-2 prediction</td>
+</tr>
+<tr>
+<td><a href="polyphen_score/">polyphen_score</a></td>
+<td>PolyPhen-2 score between 0 and 1</td>
+</tr>
+<tr>
+<td><a href="predicate/">predicate</a></td>
+<td>A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.</td>
+</tr>
+<tr>
+<td><a href="prefix/">prefix</a></td>
+<td>Denormalization to help with classifying types of crossReferences, distinguishing DOIs from PMC ids, etc.</td>
+</tr>
+<tr>
+<td><a href="prefix_order/">prefix_order</a></td>
+<td>The relative order of the resource when listed with other crossReferences.</td>
+</tr>
+<tr>
+<td><a href="prefix_page/">prefix_page</a></td>
+<td>The cateogry of pages the resource in the context of the URL associated with the crossReference provides.  Equivalent to the 'page' attribute in the Alliance resourceDescriptor file.</td>
+</tr>
+<tr>
+<td><a href="print_issn/">print_issn</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="private_comment/">private_comment</a></td>
+<td>A private explanatory note from curators about some entity, for internal use only.</td>
+</tr>
+<tr>
+<td><a href="product_binds_matrix/">product_binds_matrix</a></td>
+<td>WB specific. ID of position matrix object</td>
+</tr>
+<tr>
+<td><a href="protein_end/">protein_end</a></td>
+<td>end position of variation in protein amino acid coordinates</td>
+</tr>
+<tr>
+<td><a href="protein_start/">protein_start</a></td>
+<td>start position of variation in protein amino acid coordinates</td>
+</tr>
+<tr>
+<td><a href="proteins/">proteins</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="publisher/">publisher</a></td>
+<td>Publisher associated with a reference or resource. From PubMed otherwise from Mod or manual reference creation.</td>
+</tr>
+<tr>
+<td><a href="pubmed_abstract_languages/">pubmed_abstract_languages</a></td>
+<td>Languages for the abstract. Only relevant for PubMed references.</td>
+</tr>
+<tr>
+<td><a href="pubmed_publication_status/">pubmed_publication_status</a></td>
+<td>Status of the publication at PubMed. Only relevant for PubMed references.</td>
+</tr>
+<tr>
+<td><a href="pubmed_type/">pubmed_type</a></td>
+<td>Type of Reference as described by PubMed. Only relevant for PubMed references.</td>
+</tr>
+<tr>
+<td><a href="qualifier_term/">qualifier_term</a></td>
+<td>The MeSH term subheading from PubMed, to narrow down the topic. e.g. epidemiology in a Measles/epidemiology term.</td>
+</tr>
+<tr>
+<td><a href="qualifiers/">qualifiers</a></td>
+<td>This is the MeSH qualifier term that is optionally added to the descriptor term.</td>
+</tr>
+<tr>
+<td><a href="reagents_used/">reagents_used</a></td>
+<td>Reagents used in the expression assay: e.g., antibodies, probes.</td>
+</tr>
+<tr>
+<td><a href="reference_id/">reference_id</a></td>
+<td>An integer referring to a Reference object in the references table. It's a primary key in the references table, a foreign key when in other tables.</td>
+</tr>
+<tr>
+<td><a href="reference_sequence/">reference_sequence</a></td>
+<td>Reference sequence of genome or genomic entity at position of aligned variant.</td>
+</tr>
+<tr>
+<td><a href="reference_type/">reference_type</a></td>
+<td>Description of how a reference is associated with an entity, e.g. molecular / origin / other</td>
+</tr>
+<tr>
+<td><a href="references/">references</a></td>
+<td>holds between an object and a list of references</td>
+</tr>
+<tr>
+<td><a href="related_note/">related_note</a></td>
+<td>Holds between an object and a Note object.</td>
+</tr>
+<tr>
+<td><a href="related_notes/">related_notes</a></td>
+<td>Holds between an object and a list of related Note objects.</td>
+</tr>
+<tr>
+<td><a href="related_to/">related_to</a></td>
+<td>A relationship that is asserted between two named things.</td>
+</tr>
+<tr>
+<td><a href="release/">release</a></td>
+<td>MOD release ID</td>
+</tr>
+<tr>
+<td><a href="resource_id/">resource_id</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="schedule_active/">schedule_active</a></td>
+<td>This determines if the the schedule is active or not</td>
+</tr>
+<tr>
+<td><a href="secondary_data_provider/">secondary_data_provider</a></td>
+<td>Organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source</td>
+</tr>
+<tr>
+<td><a href="secondary_identifiers/">secondary_identifiers</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="sequence_targeting_reagents/">sequence_targeting_reagents</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="sequencing_status/">sequencing_status</a></td>
+<td>Status of whether or not the variant genomic location has been verified by sequencing</td>
+</tr>
+<tr>
+<td><a href="sgd_strain_background/">sgd_strain_background</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="sift_prediction/">sift_prediction</a></td>
+<td>SIFT prediction</td>
+</tr>
+<tr>
+<td><a href="sift_score/">sift_score</a></td>
+<td>SIFT score between 0 and 1</td>
+</tr>
+<tr>
+<td><a href="single_reference/">single_reference</a></td>
+<td>holds between an object and a single reference</td>
+</tr>
+<tr>
+<td><a href="smiles/">smiles</a></td>
+<td>Molecular structure in SMILES format</td>
+</tr>
+<tr>
+<td><a href="source_general_consequence/">source_general_consequence</a></td>
+<td>SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference when no transcript ID is provided. Since a curator would determine variant location and consequences relative to at least one specific genome assembly, transcript and/or polypeptide, no slot for curated general consequence is provided.</td>
+</tr>
+<tr>
+<td><a href="source_variant_locations/">source_variant_locations</a></td>
+<td>Location of the variant within genomic entities,as described in the source references.</td>
+</tr>
+<tr>
+<td><a href="spatial_qualifiers/">spatial_qualifiers</a></td>
+<td>Qualifiers that describe the spatial characteristics of an event.</td>
+</tr>
+<tr>
+<td><a href="specimen_alleles/">specimen_alleles</a></td>
+<td>The Allele(s) of the specimen assayed.</td>
+</tr>
+<tr>
+<td><a href="specimen_genomic_model/">specimen_genomic_model</a></td>
+<td>The AffectedGenomicModel of the specimen assayed.</td>
+</tr>
+<tr>
+<td><a href="split_from/">split_from</a></td>
+<td>This gene exists because it has been split from this gene</td>
+</tr>
+<tr>
+<td><a href="split_into/">split_into</a></td>
+<td>This gene has been split into these genes</td>
+</tr>
+<tr>
+<td><a href="sqtr_ingest_set/">sqtr_ingest_set</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="start/">start</a></td>
+<td>The start of the feature in positive 1-based integer coordinates</td>
+</tr>
+<tr>
+<td><a href="start_position/">start_position</a></td>
+<td>Start position of variant on genomic entity.</td>
+</tr>
+<tr>
+<td><a href="statement_subject/">statement_subject</a></td>
+<td>The entity being described by the note.</td>
+</tr>
+<tr>
+<td><a href="statement_text/">statement_text</a></td>
+<td>Free-text describing some aspect of an entity.</td>
+</tr>
+<tr>
+<td><a href="statement_type/">statement_type</a></td>
+<td>The type of free-text statement. For example: cytology, private, curator_comments.</td>
+</tr>
+<tr>
+<td><a href="subject/">subject</a></td>
+<td>connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.</td>
+</tr>
+<tr>
+<td><a href="subsets/">subsets</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="subtype/">subtype</a></td>
+<td>Subtype of affected genomic model</td>
+</tr>
+<tr>
+<td><a href="summary/">summary</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="symbol/">symbol</a></td>
+<td>Symbol for a particular thing</td>
+</tr>
+<tr>
+<td><a href="synonym/">synonym</a></td>
+<td>the text string of the synonym</td>
+</tr>
+<tr>
+<td><a href="synonyms/">synonyms</a></td>
+<td>holds between a named thing and a synonym</td>
+</tr>
+<tr>
+<td><a href="table_key/">table_key</a></td>
+<td>The primary key for a specific table entry, unique for that table.</td>
+</tr>
+<tr>
+<td><a href="taxon/">taxon</a></td>
+<td>The taxon from which the biological entity derives.</td>
+</tr>
+<tr>
+<td><a href="temporal_qualifiers/">temporal_qualifiers</a></td>
+<td>Qualifiers of the stage or age in an annotation.</td>
+</tr>
+<tr>
+<td><a href="text_synonyms/">text_synonyms</a></td>
+<td>Free text synonym(s) of a term, used for controlled vocabulary terms; this is distinct from the 'synonyms' slot which has a range of a Synonym class object.</td>
+</tr>
+<tr>
+<td><a href="title/">title</a></td>
+<td>A human readable title for a reference. From PubMed otherwise from Mod or manual reference creation.</td>
+</tr>
+<tr>
+<td><a href="trans_splice_leaders/">trans_splice_leaders</a></td>
+<td>Trans-splicing splice leaders observed to operate on this gene, in species which have spliced leader trans-splicing</td>
+</tr>
+<tr>
+<td><a href="transcript/">transcript</a></td>
+<td>Transcript associated with variant and for which a specific location and consequence of that variant is provided, as specified at source.  Multivalued=false for this slot because although a variant can have multiple VariantTranscriptLocation stanzas, each stanza will have one and only one source transcript ID.</td>
+</tr>
+<tr>
+<td><a href="transposon_insertion/">transposon_insertion</a></td>
+<td>Associated transposon insertion that causes the mutation</td>
+</tr>
+<tr>
+<td><a href="transposon_origin/">transposon_origin</a></td>
+<td>If this gene contains or is originating from a transposon</td>
+</tr>
+<tr>
+<td><a href="type/">type</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="uncertain/">uncertain</a></td>
+<td>If set to true, then the related entity is uncertain.</td>
+</tr>
+<tr>
+<td><a href="unique_id/">unique_id</a></td>
+<td>A non-curie unique identifier for a thing.</td>
+</tr>
+<tr>
+<td><a href="updated_by/">updated_by</a></td>
+<td>The individual that last modified the entity.</td>
+</tr>
+<tr>
+<td><a href="url_prefix/">url_prefix</a></td>
+<td>The prefix of the url before the accession number.</td>
+</tr>
+<tr>
+<td><a href="url_suffix/">url_suffix</a></td>
+<td>The suffix of the url after the accession number.</td>
+</tr>
+<tr>
+<td><a href="user_settings/">user_settings</a></td>
+<td>JSON Blob containing details of UI settings for LoggedInPerson</td>
+</tr>
+<tr>
+<td><a href="variant_genome_locations/">variant_genome_locations</a></td>
+<td>Location of the variant in a genomic context.  multiple variant_genome_locations represent multiple assemblies.</td>
+</tr>
+<tr>
+<td><a href="variant_ingest_set/">variant_ingest_set</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="variant_locations/">variant_locations</a></td>
+<td>Location of the variant within genomic entities. Variant_locations can include any or all of: one VariantGenomeLocation stanza, one or more VariantTranscriptLocation stanzas and/or one or more VariantPolypeptideLocation stanzas.</td>
+</tr>
+<tr>
+<td><a href="variant_polypeptide_locations/">variant_polypeptide_locations</a></td>
+<td>Location of the variant within polypeptide entities.</td>
+</tr>
+<tr>
+<td><a href="variant_sequence/">variant_sequence</a></td>
+<td>Sequence that differs from the reference sequence of genome or genomic entity at position of variant, as specified by curator.</td>
+</tr>
+<tr>
+<td><a href="variant_status/">variant_status</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="variant_transcript_locations/">variant_transcript_locations</a></td>
+<td>Location of the variant within transcript entities.</td>
+</tr>
+<tr>
+<td><a href="variant_type/">variant_type</a></td>
+<td>SOTerm describing the type of variant. In practice, variant type will be limited to a subset of the SO specified in an Alliance controlled vocabulary in order to maintain consistency.</td>
+</tr>
+<tr>
+<td><a href="vep_consequence/">vep_consequence</a></td>
+<td>VEP consequence</td>
+</tr>
+<tr>
+<td><a href="vep_impact/">vep_impact</a></td>
+<td>VEP predicted impact of variation on molecule</td>
+</tr>
+<tr>
+<td><a href="video_still/">video_still</a></td>
+<td>An image represents a video still.</td>
+</tr>
+<tr>
+<td><a href="vocabulary_description/">vocabulary_description</a></td>
+<td>The free text description of a Vocabulary including its intended use.</td>
+</tr>
+<tr>
+<td><a href="volume/">volume</a></td>
+<td>Volume associated with a reference. From PubMed otherwise from Mod or manual reference creation.</td>
+</tr>
+<tr>
+<td><a href="wbprocess/">wbprocess</a></td>
+<td>WB specific. Eg WBbiop00000015 Corpse engulfment</td>
+</tr>
+<tr>
+<td><a href="when_expressed/">when_expressed</a></td>
+<td>When a gene product is observed to be present.</td>
+</tr>
+<tr>
+<td><a href="where_expressed/">where_expressed</a></td>
+<td>Where a gene product is observed to be present.</td>
+</tr>
+<tr>
+<td><a href="width/">width</a></td>
+<td>The width of the image (pixels).</td>
+</tr>
+<tr>
+<td><a href="with/">with</a></td>
+<td>http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8</td>
+</tr>
+<tr>
+<td><a href="zygosity/">zygosity</a></td>
+<td>GENO onotology ID for allele zygosity</td>
+</tr>
+</tbody>
+</table>
+<h2 id="enumerations">Enumerations</h2>
+<table>
+<thead>
+<tr>
+<th>Enumeration</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="AggregationDatabaseEnum/">AggregationDatabaseEnum</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="AntibodyClonalitySet/">AntibodyClonalitySet</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="AntibodyNoteTypeSet/">AntibodyNoteTypeSet</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="ConstructComponentRelationEnum/">ConstructComponentRelationEnum</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="DetectionMethodsEnum/">DetectionMethodsEnum</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="EntitySynonymTypeSet/">EntitySynonymTypeSet</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="ExpressionConditionRelationEnum/">ExpressionConditionRelationEnum</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="ExpressionQualifierSet/">ExpressionQualifierSet</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="ExpressionStatementTypeEnum/">ExpressionStatementTypeEnum</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="HeavyChainIsotypeSet/">HeavyChainIsotypeSet</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="InteractionSourceEnum/">InteractionSourceEnum</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="InteractionTypeEnum/">InteractionTypeEnum</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="InteractorARoleEnum/">InteractorARoleEnum</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="InteractorBRoleEnum/">InteractorBRoleEnum</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="InteractorTypeEnum/">InteractorTypeEnum</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="LightChainIsotypeSet/">LightChainIsotypeSet</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="PolyphenPredictionLevels/">PolyphenPredictionLevels</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="PubmedPublicationStatusEnum/">PubmedPublicationStatusEnum</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="PubmedTypeEnum/">PubmedTypeEnum</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="ReferenceCategoryEnum/">ReferenceCategoryEnum</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="SiftPredictionLevels/">SiftPredictionLevels</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="SpatialQualifierSet/">SpatialQualifierSet</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="SqtrRelationEnum/">SqtrRelationEnum</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="SubtypeValues/">SubtypeValues</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="TemporalQualifierSet/">TemporalQualifierSet</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="VariantStatusEnum/">VariantStatusEnum</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="VepConsequenceLevels/">VepConsequenceLevels</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="ZygosityValues/">ZygosityValues</a></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h2 id="subsets">Subsets</h2>
+<table>
+<thead>
+<tr>
+<th>Subset</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alliance subset</td>
+<td>Subset consisting of just the alliance activities</td>
+</tr>
+</tbody>
+</table>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+      
+        
+        <a href="developing-the-model/" class="md-footer__link md-footer__link--next" aria-label="Next: Developing the Alliance Model" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Developing the Alliance Model
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.c2e1ee47.min.js"></script>
+      
+    
+  </body>
+</html>
