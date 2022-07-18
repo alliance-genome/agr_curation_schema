@@ -81,7 +81,6 @@ classes:
           on the production environment (curation.alliancegenome.org). New terms
           can be added as needed.
 
-
   GeneticMapPosition:
     description: >-
       A genetic map position.
@@ -92,6 +91,14 @@ classes:
       - genetic_map_position_centimorgan
       - genetic_map_position_centimorgan_error
       - genetic_map_position_radiation
+
+  GeneHistory:
+    description: >-
+      The history of a gene
+    is_a: AuditedObject
+    slots:
+      - current_status
+
 
 ## ------------
 ## SLOTS
@@ -202,7 +209,7 @@ slots:
     domain: GeneticMapPosition
     range: float
 
-    genetic_map_position_centimorgan_error:
+  genetic_map_position_centimorgan_error:
     description: >-
       Genetic map calculated error in the predicted chromosome location in centimorgans eg 0.045 cM
     required: false
@@ -217,5 +224,14 @@ slots:
     multivalued: true
     domain: GeneticMapPosition
     range: float
+
+  current_status:
+    description: >-
+      Current status of this object
+    required: false
+    multivalued: true
+    domain: GeneHistory
+    range: string  # change to a controlled vocab, like live-dead-suppressed...
+
 
      
