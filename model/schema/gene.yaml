@@ -149,7 +149,7 @@ slots:
 
 anatomy_function:
     description: >-
-      WB specific. Allow the connection between Anatomy_term, Phenotype - proxy of biological function- , and Gene and still give some information about the experiment itself. Eg WBbtf0001
+      WB specific. Allow the connection between Anatomy_term, Phenotype proxy of biological function, and Gene and still give some information about the experiment itself. Eg WBbtf0001
     required: false
     multivalued: true
     domain: Gene
@@ -178,8 +178,6 @@ anatomy_function:
     multivalued: false
     domain: Gene
     range: boolean
-
-
 
   genetic_map_chromosome:
     description: >-
@@ -220,6 +218,7 @@ anatomy_function:
     multivalued: true
     domain: GeneticMapPosition
     range: float
+
 
 
 
