@@ -53,8 +53,8 @@ classes:
     slots:
       - symbol
       - related_notes
-      - gene_type
-      - gene_types_secondary
+        #- gene_type
+        #- gene_types_secondary
       - designating_laboratories
       - designating_persons
       - trans_splice_leaders
@@ -116,21 +116,21 @@ classes:
 
 slots:
 
-  gene_type:
-    description: >- 
-      SOTerm describing gene type
-    required: true
-    multivalued: false
-    domain: Gene
-    range: SOTerm
+#  gene_type:
+#    description: >- 
+#      SOTerm describing gene type
+#    required: true
+#    multivalued: false
+#    domain: Gene
+#    range: SOTerm
 
-  gene_types_secondary:
-    description: >- 
-      SOTerm describing alternate gene types
-    required: false
-    multivalued: true
-    domain: Gene
-    range: SOTerm
+#  gene_types_secondary:
+#    description: >- 
+#      SOTerm describing alternate gene types
+#    required: false
+#    multivalued: true
+#    domain: Gene
+#    range: SOTerm
 
   designating_laboratories:
     description: >-
