@@ -84,6 +84,32 @@ slots:
     domain: Molecule
     range: string
 
+  is_a_children:
+    description: >-
+      Direct is_a relationship children, a.k.a. direct subclasses, of an ontology term
+    domain: OntologyTerm
+    range: OntologyTerm
+    multivalued: true
+
+  is_a_parents:
+    description: Direct is_a relationship parents, a.k.a. direct superclasses, of an ontology term
+    domain: OntologyTerm
+    range: OntologyTerm
+    multivalued: true
+
+  is_a_ancestors:
+    description: All is_a relationship ancestors (all superclasses) of an ontology term
+    domain: OntologyTerm
+    range: OntologyTerm
+    multivalued: true
+
+  is_a_descendants:
+    description: All is_a relationship descendants (all subclasses) of an ontology term
+    domain: OntologyTerm
+    range: OntologyTerm
+    multivalued: true
+
+
 classes:
 
   OntologyTerm:
@@ -106,6 +132,10 @@ classes:
       - namespace
       - subsets
       - secondary_identifiers
+      - is_a_children
+      - is_a_parents
+      - is_a_ancestors
+      - is_a_descendants
     defining_slots:
       - curie
       - namespace
