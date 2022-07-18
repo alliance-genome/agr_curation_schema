@@ -111,21 +111,6 @@ classes:
 #        required: true
 #        range: gene_phenotype_relation_enum  # TO DO: generate this relation enumeration or don't specify predicate
 
-  GeneClassPhenotypeAnnotation:
-    description: >-
-      An annotation asserting an association between a GeneClass and a phenotype
-      supported by evidence.
-    is_a: PhenotypeAnnotation
-    slots:
-      - sgd_strain_background   # Does this also apply to phenotype annotations?
-    slot_usage:
-      subject:
-        required: true
-        description: >-
-          The GeneClass to which the phenotype ontology term is associated.
-        range: GeneClass
-
-
   AllelePhenotypeAnnotation:
     description: >-
       An annotation asserting an association between an allele
