@@ -57,6 +57,10 @@ classes:
       - designating_persons
       - trans_splice_leaders
       - contig
+      - anatomy_function
+      - product_binds_matrix
+      - wbprocess
+      - transposon_origin
     id_prefixes:
       - ENSEMBL
       - HGNC
@@ -124,7 +128,39 @@ slots:
     range: string
 
 
-     
+anatomy_function:
+    description: >-
+      WB specific. Allow the connection between Anatomy_term, Phenotype (proxy of biological function), and Gene and still give some information about the experiment itself. Eg WBbtf0001
+    required: false
+    multivalued: true
+    domain: Gene
+    range: string  # this should be changed to WBAnatomy term
+
+  product_binds_matrix:
+    description: >-
+      WB specific. ID of position matrix object
+    required: false
+    multivalued: true
+    domain: Gene
+    range: string  # this should be changed to a position matrix object, once that class is modelled
+
+  wbprocess:
+    description: >-
+      WB specific. Eg WBbiopr:00000015 (Corpse engulfment)
+    required: false
+    multivalued: true
+    domain: Gene
+    range: string  # this should be changed to a WBbiopr term
+
+  transposon_origin:
+    description: >-
+      If this gene contains or is originating from a transposon
+    required: false
+    multivalued: false
+    domain: Gene
+    range: boolean
+
+
       
 
 
