@@ -115,6 +115,8 @@ classes:
           The definition of the ontology term. This is a reference to an object that holds
           the text description of the term and a collection of URLs that further define the
           term.
+      curie:
+        required: true
 
 
   DOTerm:

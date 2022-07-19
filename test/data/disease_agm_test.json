@@ -4,11 +4,11 @@
       "evidence_codes": [
         "ECO:0000305"
       ],
-      "single_reference": "PMID:0012345",
+      "single_reference": {"reference_id":"PMID:123456"},
       "data_provider": "ZFIN",
       "object": "DOID:9452",
-      "created_by": "ZFIN",
-      "updated_by": "ZFIN",
+      "date_created": "ZFIN",
+      "date_updated": "ZFIN",
       "internal": false,
       "subject": "ZFIN:ZDB-FISH-180912-16",
       "predicate": "is_model_of",
