@@ -49,22 +49,17 @@ classes:
       element can be endogenous or constructed.
     slots:
       - symbol
-      - contains_constructs
       - molecular_mutations
       - functional_impact
       - generation_method
       - associated_references
       - related_notes
       - germline_transmission_status
-      - parent_cell_line
-      - mutant_cell_lines
-      - embryonic_stem_cell_lines
       - images
-      - origins
       - database_status
       - inheritence_mode
       - in_collection
-      - transposon_insertion
+      - transposon_insertion # are we going to model transpsons?
       - aberration
       - is_extinct
       - sequencing_status
@@ -74,12 +69,6 @@ classes:
       synonyms:
         description: synonyms for allele names and synonyms
       germline_transmission_status:
-        notes: specific to MGI
-      parent_cell_line:
-        notes: specific to MGI
-      mutant_cell_lines:
-        notes: specific to MGI
-      embryonic_stem_cell_lines:
         notes: specific to MGI
       transposon_insertion:
         notes: specific to FB
@@ -132,13 +121,54 @@ classes:
   AlleleVariantAssociation:
     is_a: AlleleGenomicEntityAssociation
     description: >-
-      The relationship between an allele and a variant is many to many. An Allele may have many variants and a variant
-      can be present in many alleles.
+      The relationship between an allele and a variant is many to many. An
+      Allele may have many variants and a variant can be present in many
+      alleles.
     slot_usage:
       subject:
         range: Allele
       object:
         range: Variant
+
+  AlleleConstructAssociation:
+    is_a: AlleleGenomicEntityAssociation
+    description: >-
+      The relationship between an allele and constructs contained in
+      that allele.
+    slot_usage:
+      subject:
+        range: Allele
+      predicate:
+        notes: RO:0001019 (contains)
+      object:
+        range: Construct
+
+  AlleleOriginAssociation: # could be part of more general AlleleAgmAssociation?
+    is_a: Association
+    description: >-
+      The relationship between an allele and an AGM in which it was introduced.
+    slot_usage:
+      subject:
+        range: Allele
+      predicate:
+        range: VocabularyTerm
+      object:
+        range: AffectedGenomicModel
+
+  AlleleCellLineAssociation: # do mutant/parent/embryonic cell line associations need to be split out?
+    is_a: Association
+    description: >-
+      The relationship between an allele and a cell line.  Includes mutant/
+      embryonic stem cell lines known to carry the allele, and parental cell
+      line of alleles made in embryonic stem cells.
+    slot_usage:
+      subject:
+        range: Allele
+      predicate:
+        range: VocabularyTerm
+      object:
+        range: CellLine
+
 
   AssociatedReference:
     is_a: AuditedObject
@@ -217,11 +247,6 @@ slots:
     domain: Construct
     range: GenomicEntity
 
-  contains_constructs:
-    multivalued: true
-    domain: Allele
-    range: Construct
-
   molecular_mutations:
     description: >-
       Description of the DNA changes if precise
@@ -271,44 +296,12 @@ slots:
     domain: AssociatedReference
     range: VocabularyTerm
 
-  origins:
-    singular_name: origin
-    description: >-
-      Affected genomic models that the allele was introduced in
-    multivalued: true
-    domain: Allele
-    range: AffectedGenomicModel
-
   germline_transmission_status:
     description: >-
       For alleles made in cell lines, have they been
       transmitted to the germline of an animal
     domain: Allele
     range: VocabularyTerm
-
-  parent_cell_line:
-    description: >-
-      Parental cell line of alleles made in embryonic
-      stem cells
-    domain: Allele
-    range: CellLine
-
-  mutant_cell_lines:
-    singular_name: mutant_cell_line
-    description: >-
-      Mutant cell lines known to carry the allele
-    domain: Allele
-    range: CellLine
-    multivalued: true
-
-  embryonic_stem_cell_lines:
-    aliases: ['allele_derivation']
-    singular_name: embryonic_stem_cell_line
-    description: >-
-      Embryonic stem cell lines known to carry the allele
-    domain: Allele
-    range: CellLine
-    multivalued: true
 
   database_status:
     description: >-
