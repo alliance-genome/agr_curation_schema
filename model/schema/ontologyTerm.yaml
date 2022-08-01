@@ -39,6 +39,17 @@ emit_prefixes:
 
 
 slots:
+
+  genus:
+    description: >-
+      a principal taxonomic category that ranks above species and below family, and is denoted by a 
+      capitalized Latin name, e.g. Leo.
+  species:
+    description: >-
+      a group of living organisms consisting of similar individuals capable of exchanging genes or 
+      interbreeding. The species is the principal natural taxonomic unit, ranking below a genus and 
+      denoted by a Latin binomial, e.g. Homo sapiens.
+
   definition:
     description: >-
       The explanation of the meaning of a term.
@@ -115,6 +126,8 @@ classes:
           The definition of the ontology term. This is a reference to an object that holds
           the text description of the term and a collection of URLs that further define the
           term.
+      curie:
+        required: true
 
 
   DOTerm:
@@ -131,6 +144,9 @@ classes:
 
   NCBITaxonTerm:
     is_a: OntologyTerm
+    slots:
+      - genus
+      - species
 
   FBCVTerm:
     is_a: OntologyTerm
