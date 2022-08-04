@@ -236,6 +236,11 @@ classes:
   XPOTerm:
     is_a: PhenotypeTerm
 
+  ATPTerm:
+    is_a: OntologyTerm
+    description: >-
+      An ontology term from the Alliance Tags for Papers ontology (ATP)
+
   ChemicalTerm:
     is_a: OntologyTerm
     abstract: true
