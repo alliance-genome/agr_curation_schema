@@ -251,6 +251,14 @@ linkml:Nodeidentifier NONLITERAL
     @<PhenotypeAnnotation> OR @<SequenceTargetingReagentToGeneAssociation>
 )
 
+<ATPTerm> CLOSED {
+    (  $<ATPTerm_tes> (  &<OntologyTerm_tes> ;
+          rdf:type [ <OntologyTerm> ] ?
+       ) ;
+       rdf:type [ <ATPTerm> ]
+    )
+}
+
 <AuditedObject>  (
     CLOSED {
        (  $<AuditedObject_tes> (  <created_by> @<Person> ? ;
@@ -818,9 +826,9 @@ linkml:Nodeidentifier NONLITERAL
           ) ;
           rdf:type [ <OntologyTerm> ]
        )
-    } OR @<AnatomicalTerm> OR @<ChemicalTerm> OR @<DOTerm> OR @<ECOTerm> OR @<ExperimentalConditionOntologyTerm> OR @<FBCVTerm> OR
-    @<GOTerm> OR @<MITerm> OR @<MMOTerm> OR @<MMUSDVTerm> OR @<NCBITaxonTerm> OR @<PhenotypeTerm> OR @<ROTerm> OR @<SOTerm> OR
-    @<StageTerm> OR @<XBEDTerm>
+    } OR @<ATPTerm> OR @<AnatomicalTerm> OR @<ChemicalTerm> OR @<DOTerm> OR @<ECOTerm> OR @<ExperimentalConditionOntologyTerm> OR
+    @<FBCVTerm> OR @<GOTerm> OR @<MITerm> OR @<MMOTerm> OR @<MMUSDVTerm> OR @<NCBITaxonTerm> OR @<PhenotypeTerm> OR @<ROTerm> OR
+    @<SOTerm> OR @<StageTerm> OR @<XBEDTerm>
 )
 
 <Organization>  (
