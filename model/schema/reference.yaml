@@ -38,6 +38,7 @@ emit_prefixes:
 classes:
 
   InformationContentEntity:
+  is_a: AuditedObject
   description: >-
     a piece of information that typically is used as support for an assertion or annotation.
 
@@ -95,6 +96,16 @@ classes:
       reference_id:
         description: >-
           The primary key for the Reference object in the references table.
+
+
+  PersonalCommunication:
+    alias: ["person_evidence"]
+    is_a: InformationContentEntity
+    description: >- 
+      a piece of information that is used to support an assertion or annotation, where the information
+      comes from a person other than the author of the assertion or annotation, or the author of the reference.
+    slots_usage:
+
 
   MeshDetail:
     is_a: AuditedObject
