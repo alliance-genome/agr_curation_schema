@@ -49,10 +49,8 @@ classes:
       element can be endogenous or constructed.
     slots:
       - symbol
-      - generation_method
-      - associated_references
+      - references
       - related_notes
-      - germline_transmission_status
       - images
       - database_status
       - inheritence_mode
@@ -66,28 +64,45 @@ classes:
     slot_usage:
       synonyms:
         description: synonyms for allele names and synonyms
-      germline_transmission_status:
-        notes: specific to MGI
-      transposon_insertion:
-        notes: specific to FB
       aberration:
         notes: specific to FB
       name:
         required: true
 
-  AlleleFunctionalImpact:
+  AlleleSlotAnnotation:
     is_a: SlotAnnotation
     slots:
-      - allele_id
-      - functional_impact
+      - allele
       - evidence
 
-  AlleleMolecularMutations:
-    is_a: SlotAnnotation
+  AlleleGermlineTransmissionStatus:
+    is_a: AlleleSlotAnnotation
     slots:
-      - allele_id
+      - germline_transmission_status
+
+  AlleleFunctionalImpact:
+    is_a: AlleleSlotAnnotation
+    slots:
+      - functional_impact
+
+  AlleleMolecularMutations:
+    is_a: AlleleSlotAnnotation
+    slots:
       - molecular_mutations
-      - evidence
+
+  AlleleOrigin:
+    is_a: AuditedObject
+    description: >-
+      Affected genomic models that the allele was introduced in and associated
+      evidence
+    slots:
+      - origin
+      - analyses
+    slot_usage:
+      analyses:
+        description: Analyses providing evidence for AGM of origin
+      origin:
+        range: AffectedGenomicModel
 
   AlleleGenerationMethod:
     is_a: Assocation
@@ -271,6 +286,9 @@ classes:
 
 slots:
 
+  allele:
+    range: curie
+
   evidence:
     description: >-
     range: InformationContentEntity
@@ -312,22 +330,6 @@ slots:
     domain: Allele
     range: string
     multivalued: false
-
-  associated_references:
-    description: >-
-      List of references associated with the entity in some way with a
-      description of the association.
-    range: AssociatedReference
-    multivalued: true
-
-  reference_type:
-    description: >-
-      Description of how a reference is associated with
-      an entity, e.g. molecular / origin / other
-    required: true
-    multivalued: false
-    domain: AssociatedReference
-    range: VocabularyTerm
 
   germline_transmission_status:
     description: >-

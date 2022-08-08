@@ -132,7 +132,7 @@ classes:
     slots:
       - free_text
       - note_type
-      - references
+      - evidence
     slot_usage:
       free_text:
         required: true
