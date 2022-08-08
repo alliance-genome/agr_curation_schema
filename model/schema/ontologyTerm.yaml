@@ -40,16 +40,6 @@ emit_prefixes:
 
 slots:
 
-  genus:
-    description: >-
-      a principal taxonomic category that ranks above species and below family, and is denoted by a 
-      capitalized Latin name, e.g. Leo.
-  species:
-    description: >-
-      a group of living organisms consisting of similar individuals capable of exchanging genes or 
-      interbreeding. The species is the principal natural taxonomic unit, ranking below a genus and 
-      denoted by a Latin binomial, e.g. Homo sapiens.
-
   definition:
     description: >-
       The explanation of the meaning of a term.
