@@ -56,12 +56,10 @@ classes:
           The curie prefix, or letter code used by FMS (Alliance file management
           system).  e.g. MGI, FB
         multivalued: false
-        range: string
+        range: curatorial_organization_enum
         required: true
       date_created:
         required: true
-      short_name:
-        range: curatorial_organization_enum
 
 slots:
 
