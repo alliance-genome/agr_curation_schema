@@ -51,8 +51,6 @@ classes:
       - symbol
       - references
       - related_notes
-      - images
-      - database_status
       - inheritence_mode
       - in_collection
       - transposon_insertion # are we going to model transpsons?
@@ -69,26 +67,34 @@ classes:
       name:
         required: true
 
+
+# SlotAnnotations
   AlleleSlotAnnotation:
     is_a: SlotAnnotation
     slots:
       - allele
       - evidence
 
-  AlleleGermlineTransmissionStatus:
+  AlleleGermlineTransmissionStatusAnnotation:
     is_a: AlleleSlotAnnotation
     slots:
       - germline_transmission_status
 
-  AlleleFunctionalImpact:
+  AlleleFunctionalImpactAnnotation:
     is_a: AlleleSlotAnnotation
     slots:
       - functional_impact
 
-  AlleleMolecularMutations:
+  AlleleMolecularMutationAnnotation:
     is_a: AlleleSlotAnnotation
     slots:
       - molecular_mutations
+
+  AlleleDatabaseStatusAnnotation:
+    is_a: AlleleSlotAnnotation
+    slots:
+      - database_status
+# Auxiliary classes
 
   AlleleOrigin:
     is_a: AuditedObject
@@ -104,7 +110,16 @@ classes:
       origin:
         range: AffectedGenomicModel
 
-  AlleleGenerationMethod:
+  GenerationMethod:
+    is_a: AuditedObject
+    slots:
+      - mutagenesis_method
+      - mutagen
+      - generation_method
+
+# Allele Associations
+
+  AlleleGenerationMethodAssociation:
     is_a: Assocation
     slots:
       - evidence
@@ -114,12 +129,17 @@ classes:
       object:
         range: GenerationMethod
 
-  GenerationMethod:
-    is_a: AuditedObject
-    slots:
-      - mutagenesis_method
-      - mutagen
-      - generation_method
+  AlleleOriginAssociation: # could be part of more general AlleleAgmAssociation?
+    is_a: Association
+    description: >-
+      The relationship between an allele and an AGM in which it was introduced.
+    slot_usage:
+      subject:
+        range: AlleleOrigin
+      predicate:
+        range: VocabularyTerm
+      object:
+        range: AffectedGenomicModel
 
   AlleleGenomicEntityAssociation:
     is_a: Association
@@ -187,18 +207,6 @@ classes:
       object:
         range: Construct
 
-  AlleleOriginAssociation: # could be part of more general AlleleAgmAssociation?
-    is_a: Association
-    description: >-
-      The relationship between an allele and an AGM in which it was introduced.
-    slot_usage:
-      subject:
-        range: Allele
-      predicate:
-        range: VocabularyTerm
-      object:
-        range: AffectedGenomicModel
-
   AlleleCellLineAssociation: # do mutant/parent/embryonic cell line associations need to be split out?
     is_a: Association
     description: >-
@@ -213,14 +221,22 @@ classes:
       object:
         range: CellLine
 
-
-  AssociatedReference:
-    is_a: AuditedObject
+  AlleleImageAssociation:
+    is_a: Association
     description: >-
-      Describes the relation between a reference and an object
-    slots:
-      - reference_type
-      - single_reference
+      The relationship between an allele and an image.
+    slot_usage:
+      subject:
+        range: Allele
+      predicate:
+        range: VocabularyTerm
+      object:
+        range: Image
+
+
+
+# Other classes roughly grouped with the Allele class because they have relationships to Allele and were
+# designed close to the time the Allele class was designed.  These could be broken out into their own yaml files.
 
   Construct:
     is_a: GenomicEntity
@@ -234,7 +250,6 @@ classes:
     slots:
       - construct_components
       - references
-
 
   CellLine:
     is_a: AuditedObject
@@ -265,7 +280,6 @@ classes:
       object:
         range: Gene
 
-
   ConstructComponentAssociation:
     is_a: Association
     slot_usage:
@@ -281,9 +295,7 @@ classes:
     slots:
       - symbol
 
-
 # Slots
-
 slots:
 
   allele:
@@ -347,6 +359,7 @@ slots:
     description: >-
       Mode of inheritence, e.g. dominant / semi-dominant /
       recessive / unknown
+      # TODO: please enumerate the difference between this and zygosity in AffectedGenomicModel class. 
     domain: Allele
     range: VocabularyTerm
 
@@ -382,6 +395,10 @@ slots:
       by sequencing
     domain: Variant
     range: VocabularyTerm
+
+  analysis:
+    description: >-
+      # TODO: added as a result of 'origin' class - please advise on a more descriptive slot/class definition.
 
 enums:
   construct_component_relation_enum:
