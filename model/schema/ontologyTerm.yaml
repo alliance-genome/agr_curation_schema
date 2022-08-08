@@ -39,7 +39,6 @@ emit_prefixes:
 
 
 slots:
-
   definition:
     description: >-
       The explanation of the meaning of a term.
