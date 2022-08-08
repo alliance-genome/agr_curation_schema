@@ -267,6 +267,10 @@ slots:
   synonym:
     description: the text string of the synonym
 
+  synonym_scope:
+    description: the scope of the synonym, e.g. 'EXACT', 'NARROW' or 'RELATED'
+    range: synonym_scope_enum
+
   start:
     description: The start of the feature in positive 1-based integer coordinates
 
@@ -666,3 +670,10 @@ enums:
         description: >-
           The synonym is an alternate symbol or name for the entity. It is not
           the currently preferred symbol/name for the entity.
+
+  synonym_scope_enum:
+    permissible_values:
+      narrow:
+      broad:
+      related:
+      exact:
