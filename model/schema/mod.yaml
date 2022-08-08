@@ -61,6 +61,29 @@ classes:
       date_created:
         required: true
 
+  AnnotationalOrganization:
+    is_a: Organization
+    description: >-
+      A Model Organism Database that is a member of the Alliance of Genome Resources.
+    notes: >-
+      We have not modeled synonyms, e.g. Mouse Genome Informatics
+      Literature has 8 values: FB, MGI, RGD, SGD, WB, XB, ZFIN, GO.
+    slots:
+      - abbreviation
+      - full_name
+      - mod_id
+      - short_name
+    slot_usage:
+      abbreviation:
+        description: >-
+          The curie prefix, or letter code used by FMS (Alliance file management
+          system).  e.g. MGI, FB
+        multivalued: false
+        range: annotation_organization_enum
+        required: true
+      date_created:
+        required: true
+
 slots:
 
   mod_id:
@@ -98,3 +121,14 @@ enums:
       XB:
       RGD:
       MGI:
+
+  annotational_organization_enum:
+    permissible_values:
+      SGD:
+      WB:
+      FB:
+      ZFIN:
+      XB:
+      RGD:
+      MGI:
+      GO:
