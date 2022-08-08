@@ -39,6 +39,7 @@ emit_prefixes:
 
 classes:
   Mod:
+    alias: ["model organism database", "model organism knowledgebase"]
     is_a: Organization
     description: >-
       A Model Organism Database that is a member of the Alliance of Genome Resources.
@@ -62,6 +63,12 @@ classes:
         required: true
 
   PubMedSearchString:
+    description: >- 
+    The pub corpus at Alliance will be made by querying pubmed for a variety of search terms (like 'danio', 'mus' etc.). 
+    Its important to store the search terms in the database so that we do not have to hard code the search terms in the 
+    retrieval scripts. The search terms collection, should not be repurposed for other things (this search term 
+    collection is different than an attribution or provided_by source and is also different than the list of MODs 
+    in the Alliance). It is also not a list of species in the Alliance.
     slots:
       - search_string
       - originating_mod
