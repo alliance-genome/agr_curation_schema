@@ -36,6 +36,11 @@ emit_prefixes:
 
 
 classes:
+
+  InformationContentEntity:
+  description: >-
+    a piece of information that typically is used as support for an assertion or annotation.
+
   AuthorReference:
     is_a: AuditedObject
     slots:
@@ -46,7 +51,7 @@ classes:
       - cross_references
 
   Reference:
-    is_a: AuditedObject
+    is_a: InformationContentEntity
     aliases: [ 'references', 'publication' ]
     notes: >-
       In the ABC literature database, the table holding Reference objects is
@@ -110,6 +115,11 @@ classes:
           Here, a foreign key referring to the references table.
 
 slots:
+
+  evidence:
+    description: >-
+    range: InformationContentEntity
+    multivalued: true
 
   reference_id:
     description: >-

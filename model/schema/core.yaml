@@ -157,11 +157,30 @@ classes:
       - statement_text
       - references
 
+  SlotAnnotation:
+    is_a: AuditedObject
+    description: >-
+      SlotAnnotation classes should be used when we need to attach metadata (in particular evidence and provenance)
+      to a slot in the context of its referencing class, that can not be fully captured using an Association between
+      the full class itself, and an InformationContentEntity. Evidence and provenance can exist here in the form of an
+      evidence code, a publication, a personal communication or any other kind of InformationContentEntity.
+      SlotAnnotation classes are used where the slot is not referencing a class in and of itself, and often has a 
+      scalar range.
+    notes: >-
+      A good example of the use of a SlotAnnotation class is the use case of attributing one of many functional 
+      impacts of an allele to a publication.  AlleleFunctionalImpact is the SlotAnnotation class that represents 
+      this use case. 
+
   Association:
     is_a: AuditedObject
     description: >-
-      A typed association between two entities, supported by evidence.
-    close_mappings:
+      A typed association between two entities, supported by evidence.  Associations have three base slots: subject, 
+      object, and predicate, but they can have any number of additional attributes that help qualify the relationship 
+      between the subject and the object.  The subject is the curie (or identifier) of the class that is the subject 
+      of the association, and likewise the object is the curie (or identifier of the class that is the object. The 
+      relationship between subject and object is defined by the predicate slot (which can also be constrained 
+      using the range of the predicate).
+    exact_mappings:
       - biolink:association
     notes:
       Keeping this more generic than biolink:association by foregoing the

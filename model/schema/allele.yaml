@@ -49,8 +49,6 @@ classes:
       element can be endogenous or constructed.
     slots:
       - symbol
-      - molecular_mutations
-      - functional_impact
       - generation_method
       - associated_references
       - related_notes
@@ -77,13 +75,44 @@ classes:
       name:
         required: true
 
+  AlleleFunctionalImpact:
+    is_a: SlotAnnotation
+    slots:
+      - allele_id
+      - functional_impact
+      - evidence
+
+  AlleleMolecularMutations:
+    is_a: SlotAnnotation
+    slots:
+      - allele_id
+      - molecular_mutations
+      - evidence
+
+  AlleleGenerationMethod:
+    is_a: Assocation
+    slots:
+      - evidence
+    slot_usage:
+      subject:
+        range: Allele
+      object:
+        range: GenerationMethod
+
+  GenerationMethod:
+    is_a: AuditedObject
+    slots:
+      - mutagenesis_method
+      - mutagen
+      - generation_method
+
   AlleleGenomicEntityAssociation:
     is_a: Association
     abstract: true
     description: >-
       Association between an allele and a genomic entity
     slots:
-      - single_reference
+      - evidence
       - evidence_code
       - related_note
     slot_usage:
@@ -241,6 +270,10 @@ classes:
 # Slots
 
 slots:
+
+  evidence:
+    description: >-
+    range: InformationContentEntity
 
   construct_components:
     multivalued: true
