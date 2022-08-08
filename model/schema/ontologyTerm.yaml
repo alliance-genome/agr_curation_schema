@@ -144,9 +144,6 @@ classes:
 
   NCBITaxonTerm:
     is_a: OntologyTerm
-    slots:
-      - genus
-      - species
 
   FBCVTerm:
     is_a: OntologyTerm

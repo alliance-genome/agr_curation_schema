@@ -38,7 +38,7 @@ emit_prefixes:
 
 
 classes:
-  Mod:
+  CuratorialOrganization:
     is_a: Organization
     description: >-
       A Model Organism Database that is a member of the Alliance of Genome Resources.
@@ -60,6 +60,8 @@ classes:
         required: true
       date_created:
         required: true
+      short_name:
+        range: curatorial_organization_enum
 
 slots:
 
@@ -87,3 +89,14 @@ slots:
     domain: Mod
     range: string
     required: true
+
+enums:
+  curatorial_organization_enum:
+    permissible_values:
+      SGD:
+      WB:
+      FB:
+      ZFIN:
+      XB:
+      RGD:
+      MGI:
