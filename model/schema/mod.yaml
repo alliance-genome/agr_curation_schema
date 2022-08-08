@@ -79,7 +79,7 @@ classes:
           The curie prefix, or letter code used by FMS (Alliance file management
           system).  e.g. MGI, FB
         multivalued: false
-        range: annotation_organization_enum
+        range: annotational_organization_enum
         required: true
       date_created:
         required: true
