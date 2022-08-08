@@ -115,6 +115,11 @@ classes:
 
 # Allele Associations
 
+  AlleleNomenclatureAnnotation:
+    is_a: AlleleSlotAnnotation
+    slots:
+      - nomenclature_event
+
   AlleleGenerationMethodAssociation:
     is_a: Assocation
     slots:
@@ -416,6 +421,11 @@ slots:
     description: >-
       # TODO: added as a result of 'origin' class - please advise on a more descriptive slot/class definition.
 
+  nomenclature_event:
+    description: >-
+      any of the kinds of changes made to an object's name or symbol
+    range: nomenclature_event_enum
+
 enums:
   construct_component_relation_enum:
     permissible_values:
@@ -429,3 +439,8 @@ enums:
   sqtr_relation_enum:
     permissible_values:
       targets:
+
+  nomenclature_event_enum:
+    permissible_values:
+      named:
+      renamed:
