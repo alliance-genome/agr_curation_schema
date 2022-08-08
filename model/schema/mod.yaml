@@ -61,7 +61,23 @@ classes:
       date_created:
         required: true
 
+  PubMedSearchString:
+    slots:
+      - search_string
+      - originating_mod
 slots:
+
+  search_string:
+    description: >-
+      The search string used to search PubMed.
+    range: string
+    required: true
+
+  originating_mod:
+    description: >-
+      The originating mod.
+    range: Mod
+    required: true
 
   mod_id:
     description: >-
@@ -87,3 +103,10 @@ slots:
     domain: Mod
     range: string
     required: true
+
+enums:
+  search_string_enum:
+    permissible_values:
+      danio rerio:
+      mus musculus:
+        
