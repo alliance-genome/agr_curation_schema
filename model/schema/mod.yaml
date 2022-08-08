@@ -70,7 +70,7 @@ slots:
   search_string:
     description: >-
       The search string used to search PubMed.
-    range: string
+    range: search_string_enum
     required: true
 
   originating_mod:
@@ -109,4 +109,4 @@ enums:
     permissible_values:
       danio rerio:
       mus musculus:
-        
+
