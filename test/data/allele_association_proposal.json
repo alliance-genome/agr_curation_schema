@@ -12,18 +12,6 @@
       "created_by": "WB:WBPerson002314",
       "updated_by": "WB:WBPerson010002",
       "aberattion": "aberattion_string",
-      "associated_references": [
-        {
-          "reference_type": "origin",
-          "single_reference": "PMID:1123141",
-          "internal": false,
-          "obsolete": false,
-          "date_created": "2015-04-09T10:15:30+00:00",
-          "date_updated": "2022-07-11T13:12:51+00:00",
-          "created_by": "WB:WBPerson002314",
-          "updated_by": "WB:WBPerson010002"
-        }
-      ],
       "database_status": "Live",
       "functional_impact": "knockout",
       "generation_method": "spontaneous",
