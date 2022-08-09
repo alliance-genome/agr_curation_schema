@@ -2,16 +2,34 @@
   "disease_gene_ingest_set": [
     {
       "evidence_codes": [
-        "ECO:0000305"
+        {
+          "curie": "ECO:0000305",
+          "namespace": "I don't know",
+          "internal": false
+        }
       ],
       "curie": "AGRKB:100123456789014",
-      "single_reference": "PMID:0012345",
+      "single_reference": {
+        "curie": "PMID:0012345",
+        "reference_id": 12345,
+        "internal": false
+      },
       "data_provider": "ZFIN",
-      "object": "DOID:9452",
+      "object": {
+        "curie": "DOID:0001234",
+        "namespace": "I don't know",
+        "internal": false
+      },
       "created_by": "ZFIN",
       "updated_by": "ZFIN",
       "internal": false,
-      "subject": "ZFIN:ZDB-GENE-060503-338",
+      "subject": {
+        "curie": "ZFIN:ZDB-GENE-001122-1",
+        "symbol": "somesymbol",
+        "name": "not sure why this is required here",
+        "taxon": {"curie": "NCBITaxon:7955", "internal": false},
+        "internal": false
+      },
       "predicate": "is_implicated_in"
     }
   ]
