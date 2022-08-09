@@ -104,7 +104,7 @@ classes:
     description: >- 
       a piece of information that is used to support an assertion or annotation, where the information
       comes from a person other than the author of the assertion or annotation, or the author of the reference.
-    slots_usage:
+    slot_usage:
 
 
   MeshDetail:

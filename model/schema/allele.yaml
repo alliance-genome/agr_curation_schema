@@ -68,7 +68,7 @@ classes:
   AlleleSlotAnnotation:
     is_a: SlotAnnotation
     slots:
-      - allele
+      - allele_id
       - evidence
 
   AlleleMutationTypeAnnotation:
@@ -131,7 +131,7 @@ classes:
       - nomenclature_event
 
   AlleleGenerationMethodAssociation:
-    is_a: Assocation
+    is_a: Association
     slots:
       - evidence
     slot_usage:
@@ -330,12 +330,17 @@ classes:
 # Slots
 slots:
 
-  allele:
+  origin:
+    range: AffectedGenomicModel
+
+  allele_id:
     range: uriorcurie
 
-  evidence:
-    description: >-
-    range: InformationContentEntity
+  mutagenesis_method:
+    range: VocabularyTerm
+
+  mutagen:
+    range: VocabularyTerm
 
   construct_components:
     multivalued: true
@@ -429,7 +434,7 @@ slots:
     domain: Variant
     range: VocabularyTerm
 
-  analysis:
+  analyses:
     description: >-
       # TODO: added as a result of 'origin' class - please advise on a more descriptive slot/class definition.
 
