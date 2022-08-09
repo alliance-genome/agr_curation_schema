@@ -507,6 +507,19 @@
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
+-- # Class: "ATPTerm" Description: "An ontology term from the Alliance Tags for Papers ontology (ATP)"
+--     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
+--     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
+--     * Slot: name Description: a human-readable name for an entity
+--     * Slot: definition Description: The explanation of the meaning of a term.
+--     * Slot: type Description: 
+--     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: updated_by Description: The individual that last modified the entity.
+--     * Slot: date_updated Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
+--     * Slot: obsolete Description: Entity is no longer current.
 -- # Class: "ChemicalTerm" Description: "An ontology term representing a chemical or molecule"
 --     * Slot: inchi Description: InChi style description of the molecule
 --     * Slot: inchi_key Description: InChi key description of the molecule
@@ -832,6 +845,7 @@
 --     * Slot: ZFATerm_curie Description: Autocreated FK slot
 --     * Slot: PhenotypeTerm_curie Description: Autocreated FK slot
 --     * Slot: XPOTerm_curie Description: Autocreated FK slot
+--     * Slot: ATPTerm_curie Description: Autocreated FK slot
 --     * Slot: ChemicalTerm_curie Description: Autocreated FK slot
 --     * Slot: XSMOTerm_curie Description: Autocreated FK slot
 --     * Slot: Molecule_curie Description: Autocreated FK slot
@@ -2133,6 +2147,18 @@
 -- # Class: "XPOTerm_secondary_identifiers" Description: ""
 --     * Slot: XPOTerm_curie Description: Autocreated FK slot
 --     * Slot: secondary_identifiers Description: 
+-- # Class: "ATPTerm_definition_urls" Description: ""
+--     * Slot: ATPTerm_curie Description: Autocreated FK slot
+--     * Slot: definition_urls Description: 
+-- # Class: "ATPTerm_synonym" Description: ""
+--     * Slot: ATPTerm_curie Description: Autocreated FK slot
+--     * Slot: synonym_id Description: holds between a named thing and a synonym
+-- # Class: "ATPTerm_subsets" Description: ""
+--     * Slot: ATPTerm_curie Description: Autocreated FK slot
+--     * Slot: subsets Description: 
+-- # Class: "ATPTerm_secondary_identifiers" Description: ""
+--     * Slot: ATPTerm_curie Description: Autocreated FK slot
+--     * Slot: secondary_identifiers Description: 
 -- # Class: "ChemicalTerm_definition_urls" Description: ""
 --     * Slot: ChemicalTerm_curie Description: Autocreated FK slot
 --     * Slot: definition_urls Description: 
@@ -3115,6 +3141,23 @@ CREATE TABLE "PhenotypeTerm" (
 	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "XPOTerm" (
+	curie TEXT NOT NULL, 
+	dbkey TEXT, 
+	name TEXT, 
+	definition TEXT, 
+	type TEXT, 
+	namespace TEXT, 
+	created_by TEXT, 
+	date_created DATE, 
+	updated_by TEXT, 
+	date_updated DATE, 
+	internal BOOLEAN NOT NULL, 
+	obsolete BOOLEAN, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "ATPTerm" (
 	curie TEXT NOT NULL, 
 	dbkey TEXT, 
 	name TEXT, 
@@ -4794,6 +4837,31 @@ CREATE TABLE "XPOTerm_secondary_identifiers" (
 	secondary_identifiers TEXT, 
 	PRIMARY KEY ("XPOTerm_curie", secondary_identifiers), 
 	FOREIGN KEY("XPOTerm_curie") REFERENCES "XPOTerm" (curie)
+);
+CREATE TABLE "ATPTerm_definition_urls" (
+	"ATPTerm_curie" TEXT, 
+	definition_urls TEXT, 
+	PRIMARY KEY ("ATPTerm_curie", definition_urls), 
+	FOREIGN KEY("ATPTerm_curie") REFERENCES "ATPTerm" (curie)
+);
+CREATE TABLE "ATPTerm_synonym" (
+	"ATPTerm_curie" TEXT, 
+	synonym_id TEXT, 
+	PRIMARY KEY ("ATPTerm_curie", synonym_id), 
+	FOREIGN KEY("ATPTerm_curie") REFERENCES "ATPTerm" (curie), 
+	FOREIGN KEY(synonym_id) REFERENCES "Synonym" (id)
+);
+CREATE TABLE "ATPTerm_subsets" (
+	"ATPTerm_curie" TEXT, 
+	subsets TEXT, 
+	PRIMARY KEY ("ATPTerm_curie", subsets), 
+	FOREIGN KEY("ATPTerm_curie") REFERENCES "ATPTerm" (curie)
+);
+CREATE TABLE "ATPTerm_secondary_identifiers" (
+	"ATPTerm_curie" TEXT, 
+	secondary_identifiers TEXT, 
+	PRIMARY KEY ("ATPTerm_curie", secondary_identifiers), 
+	FOREIGN KEY("ATPTerm_curie") REFERENCES "ATPTerm" (curie)
 );
 CREATE TABLE "ChemicalTerm_definition_urls" (
 	"ChemicalTerm_curie" TEXT, 
@@ -6643,6 +6711,7 @@ CREATE TABLE "CrossReference" (
 	"ZFATerm_curie" TEXT, 
 	"PhenotypeTerm_curie" TEXT, 
 	"XPOTerm_curie" TEXT, 
+	"ATPTerm_curie" TEXT, 
 	"ChemicalTerm_curie" TEXT, 
 	"XSMOTerm_curie" TEXT, 
 	"Molecule_curie" TEXT, 
@@ -6697,6 +6766,7 @@ CREATE TABLE "CrossReference" (
 	FOREIGN KEY("ZFATerm_curie") REFERENCES "ZFATerm" (curie), 
 	FOREIGN KEY("PhenotypeTerm_curie") REFERENCES "PhenotypeTerm" (curie), 
 	FOREIGN KEY("XPOTerm_curie") REFERENCES "XPOTerm" (curie), 
+	FOREIGN KEY("ATPTerm_curie") REFERENCES "ATPTerm" (curie), 
 	FOREIGN KEY("ChemicalTerm_curie") REFERENCES "ChemicalTerm" (curie), 
 	FOREIGN KEY("XSMOTerm_curie") REFERENCES "XSMOTerm" (curie), 
 	FOREIGN KEY("Molecule_curie") REFERENCES "Molecule" (curie), 

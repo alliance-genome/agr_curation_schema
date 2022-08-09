@@ -1,5 +1,5 @@
 # Auto generated from core.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-07-18T14:38:01
+# Generation date: 2022-08-04T16:58:29
 # Schema: core
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/core.yaml
@@ -244,6 +244,10 @@ class PhenotypeTermCurie(OntologyTermCurie):
 
 
 class XPOTermCurie(PhenotypeTermCurie):
+    pass
+
+
+class ATPTermCurie(OntologyTermCurie):
     pass
 
 
@@ -2067,6 +2071,30 @@ class XPOTerm(PhenotypeTerm):
             self.MissingRequiredField("curie")
         if not isinstance(self.curie, XPOTermCurie):
             self.curie = XPOTermCurie(self.curie)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class ATPTerm(OntologyTerm):
+    """
+    An ontology term from the Alliance Tags for Papers ontology (ATP)
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALLIANCE.ATPTerm
+    class_class_curie: ClassVar[str] = "alliance:ATPTerm"
+    class_name: ClassVar[str] = "ATPTerm"
+    class_model_uri: ClassVar[URIRef] = ALLIANCE.ATPTerm
+
+    curie: Union[str, ATPTermCurie] = None
+    internal: Union[bool, Bool] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.curie):
+            self.MissingRequiredField("curie")
+        if not isinstance(self.curie, ATPTermCurie):
+            self.curie = ATPTermCurie(self.curie)
 
         super().__post_init__(**kwargs)
 
