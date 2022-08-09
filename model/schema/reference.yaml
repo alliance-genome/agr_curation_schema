@@ -38,9 +38,9 @@ emit_prefixes:
 classes:
 
   InformationContentEntity:
-  is_a: AuditedObject
-  description: >-
-    a piece of information that typically is used as support for an assertion or annotation.
+    is_a: AuditedObject
+    description: >-
+      a piece of information that typically is used as support for an assertion or annotation.
 
   AuthorReference:
     is_a: AuditedObject
