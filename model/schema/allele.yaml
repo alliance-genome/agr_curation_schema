@@ -71,6 +71,11 @@ classes:
       - allele
       - evidence
 
+  AlleleMutationTypeAnnotation:
+    is_a: AlleleSlotAnnotation
+    slots:
+      - mutation_type
+
   AlleleGermlineTransmissionStatusAnnotation:
     is_a: AlleleSlotAnnotation
     slots:
@@ -355,6 +360,7 @@ slots:
       allele, e.g. knockout / amorphic
     domain: Allele
     range: string
+    multivalued: true
 
   generation_method:
     description: >-
