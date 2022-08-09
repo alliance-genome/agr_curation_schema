@@ -99,7 +99,7 @@ classes:
 
 
   PersonalCommunication:
-    alias: ["person_evidence"]
+    aliases: ["person_evidence"]
     is_a: InformationContentEntity
     description: >- 
       a piece of information that is used to support an assertion or annotation, where the information
