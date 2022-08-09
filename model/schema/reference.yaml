@@ -97,7 +97,6 @@ classes:
         description: >-
           The primary key for the Reference object in the references table.
 
-
   PersonalCommunication:
     aliases: ["person_evidence"]
     is_a: InformationContentEntity

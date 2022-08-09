@@ -95,21 +95,7 @@ classes:
     is_a: AlleleSlotAnnotation
     slots:
       - database_status
-# Auxiliary classes
 
-  AlleleOrigin:
-    is_a: AuditedObject
-    description: >-
-      Affected genomic models that the allele was introduced in and associated
-      evidence
-    slots:
-      - origin
-      - analyses
-    slot_usage:
-      analyses:
-        description: Analyses providing evidence for AGM of origin
-      origin:
-        range: AffectedGenomicModel
 
   GenerationMethod:
     is_a: AuditedObject
@@ -117,8 +103,6 @@ classes:
       - mutagenesis_method
       - mutagen
       - generation_method
-
-# Allele Associations
 
   AlleleSecondaryIdAnnotation:
     is_a: AlleleSlotAnnotation
@@ -130,6 +114,8 @@ classes:
     slots:
       - nomenclature_event
 
+# Allele Associations
+
   AlleleGenerationMethodAssociation:
     is_a: Association
     slots:
@@ -139,18 +125,6 @@ classes:
         range: Allele
       object:
         range: GenerationMethod
-
-  AlleleOriginAssociation: # could be part of more general AlleleAgmAssociation?
-    is_a: Association
-    description: >-
-      The relationship between an allele and an AGM in which it was introduced.
-    slot_usage:
-      subject:
-        range: AlleleOrigin
-      predicate:
-        range: VocabularyTerm
-      object:
-        range: AffectedGenomicModel
 
   AlleleGenomicEntityAssociation:
     is_a: Association
@@ -236,6 +210,8 @@ classes:
     is_a: Association
     description: >-
       The relationship between an allele and an image.
+    slots:
+      - primary_image
     slot_usage:
       subject:
         range: Allele
@@ -243,6 +219,10 @@ classes:
         range: VocabularyTerm
       object:
         range: Image
+      primary_image:
+        description: >-
+          Can be null; if false, maybe you would show all the images.
+          We need to revisit this issue. 
 
   AlleleNotesAssociation:
     is_a: Association
@@ -330,8 +310,12 @@ classes:
 # Slots
 slots:
 
+  primary_image:
+    description: >-
+      The primary image for an allele that is used to represent the allele on a page. 
+
   origin:
-    range: AffectedGenomicModel
+    range: boolean
 
   allele_id:
     range: uriorcurie
@@ -461,3 +445,4 @@ enums:
     permissible_values:
       named:
       renamed:
+      # merged?

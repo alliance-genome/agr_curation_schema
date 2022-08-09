@@ -116,13 +116,6 @@ slots:
     mixins:
       - object_set
 
-  allele_origin_association_ingest_set:
-    description: >-
-    domain: Ingest
-    range: AlleleOriginAssociation
-    multivalued: true
-    mixins:
-      - object_set
 
   allele_cell_line_association_ingest_set:
     description: >-
@@ -189,7 +182,6 @@ classes:
       - allele_transcript_association_ingest_set
       - allele_protein_association_ingest_set
       - allele_construct_association_ingest_set
-      - allele_origin_association_ingest_set
       - allele_cell_line_association_ingest_set
       - agm_ingest_set
       - sqtr_ingest_set
