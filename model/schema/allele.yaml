@@ -120,6 +120,11 @@ classes:
 
 # Allele Associations
 
+  AlleleSecondaryIdAnnotation:
+    is_a: AlleleSlotAnnotation
+    slots:
+      - secondary_id
+
   AlleleNomenclatureAnnotation:
     is_a: AlleleSlotAnnotation
     slots:
@@ -261,6 +266,7 @@ classes:
       object:
         range: Synonym
 
+
 # Other classes roughly grouped with the Allele class because they have relationships to Allele and were
 # designed close to the time the Allele class was designed.  These could be broken out into their own yaml files.
 
@@ -325,7 +331,7 @@ classes:
 slots:
 
   allele:
-    range: curie
+    range: uriorcurie
 
   evidence:
     description: >-

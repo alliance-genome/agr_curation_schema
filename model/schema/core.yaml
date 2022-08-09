@@ -437,6 +437,10 @@ slots:
     multivalued: true
     range: uriorcurie
 
+  secondary_id:
+    multivalued: false
+    range: uriorcurie
+
   genomic_locations:
     domain: GenomicEntity
     range: GenomicLocation
