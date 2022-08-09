@@ -2,7 +2,10 @@
   "agm_ingest_set": [
     {
       "curie": "ZFIN:ZDB-FISH-200601-1",
-      "taxon": "NCBITaxon:7955",
+      "taxon": {
+          "curie": "NCBITaxon:7955",
+          "internal": false
+        },
       "created_by": "ZFIN",
       "updated_by": "ZFIN",
       "internal": false,
@@ -24,7 +27,10 @@
     },
     {
       "curie": "ZFIN:ZDB-FISH-150901-28778",
-      "taxon": "NCBITaxon:7955",
+      "taxon": {
+          "curie": "NCBITaxon:7955",
+          "internal": false
+        },
       "created_by": "ZFIN",
       "updated_by": "ZFIN",
       "internal": false,
@@ -33,16 +39,27 @@
         {
           "synonym": "test",
           "internal": false
-        },{
+        },
+        {
           "synonym": "another test",
           "internal": false
         }
       ],
-      "secondary_identifiers": ["ZFIN:ZDB-FISH-123456-1"],
+      "secondary_identifiers": [
+        "ZFIN:ZDB-FISH-123456-1"
+      ],
       "references": [],
       "components": [
         {
-          "has_allele": "ZFIN:ZDB-ALT-980203-1593",
+          "has_allele": {
+            "curie": "ZFIN:ZDB-ALT-980203-1593",
+            "internal": false,
+            "name": "placeholder name",
+            "taxon": {
+              "curie": "NCBITaxon:7955",
+              "internal": false
+            }
+          },
           "internal": false,
           "zygosity": "GENO:0000136"
         }

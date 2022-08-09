@@ -153,7 +153,6 @@ classes:
     description: >-
     slot_usage:
       curie:
-        required: true
         identifier: true
       name:
         required: true

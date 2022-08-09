@@ -179,6 +179,7 @@ classes:
     description: >-
       An annotation asserting an association between a biological entity and a disease supported by evidence.
     slots:
+      - curie
       - unique_id
       - mod_entity_id
       - negated
@@ -195,6 +196,12 @@ classes:
       - disease_genetic_modifier
       - disease_genetic_modifier_relation
     slot_usage:
+      curie:
+        description: >-
+          The Alliance-minted ID for the disease annotation. The ID is of the format
+          AGRKB:100000000000001, where the first three digits represent the
+          DiseaseAnnotation class code of "100", followed by a 12-digit identifier
+        required: false
       unique_id:
         description: >-
           Unique identifer for the disease annotation.  Will be generated at AGR
@@ -403,7 +410,7 @@ classes:
         description: >-
           ChEBI or molecular ontology id used in subset of condition terms.  ie: the specific
           chemcial used in conjunction with 'chemical condition'.
-        range: ChemicalTerm
+        range: VocabularyTerm
 
 
   ConditionRelation:
@@ -567,7 +574,6 @@ slots:
   disease_genetic_modifier:
     description: >-
       Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
-    range: BiologicalEntity
     required: false
 
   disease_genetic_modifier_relation:
