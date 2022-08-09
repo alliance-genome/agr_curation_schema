@@ -410,7 +410,7 @@ classes:
         description: >-
           ChEBI or molecular ontology id used in subset of condition terms.  ie: the specific
           chemcial used in conjunction with 'chemical condition'.
-        range: ChemicalTerm
+        range: VocabularyTerm
 
 
   ConditionRelation:
@@ -574,7 +574,6 @@ slots:
   disease_genetic_modifier:
     description: >-
       Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
-    range: BiologicalEntity
     required: false
 
   disease_genetic_modifier_relation:

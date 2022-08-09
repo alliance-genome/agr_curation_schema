@@ -45,8 +45,8 @@
                "type": "string"
             },
             "disease_genetic_modifier": {
-               "$ref": "#/$defs/BiologicalEntity",
-               "description": "Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM."
+               "description": "Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.",
+               "type": "string"
             },
             "disease_genetic_modifier_relation": {
                "description": "A relation describing how the genetic modifier modifies the disease model. Submitted value should be a vocabulary term from the 'Disease genetic modifiers' vocabulary",
@@ -652,8 +652,8 @@
                "type": "string"
             },
             "disease_genetic_modifier": {
-               "$ref": "#/$defs/BiologicalEntity",
-               "description": "Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM."
+               "description": "Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.",
+               "type": "string"
             },
             "disease_genetic_modifier_relation": {
                "description": "A relation describing how the genetic modifier modifies the disease model. Submitted value should be a vocabulary term from the 'Disease genetic modifiers' vocabulary",
@@ -2956,8 +2956,8 @@
                "description": "Anatomical ontology identifier used in cases like regeneration/wounding."
             },
             "condition_chemical": {
-               "$ref": "#/$defs/ChemicalTerm",
-               "description": "ChEBI or molecular ontology id used in subset of condition terms.  ie: the specific chemcial used in conjunction with 'chemical condition'."
+               "description": "ChEBI or molecular ontology id used in subset of condition terms.  ie: the specific chemcial used in conjunction with 'chemical condition'.",
+               "type": "string"
             },
             "condition_class": {
                "$ref": "#/$defs/ZECOTerm",
@@ -4063,8 +4063,8 @@
                "type": "string"
             },
             "disease_genetic_modifier": {
-               "$ref": "#/$defs/BiologicalEntity",
-               "description": "Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM."
+               "description": "Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.",
+               "type": "string"
             },
             "disease_genetic_modifier_relation": {
                "description": "A relation describing how the genetic modifier modifies the disease model. Submitted value should be a vocabulary term from the 'Disease genetic modifiers' vocabulary",

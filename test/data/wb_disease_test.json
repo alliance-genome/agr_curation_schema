@@ -8,7 +8,11 @@
           "conditions": [
             {
               "condition_chemical": "CHEBI:6432",
-              "condition_class": "ZECO:0000111",
+              "condition_class": {
+                "curie": "ZECO:0000111",
+                "namespace": "standard conditions",
+                "internal": false
+              },
               "condition_statement": "chemical treatment:levamisole",
               "internal": false
             }
@@ -27,18 +31,42 @@
         }
       ],
       "evidence_codes": [
-        "ECO:0000315",
-        "ECO:0007013"
+        {
+          "curie": "ECO:0000315",
+          "namespace": "I don't know",
+          "internal": false
+        },
+        {
+          "curie": "ECO:0007013",
+          "namespace": "I don't know",
+          "internal": false
+        }
       ],
       "genetic_sex": "hermaphrodite",
       "mod_entity_id": "WBDOannot00001032",
       "updated_by": "WB:WBPerson324",
       "internal": false,
       "negated": false,
-      "object": "DOID:11724",
+      "object": {
+        "curie": "DOID:11724",
+        "namespace": "I don't know",
+        "internal": false
+      },
       "predicate": "is_implicated_in",
-      "single_reference": "PMID:24244862",
-      "subject": "WB:WBVar00087752"
+      "single_reference":{
+        "curie": "PMID:19648295",
+        "reference_id": 19648295,
+        "internal": false
+      },
+      "subject": {
+        "curie": "WB:WBVar00087752",
+        "name": "not sure why this is required here",
+        "taxon": {
+          "curie": "NCBITaxon:99077",
+          "internal": false
+        },
+        "internal": false
+      }
     }
   ],
   "disease_gene_ingest_set": [
@@ -50,7 +78,11 @@
           "conditions": [
             {
               "condition_chemical": "CHEBI:34910",
-              "condition_class": "ZECO:0000111",
+              "condition_class": {
+                "curie": "ZECO:0000111",
+                "namespace": "standard conditions",
+                "internal": false
+              },
               "condition_statement": "chemical treatment:pentylenetetrazole",
               "internal": false
             }
@@ -71,18 +103,43 @@
       "disease_genetic_modifier": "WB:WBStrain00035193",
       "disease_genetic_modifier_relation": "ameliorated_by",
       "evidence_codes": [
-        "ECO:0000315",
-        "ECO:0007013"
+        {
+          "curie": "ECO:0000315",
+          "namespace": "I don't know",
+          "internal": false
+        },
+        {
+          "curie": "ECO:0007013",
+          "namespace": "I don't know",
+          "internal": false
+        }
       ],
       "genetic_sex": "hermaphrodite",
       "mod_entity_id": "WBDOannot00001014",
       "updated_by": "WB:WBPerson324",
       "negated": false,
       "internal": false,
-      "object": "DOID:1826",
+      "object": {
+        "curie": "DOID:1826",
+        "namespace": "I don't know",
+        "internal": false
+      },
       "predicate": "is_implicated_in",
-      "single_reference": "PMID:16996038",
-      "subject": "WB:WBGene00011955"
+      "single_reference":{
+        "curie": "PMID:19648295",
+        "reference_id": 19648295,
+        "internal": false
+      },
+      "subject": {
+        "curie": "WB:WBGene00011955",
+        "name": "not sure why this is required here",
+        "taxon": {
+          "curie": "NCBITaxon:99077",
+          "internal": false
+        },
+        "internal": false,
+        "symbol": "test"
+      }
     }
   ],
   "disease_agm_ingest_set": [
@@ -94,17 +151,42 @@
       "disease_genetic_modifier": "WB:WBVar00250993",
       "disease_genetic_modifier_relation": "exacerbated_by",
       "evidence_codes": [
-        "ECO:0000315",
-        "ECO:0007013"
+        {
+          "curie": "ECO:0000315",
+          "namespace": "I don't know",
+          "internal": false
+        },
+        {
+          "curie": "ECO:0007013",
+          "namespace": "I don't know",
+          "internal": false
+        }
       ],
       "genetic_sex": "hermaphrodite",
       "mod_entity_id": "WBDOannot00000109",
       "updated_by": "WB:WBPerson324",
       "internal": false,
-      "object": "DOID:10652",
+      "object": {
+        "curie": "DOID:10652",
+        "namespace": "I don't know",
+        "internal": false
+      },
       "predicate": "is_model_of",
-      "single_reference": "PMID:22220943",
-      "subject": "WB:WBStrain00005094"
+      "single_reference":{
+        "curie": "PMID:19648295",
+        "reference_id": 19648295,
+        "internal": false
+      },
+      "subject": {
+        "curie": "WB:WBStrain00005094",
+        "name": "not sure why this is required here",
+        "taxon": {
+          "curie": "NCBITaxon:99077",
+          "internal": false
+        },
+        "internal": false,
+        "subtype": "strain"
+      }
     },
     {
       "condition_relations": [
@@ -114,13 +196,21 @@
           "conditions": [
             {
               "condition_chemical": "CHEBI:30052",
-              "condition_class": "ZECO:0000111",
+              "condition_class": {
+                "curie": "ZECO:0000111",
+                "namespace": "standard conditions",
+                "internal": false
+              },
               "condition_statement": "chemical treatment:Copper",
               "internal": false
             },
             {
               "condition_chemical": "WB:WBMol:00004976",
-              "condition_class": "ZECO:0000111",
+              "condition_class": {
+                "curie": "ZECO:0000111",
+                "namespace": "standard conditions",
+                "internal": false
+              },
               "condition_statement": "chemical treatment:Methazolamide",
               "internal": false
             }
@@ -139,17 +229,42 @@
         }
       ],
       "evidence_codes": [
-        "ECO:0000315",
-        "ECO:0007013"
+        {
+          "curie": "ECO:0000315",
+          "namespace": "I don't know",
+          "internal": false
+        },
+        {
+          "curie": "ECO:0007013",
+          "namespace": "I don't know",
+          "internal": false
+        }
       ],
       "genetic_sex": "hermaphrodite",
       "mod_entity_id": "WBDOannot00000110",
       "updated_by": "WB:WBPerson324",
       "internal": false,
-      "object": "DOID:11723",
+      "object": {
+        "curie": "DOID:11723",
+        "namespace": "I don't know",
+        "internal": false
+      },
       "predicate": "is_model_of",
-      "single_reference": "PMID:19648295",
-      "subject": "WB:WBStrain00024340"
+      "single_reference": {
+        "curie": "PMID:19648295",
+        "reference_id": 19648295,
+        "internal": false
+      },
+      "subject": {
+        "curie": "WB:WBStrain00024340",
+        "name": "not sure why this is required here",
+        "taxon": {
+          "curie": "NCBITaxon:99077",
+          "internal": false
+        },
+        "internal": false,
+        "subtype": "strain"
+      }
     }
   ]
 }
