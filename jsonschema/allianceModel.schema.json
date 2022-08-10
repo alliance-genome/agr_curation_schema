@@ -752,6 +752,56 @@
          "title": "AlleleConstructAssociation",
          "type": "object"
       },
+      "AlleleDatabaseStatusAnnotation": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "allele_id": {
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "database_status": {
+               "description": "Database status of the allele",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "$ref": "#/$defs/InformationContentEntity"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AlleleDatabaseStatusAnnotation",
+         "type": "object"
+      },
       "AlleleDiseaseAnnotation": {
          "additionalProperties": false,
          "description": "An annotation asserting an association between an allele and a disease supported by evidence.",
@@ -893,6 +943,59 @@
          "title": "AlleleDiseaseAnnotation",
          "type": "object"
       },
+      "AlleleFunctionalImpactAnnotation": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "allele_id": {
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "$ref": "#/$defs/InformationContentEntity"
+               },
+               "type": "array"
+            },
+            "functional_impact": {
+               "description": "Experimentally assessed functional impact of the allele, e.g. knockout / amorphic",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AlleleFunctionalImpactAnnotation",
+         "type": "object"
+      },
       "AlleleGeneAssociation": {
          "additionalProperties": false,
          "description": "Association between an allele and a gene",
@@ -1016,6 +1119,56 @@
          "title": "AlleleGenerationMethodAssociation",
          "type": "object"
       },
+      "AlleleGermlineTransmissionStatusAnnotation": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "allele_id": {
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "$ref": "#/$defs/InformationContentEntity"
+               },
+               "type": "array"
+            },
+            "germline_transmission_status": {
+               "description": "For alleles made in cell lines, have they been transmitted to the germline of an animal",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AlleleGermlineTransmissionStatusAnnotation",
+         "type": "object"
+      },
       "AlleleImageAssociation": {
          "additionalProperties": false,
          "description": "The relationship between an allele and an image.",
@@ -1072,6 +1225,109 @@
          "title": "AlleleImageAssociation",
          "type": "object"
       },
+      "AlleleMolecularMutationAnnotation": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "allele_id": {
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "$ref": "#/$defs/InformationContentEntity"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "molecular_mutations": {
+               "description": "Description of the DNA changes if precise genomic location unknown",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AlleleMolecularMutationAnnotation",
+         "type": "object"
+      },
+      "AlleleMutationTypeAnnotation": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "allele_id": {
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "$ref": "#/$defs/InformationContentEntity"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "mutation_type": {
+               "$ref": "#/$defs/SOTerm",
+               "description": "SO term for type of mutation"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AlleleMutationTypeAnnotation",
+         "type": "object"
+      },
       "AlleleNomenclatureAnnotation": {
          "additionalProperties": false,
          "description": "",
@@ -1110,14 +1366,6 @@
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
-            },
-            "referenced_slot": {
-               "description": "the slot for which the evidence is being provided (e.g. mutation_type, functional_annotation,  germline_transmission_status, functional_impact, database_status, molecular_mutations, etc.)",
-               "type": "string"
-            },
-            "slot_value": {
-               "description": "The value of the slot (e.g. missense, nonsense, etc.)",
-               "type": "string"
             },
             "updated_by": {
                "description": "The individual that last modified the entity.",
@@ -1364,15 +1612,7 @@
                "description": "Entity is no longer current.",
                "type": "boolean"
             },
-            "referenced_slot": {
-               "description": "the slot for which the evidence is being provided (e.g. mutation_type, functional_annotation,  germline_transmission_status, functional_impact, database_status, molecular_mutations, etc.)",
-               "type": "string"
-            },
             "secondary_id": {
-               "type": "string"
-            },
-            "slot_value": {
-               "description": "The value of the slot (e.g. missense, nonsense, etc.)",
                "type": "string"
             },
             "updated_by": {
@@ -1420,14 +1660,6 @@
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
-            },
-            "referenced_slot": {
-               "description": "the slot for which the evidence is being provided (e.g. mutation_type, functional_annotation,  germline_transmission_status, functional_impact, database_status, molecular_mutations, etc.)",
-               "type": "string"
-            },
-            "slot_value": {
-               "description": "The value of the slot (e.g. missense, nonsense, etc.)",
-               "type": "string"
             },
             "updated_by": {
                "description": "The individual that last modified the entity.",

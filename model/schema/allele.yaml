@@ -70,8 +70,31 @@ classes:
     slots:
       - allele_id
       - evidence
-      - referenced_slot # mutation_type, functional_annotation, germline_transmission_status, functional_impact, database_status, molecular_mutations,
-      - slot_value
+
+  AlleleMutationTypeAnnotation:
+    is_a: AlleleSlotAnnotation
+    slots:
+      - mutation_type
+
+  AlleleGermlineTransmissionStatusAnnotation:
+    is_a: AlleleSlotAnnotation
+    slots:
+      - germline_transmission_status
+
+  AlleleFunctionalImpactAnnotation:
+    is_a: AlleleSlotAnnotation
+    slots:
+      - functional_impact
+
+  AlleleMolecularMutationAnnotation:
+    is_a: AlleleSlotAnnotation
+    slots:
+      - molecular_mutations
+
+  AlleleDatabaseStatusAnnotation:
+    is_a: AlleleSlotAnnotation
+    slots:
+      - database_status
 
   GenerationMethod:
     is_a: AuditedObject
@@ -284,14 +307,6 @@ classes:
 
 # Slots
 slots:
-  referenced_slot:
-    description: >- 
-      the slot for which the evidence is being provided (e.g. mutation_type, functional_annotation, 
-      germline_transmission_status, functional_impact, database_status, molecular_mutations, etc.)
-
-  slot_value:
-    description: >-
-        The value of the slot (e.g. missense, nonsense, etc.)
 
   primary_image:
     description: >-
