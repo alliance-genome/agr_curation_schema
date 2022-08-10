@@ -118,6 +118,7 @@ classes:
     is_a: PhenotypeAnnotation
     slots:
       - inferred_gene
+      - asserted_gene
     slot_usage:
       subject:
         description: >-
@@ -132,6 +133,10 @@ classes:
           The gene to which the phenotype is inferred to be associated.
         required: false
         range: Gene
+      asserted_gene:
+        required: false
+      asserted_allele:
+        required: false
 
   AGMPhenotypeAnnotation:
     description: >-
@@ -141,6 +146,8 @@ classes:
     slots:
       - inferred_allele
       - inferred_gene
+      - asserted_gene
+      - asserted_allele
     slot_usage:
       subject:
         description: >-
@@ -160,6 +167,10 @@ classes:
           The allele to which the phenotype is inferred to be associated.
         required: false
         range: Allele
+      asserted_gene:
+        required: false
+      asserted_allele:
+        required: false
 
 
   DiseaseAnnotation:
@@ -168,6 +179,7 @@ classes:
     description: >-
       An annotation asserting an association between a biological entity and a disease supported by evidence.
     slots:
+      - curie
       - unique_id
       - mod_entity_id
       - negated
@@ -184,6 +196,12 @@ classes:
       - disease_genetic_modifier
       - disease_genetic_modifier_relation
     slot_usage:
+      curie:
+        description: >-
+          The Alliance-minted ID for the disease annotation. The ID is of the format
+          AGRKB:100000000000001, where the first three digits represent the
+          DiseaseAnnotation class code of "100", followed by a 12-digit identifier
+        required: false
       unique_id:
         description: >-
           Unique identifer for the disease annotation.  Will be generated at AGR
@@ -270,6 +288,7 @@ classes:
     is_a: DiseaseAnnotation
     slots:
       - inferred_gene
+      - asserted_gene
     slot_usage:
       subject:
         description: >-
@@ -286,6 +305,8 @@ classes:
           The gene to which the disease is inferred to be associated.
         required: false
         range: Gene
+      asserted_gene:
+        required: false
 
   AGMDiseaseAnnotation:
     description: >-
@@ -295,6 +316,8 @@ classes:
     slots:
       - inferred_allele
       - inferred_gene
+      - asserted_gene
+      - asserted_allele
     slot_usage:
       subject:
         description: >-
@@ -316,6 +339,10 @@ classes:
           The allele to which the disease is inferred to be associated.
         required: false
         range: Allele
+      asserted_gene:
+        required: false
+      asserted_allele:
+        required: false
 
   ExperimentalCondition:
     is_a: AuditedObject
@@ -383,7 +410,7 @@ classes:
         description: >-
           ChEBI or molecular ontology id used in subset of condition terms.  ie: the specific
           chemcial used in conjunction with 'chemical condition'.
-        range: ChemicalTerm
+        range: VocabularyTerm
 
 
   ConditionRelation:
@@ -511,6 +538,16 @@ slots:
       The allele to which something is inferred to be associated.
     range: Allele
 
+  asserted_gene:
+    description: >-
+      The gene to which something is manually asserted to be associated.
+    range: Gene
+
+  asserted_allele:
+    description: >-
+      The allele to which something is manually asserted to be associated.
+    range: Allele
+
   disease_qualifiers:
     description: >-
       Submitted values should be vocabulary terms from the 'Disease Qualifiers'
@@ -537,7 +574,6 @@ slots:
   disease_genetic_modifier:
     description: >-
       Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
-    range: BiologicalEntity
     required: false
 
   disease_genetic_modifier_relation:

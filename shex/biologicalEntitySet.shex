@@ -168,26 +168,6 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
-<Antibody> CLOSED {
-    (  $<Antibody_tes> (  &<Reagent_tes> ;
-          rdf:type [ <Reagent> ] ? ;
-          <name> @linkml:String ;
-          <antigen_taxon> @<NCBITaxonTerm> ? ;
-          <clonality> @<AntibodyClonalitySet> ;
-          <heavy_chain_isotype> @<HeavyChainIsotypeSet> ? ;
-          <light_chain_isotype> @<LightChainIsotypeSet> ? ;
-          <antibody_target_genes> @<Gene> * ;
-          <cross_references> @<CrossReference> * ;
-          <secondary_identifiers> @linkml:Uriorcurie * ;
-          <references> @<Reference> * ;
-          <original_reference> @<Reference> ? ;
-          <related_notes> @<Note> * ;
-          <taxon> @<NCBITaxonTerm> ?
-       ) ;
-       rdf:type [ <Antibody> ]
-    )
-}
-
 <Assembly> CLOSED {
     (  $<Assembly_tes> (  &<AuditedObject_tes> ;
           rdf:type [ <AuditedObject> ] ?
@@ -216,8 +196,8 @@ linkml:Nodeidentifier NONLITERAL
           ) ;
           rdf:type [ <Association> ] ?
        )
-    } OR @<AlleleGenomicEntityAssociation> OR @<ConstructComponentAssociation> OR @<EntitySynonym> OR
-    @<SequenceTargetingReagentToGeneAssociation>
+    } OR @<AlleleGenomicEntityAssociation> OR @<ConstructComponentAssociation> OR @<EntitySynonym> OR @<GeneToPathwayAssociation>
+    OR @<SequenceTargetingReagentToGeneAssociation>
 )
 
 <ATPTerm> CLOSED {
@@ -241,9 +221,9 @@ linkml:Nodeidentifier NONLITERAL
        )
     } OR @<AffectedGenomicModelComponent> OR @<Agent> OR @<Assembly> OR @<AssociatedReference> OR @<Association> OR
     @<AuthorReference> OR @<BiologicalEntity> OR @<CellLine> OR @<Chromosome> OR @<CrossReference> OR @<EntityStatement> OR
-    @<ExternalDatabaseLink> OR @<Figure> OR @<File> OR @<GeneHistory> OR @<GenomicLocation> OR @<Image> OR @<ImagePane> OR
-    @<MeshDetail> OR @<Note> OR @<OntologyTerm> OR @<Reference> OR @<Resource> OR @<SourceVariantLocation> OR @<Synonym> OR
-    @<VariantLocation> OR @<Vocabulary> OR @<VocabularyTerm>
+    @<ExternalDatabaseLink> OR @<Figure> OR @<File> OR @<GeneHistory> OR @<GeneNomenclatureSet> OR @<GenomicLocation> OR @<Image>
+    OR @<ImagePane> OR @<MeshDetail> OR @<Note> OR @<OntologyTerm> OR @<Reference> OR @<Resource> OR @<SourceVariantLocation> OR
+    @<Synonym> OR @<VariantLocation> OR @<Vocabulary> OR @<VocabularyTerm>
 )
 
 <AuthorReference> CLOSED {
@@ -260,7 +240,7 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <BiologicalEntity>  (
-    @<GenomicEntity> OR @<Reagent>
+    @<FunctionalGeneSet> OR @<GeneCluster> OR @<GeneCollection> OR @<GenomicEntity> OR @<Operon> OR @<Pathway> OR @<ProteinComplex>
 )
 
 <BiologicalEntity_struct> {
@@ -379,14 +359,6 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
-<DNAClone> CLOSED {
-    (  $<DNAClone_tes> (  &<Reagent_tes> ;
-          rdf:type [ <Reagent> ] ?
-       ) ;
-       rdf:type [ <DNAClone> ]
-    )
-}
-
 <DOTerm> CLOSED {
     (  $<DOTerm_tes> (  &<OntologyTerm_tes> ;
           rdf:type [ <OntologyTerm> ] ?
@@ -497,6 +469,16 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
+<FunctionalGeneSet> CLOSED {
+    (  $<FunctionalGeneSet_tes> (  &<BiologicalEntity_tes> ;
+          rdf:type [ <BiologicalEntity> ] ? ;
+          <genes> @<Gene> * ;
+          <single_reference> @<Reference> ?
+       ) ;
+       rdf:type [ <FunctionalGeneSet> ]
+    )
+}
+
 <Gene> CLOSED {
     (  $<Gene_tes> (  &<GenomicEntity_tes> ;
           rdf:type [ <GenomicEntity> ] ? ;
@@ -517,6 +499,27 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
+<GeneCluster> CLOSED {
+    (  $<GeneCluster_tes> (  &<BiologicalEntity_tes> ;
+          rdf:type [ <BiologicalEntity> ] ? ;
+          <genes> @<Gene> * ;
+          <related_note> @<Note> ?
+       ) ;
+       rdf:type [ <GeneCluster> ]
+    )
+}
+
+<GeneCollection> CLOSED {
+    (  $<GeneCollection_tes> (  &<BiologicalEntity_tes> ;
+          rdf:type [ <BiologicalEntity> ] ? ;
+          <genes> @<Gene> * ;
+          <related_note> @<Note> ? ;
+          <experiment_type> @linkml:String *
+       ) ;
+       rdf:type [ <GeneCollection> ]
+    )
+}
+
 <GeneHistory> CLOSED {
     (  $<GeneHistory_tes> (  &<AuditedObject_tes> ;
           rdf:type [ <AuditedObject> ] ? ;
@@ -531,6 +534,19 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
+<GeneNomenclatureSet> CLOSED {
+    (  $<GeneNomenclatureSet_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <genes> @<Gene> * ;
+          <designating_laboratory> @<Laboratory> ;
+          <old_members> @<Gene> * ;
+          <synonym> @linkml:String ? ;
+          <related_note> @<Note> ?
+       ) ;
+       rdf:type [ <GeneNomenclatureSet> ]
+    )
+}
+
 <GeneticMapPosition> CLOSED {
     (  $<GeneticMapPosition_tes> (  &<GenomicEntity_tes> ;
           rdf:type [ <GenomicEntity> ] ? ;
@@ -541,6 +557,17 @@ linkml:Nodeidentifier NONLITERAL
           <genetic_map_position_radiation> @linkml:Float *
        ) ;
        rdf:type [ <GeneticMapPosition> ]
+    )
+}
+
+<GeneToPathwayAssociation> CLOSED {
+    (  $<GeneToPathwayAssociation_tes> (  &<Association_tes> ;
+          rdf:type [ <Association> ] ? ;
+          <predicate> @linkml:String ;
+          <subject> @<Gene> ;
+          <object> @<Pathway>
+       ) ;
+       rdf:type [ <GeneToPathwayAssociation> ] ?
     )
 }
 
@@ -727,6 +754,16 @@ linkml:Nodeidentifier NONLITERAL
     @<SOTerm> OR @<StageTerm> OR @<XBEDTerm>
 )
 
+<Operon> CLOSED {
+    (  $<Operon_tes> (  &<BiologicalEntity_tes> ;
+          rdf:type [ <BiologicalEntity> ] ? ;
+          <genes> @<Gene> * ;
+          <related_note> @<Note> ?
+       ) ;
+       rdf:type [ <Operon> ]
+    )
+}
+
 <Organization>  (
     CLOSED {
        (  $<Organization_tes> (  &<Agent_tes> ;
@@ -736,6 +773,14 @@ linkml:Nodeidentifier NONLITERAL
        )
     } OR @<Company> OR @<Laboratory>
 )
+
+<Pathway> CLOSED {
+    (  $<Pathway_tes> (  &<BiologicalEntity_tes> ;
+          rdf:type [ <BiologicalEntity> ] ?
+       ) ;
+       rdf:type [ <Pathway> ]
+    )
+}
 
 <Person>  (
     CLOSED {
@@ -772,17 +817,14 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
-<Reagent>  (
-    CLOSED {
-       (  $<Reagent_tes> (  &<BiologicalEntity_tes> ;
-             rdf:type [ <BiologicalEntity> ] ? ;
-             <generated_by> @<Agent> * ;
-             <manufactured_by> @<Agent> *
-          ) ;
-          rdf:type [ <Reagent> ]
-       )
-    } OR @<Antibody> OR @<DNAClone> OR @<RNAClone>
-)
+<ProteinComplex> CLOSED {
+    (  $<ProteinComplex_tes> (  &<BiologicalEntity_tes> ;
+          rdf:type [ <BiologicalEntity> ] ? ;
+          <proteins> @<Protein> *
+       ) ;
+       rdf:type [ <ProteinComplex> ]
+    )
+}
 
 <Reference> CLOSED {
     (  $<Reference_tes> (  &<AuditedObject_tes> ;
@@ -831,14 +873,6 @@ linkml:Nodeidentifier NONLITERAL
           <id> @linkml:String ?
        ) ;
        rdf:type [ <Resource> ]
-    )
-}
-
-<RNAClone> CLOSED {
-    (  $<RNAClone_tes> (  &<Reagent_tes> ;
-          rdf:type [ <Reagent> ] ?
-       ) ;
-       rdf:type [ <RNAClone> ]
     )
 }
 

@@ -44,7 +44,7 @@ t:
 echo:
 	echo $(patsubst %,gen-%,$(TGTS))
 
-test: all test-jsonschema test-jsonschema_invalid
+test: all test-jsonschema
 
 install:
 	poetry install

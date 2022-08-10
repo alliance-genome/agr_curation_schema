@@ -60,4 +60,3 @@ jobs:
       - name: Validate JSON Schema
         run: |
           make test-jsonschema
-          make test-jsonschema_invalid

@@ -507,6 +507,19 @@
 --     * Slot: date_updated Description: Date on which an entity was last modified.
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
+-- # Class: "ATPTerm" Description: "An ontology term from the Alliance Tags for Papers ontology (ATP)"
+--     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
+--     * Slot: dbkey Description: Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.
+--     * Slot: name Description: a human-readable name for an entity
+--     * Slot: definition Description: The explanation of the meaning of a term.
+--     * Slot: type Description: 
+--     * Slot: namespace Description: the namespace of the ontology.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: updated_by Description: The individual that last modified the entity.
+--     * Slot: date_updated Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
+--     * Slot: obsolete Description: Entity is no longer current.
 -- # Class: "ChemicalTerm" Description: "An ontology term representing a chemical or molecule"
 --     * Slot: inchi Description: InChi style description of the molecule
 --     * Slot: inchi_key Description: InChi key description of the molecule
@@ -832,6 +845,7 @@
 --     * Slot: ZFATerm_curie Description: Autocreated FK slot
 --     * Slot: PhenotypeTerm_curie Description: Autocreated FK slot
 --     * Slot: XPOTerm_curie Description: Autocreated FK slot
+--     * Slot: ATPTerm_curie Description: Autocreated FK slot
 --     * Slot: ChemicalTerm_curie Description: Autocreated FK slot
 --     * Slot: XSMOTerm_curie Description: Autocreated FK slot
 --     * Slot: Molecule_curie Description: Autocreated FK slot
@@ -845,6 +859,7 @@
 --     * Slot: Protein_curie Description: Autocreated FK slot
 --     * Slot: AuthorReference_id Description: Autocreated FK slot
 --     * Slot: Gene_curie Description: Autocreated FK slot
+--     * Slot: GeneticMapPosition_curie Description: Autocreated FK slot
 --     * Slot: Antibody_curie Description: Autocreated FK slot
 --     * Slot: GeneInteraction_curie Description: Autocreated FK slot
 --     * Slot: GeneMolecularInteraction_curie Description: Autocreated FK slot
@@ -1154,6 +1169,7 @@
 -- # Class: "Gene" Description: "A DNA genomic entity from which one or more functional* RNA transcript molecules are transcribed, along with cis-regulatory elements responsible for regulating expression (transcription) of the gene. * A functional RNA molecule here can mean one that is directly responsible for the gene's function (e.g. catalysis, structure, etc.) or one that is translated to produce a functional polypeptide/protein. A pseudogene may be considered a gene under this definition, albeit no longer functional."
 --     * Slot: symbol Description: Symbol for a particular thing
 --     * Slot: gene_type Description: SOTerm describing gene type
+--     * Slot: transposon_origin Description: If this gene contains or is originating from a transposon
 --     * Slot: name Description: a human-readable name for an entity
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: taxon Description: The taxon from which the biological entity derives.
@@ -1164,6 +1180,27 @@
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
 --     * Slot: Ingest_id Description: Autocreated FK slot
+-- # Class: "GeneticMapPosition" Description: "A genetic map position."
+--     * Slot: genetic_map_chromosome Description: Chromosome or contig to which the gene has been genetically mapped
+--     * Slot: genetic_map_band Description: Genetic map predicted chromosome location eg 10q12
+--     * Slot: name Description: a human-readable name for an entity
+--     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
+--     * Slot: taxon Description: The taxon from which the biological entity derives.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: updated_by Description: The individual that last modified the entity.
+--     * Slot: date_updated Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
+--     * Slot: obsolete Description: Entity is no longer current.
+-- # Class: "GeneHistory" Description: "The history of a gene"
+--     * Slot: id Description: 
+--     * Slot: current_version Description: Current version of this object with each version eg 1,2,3 describing major updates
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: updated_by Description: The individual that last modified the entity.
+--     * Slot: date_updated Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
+--     * Slot: obsolete Description: Entity is no longer current.
 -- # Class: "VariantConsequence" Description: "Parent class for gene- and transcript-level consequences"
 --     * Slot: id Description: 
 --     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
@@ -1294,6 +1331,7 @@
 --     * Slot: obsolete Description: Entity is no longer current.
 -- # Class: "AllelePhenotypeAnnotation" Description: "An annotation asserting an association between an allele and a phenotype supported by evidence."
 --     * Slot: inferred_gene Description: The gene to which the phenotype is inferred to be associated.
+--     * Slot: asserted_gene Description: The gene to which something is manually asserted to be associated.
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: single_reference Description: holds between an object and a single reference
 --     * Slot: phenotype_term Description: 
@@ -1309,6 +1347,8 @@
 -- # Class: "AGMPhenotypeAnnotation" Description: "An annotation asserting an association between an AGM and a phenotype supported by evidence."
 --     * Slot: inferred_allele Description: The allele to which the phenotype is inferred to be associated.
 --     * Slot: inferred_gene Description: The gene to which the phenotype is inferred to be associated.
+--     * Slot: asserted_gene Description: The gene to which something is manually asserted to be associated.
+--     * Slot: asserted_allele Description: The allele to which something is manually asserted to be associated.
 --     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
 --     * Slot: single_reference Description: holds between an object and a single reference
 --     * Slot: phenotype_term Description: 
@@ -1368,6 +1408,7 @@
 -- # Class: "AlleleDiseaseAnnotation" Description: "An annotation asserting an association between an allele and a disease supported by evidence."
 --     * Slot: id Description: 
 --     * Slot: inferred_gene Description: The gene to which the disease is inferred to be associated.
+--     * Slot: asserted_gene Description: The gene to which something is manually asserted to be associated.
 --     * Slot: unique_id Description: A non-curie unique identifier for a thing.
 --     * Slot: mod_entity_id Description: The model organism database (MOD) identifier/curie for the object
 --     * Slot: negated Description: if set to true, then the association is negated i.e. is not true
@@ -1392,6 +1433,8 @@
 --     * Slot: id Description: 
 --     * Slot: inferred_allele Description: The allele to which the disease is inferred to be associated.
 --     * Slot: inferred_gene Description: The gene to which the disease is inferred to be associated.
+--     * Slot: asserted_gene Description: The gene to which something is manually asserted to be associated.
+--     * Slot: asserted_allele Description: The allele to which something is manually asserted to be associated.
 --     * Slot: unique_id Description: A non-curie unique identifier for a thing.
 --     * Slot: mod_entity_id Description: The model organism database (MOD) identifier/curie for the object
 --     * Slot: negated Description: if set to true, then the association is negated i.e. is not true
@@ -1533,6 +1576,7 @@
 --     * Slot: expression_qualifiers Description: Qualifiers that describe additional characteristics of gene expression. For example: aint, intense, restricted.
 --     * Slot: negated Description: if set to true, then the association is negated i.e. is not true
 --     * Slot: uncertain Description: If set to true, then the related entity is uncertain.
+--     * Slot: assay_notes Description: 
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: updated_by Description: The individual that last modified the entity.
@@ -1547,7 +1591,6 @@
 --     * Slot: developmental_stage_stop Description: The end developmental stage at which an annotated event was observed.
 --     * Slot: age Description: The age at which an annotated event was observed.
 --     * Slot: temporal_qualifiers Description: Qualifiers of the stage or age in an annotation.
---     * Slot: stage_uncertainty Description: 
 --     * Slot: created_by Description: The individual that created the entity.
 --     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
 --     * Slot: updated_by Description: The individual that last modified the entity.
@@ -1577,7 +1620,7 @@
 --     * Slot: obsolete Description: Entity is no longer current.
 --     * Slot: subject_id Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
 --     * Slot: object_id Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
--- # Class: "GeneExpressionStatement" Description: "Free-text describing some aspect(s) of a gene's expression, particularly nuanced information that is not readily captured in annotations. May summarize data from many annotations and/or many publications."
+-- # Class: "GeneExpressionStatement" Description: "Free-text describing some aspect(s) of a gene's expression, particularly nuanced information that is not readily captured in annotations. May summarize data from many annotations and/or many experiments."
 --     * Slot: id Description: 
 --     * Slot: statement_subject Description: The entity being described by the note.
 --     * Slot: statement_type Description: The type of free-text statement. For example: cytology, private, curator_comments.
@@ -1610,6 +1653,86 @@
 --     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
 --     * Slot: obsolete Description: Entity is no longer current.
 --     * Slot: statement_subject_id Description: The entity being described by the note.
+-- # Class: "GeneCluster" Description: "A gene cluster is a set of genes which have a biological significance, and which are probably clustered together on the genome, like histones and miRNAs"
+--     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
+--     * Slot: taxon Description: The taxon from which the biological entity derives.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: updated_by Description: The individual that last modified the entity.
+--     * Slot: date_updated Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
+--     * Slot: obsolete Description: Entity is no longer current.
+--     * Slot: related_note_id Description: Holds between an object and a Note object.
+-- # Class: "GeneCollection" Description: "A gene collection is a set of genes which have been grouped based on experimental evidence, for example a set of interacting genes, genes in expression cluster, or a set of ChIP binding peaks"
+--     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
+--     * Slot: taxon Description: The taxon from which the biological entity derives.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: updated_by Description: The individual that last modified the entity.
+--     * Slot: date_updated Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
+--     * Slot: obsolete Description: Entity is no longer current.
+--     * Slot: related_note_id Description: Holds between an object and a Note object.
+-- # Class: "GeneNomenclatureSet" Description: "WB specific. A gene class is a set of genes which share nomenclature, belonging to the same gene class."
+--     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
+--     * Slot: synonym Description: the text string of the synonym
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: updated_by Description: The individual that last modified the entity.
+--     * Slot: date_updated Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
+--     * Slot: obsolete Description: Entity is no longer current.
+--     * Slot: designating_laboratory_id Description: A laboratory which designated this gene class
+--     * Slot: related_note_id Description: Holds between an object and a Note object.
+-- # Class: "Operon" Description: "The DNA region of a group of adjacent genes whose transcription is coordinated on one or several mutually overlapping transcription units transcribed in the same direction and sharing at least one gene."
+--     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
+--     * Slot: taxon Description: The taxon from which the biological entity derives.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: updated_by Description: The individual that last modified the entity.
+--     * Slot: date_updated Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
+--     * Slot: obsolete Description: Entity is no longer current.
+--     * Slot: related_note_id Description: Holds between an object and a Note object.
+-- # Class: "FunctionalGeneSet" Description: ""
+--     * Slot: single_reference Description: holds between an object and a single reference
+--     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
+--     * Slot: taxon Description: The taxon from which the biological entity derives.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: updated_by Description: The individual that last modified the entity.
+--     * Slot: date_updated Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
+--     * Slot: obsolete Description: Entity is no longer current.
+-- # Class: "Pathway" Description: ""
+--     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
+--     * Slot: taxon Description: The taxon from which the biological entity derives.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: updated_by Description: The individual that last modified the entity.
+--     * Slot: date_updated Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
+--     * Slot: obsolete Description: Entity is no longer current.
+-- # Class: "ProteinComplex" Description: ""
+--     * Slot: curie Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
+--     * Slot: taxon Description: The taxon from which the biological entity derives.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: updated_by Description: The individual that last modified the entity.
+--     * Slot: date_updated Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
+--     * Slot: obsolete Description: Entity is no longer current.
+-- # Class: "GeneToPathwayAssociation" Description: ""
+--     * Slot: id Description: 
+--     * Slot: subject Description: connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
+--     * Slot: predicate Description: A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.
+--     * Slot: object Description: connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
+--     * Slot: created_by Description: The individual that created the entity.
+--     * Slot: date_created Description: The date on which an entity was created. This can be applied to nodes or edges.
+--     * Slot: updated_by Description: The individual that last modified the entity.
+--     * Slot: date_updated Description: Date on which an entity was last modified.
+--     * Slot: internal Description: Classifies the entity as private (for internal use) or not (for public use).
+--     * Slot: obsolete Description: Entity is no longer current.
 -- # Class: "Variant_related_notes" Description: ""
 --     * Slot: Variant_curie Description: Autocreated FK slot
 --     * Slot: related_notes_id Description: Holds between an object and a list of related Note objects.
@@ -2024,6 +2147,18 @@
 -- # Class: "XPOTerm_secondary_identifiers" Description: ""
 --     * Slot: XPOTerm_curie Description: Autocreated FK slot
 --     * Slot: secondary_identifiers Description: 
+-- # Class: "ATPTerm_definition_urls" Description: ""
+--     * Slot: ATPTerm_curie Description: Autocreated FK slot
+--     * Slot: definition_urls Description: 
+-- # Class: "ATPTerm_synonym" Description: ""
+--     * Slot: ATPTerm_curie Description: Autocreated FK slot
+--     * Slot: synonym_id Description: holds between a named thing and a synonym
+-- # Class: "ATPTerm_subsets" Description: ""
+--     * Slot: ATPTerm_curie Description: Autocreated FK slot
+--     * Slot: subsets Description: 
+-- # Class: "ATPTerm_secondary_identifiers" Description: ""
+--     * Slot: ATPTerm_curie Description: Autocreated FK slot
+--     * Slot: secondary_identifiers Description: 
 -- # Class: "ChemicalTerm_definition_urls" Description: ""
 --     * Slot: ChemicalTerm_curie Description: Autocreated FK slot
 --     * Slot: definition_urls Description: 
@@ -2234,6 +2369,30 @@
 -- # Class: "Gene_related_notes" Description: ""
 --     * Slot: Gene_curie Description: Autocreated FK slot
 --     * Slot: related_notes_id Description: Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the "Gene note types" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.
+-- # Class: "Gene_gene_types_secondary" Description: ""
+--     * Slot: Gene_curie Description: Autocreated FK slot
+--     * Slot: gene_types_secondary Description: SOTerm describing alternate gene types
+-- # Class: "Gene_designating_laboratories" Description: ""
+--     * Slot: Gene_curie Description: Autocreated FK slot
+--     * Slot: designating_laboratories_id Description: A laboratory, rarely laboratories, which designated this gene
+-- # Class: "Gene_designating_persons" Description: ""
+--     * Slot: Gene_curie Description: Autocreated FK slot
+--     * Slot: designating_persons Description: A person/persons who designated this gene
+-- # Class: "Gene_trans_splice_leaders" Description: ""
+--     * Slot: Gene_curie Description: Autocreated FK slot
+--     * Slot: trans_splice_leaders Description: Trans-splicing splice leaders observed to operate on this gene, in species which have spliced leader trans-splicing
+-- # Class: "Gene_contig" Description: ""
+--     * Slot: Gene_curie Description: Autocreated FK slot
+--     * Slot: contig Description: Contig or clone this gene is located to
+-- # Class: "Gene_anatomy_function" Description: ""
+--     * Slot: Gene_curie Description: Autocreated FK slot
+--     * Slot: anatomy_function Description: WB specific. Allow the connection between Anatomy_term, Phenotype and gene Eg WBbtf0001
+-- # Class: "Gene_product_binds_matrix" Description: ""
+--     * Slot: Gene_curie Description: Autocreated FK slot
+--     * Slot: product_binds_matrix Description: WB specific. ID of position matrix object
+-- # Class: "Gene_wbprocess" Description: ""
+--     * Slot: Gene_curie Description: Autocreated FK slot
+--     * Slot: wbprocess Description: WB specific. Eg WBbiop00000015 Corpse engulfment
 -- # Class: "Gene_synonym" Description: ""
 --     * Slot: Gene_curie Description: Autocreated FK slot
 --     * Slot: synonym_id Description: holds between a named thing and a synonym
@@ -2243,6 +2402,39 @@
 -- # Class: "Gene_genomic_locations" Description: ""
 --     * Slot: Gene_curie Description: Autocreated FK slot
 --     * Slot: genomic_locations_id Description: 
+-- # Class: "GeneticMapPosition_genetic_map_position_centimorgan" Description: ""
+--     * Slot: GeneticMapPosition_curie Description: Autocreated FK slot
+--     * Slot: genetic_map_position_centimorgan Description: Genetic map predicted chromosome location in centimorgans eg 22.3366 cM
+-- # Class: "GeneticMapPosition_genetic_map_position_centimorgan_error" Description: ""
+--     * Slot: GeneticMapPosition_curie Description: Autocreated FK slot
+--     * Slot: genetic_map_position_centimorgan_error Description: Genetic map calculated error in the predicted chromosome location in centimorgans eg 0.045 cM
+-- # Class: "GeneticMapPosition_genetic_map_position_radiation" Description: ""
+--     * Slot: GeneticMapPosition_curie Description: Autocreated FK slot
+--     * Slot: genetic_map_position_radiation Description: Radiation hybrid map predicted chromosome location eg 66.5 cR
+-- # Class: "GeneticMapPosition_synonym" Description: ""
+--     * Slot: GeneticMapPosition_curie Description: Autocreated FK slot
+--     * Slot: synonym_id Description: holds between a named thing and a synonym
+-- # Class: "GeneticMapPosition_secondary_identifiers" Description: ""
+--     * Slot: GeneticMapPosition_curie Description: Autocreated FK slot
+--     * Slot: secondary_identifiers Description: 
+-- # Class: "GeneticMapPosition_genomic_locations" Description: ""
+--     * Slot: GeneticMapPosition_curie Description: Autocreated FK slot
+--     * Slot: genomic_locations_id Description: 
+-- # Class: "GeneHistory_current_status" Description: ""
+--     * Slot: GeneHistory_id Description: Autocreated FK slot
+--     * Slot: current_status Description: Current status of this object
+-- # Class: "GeneHistory_merged_into" Description: ""
+--     * Slot: GeneHistory_id Description: Autocreated FK slot
+--     * Slot: merged_into Description: This gene has been merged into
+-- # Class: "GeneHistory_acquires_merge" Description: ""
+--     * Slot: GeneHistory_id Description: Autocreated FK slot
+--     * Slot: acquires_merge Description: Genes which have been merged into this gene
+-- # Class: "GeneHistory_split_from" Description: ""
+--     * Slot: GeneHistory_id Description: Autocreated FK slot
+--     * Slot: split_from Description: This gene exists because it has been split from this gene
+-- # Class: "GeneHistory_split_into" Description: ""
+--     * Slot: GeneHistory_id Description: Autocreated FK slot
+--     * Slot: split_into Description: This gene has been split into these genes
 -- # Class: "Reagent_generated_by" Description: ""
 --     * Slot: Reagent_curie Description: Autocreated FK slot
 --     * Slot: generated_by_id Description: Holds between a material entity and an Agent that generated it: e.g., Thomas Blumenthal, Kornberg Laboratory.
@@ -2369,6 +2561,30 @@
 -- # Class: "ExpressionAnnotationStatement_reference" Description: ""
 --     * Slot: ExpressionAnnotationStatement_id Description: Autocreated FK slot
 --     * Slot: reference Description: holds between an object and a list of references
+-- # Class: "GeneCluster_genes" Description: ""
+--     * Slot: GeneCluster_curie Description: Autocreated FK slot
+--     * Slot: genes Description: 
+-- # Class: "GeneCollection_genes" Description: ""
+--     * Slot: GeneCollection_curie Description: Autocreated FK slot
+--     * Slot: genes Description: 
+-- # Class: "GeneCollection_experiment_type" Description: ""
+--     * Slot: GeneCollection_curie Description: Autocreated FK slot
+--     * Slot: experiment_type Description: Type of experiment by which these genes were collated eg chip-seq, interaction, expression
+-- # Class: "GeneNomenclatureSet_genes" Description: ""
+--     * Slot: GeneNomenclatureSet_curie Description: Autocreated FK slot
+--     * Slot: genes Description: 
+-- # Class: "GeneNomenclatureSet_old_members" Description: ""
+--     * Slot: GeneNomenclatureSet_curie Description: Autocreated FK slot
+--     * Slot: old_members Description: Gene which were formerly members of this GeneClass
+-- # Class: "Operon_genes" Description: ""
+--     * Slot: Operon_curie Description: Autocreated FK slot
+--     * Slot: genes Description: 
+-- # Class: "FunctionalGeneSet_genes" Description: ""
+--     * Slot: FunctionalGeneSet_curie Description: Autocreated FK slot
+--     * Slot: genes Description: 
+-- # Class: "ProteinComplex_proteins" Description: ""
+--     * Slot: ProteinComplex_curie Description: Autocreated FK slot
+--     * Slot: proteins Description: 
 
 CREATE TABLE "Person" (
 	last_name TEXT, 
@@ -2941,6 +3157,23 @@ CREATE TABLE "XPOTerm" (
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
+CREATE TABLE "ATPTerm" (
+	curie TEXT NOT NULL, 
+	dbkey TEXT, 
+	name TEXT, 
+	definition TEXT, 
+	type TEXT, 
+	namespace TEXT, 
+	created_by TEXT, 
+	date_created DATE, 
+	updated_by TEXT, 
+	date_updated DATE, 
+	internal BOOLEAN NOT NULL, 
+	obsolete BOOLEAN, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
+);
 CREATE TABLE "ChemicalTerm" (
 	inchi TEXT, 
 	inchi_key TEXT, 
@@ -3304,6 +3537,19 @@ CREATE TABLE "MeshDetail" (
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
+CREATE TABLE "GeneHistory" (
+	id INTEGER, 
+	current_version INTEGER, 
+	created_by TEXT, 
+	date_created DATE, 
+	updated_by TEXT, 
+	date_updated DATE, 
+	internal BOOLEAN NOT NULL, 
+	obsolete BOOLEAN, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
+);
 CREATE TABLE "VariantConsequence" (
 	id INTEGER, 
 	subject TEXT NOT NULL, 
@@ -3613,6 +3859,7 @@ CREATE TABLE "Figure" (
 CREATE TABLE "Gene" (
 	symbol TEXT NOT NULL, 
 	gene_type TEXT, 
+	transposon_origin BOOLEAN, 
 	name TEXT, 
 	curie TEXT NOT NULL, 
 	taxon TEXT NOT NULL, 
@@ -3629,6 +3876,24 @@ CREATE TABLE "Gene" (
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY("Ingest_id") REFERENCES "Ingest" (id)
+);
+CREATE TABLE "GeneticMapPosition" (
+	genetic_map_chromosome TEXT, 
+	genetic_map_band TEXT, 
+	name TEXT, 
+	curie TEXT NOT NULL, 
+	taxon TEXT NOT NULL, 
+	created_by TEXT, 
+	date_created DATE, 
+	updated_by TEXT, 
+	date_updated DATE, 
+	internal BOOLEAN NOT NULL, 
+	obsolete BOOLEAN, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(genetic_map_chromosome) REFERENCES "Chromosome" (curie), 
+	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
 CREATE TABLE "Reagent" (
 	curie TEXT NOT NULL, 
@@ -3698,7 +3963,6 @@ CREATE TABLE "TemporalContext" (
 	developmental_stage_stop TEXT, 
 	age TEXT, 
 	temporal_qualifiers VARCHAR(15), 
-	stage_uncertainty TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
 	updated_by TEXT, 
@@ -3727,6 +3991,50 @@ CREATE TABLE "AnatomicalSite" (
 	FOREIGN KEY(anatomical_structure) REFERENCES "AnatomicalTerm" (curie), 
 	FOREIGN KEY(anatomical_substructure) REFERENCES "AnatomicalTerm" (curie), 
 	FOREIGN KEY(cellular_component) REFERENCES "GOTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "FunctionalGeneSet" (
+	single_reference TEXT, 
+	curie TEXT NOT NULL, 
+	taxon TEXT NOT NULL, 
+	created_by TEXT, 
+	date_created DATE, 
+	updated_by TEXT, 
+	date_updated DATE, 
+	internal BOOLEAN NOT NULL, 
+	obsolete BOOLEAN, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
+	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "Pathway" (
+	curie TEXT NOT NULL, 
+	taxon TEXT NOT NULL, 
+	created_by TEXT, 
+	date_created DATE, 
+	updated_by TEXT, 
+	date_updated DATE, 
+	internal BOOLEAN NOT NULL, 
+	obsolete BOOLEAN, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
+);
+CREATE TABLE "ProteinComplex" (
+	curie TEXT NOT NULL, 
+	taxon TEXT NOT NULL, 
+	created_by TEXT, 
+	date_created DATE, 
+	updated_by TEXT, 
+	date_updated DATE, 
+	internal BOOLEAN NOT NULL, 
+	obsolete BOOLEAN, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
@@ -4530,6 +4838,31 @@ CREATE TABLE "XPOTerm_secondary_identifiers" (
 	PRIMARY KEY ("XPOTerm_curie", secondary_identifiers), 
 	FOREIGN KEY("XPOTerm_curie") REFERENCES "XPOTerm" (curie)
 );
+CREATE TABLE "ATPTerm_definition_urls" (
+	"ATPTerm_curie" TEXT, 
+	definition_urls TEXT, 
+	PRIMARY KEY ("ATPTerm_curie", definition_urls), 
+	FOREIGN KEY("ATPTerm_curie") REFERENCES "ATPTerm" (curie)
+);
+CREATE TABLE "ATPTerm_synonym" (
+	"ATPTerm_curie" TEXT, 
+	synonym_id TEXT, 
+	PRIMARY KEY ("ATPTerm_curie", synonym_id), 
+	FOREIGN KEY("ATPTerm_curie") REFERENCES "ATPTerm" (curie), 
+	FOREIGN KEY(synonym_id) REFERENCES "Synonym" (id)
+);
+CREATE TABLE "ATPTerm_subsets" (
+	"ATPTerm_curie" TEXT, 
+	subsets TEXT, 
+	PRIMARY KEY ("ATPTerm_curie", subsets), 
+	FOREIGN KEY("ATPTerm_curie") REFERENCES "ATPTerm" (curie)
+);
+CREATE TABLE "ATPTerm_secondary_identifiers" (
+	"ATPTerm_curie" TEXT, 
+	secondary_identifiers TEXT, 
+	PRIMARY KEY ("ATPTerm_curie", secondary_identifiers), 
+	FOREIGN KEY("ATPTerm_curie") REFERENCES "ATPTerm" (curie)
+);
 CREATE TABLE "ChemicalTerm_definition_urls" (
 	"ChemicalTerm_curie" TEXT, 
 	definition_urls TEXT, 
@@ -4688,6 +5021,12 @@ CREATE TABLE "Reference_pubmed_type" (
 	pubmed_type VARCHAR(56), 
 	PRIMARY KEY ("Reference_curie", pubmed_type), 
 	FOREIGN KEY("Reference_curie") REFERENCES "Reference" (curie)
+);
+CREATE TABLE "GeneHistory_current_status" (
+	"GeneHistory_id" TEXT, 
+	current_status TEXT, 
+	PRIMARY KEY ("GeneHistory_id", current_status), 
+	FOREIGN KEY("GeneHistory_id") REFERENCES "GeneHistory" (id)
 );
 CREATE TABLE "VariantTranscriptLocation" (
 	id INTEGER, 
@@ -5049,6 +5388,88 @@ CREATE TABLE "GeneExpressionStatement" (
 	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
 	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
 );
+CREATE TABLE "GeneCluster" (
+	curie TEXT NOT NULL, 
+	taxon TEXT NOT NULL, 
+	created_by TEXT, 
+	date_created DATE, 
+	updated_by TEXT, 
+	date_updated DATE, 
+	internal BOOLEAN NOT NULL, 
+	obsolete BOOLEAN, 
+	related_note_id TEXT, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(related_note_id) REFERENCES "Note" (id)
+);
+CREATE TABLE "GeneCollection" (
+	curie TEXT NOT NULL, 
+	taxon TEXT NOT NULL, 
+	created_by TEXT, 
+	date_created DATE, 
+	updated_by TEXT, 
+	date_updated DATE, 
+	internal BOOLEAN NOT NULL, 
+	obsolete BOOLEAN, 
+	related_note_id TEXT, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(related_note_id) REFERENCES "Note" (id)
+);
+CREATE TABLE "GeneNomenclatureSet" (
+	curie TEXT NOT NULL, 
+	synonym TEXT, 
+	created_by TEXT, 
+	date_created DATE, 
+	updated_by TEXT, 
+	date_updated DATE, 
+	internal BOOLEAN NOT NULL, 
+	obsolete BOOLEAN, 
+	designating_laboratory_id TEXT NOT NULL, 
+	related_note_id TEXT, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(designating_laboratory_id) REFERENCES "Laboratory" (id), 
+	FOREIGN KEY(related_note_id) REFERENCES "Note" (id)
+);
+CREATE TABLE "Operon" (
+	curie TEXT NOT NULL, 
+	taxon TEXT NOT NULL, 
+	created_by TEXT, 
+	date_created DATE, 
+	updated_by TEXT, 
+	date_updated DATE, 
+	internal BOOLEAN NOT NULL, 
+	obsolete BOOLEAN, 
+	related_note_id TEXT, 
+	PRIMARY KEY (curie), 
+	FOREIGN KEY(taxon) REFERENCES "NCBITaxonTerm" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(related_note_id) REFERENCES "Note" (id)
+);
+CREATE TABLE "GeneToPathwayAssociation" (
+	id INTEGER, 
+	subject TEXT NOT NULL, 
+	predicate TEXT NOT NULL, 
+	object TEXT NOT NULL, 
+	created_by TEXT, 
+	date_created DATE, 
+	updated_by TEXT, 
+	date_updated DATE, 
+	internal BOOLEAN NOT NULL, 
+	obsolete BOOLEAN, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(subject) REFERENCES "Gene" (curie), 
+	FOREIGN KEY(object) REFERENCES "Pathway" (curie), 
+	FOREIGN KEY(created_by) REFERENCES "Person" (unique_id), 
+	FOREIGN KEY(updated_by) REFERENCES "Person" (unique_id)
+);
 CREATE TABLE "Variant_related_notes" (
 	"Variant_curie" TEXT, 
 	related_notes_id TEXT, 
@@ -5236,6 +5657,56 @@ CREATE TABLE "Gene_related_notes" (
 	FOREIGN KEY("Gene_curie") REFERENCES "Gene" (curie), 
 	FOREIGN KEY(related_notes_id) REFERENCES "Note" (id)
 );
+CREATE TABLE "Gene_gene_types_secondary" (
+	"Gene_curie" TEXT, 
+	gene_types_secondary TEXT, 
+	PRIMARY KEY ("Gene_curie", gene_types_secondary), 
+	FOREIGN KEY("Gene_curie") REFERENCES "Gene" (curie), 
+	FOREIGN KEY(gene_types_secondary) REFERENCES "SOTerm" (curie)
+);
+CREATE TABLE "Gene_designating_laboratories" (
+	"Gene_curie" TEXT, 
+	designating_laboratories_id TEXT, 
+	PRIMARY KEY ("Gene_curie", designating_laboratories_id), 
+	FOREIGN KEY("Gene_curie") REFERENCES "Gene" (curie), 
+	FOREIGN KEY(designating_laboratories_id) REFERENCES "Laboratory" (id)
+);
+CREATE TABLE "Gene_designating_persons" (
+	"Gene_curie" TEXT, 
+	designating_persons TEXT, 
+	PRIMARY KEY ("Gene_curie", designating_persons), 
+	FOREIGN KEY("Gene_curie") REFERENCES "Gene" (curie)
+);
+CREATE TABLE "Gene_trans_splice_leaders" (
+	"Gene_curie" TEXT, 
+	trans_splice_leaders TEXT, 
+	PRIMARY KEY ("Gene_curie", trans_splice_leaders), 
+	FOREIGN KEY("Gene_curie") REFERENCES "Gene" (curie)
+);
+CREATE TABLE "Gene_contig" (
+	"Gene_curie" TEXT, 
+	contig TEXT, 
+	PRIMARY KEY ("Gene_curie", contig), 
+	FOREIGN KEY("Gene_curie") REFERENCES "Gene" (curie)
+);
+CREATE TABLE "Gene_anatomy_function" (
+	"Gene_curie" TEXT, 
+	anatomy_function TEXT, 
+	PRIMARY KEY ("Gene_curie", anatomy_function), 
+	FOREIGN KEY("Gene_curie") REFERENCES "Gene" (curie)
+);
+CREATE TABLE "Gene_product_binds_matrix" (
+	"Gene_curie" TEXT, 
+	product_binds_matrix TEXT, 
+	PRIMARY KEY ("Gene_curie", product_binds_matrix), 
+	FOREIGN KEY("Gene_curie") REFERENCES "Gene" (curie)
+);
+CREATE TABLE "Gene_wbprocess" (
+	"Gene_curie" TEXT, 
+	wbprocess TEXT, 
+	PRIMARY KEY ("Gene_curie", wbprocess), 
+	FOREIGN KEY("Gene_curie") REFERENCES "Gene" (curie)
+);
 CREATE TABLE "Gene_synonym" (
 	"Gene_curie" TEXT, 
 	synonym_id TEXT, 
@@ -5248,6 +5719,65 @@ CREATE TABLE "Gene_secondary_identifiers" (
 	secondary_identifiers TEXT, 
 	PRIMARY KEY ("Gene_curie", secondary_identifiers), 
 	FOREIGN KEY("Gene_curie") REFERENCES "Gene" (curie)
+);
+CREATE TABLE "GeneticMapPosition_genetic_map_position_centimorgan" (
+	"GeneticMapPosition_curie" TEXT, 
+	genetic_map_position_centimorgan FLOAT, 
+	PRIMARY KEY ("GeneticMapPosition_curie", genetic_map_position_centimorgan), 
+	FOREIGN KEY("GeneticMapPosition_curie") REFERENCES "GeneticMapPosition" (curie)
+);
+CREATE TABLE "GeneticMapPosition_genetic_map_position_centimorgan_error" (
+	"GeneticMapPosition_curie" TEXT, 
+	genetic_map_position_centimorgan_error FLOAT, 
+	PRIMARY KEY ("GeneticMapPosition_curie", genetic_map_position_centimorgan_error), 
+	FOREIGN KEY("GeneticMapPosition_curie") REFERENCES "GeneticMapPosition" (curie)
+);
+CREATE TABLE "GeneticMapPosition_genetic_map_position_radiation" (
+	"GeneticMapPosition_curie" TEXT, 
+	genetic_map_position_radiation FLOAT, 
+	PRIMARY KEY ("GeneticMapPosition_curie", genetic_map_position_radiation), 
+	FOREIGN KEY("GeneticMapPosition_curie") REFERENCES "GeneticMapPosition" (curie)
+);
+CREATE TABLE "GeneticMapPosition_synonym" (
+	"GeneticMapPosition_curie" TEXT, 
+	synonym_id TEXT, 
+	PRIMARY KEY ("GeneticMapPosition_curie", synonym_id), 
+	FOREIGN KEY("GeneticMapPosition_curie") REFERENCES "GeneticMapPosition" (curie), 
+	FOREIGN KEY(synonym_id) REFERENCES "Synonym" (id)
+);
+CREATE TABLE "GeneticMapPosition_secondary_identifiers" (
+	"GeneticMapPosition_curie" TEXT, 
+	secondary_identifiers TEXT, 
+	PRIMARY KEY ("GeneticMapPosition_curie", secondary_identifiers), 
+	FOREIGN KEY("GeneticMapPosition_curie") REFERENCES "GeneticMapPosition" (curie)
+);
+CREATE TABLE "GeneHistory_merged_into" (
+	"GeneHistory_id" TEXT, 
+	merged_into TEXT, 
+	PRIMARY KEY ("GeneHistory_id", merged_into), 
+	FOREIGN KEY("GeneHistory_id") REFERENCES "GeneHistory" (id), 
+	FOREIGN KEY(merged_into) REFERENCES "Gene" (curie)
+);
+CREATE TABLE "GeneHistory_acquires_merge" (
+	"GeneHistory_id" TEXT, 
+	acquires_merge TEXT, 
+	PRIMARY KEY ("GeneHistory_id", acquires_merge), 
+	FOREIGN KEY("GeneHistory_id") REFERENCES "GeneHistory" (id), 
+	FOREIGN KEY(acquires_merge) REFERENCES "Gene" (curie)
+);
+CREATE TABLE "GeneHistory_split_from" (
+	"GeneHistory_id" TEXT, 
+	split_from TEXT, 
+	PRIMARY KEY ("GeneHistory_id", split_from), 
+	FOREIGN KEY("GeneHistory_id") REFERENCES "GeneHistory" (id), 
+	FOREIGN KEY(split_from) REFERENCES "Gene" (curie)
+);
+CREATE TABLE "GeneHistory_split_into" (
+	"GeneHistory_id" TEXT, 
+	split_into TEXT, 
+	PRIMARY KEY ("GeneHistory_id", split_into), 
+	FOREIGN KEY("GeneHistory_id") REFERENCES "GeneHistory" (id), 
+	FOREIGN KEY(split_into) REFERENCES "Gene" (curie)
 );
 CREATE TABLE "Reagent_generated_by" (
 	"Reagent_curie" TEXT, 
@@ -5338,6 +5868,20 @@ CREATE TABLE "RNAClone_manufactured_by" (
 	PRIMARY KEY ("RNAClone_curie", manufactured_by_id), 
 	FOREIGN KEY("RNAClone_curie") REFERENCES "RNAClone" (curie), 
 	FOREIGN KEY(manufactured_by_id) REFERENCES "Agent" (id)
+);
+CREATE TABLE "FunctionalGeneSet_genes" (
+	"FunctionalGeneSet_curie" TEXT, 
+	genes TEXT, 
+	PRIMARY KEY ("FunctionalGeneSet_curie", genes), 
+	FOREIGN KEY("FunctionalGeneSet_curie") REFERENCES "FunctionalGeneSet" (curie), 
+	FOREIGN KEY(genes) REFERENCES "Gene" (curie)
+);
+CREATE TABLE "ProteinComplex_proteins" (
+	"ProteinComplex_curie" TEXT, 
+	proteins TEXT, 
+	PRIMARY KEY ("ProteinComplex_curie", proteins), 
+	FOREIGN KEY("ProteinComplex_curie") REFERENCES "ProteinComplex" (curie), 
+	FOREIGN KEY(proteins) REFERENCES "Protein" (curie)
 );
 CREATE TABLE "Allele" (
 	symbol TEXT, 
@@ -5435,6 +5979,7 @@ CREATE TABLE "ExpressionAnnotation" (
 	expression_qualifiers VARCHAR(21), 
 	negated BOOLEAN, 
 	uncertain BOOLEAN, 
+	assay_notes TEXT, 
 	created_by TEXT, 
 	date_created DATE, 
 	updated_by TEXT, 
@@ -5563,6 +6108,13 @@ CREATE TABLE "Gene_genomic_locations" (
 	FOREIGN KEY("Gene_curie") REFERENCES "Gene" (curie), 
 	FOREIGN KEY(genomic_locations_id) REFERENCES "GenomicLocation" (id)
 );
+CREATE TABLE "GeneticMapPosition_genomic_locations" (
+	"GeneticMapPosition_curie" TEXT, 
+	genomic_locations_id TEXT, 
+	PRIMARY KEY ("GeneticMapPosition_curie", genomic_locations_id), 
+	FOREIGN KEY("GeneticMapPosition_curie") REFERENCES "GeneticMapPosition" (curie), 
+	FOREIGN KEY(genomic_locations_id) REFERENCES "GenomicLocation" (id)
+);
 CREATE TABLE "DiseaseAnnotation_evidence_codes" (
 	"DiseaseAnnotation_id" TEXT, 
 	evidence_codes TEXT NOT NULL, 
@@ -5656,6 +6208,47 @@ CREATE TABLE "GeneExpressionStatement_reference" (
 	PRIMARY KEY ("GeneExpressionStatement_id", reference), 
 	FOREIGN KEY("GeneExpressionStatement_id") REFERENCES "GeneExpressionStatement" (id), 
 	FOREIGN KEY(reference) REFERENCES "Reference" (curie)
+);
+CREATE TABLE "GeneCluster_genes" (
+	"GeneCluster_curie" TEXT, 
+	genes TEXT, 
+	PRIMARY KEY ("GeneCluster_curie", genes), 
+	FOREIGN KEY("GeneCluster_curie") REFERENCES "GeneCluster" (curie), 
+	FOREIGN KEY(genes) REFERENCES "Gene" (curie)
+);
+CREATE TABLE "GeneCollection_genes" (
+	"GeneCollection_curie" TEXT, 
+	genes TEXT, 
+	PRIMARY KEY ("GeneCollection_curie", genes), 
+	FOREIGN KEY("GeneCollection_curie") REFERENCES "GeneCollection" (curie), 
+	FOREIGN KEY(genes) REFERENCES "Gene" (curie)
+);
+CREATE TABLE "GeneCollection_experiment_type" (
+	"GeneCollection_curie" TEXT, 
+	experiment_type TEXT, 
+	PRIMARY KEY ("GeneCollection_curie", experiment_type), 
+	FOREIGN KEY("GeneCollection_curie") REFERENCES "GeneCollection" (curie)
+);
+CREATE TABLE "GeneNomenclatureSet_genes" (
+	"GeneNomenclatureSet_curie" TEXT, 
+	genes TEXT, 
+	PRIMARY KEY ("GeneNomenclatureSet_curie", genes), 
+	FOREIGN KEY("GeneNomenclatureSet_curie") REFERENCES "GeneNomenclatureSet" (curie), 
+	FOREIGN KEY(genes) REFERENCES "Gene" (curie)
+);
+CREATE TABLE "GeneNomenclatureSet_old_members" (
+	"GeneNomenclatureSet_curie" TEXT, 
+	old_members TEXT, 
+	PRIMARY KEY ("GeneNomenclatureSet_curie", old_members), 
+	FOREIGN KEY("GeneNomenclatureSet_curie") REFERENCES "GeneNomenclatureSet" (curie), 
+	FOREIGN KEY(old_members) REFERENCES "Gene" (curie)
+);
+CREATE TABLE "Operon_genes" (
+	"Operon_curie" TEXT, 
+	genes TEXT, 
+	PRIMARY KEY ("Operon_curie", genes), 
+	FOREIGN KEY("Operon_curie") REFERENCES "Operon" (curie), 
+	FOREIGN KEY(genes) REFERENCES "Gene" (curie)
 );
 CREATE TABLE "AlleleGenomicEntityAssociation" (
 	id INTEGER, 
@@ -5796,6 +6389,7 @@ CREATE TABLE "AffectedGenomicModelComponent" (
 );
 CREATE TABLE "AllelePhenotypeAnnotation" (
 	inferred_gene TEXT, 
+	asserted_gene TEXT, 
 	curie TEXT NOT NULL, 
 	single_reference TEXT, 
 	phenotype_term TEXT, 
@@ -5810,6 +6404,7 @@ CREATE TABLE "AllelePhenotypeAnnotation" (
 	obsolete BOOLEAN, 
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(inferred_gene) REFERENCES "Gene" (curie), 
+	FOREIGN KEY(asserted_gene) REFERENCES "Gene" (curie), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(phenotype_term) REFERENCES "PhenotypeTerm" (curie), 
 	FOREIGN KEY(subject) REFERENCES "Allele" (curie), 
@@ -5819,6 +6414,8 @@ CREATE TABLE "AllelePhenotypeAnnotation" (
 CREATE TABLE "AGMPhenotypeAnnotation" (
 	inferred_allele TEXT, 
 	inferred_gene TEXT, 
+	asserted_gene TEXT, 
+	asserted_allele TEXT, 
 	curie TEXT NOT NULL, 
 	single_reference TEXT, 
 	phenotype_term TEXT, 
@@ -5834,6 +6431,8 @@ CREATE TABLE "AGMPhenotypeAnnotation" (
 	PRIMARY KEY (curie), 
 	FOREIGN KEY(inferred_allele) REFERENCES "Allele" (curie), 
 	FOREIGN KEY(inferred_gene) REFERENCES "Gene" (curie), 
+	FOREIGN KEY(asserted_gene) REFERENCES "Gene" (curie), 
+	FOREIGN KEY(asserted_allele) REFERENCES "Allele" (curie), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(phenotype_term) REFERENCES "PhenotypeTerm" (curie), 
 	FOREIGN KEY(subject) REFERENCES "AffectedGenomicModel" (curie), 
@@ -5843,6 +6442,7 @@ CREATE TABLE "AGMPhenotypeAnnotation" (
 CREATE TABLE "AlleleDiseaseAnnotation" (
 	id INTEGER, 
 	inferred_gene TEXT, 
+	asserted_gene TEXT, 
 	unique_id TEXT, 
 	mod_entity_id TEXT, 
 	negated BOOLEAN, 
@@ -5865,6 +6465,7 @@ CREATE TABLE "AlleleDiseaseAnnotation" (
 	"Ingest_id" TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(inferred_gene) REFERENCES "Gene" (curie), 
+	FOREIGN KEY(asserted_gene) REFERENCES "Gene" (curie), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(annotation_type) REFERENCES "VocabularyTerm" (name), 
 	FOREIGN KEY(genetic_sex) REFERENCES "VocabularyTerm" (name), 
@@ -5881,6 +6482,8 @@ CREATE TABLE "AGMDiseaseAnnotation" (
 	id INTEGER, 
 	inferred_allele TEXT, 
 	inferred_gene TEXT, 
+	asserted_gene TEXT, 
+	asserted_allele TEXT, 
 	unique_id TEXT, 
 	mod_entity_id TEXT, 
 	negated BOOLEAN, 
@@ -5904,6 +6507,8 @@ CREATE TABLE "AGMDiseaseAnnotation" (
 	PRIMARY KEY (id), 
 	FOREIGN KEY(inferred_allele) REFERENCES "Allele" (curie), 
 	FOREIGN KEY(inferred_gene) REFERENCES "Gene" (curie), 
+	FOREIGN KEY(asserted_gene) REFERENCES "Gene" (curie), 
+	FOREIGN KEY(asserted_allele) REFERENCES "Allele" (curie), 
 	FOREIGN KEY(single_reference) REFERENCES "Reference" (curie), 
 	FOREIGN KEY(annotation_type) REFERENCES "VocabularyTerm" (name), 
 	FOREIGN KEY(genetic_sex) REFERENCES "VocabularyTerm" (name), 
@@ -6106,6 +6711,7 @@ CREATE TABLE "CrossReference" (
 	"ZFATerm_curie" TEXT, 
 	"PhenotypeTerm_curie" TEXT, 
 	"XPOTerm_curie" TEXT, 
+	"ATPTerm_curie" TEXT, 
 	"ChemicalTerm_curie" TEXT, 
 	"XSMOTerm_curie" TEXT, 
 	"Molecule_curie" TEXT, 
@@ -6119,6 +6725,7 @@ CREATE TABLE "CrossReference" (
 	"Protein_curie" TEXT, 
 	"AuthorReference_id" TEXT, 
 	"Gene_curie" TEXT, 
+	"GeneticMapPosition_curie" TEXT, 
 	"Antibody_curie" TEXT, 
 	"GeneInteraction_curie" TEXT, 
 	"GeneMolecularInteraction_curie" TEXT, 
@@ -6159,6 +6766,7 @@ CREATE TABLE "CrossReference" (
 	FOREIGN KEY("ZFATerm_curie") REFERENCES "ZFATerm" (curie), 
 	FOREIGN KEY("PhenotypeTerm_curie") REFERENCES "PhenotypeTerm" (curie), 
 	FOREIGN KEY("XPOTerm_curie") REFERENCES "XPOTerm" (curie), 
+	FOREIGN KEY("ATPTerm_curie") REFERENCES "ATPTerm" (curie), 
 	FOREIGN KEY("ChemicalTerm_curie") REFERENCES "ChemicalTerm" (curie), 
 	FOREIGN KEY("XSMOTerm_curie") REFERENCES "XSMOTerm" (curie), 
 	FOREIGN KEY("Molecule_curie") REFERENCES "Molecule" (curie), 
@@ -6172,6 +6780,7 @@ CREATE TABLE "CrossReference" (
 	FOREIGN KEY("Protein_curie") REFERENCES "Protein" (curie), 
 	FOREIGN KEY("AuthorReference_id") REFERENCES "AuthorReference" (id), 
 	FOREIGN KEY("Gene_curie") REFERENCES "Gene" (curie), 
+	FOREIGN KEY("GeneticMapPosition_curie") REFERENCES "GeneticMapPosition" (curie), 
 	FOREIGN KEY("Antibody_curie") REFERENCES "Antibody" (curie), 
 	FOREIGN KEY("GeneInteraction_curie") REFERENCES "GeneInteraction" (curie), 
 	FOREIGN KEY("GeneMolecularInteraction_curie") REFERENCES "GeneMolecularInteraction" (curie), 
