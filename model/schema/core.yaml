@@ -154,16 +154,6 @@ classes:
           - value: gene_function_summary
           - value: gene_phenotype_summary
 
-  EntityStatement:    # to be deprecated in favor of Note class?
-    is_a: AuditedObject
-    description: >-
-      Free-text describing some aspect of an entity.
-    slots:
-      - statement_subject
-      - statement_type
-      - statement_text
-      - references
-
   Association:
     is_a: AuditedObject
     description: >-
@@ -355,27 +345,6 @@ slots:
       Singular version of related_notes
     range: Note
     multivalued: false
-
-  statement_subject:
-    description: >-
-      The entity being described by the note.
-    domain: EntityStatement
-
-  statement_type:
-    description: >-
-      The type of free-text statement. For example: cytology, private,
-      curator_comments.
-    notes: >-
-      Note types listed here as having range string, but should probably be
-      constrained to specific enum sets depending on the entity type.
-    domain: EntityStatement
-    range: string
-
-  statement_text:
-    description: >-
-      Free-text describing some aspect of an entity.
-    domain: EntityStatement
-    range: string
 
   generated_by:
     description: >-

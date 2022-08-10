@@ -2916,62 +2916,6 @@
          "title": "EMAPATerm",
          "type": "object"
       },
-      "EntityStatement": {
-         "additionalProperties": false,
-         "description": "Free-text describing some aspect of an entity.",
-         "properties": {
-            "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
-            },
-            "date_created": {
-               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-               "format": "date",
-               "type": "string"
-            },
-            "date_updated": {
-               "description": "Date on which an entity was last modified.",
-               "format": "date",
-               "type": "string"
-            },
-            "internal": {
-               "description": "Classifies the entity as private (for internal use) or not (for public use).",
-               "type": "boolean"
-            },
-            "obsolete": {
-               "description": "Entity is no longer current.",
-               "type": "boolean"
-            },
-            "references": {
-               "description": "holds between an object and a list of references",
-               "items": {
-                  "$ref": "#/$defs/Reference"
-               },
-               "type": "array"
-            },
-            "statement_subject": {
-               "description": "The entity being described by the note.",
-               "type": "string"
-            },
-            "statement_text": {
-               "description": "Free-text describing some aspect of an entity.",
-               "type": "string"
-            },
-            "statement_type": {
-               "description": "The type of free-text statement. For example: cytology, private, curator_comments.",
-               "type": "string"
-            },
-            "updated_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
-            }
-         },
-         "required": [
-            "internal"
-         ],
-         "title": "EntityStatement",
-         "type": "object"
-      },
       "EntitySynonym": {
          "additionalProperties": false,
          "description": "A relationship between an entity and a synonym.",
@@ -3127,9 +3071,6 @@
          "additionalProperties": false,
          "description": "A description of when and where gene products are observed to be present, including experimental details, supporting evidence, and curator notes.",
          "properties": {
-            "assay_notes": {
-               "type": "string"
-            },
             "associated_with_figure": {
                "description": "The figure(s) that support(s) the expression annotation.",
                "items": {
@@ -3170,6 +3111,13 @@
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "related_notes": {
+               "description": "Holds between an object and a list of related Note objects.",
+               "items": {
+                  "$ref": "#/$defs/Note"
+               },
+               "type": "array"
             },
             "uncertain": {
                "description": "If set to true, then the related entity is uncertain.",
@@ -3247,62 +3195,6 @@
          "title": "ExpressionAnnotationImagePane",
          "type": "object"
       },
-      "ExpressionAnnotationStatement": {
-         "additionalProperties": false,
-         "description": "",
-         "properties": {
-            "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
-            },
-            "date_created": {
-               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-               "format": "date",
-               "type": "string"
-            },
-            "date_updated": {
-               "description": "Date on which an entity was last modified.",
-               "format": "date",
-               "type": "string"
-            },
-            "internal": {
-               "description": "Classifies the entity as private (for internal use) or not (for public use).",
-               "type": "boolean"
-            },
-            "obsolete": {
-               "description": "Entity is no longer current.",
-               "type": "boolean"
-            },
-            "references": {
-               "description": "holds between an object and a list of references",
-               "items": {
-                  "$ref": "#/$defs/Reference"
-               },
-               "type": "array"
-            },
-            "statement_subject": {
-               "$ref": "#/$defs/ExpressionAnnotation",
-               "description": "The entity being described by the note."
-            },
-            "statement_text": {
-               "description": "Free-text describing some aspect of an entity.",
-               "type": "string"
-            },
-            "statement_type": {
-               "$ref": "#/$defs/ExpressionStatementTypeEnum",
-               "description": "The type of free-text statement. For example: cytology, private, curator_comments."
-            },
-            "updated_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
-            }
-         },
-         "required": [
-            "internal"
-         ],
-         "title": "ExpressionAnnotationStatement",
-         "type": "object"
-      },
       "ExpressionConditionRelationEnum": {
          "description": "",
          "enum": [
@@ -3363,6 +3255,13 @@
                },
                "type": "array"
             },
+            "related_notes": {
+               "description": "Holds between an object and a list of related Note objects.",
+               "items": {
+                  "$ref": "#/$defs/Note"
+               },
+               "type": "array"
+            },
             "single_reference": {
                "$ref": "#/$defs/Reference",
                "description": "holds between an object and a single reference"
@@ -3388,62 +3287,6 @@
             "curie"
          ],
          "title": "ExpressionExperiment",
-         "type": "object"
-      },
-      "ExpressionExperimentStatement": {
-         "additionalProperties": false,
-         "description": "Free-text describing some aspect(s) of a gene's expression, particularly nuanced information that is not readily captured in annotations. This statement's scope is limited to the associated ExpressionExperiment.",
-         "properties": {
-            "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
-            },
-            "date_created": {
-               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-               "format": "date",
-               "type": "string"
-            },
-            "date_updated": {
-               "description": "Date on which an entity was last modified.",
-               "format": "date",
-               "type": "string"
-            },
-            "internal": {
-               "description": "Classifies the entity as private (for internal use) or not (for public use).",
-               "type": "boolean"
-            },
-            "obsolete": {
-               "description": "Entity is no longer current.",
-               "type": "boolean"
-            },
-            "references": {
-               "description": "holds between an object and a list of references",
-               "items": {
-                  "$ref": "#/$defs/Reference"
-               },
-               "type": "array"
-            },
-            "statement_subject": {
-               "$ref": "#/$defs/ExpressionExperiment",
-               "description": "The entity being described by the note."
-            },
-            "statement_text": {
-               "description": "Free-text describing some aspect of an entity.",
-               "type": "string"
-            },
-            "statement_type": {
-               "description": "The type of free-text statement. For example: cytology, private, curator_comments.",
-               "type": "string"
-            },
-            "updated_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
-            }
-         },
-         "required": [
-            "internal"
-         ],
-         "title": "ExpressionExperimentStatement",
          "type": "object"
       },
       "ExpressionQualifierSet": {
@@ -3853,7 +3696,7 @@
             },
             "genes": {
                "items": {
-                  "type": "string"
+                  "$ref": "#/$defs/Gene"
                },
                "type": "array"
             },
@@ -4043,7 +3886,7 @@
             "gene_types_secondary": {
                "description": "SOTerm describing alternate gene types",
                "items": {
-                  "type": "string"
+                  "$ref": "#/$defs/SOTerm"
                },
                "type": "array"
             },
@@ -4220,7 +4063,7 @@
             },
             "genes": {
                "items": {
-                  "type": "string"
+                  "$ref": "#/$defs/Gene"
                },
                "type": "array"
             },
@@ -4237,8 +4080,8 @@
                "description": "Holds between an object and a Note object."
             },
             "taxon": {
-               "description": "The taxon from which the biological entity derives.",
-               "type": "string"
+               "$ref": "#/$defs/NCBITaxonTerm",
+               "description": "The taxon from which the biological entity derives."
             },
             "updated_by": {
                "description": "The individual that last modified the entity.",
@@ -4389,62 +4232,6 @@
          "title": "GeneDiseaseAnnotation",
          "type": "object"
       },
-      "GeneExpressionStatement": {
-         "additionalProperties": false,
-         "description": "Free-text describing some aspect(s) of a gene's expression, particularly nuanced information that is not readily captured in annotations. May summarize data from many annotations and/or many experiments.",
-         "properties": {
-            "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
-            },
-            "date_created": {
-               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-               "format": "date",
-               "type": "string"
-            },
-            "date_updated": {
-               "description": "Date on which an entity was last modified.",
-               "format": "date",
-               "type": "string"
-            },
-            "internal": {
-               "description": "Classifies the entity as private (for internal use) or not (for public use).",
-               "type": "boolean"
-            },
-            "obsolete": {
-               "description": "Entity is no longer current.",
-               "type": "boolean"
-            },
-            "references": {
-               "description": "holds between an object and a list of references",
-               "items": {
-                  "$ref": "#/$defs/Reference"
-               },
-               "type": "array"
-            },
-            "statement_subject": {
-               "$ref": "#/$defs/Gene",
-               "description": "The entity being described by the note."
-            },
-            "statement_text": {
-               "description": "Free-text describing some aspect of an entity.",
-               "type": "string"
-            },
-            "statement_type": {
-               "$ref": "#/$defs/ExpressionStatementTypeEnum",
-               "description": "The type of free-text statement. For example: cytology, private, curator_comments."
-            },
-            "updated_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
-            }
-         },
-         "required": [
-            "internal"
-         ],
-         "title": "GeneExpressionStatement",
-         "type": "object"
-      },
       "GeneGeneticInteraction": {
          "additionalProperties": false,
          "description": "A genetic interaction between genes (e.g. phenotypic suppression)",
@@ -4564,7 +4351,7 @@
             "acquires_merge": {
                "description": "Genes which have been merged into this gene",
                "items": {
-                  "type": "string"
+                  "$ref": "#/$defs/Gene"
                },
                "type": "array"
             },
@@ -4600,7 +4387,7 @@
             "merged_into": {
                "description": "This gene has been merged into",
                "items": {
-                  "type": "string"
+                  "$ref": "#/$defs/Gene"
                },
                "type": "array"
             },
@@ -4611,14 +4398,14 @@
             "split_from": {
                "description": "This gene exists because it has been split from this gene",
                "items": {
-                  "type": "string"
+                  "$ref": "#/$defs/Gene"
                },
                "type": "array"
             },
             "split_into": {
                "description": "This gene has been split into these genes",
                "items": {
-                  "type": "string"
+                  "$ref": "#/$defs/Gene"
                },
                "type": "array"
             },
@@ -4769,7 +4556,7 @@
             },
             "genes": {
                "items": {
-                  "type": "string"
+                  "$ref": "#/$defs/Gene"
                },
                "type": "array"
             },
@@ -4784,7 +4571,7 @@
             "old_members": {
                "description": "Gene which were formerly members of this GeneClass",
                "items": {
-                  "type": "string"
+                  "$ref": "#/$defs/Gene"
                },
                "type": "array"
             },
@@ -4803,7 +4590,6 @@
          },
          "required": [
             "internal",
-            "curie",
             "designating_laboratory"
          ],
          "title": "GeneNomenclatureSet",
@@ -4968,8 +4754,8 @@
                "type": "string"
             },
             "genetic_map_chromosome": {
-               "description": "Chromosome or contig to which the gene has been genetically mapped",
-               "type": "string"
+               "$ref": "#/$defs/Chromosome",
+               "description": "Chromosome or contig to which the gene has been genetically mapped"
             },
             "genetic_map_position_centimorgan": {
                "description": "Genetic map predicted chromosome location in centimorgans eg 22.3366 cM",
@@ -5024,8 +4810,8 @@
                "type": "array"
             },
             "taxon": {
-               "description": "The taxon from which the biological entity derives.",
-               "type": "string"
+               "$ref": "#/$defs/NCBITaxonTerm",
+               "description": "The taxon from which the biological entity derives."
             },
             "updated_by": {
                "description": "The individual that last modified the entity.",
