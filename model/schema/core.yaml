@@ -240,6 +240,18 @@ classes:
   Protein:
     is_a: GenomicEntity
 
+  Identifier:
+    slots:
+      - counter
+      - subdomain_code
+      - subdomain_name
+      - curie
+
+  IdentifiersRange:
+    slots:
+      - first
+      - last
+
 ## ------------
 ## SLOTS
 ## ------------
@@ -570,7 +582,28 @@ slots:
     description: This determines if the the schedule is active or not
     range: boolean
 
-## --------------------
+  counter:
+    description: a number to identify an alliance resource in a subdomain
+    range: integer
+
+  subdomain_code:
+    description: a three letter string, representing a subdomain (e.g 101 represents disease_annotation)
+    range: string
+
+  subdomain_name:
+    description: subdomain name (e.g disease_annotation)
+    range: string
+
+  first:
+    description: first identifier in a range
+    range: Identifier
+
+  last:
+    description: last identifier in a range
+    range: Identifier
+
+
+  ## --------------------
 ## ASSOCIATION SLOTS
 ## --------------------
 
