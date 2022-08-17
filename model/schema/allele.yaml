@@ -119,6 +119,7 @@ classes:
     is_a: Association
     slots:
       - evidence
+      - mutation_target_strain
     slot_usage:
       subject:
         range: Allele
@@ -319,10 +320,25 @@ slots:
     range: uriorcurie
 
   mutagenesis_method:
+    alias: ["mutagen"]
     range: VocabularyTerm
+    description: >-
+      Technique used to create the allele, e.g.
+      spontaneous / naturally occuring / radiation induced / recombinant / 
+      ENU / CRISPR / TALEN / gamma rays / not specified / spontaneous / DNA /
+      DNA AND CRISPR / DNA and TALEN / zinc finger nuclease / EMS
 
-  mutagen:
-    range: VocabularyTerm
+  mutation_target:
+    description: >-
+      The target of the mutation, e.g. strain / adult females / 
+      adult males / embryos / sperm / not specified
+    range: string # VocabularyTerm?
+
+  mutation_target_strain:
+    description: >- 
+      The particular strain (solely for and from MGI) that is targeted
+      by the generation method for a particular allele.
+    range: string # VocabularyTerm?
 
   construct_components:
     multivalued: true
@@ -354,14 +370,6 @@ slots:
     domain: Allele
     range: string
     multivalued: true
-
-  generation_method:
-    description: >-
-      Technique used to create the allele, e.g.
-      spontaneous / naturally occuring / radiation
-    domain: Allele
-    range: string
-    multivalued: false
 
   germline_transmission_status:
     description: >-
