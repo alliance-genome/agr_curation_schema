@@ -1089,6 +1089,10 @@
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
             },
+            "mutation_target_strain": {
+               "description": "The particular strain (solely for and from MGI) that is targeted by the generation method for a particular allele.",
+               "type": "string"
+            },
             "object": {
                "$ref": "#/$defs/GenerationMethod",
                "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
@@ -5357,6 +5361,10 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "['mutagen']": {
+               "description": "Technique used to create the allele, e.g. spontaneous / naturally occuring / radiation induced / recombinant /  ENU / CRISPR / TALEN / gamma rays / not specified / spontaneous / DNA / DNA AND CRISPR / DNA and TALEN / zinc finger nuclease / EMS",
+               "type": "string"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -5371,18 +5379,12 @@
                "format": "date",
                "type": "string"
             },
-            "generation_method": {
-               "description": "Technique used to create the allele, e.g. spontaneous / naturally occuring / radiation",
-               "type": "string"
-            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
             },
-            "mutagen": {
-               "type": "string"
-            },
-            "mutagenesis_method": {
+            "mutagen_target": {
+               "description": "The target of the mutation, e.g. strain / adult females /  adult males / embryos / sperm / not specified",
                "type": "string"
             },
             "obsolete": {
