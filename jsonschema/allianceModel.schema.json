@@ -5361,6 +5361,10 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "['mutagee']": {
+               "description": "The target of the mutation, e.g. strain / adult females /  adult males / embryos / sperm / not specified",
+               "type": "string"
+            },
             "['mutagen']": {
                "description": "Technique used to create the allele, e.g. spontaneous / naturally occuring / radiation induced / recombinant /  ENU / CRISPR / TALEN / gamma rays / not specified / spontaneous / DNA / DNA AND CRISPR / DNA and TALEN / zinc finger nuclease / EMS",
                "type": "string"
@@ -5382,10 +5386,6 @@
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
-            },
-            "mutagen_target": {
-               "description": "The target of the mutation, e.g. strain / adult females /  adult males / embryos / sperm / not specified",
-               "type": "string"
             },
             "obsolete": {
                "description": "Entity is no longer current.",

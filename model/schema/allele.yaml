@@ -100,7 +100,7 @@ classes:
     is_a: AuditedObject
     slots:
       - mutagenesis_method
-      - mutagen_target
+      - mutagenesis_target
 
   AlleleSecondaryIdAnnotation:
     is_a: AlleleSlotAnnotation
@@ -327,7 +327,8 @@ slots:
       ENU / CRISPR / TALEN / gamma rays / not specified / spontaneous / DNA /
       DNA AND CRISPR / DNA and TALEN / zinc finger nuclease / EMS
 
-  mutagen_target:
+  mutagenesis_target:
+    alias: ["mutagee"]
     description: >-
       The target of the mutation, e.g. strain / adult females / 
       adult males / embryos / sperm / not specified
