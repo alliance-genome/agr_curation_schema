@@ -101,7 +101,7 @@ classes:
     slots:
       - mutagenesis_method
       - mutagen
-      - generation_method
+      - mutagen_target
 
   AlleleSecondaryIdAnnotation:
     is_a: AlleleSlotAnnotation
