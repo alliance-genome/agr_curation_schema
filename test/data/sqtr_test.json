@@ -9,11 +9,7 @@
       "name": "TALEN2-eftud2",
       "synonyms": [{"synonym": "test", "internal": false},{"synonym": "another test", "internal": false}],
       "secondary_identifiers": ["ZFIN:ZDB-MRPHLNO-123456-1"],
-      "references": [{
-        "curie": "PMID:19648295",
-        "reference_id": 19648295,
-        "internal": false
-      }]
+      "references": ["PMID:19648295"]
     },
     {
       "curie": "ZFIN:ZDB-CRISPR-220421",
@@ -24,11 +20,7 @@
       "name": "CRISPR-eftud2",
       "synonyms": [{"synonym": "test", "internal": false},{"synonym": "another test", "internal": false}],
       "secondary_identifiers": ["ZFIN:ZDB-MRPHLNO-123456-1"],
-      "references": [{
-        "curie": "PMID:19648295",
-        "reference_id": 19648295,
-        "internal": false
-      }]
+      "references": ["PMID:19648295"]
     },
     {
       "curie": "ZFIN:ZDB-MRPHLNO-220211",
@@ -39,12 +31,7 @@
       "internal": false,
       "synonyms": [{"synonym": "test", "internal": false},{"synonym": "another test", "internal": false}],
       "secondary_identifiers": ["ZFIN:ZDB-MRPHLNO-123456-1"],
-      "references": [{
-        "curie": "PMID:19648295",
-        "reference_id": 19648295,
-        "internal": false
-      }
-      ]
+       "references": ["PMID:19648295"]
     }
   ]
 }

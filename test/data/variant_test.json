@@ -8,8 +8,8 @@
       "internal": false,
       "variant_genome_locations": [
         {
-          "assembly": {"internal": false, "curie":"GRCz11"},
-          "chromosome": {"internal": false, "curie":"7"},
+          "assembly": "GRCz11",
+          "chromosome": "7",
           "start_position": 30341642,
           "end_position": 30341642,
           "reference_sequence": "C",

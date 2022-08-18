@@ -12,8 +12,6 @@
       "date_updated": "ZFIN",
       "internal": false,
       "subject": "ZFIN:ZDB-FISH-180912-16",
-      "taxon": "NCBITaxon:7955",
-      "subtype": "fish",
       "predicate": "is_model_of",
       "condition_relations": [
         {

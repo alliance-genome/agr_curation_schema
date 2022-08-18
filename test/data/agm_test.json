@@ -45,12 +45,7 @@
       "references": [],
       "components": [
         {
-          "has_allele": {
-            "curie": "ZFIN:ZDB-ALT-980203-1593",
-            "internal": false,
-            "name": "placeholder name",
-            "taxon": "NCBITaxon:7955"
-          },
+          "has_allele": "ZFIN:ZDB-ALT-980203-1593",
           "internal": false,
           "zygosity": "GENO:0000136"
         }

@@ -35,11 +35,7 @@
           "display_name": ""
         }
       ],
-      "gene_type": {
-        "curie": "SO:0001217",
-        "namespace": "I don't know",
-        "internal": false
-      }
+      "gene_type": "SO:0001217"
     }
   ]
 }
