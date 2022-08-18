@@ -2,7 +2,7 @@
   "sqtr_ingest_set": [
     {
       "curie": "ZFIN:ZDB-TALEN-200601-1",
-      "taxon": {"curie":"NCBITaxon:7955", "namespace": "I don't know", "internal": false},
+      "taxon": "NCBITaxon:7955",
       "created_by": "ZFIN",
       "updated_by": "ZFIN",
       "internal": false,
@@ -17,7 +17,7 @@
     },
     {
       "curie": "ZFIN:ZDB-CRISPR-220421",
-      "taxon": {"curie":"NCBITaxon:7955", "namespace": "I don't know", "internal": false},
+      "taxon": "NCBITaxon:7955",
       "created_by": "ZFIN",
       "updated_by": "ZFIN",
       "internal": false,
@@ -32,7 +32,7 @@
     },
     {
       "curie": "ZFIN:ZDB-MRPHLNO-220211",
-      "taxon": {"curie":"NCBITaxon:7955", "namespace": "I don't know", "internal": false},
+      "taxon": "NCBITaxon:7955",
       "name": "MRPHLNO-eftud2",
       "created_by": "ZFIN",
       "updated_by": "ZFIN",
