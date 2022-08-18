@@ -4,11 +4,7 @@
       "evidence_codes": [
         "ECO:0000305"
       ],
-      "single_reference": {
-        "reference_id": 123456,
-        "curie": "PMID:123456",
-        "internal": false
-      },
+      "single_reference": "PMID:123456",
       "data_provider": "ZFIN",
       "object": "DOID:9452",
       "date_created": "ZFIN",

@@ -5,11 +5,7 @@
       "evidence_codes": [
         "ECO:0000305"
       ],
-      "single_reference": {
-        "curie": "PMID:0012345",
-        "reference_id": 12345,
-        "internal": false
-      },
+      "single_reference": "PMID:123456",
       "data_provider": "ZFIN",
       "subject": "ZFIN:ZDB-ALT-001122-1",
       "predicate": "is_implicated_in",

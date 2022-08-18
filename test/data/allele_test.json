@@ -8,11 +8,7 @@
       "internal": false,
       "name": "b1219",
       "associated_references": [
-        {
-          "reference_type": "term:huh?",
-          "single_reference": {"reference_id":123456, "internal": false},
-          "internal": false
-        }
+        "PMID:123456"
       ]
     },
     {
@@ -23,11 +19,7 @@
       "internal": false,
       "name": "sa11077",
       "associated_references": [
-        {
-          "reference_type": "term:huh?",
-          "single_reference": {"reference_id":123456, "internal": false},
-          "internal": false
-        }
+        "PMID:123456"
       ]
     }
   ]
