@@ -4,6 +4,7 @@
       "evidence_codes": [
         "ECO:0000305"
       ],
+      "alliance_curie": "AGRKB:100123456789014",
       "single_reference": "PMID:123456",
       "data_provider": "ZFIN",
       "object": "DOID:9452",

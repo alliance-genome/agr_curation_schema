@@ -1,7 +1,7 @@
 {
   "disease_allele_ingest_set": [
     {
-      "curie": "AGRKB:100123456789013",
+      "alliance_curie": "AGRKB:100123456789013",
       "evidence_codes": [
         "ECO:0000305"
       ],

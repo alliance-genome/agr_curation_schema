@@ -8,7 +8,9 @@
       "internal": false,
       "name": "b1219",
       "associated_references": [
-        "PMID:123456"
+        {"single_reference": "PMID:123456",
+        "internal": true,
+        "reference_type": "journal"}
       ]
     },
     {
@@ -19,7 +21,9 @@
       "internal": false,
       "name": "sa11077",
       "associated_references": [
-        "PMID:123456"
+        {"single_reference": "PMID:123456",
+        "internal": true,
+        "reference_type": "journal"}
       ]
     }
   ]

@@ -2,7 +2,7 @@
   "disease_gene_ingest_set": [
     {
       "evidence_codes": ["ECO:0000305"],
-      "curie": "AGRKB:100123456789014",
+      "alliance_curie": "AGRKB:100123456789014",
       "single_reference": "PMID:123456",
       "data_provider": "ZFIN",
       "object": "DOID:0001234",
