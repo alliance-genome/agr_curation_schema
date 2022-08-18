@@ -167,11 +167,6 @@ classes:
       - subject
       - predicate
       - object
-    slot_usage:
-      subject:
-        identifier: true
-      object:
-        identifier: true
 
   EntitySynonym:
     is_a: Association
@@ -374,6 +369,14 @@ slots:
     multivalued: false
     description: >-
       A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
+    range: uriorcurie
+    identifier: true
+
+  alliance_curie:
+    multivalued: false
+    description: >-
+      A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI, 
+      prefix must be AGRKB, generated at alliance.
     range: uriorcurie
 
   unique_id:
