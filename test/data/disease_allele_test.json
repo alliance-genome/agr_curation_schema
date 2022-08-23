@@ -1,32 +1,15 @@
 {
   "disease_allele_ingest_set": [
     {
-      "curie": "AGRKB:100123456789013",
+      "alliance_curie": "AGRKB:100123456789013",
       "evidence_codes": [
-        {
-          "curie": "ECO:0000305",
-          "namespace": "I don't know",
-          "internal": false
-        }
+        "ECO:0000305"
       ],
-      "single_reference": {
-        "curie": "PMID:0012345",
-        "reference_id": 12345,
-        "internal": false
-      },
+      "single_reference": "PMID:123456",
       "data_provider": "ZFIN",
-      "subject": {
-        "curie": "ZFIN:ZDB-ALT-001122-1",
-        "name": "not sure why this is required here",
-        "taxon": {"curie": "NCBITaxon:7955", "internal": false},
-        "internal": false
-      },
+      "subject": "ZFIN:ZDB-ALT-001122-1",
       "predicate": "is_implicated_in",
-      "object": {
-        "curie": "DOID:0001234",
-        "namespace": "I don't know",
-        "internal": false
-      },
+      "object": "DOID:0001234",
       "created_by": "ZFIN",
       "updated_by": "ZFIN",
       "internal": false

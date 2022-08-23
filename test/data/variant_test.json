@@ -2,17 +2,14 @@
   "variant_ingest_set": [
     {
       "curie": "ZFIN:ZDB-ALT-000412-8",
-      "taxon": {
-          "curie": "NCBITaxon:7955",
-          "internal": false
-        },
+      "taxon": "NCBITaxon:7955",
       "created_by": "ZFIN",
       "updated_by": "ZFIN",
       "internal": false,
       "variant_genome_locations": [
         {
-          "assembly": {"internal": false, "curie":"GRCz11"},
-          "chromosome": {"internal": false, "curie":"7"},
+          "assembly": "GRCz11",
+          "chromosome": "7",
           "start_position": 30341642,
           "end_position": 30341642,
           "reference_sequence": "C",
@@ -21,7 +18,7 @@
         }
       ],
       "variant_status": "public",
-      "variant_type": {"curie": "SO:1000008", "internal": false, "namespace": "I do not know"}
+      "variant_type": "SO:1000008"
     }
   ]
 }

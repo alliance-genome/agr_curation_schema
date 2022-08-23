@@ -2,32 +2,28 @@
   "allele_ingest_set": [
     {
       "curie": "ZFIN:ZDB-ALT-130621-1",
-      "taxon": {"curie":"NCBITaxon:7955", "namespace": "I don't know", "internal": false},
+      "taxon": "NCBITaxon:7955",
       "created_by": "ZFIN",
       "updated_by": "ZFIN",
       "internal": false,
       "name": "b1219",
       "associated_references": [
-        {
-          "reference_type": "term:huh?",
-          "single_reference": {"reference_id":123456, "internal": false},
-          "internal": false
-        }
+        {"single_reference": "PMID:123456",
+        "internal": true,
+        "reference_type": "journal"}
       ]
     },
     {
       "curie": "ZFIN:ZDB-ALT-130411-947",
-      "taxon": {"curie":"NCBITaxon:7955", "namespace": "I don't know", "internal": false},
+      "taxon": "NCBITaxon:7955",
       "created_by": "ZFIN",
       "updated_by": "ZFIN",
       "internal": false,
       "name": "sa11077",
       "associated_references": [
-        {
-          "reference_type": "term:huh?",
-          "single_reference": {"reference_id":123456, "internal": false},
-          "internal": false
-        }
+        {"single_reference": "PMID:123456",
+        "internal": true,
+        "reference_type": "journal"}
       ]
     }
   ]
