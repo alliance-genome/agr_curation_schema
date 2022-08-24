@@ -12,6 +12,7 @@
       "date_updated": "ZFIN",
       "internal": false,
       "subject": "ZFIN:ZDB-FISH-180912-16",
+      "inferred_gene": "ZFIN:ZDB-GENE-060503-338",
       "predicate": "is_model_of",
       "condition_relations": [
         {
@@ -19,8 +20,9 @@
           "internal": false,
           "conditions": [
             {
-              "condition_statement": "standard conditions",
-              "condition_class": "ZECO:0000103",
+              "condition_free_text": "Bacterial strain HB101",
+              "condition_class": "ZECO:0000104",
+              "condition_statement": "experimental conditions:Bacterial strain HB101",
               "internal": false
             }
           ]

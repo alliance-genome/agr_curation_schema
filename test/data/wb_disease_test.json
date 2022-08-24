@@ -11,6 +11,12 @@
               "condition_class": "ZECO:0000111",
               "condition_statement": "chemical treatment:levamisole",
               "internal": false
+            },
+            {
+              "condition_free_text": "Bacterial strain HB101",
+              "condition_class": "ZECO:0000104",
+              "condition_statement": "experimental conditions:Bacterial strain HB101",
+              "internal": false
             }
           ]
         }
@@ -99,7 +105,8 @@
       "object": "DOID:10652",
       "predicate": "is_model_of",
       "single_reference":"PMID:19648295",
-      "subject": "WB:WBStrain00005094"
+      "subject": "WB:WBStrain00005094",
+      "inferred_allele": "WB:WBTransgene00000410"
     },
     {
       "condition_relations": [
@@ -141,7 +148,8 @@
       "object": "DOID:11723",
       "predicate": "is_model_of",
       "single_reference":"PMID:19648295",
-      "subject": "WB:WBStrain00024340"
-      }
+      "subject": "WB:WBStrain00024340",
+      "asserted_allele": "WB:WBVar00054722"
+    }
   ]
 }
