@@ -5366,7 +5366,7 @@
                "type": "string"
             },
             "['mutagen']": {
-               "description": "Technique used to create the allele, e.g. spontaneous / naturally occuring / radiation induced / recombinant /  ENU / CRISPR / TALEN / gamma rays / not specified / spontaneous / DNA / DNA AND CRISPR / DNA and TALEN / zinc finger nuclease / EMS",
+               "description": "Technique used to create the allele, e.g. spontaneous / naturally occurring / radiation-induced / recombinant /  ENU / CRISPR / TALEN / gamma rays / not specified / spontaneous / DNA / DNA AND CRISPR / DNA and TALEN / zinc finger nuclease / EMS",
                "type": "string"
             },
             "created_by": {
