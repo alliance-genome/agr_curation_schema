@@ -2,10 +2,7 @@
   "gene_ingest_set": [
     {
       "curie": "ZFIN:ZDB-GENE-010226-1",
-      "taxon": {
-          "curie": "NCBITaxon:7955",
-          "internal": false
-        },
+      "taxon": "NCBITaxon:7955",
       "created_by": "ZFIN",
       "updated_by": "ZFIN",
       "internal": false,
@@ -38,11 +35,7 @@
           "display_name": ""
         }
       ],
-      "gene_type": {
-        "curie": "SO:0001217",
-        "namespace": "I don't know",
-        "internal": false
-      }
+      "gene_type": "SO:0001217"
     }
   ]
 }

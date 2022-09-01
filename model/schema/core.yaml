@@ -259,6 +259,18 @@ classes:
   Protein:
     is_a: GenomicEntity
 
+  Identifier:
+    slots:
+      - counter
+      - subdomain_code
+      - subdomain_name
+      - curie
+
+  IdentifiersRange:
+    slots:
+      - first
+      - last
+
 ## ------------
 ## SLOTS
 ## ------------
@@ -392,6 +404,14 @@ slots:
     multivalued: false
     description: >-
       A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
+    range: uriorcurie
+    identifier: true
+
+  alliance_curie:
+    multivalued: false
+    description: >-
+      A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI, 
+      prefix must be AGRKB, generated at alliance.
     range: uriorcurie
 
   unique_id:
@@ -597,7 +617,28 @@ slots:
     description: This determines if the the schedule is active or not
     range: boolean
 
-## --------------------
+  counter:
+    description: a number to identify an alliance resource in a subdomain
+    range: integer
+
+  subdomain_code:
+    description: a three letter string, representing a subdomain (e.g 101 represents disease_annotation)
+    range: string
+
+  subdomain_name:
+    description: subdomain name (e.g disease_annotation)
+    range: string
+
+  first:
+    description: first identifier in a range
+    range: Identifier
+
+  last:
+    description: last identifier in a range
+    range: Identifier
+
+
+  ## --------------------
 ## ASSOCIATION SLOTS
 ## --------------------
 

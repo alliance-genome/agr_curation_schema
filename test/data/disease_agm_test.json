@@ -2,36 +2,17 @@
   "disease_agm_ingest_set": [
     {
       "evidence_codes": [
-        {
-          "curie": "ECO:0000305",
-          "namespace": "I don't know",
-          "internal": false
-        }
+        "ECO:0000305"
       ],
-      "single_reference": {
-        "reference_id": 123456,
-        "curie": "PMID:123456",
-        "internal": false
-      },
+      "alliance_curie": "AGRKB:100123456789014",
+      "single_reference": "PMID:123456",
       "data_provider": "ZFIN",
-      "object": {
-        "curie": "DOID:9452",
-        "namespace": "standard conditions",
-        "internal": false
-      },
+      "object": "DOID:9452",
       "date_created": "ZFIN",
       "date_updated": "ZFIN",
       "internal": false,
-      "subject": {
-        "curie": "ZFIN:ZDB-FISH-180912-16",
-        "name": "not sure why this is required here",
-        "internal": false,
-        "taxon": {
-          "curie": "NCBITaxon:7955",
-          "internal": false
-        },
-        "subtype": "fish"
-      },
+      "subject": "ZFIN:ZDB-FISH-180912-16",
+      "inferred_gene": "ZFIN:ZDB-GENE-060503-338",
       "predicate": "is_model_of",
       "condition_relations": [
         {
@@ -39,12 +20,9 @@
           "internal": false,
           "conditions": [
             {
-              "condition_statement": "standard conditions",
-              "condition_class": {
-                "curie": "ZECO:0000103",
-                "namespace": "standard conditions",
-                "internal": false
-              },
+              "condition_free_text": "Bacterial strain HB101",
+              "condition_class": "ZECO:0000104",
+              "condition_statement": "experimental conditions:Bacterial strain HB101",
               "internal": false
             }
           ]
