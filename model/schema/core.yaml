@@ -262,6 +262,9 @@ classes:
 
 slots:
 
+  synonym:
+    description: the text string of the synonym
+
   start:
     description: The start of the feature in positive 1-based integer coordinates
 
