@@ -50,6 +50,8 @@ classes:
       - cron_schedule
       - curation_report_status
       - curation_report_group
+      - error_message
+      - scheduling_error_message
 
   CurationReportHistory:
     is_a: AuditedObject
@@ -59,7 +61,8 @@ classes:
       - curation_report
       - curation_report_timestamp
       - pdf_file_path
-      - xlsx_file_path
+      - xls_file_path
+      - html_file_path
       - curation_report_status
 
 
@@ -73,9 +76,14 @@ slots:
     description: File path of the PDF file generated from the BIRT report
     range: string
 
-  xlsx_file_path:
+  xls_file_path:
     description: >-
       File path of the Excel file generated from the BIRT report
+    range: string
+
+  html_file_path:
+    description: >-
+      File path of the HTML file generated from the BIRT report
     range: string
 
   curation_report_group:
@@ -96,3 +104,13 @@ slots:
     description: Timestamp for creation of BIRT report file
     domain: CurationReportHistory
     range: date
+
+  error_message:
+    description: Error message for curation reports
+    domain: CurationReport
+    range: string
+
+  scheduling_error_message:
+    description: Error message for scheduling of curation reports
+    domain: CurationReport
+    range: string

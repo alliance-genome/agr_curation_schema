@@ -63,6 +63,8 @@ classes:
       - date_created
       - updated_by
       - date_updated
+      - db_date_created
+      - db_date_updated
       - internal
       - obsolete
 
@@ -127,7 +129,7 @@ classes:
   Synonym:
     is_a: AuditedObject
     slots:
-      - synonym
+      - name
 
   Note:
     is_a: AuditedObject
@@ -387,7 +389,7 @@ slots:
   alliance_curie:
     multivalued: false
     description: >-
-      A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI, 
+      A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI,
       prefix must be AGRKB, generated at alliance.
     range: uriorcurie
 
@@ -440,6 +442,20 @@ slots:
     aliases: ['date_last_modified']
     description: >-
       Date on which an entity was last modified.
+    range: date
+
+  db_date_created:
+    description: >-
+      The date on which an entity was created in the Alliance database.  This
+      is disinct from date_created, which represents the date when the entity
+      was originally created (i.e. at the MOD for imported data).
+    range: date
+
+  db_date_updated:
+    description: >-
+      Date on which an entity was last modified in the Alliance database.  This
+      is disinct from date_updated, which represents the date when the entity
+      was last modified and may predate import into the Alliance database.
     range: date
 
   created_by:

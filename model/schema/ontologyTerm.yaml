@@ -159,8 +159,6 @@ classes:
   XBEDTerm:
     is_a: OntologyTerm
 
-
-
   CHEBITerm:
     is_a: ChemicalTerm
 
@@ -239,6 +237,9 @@ classes:
   XPOTerm:
     is_a: PhenotypeTerm
 
+  MPTerm:
+    is_a: PhenotypeTerm
+
   ATPTerm:
     is_a: OntologyTerm
     description: >-
@@ -263,4 +264,3 @@ classes:
     is_a: ChemicalTerm
     description: >-
       Molecules as described by WormBase
-
