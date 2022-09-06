@@ -7,9 +7,22 @@
       "updated_by": "ZFIN",
       "internal": false,
       "name": "TALEN2-eftud2",
-      "synonyms": [{"synonym": "test", "internal": false},{"synonym": "another test", "internal": false}],
-      "secondary_identifiers": ["ZFIN:ZDB-MRPHLNO-123456-1"],
-      "references": ["PMID:19648295"]
+      "synonyms": [
+        {
+          "name": "test",
+          "internal": false
+        },
+        {
+          "name": "another test",
+          "internal": false
+        }
+      ],
+      "secondary_identifiers": [
+        "ZFIN:ZDB-MRPHLNO-123456-1"
+      ],
+      "references": [
+        "PMID:19648295"
+      ]
     },
     {
       "curie": "ZFIN:ZDB-CRISPR-220421",
@@ -18,9 +31,22 @@
       "updated_by": "ZFIN",
       "internal": false,
       "name": "CRISPR-eftud2",
-      "synonyms": [{"synonym": "test", "internal": false},{"synonym": "another test", "internal": false}],
-      "secondary_identifiers": ["ZFIN:ZDB-MRPHLNO-123456-1"],
-      "references": ["PMID:19648295"]
+      "synonyms": [
+        {
+          "name": "test",
+          "internal": false
+        },
+        {
+          "name": "another test",
+          "internal": false
+        }
+      ],
+      "secondary_identifiers": [
+        "ZFIN:ZDB-MRPHLNO-123456-1"
+      ],
+      "references": [
+        "PMID:19648295"
+      ]
     },
     {
       "curie": "ZFIN:ZDB-MRPHLNO-220211",
@@ -29,9 +55,22 @@
       "created_by": "ZFIN",
       "updated_by": "ZFIN",
       "internal": false,
-      "synonyms": [{"synonym": "test", "internal": false},{"synonym": "another test", "internal": false}],
-      "secondary_identifiers": ["ZFIN:ZDB-MRPHLNO-123456-1"],
-       "references": ["PMID:19648295"]
+      "synonyms": [
+        {
+          "name": "test",
+          "internal": false
+        },
+        {
+          "name": "another test",
+          "internal": false
+        }
+      ],
+      "secondary_identifiers": [
+        "ZFIN:ZDB-MRPHLNO-123456-1"
+      ],
+      "references": [
+        "PMID:19648295"
+      ]
     }
   ]
 }
