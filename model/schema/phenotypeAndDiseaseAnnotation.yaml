@@ -409,7 +409,7 @@ classes:
         description: >-
           ChEBI or molecular ontology id used in subset of condition terms.  ie: the specific
           chemcial used in conjunction with 'chemical condition'.
-        range: VocabularyTerm
+        range: ChemicalTerm
 
 
   ConditionRelation:
@@ -596,4 +596,3 @@ slots:
       A slot pointing to a free-text alias or 'handle' for a data object, such as
       a reference-specific alias for a data object used while curating.
     range: string
-
