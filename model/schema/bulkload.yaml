@@ -63,6 +63,7 @@ classes:
       - record_count
       - error_message
       - bulk_load
+      - date_last_loaded
 
   BulkScheduledLoad:
     is_a: BulkLoad
@@ -130,6 +131,12 @@ slots:
     multivalued: true
     range: BulkLoadFile
 
+  date_last_loaded:
+    description: >-
+      Indicates when the file was last loaded
+    domain: BulkLoadFile
+    range: date  
+
   md5_sum:
     description: Generated md5Sum of the file that has been uploaded
     range: string
@@ -137,18 +144,23 @@ slots:
   local_file_path:
     description: Local file path to where the file has been saved for processing
     range: string
+
   file_size:
     description: The size of the file
     range: integer
+
   s3_path:
     description: The relative path to the file in the S3 bucket
     range: string
+
   s3_url:
     description: The full URL to the file from S3
     range: string
+
   record_count:
     description: The number of records found in the file
     range: integer
+
   bulk_load:
     description: A link back to the parent bulk load
     range: BulkLoad
@@ -160,33 +172,42 @@ slots:
   fms_data_type:
     description: The dataType paramater in the FMS
     range: string
+
   fms_data_sub_type:
     description: The dataSubType paramater in the FMS
     range: string
+
   bulkload_url:
     description: The URL that this bulk load will download for ingest
     range: string
+
   backend_load_type:
     range: backend_bulk_data_type_enum
+
   load_started:
     description: >-
       The date and time that the load started.
     range: date
+
   load_finished:
     description: >-
       The date and time that the load finished.
     range: date
+
   total_records:
     description:
       The total number of records
     range: integer
+
   failed_records:
     description:
       The number of failed records
     range: integer
+
   completed_records:
     description:
       The number of completed records
+
   load_exceptions:
     description:
       A list of execeptions the load encountered
