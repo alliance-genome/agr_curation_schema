@@ -195,6 +195,7 @@ SCHEMA_TEST_EXAMPLES := \
 	variant_test \
 	agm_test \
 	sqtr_test \
+	ontology_closure_test \
 
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
