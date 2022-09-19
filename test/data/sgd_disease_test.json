@@ -5,7 +5,7 @@
                 "ECO:0000250",
                 "ECO:0000316"
             ],
-            "curie": "AGRKB:100123456789017",
+            "alliance_curie": "AGRKB:100123456789017",
             "annotation_type": "manually curated",
             "single_reference": "PMID:21145416",
             "data_provider": "SGD",
