@@ -62,6 +62,19 @@
       "updated_by": "WB:WBPerson010002"
     }
   ],
+  "allele_origin_association_ingest_set": [
+  {
+    "subject": "WB:WBVar00000001",
+    "predicate": "introduced_in",
+    "object": "WB:WBStrain00000001",
+    "internal": false,
+    "obsolete": false,
+    "date_created": "2015-04-09T10:15:30+00:00",
+    "date_updated": "2022-07-11T13:12:51+00:00",
+    "created_by": "WB:WBPerson002314",
+    "updated_by": "WB:WBPerson010002"
+  }
+],
   "allele_construct_association_ingest_set": [
     {
       "subject": "WB:WBVar00000001",
@@ -100,5 +113,20 @@
       "created_by": "WB:WBPerson002314",
       "updated_by": "WB:WBPerson010002"
     }
-  ]
+  ],
+  "allele_variant_association_ingest_set": [
+  {
+    "subject": "WB:WBVar00000001",
+    "predicate": "RO:0001019",
+    "object": "WB:WBVar00000001",
+    "evidence_code": "ECO:0000006",
+    "evidence": ["PMID:11231512"],
+    "internal": false,
+    "obsolete": false,
+    "date_created": "2015-04-09T10:15:30+00:00",
+    "date_updated": "2022-07-11T13:12:51+00:00",
+    "created_by": "WB:WBPerson002314",
+    "updated_by": "WB:WBPerson010002"
+  }
+]
 }
