@@ -3,7 +3,8 @@
     {
       "allele_id": "WB:WBVar00000001",
       "mutation_type": "insertion",
-      "evidence": ["PMID:11231512"]
+      "evidence": ["PMID:11231512"],
+      "internal": false
     }
   ],
   "allele_germline_transmission_status_annotation_ingest_set": [
@@ -12,7 +13,8 @@
       "germline_transmission_status": "germline",
       "evidence": [
         "PMID:11231512"
-      ]
+      ],
+      "internal": false
     }
   ],
   "allele_functional_impact_annotation_ingest_set": [
@@ -21,7 +23,8 @@
       "functional_impact": ["loss-of-function"],
       "evidence": [
         "PMID:11231512"
-      ]
+      ],
+      "internal": false
     }
   ],
   "allele_molecular_mutation_annotation_ingest_set": [
@@ -30,7 +33,8 @@
       "molecular_mutations": ["insertion"],
       "evidence": [
         "PMID:11231512"
-      ]
+      ],
+      "internal": false
     }
   ],
   "allele_database_status_annotation_ingest_set": [
@@ -39,23 +43,27 @@
       "database_status": "public",
       "evidence": [
         "PMID:11231512"
-      ]
+      ],
+      "internal": false
     }
   ],
-  "allele_secondary_id_annotation_ingest_set": {
-    "allele_id": "WB:WBVar00000001",
-    "secondary_id": "WBVar00000001",
-    "evidence": [
-      "PMID:11231512"
-    ]
-  },
+  "allele_secondary_id_annotation_ingest_set": [
+    {
+      "allele_id": "WB:WBVar00000001",
+      "secondary_id": "WBVar00000001",
+      "evidence": [
+        "PMID:11231512"
+      ],
+      "internal": false
+    } ],
   "allele_nomenclature_annotation_ingest_set": [
     {
       "allele_id": "WB:WBVar00000001",
-      "nomenclature_event": "WBPaper00000000",
+      "nomenclature_event": "named",
       "evidence": [
         "PMID:11231512"
-      ]
+      ],
+      "internal": false
     }
   ]
 }
