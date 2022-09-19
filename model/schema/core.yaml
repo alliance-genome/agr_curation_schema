@@ -186,6 +186,13 @@ classes:
       - subject
       - predicate
       - object
+    slot_usage:
+        subject:
+            required: true
+        predicate:
+            required: true
+        object:
+            required: true
 
   EntitySynonym:
     is_a: Association

@@ -195,6 +195,10 @@ SCHEMA_TEST_EXAMPLES := \
 	variant_test \
 	agm_test \
 	sqtr_test \
+	allele_association_ingest_test \
+ 	variant_allele_association_test \
+ 	sgd_disease_test \
+ 	fb_disease_test \
 
 
 SCHEMA_TEST_EXAMPLES_INVALID := \

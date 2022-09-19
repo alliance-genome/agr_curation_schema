@@ -141,6 +141,8 @@ classes:
         range: ROTerm
       object:
         range: GenomicEntity
+      evidence:
+        required: true
 
   AlleleGeneAssociation:
     is_a: AlleleGenomicEntityAssociation
