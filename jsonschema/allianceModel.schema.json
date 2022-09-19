@@ -6153,9 +6153,33 @@
                },
                "type": "array"
             },
+            "allele_database_status_annotation_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AlleleDatabaseStatusAnnotation"
+               },
+               "type": "array"
+            },
+            "allele_functional_impact_annotation_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AlleleFunctionalImpactAnnotation"
+               },
+               "type": "array"
+            },
             "allele_gene_association_ingest_set": {
                "items": {
                   "$ref": "#/$defs/AlleleGeneAssociation"
+               },
+               "type": "array"
+            },
+            "allele_generation_method_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/GenerationMethod"
+               },
+               "type": "array"
+            },
+            "allele_germline_transmission_status_annotation_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AlleleGermlineTransmissionStatusAnnotation"
                },
                "type": "array"
             },
@@ -6165,9 +6189,39 @@
                },
                "type": "array"
             },
+            "allele_molecular_mutation_annotation_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AlleleMolecularMutationAnnotation"
+               },
+               "type": "array"
+            },
+            "allele_mutation_type_annotation_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AlleleMutationTypeAnnotation"
+               },
+               "type": "array"
+            },
+            "allele_nomenclature_annotation_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AlleleNomenclatureAnnotation"
+               },
+               "type": "array"
+            },
+            "allele_origin_association_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AlleleOriginAssociation"
+               },
+               "type": "array"
+            },
             "allele_protein_association_ingest_set": {
                "items": {
                   "$ref": "#/$defs/AlleleProteinAssociation"
+               },
+               "type": "array"
+            },
+            "allele_secondary_id_annotation_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AlleleSecondaryIdAnnotation"
                },
                "type": "array"
             },
@@ -10865,9 +10919,33 @@
          },
          "type": "array"
       },
+      "allele_database_status_annotation_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AlleleDatabaseStatusAnnotation"
+         },
+         "type": "array"
+      },
+      "allele_functional_impact_annotation_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AlleleFunctionalImpactAnnotation"
+         },
+         "type": "array"
+      },
       "allele_gene_association_ingest_set": {
          "items": {
             "$ref": "#/$defs/AlleleGeneAssociation"
+         },
+         "type": "array"
+      },
+      "allele_generation_method_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/GenerationMethod"
+         },
+         "type": "array"
+      },
+      "allele_germline_transmission_status_annotation_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AlleleGermlineTransmissionStatusAnnotation"
          },
          "type": "array"
       },
@@ -10877,9 +10955,39 @@
          },
          "type": "array"
       },
+      "allele_molecular_mutation_annotation_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AlleleMolecularMutationAnnotation"
+         },
+         "type": "array"
+      },
+      "allele_mutation_type_annotation_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AlleleMutationTypeAnnotation"
+         },
+         "type": "array"
+      },
+      "allele_nomenclature_annotation_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AlleleNomenclatureAnnotation"
+         },
+         "type": "array"
+      },
+      "allele_origin_association_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AlleleOriginAssociation"
+         },
+         "type": "array"
+      },
       "allele_protein_association_ingest_set": {
          "items": {
             "$ref": "#/$defs/AlleleProteinAssociation"
+         },
+         "type": "array"
+      },
+      "allele_secondary_id_annotation_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AlleleSecondaryIdAnnotation"
          },
          "type": "array"
       },

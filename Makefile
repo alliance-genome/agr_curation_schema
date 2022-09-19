@@ -199,6 +199,7 @@ SCHEMA_TEST_EXAMPLES := \
  	variant_allele_association_test \
  	sgd_disease_test \
  	fb_disease_test \
+ 	allele_slot_annotation_ingest_test \
 
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
