@@ -1,24 +1,34 @@
 {
   "ontology_closure_ingest_set": [
     {
-      "curie": "ZFIN:ZDB-ALT-000412-8",
-      "taxon": "NCBITaxon:7955",
-      "created_by": "ZFIN",
-      "updated_by": "ZFIN",
-      "internal": false,
-      "variant_genome_locations": [
-        {
-          "assembly": "GRCz11",
-          "chromosome": "7",
-          "start_position": 30341642,
-          "end_position": 30341642,
-          "reference_sequence": "C",
-          "variant_sequence": "T",
-          "internal": false
-        }
-      ],
-      "variant_status": "public",
-      "variant_type": "SO:1000008"
+      "subject": "ZFA:brain",
+      "object": "ZFA:cavitated_compound_organ", # direct
+      "relationship_type": ["RO:is_a"]
+    },
+    {
+      "subject": "ZFA:brain",
+      "object": "ZFA:compound_organ", # via cavitated_compound_organ isa compound_organ
+      "relationship_type": ["RO:is_a"]
+    },
+    {
+      "subject": "ZFA:brain",
+      "object": "ZFA:anatomical_structure", # via cavitated_compound_organ isa compound_organ isa anatomical_structure
+      "relationship_type": ["RO:is_a"]
+    },
+    {
+      "subject": "ZFA:brain",
+      "object": "ZFA:zebrafish_anatomical_entity", # via cavitated_compound_organ isa compound_organ isa anatomical_structure isa zebrafish_anatomical_entity
+      "relationship_type": ["RO:is_a"]
+    },
+    {
+      "subject": "ZFA:brain",
+      "object": "ZFA:whole_organism",  # ???
+      "relationship_type": ["RO:is_a", "RO:part_of"]
+    },
+    {
+      "subject": "ZFA:brain",
+      "object": "ZFA:whole_organism",  # makes more sense?
+      "relationship_type": ["is_a_part_of"]
     }
   ]
 }
