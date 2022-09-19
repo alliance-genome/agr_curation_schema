@@ -1,5 +1,5 @@
 {
-  "allele_variant_association_ingest_set": {
+  "allele_variant_association_ingest_set": [{
     "created_by": "ZFIN",
     "updated_by": "ZFIN",
     "internal": false,
@@ -7,5 +7,5 @@
     "object": "ZFIN:ZDB-ALT-000412-8",
     "predicate": "RO:0002525",
     "single_reference": "ZFIN:ZDB-PUB-010101-1"
-  }
+  }]
 }

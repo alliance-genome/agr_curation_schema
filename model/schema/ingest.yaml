@@ -125,6 +125,14 @@ slots:
     mixins:
       - object_set
 
+  allele_origin_association_ingest_set:
+    description: >-
+    domain: Ingest
+    range: AlleleOriginAssociation
+    multivalued: true
+    mixins:
+      - object_set
+
   disease_allele_ingest_set:
     description: >-
     domain: Ingest

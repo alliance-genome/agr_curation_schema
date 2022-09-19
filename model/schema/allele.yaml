@@ -235,6 +235,16 @@ classes:
       object:
         range: Note
 
+  AlleleOriginAssociation:
+    is_a: Association
+    description: >-
+      The relationship between an allele and the origin of the allele.
+    slot_usage:
+        subject:
+            range: Allele
+        object:
+            range: AffectedGenomicModel
+
   AlleleSynonymAssociation:
     is_a: Association
     description: >-
@@ -264,7 +274,7 @@ classes:
       - references
 
   CellLine:
-    is_a: AuditedObject
+    is_a: GenomicEntity
     description: >-
       Dummy cell line class
 

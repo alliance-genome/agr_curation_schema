@@ -39,6 +39,8 @@ classes:
 
   InformationContentEntity:
     is_a: AuditedObject
+    slots:
+      - curie
     description: >-
       a piece of information that typically is used as support for an assertion or annotation.
 

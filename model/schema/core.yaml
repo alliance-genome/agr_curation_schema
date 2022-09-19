@@ -186,6 +186,7 @@ classes:
       - subject
       - predicate
       - object
+      - evidence
     slot_usage:
         subject:
             required: true

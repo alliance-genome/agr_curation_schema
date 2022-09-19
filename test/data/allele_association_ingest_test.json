@@ -11,50 +11,10 @@
       "date_updated": "2022-07-11T13:12:51+00:00",
       "created_by": "WB:WBPerson002314",
       "updated_by": "WB:WBPerson010002",
-      "aberattion": "aberattion_string",
-      "database_status": "Live",
-      "functional_impact": "knockout",
-      "generation_method": "spontaneous",
-      "germline_transmission_status": "transmitted",
-      "images": [
-        "WB:WBImage00000001"
-      ],
       "in_collection": "Million Mutations Project",
       "inheritence_mode": "semi-dominant",
       "is_extinct": false,
-      "molecular_mutations": "Deletion in first exon of WBGene00000012",
-      "related_notes": [
-        {
-          "free_text": "Description of var1",
-          "note_type": "allele_summary",
-          "references": [
-            "PMID:1123143"
-          ],
-          "internal": false,
-          "obsolete": false,
-          "date_created": "2015-04-09T10:15:30+00:00",
-          "date_updated": "2022-07-11T13:12:51+00:00",
-          "created_by": "WB:WBPerson002314",
-          "updated_by": "WB:WBPerson010002"
-        }
-      ],
-      "sequencing_status": "sequenced",
-      "transposon_insertion": "P{XP}cnn[d08390] (FBti0056623)"
-    }
-  ],
-  "allele_variation_association_ingest_set": [
-    {
-      "subject": "WB:WBVar00000001",
-      "predicate": "RO:0001019",
-      "object": "WB:WBVar00000001",
-      "evidence_code": "ECO:0000006",
-      "single_reference": "PMID:11231512",
-      "internal": false,
-      "obsolete": false,
-      "date_created": "2015-04-09T10:15:30+00:00",
-      "date_updated": "2022-07-11T13:12:51+00:00",
-      "created_by": "WB:WBPerson002314",
-      "updated_by": "WB:WBPerson010002"
+      "sequencing_status": "sequenced"
     }
   ],
   "allele_gene_association_ingest_set": [
@@ -63,7 +23,7 @@
       "predicate": "RO:0001025",
       "object": "WB:WBGene00000001",
       "evidence_code": "ECO:0000006",
-      "single_reference": "PMID:11231512",
+      "evidence": ["PMID:11231512"],
       "internal": false,
       "obsolete": false,
       "date_created": "2015-04-09T10:15:30+00:00",
@@ -78,7 +38,7 @@
       "predicate": "RO:0001025",
       "object": "WB:WBTranscript00000001",
       "evidence_code": "ECO:0000006",
-      "single_reference": "PMID:11231512",
+      "evidence": ["PMID:11231512"],
       "internal": false,
       "obsolete": false,
       "date_created": "2015-04-09T10:15:30+00:00",
@@ -93,7 +53,7 @@
       "predicate": "RO:0001025",
       "object": "WB:WBProtein00000001",
       "evidence_code": "ECO:0000006",
-      "single_reference": "PMID:11231512",
+      "evidence": ["PMID:11231512"],
       "internal": false,
       "obsolete": false,
       "date_created": "2015-04-09T10:15:30+00:00",
@@ -108,20 +68,7 @@
       "predicate": "RO:0001019",
       "object": "WB:WBConstruct00000001",
       "evidence_code": "ECO:0000006",
-      "single_reference": "PMID:11231512",
-      "internal": false,
-      "obsolete": false,
-      "date_created": "2015-04-09T10:15:30+00:00",
-      "date_updated": "2022-07-11T13:12:51+00:00",
-      "created_by": "WB:WBPerson002314",
-      "updated_by": "WB:WBPerson010002"
-    }
-  ],
-  "allele_origin_association_ingest_set": [
-    {
-      "subject": "WB:WBVar00000001",
-      "predicate": "introduced_in",
-      "object": "WB:WBStrain00000001",
+      "evidence": ["PMID:11231512"],
       "internal": false,
       "obsolete": false,
       "date_created": "2015-04-09T10:15:30+00:00",

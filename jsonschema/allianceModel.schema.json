@@ -59,6 +59,12 @@
                },
                "type": "array"
             },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "evidence_codes": {
                "description": "ECO term IDs",
                "items": {
@@ -184,6 +190,12 @@
                "description": "Date on which an entity was last modified.",
                "format": "date",
                "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "inferred_allele": {
                "description": "The allele to which the phenotype is inferred to be associated.",
@@ -654,13 +666,19 @@
                "format": "date",
                "type": "string"
             },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
             },
             "object": {
-               "$ref": "#/$defs/CellLine",
-               "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+               "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
             },
             "obsolete": {
                "description": "Entity is no longer current.",
@@ -708,7 +726,7 @@
             },
             "evidence": {
                "items": {
-                  "$ref": "#/$defs/InformationContentEntity"
+                  "type": "string"
                },
                "type": "array"
             },
@@ -746,6 +764,7 @@
          },
          "required": [
             "internal",
+            "evidence",
             "subject",
             "predicate",
             "object"
@@ -780,7 +799,7 @@
             },
             "evidence": {
                "items": {
-                  "$ref": "#/$defs/InformationContentEntity"
+                  "type": "string"
                },
                "type": "array"
             },
@@ -853,6 +872,12 @@
             },
             "disease_qualifiers": {
                "description": "Submitted values should be vocabulary terms from the 'Disease Qualifiers' vocabulary",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "evidence": {
                "items": {
                   "type": "string"
                },
@@ -967,7 +992,7 @@
             },
             "evidence": {
                "items": {
-                  "$ref": "#/$defs/InformationContentEntity"
+                  "type": "string"
                },
                "type": "array"
             },
@@ -1017,7 +1042,7 @@
             },
             "evidence": {
                "items": {
-                  "$ref": "#/$defs/InformationContentEntity"
+                  "type": "string"
                },
                "type": "array"
             },
@@ -1055,6 +1080,7 @@
          },
          "required": [
             "internal",
+            "evidence",
             "subject",
             "predicate",
             "object"
@@ -1082,7 +1108,7 @@
             },
             "evidence": {
                "items": {
-                  "$ref": "#/$defs/InformationContentEntity"
+                  "type": "string"
                },
                "type": "array"
             },
@@ -1147,7 +1173,7 @@
             },
             "evidence": {
                "items": {
-                  "$ref": "#/$defs/InformationContentEntity"
+                  "type": "string"
                },
                "type": "array"
             },
@@ -1191,6 +1217,12 @@
                "description": "Date on which an entity was last modified.",
                "format": "date",
                "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
@@ -1253,7 +1285,7 @@
             },
             "evidence": {
                "items": {
-                  "$ref": "#/$defs/InformationContentEntity"
+                  "type": "string"
                },
                "type": "array"
             },
@@ -1306,7 +1338,7 @@
             },
             "evidence": {
                "items": {
-                  "$ref": "#/$defs/InformationContentEntity"
+                  "type": "string"
                },
                "type": "array"
             },
@@ -1356,7 +1388,7 @@
             },
             "evidence": {
                "items": {
-                  "$ref": "#/$defs/InformationContentEntity"
+                  "type": "string"
                },
                "type": "array"
             },
@@ -1401,6 +1433,12 @@
                "format": "date",
                "type": "string"
             },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -1433,6 +1471,64 @@
             "object"
          ],
          "title": "AlleleNotesAssociation",
+         "type": "object"
+      },
+      "AlleleOriginAssociation": {
+         "additionalProperties": false,
+         "description": "The relationship between an allele and the origin of the allele.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "object": {
+               "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "predicate": {
+               "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+               "type": "string"
+            },
+            "subject": {
+               "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "predicate",
+            "subject",
+            "object"
+         ],
+         "title": "AlleleOriginAssociation",
          "type": "object"
       },
       "AllelePhenotypeAnnotation": {
@@ -1470,6 +1566,12 @@
                "description": "Date on which an entity was last modified.",
                "format": "date",
                "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "inferred_gene": {
                "description": "The gene to which the phenotype is inferred to be associated.",
@@ -1538,7 +1640,7 @@
             },
             "evidence": {
                "items": {
-                  "$ref": "#/$defs/InformationContentEntity"
+                  "type": "string"
                },
                "type": "array"
             },
@@ -1576,6 +1678,7 @@
          },
          "required": [
             "internal",
+            "evidence",
             "subject",
             "predicate",
             "object"
@@ -1606,7 +1709,7 @@
             },
             "evidence": {
                "items": {
-                  "$ref": "#/$defs/InformationContentEntity"
+                  "type": "string"
                },
                "type": "array"
             },
@@ -1655,7 +1758,7 @@
             },
             "evidence": {
                "items": {
-                  "$ref": "#/$defs/InformationContentEntity"
+                  "type": "string"
                },
                "type": "array"
             },
@@ -1695,6 +1798,12 @@
                "description": "Date on which an entity was last modified.",
                "format": "date",
                "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
@@ -1754,7 +1863,7 @@
             },
             "evidence": {
                "items": {
-                  "$ref": "#/$defs/InformationContentEntity"
+                  "type": "string"
                },
                "type": "array"
             },
@@ -1792,6 +1901,7 @@
          },
          "required": [
             "internal",
+            "evidence",
             "subject",
             "predicate",
             "object"
@@ -1819,7 +1929,7 @@
             },
             "evidence": {
                "items": {
-                  "$ref": "#/$defs/InformationContentEntity"
+                  "type": "string"
                },
                "type": "array"
             },
@@ -1857,6 +1967,7 @@
          },
          "required": [
             "internal",
+            "evidence",
             "predicate",
             "subject",
             "object"
@@ -2114,6 +2225,12 @@
                "description": "Date on which an entity was last modified.",
                "format": "date",
                "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
@@ -2460,6 +2577,17 @@
                "description": "The individual that created the entity.",
                "type": "string"
             },
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/$defs/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
             "date_created": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                "format": "date",
@@ -2470,13 +2598,40 @@
                "format": "date",
                "type": "string"
             },
+            "genomic_locations": {
+               "items": {
+                  "$ref": "#/$defs/GenomicLocation"
+               },
+               "type": "array"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
             },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/$defs/Synonym"
+               },
+               "type": "array"
+            },
+            "taxon": {
+               "description": "The taxon from which the biological entity derives.",
+               "type": "string"
             },
             "updated_by": {
                "description": "The individual that last modified the entity.",
@@ -2484,7 +2639,9 @@
             }
          },
          "required": [
-            "internal"
+            "internal",
+            "curie",
+            "taxon"
          ],
          "title": "CellLine",
          "type": "object"
@@ -2817,6 +2974,12 @@
                "description": "Date on which an entity was last modified.",
                "format": "date",
                "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
@@ -3573,6 +3736,12 @@
                "format": "date",
                "type": "string"
             },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -3799,6 +3968,12 @@
                "description": "Date on which an entity was last modified.",
                "format": "date",
                "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
@@ -4787,6 +4962,12 @@
                },
                "type": "array"
             },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "evidence_codes": {
                "description": "ECO term IDs",
                "items": {
@@ -4900,6 +5081,12 @@
                "description": "Date on which an entity was last modified.",
                "format": "date",
                "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "interaction_data_provider": {
                "$ref": "#/$defs/InteractionSourceEnum",
@@ -5098,6 +5285,12 @@
                "$ref": "#/$defs/DetectionMethodsEnum",
                "description": "The experimental method used to identify the physical interaction between two molecules"
             },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "interaction_data_provider": {
                "$ref": "#/$defs/InteractionSourceEnum",
                "description": "The interaction database that curated the interaction. e.g. BioGRID"
@@ -5266,6 +5459,12 @@
                "format": "date",
                "type": "string"
             },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -5329,6 +5528,12 @@
                "description": "Date on which an entity was last modified.",
                "format": "date",
                "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
@@ -5892,6 +6097,10 @@
                "description": "The individual that created the entity.",
                "type": "string"
             },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
             "date_created": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                "format": "date",
@@ -5916,7 +6125,8 @@
             }
          },
          "required": [
-            "internal"
+            "internal",
+            "curie"
          ],
          "title": "InformationContentEntity",
          "type": "object"
@@ -6986,7 +7196,7 @@
             },
             "evidence": {
                "items": {
-                  "$ref": "#/$defs/InformationContentEntity"
+                  "type": "string"
                },
                "type": "array"
             },
@@ -7337,6 +7547,10 @@
                "description": "The individual that created the entity.",
                "type": "string"
             },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
             "date_created": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                "format": "date",
@@ -7361,7 +7575,8 @@
             }
          },
          "required": [
-            "internal"
+            "internal",
+            "curie"
          ],
          "title": "PersonalCommunication",
          "type": "object"
@@ -7393,6 +7608,12 @@
                "description": "Date on which an entity was last modified.",
                "format": "date",
                "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
@@ -8434,6 +8655,12 @@
                "description": "Date on which an entity was last modified.",
                "format": "date",
                "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
