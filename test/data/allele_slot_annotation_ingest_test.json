@@ -3,9 +3,7 @@
     {
       "allele_id": "WB:WBVar00000001",
       "mutation_type": "insertion",
-      "evidence": [
-        "PMID:11231512"
-      ]
+      "evidence": ["PMID:11231512"]
     }
   ],
   "allele_germline_transmission_status_annotation_ingest_set": [
@@ -54,7 +52,7 @@
   "allele_nomenclature_annotation_ingest_set": [
     {
       "allele_id": "WB:WBVar00000001",
-      "nomenclature": "WBPaper00000000",
+      "nomenclature_event": "WBPaper00000000",
       "evidence": [
         "PMID:11231512"
       ]
