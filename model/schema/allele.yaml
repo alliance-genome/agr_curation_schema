@@ -64,6 +64,12 @@ classes:
       name:
         required: true
 
+  GenerationMethod:
+    is_a: AuditedObject
+    slots:
+      - mutagenesis_method
+      - mutagenesis_target
+
 # SlotAnnotations
   AlleleSlotAnnotation:
     is_a: SlotAnnotation
@@ -95,12 +101,6 @@ classes:
     is_a: AlleleSlotAnnotation
     slots:
       - database_status
-
-  GenerationMethod:
-    is_a: AuditedObject
-    slots:
-      - mutagenesis_method
-      - mutagenesis_target
 
   AlleleSecondaryIdAnnotation:
     is_a: AlleleSlotAnnotation

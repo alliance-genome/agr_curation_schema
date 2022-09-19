@@ -20,7 +20,7 @@
   "allele_functional_impact_annotation_ingest_set": [
     {
       "allele_id": "WB:WBVar00000001",
-      "functional_impact": "loss-of-function",
+      "functional_impact": ["loss-of-function"],
       "evidence": [
         "PMID:11231512"
       ]
@@ -39,15 +39,6 @@
     {
       "allele_id": "WB:WBVar00000001",
       "database_status": "public",
-      "evidence": [
-        "PMID:11231512"
-      ]
-    }
-  ],
-  "allele_generation_method_ingest_set": [
-    {
-      "allele_id": "WB:WBVar00000001",
-      "generation_method": "transposon insertion",
       "evidence": [
         "PMID:11231512"
       ]
