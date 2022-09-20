@@ -2,33 +2,33 @@
   "ontology_closure_ingest_set": [
     {
       "subject": "ZFA:brain",
-      "object": "ZFA:cavitated_compound_organ", # direct
+      "object": "ZFA:cavitated_compound_organ",
       "relationship_type": ["RO:is_a"]
     },
     {
       "subject": "ZFA:brain",
-      "object": "ZFA:compound_organ", # via cavitated_compound_organ isa compound_organ
+      "object": "ZFA:compound_organ",
       "relationship_type": ["RO:is_a"]
     },
     {
       "subject": "ZFA:brain",
-      "object": "ZFA:anatomical_structure", # via cavitated_compound_organ isa compound_organ isa anatomical_structure
+      "object": "ZFA:anatomical_structure",
       "relationship_type": ["RO:is_a"]
     },
     {
       "subject": "ZFA:brain",
-      "object": "ZFA:zebrafish_anatomical_entity", # via cavitated_compound_organ isa compound_organ isa anatomical_structure isa zebrafish_anatomical_entity
+      "object": "ZFA:zebrafish_anatomical_entity",
       "relationship_type": ["RO:is_a"]
     },
     {
       "subject": "ZFA:brain",
-      "object": "ZFA:whole_organism",  # ???
+      "object": "ZFA:whole_organism",
       "relationship_type": ["RO:is_a", "RO:part_of"]
     },
     {
       "subject": "ZFA:brain",
-      "object": "ZFA:whole_organism",  # makes more sense?
-      "relationship_type": ["is_a_part_of"]
+      "object": "ZFA:whole_organism",
+      "relationship_type": ["RO:is_a", "RO:part_of"]
     }
   ]
 }

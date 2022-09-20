@@ -103,7 +103,8 @@ slots:
       parent/child or ancestor/descendant relationship).
 
   relationship_type:
-    range: ROTerm
+    range: string
+    multivalued: true
 
   distance_between:
     range: integer
@@ -195,8 +196,6 @@ OntologyTermClosure:
 
   XBEDTerm:
     is_a: OntologyTerm
-
-
 
   CHEBITerm:
     is_a: ChemicalTerm
