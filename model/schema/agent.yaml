@@ -70,6 +70,7 @@ classes:
       - okta_id
       - okta_email
       - user_settings
+      - api_token
     slot_usage:
       okta_id:
         required: true
@@ -111,3 +112,8 @@ slots:
     domain: LoggedInPerson
     range: string
     multivalued: false
+
+  api_token:
+    description: The API token of the LoggedInPerson for the curation system
+    domain: LoggedInPerson
+    range: string

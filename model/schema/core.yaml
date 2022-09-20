@@ -63,6 +63,8 @@ classes:
       - date_created
       - updated_by
       - date_updated
+      - db_date_created
+      - db_date_updated
       - internal
       - obsolete
 
@@ -78,6 +80,9 @@ classes:
     slot_usage:
       taxon:
         required: true
+      curie:
+        required: true
+
 
   GenomicEntity:
     is_a: BiologicalEntity
@@ -116,11 +121,15 @@ classes:
     defining_slots:
       - curie
       - page_areas
+    slot_usage:
+      curie:
+        required: true
+
 
   Synonym:
     is_a: AuditedObject
     slots:
-      - synonym
+      - name
 
   Note:
     is_a: AuditedObject
@@ -132,7 +141,7 @@ classes:
     slots:
       - free_text
       - note_type
-      - references
+      - evidence
     slot_usage:
       free_text:
         required: true
@@ -147,21 +156,30 @@ classes:
           - value: gene_function_summary
           - value: gene_phenotype_summary
 
-  EntityStatement:    # to be deprecated in favor of Note class?
+  SlotAnnotation:
     is_a: AuditedObject
     description: >-
-      Free-text describing some aspect of an entity.
-    slots:
-      - statement_subject
-      - statement_type
-      - statement_text
-      - references
+      SlotAnnotation classes should be used when we need to attach metadata (in particular evidence and provenance)
+      to a slot in the context of its referencing class, that can not be fully captured using an Association between
+      the full class itself, and an InformationContentEntity. Evidence and provenance can exist here in the form of an
+      evidence code, a publication, a personal communication or any other kind of InformationContentEntity.
+      SlotAnnotation classes are used where the slot is not referencing a class in and of itself, and often has a 
+      scalar range.
+    notes: >-
+      A good example of the use of a SlotAnnotation class is the use case of attributing one of many functional 
+      impacts of an allele to a publication.  AlleleFunctionalImpact is the SlotAnnotation class that represents 
+      this use case. 
 
   Association:
     is_a: AuditedObject
     description: >-
-      A typed association between two entities, supported by evidence.
-    close_mappings:
+      A typed association between two entities, supported by evidence.  Associations have three base slots: subject, 
+      object, and predicate, but they can have any number of additional attributes that help qualify the relationship 
+      between the subject and the object.  The subject is the curie (or identifier) of the class that is the subject 
+      of the association, and likewise the object is the curie (or identifier of the class that is the object. The 
+      relationship between subject and object is defined by the predicate slot (which can also be constrained 
+      using the range of the predicate).
+    exact_mappings:
       - biolink:association
     notes:
       Keeping this more generic than biolink:association by foregoing the
@@ -170,6 +188,14 @@ classes:
       - subject
       - predicate
       - object
+      - evidence
+    slot_usage:
+        subject:
+            required: true
+        predicate:
+            required: true
+        object:
+            required: true
 
   EntitySynonym:
     is_a: Association
@@ -202,11 +228,17 @@ classes:
     description: The ID of the landmark used to establish the coordinate system for the current feature.
     slots:
       - curie
+    slot_usage:
+      curie:
+        required: true
 
   Assembly:
     is_a: AuditedObject
     slots:
       - curie
+    slot_usage:
+      curie:
+        required: true
 
   GenomicLocation:
     is_a: AuditedObject
@@ -237,6 +269,18 @@ classes:
   Protein:
     is_a: GenomicEntity
 
+  Identifier:
+    slots:
+      - counter
+      - subdomain_code
+      - subdomain_name
+      - curie
+
+  IdentifiersRange:
+    slots:
+      - first
+      - last
+
 ## ------------
 ## SLOTS
 ## ------------
@@ -247,6 +291,10 @@ slots:
 
   synonym:
     description: the text string of the synonym
+
+  synonym_scope:
+    description: the scope of the synonym, e.g. 'EXACT', 'NARROW' or 'RELATED'
+    range: synonym_scope_enum
 
   start:
     description: The start of the feature in positive 1-based integer coordinates
@@ -343,27 +391,6 @@ slots:
     range: Note
     multivalued: false
 
-  statement_subject:
-    description: >-
-      The entity being described by the note.
-    domain: EntityStatement
-
-  statement_type:
-    description: >-
-      The type of free-text statement. For example: cytology, private,
-      curator_comments.
-    notes: >-
-      Note types listed here as having range string, but should probably be
-      constrained to specific enum sets depending on the entity type.
-    domain: EntityStatement
-    range: string
-
-  statement_text:
-    description: >-
-      Free-text describing some aspect of an entity.
-    domain: EntityStatement
-    range: string
-
   generated_by:
     description: >-
       Holds between a material entity and an Agent that generated it:
@@ -384,11 +411,17 @@ slots:
     range: boolean
 
   curie:
-    identifier: true
-    required: true
     multivalued: false
     description: >-
       A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
+    range: uriorcurie
+    identifier: true
+
+  alliance_curie:
+    multivalued: false
+    description: >-
+      A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI,
+      prefix must be AGRKB, generated at alliance.
     range: uriorcurie
 
   unique_id:
@@ -412,6 +445,10 @@ slots:
   secondary_identifiers:
     aliases: ['secondary_ids']
     multivalued: true
+    range: uriorcurie
+
+  secondary_id:
+    multivalued: false
     range: uriorcurie
 
   genomic_locations:
@@ -440,6 +477,20 @@ slots:
     aliases: ['date_last_modified']
     description: >-
       Date on which an entity was last modified.
+    range: date
+
+  db_date_created:
+    description: >-
+      The date on which an entity was created in the Alliance database.  This
+      is disinct from date_created, which represents the date when the entity
+      was originally created (i.e. at the MOD for imported data).
+    range: date
+
+  db_date_updated:
+    description: >-
+      Date on which an entity was last modified in the Alliance database.  This
+      is disinct from date_updated, which represents the date when the entity
+      was last modified and may predate import into the Alliance database.
     range: date
 
   created_by:
@@ -590,7 +641,28 @@ slots:
     description: This determines if the the schedule is active or not
     range: boolean
 
-## --------------------
+  counter:
+    description: a number to identify an alliance resource in a subdomain
+    range: integer
+
+  subdomain_code:
+    description: a three letter string, representing a subdomain (e.g 101 represents disease_annotation)
+    range: string
+
+  subdomain_name:
+    description: subdomain name (e.g disease_annotation)
+    range: string
+
+  first:
+    description: first identifier in a range
+    range: Identifier
+
+  last:
+    description: last identifier in a range
+    range: Identifier
+
+
+  ## --------------------
 ## ASSOCIATION SLOTS
 ## --------------------
 
@@ -647,3 +719,10 @@ enums:
         description: >-
           The synonym is an alternate symbol or name for the entity. It is not
           the currently preferred symbol/name for the entity.
+
+  synonym_scope_enum:
+    permissible_values:
+      narrow:
+      broad:
+      related:
+      exact:

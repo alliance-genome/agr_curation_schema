@@ -44,7 +44,7 @@ t:
 echo:
 	echo $(patsubst %,gen-%,$(TGTS))
 
-test: all test-jsonschema test-jsonschema_invalid
+test: all test-jsonschema
 
 install:
 	poetry install
@@ -196,6 +196,11 @@ SCHEMA_TEST_EXAMPLES := \
 	agm_test \
 	sqtr_test \
 	ontology_closure_test \
+	allele_association_ingest_test \
+ 	variant_allele_association_test \
+ 	sgd_disease_test \
+ 	fb_disease_test \
+ 	allele_slot_annotation_ingest_test \
 
 
 SCHEMA_TEST_EXAMPLES_INVALID := \

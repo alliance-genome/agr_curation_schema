@@ -200,6 +200,14 @@ linkml:Nodeidentifier NONLITERAL
     @<SequenceTargetingReagentToGeneAssociation>
 )
 
+<ATPTerm> CLOSED {
+    (  $<ATPTerm_tes> (  &<OntologyTerm_tes> ;
+          rdf:type [ <OntologyTerm> ] ?
+       ) ;
+       rdf:type [ <ATPTerm> ]
+    )
+}
+
 <AuditedObject>  (
     CLOSED {
        (  $<AuditedObject_tes> (  <created_by> @<Person> ? ;
@@ -213,9 +221,9 @@ linkml:Nodeidentifier NONLITERAL
        )
     } OR @<AffectedGenomicModelComponent> OR @<Agent> OR @<Assembly> OR @<AssociatedReference> OR @<Association> OR
     @<AuthorReference> OR @<BiologicalEntity> OR @<CellLine> OR @<Chromosome> OR @<CrossReference> OR @<EntityStatement> OR
-    @<ExternalDatabaseLink> OR @<Figure> OR @<File> OR @<GenomicLocation> OR @<Image> OR @<ImagePane> OR @<MeshDetail> OR
-    @<ModCorpusAssociation> OR @<Note> OR @<OntologyTerm> OR @<Reference> OR @<Resource> OR @<SourceVariantLocation> OR @<Synonym>
-    OR @<VariantLocation> OR @<Vocabulary> OR @<VocabularyTerm>
+    @<ExternalDatabaseLink> OR @<Figure> OR @<File> OR @<GeneHistory> OR @<GenomicLocation> OR @<Image> OR @<ImagePane> OR
+    @<MeshDetail> OR @<ModCorpusAssociation> OR @<Note> OR @<OntologyTerm> OR @<Reference> OR @<Resource> OR
+    @<SourceVariantLocation> OR @<Synonym> OR @<VariantLocation> OR @<Vocabulary> OR @<VocabularyTerm>
 )
 
 <AuthorReference> CLOSED {
@@ -464,9 +472,45 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <GenomicEntity> ] ? ;
           <symbol> @linkml:String ;
           <related_notes> @<Note> * ;
-          <gene_type> @<SOTerm> ?
+          <gene_type> @<SOTerm> ? ;
+          <gene_types_secondary> @<SOTerm> * ;
+          <designating_laboratories> @<Laboratory> * ;
+          <designating_persons> @linkml:String * ;
+          <trans_splice_leaders> @linkml:String * ;
+          <contig> @linkml:String * ;
+          <anatomy_function> @linkml:String * ;
+          <product_binds_matrix> @linkml:String * ;
+          <wbprocess> @linkml:String * ;
+          <transposon_origin> @linkml:Boolean ?
        ) ;
        rdf:type [ <Gene> ]
+    )
+}
+
+<GeneHistory> CLOSED {
+    (  $<GeneHistory_tes> (  &<AuditedObject_tes> ;
+          rdf:type [ <AuditedObject> ] ? ;
+          <current_status> @linkml:String * ;
+          <current_version> @linkml:Integer ? ;
+          <merged_into> @<Gene> * ;
+          <acquires_merge> @<Gene> * ;
+          <split_from> @<Gene> * ;
+          <split_into> @<Gene> *
+       ) ;
+       rdf:type [ <GeneHistory> ] ?
+    )
+}
+
+<GeneticMapPosition> CLOSED {
+    (  $<GeneticMapPosition_tes> (  &<GenomicEntity_tes> ;
+          rdf:type [ <GenomicEntity> ] ? ;
+          <genetic_map_chromosome> @<Chromosome> ? ;
+          <genetic_map_band> @linkml:String ? ;
+          <genetic_map_position_centimorgan> @linkml:Float * ;
+          <genetic_map_position_centimorgan_error> @linkml:Float * ;
+          <genetic_map_position_radiation> @linkml:Float *
+       ) ;
+       rdf:type [ <GeneticMapPosition> ]
     )
 }
 
@@ -482,8 +526,8 @@ linkml:Nodeidentifier NONLITERAL
           ) ;
           rdf:type [ <GenomicEntity> ]
        )
-    } OR @<AffectedGenomicModel> OR @<Allele> OR @<Construct> OR @<ConstructComponent> OR @<Gene> OR @<Protein> OR
-    @<SequenceTargetingReagent> OR @<Transcript> OR @<Variant>
+    } OR @<AffectedGenomicModel> OR @<Allele> OR @<Construct> OR @<ConstructComponent> OR @<Gene> OR @<GeneticMapPosition> OR
+    @<Protein> OR @<SequenceTargetingReagent> OR @<Transcript> OR @<Variant>
 )
 
 <GenomicLocation> CLOSED {
@@ -675,9 +719,9 @@ linkml:Nodeidentifier NONLITERAL
           ) ;
           rdf:type [ <OntologyTerm> ]
        )
-    } OR @<AnatomicalTerm> OR @<ChemicalTerm> OR @<DOTerm> OR @<ECOTerm> OR @<ExperimentalConditionOntologyTerm> OR @<FBCVTerm> OR
-    @<GOTerm> OR @<MITerm> OR @<MMOTerm> OR @<MMUSDVTerm> OR @<NCBITaxonTerm> OR @<PhenotypeTerm> OR @<ROTerm> OR @<SOTerm> OR
-    @<StageTerm> OR @<XBEDTerm>
+    } OR @<ATPTerm> OR @<AnatomicalTerm> OR @<ChemicalTerm> OR @<DOTerm> OR @<ECOTerm> OR @<ExperimentalConditionOntologyTerm> OR
+    @<FBCVTerm> OR @<GOTerm> OR @<MITerm> OR @<MMOTerm> OR @<MMUSDVTerm> OR @<NCBITaxonTerm> OR @<PhenotypeTerm> OR @<ROTerm> OR
+    @<SOTerm> OR @<StageTerm> OR @<XBEDTerm>
 )
 
 <Organization>  (

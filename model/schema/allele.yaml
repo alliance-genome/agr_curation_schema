@@ -49,23 +49,9 @@ classes:
       element can be endogenous or constructed.
     slots:
       - symbol
-      - contains_constructs
-      - molecular_mutations
-      - functional_impact
-      - generation_method
-      - associated_references
-      - related_notes
-      - germline_transmission_status
-      - parent_cell_line
-      - mutant_cell_lines
-      - embryonic_stem_cell_lines
-      - images
-      - origins
-      - database_status
+      - references
       - inheritence_mode
       - in_collection
-      - transposon_insertion
-      - aberration
       - is_extinct
       - sequencing_status
     exact_mappings:
@@ -73,20 +59,71 @@ classes:
     slot_usage:
       synonyms:
         description: synonyms for allele names and synonyms
-      germline_transmission_status:
-        notes: specific to MGI
-      parent_cell_line:
-        notes: specific to MGI
-      mutant_cell_lines:
-        notes: specific to MGI
-      embryonic_stem_cell_lines:
-        notes: specific to MGI
-      transposon_insertion:
-        notes: specific to FB
       aberration:
         notes: specific to FB
       name:
         required: true
+
+  GenerationMethod:
+    is_a: AuditedObject
+    slots:
+      - mutagenesis_method
+      - mutagenesis_target
+
+# SlotAnnotations
+  AlleleSlotAnnotation:
+    is_a: SlotAnnotation
+    slots:
+      - allele_id
+      - evidence
+
+  AlleleMutationTypeAnnotation:
+    is_a: AlleleSlotAnnotation
+    slots:
+      - mutation_type
+
+  AlleleGermlineTransmissionStatusAnnotation:
+    is_a: AlleleSlotAnnotation
+    slots:
+      - germline_transmission_status
+
+  AlleleFunctionalImpactAnnotation:
+    is_a: AlleleSlotAnnotation
+    slots:
+      - functional_impact
+
+  AlleleMolecularMutationAnnotation:
+    is_a: AlleleSlotAnnotation
+    slots:
+      - molecular_mutations
+
+  AlleleDatabaseStatusAnnotation:
+    is_a: AlleleSlotAnnotation
+    slots:
+      - database_status
+
+  AlleleSecondaryIdAnnotation:
+    is_a: AlleleSlotAnnotation
+    slots:
+      - secondary_id
+
+  AlleleNomenclatureAnnotation:
+    is_a: AlleleSlotAnnotation
+    slots:
+      - nomenclature_event
+
+# Allele Associations
+
+  AlleleGenerationMethodAssociation:
+    is_a: Association
+    slots:
+      - evidence
+      - mutation_target_strain
+    slot_usage:
+      subject:
+        range: Allele
+      object:
+        range: GenerationMethod
 
   AlleleGenomicEntityAssociation:
     is_a: Association
@@ -94,7 +131,7 @@ classes:
     description: >-
       Association between an allele and a genomic entity
     slots:
-      - single_reference
+      - evidence
       - evidence_code
       - related_note
     slot_usage:
@@ -104,6 +141,8 @@ classes:
         range: ROTerm
       object:
         range: GenomicEntity
+      evidence:
+        required: true
 
   AlleleGeneAssociation:
     is_a: AlleleGenomicEntityAssociation
@@ -132,28 +171,101 @@ classes:
   AlleleVariantAssociation:
     is_a: AlleleGenomicEntityAssociation
     description: >-
-      The relationship between an allele and a variant is many to many. An Allele may have many variants and a variant
-      can be present in many alleles.
+      The relationship between an allele and a variant is many to many. An
+      Allele may have many variants and a variant can be present in many
+      alleles.
     slot_usage:
       subject:
         range: Allele
       object:
         range: Variant
 
-  AssociatedReference:
-    is_a: AuditedObject
+  AlleleConstructAssociation:
+    is_a: AlleleGenomicEntityAssociation
     description: >-
-      Describes the relation between a reference and an object
+      The relationship between an allele and constructs contained in
+      that allele.
+    slot_usage:
+      subject:
+        range: Allele
+      predicate:
+        notes: RO:0001019 (contains)
+      object:
+        range: Construct
+
+  AlleleCellLineAssociation: # do mutant/parent/embryonic cell line associations need to be split out?
+    is_a: Association
+    description: >-
+      The relationship between an allele and a cell line.  Includes mutant/
+      embryonic stem cell lines known to carry the allele, and parental cell
+      line of alleles made in embryonic stem cells.
+    slot_usage:
+      subject:
+        range: Allele
+      predicate:
+        range: VocabularyTerm
+      object:
+        range: CellLine
+
+  AlleleImageAssociation:
+    is_a: Association
+    description: >-
+      The relationship between an allele and an image.
     slots:
-      - reference_type
-      - single_reference
+      - primary_image
+    slot_usage:
+      subject:
+        range: Allele
+      predicate:
+        range: VocabularyTerm
+      object:
+        range: Image
+      primary_image:
+        description: >-
+          Can be null; if false, maybe you would show all the images.
+          We need to revisit this issue. 
+
+  AlleleNotesAssociation:
+    is_a: Association
+    description: >-
+      The relationship between an allele and a note.
+    slot_usage:
+      subject:
+        range: Allele
+      object:
+        range: Note
+
+  AlleleOriginAssociation:
+    is_a: Association
+    description: >-
+      The relationship between an allele and the origin of the allele.
+    slot_usage:
+        subject:
+            range: Allele
+        object:
+            range: AffectedGenomicModel
+
+  AlleleSynonymAssociation:
+    is_a: Association
+    description: >-
+      The relationship between an allele and a synonym.
+    slots:
+      - synonym_scope
+    slot_usage:
+      subject:
+        range: Allele
+      object:
+        range: Synonym
+
+
+# Other classes roughly grouped with the Allele class because they have relationships to Allele and were
+# designed close to the time the Allele class was designed.  These could be broken out into their own yaml files.
 
   Construct:
     is_a: GenomicEntity
     description: >-
     slot_usage:
       curie:
-        required: true
         identifier: true
       name:
         required: true
@@ -161,9 +273,8 @@ classes:
       - construct_components
       - references
 
-
   CellLine:
-    is_a: AuditedObject
+    is_a: GenomicEntity
     description: >-
       Dummy cell line class
 
@@ -191,7 +302,6 @@ classes:
       object:
         range: Gene
 
-
   ConstructComponentAssociation:
     is_a: Association
     slot_usage:
@@ -207,20 +317,45 @@ classes:
     slots:
       - symbol
 
-
 # Slots
-
 slots:
+
+  primary_image:
+    description: >-
+      The primary image for an allele that is used to represent the allele on a page. 
+
+  origin:
+    range: boolean
+
+  allele_id:
+    range: uriorcurie
+
+  mutagenesis_method:
+    alias: ["mutagen"]
+    range: VocabularyTerm
+    description: >-
+      Technique used to create the allele, e.g.
+      spontaneous / naturally occurring / radiation-induced / recombinant / 
+      ENU / CRISPR / TALEN / gamma rays / not specified / spontaneous / DNA /
+      DNA AND CRISPR / DNA and TALEN / zinc finger nuclease / EMS
+
+  mutagenesis_target:
+    alias: ["mutagee"]
+    description: >-
+      The target of the mutation, e.g. strain / adult females / 
+      adult males / embryos / sperm / not specified
+    range: string # VocabularyTerm?
+
+  mutation_target_strain:
+    description: >- 
+      The particular strain (solely for and from MGI) that is targeted
+      by the generation method for a particular allele.
+    range: string # VocabularyTerm?
 
   construct_components:
     multivalued: true
     domain: Construct
     range: GenomicEntity
-
-  contains_constructs:
-    multivalued: true
-    domain: Allele
-    range: Construct
 
   molecular_mutations:
     description: >-
@@ -246,38 +381,7 @@ slots:
       allele, e.g. knockout / amorphic
     domain: Allele
     range: string
-
-  generation_method:
-    description: >-
-      Technique used to create the allele, e.g.
-      spontaneous / naturally occuring / radiation
-    domain: Allele
-    range: string
-    multivalued: false
-
-  associated_references:
-    description: >-
-      List of references associated with the entity in some way with a
-      description of the association.
-    range: AssociatedReference
     multivalued: true
-
-  reference_type:
-    description: >-
-      Description of how a reference is associated with
-      an entity, e.g. molecular / origin / other
-    required: true
-    multivalued: false
-    domain: AssociatedReference
-    range: VocabularyTerm
-
-  origins:
-    singular_name: origin
-    description: >-
-      Affected genomic models that the allele was introduced in
-    multivalued: true
-    domain: Allele
-    range: AffectedGenomicModel
 
   germline_transmission_status:
     description: >-
@@ -285,30 +389,6 @@ slots:
       transmitted to the germline of an animal
     domain: Allele
     range: VocabularyTerm
-
-  parent_cell_line:
-    description: >-
-      Parental cell line of alleles made in embryonic
-      stem cells
-    domain: Allele
-    range: CellLine
-
-  mutant_cell_lines:
-    singular_name: mutant_cell_line
-    description: >-
-      Mutant cell lines known to carry the allele
-    domain: Allele
-    range: CellLine
-    multivalued: true
-
-  embryonic_stem_cell_lines:
-    aliases: ['allele_derivation']
-    singular_name: embryonic_stem_cell_line
-    description: >-
-      Embryonic stem cell lines known to carry the allele
-    domain: Allele
-    range: CellLine
-    multivalued: true
 
   database_status:
     description: >-
@@ -319,6 +399,7 @@ slots:
     description: >-
       Mode of inheritence, e.g. dominant / semi-dominant /
       recessive / unknown
+      # TODO: please enumerate the difference between this and zygosity in AffectedGenomicModel class.
     domain: Allele
     range: VocabularyTerm
 
@@ -355,6 +436,15 @@ slots:
     domain: Variant
     range: VocabularyTerm
 
+  analyses:
+    description: >-
+      # TODO: added as a result of 'origin' class - please advise on a more descriptive slot/class definition.
+
+  nomenclature_event:
+    description: >-
+      any of the kinds of changes made to an object's name or symbol
+    range: nomenclature_event_enum
+
 enums:
   construct_component_relation_enum:
     permissible_values:
@@ -368,3 +458,9 @@ enums:
   sqtr_relation_enum:
     permissible_values:
       targets:
+
+  nomenclature_event_enum:
+    permissible_values:
+      named:
+      renamed:
+      # merged?

@@ -36,6 +36,14 @@ emit_prefixes:
 
 
 classes:
+
+  InformationContentEntity:
+    is_a: AuditedObject
+    slots:
+      - curie
+    description: >-
+      a piece of information that typically is used as support for an assertion or annotation.
+
   AuthorReference:
     is_a: AuditedObject
     slots:
@@ -46,7 +54,7 @@ classes:
       - cross_references
 
   Reference:
-    is_a: AuditedObject
+    is_a: InformationContentEntity
     aliases: [ 'references', 'publication' ]
     notes: >-
       In the ABC literature database, the table holding Reference objects is
@@ -91,6 +99,15 @@ classes:
         description: >-
           The primary key for the Reference object in the references table.
 
+  PersonalCommunication:
+    aliases: ["person_evidence"]
+    is_a: InformationContentEntity
+    description: >- 
+      a piece of information that is used to support an assertion or annotation, where the information
+      comes from a person other than the author of the assertion or annotation, or the author of the reference.
+    slot_usage:
+
+
   MeshDetail:
     is_a: AuditedObject
     description: >-
@@ -110,6 +127,11 @@ classes:
           Here, a foreign key referring to the references table.
 
 slots:
+
+  evidence:
+    description: >-
+    range: InformationContentEntity
+    multivalued: true
 
   reference_id:
     description: >-

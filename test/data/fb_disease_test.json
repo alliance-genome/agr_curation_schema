@@ -1,6 +1,7 @@
 {
   "disease_allele_ingest_set": [
     {
+      "alliance_curie": "AGRKB:100123456789015",
       "subject": "FB:FBal0000272",
       "predicate": "is_implicated_in",
       "object": "DOID:3191",
@@ -18,6 +19,7 @@
   ],
   "disease_gene_ingest_set": [
     {
+      "alliance_curie": "AGRKB:100123456789016",
       "subject": "FB:FBgn0000047",
       "predicate": "is_implicated_in",
       "object": "DOID:422",
