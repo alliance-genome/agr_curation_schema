@@ -6,12 +6,7 @@
       "created_by": "ZFIN",
       "updated_by": "ZFIN",
       "internal": false,
-      "name": "b1219",
-      "associated_references": [
-        {"single_reference": "PMID:123456",
-        "internal": true,
-        "reference_type": "journal"}
-      ]
+      "name": "b1219"
     },
     {
       "curie": "ZFIN:ZDB-ALT-130411-947",
@@ -19,12 +14,7 @@
       "created_by": "ZFIN",
       "updated_by": "ZFIN",
       "internal": false,
-      "name": "sa11077",
-      "associated_references": [
-        {"single_reference": "PMID:123456",
-        "internal": true,
-        "reference_type": "journal"}
-      ]
+      "name": "sa11077"
     }
   ]
 }
