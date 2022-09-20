@@ -1,0 +1,132 @@
+{
+  "allele_ingest_set": [
+    {
+      "curie": "WB:WBVar00000001",
+      "name": "variation 1",
+      "symbol": "a83",
+      "internal": false,
+      "obsolete": false,
+      "taxon": "NCBITaxon:6239",
+      "date_created": "2015-04-09T10:15:30+00:00",
+      "date_updated": "2022-07-11T13:12:51+00:00",
+      "created_by": "WB:WBPerson002314",
+      "updated_by": "WB:WBPerson010002",
+      "in_collection": "Million Mutations Project",
+      "inheritence_mode": "semi-dominant",
+      "is_extinct": false,
+      "sequencing_status": "sequenced"
+    }
+  ],
+  "allele_gene_association_ingest_set": [
+    {
+      "subject": "WB:WBVar00000001",
+      "predicate": "RO:0001025",
+      "object": "WB:WBGene00000001",
+      "evidence_code": "ECO:0000006",
+      "evidence": ["PMID:11231512"],
+      "internal": false,
+      "obsolete": false,
+      "date_created": "2015-04-09T10:15:30+00:00",
+      "date_updated": "2022-07-11T13:12:51+00:00",
+      "created_by": "WB:WBPerson002314",
+      "updated_by": "WB:WBPerson010002"
+    }
+  ],
+  "allele_transcript_association_ingest_set": [
+    {
+      "subject": "WB:WBVar00000001",
+      "predicate": "RO:0001025",
+      "object": "WB:WBTranscript00000001",
+      "evidence_code": "ECO:0000006",
+      "evidence": ["PMID:11231512"],
+      "internal": false,
+      "obsolete": false,
+      "date_created": "2015-04-09T10:15:30+00:00",
+      "date_updated": "2022-07-11T13:12:51+00:00",
+      "created_by": "WB:WBPerson002314",
+      "updated_by": "WB:WBPerson010002"
+    }
+  ],
+  "allele_protein_association_ingest_set": [
+    {
+      "subject": "WB:WBVar00000001",
+      "predicate": "RO:0001025",
+      "object": "WB:WBProtein00000001",
+      "evidence_code": "ECO:0000006",
+      "evidence": ["PMID:11231512"],
+      "internal": false,
+      "obsolete": false,
+      "date_created": "2015-04-09T10:15:30+00:00",
+      "date_updated": "2022-07-11T13:12:51+00:00",
+      "created_by": "WB:WBPerson002314",
+      "updated_by": "WB:WBPerson010002"
+    }
+  ],
+  "allele_origin_association_ingest_set": [
+    {
+      "subject": "WB:WBVar00000001",
+      "predicate": "introduced_in",
+      "object": "WB:WBStrain00000001",
+      "internal": false,
+      "obsolete": false,
+      "date_created": "2015-04-09T10:15:30+00:00",
+      "date_updated": "2022-07-11T13:12:51+00:00",
+      "created_by": "WB:WBPerson002314",
+      "updated_by": "WB:WBPerson010002"
+    }
+  ],
+  "allele_construct_association_ingest_set": [
+    {
+      "subject": "WB:WBVar00000001",
+      "predicate": "RO:0001019",
+      "object": "WB:WBConstruct00000001",
+      "evidence_code": "ECO:0000006",
+      "evidence": ["PMID:11231512"],
+      "internal": false,
+      "obsolete": false,
+      "date_created": "2015-04-09T10:15:30+00:00",
+      "date_updated": "2022-07-11T13:12:51+00:00",
+      "created_by": "WB:WBPerson002314",
+      "updated_by": "WB:WBPerson010002"
+    }
+  ],
+  "allele_cell_line_association_ingest_set": [
+    {
+      "subject": "WB:WBVar00000001",
+      "predicate": "carried_by_cell_line",
+      "object": "WB:WBCell00000002",
+      "internal": false,
+      "obsolete": false,
+      "date_created": "2015-04-09T10:15:30+00:00",
+      "date_updated": "2022-07-11T13:12:51+00:00",
+      "created_by": "WB:WBPerson002314",
+      "updated_by": "WB:WBPerson010002"
+    },
+    {
+      "subject": "WB:WBVar00000001",
+      "predicate": "has_parent_cell_line",
+      "object": "WB:WBCell00000001",
+      "internal": false,
+      "obsolete": false,
+      "date_created": "2015-04-09T10:15:30+00:00",
+      "date_updated": "2022-07-11T13:12:51+00:00",
+      "created_by": "WB:WBPerson002314",
+      "updated_by": "WB:WBPerson010002"
+    }
+  ],
+  "allele_variant_association_ingest_set": [
+  {
+    "subject": "WB:WBVar00000001",
+    "predicate": "RO:0001019",
+    "object": "WB:WBVar00000001",
+    "evidence_code": "ECO:0000006",
+    "evidence": ["PMID:11231512"],
+    "internal": false,
+    "obsolete": false,
+    "date_created": "2015-04-09T10:15:30+00:00",
+    "date_updated": "2022-07-11T13:12:51+00:00",
+    "created_by": "WB:WBPerson002314",
+    "updated_by": "WB:WBPerson010002"
+  }
+]
+}

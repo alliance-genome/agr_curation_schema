@@ -84,6 +84,55 @@ slots:
     mixins:
       - object_set
 
+  allele_gene_association_ingest_set:
+    description: >-
+    domain: Ingest
+    range: AlleleGeneAssociation
+    multivalued: true
+    mixins:
+      - object_set
+
+  allele_transcript_association_ingest_set:
+    description: >-
+    domain: Ingest
+    range: AlleleTranscriptAssociation
+    multivalued: true
+    mixins:
+      - object_set
+
+  allele_protein_association_ingest_set:
+    description: >-
+    domain: Ingest
+    range: AlleleProteinAssociation
+    multivalued: true
+    mixins:
+      - object_set
+
+  allele_construct_association_ingest_set:
+    description: >-
+    domain: Ingest
+    range: AlleleConstructAssociation
+    multivalued: true
+    mixins:
+      - object_set
+
+
+  allele_cell_line_association_ingest_set:
+    description: >-
+    domain: Ingest
+    range: AlleleCellLineAssociation
+    multivalued: true
+    mixins:
+      - object_set
+
+  allele_origin_association_ingest_set:
+    description: >-
+    domain: Ingest
+    range: AlleleOriginAssociation
+    multivalued: true
+    mixins:
+      - object_set
+
   disease_allele_ingest_set:
     description: >-
     domain: Ingest
@@ -134,6 +183,72 @@ slots:
       This is necessary in a json document to provide context for a list, and
       to allow for a single json object that combines multiple object types
 
+  allele_mutation_type_annotation_ingest_set:
+    description: >-
+    domain: Ingest
+    range: AlleleMutationTypeAnnotation
+    multivalued: true
+    mixins:
+      - object_set
+
+  allele_germline_transmission_status_annotation_ingest_set:
+    description: >-
+    domain: Ingest
+    range: AlleleGermlineTransmissionStatusAnnotation
+    multivalued: true
+    mixins:
+      - object_set
+
+  allele_functional_impact_annotation_ingest_set:
+    description: >-
+    domain: Ingest
+    range: AlleleFunctionalImpactAnnotation
+    multivalued: true
+    mixins:
+      - object_set
+
+  allele_molecular_mutation_annotation_ingest_set:
+    description: >-
+    domain: Ingest
+    range: AlleleMolecularMutationAnnotation
+    multivalued: true
+    mixins:
+      - object_set
+
+  allele_database_status_annotation_ingest_set:
+    description: >-
+    domain: Ingest
+    range: AlleleDatabaseStatusAnnotation
+    multivalued: true
+    mixins:
+      - object_set
+
+  allele_generation_method_ingest_set:
+    description: >-
+    domain: Ingest
+    range: GenerationMethod
+    multivalued: true
+    mixins:
+      - object_set
+
+  allele_secondary_id_annotation_ingest_set:
+    description: >-
+    domain: Ingest
+    range: AlleleSecondaryIdAnnotation
+    multivalued: true
+    mixins:
+      - object_set
+
+  allele_nomenclature_annotation_ingest_set:
+    description: >-
+    domain: Ingest
+    range: AlleleNomenclatureAnnotation
+    multivalued: true
+    mixins:
+      - object_set
+
+
+
 classes:
   Ingest:
     tree_root: true
@@ -145,7 +260,20 @@ classes:
       - gene_ingest_set
       - variant_ingest_set
       - allele_variant_association_ingest_set
+      - allele_gene_association_ingest_set
+      - allele_transcript_association_ingest_set
+      - allele_protein_association_ingest_set
+      - allele_construct_association_ingest_set
+      - allele_cell_line_association_ingest_set
+      - allele_origin_association_ingest_set
       - agm_ingest_set
       - sqtr_ingest_set
       - ontology_closure_ingest_set
-
+      - allele_mutation_type_annotation_ingest_set
+      - allele_germline_transmission_status_annotation_ingest_set
+      - allele_functional_impact_annotation_ingest_set
+      - allele_molecular_mutation_annotation_ingest_set
+      - allele_database_status_annotation_ingest_set
+      - allele_generation_method_ingest_set
+      - allele_secondary_id_annotation_ingest_set
+      - allele_nomenclature_annotation_ingest_set

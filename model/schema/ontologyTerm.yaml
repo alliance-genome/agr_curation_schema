@@ -142,6 +142,9 @@ classes:
           The definition of the ontology term. This is a reference to an object that holds
           the text description of the term and a collection of URLs that further define the
           term.
+      curie:
+        required: true
+        identifier: true
 
 OntologyTermClosure:
   is_a: Association
@@ -275,6 +278,14 @@ OntologyTermClosure:
   XPOTerm:
     is_a: PhenotypeTerm
 
+  MPTerm:
+    is_a: PhenotypeTerm
+
+  ATPTerm:
+    is_a: OntologyTerm
+    description: >-
+      An ontology term from the Alliance Tags for Papers ontology (ATP)
+
   ChemicalTerm:
     is_a: OntologyTerm
     abstract: true
@@ -294,4 +305,3 @@ OntologyTermClosure:
     is_a: ChemicalTerm
     description: >-
       Molecules as described by WormBase
-

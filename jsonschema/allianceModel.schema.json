@@ -4,6 +4,10 @@
          "additionalProperties": false,
          "description": "An annotation asserting an association between an AGM and a disease supported by evidence.",
          "properties": {
+            "alliance_curie": {
+               "description": "The Alliance-minted ID for the disease annotation. The ID is of the format AGRKB:100000000000001, where the first three digits represent the DiseaseAnnotation class code of \"100\", followed by a 12-digit identifier",
+               "type": "string"
+            },
             "annotation_type": {
                "description": "The type of annotation classified according to curation method. Submitted value should be a vocabulary term from the 'Annotation types' vocabulary",
                "type": "string"
@@ -50,6 +54,12 @@
             },
             "disease_qualifiers": {
                "description": "Submitted values should be vocabulary terms from the 'Disease Qualifiers' vocabulary",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "evidence": {
                "items": {
                   "type": "string"
                },
@@ -181,6 +191,12 @@
                "format": "date",
                "type": "string"
             },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "inferred_allele": {
                "description": "The allele to which the phenotype is inferred to be associated.",
                "type": "string"
@@ -230,6 +246,99 @@
             "subject"
          ],
          "title": "AGMPhenotypeAnnotation",
+         "type": "object"
+      },
+      "ATPTerm": {
+         "additionalProperties": false,
+         "description": "An ontology term from the Alliance Tags for Papers ontology (ATP)",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/$defs/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/$defs/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "curie"
+         ],
+         "title": "ATPTerm",
          "type": "object"
       },
       "AffectedGenomicModel": {
@@ -438,19 +547,6 @@
                "description": "Associated deficiency (etc.) whose breakpoint causes the mutation",
                "type": "string"
             },
-            "associated_references": {
-               "description": "List of references associated with the entity in some way with a description of the association.",
-               "items": {
-                  "$ref": "#/$defs/AssociatedReference"
-               },
-               "type": "array"
-            },
-            "contains_constructs": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -466,10 +562,6 @@
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                "type": "string"
             },
-            "database_status": {
-               "description": "Database status of the allele",
-               "type": "string"
-            },
             "date_created": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                "format": "date",
@@ -480,41 +572,18 @@
                "format": "date",
                "type": "string"
             },
-            "embryonic_stem_cell_lines": {
-               "description": "Embryonic stem cell lines known to carry the allele",
-               "items": {
-                  "$ref": "#/$defs/CellLine"
-               },
-               "type": "array"
-            },
-            "functional_impact": {
-               "description": "Experimentally assessed functional impact of the allele, e.g. knockout / amorphic",
-               "type": "string"
-            },
-            "generation_method": {
-               "description": "Technique used to create the allele, e.g. spontaneous / naturally occuring / radiation",
-               "type": "string"
-            },
             "genomic_locations": {
                "items": {
                   "$ref": "#/$defs/GenomicLocation"
                },
                "type": "array"
             },
-            "germline_transmission_status": {
-               "description": "For alleles made in cell lines, have they been transmitted to the germline of an animal",
-               "type": "string"
-            },
-            "images": {
-               "description": "Any associated image",
-               "type": "string"
-            },
             "in_collection": {
                "description": "Set of high-throughput alleles made by large projects",
                "type": "string"
             },
             "inheritence_mode": {
-               "description": "Mode of inheritence, e.g. dominant / semi-dominant / recessive / unknown",
+               "description": "Mode of inheritence, e.g. dominant / semi-dominant / recessive / unknown # TODO: please enumerate the difference between this and zygosity in AffectedGenomicModel class.",
                "type": "string"
             },
             "internal": {
@@ -525,20 +594,6 @@
                "description": "Does the allele still exist in a population somewhere?",
                "type": "boolean"
             },
-            "molecular_mutations": {
-               "description": "Description of the DNA changes if precise genomic location unknown",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "mutant_cell_lines": {
-               "description": "Mutant cell lines known to carry the allele",
-               "items": {
-                  "$ref": "#/$defs/CellLine"
-               },
-               "type": "array"
-            },
             "name": {
                "description": "a human-readable name for an entity",
                "type": "string"
@@ -547,21 +602,10 @@
                "description": "Entity is no longer current.",
                "type": "boolean"
             },
-            "origins": {
-               "description": "Affected genomic models that the allele was introduced in",
+            "references": {
+               "description": "holds between an object and a list of references",
                "items": {
                   "type": "string"
-               },
-               "type": "array"
-            },
-            "parent_cell_line": {
-               "$ref": "#/$defs/CellLine",
-               "description": "Parental cell line of alleles made in embryonic stem cells"
-            },
-            "related_notes": {
-               "description": "Holds between an object and a list of related Note objects.",
-               "items": {
-                  "$ref": "#/$defs/Note"
                },
                "type": "array"
             },
@@ -590,10 +634,6 @@
                "description": "The taxon from which the biological entity derives.",
                "type": "string"
             },
-            "transposon_insertion": {
-               "description": "Associated transposon insertion that causes the mutation",
-               "type": "string"
-            },
             "updated_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
@@ -608,10 +648,188 @@
          "title": "Allele",
          "type": "object"
       },
+      "AlleleCellLineAssociation": {
+         "additionalProperties": false,
+         "description": "The relationship between an allele and a cell line.  Includes mutant/ embryonic stem cell lines known to carry the allele, and parental cell line of alleles made in embryonic stem cells.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "object": {
+               "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "predicate": {
+               "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+               "type": "string"
+            },
+            "subject": {
+               "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "subject",
+            "predicate",
+            "object"
+         ],
+         "title": "AlleleCellLineAssociation",
+         "type": "object"
+      },
+      "AlleleConstructAssociation": {
+         "additionalProperties": false,
+         "description": "The relationship between an allele and constructs contained in that allele.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "evidence_code": {
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "object": {
+               "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "predicate": {
+               "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+               "type": "string"
+            },
+            "related_note": {
+               "$ref": "#/$defs/Note",
+               "description": "Holds between an object and a Note object."
+            },
+            "subject": {
+               "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "evidence",
+            "subject",
+            "predicate",
+            "object"
+         ],
+         "title": "AlleleConstructAssociation",
+         "type": "object"
+      },
+      "AlleleDatabaseStatusAnnotation": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "allele_id": {
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "database_status": {
+               "description": "Database status of the allele",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AlleleDatabaseStatusAnnotation",
+         "type": "object"
+      },
       "AlleleDiseaseAnnotation": {
          "additionalProperties": false,
          "description": "An annotation asserting an association between an allele and a disease supported by evidence.",
          "properties": {
+            "alliance_curie": {
+               "description": "The Alliance-minted ID for the disease annotation. The ID is of the format AGRKB:100000000000001, where the first three digits represent the DiseaseAnnotation class code of \"100\", followed by a 12-digit identifier",
+               "type": "string"
+            },
             "annotation_type": {
                "description": "The type of annotation classified according to curation method. Submitted value should be a vocabulary term from the 'Annotation types' vocabulary",
                "type": "string"
@@ -654,6 +872,12 @@
             },
             "disease_qualifiers": {
                "description": "Submitted values should be vocabulary terms from the 'Disease Qualifiers' vocabulary",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "evidence": {
                "items": {
                   "type": "string"
                },
@@ -745,6 +969,59 @@
          "title": "AlleleDiseaseAnnotation",
          "type": "object"
       },
+      "AlleleFunctionalImpactAnnotation": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "allele_id": {
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "functional_impact": {
+               "description": "Experimentally assessed functional impact of the allele, e.g. knockout / amorphic",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AlleleFunctionalImpactAnnotation",
+         "type": "object"
+      },
       "AlleleGeneAssociation": {
          "additionalProperties": false,
          "description": "Association between an allele and a gene",
@@ -762,6 +1039,12 @@
                "description": "Date on which an entity was last modified.",
                "format": "date",
                "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "evidence_code": {
                "type": "string"
@@ -786,8 +1069,179 @@
                "$ref": "#/$defs/Note",
                "description": "Holds between an object and a Note object."
             },
-            "single_reference": {
-               "description": "holds between an object and a single reference",
+            "subject": {
+               "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "evidence",
+            "subject",
+            "predicate",
+            "object"
+         ],
+         "title": "AlleleGeneAssociation",
+         "type": "object"
+      },
+      "AlleleGenerationMethodAssociation": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "mutation_target_strain": {
+               "description": "The particular strain (solely for and from MGI) that is targeted by the generation method for a particular allele.",
+               "type": "string"
+            },
+            "object": {
+               "$ref": "#/$defs/GenerationMethod",
+               "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "predicate": {
+               "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+               "type": "string"
+            },
+            "subject": {
+               "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "predicate",
+            "subject",
+            "object"
+         ],
+         "title": "AlleleGenerationMethodAssociation",
+         "type": "object"
+      },
+      "AlleleGermlineTransmissionStatusAnnotation": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "allele_id": {
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "germline_transmission_status": {
+               "description": "For alleles made in cell lines, have they been transmitted to the germline of an animal",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AlleleGermlineTransmissionStatusAnnotation",
+         "type": "object"
+      },
+      "AlleleImageAssociation": {
+         "additionalProperties": false,
+         "description": "The relationship between an allele and an image.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "object": {
+               "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "predicate": {
+               "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+               "type": "string"
+            },
+            "primary_image": {
+               "description": "Can be null; if false, maybe you would show all the images. We need to revisit this issue. ",
                "type": "string"
             },
             "subject": {
@@ -805,7 +1259,276 @@
             "predicate",
             "object"
          ],
-         "title": "AlleleGeneAssociation",
+         "title": "AlleleImageAssociation",
+         "type": "object"
+      },
+      "AlleleMolecularMutationAnnotation": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "allele_id": {
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "molecular_mutations": {
+               "description": "Description of the DNA changes if precise genomic location unknown",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AlleleMolecularMutationAnnotation",
+         "type": "object"
+      },
+      "AlleleMutationTypeAnnotation": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "allele_id": {
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "mutation_type": {
+               "description": "SO term for type of mutation",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AlleleMutationTypeAnnotation",
+         "type": "object"
+      },
+      "AlleleNomenclatureAnnotation": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "allele_id": {
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "nomenclature_event": {
+               "$ref": "#/$defs/NomenclatureEventEnum",
+               "description": "any of the kinds of changes made to an object's name or symbol"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AlleleNomenclatureAnnotation",
+         "type": "object"
+      },
+      "AlleleNotesAssociation": {
+         "additionalProperties": false,
+         "description": "The relationship between an allele and a note.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "object": {
+               "$ref": "#/$defs/Note",
+               "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "predicate": {
+               "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+               "type": "string"
+            },
+            "subject": {
+               "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "predicate",
+            "subject",
+            "object"
+         ],
+         "title": "AlleleNotesAssociation",
+         "type": "object"
+      },
+      "AlleleOriginAssociation": {
+         "additionalProperties": false,
+         "description": "The relationship between an allele and the origin of the allele.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "object": {
+               "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "predicate": {
+               "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+               "type": "string"
+            },
+            "subject": {
+               "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "predicate",
+            "subject",
+            "object"
+         ],
+         "title": "AlleleOriginAssociation",
          "type": "object"
       },
       "AllelePhenotypeAnnotation": {
@@ -843,6 +1566,12 @@
                "description": "Date on which an entity was last modified.",
                "format": "date",
                "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "inferred_gene": {
                "description": "The gene to which the phenotype is inferred to be associated.",
@@ -909,6 +1638,12 @@
                "format": "date",
                "type": "string"
             },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "evidence_code": {
                "type": "string"
             },
@@ -932,10 +1667,6 @@
                "$ref": "#/$defs/Note",
                "description": "Holds between an object and a Note object."
             },
-            "single_reference": {
-               "description": "holds between an object and a single reference",
-               "type": "string"
-            },
             "subject": {
                "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
                "type": "string"
@@ -947,11 +1678,169 @@
          },
          "required": [
             "internal",
+            "evidence",
             "subject",
             "predicate",
             "object"
          ],
          "title": "AlleleProteinAssociation",
+         "type": "object"
+      },
+      "AlleleSecondaryIdAnnotation": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "allele_id": {
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "secondary_id": {
+               "type": "string"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AlleleSecondaryIdAnnotation",
+         "type": "object"
+      },
+      "AlleleSlotAnnotation": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "allele_id": {
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AlleleSlotAnnotation",
+         "type": "object"
+      },
+      "AlleleSynonymAssociation": {
+         "additionalProperties": false,
+         "description": "The relationship between an allele and a synonym.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "object": {
+               "$ref": "#/$defs/Synonym",
+               "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "predicate": {
+               "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+               "type": "string"
+            },
+            "subject": {
+               "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            },
+            "synonym_scope": {
+               "$ref": "#/$defs/SynonymScopeEnum",
+               "description": "the scope of the synonym, e.g. 'EXACT', 'NARROW' or 'RELATED'"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "predicate",
+            "subject",
+            "object"
+         ],
+         "title": "AlleleSynonymAssociation",
          "type": "object"
       },
       "AlleleTranscriptAssociation": {
@@ -972,6 +1861,12 @@
                "format": "date",
                "type": "string"
             },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "evidence_code": {
                "type": "string"
             },
@@ -995,10 +1890,6 @@
                "$ref": "#/$defs/Note",
                "description": "Holds between an object and a Note object."
             },
-            "single_reference": {
-               "description": "holds between an object and a single reference",
-               "type": "string"
-            },
             "subject": {
                "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
                "type": "string"
@@ -1010,6 +1901,7 @@
          },
          "required": [
             "internal",
+            "evidence",
             "subject",
             "predicate",
             "object"
@@ -1035,6 +1927,12 @@
                "format": "date",
                "type": "string"
             },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "evidence_code": {
                "type": "string"
             },
@@ -1058,10 +1956,6 @@
                "$ref": "#/$defs/Note",
                "description": "Holds between an object and a Note object."
             },
-            "single_reference": {
-               "description": "holds between an object and a single reference",
-               "type": "string"
-            },
             "subject": {
                "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
                "type": "string"
@@ -1073,6 +1967,7 @@
          },
          "required": [
             "internal",
+            "evidence",
             "predicate",
             "subject",
             "object"
@@ -1313,55 +2208,9 @@
          "title": "Assembly",
          "type": "object"
       },
-      "AssociatedReference": {
-         "additionalProperties": false,
-         "description": "Describes the relation between a reference and an object",
-         "properties": {
-            "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
-            },
-            "date_created": {
-               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-               "format": "date",
-               "type": "string"
-            },
-            "date_updated": {
-               "description": "Date on which an entity was last modified.",
-               "format": "date",
-               "type": "string"
-            },
-            "internal": {
-               "description": "Classifies the entity as private (for internal use) or not (for public use).",
-               "type": "boolean"
-            },
-            "obsolete": {
-               "description": "Entity is no longer current.",
-               "type": "boolean"
-            },
-            "reference_type": {
-               "description": "Description of how a reference is associated with an entity, e.g. molecular / origin / other",
-               "type": "string"
-            },
-            "single_reference": {
-               "description": "holds between an object and a single reference",
-               "type": "string"
-            },
-            "updated_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
-            }
-         },
-         "required": [
-            "internal",
-            "reference_type"
-         ],
-         "title": "AssociatedReference",
-         "type": "object"
-      },
       "Association": {
          "additionalProperties": false,
-         "description": "A typed association between two entities, supported by evidence.",
+         "description": "A typed association between two entities, supported by evidence.  Associations have three base slots: subject,  object, and predicate, but they can have any number of additional attributes that help qualify the relationship  between the subject and the object.  The subject is the curie (or identifier) of the class that is the subject  of the association, and likewise the object is the curie (or identifier of the class that is the object. The  relationship between subject and object is defined by the predicate slot (which can also be constrained  using the range of the predicate).",
          "properties": {
             "created_by": {
                "description": "The individual that created the entity.",
@@ -1376,6 +2225,12 @@
                "description": "Date on which an entity was last modified.",
                "format": "date",
                "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
@@ -1722,6 +2577,17 @@
                "description": "The individual that created the entity.",
                "type": "string"
             },
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/$defs/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
             "date_created": {
                "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                "format": "date",
@@ -1732,13 +2598,40 @@
                "format": "date",
                "type": "string"
             },
+            "genomic_locations": {
+               "items": {
+                  "$ref": "#/$defs/GenomicLocation"
+               },
+               "type": "array"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
             },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/$defs/Synonym"
+               },
+               "type": "array"
+            },
+            "taxon": {
+               "description": "The taxon from which the biological entity derives.",
+               "type": "string"
             },
             "updated_by": {
                "description": "The individual that last modified the entity.",
@@ -1746,7 +2639,9 @@
             }
          },
          "required": [
-            "internal"
+            "internal",
+            "curie",
+            "taxon"
          ],
          "title": "CellLine",
          "type": "object"
@@ -2079,6 +2974,12 @@
                "description": "Date on which an entity was last modified.",
                "format": "date",
                "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
@@ -2817,62 +3718,6 @@
          "title": "EMAPATerm",
          "type": "object"
       },
-      "EntityStatement": {
-         "additionalProperties": false,
-         "description": "Free-text describing some aspect of an entity.",
-         "properties": {
-            "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
-            },
-            "date_created": {
-               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-               "format": "date",
-               "type": "string"
-            },
-            "date_updated": {
-               "description": "Date on which an entity was last modified.",
-               "format": "date",
-               "type": "string"
-            },
-            "internal": {
-               "description": "Classifies the entity as private (for internal use) or not (for public use).",
-               "type": "boolean"
-            },
-            "obsolete": {
-               "description": "Entity is no longer current.",
-               "type": "boolean"
-            },
-            "references": {
-               "description": "holds between an object and a list of references",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "statement_subject": {
-               "description": "The entity being described by the note.",
-               "type": "string"
-            },
-            "statement_text": {
-               "description": "Free-text describing some aspect of an entity.",
-               "type": "string"
-            },
-            "statement_type": {
-               "description": "The type of free-text statement. For example: cytology, private, curator_comments.",
-               "type": "string"
-            },
-            "updated_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
-            }
-         },
-         "required": [
-            "internal"
-         ],
-         "title": "EntityStatement",
-         "type": "object"
-      },
       "EntitySynonym": {
          "additionalProperties": false,
          "description": "A relationship between an entity and a synonym.",
@@ -2890,6 +3735,12 @@
                "description": "Date on which an entity was last modified.",
                "format": "date",
                "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
@@ -3028,9 +3879,6 @@
          "additionalProperties": false,
          "description": "A description of when and where gene products are observed to be present, including experimental details, supporting evidence, and curator notes.",
          "properties": {
-            "assay_notes": {
-               "type": "string"
-            },
             "associated_with_figure": {
                "description": "The figure(s) that support(s) the expression annotation.",
                "items": {
@@ -3071,6 +3919,13 @@
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "related_notes": {
+               "description": "Holds between an object and a list of related Note objects.",
+               "items": {
+                  "$ref": "#/$defs/Note"
+               },
+               "type": "array"
             },
             "uncertain": {
                "description": "If set to true, then the related entity is uncertain.",
@@ -3114,6 +3969,12 @@
                "format": "date",
                "type": "string"
             },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -3146,62 +4007,6 @@
             "object"
          ],
          "title": "ExpressionAnnotationImagePane",
-         "type": "object"
-      },
-      "ExpressionAnnotationStatement": {
-         "additionalProperties": false,
-         "description": "",
-         "properties": {
-            "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
-            },
-            "date_created": {
-               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-               "format": "date",
-               "type": "string"
-            },
-            "date_updated": {
-               "description": "Date on which an entity was last modified.",
-               "format": "date",
-               "type": "string"
-            },
-            "internal": {
-               "description": "Classifies the entity as private (for internal use) or not (for public use).",
-               "type": "boolean"
-            },
-            "obsolete": {
-               "description": "Entity is no longer current.",
-               "type": "boolean"
-            },
-            "references": {
-               "description": "holds between an object and a list of references",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "statement_subject": {
-               "$ref": "#/$defs/ExpressionAnnotation",
-               "description": "The entity being described by the note."
-            },
-            "statement_text": {
-               "description": "Free-text describing some aspect of an entity.",
-               "type": "string"
-            },
-            "statement_type": {
-               "$ref": "#/$defs/ExpressionStatementTypeEnum",
-               "description": "The type of free-text statement. For example: cytology, private, curator_comments."
-            },
-            "updated_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
-            }
-         },
-         "required": [
-            "internal"
-         ],
-         "title": "ExpressionAnnotationStatement",
          "type": "object"
       },
       "ExpressionConditionRelationEnum": {
@@ -3264,6 +4069,13 @@
                },
                "type": "array"
             },
+            "related_notes": {
+               "description": "Holds between an object and a list of related Note objects.",
+               "items": {
+                  "$ref": "#/$defs/Note"
+               },
+               "type": "array"
+            },
             "single_reference": {
                "description": "holds between an object and a single reference",
                "type": "string"
@@ -3289,62 +4101,6 @@
             "curie"
          ],
          "title": "ExpressionExperiment",
-         "type": "object"
-      },
-      "ExpressionExperimentStatement": {
-         "additionalProperties": false,
-         "description": "Free-text describing some aspect(s) of a gene's expression, particularly nuanced information that is not readily captured in annotations. This statement's scope is limited to the associated ExpressionExperiment.",
-         "properties": {
-            "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
-            },
-            "date_created": {
-               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-               "format": "date",
-               "type": "string"
-            },
-            "date_updated": {
-               "description": "Date on which an entity was last modified.",
-               "format": "date",
-               "type": "string"
-            },
-            "internal": {
-               "description": "Classifies the entity as private (for internal use) or not (for public use).",
-               "type": "boolean"
-            },
-            "obsolete": {
-               "description": "Entity is no longer current.",
-               "type": "boolean"
-            },
-            "references": {
-               "description": "holds between an object and a list of references",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "statement_subject": {
-               "description": "The entity being described by the note.",
-               "type": "string"
-            },
-            "statement_text": {
-               "description": "Free-text describing some aspect of an entity.",
-               "type": "string"
-            },
-            "statement_type": {
-               "description": "The type of free-text statement. For example: cytology, private, curator_comments.",
-               "type": "string"
-            },
-            "updated_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
-            }
-         },
-         "required": [
-            "internal"
-         ],
-         "title": "ExpressionExperimentStatement",
          "type": "object"
       },
       "ExpressionQualifierSet": {
@@ -3753,6 +4509,12 @@
                "format": "date",
                "type": "string"
             },
+            "genes": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -3879,6 +4641,20 @@
          "additionalProperties": false,
          "description": "A DNA genomic entity from which one or more functional* RNA transcript molecules are transcribed, along with cis-regulatory elements responsible for regulating expression (transcription) of the gene. * A functional RNA molecule here can mean one that is directly responsible for the gene's function (e.g. catalysis, structure, etc.) or one that is translated to produce a functional polypeptide/protein. A pseudogene may be considered a gene under this definition, albeit no longer functional.",
          "properties": {
+            "anatomy_function": {
+               "description": "WB specific. Allow the connection between Anatomy_term, Phenotype and gene Eg WBbtf0001",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "contig": {
+               "description": "Contig or clone this gene is located to",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -3904,9 +4680,30 @@
                "format": "date",
                "type": "string"
             },
+            "designating_laboratories": {
+               "description": "A laboratory, rarely laboratories, which designated this gene",
+               "items": {
+                  "$ref": "#/$defs/Laboratory"
+               },
+               "type": "array"
+            },
+            "designating_persons": {
+               "description": "A person/persons who designated this gene",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "gene_type": {
                "description": "SOTerm describing gene type",
                "type": "string"
+            },
+            "gene_types_secondary": {
+               "description": "SOTerm describing alternate gene types",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "genomic_locations": {
                "items": {
@@ -3925,6 +4722,13 @@
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "product_binds_matrix": {
+               "description": "WB specific. ID of position matrix object",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "related_notes": {
                "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Gene note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
@@ -3954,9 +4758,27 @@
                "description": "The taxon from which the biological entity derives.",
                "type": "string"
             },
+            "trans_splice_leaders": {
+               "description": "Trans-splicing splice leaders observed to operate on this gene, in species which have spliced leader trans-splicing",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "transposon_origin": {
+               "description": "If this gene contains or is originating from a transposon",
+               "type": "boolean"
+            },
             "updated_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
+            },
+            "wbprocess": {
+               "description": "WB specific. Eg WBbiop00000015 Corpse engulfment",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
@@ -3970,7 +4792,7 @@
       },
       "GeneCluster": {
          "additionalProperties": false,
-         "description": "A gene cluster is a set of genes which is of biological significance, and which is clustered together on the genome.",
+         "description": "A gene cluster is a set of genes which have a biological significance, and which are probably clustered together on the genome, like histones and miRNAs",
          "properties": {
             "created_by": {
                "description": "The individual that created the entity.",
@@ -4004,6 +4826,10 @@
                "description": "Entity is no longer current.",
                "type": "boolean"
             },
+            "related_note": {
+               "$ref": "#/$defs/Note",
+               "description": "Holds between an object and a Note object."
+            },
             "taxon": {
                "description": "The taxon from which the biological entity derives.",
                "type": "string"
@@ -4021,10 +4847,78 @@
          "title": "GeneCluster",
          "type": "object"
       },
+      "GeneCollection": {
+         "additionalProperties": false,
+         "description": "A gene collection is a set of genes which have been grouped based on experimental evidence, for example a set of interacting genes, genes in expression cluster, or a set of ChIP binding peaks",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "experiment_type": {
+               "description": "Type of experiment by which these genes were collated eg chip-seq, interaction, expression",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "genes": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "related_note": {
+               "$ref": "#/$defs/Note",
+               "description": "Holds between an object and a Note object."
+            },
+            "taxon": {
+               "description": "The taxon from which the biological entity derives.",
+               "type": "string"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "curie",
+            "taxon"
+         ],
+         "title": "GeneCollection",
+         "type": "object"
+      },
       "GeneDiseaseAnnotation": {
          "additionalProperties": false,
          "description": "An annotation asserting an association between a gene and a disease supported by evidence.",
          "properties": {
+            "alliance_curie": {
+               "description": "The Alliance-minted ID for the disease annotation. The ID is of the format AGRKB:100000000000001, where the first three digits represent the DiseaseAnnotation class code of \"100\", followed by a 12-digit identifier",
+               "type": "string"
+            },
             "annotation_type": {
                "description": "The type of annotation classified according to curation method. Submitted value should be a vocabulary term from the 'Annotation types' vocabulary",
                "type": "string"
@@ -4063,6 +4957,12 @@
             },
             "disease_qualifiers": {
                "description": "Submitted values should be vocabulary terms from the 'Disease Qualifiers' vocabulary",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "evidence": {
                "items": {
                   "type": "string"
                },
@@ -4153,62 +5053,6 @@
          "title": "GeneDiseaseAnnotation",
          "type": "object"
       },
-      "GeneExpressionStatement": {
-         "additionalProperties": false,
-         "description": "Free-text describing some aspect(s) of a gene's expression, particularly nuanced information that is not readily captured in annotations. May summarize data from many annotations and/or many experiments.",
-         "properties": {
-            "created_by": {
-               "description": "The individual that created the entity.",
-               "type": "string"
-            },
-            "date_created": {
-               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-               "format": "date",
-               "type": "string"
-            },
-            "date_updated": {
-               "description": "Date on which an entity was last modified.",
-               "format": "date",
-               "type": "string"
-            },
-            "internal": {
-               "description": "Classifies the entity as private (for internal use) or not (for public use).",
-               "type": "boolean"
-            },
-            "obsolete": {
-               "description": "Entity is no longer current.",
-               "type": "boolean"
-            },
-            "references": {
-               "description": "holds between an object and a list of references",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "statement_subject": {
-               "description": "The entity being described by the note.",
-               "type": "string"
-            },
-            "statement_text": {
-               "description": "Free-text describing some aspect of an entity.",
-               "type": "string"
-            },
-            "statement_type": {
-               "$ref": "#/$defs/ExpressionStatementTypeEnum",
-               "description": "The type of free-text statement. For example: cytology, private, curator_comments."
-            },
-            "updated_by": {
-               "description": "The individual that last modified the entity.",
-               "type": "string"
-            }
-         },
-         "required": [
-            "internal"
-         ],
-         "title": "GeneExpressionStatement",
-         "type": "object"
-      },
       "GeneGeneticInteraction": {
          "additionalProperties": false,
          "description": "A genetic interaction between genes (e.g. phenotypic suppression)",
@@ -4237,6 +5081,12 @@
                "description": "Date on which an entity was last modified.",
                "format": "date",
                "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "interaction_data_provider": {
                "$ref": "#/$defs/InteractionSourceEnum",
@@ -4322,6 +5172,82 @@
          "title": "GeneGeneticInteraction",
          "type": "object"
       },
+      "GeneHistory": {
+         "additionalProperties": false,
+         "description": "The history of a gene",
+         "properties": {
+            "acquires_merge": {
+               "description": "Genes which have been merged into this gene",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "current_status": {
+               "description": "Current status of this object",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "current_version": {
+               "description": "Current version of this object with each version eg 1,2,3 describing major updates",
+               "type": "integer"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "merged_into": {
+               "description": "This gene has been merged into",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "split_from": {
+               "description": "This gene exists because it has been split from this gene",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "split_into": {
+               "description": "This gene has been split into these genes",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "GeneHistory",
+         "type": "object"
+      },
       "GeneMolecularInteraction": {
          "additionalProperties": false,
          "description": "A physical molecular interaction between gene products (e.g. protein-protein interactions or protein-RNA interactions) or between genes and DNA-binding factors (e.g. protein-DNA interactions)",
@@ -4358,6 +5284,12 @@
             "detection_method": {
                "$ref": "#/$defs/DetectionMethodsEnum",
                "description": "The experimental method used to identify the physical interaction between two molecules"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "interaction_data_provider": {
                "$ref": "#/$defs/InteractionSourceEnum",
@@ -4431,6 +5363,74 @@
          "title": "GeneMolecularInteraction",
          "type": "object"
       },
+      "GeneNomenclatureSet": {
+         "additionalProperties": false,
+         "description": "WB specific. A gene class is a set of genes which share nomenclature, belonging to the same gene class.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "designating_laboratory": {
+               "$ref": "#/$defs/Laboratory",
+               "description": "A laboratory which designated this gene class"
+            },
+            "genes": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "old_members": {
+               "description": "Gene which were formerly members of this GeneClass",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "related_note": {
+               "$ref": "#/$defs/Note",
+               "description": "Holds between an object and a Note object."
+            },
+            "synonym": {
+               "description": "the text string of the synonym",
+               "type": "string"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "curie",
+            "designating_laboratory"
+         ],
+         "title": "GeneNomenclatureSet",
+         "type": "object"
+      },
       "GenePhenotypeAnnotation": {
          "additionalProperties": false,
          "description": "An annotation asserting an association between a gene and a phenotype supported by evidence.",
@@ -4458,6 +5458,12 @@
                "description": "Date on which an entity was last modified.",
                "format": "date",
                "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
@@ -4523,6 +5529,12 @@
                "format": "date",
                "type": "string"
             },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -4555,6 +5567,157 @@
             "object"
          ],
          "title": "GeneToPathwayAssociation",
+         "type": "object"
+      },
+      "GenerationMethod": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "['mutagee']": {
+               "description": "The target of the mutation, e.g. strain / adult females /  adult males / embryos / sperm / not specified",
+               "type": "string"
+            },
+            "['mutagen']": {
+               "description": "Technique used to create the allele, e.g. spontaneous / naturally occurring / radiation-induced / recombinant /  ENU / CRISPR / TALEN / gamma rays / not specified / spontaneous / DNA / DNA AND CRISPR / DNA and TALEN / zinc finger nuclease / EMS",
+               "type": "string"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "GenerationMethod",
+         "type": "object"
+      },
+      "GeneticMapPosition": {
+         "additionalProperties": false,
+         "description": "A genetic map position.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/$defs/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "genetic_map_band": {
+               "description": "Genetic map predicted chromosome location eg 10q12",
+               "type": "string"
+            },
+            "genetic_map_chromosome": {
+               "description": "Chromosome or contig to which the gene has been genetically mapped",
+               "type": "string"
+            },
+            "genetic_map_position_centimorgan": {
+               "description": "Genetic map predicted chromosome location in centimorgans eg 22.3366 cM",
+               "items": {
+                  "type": "number"
+               },
+               "type": "array"
+            },
+            "genetic_map_position_centimorgan_error": {
+               "description": "Genetic map calculated error in the predicted chromosome location in centimorgans eg 0.045 cM",
+               "items": {
+                  "type": "number"
+               },
+               "type": "array"
+            },
+            "genetic_map_position_radiation": {
+               "description": "Radiation hybrid map predicted chromosome location eg 66.5 cR",
+               "items": {
+                  "type": "number"
+               },
+               "type": "array"
+            },
+            "genomic_locations": {
+               "items": {
+                  "$ref": "#/$defs/GenomicLocation"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/$defs/Synonym"
+               },
+               "type": "array"
+            },
+            "taxon": {
+               "description": "The taxon from which the biological entity derives.",
+               "type": "string"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "curie",
+            "taxon"
+         ],
+         "title": "GeneticMapPosition",
          "type": "object"
       },
       "GenomicEntity": {
@@ -4724,6 +5887,50 @@
          "title": "HeavyChainIsotypeSet",
          "type": "string"
       },
+      "Identifier": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "counter": {
+               "description": "a number to identify an alliance resource in a subdomain",
+               "type": "integer"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "subdomain_code": {
+               "description": "a three letter string, representing a subdomain (e.g 101 represents disease_annotation)",
+               "type": "string"
+            },
+            "subdomain_name": {
+               "description": "subdomain name (e.g disease_annotation)",
+               "type": "string"
+            }
+         },
+         "required": [
+            "curie"
+         ],
+         "title": "Identifier",
+         "type": "object"
+      },
+      "IdentifiersRange": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "first": {
+               "description": "first identifier in a range",
+               "type": "string"
+            },
+            "last": {
+               "description": "last identifier in a range",
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "IdentifiersRange",
+         "type": "object"
+      },
       "Image": {
          "additionalProperties": false,
          "description": "The set of files and metadata that constitute an image.",
@@ -4882,6 +6089,48 @@
          "title": "ImagePane",
          "type": "object"
       },
+      "InformationContentEntity": {
+         "additionalProperties": false,
+         "description": "a piece of information that typically is used as support for an assertion or annotation.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "curie"
+         ],
+         "title": "InformationContentEntity",
+         "type": "object"
+      },
       "Ingest": {
          "additionalProperties": false,
          "description": "",
@@ -4892,9 +6141,93 @@
                },
                "type": "array"
             },
+            "allele_cell_line_association_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AlleleCellLineAssociation"
+               },
+               "type": "array"
+            },
+            "allele_construct_association_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AlleleConstructAssociation"
+               },
+               "type": "array"
+            },
+            "allele_database_status_annotation_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AlleleDatabaseStatusAnnotation"
+               },
+               "type": "array"
+            },
+            "allele_functional_impact_annotation_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AlleleFunctionalImpactAnnotation"
+               },
+               "type": "array"
+            },
+            "allele_gene_association_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AlleleGeneAssociation"
+               },
+               "type": "array"
+            },
+            "allele_generation_method_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/GenerationMethod"
+               },
+               "type": "array"
+            },
+            "allele_germline_transmission_status_annotation_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AlleleGermlineTransmissionStatusAnnotation"
+               },
+               "type": "array"
+            },
             "allele_ingest_set": {
                "items": {
                   "$ref": "#/$defs/Allele"
+               },
+               "type": "array"
+            },
+            "allele_molecular_mutation_annotation_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AlleleMolecularMutationAnnotation"
+               },
+               "type": "array"
+            },
+            "allele_mutation_type_annotation_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AlleleMutationTypeAnnotation"
+               },
+               "type": "array"
+            },
+            "allele_nomenclature_annotation_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AlleleNomenclatureAnnotation"
+               },
+               "type": "array"
+            },
+            "allele_origin_association_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AlleleOriginAssociation"
+               },
+               "type": "array"
+            },
+            "allele_protein_association_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AlleleProteinAssociation"
+               },
+               "type": "array"
+            },
+            "allele_secondary_id_annotation_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AlleleSecondaryIdAnnotation"
+               },
+               "type": "array"
+            },
+            "allele_transcript_association_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/AlleleTranscriptAssociation"
                },
                "type": "array"
             },
@@ -5888,6 +7221,15 @@
          "title": "NCBITaxonTerm",
          "type": "object"
       },
+      "NomenclatureEventEnum": {
+         "description": "",
+         "enum": [
+            "named",
+            "renamed"
+         ],
+         "title": "NomenclatureEventEnum",
+         "type": "string"
+      },
       "Note": {
          "additionalProperties": false,
          "description": "Note object for capturing free-text describing some attribute of an entity, coupled with a 'note type', internal boolean, and an optional list of references. Permissible values for note_type can be viewed and managed in the A-Team curation UI Controlled Vocabulary Terms Table.",
@@ -5906,6 +7248,12 @@
                "format": "date",
                "type": "string"
             },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "free_text": {
                "description": "A free text string that describes some aspect of an entity.",
                "type": "string"
@@ -5921,13 +7269,6 @@
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
-            },
-            "references": {
-               "description": "holds between an object and a list of references",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
             },
             "updated_by": {
                "description": "The individual that last modified the entity.",
@@ -6070,6 +7411,10 @@
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "related_note": {
+               "$ref": "#/$defs/Note",
+               "description": "Holds between an object and a Note object."
             },
             "taxon": {
                "description": "The taxon from which the biological entity derives.",
@@ -6248,6 +7593,48 @@
          "title": "Person",
          "type": "object"
       },
+      "PersonalCommunication": {
+         "additionalProperties": false,
+         "description": "a piece of information that is used to support an assertion or annotation, where the information comes from a person other than the author of the assertion or annotation, or the author of the reference.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "curie"
+         ],
+         "title": "PersonalCommunication",
+         "type": "object"
+      },
       "PhenotypeAnnotation": {
          "additionalProperties": false,
          "description": "An annotation asserting an association between a biological entity and a phenotype supported by evidence.",
@@ -6275,6 +7662,12 @@
                "description": "Date on which an entity was last modified.",
                "format": "date",
                "type": "string"
+            },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
@@ -7317,6 +8710,12 @@
                "format": "date",
                "type": "string"
             },
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -7366,6 +8765,43 @@
          ],
          "title": "SiftPredictionLevels",
          "type": "string"
+      },
+      "SlotAnnotation": {
+         "additionalProperties": false,
+         "description": "SlotAnnotation classes should be used when we need to attach metadata (in particular evidence and provenance) to a slot in the context of its referencing class, that can not be fully captured using an Association between the full class itself, and an InformationContentEntity. Evidence and provenance can exist here in the form of an evidence code, a publication, a personal communication or any other kind of InformationContentEntity. SlotAnnotation classes are used where the slot is not referencing a class in and of itself, and often has a  scalar range.",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "SlotAnnotation",
+         "type": "object"
       },
       "SourceVariantLocation": {
          "additionalProperties": false,
@@ -7496,6 +8932,17 @@
          ],
          "title": "Synonym",
          "type": "object"
+      },
+      "SynonymScopeEnum": {
+         "description": "",
+         "enum": [
+            "narrow",
+            "broad",
+            "related",
+            "exact"
+         ],
+         "title": "SynonymScopeEnum",
+         "type": "string"
       },
       "TemporalContext": {
          "additionalProperties": false,
@@ -9460,9 +10907,93 @@
          },
          "type": "array"
       },
+      "allele_cell_line_association_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AlleleCellLineAssociation"
+         },
+         "type": "array"
+      },
+      "allele_construct_association_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AlleleConstructAssociation"
+         },
+         "type": "array"
+      },
+      "allele_database_status_annotation_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AlleleDatabaseStatusAnnotation"
+         },
+         "type": "array"
+      },
+      "allele_functional_impact_annotation_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AlleleFunctionalImpactAnnotation"
+         },
+         "type": "array"
+      },
+      "allele_gene_association_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AlleleGeneAssociation"
+         },
+         "type": "array"
+      },
+      "allele_generation_method_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/GenerationMethod"
+         },
+         "type": "array"
+      },
+      "allele_germline_transmission_status_annotation_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AlleleGermlineTransmissionStatusAnnotation"
+         },
+         "type": "array"
+      },
       "allele_ingest_set": {
          "items": {
             "$ref": "#/$defs/Allele"
+         },
+         "type": "array"
+      },
+      "allele_molecular_mutation_annotation_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AlleleMolecularMutationAnnotation"
+         },
+         "type": "array"
+      },
+      "allele_mutation_type_annotation_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AlleleMutationTypeAnnotation"
+         },
+         "type": "array"
+      },
+      "allele_nomenclature_annotation_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AlleleNomenclatureAnnotation"
+         },
+         "type": "array"
+      },
+      "allele_origin_association_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AlleleOriginAssociation"
+         },
+         "type": "array"
+      },
+      "allele_protein_association_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AlleleProteinAssociation"
+         },
+         "type": "array"
+      },
+      "allele_secondary_id_annotation_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AlleleSecondaryIdAnnotation"
+         },
+         "type": "array"
+      },
+      "allele_transcript_association_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/AlleleTranscriptAssociation"
          },
          "type": "array"
       },

@@ -179,6 +179,7 @@ classes:
     description: >-
       An annotation asserting an association between a biological entity and a disease supported by evidence.
     slots:
+      - alliance_curie
       - unique_id
       - mod_entity_id
       - negated
@@ -195,6 +196,11 @@ classes:
       - disease_genetic_modifier
       - disease_genetic_modifier_relation
     slot_usage:
+      alliance_curie:
+        description: >-
+          The Alliance-minted ID for the disease annotation. The ID is of the format
+          AGRKB:100000000000001, where the first three digits represent the
+          DiseaseAnnotation class code of "100", followed by a 12-digit identifier
       unique_id:
         description: >-
           Unique identifer for the disease annotation.  Will be generated at AGR
@@ -567,7 +573,6 @@ slots:
   disease_genetic_modifier:
     description: >-
       Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
-    range: BiologicalEntity
     required: false
 
   disease_genetic_modifier_relation:
@@ -591,4 +596,3 @@ slots:
       A slot pointing to a free-text alias or 'handle' for a data object, such as
       a reference-specific alias for a data object used while curating.
     range: string
-
