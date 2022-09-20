@@ -132,7 +132,7 @@ classes:
       - subsets
       - secondary_identifiers
       - ancestors
-      - descendents
+      - descendants
     defining_slots:
       - curie
       - namespace
@@ -146,20 +146,20 @@ classes:
         required: true
         identifier: true
 
-OntologyTermClosure:
-  is_a: Association
-   slots:
+  OntologyTermClosure:
+    is_a: AuditedObject
+    slots:
       - relationship_type
       - distance_between
-   slot_usage:
-     subject:
+    slot_usage:
+      subject:
         range: OntologyTerm
-     object:
+      object:
         range: OntologyTerm
-     distance_between:
-       description: >-
-         distance_between = 0 for reflexive–transitive closure
-         each node has an ancestor or descendant of itself 
+      distance_between:
+        description: >-
+          distance_between is zero for reflexive–transitive closure
+          each node has an ancestor or descendant of itself 
 
   DOTerm:
     is_a: OntologyTerm

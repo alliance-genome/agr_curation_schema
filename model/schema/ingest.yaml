@@ -160,7 +160,7 @@ slots:
   ontology_closure_ingest_set:
     description: >-
     domain: Ingest
-    range: OntologyClosure
+    range: OntologyTermClosure
     multivalued: true
     mixins:
       - object_set
