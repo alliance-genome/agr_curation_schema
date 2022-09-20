@@ -195,6 +195,7 @@ SCHEMA_TEST_EXAMPLES := \
 	variant_test \
 	agm_test \
 	sqtr_test \
+	ontology_closure_test \
 	allele_association_ingest_test \
  	variant_allele_association_test \
  	sgd_disease_test \

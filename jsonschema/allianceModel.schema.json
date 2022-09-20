@@ -44,6 +44,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "disease_genetic_modifier": {
                "description": "Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.",
                "type": "string"
@@ -191,6 +201,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "evidence": {
                "items": {
                   "type": "string"
@@ -252,6 +272,13 @@
          "additionalProperties": false,
          "description": "An ontology term from the Alliance Tags for Papers ontology (ATP)",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -277,6 +304,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -288,6 +325,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -381,6 +425,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "genomic_locations": {
                "items": {
                   "$ref": "#/$defs/GenomicLocation"
@@ -468,6 +522,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "has_allele": {
                "type": "string"
             },
@@ -509,6 +573,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -569,6 +643,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -666,6 +750,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "evidence": {
                "items": {
                   "type": "string"
@@ -721,6 +815,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -797,6 +901,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "evidence": {
                "items": {
                   "type": "string"
@@ -859,6 +973,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -990,6 +1114,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "evidence": {
                "items": {
                   "type": "string"
@@ -1037,6 +1171,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -1106,6 +1250,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "evidence": {
                "items": {
                   "type": "string"
@@ -1171,6 +1325,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "evidence": {
                "items": {
                   "type": "string"
@@ -1215,6 +1379,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -1283,6 +1457,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "evidence": {
                "items": {
                   "type": "string"
@@ -1336,6 +1520,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "evidence": {
                "items": {
                   "type": "string"
@@ -1386,6 +1580,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "evidence": {
                "items": {
                   "type": "string"
@@ -1430,6 +1634,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -1488,6 +1702,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -1567,6 +1791,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "evidence": {
                "items": {
                   "type": "string"
@@ -1635,6 +1869,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -1707,6 +1951,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "evidence": {
                "items": {
                   "type": "string"
@@ -1756,6 +2010,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "evidence": {
                "items": {
                   "type": "string"
@@ -1796,6 +2060,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -1858,6 +2132,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -1924,6 +2208,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -2002,6 +2296,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -2066,6 +2370,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -2188,6 +2502,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -2223,6 +2547,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -2284,6 +2618,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -2332,6 +2676,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "first_author": {
                "description": "Indicates if the author is a first author.",
                "type": "boolean"
@@ -2367,6 +2721,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -2392,6 +2753,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -2403,6 +2774,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -2480,6 +2858,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -2505,6 +2890,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -2516,6 +2911,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -2598,6 +3000,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "genomic_locations": {
                "items": {
                   "$ref": "#/$defs/GenomicLocation"
@@ -2668,6 +3080,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -2703,6 +3125,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -2750,6 +3182,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -2817,6 +3259,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -2905,6 +3357,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "genomic_locations": {
                "items": {
                   "$ref": "#/$defs/GenomicLocation"
@@ -2972,6 +3434,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -3047,6 +3519,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "display_name": {
                "type": "string"
             },
@@ -3087,6 +3569,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -3112,6 +3601,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -3123,6 +3622,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -3198,6 +3704,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "generated_by": {
                "description": "Holds between a material entity and an Agent that generated it: e.g., Thomas Blumenthal, Kornberg Laboratory.",
                "items": {
@@ -3241,6 +3757,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -3266,6 +3789,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -3277,6 +3810,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -3536,6 +4076,13 @@
                "description": "Letter code used by curators to refer to the ECO term.",
                "type": "string"
             },
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -3561,6 +4108,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -3572,6 +4129,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -3629,6 +4193,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -3654,6 +4225,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -3665,6 +4246,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -3733,6 +4321,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -3850,6 +4448,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -3901,6 +4509,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -3966,6 +4584,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -4051,6 +4679,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -4159,6 +4797,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -4207,6 +4855,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -4232,6 +4887,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -4243,6 +4908,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -4300,6 +4972,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -4325,6 +5004,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -4336,6 +5025,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -4415,6 +5111,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -4468,6 +5174,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -4506,6 +5222,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -4548,6 +5274,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -4573,6 +5306,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -4584,6 +5327,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -4677,6 +5427,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -4812,6 +5572,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "genes": {
                "items": {
                   "type": "string"
@@ -4866,6 +5636,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -4944,6 +5724,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -5082,6 +5872,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "evidence": {
                "items": {
                   "type": "string"
@@ -5208,6 +6008,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -5278,6 +6088,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -5385,6 +6205,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "designating_laboratory": {
                "$ref": "#/$defs/Laboratory",
                "description": "A laboratory which designated this gene class"
@@ -5459,6 +6289,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "evidence": {
                "items": {
                   "type": "string"
@@ -5529,6 +6369,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "evidence": {
                "items": {
                   "type": "string"
@@ -5595,6 +6445,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -5640,6 +6500,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -5749,6 +6619,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "genomic_locations": {
                "items": {
                   "$ref": "#/$defs/GenomicLocation"
@@ -5812,6 +6692,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -5961,6 +6851,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "height": {
                "description": "The height of the image (pixels).",
                "type": "integer"
@@ -6043,6 +6943,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "from_image": {
                "description": "Holds between an ImagePane and an Image.",
                "type": "string"
@@ -6108,6 +7018,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -6258,6 +7178,12 @@
             "gene_ingest_set": {
                "items": {
                   "$ref": "#/$defs/Gene"
+               },
+               "type": "array"
+            },
+            "ontology_closure_ingest_set": {
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -6458,6 +7384,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -6501,6 +7437,10 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "api_token": {
+               "description": "The API token of the LoggedInPerson for the curation system",
+               "type": "string"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -6512,6 +7452,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -6591,6 +7541,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -6616,6 +7573,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -6627,6 +7594,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -6684,6 +7658,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -6709,6 +7690,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -6720,6 +7711,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -6777,6 +7775,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -6802,6 +7807,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -6813,6 +7828,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -6870,6 +7892,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -6895,6 +7924,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -6906,6 +7945,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -6959,6 +8005,123 @@
          "title": "MMUSDVTerm",
          "type": "object"
       },
+      "MPTerm": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "cross_references": {
+               "description": "Holds between an object and its CrossReferences.",
+               "items": {
+                  "$ref": "#/$defs/CrossReference"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "dbkey": {
+               "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+               "type": "string"
+            },
+            "definition": {
+               "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+               "type": "string"
+            },
+            "definition_urls": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "namespace": {
+               "description": "the namespace of the ontology.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subsets": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonyms": {
+               "description": "holds between a named thing and a synonym",
+               "items": {
+                  "$ref": "#/$defs/Synonym"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "curie"
+         ],
+         "title": "MPTerm",
+         "type": "object"
+      },
       "MeshDetail": {
          "additionalProperties": false,
          "description": "Medical Subject Headings information coming from PubMed.",
@@ -6974,6 +8137,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -7019,6 +8192,13 @@
          "additionalProperties": false,
          "description": "Molecules as described by WormBase",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -7044,6 +8224,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -7055,6 +8245,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -7132,6 +8329,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -7157,6 +8361,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -7168,6 +8382,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -7248,6 +8469,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "evidence": {
                "items": {
                   "type": "string"
@@ -7287,6 +8518,13 @@
          "additionalProperties": false,
          "description": "A concept or class in an ontology, vocabulary or thesaurus. Note, ontology terms can be found in multiple ontologies (ie: mireoting). defining_slots helps define an alternative key for ontology terms.",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -7312,6 +8550,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -7323,6 +8571,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -7376,6 +8631,73 @@
          "title": "OntologyTerm",
          "type": "object"
       },
+      "OntologyTermClosure": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "distance_between": {
+               "description": "distance_between is zero for reflexive\u2013transitive closure each node has an ancestor or descendant of itself ",
+               "type": "integer"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "object": {
+               "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "relationship_type": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subject": {
+               "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+               "type": "string"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "subject",
+            "object"
+         ],
+         "title": "OntologyTermClosure",
+         "type": "object"
+      },
       "Operon": {
          "additionalProperties": false,
          "description": "The DNA region of a group of adjacent genes whose transcription is coordinated on one or several mutually overlapping transcription units transcribed in the same direction and sharing at least one gene.",
@@ -7395,6 +8717,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -7451,6 +8783,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -7489,6 +8831,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -7532,6 +8884,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -7615,6 +8977,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -7660,6 +9032,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -7716,6 +9098,13 @@
          "additionalProperties": false,
          "description": "An ontology term representing a characteristic of an organism. This may or may not be expressed as a difference in comparison to a reference organism.",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -7741,6 +9130,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -7752,6 +9151,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -7844,6 +9250,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "genomic_locations": {
                "items": {
                   "$ref": "#/$defs/GenomicLocation"
@@ -7911,6 +9327,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -8063,6 +9489,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "generated_by": {
                "description": "Holds between a material entity and an Agent that generated it: e.g., Thomas Blumenthal, Kornberg Laboratory.",
                "items": {
@@ -8106,6 +9542,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -8131,6 +9574,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -8142,6 +9595,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -8214,6 +9674,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -8305,6 +9775,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -8449,6 +9929,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "editors": {
                "description": "holds between a resource and a editor_resource",
                "items": {
@@ -8518,6 +10008,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -8543,6 +10040,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -8554,6 +10061,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -8636,6 +10150,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "genomic_locations": {
                "items": {
                   "$ref": "#/$defs/GenomicLocation"
@@ -8707,6 +10231,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -8784,6 +10318,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -8818,6 +10362,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -8910,17 +10464,27 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
             },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
-            },
-            "synonym": {
-               "description": "the text string of the synonym",
-               "type": "string"
             },
             "updated_by": {
                "description": "The individual that last modified the entity.",
@@ -8963,6 +10527,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -9035,6 +10609,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "genomic_locations": {
                "items": {
                   "$ref": "#/$defs/GenomicLocation"
@@ -9087,6 +10671,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -9112,6 +10703,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -9123,6 +10724,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -9202,6 +10810,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -9319,6 +10937,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -9402,6 +11030,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "end_position": {
                "description": "End position of variant on genomic entity.",
                "type": "integer"
@@ -9470,6 +11108,16 @@
             },
             "date_updated": {
                "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                "format": "date",
                "type": "string"
             },
@@ -9579,6 +11227,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "hgvs_coding_nomenclature": {
                "description": "HGVS coding sequence (HGVSc) name",
                "type": "string"
@@ -9670,6 +11328,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "end_position": {
                "description": "End position of variant on genomic entity.",
                "type": "integer"
@@ -9745,6 +11413,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -9801,6 +11479,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "definition": {
                "description": "The explanation of the meaning of a term.",
                "type": "string"
@@ -9840,6 +11528,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -9865,6 +11560,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -9876,6 +11581,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -9933,6 +11645,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -9958,6 +11677,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -9969,6 +11698,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -10026,6 +11762,13 @@
          "additionalProperties": false,
          "description": "The Xenbase anatomy ontology XAO is home to Xenopus anatomy terms as well as Xenopus developmental life stage terms, differentiated by namespace. The anatomy term class in LinkML will be named 'XBATerm' for Xenbase Anatomy Term and life stage terms will be named 'XBSTerm' for Xenbase Stage Term.",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -10051,6 +11794,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -10062,6 +11815,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -10119,6 +11879,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -10144,6 +11911,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -10155,6 +11932,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -10212,6 +11996,13 @@
          "additionalProperties": false,
          "description": "The Xenbase anatomy ontology XAO is home to Xenopus anatomy terms as well as Xenopus developmental life stage terms, differentiated by namespace. The anatomy term class in LinkML will be named 'XBATerm' for Xenbase Anatomy Term and life stage terms will be named 'XBSTerm' for Xenbase Stage Term.",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -10237,6 +12028,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -10248,6 +12049,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -10305,6 +12113,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -10330,6 +12145,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -10341,6 +12166,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -10398,6 +12230,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -10423,6 +12262,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -10434,6 +12283,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -10491,6 +12347,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -10516,6 +12379,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -10527,6 +12400,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -10604,6 +12484,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -10629,6 +12516,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -10640,6 +12537,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -10697,6 +12601,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -10722,6 +12633,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -10733,6 +12654,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -10790,6 +12718,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "ancestors": {
+               "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -10815,6 +12750,16 @@
                "format": "date",
                "type": "string"
             },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
             "dbkey": {
                "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
                "type": "string"
@@ -10826,6 +12771,13 @@
             "definition_urls": {
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "descendants": {
+               "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+               "items": {
+                  "$ref": "#/$defs/OntologyTermClosure"
                },
                "type": "array"
             },
@@ -11024,6 +12976,12 @@
       "gene_ingest_set": {
          "items": {
             "$ref": "#/$defs/Gene"
+         },
+         "type": "array"
+      },
+      "ontology_closure_ingest_set": {
+         "items": {
+            "$ref": "#/$defs/OntologyTermClosure"
          },
          "type": "array"
       },

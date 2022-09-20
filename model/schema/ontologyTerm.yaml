@@ -84,6 +84,31 @@ slots:
     domain: Molecule
     range: string
 
+  ancestors:
+    range: OntologyTermClosure
+    multivalued: true
+    description: >-
+      The ancestors of this term in the ontology, including the term itself.
+      This language works well for the majority of use cases, however for a relationship
+      like "develops_from", ancestors are the terms from which this term develops (not a true
+      parent/child or ancestor/descendant relationship).
+
+  descendants:
+    range: OntologyTermClosure
+    multivalued: true
+    description: >-
+      The descendants of this term in the ontology, including the term itself.
+      This language works well for the majority of use cases, however for a relationship
+      like "develops_from", ancestors are the terms to which this term develops into (not a true
+      parent/child or ancestor/descendant relationship).
+
+  relationship_type:
+    range: string
+    multivalued: true
+
+  distance_between:
+    range: integer
+
 classes:
 
   OntologyTerm:
@@ -106,6 +131,8 @@ classes:
       - namespace
       - subsets
       - secondary_identifiers
+      - ancestors
+      - descendants
     defining_slots:
       - curie
       - namespace
@@ -119,6 +146,20 @@ classes:
         required: true
         identifier: true
 
+  OntologyTermClosure:
+    is_a: AuditedObject
+    slots:
+      - relationship_type
+      - distance_between
+    slot_usage:
+      subject:
+        range: OntologyTerm
+      object:
+        range: OntologyTerm
+      distance_between:
+        description: >-
+          distance_between is zero for reflexive–transitive closure
+          each node has an ancestor or descendant of itself 
 
   DOTerm:
     is_a: OntologyTerm

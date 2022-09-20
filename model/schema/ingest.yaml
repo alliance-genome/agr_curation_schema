@@ -157,6 +157,14 @@ slots:
     mixins:
       - object_set
 
+  ontology_closure_ingest_set:
+    description: >-
+    domain: Ingest
+    range: OntologyTermClosure
+    multivalued: true
+    mixins:
+      - object_set
+
   gene_ingest_set:
     description: >-
     domain: Ingest
@@ -260,6 +268,7 @@ classes:
       - allele_origin_association_ingest_set
       - agm_ingest_set
       - sqtr_ingest_set
+      - ontology_closure_ingest_set
       - allele_mutation_type_annotation_ingest_set
       - allele_germline_transmission_status_annotation_ingest_set
       - allele_functional_impact_annotation_ingest_set
