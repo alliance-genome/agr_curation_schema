@@ -44,6 +44,14 @@ emit_prefixes:
 
 
 slots:
+  linkml_version:
+    description: >-
+      Version of LinkML schema used for submitted file in the format n.n.n
+      (e.g. 1.2.4 or 2.0.0)
+    domain: Ingest
+    range: string
+    required: true
+
   allele_ingest_set:
     description: >-
     domain: Ingest
@@ -253,6 +261,7 @@ classes:
   Ingest:
     tree_root: true
     slots:
+      - linkml_version
       - allele_ingest_set
       - disease_allele_ingest_set
       - disease_agm_ingest_set
