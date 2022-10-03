@@ -7181,6 +7181,10 @@
                },
                "type": "array"
             },
+            "linkml_version": {
+               "description": "Version of LinkML schema used for submitted file in the format n.n.n (e.g. 1.2.4 or 2.0.0)",
+               "type": "string"
+            },
             "ontology_closure_ingest_set": {
                "items": {
                   "$ref": "#/$defs/OntologyTermClosure"
@@ -7200,7 +7204,9 @@
                "type": "array"
             }
          },
-         "required": [],
+         "required": [
+            "linkml_version"
+         ],
          "title": "Ingest",
          "type": "object"
       },
@@ -12979,6 +12985,10 @@
          },
          "type": "array"
       },
+      "linkml_version": {
+         "description": "Version of LinkML schema used for submitted file in the format n.n.n (e.g. 1.2.4 or 2.0.0)",
+         "type": "string"
+      },
       "ontology_closure_ingest_set": {
          "items": {
             "$ref": "#/$defs/OntologyTermClosure"
@@ -12998,7 +13008,9 @@
          "type": "array"
       }
    },
-   "required": [],
+   "required": [
+      "linkml_version"
+   ],
    "title": "AllianceModel",
    "type": "object",
    "version": "0.0.1"

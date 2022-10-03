@@ -1,4 +1,5 @@
 {
+  "linkml_version": "1.3.0",
   "gene_ingest_set": [
     {
       "curie": "ZFIN:ZDB-GENE-010226-1",
@@ -29,8 +30,7 @@
           "created_by": "ZFIN",
           "updated_by": "ZFIN",
           "internal": false,
-          "page_areas": [
-          ],
+          "page_areas": [],
           "prefix": "NCBI_Gene",
           "display_name": ""
         }

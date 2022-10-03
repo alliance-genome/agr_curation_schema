@@ -1,4 +1,5 @@
 {
+  "linkml_version": "1.3.0",
   "disease_allele_ingest_set": [
     {
       "condition_relations": [
@@ -33,7 +34,8 @@
         }
       ],
       "evidence_codes": [
-        "ECO:0000315","ECO:0007013"
+        "ECO:0000315",
+        "ECO:0007013"
       ],
       "genetic_sex": "hermaphrodite",
       "mod_entity_id": "WBDOannot00001032",
@@ -42,7 +44,7 @@
       "negated": false,
       "object": "DOID:11724",
       "predicate": "is_implicated_in",
-      "single_reference":"PMID:19648295",
+      "single_reference": "PMID:19648295",
       "subject": "WB:WBVar00087752"
     }
   ],
@@ -75,7 +77,9 @@
       ],
       "disease_genetic_modifier": "WB:WBStrain00035193",
       "disease_genetic_modifier_relation": "ameliorated_by",
-      "evidence_codes": ["ECO:0000315", "ECO:0007013"
+      "evidence_codes": [
+        "ECO:0000315",
+        "ECO:0007013"
       ],
       "genetic_sex": "hermaphrodite",
       "mod_entity_id": "WBDOannot00001014",
@@ -84,9 +88,9 @@
       "internal": false,
       "object": "DOID:1826",
       "predicate": "is_implicated_in",
-      "single_reference":"PMID:19648295",
+      "single_reference": "PMID:19648295",
       "subject": "WB:WBGene00011955"
-      }
+    }
   ],
   "disease_agm_ingest_set": [
     {
@@ -96,7 +100,9 @@
       "date_updated": "2019-03-08T00:00:00+00:00",
       "disease_genetic_modifier": "WB:WBVar00250993",
       "disease_genetic_modifier_relation": "exacerbated_by",
-      "evidence_codes": ["ECO:0000315","ECO:0007013"
+      "evidence_codes": [
+        "ECO:0000315",
+        "ECO:0007013"
       ],
       "genetic_sex": "hermaphrodite",
       "mod_entity_id": "WBDOannot00000109",
@@ -104,7 +110,7 @@
       "internal": false,
       "object": "DOID:10652",
       "predicate": "is_model_of",
-      "single_reference":"PMID:19648295",
+      "single_reference": "PMID:19648295",
       "subject": "WB:WBStrain00005094",
       "inferred_allele": "WB:WBTransgene00000410"
     },
@@ -140,14 +146,17 @@
           "internal": false
         }
       ],
-      "evidence_codes": ["ECO:0000315","ECO:0007013"],
+      "evidence_codes": [
+        "ECO:0000315",
+        "ECO:0007013"
+      ],
       "genetic_sex": "hermaphrodite",
       "mod_entity_id": "WBDOannot00000110",
       "updated_by": "WB:WBPerson324",
       "internal": false,
       "object": "DOID:11723",
       "predicate": "is_model_of",
-      "single_reference":"PMID:19648295",
+      "single_reference": "PMID:19648295",
       "subject": "WB:WBStrain00024340",
       "asserted_allele": "WB:WBVar00054722"
     }

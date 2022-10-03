@@ -1,4 +1,5 @@
 {
+  "linkml_version": "1.3.0",
   "allele_ingest_set": [
     {
       "additional_propertie": "this is invalid",
