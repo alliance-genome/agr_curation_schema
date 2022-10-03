@@ -1,9 +1,12 @@
 {
+  "linkml_version": "1.3.0",
   "allele_mutation_type_annotation_ingest_set": [
     {
       "allele_id": "WB:WBVar00000001",
       "mutation_type": "insertion",
-      "evidence": ["PMID:11231512"],
+      "evidence": [
+        "PMID:11231512"
+      ],
       "internal": false
     }
   ],
@@ -20,7 +23,9 @@
   "allele_functional_impact_annotation_ingest_set": [
     {
       "allele_id": "WB:WBVar00000001",
-      "functional_impact": ["loss-of-function"],
+      "functional_impact": [
+        "loss-of-function"
+      ],
       "evidence": [
         "PMID:11231512"
       ],
@@ -30,7 +35,9 @@
   "allele_molecular_mutation_annotation_ingest_set": [
     {
       "allele_id": "WB:WBVar00000001",
-      "molecular_mutations": ["insertion"],
+      "molecular_mutations": [
+        "insertion"
+      ],
       "evidence": [
         "PMID:11231512"
       ],
@@ -55,7 +62,8 @@
         "PMID:11231512"
       ],
       "internal": false
-    } ],
+    }
+  ],
   "allele_nomenclature_annotation_ingest_set": [
     {
       "allele_id": "WB:WBVar00000001",

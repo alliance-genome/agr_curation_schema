@@ -1,39 +1,54 @@
 {
+  "linkml_version": "1.3.0",
   "ontology_closure_ingest_set": [
     {
       "subject": "ZFA:brain",
       "object": "ZFA:cavitated_compound_organ",
-      "relationship_type": ["RO:is_a"],
+      "relationship_type": [
+        "RO:is_a"
+      ],
       "internal": false
     },
     {
       "subject": "ZFA:brain",
       "object": "ZFA:compound_organ",
-      "relationship_type": ["RO:is_a"],
+      "relationship_type": [
+        "RO:is_a"
+      ],
       "internal": false
     },
     {
       "subject": "ZFA:brain",
       "object": "ZFA:anatomical_structure",
-      "relationship_type": ["RO:is_a"],
+      "relationship_type": [
+        "RO:is_a"
+      ],
       "internal": false
     },
     {
       "subject": "ZFA:brain",
       "object": "ZFA:zebrafish_anatomical_entity",
-      "relationship_type": ["RO:is_a"],
+      "relationship_type": [
+        "RO:is_a"
+      ],
       "internal": false
     },
     {
       "subject": "ZFA:brain",
       "object": "ZFA:whole_organism",
-      "relationship_type": ["RO:is_a", "RO:part_of"],
+      "relationship_type": [
+        "RO:is_a",
+        "RO:part_of"
+      ],
       "internal": false
     },
     {
       "subject": "ZFA:brain",
       "object": "ZFA:whole_organism",
-      "relationship_type": ["RO:is_a", "RO:part_of"],
+      "relationship_type": [
+        "RO:is_a",
+        "RO:part_of"
+      ],
       "internal": false
     }
   ]

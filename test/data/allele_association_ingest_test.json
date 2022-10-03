@@ -1,4 +1,5 @@
 {
+  "linkml_version": "1.3.0",
   "allele_ingest_set": [
     {
       "curie": "WB:WBVar00000001",
@@ -23,7 +24,9 @@
       "predicate": "RO:0001025",
       "object": "WB:WBGene00000001",
       "evidence_code": "ECO:0000006",
-      "evidence": ["PMID:11231512"],
+      "evidence": [
+        "PMID:11231512"
+      ],
       "internal": false,
       "obsolete": false,
       "date_created": "2015-04-09T10:15:30+00:00",
@@ -38,7 +41,9 @@
       "predicate": "RO:0001025",
       "object": "WB:WBTranscript00000001",
       "evidence_code": "ECO:0000006",
-      "evidence": ["PMID:11231512"],
+      "evidence": [
+        "PMID:11231512"
+      ],
       "internal": false,
       "obsolete": false,
       "date_created": "2015-04-09T10:15:30+00:00",
@@ -53,7 +58,9 @@
       "predicate": "RO:0001025",
       "object": "WB:WBProtein00000001",
       "evidence_code": "ECO:0000006",
-      "evidence": ["PMID:11231512"],
+      "evidence": [
+        "PMID:11231512"
+      ],
       "internal": false,
       "obsolete": false,
       "date_created": "2015-04-09T10:15:30+00:00",
@@ -81,7 +88,9 @@
       "predicate": "RO:0001019",
       "object": "WB:WBConstruct00000001",
       "evidence_code": "ECO:0000006",
-      "evidence": ["PMID:11231512"],
+      "evidence": [
+        "PMID:11231512"
+      ],
       "internal": false,
       "obsolete": false,
       "date_created": "2015-04-09T10:15:30+00:00",
@@ -115,18 +124,20 @@
     }
   ],
   "allele_variant_association_ingest_set": [
-  {
-    "subject": "WB:WBVar00000001",
-    "predicate": "RO:0001019",
-    "object": "WB:WBVar00000001",
-    "evidence_code": "ECO:0000006",
-    "evidence": ["PMID:11231512"],
-    "internal": false,
-    "obsolete": false,
-    "date_created": "2015-04-09T10:15:30+00:00",
-    "date_updated": "2022-07-11T13:12:51+00:00",
-    "created_by": "WB:WBPerson002314",
-    "updated_by": "WB:WBPerson010002"
-  }
-]
+    {
+      "subject": "WB:WBVar00000001",
+      "predicate": "RO:0001019",
+      "object": "WB:WBVar00000001",
+      "evidence_code": "ECO:0000006",
+      "evidence": [
+        "PMID:11231512"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "date_created": "2015-04-09T10:15:30+00:00",
+      "date_updated": "2022-07-11T13:12:51+00:00",
+      "created_by": "WB:WBPerson002314",
+      "updated_by": "WB:WBPerson010002"
+    }
+  ]
 }
