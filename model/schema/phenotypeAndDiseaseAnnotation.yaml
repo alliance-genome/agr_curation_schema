@@ -196,7 +196,7 @@ classes:
       - disease_genetic_modifier
       - disease_genetic_modifier_relation
     slot_usage:
-      alliance_curie:
+      disease_annotation_curie:
         description: >-
           The Alliance-minted ID for the disease annotation. The ID is of the format
           AGRKB:100000000000001, where the first three digits represent the
