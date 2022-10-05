@@ -50,7 +50,7 @@ classes:
     slots:
       - symbol
       - references
-      - inheritence_mode
+      - inheritance_mode
       - in_collection
       - is_extinct
       - sequencing_status
@@ -395,9 +395,9 @@ slots:
       Database status of the allele
     range: VocabularyTerm
 
-  inheritence_mode:
+  inheritance_mode:
     description: >-
-      Mode of inheritence, e.g. dominant / semi-dominant /
+      Mode of inheritance, e.g. dominant / semi-dominant /
       recessive / unknown
       # TODO: please enumerate the difference between this and zygosity in AffectedGenomicModel class.
     domain: Allele
