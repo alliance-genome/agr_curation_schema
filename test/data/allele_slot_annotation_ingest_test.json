@@ -2,7 +2,7 @@
   "linkml_version": "1.3.0",
   "allele_mutation_type_annotation_ingest_set": [
     {
-      "allele_id": "WB:WBVar00000001",
+      "single_allele": "WB:WBVar00000001",
       "mutation_type": "insertion",
       "evidence": [
         "PMID:11231512"
@@ -12,7 +12,7 @@
   ],
   "allele_germline_transmission_status_annotation_ingest_set": [
     {
-      "allele_id": "WB:WBVar00000001",
+      "single_allele": "WB:WBVar00000001",
       "germline_transmission_status": "germline",
       "evidence": [
         "PMID:11231512"
@@ -22,7 +22,7 @@
   ],
   "allele_functional_impact_annotation_ingest_set": [
     {
-      "allele_id": "WB:WBVar00000001",
+      "single_allele": "WB:WBVar00000001",
       "functional_impact": [
         "loss-of-function"
       ],
@@ -34,7 +34,7 @@
   ],
   "allele_molecular_mutation_annotation_ingest_set": [
     {
-      "allele_id": "WB:WBVar00000001",
+      "single_allele": "WB:WBVar00000001",
       "molecular_mutations": [
         "insertion"
       ],
@@ -46,7 +46,7 @@
   ],
   "allele_database_status_annotation_ingest_set": [
     {
-      "allele_id": "WB:WBVar00000001",
+      "single_allele": "WB:WBVar00000001",
       "database_status": "public",
       "evidence": [
         "PMID:11231512"
@@ -56,7 +56,7 @@
   ],
   "allele_secondary_id_annotation_ingest_set": [
     {
-      "allele_id": "WB:WBVar00000001",
+      "single_allele": "WB:WBVar00000001",
       "secondary_id": "WBVar00000001",
       "evidence": [
         "PMID:11231512"
@@ -66,7 +66,7 @@
   ],
   "allele_nomenclature_annotation_ingest_set": [
     {
-      "allele_id": "WB:WBVar00000001",
+      "single_allele": "WB:WBVar00000001",
       "nomenclature_event": "named",
       "evidence": [
         "PMID:11231512"

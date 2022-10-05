@@ -74,7 +74,7 @@ classes:
   AlleleSlotAnnotation:
     is_a: SlotAnnotation
     slots:
-      - allele_id
+      - single_allele
       - evidence
 
   AlleleMutationTypeAnnotation:
@@ -223,7 +223,7 @@ classes:
       primary_image:
         description: >-
           Can be null; if false, maybe you would show all the images.
-          We need to revisit this issue. 
+          We need to revisit this issue.
 
   AlleleNotesAssociation:
     is_a: Association
@@ -322,32 +322,32 @@ slots:
 
   primary_image:
     description: >-
-      The primary image for an allele that is used to represent the allele on a page. 
+      The primary image for an allele that is used to represent the allele on a page.
 
   origin:
     range: boolean
 
-  allele_id:
-    range: uriorcurie
+  single_allele:
+    range: Allele
 
   mutagenesis_method:
     alias: ["mutagen"]
     range: VocabularyTerm
     description: >-
       Technique used to create the allele, e.g.
-      spontaneous / naturally occurring / radiation-induced / recombinant / 
+      spontaneous / naturally occurring / radiation-induced / recombinant /
       ENU / CRISPR / TALEN / gamma rays / not specified / spontaneous / DNA /
       DNA AND CRISPR / DNA and TALEN / zinc finger nuclease / EMS
 
   mutagenesis_target:
     alias: ["mutagee"]
     description: >-
-      The target of the mutation, e.g. strain / adult females / 
+      The target of the mutation, e.g. strain / adult females /
       adult males / embryos / sperm / not specified
     range: string # VocabularyTerm?
 
   mutation_target_strain:
-    description: >- 
+    description: >-
       The particular strain (solely for and from MGI) that is targeted
       by the generation method for a particular allele.
     range: string # VocabularyTerm?
