@@ -118,7 +118,7 @@ classes:
     is_a: PhenotypeAnnotation
     slots:
       - inferred_gene
-      - asserted_gene
+      - asserted_genes
     slot_usage:
       subject:
         description: >-
@@ -133,7 +133,7 @@ classes:
           The gene to which the phenotype is inferred to be associated.
         required: false
         range: Gene
-      asserted_gene:
+      asserted_genes:
         required: false
       asserted_allele:
         required: false
@@ -146,7 +146,7 @@ classes:
     slots:
       - inferred_allele
       - inferred_gene
-      - asserted_gene
+      - asserted_genes
       - asserted_allele
     slot_usage:
       subject:
@@ -167,7 +167,7 @@ classes:
           The allele to which the phenotype is inferred to be associated.
         required: false
         range: Allele
-      asserted_gene:
+      asserted_genes:
         required: false
       asserted_allele:
         required: false
@@ -287,7 +287,7 @@ classes:
     is_a: DiseaseAnnotation
     slots:
       - inferred_gene
-      - asserted_gene
+      - asserted_genes
     slot_usage:
       subject:
         description: >-
@@ -304,7 +304,7 @@ classes:
           The gene to which the disease is inferred to be associated.
         required: false
         range: Gene
-      asserted_gene:
+      asserted_genes:
         required: false
 
   AGMDiseaseAnnotation:
@@ -315,7 +315,7 @@ classes:
     slots:
       - inferred_allele
       - inferred_gene
-      - asserted_gene
+      - asserted_genes
       - asserted_allele
     slot_usage:
       subject:
@@ -338,7 +338,7 @@ classes:
           The allele to which the disease is inferred to be associated.
         required: false
         range: Allele
-      asserted_gene:
+      asserted_genes:
         required: false
       asserted_allele:
         required: false
@@ -457,10 +457,12 @@ slots:
       The allele to which something is manually asserted to be associated.
     range: Allele
 
-  asserted_gene:
+  asserted_genes:
+    singular_name: asserted_gene
     description: >-
-      The gene to which something is manually asserted to be associated.
+      The gene(s) to which something is manually asserted to be associated.
     range: Gene
+    multivalued: true
 
   condition_anatomy:
     domain: ExperimentalCondition
