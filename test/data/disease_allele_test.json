@@ -11,7 +11,9 @@
       "subject": "ZFIN:ZDB-ALT-001122-1",
       "predicate": "is_implicated_in",
       "object": "DOID:0001234",
-      "asserted_gene": "ZFIN:ZDB-GENE-060503-338",
+      "asserted_genes": [
+        "ZFIN:ZDB-GENE-060503-338"
+      ],
       "created_by": "ZFIN",
       "updated_by": "ZFIN",
       "internal": false
