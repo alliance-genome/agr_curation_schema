@@ -179,7 +179,7 @@ classes:
     description: >-
       An annotation asserting an association between a biological entity and a disease supported by evidence.
     slots:
-      - alliance_curie
+      - disease_annotation_curie
       - unique_id
       - mod_entity_id
       - negated
@@ -196,7 +196,7 @@ classes:
       - disease_genetic_modifier
       - disease_genetic_modifier_relation
     slot_usage:
-      alliance_curie:
+      disease_annotation_curie:
         description: >-
           The Alliance-minted ID for the disease annotation. The ID is of the format
           AGRKB:100000000000001, where the first three digits represent the
@@ -446,6 +446,24 @@ classes:
 
 slots:
 
+  annotation_type:
+    range: VocabularyTerm
+    description: >-
+      The type of annotation classified according to curation method. Submitted
+      value should be a vocabulary term from the 'Annotation types' vocabulary
+
+  asserted_allele:
+    description: >-
+      The allele to which something is manually asserted to be associated.
+    range: Allele
+
+  asserted_genes:
+    singular_name: asserted_gene
+    description: >-
+      The gene(s) to which something is manually asserted to be associated.
+    range: Gene
+    multivalued: true
+
   condition_anatomy:
     domain: ExperimentalCondition
     range: AnatomicalTerm
@@ -468,9 +486,16 @@ slots:
     domain: ExperimentalCondition
     range: ZECOTerm
 
+  condition_free_text:
+    description: >-
+      Free-text description of the experimental condition
+    required: false
+    domain: ExperimentalCondition
+    range: string
+
   condition_gene_ontology:
     domain: ExperimentalCondition
-    range: GOTerm                     # Update to GOTerm if such a class is instantiated
+    range: GOTerm
 
   condition_id:
     domain: ExperimentalCondition
@@ -479,6 +504,19 @@ slots:
   condition_quantity:
     domain: ExperimentalCondition
     range: string
+
+  condition_relation_type:
+    description: >-
+      Submitted value should be a vocabulary term from the 'Condition relation
+      types' vocabulary
+    domain: ConditionRelation
+    range: VocabularyTerm
+
+  condition_relations:
+    range: ConditionRelation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
 
   condition_statement:
     description: >-
@@ -497,29 +535,9 @@ slots:
     domain: ExperimentalCondition
     range: string
 
-  condition_free_text:
-    description: >-
-      Free-text description of the experimental condition
-    required: false
-    domain: ExperimentalCondition
-    range: string
-
   condition_taxon:
     domain: ExperimentalCondition
     range: NCBITaxonTerm
-
-  condition_relations:
-    range: ConditionRelation
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-
-  condition_relation_type:
-    description: >-
-      Submitted value should be a vocabulary term from the 'Condition relation
-      types' vocabulary
-    domain: ConditionRelation
-    range: VocabularyTerm
 
   conditions:
     range: ExperimentalCondition
@@ -527,27 +545,28 @@ slots:
     inlined: true
     inlined_as_list: true
 
-  inferred_gene:
+  disease_annotation_curie:
     description: >-
-      The gene to which something is inferred to be associated.
-    range: Gene
+      The Alliance-minted curie (unique identifier) for the disease annotation of the form:
+      AGRKB:100123456789012 (class code: 100). This is not required upon ingest
+      from DQM disease annotation file submissions to the persistent store, but will
+      be generated Alliance-side post-ingest with the MaTI system.
+    range: uriorcurie
+    required: false
+    identifier: false
+    multivalued: false
 
-  inferred_allele:
+  disease_genetic_modifier:
     description: >-
-      The allele to which something is inferred to be associated.
-    range: Allele
+      Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
+    required: false
 
-  asserted_genes:
-    singular_name: asserted_gene
+  disease_genetic_modifier_relation:
     description: >-
-      The gene(s) to which something is manually asserted to be associated.
-    range: Gene
-    multivalued: true
-
-  asserted_allele:
-    description: >-
-      The allele to which something is manually asserted to be associated.
-    range: Allele
+      A relation describing how the genetic modifier modifies the disease model.
+      Submitted value should be a vocabulary term from the 'Disease genetic
+      modifiers' vocabulary
+    range: VocabularyTerm
 
   disease_qualifiers:
     description: >-
@@ -563,29 +582,27 @@ slots:
       vocabulary
     range: VocabularyTerm
 
-  sgd_strain_background:
-    range: AffectedGenomicModel
-
-  annotation_type:
-    range: VocabularyTerm
+  handle:
     description: >-
-      The type of annotation classified according to curation method. Submitted
-      value should be a vocabulary term from the 'Annotation types' vocabulary
+      A slot pointing to a free-text alias or 'handle' for a data object, such as
+      a reference-specific alias for a data object used while curating.
+    range: string
 
-  disease_genetic_modifier:
+  inferred_gene:
     description: >-
-      Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
-    required: false
+      The gene to which something is inferred to be associated.
+    range: Gene
 
-  disease_genetic_modifier_relation:
+  inferred_allele:
     description: >-
-      A relation describing how the genetic modifier modifies the disease model.
-      Submitted value should be a vocabulary term from the 'Disease genetic
-      modifiers' vocabulary
-    range: VocabularyTerm
+      The allele to which something is inferred to be associated.
+    range: Allele
 
   phenotype_term:
     range: PhenotypeTerm
+
+  sgd_strain_background:
+    range: AffectedGenomicModel
 
   with:
     description: >-
@@ -593,8 +610,4 @@ slots:
     range: Gene
     multivalued: true
 
-  handle:
-    description: >-
-      A slot pointing to a free-text alias or 'handle' for a data object, such as
-      a reference-specific alias for a data object used while curating.
-    range: string
+
