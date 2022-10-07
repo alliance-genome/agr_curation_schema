@@ -13,7 +13,7 @@
       "created_by": "WB:WBPerson002314",
       "updated_by": "WB:WBPerson010002",
       "in_collection": "Million Mutations Project",
-      "inheritence_mode": "semi-dominant",
+      "inheritance_mode": "semi-dominant",
       "is_extinct": false,
       "sequencing_status": "sequenced"
     }

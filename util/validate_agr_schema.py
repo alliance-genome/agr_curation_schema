@@ -55,6 +55,7 @@ def cli(input: str):
         click.echo("%s: The JSON data is VALID for agr schema." % input)
     else:
         click.echo("%s: The JSON data is ** NOT ** valid for agr schema." % input)
+        raise SystemExit("Error in validation.")
 
 
 if __name__ == "__main__":
