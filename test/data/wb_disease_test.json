@@ -10,13 +10,11 @@
             {
               "condition_chemical": "CHEBI:6432",
               "condition_class": "ZECO:0000111",
-              "condition_statement": "chemical treatment:levamisole",
               "internal": false
             },
             {
               "condition_free_text": "Bacterial strain HB101",
               "condition_class": "ZECO:0000104",
-              "condition_statement": "experimental conditions:Bacterial strain HB101",
               "internal": false
             }
           ]
@@ -58,7 +56,6 @@
             {
               "condition_chemical": "CHEBI:34910",
               "condition_class": "ZECO:0000111",
-              "condition_statement": "chemical treatment:pentylenetetrazole",
               "internal": false
             }
           ]
@@ -123,13 +120,11 @@
             {
               "condition_chemical": "CHEBI:30052",
               "condition_class": "ZECO:0000111",
-              "condition_statement": "chemical treatment:Copper",
               "internal": false
             },
             {
               "condition_chemical": "WB:WBMol:00004976",
               "condition_class": "ZECO:0000111",
-              "condition_statement": "chemical treatment:Methazolamide",
               "internal": false
             }
           ]

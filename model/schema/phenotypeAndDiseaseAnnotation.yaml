@@ -352,7 +352,6 @@ classes:
       - unique_id                         # calculated centrally at the Alliance after import from MODs
       - condition_class                   # conditionClassId in frozen JSON schema
       - condition_summary                 # analagous to conditionStatement in frozen JSON schema; for new DQM submissions should not be submitted but rather calculated centrally at the Alliance
-      - condition_statement               # conditionStatement in frozen JSON schema
       - condition_id                      # conditionId in frozen JSON schema
       - condition_free_text               # dedicated slot for free text
       - condition_quantity                # conditionQuantity in frozen JSON schema
@@ -370,20 +369,13 @@ classes:
         description: >-
           The ZECO ID that represents the high level condition grouping term.  This will come from
           a slim in the ZECO, called 'AllianceSlim'.
-      condition_statement:
-        description: >-
-          Free text describing the environmental/experimental condition. For some groups this is a
-          single term, others is it is a concatenation of the term names from the ontologies included
-          in this data structure. To be submitted by DQMs; eventually will be deprecated once DQMs no
-          longer submit these ExperimentalCondition objects.
-        range: string
       condition_summary:
         description: >-
           Free text describing the environmental/experimental condition. For some groups this is a
           single term, others is it is a concatenation of the term names from the ontologies included
-          in this data structure. Similar to condition_statement except the condition_summary will not
-          be submitted by DQMs but rather generated at the Alliance after ingest (or generated/updated
-          in the curation interface and persistent store).
+          in this data structure. The condition_summary will not be submitted by DQMs but rather
+          generated at the Alliance after ingest (or generated/updated in the curation interface and
+          persistent store).
         range: string
       condition_id:
         description: >-
@@ -518,14 +510,6 @@ slots:
     inlined: true
     inlined_as_list: true
 
-  condition_statement:
-    description: >-
-      A human-readable summary of the experimental condition accounting for all ontology terms and free-text
-      components of the ExperimentalCondition object. To be generated and submitted by DQMs
-    required: true
-    domain: ExperimentalCondition
-    range: string
-
   condition_summary:
     description: >-
       A human-readable summary of the experimental condition accounting for all ontology terms and free-text
@@ -609,5 +593,3 @@ slots:
       http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8
     range: Gene
     multivalued: true
-
-

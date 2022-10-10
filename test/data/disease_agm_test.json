@@ -23,7 +23,6 @@
             {
               "condition_free_text": "Bacterial strain HB101",
               "condition_class": "ZECO:0000104",
-              "condition_statement": "experimental conditions:Bacterial strain HB101",
               "internal": false
             }
           ]
