@@ -8,16 +8,6 @@
       "updated_by": "ZFIN",
       "internal": false,
       "name": "TALEN2-eftud2",
-      "synonyms": [
-        {
-          "name": "test",
-          "internal": false
-        },
-        {
-          "name": "another test",
-          "internal": false
-        }
-      ],
       "secondary_identifiers": [
         "ZFIN:ZDB-MRPHLNO-123456-1"
       ],
@@ -32,16 +22,6 @@
       "updated_by": "ZFIN",
       "internal": false,
       "name": "CRISPR-eftud2",
-      "synonyms": [
-        {
-          "name": "test",
-          "internal": false
-        },
-        {
-          "name": "another test",
-          "internal": false
-        }
-      ],
       "secondary_identifiers": [
         "ZFIN:ZDB-MRPHLNO-123456-1"
       ],
@@ -56,16 +36,6 @@
       "created_by": "ZFIN",
       "updated_by": "ZFIN",
       "internal": false,
-      "synonyms": [
-        {
-          "name": "test",
-          "internal": false
-        },
-        {
-          "name": "another test",
-          "internal": false
-        }
-      ],
       "secondary_identifiers": [
         "ZFIN:ZDB-MRPHLNO-123456-1"
       ],
