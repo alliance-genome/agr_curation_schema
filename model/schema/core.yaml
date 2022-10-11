@@ -83,7 +83,6 @@ classes:
       curie:
         required: true
 
-
   GenomicEntity:
     is_a: BiologicalEntity
     description: >-   # tentative
@@ -93,7 +92,6 @@ classes:
       RNA transcript translation).
     slots:
       - name
-      - synonyms
       - cross_references
       - secondary_identifiers
       - genomic_locations
@@ -125,11 +123,15 @@ classes:
       curie:
         required: true
 
-
   Synonym:
+    description: >-
+      Some symbol or name that is used to refer to an object. It can be the
+      primary/current/accepted symbol/name, or an alias.
     is_a: AuditedObject
     slots:
-      - name
+      - synonym_type
+      - format_text
+      - display_text
 
   Note:
     is_a: AuditedObject
@@ -201,14 +203,16 @@ classes:
     is_a: Association
     description: >-
       A relationship between an entity and a synonym.
+    slots:
+      - evidence
+      - synonym_scope
     slot_usage:
       object:
         range: Synonym
+        required: True
       predicate:
-        range: entity_synonym_type_set
-      references:
-        description: >-
-          The references in which the synonym is used to refer to the entity.
+        range: entity_synonym_type_enum
+        required: True
 
   ExternalDatabaseLink:
     is_a: AuditedObject
@@ -288,13 +292,6 @@ classes:
 
 
 slots:
-
-  synonym:
-    description: the text string of the synonym
-
-  synonym_scope:
-    description: the scope of the synonym, e.g. 'EXACT', 'NARROW' or 'RELATED'
-    range: synonym_scope_enum
 
   start:
     description: The start of the feature in positive 1-based integer coordinates
@@ -549,12 +546,6 @@ slots:
     exact_mappings:
       - biolink:symbol
 
-  synonyms:
-    singular_name: synonym
-    description: holds between a named thing and a synonym
-    multivalued: true
-    range: Synonym
-
   negated:
     range: boolean
     description: if set to true, then the association is negated i.e. is not true
@@ -688,6 +679,38 @@ slots:
     exact_mappings:
       - biolink:predicate
 
+  format_text:
+    description: >-
+      A version of a synonym string using only ASCII characters, which is
+      easier to type, print and parse. For example, Greek characters are
+      transliterated; sub/superscript is somehow encoded with ASCII characters.
+    aliases: ['synonym_text']
+    domain: Synonym
+    range: string
+    required: true
+    multivalued: false
+
+  display_text:
+    description: >-
+      A version of a synonym string for display. Any UTF8 character is
+      permitted.
+    aliases: ['synonym_sgml']
+    range: string
+    required: true
+    multivalued: false
+
+  synonym_type:
+    domain: Synonym
+    range: synonym_type_enum
+    multivalued: false
+    required: true
+
+  synonym_scope:
+    description: >-
+      The scope of a synonym in relation to an entity: e.g. exact, narrow, etc.
+    domain: EntitySynonym
+    range: synonym_scope_enum
+
 ## ----------
 ## PREDICATES
 ## ----------
@@ -701,7 +724,59 @@ slots:
 
 enums:
 
-  entity_synonym_type_set:
+  synonym_type_enum:
+    permissible_values:
+      symbol:
+        description: >-
+          A short string representing an entity, usually an abbreviation.
+        notes: >-
+          SGD: gene_name (e.g., ABC1)
+          WB: Public_name (e.g., abu-9)
+          FB: symbol (e.g., wg)
+          ZFIN: Symbol (e.g., pax6a)
+          MGI: Symbol (e.g., Ace)
+          RGD: (e.g., Abat)
+      full_name:
+        description: >-
+          The entity's full-length name.
+        notes: >-
+          If this is implemented, the current name slot might be supplanted by Synonyms of type name.
+          SGD: name description
+          WB:
+          FB: fullname (e.g., wingless)
+          ZFIN: name (e.g., paired box 6a)
+          MGI: Name (e.g., angiotensin I converting enzyme (peptidyl-dipeptidase A) 1)
+          RGD: Name (e.g., 4-aminobutyrate aminotransferase)
+      systematic_name:
+        notes: >-
+          It seems like a few MODS have systematic names, perhaps coming from
+          the early days of full genome sequencing.
+          Do we want to group them into one type?
+          SGD: systematic_name (e.g., YHR084W)
+          WB: Sequence_name (e.g., R09F10.2)
+          FB: Annotation symbol (e.g., CG4889)
+      # Other SGD alias types: distinct from above types?
+      NCBI protein name:
+        notes: >-
+          Synonyms developed by SGD and NCBI curators for proteins, conforming
+          to UniProt and NCBI rules. They are displayed on protein pages, and
+          used for naming of fungal orthologs.
+      Uniform:
+        notes: SGD-specific
+      Non-uniform:
+        notes: SGD-specific
+      Retired name:
+        notes: >-
+          Synonyms that were once reserved but have been abandoned for a year or more.
+
+  synonym_scope_enum:
+    permissible_values:
+      exact:
+      narrow:
+      broad:
+      related:
+
+  entity_synonym_type_enum:
     permissible_values:
       current:
         description: >-
@@ -712,10 +787,3 @@ enums:
         description: >-
           The synonym is an alternate symbol or name for the entity. It is not
           the currently preferred symbol/name for the entity.
-
-  synonym_scope_enum:
-    permissible_values:
-      narrow:
-      broad:
-      related:
-      exact:

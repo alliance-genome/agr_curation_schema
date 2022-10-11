@@ -48,7 +48,6 @@ classes:
       - publisher
       - volume
       - summary
-      - synonyms
       - authors
       - editors
     id_prefixes:
@@ -69,6 +68,14 @@ classes:
       title:
         description: >-
           the title of the publication
+
+  ResourceSynonymAssociation:
+    is_a: EntitySynonym
+    description: >-
+      The relationship between a resource and a synonym.
+    slot_usage:
+      subject:
+        range: Resource
 
 slots:
 

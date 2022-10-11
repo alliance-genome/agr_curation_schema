@@ -77,7 +77,6 @@ classes:
       - curie
       - designating_laboratory
       - old_members
-      - synonym
       - related_note
 
   Operon:
