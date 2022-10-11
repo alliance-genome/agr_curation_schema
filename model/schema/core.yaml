@@ -132,6 +132,7 @@ classes:
       - synonym_type
       - format_text
       - display_text
+      - synonym_url
 
   Note:
     is_a: AuditedObject
@@ -705,6 +706,12 @@ slots:
     multivalued: false
     required: true
 
+  synonym_url:
+    description: >-
+      URL for a synonym: e.g., NCBI URL for some NCBI synonym of an object.
+    domain: Synonym
+    range: uri
+
   synonym_scope:
     description: >-
       The scope of a synonym in relation to an entity: e.g. exact, narrow, etc.
@@ -756,18 +763,18 @@ enums:
           WB: Sequence_name (e.g., R09F10.2)
           FB: Annotation symbol (e.g., CG4889)
       # Other SGD alias types: distinct from above types?
-      NCBI protein name:
+      ncbi_protein_name:
         notes: >-
           Synonyms developed by SGD and NCBI curators for proteins, conforming
           to UniProt and NCBI rules. They are displayed on protein pages, and
           used for naming of fungal orthologs.
-      Uniform:
+      uniform:
         notes: SGD-specific
-      Non-uniform:
+      non_uniform:
         notes: SGD-specific
-      Retired name:
+      retired_name:
         notes: >-
-          Synonyms that were once reserved but have been abandoned for a year or more.
+          SGD-specific. Synonyms that were once reserved but have been abandoned for a year or more.
 
   synonym_scope_enum:
     permissible_values:
