@@ -127,6 +127,14 @@ classes:
     description: >-
       Some symbol or name that is used to refer to an object. It can be the
       primary/current/accepted symbol/name, or an alias.
+      Proposed vocabulary terms for synonym_type.
+        symbol: A short string representing an entity: e.g., pax6a.
+        full_name: The full length name of an entity: e.g., paired box 6a.
+        systematic_name: A systematic name: e.g., YHR084W, R09F10.2, CG4889.
+        ncbi_protein_name: Synonyms developed by SGD and NCBI curators.
+        uniform: SGD-specific.
+        non_uniform: SGD-specific.
+        retired_name: SGD-specific.
     is_a: AuditedObject
     slots:
       - synonym_type
@@ -204,6 +212,14 @@ classes:
     is_a: Association
     description: >-
       A relationship between an entity and a synonym.
+      Proposed vocabulary terms for synonym_scope slot.
+        exact:
+        narrow:
+        broad:
+        related:
+      Proposed vocabulary terms for predicate.
+        current: For a given synonym type, the current one for the entity.
+        alias: For a given synonym type, a non-current one for the entity.
     slots:
       - evidence
       - synonym_scope
@@ -212,7 +228,7 @@ classes:
         range: Synonym
         required: True
       predicate:
-        range: entity_synonym_type_enum
+        range: VocabularyTerm
         required: True
 
   ExternalDatabaseLink:
@@ -702,7 +718,7 @@ slots:
 
   synonym_type:
     domain: Synonym
-    range: synonym_type_enum
+    range: VocabularyTerm
     multivalued: false
     required: true
 
@@ -716,7 +732,7 @@ slots:
     description: >-
       The scope of a synonym in relation to an entity: e.g. exact, narrow, etc.
     domain: EntitySynonym
-    range: synonym_scope_enum
+    range: VocabularyTerm
 
 ## ----------
 ## PREDICATES
@@ -730,67 +746,3 @@ slots:
     symmetric: true
 
 enums:
-
-  synonym_type_enum:
-    permissible_values:
-      symbol:
-        description: >-
-          A short string representing an entity, usually an abbreviation.
-        notes: >-
-          SGD: gene_name (e.g., ABC1)
-          WB: Public_name (e.g., abu-9)
-          FB: symbol (e.g., wg)
-          ZFIN: Symbol (e.g., pax6a)
-          MGI: Symbol (e.g., Ace)
-          RGD: (e.g., Abat)
-      full_name:
-        description: >-
-          The entity's full-length name.
-        notes: >-
-          If this is implemented, the current name slot might be supplanted by Synonyms of type name.
-          SGD: name description
-          WB:
-          FB: fullname (e.g., wingless)
-          ZFIN: name (e.g., paired box 6a)
-          MGI: Name (e.g., angiotensin I converting enzyme (peptidyl-dipeptidase A) 1)
-          RGD: Name (e.g., 4-aminobutyrate aminotransferase)
-      systematic_name:
-        notes: >-
-          It seems like a few MODS have systematic names, perhaps coming from
-          the early days of full genome sequencing.
-          Do we want to group them into one type?
-          SGD: systematic_name (e.g., YHR084W)
-          WB: Sequence_name (e.g., R09F10.2)
-          FB: Annotation symbol (e.g., CG4889)
-      # Other SGD alias types: distinct from above types?
-      ncbi_protein_name:
-        notes: >-
-          Synonyms developed by SGD and NCBI curators for proteins, conforming
-          to UniProt and NCBI rules. They are displayed on protein pages, and
-          used for naming of fungal orthologs.
-      uniform:
-        notes: SGD-specific
-      non_uniform:
-        notes: SGD-specific
-      retired_name:
-        notes: >-
-          SGD-specific. Synonyms that were once reserved but have been abandoned for a year or more.
-
-  synonym_scope_enum:
-    permissible_values:
-      exact:
-      narrow:
-      broad:
-      related:
-
-  entity_synonym_type_enum:
-    permissible_values:
-      current:
-        description: >-
-          The synonym is an officially accepted synonym for an entity.
-          An entity should have only one current synonym of a give type.
-          For example, only one current symbol and one current full name.
-      alias:
-        description: >-
-          The synonym is an alternate symbol or name for the entity. It is not
-          the currently preferred symbol/name for the entity.
