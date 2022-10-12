@@ -169,13 +169,8 @@ classes:
       impacts of an allele to a publication.  AlleleFunctionalImpact is the SlotAnnotation class that represents 
       this use case. 
     slots:
-      - subject
       - evidence
     slot_usage:
-      subject:
-        description: >-
-          The subject of the SlotAnnotation data.
-        required: false
       evidence:
         required: true
 
