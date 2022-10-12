@@ -433,7 +433,7 @@ slots:
     description: >-
       Status of whether or not the variant genomic location has been verified
       by sequencing
-    domain: Variant
+    domain: Allele
     range: VocabularyTerm
 
   analyses:
