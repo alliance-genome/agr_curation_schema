@@ -141,7 +141,7 @@ classes:
         narrow:
         broad:
         related:
-    is_a: AuditedObject
+    is_a: SlotAnnotation
     slots:
       - subject
       - synonym_type
@@ -150,7 +150,6 @@ classes:
       - format_text
       - display_text
       - synonym_url
-      - evidence
     slot_usage:
       subject:
         description: >-
@@ -203,7 +202,9 @@ classes:
     notes: >-
       A good example of the use of a SlotAnnotation class is the use case of attributing one of many functional 
       impacts of an allele to a publication.  AlleleFunctionalImpact is the SlotAnnotation class that represents 
-      this use case. 
+      this use case.
+    slots:
+      - evidence
 
   Association:
     is_a: AuditedObject
