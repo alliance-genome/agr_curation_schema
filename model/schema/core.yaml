@@ -175,7 +175,7 @@ classes:
       subject:
         description: >-
           The subject of the SlotAnnotation data.
-        required: true
+        required: false
       evidence:
         required: true
 
