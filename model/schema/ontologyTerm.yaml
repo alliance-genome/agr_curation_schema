@@ -44,10 +44,6 @@ slots:
       The explanation of the meaning of a term.
     range: string
 
-  display_synonym:
-    description: >-
-      Placeholder.
-
   namespace:
     description: the namespace of the ontology.
 

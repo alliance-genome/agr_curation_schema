@@ -10,11 +10,21 @@
       "name": "TL + MO1-hars",
       "synonyms": [
         {
-          "name": "test",
+          "synonym_type": "full_name",
+          "synonym_scope": "exact",
+          "current": true,
+          "format_text": "TL + MO1-hars",
+          "display_text": "TL + MO1-hars",
+          "evidence": [],
           "internal": false
         },
         {
-          "name": "another test",
+          "synonym_type": "full_name",
+          "synonym_scope": "exact",
+          "current": false,
+          "format_text": "TL_MO1-hars",
+          "display_text": "TL_MO1-hars",
+          "evidence": [],
           "internal": false
         }
       ],
@@ -36,11 +46,21 @@
       "name": "pax2a<sup>tb21/tb21</sup>",
       "synonyms": [
         {
-          "name": "test",
+          "synonym_type": "full_name",
+          "synonym_scope": "exact",
+          "current": true,
+          "format_text": "pax2a<sup>tb21/tb21</sup>",
+          "display_text": "pax2a<sup>tb21/tb21</sup>",
+          "evidence": [],
           "internal": false
         },
         {
-          "name": "another test",
+          "synonym_type": "full_name",
+          "synonym_scope": "exact",
+          "current": false,
+          "format_text": "pax2a in tb21/tb21",
+          "display_text": "pax2a in tb21/tb21",
+          "evidence": [],
           "internal": false
         }
       ],

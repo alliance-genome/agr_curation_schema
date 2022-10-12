@@ -10,11 +10,21 @@
       "name": "TALEN2-eftud2",
       "synonyms": [
         {
-          "name": "test",
+          "synonym_type": "symbol",
+          "synonym_scope": "exact",
+          "current": true,
+          "format_text": "TALEN2-eftud2",
+          "display_text": "TALEN2-eftud2",
+          "evidence": [],
           "internal": false
         },
         {
-          "name": "another test",
+          "synonym_type": "full_name",
+          "synonym_scope": "exact",
+          "current": false,
+          "format_text": "eftud2 TALEN2",
+          "display_text": "eftud2 TALEN2",
+          "evidence": [],
           "internal": false
         }
       ],
@@ -34,19 +44,23 @@
       "name": "CRISPR-eftud2",
       "synonyms": [
         {
-          "name": "test",
+          "synonym_type": "symbol",
+          "synonym_scope": "exact",
+          "current": true,
+          "format_text": "CRISPR-eftud2",
+          "display_text": "CRISPR-eftud2",
+          "evidence": [],
           "internal": false
         },
         {
-          "name": "another test",
+          "synonym_type": "full_name",
+          "synonym_scope": "exact",
+          "current": false,
+          "format_text": "eftud2 CRISPR",
+          "display_text": "eftud2 CRISPR",
+          "evidence": [],
           "internal": false
         }
-      ],
-      "secondary_identifiers": [
-        "ZFIN:ZDB-MRPHLNO-123456-1"
-      ],
-      "references": [
-        "PMID:19648295"
       ]
     },
     {
@@ -58,11 +72,21 @@
       "internal": false,
       "synonyms": [
         {
-          "name": "test",
+          "synonym_type": "symbol",
+          "synonym_scope": "exact",
+          "current": true,
+          "format_text": "MRPHLNO-eftud2",
+          "display_text": "MRPHLNO-eftud2",
+          "evidence": [],
           "internal": false
         },
         {
-          "name": "another test",
+          "synonym_type": "full_name",
+          "synonym_scope": "exact",
+          "current": false,
+          "format_text": "eftud2 MRPHLNO",
+          "display_text": "eftud2 MRPHLNO",
+          "evidence": [],
           "internal": false
         }
       ],

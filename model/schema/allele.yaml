@@ -57,8 +57,6 @@ classes:
     exact_mappings:
       - SO:0001023
     slot_usage:
-      synonyms:
-        description: synonyms for allele names and synonyms
       aberration:
         notes: specific to FB
       name:
@@ -244,18 +242,6 @@ classes:
             range: Allele
         object:
             range: AffectedGenomicModel
-
-  AlleleSynonymAssociation:
-    is_a: Association
-    description: >-
-      The relationship between an allele and a synonym.
-    slots:
-      - synonym_scope
-    slot_usage:
-      subject:
-        range: Allele
-      object:
-        range: Synonym
 
 
 # Other classes roughly grouped with the Allele class because they have relationships to Allele and were
