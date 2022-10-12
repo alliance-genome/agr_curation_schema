@@ -84,26 +84,13 @@ classes:
   GeneticMapPosition:
     description: >-
       A genetic map position.
-    is_a: GenomicEntity
+    is_a: SlotAnnotation
     slots:
       - genetic_map_chromosome
       - genetic_map_band
       - genetic_map_position_centimorgan
       - genetic_map_position_centimorgan_error
       - genetic_map_position_radiation
-
-  GeneHistory:
-    description: >-
-      The history of a gene
-    is_a: AuditedObject
-    slots:
-      - current_status
-      - current_version
-      - merged_into
-      - acquires_merge
-      - split_from
-      - split_into
-
 
 ## ------------
 ## SLOTS
@@ -229,52 +216,3 @@ slots:
     multivalued: true
     domain: GeneticMapPosition
     range: float
-
-  current_status:
-    description: >-
-      Current status of this object
-    required: false
-    multivalued: true
-    domain: GeneHistory
-    range: string  # change to a controlled vocab, like live-dead-suppressed...
-
-  current_version:
-    description: >-
-      Current version of this object with each version eg 1,2,3 describing major updates
-    required: false
-    multivalued: false
-    domain: GeneHistory
-    range: integer
-
-  merged_into:
-    description: >-
-      This gene has been merged into
-    required: false
-    multivalued: true
-    domain: GeneHistory
-    range: Gene
-
-  acquires_merge:
-    description: >-
-      Genes which have been merged into this gene
-    required: false
-    multivalued: true
-    domain: GeneHistory
-    range: Gene
-
-  split_from:
-    description: >-
-      This gene exists because it has been split from this gene
-    required: false
-    multivalued: true
-    domain: GeneHistory
-    range: Gene
-
-  split_into:
-    description: >-
-      This gene has been split into these genes
-    required: false
-    multivalued: true
-    domain: GeneHistory
-    range: Gene
-
