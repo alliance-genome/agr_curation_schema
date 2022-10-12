@@ -69,8 +69,8 @@ classes:
         description: >-
           the title of the publication
 
-  ResourceSynonymAssociation:
-    is_a: EntitySynonym
+  ResourceSynonym:
+    is_a: Synonym
     description: >-
       The relationship between a resource and a synonym.
     slot_usage:

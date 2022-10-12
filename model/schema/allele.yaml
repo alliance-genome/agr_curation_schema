@@ -243,8 +243,8 @@ classes:
         object:
             range: AffectedGenomicModel
 
-  AlleleSynonymAssociation:
-    is_a: EntitySynonym
+  AlleleSynonym:
+    is_a: Synonym
     description: >-
       The relationship between an allele and a synonym.
     slot_usage:

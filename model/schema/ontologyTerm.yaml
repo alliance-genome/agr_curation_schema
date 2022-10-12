@@ -156,8 +156,8 @@ classes:
           distance_between is zero for reflexive–transitive closure
           each node has an ancestor or descendant of itself 
 
-  OntologyTermSynonymAssociation:
-    is_a: EntitySynonym
+  OntologyTermSynonym:
+    is_a: Synonym
     description: >-
       The relationship between an ontology term and a synonym.
     slot_usage:

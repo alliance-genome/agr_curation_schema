@@ -74,8 +74,8 @@ classes:
         required: true
         identifier: true
 
-  VocabularyTermSynonymAssociation:
-    is_a: EntitySynonym
+  VocabularyTermSynonym:
+    is_a: Synonym
     description: >-
       The relationship between a controlled vocabulary term and a synonym.
     slot_usage:
