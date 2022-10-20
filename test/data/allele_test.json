@@ -7,7 +7,7 @@
       "created_by": "ZFIN",
       "updated_by": "ZFIN",
       "internal": false,
-      "name": "b1219"
+      "symbol": "b1219"
     },
     {
       "curie": "ZFIN:ZDB-ALT-130411-947",
@@ -15,7 +15,7 @@
       "created_by": "ZFIN",
       "updated_by": "ZFIN",
       "internal": false,
-      "name": "sa11077"
+      "symbol": "sa11077"
     }
   ]
 }
