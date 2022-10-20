@@ -61,7 +61,7 @@ classes:
         description: synonyms for allele names and synonyms
       aberration:
         notes: specific to FB
-      name:
+      symbol:
         required: true
 
   GenerationMethod:
