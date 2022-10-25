@@ -53,7 +53,7 @@ classes:
       - symbol
       - related_notes
       - gene_type
-      - gene_types_secondary    
+      - gene_types_secondary
       - designating_laboratories
       - designating_persons
       - trans_splice_leaders
@@ -113,6 +113,9 @@ classes:
 
 slots:
 
+  gene_curie:
+    range: string
+
   gene_type:
     description: SOTerm describing gene type
     domain: Gene
@@ -125,7 +128,7 @@ slots:
     multivalued: true
     domain: Gene
     range: SOTerm
-        
+
   designating_laboratories:
     description: >-
       A laboratory, rarely laboratories, which designated this gene
@@ -277,4 +280,3 @@ slots:
     multivalued: true
     domain: GeneHistory
     range: Gene
-

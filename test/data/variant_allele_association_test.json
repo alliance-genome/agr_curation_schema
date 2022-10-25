@@ -2,13 +2,13 @@
   "linkml_version": "1.3.0",
   "allele_variant_association_ingest_set": [
     {
-      "created_by": "ZFIN",
-      "updated_by": "ZFIN",
+      "created_by_curie": "ZFIN:curator",
+      "updated_by_curie": "ZFIN:curator",
       "internal": false,
-      "subject": "ZFIN:ZDB-ALT-000412-8",
-      "object": "ZFIN:ZDB-ALT-000412-8",
-      "predicate": "RO:0002525",
-      "evidence": [
+      "allele_curie": "ZFIN:ZDB-ALT-000412-8",
+      "variant_curie": "ZFIN:ZDB-ALT-000412-8",
+      "ro_term_curie": "RO:0002525",
+      "evidence_curies": [
         "ZFIN:ZDB-PUB-010101-1"
       ]
     }

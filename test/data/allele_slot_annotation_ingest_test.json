@@ -1,77 +1,86 @@
 {
   "linkml_version": "1.3.0",
-  "allele_mutation_type_annotation_ingest_set": [
+  "allele_ingest_set": [
     {
-      "single_allele": "WB:WBVar00000001",
-      "mutation_type": "insertion",
-      "evidence": [
-        "PMID:11231512"
+      "curie": "WB:WBVar00000001",
+      "name": "variation 1",
+      "symbol": "a83",
+      "internal": false,
+      "obsolete": false,
+      "taxon_curie": "NCBITaxon:6239",
+      "date_created": "2015-04-09T10:15:30+00:00",
+      "date_updated": "2022-07-11T13:12:51+00:00",
+      "created_by_curie": "WB:WBPerson002314",
+      "updated_by_curie": "WB:WBPerson010002",
+      "in_collection_name": "Million_Mutation_Project",
+      "inheritance_mode_name": "semi-dominant",
+      "is_extinct": false,
+      "sequencing_status_name": "sequenced",
+      "allele_mutation_type_dtos": [
+        {
+          "mutation_type_curies": [
+            "SO:0000180"
+          ],
+          "evidence_curies": [
+            "PMID:11231512"
+          ],
+          "internal": false
+        }
       ],
-      "internal": false
-    }
-  ],
-  "allele_germline_transmission_status_annotation_ingest_set": [
-    {
-      "single_allele": "WB:WBVar00000001",
-      "germline_transmission_status": "germline",
-      "evidence": [
-        "PMID:11231512"
+      "allele_functional_impact_dtos": [
+        {
+          "functional_impact_names": [
+            "loss-of-function"
+          ],
+          "evidence_curies": [
+            "PMID:11231512"
+          ],
+          "internal": false
+        }
       ],
-      "internal": false
-    }
-  ],
-  "allele_functional_impact_annotation_ingest_set": [
-    {
-      "single_allele": "WB:WBVar00000001",
-      "functional_impact": [
-        "loss-of-function"
+      "allele_germline_transmission_status_dto": {
+        "germline_transmission_status_name": "germline",
+        "evidence_curies": [
+          "PMID:11231512"
+        ],
+        "internal": false
+      },
+      "allele_molecular_mutation_dtos": [
+        {
+          "molecular_mutation_names": [
+            "insertion"
+          ],
+          "evidence_curies": [
+            "PMID:11231512"
+          ],
+          "internal": false
+        }
       ],
-      "evidence": [
-        "PMID:11231512"
+      "allele_database_status_dto": {
+        "database_status_name": "public",
+        "evidence_curies": [
+          "PMID:11231512"
+        ],
+        "internal": false
+      },
+      "allele_secondary_id_dtos": [
+        {
+          "secondary_id": "WBVar00000001",
+          "evidence_curies": [
+            "PMID:11231512"
+          ],
+          "internal": false
+        }
       ],
-      "internal": false
-    }
-  ],
-  "allele_molecular_mutation_annotation_ingest_set": [
-    {
-      "single_allele": "WB:WBVar00000001",
-      "molecular_mutations": [
-        "insertion"
-      ],
-      "evidence": [
-        "PMID:11231512"
-      ],
-      "internal": false
-    }
-  ],
-  "allele_database_status_annotation_ingest_set": [
-    {
-      "single_allele": "WB:WBVar00000001",
-      "database_status": "public",
-      "evidence": [
-        "PMID:11231512"
-      ],
-      "internal": false
-    }
-  ],
-  "allele_secondary_id_annotation_ingest_set": [
-    {
-      "single_allele": "WB:WBVar00000001",
-      "secondary_id": "WBVar00000001",
-      "evidence": [
-        "PMID:11231512"
-      ],
-      "internal": false
-    }
-  ],
-  "allele_nomenclature_annotation_ingest_set": [
-    {
-      "single_allele": "WB:WBVar00000001",
-      "nomenclature_event": "named",
-      "evidence": [
-        "PMID:11231512"
-      ],
-      "internal": false
+      "allele_nomenclature_event_dtos": [
+        {
+          "nomenclature_event_name": "named",
+          "evidence_curies": [
+            "PMID:11231512"
+          ],
+          "internal": false
+        }
+      ]
     }
   ]
 }

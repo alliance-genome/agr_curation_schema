@@ -68,6 +68,19 @@ classes:
       - internal
       - obsolete
 
+  AuditedObjectDTO:
+    description: >-
+      Base class for all other LinkML DTO classes.
+    slots:
+      - created_by_curie
+      - date_created
+      - updated_by_curie
+      - date_updated
+      - db_date_created
+      - db_date_updated
+      - internal
+      - obsolete
+
   BiologicalEntity:
     is_a: AuditedObject
     description: >-
@@ -83,6 +96,17 @@ classes:
       curie:
         required: true
 
+  BiologicalEntityDTO:
+    is_a: AuditedObjectDTO
+    abstract: true
+    slots:
+      - curie
+      - taxon_curie
+    slot_usage:
+      taxon_curie:
+        required: true
+      curie:
+        required: true
 
   GenomicEntity:
     is_a: BiologicalEntity
@@ -97,6 +121,15 @@ classes:
       - cross_references
       - secondary_identifiers
       - genomic_locations
+
+  GenomicEntityDTO:
+    is_a: BiologicalEntityDTO
+    slots:
+      - name
+      - synonym_dtos
+      - cross_reference_dtos
+      - secondary_identifiers
+      - genomic_location_dtos
 
   Transcript:
     is_a: GenomicEntity
@@ -125,9 +158,22 @@ classes:
       curie:
         required: true
 
+  CrossReferenceDTO:
+    is_a: AuditedObjectDTO
+    slots:
+      - curie
+      - page_areas
+      - display_name
+      - prefix
+
 
   Synonym:
     is_a: AuditedObject
+    slots:
+      - name
+
+  SynonymDTO:
+    is_a: AuditedObjectDTO
     slots:
       - name
 
@@ -156,6 +202,18 @@ classes:
           - value: gene_function_summary
           - value: gene_phenotype_summary
 
+  NoteDTO:
+    is_a: AuditedObjectDTO
+    slots:
+      - free_text
+      - note_type_name
+      - evidence_curies
+    slot_usage:
+      free_text:
+        required: true
+      note_type_name:
+        required_true
+
   SlotAnnotation:
     is_a: AuditedObject
     description: >-
@@ -163,21 +221,21 @@ classes:
       to a slot in the context of its referencing class, that can not be fully captured using an Association between
       the full class itself, and an InformationContentEntity. Evidence and provenance can exist here in the form of an
       evidence code, a publication, a personal communication or any other kind of InformationContentEntity.
-      SlotAnnotation classes are used where the slot is not referencing a class in and of itself, and often has a 
+      SlotAnnotation classes are used where the slot is not referencing a class in and of itself, and often has a
       scalar range.
     notes: >-
-      A good example of the use of a SlotAnnotation class is the use case of attributing one of many functional 
-      impacts of an allele to a publication.  AlleleFunctionalImpact is the SlotAnnotation class that represents 
-      this use case. 
+      A good example of the use of a SlotAnnotation class is the use case of attributing one of many functional
+      impacts of an allele to a publication.  AlleleFunctionalImpact is the SlotAnnotation class that represents
+      this use case.
 
   Association:
     is_a: AuditedObject
     description: >-
-      A typed association between two entities, supported by evidence.  Associations have three base slots: subject, 
-      object, and predicate, but they can have any number of additional attributes that help qualify the relationship 
-      between the subject and the object.  The subject is the curie (or identifier) of the class that is the subject 
-      of the association, and likewise the object is the curie (or identifier of the class that is the object. The 
-      relationship between subject and object is defined by the predicate slot (which can also be constrained 
+      A typed association between two entities, supported by evidence.  Associations have three base slots: subject,
+      object, and predicate, but they can have any number of additional attributes that help qualify the relationship
+      between the subject and the object.  The subject is the curie (or identifier) of the class that is the subject
+      of the association, and likewise the object is the curie (or identifier of the class that is the object. The
+      relationship between subject and object is defined by the predicate slot (which can also be constrained
       using the range of the predicate).
     exact_mappings:
       - biolink:association
@@ -266,6 +324,29 @@ classes:
       - start
       - end
 
+  GenomicLocationDTO:
+    is_a: AuditedObjectDTO
+    slots:
+      - genomic_entity_curie
+      - predicate   # what should the predicate range be for this class? CG
+      - chromosome_curie
+      - assembly_curie
+      - start
+      - end
+    slot_usage:
+      genomic_entity_curie:
+        required: true
+      predicate:
+        required: true
+      chromosome_curie:
+        required: true
+      assembly_curie:
+        required: true
+      start:
+        required: true
+      end:
+        required: true
+
   Protein:
     is_a: GenomicEntity
 
@@ -293,8 +374,16 @@ slots:
     description: the text string of the synonym
 
   synonym_scope:
-    description: the scope of the synonym, e.g. 'EXACT', 'NARROW' or 'RELATED'
-    range: synonym_scope_enum
+    description: >-
+      the scope of the synonym - permissible values are narrow /
+      broad / related / exact
+    range: VocabularyTerm
+
+  synonym_scope_name:
+    description: >-
+      Name of the VocabularyTerm representing the scope of the
+      synonym - permissible values are narrow / broad / related / exact
+    range: string
 
   start:
     description: The start of the feature in positive 1-based integer coordinates
@@ -367,6 +456,12 @@ slots:
       The type of note: e.g., cytology, comment, summary. Permissible values for 'note_type' currently = disease_summary, disease_note
     range: VocabularyTerm
 
+  note_type_name:
+    description: >-
+      Name of VocabularyTerm representing note type
+    domain: NoteDTO
+    range: string
+
   internal:
     description: >-
       Classifies the entity as private (for internal use) or not (for public use).
@@ -390,6 +485,9 @@ slots:
       Singular version of related_notes
     range: Note
     multivalued: false
+
+  note_dto:
+    range: NoteDTO
 
   generated_by:
     description: >-
@@ -435,6 +533,12 @@ slots:
     multivalued: false
     range: NCBITaxonTerm
 
+  taxon_curie:
+    description: >-
+      Curie of the NCBITaxonTerm representing the taxon from which the
+      biological entity derives
+    range: string
+
   secondary_identifiers:
     aliases: ['secondary_ids']
     multivalued: true
@@ -447,6 +551,11 @@ slots:
   genomic_locations:
     domain: GenomicEntity
     range: GenomicLocation
+    multivalued: true
+
+  genomic_location_dtos:
+    domain: GenomicEntityDTO
+    range: GenomicLocationDTO
     multivalued: true
 
   table_key:
@@ -493,12 +602,26 @@ slots:
     domain: AuditedObject
     range: Person
 
+  created_by_curie:
+    description: >-
+      Curie of the Person object representing the individual that created the
+      entity
+    domain: AuditedObjectDTO
+    range: string
+
   updated_by:
     description: >-
       The individual that last modified the entity.
     multivalued: false
     domain: AuditedObject
     range: Person
+
+  updated_by_curie:
+    description: >-
+      Curie of the Person object representing the individual that updated the
+      entity
+    domain: AuditedObjectDTO
+    range: string
 
   release:
     description: MOD release ID
@@ -543,6 +666,12 @@ slots:
     inlined: true
     inlined_as_list: true
 
+  cross_reference_dtos:
+    range: CrossReferenceDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
   symbol:
     description: >-
       Symbol for a particular thing
@@ -554,6 +683,14 @@ slots:
     description: holds between a named thing and a synonym
     multivalued: true
     range: Synonym
+
+  synonym_dtos:
+    range: SynonymDTO
+    multivalued: true
+
+  synonym_dto:
+    range: SynonymDTO
+    multivalued: false
 
   negated:
     range: boolean
@@ -654,6 +791,22 @@ slots:
     description: last identifier in a range
     range: Identifier
 
+  genomic_entity_curie:
+    range: string
+
+  assembly_curie:
+    range: string
+
+  chromosome_curie:
+    range: string
+
+  transcript_curie:
+    range: string
+    required: true
+
+  protein_curie:
+    range: string
+    required: true
 
   ## --------------------
 ## ASSOCIATION SLOTS
@@ -687,6 +840,12 @@ slots:
     required: true
     exact_mappings:
       - biolink:predicate
+
+  predicate_name:
+    description: >-
+      Name of VocabularyTerm representing predicate of an Association
+    required: true
+    range: string
 
 ## ----------
 ## PREDICATES

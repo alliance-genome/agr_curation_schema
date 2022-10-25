@@ -57,6 +57,10 @@ classes:
 
 slots:
 
+  agm_curie:
+    range: string
+    required: true
+
   subtype:
     description: >-
       Subtype of affected genomic model

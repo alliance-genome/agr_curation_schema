@@ -109,6 +109,9 @@ slots:
   distance_between:
     range: integer
 
+  evidence_code_curie:
+    range: string
+
 classes:
 
   OntologyTerm:
@@ -159,7 +162,7 @@ classes:
       distance_between:
         description: >-
           distance_between is zero for reflexive–transitive closure
-          each node has an ancestor or descendant of itself 
+          each node has an ancestor or descendant of itself
 
   DOTerm:
     is_a: OntologyTerm
