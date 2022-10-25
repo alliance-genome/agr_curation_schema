@@ -4,10 +4,6 @@
          "additionalProperties": false,
          "description": "An annotation asserting an association between an AGM and a disease supported by evidence.",
          "properties": {
-            "alliance_curie": {
-               "description": "The Alliance-minted ID for the disease annotation. The ID is of the format AGRKB:100000000000001, where the first three digits represent the DiseaseAnnotation class code of \"100\", followed by a 12-digit identifier",
-               "type": "string"
-            },
             "annotation_type": {
                "description": "The type of annotation classified according to curation method. Submitted value should be a vocabulary term from the 'Annotation types' vocabulary",
                "type": "string"
@@ -16,9 +12,12 @@
                "description": "The allele to which something is manually asserted to be associated.",
                "type": "string"
             },
-            "asserted_gene": {
-               "description": "The gene to which something is manually asserted to be associated.",
-               "type": "string"
+            "asserted_genes": {
+               "description": "The gene(s) to which something is manually asserted to be associated.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "condition_relations": {
                "items": {
@@ -28,6 +27,10 @@
             },
             "created_by": {
                "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "curie": {
+               "description": "The Alliance-minted ID for the disease annotation. The ID is of the format AGRKB:100000000000001, where the first three digits represent the DiseaseAnnotation class code of \"100\", followed by a 12-digit identifier",
                "type": "string"
             },
             "data_provider": {
@@ -155,6 +158,7 @@
          },
          "required": [
             "internal",
+            "curie",
             "evidence_codes",
             "single_reference",
             "data_provider",
@@ -165,6 +169,162 @@
          "title": "AGMDiseaseAnnotation",
          "type": "object"
       },
+      "AGMDiseaseAnnotationDTO": {
+         "additionalProperties": false,
+         "description": "Ingest class for an association between an AGM and a disease",
+         "properties": {
+            "agm_curie": {
+               "type": "string"
+            },
+            "annotation_type_name": {
+               "description": "Name of the VocabularyTerm describing the annotation type",
+               "type": "string"
+            },
+            "asserted_allele_curie": {
+               "description": "Curie of the allele to which something is manually asserted to be associated",
+               "type": "string"
+            },
+            "asserted_gene_curies": {
+               "description": "Curies of the gene(s) to which something is manually asserted to be associated",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "condition_relation_dtos": {
+               "items": {
+                  "$ref": "#/$defs/ConditionRelationDTO"
+               },
+               "type": "array"
+            },
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "data_provider": {
+               "description": "Organization (e.g. MOD) from which the data was sourced",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "disease_genetic_modifier_curie": {
+               "description": "Curie of BiologcalEntity that modifies the disease model",
+               "type": "string"
+            },
+            "disease_genetic_modifier_relation_name": {
+               "description": "Name of the VocabularyTerm from the 'Disease genetic modifiers' vocabulary that describes how the genetic modifier modifies the disease model.",
+               "type": "string"
+            },
+            "disease_qualifier_names": {
+               "description": "Names of terms from the 'Disease qualifiers' vocabulary",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "disease_relation_name": {
+               "description": "Name of term from 'Disease Relation Vocabulary' vocabulary",
+               "type": "string"
+            },
+            "do_term_curie": {
+               "description": "Curie of DOTerm describing the disease",
+               "type": "string"
+            },
+            "evidence_code_curies": {
+               "description": "List of ECOTerm curies",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "evidence_curies": {
+               "description": "Curies of InformationContentEntity objects given as evidence",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "genetic_sex_name": {
+               "description": "Name of term from the 'Genetic sexes' vocabulary",
+               "type": "string"
+            },
+            "inferred_allele_curie": {
+               "description": "Curie of allele to which something is inferred to be associated via an automated pipeline",
+               "type": "string"
+            },
+            "inferred_gene_curie": {
+               "description": "Curie of gene to which something is inferred to be associated via an automated pipeline",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "mod_entity_id": {
+               "description": "The model organism database (MOD) identifier/curie for the object",
+               "type": "string"
+            },
+            "negated": {
+               "description": "if set to true, then the association is negated i.e. is not true",
+               "type": "boolean"
+            },
+            "note_dtos": {
+               "items": {
+                  "$ref": "#/$defs/NoteDTO"
+               },
+               "type": "array"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "reference_curie": {
+               "description": "External reference curie used for ingest",
+               "type": "string"
+            },
+            "secondary_data_provider": {
+               "description": "Organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source",
+               "type": "string"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            },
+            "with_gene_curies": {
+               "description": "http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "internal",
+            "disease_relation_name",
+            "do_term_curie",
+            "agm_curie"
+         ],
+         "title": "AGMDiseaseAnnotationDTO",
+         "type": "object"
+      },
       "AGMPhenotypeAnnotation": {
          "additionalProperties": false,
          "description": "An annotation asserting an association between an AGM and a phenotype supported by evidence.",
@@ -173,9 +333,12 @@
                "description": "The allele to which something is manually asserted to be associated.",
                "type": "string"
             },
-            "asserted_gene": {
-               "description": "The gene to which something is manually asserted to be associated.",
-               "type": "string"
+            "asserted_genes": {
+               "description": "The gene(s) to which something is manually asserted to be associated.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "condition_relations": {
                "items": {
@@ -476,8 +639,8 @@
                "type": "array"
             },
             "subtype": {
-               "$ref": "#/$defs/SubtypeValues",
-               "description": "Subtype of affected genomic model"
+               "description": "Subtype of affected genomic model - permissible values: strain / genotype / fish",
+               "type": "string"
             },
             "synonyms": {
                "description": "holds between a named thing and a synonym",
@@ -532,9 +695,6 @@
                "format": "date",
                "type": "string"
             },
-            "has_allele": {
-               "type": "string"
-            },
             "internal": {
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
@@ -542,6 +702,9 @@
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "single_allele": {
+               "type": "string"
             },
             "updated_by": {
                "description": "The individual that last modified the entity.",
@@ -556,6 +719,173 @@
             "internal"
          ],
          "title": "AffectedGenomicModelComponent",
+         "type": "object"
+      },
+      "AffectedGenomicModelComponentDTO": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "allele_curie": {
+               "type": "string"
+            },
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            },
+            "zygosity_curie": {
+               "description": "Curie of GENO ontology ID for allele zygosity - permissible_values: GENO:0000602 / GENO:0000603 / GENO:0000604 / GENO:0000605 / GENO:0000606 / GENO:0000135 / GENO:0000136 / GENO:0000137 / GENO:0000134",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "allele_curie"
+         ],
+         "title": "AffectedGenomicModelComponentDTO",
+         "type": "object"
+      },
+      "AffectedGenomicModelDTO": {
+         "additionalProperties": false,
+         "description": "Ingest class for AGMs",
+         "properties": {
+            "component_dtos": {
+               "items": {
+                  "$ref": "#/$defs/AffectedGenomicModelComponentDTO"
+               },
+               "type": "array"
+            },
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "cross_reference_dtos": {
+               "items": {
+                  "$ref": "#/$defs/CrossReferenceDTO"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "data_provider": {
+               "description": "Organization (e.g. MOD) from which the data was sourced",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "genomic_location_dtos": {
+               "items": {
+                  "$ref": "#/$defs/GenomicLocationDTO"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "reference_curies": {
+               "description": "External reference curies used for ingest",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "sequence_targeting_reagent_curies": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subtype_name": {
+               "description": "Name of VocabularyTerm describing subtype - permissible values: strain / genotype / fish",
+               "type": "string"
+            },
+            "synonym_dtos": {
+               "items": {
+                  "$ref": "#/$defs/SynonymDTO"
+               },
+               "type": "array"
+            },
+            "taxon_curie": {
+               "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
+               "type": "string"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "curie",
+            "taxon_curie"
+         ],
+         "title": "AffectedGenomicModelDTO",
          "type": "object"
       },
       "Agent": {
@@ -621,6 +951,60 @@
                "description": "Associated deficiency (etc.) whose breakpoint causes the mutation",
                "type": "string"
             },
+            "allele_database_status": {
+               "$ref": "#/$defs/AlleleDatabaseStatus",
+               "description": "Database status of a given allele"
+            },
+            "allele_functional_impacts": {
+               "description": "Functional impacts of a given allele",
+               "items": {
+                  "$ref": "#/$defs/AlleleFunctionalImpact"
+               },
+               "type": "array"
+            },
+            "allele_germline_transmission_status": {
+               "$ref": "#/$defs/AlleleGermlineTransmissionStatus",
+               "description": "Germline transmission status for a given allele"
+            },
+            "allele_molecular_mutations": {
+               "description": "Molecular mutations of a given allele",
+               "items": {
+                  "$ref": "#/$defs/AlleleMolecularMutation"
+               },
+               "type": "array"
+            },
+            "allele_mutation_types": {
+               "description": "Mutation types for a given allele",
+               "items": {
+                  "$ref": "#/$defs/AlleleMutationType"
+               },
+               "type": "array"
+            },
+            "allele_nomenclature_events": {
+               "description": "Nomenclature events of a given allele",
+               "items": {
+                  "$ref": "#/$defs/AlleleNomenclatureEvent"
+               },
+               "type": "array"
+            },
+            "allele_notes": {
+               "$ref": "#/$defs/AlleleNote",
+               "description": "Notes for a given allele"
+            },
+            "allele_secondary_ids": {
+               "description": "Secondary IDs of a given allele",
+               "items": {
+                  "$ref": "#/$defs/AlleleSecondaryId"
+               },
+               "type": "array"
+            },
+            "allele_synonyms": {
+               "description": "Synonyms of a given allele",
+               "items": {
+                  "$ref": "#/$defs/Synonym"
+               },
+               "type": "array"
+            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -666,8 +1050,8 @@
                "description": "Set of high-throughput alleles made by large projects",
                "type": "string"
             },
-            "inheritence_mode": {
-               "description": "Mode of inheritence, e.g. dominant / semi-dominant / recessive / unknown # TODO: please enumerate the difference between this and zygosity in AffectedGenomicModel class.",
+            "inheritance_mode": {
+               "description": "Mode of inheritance, e.g. dominant / semi-dominant / recessive / unknown # TODO: please enumerate the difference between this and zygosity in AffectedGenomicModel class.",
                "type": "string"
             },
             "internal": {
@@ -727,7 +1111,7 @@
             "internal",
             "curie",
             "taxon",
-            "name"
+            "symbol"
          ],
          "title": "Allele",
          "type": "object"
@@ -798,6 +1182,66 @@
             "object"
          ],
          "title": "AlleleCellLineAssociation",
+         "type": "object"
+      },
+      "AlleleCellLineAssociationDTO": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "allele_curie": {
+               "type": "string"
+            },
+            "cell_line_curie": {
+               "type": "string"
+            },
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "predicate_name": {
+               "description": "Name of VocabularyTerm representing predicate of an Association",
+               "type": "string"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "allele_curie",
+            "predicate_name",
+            "cell_line_curie"
+         ],
+         "title": "AlleleCellLineAssociationDTO",
          "type": "object"
       },
       "AlleleConstructAssociation": {
@@ -876,13 +1320,244 @@
          "title": "AlleleConstructAssociation",
          "type": "object"
       },
-      "AlleleDatabaseStatusAnnotation": {
+      "AlleleConstructAssociationDTO": {
          "additionalProperties": false,
          "description": "",
          "properties": {
-            "allele_id": {
+            "allele_curie": {
                "type": "string"
             },
+            "construct_curie": {
+               "type": "string"
+            },
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence_code_curie": {
+               "description": "Curie of ECOTerm",
+               "type": "string"
+            },
+            "evidence_curies": {
+               "description": "Curies of InformationContentEntity objects given as evidence",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "note_dto": {
+               "$ref": "#/$defs/NoteDTO"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "ro_term_curie": {
+               "type": "string"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "allele_curie",
+            "ro_term_curie",
+            "evidence_curies",
+            "construct_curie"
+         ],
+         "title": "AlleleConstructAssociationDTO",
+         "type": "object"
+      },
+      "AlleleDTO": {
+         "additionalProperties": false,
+         "description": "Ingest class for an Allele object",
+         "properties": {
+            "allele_database_status_dto": {
+               "$ref": "#/$defs/AlleleDatabaseStatusDTO"
+            },
+            "allele_functional_impact_dtos": {
+               "items": {
+                  "$ref": "#/$defs/AlleleFunctionalImpactDTO"
+               },
+               "type": "array"
+            },
+            "allele_germline_transmission_status_dto": {
+               "$ref": "#/$defs/AlleleGermlineTransmissionStatusDTO"
+            },
+            "allele_molecular_mutation_dtos": {
+               "items": {
+                  "$ref": "#/$defs/AlleleMolecularMutationDTO"
+               },
+               "type": "array"
+            },
+            "allele_mutation_type_dtos": {
+               "items": {
+                  "$ref": "#/$defs/AlleleMutationTypeDTO"
+               },
+               "type": "array"
+            },
+            "allele_nomenclature_event_dtos": {
+               "items": {
+                  "$ref": "#/$defs/AlleleNomenclatureEventDTO"
+               },
+               "type": "array"
+            },
+            "allele_note_dtos": {
+               "items": {
+                  "$ref": "#/$defs/AlleleNoteDTO"
+               },
+               "type": "array"
+            },
+            "allele_secondary_id_dtos": {
+               "items": {
+                  "$ref": "#/$defs/AlleleSecondaryIdDTO"
+               },
+               "type": "array"
+            },
+            "allele_synonym_dtos": {
+               "items": {
+                  "$ref": "#/$defs/AlleleSynonymDTO"
+               },
+               "type": "array"
+            },
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "cross_reference_dtos": {
+               "items": {
+                  "$ref": "#/$defs/CrossReferenceDTO"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "genomic_location_dtos": {
+               "items": {
+                  "$ref": "#/$defs/GenomicLocationDTO"
+               },
+               "type": "array"
+            },
+            "in_collection_name": {
+               "description": "Name of VocabularyTerm describing the collection",
+               "type": "string"
+            },
+            "inheritance_mode_name": {
+               "description": "Name of VocabularyTerm describing the inheritance mode",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "is_extinct": {
+               "description": "Does the allele still exist in a population somewhere?",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "reference_curies": {
+               "description": "External reference curies used for ingest",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "sequencing_status_name": {
+               "description": "Name of VocabularyTerm describing the sequencing status",
+               "type": "string"
+            },
+            "symbol": {
+               "description": "Symbol for a particular thing",
+               "type": "string"
+            },
+            "synonym_dtos": {
+               "items": {
+                  "$ref": "#/$defs/SynonymDTO"
+               },
+               "type": "array"
+            },
+            "taxon_curie": {
+               "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
+               "type": "string"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "curie",
+            "taxon_curie"
+         ],
+         "title": "AlleleDTO",
+         "type": "object"
+      },
+      "AlleleDatabaseStatus": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -925,6 +1600,9 @@
                "description": "Entity is no longer current.",
                "type": "boolean"
             },
+            "single_allele": {
+               "type": "string"
+            },
             "updated_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
@@ -933,24 +1611,81 @@
          "required": [
             "internal"
          ],
-         "title": "AlleleDatabaseStatusAnnotation",
+         "title": "AlleleDatabaseStatus",
+         "type": "object"
+      },
+      "AlleleDatabaseStatusDTO": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "created_by": {
+               "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "database_status_name": {
+               "description": "Name of the VocabularyTerm describing the database status",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence_curies": {
+               "description": "Curies of InformationContentEntity objects given as evidence",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by": {
+               "description": "The individual that last modified the entity.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AlleleDatabaseStatusDTO",
          "type": "object"
       },
       "AlleleDiseaseAnnotation": {
          "additionalProperties": false,
          "description": "An annotation asserting an association between an allele and a disease supported by evidence.",
          "properties": {
-            "alliance_curie": {
-               "description": "The Alliance-minted ID for the disease annotation. The ID is of the format AGRKB:100000000000001, where the first three digits represent the DiseaseAnnotation class code of \"100\", followed by a 12-digit identifier",
-               "type": "string"
-            },
             "annotation_type": {
                "description": "The type of annotation classified according to curation method. Submitted value should be a vocabulary term from the 'Annotation types' vocabulary",
                "type": "string"
             },
-            "asserted_gene": {
-               "description": "The gene to which something is manually asserted to be associated.",
-               "type": "string"
+            "asserted_genes": {
+               "description": "The gene(s) to which something is manually asserted to be associated.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "condition_relations": {
                "items": {
@@ -960,6 +1695,10 @@
             },
             "created_by": {
                "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "curie": {
+               "description": "The Alliance-minted ID for the disease annotation. The ID is of the format AGRKB:100000000000001, where the first three digits represent the DiseaseAnnotation class code of \"100\", followed by a 12-digit identifier",
                "type": "string"
             },
             "data_provider": {
@@ -1083,6 +1822,7 @@
          },
          "required": [
             "internal",
+            "curie",
             "evidence_codes",
             "single_reference",
             "data_provider",
@@ -1093,13 +1833,158 @@
          "title": "AlleleDiseaseAnnotation",
          "type": "object"
       },
-      "AlleleFunctionalImpactAnnotation": {
+      "AlleleDiseaseAnnotationDTO": {
+         "additionalProperties": false,
+         "description": "Ingest class for an association between an allele and a disease",
+         "properties": {
+            "allele_curie": {
+               "type": "string"
+            },
+            "annotation_type_name": {
+               "description": "Name of the VocabularyTerm describing the annotation type",
+               "type": "string"
+            },
+            "asserted_gene_curies": {
+               "description": "Curies of the gene(s) to which something is manually asserted to be associated",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "condition_relation_dtos": {
+               "items": {
+                  "$ref": "#/$defs/ConditionRelationDTO"
+               },
+               "type": "array"
+            },
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "data_provider": {
+               "description": "Organization (e.g. MOD) from which the data was sourced",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "disease_genetic_modifier_curie": {
+               "description": "Curie of BiologcalEntity that modifies the disease model",
+               "type": "string"
+            },
+            "disease_genetic_modifier_relation_name": {
+               "description": "Name of the VocabularyTerm from the 'Disease genetic modifiers' vocabulary that describes how the genetic modifier modifies the disease model.",
+               "type": "string"
+            },
+            "disease_qualifier_names": {
+               "description": "Names of terms from the 'Disease qualifiers' vocabulary",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "disease_relation_name": {
+               "description": "Name of term from 'Disease Relation Vocabulary' vocabulary",
+               "type": "string"
+            },
+            "do_term_curie": {
+               "description": "Curie of DOTerm describing the disease",
+               "type": "string"
+            },
+            "evidence_code_curies": {
+               "description": "List of ECOTerm curies",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "evidence_curies": {
+               "description": "Curies of InformationContentEntity objects given as evidence",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "genetic_sex_name": {
+               "description": "Name of term from the 'Genetic sexes' vocabulary",
+               "type": "string"
+            },
+            "inferred_gene_curie": {
+               "description": "Curie of gene to which something is inferred to be associated via an automated pipeline",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "mod_entity_id": {
+               "description": "The model organism database (MOD) identifier/curie for the object",
+               "type": "string"
+            },
+            "negated": {
+               "description": "if set to true, then the association is negated i.e. is not true",
+               "type": "boolean"
+            },
+            "note_dtos": {
+               "items": {
+                  "$ref": "#/$defs/NoteDTO"
+               },
+               "type": "array"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "reference_curie": {
+               "description": "External reference curie used for ingest",
+               "type": "string"
+            },
+            "secondary_data_provider": {
+               "description": "Organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source",
+               "type": "string"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            },
+            "with_gene_curies": {
+               "description": "http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "internal",
+            "disease_relation_name",
+            "do_term_curie",
+            "allele_curie"
+         ],
+         "title": "AlleleDiseaseAnnotationDTO",
+         "type": "object"
+      },
+      "AlleleFunctionalImpact": {
          "additionalProperties": false,
          "description": "",
          "properties": {
-            "allele_id": {
-               "type": "string"
-            },
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -1130,7 +2015,7 @@
                },
                "type": "array"
             },
-            "functional_impact": {
+            "functional_impacts": {
                "description": "Experimentally assessed functional impact of the allele, e.g. knockout / amorphic",
                "items": {
                   "type": "string"
@@ -1145,6 +2030,9 @@
                "description": "Entity is no longer current.",
                "type": "boolean"
             },
+            "single_allele": {
+               "type": "string"
+            },
             "updated_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
@@ -1153,7 +2041,68 @@
          "required": [
             "internal"
          ],
-         "title": "AlleleFunctionalImpactAnnotation",
+         "title": "AlleleFunctionalImpact",
+         "type": "object"
+      },
+      "AlleleFunctionalImpactDTO": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence_curies": {
+               "description": "Curies of InformationContentEntity objects given as evidence",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "functional_impact_names": {
+               "description": "Name of the VocabularyTerm describing the functional impact",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AlleleFunctionalImpactDTO",
          "type": "object"
       },
       "AlleleGeneAssociation": {
@@ -1232,6 +2181,80 @@
          "title": "AlleleGeneAssociation",
          "type": "object"
       },
+      "AlleleGeneAssociationDTO": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "allele_curie": {
+               "type": "string"
+            },
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence_code_curie": {
+               "description": "Curie of ECOTerm",
+               "type": "string"
+            },
+            "evidence_curies": {
+               "description": "Curies of InformationContentEntity objects given as evidence",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "gene_curie": {
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "note_dto": {
+               "$ref": "#/$defs/NoteDTO"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "ro_term_curie": {
+               "type": "string"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "allele_curie",
+            "ro_term_curie",
+            "evidence_curies",
+            "gene_curie"
+         ],
+         "title": "AlleleGeneAssociationDTO",
+         "type": "object"
+      },
       "AlleleGenerationMethodAssociation": {
          "additionalProperties": false,
          "description": "",
@@ -1304,13 +2327,80 @@
          "title": "AlleleGenerationMethodAssociation",
          "type": "object"
       },
-      "AlleleGermlineTransmissionStatusAnnotation": {
+      "AlleleGenerationMethodAssociationDTO": {
          "additionalProperties": false,
          "description": "",
          "properties": {
-            "allele_id": {
+            "allele_curie": {
                "type": "string"
             },
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence_curies": {
+               "description": "Curies of InformationContentEntity objects given as evidence",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "generation_method_dto": {
+               "$ref": "#/$defs/GenerationMethodDTO"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "mutation_target_strain_curie": {
+               "description": "Curie of the particular strain that is targeted by the generation method for a particular allele (MGI only)",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "predicate_name": {
+               "description": "Name of VocabularyTerm representing predicate of an Association",
+               "type": "string"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "allele_curie",
+            "predicate_name"
+         ],
+         "title": "AlleleGenerationMethodAssociationDTO",
+         "type": "object"
+      },
+      "AlleleGermlineTransmissionStatus": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -1353,6 +2443,9 @@
                "description": "Entity is no longer current.",
                "type": "boolean"
             },
+            "single_allele": {
+               "type": "string"
+            },
             "updated_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
@@ -1361,7 +2454,65 @@
          "required": [
             "internal"
          ],
-         "title": "AlleleGermlineTransmissionStatusAnnotation",
+         "title": "AlleleGermlineTransmissionStatus",
+         "type": "object"
+      },
+      "AlleleGermlineTransmissionStatusDTO": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence_curies": {
+               "description": "Curies of InformationContentEntity objects given as evidence",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "germline_transmission_status_name": {
+               "description": "Name of the VocabularyTerm representing the germline transmission status",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AlleleGermlineTransmissionStatusDTO",
          "type": "object"
       },
       "AlleleImageAssociation": {
@@ -1415,7 +2566,7 @@
                "type": "string"
             },
             "primary_image": {
-               "description": "Can be null; if false, maybe you would show all the images. We need to revisit this issue. ",
+               "description": "Can be null; if false, maybe you would show all the images. We need to revisit this issue.",
                "type": "string"
             },
             "subject": {
@@ -1436,13 +2587,74 @@
          "title": "AlleleImageAssociation",
          "type": "object"
       },
-      "AlleleMolecularMutationAnnotation": {
+      "AlleleImageAssociationDTO": {
          "additionalProperties": false,
          "description": "",
          "properties": {
-            "allele_id": {
+            "allele_curie": {
                "type": "string"
             },
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "image_curie": {
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "predicate_name": {
+               "description": "Name of VocabularyTerm representing predicate of an Association",
+               "type": "string"
+            },
+            "primary_image": {
+               "description": "The primary image for an allele that is used to represent the allele on a page.",
+               "type": "string"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "allele_curie",
+            "predicate_name",
+            "image_curie"
+         ],
+         "title": "AlleleImageAssociationDTO",
+         "type": "object"
+      },
+      "AlleleMolecularMutation": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -1488,6 +2700,9 @@
                "description": "Entity is no longer current.",
                "type": "boolean"
             },
+            "single_allele": {
+               "type": "string"
+            },
             "updated_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
@@ -1496,16 +2711,74 @@
          "required": [
             "internal"
          ],
-         "title": "AlleleMolecularMutationAnnotation",
+         "title": "AlleleMolecularMutation",
          "type": "object"
       },
-      "AlleleMutationTypeAnnotation": {
+      "AlleleMolecularMutationDTO": {
          "additionalProperties": false,
          "description": "",
          "properties": {
-            "allele_id": {
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
                "type": "string"
             },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence_curies": {
+               "description": "Curies of InformationContentEntity objects given as evidence",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "molecular_mutation_names": {
+               "description": "Name of the VocabularyTerm describing the molecular mutation",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AlleleMolecularMutationDTO",
+         "type": "object"
+      },
+      "AlleleMutationType": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -1540,13 +2813,19 @@
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
             },
-            "mutation_type": {
+            "mutation_types": {
                "description": "SO term for type of mutation",
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "single_allele": {
+               "type": "string"
             },
             "updated_by": {
                "description": "The individual that last modified the entity.",
@@ -1556,16 +2835,74 @@
          "required": [
             "internal"
          ],
-         "title": "AlleleMutationTypeAnnotation",
+         "title": "AlleleMutationType",
          "type": "object"
       },
-      "AlleleNomenclatureAnnotation": {
+      "AlleleMutationTypeDTO": {
          "additionalProperties": false,
          "description": "",
          "properties": {
-            "allele_id": {
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
                "type": "string"
             },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence_curies": {
+               "description": "Curies of InformationContentEntity objects given as evidence",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "mutation_type_curies": {
+               "description": "Curies of SOTerms representing mutation type",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AlleleMutationTypeDTO",
+         "type": "object"
+      },
+      "AlleleNomenclatureEvent": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -1601,12 +2938,15 @@
                "type": "boolean"
             },
             "nomenclature_event": {
-               "$ref": "#/$defs/NomenclatureEventEnum",
-               "description": "any of the kinds of changes made to an object's name or symbol"
+               "description": "any of the kinds of changes made to an object's name or symbol",
+               "type": "string"
             },
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
+            },
+            "single_allele": {
+               "type": "string"
             },
             "updated_by": {
                "description": "The individual that last modified the entity.",
@@ -1616,12 +2956,70 @@
          "required": [
             "internal"
          ],
-         "title": "AlleleNomenclatureAnnotation",
+         "title": "AlleleNomenclatureEvent",
          "type": "object"
       },
-      "AlleleNotesAssociation": {
+      "AlleleNomenclatureEventDTO": {
          "additionalProperties": false,
-         "description": "The relationship between an allele and a note.",
+         "description": "",
+         "properties": {
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence_curies": {
+               "description": "Curies of InformationContentEntity objects given as evidence",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "nomenclature_event_name": {
+               "description": "Name of the VocabularyTerm describing the nomenclature event",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AlleleNomenclatureEventDTO",
+         "type": "object"
+      },
+      "AlleleNote": {
+         "additionalProperties": false,
+         "description": "",
          "properties": {
             "created_by": {
                "description": "The individual that created the entity.",
@@ -1657,20 +3055,15 @@
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
             },
-            "object": {
-               "$ref": "#/$defs/Note",
-               "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
-            },
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
             },
-            "predicate": {
-               "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
-               "type": "string"
+            "related_note": {
+               "$ref": "#/$defs/Note",
+               "description": "Holds between an object and a Note object."
             },
-            "subject": {
-               "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+            "single_allele": {
                "type": "string"
             },
             "updated_by": {
@@ -1679,12 +3072,66 @@
             }
          },
          "required": [
-            "internal",
-            "predicate",
-            "subject",
-            "object"
+            "internal"
          ],
-         "title": "AlleleNotesAssociation",
+         "title": "AlleleNote",
+         "type": "object"
+      },
+      "AlleleNoteDTO": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence_curies": {
+               "description": "Curies of InformationContentEntity objects given as evidence",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "note_dto": {
+               "$ref": "#/$defs/NoteDTO"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AlleleNoteDTO",
          "type": "object"
       },
       "AlleleOriginAssociation": {
@@ -1755,6 +3202,66 @@
          "title": "AlleleOriginAssociation",
          "type": "object"
       },
+      "AlleleOriginAssociationDTO": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "agm_curie": {
+               "type": "string"
+            },
+            "allele_curie": {
+               "type": "string"
+            },
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "predicate_name": {
+               "description": "Name of VocabularyTerm representing predicate of an Association",
+               "type": "string"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "allele_curie",
+            "predicate_name",
+            "agm_curie"
+         ],
+         "title": "AlleleOriginAssociationDTO",
+         "type": "object"
+      },
       "AllelePhenotypeAnnotation": {
          "additionalProperties": false,
          "description": "An annotation asserting an association between an allele and a phenotype supported by evidence.",
@@ -1763,9 +3270,12 @@
                "description": "The allele to which something is manually asserted to be associated.",
                "type": "string"
             },
-            "asserted_gene": {
-               "description": "The gene to which something is manually asserted to be associated.",
-               "type": "string"
+            "asserted_genes": {
+               "description": "The gene(s) to which something is manually asserted to be associated.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "condition_relations": {
                "items": {
@@ -1930,13 +3440,84 @@
          "title": "AlleleProteinAssociation",
          "type": "object"
       },
-      "AlleleSecondaryIdAnnotation": {
+      "AlleleProteinAssociationDTO": {
          "additionalProperties": false,
          "description": "",
          "properties": {
-            "allele_id": {
+            "allele_curie": {
                "type": "string"
             },
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence_code_curie": {
+               "description": "Curie of ECOTerm",
+               "type": "string"
+            },
+            "evidence_curies": {
+               "description": "Curies of InformationContentEntity objects given as evidence",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "note_dto": {
+               "$ref": "#/$defs/NoteDTO"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "protein_curie": {
+               "type": "string"
+            },
+            "ro_term_curie": {
+               "type": "string"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "allele_curie",
+            "ro_term_curie",
+            "evidence_curies",
+            "protein_curie"
+         ],
+         "title": "AlleleProteinAssociationDTO",
+         "type": "object"
+      },
+      "AlleleSecondaryId": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
             "created_by": {
                "description": "The individual that created the entity.",
                "type": "string"
@@ -1978,6 +3559,9 @@
             "secondary_id": {
                "type": "string"
             },
+            "single_allele": {
+               "type": "string"
+            },
             "updated_by": {
                "description": "The individual that last modified the entity.",
                "type": "string"
@@ -1986,18 +3570,15 @@
          "required": [
             "internal"
          ],
-         "title": "AlleleSecondaryIdAnnotation",
+         "title": "AlleleSecondaryId",
          "type": "object"
       },
-      "AlleleSlotAnnotation": {
+      "AlleleSecondaryIdDTO": {
          "additionalProperties": false,
          "description": "",
          "properties": {
-            "allele_id": {
-               "type": "string"
-            },
-            "created_by": {
-               "description": "The individual that created the entity.",
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
                "type": "string"
             },
             "date_created": {
@@ -2020,7 +3601,8 @@
                "format": "date",
                "type": "string"
             },
-            "evidence": {
+            "evidence_curies": {
+               "description": "Curies of InformationContentEntity objects given as evidence",
                "items": {
                   "type": "string"
                },
@@ -2034,20 +3616,23 @@
                "description": "Entity is no longer current.",
                "type": "boolean"
             },
-            "updated_by": {
-               "description": "The individual that last modified the entity.",
+            "secondary_id": {
+               "type": "string"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
                "type": "string"
             }
          },
          "required": [
             "internal"
          ],
-         "title": "AlleleSlotAnnotation",
+         "title": "AlleleSecondaryIdDTO",
          "type": "object"
       },
-      "AlleleSynonymAssociation": {
+      "AlleleSynonym": {
          "additionalProperties": false,
-         "description": "The relationship between an allele and a synonym.",
+         "description": "",
          "properties": {
             "created_by": {
                "description": "The individual that created the entity.",
@@ -2083,25 +3668,20 @@
                "description": "Classifies the entity as private (for internal use) or not (for public use).",
                "type": "boolean"
             },
-            "object": {
-               "$ref": "#/$defs/Synonym",
-               "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
-            },
             "obsolete": {
                "description": "Entity is no longer current.",
                "type": "boolean"
             },
-            "predicate": {
-               "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+            "single_allele": {
                "type": "string"
             },
-            "subject": {
-               "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+            "synonym": {
+               "description": "the text string of the synonym",
                "type": "string"
             },
             "synonym_scope": {
-               "$ref": "#/$defs/SynonymScopeEnum",
-               "description": "the scope of the synonym, e.g. 'EXACT', 'NARROW' or 'RELATED'"
+               "description": "the scope of the synonym - permissible values are narrow / broad / related / exact",
+               "type": "string"
             },
             "updated_by": {
                "description": "The individual that last modified the entity.",
@@ -2109,12 +3689,70 @@
             }
          },
          "required": [
-            "internal",
-            "predicate",
-            "subject",
-            "object"
+            "internal"
          ],
-         "title": "AlleleSynonymAssociation",
+         "title": "AlleleSynonym",
+         "type": "object"
+      },
+      "AlleleSynonymDTO": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence_curies": {
+               "description": "Curies of InformationContentEntity objects given as evidence",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "synonym_dto": {
+               "$ref": "#/$defs/SynonymDTO"
+            },
+            "synonym_scope_name": {
+               "description": "Name of the VocabularyTerm representing the scope of the synonym - permissible values are narrow / broad / related / exact",
+               "type": "string"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AlleleSynonymDTO",
          "type": "object"
       },
       "AlleleTranscriptAssociation": {
@@ -2193,6 +3831,80 @@
          "title": "AlleleTranscriptAssociation",
          "type": "object"
       },
+      "AlleleTranscriptAssociationDTO": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "allele_curie": {
+               "type": "string"
+            },
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence_code_curie": {
+               "description": "Curie of ECOTerm",
+               "type": "string"
+            },
+            "evidence_curies": {
+               "description": "Curies of InformationContentEntity objects given as evidence",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "note_dto": {
+               "$ref": "#/$defs/NoteDTO"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "ro_term_curie": {
+               "type": "string"
+            },
+            "transcript_curie": {
+               "type": "string"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "allele_curie",
+            "ro_term_curie",
+            "evidence_curies",
+            "transcript_curie"
+         ],
+         "title": "AlleleTranscriptAssociationDTO",
+         "type": "object"
+      },
       "AlleleVariantAssociation": {
          "additionalProperties": false,
          "description": "The relationship between an allele and a variant is many to many. An Allele may have many variants and a variant can be present in many alleles.",
@@ -2267,6 +3979,79 @@
             "object"
          ],
          "title": "AlleleVariantAssociation",
+         "type": "object"
+      },
+      "AlleleVariantAssociationDTO": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "allele_curie": {
+               "type": "string"
+            },
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence_code_curie": {
+               "description": "Curie of ECOTerm",
+               "type": "string"
+            },
+            "evidence_curies": {
+               "description": "Curies of InformationContentEntity objects given as evidence",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "note_dto": {
+               "$ref": "#/$defs/NoteDTO"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "ro_term_curie": {
+               "type": "string"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            },
+            "variant_curie": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "allele_curie",
+            "ro_term_curie",
+            "evidence_curies"
+         ],
+         "title": "AlleleVariantAssociationDTO",
          "type": "object"
       },
       "AnatomicalSite": {
@@ -2534,7 +4319,7 @@
       },
       "Association": {
          "additionalProperties": false,
-         "description": "A typed association between two entities, supported by evidence.  Associations have three base slots: subject,  object, and predicate, but they can have any number of additional attributes that help qualify the relationship  between the subject and the object.  The subject is the curie (or identifier) of the class that is the subject  of the association, and likewise the object is the curie (or identifier of the class that is the object. The  relationship between subject and object is defined by the predicate slot (which can also be constrained  using the range of the predicate).",
+         "description": "A typed association between two entities, supported by evidence.  Associations have three base slots: subject, object, and predicate, but they can have any number of additional attributes that help qualify the relationship between the subject and the object.  The subject is the curie (or identifier) of the class that is the subject of the association, and likewise the object is the curie (or identifier of the class that is the object. The relationship between subject and object is defined by the predicate slot (which can also be constrained using the range of the predicate).",
          "properties": {
             "created_by": {
                "description": "The individual that created the entity.",
@@ -2645,6 +4430,53 @@
             "internal"
          ],
          "title": "AuditedObject",
+         "type": "object"
+      },
+      "AuditedObjectDTO": {
+         "additionalProperties": false,
+         "description": "Base class for all other LinkML DTO classes.",
+         "properties": {
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "AuditedObjectDTO",
          "type": "object"
       },
       "AuthorReference": {
@@ -3227,6 +5059,73 @@
          "title": "ConditionRelation",
          "type": "object"
       },
+      "ConditionRelationDTO": {
+         "additionalProperties": false,
+         "description": "Ingest class for the pairing of an experimental condition relation with a list of one or more conditions",
+         "properties": {
+            "condition_dtos": {
+               "items": {
+                  "$ref": "#/$defs/ExperimentalConditionDTO"
+               },
+               "type": "array"
+            },
+            "condition_relation_type_name": {
+               "description": "Name of VocabularyTerm from 'Condition relation types' vocabulary",
+               "type": "string"
+            },
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "handle": {
+               "description": "A slot pointing to a free-text alias or 'handle' for a data object, such as a reference-specific alias for a data object used while curating.",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "reference_curie": {
+               "description": "External reference curie used for ingest",
+               "type": "string"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "condition_relation_type_name",
+            "condition_dtos"
+         ],
+         "title": "ConditionRelationDTO",
+         "type": "object"
+      },
       "Construct": {
          "additionalProperties": false,
          "description": "",
@@ -3563,6 +5462,74 @@
             "prefix"
          ],
          "title": "CrossReference",
+         "type": "object"
+      },
+      "CrossReferenceDTO": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "display_name": {
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "page_areas": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "prefix": {
+               "description": "Denormalization to help with classifying types of crossReferences, distinguishing DOIs from PMC ids, etc.",
+               "type": "string"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "curie",
+            "page_areas",
+            "display_name",
+            "prefix"
+         ],
+         "title": "CrossReferenceDTO",
          "type": "object"
       },
       "DAOTerm": {
@@ -4422,12 +6389,8 @@
                "description": "Optional free text field that records the units/amount/degrees of a condition.",
                "type": "string"
             },
-            "condition_statement": {
-               "description": "Free text describing the environmental/experimental condition. For some groups this is a single term, others is it is a concatenation of the term names from the ontologies included in this data structure. To be submitted by DQMs; eventually will be deprecated once DQMs no longer submit these ExperimentalCondition objects.",
-               "type": "string"
-            },
             "condition_summary": {
-               "description": "Free text describing the environmental/experimental condition. For some groups this is a single term, others is it is a concatenation of the term names from the ontologies included in this data structure. Similar to condition_statement except the condition_summary will not be submitted by DQMs but rather generated at the Alliance after ingest (or generated/updated in the curation interface and persistent store).",
+               "description": "Free text describing the environmental/experimental condition. For some groups this is a single term, others is it is a concatenation of the term names from the ontologies included in this data structure. The condition_summary will not be submitted by DQMs but rather generated at the Alliance after ingest (or generated/updated in the curation interface and persistent store).",
                "type": "string"
             },
             "condition_taxon": {
@@ -4477,10 +6440,88 @@
          },
          "required": [
             "internal",
-            "condition_class",
-            "condition_statement"
+            "condition_class"
          ],
          "title": "ExperimentalCondition",
+         "type": "object"
+      },
+      "ExperimentalConditionDTO": {
+         "additionalProperties": false,
+         "description": "Ingest class for describing the environmental context in which an experiment is carried out",
+         "properties": {
+            "condition_anatomy_curie": {
+               "description": "Curie of AnatomicalTerm associated with condition",
+               "type": "string"
+            },
+            "condition_chemical_curie": {
+               "description": "Curie of ChemicalTerm associated with condition",
+               "type": "string"
+            },
+            "condition_class_curie": {
+               "description": "Curie of ZECOTerm describing condition class",
+               "type": "string"
+            },
+            "condition_free_text": {
+               "description": "Free-text description of the experimental condition",
+               "type": "string"
+            },
+            "condition_gene_ontology_curie": {
+               "description": "Curie of GOTerm associated with condition",
+               "type": "string"
+            },
+            "condition_id_curie": {
+               "description": "Curie of ExperimentalConditionOntologyTerm describing condition",
+               "type": "string"
+            },
+            "condition_quantity": {
+               "type": "string"
+            },
+            "condition_taxon_curie": {
+               "description": "Curie of NCBITaxonTerm associated with condition",
+               "type": "string"
+            },
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "condition_class_curie"
+         ],
+         "title": "ExperimentalConditionDTO",
          "type": "object"
       },
       "ExpressionAnnotation": {
@@ -5691,14 +7732,103 @@
          "title": "GeneCollection",
          "type": "object"
       },
+      "GeneDTO": {
+         "additionalProperties": false,
+         "description": "Ingest class for genes",
+         "properties": {
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "cross_reference_dtos": {
+               "items": {
+                  "$ref": "#/$defs/CrossReferenceDTO"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "gene_type_curie": {
+               "description": "Curie of SOTerm describing gene type",
+               "type": "string"
+            },
+            "genomic_location_dtos": {
+               "items": {
+                  "$ref": "#/$defs/GenomicLocationDTO"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "symbol": {
+               "description": "Symbol for a particular thing",
+               "type": "string"
+            },
+            "synonym_dtos": {
+               "items": {
+                  "$ref": "#/$defs/SynonymDTO"
+               },
+               "type": "array"
+            },
+            "taxon_curie": {
+               "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
+               "type": "string"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "curie",
+            "taxon_curie"
+         ],
+         "title": "GeneDTO",
+         "type": "object"
+      },
       "GeneDiseaseAnnotation": {
          "additionalProperties": false,
          "description": "An annotation asserting an association between a gene and a disease supported by evidence.",
          "properties": {
-            "alliance_curie": {
-               "description": "The Alliance-minted ID for the disease annotation. The ID is of the format AGRKB:100000000000001, where the first three digits represent the DiseaseAnnotation class code of \"100\", followed by a 12-digit identifier",
-               "type": "string"
-            },
             "annotation_type": {
                "description": "The type of annotation classified according to curation method. Submitted value should be a vocabulary term from the 'Annotation types' vocabulary",
                "type": "string"
@@ -5711,6 +7841,10 @@
             },
             "created_by": {
                "description": "The individual that created the entity.",
+               "type": "string"
+            },
+            "curie": {
+               "description": "The Alliance-minted ID for the disease annotation. The ID is of the format AGRKB:100000000000001, where the first three digits represent the DiseaseAnnotation class code of \"100\", followed by a 12-digit identifier",
                "type": "string"
             },
             "data_provider": {
@@ -5833,6 +7967,7 @@
          },
          "required": [
             "internal",
+            "curie",
             "evidence_codes",
             "single_reference",
             "data_provider",
@@ -5841,6 +7976,147 @@
             "predicate"
          ],
          "title": "GeneDiseaseAnnotation",
+         "type": "object"
+      },
+      "GeneDiseaseAnnotationDTO": {
+         "additionalProperties": false,
+         "description": "Ingest class for an association between a gene and a disease",
+         "properties": {
+            "annotation_type_name": {
+               "description": "Name of the VocabularyTerm describing the annotation type",
+               "type": "string"
+            },
+            "condition_relation_dtos": {
+               "items": {
+                  "$ref": "#/$defs/ConditionRelationDTO"
+               },
+               "type": "array"
+            },
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "data_provider": {
+               "description": "Organization (e.g. MOD) from which the data was sourced",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "disease_genetic_modifier_curie": {
+               "description": "Curie of BiologcalEntity that modifies the disease model",
+               "type": "string"
+            },
+            "disease_genetic_modifier_relation_name": {
+               "description": "Name of the VocabularyTerm from the 'Disease genetic modifiers' vocabulary that describes how the genetic modifier modifies the disease model.",
+               "type": "string"
+            },
+            "disease_qualifier_names": {
+               "description": "Names of terms from the 'Disease qualifiers' vocabulary",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "disease_relation_name": {
+               "description": "Name of term from 'Disease Relation Vocabulary' vocabulary",
+               "type": "string"
+            },
+            "do_term_curie": {
+               "description": "Curie of DOTerm describing the disease",
+               "type": "string"
+            },
+            "evidence_code_curies": {
+               "description": "List of ECOTerm curies",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "evidence_curies": {
+               "description": "Curies of InformationContentEntity objects given as evidence",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "gene_curie": {
+               "type": "string"
+            },
+            "genetic_sex_name": {
+               "description": "Name of term from the 'Genetic sexes' vocabulary",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "mod_entity_id": {
+               "description": "The model organism database (MOD) identifier/curie for the object",
+               "type": "string"
+            },
+            "negated": {
+               "description": "if set to true, then the association is negated i.e. is not true",
+               "type": "boolean"
+            },
+            "note_dtos": {
+               "items": {
+                  "$ref": "#/$defs/NoteDTO"
+               },
+               "type": "array"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "reference_curie": {
+               "description": "External reference curie used for ingest",
+               "type": "string"
+            },
+            "secondary_data_provider": {
+               "description": "Organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source",
+               "type": "string"
+            },
+            "sgd_strain_background_curie": {
+               "description": "Curie of SGD strain background AGM",
+               "type": "string"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            },
+            "with_gene_curies": {
+               "description": "http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "internal",
+            "disease_relation_name",
+            "do_term_curie",
+            "gene_curie"
+         ],
+         "title": "GeneDiseaseAnnotationDTO",
          "type": "object"
       },
       "GeneGeneticInteraction": {
@@ -6424,11 +8700,11 @@
          "description": "",
          "properties": {
             "['mutagee']": {
-               "description": "The target of the mutation, e.g. strain / adult females /  adult males / embryos / sperm / not specified",
+               "description": "The target of the mutation, e.g. strain / adult females / adult males / embryos / sperm / not specified",
                "type": "string"
             },
             "['mutagen']": {
-               "description": "Technique used to create the allele, e.g. spontaneous / naturally occurring / radiation-induced / recombinant /  ENU / CRISPR / TALEN / gamma rays / not specified / spontaneous / DNA / DNA AND CRISPR / DNA and TALEN / zinc finger nuclease / EMS",
+               "description": "Technique used to create the allele, e.g. spontaneous / naturally occurring / radiation-induced / recombinant / ENU / CRISPR / TALEN / gamma rays / not specified / spontaneous / DNA / DNA AND CRISPR / DNA and TALEN / zinc finger nuclease / EMS",
                "type": "string"
             },
             "created_by": {
@@ -6472,6 +8748,61 @@
             "internal"
          ],
          "title": "GenerationMethod",
+         "type": "object"
+      },
+      "GenerationMethodDTO": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "['mutagee']": {
+               "description": "The target of the mutation, e.g. strain / adult females / adult males / embryos / sperm / not specified",
+               "type": "string"
+            },
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "mutagenesis_method_name": {
+               "description": "Name of the VocabularyTerm describing the mutagenesis method, e.g. spontaneous / naturally occurring / radiation-induced / recombinant / ENU / CRISPR / TALEN / gamma rays / not specified / spontaneous / DNA / DNA AND CRISPR / DNA and TALEN / zinc finger nuclease / EMS",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "GenerationMethodDTO",
          "type": "object"
       },
       "GeneticMapPosition": {
@@ -6677,6 +9008,91 @@
          "title": "GenomicEntity",
          "type": "object"
       },
+      "GenomicEntityDTO": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "cross_reference_dtos": {
+               "items": {
+                  "$ref": "#/$defs/CrossReferenceDTO"
+               },
+               "type": "array"
+            },
+            "curie": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "genomic_location_dtos": {
+               "items": {
+                  "$ref": "#/$defs/GenomicLocationDTO"
+               },
+               "type": "array"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "secondary_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "synonym_dtos": {
+               "items": {
+                  "$ref": "#/$defs/SynonymDTO"
+               },
+               "type": "array"
+            },
+            "taxon_curie": {
+               "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
+               "type": "string"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "curie",
+            "taxon_curie"
+         ],
+         "title": "GenomicEntityDTO",
+         "type": "object"
+      },
       "GenomicLocation": {
          "additionalProperties": false,
          "description": "",
@@ -6749,6 +9165,80 @@
             "has_assembly"
          ],
          "title": "GenomicLocation",
+         "type": "object"
+      },
+      "GenomicLocationDTO": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "assembly_curie": {
+               "type": "string"
+            },
+            "chromosome_curie": {
+               "type": "string"
+            },
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "end": {
+               "description": "The end of the feature in positive 1-based integer coordinates",
+               "type": "string"
+            },
+            "genomic_entity_curie": {
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "predicate": {
+               "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+               "type": "string"
+            },
+            "start": {
+               "description": "The start of the feature in positive 1-based integer coordinates",
+               "type": "string"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "genomic_entity_curie",
+            "predicate",
+            "chromosome_curie",
+            "assembly_curie",
+            "start",
+            "end"
+         ],
+         "title": "GenomicLocationDTO",
          "type": "object"
       },
       "HeavyChainIsotypeSet": {
@@ -7057,127 +9547,79 @@
          "properties": {
             "agm_ingest_set": {
                "items": {
-                  "$ref": "#/$defs/AffectedGenomicModel"
+                  "$ref": "#/$defs/AffectedGenomicModelDTO"
                },
                "type": "array"
             },
             "allele_cell_line_association_ingest_set": {
                "items": {
-                  "$ref": "#/$defs/AlleleCellLineAssociation"
+                  "$ref": "#/$defs/AlleleCellLineAssociationDTO"
                },
                "type": "array"
             },
             "allele_construct_association_ingest_set": {
                "items": {
-                  "$ref": "#/$defs/AlleleConstructAssociation"
-               },
-               "type": "array"
-            },
-            "allele_database_status_annotation_ingest_set": {
-               "items": {
-                  "$ref": "#/$defs/AlleleDatabaseStatusAnnotation"
-               },
-               "type": "array"
-            },
-            "allele_functional_impact_annotation_ingest_set": {
-               "items": {
-                  "$ref": "#/$defs/AlleleFunctionalImpactAnnotation"
+                  "$ref": "#/$defs/AlleleConstructAssociationDTO"
                },
                "type": "array"
             },
             "allele_gene_association_ingest_set": {
                "items": {
-                  "$ref": "#/$defs/AlleleGeneAssociation"
-               },
-               "type": "array"
-            },
-            "allele_generation_method_ingest_set": {
-               "items": {
-                  "$ref": "#/$defs/GenerationMethod"
-               },
-               "type": "array"
-            },
-            "allele_germline_transmission_status_annotation_ingest_set": {
-               "items": {
-                  "$ref": "#/$defs/AlleleGermlineTransmissionStatusAnnotation"
+                  "$ref": "#/$defs/AlleleGeneAssociationDTO"
                },
                "type": "array"
             },
             "allele_ingest_set": {
                "items": {
-                  "$ref": "#/$defs/Allele"
-               },
-               "type": "array"
-            },
-            "allele_molecular_mutation_annotation_ingest_set": {
-               "items": {
-                  "$ref": "#/$defs/AlleleMolecularMutationAnnotation"
-               },
-               "type": "array"
-            },
-            "allele_mutation_type_annotation_ingest_set": {
-               "items": {
-                  "$ref": "#/$defs/AlleleMutationTypeAnnotation"
-               },
-               "type": "array"
-            },
-            "allele_nomenclature_annotation_ingest_set": {
-               "items": {
-                  "$ref": "#/$defs/AlleleNomenclatureAnnotation"
+                  "$ref": "#/$defs/AlleleDTO"
                },
                "type": "array"
             },
             "allele_origin_association_ingest_set": {
                "items": {
-                  "$ref": "#/$defs/AlleleOriginAssociation"
+                  "$ref": "#/$defs/AlleleOriginAssociationDTO"
                },
                "type": "array"
             },
             "allele_protein_association_ingest_set": {
                "items": {
-                  "$ref": "#/$defs/AlleleProteinAssociation"
-               },
-               "type": "array"
-            },
-            "allele_secondary_id_annotation_ingest_set": {
-               "items": {
-                  "$ref": "#/$defs/AlleleSecondaryIdAnnotation"
+                  "$ref": "#/$defs/AlleleProteinAssociationDTO"
                },
                "type": "array"
             },
             "allele_transcript_association_ingest_set": {
                "items": {
-                  "$ref": "#/$defs/AlleleTranscriptAssociation"
+                  "$ref": "#/$defs/AlleleTranscriptAssociationDTO"
                },
                "type": "array"
             },
             "allele_variant_association_ingest_set": {
                "items": {
-                  "$ref": "#/$defs/AlleleVariantAssociation"
+                  "$ref": "#/$defs/AlleleVariantAssociationDTO"
                },
                "type": "array"
             },
             "disease_agm_ingest_set": {
                "items": {
-                  "$ref": "#/$defs/AGMDiseaseAnnotation"
+                  "$ref": "#/$defs/AGMDiseaseAnnotationDTO"
                },
                "type": "array"
             },
             "disease_allele_ingest_set": {
                "items": {
-                  "$ref": "#/$defs/AlleleDiseaseAnnotation"
+                  "$ref": "#/$defs/AlleleDiseaseAnnotationDTO"
                },
                "type": "array"
             },
             "disease_gene_ingest_set": {
                "items": {
-                  "$ref": "#/$defs/GeneDiseaseAnnotation"
+                  "$ref": "#/$defs/GeneDiseaseAnnotationDTO"
                },
                "type": "array"
             },
             "gene_ingest_set": {
                "items": {
-                  "$ref": "#/$defs/Gene"
+                  "$ref": "#/$defs/GeneDTO"
                },
                "type": "array"
             },
@@ -8448,15 +10890,6 @@
          "title": "NCBITaxonTerm",
          "type": "object"
       },
-      "NomenclatureEventEnum": {
-         "description": "",
-         "enum": [
-            "named",
-            "renamed"
-         ],
-         "title": "NomenclatureEventEnum",
-         "type": "string"
-      },
       "Note": {
          "additionalProperties": false,
          "description": "Note object for capturing free-text describing some attribute of an entity, coupled with a 'note type', internal boolean, and an optional list of references. Permissible values for note_type can be viewed and managed in the A-Team curation UI Controlled Vocabulary Terms Table.",
@@ -8518,6 +10951,69 @@
             "note_type"
          ],
          "title": "Note",
+         "type": "object"
+      },
+      "NoteDTO": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "evidence_curies": {
+               "description": "Curies of InformationContentEntity objects given as evidence",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "free_text": {
+               "description": "A free text string that describes some aspect of an entity.",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "note_type_name": {
+               "description": "Name of VocabularyTerm representing note type",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal",
+            "free_text"
+         ],
+         "title": "NoteDTO",
          "type": "object"
       },
       "OntologyTerm": {
@@ -8666,7 +11162,7 @@
                "type": "string"
             },
             "distance_between": {
-               "description": "distance_between is zero for reflexive\u2013transitive closure each node has an ancestor or descendant of itself ",
+               "description": "distance_between is zero for reflexive\u2013transitive closure each node has an ancestor or descendant of itself",
                "type": "integer"
             },
             "internal": {
@@ -9741,7 +12237,7 @@
                "type": "string"
             },
             "authors": {
-               "description": "Ordered author entities for this publication.  An Author is associated with only one publication.  A Person can be associated with multiple  publications.",
+               "description": "Ordered author entities for this publication.  An Author is associated with only one publication.  A Person can be associated with multiple publications.",
                "items": {
                   "$ref": "#/$defs/AuthorReference"
                },
@@ -9907,7 +12403,7 @@
          "description": "",
          "properties": {
             "authors": {
-               "description": "Ordered author entities for this publication.  An Author is associated with only one publication.  A Person can be associated with multiple  publications.",
+               "description": "Ordered author entities for this publication.  An Author is associated with only one publication.  A Person can be associated with multiple publications.",
                "items": {
                   "$ref": "#/$defs/AuthorReference"
                },
@@ -10308,7 +12804,7 @@
       },
       "SlotAnnotation": {
          "additionalProperties": false,
-         "description": "SlotAnnotation classes should be used when we need to attach metadata (in particular evidence and provenance) to a slot in the context of its referencing class, that can not be fully captured using an Association between the full class itself, and an InformationContentEntity. Evidence and provenance can exist here in the form of an evidence code, a publication, a personal communication or any other kind of InformationContentEntity. SlotAnnotation classes are used where the slot is not referencing a class in and of itself, and often has a  scalar range.",
+         "description": "SlotAnnotation classes should be used when we need to attach metadata (in particular evidence and provenance) to a slot in the context of its referencing class, that can not be fully captured using an Association between the full class itself, and an InformationContentEntity. Evidence and provenance can exist here in the form of an evidence code, a publication, a personal communication or any other kind of InformationContentEntity. SlotAnnotation classes are used where the slot is not referencing a class in and of itself, and often has a scalar range.",
          "properties": {
             "created_by": {
                "description": "The individual that created the entity.",
@@ -10501,6 +12997,57 @@
             "internal"
          ],
          "title": "Synonym",
+         "type": "object"
+      },
+      "SynonymDTO": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "created_by_curie": {
+               "description": "Curie of the Person object representing the individual that created the entity",
+               "type": "string"
+            },
+            "date_created": {
+               "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+               "format": "date",
+               "type": "string"
+            },
+            "date_updated": {
+               "description": "Date on which an entity was last modified.",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_created": {
+               "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+               "format": "date",
+               "type": "string"
+            },
+            "db_date_updated": {
+               "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+               "format": "date",
+               "type": "string"
+            },
+            "internal": {
+               "description": "Classifies the entity as private (for internal use) or not (for public use).",
+               "type": "boolean"
+            },
+            "name": {
+               "description": "a human-readable name for an entity",
+               "type": "string"
+            },
+            "obsolete": {
+               "description": "Entity is no longer current.",
+               "type": "boolean"
+            },
+            "updated_by_curie": {
+               "description": "Curie of the Person object representing the individual that updated the entity",
+               "type": "string"
+            }
+         },
+         "required": [
+            "internal"
+         ],
+         "title": "SynonymDTO",
          "type": "object"
       },
       "SynonymScopeEnum": {
@@ -12861,127 +15408,79 @@
    "properties": {
       "agm_ingest_set": {
          "items": {
-            "$ref": "#/$defs/AffectedGenomicModel"
+            "$ref": "#/$defs/AffectedGenomicModelDTO"
          },
          "type": "array"
       },
       "allele_cell_line_association_ingest_set": {
          "items": {
-            "$ref": "#/$defs/AlleleCellLineAssociation"
+            "$ref": "#/$defs/AlleleCellLineAssociationDTO"
          },
          "type": "array"
       },
       "allele_construct_association_ingest_set": {
          "items": {
-            "$ref": "#/$defs/AlleleConstructAssociation"
-         },
-         "type": "array"
-      },
-      "allele_database_status_annotation_ingest_set": {
-         "items": {
-            "$ref": "#/$defs/AlleleDatabaseStatusAnnotation"
-         },
-         "type": "array"
-      },
-      "allele_functional_impact_annotation_ingest_set": {
-         "items": {
-            "$ref": "#/$defs/AlleleFunctionalImpactAnnotation"
+            "$ref": "#/$defs/AlleleConstructAssociationDTO"
          },
          "type": "array"
       },
       "allele_gene_association_ingest_set": {
          "items": {
-            "$ref": "#/$defs/AlleleGeneAssociation"
-         },
-         "type": "array"
-      },
-      "allele_generation_method_ingest_set": {
-         "items": {
-            "$ref": "#/$defs/GenerationMethod"
-         },
-         "type": "array"
-      },
-      "allele_germline_transmission_status_annotation_ingest_set": {
-         "items": {
-            "$ref": "#/$defs/AlleleGermlineTransmissionStatusAnnotation"
+            "$ref": "#/$defs/AlleleGeneAssociationDTO"
          },
          "type": "array"
       },
       "allele_ingest_set": {
          "items": {
-            "$ref": "#/$defs/Allele"
-         },
-         "type": "array"
-      },
-      "allele_molecular_mutation_annotation_ingest_set": {
-         "items": {
-            "$ref": "#/$defs/AlleleMolecularMutationAnnotation"
-         },
-         "type": "array"
-      },
-      "allele_mutation_type_annotation_ingest_set": {
-         "items": {
-            "$ref": "#/$defs/AlleleMutationTypeAnnotation"
-         },
-         "type": "array"
-      },
-      "allele_nomenclature_annotation_ingest_set": {
-         "items": {
-            "$ref": "#/$defs/AlleleNomenclatureAnnotation"
+            "$ref": "#/$defs/AlleleDTO"
          },
          "type": "array"
       },
       "allele_origin_association_ingest_set": {
          "items": {
-            "$ref": "#/$defs/AlleleOriginAssociation"
+            "$ref": "#/$defs/AlleleOriginAssociationDTO"
          },
          "type": "array"
       },
       "allele_protein_association_ingest_set": {
          "items": {
-            "$ref": "#/$defs/AlleleProteinAssociation"
-         },
-         "type": "array"
-      },
-      "allele_secondary_id_annotation_ingest_set": {
-         "items": {
-            "$ref": "#/$defs/AlleleSecondaryIdAnnotation"
+            "$ref": "#/$defs/AlleleProteinAssociationDTO"
          },
          "type": "array"
       },
       "allele_transcript_association_ingest_set": {
          "items": {
-            "$ref": "#/$defs/AlleleTranscriptAssociation"
+            "$ref": "#/$defs/AlleleTranscriptAssociationDTO"
          },
          "type": "array"
       },
       "allele_variant_association_ingest_set": {
          "items": {
-            "$ref": "#/$defs/AlleleVariantAssociation"
+            "$ref": "#/$defs/AlleleVariantAssociationDTO"
          },
          "type": "array"
       },
       "disease_agm_ingest_set": {
          "items": {
-            "$ref": "#/$defs/AGMDiseaseAnnotation"
+            "$ref": "#/$defs/AGMDiseaseAnnotationDTO"
          },
          "type": "array"
       },
       "disease_allele_ingest_set": {
          "items": {
-            "$ref": "#/$defs/AlleleDiseaseAnnotation"
+            "$ref": "#/$defs/AlleleDiseaseAnnotationDTO"
          },
          "type": "array"
       },
       "disease_gene_ingest_set": {
          "items": {
-            "$ref": "#/$defs/GeneDiseaseAnnotation"
+            "$ref": "#/$defs/GeneDiseaseAnnotationDTO"
          },
          "type": "array"
       },
       "gene_ingest_set": {
          "items": {
-            "$ref": "#/$defs/Gene"
+            "$ref": "#/$defs/GeneDTO"
          },
          "type": "array"
       },

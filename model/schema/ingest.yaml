@@ -63,7 +63,7 @@ slots:
   agm_ingest_set:
     description: >-
     domain: Ingest
-    range: AffectedGenomicModel
+    range: AffectedGenomicModelDTO
     multivalued: true
     mixins:
       - object_set
@@ -144,7 +144,7 @@ slots:
   disease_allele_ingest_set:
     description: >-
     domain: Ingest
-    range: AlleleDiseaseAnnotation
+    range: AlleleDiseaseAnnotationDTO
     multivalued: true
     mixins:
       - object_set
@@ -152,7 +152,7 @@ slots:
   disease_agm_ingest_set:
     description: >-
     domain: Ingest
-    range: AGMDiseaseAnnotation
+    range: AGMDiseaseAnnotationDTO
     multivalued: true
     mixins:
       - object_set
@@ -160,7 +160,7 @@ slots:
   disease_gene_ingest_set:
     description: >-
     domain: Ingest
-    range: GeneDiseaseAnnotation
+    range: GeneDiseaseAnnotationDTO
     multivalued: true
     mixins:
       - object_set
@@ -176,7 +176,7 @@ slots:
   gene_ingest_set:
     description: >-
     domain: Ingest
-    range: Gene
+    range: GeneDTO
     multivalued: true
     mixins:
       - object_set

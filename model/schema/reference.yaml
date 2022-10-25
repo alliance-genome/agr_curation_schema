@@ -338,6 +338,11 @@ slots:
     domain: Reference
     range: string
 
+  reference_curie:
+    description:
+      External reference curie used for ingest
+    range: string
+
   reference_curies:
     description: >-
       External reference curies used for ingest

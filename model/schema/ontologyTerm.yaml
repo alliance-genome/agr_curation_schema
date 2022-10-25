@@ -110,7 +110,13 @@ slots:
     range: integer
 
   evidence_code_curie:
+    description: Curie of ECOTerm
     range: string
+
+  evidence_code_curies:
+    description: List of ECOTerm curies
+    range: string
+    multivalued: true
 
 classes:
 

@@ -81,6 +81,13 @@ classes:
           on the production environment (curation.alliancegenome.org). New terms
           can be added as needed.
 
+  GeneDTO:
+    is_a: GenomicEntityDTO
+    description: Ingest class for genes
+    slots:
+      - symbol
+      - gene_type_curie
+
   GeneticMapPosition:
     description: >-
       A genetic map position.
@@ -115,11 +122,17 @@ slots:
 
   gene_curie:
     range: string
+    required: true
 
   gene_type:
     description: SOTerm describing gene type
     domain: Gene
     range: SOTerm
+
+  gene_type_curie:
+    description: Curie of SOTerm describing gene type
+    domain: GeneDTO
+    range: string
 
   gene_types_secondary:
     description: >-

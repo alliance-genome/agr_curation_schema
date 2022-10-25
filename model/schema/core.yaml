@@ -489,6 +489,10 @@ slots:
   note_dto:
     range: NoteDTO
 
+  note_dtos:
+    range: NoteDTO
+    multivalued: true
+
   generated_by:
     description: >-
       Holds between a material entity and an Agent that generated it:
