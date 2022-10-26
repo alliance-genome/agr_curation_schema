@@ -530,7 +530,8 @@ slots:
 
   annotation_type_name:
     description: >-
-      Name of the VocabularyTerm describing the annotation type
+      Name of the VocabularyTerm describing the annotation type selected from
+      the 'Annotation types' Vocabulary
     domain: DiseaseAnnotationDTO
     range: string
 
@@ -700,15 +701,16 @@ slots:
 
   disease_genetic_modifier_relation_name:
     description: >-
-      Name of the VocabularyTerm from the 'Disease genetic modifiers' vocabulary
-      that describes how the genetic modifier modifies the disease model.
+      Name of the VocabularyTerm that describes how the genetic modifier
+      modifies the disease model, selected from the 'Disease genetic modifier
+      relations' Vocabulary.
     domain: DiseaseAnnotationDTO
     range: string
 
   disease_qualifiers:
     description: >-
-      Submitted values should be vocabulary terms from the 'Disease Qualifiers'
-      vocabulary
+      Submitted values should be vocabulary terms from the 'Disease qualifiers'
+      Vocabulary
     domain: DiseaseAnnotation
     multivalued: true
     range: VocabularyTerm

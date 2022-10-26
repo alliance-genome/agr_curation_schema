@@ -166,7 +166,6 @@ classes:
       - display_name
       - prefix
 
-
   Synonym:
     is_a: AuditedObject
     slots:
@@ -213,20 +212,6 @@ classes:
         required: true
       note_type_name:
         required_true
-
-  SlotAnnotation:
-    is_a: AuditedObject
-    description: >-
-      SlotAnnotation classes should be used when we need to attach metadata (in particular evidence and provenance)
-      to a slot in the context of its referencing class, that can not be fully captured using an Association between
-      the full class itself, and an InformationContentEntity. Evidence and provenance can exist here in the form of an
-      evidence code, a publication, a personal communication or any other kind of InformationContentEntity.
-      SlotAnnotation classes are used where the slot is not referencing a class in and of itself, and often has a
-      scalar range.
-    notes: >-
-      A good example of the use of a SlotAnnotation class is the use case of attributing one of many functional
-      impacts of an allele to a publication.  AlleleFunctionalImpact is the SlotAnnotation class that represents
-      this use case.
 
   Association:
     is_a: AuditedObject
@@ -458,7 +443,8 @@ slots:
 
   note_type_name:
     description: >-
-      Name of VocabularyTerm representing note type
+      Name of VocabularyTerm representing note type selected from the
+      appropriate Vocabulary
     domain: NoteDTO
     range: string
 

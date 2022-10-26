@@ -449,13 +449,16 @@ classes:
         required: true
 
   SequenceTargetingReagentToGeneAssociation:
-    description: the relationship between a Sequence Targeting Reagent and its targeted genes.
+    description: >-
+      the relationship between a Sequence Targeting Reagent and its targeted
+      genes. The predicate should be a VocabularyTerm with one of the following
+      values - targets
     is_a: Association
     slots:
       - references
     slot_usage:
       predicate:
-        range: sqtr_relation_enum
+        range: VocabularyTerm
       subject:
         range: SequenceTargetingReagent
       object:
@@ -463,9 +466,13 @@ classes:
 
   ConstructComponentAssociation:
     is_a: Association
+    description: >-
+      The predicate should be a VocabularyTerm with one of the following
+      values - expresses (RO:0002292) / is_regulated_by (RO:0002334) /
+      targets (RO:0002436)
     slot_usage:
       predicate:
-        range: construct_component_relation_enum
+        range: VocabularyTerm
       subject:
         range: Construct
       object:
@@ -482,9 +489,6 @@ slots:
   primary_image:
     description: >-
       The primary image for an allele that is used to represent the allele on a page.
-
-  origin:
-    range: boolean
 
   single_allele:
     range: Allele
@@ -689,7 +693,8 @@ slots:
 
   inheritance_mode_name:
     description: >-
-      Name of VocabularyTerm describing the inheritance mode
+      Name of VocabularyTerm describing the inheritance mode from the 'Allele
+      inheritance mode vocabulary' vocabulary
     domain: AlleleDTO
     range: string
 
@@ -701,7 +706,8 @@ slots:
 
   in_collection_name:
     description: >-
-      Name of VocabularyTerm describing the collection
+      Name of VocabularyTerm describing the collection from the 'Allele
+      collection vocabulary' Vocabulary
     domain: AlleleDTO
     range: string
 
@@ -734,7 +740,8 @@ slots:
 
   sequencing_status_name:
     description: >-
-      Name of VocabularyTerm describing the sequencing status
+      Name of VocabularyTerm describing the sequencing status from the
+      'Sequencing status vocabulary' vocabulary
     domain: AlleleDTO
     range: string
 
@@ -804,17 +811,3 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
-
-enums:
-  construct_component_relation_enum:
-    permissible_values:
-      expresses:
-        meaning: RO:0002292
-      is_regulated_by:
-        meaning: RO:0002334
-      targets:
-        meaning: RO:0002436
-
-  sqtr_relation_enum:
-    permissible_values:
-      targets:
