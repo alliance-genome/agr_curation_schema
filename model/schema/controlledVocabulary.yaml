@@ -52,13 +52,13 @@ slots:
       The free text description of a Vocabulary including its intended use.
     range: string
 
-  set_description:
+  vocabulary_term_set_description:
     description: >-
       The free text description of a VocabularyTermSet including its intended use.
     domain: VocabularyTermSet
     range: string
 
-  set_vocabulary:
+  vocabulary_term_set_vocabulary:
     description: >-
       The Vocabulary from which the terms contained in theVocabularyTermSet
       belong
@@ -102,8 +102,8 @@ classes:
       applications
     slots:
       - name
-      - set_vocabulary
-      - set_description
+      - vocabulary_term_set_vocabulary
+      - vocabulary_term_set_description
       - member_terms
     slot_usage:
       name:
