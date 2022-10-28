@@ -52,6 +52,20 @@ slots:
       The free text description of a Vocabulary including its intended use.
     range: string
 
+  vocabulary_term_set_description:
+    description: >-
+      The free text description of a VocabularyTermSet including its intended use.
+    domain: VocabularyTermSet
+    range: string
+
+  vocabulary_term_set_vocabulary:
+    description: >-
+      The Vocabulary from which the terms contained in theVocabularyTermSet
+      belong
+    required: true
+    domain: VocabularyTermSet
+    range: Vocabulary
+
 classes:
 
   VocabularyTerm:
@@ -75,6 +89,21 @@ classes:
     slots:
       - name
       - vocabulary_description
+      - member_terms
+    slot_usage:
+      name:
+        required: true
+        identifier: true
+
+  VocabularyTermSet:
+    is_a: AuditedObject
+    description: >-
+      A subset of terms from a Vocabulary that are valid for particular
+      applications
+    slots:
+      - name
+      - vocabulary_term_set_vocabulary
+      - vocabulary_term_set_description
       - member_terms
     slot_usage:
       name:
