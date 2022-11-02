@@ -63,6 +63,14 @@ classes:
       - allele_nomenclature_events
       - allele_notes
       - allele_synonyms
+      - allele_gene_associations
+      - allele_transcript_associations
+      - allele_protein_associations
+      - allele_variant_associations
+      - allele_construct_associations
+      - allele_cell_line_associations
+      - allele_image_associations
+      - allele_origin_associations
     exact_mappings:
       - SO:0001023
     slot_usage:
@@ -106,124 +114,106 @@ classes:
       - mutagenesis_method_name
       - mutagenesis_target
 
-  AlleleMutationType:
-    is_a: AuditedObject
+  AlleleMutationTypeSlotAnnotation:
+    is_a: SlotAnnotation
     slots:
       - single_allele
       - mutation_types
-      - evidence
 
-  AlleleMutationTypeDTO:
-    is_a: AuditedObjectDTO
+  AlleleMutationTypeSlotAnnotationDTO:
+    is_a: SlotAnnotationDTO
     slots:
       - mutation_type_curies
-      - evidence_curies
 
-  AlleleGermlineTransmissionStatus:
-    is_a: AuditedObject
+  AlleleGermlineTransmissionStatusSlotAnnotation:
+    is_a: SlotAnnotation
     slots:
       - single_allele
       - germline_transmission_status
-      - evidence
 
-  AlleleGermlineTransmissionStatusDTO:
-    is_a: AuditedObjectDTO
+  AlleleGermlineTransmissionStatusSlotAnnotationDTO:
+    is_a: SlotAnnotationDTO
     slots:
       - germline_transmission_status_name
-      - evidence_curies
 
-  AlleleFunctionalImpact:
-    is_a: AuditedObject
+  AlleleFunctionalImpactSlotAnnotation:
+    is_a: SlotAnnotation
     slots:
       - single_allele
       - functional_impacts
-      - evidence
 
-  AlleleFunctionalImpactDTO:
-    is_a: AuditedObjectDTO
+  AlleleFunctionalImpactSlotAnnotationDTO:
+    is_a: SlotAnnotationDTO
     slots:
       - functional_impact_names
-      - evidence_curies
 
-  AlleleMolecularMutation:
-    is_a: AuditedObject
+  AlleleMolecularMutationSlotAnnotation:
+    is_a: SlotAnnotation
     slots:
       - single_allele
       - molecular_mutations
-      - evidence
 
-  AlleleMolecularMutationDTO:
-    is_a: AuditedObjectDTO
+  AlleleMolecularMutationSlotAnnotationDTO:
+    is_a: SlotAnnotationDTO
     slots:
       - molecular_mutation_names
-      - evidence_curies
 
-  AlleleDatabaseStatus:
-    is_a: AuditedObject
+  AlleleDatabaseStatusSlotAnnotation:
+    is_a: SlotAnnotation
     slots:
       - single_allele
       - database_status
-      - evidence
 
-  AlleleDatabaseStatusDTO:
-    is_a: AuditedObject
+  AlleleDatabaseStatusSlotAnnotationDTO:
+    is_a: SlotAnnotationDTO
     slots:
       - database_status_name
-      - evidence_curies
 
-  AlleleSecondaryId:
-    is_a: AuditedObject
+  AlleleSecondaryIdSlotAnnotation:
+    is_a: SlotAnnotation
     slots:
       - single_allele
       - secondary_id
-      - evidence
 
-  AlleleSecondaryIdDTO:
-    is_a: AuditedObjectDTO
+  AlleleSecondaryIdSlotAnnotationDTO:
+    is_a: SlotAnnotationDTO
     slots:
       - secondary_id
-      - evidence_curies
 
-  AlleleNomenclatureEvent:
-    is_a: AuditedObject
+  AlleleNomenclatureEventSlotAnnotation:
+    is_a: SlotAnnotation
     slots:
       - single_allele
       - nomenclature_event
-      - evidence
 
-  AlleleNomenclatureEventDTO:
-    is_a: AuditedObjectDTO
+  AlleleNomenclatureEventSlotAnnotationDTO:
+    is_a: SlotAnnotationDTO
     slots:
       - nomenclature_event_name
-      - evidence_curies
 
-  AlleleNote:
-    is_a: AuditedObject
+  AlleleNoteSlotAnnotation:
+    is_a: SlotAnnotation
     slots:
       - single_allele
       - related_note
-      - evidence
 
-  AlleleNoteDTO:
-    is_a: AuditedObjectDTO
+  AlleleNoteSlotAnnotationDTO:
+    is_a: SlotAnnotationDTO
     slots:
       - note_dto
-      - evidence_curies
 
-  AlleleSynonym:
-    is_a: AuditedObject
+  AlleleSynonymSlotAnnotation:
+    is_a: SlotAnnotation
     slots:
       - single_allele
       - synonym
       - synonym_scope
-      - evidence
 
-  AlleleSynonymDTO:
-    is_a: AuditedObjectDTO
+  AlleleSynonymSlotAnnotationDTO:
+    is_a: SlotAnnotationDTO
     slots:
       - synonym_dto
       - synonym_scope_name
-      - evidence_curies
 
 # Allele Associations
 
@@ -559,20 +549,20 @@ slots:
   allele_molecular_mutations:
     description: Molecular mutations of a given allele
     domain: Allele
-    range: AlleleMolecularMutation
+    range: AlleleMolecularMutationSlotAnnotation
     multivalued: true
 
   molecular_mutations:
     description: >-
       Description of the DNA changes if precise
       genomic location unknown
-    domain: AlleleMolecularMutation
+    domain: AlleleMolecularMutationSlotAnnotation
     range: string
     multivalued: true
 
   allele_molecular_mutation_dtos:
     domain: AlleleDTO
-    range: AlleleMolecularMutationDTO
+    range: AlleleMolecularMutationSlotAnnotationDTO
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -580,44 +570,44 @@ slots:
   molecular_mutation_names:
     description: >-
       Name of the VocabularyTerm describing the molecular mutation
-    domain: AlleleMolecularMutationDTO
+    domain: AlleleMolecularMutationSlotAnnotationDTO
     range: string
     multivalued: true
 
   allele_mutation_types:
     description: Mutation types for a given allele
     domain: Allele
-    range: AlleleMutationType
+    range: AlleleMutationTypeSlotAnnotation
     multivalued: true
 
   allele_mutation_type_dtos:
     domain: AlleleDTO
-    range: AlleleMutationTypeDTO
+    range: AlleleMutationTypeSlotAnnotationDTO
     multivalued: true
     inlined: true
     inlined_as_list: true
 
   mutation_types:
     description: SO term for type of mutation
-    domain: AlleleMutationType
+    domain: AlleleMutationTypeSlotAnnotation
     range: SOTerm
     multivalued: true
 
   mutation_type_curies:
     description: Curies of SOTerms representing mutation type
-    domain: AlleleMutationTypeDTO
+    domain: AlleleMutationTypeSlotAnnotationDTO
     range: string
     multivalued: true
 
   allele_functional_impacts:
     description: Functional impacts of a given allele
     domain: Allele
-    range: AlleleFunctionalImpact
+    range: AlleleFunctionalImpactSlotAnnotation
     multivalued: true
 
   allele_functional_impact_dtos:
     domain: AlleleDTO
-    range: AlleleFunctionalImpactDTO
+    range: AlleleFunctionalImpactSlotAnnotationDTO
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -626,61 +616,61 @@ slots:
     description: >-
       Experimentally assessed functional impact of the
       allele, e.g. knockout / amorphic
-    domain: AlleleFunctionalImpact
+    domain: AlleleFunctionalImpactSlotAnnotation
     range: VocabularyTerm
     multivalued: true
 
   functional_impact_names:
     description: >-
       Name of the VocabularyTerm describing the functional impact
-    domain: AlleleFunctionalImpactDTO
+    domain: AlleleFunctionalImpactSlotAnnotationDTO
     range: string
     multivalued: true
 
   allele_germline_transmission_status:
     description: Germline transmission status for a given allele
     domain: Allele
-    range: AlleleGermlineTransmissionStatus
+    range: AlleleGermlineTransmissionStatusSlotAnnotation
 
   allele_germline_transmission_status_dto:
     domain: AlleleDTO
-    range: AlleleGermlineTransmissionStatusDTO
+    range: AlleleGermlineTransmissionStatusSlotAnnotationDTO
     inlined: true
 
   germline_transmission_status:
     description: >-
       For alleles made in cell lines, have they been
       transmitted to the germline of an animal
-    domain: AlleleGermlineTransmissionStatus
+    domain: AlleleGermlineTransmissionStatusSlotAnnotation
     range: VocabularyTerm
 
   germline_transmission_status_name:
     description: >-
       Name of the VocabularyTerm representing the germline transmission
       status
-    domain: AlleleGermlineTransmissionStatusDTO
+    domain: AlleleGermlineTransmissionStatusSlotAnnotationDTO
     range: string
 
   allele_database_status:
     description: Database status of a given allele
     domain: Allele
-    range: AlleleDatabaseStatus
+    range: AlleleDatabaseStatusSlotAnnotation
 
   allele_database_status_dto:
     domain: AlleleDTO
-    range: AlleleDatabaseStatusDTO
+    range: AlleleDatabaseStatusSlotAnnotationDTO
     inlined: true
 
   database_status:
     description: >-
       Database status of the allele
-    domain: AlleleDatabaseStatus
+    domain: AlleleDatabaseStatusSlotAnnotation
     range: VocabularyTerm
 
   database_status_name:
     description: >-
       Name of the VocabularyTerm describing the database status
-    domain: AlleleDatabaseStatusDTO
+    domain: AlleleDatabaseStatusSlotAnnotationDTO
     range: string
 
   inheritance_mode:
@@ -752,12 +742,12 @@ slots:
   allele_nomenclature_events:
     description: Nomenclature events of a given allele
     domain: Allele
-    range: AlleleNomenclatureEvent
+    range: AlleleNomenclatureEventSlotAnnotation
     multivalued: true
 
   allele_nomenclature_event_dtos:
     domain: AlleleDTO
-    range: AlleleNomenclatureEventDTO
+    range: AlleleNomenclatureEventSlotAnnotationDTO
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -767,24 +757,24 @@ slots:
       any of the kinds of changes made to an object's name or symbol
     notes: >-
       permissible_values: named/renamed
-    domain: AlleleNomenclatureEvent
+    domain: AlleleNomenclatureEventSlotAnnotation
     range: VocabularyTerm
 
   nomenclature_event_name:
     description: >-
       Name of the VocabularyTerm describing the nomenclature event
-    domain: AlleleNomenclatureEventDTO
+    domain: AlleleNomenclatureEventSlotAnnotationDTO
     range: string
 
   allele_secondary_ids:
     description: Secondary IDs of a given allele
     domain: Allele
-    range: AlleleSecondaryId
+    range: AlleleSecondaryIdSlotAnnotation
     multivalued: true
 
   allele_secondary_id_dtos:
     domain: AlleleDTO
-    range: AlleleSecondaryIdDTO
+    range: AlleleSecondaryIdSlotAnnotationDTO
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -792,11 +782,11 @@ slots:
   allele_notes:
     description: Notes for a given allele
     domain: Allele
-    range: AlleleNote
+    range: AlleleNoteSlotAnnotation
 
   allele_note_dtos:
     domain: AlleleDTO
-    range: AlleleNoteDTO
+    range: AlleleNoteSlotAnnotationDTO
     multivalued: true
 
   allele_synonyms:
@@ -807,7 +797,47 @@ slots:
 
   allele_synonym_dtos:
     domain: AlleleDTO
-    range: AlleleSynonymDTO
+    range: AlleleSynonymSlotAnnotationDTO
     multivalued: true
     inlined: true
     inlined_as_list: true
+
+  allele_gene_associations:
+    domain: Allele
+    range: AlleleGeneAssociation
+    multivalued: true
+
+  allele_transcript_associations:
+    domain: Allele
+    range: AlleleTranscriptAssociation
+    multivalued: true
+
+  allele_protein_associations:
+    domain: Allele
+    range: AlleleProteinAssociation
+    multivalued: true
+
+  allele_variant_associations:
+    domain: Allele
+    range: AlleleVariantAssociation
+    multivalued: true
+
+  allele_construct_associations:
+    domain: Allele
+    range: AlleleConstructAssociation
+    multivalued: true
+
+  allele_cell_line_associations:
+    domain: Allele
+    range: AlleleCellLineAssociation
+    multivalued: true
+
+  allele_image_associations:
+    domain: Allele
+    range: AlleleImageAssociation
+    multivalued: true
+
+  allele_origin_associations:
+    domain: Allele
+    range: AlleleOriginAssociation
+    multivalued: true
