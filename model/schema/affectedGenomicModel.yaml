@@ -47,22 +47,50 @@ classes:
       - data_provider
       - references
 
+  AffectedGenomicModelDTO:
+    is_a: GenomicEntityDTO
+    description: Ingest class for AGMs
+    slots:
+      - subtype_name
+      - reference_curies
+      - data_provider
+      - sequence_targeting_reagent_curies
+      - component_dtos
+
   AffectedGenomicModelComponent:
     is_a: AuditedObject
     description: >-
       Allele that affects the model and its zygosity
     slots:
-      - has_allele
+      - single_allele
       - zygosity
+
+  AffectedGenomicModelComponentDTO:
+    is_a: AuditedObjectDTO
+    slots:
+      - allele_curie
+      - zygosity_curie
 
 slots:
 
+  agm_curie:
+    range: string
+    required: true
+
   subtype:
     description: >-
-      Subtype of affected genomic model
+      Subtype of affected genomic model - permissible values: strain / genotype
+      / fish
     domain: AffectedGenomicModel
-    range: subtype_values
+    range: VocabularyTerm
     required: true
+
+  subtype_name:
+    description: >-
+      Name of VocabularyTerm describing subtype - permissible values: strain / genotype
+      / fish
+    domain: AffectedGenomicModelDTO
+    range: string
 
   components:
     singular_name: component
@@ -71,6 +99,11 @@ slots:
       i.e. 'allele', each with a zygosity
     domain: AffectedGenomicModel
     range: AffectedGenomicModelComponent
+    multivalued: true
+
+  component_dtos:
+    domain: AffectedGenomicModelDTO
+    range: AffectedGenomicModelComponentDTO
     multivalued: true
 
   has_allele:
@@ -83,10 +116,24 @@ slots:
     domain: AffectedGenomicModelComponent
     range: zygosity_values
 
+  zygosity_curie:
+    description: >-
+      Curie of GENO ontology ID for allele zygosity - permissible_values:
+      GENO:0000602 / GENO:0000603 / GENO:0000604 / GENO:0000605
+      / GENO:0000606 / GENO:0000135 / GENO:0000136 / GENO:0000137
+      / GENO:0000134
+    domain: AffectedGenomicModelComponentDTO
+    range: string
+
   sequence_targeting_reagents:
     singular_name: sequence_targeting_reagent
     domain: AffectedGenomicModel
     range: SequenceTargetingReagent
+    multivalued: true
+
+  sequence_targeting_reagent_curies:
+    domain: AffectedGenomicModelDTO
+    range: string
     multivalued: true
 
   parental_populations:

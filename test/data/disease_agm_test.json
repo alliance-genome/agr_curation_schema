@@ -2,27 +2,26 @@
   "linkml_version": "1.3.0",
   "disease_agm_ingest_set": [
     {
-      "evidence_codes": [
+      "evidence_code_curies": [
         "ECO:0000305"
       ],
-      "disease_annotation_curie": "AGRKB:100123456789014",
-      "single_reference": "PMID:123456",
+      "reference_curie": "PMID:123456",
       "data_provider": "ZFIN",
-      "object": "DOID:9452",
+      "do_term_curie": "DOID:9452",
       "date_created": "ZFIN",
       "date_updated": "ZFIN",
       "internal": false,
-      "subject": "ZFIN:ZDB-FISH-180912-16",
-      "inferred_gene": "ZFIN:ZDB-GENE-060503-338",
-      "predicate": "is_model_of",
-      "condition_relations": [
+      "agm_curie": "ZFIN:ZDB-FISH-180912-16",
+      "inferred_gene_curie": "ZFIN:ZDB-GENE-060503-338",
+      "disease_relation_name": "is_model_of",
+      "condition_relation_dtos": [
         {
-          "condition_relation_type": "has_condition",
+          "condition_relation_type_name": "has_condition",
           "internal": false,
-          "conditions": [
+          "condition_dtos": [
             {
               "condition_free_text": "Bacterial strain HB101",
-              "condition_class": "ZECO:0000104",
+              "condition_class_curie": "ZECO:0000104",
               "internal": false
             }
           ]

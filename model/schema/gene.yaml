@@ -53,7 +53,7 @@ classes:
       - symbol
       - related_notes
       - gene_type
-      - gene_types_secondary    
+      - gene_types_secondary
       - designating_laboratories
       - designating_persons
       - trans_splice_leaders
@@ -80,6 +80,13 @@ classes:
           Controlled Vocabulary Terms Table (in the "Gene note types" vocabulary)
           on the production environment (curation.alliancegenome.org). New terms
           can be added as needed.
+
+  GeneDTO:
+    is_a: GenomicEntityDTO
+    description: Ingest class for genes
+    slots:
+      - symbol
+      - gene_type_curie
 
   GeneticMapPosition:
     description: >-
@@ -113,10 +120,19 @@ classes:
 
 slots:
 
+  gene_curie:
+    range: string
+    required: true
+
   gene_type:
     description: SOTerm describing gene type
     domain: Gene
     range: SOTerm
+
+  gene_type_curie:
+    description: Curie of SOTerm describing gene type
+    domain: GeneDTO
+    range: string
 
   gene_types_secondary:
     description: >-
@@ -125,7 +141,7 @@ slots:
     multivalued: true
     domain: Gene
     range: SOTerm
-        
+
   designating_laboratories:
     description: >-
       A laboratory, rarely laboratories, which designated this gene
@@ -277,4 +293,3 @@ slots:
     multivalued: true
     domain: GeneHistory
     range: Gene
-

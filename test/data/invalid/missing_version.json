@@ -2,12 +2,12 @@
   "agm_ingest_set": [
     {
       "curie": "ZFIN:ZDB-FISH-200601-1",
-      "taxon": "NCBITaxon:7955",
-      "created_by": "ZFIN",
-      "updated_by": "ZFIN",
+      "taxon_curie": "NCBITaxon:7955",
+      "created_by_curie": "ZFIN",
+      "updated_by_curie": "ZFIN",
       "internal": false,
       "name": "TL + MO1-hars",
-      "synonyms": [
+      "synonym_dtos": [
         {
           "name": "test",
           "internal": false
@@ -20,11 +20,11 @@
       "secondary_identifiers": [
         "ZFIN:ZDB-FISH-123456-1"
       ],
-      "references": [],
-      "sequence_targeting_reagents": [
+      "reference_curies": [],
+      "sequence_targeting_reagent_curies": [
         "ZFIN:ZDB-MRPHLNO-191104-1"
       ],
-      "subtype": "fish"
+      "subtype_name": "fish"
     }
   ]
 }

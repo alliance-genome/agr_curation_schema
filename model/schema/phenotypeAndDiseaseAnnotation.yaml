@@ -179,7 +179,7 @@ classes:
     description: >-
       An annotation asserting an association between a biological entity and a disease supported by evidence.
     slots:
-      - disease_annotation_curie
+      - curie
       - unique_id
       - mod_entity_id
       - negated
@@ -196,7 +196,7 @@ classes:
       - disease_genetic_modifier
       - disease_genetic_modifier_relation
     slot_usage:
-      disease_annotation_curie:
+      curie:
         description: >-
           The Alliance-minted ID for the disease annotation. The ID is of the format
           AGRKB:100000000000001, where the first three digits represent the
@@ -260,6 +260,30 @@ classes:
           on the production environment (curation.alliancegenome.org). New terms
           can be added as needed.
 
+  DiseaseAnnotationDTO:
+    is_a: AuditedObjectDTO
+    abstract: true
+    description: >-
+      Ingest class for association between a biological entity and a disease
+    slots:
+      - disease_relation_name
+      - do_term_curie
+      - mod_entity_id
+      - negated
+      - evidence_curies
+      - evidence_code_curies
+      - reference_curie
+      - annotation_type_name
+      - with_gene_curies
+      - disease_qualifier_names
+      - condition_relation_dtos
+      - genetic_sex_name
+      - note_dtos
+      - data_provider
+      - secondary_data_provider
+      - disease_genetic_modifier_curie
+      - disease_genetic_modifier_relation_name
+
   GeneDiseaseAnnotation:
     description: >-
       An annotation asserting an association between a gene and a disease
@@ -279,6 +303,14 @@ classes:
           vocabulary term from the 'Gene disease relations' vocabulary
         required: true
         range: VocabularyTerm
+
+  GeneDiseaseAnnotationDTO:
+    is_a: DiseaseAnnotationDTO
+    description: >-
+      Ingest class for an association between a gene and a disease
+    slots:
+      - gene_curie
+      - sgd_strain_background_curie
 
   AlleleDiseaseAnnotation:
     description: >-
@@ -306,6 +338,16 @@ classes:
         range: Gene
       asserted_genes:
         required: false
+
+  AlleleDiseaseAnnotationDTO:
+    is_a: DiseaseAnnotationDTO
+    description: >-
+      Ingest class for an association between an allele and a disease
+    slots:
+      - allele_curie
+      - inferred_gene_curie
+      - asserted_gene_curies
+
 
   AGMDiseaseAnnotation:
     description: >-
@@ -342,6 +384,17 @@ classes:
         required: false
       asserted_allele:
         required: false
+
+  AGMDiseaseAnnotationDTO:
+    is_a: DiseaseAnnotationDTO
+    description: >-
+      Ingest class for an association between an AGM and a disease
+    slots:
+      - agm_curie
+      - inferred_gene_curie
+      - asserted_gene_curies
+      - inferred_allele_curie
+      - asserted_allele_curie
 
   ExperimentalCondition:
     is_a: AuditedObject
@@ -403,6 +456,21 @@ classes:
           chemcial used in conjunction with 'chemical condition'.
         range: ChemicalTerm
 
+  ExperimentalConditionDTO:
+    is_a: AuditedObjectDTO
+    description: >-
+      Ingest class for describing the environmental context in which an
+      experiment is carried out
+    slots:
+      - condition_class_curie
+      - condition_id_curie
+      - condition_free_text
+      - condition_quantity
+      - condition_anatomy_curie
+      - condition_gene_ontology_curie
+      - condition_taxon_curie
+      - condition_chemical_curie
+
 
   ConditionRelation:
     is_a: AuditedObject
@@ -432,6 +500,22 @@ classes:
         required: true
         multivalued: false
 
+  ConditionRelationDTO:
+    is_a: AuditedObjectDTO
+    description: >-
+      Ingest class for the pairing of an experimental condition relation with
+      a list of one or more conditions
+    slots:
+      - handle
+      - reference_curie
+      - condition_relation_type_name
+      - condition_dtos
+    slot_usage:
+      condition_relation_type_name:
+        required: true
+      condition_dtos:
+        required: true
+
 ## ------------
 ## SLOTS
 ## ------------
@@ -444,16 +528,36 @@ slots:
       The type of annotation classified according to curation method. Submitted
       value should be a vocabulary term from the 'Annotation types' vocabulary
 
+  annotation_type_name:
+    description: >-
+      Name of the VocabularyTerm describing the annotation type selected from
+      the 'Annotation types' Vocabulary
+    domain: DiseaseAnnotationDTO
+    range: string
+
   asserted_allele:
     description: >-
       The allele to which something is manually asserted to be associated.
     range: Allele
+
+  asserted_allele_curie:
+    description: >-
+      Curie of the allele to which something is manually asserted to be
+      associated
+    range: string
 
   asserted_genes:
     singular_name: asserted_gene
     description: >-
       The gene(s) to which something is manually asserted to be associated.
     range: Gene
+    multivalued: true
+
+  asserted_gene_curies:
+    description: >-
+      Curies of the gene(s) to which something is manually asserted to be
+      associated
+    range: string
     multivalued: true
 
   condition_anatomy:
@@ -466,17 +570,33 @@ slots:
       - FBbt
       - GO
 
+  condition_anatomy_curie:
+    description: Curie of AnatomicalTerm associated with condition
+    domain: ExperimentalConditionDTO
+    range: string
+
   condition_chemical:
     domain: ExperimentalCondition
-    range: OntologyTerm                     # Update to Chemical if such a class is instantiated
+    range: ChemicalTerm
     values_from:
       - CHEBI
       - WBMol
+
+  condition_chemical_curie:
+    description: Curie of ChemicalTerm associated with condition
+    domain: ExperimentalConditionDTO
+    range: string
 
   condition_class:
     required: true
     domain: ExperimentalCondition
     range: ZECOTerm
+
+  condition_class_curie:
+    description: Curie of ZECOTerm describing condition class
+    domain: ExperimentalConditionDTO
+    range: string
+    required: true
 
   condition_free_text:
     description: >-
@@ -489,9 +609,20 @@ slots:
     domain: ExperimentalCondition
     range: GOTerm
 
+  condition_gene_ontology_curie:
+    description: Curie of GOTerm associated with condition
+    domain: ExperimentalConditionDTO
+    range: string
+
   condition_id:
     domain: ExperimentalCondition
     range: ExperimentalConditionOntologyTerm
+
+  condition_id_curie:
+    description: Curie of ExperimentalConditionOntologyTerm describing
+      condition
+    domain: ExperimentalConditionDTO
+    range: string
 
   condition_quantity:
     domain: ExperimentalCondition
@@ -504,8 +635,19 @@ slots:
     domain: ConditionRelation
     range: VocabularyTerm
 
+  condition_relation_type_name:
+    description: >-
+      Name of VocabularyTerm from 'Condition relation types' vocabulary
+    domain: ConditionRelationDTO
+    range: string
+    required: true
+
   condition_relations:
     range: ConditionRelation
+    multivalued: true
+
+  condition_relation_dtos:
+    range: ConditionRelationDTO
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -523,27 +665,32 @@ slots:
     domain: ExperimentalCondition
     range: NCBITaxonTerm
 
+  condition_taxon_curie:
+    description: Curie of NCBITaxonTerm associated with condition
+    domain: ExperimentalConditionDTO
+    range: string
+
   conditions:
     range: ExperimentalCondition
     multivalued: true
+
+  condition_dtos:
+    domain: ConditionRelationDTO
+    range: ExperimentalConditionDTO
+    multivalued: true
+    required: true
     inlined: true
     inlined_as_list: true
-
-  disease_annotation_curie:
-    description: >-
-      The Alliance-minted curie (unique identifier) for the disease annotation of the form:
-      AGRKB:100123456789012 (class code: 100). This is not required upon ingest
-      from DQM disease annotation file submissions to the persistent store, but will
-      be generated Alliance-side post-ingest with the MaTI system.
-    range: uriorcurie
-    required: false
-    identifier: false
-    multivalued: false
 
   disease_genetic_modifier:
     description: >-
       Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
     required: false
+
+  disease_genetic_modifier_curie:
+    description: Curie of BiologcalEntity that modifies the disease model
+    domain: DiseaseAnnotationDTO
+    range: string
 
   disease_genetic_modifier_relation:
     description: >-
@@ -552,19 +699,39 @@ slots:
       modifiers' vocabulary
     range: VocabularyTerm
 
+  disease_genetic_modifier_relation_name:
+    description: >-
+      Name of the VocabularyTerm that describes how the genetic modifier
+      modifies the disease model, selected from the 'Disease genetic modifier
+      relations' Vocabulary.
+    domain: DiseaseAnnotationDTO
+    range: string
+
   disease_qualifiers:
     description: >-
-      Submitted values should be vocabulary terms from the 'Disease Qualifiers'
-      vocabulary
+      Submitted values should be vocabulary terms from the 'Disease qualifiers'
+      Vocabulary
     domain: DiseaseAnnotation
     multivalued: true
     range: VocabularyTerm
+
+  disease_qualifier_names:
+    description: >-
+      Names of terms from the 'Disease qualifiers' vocabulary
+    domain: DiseaseAnnotationDTO
+    range: string
+    multivalued: true
 
   genetic_sex:
     description: >-
       Submitted value should be a vocabulary term from the 'Genetic sexes'
       vocabulary
     range: VocabularyTerm
+
+  genetic_sex_name:
+    description: Name of term from the 'Genetic sexes' vocabulary
+    domain: DiseaseAnnotationDTO
+    range: string
 
   handle:
     description: >-
@@ -577,10 +744,22 @@ slots:
       The gene to which something is inferred to be associated.
     range: Gene
 
+  inferred_gene_curie:
+    description: >-
+      Curie of gene to which something is inferred to be associated via an
+      automated pipeline
+    range: string
+
   inferred_allele:
     description: >-
       The allele to which something is inferred to be associated.
     range: Allele
+
+  inferred_allele_curie:
+    description: >-
+      Curie of allele to which something is inferred to be associated via an
+      automated pipeline
+    range: string
 
   phenotype_term:
     range: PhenotypeTerm
@@ -588,8 +767,31 @@ slots:
   sgd_strain_background:
     range: AffectedGenomicModel
 
+  sgd_strain_background_curie:
+    description: Curie of SGD strain background AGM
+    domain: GeneDiseaseAnnotationDTO
+    range: string
+
   with:
     description: >-
       http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8
     range: Gene
     multivalued: true
+
+  with_gene_curies:
+    description: >-
+      http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8
+    range: string
+    multivalued: true
+
+  disease_relation_name:
+    description: Name of term from 'Disease Relation Vocabulary' vocabulary
+    required: true
+    domain: DiseaseAnnotationDTO
+    range: string
+
+  do_term_curie:
+    description: Curie of DOTerm describing the disease
+    domain: DiseaseAnnotationDTO
+    range: string
+    required: true
