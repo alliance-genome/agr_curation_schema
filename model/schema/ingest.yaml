@@ -141,6 +141,22 @@ slots:
     mixins:
       - object_set
 
+  allele_generation_method_association_ingest_set:
+    description: >-
+    domain: Ingest
+    range: AlleleGenerationMethodAssociationDTO
+    multivalued: true
+    mixins:
+      - object_set
+
+  allele_image_association_ingest_set:
+    description: >-
+    domain: Ingest
+    range: AlleleImageAssociationDTO
+    multivalued: true
+    mixins:
+      - object_set
+
   disease_allele_ingest_set:
     description: >-
     domain: Ingest
@@ -210,6 +226,8 @@ classes:
       - allele_construct_association_ingest_set
       - allele_cell_line_association_ingest_set
       - allele_origin_association_ingest_set
+      - allele_image_association_ingest_set
+      - allele_generation_method_association_ingest_set
       - agm_ingest_set
       - sqtr_ingest_set
       - ontology_closure_ingest_set

@@ -211,7 +211,7 @@ classes:
       free_text:
         required: true
       note_type_name:
-        required_true
+        required: true
 
   SlotAnnotation:
     is_a: AuditedObject

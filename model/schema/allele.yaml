@@ -53,7 +53,6 @@ classes:
       - inheritance_mode
       - in_collection
       - is_extinct
-      - sequencing_status
       - allele_mutation_types
       - allele_germline_transmission_status
       - allele_functional_impacts
@@ -71,6 +70,7 @@ classes:
       - allele_cell_line_associations
       - allele_image_associations
       - allele_origin_associations
+      - allele_generation_method_associations
     exact_mappings:
       - SO:0001023
     slot_usage:
@@ -91,7 +91,6 @@ classes:
       - inheritance_mode_name
       - in_collection_name
       - is_extinct
-      - sequencing_status_name
       - allele_mutation_type_dtos
       - allele_germline_transmission_status_dto
       - allele_functional_impact_dtos
@@ -721,20 +720,6 @@ slots:
     domain: Allele
     range: boolean
 
-  sequencing_status:
-    description: >-
-      Status of whether or not the variant genomic location has been verified
-      by sequencing
-    domain: Allele
-    range: VocabularyTerm
-
-  sequencing_status_name:
-    description: >-
-      Name of VocabularyTerm describing the sequencing status from the
-      'Sequencing status vocabulary' vocabulary
-    domain: AlleleDTO
-    range: string
-
   analyses:
     description: >-
       # TODO: added as a result of 'origin' class - please advise on a more descriptive slot/class definition.
@@ -840,4 +825,9 @@ slots:
   allele_origin_associations:
     domain: Allele
     range: AlleleOriginAssociation
+    multivalued: true
+
+  allele_generation_method_associations:
+    domain: Allele
+    range: AlleleGenerationMethodAssociation
     multivalued: true
