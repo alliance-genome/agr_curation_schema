@@ -481,6 +481,7 @@ slots:
   primary_image:
     description: >-
       The primary image for an allele that is used to represent the allele on a page.
+    range: boolean
 
   single_allele:
     range: Allele
