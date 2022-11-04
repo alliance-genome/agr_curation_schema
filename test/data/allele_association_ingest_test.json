@@ -14,8 +14,7 @@
       "updated_by_curie": "WB:WBPerson010002",
       "in_collection_name": "Million_Mutation_Project",
       "inheritance_mode_name": "semi-dominant",
-      "is_extinct": false,
-      "sequencing_status_name": "sequenced"
+      "is_extinct": false
     }
   ],
   "allele_gene_association_ingest_set": [
