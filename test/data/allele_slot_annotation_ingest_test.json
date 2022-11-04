@@ -15,7 +15,6 @@
       "in_collection_name": "Million_Mutation_Project",
       "inheritance_mode_name": "semi-dominant",
       "is_extinct": false,
-      "sequencing_status_name": "sequenced",
       "allele_mutation_type_dtos": [
         {
           "mutation_type_curies": [
