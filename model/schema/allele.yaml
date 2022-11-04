@@ -362,6 +362,7 @@ classes:
         - allele_curie
         - predicate_name
         - cell_line_curie
+        - evidence_curies
 
   AlleleImageAssociation:
     is_a: Association
@@ -388,6 +389,7 @@ classes:
       - predicate_name
       - image_curie
       - primary_image
+      - evidence_curies
 
   AlleleOriginAssociation:
     is_a: Association
@@ -405,6 +407,7 @@ classes:
       - allele_curie
       - predicate_name
       - agm_curie
+      - evidence_curies
 
 # Other classes roughly grouped with the Allele class because they have relationships to Allele and were
 # designed close to the time the Allele class was designed.  These could be broken out into their own yaml files.
