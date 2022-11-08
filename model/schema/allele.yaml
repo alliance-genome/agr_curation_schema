@@ -48,7 +48,8 @@ classes:
       differing from the reference DNA sequence.  The genomic
       element can be endogenous or constructed.
     slots:
-      - symbol
+      - symbol    # Q - symbol slot in core.yaml does not specify range? How to add metadata?
+                  # Q - how is this distinct from name slot (inherited)?
       - references
       - inheritance_mode
       - in_collection
@@ -60,8 +61,10 @@ classes:
       - allele_database_status
       - allele_secondary_ids
       - allele_nomenclature_events
-      - allele_notes
-      - allele_synonyms
+      - allele_notes       # Q - Two redundant ways to provide evidence (which is a slot in both Note and SlotAnnotation objects).
+      - allele_synonyms    # Q - Domain is Synonym (no metadata))?
+                           # Q - Where do we put AlleleSynonymSlotAnnotation (defined below)?
+                           # Q - Does not seem to fit pattern used for allele_notes above?
       - allele_gene_associations
       - allele_transcript_associations
       - allele_protein_associations
