@@ -118,6 +118,9 @@ classes:
     slots:
       - single_allele
       - mutation_types
+    slot_usage:
+      single_allele:
+        required: true
 
   AlleleMutationTypeSlotAnnotationDTO:
     is_a: SlotAnnotationDTO
@@ -129,6 +132,9 @@ classes:
     slots:
       - single_allele
       - germline_transmission_status
+    slot_usage:
+      single_allele:
+        required: true
 
   AlleleGermlineTransmissionStatusSlotAnnotationDTO:
     is_a: SlotAnnotationDTO
@@ -140,6 +146,9 @@ classes:
     slots:
       - single_allele
       - functional_impacts
+    slot_usage:
+      single_allele:
+        required: true
 
   AlleleFunctionalImpactSlotAnnotationDTO:
     is_a: SlotAnnotationDTO
@@ -151,6 +160,9 @@ classes:
     slots:
       - single_allele
       - molecular_mutations
+    slot_usage:
+      single_allele:
+        required: true
 
   AlleleMolecularMutationSlotAnnotationDTO:
     is_a: SlotAnnotationDTO
@@ -162,6 +174,9 @@ classes:
     slots:
       - single_allele
       - database_status
+    slot_usage:
+      single_allele:
+        required: true
 
   AlleleDatabaseStatusSlotAnnotationDTO:
     is_a: SlotAnnotationDTO
@@ -173,17 +188,28 @@ classes:
     slots:
       - single_allele
       - secondary_id
+    slot_usage:
+      single_allele:
+        required: true
+      secondary_id:
+        required: true
 
   AlleleSecondaryIdSlotAnnotationDTO:
     is_a: SlotAnnotationDTO
     slots:
       - secondary_id
+    slot_usage:
+      secondary_id:
+        required: true
 
   AlleleNomenclatureEventSlotAnnotation:
     is_a: SlotAnnotation
     slots:
       - single_allele
       - nomenclature_event
+    slot_usage:
+      single_allele:
+        required: true
 
   AlleleNomenclatureEventSlotAnnotationDTO:
     is_a: SlotAnnotationDTO
@@ -195,11 +221,19 @@ classes:
     slots:
       - single_allele
       - related_note
+    slot_usage:
+      single_allele:
+        required: true
+      related_note:
+        required: true
 
   AlleleNoteSlotAnnotationDTO:
     is_a: SlotAnnotationDTO
     slots:
       - note_dto
+    slot_usage:
+      note_dto:
+        required: true
 
   AlleleSynonymSlotAnnotation:
     is_a: SlotAnnotation
@@ -207,12 +241,20 @@ classes:
       - single_allele
       - synonym
       - synonym_scope
+    slot_usage:
+      single_allele:
+        required: true
+      synonym:
+        required: true
 
   AlleleSynonymSlotAnnotationDTO:
     is_a: SlotAnnotationDTO
     slots:
       - synonym_dto
       - synonym_scope_name
+    slot_usage:
+      synonym_dto:
+        required: true
 
 # Allele Associations
 
@@ -562,6 +604,7 @@ slots:
     domain: AlleleMolecularMutationSlotAnnotation
     range: string
     multivalued: true
+    required: true
 
   allele_molecular_mutation_dtos:
     domain: AlleleDTO
@@ -576,6 +619,7 @@ slots:
     domain: AlleleMolecularMutationSlotAnnotationDTO
     range: string
     multivalued: true
+    required: true
 
   allele_mutation_types:
     description: Mutation types for a given allele
@@ -595,6 +639,7 @@ slots:
     domain: AlleleMutationTypeSlotAnnotation
     range: SOTerm
     multivalued: true
+    required: true
 
   mutation_type_curies:
     description: Curies of SOTerms representing mutation type
@@ -622,6 +667,7 @@ slots:
     domain: AlleleFunctionalImpactSlotAnnotation
     range: VocabularyTerm
     multivalued: true
+    required: true
 
   functional_impact_names:
     description: >-
@@ -629,6 +675,7 @@ slots:
     domain: AlleleFunctionalImpactSlotAnnotationDTO
     range: string
     multivalued: true
+    required: true
 
   allele_germline_transmission_status:
     description: Germline transmission status for a given allele
@@ -646,6 +693,7 @@ slots:
       transmitted to the germline of an animal
     domain: AlleleGermlineTransmissionStatusSlotAnnotation
     range: VocabularyTerm
+    required: true
 
   germline_transmission_status_name:
     description: >-
@@ -653,6 +701,7 @@ slots:
       status
     domain: AlleleGermlineTransmissionStatusSlotAnnotationDTO
     range: string
+    required: true
 
   allele_database_status:
     description: Database status of a given allele
@@ -669,12 +718,14 @@ slots:
       Database status of the allele
     domain: AlleleDatabaseStatusSlotAnnotation
     range: VocabularyTerm
+    required: true
 
   database_status_name:
     description: >-
       Name of the VocabularyTerm describing the database status
     domain: AlleleDatabaseStatusSlotAnnotationDTO
     range: string
+    required: true
 
   inheritance_mode:
     description: >-
@@ -748,12 +799,14 @@ slots:
       permissible_values: named/renamed
     domain: AlleleNomenclatureEventSlotAnnotation
     range: VocabularyTerm
+    required: true
 
   nomenclature_event_name:
     description: >-
       Name of the VocabularyTerm describing the nomenclature event
     domain: AlleleNomenclatureEventSlotAnnotationDTO
     range: string
+    required: true
 
   allele_secondary_ids:
     description: Secondary IDs of a given allele
