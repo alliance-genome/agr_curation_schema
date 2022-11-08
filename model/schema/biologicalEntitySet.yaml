@@ -93,6 +93,14 @@ classes:
     exact_mappings:
       - SO:0000178
 
+  UniGeneSet:
+    description: >-
+      XenBase-specific. A set of three genes from X. tropicalis and X. laevis (S and L forms)
+      representing a single unigene.
+    is_a: BiologicalEntity
+    slots:
+      - genes
+
   FunctionalGeneSet:
     is_a: BiologicalEntity
     slots:
