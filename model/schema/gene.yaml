@@ -50,7 +50,6 @@ classes:
       A pseudogene may be considered a gene under this definition, albeit no longer functional.
     is_a: GenomicEntity
     slots:
-      - symbol
       - related_notes
       - gene_type
       - gene_types_secondary
@@ -72,21 +71,45 @@ classes:
       - WB
       - ZFIN
     slot_usage:
-      symbol:
-        required: true
       related_notes:
         description: >-
           Valid note types are available for viewing in the A-Team curation tool
           Controlled Vocabulary Terms Table (in the "Gene note types" vocabulary)
           on the production environment (curation.alliancegenome.org). New terms
           can be added as needed.
+      aberration:
+        notes: specific to FB
+      symbol:
+        range: GeneNameSlotAnnotation
+      full_name:
+        range: GeneNameSlotAnnotation
+      systematic_name:
+        range: GeneNameSlotAnnotation
+      synonyms:
+        range: GeneNameSlotAnnotation
 
   GeneDTO:
     is_a: GenomicEntityDTO
     description: Ingest class for genes
     slots:
-      - symbol
       - gene_type_curie
+    slot_usage:
+      symbol:
+        range: GeneNameSlotAnnotation
+      full_name:
+        range: GeneNameSlotAnnotation
+      systematic_name:
+        range: GeneNameSlotAnnotation
+      synonyms:
+        range: GeneNameSlotAnnotation
+
+  GeneNameSlotAnnotation:
+    is_a: NameSlotAnnotation
+    slots:
+      - single_gene
+    slot_usage:
+      single_gene:
+        required: true
 
   GeneticMapPosition:
     description: >-
@@ -119,6 +142,9 @@ classes:
 
 
 slots:
+
+  single_gene:
+    range: Gene
 
   gene_curie:
     range: string

@@ -46,6 +46,15 @@ classes:
       - parental_populations
       - data_provider
       - references
+    slot_usage:
+      symbol:
+        range: AffectedGenomicModelNameSlotAnnotation
+      full_name:
+        range: AffectedGenomicModelNameSlotAnnotation
+      systematic_name:
+        range: AffectedGenomicModelNameSlotAnnotation
+      synonyms:
+        range: AffectedGenomicModelNameSlotAnnotation
 
   AffectedGenomicModelDTO:
     is_a: GenomicEntityDTO
@@ -71,7 +80,19 @@ classes:
       - allele_curie
       - zygosity_curie
 
+  AffectedGenomicModelNameSlotAnnotation:
+    is_a: NameSlotAnnotation
+    slots:
+      - single_agm
+    slot_usage:
+      single_agm:
+        required: true
+
 slots:
+
+  single_agm:
+    range: AffectedGenomicModel
+    multivalued: false
 
   agm_curie:
     range: string

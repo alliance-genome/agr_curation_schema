@@ -48,7 +48,6 @@ classes:
       differing from the reference DNA sequence.  The genomic
       element can be endogenous or constructed.
     slots:
-      - symbol
       - references
       - inheritance_mode
       - in_collection
@@ -61,7 +60,6 @@ classes:
       - allele_secondary_ids
       - allele_nomenclature_events
       - allele_notes
-      - allele_synonyms
       - allele_gene_associations
       - allele_transcript_associations
       - allele_protein_associations
@@ -74,19 +72,22 @@ classes:
     exact_mappings:
       - SO:0001023
     slot_usage:
-      synonyms:
-        description: synonyms for allele names and synonyms
       aberration:
         notes: specific to FB
       symbol:
-        required: true
+        range: AlleleNameSlotAnnotation
+      full_name:
+        range: AlleleNameSlotAnnotation
+      systematic_name:
+        range: AlleleNameSlotAnnotation
+      synonyms:
+        range: AlleleNameSlotAnnotation
 
   AlleleDTO:
     is_a: GenomicEntityDTO
     description: >-
       Ingest class for an Allele object
     slots:
-      - symbol
       - reference_curies
       - inheritance_mode_name
       - in_collection_name
@@ -99,7 +100,15 @@ classes:
       - allele_secondary_id_dtos
       - allele_nomenclature_event_dtos
       - allele_note_dtos
-      - allele_synonym_dtos
+    slot_usage:
+      symbol:
+        range: AlleleNameSlotAnnotation
+      full_name:
+        range: AlleleNameSlotAnnotation
+      systematic_name:
+        range: AlleleNameSlotAnnotation
+      synonyms:
+        range: AlleleNameSlotAnnotation      
 
   GenerationMethod:
     is_a: AuditedObject
@@ -235,26 +244,24 @@ classes:
       note_dto:
         required: true
 
-  AlleleSynonymSlotAnnotation:
-    is_a: SlotAnnotation
+  AlleleNameSlotAnnotation:
+    is_a: NameSlotAnnotation
     slots:
       - single_allele
-      - synonym
-      - synonym_scope
     slot_usage:
       single_allele:
         required: true
-      synonym:
-        required: true
 
-  AlleleSynonymSlotAnnotationDTO:
-    is_a: SlotAnnotationDTO
-    slots:
-      - synonym_dto
-      - synonym_scope_name
-    slot_usage:
-      synonym_dto:
-        required: true
+  AlleleNameSlotAnnotationDTO:
+    is_a: NameSlotAnnotationDTO
+    description: >-
+      Placeholder.
+    # slots:
+    #   - synonym_dto
+    #   - synonym_scope_name
+    # slot_usage:
+    #   synonym_dto:
+    #     required: true
 
 # Allele Associations
 
@@ -830,19 +837,6 @@ slots:
     domain: AlleleDTO
     range: AlleleNoteSlotAnnotationDTO
     multivalued: true
-
-  allele_synonyms:
-    description: Synonyms of a given allele
-    domain: Allele
-    range: Synonym
-    multivalued: true
-
-  allele_synonym_dtos:
-    domain: AlleleDTO
-    range: AlleleSynonymSlotAnnotationDTO
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
 
   allele_gene_associations:
     domain: Allele
