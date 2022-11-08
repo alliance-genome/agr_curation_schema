@@ -48,8 +48,8 @@ classes:
       differing from the reference DNA sequence.  The genomic
       element can be endogenous or constructed.
     slots:
-      - symbol    # Q - symbol slot in core.yaml does not specify range? How to add metadata?
-                  # Q - how is this distinct from name slot (inherited)?
+      - symbol    # Q - Symbol slot in core.yaml does not specify range? How to add metadata? Maybe not needed here.
+                  # Q - How is this distinct from name slot (inherited)?
       - references
       - inheritance_mode
       - in_collection
@@ -239,7 +239,7 @@ classes:
         required: true
 
   AlleleSynonymSlotAnnotation:
-    is_a: SlotAnnotation
+    is_a: SynonymSlotAnnotation
     slots:
       - single_allele
       - synonym

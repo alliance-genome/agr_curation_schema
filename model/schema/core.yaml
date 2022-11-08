@@ -406,6 +406,53 @@ classes:
 
 slots:
 
+  # NOTE: New synonym-related slots.
+  synonym_type:
+    description: >-
+      The type of synonym: e.g., symbol, full_name, systematic_name, etc.
+    notes: >-
+      Proposed vocabulary terms for synonym_type.
+        symbol: A short string representing an entity: e.g., wg.
+        nomenclature_symbol: A symbol that adheres to nomenclature guidelines: e.g., pax6a.
+        full_name: The full length name of an entity: e.g., paired box 6a.
+        systematic_name: A systematic name: e.g., YHR084W, R09F10.2, CG4889.
+        ncbi_protein_name: Synonyms developed by SGD and NCBI curators.
+        uniform: SGD-specific.
+        non_uniform: SGD-specific.
+        retired_name: SGD-specific.
+        unspecified: unclassified synonyms.
+    domain: Synonym
+    range: VocabularyTerm
+    multivalued: false
+    required: true
+
+  format_text:
+    description: >-
+      A version of a synonym string using only ASCII characters, which is
+      easier to type, print and parse. For example, Greek characters are
+      transliterated; sub/superscript is somehow encoded with ASCII characters.
+    aliases: ['synonym_text']
+    domain: Synonym
+    range: string
+    required: true
+    multivalued: false
+
+  display_text:
+    description: >-
+      A version of a synonym string for display. Any UTF8 character is
+      permitted.
+    aliases: ['synonym_sgml']
+    domain: Synonym
+    range: string
+    required: true
+    multivalued: false
+
+  synonym_url:
+    description: >-
+      URL for a synonym: e.g., NCBI URL for the NCBI synonym of an object.
+    domain: Synonym
+    range: uri
+
   synonym_scope:
     description: >-
       the scope of the synonym - permissible values are narrow /
