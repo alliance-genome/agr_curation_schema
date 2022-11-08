@@ -117,7 +117,7 @@ classes:
       RNA transcript translation).
     slots:
       - name
-      - display_name    # NOTE: A new single slot to specify the name to be used for display.
+      - display_name    # NOTE: A new single slot to specify the Synonym object to be used for display.
       - synonyms
       - cross_references
       - secondary_identifiers
@@ -201,7 +201,7 @@ classes:
     slots:
       - name
 
-  SynonymSlotAnnotation:    # NOTE - capturing metadata for current symbols/names and aliases.
+  SynonymSlotAnnotation:    # NOTE: capturing metadata for current symbols/names and aliases.
     is_a: SlotAnnotation
     abstract: true
     description: >-
@@ -763,11 +763,11 @@ slots:
     exact_mappings:
       - biolink:symbol
 
-  synonyms:    # NOTE - suggesting that synonyms slots have a new range type.
+  synonyms:    # NOTE: suggesting that synonyms slots have a new range type.
     singular_name: synonym
     description: holds between a named thing and a synonym
     multivalued: true
-    range: SynonymSlotAnnotation
+    range: SynonymSlotAnnotation    # Was Synonym. This change modeled after allele_notes/AlleleNoteSlotAnnotation.
 
   synonym:
     description: >-
