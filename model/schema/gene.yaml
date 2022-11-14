@@ -51,6 +51,8 @@ classes:
     is_a: GenomicEntity
     slots:
       - symbol
+      - full_name
+      - systematic_name
       - related_notes
       - gene_type
       - gene_types_secondary
@@ -73,7 +75,14 @@ classes:
       - ZFIN
     slot_usage:
       symbol:
+        range: GeneSymbolSlotAnnotation
         required: true
+      full_name:
+        range: GeneFullNameSlotAnnotation
+      systematic_name:
+        range: GeneSystematicNameSlotAnnotation
+      synonyms:
+        range: GeneSynonymSlotAnnotation
       related_notes:
         description: >-
           Valid note types are available for viewing in the A-Team curation tool
@@ -87,6 +96,38 @@ classes:
     slots:
       - symbol
       - gene_type_curie
+
+  GeneSymbolSlotAnnotation:
+    is_a: NameSlotAnnotation
+    slots:
+      - single_gene
+    slot_usage:
+      single_gene:
+        required: true
+
+  GeneFullNameSlotAnnotation:
+    is_a: NameSlotAnnotation
+    slots:
+      - single_gene
+    slot_usage:
+      single_gene:
+        required: true
+
+  GeneSystematicNameSlotAnnotation:
+    is_a: NameSlotAnnotation
+    slots:
+      - single_gene
+    slot_usage:
+      single_gene:
+        required: true
+
+  GeneSynonymSlotAnnotation:
+    is_a: NameSlotAnnotation
+    slots:
+      - single_gene
+    slot_usage:
+      single_gene:
+        required: true
 
   GeneticMapPosition:
     description: >-
@@ -119,6 +160,10 @@ classes:
 
 
 slots:
+
+  single_gene:
+    domain: Gene
+    multivalued: false
 
   gene_curie:
     range: string

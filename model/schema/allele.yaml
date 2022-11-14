@@ -61,7 +61,7 @@ classes:
       - allele_secondary_ids
       - allele_nomenclature_events
       - allele_notes
-      - allele_synonyms
+      # - allele_synonyms    # Allele inherits synonyms slot from GenomicEntity
       - allele_gene_associations
       - allele_transcript_associations
       - allele_protein_associations
@@ -74,12 +74,13 @@ classes:
     exact_mappings:
       - SO:0001023
     slot_usage:
+      symbol:
+        range: AlleleSymbolSlotAnnotation
+        required: true
       synonyms:
-        description: synonyms for allele names and synonyms
+        range: AlleleSynonymSlotAnnotation
       aberration:
         notes: specific to FB
-      symbol:
-        required: true
 
   AlleleDTO:
     is_a: GenomicEntityDTO
@@ -235,16 +236,20 @@ classes:
       note_dto:
         required: true
 
-  AlleleSynonymSlotAnnotation:
-    is_a: SlotAnnotation
+  AlleleSymbolSlotAnnotation:
+    is_a: NameSlotAnnotation
     slots:
       - single_allele
-      - synonym
-      - synonym_scope
     slot_usage:
       single_allele:
         required: true
-      synonym:
+
+  AlleleSynonymSlotAnnotation:
+    is_a: NameSlotAnnotation
+    slots:
+      - single_allele
+    slot_usage:
+      single_allele:
         required: true
 
   AlleleSynonymSlotAnnotationDTO:
@@ -527,6 +532,7 @@ slots:
 
   single_allele:
     range: Allele
+    multivalued: false
 
   allele_curie:
     range: string
@@ -829,12 +835,6 @@ slots:
   allele_note_dtos:
     domain: AlleleDTO
     range: AlleleNoteSlotAnnotationDTO
-    multivalued: true
-
-  allele_synonyms:
-    description: Synonyms of a given allele
-    domain: Allele
-    range: Synonym
     multivalued: true
 
   allele_synonym_dtos:
