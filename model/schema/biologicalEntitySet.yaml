@@ -56,7 +56,7 @@ classes:
     is_a: BiologicalEntity
     slots:
       - genes
-      - related_notes
+      - related_note
 
   GeneCollection:
     description: >-
@@ -64,7 +64,7 @@ classes:
     is_a: BiologicalEntity
     slots:
       - genes
-      - related_notes
+      - related_note
       - experiment_type
       # maybe we want a slot for a GO evidence code here?
 
@@ -78,7 +78,7 @@ classes:
       - designating_laboratory
       - old_members
       - synonyms
-      - related_notes
+      - related_note
 
   Operon:
     description: >-
@@ -88,7 +88,7 @@ classes:
     is_a: BiologicalEntity
     slots:
       - genes
-      - related_notes
+      - related_note
       # - history # Tracking the history of merges/splits/previous members - deal with later
     exact_mappings:
       - SO:0000178
