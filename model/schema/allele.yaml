@@ -75,10 +75,10 @@ classes:
       - SO:0001023
     slot_usage:
       symbol:
-        range: AlleleSymbolSlotAnnotation
+        range: AlleleNameSlotAnnotation
         required: true
       synonyms:
-        range: AlleleSynonymSlotAnnotation
+        range: AlleleNameSlotAnnotation
       aberration:
         notes: specific to FB
 
@@ -236,15 +236,7 @@ classes:
       note_dto:
         required: true
 
-  AlleleSymbolSlotAnnotation:
-    is_a: NameSlotAnnotation
-    slots:
-      - single_allele
-    slot_usage:
-      single_allele:
-        required: true
-
-  AlleleSynonymSlotAnnotation:
+  AlleleNameSlotAnnotation:
     is_a: NameSlotAnnotation
     slots:
       - single_allele

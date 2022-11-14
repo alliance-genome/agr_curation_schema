@@ -75,14 +75,14 @@ classes:
       - ZFIN
     slot_usage:
       symbol:
-        range: GeneSymbolSlotAnnotation
+        range: GeneNameSlotAnnotation
         required: true
       full_name:
-        range: GeneFullNameSlotAnnotation
+        range: GeneNameSlotAnnotation
       systematic_name:
-        range: GeneSystematicNameSlotAnnotation
+        range: GeneNameSlotAnnotation
       synonyms:
-        range: GeneSynonymSlotAnnotation
+        range: GeneNameSlotAnnotation
       related_notes:
         description: >-
           Valid note types are available for viewing in the A-Team curation tool
@@ -97,31 +97,7 @@ classes:
       - symbol
       - gene_type_curie
 
-  GeneSymbolSlotAnnotation:
-    is_a: NameSlotAnnotation
-    slots:
-      - single_gene
-    slot_usage:
-      single_gene:
-        required: true
-
-  GeneFullNameSlotAnnotation:
-    is_a: NameSlotAnnotation
-    slots:
-      - single_gene
-    slot_usage:
-      single_gene:
-        required: true
-
-  GeneSystematicNameSlotAnnotation:
-    is_a: NameSlotAnnotation
-    slots:
-      - single_gene
-    slot_usage:
-      single_gene:
-        required: true
-
-  GeneSynonymSlotAnnotation:
+  GeneNameSlotAnnotation:
     is_a: NameSlotAnnotation
     slots:
       - single_gene

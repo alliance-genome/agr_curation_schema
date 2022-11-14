@@ -116,7 +116,7 @@ classes:
       is derived indirectly from the genome (i.e. polypeptide or protein via
       RNA transcript translation).
     slots:
-      - name
+      - name    # This has been left in place; still has domain string.
       - synonyms
       - cross_references
       - secondary_identifiers
@@ -238,10 +238,16 @@ classes:
       applies is specified in objects that inherit from this object.
     slots:
       - name_type
+      - current
       - format_text
       - display_text
       - synonym_url
       - synonym_scope
+    slot_usage:
+      current:
+        description: >-
+          Is true if, for a given name type, the name is the single current
+          accepted one for the entity.
 
   Association:
     is_a: AuditedObject
