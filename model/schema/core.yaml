@@ -116,7 +116,7 @@ classes:
       is derived indirectly from the genome (i.e. polypeptide or protein via
       RNA transcript translation).
     slots:
-      - name
+      - name    # This has been left in place; still has domain string.
       - synonyms
       - cross_references
       - secondary_identifiers
