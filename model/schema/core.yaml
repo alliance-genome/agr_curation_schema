@@ -641,10 +641,27 @@ slots:
   data_provider:
     description: Organization (e.g. MOD) from which the data was sourced
     multivalued: false
+    range: Organization
+
+  data_provider_name:
+    description: >-
+      The string representation (for DTO objects) of the name of the
+      organization from which the data was sourced, e.g. 'MGI', 'WB', 'OMIM'
+    multivalued: false
     range: string
 
   secondary_data_provider:
-    description: Organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source
+    description: >-
+      Organization (e.g. MOD) that provided the data directly to the Alliance,
+      but not the original source
+    multivalued: false
+    range: Organization
+
+  secondary_data_provider_name:
+    description: >-
+      The string representation (for DTO objects) of the name of the organization
+      (e.g. MOD) that provided the data directly to the Alliance, but not the
+      original source, e.g. 'MGI', 'WB', 'RGD'
     multivalued: false
     range: string
 

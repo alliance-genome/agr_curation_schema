@@ -39,6 +39,13 @@ classes:
 
   Organization:
     is_a: Agent
+    description: >-
+      An organization that provides information and/or materials to the Alliance.
+      This includes Alliance member organizations (see AllianceMember subclass).
+    slots:
+      - abbreviation
+      - full_name
+      - short_name
 
   Laboratory:
     is_a: Organization
@@ -117,3 +124,21 @@ slots:
     description: The API token of the LoggedInPerson for the curation system
     domain: LoggedInPerson
     range: string
+
+  short_name:
+    description: >-
+      The short name of the organization. For Alliance Members, this is the short name
+      used in the Members list on the website. e.g. MGD, FlyBase, OMIM
+    multivalued: false
+    domain: Organization
+    range: string
+    required: true
+
+  full_name:
+    description: >-
+      The full name of the Organization.
+      e.g. Mouse Genome Database, FlyBase, Online Mendelian Inheritance of Man
+    multivalued: false
+    domain: Organization
+    range: string
+    required: true
