@@ -48,7 +48,7 @@ classes:
       differing from the reference DNA sequence.  The genomic
       element can be endogenous or constructed.
     slots:
-      - symbol
+      - allele_symbol
       - references
       - inheritance_mode
       - in_collection
@@ -61,7 +61,7 @@ classes:
       - allele_secondary_ids
       - allele_nomenclature_events
       - allele_notes
-      # - allele_synonyms    # Allele inherits synonyms slot from GenomicEntity
+      - allele_synonyms
       - allele_gene_associations
       - allele_transcript_associations
       - allele_protein_associations
@@ -74,11 +74,6 @@ classes:
     exact_mappings:
       - SO:0001023
     slot_usage:
-      symbol:
-        range: AlleleSymbolSlotAnnotation
-        required: true
-      synonyms:
-        range: AlleleSynonymSlotAnnotation
       aberration:
         notes: specific to FB
 
@@ -87,7 +82,7 @@ classes:
     description: >-
       Ingest class for an Allele object
     slots:
-      - symbol
+      - allele_symbol    # Changed to make make build pass
       - reference_curies
       - inheritance_mode_name
       - in_collection_name
@@ -520,9 +515,11 @@ classes:
   ConstructComponent:
     is_a: GenomicEntity
     slots:
-      - symbol
+      # - symbol    # Is this redundant with the name slot inherited from GenomicEntity?
+                    # Should we make a ConstructSymbolSlotAnnotation object too?
 
 # Slots
+
 slots:
 
   primary_image:
@@ -836,6 +833,22 @@ slots:
     domain: AlleleDTO
     range: AlleleNoteSlotAnnotationDTO
     multivalued: true
+
+  allele_symbol:
+    description: >-
+      The one current accepted symbol for the allele: e.g., wg<sup>1</sup>.
+    exact_mappings:
+      - biolink:symbol
+    domain: Allele
+    range: AlleleSymbolSlotAnnotation
+    required: true
+    multivalued: false
+
+  allele_synonyms:
+    description: Holds between an Allele and a synonym.
+    required: false
+    multivalued: true
+    range: AlleleSynonymSlotAnnotation
 
   allele_synonym_dtos:
     domain: AlleleDTO

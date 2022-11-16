@@ -117,7 +117,6 @@ classes:
       RNA transcript translation).
     slots:
       - name    # This has been left in place; still has domain string.
-      - synonyms
       - cross_references
       - secondary_identifiers
       - genomic_locations
@@ -722,32 +721,13 @@ slots:
     multivalued: false
     range: string
 
-  symbol:
-    description: >-
-      The one current accepted symbol for an entity: e.g., wg, pax2a.
-    exact_mappings:
-      - biolink:symbol
-    range: NameSlotAnnotation
-    required: false
-    multivalued: false
-
-  full_name:
-    description: >-
-      The current full name for an entity: e.g., wingless, paired-box gene 2a.
-    range: NameSlotAnnotation
-    multivalued: false
-
-  systematic_name:
-    description: >-
-      The current systematic name for an entity: e.g., YHR084W, CG4889.
-    range: NameSlotAnnotation
-    multivalued: false
-
   synonyms:
-    singular_name: synonym
-    description: holds between a named thing and a synonym
+    description: >-
+      Placeholder? Some objects still use this slot. Not clear how it fits in
+      with NameSlotAnnotation (which captures evidence).
+    range: string
+    required: false
     multivalued: true
-    range: NameSlotAnnotation
 
   synonym_dtos:
     range: SynonymDTO

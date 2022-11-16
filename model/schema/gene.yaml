@@ -50,9 +50,9 @@ classes:
       A pseudogene may be considered a gene under this definition, albeit no longer functional.
     is_a: GenomicEntity
     slots:
-      - symbol
-      - full_name
-      - systematic_name
+      - gene_symbol
+      - gene_full_name
+      - gene_systematic_name
       - related_notes
       - gene_type
       - gene_types_secondary
@@ -74,15 +74,6 @@ classes:
       - WB
       - ZFIN
     slot_usage:
-      symbol:
-        range: GeneSymbolSlotAnnotation
-        required: true
-      full_name:
-        range: GeneFullNameSlotAnnotation
-      systematic_name:
-        range: GeneSystematicNameSlotAnnotation
-      synonyms:
-        range: GeneSynonymSlotAnnotation
       related_notes:
         description: >-
           Valid note types are available for viewing in the A-Team curation tool
@@ -94,7 +85,7 @@ classes:
     is_a: GenomicEntityDTO
     description: Ingest class for genes
     slots:
-      - symbol
+      - gene_symbol    # Changed to make make build pass
       - gene_type_curie
 
   GeneSymbolSlotAnnotation:
@@ -152,18 +143,48 @@ classes:
       - split_from
       - split_into
 
-
 ## ------------
 ## SLOTS
 ## ------------
-
-
 
 slots:
 
   single_gene:
     domain: Gene
     multivalued: false
+
+  gene_symbol:
+    description: >-
+      The one current accepted symbol for a gene: e.g., wg, pax2a.
+    exact_mappings:
+      - biolink:symbol
+    domain: Gene
+    range: GeneSymbolSlotAnnotation
+    required: true
+    multivalued: false
+
+  gene_full_name:
+    description: >-
+      The one current full name for a gene: e.g., wingless, paired box 2a.
+    domain: Gene
+    range: GeneFullNameSlotAnnotation
+    required: false
+    multivalued: false
+
+  gene_systematic_name:
+    description: >-
+      The one current systematic name for a gene: e.g., YHR084W, R09F10.2.
+    domain: Gene
+    range: GeneSystematicNameSlotAnnotation
+    required: false
+    multivalued: false
+
+  gene_synonyms:
+    description: Holds between a Gene and a synonym.
+    domain: Gene
+    range: GeneSynonymSlotAnnotation
+    required: false
+    multivalued: true
 
   gene_curie:
     range: string
