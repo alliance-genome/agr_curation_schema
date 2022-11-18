@@ -128,7 +128,7 @@ slots:
   short_name:
     description: >-
       The short name of the organization. For Alliance Members, this is the short name
-      used in the Members list on the website. e.g. MGD, FlyBase, OMIM
+      used in the Members list on the website. e.g. MGD, FB, OMIM
     multivalued: false
     domain: Organization
     range: string
