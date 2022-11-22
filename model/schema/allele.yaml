@@ -260,6 +260,8 @@ classes:
           - equals_string: full_name
 
   AlleleSynonymSlotAnnotation:
+    description: >-
+      All aliases (non-preferred names) for the allele.
     is_a: NameSlotAnnotation
     slots:
       - single_allele

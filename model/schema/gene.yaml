@@ -130,6 +130,8 @@ classes:
 
   GeneSynonymSlotAnnotation:
     is_a: NameSlotAnnotation
+    description: >-
+      All aliases (non-preferred names) for the gene.
     slots:
       - single_gene
     slot_usage:
