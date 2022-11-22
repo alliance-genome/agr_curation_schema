@@ -151,7 +151,7 @@ classes:
 slots:
 
   single_gene:
-    domain: Gene
+    range: Gene
     multivalued: false
 
   gene_symbol:
