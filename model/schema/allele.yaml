@@ -49,6 +49,7 @@ classes:
       element can be endogenous or constructed.
     slots:
       - allele_symbol
+      - allele_full_name
       - references
       - inheritance_mode
       - in_collection
@@ -232,6 +233,14 @@ classes:
         required: true
 
   AlleleSymbolSlotAnnotation:
+    is_a: NameSlotAnnotation
+    slots:
+      - single_allele
+    slot_usage:
+      single_allele:
+        required: true
+
+  AlleleFullNameSlotAnnotation:
     is_a: NameSlotAnnotation
     slots:
       - single_allele
@@ -842,6 +851,14 @@ slots:
     domain: Allele
     range: AlleleSymbolSlotAnnotation
     required: true
+    multivalued: false
+
+  allele_full_name:
+    description: >-
+      The one current full name for an allele: e.g., wg<sup>1</sup>.
+    domain: Allele
+    range: AlleleFullNameSlotAnnotation
+    required: false
     multivalued: false
 
   allele_synonyms:
