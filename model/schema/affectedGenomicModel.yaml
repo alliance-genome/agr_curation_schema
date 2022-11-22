@@ -53,7 +53,7 @@ classes:
     slots:
       - subtype_name
       - reference_curies
-      - data_provider
+      - data_provider_name
       - sequence_targeting_reagent_curies
       - component_dtos
 
