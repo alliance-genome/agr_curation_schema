@@ -116,7 +116,6 @@ classes:
       is derived indirectly from the genome (i.e. polypeptide or protein via
       RNA transcript translation).
     slots:
-      - name    # This has been left in place; still has domain string.
       - cross_references
       - secondary_identifiers
       - genomic_locations
@@ -714,12 +713,6 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
-
-  name:
-    description: >-
-      a human-readable name for an entity
-    multivalued: false
-    range: string
 
   synonyms:
     description: >-

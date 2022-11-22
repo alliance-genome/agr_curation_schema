@@ -90,28 +90,43 @@ classes:
       - gene_type_curie
 
   GeneSymbolSlotAnnotation:
+    description: >-
+      The one current symbol for the gene.
     is_a: NameSlotAnnotation
     slots:
       - single_gene
     slot_usage:
       single_gene:
         required: true
+      name_type:
+        any_of:
+          - equals_string: nomenclature_synonym
 
   GeneFullNameSlotAnnotation:
     is_a: NameSlotAnnotation
+    description: >-
+      The one current full name for the gene.
     slots:
       - single_gene
     slot_usage:
       single_gene:
         required: true
+      name_type:
+        any_of:
+          - equals_string: full_name
 
   GeneSystematicNameSlotAnnotation:
     is_a: NameSlotAnnotation
+    description: >-
+      The one current systematic name for the gene.
     slots:
       - single_gene
     slot_usage:
       single_gene:
         required: true
+      name_type:
+        any_of:
+          - equals_string: systematic_name
 
   GeneSynonymSlotAnnotation:
     is_a: NameSlotAnnotation

@@ -233,20 +233,31 @@ classes:
         required: true
 
   AlleleSymbolSlotAnnotation:
+    description: >-
+      The one current symbol for the allele.
     is_a: NameSlotAnnotation
     slots:
       - single_allele
     slot_usage:
       single_allele:
         required: true
+      name_type:
+        any_of:
+          - equals_string: symbol
+
 
   AlleleFullNameSlotAnnotation:
+    description: >-
+      The one current full name for the allele.
     is_a: NameSlotAnnotation
     slots:
       - single_allele
     slot_usage:
       single_allele:
         required: true
+      name_type:
+        any_of:
+          - equals_string: full_name
 
   AlleleSynonymSlotAnnotation:
     is_a: NameSlotAnnotation
