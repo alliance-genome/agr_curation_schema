@@ -53,6 +53,7 @@ classes:
       - gene_symbol
       - gene_full_name
       - gene_systematic_name
+      - gene_synonyms
       - related_notes
       - gene_type
       - gene_types_secondary
