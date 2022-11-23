@@ -887,7 +887,6 @@ slots:
     domain: AlleleDTO
     range: FullNameSlotAnnotationDTO
     multivalued: false
-    required: true
     inlined: true
 
   allele_synonyms:
