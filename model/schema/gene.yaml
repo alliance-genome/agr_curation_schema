@@ -188,7 +188,7 @@ slots:
     description: >-
       The one current accepted symbol for a gene: e.g., wg, pax2a.
     domain: GeneDTO
-    range: NameSlotAnnotationDTO
+    range: SymbolSlotAnnotationDTO
     multivalued: false
     required: true
     inlined: true
@@ -205,7 +205,7 @@ slots:
     description: >-
       The one current full name for a gene: e.g., wingless, paired box 2a.
     domain: GeneDTO
-    range: NameSlotAnnotationDTO
+    range: FullNameSlotAnnotationDTO
     multivalued: false
     required: true
     inlined: true
@@ -222,7 +222,7 @@ slots:
     description: >-
       The one current systematic name for a gene: e.g., YHR084W, R09F10.2.
     domain: GeneDTO
-    range: NameSlotAnnotationDTO
+    range: SystematicNameSlotAnnotationDTO
     multivalued: false
     required: true
     inlined: true

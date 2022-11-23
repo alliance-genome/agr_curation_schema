@@ -71,7 +71,7 @@ slots:
   sqtr_ingest_set:
     description: >-
     domain: Ingest
-    range: SequenceTargetingReagent
+    range: SequenceTargetingReagentDTO
     multivalued: true
     mixins:
       - object_set

@@ -270,15 +270,6 @@ classes:
       single_allele:
         required: true
 
-  AlleleSynonymSlotAnnotationDTO:
-    is_a: SlotAnnotationDTO
-    slots:
-      - synonym_dto
-      - synonym_scope_name
-    slot_usage:
-      synonym_dto:
-        required: true
-
 # Allele Associations
 
   AlleleGenerationMethodAssociation:
@@ -494,6 +485,7 @@ classes:
     description: >-
       Dummy cell line class
 
+  # Need to add appropriate name synonym slotAnntoations as slots removed from GenomnicEntity
   SequenceTargetingReagent:
     description: >-
     is_a: GenomicEntity
@@ -504,6 +496,11 @@ classes:
         identifier: true
       name:
         required: true
+
+  SequenceTargetingReagentDTO:
+    is_a: GenomicEntityDTO
+    slots:
+      - reference_curies
 
   SequenceTargetingReagentToGeneAssociation:
     description: >-
@@ -871,7 +868,7 @@ slots:
     description: >-
       The one current accepted symbol for the allele: e.g., wg<sup>1</sup>.
     domain: AlleleDTO
-    range: NameSlotAnnotationDTO
+    range: SymbolSlotAnnotationDTO
     multivalued: false
     required: true
     inlined: true
@@ -888,7 +885,7 @@ slots:
     description: >-
       The one current full name for an allele: e.g., wg<sup>1</sup>.
     domain: AlleleDTO
-    range: NameSlotAnnotationDTO
+    range: FullNameSlotAnnotationDTO
     multivalued: false
     required: true
     inlined: true

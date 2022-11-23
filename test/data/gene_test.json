@@ -8,14 +8,15 @@
       "updated_by_curie": "ZFIN",
       "internal": false,
       "gene_symbol_dto": {
-        "name_type_name": "nomenclature_symbol",
+        "name_type_name": "symbol",
         "format_text": "wg<sup>1</sup>",
         "display_text": "wg<sup>1</sup>",
         "synonym_url": "https://synonym_url.com/a83",
         "synonym_scope_name": "exact",
         "evidence_curies": [
           "PMID:01231001"
-        ]
+        ],
+        "internal": false
       },
       "gene_full_name_dto": {
         "name_type_name": "full_name",
@@ -25,7 +26,8 @@
         "synonym_scope_name": "exact",
         "evidence_curies": [
           "PMID:01231001"
-        ]
+        ],
+        "internal": false
       },
       "gene_systematic_name_dto": {
         "name_type_name": "systematic_name",
@@ -35,7 +37,8 @@
         "synonym_scope_name": "exact",
         "evidence_curies": [
           "PMID:01231001"
-        ]
+        ],
+        "internal": false
       },
       "gene_synonym_dtos": [
         {
@@ -46,7 +49,8 @@
           "synonym_scope_name": "exact",
           "evidence_curies": [
             "PMID:01231001"
-          ]
+          ],
+          "internal": false
         }
       ],
       "cross_reference_dtos": [

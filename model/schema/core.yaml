@@ -123,8 +123,6 @@ classes:
   GenomicEntityDTO:
     is_a: BiologicalEntityDTO
     slots:
-      - name
-      - synonym_dtos
       - cross_reference_dtos
       - secondary_identifiers
       - genomic_location_dtos
@@ -244,6 +242,28 @@ classes:
       - display_text
       - synonym_url
       - synonym_scope_name
+
+  SymbolSlotAnnotationDTO:
+    is_a: NameSlotAnnotationDTO
+    slot_usage:
+      name_type_name:
+        any_of:
+          - equals_string: symbol
+
+  FullNameSlotAnnotationDTO:
+    is_a: NameSlotAnnotationDTO
+    slot_usage:
+      name_type_name:
+        any_of:
+          - equals_string: full_name
+
+  SystematicNameSlotAnnotationDTO:
+    is_a: NameSlotAnnotationDTO
+    slot_usage:
+      name_type_name:
+        any_of:
+          - equals_string: systematic_name
+
 
   Association:
     is_a: AuditedObject
@@ -734,14 +754,6 @@ slots:
     range: string
     required: false
     multivalued: true
-
-  synonym_dtos:
-    range: SynonymDTO
-    multivalued: true
-
-  synonym_dto:
-    range: SynonymDTO
-    multivalued: false
 
   negated:
     range: boolean
