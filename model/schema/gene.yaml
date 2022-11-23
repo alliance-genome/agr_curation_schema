@@ -86,7 +86,10 @@ classes:
     is_a: GenomicEntityDTO
     description: Ingest class for genes
     slots:
-      - gene_symbol    # Changed to make make build pass
+      - gene_symbol_dto
+      - gene_full_name_dto
+      - gene_systematic_name_dto
+      - gene_synonym_dtos
       - gene_type_curie
 
   GeneSymbolSlotAnnotation:
@@ -181,6 +184,15 @@ slots:
     required: true
     multivalued: false
 
+  gene_symbol_dto:
+    description: >-
+      The one current accepted symbol for a gene: e.g., wg, pax2a.
+    domain: GeneDTO
+    range: NameSlotAnnotationDTO
+    multivalued: false
+    required: true
+    inlined: true
+
   gene_full_name:
     description: >-
       The one current full name for a gene: e.g., wingless, paired box 2a.
@@ -188,6 +200,15 @@ slots:
     range: GeneFullNameSlotAnnotation
     required: false
     multivalued: false
+
+  gene_full_name_dto:
+    description: >-
+      The one current full name for a gene: e.g., wingless, paired box 2a.
+    domain: GeneDTO
+    range: NameSlotAnnotationDTO
+    multivalued: false
+    required: true
+    inlined: true
 
   gene_systematic_name:
     description: >-
@@ -197,12 +218,28 @@ slots:
     required: false
     multivalued: false
 
+  gene_systematic_name_dto:
+    description: >-
+      The one current systematic name for a gene: e.g., YHR084W, R09F10.2.
+    domain: GeneDTO
+    range: NameSlotAnnotationDTO
+    multivalued: false
+    required: true
+    inlined: true
+
   gene_synonyms:
     description: Holds between a Gene and a synonym.
     domain: Gene
     range: GeneSynonymSlotAnnotation
     required: false
     multivalued: true
+
+  gene_synonym_dtos:
+    domain: GeneDTO
+    range: NameSlotAnnotationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
 
   gene_curie:
     range: string

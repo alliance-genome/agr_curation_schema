@@ -7,8 +7,48 @@
       "created_by_curie": "ZFIN",
       "updated_by_curie": "ZFIN",
       "internal": false,
-      "symbol": "gdnfa",
-      "name": "glial cell derived neurotrophic factor a",
+      "gene_symbol_dto": {
+        "name_type_name": "nomenclature_symbol",
+        "format_text": "wg<sup>1</sup>",
+        "display_text": "wg<sup>1</sup>",
+        "synonym_url": "https://synonym_url.com/a83",
+        "synonym_scope_name": "exact",
+        "evidence_curies": [
+          "PMID:01231001"
+        ]
+      },
+      "gene_full_name_dto": {
+        "name_type_name": "full_name",
+        "format_text": "Wingless 1",
+        "display_text": "Wingless 1",
+        "synonym_url": "https://synonym_url.com/a83",
+        "synonym_scope_name": "exact",
+        "evidence_curies": [
+          "PMID:01231001"
+        ]
+      },
+      "gene_systematic_name_dto": {
+        "name_type_name": "systematic_name",
+        "format_text": "YHR084W",
+        "display_text": "YHR084W",
+        "synonym_url": "https://synonym_url.com/YHR084W",
+        "synonym_scope_name": "exact",
+        "evidence_curies": [
+          "PMID:01231001"
+        ]
+      },
+      "gene_synonym_dtos": [
+        {
+          "name_type_name": "unspecified",
+          "format_text": "wg1",
+          "display_text": "wg1",
+          "synonym_url": "https://synonym_url.com/wg1",
+          "synonym_scope_name": "exact",
+          "evidence_curies": [
+            "PMID:01231001"
+          ]
+        }
+      ],
       "cross_reference_dtos": [
         {
           "curie": "ZFIN:ZDB-GENE-010226-1",

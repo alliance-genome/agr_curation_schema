@@ -83,7 +83,8 @@ classes:
     description: >-
       Ingest class for an Allele object
     slots:
-      - allele_symbol    # Changed to make make build pass
+      - allele_symbol_dto
+      - allele_full_name_dto
       - reference_curies
       - inheritance_mode_name
       - in_collection_name
@@ -866,6 +867,15 @@ slots:
     required: true
     multivalued: false
 
+  allele_symbol_dto:
+    description: >-
+      The one current accepted symbol for the allele: e.g., wg<sup>1</sup>.
+    domain: AlleleDTO
+    range: NameSlotAnnotationDTO
+    multivalued: false
+    required: true
+    inlined: true
+
   allele_full_name:
     description: >-
       The one current full name for an allele: e.g., wg<sup>1</sup>.
@@ -873,6 +883,15 @@ slots:
     range: AlleleFullNameSlotAnnotation
     required: false
     multivalued: false
+
+  allele_full_name_dto:
+    description: >-
+      The one current full name for an allele: e.g., wg<sup>1</sup>.
+    domain: AlleleDTO
+    range: NameSlotAnnotationDTO
+    multivalued: false
+    required: true
+    inlined: true
 
   allele_synonyms:
     description: Holds between an Allele and a synonym.
@@ -882,7 +901,7 @@ slots:
 
   allele_synonym_dtos:
     domain: AlleleDTO
-    range: AlleleSynonymSlotAnnotationDTO
+    range: NameSlotAnnotationDTO
     multivalued: true
     inlined: true
     inlined_as_list: true
