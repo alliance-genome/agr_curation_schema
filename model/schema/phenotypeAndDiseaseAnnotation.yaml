@@ -279,8 +279,8 @@ classes:
       - condition_relation_dtos
       - genetic_sex_name
       - note_dtos
-      - data_provider
-      - secondary_data_provider
+      - data_provider_name
+      - secondary_data_provider_name
       - disease_genetic_modifier_curie
       - disease_genetic_modifier_relation_name
 
