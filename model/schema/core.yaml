@@ -418,6 +418,7 @@ slots:
       synonym - proposed values are nomenclature_symbol / full_name /
       systematic_name / ncbi_protein_name / uniform / non_uniform /
       retired_name / unspecified
+    domain: NameSlotAnnotationDTO
     range: string
     required: true
 
@@ -427,7 +428,6 @@ slots:
       easier to type (for searches), print and parse. For example, Greek
       characters are transliterated.
     aliases: ['synonym_text']
-    domain: NameSlotAnnotation
     range: string
     required: true
     multivalued: false
@@ -437,7 +437,6 @@ slots:
       A version of a synonym string for display. Any UTF8 character is
       permitted.
     aliases: ['synonym_sgml']
-    domain: NameSlotAnnotation
     range: string
     required: true
     multivalued: false
@@ -445,7 +444,6 @@ slots:
   synonym_url:
     description: >-
       URL for a synonym: e.g., NCBI URL for the NCBI synonym of an object.
-    domain: NameSlotAnnotation
     range: uri
 
   synonym_scope:
@@ -459,6 +457,7 @@ slots:
     description: >-
       Name of the VocabularyTerm representing the scope of the
       synonym - permissible values are narrow / broad / related / exact
+    domain: NameSlotAnnotationDTO
     range: string
 
   start:
