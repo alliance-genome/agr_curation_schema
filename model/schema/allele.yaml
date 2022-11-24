@@ -243,8 +243,7 @@ classes:
       single_allele:
         required: true
       name_type:
-        any_of:
-          - equals_string: symbol
+        notes: value must be VocabularyTerm with name "symbol"
 
 
   AlleleFullNameSlotAnnotation:
@@ -257,8 +256,7 @@ classes:
       single_allele:
         required: true
       name_type:
-        any_of:
-          - equals_string: full_name
+        notes: value must be VocabularyTerm with name "full_name"
 
   AlleleSynonymSlotAnnotation:
     description: >-

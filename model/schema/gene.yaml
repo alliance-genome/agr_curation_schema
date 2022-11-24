@@ -102,8 +102,8 @@ classes:
       single_gene:
         required: true
       name_type:
-        any_of:
-          - equals_string: nomenclature_synonym
+        name_type:
+          notes: value must be VocabularyTerm with name "symbol"
 
   GeneFullNameSlotAnnotation:
     is_a: NameSlotAnnotation
@@ -115,8 +115,8 @@ classes:
       single_gene:
         required: true
       name_type:
-        any_of:
-          - equals_string: full_name
+        name_type:
+          notes: value must be VocabularyTerm with name "full_name"
 
   GeneSystematicNameSlotAnnotation:
     is_a: NameSlotAnnotation
@@ -128,8 +128,8 @@ classes:
       single_gene:
         required: true
       name_type:
-        any_of:
-          - equals_string: systematic_name
+        name_type:
+          notes: value must be VocabularyTerm with name "systematic_name"
 
   GeneSynonymSlotAnnotation:
     is_a: NameSlotAnnotation
