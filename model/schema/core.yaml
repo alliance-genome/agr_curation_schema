@@ -248,7 +248,8 @@ classes:
     slot_usage:
       name_type_name:
         any_of:
-          - equals_string: symbol
+          - equals_string: nomenclature_symbol
+          - equals_string: systematic_name
 
   FullNameSlotAnnotationDTO:
     is_a: NameSlotAnnotationDTO
@@ -399,7 +400,7 @@ slots:
       The type of name: e.g., symbol, full_name, systematic_name, etc.
     notes: >-
       Proposed vocabulary terms for name_type.
-        nomenclature_symbol: A symbol that adheres to nomenclature guidelines: e.g., pax6a, lin-12.
+        nomenclature_symbol: A symbol for an object: e.g., pax6a, lin-12.
         full_name: The full length name of an entity: e.g., paired box 6a.
         systematic_name: A systematic name: e.g., YHR084W, R09F10.2, CG4889.
         ncbi_protein_name: Synonyms developed by SGD and NCBI curators.

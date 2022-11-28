@@ -103,7 +103,7 @@ classes:
         required: true
       name_type:
         notes: >-
-          permissible_values: symbol (VocabularyTerm)
+          permissible_values: symbol (VocabularyTerm), systematic_name (VocabularyTerm)
 
   GeneFullNameSlotAnnotation:
     is_a: NameSlotAnnotation

@@ -244,8 +244,7 @@ classes:
         required: true
       name_type:
         notes: >-
-            permissible_values: symbol (VocabularyTerm)
-
+          permissible_values: nomenclature_symbol (VocabularyTerm), systematic_name (VocabularyTerm)
 
   AlleleFullNameSlotAnnotation:
     description: >-
