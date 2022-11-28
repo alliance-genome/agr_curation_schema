@@ -261,7 +261,7 @@ classes:
 
   AlleleSynonymSlotAnnotation:
     description: >-
-      All aliases (non-preferred names) for the allele.
+      All aliases (non-preferred names) for the allele. Any type of synonym is acceptable.
     is_a: NameSlotAnnotation
     slots:
       - single_allele

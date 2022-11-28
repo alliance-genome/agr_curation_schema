@@ -103,7 +103,7 @@ classes:
         required: true
       name_type:
         notes: >-
-          permissible_values: symbol (VocabularyTerm), systematic_name (VocabularyTerm)
+          permissible_values: nomenclature_symbol (VocabularyTerm), systematic_name (VocabularyTerm)
 
   GeneFullNameSlotAnnotation:
     is_a: NameSlotAnnotation
@@ -134,7 +134,7 @@ classes:
   GeneSynonymSlotAnnotation:
     is_a: NameSlotAnnotation
     description: >-
-      All aliases (non-preferred names) for the gene.
+      All aliases (non-preferred names) for the gene. Any type of synonym is acceptable.
     slots:
       - single_gene
     slot_usage:
