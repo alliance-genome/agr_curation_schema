@@ -116,8 +116,6 @@ classes:
       is derived indirectly from the genome (i.e. polypeptide or protein via
       RNA transcript translation).
     slots:
-      - name
-      - synonyms
       - cross_references
       - secondary_identifiers
       - genomic_locations
@@ -125,8 +123,6 @@ classes:
   GenomicEntityDTO:
     is_a: BiologicalEntityDTO
     slots:
-      - name
-      - synonym_dtos
       - cross_reference_dtos
       - secondary_identifiers
       - genomic_location_dtos
@@ -165,16 +161,6 @@ classes:
       - page_areas
       - display_name
       - prefix
-
-  Synonym:
-    is_a: AuditedObject
-    slots:
-      - name
-
-  SynonymDTO:
-    is_a: AuditedObjectDTO
-    slots:
-      - name
 
   Note:
     is_a: AuditedObject
@@ -234,6 +220,52 @@ classes:
     slots:
       - evidence_curies
 
+  NameSlotAnnotation:
+    is_a: SlotAnnotation
+    abstract: true
+    description: >-
+      Some symbol or name for an object, including current names as well as
+      aliases, with accompanying metadata. The entity to which the symbol/name
+      applies is specified in objects that inherit from this object.
+    slots:
+      - name_type
+      - format_text
+      - display_text
+      - synonym_url
+      - synonym_scope
+
+  NameSlotAnnotationDTO:
+    is_a: SlotAnnotationDTO
+    slots:
+      - name_type_name
+      - format_text
+      - display_text
+      - synonym_url
+      - synonym_scope_name
+
+  SymbolSlotAnnotationDTO:
+    is_a: NameSlotAnnotationDTO
+    slot_usage:
+      name_type_name:
+        any_of:
+          - equals_string: nomenclature_symbol
+          - equals_string: systematic_name
+
+  FullNameSlotAnnotationDTO:
+    is_a: NameSlotAnnotationDTO
+    slot_usage:
+      name_type_name:
+        any_of:
+          - equals_string: full_name
+
+  SystematicNameSlotAnnotationDTO:
+    is_a: NameSlotAnnotationDTO
+    slot_usage:
+      name_type_name:
+        any_of:
+          - equals_string: systematic_name
+
+
   Association:
     is_a: AuditedObject
     description: >-
@@ -260,19 +292,6 @@ classes:
             required: true
         object:
             required: true
-
-  EntitySynonym:
-    is_a: Association
-    description: >-
-      A relationship between an entity and a synonym.
-    slot_usage:
-      object:
-        range: Synonym
-      predicate:
-        range: entity_synonym_type_set
-      references:
-        description: >-
-          The references in which the synonym is used to refer to the entity.
 
   ExternalDatabaseLink:
     is_a: AuditedObject
@@ -376,19 +395,70 @@ classes:
 
 slots:
 
-  synonym:
-    description: the text string of the synonym
+  name_type:
+    description: >-
+      The type of name: e.g., symbol, full_name, systematic_name, etc.
+    notes: >-
+      Proposed vocabulary terms for name_type.
+        nomenclature_symbol: A symbol for an object: e.g., pax6a, lin-12.
+        full_name: The full length name of an entity: e.g., paired box 6a.
+        systematic_name: A systematic name: e.g., YHR084W, R09F10.2, CG4889.
+        ncbi_protein_name: Synonyms developed by SGD and NCBI curators.
+        uniform: SGD-specific.
+        non_uniform: SGD-specific.
+        retired_name: SGD-specific.
+        unspecified: unclassified names.
+    domain: NameSlotAnnotation
+    range: VocabularyTerm
+    multivalued: false
+    required: true
+
+  name_type_name:
+    description: >-
+      Name of the VocabularyTerm representing the name type of the
+      synonym - proposed values are nomenclature_symbol / full_name /
+      systematic_name / ncbi_protein_name / uniform / non_uniform /
+      retired_name / unspecified
+    domain: NameSlotAnnotationDTO
+    range: string
+    required: true
+
+  format_text:
+    description: >-
+      A version of a synonym string using only ASCII characters, which is
+      easier to type (for searches), print and parse. For example, Greek
+      characters are transliterated.
+    aliases: ['synonym_text']
+    range: string
+    required: true
+    multivalued: false
+
+  display_text:
+    description: >-
+      A version of a synonym string for display. Any UTF8 character is
+      permitted.
+    aliases: ['synonym_sgml']
+    range: string
+    required: true
+    multivalued: false
+
+  synonym_url:
+    description: >-
+      URL for a synonym: e.g., NCBI URL for the NCBI synonym of an object.
+    range: uri
 
   synonym_scope:
     description: >-
       the scope of the synonym - permissible values are narrow /
       broad / related / exact
+    domain: NameSlotAnnotation
     range: VocabularyTerm
 
   synonym_scope_name:
     description: >-
       Name of the VocabularyTerm representing the scope of the
       synonym - permissible values are narrow / broad / related / exact
+    domain: NameSlotAnnotationDTO
     range: string
 
   start:
@@ -678,12 +748,6 @@ slots:
     description: >-
       a human-readable description of an entity
 
-  name:
-    description: >-
-      a human-readable name for an entity
-    multivalued: false
-    range: string
-
   cross_references:
     singular_name: cross_reference
     aliases: ['xrefs']
@@ -700,25 +764,13 @@ slots:
     inlined: true
     inlined_as_list: true
 
-  symbol:
-    description: >-
-      Symbol for a particular thing
-    exact_mappings:
-      - biolink:symbol
-
   synonyms:
-    singular_name: synonym
-    description: holds between a named thing and a synonym
+    description: >-
+      Placeholder? Some objects still use this slot. Not clear how it fits in
+      with NameSlotAnnotation (which captures evidence).
+    range: string
+    required: false
     multivalued: true
-    range: Synonym
-
-  synonym_dtos:
-    range: SynonymDTO
-    multivalued: true
-
-  synonym_dto:
-    range: SynonymDTO
-    multivalued: false
 
   negated:
     range: boolean
@@ -887,22 +939,3 @@ slots:
     symmetric: true
 
 enums:
-
-  entity_synonym_type_set:
-    permissible_values:
-      current:
-        description: >-
-          The synonym is an officially accepted synonym for an entity.
-          An entity should have only one current synonym of a give type.
-          For example, only one current symbol and one current full name.
-      alias:
-        description: >-
-          The synonym is an alternate symbol or name for the entity. It is not
-          the currently preferred symbol/name for the entity.
-
-  synonym_scope_enum:
-    permissible_values:
-      narrow:
-      broad:
-      related:
-      exact:

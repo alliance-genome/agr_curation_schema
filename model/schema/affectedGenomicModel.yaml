@@ -40,6 +40,7 @@ classes:
       Includes inbred strains, stocks, disease models and
       mutant genotypes
     slots:
+      - name
       - subtype
       - components
       - sequence_targeting_reagents
@@ -51,6 +52,7 @@ classes:
     is_a: GenomicEntityDTO
     description: Ingest class for AGMs
     slots:
+      - name
       - subtype_name
       - reference_curies
       - data_provider_name
@@ -72,6 +74,14 @@ classes:
       - zygosity_curie
 
 slots:
+
+  name:
+    description: >-
+      a human-readable name for an entity
+    notes: >-
+      May want to convert this into a slot that uses NameSlotAnnotation.
+    multivalued: false
+    range: string
 
   agm_curie:
     range: string

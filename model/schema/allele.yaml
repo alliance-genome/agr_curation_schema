@@ -48,7 +48,8 @@ classes:
       differing from the reference DNA sequence.  The genomic
       element can be endogenous or constructed.
     slots:
-      - symbol
+      - allele_symbol
+      - allele_full_name
       - references
       - inheritance_mode
       - in_collection
@@ -74,19 +75,16 @@ classes:
     exact_mappings:
       - SO:0001023
     slot_usage:
-      synonyms:
-        description: synonyms for allele names and synonyms
       aberration:
         notes: specific to FB
-      symbol:
-        required: true
 
   AlleleDTO:
     is_a: GenomicEntityDTO
     description: >-
       Ingest class for an Allele object
     slots:
-      - symbol
+      - allele_symbol_dto
+      - allele_full_name_dto
       - reference_curies
       - inheritance_mode_name
       - in_collection_name
@@ -235,25 +233,40 @@ classes:
       note_dto:
         required: true
 
-  AlleleSynonymSlotAnnotation:
-    is_a: SlotAnnotation
+  AlleleSymbolSlotAnnotation:
+    description: >-
+      The one current symbol for the allele.
+    is_a: NameSlotAnnotation
     slots:
       - single_allele
-      - synonym
-      - synonym_scope
     slot_usage:
       single_allele:
         required: true
-      synonym:
-        required: true
+      name_type:
+        notes: >-
+          permissible_values: nomenclature_symbol (VocabularyTerm), systematic_name (VocabularyTerm)
 
-  AlleleSynonymSlotAnnotationDTO:
-    is_a: SlotAnnotationDTO
+  AlleleFullNameSlotAnnotation:
+    description: >-
+      The one current full name for the allele.
+    is_a: NameSlotAnnotation
     slots:
-      - synonym_dto
-      - synonym_scope_name
+      - single_allele
     slot_usage:
-      synonym_dto:
+      single_allele:
+        required: true
+      name_type:
+        notes: >-
+            permissible_values: full_name (VocabularyTerm)
+
+  AlleleSynonymSlotAnnotation:
+    description: >-
+      All aliases (non-preferred names) for the allele. Any type of synonym is acceptable.
+    is_a: NameSlotAnnotation
+    slots:
+      - single_allele
+    slot_usage:
+      single_allele:
         required: true
 
 # Allele Associations
@@ -471,6 +484,7 @@ classes:
     description: >-
       Dummy cell line class
 
+  # Need to add appropriate name synonym slotAnntoations as slots removed from GenomnicEntity
   SequenceTargetingReagent:
     description: >-
     is_a: GenomicEntity
@@ -481,6 +495,11 @@ classes:
         identifier: true
       name:
         required: true
+
+  SequenceTargetingReagentDTO:
+    is_a: GenomicEntityDTO
+    slots:
+      - reference_curies
 
   SequenceTargetingReagentToGeneAssociation:
     description: >-
@@ -515,9 +534,11 @@ classes:
   ConstructComponent:
     is_a: GenomicEntity
     slots:
-      - symbol
+      # - symbol    # Is this redundant with the name slot inherited from GenomicEntity?
+                    # Should we make a ConstructSymbolSlotAnnotation object too?
 
 # Slots
+
 slots:
 
   primary_image:
@@ -527,6 +548,7 @@ slots:
 
   single_allele:
     range: Allele
+    multivalued: false
 
   allele_curie:
     range: string
@@ -831,15 +853,50 @@ slots:
     range: AlleleNoteSlotAnnotationDTO
     multivalued: true
 
-  allele_synonyms:
-    description: Synonyms of a given allele
+  allele_symbol:
+    description: >-
+      The one current accepted symbol for the allele: e.g., wg<sup>1</sup>.
+    exact_mappings:
+      - biolink:symbol
     domain: Allele
-    range: Synonym
+    range: AlleleSymbolSlotAnnotation
+    required: true
+    multivalued: false
+
+  allele_symbol_dto:
+    description: >-
+      The one current accepted symbol for the allele: e.g., wg<sup>1</sup>.
+    domain: AlleleDTO
+    range: SymbolSlotAnnotationDTO
+    multivalued: false
+    required: true
+    inlined: true
+
+  allele_full_name:
+    description: >-
+      The one current full name for an allele: e.g., wg<sup>1</sup>.
+    domain: Allele
+    range: AlleleFullNameSlotAnnotation
+    required: false
+    multivalued: false
+
+  allele_full_name_dto:
+    description: >-
+      The one current full name for an allele: e.g., wg<sup>1</sup>.
+    domain: AlleleDTO
+    range: FullNameSlotAnnotationDTO
+    multivalued: false
+    inlined: true
+
+  allele_synonyms:
+    description: Holds between an Allele and a synonym.
+    required: false
     multivalued: true
+    range: AlleleSynonymSlotAnnotation
 
   allele_synonym_dtos:
     domain: AlleleDTO
-    range: AlleleSynonymSlotAnnotationDTO
+    range: NameSlotAnnotationDTO
     multivalued: true
     inlined: true
     inlined_as_list: true

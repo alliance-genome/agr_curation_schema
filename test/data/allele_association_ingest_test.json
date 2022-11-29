@@ -3,8 +3,28 @@
   "allele_ingest_set": [
     {
       "curie": "WB:WBVar00000001",
-      "name": "variation 1",
-      "symbol": "a83",
+      "allele_symbol_dto": {
+        "name_type_name": "symbol",
+        "format_text": "a83",
+        "display_text": "a83",
+        "synonym_url": "https://synonym_url.com/a83",
+        "synonym_scope_name": "exact",
+        "evidence_curies": [
+          "PMID:01231002"
+        ],
+        "internal": false
+      },
+      "allele_full_name_dto": {
+        "name_type_name": "full_name",
+        "format_text": "a83",
+        "display_text": "a83",
+        "synonym_url": "https://synonym_url.com/a83",
+        "synonym_scope_name": "exact",
+        "evidence_curies": [
+          "PMID:01231002"
+        ],
+        "internal": false
+      },
       "internal": false,
       "obsolete": false,
       "taxon_curie": "NCBITaxon:6239",
