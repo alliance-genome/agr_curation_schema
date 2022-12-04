@@ -679,15 +679,27 @@ slots:
   inheritance_mode:
     description: >-
       Mode of inheritance, e.g. dominant / semi-dominant /
-      recessive / unknown
-      # TODO: please enumerate the difference between this and zygosity in AffectedGenomicModel class.
-    domain: Allele
-    range: VocabularyTerm
+      recessive / unknown / codominant
+    domain: AlleleInheritanceModeSlotAnnotation
+    range: VocabularyTerm # CV 'Allele inheritance mode vocabulary'
 
   inheritance_mode_name:
     description: >-
       Name of VocabularyTerm describing the inheritance mode from the 'Allele
-      inheritance mode vocabulary' vocabulary
+      inheritance mode vocabulary'
+    domain: AlleleInheritanceModeSlotAnnotationDTO
+    range: string
+
+  allele_inheritance_modes:
+    description:  >-
+      Inheritance modes for an allele
+    domain: Allele
+    range: AlleleInheritanceModeSlotAnnotation
+    multivalued: true
+
+  allele_inheritance_mode_dtos:
+    description: >-
+      One or more allele inheritance mode DTO objects to be submitted
     domain: AlleleDTO
     range: string
 
