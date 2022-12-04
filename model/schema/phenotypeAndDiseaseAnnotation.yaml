@@ -764,6 +764,13 @@ slots:
   phenotype_term:
     range: PhenotypeTerm
 
+  phenotype_statement:
+    description: >-
+      For MODs that curate to post-composed phenotype expressions composed
+      of ontology terms and other necessary information (e.g. vocabularies,
+      free text). This field captures the free text phenotype statement.
+    range: string
+
   sgd_strain_background:
     range: AffectedGenomicModel
 

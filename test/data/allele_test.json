@@ -7,7 +7,28 @@
       "created_by_curie": "ZFIN",
       "updated_by_curie": "ZFIN",
       "internal": false,
-      "symbol": "b1219"
+      "allele_symbol_dto": {
+        "name_type_name": "nomenclature_symbol",
+        "format_text": "b1219",
+        "display_text": "b1219",
+        "synonym_url": "https://synonym_url.com/a83",
+        "synonym_scope_name": "exact",
+        "evidence_curies": [
+          "PMID:01231002"
+        ],
+        "internal": false
+      },
+      "allele_full_name_dto": {
+        "name_type_name": "full_name",
+        "format_text": "broad fin 1219",
+        "display_text": "broad fin 1219",
+        "synonym_url": "https://synonym_url.com/a83",
+        "synonym_scope_name": "exact",
+        "evidence_curies": [
+          "PMID:01231002"
+        ],
+        "internal": false
+      }
     },
     {
       "curie": "ZFIN:ZDB-ALT-130411-947",
@@ -15,7 +36,47 @@
       "created_by_curie": "ZFIN",
       "updated_by_curie": "ZFIN",
       "internal": false,
-      "symbol": "sa11077"
+      "allele_symbol_dto": {
+        "name_type_name": "nomenclature_symbol",
+        "format_text": "sa11077",
+        "display_text": "sa11077",
+        "synonym_url": "https://synonym_url.com/a83",
+        "synonym_scope_name": "exact",
+        "evidence_curies": [
+          "PMID:01231002"
+        ],
+        "internal": false
+      },
+      "allele_full_name_dto": {
+        "name_type_name": "full_name",
+        "format_text": "slimy 11077",
+        "display_text": "slimy 11077",
+        "synonym_url": "https://synonym_url.com/a83",
+        "synonym_scope_name": "exact",
+        "evidence_curies": [
+          "PMID:01231002"
+        ],
+        "internal": false
+      }
+    },
+    {
+      "curie": "WB:WBTransgene00023682",
+      "taxon_curie": "NCBITaxon:6239",
+      "created_by_curie": "WB:curator",
+      "updated_by_curie": "WB:curator",
+      "internal": false,
+      "allele_symbol_dto": {
+        "name_type_name": "nomenclature_symbol",
+        "format_text": "vsIs183",
+        "display_text": "vsIs183",
+        "internal": false
+      },
+      "references": [
+        {"curie": "WB:WBPaper00050437"},
+        {"curie": "WB:WBPaper00054725"},
+        {"curie": "WB:WBPaper00056478"},
+        {"curie": "WB:WBPaper00057105"}
+      ]
     }
   ]
 }

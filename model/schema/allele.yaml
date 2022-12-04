@@ -10,6 +10,8 @@ imports:
   - linkml:types
   - ontologyTerm
   - affectedGenomicModel
+  - agent
+  - phenotypeAndDiseaseAnnotation
 
 prefixes:
   alliance: 'http://alliancegenome.org/'
@@ -35,7 +37,9 @@ emit_prefixes:
   - xsd
   - owl
 
-# Classes
+## ------------
+## CLASSES
+## ------------
 
 
 classes:
@@ -50,10 +54,13 @@ classes:
     slots:
       - symbol
       - references
-      - inheritance_mode
       - in_collection
+      - laboratory_of_origin
       - is_extinct
+      - is_extrachromosomal
+      - is_integrated
       - allele_mutation_types
+      - allele_inheritance_modes
       - allele_germline_transmission_status
       - allele_functional_impacts
       - allele_molecular_mutations
@@ -65,6 +72,7 @@ classes:
       - allele_gene_associations
       - allele_transcript_associations
       - allele_protein_associations
+      - allele_allele_associations
       - allele_variant_associations
       - allele_construct_associations
       - allele_cell_line_associations
@@ -78,8 +86,14 @@ classes:
         description: synonyms for allele names and synonyms
       aberration:
         notes: specific to FB
-      symbol:
+      allele_symbol:
         required: true
+      laboratory_of_origin:
+        required: false
+      is_extrachromosomal:
+        required: false
+      is_integrated:
+        required: false
 
   AlleleDTO:
     is_a: GenomicEntityDTO
@@ -88,10 +102,13 @@ classes:
     slots:
       - symbol
       - reference_curies
-      - inheritance_mode_name
       - in_collection_name
+      - laboratory_of_origin_curie
       - is_extinct
+      - is_extrachromosomal
+      - is_integrated
       - allele_mutation_type_dtos
+      - allele_inheritance_mode_dtos
       - allele_germline_transmission_status_dto
       - allele_functional_impact_dtos
       - allele_molecular_mutation_dtos
@@ -106,12 +123,22 @@ classes:
     slots:
       - mutagenesis_method
       - mutagenesis_target
+      - integration_method
+      - chemical_mutagen
+      - irradiation_mutagen
 
   GenerationMethodDTO:
     is_a: AuditedObjectDTO
     slots:
       - mutagenesis_method_name
       - mutagenesis_target
+      - integration_method_name
+      - chemical_mutagen_name
+      - irradiation_mutagen_name
+
+## ------------
+## ALLELE SLOT ANNOTATION CLASSES
+## ------------
 
   AlleleMutationTypeSlotAnnotation:
     is_a: SlotAnnotation
@@ -123,6 +150,43 @@ classes:
     is_a: SlotAnnotationDTO
     slots:
       - mutation_type_curies
+
+  AlleleInheritanceModeSlotAnnotation:
+    is_a: SlotAnnotation
+    slots:
+      - single_allele
+      - inheritance_mode
+      - phenotype_term
+      - phenotype_statement
+    slot_usage:
+      single_allele:
+        required: true
+      inheritance_mode:
+        required: true
+      phenotype_term:
+        required: false
+        description: >-
+          For some MODs, the inheritance mode of an allele is reported specifically in the context of a
+          particular phenotype. This slot is intended to capture the phenotype ontology term.
+      phenotype_statment:
+        required: false
+        description: >-
+          For some MODs, the inheritance mode of an allele is reported specifically in the context of a
+          particular phenotype. This slot is intended to capture the free-text phenotype statement.
+
+  AlleleInheritanceModeSlotAnnotationDTO:
+    is_a: SlotAnnotationDTO
+    slots:
+      - inheritance_mode_name
+      - phenotype_term_curie
+      - phenotype_statement
+    slot_usage:
+      inheritance_mode_name:
+        required: true
+      phenotype_term_curie:
+        required: false
+      phenotype_statement:
+        required: false
 
   AlleleGermlineTransmissionStatusSlotAnnotation:
     is_a: SlotAnnotation
@@ -140,11 +204,29 @@ classes:
     slots:
       - single_allele
       - functional_impacts
+      - phenotype_term
+      - phenotype_statement
+    slot_usage:
+      single_allele:
+        required: true
+      phenotype_term:
+        required: false
+        description: >-
+          For some MODs, the functional impact of an allele is reported specifically in the context of a
+          particular phenotype. This slot is intended to capture the PhenotypeTerm.
+      phenotype_statment:
+        required: false
+        description: >-
+          For some MODs, the functional impact of an allele is reported specifically in the context of a
+          particular phenotype. This slot is intended to capture the free-text phenotype statement.
+
 
   AlleleFunctionalImpactSlotAnnotationDTO:
     is_a: SlotAnnotationDTO
     slots:
       - functional_impact_names
+      - phenotype_term_curie
+      - phenotype_statement
 
   AlleleMolecularMutationSlotAnnotation:
     is_a: SlotAnnotation
@@ -214,7 +296,9 @@ classes:
       - synonym_dto
       - synonym_scope_name
 
-# Allele Associations
+## ------------
+## ALLELE ASSOCIATION CLASSES
+## ------------
 
   AlleleGenerationMethodAssociation:
     is_a: Association
@@ -242,18 +326,18 @@ classes:
     description: >-
       Association between an allele and a genomic entity
     slots:
-      - evidence
       - evidence_code
       - related_note
     slot_usage:
       subject:
         range: Allele
       predicate:
-        range: ROTerm
+        range: VocabularyTerm  # If we can adequately represent all needed relations in RO, this could be ROTerm
       object:
         range: GenomicEntity
       evidence:
-        required: true
+        required: false   # This needs to be not required, at least in the base class
+
 
   AlleleGenomicEntityAssociationDTO:
     is_a: AuditedObjectDTO
@@ -307,6 +391,16 @@ classes:
     slots:
       - protein_curie
 
+  AlleleAlleleAssociation:
+    is_a: AlleleGenomicEntityAssociation
+    description: >-
+      Association between an allele and another allele
+    slot_usage:
+      predicate:
+        notes: CV 'Allele-Allele Predicates'
+      object:
+        range: Allele
+
   AlleleVariantAssociation:
     is_a: AlleleGenomicEntityAssociation
     description: >-
@@ -333,7 +427,10 @@ classes:
       subject:
         range: Allele
       predicate:
-        notes: RO:0001019 (contains)
+        range: VocabularyTerm
+        notes: >-
+        CV 'Allele-Construct Predicates' including - contains, contains_coinjection_marker,
+        contains_phenotypic_sequence_feature, and contains_innocuous_sequence_feature
       object:
         range: Construct
 
@@ -409,6 +506,14 @@ classes:
       - agm_curie
       - evidence_curies
 
+
+  AlleleGenomicLocationAssociation:
+    is_a: GenomicLocationAssociation
+    slot_usage:
+      subject: Allele
+
+
+
 # Other classes roughly grouped with the Allele class because they have relationships to Allele and were
 # designed close to the time the Allele class was designed.  These could be broken out into their own yaml files.
 
@@ -429,6 +534,7 @@ classes:
     description: >-
       Dummy cell line class
 
+  # Need to add appropriate name synonym slotAnnotations as slots removed from GenomicEntity
   SequenceTargetingReagent:
     description: >-
     is_a: GenomicEntity
@@ -475,7 +581,12 @@ classes:
     slots:
       - symbol
 
-# Slots
+
+## ------------
+## SLOTS
+## ------------
+
+
 slots:
 
   primary_image:
@@ -526,6 +637,30 @@ slots:
       The target of the mutation, e.g. strain / adult females /
       adult males / embryos / sperm / not specified
     range: string # VocabularyTerm?
+
+  chemical_mutagen:
+    description: >-
+      The chemical used to generate the mutation through mutagenesis
+    domain: GenerationMethod
+    range: VocabularyTerm # CV 'Chemical Mutagens'
+
+  chemical_mutagen_name:
+    description: >-
+      The name of the chemical used to generate the mutation through mutagenesis
+    domain: GenerationMethodDTO
+    range: string # CV 'Chemical Mutagens'
+
+  irradiation_mutagen:
+    description: >-
+      The irradiation used to generate the mutation through mutagenesis
+    domain: GenerationMethod
+    range: VocabularyTerm # CV 'Irradiation Mutagens'
+
+  irradiation_mutagen_name:
+    description: >-
+      The name of the irradiation used to generate the mutation through mutagenesis
+    domain: GenerationMethodDTO
+    range: string # CV 'Irradiation Mutagens'
 
   mutation_target_strain:
     description: >-
@@ -668,7 +803,8 @@ slots:
     description: >-
       Database status of the allele
     domain: AlleleDatabaseStatusSlotAnnotation
-    range: VocabularyTerm
+    range: VocabularyTerm # CV 'Allele Database Status'
+    required: true
 
   database_status_name:
     description: >-
@@ -701,13 +837,21 @@ slots:
     description: >-
       One or more allele inheritance mode DTO objects to be submitted
     domain: AlleleDTO
+    range: AlleleInheritanceModeSlotAnnotationDTO
+    multivalued: true
+
+  phenotype_term_curie:
+    description: >-
+      The string representation of the phenotype ontology term (PhenotypeTerm)
+      curie
     range: string
+    multivalued: false
 
   in_collection:
     description: >-
       Set of high-throughput alleles made by large projects
     domain: Allele
-    range: VocabularyTerm
+    range: VocabularyTerm # CV 'Allele collection vocabulary'
 
   in_collection_name:
     description: >-
@@ -735,6 +879,42 @@ slots:
       Does the allele still exist in a population somewhere?
     domain: Allele
     range: boolean
+
+  laboratory_of_origin:
+    description: >-
+      The laboratory of origin for the entity.
+    domain: Allele
+    range: Laboratory
+
+  laboratory_of_origin_curie:
+    description: >-
+      The curie of the laboratory of origin for the entity.
+    domain: AlleleDTO
+    range: string
+
+  is_extrachromosomal:
+    description: >-
+      Used by WormBase to indicate whether a transgenic allele is known to be extrachromosomal.
+    domain: Allele
+    range: boolean
+
+  is_integrated:
+    description: >-
+      Used by WormBase to indicate whether a transgenic allele is known to be integrated into the genome.
+    domain: Allele
+    range: boolean
+
+  integration_method:
+    description: >-
+      WormBase captures the method by which an extrachromosomal transgene was integrated into the genome.
+    domain: GenerationMethod
+    range: VocabularyTerm  #CV 'WB Transgene Integration Methods'
+
+  integration_method_name:
+    description: >-
+      WormBase captures the method by which an extrachromosomal transgene was integrated into the genome.
+    domain: GenerationMethodDTO
+    range: string
 
   analyses:
     description: >-
@@ -823,6 +1003,11 @@ slots:
     range: AlleleVariantAssociation
     multivalued: true
 
+  allele_allele_associations:
+    domain: Allele
+    range: AlleleAlleleAssociation
+    multivalued: true
+
   allele_construct_associations:
     domain: Allele
     range: AlleleConstructAssociation
@@ -847,3 +1032,25 @@ slots:
     domain: Allele
     range: AlleleGenerationMethodAssociation
     multivalued: true
+
+
+
+enums:
+  construct_component_relation_enum:
+    permissible_values:
+      expresses:
+        meaning: RO:0002292
+      is_regulated_by:
+        meaning: RO:0002334
+      targets:
+        meaning: RO:0002436
+
+  sqtr_relation_enum:
+    permissible_values:
+      targets:
+
+  nomenclature_event_enum:
+    permissible_values:
+      named:
+      renamed:
+      # merged?
