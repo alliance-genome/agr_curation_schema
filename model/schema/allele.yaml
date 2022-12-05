@@ -171,7 +171,7 @@ classes:
         description: >-
           For some MODs, the inheritance mode of an allele is reported specifically in the context of a
           particular phenotype. This slot is intended to capture the phenotype ontology term.
-      phenotype_statment:
+      phenotype_statement:
         required: false
         description: >-
           For some MODs, the inheritance mode of an allele is reported specifically in the context of a
@@ -220,7 +220,7 @@ classes:
         description: >-
           For some MODs, the functional impact of an allele is reported specifically in the context of a
           particular phenotype. This slot is intended to capture the PhenotypeTerm.
-      phenotype_statment:
+      phenotype_statement:
         required: false
         description: >-
           For some MODs, the functional impact of an allele is reported specifically in the context of a
@@ -483,8 +483,8 @@ classes:
       predicate:
         range: VocabularyTerm
         notes: >-
-        CV 'Allele-Construct Predicates' including - contains, contains_coinjection_marker,
-        contains_phenotypic_sequence_feature, and contains_innocuous_sequence_feature
+          CV 'Allele-Construct Predicates' including - contains, contains_coinjection_marker,
+          contains_phenotypic_sequence_feature, and contains_innocuous_sequence_feature
       object:
         range: Construct
 
