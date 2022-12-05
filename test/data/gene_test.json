@@ -8,7 +8,7 @@
       "updated_by_curie": "ZFIN",
       "internal": false,
       "gene_symbol_dto": {
-        "name_type_name": "symbol",
+        "name_type_name": "nomenclature_symbol",
         "format_text": "wg<sup>1</sup>",
         "display_text": "wg<sup>1</sup>",
         "synonym_url": "https://synonym_url.com/a83",
@@ -74,7 +74,11 @@
           "created_by_curie": "ZFIN",
           "updated_by_curie": "ZFIN",
           "internal": false,
-          "page_areas": [],
+          "page_areas": ["gene",
+            "gene/expression",
+            "gene/wild_type_expression",
+            "gene/expression_images",
+            "gene/references"],
           "prefix": "NCBI_Gene",
           "display_name": ""
         }
