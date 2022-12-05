@@ -567,7 +567,7 @@ slots:
     required: true
 
   mutagenesis_method:
-    alias: ["mutagen"]
+    aliases: ["mutagen"]
     range: VocabularyTerm
     description: >-
       Technique used to create the allele, e.g.
@@ -585,7 +585,7 @@ slots:
     range: string
 
   mutagenesis_target:
-    alias: ["mutagee"]
+    aliases: ["mutagee"]
     description: >-
       The target of the mutation, e.g. strain / adult females /
       adult males / embryos / sperm / not specified
