@@ -186,7 +186,7 @@ classes:
       - evidence_codes
       - single_reference
       - annotation_type
-      - with
+      - with_or_from
       - disease_qualifiers
       - condition_relations
       - genetic_sex
@@ -772,7 +772,7 @@ slots:
     domain: GeneDiseaseAnnotationDTO
     range: string
 
-  with:
+  with_or_from:
     description: >-
       http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8
     range: Gene
