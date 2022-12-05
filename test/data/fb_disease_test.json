@@ -13,10 +13,10 @@
       "annotation_type_name": "manually_curated",
       "data_provider_name": "FB",
       "created_by_curie": "FB:FB_curator",
-      "date_created": "2022-01-12T09:57:42-05:00",
+      "date_created": "2022-01-12",
       "updated_by_curie": "FB:FB_curator",
       "internal": false,
-      "date_updated": "2022-01-12T09:57:42-05:00"
+      "date_updated": "2022-01-12"
     }
   ],
   "disease_gene_ingest_set": [
@@ -32,10 +32,10 @@
       "annotation_type_name": "manually_curated",
       "data_provider_name": "FB",
       "created_by_curie": "FB:FB_curator",
-      "date_created": "2022-01-12T09:57:42-05:00",
+      "date_created": "2022-01-12",
       "updated_by_curie": "FB:FB_curator",
       "internal": false,
-      "date_updated": "2022-01-12T09:57:42-05:00"
+      "date_updated": "2022-01-12"
     }
   ]
 }

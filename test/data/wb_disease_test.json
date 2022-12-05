@@ -132,7 +132,7 @@
       "date_updated": "2017-05-22",
       "note_dtos": [
         {
-          "free_text": "Mutations in human dystrophin are associated with the Duchenne",
+          "free_text": "Mutations in human dystrophin are associated with the Duchenne and Becker types of muscular dystrophy, that affect skeletal muscles used for movement, and heart (cardiac) muscle; the genetic model for progressive myopathy in C. elegans is a mutant of the elegans dystrophin ortholog, dys-1, combined with a mutation in hlh-1, the MyoD ortholog, (dys-1(cx18);hlh-1(cc561ts), these animals display time-dependent muscle degeneration; a screen of approximately 1000 compounds on the dys-1(cx18),hlh-1(cc561) model, identified several substances that ameliorated the dystrophic phenotype, with the top hits being the sulfonamides, methazolamide (MTZ) and dichlorphenamide (DCPM), known inhibitors of carbonic anydrase (CA) enymes; knock-down of the elegans CA ortholog, cah-4, via RNAi interference, significantly reduced muscle degeneration in the dys-1(cx18),hlh-1(cc561) strain; further, the effects of MTZ and DCPM have been validated in the mdx mouse model for Duchenne muscular dystrophy (DMD).",
           "note_type_name": "disease_summary",
           "internal": false
         }
