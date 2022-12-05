@@ -4,7 +4,7 @@
     {
       "curie": "WB:WBVar00000001",
       "allele_symbol_dto": {
-        "name_type_name": "symbol",
+        "name_type_name": "nomenclature_symbol",
         "format_text": "a83",
         "display_text": "a83",
         "synonym_url": "https://synonym_url.com/a83",
@@ -28,8 +28,8 @@
       "internal": false,
       "obsolete": false,
       "taxon_curie": "NCBITaxon:6239",
-      "date_created": "2015-04-09T10:15:30+00:00",
-      "date_updated": "2022-07-11T13:12:51+00:00",
+      "date_created": "2015-04-09",
+      "date_updated": "2022-07-11",
       "created_by_curie": "WB:WBPerson002314",
       "updated_by_curie": "WB:WBPerson010002",
       "in_collection_name": "Million_Mutation_Project",
@@ -48,8 +48,8 @@
       ],
       "internal": false,
       "obsolete": false,
-      "date_created": "2015-04-09T10:15:30+00:00",
-      "date_updated": "2022-07-11T13:12:51+00:00",
+      "date_created": "2015-04-09",
+      "date_updated": "2022-07-11",
       "created_by_curie": "WB:WBPerson002314",
       "updated_by_curie": "WB:WBPerson010002"
     }
@@ -65,8 +65,8 @@
       ],
       "internal": false,
       "obsolete": false,
-      "date_created": "2015-04-09T10:15:30+00:00",
-      "date_updated": "2022-07-11T13:12:51+00:00",
+      "date_created": "2015-04-09",
+      "date_updated": "2022-07-11",
       "created_by_curie": "WB:WBPerson002314",
       "updated_by_curie": "WB:WBPerson010002"
     }
@@ -82,8 +82,8 @@
       ],
       "internal": false,
       "obsolete": false,
-      "date_created": "2015-04-09T10:15:30+00:00",
-      "date_updated": "2022-07-11T13:12:51+00:00",
+      "date_created": "2015-04-09",
+      "date_updated": "2022-07-11",
       "created_by_curie": "WB:WBPerson002314",
       "updated_by_curie": "WB:WBPerson010002"
     }
@@ -95,8 +95,8 @@
       "agm_curie": "WB:WBStrain00000001",
       "internal": false,
       "obsolete": false,
-      "date_created": "2015-04-09T10:15:30+00:00",
-      "date_updated": "2022-07-11T13:12:51+00:00",
+      "date_created": "2015-04-09",
+      "date_updated": "2022-07-11",
       "created_by_curie": "WB:WBPerson002314",
       "updated_by_curie": "WB:WBPerson010002"
     }
@@ -112,8 +112,8 @@
       ],
       "internal": false,
       "obsolete": false,
-      "date_created": "2015-04-09T10:15:30+00:00",
-      "date_updated": "2022-07-11T13:12:51+00:00",
+      "date_created": "2015-04-09",
+      "date_updated": "2022-07-11",
       "created_by_curie": "WB:WBPerson002314",
       "updated_by_curie": "WB:WBPerson010002"
     }
@@ -125,8 +125,8 @@
       "cell_line_curie": "WB:WBCell00000002",
       "internal": false,
       "obsolete": false,
-      "date_created": "2015-04-09T10:15:30+00:00",
-      "date_updated": "2022-07-11T13:12:51+00:00",
+      "date_created": "2015-04-09",
+      "date_updated": "2022-07-11",
       "created_by_curie": "WB:WBPerson002314",
       "updated_by_curie": "WB:WBPerson010002"
     },
@@ -136,8 +136,8 @@
       "cell_line_curie": "WB:WBCell00000001",
       "internal": false,
       "obsolete": false,
-      "date_created": "2015-04-09T10:15:30+00:00",
-      "date_updated": "2022-07-11T13:12:51+00:00",
+      "date_created": "2015-04-09",
+      "date_updated": "2022-07-11",
       "created_by_curie": "WB:WBPerson002314",
       "updated_by_curie": "WB:WBPerson010002"
     }
@@ -153,8 +153,8 @@
       ],
       "internal": false,
       "obsolete": false,
-      "date_created": "2015-04-09T10:15:30+00:00",
-      "date_updated": "2022-07-11T13:12:51+00:00",
+      "date_created": "2015-04-09",
+      "date_updated": "2022-07-11",
       "created_by_curie": "WB:WBPerson002314",
       "updated_by_curie": "WB:WBPerson010002"
     }
