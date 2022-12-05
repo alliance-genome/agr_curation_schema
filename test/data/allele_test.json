@@ -71,20 +71,7 @@
         "display_text": "vsIs183",
         "internal": false
       },
-      "references": [
-        {
-          "curie": "WB:WBPaper00050437"
-        },
-        {
-          "curie": "WB:WBPaper00054725"
-        },
-        {
-          "curie": "WB:WBPaper00056478"
-        },
-        {
-          "curie": "WB:WBPaper00057105"
-        }
-      ]
+      "reference_curies": ["WB:WBPaper00050437","WB:WBPaper00054725","WB:WBPaper00056478","WB:WBPaper00057105"]
     }
   ]
 }

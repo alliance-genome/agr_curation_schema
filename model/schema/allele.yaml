@@ -909,13 +909,6 @@ slots:
     range: AlleleInheritanceModeSlotAnnotationDTO
     multivalued: true
 
-  phenotype_term_curie:
-    description: >-
-      The string representation of the phenotype ontology term (PhenotypeTerm)
-      curie
-    range: string
-    multivalued: false
-
   in_collection:
     description: >-
       Set of high-throughput alleles made by large projects
