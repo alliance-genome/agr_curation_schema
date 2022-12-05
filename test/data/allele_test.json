@@ -72,10 +72,18 @@
         "internal": false
       },
       "references": [
-        {"curie": "WB:WBPaper00050437"},
-        {"curie": "WB:WBPaper00054725"},
-        {"curie": "WB:WBPaper00056478"},
-        {"curie": "WB:WBPaper00057105"}
+        {
+          "curie": "WB:WBPaper00050437"
+        },
+        {
+          "curie": "WB:WBPaper00054725"
+        },
+        {
+          "curie": "WB:WBPaper00056478"
+        },
+        {
+          "curie": "WB:WBPaper00057105"
+        }
       ]
     }
   ]

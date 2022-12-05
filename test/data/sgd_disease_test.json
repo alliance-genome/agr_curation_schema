@@ -8,7 +8,7 @@
       ],
       "annotation_type_name": "manually curated",
       "reference_curie": "PMID:21145416",
-      "data_provider": "SGD",
+      "data_provider_name": "SGD",
       "do_term_curie": "DOID:10588",
       "created_by_curie": "SGD",
       "updated_by_curie": "SGD",

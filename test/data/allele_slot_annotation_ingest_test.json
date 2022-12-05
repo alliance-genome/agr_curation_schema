@@ -99,6 +99,19 @@
           ],
           "internal": false
         }
+      ],
+      "allele_synonym_dtos": [
+        {
+          "name_type_name": "systematic_name",
+          "format_text": "YHR084W",
+          "display_text": "YHR084W",
+          "synonym_url": "https://synonym_url.com/YHR084W",
+          "synonym_scope_name": "exact",
+          "evidence_curies": [
+            "PMID:01231002"
+          ],
+          "internal": false
+        }
       ]
     }
   ]

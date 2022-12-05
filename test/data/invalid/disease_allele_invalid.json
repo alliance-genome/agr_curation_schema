@@ -6,7 +6,7 @@
         "TAS"
       ],
       "reference_curie": "PMID:0012345",
-      "data_provider": [
+      "data_provider_name": [
         "ZFIN"
       ],
       "allele_curie": "ZFIN:ZDB-ALT-001122-1",
