@@ -8,7 +8,7 @@
       "updated_by_curie": "ZFIN",
       "internal": false,
       "allele_symbol_dto": {
-        "name_type_name": "symbol",
+        "name_type_name": "nomenclature_symbol",
         "format_text": "b1219",
         "display_text": "b1219",
         "synonym_url": "https://synonym_url.com/a83",
@@ -37,7 +37,7 @@
       "updated_by_curie": "ZFIN",
       "internal": false,
       "allele_symbol_dto": {
-        "name_type_name": "symbol",
+        "name_type_name": "nomenclature_symbol",
         "format_text": "sa11077",
         "display_text": "sa11077",
         "synonym_url": "https://synonym_url.com/a83",
