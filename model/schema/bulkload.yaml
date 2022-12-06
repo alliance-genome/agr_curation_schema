@@ -135,7 +135,7 @@ slots:
     description: >-
       Indicates when the file was last loaded
     domain: BulkLoadFile
-    range: date  
+    range: datetime
 
   md5_sum:
     description: Generated md5Sum of the file that has been uploaded
@@ -187,12 +187,12 @@ slots:
   load_started:
     description: >-
       The date and time that the load started.
-    range: date
+    range: date-time
 
   load_finished:
     description: >-
       The date and time that the load finished.
-    range: date
+    range: date-time
 
   total_records:
     description:
