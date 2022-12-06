@@ -167,12 +167,10 @@
   ],
   "allele_genomic_location_association_ingest_set": [
     {
-      "genomic_entity_curie": "WB:WBVar00000002",
+      "genomic_entity_curie": "WB:WBTransgene00015954",
       "predicate_name": "has_genomic_location",
       "chromosome_curie": "WB:II",
       "assembly_curie": "WBcel235",
-      "start": 1436946,
-      "end": 1436946,
       "evidence_curies": [
         "PMID:11231512"
       ],
