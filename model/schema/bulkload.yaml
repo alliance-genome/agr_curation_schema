@@ -187,12 +187,12 @@ slots:
   load_started:
     description: >-
       The date and time that the load started.
-    range: date-time
+    range: datetime
 
   load_finished:
     description: >-
       The date and time that the load finished.
-    range: date-time
+    range: datetime
 
   total_records:
     description:
