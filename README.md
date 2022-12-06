@@ -175,8 +175,10 @@ git clone https://github.com/alliance-genome/agr_curation_schema
 ```
 
 2. validating a local JSON file against the schema:
+make sure you have linkml installed (see above for instructions on how to install the agr_curation_schema dependencies into your 
+python environment).  Then run the validator:
 ```bash
-python util/validate_agr_schema.py -i path_to_the_json_data_to_validate
+poetry run linkml-validate -C Ingest -s model/schema/allianceModel.yaml -s model/schema/allianceModel.yaml [path/to/your/submission/file.json]
 ```
 
 example command using test data (replace test/allele_ingest_test.json with the path to your submission.json):
