@@ -80,6 +80,7 @@ classes:
       - allele_image_associations
       - allele_origin_associations
       - allele_generation_method_associations
+      - allele_genomic_location_associations
     exact_mappings:
       - SO:0001023
     slot_usage:
@@ -560,11 +561,11 @@ classes:
       - agm_curie
       - evidence_curies
 
-
   AlleleGenomicLocationAssociation:
     is_a: GenomicLocationAssociation
     slot_usage:
-      subject: Allele
+      subject:
+        range: Allele
 
 
 
@@ -1132,6 +1133,10 @@ slots:
     range: AlleleGenerationMethodAssociation
     multivalued: true
 
+  allele_genomic_location_associations:
+    domain: Allele
+    range: AlleleGenomicLocationAssociation
+    multivalued: true
 
 
 enums:

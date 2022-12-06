@@ -164,5 +164,24 @@
       "created_by_curie": "WB:WBPerson002314",
       "updated_by_curie": "WB:WBPerson010002"
     }
+  ],
+  "allele_genomic_location_association_ingest_set": [
+    {
+      "genomic_entity_curie": "WB:WBVar00000002",
+      "predicate_name": "has_genomic_location",
+      "chromosome_curie": "WB:II",
+      "assembly_curie": "WBcel235",
+      "start": 1436946,
+      "end": 1436946,
+      "evidence_curies": [
+        "PMID:11231512"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "date_created": "2015-04-09T10:15:30+00:00",
+      "date_updated": "2022-07-11T13:12:51+00:00",
+      "created_by_curie": "WB:WBPerson002314",
+      "updated_by_curie": "WB:WBPerson010002"
+    }
   ]
 }

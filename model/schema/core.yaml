@@ -118,14 +118,14 @@ classes:
     slots:
       - cross_references
       - secondary_identifiers
-      - genomic_locations
+      - genomic_location_associations
 
   GenomicEntityDTO:
     is_a: BiologicalEntityDTO
     slots:
       - cross_reference_dtos
       - secondary_identifiers
-      - genomic_location_dtos
+      - genomic_location_association_dtos
 
   Transcript:
     is_a: GenomicEntity
@@ -323,12 +323,9 @@ classes:
       curie:
         required: true
 
-  GenomicLocation:
-    is_a: AuditedObject
+  GenomicLocationAssociation:
+    is_a: Association
     slots:
-      - subject
-      - predicate   # what should the predicate range be for this class? CG
-      - object
       - has_assembly
       - start
       - end
@@ -341,6 +338,9 @@ classes:
         range: Chromosome
         description: >-
           object should be the chromosome identifier
+      predicate:
+        any_of:
+          equals_string: has_genomic_location
     defining_slots:
       - subject
       - predicate
@@ -349,11 +349,11 @@ classes:
       - start
       - end
 
-  GenomicLocationDTO:
+  GenomicLocationAssociationDTO:
     is_a: AuditedObjectDTO
     slots:
       - genomic_entity_curie
-      - predicate   # what should the predicate range be for this class? CG
+      - predicate_name
       - chromosome_curie
       - assembly_curie
       - start
@@ -361,16 +361,18 @@ classes:
     slot_usage:
       genomic_entity_curie:
         required: true
-      predicate:
+      predicate_name:
         required: true
+        any_of:
+          equals_string: has_genomic_location
       chromosome_curie:
         required: true
       assembly_curie:
         required: true
       start:
-        required: true
+        required: false  # CG: we need to make coordinates optional
       end:
-        required: true
+        required: false  # CG: we need to make coordinates optional
 
   Protein:
     is_a: GenomicEntity
@@ -468,7 +470,7 @@ slots:
     description: The end of the feature in positive 1-based integer coordinates
 
   has_assembly:
-    domain: GenomicLocation
+    domain: GenomicLocationAssociation
     required: true
     range: Assembly
 
@@ -629,14 +631,14 @@ slots:
     multivalued: false
     range: uriorcurie
 
-  genomic_locations:
+  genomic_location_associations:
     domain: GenomicEntity
-    range: GenomicLocation
+    range: GenomicLocationAssociation
     multivalued: true
 
-  genomic_location_dtos:
+  genomic_location_association_dtos:
     domain: GenomicEntityDTO
-    range: GenomicLocationDTO
+    range: GenomicLocationAssociationDTO
     multivalued: true
 
   table_key:
