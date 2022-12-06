@@ -355,6 +355,7 @@ classes:
       - genomic_entity_curie
       - predicate_name
       - chromosome_curie
+      - evidence_curies
       - assembly_curie
       - start
       - end
