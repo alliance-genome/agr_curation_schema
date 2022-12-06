@@ -122,7 +122,7 @@ classes:
   GenerationMethod:
     is_a: AuditedObject
     slots:
-      - mutagenesis_method
+      - mutagenesis_methods
       - mutagenesis_target
       - integration_method
       - chemical_mutagen
@@ -131,7 +131,7 @@ classes:
   GenerationMethodDTO:
     is_a: AuditedObjectDTO
     slots:
-      - mutagenesis_method_name
+      - mutagenesis_method_names
       - mutagenesis_target
       - integration_method_name
       - chemical_mutagen_name
@@ -363,6 +363,9 @@ classes:
     slot_usage:
       subject:
         range: Allele
+      predicate:
+        any_of:
+          equals_string: has_generation_method
       object:
         range: GenerationMethod
 
@@ -374,6 +377,12 @@ classes:
       - generation_method_dto
       - evidence_curies
       - mutation_target_strain_curie
+    slot_usage:
+      predicate_name:
+        required: true
+        any_of:
+          equals_string: has_generation_method
+
 
   AlleleGenomicEntityAssociation:
     is_a: Association
@@ -675,16 +684,17 @@ slots:
     range: string
     required: true
 
-  mutagenesis_method:
+  mutagenesis_methods:
     alias: ["mutagen"]
     range: VocabularyTerm
+    multivalued: true
     description: >-
       Technique used to create the allele, e.g.
       spontaneous / naturally occurring / radiation-induced / recombinant /
       ENU / CRISPR / TALEN / gamma rays / not specified / spontaneous / DNA /
       DNA AND CRISPR / DNA and TALEN / zinc finger nuclease / EMS
 
-  mutagenesis_method_name:
+  mutagenesis_method_names:
     description: >-
       Name of the VocabularyTerm describing the mutagenesis method, e.g.
       spontaneous / naturally occurring / radiation-induced / recombinant /
@@ -692,6 +702,7 @@ slots:
       DNA AND CRISPR / DNA and TALEN / zinc finger nuclease / EMS
     domain: AlleleGenerationMethodAssociationDTO
     range: string
+    multivalued: true
 
   mutagenesis_target:
     alias: ["mutagee"]
@@ -740,6 +751,7 @@ slots:
   generation_method_dto:
     domain: AlleleGenerationMethodAssociationDTO
     range: GenerationMethodDTO
+    multivalued: false
 
   construct_components:
     multivalued: true
@@ -972,12 +984,14 @@ slots:
       WormBase captures the method by which an extrachromosomal transgene was integrated into the genome.
     domain: GenerationMethod
     range: VocabularyTerm  #CV 'WB Transgene Integration Methods'
+    multivalued: false
 
   integration_method_name:
     description: >-
       WormBase captures the method by which an extrachromosomal transgene was integrated into the genome.
     domain: GenerationMethodDTO
-    range: string
+    range: string  #CV 'WB Transgene Integration Methods'
+    multivalued: false
 
   analyses:
     description: >-
