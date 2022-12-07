@@ -8,7 +8,7 @@
       "updated_by_curie": "ZFIN",
       "internal": false,
       "gene_symbol_dto": {
-        "name_type_name": "symbol",
+        "name_type_name": "nomenclature_symbol",
         "format_text": "wg<sup>1</sup>",
         "display_text": "wg<sup>1</sup>",
         "synonym_url": "https://synonym_url.com/a83",

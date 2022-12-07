@@ -4,7 +4,7 @@
     {
       "curie": "WB:WBVar00000001",
       "allele_symbol_dto": {
-        "name_type_name": "symbol",
+        "name_type_name": "nomenclature_symbol",
         "format_text": "wg<sup>1</sup>",
         "display_text": "wg<sup>1</sup>",
         "synonym_url": "https://synonym_url.com/a83",
@@ -33,7 +33,13 @@
       "created_by_curie": "WB:WBPerson002314",
       "updated_by_curie": "WB:WBPerson010002",
       "in_collection_name": "Million_Mutation_Project",
-      "inheritance_mode_name": "semi-dominant",
+      "allele_inheritance_mode_dtos": [
+        {
+          "inheritance_mode_name": "semi-dominant",
+          "evidence_curies": ["PMID:11231512"],
+          "internal": false
+        }
+      ],
       "is_extinct": false,
       "allele_mutation_type_dtos": [
         {

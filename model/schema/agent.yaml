@@ -49,6 +49,8 @@ classes:
 
   Laboratory:
     is_a: Organization
+    slots:
+      - curie
 
   Company:
     is_a: Organization
