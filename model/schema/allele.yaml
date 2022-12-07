@@ -60,6 +60,7 @@ classes:
       - is_extinct
       - is_extrachromosomal
       - is_integrated
+      - transgene_chromosome_location
       - allele_mutation_types
       - allele_inheritance_modes
       - allele_germline_transmission_status
@@ -80,7 +81,6 @@ classes:
       - allele_image_associations
       - allele_origin_associations
       - allele_generation_method_associations
-      - allele_genomic_location_associations
     exact_mappings:
       - SO:0001023
     slot_usage:
@@ -108,6 +108,7 @@ classes:
       - is_extinct
       - is_extrachromosomal
       - is_integrated
+      - transgene_chromosome_location_curie
       - allele_mutation_type_dtos
       - allele_inheritance_mode_dtos
       - allele_germline_transmission_status_dto
@@ -570,12 +571,6 @@ classes:
       - agm_curie
       - evidence_curies
 
-  AlleleGenomicLocationAssociation:
-    is_a: GenomicLocationAssociation
-    slot_usage:
-      subject:
-        range: Allele
-
 
 
 # Other classes roughly grouped with the Allele class because they have relationships to Allele and were
@@ -955,6 +950,22 @@ slots:
     domain: Allele
     range: boolean
 
+  transgene_chromosome_location:
+    description: >-
+      The chromosome to which a transgene has been mapped. Used for WormBase transgenes
+      that have been integrated into the genome and mapped to a chromosome.
+    domain: Allele
+    range: Chromosome
+    multivalued: false
+
+  transgene_chromosome_location_curie:
+    description: >-
+      The curie string of the chromosome to which a transgene has been mapped. Used for WormBase
+      transgenes that have been integrated into the genome and mapped to a chromosome.
+    domain: AlleleDTO
+    range: string
+    multivalued: false
+
   laboratory_of_origin:
     description: >-
       The laboratory of origin for the entity.
@@ -1147,10 +1158,6 @@ slots:
     range: AlleleGenerationMethodAssociation
     multivalued: true
 
-  allele_genomic_location_associations:
-    domain: Allele
-    range: AlleleGenomicLocationAssociation
-    multivalued: true
 
 
 enums:

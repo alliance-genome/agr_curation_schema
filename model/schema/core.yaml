@@ -371,9 +371,9 @@ classes:
       assembly_curie:
         required: true
       start:
-        required: false  # CG: we need to make coordinates optional
+        required: true
       end:
-        required: false  # CG: we need to make coordinates optional
+        required: true
 
   Protein:
     is_a: GenomicEntity
