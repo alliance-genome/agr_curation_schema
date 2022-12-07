@@ -66,6 +66,7 @@
       "updated_by_curie": "WB:curator",
       "internal": false,
       "is_integrated": true,
+      "transgene_chromosome_location_curie": "WB:II",
       "allele_symbol_dto": {
         "name_type_name": "nomenclature_symbol",
         "format_text": "vsIs183",
