@@ -917,6 +917,8 @@ slots:
     domain: AlleleDTO
     range: AlleleInheritanceModeSlotAnnotationDTO
     multivalued: true
+    inlined_as_list: true
+    inlined: true
 
   in_collection:
     description: >-
@@ -1061,6 +1063,8 @@ slots:
     domain: AlleleDTO
     range: AlleleNoteSlotAnnotationDTO
     multivalued: true
+    inlined_as_list: true
+    inlined: true
 
   allele_symbol:
     description: >-
