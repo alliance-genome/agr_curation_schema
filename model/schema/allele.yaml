@@ -123,7 +123,7 @@ classes:
   GenerationMethod:
     is_a: AuditedObject
     slots:
-      - mutagenesis_methods
+      - mutagenesis_method_names
       - mutagenesis_target
       - integration_method
       - chemical_mutagen
@@ -1057,6 +1057,7 @@ slots:
     range: AlleleNoteSlotAnnotation
 
   allele_note_dtos:
+    is_a: note_dtos
     domain: AlleleDTO
     range: AlleleNoteSlotAnnotationDTO
     multivalued: true

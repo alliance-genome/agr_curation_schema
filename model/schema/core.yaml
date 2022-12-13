@@ -171,7 +171,7 @@ classes:
       A-Team curation UI Controlled Vocabulary Terms Table.
     slots:
       - free_text
-      - note_type
+      - note_type_name
       - evidence
     slot_usage:
       free_text:
@@ -186,6 +186,7 @@ classes:
           - value: gene_disease_summary
           - value: gene_function_summary
           - value: gene_phenotype_summary
+          - value: transgene_construction_summary
 
   NoteDTO:
     is_a: AuditedObjectDTO

@@ -75,7 +75,7 @@
       },
       "allele_note_dtos": [
         {
-          "note_dto":{
+          "note_dto": {
             "free_text": "[nlp-3::GCaMP5::nlp-3 3'UTR + nlp-3::mCherry::nlp-3 3'UTR + lin-15(+)]",
             "note_type_name": "transgene_content_summary",
             "internal": false
