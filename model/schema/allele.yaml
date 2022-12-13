@@ -746,6 +746,7 @@ slots:
     domain: AlleleGenerationMethodAssociationDTO
     range: GenerationMethodDTO
     multivalued: false
+    inlined: true
 
   construct_components:
     multivalued: true

@@ -571,6 +571,7 @@ slots:
 
   note_dto:
     range: NoteDTO
+    inlined: true
 
   note_dtos:
     range: NoteDTO
@@ -646,6 +647,8 @@ slots:
     domain: GenomicEntityDTO
     range: GenomicLocationAssociationDTO
     multivalued: true
+    inlined: true
+    inlined_as_list: true
 
   table_key:
     description: >-
