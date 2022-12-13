@@ -123,7 +123,7 @@ classes:
   GenerationMethod:
     is_a: AuditedObject
     slots:
-      - mutagenesis_method_names
+      - mutagenesis_methods
       - mutagenesis_target
       - integration_method
       - chemical_mutagen
@@ -679,9 +679,7 @@ slots:
     range: string
     required: true
 
-  mutagenesis_method:
-    aliases: ["mutagen"]
-
+  mutagenesis_methods:
     range: VocabularyTerm
     multivalued: true
     description: >-
