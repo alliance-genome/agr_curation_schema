@@ -58,6 +58,44 @@
         ],
         "internal": false
       }
+    },
+    {
+      "curie": "WB:WBTransgene00023682",
+      "taxon_curie": "NCBITaxon:6239",
+      "created_by_curie": "WB:curator",
+      "updated_by_curie": "WB:curator",
+      "internal": false,
+      "is_integrated": true,
+      "transgene_chromosome_location_curie": "WB:II",
+      "allele_symbol_dto": {
+        "name_type_name": "nomenclature_symbol",
+        "format_text": "vsIs183",
+        "display_text": "vsIs183",
+        "internal": false
+      },
+      "allele_note_dtos": [
+        {
+          "note_dto":{
+            "free_text": "[nlp-3::GCaMP5::nlp-3 3'UTR + nlp-3::mCherry::nlp-3 3'UTR + lin-15(+)]",
+            "note_type_name": "transgene_content_summary",
+            "internal": false
+          },
+          "internal": false
+        },
+        {
+          "note_dto": {
+            "free_text": "mCherry and GCaMP5G coding sequences were ligated into pJB9 bearing the nlp-3 promoter and nlp-3 3' untranslated region, and the resulting plasmids (GCaMP5, pKMC300, 80 ng/µl; mCherry, pKMC299, 20 ng/µl) were co-injected with pL15EK (50 ng/µl) into LX1832 worms. The extrachromosomal transgene produced was integrated with UV/TMP, creating the integrated transgene vsIs183",
+            "note_type_name": "transgene_construction_summary",
+            "internal": false
+          },
+          "internal": false
+        }
+      ],
+      "reference_curies": [
+        "WB:WBPaper00050437",
+        "WB:WBPaper00054725",
+        "WB:WBPaper00056478",
+        "WB:WBPaper00057105"]
     }
   ]
 }

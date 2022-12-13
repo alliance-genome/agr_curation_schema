@@ -157,6 +157,15 @@ slots:
     mixins:
       - object_set
 
+  allele_genomic_location_association_ingest_set:
+    description: >-
+      An ingest set of genomic locations DTOs that are associated with an allele
+    domain: Ingest
+    range: GenomicLocationAssociationDTO
+    multivalued: true
+    mixins:
+      - object_set
+
   disease_allele_ingest_set:
     description: >-
     domain: Ingest
@@ -228,6 +237,7 @@ classes:
       - allele_origin_association_ingest_set
       - allele_image_association_ingest_set
       - allele_generation_method_association_ingest_set
+      - allele_genomic_location_association_ingest_set
       - agm_ingest_set
       - sqtr_ingest_set
       - ontology_closure_ingest_set
