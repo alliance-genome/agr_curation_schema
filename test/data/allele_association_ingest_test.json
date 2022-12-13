@@ -33,7 +33,13 @@
       "created_by_curie": "WB:WBPerson002314",
       "updated_by_curie": "WB:WBPerson010002",
       "in_collection_name": "Million_Mutation_Project",
-      "inheritance_mode_name": "semi-dominant",
+      "allele_inheritance_mode_dtos": [
+        {
+          "inheritance_mode_name": "semi-dominant",
+          "evidence_curies": ["PMID:11231512"],
+          "internal": false
+        }
+      ],
       "is_extinct": false
     }
   ],
@@ -148,6 +154,31 @@
       "ro_term_curie": "RO:0001019",
       "variant_curie": "WB:WBVar00000001",
       "evidence_code_curie": "ECO:0000006",
+      "evidence_curies": [
+        "PMID:11231512"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "date_created": "2015-04-09T10:15:30+00:00",
+      "date_updated": "2022-07-11T13:12:51+00:00",
+      "created_by_curie": "WB:WBPerson002314",
+      "updated_by_curie": "WB:WBPerson010002"
+    }
+  ],
+  "allele_generation_method_association_ingest_set": [
+    {
+      "allele_curie": "WB:WBTransgene00023682",
+      "predicate_name": "has_generation_method",
+      "generation_method_dto": {
+        "mutagenesis_method_names": [
+          "chemical mutagenesis",
+          "irradiation mutagenesis"
+        ],
+        "integration_method_name": "ultraviolet_irradiation_with_TMP",
+        "chemical_mutagen_name": "trimethylpsoralen (TMP)",
+        "irradiation_mutagen_name": "U.V.",
+        "internal": false
+      },
       "evidence_curies": [
         "PMID:11231512"
       ],
