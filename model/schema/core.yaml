@@ -176,7 +176,7 @@ classes:
     slot_usage:
       free_text:
         required: true
-      note_type_name:           # Permissible values currently visible in A-Team curation UI CV table
+      note_type:           # Permissible values currently visible in A-Team curation UI CV table
         required: true
         examples:
           - value: disease_summary
