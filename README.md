@@ -183,7 +183,7 @@ poetry run linkml-validate -C Ingest -s model/schema/allianceModel.yaml -s model
 
 example command using test data (replace test/allele_ingest_test.json with the path to your submission.json):
 ```bash
-run linkml-validate -C Ingest -s model/schema/allianceModel.yaml -s model/schema/allianceModel.yaml test/allele_ingest_test.json
+poetry run linkml-validate -C Ingest -s model/schema/allianceModel.yaml -s model/schema/allianceModel.yaml test/allele_ingest_test.json
 ```
 
 note: it's good practice to use a python virtual environment when running commands as the installed version of python
