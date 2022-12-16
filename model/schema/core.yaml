@@ -517,12 +517,6 @@ slots:
       The cateogry of pages the resource in the context of the URL associated with the crossReference
       provides.  Equivalent to the 'page' attribute in the Alliance resourceDescriptor file.
 
-  private_comment:
-    description: >-
-      A private explanatory note from curators about some entity, for internal
-      use only.
-    range: string
-
   uncertain:
     description: >-
       If set to true, then the related entity is uncertain.

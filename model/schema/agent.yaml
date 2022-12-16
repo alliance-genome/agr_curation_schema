@@ -66,6 +66,7 @@ classes:
       - old_emails
       - mod_entity_id
       - unique_id
+      - affiliated_alliance_member
     exact_mappings:
       - schema:person
       - foaf:Person
@@ -87,6 +88,11 @@ classes:
         required: true
 
 slots:
+
+  affiliated_alliance_member:
+    description: The Alliance Member the person is affiliated with
+    domain: Person
+    range: AllianceMember
 
   orcid:
     description:  Open Researcher and Contributor ID
