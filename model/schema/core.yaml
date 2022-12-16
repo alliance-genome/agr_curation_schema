@@ -186,6 +186,7 @@ classes:
           - value: gene_disease_summary
           - value: gene_function_summary
           - value: gene_phenotype_summary
+          - value: transgene_construction_summary
 
   NoteDTO:
     is_a: AuditedObjectDTO
@@ -570,10 +571,13 @@ slots:
 
   note_dto:
     range: NoteDTO
+    inlined: true
 
   note_dtos:
     range: NoteDTO
     multivalued: true
+    inlined: true
+    inlined_as_list: true
 
   generated_by:
     description: >-
@@ -643,6 +647,8 @@ slots:
     domain: GenomicEntityDTO
     range: GenomicLocationAssociationDTO
     multivalued: true
+    inlined: true
+    inlined_as_list: true
 
   table_key:
     description: >-
@@ -656,7 +662,7 @@ slots:
     aliases: [ 'creation_date' ]
     description: >-
       The date on which an entity was created. This can be applied to nodes or edges.
-    range: date
+    range: datetime
     exact_mappings:
       - dct:createdOn
       - WIKIDATA_PROPERTY:P577
@@ -665,21 +671,21 @@ slots:
     aliases: ['date_last_modified']
     description: >-
       Date on which an entity was last modified.
-    range: date
+    range: datetime
 
   db_date_created:
     description: >-
       The date on which an entity was created in the Alliance database.  This
       is disinct from date_created, which represents the date when the entity
       was originally created (i.e. at the MOD for imported data).
-    range: date
+    range: datetime
 
   db_date_updated:
     description: >-
       Date on which an entity was last modified in the Alliance database.  This
       is disinct from date_updated, which represents the date when the entity
       was last modified and may predate import into the Alliance database.
-    range: date
+    range: datetime
 
   created_by:
     description: >-

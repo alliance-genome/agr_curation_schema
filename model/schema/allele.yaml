@@ -680,7 +680,6 @@ slots:
     required: true
 
   mutagenesis_methods:
-    alias: ["mutagen"]
     range: VocabularyTerm
     multivalued: true
     description: >-
@@ -700,7 +699,7 @@ slots:
     multivalued: true
 
   mutagenesis_target:
-    alias: ["mutagee"]
+    aliases: ["mutagee"]
     description: >-
       The target of the mutation, e.g. strain / adult females /
       adult males / embryos / sperm / not specified
@@ -747,6 +746,7 @@ slots:
     domain: AlleleGenerationMethodAssociationDTO
     range: GenerationMethodDTO
     multivalued: false
+    inlined: true
 
   construct_components:
     multivalued: true
@@ -916,6 +916,8 @@ slots:
     domain: AlleleDTO
     range: AlleleInheritanceModeSlotAnnotationDTO
     multivalued: true
+    inlined_as_list: true
+    inlined: true
 
   in_collection:
     description: >-
@@ -1056,9 +1058,12 @@ slots:
     range: AlleleNoteSlotAnnotation
 
   allele_note_dtos:
+    is_a: note_dtos
     domain: AlleleDTO
     range: AlleleNoteSlotAnnotationDTO
     multivalued: true
+    inlined_as_list: true
+    inlined: true
 
   allele_symbol:
     description: >-

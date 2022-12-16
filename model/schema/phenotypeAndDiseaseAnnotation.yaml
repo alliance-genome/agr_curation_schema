@@ -186,7 +186,7 @@ classes:
       - evidence_codes
       - single_reference
       - annotation_type
-      - with
+      - with_or_from
       - disease_qualifiers
       - condition_relations
       - genetic_sex
@@ -231,7 +231,7 @@ classes:
         required: true
       annotation_type:
         required: false
-      with:
+      with_or_from:
         description: >-
           A field for disease annotations that captures the human gene the
           implicated MOD gene is homologous or orthologous to when using the ISS (inferred
@@ -790,7 +790,7 @@ slots:
     domain: GeneDiseaseAnnotationDTO
     range: string
 
-  with:
+  with_or_from:
     description: >-
       http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8
     range: Gene

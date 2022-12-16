@@ -115,6 +115,8 @@ slots:
     domain: AffectedGenomicModelDTO
     range: AffectedGenomicModelComponentDTO
     multivalued: true
+    inlined: true
+    inlined_as_list: true
 
   has_allele:
     domain: AffectedGenomicModelComponent
