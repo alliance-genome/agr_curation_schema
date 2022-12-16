@@ -224,6 +224,49 @@ poetry install
 make test
 ```
 
+## Alternate development environment - Using Docker
+
+1) install docker
+2) build the docker image
+```bash
+docker build -t agr_curation_schema .
+```
+3) run the docker image
+```bash
+docker run -t -d --name agr_curation_schema agr_curation_schema
+```
+4) invade the running container
+```bash
+docker exec -it agr_curation_schema /bin/bash
+```
+5) clone the repo
+```bash
+git clone https://github.com/alliance-genome/agr_curation_schema
+cd agr_curation_schema
+git checkout my_branch_to_run_tests
+```
+6) install the project
+```bash
+poetry install
+```
+7) run the tests
+```bash
+make test
+```
+
+## Alternate alternate test environment - just use pipx on MacOS
+1) install pipx
+```bash
+brew install pipx --user
+```
+2) run tests in an isolated pipx environment
+```bash
+pipx run --spec linkml linkml-validate -C Ingest -s model/schema/allianceModel.yaml -s model/schema/allianceModel.yaml test/data/allele_test.json
+```
+
+If you need to make changes based on test results, you may wish to configure git 
+according to https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls
+in order to avoid having to enter your github credentials every time you push a change.
 
 
 ## GitHub Actions
