@@ -843,11 +843,13 @@ slots:
     description: Germline transmission status for a given allele
     domain: Allele
     range: AlleleGermlineTransmissionStatusSlotAnnotation
+    multivalued: false
 
   allele_germline_transmission_status_dto:
     domain: AlleleDTO
     range: AlleleGermlineTransmissionStatusSlotAnnotationDTO
     inlined: true
+    multivalued: false
 
   germline_transmission_status:
     description: >-
@@ -1056,6 +1058,7 @@ slots:
     description: Notes for a given allele
     domain: Allele
     range: AlleleNoteSlotAnnotation
+    multivalued: true
 
   allele_note_dtos:
     is_a: note_dtos

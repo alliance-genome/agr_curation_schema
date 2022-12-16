@@ -38,6 +38,7 @@ slots:
     description: >-
       Free text synonym(s) of a term, used for controlled vocabulary terms; this is distinct from the
       'synonyms' slot which has a range of a Synonym class object.
+    domain: VocabularyTerm
     range: string
     multivalued: true
 
