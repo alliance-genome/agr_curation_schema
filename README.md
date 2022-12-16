@@ -268,6 +268,9 @@ If you need to make changes based on test results, you may wish to configure git
 according to https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls
 in order to avoid having to enter your github credentials every time you push a change.
 
+## All else fails
+1) make schema changes in a branch
+2) push the branch to github; github actions will run all the tests for you in an isolated environment even on a draft PR.  Use the actions to see if your tests pass.
 
 ## GitHub Actions
 
