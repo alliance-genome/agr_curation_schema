@@ -1,6 +1,6 @@
-id: https://github.com/alliance-genome/agr_curation_schema/src/schema/allele_dto
-name: Alliance-Schema-Prototype-Allele-DTO
-title: Alliance Schema Prototype Allele DTO
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/alleleDTO
+name: alleleDTO
+title: Allele DTO
 
 imports:
   - core
@@ -455,7 +455,7 @@ slots:
     range: AlleleDatabaseStatusSlotAnnotationDTO
     inlined: true
 
- allele_full_name_dto:
+  allele_full_name_dto:
     description: >-
       The one current full name for an allele: e.g., wg<sup>1</sup>.
     domain: AlleleDTO

@@ -1,18 +1,18 @@
 id: https://github.com/alliance-genome/agr_curation_schema/src/schema/allele
-name: Alliance-Schema-Prototype-Allele
-title: Alliance Schema Prototype Allele
+name: allele
+title: Allele
 
 imports:
   - affectedGenomicModel
   - agent
   - core
+  - image
   - controlledVocabulary
   - gene
-  - image
+  - variation
   - linkml:types
   - ontologyTerm
   - phenotypeAndDiseaseAnnotation
-  - variation
 
 prefixes:
   alliance: 'http://alliancegenome.org/'
@@ -118,11 +118,8 @@ classes:
 
   ConstructComponent:
     is_a: GenomicEntity
-    slots:
-      # - symbol    # Is this redundant with the name slot inherited from GenomicEntity?
-                    # Should we make a ConstructSymbolSlotAnnotation object too?
 
- ConstructComponentAssociation:
+  ConstructComponentAssociation:
     is_a: Association
     description: >-
       The predicate should be a VocabularyTerm with one of the following
@@ -339,7 +336,8 @@ classes:
       object:
         range: Allele
 
-  AlleleCellLineAssociation: # do mutant/parent/embryonic cell line associations need to be split out?
+# do mutant/parent/embryonic cell line associations need to be split out?
+  AlleleCellLineAssociation:
     is_a: Association
     description: >-
       The relationship between an allele and a cell line.  Includes mutant/
@@ -465,25 +463,24 @@ classes:
       object:
         range: Variant
 
-
-
-
 ## ------------
 ## SLOTS
 ## ------------
 
 slots:
 
-  aberration:   # This slot is currently not being used 2022-12-20; should it be? [CG]
+# This slot is currently not being used 2022-12-20; should it be? [CG]
+  aberration:
     description: >-
       Associated deficiency (etc.) whose breakpoint causes
       the mutation
     domain: Allele
     range: string
 
-  analyses:   # This slot is currently not being used 2022-12-20; should it be? [CG]
+# This slot is currently not being used 2022-12-20; should it be? [CG]
+  analyses:
     description: >-
-      # TODO: added as a result of 'origin' class - please advise on a more descriptive slot/class definition.
+      TODO: added as a result of 'origin' class - please advise on a more descriptive slot/class definition.
 
   chemical_mutagen:
     description: >-
