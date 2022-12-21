@@ -477,6 +477,134 @@ slots:
     domain: Allele
     range: string
 
+  allele_allele_associations:
+    domain: Allele
+    range: AlleleAlleleAssociation
+    multivalued: true
+
+  allele_cell_line_associations:
+    domain: Allele
+    range: AlleleCellLineAssociation
+    multivalued: true
+
+  allele_construct_associations:
+    domain: Allele
+    range: AlleleConstructAssociation
+    multivalued: true
+
+  allele_database_status:
+    description: Database status of a given allele
+    domain: Allele
+    range: AlleleDatabaseStatusSlotAnnotation
+
+  allele_full_name:
+    description: >-
+      The one current full name for an allele: e.g., wg<sup>1</sup>.
+    domain: Allele
+    range: AlleleFullNameSlotAnnotation
+    required: false
+    multivalued: false
+
+  allele_functional_impacts:
+    description: Functional impacts of a given allele
+    domain: Allele
+    range: AlleleFunctionalImpactSlotAnnotation
+    multivalued: true
+
+  allele_gene_associations:
+    domain: Allele
+    range: AlleleGeneAssociation
+    multivalued: true
+
+  allele_generation_method_associations:
+    domain: Allele
+    range: AlleleGenerationMethodAssociation
+    multivalued: true
+
+  allele_germline_transmission_status:
+    description: Germline transmission status for a given allele
+    domain: Allele
+    range: AlleleGermlineTransmissionStatusSlotAnnotation
+    multivalued: false
+
+  allele_image_associations:
+    domain: Allele
+    range: AlleleImageAssociation
+    multivalued: true
+
+  allele_inheritance_modes:
+    description:  >-
+      Inheritance modes for an allele
+    domain: Allele
+    range: AlleleInheritanceModeSlotAnnotation
+    multivalued: true
+
+  allele_molecular_mutations:
+    description: Molecular mutations of a given allele
+    domain: Allele
+    range: AlleleMolecularMutationSlotAnnotation
+    multivalued: true
+
+  allele_mutation_types:
+    description: Mutation types for a given allele
+    domain: Allele
+    range: AlleleMutationTypeSlotAnnotation
+    multivalued: true
+
+  allele_nomenclature_events:
+    description: Nomenclature events of a given allele
+    domain: Allele
+    range: AlleleNomenclatureEventSlotAnnotation
+    multivalued: true
+
+  allele_notes:
+    description: Notes for a given allele
+    domain: Allele
+    range: AlleleNoteSlotAnnotation
+    multivalued: true
+
+  allele_origin_associations:
+    domain: Allele
+    range: AlleleOriginAssociation
+    multivalued: true
+
+  allele_protein_associations:
+    domain: Allele
+    range: AlleleProteinAssociation
+    multivalued: true
+
+  allele_secondary_ids:
+    description: Secondary IDs of a given allele
+    domain: Allele
+    range: AlleleSecondaryIdSlotAnnotation
+    multivalued: true
+
+  allele_symbol:
+    description: >-
+      The one current accepted symbol for the allele: e.g., wg<sup>1</sup>.
+    exact_mappings:
+      - biolink:symbol
+    domain: Allele
+    range: AlleleSymbolSlotAnnotation
+    required: true
+    multivalued: false
+
+  allele_synonyms:
+    description: Holds between an Allele and a synonym.
+    required: false
+    multivalued: true
+    range: AlleleSynonymSlotAnnotation
+
+  allele_transcript_associations:
+    domain: Allele
+    range: AlleleTranscriptAssociation
+    multivalued: true
+
+  allele_variant_associations:
+    domain: Allele
+    range: AlleleVariantAssociation
+    multivalued: true
+
 # This slot is currently not being used 2022-12-20; should it be? [CG]
   analyses:
     description: >-
@@ -638,144 +766,6 @@ slots:
       mutation
     domain: Allele
     range: string
-
-
-## ------------
-## ALLELE SLOT ANNOTATION SLOTS
-## ------------
-
-  allele_database_status:
-    description: Database status of a given allele
-    domain: Allele
-    range: AlleleDatabaseStatusSlotAnnotation
-
-  allele_full_name:
-    description: >-
-      The one current full name for an allele: e.g., wg<sup>1</sup>.
-    domain: Allele
-    range: AlleleFullNameSlotAnnotation
-    required: false
-    multivalued: false
-
-  allele_functional_impacts:
-    description: Functional impacts of a given allele
-    domain: Allele
-    range: AlleleFunctionalImpactSlotAnnotation
-    multivalued: true
-
-  allele_germline_transmission_status:
-    description: Germline transmission status for a given allele
-    domain: Allele
-    range: AlleleGermlineTransmissionStatusSlotAnnotation
-    multivalued: false
-
-  allele_inheritance_modes:
-    description:  >-
-      Inheritance modes for an allele
-    domain: Allele
-    range: AlleleInheritanceModeSlotAnnotation
-    multivalued: true
-
-  allele_molecular_mutations:
-    description: Molecular mutations of a given allele
-    domain: Allele
-    range: AlleleMolecularMutationSlotAnnotation
-    multivalued: true
-
-  allele_mutation_types:
-    description: Mutation types for a given allele
-    domain: Allele
-    range: AlleleMutationTypeSlotAnnotation
-    multivalued: true
-
-  allele_nomenclature_events:
-    description: Nomenclature events of a given allele
-    domain: Allele
-    range: AlleleNomenclatureEventSlotAnnotation
-    multivalued: true
-
-  allele_notes:
-    description: Notes for a given allele
-    domain: Allele
-    range: AlleleNoteSlotAnnotation
-    multivalued: true
-
-  allele_secondary_ids:
-    description: Secondary IDs of a given allele
-    domain: Allele
-    range: AlleleSecondaryIdSlotAnnotation
-    multivalued: true
-
-  allele_symbol:
-    description: >-
-      The one current accepted symbol for the allele: e.g., wg<sup>1</sup>.
-    exact_mappings:
-      - biolink:symbol
-    domain: Allele
-    range: AlleleSymbolSlotAnnotation
-    required: true
-    multivalued: false
-
-  allele_synonyms:
-    description: Holds between an Allele and a synonym.
-    required: false
-    multivalued: true
-    range: AlleleSynonymSlotAnnotation
-
-
-## ------------
-## ALLELE ASSOCIATION SLOTS
-## ------------
-
-  allele_allele_associations:
-    domain: Allele
-    range: AlleleAlleleAssociation
-    multivalued: true
-
-  allele_cell_line_associations:
-    domain: Allele
-    range: AlleleCellLineAssociation
-    multivalued: true
-
-  allele_construct_associations:
-    domain: Allele
-    range: AlleleConstructAssociation
-    multivalued: true
-
-  allele_gene_associations:
-    domain: Allele
-    range: AlleleGeneAssociation
-    multivalued: true
-
-  allele_generation_method_associations:
-    domain: Allele
-    range: AlleleGenerationMethodAssociation
-    multivalued: true
-
-  allele_image_associations:
-    domain: Allele
-    range: AlleleImageAssociation
-    multivalued: true
-
-  allele_origin_associations:
-    domain: Allele
-    range: AlleleOriginAssociation
-    multivalued: true
-
-  allele_protein_associations:
-    domain: Allele
-    range: AlleleProteinAssociation
-    multivalued: true
-
-  allele_transcript_associations:
-    domain: Allele
-    range: AlleleTranscriptAssociation
-    multivalued: true
-
-  allele_variant_associations:
-    domain: Allele
-    range: AlleleVariantAssociation
-    multivalued: true
 
 
 enums:
