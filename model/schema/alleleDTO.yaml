@@ -304,12 +304,98 @@ classes:
 ## DTO SLOTS
 ## ------------
 
-
 slots:
 
   allele_curie:
     range: string
     required: true
+
+  allele_database_status_dto:
+    domain: AlleleDTO
+    range: AlleleDatabaseStatusSlotAnnotationDTO
+    inlined: true
+
+  allele_full_name_dto:
+    description: >-
+      The one current full name for an allele: e.g., wg<sup>1</sup>.
+    domain: AlleleDTO
+    range: FullNameSlotAnnotationDTO
+    multivalued: false
+    inlined: true
+
+  allele_functional_impact_dtos:
+    domain: AlleleDTO
+    range: AlleleFunctionalImpactSlotAnnotationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  allele_germline_transmission_status_dto:
+    domain: AlleleDTO
+    range: AlleleGermlineTransmissionStatusSlotAnnotationDTO
+    inlined: true
+    multivalued: false
+
+  allele_inheritance_mode_dtos:
+    description: >-
+      One or more allele inheritance mode DTO objects to be submitted
+    domain: AlleleDTO
+    range: AlleleInheritanceModeSlotAnnotationDTO
+    multivalued: true
+    inlined_as_list: true
+    inlined: true
+
+  allele_molecular_mutation_dtos:
+    domain: AlleleDTO
+    range: AlleleMolecularMutationSlotAnnotationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  allele_mutation_type_dtos:
+    domain: AlleleDTO
+    range: AlleleMutationTypeSlotAnnotationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  allele_nomenclature_event_dtos:
+    domain: AlleleDTO
+    range: AlleleNomenclatureEventSlotAnnotationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  allele_note_dtos:
+    is_a: note_dtos
+    domain: AlleleDTO
+    range: AlleleNoteSlotAnnotationDTO
+    multivalued: true
+    inlined_as_list: true
+    inlined: true
+
+  allele_secondary_id_dtos:
+    domain: AlleleDTO
+    range: AlleleSecondaryIdSlotAnnotationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  allele_symbol_dto:
+    description: >-
+      The one current accepted symbol for the allele: e.g., wg<sup>1</sup>.
+    domain: AlleleDTO
+    range: SymbolSlotAnnotationDTO
+    multivalued: false
+    required: true
+    inlined: true
+
+  allele_synonym_dtos:
+    domain: AlleleDTO
+    range: NameSlotAnnotationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
 
   cell_line_curie:
     range: string
@@ -446,95 +532,6 @@ slots:
     range: string
     multivalued: false
 
-## ------------
-## ALLELE DTO SLOT ANNOTATION SLOTS
-## ------------
 
-  allele_database_status_dto:
-    domain: AlleleDTO
-    range: AlleleDatabaseStatusSlotAnnotationDTO
-    inlined: true
-
-  allele_full_name_dto:
-    description: >-
-      The one current full name for an allele: e.g., wg<sup>1</sup>.
-    domain: AlleleDTO
-    range: FullNameSlotAnnotationDTO
-    multivalued: false
-    inlined: true
-
-  allele_functional_impact_dtos:
-    domain: AlleleDTO
-    range: AlleleFunctionalImpactSlotAnnotationDTO
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-
-  allele_germline_transmission_status_dto:
-    domain: AlleleDTO
-    range: AlleleGermlineTransmissionStatusSlotAnnotationDTO
-    inlined: true
-    multivalued: false
-
-  allele_inheritance_mode_dtos:
-    description: >-
-      One or more allele inheritance mode DTO objects to be submitted
-    domain: AlleleDTO
-    range: AlleleInheritanceModeSlotAnnotationDTO
-    multivalued: true
-    inlined_as_list: true
-    inlined: true
-
-  allele_molecular_mutation_dtos:
-    domain: AlleleDTO
-    range: AlleleMolecularMutationSlotAnnotationDTO
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-
-  allele_mutation_type_dtos:
-    domain: AlleleDTO
-    range: AlleleMutationTypeSlotAnnotationDTO
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-
-  allele_nomenclature_event_dtos:
-    domain: AlleleDTO
-    range: AlleleNomenclatureEventSlotAnnotationDTO
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-
-  allele_note_dtos:
-    is_a: note_dtos
-    domain: AlleleDTO
-    range: AlleleNoteSlotAnnotationDTO
-    multivalued: true
-    inlined_as_list: true
-    inlined: true
-
-  allele_secondary_id_dtos:
-    domain: AlleleDTO
-    range: AlleleSecondaryIdSlotAnnotationDTO
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-
-  allele_symbol_dto:
-    description: >-
-      The one current accepted symbol for the allele: e.g., wg<sup>1</sup>.
-    domain: AlleleDTO
-    range: SymbolSlotAnnotationDTO
-    multivalued: false
-    required: true
-    inlined: true
-
-  allele_synonym_dtos:
-    domain: AlleleDTO
-    range: NameSlotAnnotationDTO
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
 
 
