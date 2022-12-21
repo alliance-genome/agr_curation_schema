@@ -1,6 +1,6 @@
-id: https://github.com/alliance-genome/agr_curation_schema/src/schema/allele
-name: Alliance-Schema-Prototype-Allele
-title: Alliance Schema Prototype Allele
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/allele_dto
+name: Alliance-Schema-Prototype-Allele-DTO
+title: Alliance Schema Prototype Allele DTO
 
 imports:
   - core
