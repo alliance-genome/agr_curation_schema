@@ -32,15 +32,21 @@ imports:
   - agent
   - allele
   - allele_dto
+  - allianceMember
   - biologicalEntitySet
+  - bulkload
   - controlledVocabulary
   - core
+  - curationReport
   - expression
   - gene
   - geneInteraction
+  - image
   - ingest
+  - modCorpusAssociation
   - linkml:types
   - ontologyTerm
+  - orthology
   - phenotypeAndDiseaseAnnotation
   - reagent
   - reference
