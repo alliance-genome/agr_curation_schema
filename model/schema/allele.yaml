@@ -3,15 +3,16 @@ name: Alliance-Schema-Prototype-Allele
 title: Alliance Schema Prototype Allele
 
 imports:
-  - core
-  - image
-  - gene
-  - variation
-  - linkml:types
-  - ontologyTerm
   - affectedGenomicModel
   - agent
+  - core
+  - controlledVocabulary
+  - gene
+  - image
+  - linkml:types
+  - ontologyTerm
   - phenotypeAndDiseaseAnnotation
+  - variation
 
 prefixes:
   alliance: 'http://alliancegenome.org/'
