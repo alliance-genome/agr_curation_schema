@@ -7,7 +7,7 @@
       "internal": false,
       "allele_curie": "ZFIN:ZDB-ALT-000412-8",
       "variant_curie": "ZFIN:ZDB-ALT-000412-8",
-      "ro_term_curie": "RO:0002525",
+      "predicate_name": "RO:0002525",
       "evidence_curies": [
         "ZFIN:ZDB-PUB-010101-1"
       ]

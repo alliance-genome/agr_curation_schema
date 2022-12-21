@@ -1,16 +1,17 @@
 id: https://github.com/alliance-genome/agr_curation_schema/src/schema/allele
-name: Alliance-Schema-Prototype-Allele
-title: Alliance Schema Prototype Allele
+name: allele
+title: Allele
 
 imports:
+  - affectedGenomicModel
+  - agent
   - core
   - image
+  - controlledVocabulary
   - gene
   - variation
   - linkml:types
   - ontologyTerm
-  - affectedGenomicModel
-  - agent
   - phenotypeAndDiseaseAnnotation
 
 prefixes:
@@ -84,7 +85,7 @@ classes:
     exact_mappings:
       - SO:0001023
     slot_usage:
-      aberration:
+      aberration:    # This slot is no longer declared in the Allele class; is this covered by something else? [CG]
         notes: specific to FB
       allele_symbol:
         required: true
@@ -95,30 +96,42 @@ classes:
       is_integrated:
         required: false
 
-  AlleleDTO:
-    is_a: GenomicEntityDTO
+# Some classes roughly grouped with the Allele class because they have relationships to Allele and were
+# designed close to the time the Allele class was designed.  These could be broken out into their own yaml files.
+
+  CellLine:
+    is_a: GenomicEntity
     description: >-
-      Ingest class for an Allele object
+      Dummy cell line class
+
+  Construct:
+    is_a: GenomicEntity
+    description: >-
+    slot_usage:
+      curie:
+        identifier: true
+      name:
+        required: true
     slots:
-      - allele_symbol_dto
-      - allele_full_name_dto
-      - reference_curies
-      - in_collection_name
-      - laboratory_of_origin_curie
-      - is_extinct
-      - is_extrachromosomal
-      - is_integrated
-      - transgene_chromosome_location_curie
-      - allele_mutation_type_dtos
-      - allele_inheritance_mode_dtos
-      - allele_germline_transmission_status_dto
-      - allele_functional_impact_dtos
-      - allele_molecular_mutation_dtos
-      - allele_database_status_dto
-      - allele_secondary_id_dtos
-      - allele_nomenclature_event_dtos
-      - allele_note_dtos
-      - allele_synonym_dtos
+      - construct_components
+      - references
+
+  ConstructComponent:
+    is_a: GenomicEntity
+
+  ConstructComponentAssociation:
+    is_a: Association
+    description: >-
+      The predicate should be a VocabularyTerm with one of the following
+      values - expresses (RO:0002292) / is_regulated_by (RO:0002334) /
+      targets (RO:0002436)
+    slot_usage:
+      predicate:
+        range: VocabularyTerm
+      subject:
+        range: Construct
+      object:
+        range: ConstructComponent
 
   GenerationMethod:
     is_a: AuditedObject
@@ -129,32 +142,90 @@ classes:
       - chemical_mutagen
       - irradiation_mutagen
 
-  GenerationMethodDTO:
-    is_a: AuditedObjectDTO
+# Need to add appropriate name synonym slotAnnotations as slots removed from GenomicEntity
+  SequenceTargetingReagent:
+    description: >-
+    is_a: GenomicEntity
     slots:
-      - mutagenesis_method_names
-      - mutagenesis_target
-      - integration_method_name
-      - chemical_mutagen_name
-      - irradiation_mutagen_name
+      - references
+    slot_usage:
+      curie:
+        identifier: true
+      name:
+        required: true
+
+  SequenceTargetingReagentToGeneAssociation:
+    description: >-
+      the relationship between a Sequence Targeting Reagent and its targeted
+      genes. The predicate should be a VocabularyTerm with one of the following
+      values - targets
+    is_a: Association
+    slots:
+      - references
+    slot_usage:
+      predicate:
+        range: VocabularyTerm
+      subject:
+        range: SequenceTargetingReagent
+      object:
+        range: Gene
+
 
 ## ------------
 ## ALLELE SLOT ANNOTATION CLASSES
 ## ------------
 
-  AlleleMutationTypeSlotAnnotation:
+  AlleleDatabaseStatusSlotAnnotation:
     is_a: SlotAnnotation
     slots:
       - single_allele
-      - mutation_types
+      - database_status
     slot_usage:
       single_allele:
         required: true
 
-  AlleleMutationTypeSlotAnnotationDTO:
-    is_a: SlotAnnotationDTO
+  AlleleFullNameSlotAnnotation:
+    description: >-
+      The one current full name for the allele.
+    is_a: NameSlotAnnotation
     slots:
-      - mutation_type_curies
+      - single_allele
+    slot_usage:
+      single_allele:
+        required: true
+      name_type:
+        notes: >-
+            permissible_values: full_name (VocabularyTerm)
+
+  AlleleFunctionalImpactSlotAnnotation:
+    is_a: SlotAnnotation
+    slots:
+      - single_allele
+      - functional_impacts
+      - phenotype_term
+      - phenotype_statement
+    slot_usage:
+      single_allele:
+        required: true
+      phenotype_term:
+        required: false
+        description: >-
+          For some MODs, the functional impact of an allele is reported specifically in the context of a
+          particular phenotype. This slot is intended to capture the PhenotypeTerm.
+      phenotype_statement:
+        required: false
+        description: >-
+          For some MODs, the functional impact of an allele is reported specifically in the context of a
+          particular phenotype. This slot is intended to capture the free-text phenotype statement.
+
+  AlleleGermlineTransmissionStatusSlotAnnotation:
+    is_a: SlotAnnotation
+    slots:
+      - single_allele
+      - germline_transmission_status
+    slot_usage:
+      single_allele:
+        required: true
 
   AlleleInheritanceModeSlotAnnotation:
     is_a: SlotAnnotation
@@ -179,63 +250,6 @@ classes:
           For some MODs, the inheritance mode of an allele is reported specifically in the context of a
           particular phenotype. This slot is intended to capture the free-text phenotype statement.
 
-  AlleleInheritanceModeSlotAnnotationDTO:
-    is_a: SlotAnnotationDTO
-    slots:
-      - inheritance_mode_name
-      - phenotype_term_curie
-      - phenotype_statement
-    slot_usage:
-      inheritance_mode_name:
-        required: true
-      phenotype_term_curie:
-        required: false
-      phenotype_statement:
-        required: false
-
-  AlleleGermlineTransmissionStatusSlotAnnotation:
-    is_a: SlotAnnotation
-    slots:
-      - single_allele
-      - germline_transmission_status
-    slot_usage:
-      single_allele:
-        required: true
-
-  AlleleGermlineTransmissionStatusSlotAnnotationDTO:
-    is_a: SlotAnnotationDTO
-    slots:
-      - germline_transmission_status_name
-
-  AlleleFunctionalImpactSlotAnnotation:
-    is_a: SlotAnnotation
-    slots:
-      - single_allele
-      - functional_impacts
-      - phenotype_term
-      - phenotype_statement
-    slot_usage:
-      single_allele:
-        required: true
-      phenotype_term:
-        required: false
-        description: >-
-          For some MODs, the functional impact of an allele is reported specifically in the context of a
-          particular phenotype. This slot is intended to capture the PhenotypeTerm.
-      phenotype_statement:
-        required: false
-        description: >-
-          For some MODs, the functional impact of an allele is reported specifically in the context of a
-          particular phenotype. This slot is intended to capture the free-text phenotype statement.
-
-
-  AlleleFunctionalImpactSlotAnnotationDTO:
-    is_a: SlotAnnotationDTO
-    slots:
-      - functional_impact_names
-      - phenotype_term_curie
-      - phenotype_statement
-
   AlleleMolecularMutationSlotAnnotation:
     is_a: SlotAnnotation
     slots:
@@ -245,42 +259,13 @@ classes:
       single_allele:
         required: true
 
-  AlleleMolecularMutationSlotAnnotationDTO:
-    is_a: SlotAnnotationDTO
-    slots:
-      - molecular_mutation_names
-
-  AlleleDatabaseStatusSlotAnnotation:
+  AlleleMutationTypeSlotAnnotation:
     is_a: SlotAnnotation
     slots:
       - single_allele
-      - database_status
+      - mutation_types
     slot_usage:
       single_allele:
-        required: true
-
-  AlleleDatabaseStatusSlotAnnotationDTO:
-    is_a: SlotAnnotationDTO
-    slots:
-      - database_status_name
-
-  AlleleSecondaryIdSlotAnnotation:
-    is_a: SlotAnnotation
-    slots:
-      - single_allele
-      - secondary_id
-    slot_usage:
-      single_allele:
-        required: true
-      secondary_id:
-        required: true
-
-  AlleleSecondaryIdSlotAnnotationDTO:
-    is_a: SlotAnnotationDTO
-    slots:
-      - secondary_id
-    slot_usage:
-      secondary_id:
         required: true
 
   AlleleNomenclatureEventSlotAnnotation:
@@ -291,11 +276,6 @@ classes:
     slot_usage:
       single_allele:
         required: true
-
-  AlleleNomenclatureEventSlotAnnotationDTO:
-    is_a: SlotAnnotationDTO
-    slots:
-      - nomenclature_event_name
 
   AlleleNoteSlotAnnotation:
     is_a: SlotAnnotation
@@ -308,12 +288,15 @@ classes:
       related_note:
         required: true
 
-  AlleleNoteSlotAnnotationDTO:
-    is_a: SlotAnnotationDTO
+  AlleleSecondaryIdSlotAnnotation:
+    is_a: SlotAnnotation
     slots:
-      - note_dto
+      - single_allele
+      - secondary_id
     slot_usage:
-      note_dto:
+      single_allele:
+        required: true
+      secondary_id:
         required: true
 
   AlleleSymbolSlotAnnotation:
@@ -329,19 +312,6 @@ classes:
         notes: >-
           permissible_values: nomenclature_symbol (VocabularyTerm), systematic_name (VocabularyTerm)
 
-  AlleleFullNameSlotAnnotation:
-    description: >-
-      The one current full name for the allele.
-    is_a: NameSlotAnnotation
-    slots:
-      - single_allele
-    slot_usage:
-      single_allele:
-        required: true
-      name_type:
-        notes: >-
-            permissible_values: full_name (VocabularyTerm)
-
   AlleleSynonymSlotAnnotation:
     description: >-
       All aliases (non-preferred names) for the allele. Any type of synonym is acceptable.
@@ -356,6 +326,55 @@ classes:
 ## ALLELE ASSOCIATION CLASSES
 ## ------------
 
+  AlleleAlleleAssociation:
+    is_a: AlleleGenomicEntityAssociation
+    description: >-
+      Association between an allele and another allele
+    slot_usage:
+      predicate:
+        notes: CV 'Allele-Allele Predicates'
+      object:
+        range: Allele
+
+# do mutant/parent/embryonic cell line associations need to be split out?
+  AlleleCellLineAssociation:
+    is_a: Association
+    description: >-
+      The relationship between an allele and a cell line.  Includes mutant/
+      embryonic stem cell lines known to carry the allele, and parental cell
+      line of alleles made in embryonic stem cells.
+    slot_usage:
+      subject:
+        range: Allele
+      predicate:
+        range: VocabularyTerm
+      object:
+        range: CellLine
+
+  AlleleConstructAssociation:
+    is_a: AlleleGenomicEntityAssociation
+    description: >-
+      The relationship between an allele and constructs contained in
+      that allele.
+    slot_usage:
+      subject:
+        range: Allele
+      predicate:
+        range: VocabularyTerm
+        notes: >-
+          CV 'Allele-Construct Predicates' including - contains, contains_coinjection_marker,
+          contains_phenotypic_sequence_feature, and contains_innocuous_sequence_feature
+      object:
+        range: Construct
+
+  AlleleGeneAssociation:
+    is_a: AlleleGenomicEntityAssociation
+    description: >-
+      Association between an allele and a gene
+    slot_usage:
+      object:
+        range: Gene
+
   AlleleGenerationMethodAssociation:
     is_a: Association
     slots:
@@ -369,21 +388,6 @@ classes:
           equals_string: has_generation_method
       object:
         range: GenerationMethod
-
-  AlleleGenerationMethodAssociationDTO:
-    is_a: AuditedObjectDTO
-    slots:
-      - allele_curie
-      - predicate_name
-      - generation_method_dto
-      - evidence_curies
-      - mutation_target_strain_curie
-    slot_usage:
-      predicate_name:
-        required: true
-        any_of:
-          equals_string: has_generation_method
-
 
   AlleleGenomicEntityAssociation:
     is_a: Association
@@ -403,129 +407,6 @@ classes:
       evidence:
         required: false   # This needs to be not required, at least in the base class
 
-
-  AlleleGenomicEntityAssociationDTO:
-    is_a: AuditedObjectDTO
-    abstract: true
-    slots:
-      - allele_curie
-      - ro_term_curie
-      - evidence_curies
-      - evidence_code_curie
-      - note_dto
-    slot_usage:
-      evidence_curies:
-        required: true
-
-  AlleleGeneAssociation:
-    is_a: AlleleGenomicEntityAssociation
-    description: >-
-      Association between an allele and a gene
-    slot_usage:
-      object:
-        range: Gene
-
-  AlleleGeneAssociationDTO:
-    is_a: AlleleGenomicEntityAssociationDTO
-    slots:
-      - gene_curie
-
-  AlleleTranscriptAssociation:
-    is_a: AlleleGenomicEntityAssociation
-    description: >-
-      Association between an allele and a transcript
-    slot_usage:
-      object:
-        range: Transcript
-
-  AlleleTranscriptAssociationDTO:
-    is_a: AlleleGenomicEntityAssociationDTO
-    slots:
-      - transcript_curie
-
-  AlleleProteinAssociation:
-    is_a: AlleleGenomicEntityAssociation
-    description: >-
-      Association between an allele and a protein
-    slot_usage:
-      object:
-        range: Protein
-
-  AlleleProteinAssociationDTO:
-    is_a: AlleleGenomicEntityAssociationDTO
-    slots:
-      - protein_curie
-
-  AlleleAlleleAssociation:
-    is_a: AlleleGenomicEntityAssociation
-    description: >-
-      Association between an allele and another allele
-    slot_usage:
-      predicate:
-        notes: CV 'Allele-Allele Predicates'
-      object:
-        range: Allele
-
-  AlleleVariantAssociation:
-    is_a: AlleleGenomicEntityAssociation
-    description: >-
-      The relationship between an allele and a variant is many to many. An
-      Allele may have many variants and a variant can be present in many
-      alleles.
-    slot_usage:
-      subject:
-        range: Allele
-      object:
-        range: Variant
-
-  AlleleVariantAssociationDTO:
-    is_a: AlleleGenomicEntityAssociationDTO
-    slots:
-      - variant_curie
-
-  AlleleConstructAssociation:
-    is_a: AlleleGenomicEntityAssociation
-    description: >-
-      The relationship between an allele and constructs contained in
-      that allele.
-    slot_usage:
-      subject:
-        range: Allele
-      predicate:
-        range: VocabularyTerm
-        notes: >-
-          CV 'Allele-Construct Predicates' including - contains, contains_coinjection_marker,
-          contains_phenotypic_sequence_feature, and contains_innocuous_sequence_feature
-      object:
-        range: Construct
-
-  AlleleConstructAssociationDTO:
-      is_a: AlleleGenomicEntityAssociationDTO
-      slots:
-        - construct_curie
-
-  AlleleCellLineAssociation: # do mutant/parent/embryonic cell line associations need to be split out?
-    is_a: Association
-    description: >-
-      The relationship between an allele and a cell line.  Includes mutant/
-      embryonic stem cell lines known to carry the allele, and parental cell
-      line of alleles made in embryonic stem cells.
-    slot_usage:
-      subject:
-        range: Allele
-      predicate:
-        range: VocabularyTerm
-      object:
-        range: CellLine
-
-  AlleleCellLineAssociationDTO:
-      is_a: AuditedObjectDTO
-      slots:
-        - allele_curie
-        - predicate_name
-        - cell_line_curie
-        - evidence_curies
-
   AlleleImageAssociation:
     is_a: Association
     description: >-
@@ -544,15 +425,6 @@ classes:
           Can be null; if false, maybe you would show all the images.
           We need to revisit this issue.
 
-  AlleleImageAssociationDTO:
-    is_a: AuditedObjectDTO
-    slots:
-      - allele_curie
-      - predicate_name
-      - image_curie
-      - primary_image
-      - evidence_curies
-
   AlleleOriginAssociation:
     is_a: Association
     description: >-
@@ -563,251 +435,75 @@ classes:
         object:
             range: AffectedGenomicModel
 
-  AlleleOriginAssociationDTO:
-    is_a: AuditedObjectDTO
-    slots:
-      - allele_curie
-      - predicate_name
-      - agm_curie
-      - evidence_curies
-
-
-
-# Other classes roughly grouped with the Allele class because they have relationships to Allele and were
-# designed close to the time the Allele class was designed.  These could be broken out into their own yaml files.
-
-  Construct:
-    is_a: GenomicEntity
+  AlleleProteinAssociation:
+    is_a: AlleleGenomicEntityAssociation
     description: >-
+      Association between an allele and a protein
     slot_usage:
-      curie:
-        identifier: true
-      name:
-        required: true
-    slots:
-      - construct_components
-      - references
-
-  CellLine:
-    is_a: GenomicEntity
-    description: >-
-      Dummy cell line class
-
-  # Need to add appropriate name synonym slotAnnotations as slots removed from GenomicEntity
-  SequenceTargetingReagent:
-    description: >-
-    is_a: GenomicEntity
-    slots:
-      - references
-    slot_usage:
-      curie:
-        identifier: true
-      name:
-        required: true
-
-  SequenceTargetingReagentDTO:
-    is_a: GenomicEntityDTO
-    slots:
-      - reference_curies
-
-  SequenceTargetingReagentToGeneAssociation:
-    description: >-
-      the relationship between a Sequence Targeting Reagent and its targeted
-      genes. The predicate should be a VocabularyTerm with one of the following
-      values - targets
-    is_a: Association
-    slots:
-      - references
-    slot_usage:
-      predicate:
-        range: VocabularyTerm
-      subject:
-        range: SequenceTargetingReagent
       object:
-        range: Gene
+        range: Protein
 
-  ConstructComponentAssociation:
-    is_a: Association
+  AlleleTranscriptAssociation:
+    is_a: AlleleGenomicEntityAssociation
     description: >-
-      The predicate should be a VocabularyTerm with one of the following
-      values - expresses (RO:0002292) / is_regulated_by (RO:0002334) /
-      targets (RO:0002436)
+      Association between an allele and a transcript
     slot_usage:
-      predicate:
-        range: VocabularyTerm
-      subject:
-        range: Construct
       object:
-        range: ConstructComponent
+        range: Transcript
 
-  ConstructComponent:
-    is_a: GenomicEntity
-    slots:
-      # - symbol    # Is this redundant with the name slot inherited from GenomicEntity?
-                    # Should we make a ConstructSymbolSlotAnnotation object too?
-
+  AlleleVariantAssociation:
+    is_a: AlleleGenomicEntityAssociation
+    description: >-
+      The relationship between an allele and a variant is many to many. An
+      Allele may have many variants and a variant can be present in many
+      alleles.
+    slot_usage:
+      subject:
+        range: Allele
+      object:
+        range: Variant
 
 ## ------------
 ## SLOTS
 ## ------------
 
-
 slots:
 
-  primary_image:
+# This slot is currently not being used 2022-12-20; should it be? [CG]
+  aberration:
     description: >-
-      The primary image for an allele that is used to represent the allele on a page.
-    range: boolean
-
-  single_allele:
-    range: Allele
-    multivalued: false
-
-  allele_curie:
-    range: string
-    required: true
-
-  ro_term_curie:
-    range: string
-    required: true
-
-  construct_curie:
-    range: string
-    required: true
-
-  cell_line_curie:
-    range: string
-    required: true
-
-  mutagenesis_methods:
-    range: VocabularyTerm
-    multivalued: true
-    description: >-
-      Technique used to create the allele, e.g.
-      spontaneous / naturally occurring / radiation-induced / recombinant /
-      ENU / CRISPR / TALEN / gamma rays / not specified / spontaneous / DNA /
-      DNA AND CRISPR / DNA and TALEN / zinc finger nuclease / EMS
-
-  mutagenesis_method_names:
-    description: >-
-      Name of the VocabularyTerm describing the mutagenesis method, e.g.
-      spontaneous / naturally occurring / radiation-induced / recombinant /
-      ENU / CRISPR / TALEN / gamma rays / not specified / spontaneous / DNA /
-      DNA AND CRISPR / DNA and TALEN / zinc finger nuclease / EMS
-    domain: AlleleGenerationMethodAssociationDTO
-    range: string
-    multivalued: true
-
-  mutagenesis_target:
-    aliases: ["mutagee"]
-    description: >-
-      The target of the mutation, e.g. strain / adult females /
-      adult males / embryos / sperm / not specified
-    range: string # VocabularyTerm?
-
-  chemical_mutagen:
-    description: >-
-      The chemical used to generate the mutation through mutagenesis
-    domain: GenerationMethod
-    range: VocabularyTerm # CV 'Chemical Mutagens'
-
-  chemical_mutagen_name:
-    description: >-
-      The name of the chemical used to generate the mutation through mutagenesis
-    domain: GenerationMethodDTO
-    range: string # CV 'Chemical Mutagens'
-
-  irradiation_mutagen:
-    description: >-
-      The irradiation used to generate the mutation through mutagenesis
-    domain: GenerationMethod
-    range: VocabularyTerm # CV 'Irradiation Mutagens'
-
-  irradiation_mutagen_name:
-    description: >-
-      The name of the irradiation used to generate the mutation through mutagenesis
-    domain: GenerationMethodDTO
-    range: string # CV 'Irradiation Mutagens'
-
-  mutation_target_strain:
-    description: >-
-      The particular strain (solely for and from MGI) that is targeted
-      by the generation method for a particular allele.
-    range: AffectedGenomicModel
-
-  mutation_target_strain_curie:
-    description: >-
-      Curie of the particular strain that is targeted by the generation method
-      for a particular allele (MGI only)
-    domain: AlleleGenerationMethodAssociationDTO
-    range: string
-
-  generation_method_dto:
-    domain: AlleleGenerationMethodAssociationDTO
-    range: GenerationMethodDTO
-    multivalued: false
-    inlined: true
-
-  construct_components:
-    multivalued: true
-    domain: Construct
-    range: GenomicEntity
-
-  allele_molecular_mutations:
-    description: Molecular mutations of a given allele
+      Associated deficiency (etc.) whose breakpoint causes
+      the mutation
     domain: Allele
-    range: AlleleMolecularMutationSlotAnnotation
-    multivalued: true
-
-  molecular_mutations:
-    description: >-
-      Description of the DNA changes if precise
-      genomic location unknown
-    domain: AlleleMolecularMutationSlotAnnotation
     range: string
-    multivalued: true
-    required: true
 
-  allele_molecular_mutation_dtos:
-    domain: AlleleDTO
-    range: AlleleMolecularMutationSlotAnnotationDTO
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-
-  molecular_mutation_names:
-    description: >-
-      Name of the VocabularyTerm describing the molecular mutation
-    domain: AlleleMolecularMutationSlotAnnotationDTO
-    range: string
-    multivalued: true
-    required: true
-
-  allele_mutation_types:
-    description: Mutation types for a given allele
+  allele_allele_associations:
     domain: Allele
-    range: AlleleMutationTypeSlotAnnotation
+    range: AlleleAlleleAssociation
     multivalued: true
 
-  allele_mutation_type_dtos:
-    domain: AlleleDTO
-    range: AlleleMutationTypeSlotAnnotationDTO
+  allele_cell_line_associations:
+    domain: Allele
+    range: AlleleCellLineAssociation
     multivalued: true
-    inlined: true
-    inlined_as_list: true
 
-  mutation_types:
-    description: SO term for type of mutation
-    domain: AlleleMutationTypeSlotAnnotation
-    range: SOTerm
+  allele_construct_associations:
+    domain: Allele
+    range: AlleleConstructAssociation
     multivalued: true
-    required: true
 
-  mutation_type_curies:
-    description: Curies of SOTerms representing mutation type
-    domain: AlleleMutationTypeSlotAnnotationDTO
-    range: string
-    multivalued: true
+  allele_database_status:
+    description: Database status of a given allele
+    domain: Allele
+    range: AlleleDatabaseStatusSlotAnnotation
+
+  allele_full_name:
+    description: >-
+      The one current full name for an allele: e.g., wg<sup>1</sup>.
+    domain: Allele
+    range: AlleleFullNameSlotAnnotation
+    required: false
+    multivalued: false
 
   allele_functional_impacts:
     description: Functional impacts of a given allele
@@ -815,12 +511,122 @@ slots:
     range: AlleleFunctionalImpactSlotAnnotation
     multivalued: true
 
-  allele_functional_impact_dtos:
-    domain: AlleleDTO
-    range: AlleleFunctionalImpactSlotAnnotationDTO
+  allele_gene_associations:
+    domain: Allele
+    range: AlleleGeneAssociation
     multivalued: true
-    inlined: true
-    inlined_as_list: true
+
+  allele_generation_method_associations:
+    domain: Allele
+    range: AlleleGenerationMethodAssociation
+    multivalued: true
+
+  allele_germline_transmission_status:
+    description: Germline transmission status for a given allele
+    domain: Allele
+    range: AlleleGermlineTransmissionStatusSlotAnnotation
+    multivalued: false
+
+  allele_image_associations:
+    domain: Allele
+    range: AlleleImageAssociation
+    multivalued: true
+
+  allele_inheritance_modes:
+    description:  >-
+      Inheritance modes for an allele
+    domain: Allele
+    range: AlleleInheritanceModeSlotAnnotation
+    multivalued: true
+
+  allele_molecular_mutations:
+    description: Molecular mutations of a given allele
+    domain: Allele
+    range: AlleleMolecularMutationSlotAnnotation
+    multivalued: true
+
+  allele_mutation_types:
+    description: Mutation types for a given allele
+    domain: Allele
+    range: AlleleMutationTypeSlotAnnotation
+    multivalued: true
+
+  allele_nomenclature_events:
+    description: Nomenclature events of a given allele
+    domain: Allele
+    range: AlleleNomenclatureEventSlotAnnotation
+    multivalued: true
+
+  allele_notes:
+    description: Notes for a given allele
+    domain: Allele
+    range: AlleleNoteSlotAnnotation
+    multivalued: true
+
+  allele_origin_associations:
+    domain: Allele
+    range: AlleleOriginAssociation
+    multivalued: true
+
+  allele_protein_associations:
+    domain: Allele
+    range: AlleleProteinAssociation
+    multivalued: true
+
+  allele_secondary_ids:
+    description: Secondary IDs of a given allele
+    domain: Allele
+    range: AlleleSecondaryIdSlotAnnotation
+    multivalued: true
+
+  allele_symbol:
+    description: >-
+      The one current accepted symbol for the allele: e.g., wg<sup>1</sup>.
+    exact_mappings:
+      - biolink:symbol
+    domain: Allele
+    range: AlleleSymbolSlotAnnotation
+    required: true
+    multivalued: false
+
+  allele_synonyms:
+    description: Holds between an Allele and a synonym.
+    required: false
+    multivalued: true
+    range: AlleleSynonymSlotAnnotation
+
+  allele_transcript_associations:
+    domain: Allele
+    range: AlleleTranscriptAssociation
+    multivalued: true
+
+  allele_variant_associations:
+    domain: Allele
+    range: AlleleVariantAssociation
+    multivalued: true
+
+# This slot is currently not being used 2022-12-20; should it be? [CG]
+  analyses:
+    description: >-
+      TODO: added as a result of 'origin' class - please advise on a more descriptive slot/class definition.
+
+  chemical_mutagen:
+    description: >-
+      The chemical used to generate the mutation through mutagenesis
+    domain: GenerationMethod
+    range: VocabularyTerm # CV 'Chemical Mutagens'
+
+  construct_components:
+    multivalued: true
+    domain: Construct
+    range: GenomicEntity
+
+  database_status:
+    description: >-
+      Database status of the allele
+    domain: AlleleDatabaseStatusSlotAnnotation
+    range: VocabularyTerm # CV 'Allele Database Status'
+    required: true
 
   functional_impacts:
     description: >-
@@ -831,26 +637,6 @@ slots:
     multivalued: true
     required: true
 
-  functional_impact_names:
-    description: >-
-      Name of the VocabularyTerm describing the functional impact
-    domain: AlleleFunctionalImpactSlotAnnotationDTO
-    range: string
-    multivalued: true
-    required: true
-
-  allele_germline_transmission_status:
-    description: Germline transmission status for a given allele
-    domain: Allele
-    range: AlleleGermlineTransmissionStatusSlotAnnotation
-    multivalued: false
-
-  allele_germline_transmission_status_dto:
-    domain: AlleleDTO
-    range: AlleleGermlineTransmissionStatusSlotAnnotationDTO
-    inlined: true
-    multivalued: false
-
   germline_transmission_status:
     description: >-
       For alleles made in cell lines, have they been
@@ -858,38 +644,13 @@ slots:
     domain: AlleleGermlineTransmissionStatusSlotAnnotation
     range: VocabularyTerm
     required: true
+    multivalued: false
 
-  germline_transmission_status_name:
+  in_collection:
     description: >-
-      Name of the VocabularyTerm representing the germline transmission
-      status
-    domain: AlleleGermlineTransmissionStatusSlotAnnotationDTO
-    range: string
-    required: true
-
-  allele_database_status:
-    description: Database status of a given allele
+      Set of high-throughput alleles made by large projects
     domain: Allele
-    range: AlleleDatabaseStatusSlotAnnotation
-
-  allele_database_status_dto:
-    domain: AlleleDTO
-    range: AlleleDatabaseStatusSlotAnnotationDTO
-    inlined: true
-
-  database_status:
-    description: >-
-      Database status of the allele
-    domain: AlleleDatabaseStatusSlotAnnotation
-    range: VocabularyTerm # CV 'Allele Database Status'
-    required: true
-
-  database_status_name:
-    description: >-
-      Name of the VocabularyTerm describing the database status
-    domain: AlleleDatabaseStatusSlotAnnotationDTO
-    range: string
-    required: true
+    range: VocabularyTerm # CV 'Allele collection vocabulary'
 
   inheritance_mode:
     description: >-
@@ -898,89 +659,24 @@ slots:
     domain: AlleleInheritanceModeSlotAnnotation
     range: VocabularyTerm # CV 'Allele inheritance mode vocabulary'
 
-  inheritance_mode_name:
+  integration_method:
     description: >-
-      Name of VocabularyTerm describing the inheritance mode from the 'Allele
-      inheritance mode vocabulary'
-    domain: AlleleInheritanceModeSlotAnnotationDTO
-    range: string
+      WormBase captures the method by which an extrachromosomal transgene was integrated into the genome.
+    domain: GenerationMethod
+    range: VocabularyTerm  #CV 'WB Transgene Integration Methods'
+    multivalued: false
 
-  allele_inheritance_modes:
-    description:  >-
-      Inheritance modes for an allele
-    domain: Allele
-    range: AlleleInheritanceModeSlotAnnotation
-    multivalued: true
-
-  allele_inheritance_mode_dtos:
+  irradiation_mutagen:
     description: >-
-      One or more allele inheritance mode DTO objects to be submitted
-    domain: AlleleDTO
-    range: AlleleInheritanceModeSlotAnnotationDTO
-    multivalued: true
-    inlined_as_list: true
-    inlined: true
-
-  in_collection:
-    description: >-
-      Set of high-throughput alleles made by large projects
-    domain: Allele
-    range: VocabularyTerm # CV 'Allele collection vocabulary'
-
-  in_collection_name:
-    description: >-
-      Name of VocabularyTerm describing the collection from the 'Allele
-      collection vocabulary' Vocabulary
-    domain: AlleleDTO
-    range: string
-
-  transposon_insertion:
-    description: >-
-      Associated transposon insertion that causes the
-      mutation
-    domain: Allele
-    range: string
-
-  aberration:
-    description: >-
-      Associated deficiency (etc.) whose breakpoint causes
-      the mutation
-    domain: Allele
-    range: string
+      The irradiation used to generate the mutation through mutagenesis
+    domain: GenerationMethod
+    range: VocabularyTerm # CV 'Irradiation Mutagens'
 
   is_extinct:
     description: >-
       Does the allele still exist in a population somewhere?
     domain: Allele
     range: boolean
-
-  transgene_chromosome_location:
-    description: >-
-      The chromosome to which a transgene has been mapped. Used for WormBase transgenes
-      that have been integrated into the genome and mapped to a chromosome.
-    domain: Allele
-    range: Chromosome
-    multivalued: false
-
-  transgene_chromosome_location_curie:
-    description: >-
-      The curie string of the chromosome to which a transgene has been mapped. Used for WormBase
-      transgenes that have been integrated into the genome and mapped to a chromosome.
-    domain: AlleleDTO
-    range: string
-    multivalued: false
-
-  laboratory_of_origin:
-    description: >-
-      The laboratory of origin for the entity.
-    domain: Allele
-    range: Laboratory
-
-  laboratory_of_origin_curie:
-    description: >-
-      The curie of the laboratory of origin for the entity.
-    domain: AlleleDTO
-    range: string
 
   is_extrachromosomal:
     description: >-
@@ -994,36 +690,49 @@ slots:
     domain: Allele
     range: boolean
 
-  integration_method:
+  laboratory_of_origin:
     description: >-
-      WormBase captures the method by which an extrachromosomal transgene was integrated into the genome.
-    domain: GenerationMethod
-    range: VocabularyTerm  #CV 'WB Transgene Integration Methods'
-    multivalued: false
-
-  integration_method_name:
-    description: >-
-      WormBase captures the method by which an extrachromosomal transgene was integrated into the genome.
-    domain: GenerationMethodDTO
-    range: string  #CV 'WB Transgene Integration Methods'
-    multivalued: false
-
-  analyses:
-    description: >-
-      # TODO: added as a result of 'origin' class - please advise on a more descriptive slot/class definition.
-
-  allele_nomenclature_events:
-    description: Nomenclature events of a given allele
+      The laboratory of origin for the entity.
     domain: Allele
-    range: AlleleNomenclatureEventSlotAnnotation
-    multivalued: true
+    range: Laboratory
 
-  allele_nomenclature_event_dtos:
-    domain: AlleleDTO
-    range: AlleleNomenclatureEventSlotAnnotationDTO
+  molecular_mutations:
+    description: >-
+      Description of the DNA changes if precise
+      genomic location unknown
+    domain: AlleleMolecularMutationSlotAnnotation
+    range: string
     multivalued: true
-    inlined: true
-    inlined_as_list: true
+    required: true
+
+  mutagenesis_methods:
+    range: VocabularyTerm
+    multivalued: true
+    description: >-
+      Technique used to create the allele, e.g.
+      spontaneous / naturally occurring / radiation-induced / recombinant /
+      ENU / CRISPR / TALEN / gamma rays / not specified / spontaneous / DNA /
+      DNA AND CRISPR / DNA and TALEN / zinc finger nuclease / EMS
+
+  mutagenesis_target:
+    aliases: ["mutagee"]
+    description: >-
+      The target of the mutation, e.g. strain / adult females /
+      adult males / embryos / sperm / not specified
+    range: string # VocabularyTerm?
+
+  mutation_target_strain:
+    description: >-
+      The particular strain (solely for and from MGI) that is targeted
+      by the generation method for a particular allele.
+    range: AffectedGenomicModel
+
+  mutation_types:
+    description: SO term for type of mutation
+    domain: AlleleMutationTypeSlotAnnotation
+    range: SOTerm
+    multivalued: true
+    required: true
 
   nomenclature_event:
     description: >-
@@ -1034,138 +743,29 @@ slots:
     range: VocabularyTerm
     required: true
 
-  nomenclature_event_name:
+  primary_image:
     description: >-
-      Name of the VocabularyTerm describing the nomenclature event
-    domain: AlleleNomenclatureEventSlotAnnotationDTO
+      The primary image for an allele that is used to represent the allele on a page.
+    range: boolean
+
+  single_allele:
+    range: Allele
+    multivalued: false
+
+  transgene_chromosome_location:
+    description: >-
+      The chromosome to which a transgene has been mapped. Used for WormBase transgenes
+      that have been integrated into the genome and mapped to a chromosome.
+    domain: Allele
+    range: Chromosome
+    multivalued: false
+
+  transposon_insertion:   # This slot is currently not being used 2022-12-20; should it be? [CG]
+    description: >-
+      Associated transposon insertion that causes the
+      mutation
+    domain: Allele
     range: string
-    required: true
-
-  allele_secondary_ids:
-    description: Secondary IDs of a given allele
-    domain: Allele
-    range: AlleleSecondaryIdSlotAnnotation
-    multivalued: true
-
-  allele_secondary_id_dtos:
-    domain: AlleleDTO
-    range: AlleleSecondaryIdSlotAnnotationDTO
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-
-  allele_notes:
-    description: Notes for a given allele
-    domain: Allele
-    range: AlleleNoteSlotAnnotation
-    multivalued: true
-
-  allele_note_dtos:
-    is_a: note_dtos
-    domain: AlleleDTO
-    range: AlleleNoteSlotAnnotationDTO
-    multivalued: true
-    inlined_as_list: true
-    inlined: true
-
-  allele_symbol:
-    description: >-
-      The one current accepted symbol for the allele: e.g., wg<sup>1</sup>.
-    exact_mappings:
-      - biolink:symbol
-    domain: Allele
-    range: AlleleSymbolSlotAnnotation
-    required: true
-    multivalued: false
-
-  allele_symbol_dto:
-    description: >-
-      The one current accepted symbol for the allele: e.g., wg<sup>1</sup>.
-    domain: AlleleDTO
-    range: SymbolSlotAnnotationDTO
-    multivalued: false
-    required: true
-    inlined: true
-
-  allele_full_name:
-    description: >-
-      The one current full name for an allele: e.g., wg<sup>1</sup>.
-    domain: Allele
-    range: AlleleFullNameSlotAnnotation
-    required: false
-    multivalued: false
-
-  allele_full_name_dto:
-    description: >-
-      The one current full name for an allele: e.g., wg<sup>1</sup>.
-    domain: AlleleDTO
-    range: FullNameSlotAnnotationDTO
-    multivalued: false
-    inlined: true
-
-  allele_synonyms:
-    description: Holds between an Allele and a synonym.
-    required: false
-    multivalued: true
-    range: AlleleSynonymSlotAnnotation
-
-  allele_synonym_dtos:
-    domain: AlleleDTO
-    range: NameSlotAnnotationDTO
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-
-  allele_gene_associations:
-    domain: Allele
-    range: AlleleGeneAssociation
-    multivalued: true
-
-  allele_transcript_associations:
-    domain: Allele
-    range: AlleleTranscriptAssociation
-    multivalued: true
-
-  allele_protein_associations:
-    domain: Allele
-    range: AlleleProteinAssociation
-    multivalued: true
-
-  allele_variant_associations:
-    domain: Allele
-    range: AlleleVariantAssociation
-    multivalued: true
-
-  allele_allele_associations:
-    domain: Allele
-    range: AlleleAlleleAssociation
-    multivalued: true
-
-  allele_construct_associations:
-    domain: Allele
-    range: AlleleConstructAssociation
-    multivalued: true
-
-  allele_cell_line_associations:
-    domain: Allele
-    range: AlleleCellLineAssociation
-    multivalued: true
-
-  allele_image_associations:
-    domain: Allele
-    range: AlleleImageAssociation
-    multivalued: true
-
-  allele_origin_associations:
-    domain: Allele
-    range: AlleleOriginAssociation
-    multivalued: true
-
-  allele_generation_method_associations:
-    domain: Allele
-    range: AlleleGenerationMethodAssociation
-    multivalued: true
-
 
 
 enums:

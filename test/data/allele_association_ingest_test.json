@@ -46,7 +46,7 @@
   "allele_gene_association_ingest_set": [
     {
       "allele_curie": "WB:WBVar00000001",
-      "ro_term_curie": "RO:0001025",
+      "predicate_name": "is_allele_of",
       "gene_curie": "WB:WBGene00000001",
       "evidence_code_curie": "ECO:0000006",
       "evidence_curies": [
@@ -63,7 +63,7 @@
   "allele_transcript_association_ingest_set": [
     {
       "allele_curie": "WB:WBVar00000001",
-      "ro_term_curie": "RO:0001025",
+      "predicate_name": "has_transcript",
       "transcript_curie": "WB:WBTranscript00000001",
       "evidence_code_curie": "ECO:0000006",
       "evidence_curies": [
@@ -80,7 +80,7 @@
   "allele_protein_association_ingest_set": [
     {
       "allele_curie": "WB:WBVar00000001",
-      "ro_term_curie": "RO:0001025",
+      "predicate_name": "has_protein",
       "protein_curie": "WB:WBProtein00000001",
       "evidence_code_curie": "ECO:0000006",
       "evidence_curies": [
@@ -110,7 +110,7 @@
   "allele_construct_association_ingest_set": [
     {
       "allele_curie": "WB:WBVar00000001",
-      "ro_term_curie": "RO:0001019",
+      "predicate_name": "has_construct",
       "construct_curie": "WB:WBConstruct00000001",
       "evidence_code_curie": "ECO:0000006",
       "evidence_curies": [
@@ -151,7 +151,7 @@
   "allele_variant_association_ingest_set": [
     {
       "allele_curie": "WB:WBVar00000001",
-      "ro_term_curie": "RO:0001019",
+      "predicate_name": "has_variant",
       "variant_curie": "WB:WBVar00000001",
       "evidence_code_curie": "ECO:0000006",
       "evidence_curies": [
