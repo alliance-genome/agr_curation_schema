@@ -1,0 +1,84 @@
+id: https://github.com/alliance-genome/agr_curation_schema/resourceDescriptor.yaml
+name: Alliance-Schema-Prototype-Resource-Descriptor
+title: Alliance Schema Prototype Resource Descriptor
+
+imports:
+  - core
+  - linkml:types
+
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - owl
+
+classes:
+
+  ResourceDescriptor:
+    is_a: AuditedObject
+    slots:
+      - prefix
+      - name
+      - synonyms
+      - id_pattern
+      - id_example
+      - default_url_template
+      - resource_pages
+
+  ResourceDescriptorPage:
+    is_a: AuditedObject
+    slots:
+      - name
+      - url_template
+      - page_description
+    slot_usage:
+      name:
+        required: true
+
+slots:
+
+  default_url_template:
+    description: >-
+      Default URL template for the resource
+    domain: ResourceDescriptor
+    range: string
+
+  id_example:
+    description: >-
+      Example ID for the resource that fits the pattern described by the
+      id_pattern slot
+    domain: ResourceDescriptor
+    range: string
+
+  id_pattern:
+    description: >-
+      Regex for the expected format of the ID
+    domain: ResourceDescriptor
+    range: string
+
+  page_description:
+    description: Description of page
+    domain: ResourceDescriptorPage
+    range: string
+
+  resource_pages:
+    description: Pages for a particular resource
+    domain: ResourceDescriptor
+    range: ResourceDescriptorPage
+    multivalued: true
+
+  url_template:
+    description: >-
+      URL template for constructing link to resource using prodived ID, eg.
+      "https://www.omim.org/phenotypicSeries/[%s]"
+    domain: ResourceDescriptor
+    range: string

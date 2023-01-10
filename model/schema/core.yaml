@@ -153,6 +153,8 @@ classes:
     slot_usage:
       curie:
         required: true
+      prefix:
+        required: true
 
   CrossReferenceDTO:
     is_a: AuditedObjectDTO
@@ -161,6 +163,23 @@ classes:
       - page_areas
       - display_name
       - prefix
+    slot_usage:
+      curie:
+        required: true
+      prefix:
+        required: true
+
+  DataProviderCrossReference:
+    is_a: AuditedObject
+    slots:
+      - source_organization
+      - cross_reference
+
+  DataProviderCrossReferenceDTO:
+    is_a: AuditedObjectDTO
+    slots:
+      - source_organization_abbreviation
+      - cross_reference_dto
 
   Note:
     is_a: AuditedObject
@@ -713,32 +732,37 @@ slots:
     description: MOD release ID
     range: string
 
-  data_provider:
-    description: Organization (e.g. MOD) from which the data was sourced
-    multivalued: false
-    range: Organization
-
-  data_provider_name:
+  data_provider_cross_reference:
     description: >-
-      The string representation (for DTO objects) of the name of the
-      organization from which the data was sourced, e.g. 'MGI', 'WB', 'OMIM'
+      Object representing the organization (e.g. MOD) from which the data was
+      sourced and a CrossReference to that organisation's site
     multivalued: false
-    range: string
+    range: DataProviderCrossReference
 
-  secondary_data_provider:
+  data_provider_cross_reference_dto:
     description: >-
-      Organization (e.g. MOD) that provided the data directly to the Alliance,
-      but not the original source
+      Ingest object representing the organization (e.g. MOD) from which the data
+      was sourced and a CrossReference to that organisation's site
     multivalued: false
-    range: Organization
+    inlined: true
+    range: DataProviderCrossReferenceDTO
 
-  secondary_data_provider_name:
+  secondary_data_provider_cross_reference:
     description: >-
-      The string representation (for DTO objects) of the name of the organization
-      (e.g. MOD) that provided the data directly to the Alliance, but not the
-      original source, e.g. 'MGI', 'WB', 'RGD'
+      Object representing organization (e.g. MOD) that provided the data
+      directly to the Alliance, but not the original source, and a
+      CrossReference to that organisation's site
     multivalued: false
-    range: string
+    range: DataProviderCrossReference
+
+  secondary_data_provider_cross_reference_dto:
+    description: >-
+      Ingest object representing organization (e.g. MOD) that provided the
+      data directly to the Alliance, but not the original source, and a
+      CrossReference to that organisation's site
+    multivalued: false
+    inlined: true
+    range: DataProviderCrossReferenceDTO
 
   association_slot:
     abstract: true
@@ -753,6 +777,11 @@ slots:
     description: >-
       a human-readable description of an entity
 
+  cross_reference:
+    range: CrossReference
+    multivalued: false
+    inlined: true
+
   cross_references:
     singular_name: cross_reference
     aliases: ['xrefs']
@@ -762,6 +791,11 @@ slots:
     range: CrossReference
     inlined: true
     inlined_as_list: true
+
+  cross_reference_dto:
+    range: CrossReferenceDTO
+    multivalued: false
+    inlined: true
 
   cross_reference_dtos:
     range: CrossReferenceDTO
@@ -890,6 +924,16 @@ slots:
     required: true
 
   protein_curie:
+    range: string
+    required: true
+
+  source_organization:
+    domain: DataProviderCrossReference
+    range: Organization
+    required: true
+
+  source_organization_abbreviation:
+    domain: DataProviderCrossReferenceDTO
     range: string
     required: true
 
