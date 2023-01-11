@@ -101,6 +101,7 @@ slots:
       / fish
     domain: AffectedGenomicModelDTO
     range: string
+    required: true
 
   components:
     singular_name: component
