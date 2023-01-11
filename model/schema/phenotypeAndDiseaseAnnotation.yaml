@@ -11,6 +11,7 @@ imports:
   - reference
   - core
   - gene
+  - alleleDTO
   - ontologyTerm
 
 

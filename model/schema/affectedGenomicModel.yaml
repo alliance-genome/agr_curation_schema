@@ -5,6 +5,7 @@ title: Alliance Schema Prototype Affected Genomic Model
 imports:
   - core
   - allele
+  - alleleDTO
   - linkml:types
 
 default_prefix: alliance
