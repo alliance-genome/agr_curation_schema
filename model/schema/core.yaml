@@ -24,6 +24,7 @@ imports:
   - image
   - ontologyTerm
   - controlledVocabulary
+  - resourceDescriptor
 
 prefixes:
   alliance: 'http://alliancegenome.org/'
@@ -144,16 +145,13 @@ classes:
     is_a: AuditedObject
     slots:
       - curie
-      - page_areas
+      - resource_descriptor_pages
       - display_name
-      - prefix
     defining_slots:
       - curie
-      - page_areas
+      - resource_descriptor_pages
     slot_usage:
       curie:
-        required: true
-      prefix:
         required: true
 
   CrossReferenceDTO:
@@ -935,6 +933,12 @@ slots:
   source_organization_abbreviation:
     domain: DataProviderCrossReferenceDTO
     range: string
+    required: true
+
+  resource_descriptor_pages:
+    domain: CrossReference
+    range: ResourceDescriptorPage
+    multivalued: true
     required: true
 
   ## --------------------
