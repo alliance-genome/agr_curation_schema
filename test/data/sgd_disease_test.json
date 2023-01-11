@@ -8,7 +8,7 @@
       ],
       "annotation_type_name": "manually curated",
       "reference_curie": "PMID:21145416",
-      "data_provider_dto": {
+      "data_provider_cross_reference_dto": {
         "source_organization_abbreviation": "SGD",
         "cross_reference_dto": {
           "curie": "SGD:11111",
@@ -16,8 +16,10 @@
           "page_areas": [
             "gene/disease"
           ],
-          "display_name": "SGD:SGD11111"
-        }
+          "display_name": "SGD:SGD11111",
+          "internal": false
+        },
+        "internal": false
       },
       "do_term_curie": "DOID:10588",
       "created_by_curie": "SGD",

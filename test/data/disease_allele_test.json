@@ -6,7 +6,7 @@
         "ECO:0000305"
       ],
       "reference_curie": "PMID:123456",
-      "data_provider_dto": {
+      "data_provider_cross_reference_dto": {
         "source_organization_abbreviation": "ZFIN",
         "cross_reference_dto": {
           "curie": "DOID:0001234",
@@ -14,8 +14,10 @@
           "page_areas": [
             "disease/zfin"
           ],
-          "display_name": "DOID:0001234"
-        }
+          "display_name": "DOID:0001234",
+          "internal": false
+        },
+        "internal": false
       },
       "allele_curie": "ZFIN:ZDB-ALT-001122-1",
       "disease_relation_name": "is_implicated_in",
