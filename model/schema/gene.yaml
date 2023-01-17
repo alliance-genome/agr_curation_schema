@@ -57,6 +57,7 @@ classes:
       - related_notes
       - gene_type
       - gene_types_secondary
+      - gene_nomenclature_events
       - designating_laboratories
       - designating_persons
       - trans_splice_leaders
@@ -141,6 +142,14 @@ classes:
       single_gene:
         required: true
 
+  GeneNomenclatureEventSlotAnnotation:
+    is_a: NomenclatureEventSlotAnnotation
+    slots:
+      - single_gene
+    slot_usage:
+      single_gene:
+        required: true
+
   GeneticMapPosition:
     description: >-
       A genetic map position.
@@ -151,18 +160,6 @@ classes:
       - genetic_map_position_centimorgan
       - genetic_map_position_centimorgan_error
       - genetic_map_position_radiation
-
-  GeneHistory:
-    description: >-
-      The history of a gene
-    is_a: AuditedObject
-    slots:
-      - current_status
-      - current_version
-      - merged_into
-      - acquires_merge
-      - split_from
-      - split_into
 
 ## ------------
 ## SLOTS
@@ -263,6 +260,13 @@ slots:
     domain: Gene
     range: SOTerm
 
+  gene_nomenclature_events:
+    description: >-
+      Change/nomenclature events of a given gene.
+    domain: Gene
+    range: GeneNomenclatureEventSlotAnnotation
+    multivalued: true
+      
   designating_laboratories:
     description: >-
       A laboratory, rarely laboratories, which designated this gene
@@ -366,51 +370,3 @@ slots:
     multivalued: true
     domain: GeneticMapPosition
     range: float
-
-  current_status:
-    description: >-
-      Current status of this object
-    required: false
-    multivalued: true
-    domain: GeneHistory
-    range: string  # change to a controlled vocab, like live-dead-suppressed...
-
-  current_version:
-    description: >-
-      Current version of this object with each version eg 1,2,3 describing major updates
-    required: false
-    multivalued: false
-    domain: GeneHistory
-    range: integer
-
-  merged_into:
-    description: >-
-      This gene has been merged into
-    required: false
-    multivalued: true
-    domain: GeneHistory
-    range: Gene
-
-  acquires_merge:
-    description: >-
-      Genes which have been merged into this gene
-    required: false
-    multivalued: true
-    domain: GeneHistory
-    range: Gene
-
-  split_from:
-    description: >-
-      This gene exists because it has been split from this gene
-    required: false
-    multivalued: true
-    domain: GeneHistory
-    range: Gene
-
-  split_into:
-    description: >-
-      This gene has been split into these genes
-    required: false
-    multivalued: true
-    domain: GeneHistory
-    range: Gene
