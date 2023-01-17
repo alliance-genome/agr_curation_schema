@@ -50,10 +50,13 @@ classes:
       A pseudogene may be considered a gene under this definition, albeit no longer functional.
     is_a: GenomicEntity
     slots:
-      - symbol
+      - gene_symbol
+      - gene_full_name
+      - gene_systematic_name
+      - gene_synonyms
       - related_notes
       - gene_type
-      - gene_types_secondary    
+      - gene_types_secondary
       - designating_laboratories
       - designating_persons
       - trans_splice_leaders
@@ -72,14 +75,71 @@ classes:
       - WB
       - ZFIN
     slot_usage:
-      symbol:
-        required: true
       related_notes:
         description: >-
           Valid note types are available for viewing in the A-Team curation tool
           Controlled Vocabulary Terms Table (in the "Gene note types" vocabulary)
           on the production environment (curation.alliancegenome.org). New terms
           can be added as needed.
+
+  GeneDTO:
+    is_a: GenomicEntityDTO
+    description: Ingest class for genes
+    slots:
+      - gene_symbol_dto
+      - gene_full_name_dto
+      - gene_systematic_name_dto
+      - gene_synonym_dtos
+      - gene_type_curie
+
+  GeneSymbolSlotAnnotation:
+    description: >-
+      The one current symbol for the gene.
+    is_a: NameSlotAnnotation
+    slots:
+      - single_gene
+    slot_usage:
+      single_gene:
+        required: true
+      name_type:
+        notes: >-
+          permissible_values: nomenclature_symbol (VocabularyTerm), systematic_name (VocabularyTerm)
+
+  GeneFullNameSlotAnnotation:
+    is_a: NameSlotAnnotation
+    description: >-
+      The one current full name for the gene.
+    slots:
+      - single_gene
+    slot_usage:
+      single_gene:
+        required: true
+      name_type:
+        notes: >-
+          permissible_values: full_name (VocabularyTerm)
+
+  GeneSystematicNameSlotAnnotation:
+    is_a: NameSlotAnnotation
+    description: >-
+      The one current systematic name for the gene.
+    slots:
+      - single_gene
+    slot_usage:
+      single_gene:
+        required: true
+      name_type:
+        notes: >-
+            permissible_values: systematic_name (VocabularyTerm)
+
+  GeneSynonymSlotAnnotation:
+    is_a: NameSlotAnnotation
+    description: >-
+      All aliases (non-preferred names) for the gene. Any type of synonym is acceptable.
+    slots:
+      - single_gene
+    slot_usage:
+      single_gene:
+        required: true
 
   GeneticMapPosition:
     description: >-
@@ -96,14 +156,92 @@ classes:
 ## SLOTS
 ## ------------
 
-
-
 slots:
+
+  single_gene:
+    range: Gene
+    multivalued: false
+
+  gene_symbol:
+    description: >-
+      The one current accepted symbol for a gene: e.g., wg, pax2a.
+    exact_mappings:
+      - biolink:symbol
+    domain: Gene
+    range: GeneSymbolSlotAnnotation
+    required: true
+    multivalued: false
+
+  gene_symbol_dto:
+    description: >-
+      The one current accepted symbol for a gene: e.g., wg, pax2a.
+    domain: GeneDTO
+    range: SymbolSlotAnnotationDTO
+    multivalued: false
+    required: true
+    inlined: true
+
+  gene_full_name:
+    description: >-
+      The one current full name for a gene: e.g., wingless, paired box 2a.
+    domain: Gene
+    range: GeneFullNameSlotAnnotation
+    required: false
+    multivalued: false
+
+  gene_full_name_dto:
+    description: >-
+      The one current full name for a gene: e.g., wingless, paired box 2a.
+    domain: GeneDTO
+    range: FullNameSlotAnnotationDTO
+    multivalued: false
+    required: true
+    inlined: true
+
+  gene_systematic_name:
+    description: >-
+      The one current systematic name for a gene: e.g., YHR084W, R09F10.2.
+    domain: Gene
+    range: GeneSystematicNameSlotAnnotation
+    required: false
+    multivalued: false
+
+  gene_systematic_name_dto:
+    description: >-
+      The one current systematic name for a gene: e.g., YHR084W, R09F10.2.
+    domain: GeneDTO
+    range: SystematicNameSlotAnnotationDTO
+    multivalued: false
+    required: true
+    inlined: true
+
+  gene_synonyms:
+    description: Holds between a Gene and a synonym.
+    domain: Gene
+    range: GeneSynonymSlotAnnotation
+    required: false
+    multivalued: true
+
+  gene_synonym_dtos:
+    domain: GeneDTO
+    range: NameSlotAnnotationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  gene_curie:
+    range: string
+    required: true
 
   gene_type:
     description: SOTerm describing gene type
     domain: Gene
     range: SOTerm
+
+  gene_type_curie:
+    description: Curie of SOTerm describing gene type
+    domain: GeneDTO
+    range: string
 
   gene_types_secondary:
     description: >-
@@ -112,7 +250,7 @@ slots:
     multivalued: true
     domain: Gene
     range: SOTerm
-        
+
   designating_laboratories:
     description: >-
       A laboratory, rarely laboratories, which designated this gene

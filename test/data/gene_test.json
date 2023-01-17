@@ -3,18 +3,62 @@
   "gene_ingest_set": [
     {
       "curie": "ZFIN:ZDB-GENE-010226-1",
-      "taxon": "NCBITaxon:7955",
-      "created_by": "ZFIN",
-      "updated_by": "ZFIN",
+      "taxon_curie": "NCBITaxon:7955",
+      "created_by_curie": "ZFIN",
+      "updated_by_curie": "ZFIN",
       "internal": false,
-      "symbol": "gdnfa",
-      "name": "glial cell derived neurotrophic factor a",
-      "cross_references": [
+      "gene_symbol_dto": {
+        "name_type_name": "nomenclature_symbol",
+        "format_text": "wg<sup>1</sup>",
+        "display_text": "wg<sup>1</sup>",
+        "synonym_url": "https://synonym_url.com/a83",
+        "synonym_scope_name": "exact",
+        "evidence_curies": [
+          "PMID:01231001"
+        ],
+        "internal": false
+      },
+      "gene_full_name_dto": {
+        "name_type_name": "full_name",
+        "format_text": "Wingless 1",
+        "display_text": "Wingless 1",
+        "synonym_url": "https://synonym_url.com/a83",
+        "synonym_scope_name": "exact",
+        "evidence_curies": [
+          "PMID:01231001"
+        ],
+        "internal": false
+      },
+      "gene_systematic_name_dto": {
+        "name_type_name": "systematic_name",
+        "format_text": "YHR084W",
+        "display_text": "YHR084W",
+        "synonym_url": "https://synonym_url.com/YHR084W",
+        "synonym_scope_name": "exact",
+        "evidence_curies": [
+          "PMID:01231001"
+        ],
+        "internal": false
+      },
+      "gene_synonym_dtos": [
+        {
+          "name_type_name": "unspecified",
+          "format_text": "wg1",
+          "display_text": "wg1",
+          "synonym_url": "https://synonym_url.com/wg1",
+          "synonym_scope_name": "exact",
+          "evidence_curies": [
+            "PMID:01231001"
+          ],
+          "internal": false
+        }
+      ],
+      "cross_reference_dtos": [
         {
           "curie": "ZFIN:ZDB-GENE-010226-1",
-          "created_by": "ZFIN",
+          "created_by_curie": "ZFIN",
           "display_name": "",
-          "updated_by": "ZFIN",
+          "updated_by_curie": "ZFIN",
           "internal": false,
           "page_areas": [
             "gene",
@@ -27,15 +71,19 @@
         },
         {
           "curie": "NCBI_Gene:79379",
-          "created_by": "ZFIN",
-          "updated_by": "ZFIN",
+          "created_by_curie": "ZFIN",
+          "updated_by_curie": "ZFIN",
           "internal": false,
-          "page_areas": [],
+          "page_areas": ["gene",
+            "gene/expression",
+            "gene/wild_type_expression",
+            "gene/expression_images",
+            "gene/references"],
           "prefix": "NCBI_Gene",
           "display_name": ""
         }
       ],
-      "gene_type": "SO:0001217"
+      "gene_type_curie": "SO:0001217"
     }
   ]
 }

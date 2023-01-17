@@ -2,40 +2,38 @@
   "linkml_version": "1.3.0",
   "disease_allele_ingest_set": [
     {
-      "disease_annotation_curie": "AGRKB:100123456789015",
-      "subject": "FB:FBal0000272",
-      "predicate": "is_implicated_in",
-      "object": "DOID:3191",
+      "allele_curie": "FB:FBal0000272",
+      "disease_relation_name": "is_implicated_in",
+      "do_term_curie": "DOID:3191",
       "negated": false,
-      "evidence_codes": [
+      "evidence_code_curies": [
         "ECO:0007013"
       ],
-      "single_reference": "FB:FBrf0227496",
-      "annotation_type": "manually_curated",
-      "data_provider": "FB",
-      "created_by": "FB:FB_curator",
+      "reference_curie": "FB:FBrf0227496",
+      "annotation_type_name": "manually_curated",
+      "data_provider_name": "FB",
+      "created_by_curie": "FB:FB_curator",
       "date_created": "2022-01-12T09:57:42-05:00",
-      "updated_by": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator",
       "internal": false,
       "date_updated": "2022-01-12T09:57:42-05:00"
     }
   ],
   "disease_gene_ingest_set": [
     {
-      "disease_annotation_curie": "AGRKB:100123456789016",
-      "subject": "FB:FBgn0000047",
-      "predicate": "is_implicated_in",
-      "object": "DOID:422",
+      "gene_curie": "FB:FBgn0000047",
+      "disease_relation_name": "is_implicated_in",
+      "do_term_curie": "DOID:422",
       "negated": false,
-      "evidence_codes": [
+      "evidence_code_curies": [
         "ECO:0007013"
       ],
-      "single_reference": "FB:FBrf0211153",
-      "annotation_type": "manually_curated",
-      "data_provider": "FB",
-      "created_by": "FB:FB_curator",
+      "reference_curie": "FB:FBrf0211153",
+      "annotation_type_name": "manually_curated",
+      "data_provider_name": "FB",
+      "created_by_curie": "FB:FB_curator",
       "date_created": "2022-01-12T09:57:42-05:00",
-      "updated_by": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator",
       "internal": false,
       "date_updated": "2022-01-12T09:57:42-05:00"
     }

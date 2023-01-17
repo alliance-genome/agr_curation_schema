@@ -175,24 +175,102 @@ git clone https://github.com/alliance-genome/agr_curation_schema
 ```
 
 2. validating a local JSON file against the schema:
+make sure you have linkml installed (see above for instructions on how to install the agr_curation_schema dependencies into your 
+python environment).  Then run the validator:
 ```bash
-python util/validate_agr_schema.py -i path_to_the_json_data_to_validate
+poetry run linkml-validate -C Ingest -s model/schema/allianceModel.yaml -s model/schema/allianceModel.yaml [path/to/your/submission/file.json]
 ```
 
 example command using test data (replace test/allele_ingest_test.json with the path to your submission.json):
 ```bash
-python util/validate_agr_schema.py -i test/allele_ingest_test.json
+poetry run linkml-validate -C Ingest -s model/schema/allianceModel.yaml -s model/schema/allianceModel.yaml test/allele_ingest_test.json
 ```
 
 note: it's good practice to use a python virtual environment when running commands as the installed version of python
-(for example, on most Mac operating systems is version 2 vs. version 3).  The simplest way to do that is like this:
+(for example, on most Mac operating systems is version 2 vs. version 3).  
+Here is a guide for working with python and poetry virtual environments: https://berkeleybop.github.io/best_practice/python_environments
+Note, the guide above has been tested with a wide variety of biomedical python projects and is a great learning guide
+for working with python and virtual environments.
+
+The basic steps for setting up a system with multiple versions of python and virtual environments are:
+1) Install pyenv, homebrew is a good method for installing pyenv:
 ```bash
-pyvenv venv
-source venv/bin/activate
-export PYTHONPATH=.:$PYTHONPATH
-pip install poetry
-pip install -e .
+brew update
+brew install pyenv
 ```
+once installed, you can add many versions of python to your system using pyenv:
+```bash
+pyenv install 3.8.15
+pyenv global 3.8.15
+```
+
+2) Install poetry
+```bash
+curl -sSL https://install.python-poetry.org | python3 -
+poetry config virtualenvs.in-project true
+poetry config virtualenvs.prefer-active-python true
+```
+
+3) Creating a virtual environment with poetry
+```bash
+git clone https://github.com/alliance-genome/agr_curation_schema
+git checkout -b my_new_branch
+cd agr_curation_schema
+poetry install  
+```
+
+5) Run the tests
+```bash
+make test
+```
+
+## Alternate development environment - Using Docker
+
+1) install docker
+2) build the docker image
+```bash
+docker build -t agr_curation_schema .
+```
+3) run the docker image
+```bash
+docker run -t -d --name agr_curation_schema agr_curation_schema
+```
+4) invade the running container
+```bash
+docker exec -it agr_curation_schema /bin/bash
+```
+5) clone the repo
+```bash
+git clone https://github.com/alliance-genome/agr_curation_schema
+cd agr_curation_schema
+git checkout my_branch_to_run_tests
+```
+6) install the project
+```bash
+poetry install
+```
+7) run the tests
+```bash
+make test
+```
+
+## Alternate alternate test environment - just use pipx on MacOS
+1) install pipx
+```bash
+brew install pipx --user
+```
+2) run tests in an isolated pipx environment
+```bash
+pipx run --spec linkml linkml-validate -C Ingest -s model/schema/allianceModel.yaml -s model/schema/allianceModel.yaml test/data/allele_test.json
+```
+
+If you need to make changes based on test results, you may wish to configure git 
+according to https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls
+in order to avoid having to enter your github credentials every time you push a change.
+
+## All else fails
+1) make schema changes in a branch
+2) push the branch to github; github actions will run all the tests for you in an isolated environment even on a draft PR.  Use the actions to see if your tests pass.
 
 ## GitHub Actions
 

@@ -17,6 +17,7 @@ emit_prefixes:
 imports:
   - linkml:types
   - core
+  - allianceMember
 
 prefixes:
   alliance: 'http://alliancegenome.org/'
@@ -39,9 +40,18 @@ classes:
 
   Organization:
     is_a: Agent
+    description: >-
+      An organization that provides information and/or materials to the Alliance.
+      This includes Alliance member organizations (see AllianceMember subclass).
+    slots:
+      - abbreviation
+      - full_name
+      - short_name
 
   Laboratory:
     is_a: Organization
+    slots:
+      - curie
 
   Company:
     is_a: Organization
@@ -57,6 +67,7 @@ classes:
       - old_emails
       - mod_entity_id
       - unique_id
+      - affiliated_alliance_member
     exact_mappings:
       - schema:person
       - foaf:Person
@@ -78,6 +89,11 @@ classes:
         required: true
 
 slots:
+
+  affiliated_alliance_member:
+    description: The Alliance Member the person is affiliated with
+    domain: Person
+    range: AllianceMember
 
   orcid:
     description:  Open Researcher and Contributor ID
@@ -117,3 +133,21 @@ slots:
     description: The API token of the LoggedInPerson for the curation system
     domain: LoggedInPerson
     range: string
+
+  short_name:
+    description: >-
+      The short name of the organization. For Alliance Members, this is the short name
+      used in the Members list on the website. e.g. MGD, FB, OMIM
+    multivalued: false
+    domain: Organization
+    range: string
+    required: true
+
+  full_name:
+    description: >-
+      The full name of the Organization.
+      e.g. Mouse Genome Database, FlyBase, Online Mendelian Inheritance of Man
+    multivalued: false
+    domain: Organization
+    range: string
+    required: true

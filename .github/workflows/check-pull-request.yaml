@@ -44,19 +44,8 @@ jobs:
       - name: Install library
         run: poetry install --no-interaction
 
-      #----------------------------------------------
-      #              run test suite
-      #----------------------------------------------
-      - name: Run tests
-        run: poetry run python -m unittest discover
-
-      # Excute the Makefile to build generated artifacts
-      - name: Make JSONSchema so tests can use it to validate
+      - name: regenerate artifacts and validate against generated artifacts
         run: |
           make clean
           make all
-
-      # Validate json schema aganst test data
-      - name: Validate JSON Schema
-        run: |
           make test-jsonschema

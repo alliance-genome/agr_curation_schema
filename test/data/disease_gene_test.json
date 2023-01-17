@@ -2,18 +2,17 @@
   "linkml_version": "1.3.0",
   "disease_gene_ingest_set": [
     {
-      "evidence_codes": [
+      "evidence_code_curies": [
         "ECO:0000305"
       ],
-      "disease_annotation_curie": "AGRKB:100123456789014",
-      "single_reference": "PMID:123456",
-      "data_provider": "ZFIN",
-      "object": "DOID:0001234",
-      "created_by": "ZFIN",
-      "updated_by": "ZFIN",
+      "reference_curie": "PMID:123456",
+      "data_provider_name": "ZFIN",
+      "do_term_curie": "DOID:0001234",
+      "created_by_curie": "ZFIN",
+      "updated_by_curie": "ZFIN",
       "internal": false,
-      "subject": "ZFIN:ZDB-GENE-001122-1",
-      "predicate": "is_implicated_in"
+      "gene_curie": "ZFIN:ZDB-GENE-001122-1",
+      "disease_relation_name": "is_implicated_in"
     }
   ]
 }

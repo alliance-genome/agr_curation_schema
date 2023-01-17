@@ -68,6 +68,19 @@ classes:
       - internal
       - obsolete
 
+  AuditedObjectDTO:
+    description: >-
+      Base class for all other LinkML DTO classes.
+    slots:
+      - created_by_curie
+      - date_created
+      - updated_by_curie
+      - date_updated
+      - db_date_created
+      - db_date_updated
+      - internal
+      - obsolete
+
   BiologicalEntity:
     is_a: AuditedObject
     description: >-
@@ -83,6 +96,18 @@ classes:
       curie:
         required: true
 
+  BiologicalEntityDTO:
+    is_a: AuditedObjectDTO
+    abstract: true
+    slots:
+      - curie
+      - taxon_curie
+    slot_usage:
+      taxon_curie:
+        required: true
+      curie:
+        required: true
+
   GenomicEntity:
     is_a: BiologicalEntity
     description: >-   # tentative
@@ -91,11 +116,16 @@ classes:
       is derived indirectly from the genome (i.e. polypeptide or protein via
       RNA transcript translation).
     slots:
-      - name
-      - synonyms
       - cross_references
       - secondary_identifiers
-      - genomic_locations
+      - genomic_location_associations
+
+  GenomicEntityDTO:
+    is_a: BiologicalEntityDTO
+    slots:
+      - cross_reference_dtos
+      - secondary_identifiers
+      - genomic_location_association_dtos
 
   Transcript:
     is_a: GenomicEntity
@@ -124,11 +154,13 @@ classes:
       curie:
         required: true
 
-
-  Synonym:
-    is_a: AuditedObject
+  CrossReferenceDTO:
+    is_a: AuditedObjectDTO
     slots:
-      - name
+      - curie
+      - page_areas
+      - display_name
+      - prefix
 
   Note:
     is_a: AuditedObject
@@ -154,6 +186,19 @@ classes:
           - value: gene_disease_summary
           - value: gene_function_summary
           - value: gene_phenotype_summary
+          - value: transgene_construction_summary
+
+  NoteDTO:
+    is_a: AuditedObjectDTO
+    slots:
+      - free_text
+      - note_type_name
+      - evidence_curies
+    slot_usage:
+      free_text:
+        required: true
+      note_type_name:
+        required: true
 
   SlotAnnotation:
     is_a: AuditedObject
@@ -162,26 +207,73 @@ classes:
       to a slot in the context of its referencing class, that can not be fully captured using an Association between
       the full class itself, and an InformationContentEntity. Evidence and provenance can exist here in the form of an
       evidence code, a publication, a personal communication or any other kind of InformationContentEntity.
-      SlotAnnotation classes are used where the slot is not referencing a class in and of itself, and often has a 
+      SlotAnnotation classes are used where the slot is not referencing a class in and of itself, and often has a
       scalar range.
     notes: >-
-      A good example of the use of a SlotAnnotation class is the use case of attributing one of many functional 
-      impacts of an allele to a publication.  AlleleFunctionalImpact is the SlotAnnotation class that represents 
-      this use case. 
+      A good example of the use of a SlotAnnotation class is the use case of attributing one of many functional
+      impacts of an allele to a publication.  AlleleFunctionalImpact is the SlotAnnotation class that represents
+      this use case.
     slots:
       - evidence
+
+  SlotAnnotationDTO:
+    is_a: AuditedObjectDTO
+    slots:
+      - evidence_curies
+
+  NameSlotAnnotation:
+    is_a: SlotAnnotation
+    abstract: true
+    description: >-
+      Some symbol or name for an object, including current names as well as
+      aliases, with accompanying metadata. The entity to which the symbol/name
+      applies is specified in objects that inherit from this object.
+    slots:
+      - name_type
+      - format_text
+      - display_text
+      - synonym_url
+      - synonym_scope
+
+  NameSlotAnnotationDTO:
+    is_a: SlotAnnotationDTO
+    slots:
+      - name_type_name
+      - format_text
+      - display_text
+      - synonym_url
+      - synonym_scope_name
+
+  SymbolSlotAnnotationDTO:
+    is_a: NameSlotAnnotationDTO
     slot_usage:
-      evidence:
-        required: true
+      name_type_name:
+        any_of:
+          - equals_string: nomenclature_symbol
+          - equals_string: systematic_name
+
+  FullNameSlotAnnotationDTO:
+    is_a: NameSlotAnnotationDTO
+    slot_usage:
+      name_type_name:
+        any_of:
+          - equals_string: full_name
+
+  SystematicNameSlotAnnotationDTO:
+    is_a: NameSlotAnnotationDTO
+    slot_usage:
+      name_type_name:
+        any_of:
+          - equals_string: systematic_name
 
   Association:
     is_a: AuditedObject
     description: >-
-      A typed association between two entities, supported by evidence.  Associations have three base slots: subject, 
-      object, and predicate, but they can have any number of additional attributes that help qualify the relationship 
-      between the subject and the object.  The subject is the curie (or identifier) of the class that is the subject 
-      of the association, and likewise the object is the curie (or identifier of the class that is the object. The 
-      relationship between subject and object is defined by the predicate slot (which can also be constrained 
+      A typed association between two entities, supported by evidence.  Associations have three base slots: subject,
+      object, and predicate, but they can have any number of additional attributes that help qualify the relationship
+      between the subject and the object.  The subject is the curie (or identifier) of the class that is the subject
+      of the association, and likewise the object is the curie (or identifier of the class that is the object. The
+      relationship between subject and object is defined by the predicate slot (which can also be constrained
       using the range of the predicate).
     exact_mappings:
       - biolink:association
@@ -200,19 +292,6 @@ classes:
             required: true
         object:
             required: true
-
-  EntitySynonym:
-    is_a: Association
-    description: >-
-      A relationship between an entity and a synonym.
-    slot_usage:
-      object:
-        range: Synonym
-      predicate:
-        range: entity_synonym_type_set
-      references:
-        description: >-
-          The references in which the synonym is used to refer to the entity.
 
   ExternalDatabaseLink:
     is_a: AuditedObject
@@ -244,12 +323,9 @@ classes:
       curie:
         required: true
 
-  GenomicLocation:
-    is_a: AuditedObject
+  GenomicLocationAssociation:
+    is_a: Association
     slots:
-      - subject
-      - predicate   # what should the predicate range be for this class? CG
-      - object
       - has_assembly
       - start
       - end
@@ -262,6 +338,9 @@ classes:
         range: Chromosome
         description: >-
           object should be the chromosome identifier
+      predicate:
+        any_of:
+          equals_string: has_genomic_location
     defining_slots:
       - subject
       - predicate
@@ -269,6 +348,32 @@ classes:
       - has_assembly
       - start
       - end
+
+  GenomicLocationAssociationDTO:
+    is_a: AuditedObjectDTO
+    slots:
+      - genomic_entity_curie
+      - predicate_name
+      - chromosome_curie
+      - evidence_curies
+      - assembly_curie
+      - start
+      - end
+    slot_usage:
+      genomic_entity_curie:
+        required: true
+      predicate_name:
+        required: true
+        any_of:
+          equals_string: has_genomic_location
+      chromosome_curie:
+        required: true
+      assembly_curie:
+        required: true
+      start:
+        required: true
+      end:
+        required: true
 
   Protein:
     is_a: GenomicEntity
@@ -399,21 +504,82 @@ slots:
     required: false
     multivalued: false
 
-  synonym:
-    description: the text string of the synonym
+  name_type:
+    description: >-
+      The type of name: e.g., symbol, full_name, systematic_name, etc.
+    notes: >-
+      Proposed vocabulary terms for name_type.
+        nomenclature_symbol: A symbol for an object: e.g., pax6a, lin-12.
+        full_name: The full length name of an entity: e.g., paired box 6a.
+        systematic_name: A systematic name: e.g., YHR084W, R09F10.2, CG4889.
+        ncbi_protein_name: Synonyms developed by SGD and NCBI curators.
+        uniform: SGD-specific.
+        non_uniform: SGD-specific.
+        retired_name: SGD-specific.
+        unspecified: unclassified names.
+    domain: NameSlotAnnotation
+    range: VocabularyTerm
+    multivalued: false
+    required: true
+
+  name_type_name:
+    description: >-
+      Name of the VocabularyTerm representing the name type of the
+      synonym - proposed values are nomenclature_symbol / full_name /
+      systematic_name / ncbi_protein_name / uniform / non_uniform /
+      retired_name / unspecified
+    domain: NameSlotAnnotationDTO
+    range: string
+    required: true
+
+  format_text:
+    description: >-
+      A version of a synonym string using only ASCII characters, which is
+      easier to type (for searches), print and parse. For example, Greek
+      characters are transliterated.
+    aliases: ['synonym_text']
+    range: string
+    required: true
+    multivalued: false
+
+  display_text:
+    description: >-
+      A version of a synonym string for display. Any UTF8 character is
+      permitted.
+    aliases: ['synonym_sgml']
+    range: string
+    required: true
+    multivalued: false
+
+  synonym_url:
+    description: >-
+      URL for a synonym: e.g., NCBI URL for the NCBI synonym of an object.
+    range: uri
 
   synonym_scope:
-    description: the scope of the synonym, e.g. 'EXACT', 'NARROW' or 'RELATED'
-    range: synonym_scope_enum
+    description: >-
+      the scope of the synonym - permissible values are narrow /
+      broad / related / exact
+    domain: NameSlotAnnotation
+    range: VocabularyTerm
+
+  synonym_scope_name:
+    description: >-
+      Name of the VocabularyTerm representing the scope of the
+      synonym - permissible values are narrow / broad / related / exact
+    domain: NameSlotAnnotationDTO
+    range: string
 
   start:
     description: The start of the feature in positive 1-based integer coordinates
+    range: integer
 
   end:
     description: The end of the feature in positive 1-based integer coordinates
+    range: integer
 
   has_assembly:
-    domain: GenomicLocation
+    domain: GenomicLocationAssociation
     required: true
     range: Assembly
 
@@ -456,12 +622,6 @@ slots:
       The cateogry of pages the resource in the context of the URL associated with the crossReference
       provides.  Equivalent to the 'page' attribute in the Alliance resourceDescriptor file.
 
-  private_comment:
-    description: >-
-      A private explanatory note from curators about some entity, for internal
-      use only.
-    range: string
-
   uncertain:
     description: >-
       If set to true, then the related entity is uncertain.
@@ -476,6 +636,13 @@ slots:
     description: >-
       The type of note: e.g., cytology, comment, summary. Permissible values for 'note_type' currently = disease_summary, disease_note
     range: VocabularyTerm
+
+  note_type_name:
+    description: >-
+      Name of VocabularyTerm representing note type selected from the
+      appropriate Vocabulary
+    domain: NoteDTO
+    range: string
 
   internal:
     description: >-
@@ -500,6 +667,16 @@ slots:
       Singular version of related_notes
     range: Note
     multivalued: false
+
+  note_dto:
+    range: NoteDTO
+    inlined: true
+
+  note_dtos:
+    range: NoteDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
 
   generated_by:
     description: >-
@@ -545,6 +722,12 @@ slots:
     multivalued: false
     range: NCBITaxonTerm
 
+  taxon_curie:
+    description: >-
+      Curie of the NCBITaxonTerm representing the taxon from which the
+      biological entity derives
+    range: string
+
   secondary_identifiers:
     aliases: ['secondary_ids']
     multivalued: true
@@ -554,10 +737,17 @@ slots:
     multivalued: false
     range: uriorcurie
 
-  genomic_locations:
+  genomic_location_associations:
     domain: GenomicEntity
-    range: GenomicLocation
+    range: GenomicLocationAssociation
     multivalued: true
+
+  genomic_location_association_dtos:
+    domain: GenomicEntityDTO
+    range: GenomicLocationAssociationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
 
   table_key:
     description: >-
@@ -571,7 +761,7 @@ slots:
     aliases: [ 'creation_date' ]
     description: >-
       The date on which an entity was created. This can be applied to nodes or edges.
-    range: date
+    range: datetime
     exact_mappings:
       - dct:createdOn
       - WIKIDATA_PROPERTY:P577
@@ -580,21 +770,21 @@ slots:
     aliases: ['date_last_modified']
     description: >-
       Date on which an entity was last modified.
-    range: date
+    range: datetime
 
   db_date_created:
     description: >-
       The date on which an entity was created in the Alliance database.  This
       is disinct from date_created, which represents the date when the entity
       was originally created (i.e. at the MOD for imported data).
-    range: date
+    range: datetime
 
   db_date_updated:
     description: >-
       Date on which an entity was last modified in the Alliance database.  This
       is disinct from date_updated, which represents the date when the entity
       was last modified and may predate import into the Alliance database.
-    range: date
+    range: datetime
 
   created_by:
     description: >-
@@ -603,12 +793,26 @@ slots:
     domain: AuditedObject
     range: Person
 
+  created_by_curie:
+    description: >-
+      Curie of the Person object representing the individual that created the
+      entity
+    domain: AuditedObjectDTO
+    range: string
+
   updated_by:
     description: >-
       The individual that last modified the entity.
     multivalued: false
     domain: AuditedObject
     range: Person
+
+  updated_by_curie:
+    description: >-
+      Curie of the Person object representing the individual that updated the
+      entity
+    domain: AuditedObjectDTO
+    range: string
 
   release:
     description: MOD release ID
@@ -617,10 +821,27 @@ slots:
   data_provider:
     description: Organization (e.g. MOD) from which the data was sourced
     multivalued: false
+    range: Organization
+
+  data_provider_name:
+    description: >-
+      The string representation (for DTO objects) of the name of the
+      organization from which the data was sourced, e.g. 'MGI', 'WB', 'OMIM'
+    multivalued: false
     range: string
 
   secondary_data_provider:
-    description: Organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source
+    description: >-
+      Organization (e.g. MOD) that provided the data directly to the Alliance,
+      but not the original source
+    multivalued: false
+    range: Organization
+
+  secondary_data_provider_name:
+    description: >-
+      The string representation (for DTO objects) of the name of the organization
+      (e.g. MOD) that provided the data directly to the Alliance, but not the
+      original source, e.g. 'MGI', 'WB', 'RGD'
     multivalued: false
     range: string
 
@@ -637,12 +858,6 @@ slots:
     description: >-
       a human-readable description of an entity
 
-  name:
-    description: >-
-      a human-readable name for an entity
-    multivalued: false
-    range: string
-
   cross_references:
     singular_name: cross_reference
     aliases: ['xrefs']
@@ -653,17 +868,19 @@ slots:
     inlined: true
     inlined_as_list: true
 
-  symbol:
-    description: >-
-      Symbol for a particular thing
-    exact_mappings:
-      - biolink:symbol
+  cross_reference_dtos:
+    range: CrossReferenceDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
 
   synonyms:
-    singular_name: synonym
-    description: holds between a named thing and a synonym
+    description: >-
+      Placeholder? Some objects still use this slot. Not clear how it fits in
+      with NameSlotAnnotation (which captures evidence).
+    range: string
+    required: false
     multivalued: true
-    range: Synonym
 
   negated:
     range: boolean
@@ -764,6 +981,22 @@ slots:
     description: last identifier in a range
     range: Identifier
 
+  genomic_entity_curie:
+    range: string
+
+  assembly_curie:
+    range: string
+
+  chromosome_curie:
+    range: string
+
+  transcript_curie:
+    range: string
+    required: true
+
+  protein_curie:
+    range: string
+    required: true
 
   ## --------------------
 ## ASSOCIATION SLOTS
@@ -798,6 +1031,12 @@ slots:
     exact_mappings:
       - biolink:predicate
 
+  predicate_name:
+    description: >-
+      Name of VocabularyTerm representing predicate of an Association
+    required: true
+    range: string
+
 ## ----------
 ## PREDICATES
 ## ----------
@@ -810,22 +1049,3 @@ slots:
     symmetric: true
 
 enums:
-
-  entity_synonym_type_set:
-    permissible_values:
-      current:
-        description: >-
-          The synonym is an officially accepted synonym for an entity.
-          An entity should have only one current synonym of a give type.
-          For example, only one current symbol and one current full name.
-      alias:
-        description: >-
-          The synonym is an alternate symbol or name for the entity. It is not
-          the currently preferred symbol/name for the entity.
-
-  synonym_scope_enum:
-    permissible_values:
-      narrow:
-      broad:
-      related:
-      exact:

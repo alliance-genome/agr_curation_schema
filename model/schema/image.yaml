@@ -231,3 +231,7 @@ slots:
     range: integer
     required: true
     multivalued: false
+
+  image_curie:
+    range: string
+    required: true

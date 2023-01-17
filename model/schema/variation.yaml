@@ -136,6 +136,9 @@ classes:
 
 slots:
 
+  variant_curie:
+    range: string
+
   variant_status:
     description: >-
     required: false # should this default to "public?"
@@ -188,7 +191,6 @@ slots:
       Location of the variant within genomic entities. Variant_locations can include any or all of: one
       VariantGenomeLocation stanza, one or more VariantTranscriptLocation stanzas and/or one or more
       VariantPolypeptideLocation stanzas.
-    required: true
     multivalued: true
     domain: Variant
     range: VariantLocation
@@ -202,6 +204,8 @@ slots:
     multivalued: true
     domain: Variant
     range: VariantGenomeLocation
+    inlined: true
+    inlined_as_list: true
 
   variant_polypeptide_locations:
     is_a: variant_locations

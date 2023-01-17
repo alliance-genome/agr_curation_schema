@@ -2,158 +2,154 @@
   "linkml_version": "1.3.0",
   "disease_allele_ingest_set": [
     {
-      "condition_relations": [
+      "condition_relation_dtos": [
         {
-          "condition_relation_type": "induced_by",
+          "condition_relation_type_name": "induced_by",
           "internal": false,
-          "conditions": [
+          "condition_dtos": [
             {
-              "condition_chemical": "CHEBI:6432",
-              "condition_class": "ZECO:0000111",
+              "condition_chemical_curie": "CHEBI:6432",
+              "condition_class_curie": "ZECO:0000111",
               "internal": false
             },
             {
               "condition_free_text": "Bacterial strain HB101",
-              "condition_class": "ZECO:0000104",
+              "condition_class_curie": "ZECO:0000104",
               "internal": false
             }
           ]
         }
       ],
-      "disease_annotation_curie": "AGRKB:100123456789018",
-      "data_provider": "WB",
-      "created_by": "WB:WBPerson324",
+      "data_provider_name": "WB",
+      "created_by_curie": "WB:WBPerson324",
       "date_updated": "2021-09-01T00:00:00+00:00",
-      "related_notes": [
+      "note_dtos": [
         {
           "free_text": "summary statement",
-          "note_type": "disease_summary",
+          "note_type_name": "disease_summary",
           "internal": false
         }
       ],
-      "evidence_codes": [
+      "evidence_code_curies": [
         "ECO:0000315",
         "ECO:0007013"
       ],
-      "genetic_sex": "hermaphrodite",
+      "genetic_sex_name": "hermaphrodite",
       "mod_entity_id": "WBDOannot00001032",
-      "updated_by": "WB:WBPerson324",
+      "updated_by_curie": "WB:WBPerson324",
       "internal": false,
       "negated": false,
-      "object": "DOID:11724",
-      "predicate": "is_implicated_in",
-      "single_reference": "PMID:19648295",
-      "subject": "WB:WBVar00087752"
+      "do_term_curie": "DOID:11724",
+      "disease_relation_name": "is_implicated_in",
+      "reference_curie": "PMID:19648295",
+      "allele_curie": "WB:WBVar00087752"
     }
   ],
   "disease_gene_ingest_set": [
     {
-      "condition_relations": [
+      "condition_relation_dtos": [
         {
-          "condition_relation_type": "induced_by",
+          "condition_relation_type_name": "induced_by",
           "internal": false,
-          "conditions": [
+          "condition_dtos": [
             {
-              "condition_chemical": "CHEBI:34910",
-              "condition_class": "ZECO:0000111",
+              "condition_chemical_curie": "CHEBI:34910",
+              "condition_class_curie": "ZECO:0000111",
               "internal": false
             }
           ]
         }
       ],
-      "disease_annotation_curie": "AGRKB:100123456789019",
-      "data_provider": "WB",
-      "created_by": "WB:WBPerson324",
+      "data_provider_name": "WB",
+      "created_by_curie": "WB:WBPerson324",
       "date_updated": "2021-08-24T00:00:00+00:00",
-      "related_notes": [
+      "note_dtos": [
         {
           "free_text": "summary statement",
-          "note_type": "disease_summary",
+          "note_type_name": "disease_summary",
           "internal": false
         }
       ],
-      "disease_genetic_modifier": "WB:WBStrain00035193",
-      "disease_genetic_modifier_relation": "ameliorated_by",
-      "evidence_codes": [
+      "disease_genetic_modifier_curie": "WB:WBStrain00035193",
+      "disease_genetic_modifier_relation_name": "ameliorated_by",
+      "evidence_code_curies": [
         "ECO:0000315",
         "ECO:0007013"
       ],
-      "genetic_sex": "hermaphrodite",
+      "genetic_sex_name": "hermaphrodite",
       "mod_entity_id": "WBDOannot00001014",
-      "updated_by": "WB:WBPerson324",
+      "updated_by_curie": "WB:WBPerson324",
       "negated": false,
       "internal": false,
-      "object": "DOID:1826",
-      "predicate": "is_implicated_in",
-      "single_reference": "PMID:19648295",
-      "subject": "WB:WBGene00011955"
+      "do_term_curie": "DOID:1826",
+      "disease_relation_name": "is_implicated_in",
+      "reference_curie": "PMID:19648295",
+      "gene_curie": "WB:WBGene00011955"
     }
   ],
   "disease_agm_ingest_set": [
     {
-      "created_by": "WB:WBPerson324",
-      "disease_annotation_curie": "AGRKB:100123456789020",
-      "data_provider": "WB",
+      "created_by_curie": "WB:WBPerson324",
+      "data_provider_name": "WB",
       "date_updated": "2019-03-08T00:00:00+00:00",
-      "disease_genetic_modifier": "WB:WBVar00250993",
-      "disease_genetic_modifier_relation": "exacerbated_by",
-      "evidence_codes": [
+      "disease_genetic_modifier_curie": "WB:WBVar00250993",
+      "disease_genetic_modifier_relation_name": "exacerbated_by",
+      "evidence_code_curies": [
         "ECO:0000315",
         "ECO:0007013"
       ],
-      "genetic_sex": "hermaphrodite",
+      "genetic_sex_name": "hermaphrodite",
       "mod_entity_id": "WBDOannot00000109",
-      "updated_by": "WB:WBPerson324",
+      "updated_by_curie": "WB:WBPerson324",
       "internal": false,
-      "object": "DOID:10652",
-      "predicate": "is_model_of",
-      "single_reference": "PMID:19648295",
-      "subject": "WB:WBStrain00005094",
-      "inferred_allele": "WB:WBTransgene00000410"
+      "do_term_curie": "DOID:10652",
+      "disease_relation_name": "is_model_of",
+      "reference_curie": "PMID:19648295",
+      "agm_curie": "WB:WBStrain00005094",
+      "inferred_allele_curie": "WB:WBTransgene00000410"
     },
     {
-      "condition_relations": [
+      "condition_relation_dtos": [
         {
-          "condition_relation_type": "ameliorated_by",
+          "condition_relation_type_name": "ameliorated_by",
           "internal": false,
-          "conditions": [
+          "condition_dtos": [
             {
-              "condition_chemical": "CHEBI:30052",
-              "condition_class": "ZECO:0000111",
+              "condition_chemical_curie": "CHEBI:30052",
+              "condition_class_curie": "ZECO:0000111",
               "internal": false
             },
             {
-              "condition_chemical": "WB:WBMol:00004976",
-              "condition_class": "ZECO:0000111",
+              "condition_chemical_curie": "WB:WBMol:00004976",
+              "condition_class_curie": "ZECO:0000111",
               "internal": false
             }
           ]
         }
       ],
-      "created_by": "WB:WBPerson324",
-      "disease_annotation_curie": "AGRKB:100123456789021",
-      "data_provider": "WB",
+      "created_by_curie": "WB:WBPerson324",
+      "data_provider_name": "WB",
       "date_updated": "2017-05-22T00:00:00+00:00",
-      "related_notes": [
+      "note_dtos": [
         {
           "free_text": "Mutations in human dystrophin are associated with the Duchenne and Becker types of muscular dystrophy, that affect skeletal muscles used for movement, and heart (cardiac) muscle; the genetic model for progressive myopathy in C. elegans is a mutant of the elegans dystrophin ortholog, dys-1, combined with a mutation in hlh-1, the MyoD ortholog, (dys-1(cx18);hlh-1(cc561ts), these animals display time-dependent muscle degeneration; a screen of approximately 1000 compounds on the dys-1(cx18),hlh-1(cc561) model, identified several substances that ameliorated the dystrophic phenotype, with the top hits being the sulfonamides, methazolamide (MTZ) and dichlorphenamide (DCPM), known inhibitors of carbonic anydrase (CA) enymes; knock-down of the elegans CA ortholog, cah-4, via RNAi interference, significantly reduced muscle degeneration in the dys-1(cx18),hlh-1(cc561) strain; further, the effects of MTZ and DCPM have been validated in the mdx mouse model for Duchenne muscular dystrophy (DMD).",
-          "note_type": "disease_summary",
+          "note_type_name": "disease_summary",
           "internal": false
         }
       ],
-      "evidence_codes": [
+      "evidence_code_curies": [
         "ECO:0000315",
         "ECO:0007013"
       ],
-      "genetic_sex": "hermaphrodite",
+      "genetic_sex_name": "hermaphrodite",
       "mod_entity_id": "WBDOannot00000110",
-      "updated_by": "WB:WBPerson324",
+      "updated_by_curie": "WB:WBPerson324",
       "internal": false,
-      "object": "DOID:11723",
-      "predicate": "is_model_of",
-      "single_reference": "PMID:19648295",
-      "subject": "WB:WBStrain00024340",
-      "asserted_allele": "WB:WBVar00054722"
+      "do_term_curie": "DOID:11723",
+      "disease_relation_name": "is_model_of",
+      "reference_curie": "PMID:19648295",
+      "agm_curie": "WB:WBStrain00024340",
+      "asserted_allele_curie": "WB:WBVar00054722"
     }
   ]
 }

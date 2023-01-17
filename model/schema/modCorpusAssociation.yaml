@@ -2,7 +2,7 @@ id: https://github.com/alliance-genome/agr_curation_schema/src/schema/modCorpusA
 
 imports:
   - core
-  - mod
+  - allianceMember
   - reference
   - linkml:types
 
@@ -50,17 +50,17 @@ classes:
       - corpus
       - mod_corpus_association_id
       - mod_corpus_sort_source
-      - mod_id
+      - alliance_member_id
       - reference_id
       - curie
     defining_slots:
       - reference_id
-      - mod_id
+      - alliance_member_id
     slot_usage:
-      mod_id:
+      alliance_member_id:
         notes: >-
-          An integer corresponding to a primary key in the mod table. Used here
-          as a foreign key.
+          An integer corresponding to a primary key in the AllianceMember/MOD table.
+          Used here as a foreign key.
       reference_id:
         notes: >-
           An integer corresponding to a primary key in the reference table.

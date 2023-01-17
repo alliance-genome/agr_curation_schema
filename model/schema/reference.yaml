@@ -102,7 +102,7 @@ classes:
   PersonalCommunication:
     aliases: ["person_evidence"]
     is_a: InformationContentEntity
-    description: >- 
+    description: >-
       a piece of information that is used to support an assertion or annotation, where the information
       comes from a person other than the author of the assertion or annotation, or the author of the reference.
     slot_usage:
@@ -113,12 +113,12 @@ classes:
     description: >-
       Medical Subject Headings information coming from PubMed.
     notes: >-
-      In the literature database, the table is named mesh_details. 
+      In the literature database, the table is named mesh_details.
       In the literature API, the field is named mesh_terms.
     aliases: [ 'mesh_details', 'mesh_terms' ]
     slots:
-      - mesh_detail_id 
-      - reference_id 
+      - mesh_detail_id
+      - reference_id
       - heading_term
       - qualifier_term
     slot_usage:
@@ -131,6 +131,12 @@ slots:
   evidence:
     description: >-
     range: InformationContentEntity
+    multivalued: true
+
+  evidence_curies:
+    description: >-
+      Curies of InformationContentEntity objects given as evidence
+    range: string
     multivalued: true
 
   reference_id:
@@ -221,7 +227,7 @@ slots:
     range: string
     close_mappings:
       - WIKIDATA_PROPERTY:P304
-    
+
   plain_language_abstract:
     description: >-
       Lay person, readable version of the abstract.
@@ -275,7 +281,7 @@ slots:
       editable at Alliance.
     multivalued: true
     range: string
-  
+
   language:
     description: Language of the reference.  Aggregation of PubMed and FlyBase,
       editable at Alliance.
@@ -292,7 +298,7 @@ slots:
   authors:
     description: >-
       Ordered author entities for this publication.  An Author is associated
-      with only one publication.  A Person can be associated with multiple 
+      with only one publication.  A Person can be associated with multiple
       publications.
     multivalued: true
     domain: Reference
@@ -330,6 +336,17 @@ slots:
       From PubMed otherwise from Mod or manual reference creation.
     multivalued: false
     domain: Reference
+    range: string
+
+  reference_curie:
+    description:
+      External reference curie used for ingest
+    range: string
+
+  reference_curies:
+    description: >-
+      External reference curies used for ingest
+    multivalued: true
     range: string
 
 enums:
