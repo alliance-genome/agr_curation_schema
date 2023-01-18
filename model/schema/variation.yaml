@@ -104,10 +104,15 @@ classes:
       - reference_sequence
       - variant_sequence
       - consequence
-      - sequence_of_refernece_accession_number
+      - sequence_of_reference_accession_number
     slot_usage:
       evidence_code:
         required: false
+      slot_usage:
+        start_position:
+          required: true
+        end_position:
+          required: true
 
   VariantGenomeLocation:
     is_a: VariantLocation
@@ -119,13 +124,15 @@ classes:
       - assembly
       - chromosome
     slot_usage:
-      start:
-        required: true
-      end:
-        required: true
       assembly:
         required: true
       chromosome:
+        required: true
+      start_position:
+        required: true
+      end_position:
+        required: true
+      sequence_of_reference_accession_number:
         required: true
 
 
@@ -181,7 +188,7 @@ slots:
     domain: Variant
     range: SOTerm
 
-  sequence_of_refernece_accession_number:
+  sequence_of_reference_accession_number:
     description: >-
       The accession number that describes the assembly and chromosome of the reference sequence.
     required: true
