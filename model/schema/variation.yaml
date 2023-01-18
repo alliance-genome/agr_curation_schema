@@ -69,6 +69,9 @@ classes:
             - slot_conditions:
                 variant_status:
                   equals_string: private
+            - slot_conditions:
+                variant_status:
+                  equals_string: ambiguous
           description: a variant must have a genome location, or must be private
 
   SourceVariantLocation:
@@ -101,6 +104,7 @@ classes:
       - reference_sequence
       - variant_sequence
       - consequence
+      - sequence_of_refernece_accession_number
     slot_usage:
       evidence_code:
         required: false
@@ -114,6 +118,16 @@ classes:
     slots:
       - assembly
       - chromosome
+    slot_usage:
+      start:
+        required: true
+      end:
+        required: true
+      assembly:
+        required: true
+      chromosome:
+        required: true
+
 
   VariantTranscriptLocation:
     is_a: VariantLocation
@@ -131,6 +145,7 @@ classes:
     slots:
       - polypeptide
       - associated_transcripts
+
 
 # Slots
 
@@ -154,6 +169,7 @@ slots:
     range: SOTerm
 
   source_general_consequence:
+    aliases: ['transcript_consequence']
     description: >-
       SOTerm (child of SO:0001576 - transcript_variant) that describes the
       consequence of the variant, as stated in the source reference when no
@@ -164,6 +180,14 @@ slots:
     multivalued: false
     domain: Variant
     range: SOTerm
+
+  sequence_of_refernece_accession_number:
+    description: >-
+      The accession number that describes the assembly and chromosome of the reference sequence.
+    required: true
+    multivalued: false
+    domain: VariantLocation
+    range: string
 
   consequence:
     description: >-
@@ -199,7 +223,8 @@ slots:
     is_a: variant_locations
     description: >-
       Location of the variant in a genomic context.  multiple variant_genome_locations represent multiple
-      assemblies.
+      assemblies.  because we want the variant to stay consistent between assemblies, we must have a single 
+      variant object apart from its location.
     required: true
     multivalued: true
     domain: Variant
@@ -227,7 +252,7 @@ slots:
 
   source_variant_locations:
     description: >-
-      Location of the variant within genomic entities,as described in the source
+      Location of the variant within genomic entities, as described in the source
       references.
     required: false
     multivalued: true
