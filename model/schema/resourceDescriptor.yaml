@@ -5,6 +5,7 @@ title: Alliance Schema Prototype Resource Descriptor
 imports:
   - core
   - linkml:types
+  - affectedGenomicModel
 
 default_prefix: alliance
 default_range: string
