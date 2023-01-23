@@ -145,11 +145,8 @@ classes:
     is_a: AuditedObject
     slots:
       - curie
-      - resource_descriptor_pages
+      - resource_descriptor_page
       - display_name
-    defining_slots:
-      - curie
-      - resource_descriptor_pages
     slot_usage:
       curie:
         required: true
@@ -167,13 +164,13 @@ classes:
       prefix:
         required: true
 
-  DataProviderCrossReference:
+  DataProvider:
     is_a: AuditedObject
     slots:
       - source_organization
       - cross_reference
 
-  DataProviderCrossReferenceDTO:
+  DataProviderDTO:
     is_a: AuditedObjectDTO
     slots:
       - source_organization_abbreviation
@@ -730,37 +727,37 @@ slots:
     description: MOD release ID
     range: string
 
-  data_provider_cross_reference:
+  data_provider:
     description: >-
       Object representing the organization (e.g. MOD) from which the data was
       sourced and a CrossReference to that organisation's site
     multivalued: false
-    range: DataProviderCrossReference
+    range: DataProvider
 
-  data_provider_cross_reference_dto:
+  data_provider_dto:
     description: >-
       Ingest object representing the organization (e.g. MOD) from which the data
       was sourced and a CrossReference to that organisation's site
     multivalued: false
     inlined: true
-    range: DataProviderCrossReferenceDTO
+    range: DataProviderDTO
 
-  secondary_data_provider_cross_reference:
+  secondary_data_provider:
     description: >-
       Object representing organization (e.g. MOD) that provided the data
       directly to the Alliance, but not the original source, and a
       CrossReference to that organisation's site
     multivalued: false
-    range: DataProviderCrossReference
+    range: DataProvider
 
-  secondary_data_provider_cross_reference_dto:
+  secondary_data_provider_dto:
     description: >-
       Ingest object representing organization (e.g. MOD) that provided the
       data directly to the Alliance, but not the original source, and a
       CrossReference to that organisation's site
     multivalued: false
     inlined: true
-    range: DataProviderCrossReferenceDTO
+    range: DataProviderDTO
 
   association_slot:
     abstract: true
@@ -787,8 +784,6 @@ slots:
       Holds between an object and its CrossReferences.
     multivalued: true
     range: CrossReference
-    inlined: true
-    inlined_as_list: true
 
   cross_reference_dto:
     range: CrossReferenceDTO
@@ -926,19 +921,18 @@ slots:
     required: true
 
   source_organization:
-    domain: DataProviderCrossReference
+    domain: DataProvider
     range: Organization
     required: true
 
   source_organization_abbreviation:
-    domain: DataProviderCrossReferenceDTO
+    domain: DataProviderDTO
     range: string
     required: true
 
-  resource_descriptor_pages:
+  resource_descriptor_page:
     domain: CrossReference
     range: ResourceDescriptorPage
-    multivalued: true
     required: true
 
   ## --------------------

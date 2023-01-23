@@ -191,8 +191,8 @@ classes:
       - condition_relations
       - genetic_sex
       - related_notes
-      - data_provider_cross_reference
-      - secondary_data_provider_cross_reference
+      - data_provider
+      - secondary_data_provider
       - disease_genetic_modifier
       - disease_genetic_modifier_relation
     slot_usage:
@@ -227,7 +227,7 @@ classes:
         description: >-
           The disease ontology term.
         range: DOTerm
-      data_provider_cross_reference:
+      data_provider:
         required: true
       annotation_type:
         required: false
@@ -279,12 +279,12 @@ classes:
       - condition_relation_dtos
       - genetic_sex_name
       - note_dtos
-      - data_provider_cross_reference_dto
-      - secondary_data_provider_cross_reference_dto
+      - data_provider_dto
+      - secondary_data_provider_dto
       - disease_genetic_modifier_curie
       - disease_genetic_modifier_relation_name
     slot_usage:
-      data_provider_cross_reference_dto:
+      data_provider_dto:
         required: true
 
   GeneDiseaseAnnotation:

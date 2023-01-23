@@ -20,7 +20,7 @@
           ]
         }
       ],
-      "data_provider_cross_reference_dto": {
+      "data_provider_dto": {
         "source_organization_abbreviation": "WB",
         "cross_reference_dto": {
           "curie": "DOID:11724",
@@ -72,7 +72,7 @@
           ]
         }
       ],
-      "data_provider_cross_reference_dto": {
+      "data_provider_dto": {
         "source_organization_abbreviation": "WB",
         "cross_reference_dto": {
           "curie": "DOID:1826",
@@ -114,7 +114,7 @@
   "disease_agm_ingest_set": [
     {
       "created_by_curie": "WB:WBPerson324",
-      "data_provider_cross_reference_dto": {
+      "data_provider_dto": {
         "source_organization_abbreviation": "WB",
         "cross_reference_dto": {
           "curie": "DOID:10652",
@@ -164,7 +164,7 @@
         }
       ],
       "created_by_curie": "WB:WBPerson324",
-      "data_provider_cross_reference_dto": {
+      "data_provider_dto": {
         "source_organization_abbreviation": "WB",
         "cross_reference_dto": {
           "curie": "DOID:11723",

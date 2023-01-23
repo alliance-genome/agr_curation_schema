@@ -45,7 +45,7 @@ classes:
       - components
       - sequence_targeting_reagents
       - parental_populations
-      - data_provider_cross_reference
+      - data_provider
       - references
 
   AffectedGenomicModelDTO:
@@ -55,7 +55,7 @@ classes:
       - name
       - subtype_name
       - reference_curies
-      - data_provider_cross_reference_dto
+      - data_provider_dto
       - sequence_targeting_reagent_curies
       - component_dtos
 
