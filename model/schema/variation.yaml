@@ -123,7 +123,6 @@ classes:
       - dna_mutation_type
       - gene_localization_type
 
-
   VariantTranscriptLocation:
     is_a: VariantLocation
     description: >-
@@ -151,19 +150,45 @@ classes:
 
 slots:
 
+  number_amino_acids_removed:
+    description: >-
+      The number of amino acids removed from the polypeptide as a result of the variant.
+    range: integer
+    required: false
+    multivalued: false
+    examples:
+      - value: 1
+      - value: 2
+      - value: 3
+    exact_mappings:
+      - SO:0001889
+
+  number_amino_acids_inserted:
+    description: >-
+      The number of amino acids added from the polypeptide as a result of the variant.
+    range: integer
+    required: false
+    multivalued: false
+    examples:
+      - value: 1
+      - value: 2
+      - value: 3
+    exact_mappings:
+      - SO:0001889
+
   dna_mutation_type:
     description: >-
       The type of DNA mutation, for example, insertion, deletion, substitution, or indel.
     range: uriorcurie
     examples:
-      - SO:1000027 # G_to_T_transversion
+      - value: SO:1000027 # G_to_T_transversion
 
   gene_localization_type:
     description: >-
       The type of gene localization, for example, intronic, intergenic, or intragenic.
     range: uriorcurie
     examples:
-      - SO:0000147 # exon
+      - value: SO:0000147 # exon
 
   padded_base:
     description: >-
@@ -180,8 +205,8 @@ slots:
     multivalued: false
     required: false
     examples:
-      - '+'
-      - '-'
+      - value: '+'
+      - value: '-'
 
   number_additional_dna_base_pairs:
     description: >-
@@ -190,8 +215,8 @@ slots:
     multivalued: false
     required: false
     examples:
-      - 1
-      - 2
+      - value: 1
+      - value: 2
 
   number_removed_dna_base_pairs:
     description: >-
@@ -201,8 +226,8 @@ slots:
     multivalued: false
     required: false
     examples:
-      - 1
-      - 2
+      - value: 1
+      - value: 2
 
   inserted_sequence:
     description: >-
@@ -211,8 +236,8 @@ slots:
     multivalued: false
     required: false
     examples:
-      - 'A'
-      - 'AT'
+      - value: 'A'
+      - value: 'AT'
 
   deleted_sequence:
     description: >-
@@ -221,8 +246,8 @@ slots:
     multivalued: false
     required: false
     examples:
-      - 'A'
-      - 'AT'
+      - value: 'A'
+      - value: 'AT'
 
   exon_number:
     range: integer
