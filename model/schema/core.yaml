@@ -144,23 +144,18 @@ classes:
   CrossReference:
     is_a: AuditedObject
     slots:
-      - curie
+      - referenced_curie
       - resource_descriptor_page
       - display_name
-    slot_usage:
-      curie:
-        required: true
 
   CrossReferenceDTO:
     is_a: AuditedObjectDTO
     slots:
-      - curie
-      - page_areas
+      - referenced_curie
+      - page_area
       - display_name
       - prefix
     slot_usage:
-      curie:
-        required: true
       prefix:
         required: true
 
@@ -499,9 +494,9 @@ slots:
       Denormalization to help with classifying types of crossReferences,
       distinguishing DOIs from PMC ids, etc.
 
-  page_areas:
+  page_area:
     required: true
-    multivalued: true
+    multivalued: false
     range: string
 
   display_name:
@@ -612,6 +607,12 @@ slots:
       A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
     range: uriorcurie
     identifier: true
+
+  referenced_curie:
+    description: >-
+      Curie of the thing being referenced in a CrossReference
+    required: true
+    range: uriorcurie
 
   unique_id:
     description: >-

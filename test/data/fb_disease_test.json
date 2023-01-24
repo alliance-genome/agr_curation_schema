@@ -14,11 +14,9 @@
       "data_provider_dto": {
         "source_organization_abbreviation": "FB",
         "cross_reference_dto": {
-          "curie": "FB:FB123131",
+          "referenced_curie": "FB:FB123131",
           "prefix": "FB",
-          "page_areas": [
-            "disease"
-          ],
+          "page_area": "disease",
           "display_name": "FB:FB123131",
           "internal": false
         },
@@ -45,11 +43,9 @@
       "data_provider_dto": {
         "source_organization_abbreviation": "FB",
         "cross_reference_dto": {
-          "curie": "FB:FB123132",
+          "referenced_curie": "FB:FB123132",
           "prefix": "FB",
-          "page_areas": [
-            "disease"
-          ],
+          "page_area": "disease",
           "display_name": "FB:FB123132",
           "internal": false
         },

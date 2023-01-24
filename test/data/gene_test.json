@@ -55,30 +55,92 @@
       ],
       "cross_reference_dtos": [
         {
-          "curie": "ZFIN:ZDB-GENE-010226-1",
+          "referenced_curie": "ZFIN:ZDB-GENE-010226-1",
           "created_by_curie": "ZFIN",
           "display_name": "",
           "updated_by_curie": "ZFIN",
           "internal": false,
-          "page_areas": [
-            "gene",
-            "gene/expression",
-            "gene/wild_type_expression",
-            "gene/expression_images",
-            "gene/references"
-          ],
+          "page_area": "gene",
           "prefix": "ZFIN"
         },
         {
-          "curie": "NCBI_Gene:79379",
+          "referenced_curie": "ZFIN:ZDB-GENE-010226-1",
+          "created_by_curie": "ZFIN",
+          "display_name": "",
+          "updated_by_curie": "ZFIN",
+          "internal": false,
+          "page_area": "gene/expression",
+          "prefix": "ZFIN"
+        },
+        {
+          "referenced_curie": "ZFIN:ZDB-GENE-010226-1",
+          "created_by_curie": "ZFIN",
+          "display_name": "",
+          "updated_by_curie": "ZFIN",
+          "internal": false,
+          "page_area": "gene/wild_type_expression",
+          "prefix": "ZFIN"
+        },
+        {
+          "referenced_curie": "ZFIN:ZDB-GENE-010226-1",
+          "created_by_curie": "ZFIN",
+          "display_name": "",
+          "updated_by_curie": "ZFIN",
+          "internal": false,
+          "page_area": "gene/references",
+          "prefix": "ZFIN"
+        },
+        {
+          "referenced_curie": "ZFIN:ZDB-GENE-010226-1",
+          "created_by_curie": "ZFIN",
+          "display_name": "",
+          "updated_by_curie": "ZFIN",
+          "internal": false,
+          "page_area": "gene/expression_images",
+          "prefix": "ZFIN"
+        },
+        {
+          "referenced_curie": "NCBI_Gene:79379",
           "created_by_curie": "ZFIN",
           "updated_by_curie": "ZFIN",
           "internal": false,
-          "page_areas": ["gene",
-            "gene/expression",
-            "gene/wild_type_expression",
-            "gene/expression_images",
-            "gene/references"],
+          "page_area": "gene",
+          "prefix": "NCBI_Gene",
+          "display_name": ""
+        },
+        {
+          "referenced_curie": "NCBI_Gene:79379",
+          "created_by_curie": "ZFIN",
+          "updated_by_curie": "ZFIN",
+          "internal": false,
+          "page_area": "gene/expression",
+          "prefix": "NCBI_Gene",
+          "display_name": ""
+        },
+        {
+          "referenced_curie": "NCBI_Gene:79379",
+          "created_by_curie": "ZFIN",
+          "updated_by_curie": "ZFIN",
+          "internal": false,
+          "page_area": "gene/wild_type_expression",
+          "prefix": "NCBI_Gene",
+          "display_name": ""
+        },
+        {
+          "referenced_curie": "NCBI_Gene:79379",
+          "created_by_curie": "ZFIN",
+          "updated_by_curie": "ZFIN",
+          "internal": false,
+          "page_area": "gene/expression_images",
+          "prefix": "NCBI_Gene",
+          "display_name": ""
+        },
+        {
+          "referenced_curie": "NCBI_Gene:79379",
+          "created_by_curie": "ZFIN",
+          "updated_by_curie": "ZFIN",
+          "internal": false,
+          "page_area": "gene/references",
           "prefix": "NCBI_Gene",
           "display_name": ""
         }

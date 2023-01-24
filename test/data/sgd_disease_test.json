@@ -11,11 +11,9 @@
       "data_provider_dto": {
         "source_organization_abbreviation": "SGD",
         "cross_reference_dto": {
-          "curie": "SGD:11111",
+          "referenced_curie": "SGD:11111",
           "prefix": "SGD",
-          "page_areas": [
-            "gene/disease"
-          ],
+          "page_area": "gene/disease",
           "display_name": "SGD:SGD11111",
           "internal": false
         },

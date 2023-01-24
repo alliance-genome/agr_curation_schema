@@ -9,11 +9,9 @@
       "data_provider_dto": {
         "source_organization_abbreviation": "ZFIN",
         "cross_reference_dto": {
-          "curie": "DOID:9452",
+          "referenced_curie": "DOID:9452",
           "prefix": "DOID",
-          "page_areas": [
-            "disease/zfin"
-          ],
+          "page_area": "disease/zfin",
           "display_name": "DOID:9452",
           "internal": false
         },

@@ -23,11 +23,9 @@
       "data_provider_dto": {
         "source_organization_abbreviation": "WB",
         "cross_reference_dto": {
-          "curie": "DOID:11724",
+          "referenced_curie": "DOID:11724",
           "prefix": "DOID",
-          "page_areas": [
-            "disease/wb"
-          ],
+          "page_area": "disease/wb",
           "display_name": "DOID:11724",
           "internal": false
         },
@@ -75,11 +73,9 @@
       "data_provider_dto": {
         "source_organization_abbreviation": "WB",
         "cross_reference_dto": {
-          "curie": "DOID:1826",
+          "referenced_curie": "DOID:1826",
           "prefix": "DOID",
-          "page_areas": [
-            "disease/wb"
-          ],
+          "page_area": "disease/wb",
           "display_name": "DOID:1826",
           "internal": false
         },
@@ -117,11 +113,9 @@
       "data_provider_dto": {
         "source_organization_abbreviation": "WB",
         "cross_reference_dto": {
-          "curie": "DOID:10652",
+          "referenced_curie": "DOID:10652",
           "prefix": "DOID",
-          "page_areas": [
-            "disease/wb"
-          ],
+          "page_area": "disease/wb",
           "display_name": "DOID:10652",
           "internal": false
         },
@@ -167,11 +161,9 @@
       "data_provider_dto": {
         "source_organization_abbreviation": "WB",
         "cross_reference_dto": {
-          "curie": "DOID:11723",
+          "referenced_curie": "DOID:11723",
           "prefix": "DOID",
-          "page_areas": [
-            "disease/wb"
-          ],
+          "page_area": "disease/wb",
           "display_name": "DOID:11723",
           "internal": false
         },
