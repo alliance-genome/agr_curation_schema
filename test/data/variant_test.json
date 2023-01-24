@@ -7,7 +7,6 @@
       "created_by": "ZFIN",
       "updated_by": "ZFIN",
       "internal": false,
-      "sequence_of_reference_accession_number": "NC_006088.4",
       "variant_genome_locations": [
         {
           "assembly": "GRCz11",
@@ -16,7 +15,8 @@
           "end_position": 30341642,
           "reference_sequence": "C",
           "variant_sequence": "T",
-          "internal": false
+          "internal": false,
+          "sequence_of_reference_accession_number": "NC_006088.4"
         }
       ],
       "variant_status": "public",
