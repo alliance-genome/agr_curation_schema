@@ -5,6 +5,7 @@ title: Alliance Schema Prototype Affected Genomic Model
 imports:
   - core
   - allele
+  - alleleDTO
   - linkml:types
 
 default_prefix: alliance
@@ -101,6 +102,7 @@ slots:
       / fish
     domain: AffectedGenomicModelDTO
     range: string
+    required: true
 
   components:
     singular_name: component

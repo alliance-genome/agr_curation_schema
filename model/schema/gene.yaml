@@ -207,7 +207,7 @@ slots:
     domain: GeneDTO
     range: FullNameSlotAnnotationDTO
     multivalued: false
-    required: true
+    required: false
     inlined: true
 
   gene_systematic_name:
@@ -224,7 +224,7 @@ slots:
     domain: GeneDTO
     range: SystematicNameSlotAnnotationDTO
     multivalued: false
-    required: true
+    required: false
     inlined: true
 
   gene_synonyms:
