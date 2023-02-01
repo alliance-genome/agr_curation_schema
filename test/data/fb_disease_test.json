@@ -11,7 +11,17 @@
       ],
       "reference_curie": "FB:FBrf0227496",
       "annotation_type_name": "manually_curated",
-      "data_provider_name": "FB",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "FB",
+        "cross_reference_dto": {
+          "referenced_curie": "FB:FB123131",
+          "prefix": "FB",
+          "page_area": "disease",
+          "display_name": "FB:FB123131",
+          "internal": false
+        },
+        "internal": false
+      },
       "created_by_curie": "FB:FB_curator",
       "date_created": "2022-01-12T09:57:42-05:00",
       "updated_by_curie": "FB:FB_curator",
@@ -30,7 +40,17 @@
       ],
       "reference_curie": "FB:FBrf0211153",
       "annotation_type_name": "manually_curated",
-      "data_provider_name": "FB",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "FB",
+        "cross_reference_dto": {
+          "referenced_curie": "FB:FB123132",
+          "prefix": "FB",
+          "page_area": "disease",
+          "display_name": "FB:FB123132",
+          "internal": false
+        },
+        "internal": false
+      },
       "created_by_curie": "FB:FB_curator",
       "date_created": "2022-01-12T09:57:42-05:00",
       "updated_by_curie": "FB:FB_curator",

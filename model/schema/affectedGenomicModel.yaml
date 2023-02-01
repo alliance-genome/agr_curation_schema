@@ -56,7 +56,7 @@ classes:
       - name
       - subtype_name
       - reference_curies
-      - data_provider_name
+      - data_provider_dto
       - sequence_targeting_reagent_curies
       - component_dtos
 

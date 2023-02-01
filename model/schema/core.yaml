@@ -24,6 +24,7 @@ imports:
   - image
   - ontologyTerm
   - controlledVocabulary
+  - resourceDescriptor
 
 prefixes:
   alliance: 'http://alliancegenome.org/'
@@ -143,24 +144,32 @@ classes:
   CrossReference:
     is_a: AuditedObject
     slots:
-      - curie
-      - page_areas
+      - referenced_curie
+      - resource_descriptor_page
       - display_name
-      - prefix
-    defining_slots:
-      - curie
-      - page_areas
-    slot_usage:
-      curie:
-        required: true
 
   CrossReferenceDTO:
     is_a: AuditedObjectDTO
     slots:
-      - curie
-      - page_areas
+      - referenced_curie
+      - page_area
       - display_name
       - prefix
+    slot_usage:
+      prefix:
+        required: true
+
+  DataProvider:
+    is_a: AuditedObject
+    slots:
+      - source_organization
+      - cross_reference
+
+  DataProviderDTO:
+    is_a: AuditedObjectDTO
+    slots:
+      - source_organization_abbreviation
+      - cross_reference_dto
 
   Note:
     is_a: AuditedObject
@@ -485,9 +494,9 @@ slots:
       Denormalization to help with classifying types of crossReferences,
       distinguishing DOIs from PMC ids, etc.
 
-  page_areas:
+  page_area:
     required: true
-    multivalued: true
+    multivalued: false
     range: string
 
   display_name:
@@ -598,6 +607,12 @@ slots:
       A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
     range: uriorcurie
     identifier: true
+
+  referenced_curie:
+    description: >-
+      Curie of the thing being referenced in a CrossReference
+    required: true
+    range: uriorcurie
 
   unique_id:
     description: >-
@@ -714,31 +729,36 @@ slots:
     range: string
 
   data_provider:
-    description: Organization (e.g. MOD) from which the data was sourced
-    multivalued: false
-    range: Organization
-
-  data_provider_name:
     description: >-
-      The string representation (for DTO objects) of the name of the
-      organization from which the data was sourced, e.g. 'MGI', 'WB', 'OMIM'
+      Object representing the organization (e.g. MOD) from which the data was
+      sourced and a CrossReference to that organisation's site
     multivalued: false
-    range: string
+    range: DataProvider
+
+  data_provider_dto:
+    description: >-
+      Ingest object representing the organization (e.g. MOD) from which the data
+      was sourced and a CrossReference to that organisation's site
+    multivalued: false
+    inlined: true
+    range: DataProviderDTO
 
   secondary_data_provider:
     description: >-
-      Organization (e.g. MOD) that provided the data directly to the Alliance,
-      but not the original source
+      Object representing organization (e.g. MOD) that provided the data
+      directly to the Alliance, but not the original source, and a
+      CrossReference to that organisation's site
     multivalued: false
-    range: Organization
+    range: DataProvider
 
-  secondary_data_provider_name:
+  secondary_data_provider_dto:
     description: >-
-      The string representation (for DTO objects) of the name of the organization
-      (e.g. MOD) that provided the data directly to the Alliance, but not the
-      original source, e.g. 'MGI', 'WB', 'RGD'
+      Ingest object representing organization (e.g. MOD) that provided the
+      data directly to the Alliance, but not the original source, and a
+      CrossReference to that organisation's site
     multivalued: false
-    range: string
+    inlined: true
+    range: DataProviderDTO
 
   association_slot:
     abstract: true
@@ -753,6 +773,11 @@ slots:
     description: >-
       a human-readable description of an entity
 
+  cross_reference:
+    range: CrossReference
+    multivalued: false
+    inlined: true
+
   cross_references:
     singular_name: cross_reference
     aliases: ['xrefs']
@@ -760,8 +785,11 @@ slots:
       Holds between an object and its CrossReferences.
     multivalued: true
     range: CrossReference
+
+  cross_reference_dto:
+    range: CrossReferenceDTO
+    multivalued: false
     inlined: true
-    inlined_as_list: true
 
   cross_reference_dtos:
     range: CrossReferenceDTO
@@ -892,6 +920,20 @@ slots:
   protein_curie:
     range: string
     required: true
+
+  source_organization:
+    domain: DataProvider
+    range: Organization
+    required: true
+
+  source_organization_abbreviation:
+    domain: DataProviderDTO
+    range: string
+    required: true
+
+  resource_descriptor_page:
+    domain: CrossReference
+    range: ResourceDescriptorPage
 
   ## --------------------
 ## ASSOCIATION SLOTS

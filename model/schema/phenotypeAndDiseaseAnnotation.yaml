@@ -280,10 +280,13 @@ classes:
       - condition_relation_dtos
       - genetic_sex_name
       - note_dtos
-      - data_provider_name
-      - secondary_data_provider_name
+      - data_provider_dto
+      - secondary_data_provider_dto
       - disease_genetic_modifier_curie
       - disease_genetic_modifier_relation_name
+    slot_usage:
+      data_provider_dto:
+        required: true
 
   GeneDiseaseAnnotation:
     description: >-

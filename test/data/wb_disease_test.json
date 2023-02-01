@@ -20,7 +20,17 @@
           ]
         }
       ],
-      "data_provider_name": "WB",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "WB",
+        "cross_reference_dto": {
+          "referenced_curie": "DOID:11724",
+          "prefix": "DOID",
+          "page_area": "disease/wb",
+          "display_name": "DOID:11724",
+          "internal": false
+        },
+        "internal": false
+      },
       "created_by_curie": "WB:WBPerson324",
       "date_updated": "2021-09-01T00:00:00+00:00",
       "note_dtos": [
@@ -60,7 +70,17 @@
           ]
         }
       ],
-      "data_provider_name": "WB",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "WB",
+        "cross_reference_dto": {
+          "referenced_curie": "DOID:1826",
+          "prefix": "DOID",
+          "page_area": "disease/wb",
+          "display_name": "DOID:1826",
+          "internal": false
+        },
+        "internal": false
+      },
       "created_by_curie": "WB:WBPerson324",
       "date_updated": "2021-08-24T00:00:00+00:00",
       "note_dtos": [
@@ -90,7 +110,17 @@
   "disease_agm_ingest_set": [
     {
       "created_by_curie": "WB:WBPerson324",
-      "data_provider_name": "WB",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "WB",
+        "cross_reference_dto": {
+          "referenced_curie": "DOID:10652",
+          "prefix": "DOID",
+          "page_area": "disease/wb",
+          "display_name": "DOID:10652",
+          "internal": false
+        },
+        "internal": false
+      },
       "date_updated": "2019-03-08T00:00:00+00:00",
       "disease_genetic_modifier_curie": "WB:WBVar00250993",
       "disease_genetic_modifier_relation_name": "exacerbated_by",
@@ -128,7 +158,17 @@
         }
       ],
       "created_by_curie": "WB:WBPerson324",
-      "data_provider_name": "WB",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "WB",
+        "cross_reference_dto": {
+          "referenced_curie": "DOID:11723",
+          "prefix": "DOID",
+          "page_area": "disease/wb",
+          "display_name": "DOID:11723",
+          "internal": false
+        },
+        "internal": false
+      },
       "date_updated": "2017-05-22T00:00:00+00:00",
       "note_dtos": [
         {
