@@ -1,5 +1,5 @@
 # Auto generated from gene.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-02-06T16:30:25
+# Generation date: 2023-02-06T17:37:47
 # Schema: gene
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/gene.yaml

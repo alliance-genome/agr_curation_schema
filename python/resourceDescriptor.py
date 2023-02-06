@@ -1,5 +1,5 @@
 # Auto generated from resourceDescriptor.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-02-06T16:29:46
+# Generation date: 2023-02-06T17:37:07
 # Schema: Alliance-Schema-Prototype-Resource-Descriptor
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/resourceDescriptor.yaml

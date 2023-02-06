@@ -1,5 +1,5 @@
 # Auto generated from allianceMember.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-02-06T16:30:18
+# Generation date: 2023-02-06T17:37:40
 # Schema: allianceMember
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/allianceMember

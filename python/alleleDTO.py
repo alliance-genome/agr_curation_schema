@@ -1,5 +1,5 @@
 # Auto generated from alleleDTO.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-02-06T16:29:43
+# Generation date: 2023-02-06T17:37:04
 # Schema: alleleDTO
 #
 # id: https://github.com/alliance-genome/agr_curation_schema/src/schema/alleleDTO
