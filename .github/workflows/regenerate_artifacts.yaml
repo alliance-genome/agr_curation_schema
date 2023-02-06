@@ -67,8 +67,8 @@ jobs:
           git add jsonschema/*
           git add python/*
           git add org/*
-          git commit -m "Regenerate artifacts"
-          git push --force 
+          git commit -m "Automated artifacts regeneration [skip actions]"
+          git push --force
         else
           echo "'make' failed to finish successfully"
         fi
