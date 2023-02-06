@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  build:
+  generate-artifacts:
     runs-on: ubuntu-latest
 
     steps:
