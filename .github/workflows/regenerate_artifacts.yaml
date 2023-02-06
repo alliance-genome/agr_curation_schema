@@ -40,8 +40,7 @@ jobs:
       #----------------------------------------------
       # install dependencies if cache does not exist
       #----------------------------------------------
-    - name: Install dependencies
-      if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+    - name: Install poetry dependencies
       run: poetry install --no-interaction --no-root
 
       #----------------------------------------------
@@ -58,18 +57,19 @@ jobs:
         export PATH=$PATH:`pwd`/jsonschema2pojo-1.0.2/bin
         make clean-artifacts
         make -B gen-artifacts
-        if [ $? -eq 0 ]; then
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add jsonld-context/*
-          git add owl/*
-          git add shex/*
-          git add sqlddl/*
-          git add jsonschema/*
-          git add python/*
-          git add org/*
-          git commit -m "Automated artifacts regeneration [skip actions]"
-          git push
-        else
-          echo "'make' failed to finish successfully"
-        fi
+
+    - name: Commit and push artifacts
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add jsonld-context/*
+        git add owl/*
+        git add shex/*
+        git add sqlddl/*
+        git add jsonschema/*
+        git add python/*
+        git add org/*
+        git commit -m "Automated artifacts regeneration [skip actions]"
+        git push
