@@ -50,10 +50,11 @@ jobs:
     - name: Install library
       run: poetry install --no-interaction
 
-
-    # note: the git push --force to bypass the PR code review requirement.
     - name: Generate AGR Curation Model artifacts
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
+        gh pr checkout ${{ github.event.pull_request.number }}
         export PATH=$PATH:`pwd`/jsonschema2pojo-1.0.2/bin
         make clean-artifacts
         make -B gen-artifacts
@@ -68,7 +69,7 @@ jobs:
           git add python/*
           git add org/*
           git commit -m "Automated artifacts regeneration [skip actions]"
-          git push --force
+          git push
         else
           echo "'make' failed to finish successfully"
         fi
