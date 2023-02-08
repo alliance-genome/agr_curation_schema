@@ -5,11 +5,14 @@ SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
 
 SCHEMA_NAME = allianceModel
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
+
+ARTIFACTS_DIR=generated
+TARGET_DIR=$(ARTIFACTS_DIR)/target
 #TGTS = graphql jsonschema docs shex owl csv  python
 TGTS = jsonschema
 ARTIFACT_TGTS = python jsonschema jsonld-context python sqlddl owl shex
-JAVA_GEN_OPTS = --output_directory org/alliancegenome/curation/model --package org.alliancegenome.curation.model
-DDL_GEN_OPTS = --sqla-file target/sqla-files/
+JAVA_GEN_OPTS = --output_directory $(ARTIFACTS_DIR)/java/org/alliancegenome/curation/model --package org.alliancegenome.curation.model
+DDL_GEN_OPTS = --sqla-file $(TARGET_DIR)/sqla-files/
 
 all: clean gen stage
 artifacts: clean-artifacts gen-artifacts stage-artifacts
@@ -17,26 +20,22 @@ gen: $(patsubst %,gen-%,$(TGTS))
 .PHONY: all gen clean t echo test install gh-deploy clean-artifacts clean-doc clean-artifacts gen-artifacts clean-docs .FORCE
 
 gen-artifacts: $(patsubst %,gen-%,$(ARTIFACT_TGTS))
-	cp -pr target/* .
+	cp -pr $(TARGET_DIR)/* $(ARTIFACTS_DIR)/
 
 clean: clean-jsonschema
 
 clean-jsonschema:
-	rm -rf target/*
-	rm -rf jsonschema/*
+	rm -rf $(TARGET_DIR)/*
+	rm -rf $(ARTIFACTS_DIR)/jsonschema/*
 
 clean-artifacts:
-	rm -rf target/*
-	rm -rf python/*
-	rm -rf jsonld-context/*
-	rm -rf jsonschema/*
-	rm -rf sqlddl/*
-	rm -rf rdf/*
+	rm -rf $(TARGET_DIR)/*
+	rm -rf $(ARTIFACTS_DIR)/*
 
 clean-docs:
-	rm -rf docs/images/*
-	rm -rf docs/types/*
-	rm -rf docs/
+	rm -rf $(ARTIFACTS_DIR)/docs/images/*
+	rm -rf $(ARTIFACTS_DIR)/docs/types/*
+	rm -rf $(ARTIFACTS_DIR)/docs/
 
 t:
 	echo $(SCHEMA_NAMES)
@@ -50,102 +49,102 @@ install:
 	poetry install
 
 tdir-%:
-	mkdir -p target/$*
+	mkdir -p $(TARGET_DIR)/$*
 
 docs:
-	mkdir -p $@
-	mkdir -p $@/images
+	mkdir -p $ARTIFACTS_DIR/$@
+	mkdir -p $ARTIFACTS_DIR/$@/images
 
 stage: $(patsubst %,stage-%,$(TGTS))
 
 stage-artifacts: $(patsubst %,stage-%,$(ARTIFACT_TGTS))
 
 stage-%: gen-%
-	cp -pr target/$* .
+	cp -pr $(TARGET_DIR)/$* $(ARTIFACTS_DIR)/
 
 gen-docs:
-	poetry run gen-doc model/schema/allianceModel.yaml --directory target/docs --template-directory doc_templates
+	poetry run gen-doc model/schema/allianceModel.yaml --directory $(TARGET_DIR)/docs --template-directory doc_templates
 
 stage-docs:
-	cp -pr target/$* .
-	cp css/extra_css.css docs/
-	cp README.md docs/developing-the-model.md
+	cp -pr $(TARGET_DIR)/$* $(ARTIFACTS_DIR)/
+	cp $(ARTIFACTS_DIR)/css/extra_css.css $(ARTIFACTS_DIR)/docs/
+	cp README.md $(ARTIFACTS_DIR)/docs/developing-the-model.md
 	poetry run mkdocs serve
 
-guidelines/%.md: docs/index.md
-	cp -R guidelines/* $(dir $@)
+$(ARTIFACTS_DIR)/guidelines/%.md: $(ARTIFACTS_DIR)/docs/index.md
+	cp -R $(ARTIFACTS_DIR)/guidelines/* $(dir $@)
 
 # add more logging?
 # some docs pages not being created
 # usage of mkdocs.yml attributes like analytics?
 
 ###  -- PYTHON --
-gen-python: $(patsubst %, target/python/%.py, $(SCHEMA_NAMES))
+gen-python: $(patsubst %, $(TARGET_DIR)/python/%.py, $(SCHEMA_NAMES))
 .PHONY: gen-python
-target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python
+$(TARGET_DIR)/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python
 # --no-mergeimports was causing an import error
 #	gen-py-classes --no-mergeimports $(GEN_OPTS) $< > $@
 	poetry run gen-py-classes --mergeimports $(GEN_OPTS) $< > $@
 
 ###  -- GRAPHQL --
-gen-graphql:target/graphql/$(SCHEMA_NAME).graphql
+gen-graphql:$(TARGET_DIR)/graphql/$(SCHEMA_NAME).graphql
 .PHONY: gen-graphql
-target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
+$(TARGET_DIR)/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
 	poetry run gen-graphql $(GEN_OPTS) $< > $@
 
 ###  -- JSON SCHEMA --
-gen-jsonschema: target/jsonschema/$(SCHEMA_NAME).schema.json
+gen-jsonschema: $(TARGET_DIR)/jsonschema/$(SCHEMA_NAME).schema.json
 .PHONY: gen-jsonschema
-target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
+$(TARGET_DIR)/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
 	poetry run gen-json-schema $(GEN_OPTS) --closed -t ingest $< > $@
 
 
 ###  -- SQL --
-gen-sqlddl: target/sqlddl/$(SCHEMA_NAME).sql
+gen-sqlddl: $(TARGET_DIR)/sqlddl/$(SCHEMA_NAME).sql
 .PHONY: gen-sqlddl
-target/sqlddl/%.sql: $(SCHEMA_DIR)/%.yaml tdir-sqlddl
+$(TARGET_DIR)/sqlddl/%.sql: $(SCHEMA_DIR)/%.yaml tdir-sqlddl
 	poetry run gen-sqlddl $(GEN_OPTS) $< > $@
 
 ###  -- JSONLD Context --
-gen-jsonld-context: target/jsonld-context/$(SCHEMA_NAME).context.jsonld
+gen-jsonld-context: $(TARGET_DIR)/jsonld-context/$(SCHEMA_NAME).context.jsonld
 .PHONY: gen-jsonld-context
-target/jsonld-context/%.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld-context
+$(TARGET_DIR)/jsonld-context/%.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld-context
 	poetry run gen-jsonld-context $(GEN_OPTS) $< > $@
 
 ###  -- SHEX --
 # one file per module
-gen-shex: $(patsubst %, target/shex/%.shex, $(SCHEMA_NAMES))
+gen-shex: $(patsubst %, $(TARGET_DIR)/shex/%.shex, $(SCHEMA_NAMES))
 .PHONY: gen-shex
-target/shex/%.shex: $(SCHEMA_DIR)/%.yaml tdir-shex
+$(TARGET_DIR)/shex/%.shex: $(SCHEMA_DIR)/%.yaml tdir-shex
 	poetry run gen-shex --no-mergeimports $(GEN_OPTS) $< > $@
 
 ###  -- CSV --
 # one file per module
-gen-csv: $(patsubst %, target/csv/%.csv, $(SCHEMA_NAMES))
+gen-csv: $(patsubst %, $(TARGET_DIR)/csv/%.csv, $(SCHEMA_NAMES))
 .PHONY: gen-csv
-target/csv/%.csv: $(SCHEMA_DIR)/%.yaml tdir-csv
+$(TARGET_DIR)/csv/%.csv: $(SCHEMA_DIR)/%.yaml tdir-csv
 	poetry run gen-csv $(GEN_OPTS) $< > $@
 
 ###  -- OWL --
 # TODO: modularize imports. For now imports are merged.
-gen-owl: target/owl/$(SCHEMA_NAME).owl.ttl
+gen-owl: $(TARGET_DIR)/owl/$(SCHEMA_NAME).owl.ttl
 .PHONY: gen-owl
-target/owl/%.owl.ttl: $(SCHEMA_DIR)/%.yaml tdir-owl
+$(TARGET_DIR)/owl/%.owl.ttl: $(SCHEMA_DIR)/%.yaml tdir-owl
 	poetry run gen-owl $(GEN_OPTS) $< > $@
 
 ###  -- RDF (direct mapping) --
 # TODO: modularize imports. For now imports are merged.
-gen-rdf: target/rdf/$(SCHEMA_NAME).ttl
+gen-rdf: $(TARGET_DIR)/rdf/$(SCHEMA_NAME).ttl
 .PHONY: gen-rdf
-target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml tdir-rdf
+$(TARGET_DIR)/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml tdir-rdf
 	poetry run gen-rdf $(GEN_OPTS) $< > $@
 
 ###  -- LINKML --
 # linkml (copy)
 # one file per module
-gen-linkml: target/linkml/$(SCHEMA_NAME).yaml
+gen-linkml: $(TARGET_DIR)/linkml/$(SCHEMA_NAME).yaml
 .PHONY: gen-linkml
-target/linkml/%.yaml: $(SCHEMA_DIR)/%.yaml tdir-limkml
+$(TARGET_DIR)/linkml/%.yaml: $(SCHEMA_DIR)/%.yaml tdir-limkml
 	cp $< > $@
 
 gh-deploy:
@@ -165,8 +164,8 @@ clean-package:
 
 build-package: clean-package
 	cp model/schema/allianceModel.yaml agr_schema/ # copy allianceModel yaml file
-	cp python/*.py agr_schema/ # copy python files
-	cp jsonschema/allianceModel.schema.json agr_schema/ # copy allianceModel json schema
+	cp $(ARTIFACTS_DIR)/python/*.py agr_schema/ # copy python files
+	cp $(ARTIFACTS_DIR)/jsonschema/allianceModel.schema.json agr_schema/ # copy allianceModel json schema
 	cp util/validate_agr_json.py agr_schema/ # copy command-line validation tool
 	python setup.py bdist_wheel sdist
 
@@ -214,19 +213,19 @@ test-jsonschema: $(foreach example, $(SCHEMA_TEST_EXAMPLES), validate-$(example)
 .PHONY: test-jsonschema_invalid
 test-jsonschema_invalid: $(foreach example, $(SCHEMA_TEST_EXAMPLES_INVALID), validate-invalid-$(example))
 
-validate-%: test/data/%.json jsonschema/allianceModel.schema.json
+validate-%: test/data/%.json $(ARTIFACTS_DIR)/jsonschema/allianceModel.schema.json
 # util/validate_allianceModel_json.py -i $< # example of validating data using the cli
 	# poetry run jsonschema -i $< $(word 2, $^)
 	poetry run linkml-validate -C Ingest -s model/schema/allianceModel.yaml -s model/schema/allianceModel.yaml $<
-validate-invalid-%: test/data/invalid/%.json jsonschema/allianceModel.schema.json
+validate-invalid-%: test/data/invalid/%.json $(ARTIFACTS_DIR)/jsonschema/allianceModel.schema.json
 	! poetry run jsonschema -i $< $(word 2, $^)
 
 
 # ---------------------------------------
 # Java
 # ---------------------------------------
-gen-java: $(patsubst %, target/java/%.java, $(SCHEMA_NAMES))
+gen-java: $(patsubst %, $(TARGET_DIR)/java/%.java, $(SCHEMA_NAMES))
 .PHONY: gen-java
 
-target/java/%.java: $(SCHEMA_DIR)/%.yaml tdir-java
+$(TARGET_DIR)/java/%.java: $(SCHEMA_DIR)/%.yaml tdir-java
 	poetry run gen-java $(JAVA_GEN_OPTS)  $< > $@

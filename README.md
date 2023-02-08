@@ -90,9 +90,10 @@ use these Makefile targets to generate the artifacts for a pull request or for a
 
 To regenerate python, java, jsonschema, etc. locally, run `make` from the command line.
 Two other important targets exist in the Makefile for this repository: stage and test.  Stage moves all the assembled 
-artifacts that are generated in a non-checked-in directory (`target` directory) into the top of the repository for 
-easier finding and for easier packaging of these artifacts.  `stage` is executed as part of the build targets in the Makefile
-via github actions (GA) and so developers can ignore these targets in favor of automated builds via GA.
+artifacts that are generated in a non-checked-in directory (`target` directory) into the top of the artifacts directory (`/generated/`)
+for easier discoverability and packaging of these artifacts and to enable ignoring these during PR review.
+`stage` is executed as part of the build targets in the Makefile via github actions (GA)
+and so developers can ignore these targets in favor of automated builds via GA.
 
 To make a schema change and test your changes:
 
