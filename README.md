@@ -25,7 +25,8 @@ classes in the model.
 
 ### Types
 
-Types can be "string" or "integer" per many language specifications, but if custom types can also be defined.  Alliance model reuses a custom LinkML type (URIorCurie) which restricts a slot value to a URI or CURIE data type. 
+Types can be "string" or "integer" per many language specifications, but if custom types can also be defined. 
+Alliance model reuses a custom LinkML type (URIorCurie) which restricts a slot value to a URI or CURIE data type. 
 
 ### Enums
 
