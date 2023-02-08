@@ -10,8 +10,8 @@ ARTIFACTS_DIR=generated
 TARGET_DIR=$(ARTIFACTS_DIR)/target
 #TGTS = graphql jsonschema docs shex owl csv  python
 TGTS = jsonschema
-ARTIFACT_TGTS = python jsonschema jsonld-context python sqlddl owl shex
-JAVA_GEN_OPTS = --output_directory $(ARTIFACTS_DIR)/java/org/alliancegenome/curation/model --package org.alliancegenome.curation.model
+ARTIFACT_TGTS = python jsonschema jsonld-context sqlddl owl shex java docs
+JAVA_GEN_OPTS = --output-directory $(ARTIFACTS_DIR)/java/org/alliancegenome/curation/model --package org.alliancegenome.curation.model
 DDL_GEN_OPTS = --sqla-file $(TARGET_DIR)/sqla-files/
 
 all: clean gen stage
@@ -19,8 +19,7 @@ artifacts: clean-artifacts gen-artifacts stage-artifacts
 gen: $(patsubst %,gen-%,$(TGTS))
 .PHONY: all gen clean t echo test install gh-deploy clean-artifacts clean-doc clean-artifacts gen-artifacts clean-docs .FORCE
 
-gen-artifacts: $(patsubst %,gen-%,$(ARTIFACT_TGTS))
-	cp -pr $(TARGET_DIR)/* $(ARTIFACTS_DIR)/
+gen-artifacts: $(patsubst %,gen-%,$(ARTIFACT_TGTS)) $(patsubst %,stage-%,$(ARTIFACT_TGTS))
 
 clean: clean-jsonschema
 
@@ -66,9 +65,11 @@ gen-docs:
 	poetry run gen-doc model/schema/allianceModel.yaml --directory $(TARGET_DIR)/docs --template-directory doc_templates
 
 stage-docs:
-	cp -pr $(TARGET_DIR)/$* $(ARTIFACTS_DIR)/
-	cp $(ARTIFACTS_DIR)/css/extra_css.css $(ARTIFACTS_DIR)/docs/
+	cp -pr $(TARGET_DIR)/docs $(ARTIFACTS_DIR)/
+	cp css/extra_css.css $(ARTIFACTS_DIR)/docs/
 	cp README.md $(ARTIFACTS_DIR)/docs/developing-the-model.md
+
+serve-docs: stage-docs
 	poetry run mkdocs serve
 
 $(ARTIFACTS_DIR)/guidelines/%.md: $(ARTIFACTS_DIR)/docs/index.md
@@ -228,4 +229,4 @@ gen-java: $(patsubst %, $(TARGET_DIR)/java/%.java, $(SCHEMA_NAMES))
 .PHONY: gen-java
 
 $(TARGET_DIR)/java/%.java: $(SCHEMA_DIR)/%.yaml tdir-java
-	poetry run gen-java $(JAVA_GEN_OPTS)  $< > $@
+	poetry run gen-java $(JAVA_GEN_OPTS)  $<
