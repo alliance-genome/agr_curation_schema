@@ -68,12 +68,6 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add jsonld-context/*
-        git add owl/*
-        git add shex/*
-        git add sqlddl/*
-        git add jsonschema/*
-        git add python/*
-        git add org/*
+        git add generated/
         git commit -m "Automated artifacts regeneration [skip actions]"
         git push
