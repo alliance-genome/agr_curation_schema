@@ -6,8 +6,8 @@ plugins:
   - mermaid2
 
 
-docs_dir: docs
-site_dir: mkdocs_html
+docs_dir: generated/docs
+site_dir: generated/mkdocs_html
 
 nav:
   - Browse the Model: index.md

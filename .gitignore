@@ -1,5 +1,5 @@
 # artifacts
-target/**
+generated/target/**
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -80,10 +80,6 @@ instance/
 # IPython
 profile_default/
 ipython_config.py
-
-# Docs
-docs/
-docs/*.md
 
 
 # pyenv
