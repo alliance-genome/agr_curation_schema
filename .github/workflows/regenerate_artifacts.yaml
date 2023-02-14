@@ -65,9 +65,14 @@ jobs:
     - name: Commit and push artifacts
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      shell: bash
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add generated/
-        git commit -m "Automated artifacts regeneration [skip actions]"
-        git push
+        if [[ $(git add -n generated/) ]]; then
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add generated/
+          git commit -m "Automated artifacts regeneration [skip actions]"
+          git push
+        else
+          echo "No artifact changes to commit."
+        fi
