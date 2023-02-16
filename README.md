@@ -1,7 +1,17 @@
 # LinkML Model to describe the Alliance curation/persistence data store
 Model to describe the Alliance curation/persistence data store
 
-## [Model Components and Visualizations](https://alliance-genome.github.io/agr_curation_schema/)
+## Model Components and Visualizations
+To browse the model through html and visualisation, visit the project page [here](https://alliance-genome.github.io/agr_curation_schema/).
+This page will always represent the model as available on the [main branch of the repository](https://github.com/alliance-genome/agr_curation_schema/).
+
+To build the html and visualisations and browse it for a specific release or code version, checkout the repository locally
+(at that specific release tag, branch or commit) and run the following command:
+```bash
+make serve-docs
+```
+
+This should report the URL at which it is serving the docs locally, usually http://127.0.0.1:8000/alliance-genome/agr_curation_schema/.
 
 ## Developing the AGR Curation Schema 
 
