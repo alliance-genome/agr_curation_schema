@@ -81,6 +81,9 @@ instance/
 profile_default/
 ipython_config.py
 
+# Docs
+generated/docs/*
+
 
 # pyenv
 #   For a library or package, you might want to ignore these files since the code is
