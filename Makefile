@@ -11,7 +11,7 @@ TARGET_DIR=$(ARTIFACTS_DIR)/target
 #TGTS = graphql jsonschema docs shex owl csv  python
 TGTS = jsonschema
 # ARTIFACT_TGTS = python jsonschema jsonld-context sqlddl owl shex java docs
-ARTIFACT_TGTS = jsonschema docs
+ARTIFACT_TGTS = jsonschema
 JAVA_GEN_OPTS = --output-directory $(ARTIFACTS_DIR)/java/org/alliancegenome/curation/model --package org.alliancegenome.curation.model
 DDL_GEN_OPTS = --sqla-file $(TARGET_DIR)/sqla-files/
 
