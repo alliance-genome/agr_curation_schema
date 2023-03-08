@@ -101,7 +101,7 @@ the ingest classes much cleaner.  All fields that are populated via Alliance bus
 classes.  Slot naming and descriptions can also be tailored towards ingest, making it much clearer to DQMs exactly what is
 required for submission, e.g. `evidence_codes` in the `DiseaseAnnotation` class vs. `evidence_code_curies` in the
 `DiseaseAnnotationDTO` class.  In both these cases, the generated JSON schema represents these slots as a list of strings but
-invthe case of the former it is not clear which field is expected to be represented in the ingest file - it could just as well be
+in the case of the former it is not clear which field is expected to be represented in the ingest file - it could just as well be
 the evidence code name or abbreviation that could be expected.  Furthermore, the description in the `evidence_code_curies` slot
 definition could be used for ingest-specific instructions that would be propagated to the generated JSON schema.
 
