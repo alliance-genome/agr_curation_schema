@@ -46,12 +46,5 @@ jobs:
       - name: Install library
         run: poetry install --no-interaction
 
-      - name: Generate markdown files
-        run: |
-          mkdir docs
-          poetry run gen-doc model/schema/allianceModel.yaml --directory docs --template-directory doc_templates
-          cp css/extra_css.css docs/
-          cp README.md docs/developing-the-model.md
-
-      - name: Deploy documentation (requires documentation is in docs dir)
-        run: make gh-deploy
+      - name: Generate and deploy documentation
+        run: make gh-deploy-docs
