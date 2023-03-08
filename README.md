@@ -112,9 +112,9 @@ classes.  The `DiseaseAnnotation` class inherits from `Association`, which in tu
 `DiseaseAnnotationDTO` class inherits directly from the `AuditedObjectDTO` class and the slots corresponding to those in the
 `Association` class are moved up to the `DiseaseAnnotationDTO` class itself and its child classes.  This allows the ingest slots
 corresponding to the `Association` class slots `subject`, `predicate` and `object` to be specific to the data type being ingested
-and be more descriptive - `agm_curie`, `allele_curie` and `gene_curie` in the AGMDiseaseAnnotationDTO, AlleleDiseaseAnnotationDTO,
-and GeneDiseaseAnnotationDTO classes correspond to `subject`; `disease_relation_name` and `do_term_curie` in the
-DiseaseAnnotationDTO class correspond to `predicate` and `object`.  This makes the generated JSON schema much more transparent to
+and be more descriptive - `agm_curie`, `allele_curie` and `gene_curie` in the `AGMDiseaseAnnotationDTO`, `AlleleDiseaseAnnotationDTO`,
+and `GeneDiseaseAnnotationDTO` classes correspond to `subject`; `disease_relation_name` and `do_term_curie` in the
+`DiseaseAnnotationDTO` class correspond to `predicate` and `object`.  This makes the generated JSON schema much more transparent to
 DQMs.
 
 Class names for ingest classes simply follow the naming of the corresponding non-ingest classes and add the DTO suffix although,
@@ -123,7 +123,7 @@ as described above, not all classes in a hierarchy are necessarily represented.
 Slot names for slots used in ingest classes should be descriptive of exactly what is required to be submitted.  In many cases this
 will simply be the same name as the corresponding non-ingest slot with a suffix to indicate which field is required to be submitted.
 For classes that have a curie this is usually the snake case form of the class name with the suffix `_curie` (e.g. `eco_term_curie`
-or `reference_curie`), for slots where the corresponding non-ingest slot range is a VocabularyTerm  it is typically the name of the
+or `reference_curie`), for slots where the corresponding non-ingest slot range is a `VocabularyTerm`  it is typically the name of the
 vocabulary with the suffix `_name`, e.g. (`genetic_sex_name`).  As with non-ingest slots, multivalued slot names should be pluralised
 (e.g. `disease_qualifier_names`).  For inlined classes, where the complete class object is submitted as part of the submission of
 another class, the suffixes `_dto` or `_dtos` should be used (e.g. `condition_relation_dtos` or `note_dtos`).  In cases where the
