@@ -1,0 +1,85 @@
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantDTO
+name: variantDTO
+title: Variant DTO
+
+imports:
+  - core
+  - variant
+  - allele
+  - linkml:types
+
+prefixes:
+  alliance: 'http://alliancegenome.org/'
+  linkml: 'https://w3id.org/linkml/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - owl
+
+## ------------
+## DTO CLASSES
+## ------------
+
+classes:
+
+## ------------
+## DTO BASE CLASSES
+## ------------
+
+  VariantDTO:
+    is_a: GenomicEntityDTO
+    description: >-
+      Ingest class for a Variant object
+    slots:
+      - variant_type_dto
+      - variant_note_dtos
+      - source_general_consequence_dto
+      - variant_status
+
+  VariantNoteSlotAnnotationDTO:
+    is_a: SlotAnnotationDTO
+    slots:
+      - note_dto
+    slot_usage:
+      note_dto:
+        required: true
+
+slots:
+
+  variant_type_dto:
+    description: >-
+        Variant type slot annotation DTO for a Variant object
+    domain: VariantDTO
+    range: SlotAnnotationDTO
+    multivalued: false
+    inlined: true
+
+  source_general_consequence_dto:
+    domain: VariantDTO
+    range: SlotAnnotationDTO
+    multivalued: true
+    inlined: true
+
+  variant_note_dtos:
+    is_a: note_dtos
+    domain: VariantDTO
+    range: VariantNoteSlotAnnotationDTO
+    multivalued: true
+    inlined_as_list: true
+    inlined: true

@@ -51,7 +51,7 @@ classes:
       position or in a range of contiguous nucleotides or amino acids.
     slots:
       - variant_type
-      - related_notes
+      - variant_notes
       - source_general_consequence
       - variant_genome_locations # assembly identifies a genome location, so a variant on many assemblies can have many genome locations.
       - variant_polypeptide_locations
@@ -68,8 +68,10 @@ classes:
                   required: true
             - slot_conditions:
                 variant_status:
-                  equals_string: private
-          description: a variant must have a genome location, or must be private
+                  any_of:
+                    - equals_string: private
+                    - equals_string: incomplete
+          description: a variant must have a genome location, or must be private or incomplete
 
   SourceVariantLocation:
     is_a: AuditedObject
@@ -133,7 +135,6 @@ classes:
       - exon_number
       - intron_number
 
-
   VariantPolypeptideLocation:
     is_a: VariantLocation
     description: >-
@@ -145,6 +146,16 @@ classes:
       - number_amino_acids_removed
       - number_amino_acids_inserted
 
+  VariantNoteSlotAnnotation:
+    is_a: SlotAnnotation
+    slots:
+      - single_variant
+      - related_note
+    slot_usage:
+      single_variant:
+        required: true
+      related_note:
+        required: true
 
 # Slots
 
@@ -310,16 +321,6 @@ slots:
     domain: VariantLocation
     range: SOTerm
 
-  curated_consequence:
-    description: >-
-      SOTerm that describes the consequence of the variant, as determined by
-      the curator. In practice curated consequence will be associated with locations at any or all of
-      VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.
-    required: false
-    multivalued: false
-    domain: VariantLocation
-    range: SOTerm
-
   variant_locations:
     description: >-
       Location of the variant within genomic entities. Variant_locations can include any or all of: one
@@ -456,6 +457,12 @@ slots:
     multivalued: true
     domain: VariantPolypeptideLocation
     range: Transcript
+
+  variant_notes:
+    description: Notes for a given variant
+    domain: Variant
+    range: VariantNoteSlotAnnotation
+    multivalued: true
 
 enums:
   variant_status_enum:

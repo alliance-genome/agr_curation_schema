@@ -275,6 +275,10 @@ classes:
         any_of:
           - equals_string: systematic_name
 
+  TypeSlotAnnotationDTO:
+    is_a: SlotAnnotationDTO
+    slots:
+      - type_name
 
   Association:
     is_a: AuditedObject
@@ -285,7 +289,7 @@ classes:
       of the association, and likewise the object is the curie (or identifier of the class that is the object. The
       relationship between subject and object is defined by the predicate slot (which can also be constrained
       using the range of the predicate).
-    exact_mappings:
+    broad_mappings:
       - biolink:association
     notes:
       Keeping this more generic than biolink:association by foregoing the
