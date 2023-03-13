@@ -538,7 +538,8 @@ slots:
 
   note_type:
     description: >-
-      The type of note: e.g., cytology, comment, summary. Permissible values for 'note_type' currently = disease_summary, disease_note
+      The type of note: e.g., cytology, comment, summary. Permissible values for 'note_type' currently = disease_summary, disease_note,
+      molecular_mutation -- please see the VocabularyTerm class for the full list.
     range: VocabularyTerm
 
   note_type_name:

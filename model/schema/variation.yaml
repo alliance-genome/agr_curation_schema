@@ -101,9 +101,7 @@ classes:
       - reference_sequence
       - variant_sequence
       - consequence
-    slot_usage:
-      evidence_code:
-        required: false
+
 
   VariantGenomeLocation:
     is_a: VariantLocation
