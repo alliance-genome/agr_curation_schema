@@ -275,11 +275,6 @@ classes:
         any_of:
           - equals_string: systematic_name
 
-  TypeSlotAnnotationDTO:
-    is_a: SlotAnnotationDTO
-    slots:
-      - type_name
-
   Association:
     is_a: AuditedObject
     description: >-
@@ -839,12 +834,6 @@ slots:
       Holds between an entity and the first reference to describe that entity.
     multivalued: false
     range: Reference
-
-  reference_curie:
-    description: >-
-      The curie of the reference object
-    range: uriorcurie
-
 
   obsolete:
     description: >-

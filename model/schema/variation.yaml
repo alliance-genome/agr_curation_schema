@@ -78,7 +78,7 @@ classes:
     description:
       Links a paper to the variant locations described in that paper
     slots:
-      - variant_locations
+      - source_variant_locations
       - single_reference
     slot_usage:
       single_reference:
@@ -132,9 +132,7 @@ classes:
       - related_variant_genome_location
     slot_usage:
       single_variant:
-        required: true
       related_variant_genome_location:
-        required: true
 
   VariantTranscriptLocation:
     is_a: VariantLocation
@@ -173,38 +171,27 @@ classes:
     slots:
       - single_variant
       - related_variant_polypeptide_location
-    slot_usage:
-      single_variant:
-        required: true
-      related_variant_polypeptide_location:
-        required: true
 
   VariantSourceLocationSlotAnnotation:
     is_a: SlotAnnotation
     slots:
       - single_variant
       - related_variant_source_location
-    slot_usage:
-      single_variant:
-        required: true
-      related_variant_source_location:
-        required: true
 
   VariantNoteSlotAnnotation:
     is_a: SlotAnnotation
     slots:
       - single_variant
       - related_note
-    slot_usage:
-      single_variant:
-        required: true
-      related_note:
-        required: true
-
 
 # Slots
 
 slots:
+
+  related_variant_source_location:
+    description: >-
+      Links a variant to a source variant location
+    range: SourceVariantLocation
 
   number_amino_acids_removed:
     description: >-
@@ -401,7 +388,7 @@ slots:
     required: false
     multivalued: true
     domain: Variant
-    range: SourceVariantLocationSlotAnnotation
+    range: VariantSourceLocationSlotAnnotation
 
   hgvs:
     description: >-
@@ -481,7 +468,6 @@ slots:
     required: true
     multivalued: false
     domain: VariantPolypeptideLocation
-    range: Polypeptide
 
   associated_transcripts:
     description:

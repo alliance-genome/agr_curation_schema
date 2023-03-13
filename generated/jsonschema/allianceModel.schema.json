@@ -13533,7 +13533,7 @@
                     "type": "boolean"
                 },
                 "note_type": {
-                    "description": "The type of note: e.g., cytology, comment, summary. Permissible values for 'note_type' currently = disease_summary, disease_note",
+                    "description": "The type of note: e.g., cytology, comment, summary. Permissible values for 'note_type' currently = disease_summary, disease_note, molecular_mutation -- please see the VocabularyTerm class for the full list.",
                     "type": "string"
                 },
                 "obsolete": {
@@ -15810,16 +15810,16 @@
                     "description": "holds between an object and a single reference",
                     "type": "string"
                 },
+                "source_variant_locations": {
+                    "description": "Location of the variant within genomic entities, as described in the source references.",
+                    "items": {
+                        "$ref": "#/$defs/VariantSourceLocationSlotAnnotation"
+                    },
+                    "type": "array"
+                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": "string"
-                },
-                "variant_locations": {
-                    "description": "Location of the variant within genomic entities. Variant_locations can include any or all of: one VariantGenomeLocation stanza, one or more VariantTranscriptLocation stanzas and/or one or more VariantPolypeptideLocation stanzas.",
-                    "items": {
-                        "$ref": "#/$defs/VariantLocation"
-                    },
-                    "type": "array"
                 }
             },
             "required": [
@@ -16416,13 +16416,6 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "related_notes": {
-                    "description": "Holds between an object and a list of related Note objects.",
-                    "items": {
-                        "$ref": "#/$defs/Note"
-                    },
-                    "type": "array"
-                },
                 "secondary_identifiers": {
                     "items": {
                         "type": "string"
@@ -16434,9 +16427,9 @@
                     "type": "string"
                 },
                 "source_variant_locations": {
-                    "description": "Location of the variant within genomic entities,as described in the source references.",
+                    "description": "Location of the variant within genomic entities, as described in the source references.",
                     "items": {
-                        "$ref": "#/$defs/SourceVariantLocation"
+                        "$ref": "#/$defs/VariantSourceLocationSlotAnnotation"
                     },
                     "type": "array"
                 },
@@ -16449,16 +16442,23 @@
                     "type": "string"
                 },
                 "variant_genome_locations": {
-                    "description": "Location of the variant in a genomic context.  multiple variant_genome_locations represent multiple assemblies.",
+                    "description": "Location of the variant in a genomic context.  multiple variant_genome_locations represent multiple assemblies.  because we want the variant to stay consistent between assemblies, we must have a single  variant object apart from its location.",
                     "items": {
-                        "$ref": "#/$defs/VariantGenomeLocation"
+                        "$ref": "#/$defs/VariantGenomeLocationSlotAnnotation"
+                    },
+                    "type": "array"
+                },
+                "variant_notes": {
+                    "description": "Notes for a given variant",
+                    "items": {
+                        "$ref": "#/$defs/VariantNoteSlotAnnotation"
                     },
                     "type": "array"
                 },
                 "variant_polypeptide_locations": {
                     "description": "Location of the variant within polypeptide entities.",
                     "items": {
-                        "$ref": "#/$defs/VariantPolypeptideLocation"
+                        "$ref": "#/$defs/VariantPolypeptideLocationSlotAnnotation"
                     },
                     "type": "array"
                 },
@@ -16469,7 +16469,7 @@
                 "variant_transcript_locations": {
                     "description": "Location of the variant within transcript entities.",
                     "items": {
-                        "$ref": "#/$defs/VariantTranscriptLocation"
+                        "$ref": "#/$defs/VariantTranscriptLocationSlotAnnotation"
                     },
                     "type": "array"
                 },
@@ -16582,7 +16582,7 @@
                     "type": "string"
                 },
                 "consequence": {
-                    "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.",
+                    "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocationSlotAnnotation, VariantTranscriptLocationSlotAnnotation, and VariantPolypeptideLocation.",
                     "type": "string"
                 },
                 "created_by": {
@@ -16609,6 +16609,14 @@
                     "format": "date-time",
                     "type": "string"
                 },
+                "deleted_sequence": {
+                    "description": "The sequence of DNA base pairs removed from the reference sequence by the variant.",
+                    "type": "string"
+                },
+                "dna_mutation_type": {
+                    "description": "The type of DNA mutation, for example, insertion, deletion, substitution, or indel.",
+                    "type": "string"
+                },
                 "end_position": {
                     "description": "End position of variant on genomic entity.",
                     "type": "integer"
@@ -16616,16 +16624,48 @@
                 "evidence_code": {
                     "type": "string"
                 },
+                "exon_number": {
+                    "description": "The exon number of the variant location.  If the variant is in an intron, this slot is not populated. Primarily used for zebrafish.",
+                    "type": "integer"
+                },
+                "gene_localization_type": {
+                    "description": "The type of gene localization, for example, intronic, intergenic, or intragenic.",
+                    "type": "string"
+                },
+                "inserted_sequence": {
+                    "description": "The sequence of DNA base pairs inserted into the reference sequence by the variant.",
+                    "type": "string"
+                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
+                },
+                "intron_number": {
+                    "description": "The intron number of the variant location.  If the variant is in an exon, this slot is not populated. Primarily used for zebrafish.",
+                    "type": "integer"
+                },
+                "number_additional_dna_base_pairs": {
+                    "description": "The number of additional DNA base pairs inserted into the reference sequence by the variant.",
+                    "type": "integer"
+                },
+                "number_removed_dna_base_pairs": {
+                    "description": "The number of DNA base pairs removed from the reference sequence by the variant.   sequence.",
+                    "type": "integer"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
+                "padded_base": {
+                    "description": "",
+                    "type": "string"
+                },
                 "reference_sequence": {
                     "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
+                    "type": "string"
+                },
+                "sequence_of_reference_accession_number": {
+                    "description": "The accession number that describes the assembly and chromosome of the reference sequence.",
                     "type": "string"
                 },
                 "single_reference": {
@@ -16643,12 +16683,138 @@
                 "variant_sequence": {
                     "description": "Sequence that differs from the reference sequence of genome or genomic entity at position of variant, as specified by curator.",
                     "type": "string"
+                },
+                "variation_strand": {
+                    "description": "The strand on which the variant is located.  This is the strand of the reference sequence, not the variant sequence.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "sequence_of_reference_accession_number",
+                "internal"
+            ],
+            "title": "VariantGenomeLocation",
+            "type": "object"
+        },
+        "VariantGenomeLocationSlotAnnotation": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "evidence": {
+                    "description": "",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "related_variant_genome_location": {
+                    "$ref": "#/$defs/VariantGenomeLocation"
+                },
+                "single_variant": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
                 }
             },
             "required": [
                 "internal"
             ],
-            "title": "VariantGenomeLocation",
+            "title": "VariantGenomeLocationSlotAnnotation",
+            "type": "object"
+        },
+        "VariantNoteSlotAnnotation": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "evidence": {
+                    "description": "",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "related_note": {
+                    "$ref": "#/$defs/Note",
+                    "description": "Holds between an object and a Note object."
+                },
+                "single_variant": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "internal"
+            ],
+            "title": "VariantNoteSlotAnnotation",
             "type": "object"
         },
         "VariantPolypeptideLocation": {
@@ -16663,7 +16829,7 @@
                     "type": "array"
                 },
                 "consequence": {
-                    "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.",
+                    "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocationSlotAnnotation, VariantTranscriptLocationSlotAnnotation, and VariantPolypeptideLocation.",
                     "type": "string"
                 },
                 "created_by": {
@@ -16701,16 +16867,28 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "number_amino_acids_inserted": {
+                    "description": "The number of amino acids added from the polypeptide as a result of the variant.",
+                    "type": "integer"
+                },
+                "number_amino_acids_removed": {
+                    "description": "The number of amino acids removed from the polypeptide as a result of the variant.",
+                    "type": "integer"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
                 "polypeptide": {
-                    "description": "Transcript associated with variant and for which a specific location and consequence of that variant is provided, as specified by curator. Multivalued=false for this slot because although a variant can have multiple VariantTranscriptLocation stanzas, each stanza will have one and only one curated transcript ID.",
+                    "description": "Polypeptide associated with variant and for which a specific location and consequence of that variant is provided, as specified by curator. Multivalued=false for this slot because although a variant can have multiple VariantPolypeptideLocation stanzas, each stanza will have one and only one curated polypeptide ID.",
                     "type": "string"
                 },
                 "reference_sequence": {
                     "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
+                    "type": "string"
+                },
+                "sequence_of_reference_accession_number": {
+                    "description": "The accession number that describes the assembly and chromosome of the reference sequence.",
                     "type": "string"
                 },
                 "single_reference": {
@@ -16732,9 +16910,131 @@
             },
             "required": [
                 "polypeptide",
+                "sequence_of_reference_accession_number",
                 "internal"
             ],
             "title": "VariantPolypeptideLocation",
+            "type": "object"
+        },
+        "VariantPolypeptideLocationSlotAnnotation": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "evidence": {
+                    "description": "",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "related_variant_polypeptide_location": {
+                    "$ref": "#/$defs/VariantPolypeptideLocation"
+                },
+                "single_variant": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "internal"
+            ],
+            "title": "VariantPolypeptideLocationSlotAnnotation",
+            "type": "object"
+        },
+        "VariantSourceLocationSlotAnnotation": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "evidence": {
+                    "description": "",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "related_variant_source_location": {
+                    "$ref": "#/$defs/SourceVariantLocation",
+                    "description": "Links a variant to a source variant location"
+                },
+                "single_variant": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "internal"
+            ],
+            "title": "VariantSourceLocationSlotAnnotation",
             "type": "object"
         },
         "VariantStatusEnum": {
@@ -16880,7 +17180,7 @@
             "description": "Links a variant to a position on a specified transcript and the resulting consequence to the sequence and/or function of that transcript.",
             "properties": {
                 "consequence": {
-                    "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.",
+                    "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocationSlotAnnotation, VariantTranscriptLocationSlotAnnotation, and VariantPolypeptideLocation.",
                     "type": "string"
                 },
                 "created_by": {
@@ -16914,9 +17214,17 @@
                 "evidence_code": {
                     "type": "string"
                 },
+                "exon_number": {
+                    "description": "The exon number of the variant location.  If the variant is in an intron, this slot is not populated. Primarily used for zebrafish.",
+                    "type": "integer"
+                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
+                },
+                "intron_number": {
+                    "description": "The intron number of the variant location.  If the variant is in an exon, this slot is not populated. Primarily used for zebrafish.",
+                    "type": "integer"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -16924,6 +17232,10 @@
                 },
                 "reference_sequence": {
                     "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
+                    "type": "string"
+                },
+                "sequence_of_reference_accession_number": {
+                    "description": "The accession number that describes the assembly and chromosome of the reference sequence.",
                     "type": "string"
                 },
                 "single_reference": {
@@ -16948,9 +17260,72 @@
                 }
             },
             "required": [
+                "sequence_of_reference_accession_number",
                 "internal"
             ],
             "title": "VariantTranscriptLocation",
+            "type": "object"
+        },
+        "VariantTranscriptLocationSlotAnnotation": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "evidence": {
+                    "description": "",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "related_variant_transcript_location": {
+                    "$ref": "#/$defs/VariantTranscriptLocation"
+                },
+                "single_variant": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "single_variant",
+                "related_variant_transcript_location",
+                "internal"
+            ],
+            "title": "VariantTranscriptLocationSlotAnnotation",
             "type": "object"
         },
         "VepConsequenceLevels": {
