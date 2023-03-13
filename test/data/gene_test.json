@@ -3,6 +3,17 @@
   "gene_ingest_set": [
     {
       "curie": "ZFIN:ZDB-GENE-010226-1",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "ZFIN",
+        "cross_reference_dto": {
+          "referenced_curie": "ZFIN:ZDB-GENE-010226-1",
+          "prefix": "ZFIN",
+          "page_area": "gene",
+          "display_name": "ZFIN:ZDB-GENE-010226-1",
+          "internal": false
+        },
+        "internal": false
+      },
       "taxon_curie": "NCBITaxon:7955",
       "created_by_curie": "ZFIN",
       "updated_by_curie": "ZFIN",

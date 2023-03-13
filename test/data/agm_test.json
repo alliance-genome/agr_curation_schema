@@ -15,7 +15,18 @@
       "sequence_targeting_reagent_curies": [
         "ZFIN:ZDB-MRPHLNO-191104-1"
       ],
-      "subtype_name": "fish"
+      "subtype_name": "fish",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "ZFIN",
+        "cross_reference_dto": {
+          "referenced_curie": "ZFIN:ZDB-FISH-200601-1",
+          "prefix": "ZFIN",
+          "page_area": "fish",
+          "display_name": "ZFIN:ZDB-FISH-200601-1",
+          "internal": false
+        },
+        "internal": false
+      }
     },
     {
       "curie": "ZFIN:ZDB-FISH-150901-28778",
@@ -35,7 +46,18 @@
           "zygosity_curie": "GENO:0000136"
         }
       ],
-      "subtype_name": "fish"
+      "subtype_name": "fish",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "ZFIN",
+        "cross_reference_dto": {
+          "referenced_curie": "ZFIN:ZDB-FISH-150901-28778",
+          "prefix": "ZFIN",
+          "page_area": "fish",
+          "display_name": "ZFIN:ZDB-FISH-150901-28778",
+          "internal": false
+        },
+        "internal": false
+      }
     }
   ]
 }

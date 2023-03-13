@@ -118,7 +118,18 @@
           ],
           "internal": false
         }
-      ]
+      ],
+      "data_provider_dto": {
+        "source_organization_abbreviation": "WB",
+        "cross_reference_dto": {
+          "referenced_curie": "WB:WBVar00000001",
+          "prefix": "WB",
+          "page_area": "allele",
+          "display_name": "WB:WBVar00000001",
+          "internal": false
+        },
+        "internal": false
+      }
     }
   ]
 }
