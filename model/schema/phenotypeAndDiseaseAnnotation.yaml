@@ -228,8 +228,6 @@ classes:
         description: >-
           The disease ontology term.
         range: DOTerm
-      data_provider:
-        required: true
       annotation_type:
         required: false
       with_or_from:
@@ -284,9 +282,6 @@ classes:
       - secondary_data_provider_dto
       - disease_genetic_modifier_curie
       - disease_genetic_modifier_relation_name
-    slot_usage:
-      data_provider_dto:
-        required: true
 
   GeneDiseaseAnnotation:
     description: >-
