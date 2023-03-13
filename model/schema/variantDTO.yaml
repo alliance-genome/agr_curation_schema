@@ -4,8 +4,9 @@ title: Variant DTO
 
 imports:
   - core
-  - variant
+  - variation
   - allele
+  - reference
   - linkml:types
 
 prefixes:
@@ -88,7 +89,6 @@ classes:
       - dna_mutation_type
       - gene_localization_type
 
-
   VariantTranscriptLocationDTO:
     is_a: AuditedObjectDTO
     slots:
@@ -96,21 +96,14 @@ classes:
       - exon_number
       - intron_number
 
-  VariantPolypeptideLocationDTO:
-    is_a: AuditedObjectDTO
-    slots:
-      - polypeptide_curie
-      - associated_transcripts
-      - number_amino_acids_removed
-      - number_amino_acids_inserted
-
   VariantGenomicLocationSlotAnnotationDTO:
     is_a: SlotAnnotationDTO
     slots:
-      - variant_genomic_location_dto
+      - variant_genome_location_dto
     slot_usage:
-      variant_genomic_location_dto:
+      variant_genome_location_dto:
         required: true
+
 
   VariantTranscriptLocationSlotAnnotationDTO:
     is_a: SlotAnnotationDTO
@@ -120,6 +113,14 @@ classes:
       variant_transcript_location_dto:
         required: true
 
+  VariantPolypeptideLocationDTO:
+    is_a: AuditedObjectDTO
+    slots:
+      - polypeptide_curie
+      - associated_transcripts
+      - number_amino_acids_removed
+      - number_amino_acids_inserted
+
   VariantPolypeptideLocationSlotAnnotationDTO:
     is_a: SlotAnnotationDTO
     slots:
@@ -128,8 +129,22 @@ classes:
       variant_polypeptide_location_dto:
         required: true
 
+  VariantPolypeptideLocationSlotAnnotation:
+    is_a: SlotAnnotation
+    slots:
+      - single_variant
+      - related_variant_polypeptide_location
+    slot_usage:
+      single_variant:
+        required: true
+      related_variant_polypeptide_location:
+        required: true
 
 slots:
+
+  related_variant_polypeptide_location:
+    range: VariantPolypeptideLocation
+    multivalued: false
 
   chromosome_id:
     range: uriorcurie
