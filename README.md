@@ -88,6 +88,48 @@ An easy way to write a test is to pull out the 'required' fields of a domain obj
 and write test data according to those required fields.  Alternatively, a few submission objects from an existing submission
 will be a better exercise of the schema when not many fields are required.  
 
+##### Ingest classes
+
+The use of separate classes for data ingest came about due to the inability to adequately represent requirements of data ingest
+and storage using the same model.  An example of this is the curie field for disease annotations.  This will be populated
+with Alliance-minted IDs and will be a required field in the database.  However, because this ID is generated at the Alliance
+it cannot be a required field for ingest.  The use of separate “DTO” (data transfer object) classes to represent the
+requirements for ingest, and ingest only, avoids issues such as this.
+
+In addition to avoiding conflicting requirements, the use of separate classes for ingest makes the generated JSON schema for
+the ingest classes much cleaner.  All fields that are populated via Alliance business logic can be excluded from the ingest
+classes.  Slot naming and descriptions can also be tailored towards ingest, making it much clearer to DQMs exactly what is
+required for submission, e.g. `evidence_codes` in the `DiseaseAnnotation` class vs. `evidence_code_curies` in the
+`DiseaseAnnotationDTO` class.  In both these cases, the generated JSON schema represents these slots as a list of strings but
+in the case of the former it is not clear which field is expected to be represented in the ingest file - it could just as well be
+the evidence code name or abbreviation that could be expected.  Furthermore, the description in the `evidence_code_curies` slot
+definition could be used for ingest-specific instructions that would be propagated to the generated JSON schema.
+
+In many cases, the inheritance pattern of the DTO classes will mirror that of the corresponding non-DTO classes, but that does
+not have to be the case.  It may make sense to remove levels in the hierarchical structure in order to simplify the ingest schema
+and/or give more descriptive slot names.  An example of this can be found in the `DiseaseAnnotation` and `DiseaseAnnotationDTO`
+classes.  The `DiseaseAnnotation` class inherits from `Association`, which in turn inherits from `AuditedObject`.  However, the
+`DiseaseAnnotationDTO` class inherits directly from the `AuditedObjectDTO` class and the slots corresponding to those in the
+`Association` class are moved up to the `DiseaseAnnotationDTO` class itself and its child classes.  This allows the ingest slots
+corresponding to the `Association` class slots `subject`, `predicate` and `object` to be specific to the data type being ingested
+and be more descriptive - `agm_curie`, `allele_curie` and `gene_curie` in the `AGMDiseaseAnnotationDTO`, `AlleleDiseaseAnnotationDTO`,
+and `GeneDiseaseAnnotationDTO` classes correspond to `subject`; `disease_relation_name` and `do_term_curie` in the
+`DiseaseAnnotationDTO` class correspond to `predicate` and `object`.  This makes the generated JSON schema much more transparent to
+DQMs.
+
+Class names for ingest classes simply follow the naming of the corresponding non-ingest classes and add the DTO suffix although,
+as described above, not all classes in a hierarchy are necessarily represented.
+
+Slot names for slots used in ingest classes should be descriptive of exactly what is required to be submitted.  In many cases this
+will simply be the same name as the corresponding non-ingest slot with a suffix to indicate which field is required to be submitted.
+For classes that have a curie this is usually the snake case form of the class name with the suffix `_curie` (e.g. `eco_term_curie`
+or `reference_curie`), for slots where the corresponding non-ingest slot range is a `VocabularyTerm`  it is typically the name of the
+vocabulary with the suffix `_name`, e.g. (`genetic_sex_name`).  As with non-ingest slots, multivalued slot names should be pluralised
+(e.g. `disease_qualifier_names`).  For inlined classes, where the complete class object is submitted as part of the submission of
+another class, the suffixes `_dto` or `_dtos` should be used (e.g. `condition_relation_dtos` or `note_dtos`).  In cases where the
+non-ingest slot has a range of string, curie, or boolean and the slot name is sufficiently descriptive, there is no need to define a
+corresponding ingest slot and the same slot definition can be used in both ingest and non-ingest classes (e.g. `is_extinct`).
+
 ## Building the Artifacts of the AGR Curation Schema
 
 Artifacts of the AGR Curation Schema are defined as all the schema transformations that are automatically conducted 

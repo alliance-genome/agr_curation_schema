@@ -18,7 +18,7 @@ DDL_GEN_OPTS = --sqla-file $(TARGET_DIR)/sqla-files/
 all: clean gen stage
 artifacts: clean-artifacts gen-artifacts stage-artifacts
 gen: $(patsubst %,gen-%,$(TGTS))
-.PHONY: all gen clean t echo test install gh-deploy clean-artifacts clean-doc clean-artifacts gen-artifacts clean-docs .FORCE
+.PHONY: all gen clean t echo test install gh-deploy-docs clean-artifacts clean-doc clean-artifacts gen-artifacts clean-docs .FORCE
 
 gen-artifacts: $(patsubst %,gen-%,$(ARTIFACT_TGTS)) $(patsubst %,stage-%,$(ARTIFACT_TGTS))
 
@@ -65,7 +65,7 @@ stage-%: gen-%
 gen-docs:
 	poetry run gen-doc model/schema/allianceModel.yaml --directory $(TARGET_DIR)/docs --template-directory doc_templates
 
-stage-docs:
+stage-docs: gen-docs
 	cp -pr $(TARGET_DIR)/docs $(ARTIFACTS_DIR)/
 	cp css/extra_css.css $(ARTIFACTS_DIR)/docs/
 	cp README.md $(ARTIFACTS_DIR)/docs/developing-the-model.md
@@ -98,7 +98,7 @@ $(TARGET_DIR)/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
 gen-jsonschema: $(TARGET_DIR)/jsonschema/$(SCHEMA_NAME).schema.json
 .PHONY: gen-jsonschema
 $(TARGET_DIR)/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
-	poetry run gen-json-schema $(GEN_OPTS) --closed -t ingest $< > $@
+	poetry run gen-json-schema $(GEN_OPTS) --indent 4 --closed -t ingest $< > $@
 
 
 ###  -- SQL --
@@ -149,7 +149,7 @@ gen-linkml: $(TARGET_DIR)/linkml/$(SCHEMA_NAME).yaml
 $(TARGET_DIR)/linkml/%.yaml: $(SCHEMA_DIR)/%.yaml tdir-limkml
 	cp $< > $@
 
-gh-deploy:
+gh-deploy-docs: stage-docs
 # deploy documentation (note: requires documentation is in docs dir)
 	poetry run mkdocs gh-deploy --remote-branch gh-pages --force
 
