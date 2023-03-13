@@ -60,7 +60,97 @@ classes:
       note_dto:
         required: true
 
+  VariantLocationDTO:
+    is_a: AuditedObjectDTO
+    slots:
+      - evidence_code
+      - reference_curie
+      - start_position
+      - end_position
+      - reference_sequence
+      - variant_sequence
+      - consequence_curie
+      - sequence_of_reference_accession_number
+
+  VariantGenomicLocationDTO:
+    is_a: VariantLocationDTO
+    slots:
+      - assembly_name
+      - chromosome
+      - exon_number
+      - intron_number
+      - variation_strand
+      - number_additional_dna_base_pairs
+      - number_removed_dna_base_pairs
+      - inserted_sequence
+      - deleted_sequence
+      - padded_base
+      - dna_mutation_type
+      - gene_localization_type
+
+
+  VariantTranscriptLocationDTO:
+    is_a: AuditedObjectDTO
+    slots:
+      - transcript_curie
+      - exon_number
+      - intron_number
+
+  VariantPolypeptideLocationDTO:
+    is_a: AuditedObjectDTO
+    slots:
+      - polypeptide_curie
+      - associated_transcripts
+      - number_amino_acids_removed
+      - number_amino_acids_inserted
+
+  VariantGenomicLocationSlotAnnotationDTO:
+    is_a: SlotAnnotationDTO
+    slots:
+      - variant_genomic_location_dto
+    slot_usage:
+      variant_genomic_location_dto:
+        required: true
+
+  VariantTranscriptLocationSlotAnnotationDTO:
+    is_a: SlotAnnotationDTO
+    slots:
+      - variant_transcript_location_dto
+    slot_usage:
+      variant_transcript_location_dto:
+        required: true
+
+  VariantPolypeptideLocationSlotAnnotationDTO:
+    is_a: SlotAnnotationDTO
+    slots:
+      - variant_polypeptide_location_dto
+    slot_usage:
+      variant_polypeptide_location_dto:
+        required: true
+
+
 slots:
+
+  chromosome_id:
+    range: uriorcurie
+
+  polypeptide_curie:
+    range: uriorcurie
+
+  transcript_curie:
+    range: uriorcurie
+
+  variant_genome_location_dto:
+    range: VariantGenomicLocationDTO
+    inlined: true
+
+  variant_transcript_location_dto:
+    range: VariantTranscriptLocationDTO
+    inlined: true
+
+  variant_polypeptide_location_dto:
+    range: VariantPolypeptideLocationDTO
+    inlined: true
 
   variant_type_dto:
     description: >-
@@ -80,6 +170,39 @@ slots:
     is_a: note_dtos
     domain: VariantDTO
     range: VariantNoteSlotAnnotationDTO
+    multivalued: true
+    inlined_as_list: true
+    inlined: true
+
+  variant_location_dtos:
+    description: >-
+      Variant location slot annotation DTO for a Variant object
+    domain: VariantDTO
+    range: SlotAnnotationDTO
+    multivalued: true
+    inlined_as_list: true
+    inlined: true
+
+  variant_genomic_location_dtos:
+    is_a: variant_location_dtos
+    domain: VariantDTO
+    range: VariantGenomicLocationSlotAnnotationDTO
+    multivalued: true
+    inlined_as_list: true
+    inlined: true
+
+  variant_transcript_location_dtos:
+    is_a: variant_location_dtos
+    domain: VariantDTO
+    range: VariantTranscriptLocationSlotAnnotationDTO
+    multivalued: true
+    inlined_as_list: true
+    inlined: true
+
+  variant_polypeptide_location_dtos:
+    is_a: variant_location_dtos
+    domain: VariantDTO
+    range: VariantPolypeptideLocationSlotAnnotationDTO
     multivalued: true
     inlined_as_list: true
     inlined: true

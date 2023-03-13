@@ -125,6 +125,17 @@ classes:
       - dna_mutation_type
       - gene_localization_type
 
+  VariantGenomeLocationSlotAnnotation:
+    is_a: SlotAnnotation
+    slots:
+      - single_variant
+      - related_variant_genome_location
+    slot_usage:
+      single_variant:
+        required: true
+      related_variant_genome_location:
+        required: true
+
   VariantTranscriptLocation:
     is_a: VariantLocation
     description: >-
@@ -134,6 +145,17 @@ classes:
       - transcript
       - exon_number
       - intron_number
+
+  VariantTranscriptLocationSlotAnnotation:
+    is_a: SlotAnnotation
+    slots:
+      - single_variant
+      - related_variant_transcript_location
+    slot_usage:
+      single_variant:
+        required: true
+      related_variant_transcript_location:
+        required: true
 
   VariantPolypeptideLocation:
     is_a: VariantLocation
@@ -146,6 +168,28 @@ classes:
       - number_amino_acids_removed
       - number_amino_acids_inserted
 
+  VariantPolypeptideLocationSlotAnnotation:
+    is_a: SlotAnnotation
+    slots:
+      - single_variant
+      - related_variant_polypeptide_location
+    slot_usage:
+      single_variant:
+        required: true
+      related_variant_polypeptide_location:
+        required: true
+
+  VariantSourceLocationSlotAnnotation:
+    is_a: SlotAnnotation
+    slots:
+      - single_variant
+      - related_variant_source_location
+    slot_usage:
+      single_variant:
+        required: true
+      related_variant_source_location:
+        required: true
+
   VariantNoteSlotAnnotation:
     is_a: SlotAnnotation
     slots:
@@ -156,6 +200,7 @@ classes:
         required: true
       related_note:
         required: true
+
 
 # Slots
 
@@ -314,24 +359,14 @@ slots:
     description: >-
       SOTerm (child of SO:0001576 - transcript_variant) that describes the
       consequence of the variant, as stated in the source reference. In practice source consequence will be
-      associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and
+      associated with locations at any or all of VariantGenomeLocationSlotAnnotation, VariantTranscriptLocationSlotAnnotation, and
       VariantPolypeptideLocation.
     required: false
     multivalued: false
     domain: VariantLocation
     range: SOTerm
 
-  variant_locations:
-    description: >-
-      Location of the variant within genomic entities. Variant_locations can include any or all of: one
-      VariantGenomeLocation stanza, one or more VariantTranscriptLocation stanzas and/or one or more
-      VariantPolypeptideLocation stanzas.
-    multivalued: true
-    domain: Variant
-    range: VariantLocation
-
   variant_genome_locations:
-    is_a: variant_locations
     description: >-
       Location of the variant in a genomic context.  multiple variant_genome_locations represent multiple
       assemblies.  because we want the variant to stay consistent between assemblies, we must have a single 
@@ -339,27 +374,25 @@ slots:
     required: true
     multivalued: true
     domain: Variant
-    range: VariantGenomeLocation
+    range: VariantGenomeLocationSlotAnnotation
     inlined: true
     inlined_as_list: true
 
   variant_polypeptide_locations:
-    is_a: variant_locations
     description: >-
       Location of the variant within polypeptide entities.
     required: false
     multivalued: true
     domain: Variant
-    range: VariantPolypeptideLocation
+    range: VariantPolypeptideLocationSlotAnnotation
 
   variant_transcript_locations:
-    is_a: variant_locations
     description: >-
       Location of the variant within transcript entities.
     required: false
     multivalued: true
     domain: Variant
-    range: VariantTranscriptLocation
+    range: VariantTranscriptLocationSlotAnnotation
 
   source_variant_locations:
     description: >-
@@ -368,12 +401,12 @@ slots:
     required: false
     multivalued: true
     domain: Variant
-    range: SourceVariantLocation
+    range: SourceVariantLocationSlotAnnotation
 
   hgvs:
     description: >-
       HGVS nomenclature for variant located on a genomic entity. In practice HGVS nomenclature will be derived
-      for any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.
+      for any or all of VariantGenomeLocationSlotAnnotation, VariantTranscriptLocationSlotAnnotation, and VariantPolypeptideLocationSlotAnnotation.
     required: true
     domain: VariantLocation
     range: string
@@ -442,13 +475,13 @@ slots:
 
   polypeptide:
     description: >-
-      Transcript associated with variant and for which a specific location and consequence of that variant is
+      Polypeptide associated with variant and for which a specific location and consequence of that variant is
       provided, as specified by curator. Multivalued=false for this slot because although a variant can have
-      multiple VariantTranscriptLocation stanzas, each stanza will have one and only one curated transcript ID.
+      multiple VariantPolypeptideLocation stanzas, each stanza will have one and only one curated polypeptide ID.
     required: true
     multivalued: false
-    domain: VariantTranscriptLocation
-    range: Transcript
+    domain: VariantPolypeptideLocation
+    range: Polypeptide
 
   associated_transcripts:
     description:
@@ -463,6 +496,22 @@ slots:
     domain: Variant
     range: VariantNoteSlotAnnotation
     multivalued: true
+
+  single_variant:
+    range: Variant
+    multivalued: false
+
+  related_variant_transcript_location:
+    range: VariantTranscriptLocation
+    multivalued: false
+
+  related_variant_genome_location:
+    range: VariantGenomeLocation
+    multivalued: false
+
+  related_variant_polypeptide_location:
+    range: VariantPolypeptideLocation
+    multivalued: false
 
 enums:
   variant_status_enum:

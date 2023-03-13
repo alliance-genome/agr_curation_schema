@@ -840,6 +840,12 @@ slots:
     multivalued: false
     range: Reference
 
+  reference_curie:
+    description: >-
+      The curie of the reference object
+    range: uriorcurie
+
+
   obsolete:
     description: >-
       Entity is no longer current.
