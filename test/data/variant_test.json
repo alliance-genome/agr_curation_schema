@@ -7,16 +7,14 @@
       "created_by": "ZFIN",
       "updated_by": "ZFIN",
       "internal": false,
-      "data_provider_dto": {
-        "source_organization_abbreviation": "ZFIN",
-        "cross_reference_dto": {
-          "referenced_curie": "ZFIN:ZDB-ALT-000412-8",
-          "prefix": "ZFIN",
-          "page_area": "variation",
-          "display_name": "ZFIN:ZDB-ALT-000412-8",
-          "internal": false
+      "data_provider": {
+        "source_organization": {
+          "abbreviation" : "ZFIN",
+          "full_name": "Zebrafish Information Network",
+          "short_name" : "ZFIN",
+          "internal" : false
         },
-        "internal": false
+        "internal" : false
       },
       "variant_genome_locations": [
         {
