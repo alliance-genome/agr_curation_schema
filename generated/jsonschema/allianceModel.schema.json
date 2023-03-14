@@ -16689,6 +16689,7 @@
                 }
             },
             "required": [
+                "sequence_of_reference_accession_number",
                 "internal"
             ],
             "title": "VariantGenomeLocation",
@@ -16787,6 +16788,7 @@
             },
             "required": [
                 "polypeptide",
+                "sequence_of_reference_accession_number",
                 "internal"
             ],
             "title": "VariantPolypeptideLocation",
@@ -17015,6 +17017,7 @@
                 }
             },
             "required": [
+                "sequence_of_reference_accession_number",
                 "internal"
             ],
             "title": "VariantTranscriptLocation",
