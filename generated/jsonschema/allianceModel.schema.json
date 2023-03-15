@@ -13620,7 +13620,7 @@
                     "type": "boolean"
                 },
                 "note_type": {
-                    "description": "The type of note: e.g., cytology, comment, summary. Permissible values for 'note_type' currently = disease_summary, disease_note",
+                    "description": "The type of note: e.g., cytology, comment, summary. Permissible values for 'note_type' currently = disease_summary, disease_note, molecular_mutation -- please see the VocabularyTerm class for the full list.",
                     "type": "string"
                 },
                 "obsolete": {
@@ -16575,7 +16575,7 @@
                     "type": "string"
                 },
                 "source_variant_locations": {
-                    "description": "Location of the variant within genomic entities,as described in the source references.",
+                    "description": "Location of the variant within genomic entities, as described in the source references.",
                     "items": {
                         "$ref": "#/$defs/SourceVariantLocation"
                     },
@@ -16590,7 +16590,7 @@
                     "type": "string"
                 },
                 "variant_genome_locations": {
-                    "description": "Location of the variant in a genomic context.  multiple variant_genome_locations represent multiple assemblies.",
+                    "description": "Location of the variant in a genomic context.  multiple variant_genome_locations represent multiple assemblies.  because we want the variant to stay consistent between assemblies, we must have a single  variant object apart from its location.",
                     "items": {
                         "$ref": "#/$defs/VariantGenomeLocation"
                     },
@@ -16621,7 +16621,6 @@
             },
             "required": [
                 "variant_type",
-                "variant_genome_locations",
                 "curie",
                 "taxon",
                 "data_provider",
@@ -16751,6 +16750,124 @@
                     "format": "date-time",
                     "type": "string"
                 },
+                "deleted_sequence": {
+                    "description": "The sequence of DNA base pairs removed from the reference sequence by the variant.",
+                    "type": "string"
+                },
+                "dna_mutation_type": {
+                    "description": "The type of DNA mutation, for example, insertion, deletion, substitution, or indel.",
+                    "type": "string"
+                },
+                "end_position": {
+                    "description": "End position of variant on genomic entity.",
+                    "type": "integer"
+                },
+                "evidence_code": {
+                    "type": "string"
+                },
+                "exon_number": {
+                    "description": "The exon number of the variant location.  If the variant is in an intron, this slot is not populated. Primarily used for zebrafish.",
+                    "type": "integer"
+                },
+                "gene_localization_type": {
+                    "description": "The type of gene localization, for example, intronic, intergenic, or intragenic.",
+                    "type": "string"
+                },
+                "inserted_sequence": {
+                    "description": "The sequence of DNA base pairs inserted into the reference sequence by the variant.",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "intron_number": {
+                    "description": "The intron number of the variant location.  If the variant is in an exon, this slot is not populated. Primarily used for zebrafish.",
+                    "type": "integer"
+                },
+                "number_additional_dna_base_pairs": {
+                    "description": "The number of additional DNA base pairs inserted into the reference sequence by the variant.",
+                    "type": "integer"
+                },
+                "number_removed_dna_base_pairs": {
+                    "description": "The number of DNA base pairs removed from the reference sequence by the variant.   sequence.",
+                    "type": "integer"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "padded_base": {
+                    "description": "",
+                    "type": "string"
+                },
+                "reference_sequence": {
+                    "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
+                    "type": "string"
+                },
+                "sequence_of_reference_accession_number": {
+                    "description": "The accession number that describes the assembly and chromosome of the reference sequence.",
+                    "type": "string"
+                },
+                "single_reference": {
+                    "description": "holds between an object and a single reference",
+                    "type": "string"
+                },
+                "start_position": {
+                    "description": "Start position of variant on genomic entity.",
+                    "type": "integer"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                },
+                "variant_sequence": {
+                    "description": "Sequence that differs from the reference sequence of genome or genomic entity at position of variant, as specified by curator.",
+                    "type": "string"
+                },
+                "variation_strand": {
+                    "description": "The strand on which the variant is located.  This is the strand of the reference sequence, not the variant sequence.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "internal"
+            ],
+            "title": "VariantGenomeLocation",
+            "type": "object"
+        },
+        "VariantLocation": {
+            "additionalProperties": false,
+            "description": "Base class linking a variant to a position on a genomic entity and the resulting consequence to the sequence and/or function of that genomic entity. Slots are provided for data taken from a source publication or data load and for data resulting from manual curation. Where the values are the same, the curator has confirmed the information from the source.  In other cases, the curator's analysis has resulted in different values, for instance, if the assembly is different, the source did not specify the transcript or protein isoform, the definition of the transcript or protein isoform used by the source has changed, or if there was an error in the source data.",
+            "properties": {
+                "consequence": {
+                    "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.",
+                    "type": "string"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
                 "end_position": {
                     "description": "End position of variant on genomic entity.",
                     "type": "integer"
@@ -16768,6 +16885,10 @@
                 },
                 "reference_sequence": {
                     "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
+                    "type": "string"
+                },
+                "sequence_of_reference_accession_number": {
+                    "description": "The accession number that describes the assembly and chromosome of the reference sequence.",
                     "type": "string"
                 },
                 "single_reference": {
@@ -16790,7 +16911,7 @@
             "required": [
                 "internal"
             ],
-            "title": "VariantGenomeLocation",
+            "title": "VariantLocation",
             "type": "object"
         },
         "VariantPolypeptideLocation": {
@@ -16843,6 +16964,14 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "number_amino_acids_inserted": {
+                    "description": "The number of amino acids added from the polypeptide as a result of the variant.",
+                    "type": "integer"
+                },
+                "number_amino_acids_removed": {
+                    "description": "The number of amino acids removed from the polypeptide as a result of the variant.",
+                    "type": "integer"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
@@ -16853,6 +16982,10 @@
                 },
                 "reference_sequence": {
                     "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
+                    "type": "string"
+                },
+                "sequence_of_reference_accession_number": {
+                    "description": "The accession number that describes the assembly and chromosome of the reference sequence.",
                     "type": "string"
                 },
                 "single_reference": {
@@ -17056,9 +17189,17 @@
                 "evidence_code": {
                     "type": "string"
                 },
+                "exon_number": {
+                    "description": "The exon number of the variant location.  If the variant is in an intron, this slot is not populated. Primarily used for zebrafish.",
+                    "type": "integer"
+                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
+                },
+                "intron_number": {
+                    "description": "The intron number of the variant location.  If the variant is in an exon, this slot is not populated. Primarily used for zebrafish.",
+                    "type": "integer"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -17066,6 +17207,10 @@
                 },
                 "reference_sequence": {
                     "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
+                    "type": "string"
+                },
+                "sequence_of_reference_accession_number": {
+                    "description": "The accession number that describes the assembly and chromosome of the reference sequence.",
                     "type": "string"
                 },
                 "single_reference": {
