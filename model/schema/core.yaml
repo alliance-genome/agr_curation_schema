@@ -91,6 +91,7 @@ classes:
     slots:
       - curie
       - taxon
+      - data_provider
     slot_usage:
       taxon:
         required: true
@@ -103,6 +104,7 @@ classes:
     slots:
       - curie
       - taxon_curie
+      - data_provider_dto
     slot_usage:
       taxon_curie:
         required: true
@@ -733,12 +735,14 @@ slots:
       Object representing the organization (e.g. MOD) from which the data was
       sourced and a CrossReference to that organisation's site
     multivalued: false
+    required: true
     range: DataProvider
 
   data_provider_dto:
     description: >-
       Ingest object representing the organization (e.g. MOD) from which the data
       was sourced and a CrossReference to that organisation's site
+    required: true
     multivalued: false
     inlined: true
     range: DataProviderDTO

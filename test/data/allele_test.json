@@ -3,6 +3,17 @@
   "allele_ingest_set": [
     {
       "curie": "ZFIN:ZDB-ALT-130621-1",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "ZFIN",
+        "cross_reference_dto": {
+          "referenced_curie": "ZFIN:ZDB-ALT-130621-1",
+          "prefix": "ZFIN",
+          "page_area": "allele",
+          "display_name": "ZFIN:ZDB-ALT-130621-1",
+          "internal": false
+        },
+        "internal": false
+      },
       "taxon_curie": "NCBITaxon:7955",
       "created_by_curie": "ZFIN",
       "updated_by_curie": "ZFIN",
@@ -32,6 +43,17 @@
     },
     {
       "curie": "ZFIN:ZDB-ALT-130411-947",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "ZFIN",
+        "cross_reference_dto": {
+          "referenced_curie": "ZFIN:ZDB-ALT-130411-947",
+          "prefix": "ZFIN",
+          "page_area": "allele",
+          "display_name": "ZFIN:ZDB-ALT-130411-947",
+          "internal": false
+        },
+        "internal": false
+      },
       "taxon_curie": "NCBITaxon:7955",
       "created_by_curie": "ZFIN",
       "updated_by_curie": "ZFIN",
@@ -61,6 +83,17 @@
     },
     {
       "curie": "WB:WBTransgene00023682",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "WB",
+        "cross_reference_dto": {
+          "referenced_curie": "WB:WBTransgene00023682",
+          "prefix": "WB",
+          "page_area": "transgene",
+          "display_name": "WB:WBTransgene00023682",
+          "internal": false
+        },
+        "internal": false
+      },
       "taxon_curie": "NCBITaxon:6239",
       "created_by_curie": "WB:curator",
       "updated_by_curie": "WB:curator",

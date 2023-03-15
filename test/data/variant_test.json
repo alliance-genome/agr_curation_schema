@@ -7,6 +7,15 @@
       "created_by": "ZFIN",
       "updated_by": "ZFIN",
       "internal": false,
+      "data_provider": {
+        "source_organization": {
+          "abbreviation" : "ZFIN",
+          "full_name": "Zebrafish Information Network",
+          "short_name" : "ZFIN",
+          "internal" : false
+        },
+        "internal" : false
+      },
       "variant_genome_locations": [
         {
           "assembly": "GRCz11",
