@@ -12,11 +12,33 @@
       ],
       "reference_curies": [
         "PMID:19648295"
-      ]
+      ],
+      "data_provider_dto": {
+        "source_organization_abbreviation": "ZFIN",
+        "cross_reference_dto": {
+          "referenced_curie": "ZFIN:ZDB-TALEN-200601-1",
+          "prefix": "ZFIN",
+          "page_area": "allele",
+          "display_name": "ZFIN:ZDB-TALEN-200601-1",
+          "internal": false
+        },
+        "internal": false
+      }
     },
     {
       "curie": "ZFIN:ZDB-CRISPR-220421",
       "taxon_curie": "NCBITaxon:7955",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "ZFIN",
+        "cross_reference_dto": {
+          "referenced_curie": "ZFIN:ZDB-CRISPR-220421",
+          "prefix": "ZFIN",
+          "page_area": "allele",
+          "display_name": "ZFIN:ZDB-CRISPR-220421",
+          "internal": false
+        },
+        "internal": false
+      },
       "created_by_curie": "ZFIN",
       "updated_by_curie": "ZFIN",
       "internal": false,
@@ -30,6 +52,17 @@
     {
       "curie": "ZFIN:ZDB-MRPHLNO-220211",
       "taxon_curie": "NCBITaxon:7955",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "ZFIN",
+        "cross_reference_dto": {
+          "referenced_curie": "ZFIN:ZDB-MRPHLNO-220211",
+          "prefix": "ZFIN",
+          "page_area": "allele",
+          "display_name": "ZFIN:ZDB-MRPHLNO-220211",
+          "internal": false
+        },
+        "internal": false
+      },
       "created_by_curie": "ZFIN",
       "updated_by_curie": "ZFIN",
       "internal": false,

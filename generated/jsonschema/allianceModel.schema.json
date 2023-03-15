@@ -659,6 +659,7 @@
                 "subtype",
                 "curie",
                 "taxon",
+                "data_provider",
                 "internal"
             ],
             "title": "AffectedGenomicModel",
@@ -875,6 +876,7 @@
                 "subtype_name",
                 "curie",
                 "taxon_curie",
+                "data_provider_dto",
                 "internal"
             ],
             "title": "AffectedGenomicModelDTO",
@@ -1086,6 +1088,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -1170,6 +1176,7 @@
                 "allele_symbol",
                 "curie",
                 "taxon",
+                "data_provider",
                 "internal"
             ],
             "title": "Allele",
@@ -1694,6 +1701,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -1778,6 +1789,7 @@
                 "allele_symbol_dto",
                 "curie",
                 "taxon_curie",
+                "data_provider_dto",
                 "internal"
             ],
             "title": "AlleleDTO",
@@ -4783,6 +4795,10 @@
                     "description": "A unique identifier for the antibody: e.g., WBAntibody0000001.",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -4877,6 +4893,7 @@
                 "name",
                 "clonality",
                 "curie",
+                "data_provider",
                 "internal"
             ],
             "title": "Antibody",
@@ -6156,6 +6173,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -6208,6 +6229,7 @@
             "required": [
                 "curie",
                 "taxon",
+                "data_provider",
                 "internal"
             ],
             "title": "CellLine",
@@ -6230,6 +6252,10 @@
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -6283,6 +6309,7 @@
             "required": [
                 "curie",
                 "taxon_curie",
+                "data_provider_dto",
                 "internal"
             ],
             "title": "CellLineDTO",
@@ -6566,6 +6593,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -6625,6 +6656,7 @@
             "required": [
                 "curie",
                 "taxon",
+                "data_provider",
                 "internal"
             ],
             "title": "Construct",
@@ -6648,6 +6680,10 @@
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
+                },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -6701,6 +6737,7 @@
             "required": [
                 "curie",
                 "taxon",
+                "data_provider",
                 "internal"
             ],
             "title": "ConstructComponent",
@@ -6809,6 +6846,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -6868,6 +6909,7 @@
             "required": [
                 "curie",
                 "taxon_curie",
+                "data_provider_dto",
                 "internal"
             ],
             "title": "ConstructDTO",
@@ -7328,6 +7370,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -7382,6 +7428,7 @@
             "required": [
                 "curie",
                 "taxon",
+                "data_provider",
                 "internal"
             ],
             "title": "DNAClone",
@@ -9030,6 +9077,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -9080,6 +9131,7 @@
             "required": [
                 "curie",
                 "taxon",
+                "data_provider",
                 "internal"
             ],
             "title": "FunctionalGeneSet",
@@ -9235,6 +9287,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -9371,6 +9427,7 @@
                 "gene_symbol",
                 "curie",
                 "taxon",
+                "data_provider",
                 "internal"
             ],
             "title": "Gene",
@@ -9509,6 +9566,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -9559,6 +9620,7 @@
             "required": [
                 "curie",
                 "taxon",
+                "data_provider",
                 "internal"
             ],
             "title": "GeneCluster",
@@ -9575,6 +9637,10 @@
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
+                },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -9633,6 +9699,7 @@
             "required": [
                 "curie",
                 "taxon",
+                "data_provider",
                 "internal"
             ],
             "title": "GeneCollection",
@@ -9655,6 +9722,10 @@
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -9731,6 +9802,7 @@
                 "gene_symbol_dto",
                 "curie",
                 "taxon_curie",
+                "data_provider_dto",
                 "internal"
             ],
             "title": "GeneDTO",
@@ -11195,6 +11267,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -11276,6 +11352,7 @@
             "required": [
                 "curie",
                 "taxon",
+                "data_provider",
                 "internal"
             ],
             "title": "GeneticMapPosition",
@@ -11299,6 +11376,10 @@
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
+                },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -11352,6 +11433,7 @@
             "required": [
                 "curie",
                 "taxon",
+                "data_provider",
                 "internal"
             ],
             "title": "GenomicEntity",
@@ -11374,6 +11456,10 @@
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -11427,6 +11513,7 @@
             "required": [
                 "curie",
                 "taxon_curie",
+                "data_provider_dto",
                 "internal"
             ],
             "title": "GenomicEntityDTO",
@@ -13845,6 +13932,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -13895,6 +13986,7 @@
             "required": [
                 "curie",
                 "taxon",
+                "data_provider",
                 "internal"
             ],
             "title": "Operon",
@@ -13976,6 +14068,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -14016,6 +14112,7 @@
             "required": [
                 "curie",
                 "taxon",
+                "data_provider",
                 "internal"
             ],
             "title": "Pathway",
@@ -14398,6 +14495,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -14450,6 +14551,7 @@
             "required": [
                 "curie",
                 "taxon",
+                "data_provider",
                 "internal"
             ],
             "title": "Protein",
@@ -14466,6 +14568,10 @@
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
+                },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -14513,6 +14619,7 @@
             "required": [
                 "curie",
                 "taxon",
+                "data_provider",
                 "internal"
             ],
             "title": "ProteinComplex",
@@ -14626,6 +14733,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -14680,6 +14791,7 @@
             "required": [
                 "curie",
                 "taxon",
+                "data_provider",
                 "internal"
             ],
             "title": "RNAClone",
@@ -14814,6 +14926,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -14868,6 +14984,7 @@
             "required": [
                 "curie",
                 "taxon",
+                "data_provider",
                 "internal"
             ],
             "title": "Reagent",
@@ -15431,6 +15548,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -15490,6 +15611,7 @@
             "required": [
                 "curie",
                 "taxon",
+                "data_provider",
                 "internal"
             ],
             "title": "SequenceTargetingReagent",
@@ -15512,6 +15634,10 @@
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -15572,6 +15698,7 @@
             "required": [
                 "curie",
                 "taxon_curie",
+                "data_provider_dto",
                 "internal"
             ],
             "title": "SequenceTargetingReagentDTO",
@@ -16126,6 +16253,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -16178,6 +16309,7 @@
             "required": [
                 "curie",
                 "taxon",
+                "data_provider",
                 "internal"
             ],
             "title": "Transcript",
@@ -16312,6 +16444,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -16358,6 +16494,7 @@
             "required": [
                 "curie",
                 "taxon",
+                "data_provider",
                 "internal"
             ],
             "title": "UniGeneSet",
@@ -16381,6 +16518,10 @@
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
+                },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -16482,6 +16623,7 @@
                 "variant_type",
                 "curie",
                 "taxon",
+                "data_provider",
                 "internal"
             ],
             "title": "Variant",

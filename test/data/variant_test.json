@@ -18,7 +18,16 @@
           "exon_number": 3
         }
       ],
-      "variant_genome_locations": [
+      "data_provider": {
+        "source_organization": {
+          "abbreviation" : "ZFIN",
+          "full_name": "Zebrafish Information Network",
+          "short_name" : "ZFIN",
+          "internal" : false
+        },
+        "internal" : false
+      },
+"variant_genome_locations": [
         {
           "single_reference": "ZFIN:ZDB-PUB-000412-1",
           "assembly": "GRCz11",
