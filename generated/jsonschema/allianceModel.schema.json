@@ -30,7 +30,7 @@
                     "type": "string"
                 },
                 "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "description": "The Alliance-minted ID for the disease annotation. The ID is of the format AGRKB:100000000000001, where the first three digits represent the DiseaseAnnotation class code of \"100\", followed by a 12-digit identifier",
                     "type": "string"
                 },
                 "data_provider": {
@@ -103,15 +103,15 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the disease annotation. Currently only used by WormBase for disease annotations, e.g. \"WBDOannot00000907\"",
                     "type": "string"
                 },
                 "negated": {
-                    "description": "if set to true, then the association is negated i.e. is not true",
+                    "description": "The negative qualifier for the annotation.",
                     "type": "boolean"
                 },
                 "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+                    "description": "The disease ontology term.",
                     "type": "string"
                 },
                 "obsolete": {
@@ -123,7 +123,7 @@
                     "type": "string"
                 },
                 "related_notes": {
-                    "description": "Holds between an object and a list of related Note objects.",
+                    "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Disease annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
                     "items": {
                         "$ref": "#/$defs/Note"
                     },
@@ -134,7 +134,7 @@
                     "description": "Object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source, and a CrossReference to that organisation's site"
                 },
                 "single_reference": {
-                    "description": "holds between an object and a single reference",
+                    "description": "The reference in which the disease association was asserted/reported.",
                     "type": "string"
                 },
                 "subject": {
@@ -142,7 +142,7 @@
                     "type": "string"
                 },
                 "unique_id": {
-                    "description": "A non-curie unique identifier for a thing.",
+                    "description": "Unique identifer for the disease annotation.  Will be generated at AGR if not submitted by the MOD.",
                     "type": "string"
                 },
                 "updated_by": {
@@ -150,7 +150,7 @@
                     "type": "string"
                 },
                 "with_or_from": {
-                    "description": "http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8",
+                    "description": "A field for disease annotations that captures the human gene the implicated MOD gene is homologous or orthologous to when using the ISS (inferred from sequence similarity) evidence code or the ISO (inferred from sequence orthology) evidence code. The assertion would state that the MOD gene is implicated in the indicated disease based on sequence-similarity/sequence-orthology \"with\" some human gene. Currently used by SGD.",
                     "items": {
                         "type": "string"
                     },
@@ -357,7 +357,7 @@
                     "type": "string"
                 },
                 "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "description": "The date of curation at the source (MOD) database.",
                     "format": "date-time",
                     "type": "string"
                 },
@@ -396,7 +396,7 @@
                     "type": "boolean"
                 },
                 "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+                    "description": "phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed statement of the phenotype from a post-composed terminology",
                     "type": "string"
                 },
                 "obsolete": {
@@ -412,7 +412,7 @@
                     "type": "string"
                 },
                 "single_reference": {
-                    "description": "holds between an object and a single reference",
+                    "description": "The reference in which the phenotype association was asserted/reported.",
                     "type": "string"
                 },
                 "subject": {
@@ -486,7 +486,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -1943,7 +1943,7 @@
                     "type": "string"
                 },
                 "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "description": "The Alliance-minted ID for the disease annotation. The ID is of the format AGRKB:100000000000001, where the first three digits represent the DiseaseAnnotation class code of \"100\", followed by a 12-digit identifier",
                     "type": "string"
                 },
                 "data_provider": {
@@ -2012,15 +2012,15 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the disease annotation. Currently only used by WormBase for disease annotations, e.g. \"WBDOannot00000907\"",
                     "type": "string"
                 },
                 "negated": {
-                    "description": "if set to true, then the association is negated i.e. is not true",
+                    "description": "The negative qualifier for the annotation.",
                     "type": "boolean"
                 },
                 "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+                    "description": "The disease ontology term.",
                     "type": "string"
                 },
                 "obsolete": {
@@ -2032,7 +2032,7 @@
                     "type": "string"
                 },
                 "related_notes": {
-                    "description": "Holds between an object and a list of related Note objects.",
+                    "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Disease annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
                     "items": {
                         "$ref": "#/$defs/Note"
                     },
@@ -2043,7 +2043,7 @@
                     "description": "Object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source, and a CrossReference to that organisation's site"
                 },
                 "single_reference": {
-                    "description": "holds between an object and a single reference",
+                    "description": "The reference in which the disease association was asserted/reported.",
                     "type": "string"
                 },
                 "subject": {
@@ -2051,7 +2051,7 @@
                     "type": "string"
                 },
                 "unique_id": {
-                    "description": "A non-curie unique identifier for a thing.",
+                    "description": "Unique identifer for the disease annotation.  Will be generated at AGR if not submitted by the MOD.",
                     "type": "string"
                 },
                 "updated_by": {
@@ -2059,7 +2059,7 @@
                     "type": "string"
                 },
                 "with_or_from": {
-                    "description": "http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8",
+                    "description": "A field for disease annotations that captures the human gene the implicated MOD gene is homologous or orthologous to when using the ISS (inferred from sequence similarity) evidence code or the ISO (inferred from sequence orthology) evidence code. The assertion would state that the MOD gene is implicated in the indicated disease based on sequence-similarity/sequence-orthology \"with\" some human gene. Currently used by SGD.",
                     "items": {
                         "type": "string"
                     },
@@ -3821,7 +3821,7 @@
                     "type": "string"
                 },
                 "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "description": "The date of curation at the source (MOD) database.",
                     "format": "date-time",
                     "type": "string"
                 },
@@ -3856,7 +3856,7 @@
                     "type": "boolean"
                 },
                 "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+                    "description": "phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed statement of the phenotype from a post-composed terminology",
                     "type": "string"
                 },
                 "obsolete": {
@@ -3872,7 +3872,7 @@
                     "type": "string"
                 },
                 "single_reference": {
-                    "description": "holds between an object and a single reference",
+                    "description": "The reference in which the phenotype association was asserted/reported.",
                     "type": "string"
                 },
                 "subject": {
@@ -5951,7 +5951,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -6088,7 +6088,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -7292,7 +7292,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -7485,7 +7485,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -7912,7 +7912,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -8029,7 +8029,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -8682,7 +8682,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -8799,7 +8799,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -9188,7 +9188,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -9827,7 +9827,7 @@
                     "type": "string"
                 },
                 "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "description": "The Alliance-minted ID for the disease annotation. The ID is of the format AGRKB:100000000000001, where the first three digits represent the DiseaseAnnotation class code of \"100\", followed by a 12-digit identifier",
                     "type": "string"
                 },
                 "data_provider": {
@@ -9892,15 +9892,15 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the disease annotation. Currently only used by WormBase for disease annotations, e.g. \"WBDOannot00000907\"",
                     "type": "string"
                 },
                 "negated": {
-                    "description": "if set to true, then the association is negated i.e. is not true",
+                    "description": "The negative qualifier for the annotation.",
                     "type": "boolean"
                 },
                 "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+                    "description": "The disease ontology term.",
                     "type": "string"
                 },
                 "obsolete": {
@@ -9912,7 +9912,7 @@
                     "type": "string"
                 },
                 "related_notes": {
-                    "description": "Holds between an object and a list of related Note objects.",
+                    "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Disease annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
                     "items": {
                         "$ref": "#/$defs/Note"
                     },
@@ -9926,7 +9926,7 @@
                     "type": "string"
                 },
                 "single_reference": {
-                    "description": "holds between an object and a single reference",
+                    "description": "The reference in which the disease association was asserted/reported.",
                     "type": "string"
                 },
                 "subject": {
@@ -9934,7 +9934,7 @@
                     "type": "string"
                 },
                 "unique_id": {
-                    "description": "A non-curie unique identifier for a thing.",
+                    "description": "Unique identifer for the disease annotation.  Will be generated at AGR if not submitted by the MOD.",
                     "type": "string"
                 },
                 "updated_by": {
@@ -9942,7 +9942,7 @@
                     "type": "string"
                 },
                 "with_or_from": {
-                    "description": "http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8",
+                    "description": "A field for disease annotations that captures the human gene the implicated MOD gene is homologous or orthologous to when using the ISS (inferred from sequence similarity) evidence code or the ISO (inferred from sequence orthology) evidence code. The assertion would state that the MOD gene is implicated in the indicated disease based on sequence-similarity/sequence-orthology \"with\" some human gene. Currently used by SGD.",
                     "items": {
                         "type": "string"
                     },
@@ -10194,14 +10194,14 @@
                     "type": "string"
                 },
                 "cross_references": {
-                    "description": "Holds between an object and its CrossReferences.",
+                    "description": "Additional identifier(s) of the interaction annotation other than the primary id.",
                     "items": {
                         "$ref": "#/$defs/CrossReference"
                     },
                     "type": "array"
                 },
                 "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "description": "The unique primary identifier for the interaction. This should be the source (curation) database identifier, or if that is not available then the aggregation database identifier (e.g. IMEx)",
                     "type": "string"
                 },
                 "date_created": {
@@ -10268,7 +10268,7 @@
                     "type": "boolean"
                 },
                 "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+                    "description": "the object gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa.",
                     "type": "string"
                 },
                 "obsolete": {
@@ -10286,7 +10286,7 @@
                     "type": "string"
                 },
                 "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+                    "description": "the subject gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa.",
                     "type": "string"
                 },
                 "updated_by": {
@@ -10321,14 +10321,14 @@
                     "type": "string"
                 },
                 "cross_references": {
-                    "description": "Holds between an object and its CrossReferences.",
+                    "description": "Additional identifier(s) of the interaction annotation other than the primary id.",
                     "items": {
                         "$ref": "#/$defs/CrossReference"
                     },
                     "type": "array"
                 },
                 "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "description": "The unique primary identifier for the interaction. This should be the source (curation) database identifier, or if that is not available then the aggregation database identifier (e.g. IMEx)",
                     "type": "string"
                 },
                 "date_created": {
@@ -10393,7 +10393,7 @@
                     "type": "boolean"
                 },
                 "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+                    "description": "the object gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa.",
                     "type": "string"
                 },
                 "obsolete": {
@@ -10405,7 +10405,7 @@
                     "type": "string"
                 },
                 "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+                    "description": "the subject gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa.",
                     "type": "string"
                 },
                 "updated_by": {
@@ -10527,7 +10527,7 @@
                     "type": "string"
                 },
                 "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "description": "The date of curation at the source (MOD) database.",
                     "format": "date-time",
                     "type": "string"
                 },
@@ -10558,7 +10558,7 @@
                     "type": "boolean"
                 },
                 "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+                    "description": "phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed statement of the phenotype from a post-composed terminology",
                     "type": "string"
                 },
                 "obsolete": {
@@ -10577,7 +10577,7 @@
                     "type": "string"
                 },
                 "single_reference": {
-                    "description": "holds between an object and a single reference",
+                    "description": "The reference in which the phenotype association was asserted/reported.",
                     "type": "string"
                 },
                 "subject": {
@@ -10947,7 +10947,7 @@
                     "type": "boolean"
                 },
                 "predicate": {
-                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "description": "orthologous relationship type",
                     "type": "string"
                 },
                 "single_reference": {
@@ -11021,7 +11021,7 @@
                     "type": "boolean"
                 },
                 "predicate": {
-                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "description": "orthologous relationship type",
                     "type": "string"
                 },
                 "strict_filter": {
@@ -12548,7 +12548,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -12665,7 +12665,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -12782,7 +12782,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -12899,7 +12899,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -13016,7 +13016,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -13287,7 +13287,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -13424,7 +13424,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -14400,7 +14400,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -14848,7 +14848,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -15463,7 +15463,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -16366,7 +16366,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -17499,7 +17499,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -17616,7 +17616,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -17733,7 +17733,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -17850,7 +17850,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -17967,7 +17967,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -18084,7 +18084,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -18201,7 +18201,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -18318,7 +18318,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -18455,7 +18455,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -18572,7 +18572,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
@@ -18689,7 +18689,7 @@
                     "type": "string"
                 },
                 "definition": {
-                    "description": "The explanation of the meaning of a term.",
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
                     "type": "string"
                 },
                 "definition_urls": {
