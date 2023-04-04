@@ -4,12 +4,18 @@ description = "Schema and generated objects for agr-curation-schema data model a
 version = "0.0.0"
 authors = ["Alliance of Genome Resources"]
 
+[tool.poetry-dynamic-versioning]
+enable = true
+vcs = "git"
+style = "pep440"
+
 [tool.poetry.dependencies]
 python = "^3.9"
 greenlet = "2.0.1"
 linkml = "^1.2.4"
 mkdocs = "^1.3.0"
 mkdocs-mermaid2-plugin = "^0.6.0"
+greenlet = "<2.0.2"
 
 [tool.poetry.dev-dependencies]
 linkml = "^1.2.4"
@@ -17,5 +23,5 @@ pytest = "^5.2"
 mkdocs = "^1.3.0"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
+build-backend = "poetry_dynamic_versioning.backend"
