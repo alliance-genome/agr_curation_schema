@@ -287,8 +287,10 @@ docker build -t agr_curation_schema .
 ```
 3) run the docker image
 ```bash
-docker run -t -d --name agr_curation_schema agr_curation_schema
+docker run -t -d --name agr_curation_schema agr_curation_schema -v .:/agr_curation_schema 
 ```
+# TODO: add docker cp command example here.
+# TODO: script the docker spin up.
 4) invade the running container
 ```bash
 docker exec -it agr_curation_schema /bin/bash
