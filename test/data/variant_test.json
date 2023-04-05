@@ -27,7 +27,7 @@
         },
         "internal" : false
       },
-"variant_genome_locations": [
+      "variant_genome_locations": [
         {
           "single_reference": "ZFIN:ZDB-PUB-000412-1",
           "assembly": "GRCz11",
@@ -77,6 +77,15 @@
       "created_by": "ZFIN",
       "updated_by": "ZFIN",
       "internal": false,
+      "data_provider": {
+        "source_organization": {
+          "abbreviation" : "ZFIN",
+          "full_name": "Zebrafish Information Network",
+          "short_name" : "ZFIN",
+          "internal" : false
+        },
+        "internal" : false
+      },
       "variant_status": "private",
       "variant_type": "SO:1000008"
     }
