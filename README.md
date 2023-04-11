@@ -288,6 +288,13 @@ make remove-container
 ```bash
 make run-tests
 ````
+This will spin up and run the tests in a container.  If your tests fail, then run `make remove-container`, edit
+the files or schema as necessary, and then run `make run-tests` again.
+
+3) remove the container when done
+```bash
+make remove-container
+```
 
 ## Alternate alternate test environment - just use pipx on MacOS
 1) install pipx

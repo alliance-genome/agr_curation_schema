@@ -232,7 +232,7 @@ gen-java: $(patsubst %, $(TARGET_DIR)/java/%.java, $(SCHEMA_NAMES))
 $(TARGET_DIR)/java/%.java: $(SCHEMA_DIR)/%.yaml tdir-java
 	poetry run gen-java $(JAVA_GEN_OPTS)  $<
 
-run-tests: 
+run-tests:
 	docker build -t agr_curation_schema .
 	docker run -i -t --name agr_curation_schema agr_curation_schema
 
