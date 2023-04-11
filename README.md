@@ -286,6 +286,7 @@ make remove-container
 ```
 2) build and run the tests in the container
 ```bash
+
 make run-tests
 ````
 This will spin up and run the tests in a container.  If your tests fail, then run `make remove-container`, edit
