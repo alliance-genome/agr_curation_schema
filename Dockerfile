@@ -36,4 +36,4 @@ WORKDIR src
 COPY Makefile pyproject.toml poetry.lock README.md .
 COPY . .
 
-CMD poetry install && make test
+CMD poetry install

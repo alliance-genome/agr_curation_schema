@@ -286,10 +286,17 @@ make remove-container
 ```
 2) build and run the tests in the container
 ```bash
+make build-container
 make run-tests
 ````
-This will spin up and run the tests in a container.  If your tests fail, then run `make remove-container`, edit
-the files or schema as necessary, and then run `make run-tests` again.
+This will mount and run your local directory to the docker container.  Any changes you make to the local 
+directory will be reflected in the container.  This is a convenient way to run the tests in a clean 
+environment without having to install the dependencies locally.
+
+Make a change to the schema or tests files and run again:
+```bash
+make run-tests
+```
 
 3) remove the container when done
 ```bash
