@@ -17925,13 +17925,6 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "synonyms": {
-                    "description": "Free text synonym(s) of a controlled vocabulary term",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": "string"
@@ -17995,8 +17988,8 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "text_synonyms": {
-                    "description": "Free text synonym(s) of a term, used for controlled vocabulary terms; this is distinct from the 'synonyms' slot which has a range of a Synonym class object.",
+                "synonyms": {
+                    "description": "Free text synonym(s) of a controlled vocabulary term",
                     "items": {
                         "type": "string"
                     },
