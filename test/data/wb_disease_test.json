@@ -90,7 +90,7 @@
           "internal": false
         }
       ],
-      "disease_genetic_modifier_curie": "WB:WBStrain00035193",
+      "disease_genetic_modifier_curies": ["WB:WBStrain00035193"],
       "disease_genetic_modifier_relation_name": "ameliorated_by",
       "evidence_code_curies": [
         "ECO:0000315",
@@ -122,7 +122,7 @@
         "internal": false
       },
       "date_updated": "2019-03-08T00:00:00+00:00",
-      "disease_genetic_modifier_curie": "WB:WBVar00250993",
+      "disease_genetic_modifier_curies": ["WB:WBVar00250993"],
       "disease_genetic_modifier_relation_name": "exacerbated_by",
       "evidence_code_curies": [
         "ECO:0000315",
