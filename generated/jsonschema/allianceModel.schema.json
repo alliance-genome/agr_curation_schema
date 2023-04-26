@@ -233,9 +233,12 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "disease_genetic_modifier_curie": {
+                "disease_genetic_modifier_curies": {
                     "description": "Curie of BiologcalEntity that modifies the disease model",
-                    "type": "string"
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "disease_genetic_modifier_relation_name": {
                     "description": "Name of the VocabularyTerm that describes how the genetic modifier modifies the disease model, selected from the 'Disease genetic modifier relations' Vocabulary.",
@@ -2262,9 +2265,12 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "disease_genetic_modifier_curie": {
+                "disease_genetic_modifier_curies": {
                     "description": "Curie of BiologcalEntity that modifies the disease model",
-                    "type": "string"
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "disease_genetic_modifier_relation_name": {
                     "description": "Name of the VocabularyTerm that describes how the genetic modifier modifies the disease model, selected from the 'Disease genetic modifier relations' Vocabulary.",
@@ -10259,9 +10265,12 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "disease_genetic_modifier_curie": {
+                "disease_genetic_modifier_curies": {
                     "description": "Curie of BiologcalEntity that modifies the disease model",
-                    "type": "string"
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "disease_genetic_modifier_relation_name": {
                     "description": "Name of the VocabularyTerm that describes how the genetic modifier modifies the disease model, selected from the 'Disease genetic modifier relations' Vocabulary.",
