@@ -275,6 +275,7 @@ classes:
       - disease_relation_name
       - do_term_curie
       - mod_entity_id
+      - mod_internal_id
       - negated
       - evidence_curies
       - evidence_code_curies
