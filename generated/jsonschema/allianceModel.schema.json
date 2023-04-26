@@ -57,13 +57,16 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "disease_genetic_modifier": {
-                    "description": "Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.",
-                    "type": "string"
-                },
                 "disease_genetic_modifier_relation": {
                     "description": "A relation describing how the genetic modifier modifies the disease model. Submitted value should be a vocabulary term from the 'Disease genetic modifiers' vocabulary",
                     "type": "string"
+                },
+                "disease_genetic_modifiers": {
+                    "description": "Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "disease_qualifiers": {
                     "description": "Submitted values should be vocabulary terms from the 'Disease qualifiers' Vocabulary",
@@ -104,6 +107,10 @@
                 },
                 "mod_entity_id": {
                     "description": "The model organism database (MOD) identifier/curie for the disease annotation. Currently only used by WormBase for disease annotations, e.g. \"WBDOannot00000907\"",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the disease annotation. When available, this is used for determination of distinctness instead of the Unique ID field.",
                     "type": "string"
                 },
                 "negated": {
@@ -226,9 +233,12 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "disease_genetic_modifier_curie": {
+                "disease_genetic_modifier_curies": {
                     "description": "Curie of BiologcalEntity that modifies the disease model",
-                    "type": "string"
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "disease_genetic_modifier_relation_name": {
                     "description": "Name of the VocabularyTerm that describes how the genetic modifier modifies the disease model, selected from the 'Disease genetic modifier relations' Vocabulary.",
@@ -281,6 +291,10 @@
                 },
                 "mod_entity_id": {
                     "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
                 },
                 "negated": {
@@ -435,6 +449,123 @@
             "title": "AGMPhenotypeAnnotation",
             "type": "object"
         },
+        "APOTerm": {
+            "additionalProperties": false,
+            "description": "A phenotype ontology term from the Ascomycete Phenotype Ontology (APO). PURL: http://purl.obolibrary.org/obo/APO.owl",
+            "properties": {
+                "ancestors": {
+                    "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": "array"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "dbkey": {
+                    "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+                    "type": "string"
+                },
+                "definition": {
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+                    "type": "string"
+                },
+                "definition_urls": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "descendants": {
+                    "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
+                },
+                "namespace": {
+                    "description": "the namespace of the ontology.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "subsets": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "curie",
+                "internal"
+            ],
+            "title": "APOTerm",
+            "type": "object"
+        },
         "ATPTerm": {
             "additionalProperties": false,
             "description": "An ontology term from the Alliance Tags for Papers ontology (ATP)",
@@ -531,7 +662,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -1970,13 +2101,16 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "disease_genetic_modifier": {
-                    "description": "Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.",
-                    "type": "string"
-                },
                 "disease_genetic_modifier_relation": {
                     "description": "A relation describing how the genetic modifier modifies the disease model. Submitted value should be a vocabulary term from the 'Disease genetic modifiers' vocabulary",
                     "type": "string"
+                },
+                "disease_genetic_modifiers": {
+                    "description": "Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "disease_qualifiers": {
                     "description": "Submitted values should be vocabulary terms from the 'Disease qualifiers' Vocabulary",
@@ -2013,6 +2147,10 @@
                 },
                 "mod_entity_id": {
                     "description": "The model organism database (MOD) identifier/curie for the disease annotation. Currently only used by WormBase for disease annotations, e.g. \"WBDOannot00000907\"",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the disease annotation. When available, this is used for determination of distinctness instead of the Unique ID field.",
                     "type": "string"
                 },
                 "negated": {
@@ -2131,9 +2269,12 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "disease_genetic_modifier_curie": {
+                "disease_genetic_modifier_curies": {
                     "description": "Curie of BiologcalEntity that modifies the disease model",
-                    "type": "string"
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "disease_genetic_modifier_relation_name": {
                     "description": "Name of the VocabularyTerm that describes how the genetic modifier modifies the disease model, selected from the 'Disease genetic modifier relations' Vocabulary.",
@@ -2182,6 +2323,10 @@
                 },
                 "mod_entity_id": {
                     "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
                 },
                 "negated": {
@@ -6016,7 +6161,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -6133,7 +6278,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -7337,7 +7482,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -7530,7 +7675,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -7549,6 +7694,123 @@
                 "internal"
             ],
             "title": "DOTerm",
+            "type": "object"
+        },
+        "DPOTerm": {
+            "additionalProperties": false,
+            "description": "A phenotype ontology term from the Drosophila Phenotype Ontology (DPO). PURL: http://purl.obolibrary.org/obo/dpo.owl",
+            "properties": {
+                "ancestors": {
+                    "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": "array"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "dbkey": {
+                    "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+                    "type": "string"
+                },
+                "definition": {
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+                    "type": "string"
+                },
+                "definition_urls": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "descendants": {
+                    "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
+                },
+                "namespace": {
+                    "description": "the namespace of the ontology.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "subsets": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "curie",
+                "internal"
+            ],
+            "title": "DPOTerm",
             "type": "object"
         },
         "DataProvider": {
@@ -7957,7 +8219,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -8074,7 +8336,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -8727,7 +8989,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -8844,7 +9106,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -9233,7 +9495,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -9854,13 +10116,16 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "disease_genetic_modifier": {
-                    "description": "Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.",
-                    "type": "string"
-                },
                 "disease_genetic_modifier_relation": {
                     "description": "A relation describing how the genetic modifier modifies the disease model. Submitted value should be a vocabulary term from the 'Disease genetic modifiers' vocabulary",
                     "type": "string"
+                },
+                "disease_genetic_modifiers": {
+                    "description": "Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "disease_qualifiers": {
                     "description": "Submitted values should be vocabulary terms from the 'Disease qualifiers' Vocabulary",
@@ -9893,6 +10158,10 @@
                 },
                 "mod_entity_id": {
                     "description": "The model organism database (MOD) identifier/curie for the disease annotation. Currently only used by WormBase for disease annotations, e.g. \"WBDOannot00000907\"",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the disease annotation. When available, this is used for determination of distinctness instead of the Unique ID field.",
                     "type": "string"
                 },
                 "negated": {
@@ -10004,9 +10273,12 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "disease_genetic_modifier_curie": {
+                "disease_genetic_modifier_curies": {
                     "description": "Curie of BiologcalEntity that modifies the disease model",
-                    "type": "string"
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "disease_genetic_modifier_relation_name": {
                     "description": "Name of the VocabularyTerm that describes how the genetic modifier modifies the disease model, selected from the 'Disease genetic modifier relations' Vocabulary.",
@@ -10054,6 +10326,10 @@
                 },
                 "mod_entity_id": {
                     "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
                 },
                 "negated": {
@@ -10489,7 +10765,7 @@
                     "description": "Holds between an object and a Note object."
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -11691,6 +11967,123 @@
             "title": "GenomicLocationAssociationDTO",
             "type": "object"
         },
+        "HPTerm": {
+            "additionalProperties": false,
+            "description": "A phenotype ontology term from the Human Phenotype (HP) Ontology. PURL: http://purl.obolibrary.org/obo/hp.owl",
+            "properties": {
+                "ancestors": {
+                    "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": "array"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "dbkey": {
+                    "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+                    "type": "string"
+                },
+                "definition": {
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+                    "type": "string"
+                },
+                "definition_urls": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "descendants": {
+                    "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
+                },
+                "namespace": {
+                    "description": "the namespace of the ontology.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "subsets": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "curie",
+                "internal"
+            ],
+            "title": "HPTerm",
+            "type": "object"
+        },
         "HeavyChainIsotypeSet": {
             "description": "",
             "enum": [
@@ -12593,7 +12986,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -12710,7 +13103,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -12827,7 +13220,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -12944,7 +13337,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -12967,7 +13360,7 @@
         },
         "MPTerm": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A phenotype ontology term from the Mammalian Phenotype (MP) Ontology. PURL: http://purl.obolibrary.org/obo/mp.owl",
             "properties": {
                 "ancestors": {
                     "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
@@ -13061,7 +13454,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -13352,7 +13745,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -13469,7 +13862,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -13704,6 +14097,123 @@
             "title": "NoteDTO",
             "type": "object"
         },
+        "OBITerm": {
+            "additionalProperties": false,
+            "description": "An ontology term from the Ontology for Biomedical Investigations (OBI). PURL: http://purl.obolibrary.org/obo/obi.owl",
+            "properties": {
+                "ancestors": {
+                    "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": "array"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "dbkey": {
+                    "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+                    "type": "string"
+                },
+                "definition": {
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+                    "type": "string"
+                },
+                "definition_urls": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "descendants": {
+                    "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
+                },
+                "namespace": {
+                    "description": "the namespace of the ontology.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "subsets": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "curie",
+                "internal"
+            ],
+            "title": "OBITerm",
+            "type": "object"
+        },
         "OntologyBulkLoadTypeEnum": {
             "description": "",
             "enum": [
@@ -13820,7 +14330,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -14054,6 +14564,123 @@
                 "internal"
             ],
             "title": "Organization",
+            "type": "object"
+        },
+        "PATOTerm": {
+            "additionalProperties": false,
+            "description": "An ontology term from the Phenotype and Trait Ontology (PATO). PURL: http://purl.obolibrary.org/obo/PATO.owl",
+            "properties": {
+                "ancestors": {
+                    "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": "array"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "dbkey": {
+                    "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+                    "type": "string"
+                },
+                "definition": {
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+                    "type": "string"
+                },
+                "definition_urls": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "descendants": {
+                    "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
+                },
+                "namespace": {
+                    "description": "the namespace of the ontology.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "subsets": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "curie",
+                "internal"
+            ],
+            "title": "PATOTerm",
             "type": "object"
         },
         "Pathway": {
@@ -14445,7 +15072,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -14893,7 +15520,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -15244,7 +15871,7 @@
                     "type": "string"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -15334,7 +15961,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -15508,7 +16135,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -16411,7 +17038,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -17361,8 +17988,8 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "text_synonyms": {
-                    "description": "Free text synonym(s) of a term, used for controlled vocabulary terms; this is distinct from the 'synonyms' slot which has a range of a Synonym class object.",
+                "synonyms": {
+                    "description": "Free text synonym(s) of a controlled vocabulary term",
                     "items": {
                         "type": "string"
                     },
@@ -17544,7 +18171,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -17661,7 +18288,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -17680,6 +18307,123 @@
                 "internal"
             ],
             "title": "WBLSTerm",
+            "type": "object"
+        },
+        "WBPhenotypeTerm": {
+            "additionalProperties": false,
+            "description": "A phenotype ontology term from the (WormBase) C. elegans Phenotype Ontology (WBPhenotype). PURL: http://purl.obolibrary.org/obo/wbphenotype.owl",
+            "properties": {
+                "ancestors": {
+                    "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": "array"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "dbkey": {
+                    "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+                    "type": "string"
+                },
+                "definition": {
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+                    "type": "string"
+                },
+                "definition_urls": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "descendants": {
+                    "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
+                },
+                "namespace": {
+                    "description": "the namespace of the ontology.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "subsets": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "curie",
+                "internal"
+            ],
+            "title": "WBPhenotypeTerm",
             "type": "object"
         },
         "XBATerm": {
@@ -17778,7 +18522,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -17895,7 +18639,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -18012,7 +18756,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -18129,7 +18873,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -18152,7 +18896,7 @@
         },
         "XPOTerm": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A phenotype ontology term from the Xenopus Phenotype Ontology (XPO). PURL: http://purl.obolibrary.org/obo/xpo.owl",
             "properties": {
                 "ancestors": {
                     "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
@@ -18246,7 +18990,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -18383,7 +19127,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -18500,7 +19244,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -18617,7 +19361,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -18734,7 +19478,7 @@
                     "type": "array"
                 },
                 "synonyms": {
-                    "description": "Placeholder? Some objects still use this slot. Not clear how it fits in with NameSlotAnnotation (which captures evidence).",
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },

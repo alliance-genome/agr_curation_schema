@@ -216,7 +216,6 @@ classes:
     is_a: OntologyTerm
     abstract: true
 
-
   FBDVTerm:
     is_a: StageTerm
 
@@ -286,9 +285,51 @@ classes:
 
   XPOTerm:
     is_a: PhenotypeTerm
+    description: >-
+      A phenotype ontology term from the Xenopus Phenotype Ontology (XPO).
+      PURL: http://purl.obolibrary.org/obo/xpo.owl
 
   MPTerm:
     is_a: PhenotypeTerm
+    description: >-
+      A phenotype ontology term from the Mammalian Phenotype (MP) Ontology.
+      PURL: http://purl.obolibrary.org/obo/mp.owl
+
+  HPTerm:
+    is_a: PhenotypeTerm
+    description: >-
+      A phenotype ontology term from the Human Phenotype (HP) Ontology.
+      PURL: http://purl.obolibrary.org/obo/hp.owl
+
+  WBPhenotypeTerm:
+    is_a: PhenotypeTerm
+    description: >-
+      A phenotype ontology term from the (WormBase) C. elegans Phenotype Ontology (WBPhenotype).
+      PURL: http://purl.obolibrary.org/obo/wbphenotype.owl
+
+  APOTerm:
+    is_a: PhenotypeTerm
+    description: >-
+      A phenotype ontology term from the Ascomycete Phenotype Ontology (APO).
+      PURL: http://purl.obolibrary.org/obo/APO.owl
+
+  DPOTerm:
+    is_a: PhenotypeTerm
+    description: >-
+      A phenotype ontology term from the Drosophila Phenotype Ontology (DPO).
+      PURL: http://purl.obolibrary.org/obo/dpo.owl
+
+  PATOTerm:
+    is_a: OntologyTerm
+    description: >-
+      An ontology term from the Phenotype and Trait Ontology (PATO).
+      PURL: http://purl.obolibrary.org/obo/PATO.owl
+
+  OBITerm:
+    is_a: OntologyTerm
+    description: >-
+      An ontology term from the Ontology for Biomedical Investigations (OBI).
+      PURL: http://purl.obolibrary.org/obo/obi.owl
 
   ATPTerm:
     is_a: OntologyTerm

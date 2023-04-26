@@ -183,6 +183,7 @@ classes:
       - curie
       - unique_id
       - mod_entity_id
+      - mod_internal_id
       - negated
       - evidence_codes
       - single_reference
@@ -194,7 +195,7 @@ classes:
       - related_notes
       - data_provider
       - secondary_data_provider
-      - disease_genetic_modifier
+      - disease_genetic_modifiers
       - disease_genetic_modifier_relation
     slot_usage:
       curie:
@@ -211,6 +212,12 @@ classes:
         description: >-
           The model organism database (MOD) identifier/curie for the disease annotation. Currently only
           used by WormBase for disease annotations, e.g. "WBDOannot00000907"
+        required: false
+      mod_internal_id:
+        description: >-
+          The model organism database (MOD) internal identifier for the disease annotation. When available,
+          this is used for determination of distinctness instead of the Unique ID field.
+        required: false
       subject:
         required: true
         description: >-
@@ -268,6 +275,7 @@ classes:
       - disease_relation_name
       - do_term_curie
       - mod_entity_id
+      - mod_internal_id
       - negated
       - evidence_curies
       - evidence_code_curies
@@ -280,7 +288,7 @@ classes:
       - note_dtos
       - data_provider_dto
       - secondary_data_provider_dto
-      - disease_genetic_modifier_curie
+      - disease_genetic_modifier_curies
       - disease_genetic_modifier_relation_name
 
   GeneDiseaseAnnotation:
@@ -681,15 +689,17 @@ slots:
     inlined: true
     inlined_as_list: true
 
-  disease_genetic_modifier:
+  disease_genetic_modifiers:
     description: >-
       Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
     required: false
+    multivalued: true
 
-  disease_genetic_modifier_curie:
+  disease_genetic_modifier_curies:
     description: Curie of BiologcalEntity that modifies the disease model
     domain: DiseaseAnnotationDTO
     range: string
+    multivalued: true
 
   disease_genetic_modifier_relation:
     description: >-
