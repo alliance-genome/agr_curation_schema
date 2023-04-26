@@ -293,6 +293,10 @@
                     "description": "The model organism database (MOD) identifier/curie for the object",
                     "type": "string"
                 },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "negated": {
                     "description": "if set to true, then the association is negated i.e. is not true",
                     "type": "boolean"
@@ -2319,6 +2323,10 @@
                 },
                 "mod_entity_id": {
                     "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
                 },
                 "negated": {
@@ -10318,6 +10326,10 @@
                 },
                 "mod_entity_id": {
                     "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
                 },
                 "negated": {
