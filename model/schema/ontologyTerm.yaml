@@ -298,7 +298,7 @@ classes:
   HPTerm:
     is_a: PhenotypeTerm
     description: >-
-      A phenotype ontology term from the Human Phenotype (MP) Ontology.
+      A phenotype ontology term from the Human Phenotype (HP) Ontology.
       PURL: http://purl.obolibrary.org/obo/hp.owl
 
   WBPhenotypeTerm:
