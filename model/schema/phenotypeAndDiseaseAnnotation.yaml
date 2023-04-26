@@ -287,7 +287,7 @@ classes:
       - note_dtos
       - data_provider_dto
       - secondary_data_provider_dto
-      - disease_genetic_modifier_curie
+      - disease_genetic_modifier_curies
       - disease_genetic_modifier_relation_name
 
   GeneDiseaseAnnotation:
@@ -694,10 +694,11 @@ slots:
     required: false
     multivalued: true
 
-  disease_genetic_modifier_curie:
+  disease_genetic_modifier_curies:
     description: Curie of BiologcalEntity that modifies the disease model
     domain: DiseaseAnnotationDTO
     range: string
+    multivalued: true
 
   disease_genetic_modifier_relation:
     description: >-
