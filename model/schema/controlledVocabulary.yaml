@@ -34,13 +34,6 @@ prefixes:
   schema: 'http://schema.org/'
 
 slots:
-  text_synonyms:
-    description: >-
-      Free text synonym(s) of a term, used for controlled vocabulary terms; this is distinct from the
-      'synonyms' slot which has a range of a Synonym class object.
-    domain: VocabularyTerm
-    range: string
-    multivalued: true
 
   member_terms:
     description: >-
@@ -77,20 +70,6 @@ classes:
       - name
       - abbreviation
       - definition
-      - text_synonyms
-    slot_usage:
-      name:
-        required: true
-        identifier: true
-
-  Vocabulary:
-    description: >-
-      A set of VocabularyTerm objects.
-    is_a: AuditedObject
-    slots:
-      - name
-      - vocabulary_description
-      - member_terms
       - synonyms
     slot_usage:
       name:
@@ -100,6 +79,20 @@ classes:
         description: >-
           Free text synonym(s) of a controlled vocabulary term
         required: false
+
+  Vocabulary:
+    description: >-
+      A set of VocabularyTerm objects.
+    is_a: AuditedObject
+    slots:
+      - name
+      - vocabulary_description
+      - member_terms
+    slot_usage:
+      name:
+        required: true
+        identifier: true
+
 
   VocabularyTermSet:
     is_a: AuditedObject
