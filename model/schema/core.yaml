@@ -861,7 +861,7 @@ slots:
   mod_internal_id:
     description: >-
       The model organism database (MOD) internal identifier for the object
-      range: string
+    range: string
 
   first_name:
     description: first name of a person
