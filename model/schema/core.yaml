@@ -804,8 +804,9 @@ slots:
 
   synonyms:
     description: >-
-      Placeholder? Some objects still use this slot. Not clear how it fits in
-      with NameSlotAnnotation (which captures evidence).
+      A generic free-text field for objects that only have string representation of one
+      or more synonyms and do not require meta data or attribution; if meta data or attribution
+      are required to be captured for individual synonyms, consider the NameSlotAnnotation class
     range: string
     required: false
     multivalued: true
@@ -856,6 +857,11 @@ slots:
     description: >-
       The model organism database (MOD) identifier/curie for the object
     range: string
+
+  mod_internal_id:
+    description: >-
+      The model organism database (MOD) internal identifier for the object
+      range: string
 
   first_name:
     description: first name of a person

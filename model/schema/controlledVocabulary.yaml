@@ -91,10 +91,15 @@ classes:
       - name
       - vocabulary_description
       - member_terms
+      - synonyms
     slot_usage:
       name:
         required: true
         identifier: true
+      synonyms:
+        description: >-
+          Free text synonym(s) of a controlled vocabulary term
+        required: false
 
   VocabularyTermSet:
     is_a: AuditedObject
