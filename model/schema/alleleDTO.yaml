@@ -170,14 +170,6 @@ classes:
       note_dto:
         required: true
 
-  AlleleSecondaryIdSlotAnnotationDTO:
-    is_a: SlotAnnotationDTO
-    slots:
-      - secondary_id
-    slot_usage:
-      secondary_id:
-        required: true
-
 
 ## ------------
 ## ALLELE DTO ASSOCIATION CLASSES
@@ -376,7 +368,7 @@ slots:
 
   allele_secondary_id_dtos:
     domain: AlleleDTO
-    range: AlleleSecondaryIdSlotAnnotationDTO
+    range: SecondaryIdSlotAnnotationDTO
     multivalued: true
     inlined: true
     inlined_as_list: true
