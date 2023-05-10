@@ -687,6 +687,13 @@
             "additionalProperties": false,
             "description": "Includes inbred strains, stocks, disease models and mutant genotypes",
             "properties": {
+                "agm_secondary_ids": {
+                    "description": "Secondary IDs of a given allele",
+                    "items": {
+                        "$ref": "#/$defs/AgmSecondaryIdSlotAnnotation"
+                    },
+                    "type": "array"
+                },
                 "components": {
                     "description": "Collection of genomic components that make up a model, i.e. 'allele', each with a zygosity",
                     "items": {
@@ -756,12 +763,6 @@
                 },
                 "references": {
                     "description": "holds between an object and a list of references",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "secondary_identifiers": {
                     "items": {
                         "type": "string"
                     },
@@ -909,6 +910,12 @@
             "additionalProperties": false,
             "description": "Ingest class for AGMs",
             "properties": {
+                "agm_secondary_id_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/SecondaryIdSlotAnnotationDTO"
+                    },
+                    "type": "array"
+                },
                 "component_dtos": {
                     "items": {
                         "$ref": "#/$defs/AffectedGenomicModelComponentDTO"
@@ -973,12 +980,6 @@
                 },
                 "reference_curies": {
                     "description": "External reference curies used for ingest",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "secondary_identifiers": {
                     "items": {
                         "type": "string"
                     },
@@ -1067,6 +1068,67 @@
             ],
             "title": "AggregationDatabaseEnum",
             "type": "string"
+        },
+        "AgmSecondaryIdSlotAnnotation": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "evidence": {
+                    "description": "",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "secondary_id": {
+                    "type": "string"
+                },
+                "single_agm": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "secondary_id",
+                "internal"
+            ],
+            "title": "AgmSecondaryIdSlotAnnotation",
+            "type": "object"
         },
         "Allele": {
             "additionalProperties": false,
@@ -1279,12 +1341,6 @@
                 },
                 "references": {
                     "description": "holds between an object and a list of references",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "secondary_identifiers": {
                     "items": {
                         "type": "string"
                     },
@@ -1804,7 +1860,7 @@
                 },
                 "allele_secondary_id_dtos": {
                     "items": {
-                        "$ref": "#/$defs/AlleleSecondaryIdSlotAnnotationDTO"
+                        "$ref": "#/$defs/SecondaryIdSlotAnnotationDTO"
                     },
                     "type": "array"
                 },
@@ -1892,12 +1948,6 @@
                 },
                 "reference_curies": {
                     "description": "External reference curies used for ingest",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "secondary_identifiers": {
                     "items": {
                         "type": "string"
                     },
@@ -4253,64 +4303,6 @@
             "title": "AlleleSecondaryIdSlotAnnotation",
             "type": "object"
         },
-        "AlleleSecondaryIdSlotAnnotationDTO": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
-                    "type": "string"
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": "boolean"
-                },
-                "secondary_id": {
-                    "type": "string"
-                },
-                "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "secondary_id",
-                "internal"
-            ],
-            "title": "AlleleSecondaryIdSlotAnnotationDTO",
-            "type": "object"
-        },
         "AlleleSymbolSlotAnnotation": {
             "additionalProperties": false,
             "description": "The one current symbol for the allele.",
@@ -6356,12 +6348,6 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "secondary_identifiers": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
                     "type": "string"
@@ -6435,12 +6421,6 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
-                },
-                "secondary_identifiers": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
                 },
                 "taxon_curie": {
                     "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
@@ -6783,12 +6763,6 @@
                     },
                     "type": "array"
                 },
-                "secondary_identifiers": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
                     "type": "string"
@@ -6863,12 +6837,6 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
-                },
-                "secondary_identifiers": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
@@ -7031,12 +6999,6 @@
                 },
                 "reference_curies": {
                     "description": "External reference curies used for ingest",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "secondary_identifiers": {
                     "items": {
                         "type": "string"
                     },
@@ -9598,6 +9560,13 @@
                     "$ref": "#/$defs/GeneFullNameSlotAnnotation",
                     "description": "The one current full name for a gene: e.g., wingless, paired box 2a."
                 },
+                "gene_secondary_ids": {
+                    "description": "Secondary IDs of a given gene",
+                    "items": {
+                        "$ref": "#/$defs/GeneSecondaryIdSlotAnnotation"
+                    },
+                    "type": "array"
+                },
                 "gene_symbol": {
                     "$ref": "#/$defs/GeneSymbolSlotAnnotation",
                     "description": "The one current accepted symbol for a gene: e.g., wg, pax2a."
@@ -9649,12 +9618,6 @@
                     "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Gene note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
                     "items": {
                         "$ref": "#/$defs/Note"
-                    },
-                    "type": "array"
-                },
-                "secondary_identifiers": {
-                    "items": {
-                        "type": "string"
                     },
                     "type": "array"
                 },
@@ -10013,6 +9976,12 @@
                     "$ref": "#/$defs/FullNameSlotAnnotationDTO",
                     "description": "The one current full name for a gene: e.g., wingless, paired box 2a."
                 },
+                "gene_secondary_id_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/SecondaryIdSlotAnnotationDTO"
+                    },
+                    "type": "array"
+                },
                 "gene_symbol_dto": {
                     "$ref": "#/$defs/SymbolSlotAnnotationDTO",
                     "description": "The one current accepted symbol for a gene: e.g., wg, pax2a."
@@ -10044,12 +10013,6 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
-                },
-                "secondary_identifiers": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
                 },
                 "taxon_curie": {
                     "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
@@ -10876,6 +10839,68 @@
             "title": "GenePhenotypeAnnotation",
             "type": "object"
         },
+        "GeneSecondaryIdSlotAnnotation": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "evidence": {
+                    "description": "",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "secondary_id": {
+                    "type": "string"
+                },
+                "single_gene": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "single_gene",
+                "secondary_id",
+                "internal"
+            ],
+            "title": "GeneSecondaryIdSlotAnnotation",
+            "type": "object"
+        },
         "GeneSymbolSlotAnnotation": {
             "additionalProperties": false,
             "description": "The one current symbol for the gene.",
@@ -11610,12 +11635,6 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "secondary_identifiers": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
                     "type": "string"
@@ -11691,12 +11710,6 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "secondary_identifiers": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
                     "type": "string"
@@ -11770,12 +11783,6 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
-                },
-                "secondary_identifiers": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
                 },
                 "taxon_curie": {
                     "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
@@ -15160,12 +15167,6 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "secondary_identifiers": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
                     "type": "string"
@@ -16156,6 +16157,64 @@
             "title": "SOTerm",
             "type": "object"
         },
+        "SecondaryIdSlotAnnotationDTO": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "evidence_curies": {
+                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "secondary_id": {
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "secondary_id",
+                "internal"
+            ],
+            "title": "SecondaryIdSlotAnnotationDTO",
+            "type": "object"
+        },
         "SequenceTargetingReagent": {
             "additionalProperties": false,
             "description": "",
@@ -16215,12 +16274,6 @@
                 },
                 "references": {
                     "description": "holds between an object and a list of references",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "secondary_identifiers": {
                     "items": {
                         "type": "string"
                     },
@@ -16302,12 +16355,6 @@
                 },
                 "reference_curies": {
                     "description": "External reference curies used for ingest",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "secondary_identifiers": {
                     "items": {
                         "type": "string"
                     },
@@ -16918,12 +16965,6 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "secondary_identifiers": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
                     "type": "string"
@@ -17188,12 +17229,6 @@
                     "description": "Holds between an object and a list of related Note objects.",
                     "items": {
                         "$ref": "#/$defs/Note"
-                    },
-                    "type": "array"
-                },
-                "secondary_identifiers": {
-                    "items": {
-                        "type": "string"
                     },
                     "type": "array"
                 },
