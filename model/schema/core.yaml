@@ -275,7 +275,7 @@ classes:
         any_of:
           - equals_string: systematic_name
 
- SecondaryIdSlotAnnotation:
+  SecondaryIdSlotAnnotation:
     is_a: SlotAnnotation
     slots:
       - secondary_id
