@@ -688,7 +688,7 @@
             "description": "Includes inbred strains, stocks, disease models and mutant genotypes",
             "properties": {
                 "agm_secondary_ids": {
-                    "description": "Secondary IDs of a given allele",
+                    "description": "Secondary IDs of a given AGM",
                     "items": {
                         "$ref": "#/$defs/AgmSecondaryIdSlotAnnotation"
                     },
@@ -1124,6 +1124,7 @@
                 }
             },
             "required": [
+                "single_agm",
                 "secondary_id",
                 "internal"
             ],
