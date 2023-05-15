@@ -120,14 +120,12 @@ classes:
       RNA transcript translation).
     slots:
       - cross_references
-      - secondary_identifiers
       - genomic_location_associations
 
   GenomicEntityDTO:
     is_a: BiologicalEntityDTO
     slots:
       - cross_reference_dtos
-      - secondary_identifiers
       - genomic_location_association_dtos
 
   Transcript:
@@ -276,6 +274,22 @@ classes:
       name_type_name:
         any_of:
           - equals_string: systematic_name
+
+  SecondaryIdSlotAnnotation:
+    is_a: SlotAnnotation
+    slots:
+      - secondary_id
+    slot_usage:
+      secondary_id:
+        required: true
+        
+  SecondaryIdSlotAnnotationDTO:
+    is_a: SlotAnnotationDTO
+    slots:
+      - secondary_id
+    slot_usage:
+      secondary_id:
+        required: true
 
 
   Association:

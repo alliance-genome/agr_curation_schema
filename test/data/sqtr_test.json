@@ -7,9 +7,6 @@
       "created_by_curie": "ZFIN",
       "updated_by_curie": "ZFIN",
       "internal": false,
-      "secondary_identifiers": [
-        "ZFIN:ZDB-MRPHLNO-123456-1"
-      ],
       "reference_curies": [
         "PMID:19648295"
       ],
@@ -42,9 +39,6 @@
       "created_by_curie": "ZFIN",
       "updated_by_curie": "ZFIN",
       "internal": false,
-      "secondary_identifiers": [
-        "ZFIN:ZDB-MRPHLNO-123456-1"
-      ],
       "reference_curies": [
         "PMID:19648295"
       ]
@@ -66,9 +60,6 @@
       "created_by_curie": "ZFIN",
       "updated_by_curie": "ZFIN",
       "internal": false,
-      "secondary_identifiers": [
-        "ZFIN:ZDB-MRPHLNO-123456-1"
-      ],
       "reference_curies": [
         "PMID:19648295"
       ]

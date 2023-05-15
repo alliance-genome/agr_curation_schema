@@ -39,7 +39,16 @@
           "PMID:01231002"
         ],
         "internal": false
-      }
+      },
+      "allele_secondary_id_dtos": [
+        {
+          "secondary_id": "scnd_id",
+          "evidence_curies": [
+            "PMID:00020012"
+          ],
+          "internal": false
+        }
+      ]
     },
     {
       "curie": "ZFIN:ZDB-ALT-130411-947",

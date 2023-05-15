@@ -54,6 +54,7 @@ classes:
       - gene_full_name
       - gene_systematic_name
       - gene_synonyms
+      - gene_secondary_ids
       - related_notes
       - gene_type
       - gene_types_secondary
@@ -91,6 +92,7 @@ classes:
       - gene_full_name_dto
       - gene_systematic_name_dto
       - gene_synonym_dtos
+      - gene_secondary_id_dtos
       - gene_type_curie
 
   GeneSymbolSlotAnnotation:
@@ -119,6 +121,14 @@ classes:
         notes: >-
           permissible_values: full_name (VocabularyTerm)
 
+  GeneSecondaryIdSlotAnnotation:
+    is_a: SecondaryIdSlotAnnotation
+    slots:
+      - single_gene
+    slot_usage:
+      single_gene:
+        required: true
+        
   GeneSystematicNameSlotAnnotation:
     is_a: NameSlotAnnotation
     description: >-
@@ -238,6 +248,19 @@ slots:
     multivalued: false
     required: false
     inlined: true
+
+  gene_secondary_ids:
+    description: Secondary IDs of a given gene
+    domain: Gene
+    range: GeneSecondaryIdSlotAnnotation
+    multivalued: true
+
+  gene_secondary_id_dtos:
+    domain: GeneDTO
+    range: SecondaryIdSlotAnnotationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
 
   gene_systematic_name:
     description: >-

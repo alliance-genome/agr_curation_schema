@@ -8,8 +8,14 @@
       "updated_by_curie": "ZFIN",
       "internal": false,
       "name": "TL + MO1-hars",
-      "secondary_identifiers": [
-        "ZFIN:ZDB-FISH-123456-1"
+      "agm_secondary_id_dtos": [
+        {
+          "secondary_id": "ZFIN:ZDB-FISH-123456-1",
+          "evidence_curies": [
+            "PMID:00020012"
+          ],
+          "internal": false
+        }
       ],
       "reference_curies": [],
       "sequence_targeting_reagent_curies": [
@@ -35,8 +41,14 @@
       "updated_by_curie": "ZFIN",
       "internal": false,
       "name": "pax2a<sup>tb21/tb21</sup>",
-      "secondary_identifiers": [
-        "ZFIN:ZDB-FISH-123456-1"
+      "agm_secondary_id_dtos": [
+        {
+          "secondary_id": "ZFIN:ZDB-FISH-123456-1",
+          "evidence_curies": [
+            "PMID:00020012"
+          ],
+          "internal": false
+        }
       ],
       "reference_curies": [],
       "component_dtos": [

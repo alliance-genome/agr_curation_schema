@@ -64,6 +64,15 @@
           "internal": false
         }
       ],
+      "gene_secondary_id_dtos": [
+        {
+          "secondary_id": "scnd_id",
+          "evidence_curies": [
+            "PMID:00020012"
+          ],
+          "internal": false
+        }
+      ],
       "cross_reference_dtos": [
         {
           "referenced_curie": "ZFIN:ZDB-GENE-010226-1",

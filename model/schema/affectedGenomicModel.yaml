@@ -43,6 +43,7 @@ classes:
     slots:
       - name
       - subtype
+      - agm_secondary_ids
       - components
       - sequence_targeting_reagents
       - parental_populations
@@ -54,9 +55,21 @@ classes:
     slots:
       - name
       - subtype_name
+      - agm_secondary_id_dtos
       - reference_curies
       - sequence_targeting_reagent_curies
       - component_dtos
+
+  AgmSecondaryIdSlotAnnotation:
+    is_a: SlotAnnotation
+    slots:
+      - single_agm
+      - secondary_id
+    slot_usage:
+      single_agm:
+        required: true
+      secondary_id:
+        required: true
 
   AffectedGenomicModelComponent:
     is_a: AuditedObject
@@ -86,6 +99,10 @@ slots:
     range: string
     required: true
 
+  single_agm:
+    range: AffectedGenomicModel
+    multivalued: false
+
   subtype:
     description: >-
       Subtype of affected genomic model - permissible values: strain / genotype
@@ -101,6 +118,19 @@ slots:
     domain: AffectedGenomicModelDTO
     range: string
     required: true
+
+  agm_secondary_ids:
+    description: Secondary IDs of a given AGM
+    domain: AffectedGenomicModel
+    range: AgmSecondaryIdSlotAnnotation
+    multivalued: true
+
+  agm_secondary_id_dtos:
+    domain: AffectedGenomicModelDTO
+    range: SecondaryIdSlotAnnotationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
 
   components:
     singular_name: component
