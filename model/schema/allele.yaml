@@ -289,14 +289,11 @@ classes:
         required: true
 
   AlleleSecondaryIdSlotAnnotation:
-    is_a: SlotAnnotation
+    is_a: SecondaryIdSlotAnnotation
     slots:
       - single_allele
-      - secondary_id
     slot_usage:
       single_allele:
-        required: true
-      secondary_id:
         required: true
 
   AlleleSymbolSlotAnnotation:

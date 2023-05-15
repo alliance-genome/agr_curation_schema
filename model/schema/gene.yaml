@@ -122,14 +122,11 @@ classes:
           permissible_values: full_name (VocabularyTerm)
 
   GeneSecondaryIdSlotAnnotation:
-    is_a: SlotAnnotation
+    is_a: SecondaryIdSlotAnnotation
     slots:
       - single_gene
-      - secondary_id
     slot_usage:
       single_gene:
-        required: true
-      secondary_id:
         required: true
         
   GeneSystematicNameSlotAnnotation:

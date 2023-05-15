@@ -275,6 +275,14 @@ classes:
         any_of:
           - equals_string: systematic_name
 
+ SecondaryIdSlotAnnotation:
+    is_a: SlotAnnotation
+    slots:
+      - secondary_id
+    slot_usage:
+      secondary_id:
+        required: true
+        
   SecondaryIdSlotAnnotationDTO:
     is_a: SlotAnnotationDTO
     slots:
