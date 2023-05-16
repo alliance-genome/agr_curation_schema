@@ -1197,13 +1197,6 @@
                     },
                     "type": "array"
                 },
-                "allele_molecular_mutations": {
-                    "description": "Molecular mutations of a given allele",
-                    "items": {
-                        "$ref": "#/$defs/AlleleMolecularMutationSlotAnnotation"
-                    },
-                    "type": "array"
-                },
                 "allele_mutation_types": {
                     "description": "Mutation types for a given allele",
                     "items": {
@@ -1215,13 +1208,6 @@
                     "description": "Nomenclature events of a given allele",
                     "items": {
                         "$ref": "#/$defs/AlleleNomenclatureEventSlotAnnotation"
-                    },
-                    "type": "array"
-                },
-                "allele_notes": {
-                    "description": "Notes for a given allele",
-                    "items": {
-                        "$ref": "#/$defs/AlleleNoteSlotAnnotation"
                     },
                     "type": "array"
                 },
@@ -1344,6 +1330,13 @@
                     "description": "holds between an object and a list of references",
                     "items": {
                         "type": "string"
+                    },
+                    "type": "array"
+                },
+                "related_notes": {
+                    "description": "Holds between an object and a list of related Note objects.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
                     },
                     "type": "array"
                 },
@@ -1835,12 +1828,6 @@
                     },
                     "type": "array"
                 },
-                "allele_molecular_mutation_dtos": {
-                    "items": {
-                        "$ref": "#/$defs/AlleleMolecularMutationSlotAnnotationDTO"
-                    },
-                    "type": "array"
-                },
                 "allele_mutation_type_dtos": {
                     "items": {
                         "$ref": "#/$defs/AlleleMutationTypeSlotAnnotationDTO"
@@ -1850,12 +1837,6 @@
                 "allele_nomenclature_event_dtos": {
                     "items": {
                         "$ref": "#/$defs/AlleleNomenclatureEventSlotAnnotationDTO"
-                    },
-                    "type": "array"
-                },
-                "allele_note_dtos": {
-                    "items": {
-                        "$ref": "#/$defs/AlleleNoteSlotAnnotationDTO"
                     },
                     "type": "array"
                 },
@@ -1942,6 +1923,12 @@
                 "laboratory_of_origin_curie": {
                     "description": "The curie of the laboratory of origin for the entity.",
                     "type": "string"
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": "array"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -3357,134 +3344,6 @@
             "title": "AlleleInheritanceModeSlotAnnotationDTO",
             "type": "object"
         },
-        "AlleleMolecularMutationSlotAnnotation": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "created_by": {
-                    "description": "The individual that created the entity.",
-                    "type": "string"
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "evidence": {
-                    "description": "",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "molecular_mutations": {
-                    "description": "Description of the DNA changes if precise genomic location unknown",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": "boolean"
-                },
-                "single_allele": {
-                    "type": "string"
-                },
-                "updated_by": {
-                    "description": "The individual that last modified the entity.",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "single_allele",
-                "molecular_mutations",
-                "internal"
-            ],
-            "title": "AlleleMolecularMutationSlotAnnotation",
-            "type": "object"
-        },
-        "AlleleMolecularMutationSlotAnnotationDTO": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
-                    "type": "string"
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "molecular_mutation_names": {
-                    "description": "Name of the VocabularyTerm describing the molecular mutation",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": "boolean"
-                },
-                "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "molecular_mutation_names",
-                "internal"
-            ],
-            "title": "AlleleMolecularMutationSlotAnnotationDTO",
-            "type": "object"
-        },
         "AlleleMutationTypeSlotAnnotation": {
             "additionalProperties": false,
             "description": "",
@@ -3732,127 +3591,6 @@
                 "internal"
             ],
             "title": "AlleleNomenclatureEventSlotAnnotationDTO",
-            "type": "object"
-        },
-        "AlleleNoteSlotAnnotation": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "created_by": {
-                    "description": "The individual that created the entity.",
-                    "type": "string"
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "evidence": {
-                    "description": "",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": "boolean"
-                },
-                "related_note": {
-                    "$ref": "#/$defs/Note",
-                    "description": "Holds between an object and a Note object."
-                },
-                "single_allele": {
-                    "type": "string"
-                },
-                "updated_by": {
-                    "description": "The individual that last modified the entity.",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "single_allele",
-                "related_note",
-                "internal"
-            ],
-            "title": "AlleleNoteSlotAnnotation",
-            "type": "object"
-        },
-        "AlleleNoteSlotAnnotationDTO": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
-                    "type": "string"
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "note_dto": {
-                    "$ref": "#/$defs/NoteDTO"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": "boolean"
-                },
-                "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "note_dto",
-                "internal"
-            ],
-            "title": "AlleleNoteSlotAnnotationDTO",
             "type": "object"
         },
         "AlleleOriginAssociation": {
