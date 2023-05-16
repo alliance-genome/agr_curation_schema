@@ -72,12 +72,8 @@
       },
       "note_dtos": [
         {
-          "free_text": [
-            "insertion"
-          ],
-          "note_type_name": [
-            "molecular_mutation_note"
-          ],
+          "free_text": "insertion",
+          "note_type_name": "molecular_mutation_note",
           "evidence_curies": [
             "PMID:11231512"
           ],
