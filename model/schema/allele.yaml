@@ -61,16 +61,15 @@ classes:
       - is_extinct
       - is_extrachromosomal
       - is_integrated
+      - related_notes
       - transgene_chromosome_location
       - allele_mutation_types
       - allele_inheritance_modes
       - allele_germline_transmission_status
       - allele_functional_impacts
-      - allele_molecular_mutations
       - allele_database_status
       - allele_secondary_ids
       - allele_nomenclature_events
-      - allele_notes
       - allele_synonyms
       - allele_gene_associations
       - allele_transcript_associations
@@ -250,15 +249,6 @@ classes:
           For some MODs, the inheritance mode of an allele is reported specifically in the context of a
           particular phenotype. This slot is intended to capture the free-text phenotype statement.
 
-  AlleleMolecularMutationSlotAnnotation:
-    is_a: SlotAnnotation
-    slots:
-      - single_allele
-      - molecular_mutations
-    slot_usage:
-      single_allele:
-        required: true
-
   AlleleMutationTypeSlotAnnotation:
     is_a: SlotAnnotation
     slots:
@@ -275,17 +265,6 @@ classes:
       - nomenclature_event
     slot_usage:
       single_allele:
-        required: true
-
-  AlleleNoteSlotAnnotation:
-    is_a: SlotAnnotation
-    slots:
-      - single_allele
-      - related_note
-    slot_usage:
-      single_allele:
-        required: true
-      related_note:
         required: true
 
   AlleleSecondaryIdSlotAnnotation:
@@ -536,12 +515,6 @@ slots:
     range: AlleleInheritanceModeSlotAnnotation
     multivalued: true
 
-  allele_molecular_mutations:
-    description: Molecular mutations of a given allele
-    domain: Allele
-    range: AlleleMolecularMutationSlotAnnotation
-    multivalued: true
-
   allele_mutation_types:
     description: Mutation types for a given allele
     domain: Allele
@@ -552,12 +525,6 @@ slots:
     description: Nomenclature events of a given allele
     domain: Allele
     range: AlleleNomenclatureEventSlotAnnotation
-    multivalued: true
-
-  allele_notes:
-    description: Notes for a given allele
-    domain: Allele
-    range: AlleleNoteSlotAnnotation
     multivalued: true
 
   allele_origin_associations:
@@ -692,15 +659,6 @@ slots:
       The laboratory of origin for the entity.
     domain: Allele
     range: Laboratory
-
-  molecular_mutations:
-    description: >-
-      Description of the DNA changes if precise
-      genomic location unknown
-    domain: AlleleMolecularMutationSlotAnnotation
-    range: string
-    multivalued: true
-    required: true
 
   mutagenesis_methods:
     range: VocabularyTerm

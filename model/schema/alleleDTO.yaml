@@ -55,15 +55,14 @@ classes:
       - is_extrachromosomal
       - is_integrated
       - transgene_chromosome_location_curie
+      - note_dtos
       - allele_mutation_type_dtos
       - allele_inheritance_mode_dtos
       - allele_germline_transmission_status_dto
       - allele_functional_impact_dtos
-      - allele_molecular_mutation_dtos
       - allele_database_status_dto
       - allele_secondary_id_dtos
       - allele_nomenclature_event_dtos
-      - allele_note_dtos
       - allele_synonym_dtos
 
   CellLineDTO:
@@ -147,11 +146,6 @@ classes:
           For some MODs, the inheritance mode of an allele is reported specifically in the context of a
           particular phenotype. This slot is intended to capture the free-text phenotype statement.
 
-  AlleleMolecularMutationSlotAnnotationDTO:
-    is_a: SlotAnnotationDTO
-    slots:
-      - molecular_mutation_names
-
   AlleleMutationTypeSlotAnnotationDTO:
     is_a: SlotAnnotationDTO
     slots:
@@ -161,14 +155,6 @@ classes:
     is_a: SlotAnnotationDTO
     slots:
       - nomenclature_event_name
-
-  AlleleNoteSlotAnnotationDTO:
-    is_a: SlotAnnotationDTO
-    slots:
-      - note_dto
-    slot_usage:
-      note_dto:
-        required: true
 
 
 ## ------------
@@ -337,13 +323,6 @@ slots:
     inlined_as_list: true
     inlined: true
 
-  allele_molecular_mutation_dtos:
-    domain: AlleleDTO
-    range: AlleleMolecularMutationSlotAnnotationDTO
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-
   allele_mutation_type_dtos:
     domain: AlleleDTO
     range: AlleleMutationTypeSlotAnnotationDTO
@@ -357,14 +336,6 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
-
-  allele_note_dtos:
-    is_a: note_dtos
-    domain: AlleleDTO
-    range: AlleleNoteSlotAnnotationDTO
-    multivalued: true
-    inlined_as_list: true
-    inlined: true
 
   allele_secondary_id_dtos:
     domain: AlleleDTO
@@ -471,14 +442,6 @@ slots:
       The curie of the laboratory of origin for the entity.
     domain: AlleleDTO
     range: string
-
-  molecular_mutation_names:
-    description: >-
-      Name of the VocabularyTerm describing the molecular mutation
-    domain: AlleleMolecularMutationSlotAnnotationDTO
-    range: string
-    multivalued: true
-    required: true
 
   mutagenesis_method_names:
     description: >-
