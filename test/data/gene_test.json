@@ -1,5 +1,5 @@
 {
-  "linkml_version": "1.3.0",
+  "linkml_version": "1.7.3",
   "gene_ingest_set": [
     {
       "curie": "ZFIN:ZDB-GENE-010226-1",

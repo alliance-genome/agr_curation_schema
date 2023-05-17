@@ -1,5 +1,5 @@
 {
-  "linkml_version": "1.3.0",
+  "linkml_version": "1.7.3",
   "allele_ingest_set": [
     {
       "curie": "WB:WBVar00000001",
@@ -70,11 +70,10 @@
         ],
         "internal": false
       },
-      "allele_molecular_mutation_dtos": [
+      "note_dtos": [
         {
-          "molecular_mutation_names": [
-            "insertion"
-          ],
+          "free_text": "insertion",
+          "note_type_name": "molecular_mutation_note",
           "evidence_curies": [
             "PMID:11231512"
           ],
