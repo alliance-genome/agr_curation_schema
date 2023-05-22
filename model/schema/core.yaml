@@ -375,32 +375,6 @@ classes:
       - start
       - end
 
-  GenomicLocationAssociationDTO:
-    is_a: AuditedObjectDTO
-    slots:
-      - genomic_entity_curie
-      - predicate_name
-      - chromosome_curie
-      - evidence_curies
-      - assembly_curie
-      - start
-      - end
-    slot_usage:
-      genomic_entity_curie:
-        required: true
-      predicate_name:
-        required: true
-        any_of:
-          equals_string: has_genomic_location
-      chromosome_curie:
-        required: true
-      assembly_curie:
-        required: true
-      start:
-        required: true
-      end:
-        required: true
-
   Protein:
     is_a: GenomicEntity
 
@@ -930,9 +904,6 @@ slots:
   last:
     description: last identifier in a range
     range: Identifier
-
-  genomic_entity_curie:
-    range: string
 
   assembly_curie:
     range: string
