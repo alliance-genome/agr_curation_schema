@@ -75,7 +75,7 @@ classes:
         required: true
 
   VariantLocation:
-    is_a: AuditedObject
+    mixin: true
     description: >-
       Base class linking a variant to a position on a genomic entity and the resulting consequence to the sequence
       and/or function of that genomic entity. Slots are provided for data taken from a source publication or data
@@ -85,24 +85,20 @@ classes:
       the definition of the transcript or protein isoform used by the source has changed, or if there was an error
       in the source data.
     slots:
-      - evidence_code
-      - single_reference
-      - start_position
-      - end_position
       - reference_sequence
       - variant_sequence
       - consequence
       - sequence_of_reference_accession_number
 
   VariantGenomeLocation:
-    is_a: VariantLocation
+    is_a: GenomicLocationAssociation
+    mixins:
+      - VariantLocation
     description: >-
       Links a variant to a genomic position and the resulting consequence to the sequence and/or function.
       In practice, functional consequences for variants which overlap genes are not generally provided at the
       genome level but rather are calculated and annotated relative to a specific transcript or protein isoform.
     slots:
-      - assembly
-      - chromosome
       - exon_number
       - intron_number
       - variation_strand
@@ -115,7 +111,9 @@ classes:
       - gene_localization_type
 
   VariantTranscriptLocation:
-    is_a: VariantLocation
+    is_a: GenomicLocationAssociation
+    mixins:
+      - VariantLocation
     description: >-
       Links a variant to a position on a specified transcript and the resulting consequence to the sequence and/or
       function of that transcript.
@@ -124,9 +122,10 @@ classes:
       - exon_number
       - intron_number
 
-
   VariantPolypeptideLocation:
-    is_a: VariantLocation
+    is_a: GenomicLocationAssociation
+    mixins:
+      - VariantLocation
     description: >-
       Links a variant to a position on a specified polypeptide and the resulting consequence to the sequence and/or
       function of that polypeptide.
@@ -135,7 +134,6 @@ classes:
       - associated_transcripts
       - number_amino_acids_removed
       - number_amino_acids_inserted
-
 
 # Slots
 
