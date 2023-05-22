@@ -72,6 +72,10 @@ classes:
       - padded_base
       - dna_mutation_type
       - gene_localization_type
+      - reference_sequence
+      - variant_sequence
+      - consequence
+      - sequence_of_reference_accession_number
     slot_usage:
       variant_entity_curie:
         required: true
@@ -102,6 +106,10 @@ classes:
       - transcript_curie
       - exon_number
       - intron_number
+      - reference_sequence
+      - variant_sequence
+      - consequence
+      - sequence_of_reference_accession_number
     slot_usage:
       variant_entity_curie:
         required: true
@@ -133,6 +141,10 @@ classes:
       - associated_transcripts
       - number_amino_acids_removed
       - number_amino_acids_inserted
+      - reference_sequence
+      - variant_sequence
+      - consequence
+      - sequence_of_reference_accession_number
     slot_usage:
       variant_entity_curie:
         required: true
