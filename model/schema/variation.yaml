@@ -110,6 +110,12 @@ classes:
       - padded_base
       - dna_mutation_type
       - gene_localization_type
+    slot_usage:
+      has_assembly:
+        required: true
+      subject:
+        required: true
+
 
   VariantTranscriptLocationAssociation:
     is_a: GenomicLocationAssociation

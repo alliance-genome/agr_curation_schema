@@ -345,6 +345,7 @@ classes:
         required: true
 
   GenomicLocationAssociation:
+    abstract: true
     is_a: Association
     slots:
       - has_assembly
@@ -366,7 +367,6 @@ classes:
       - subject
       - predicate
       - object
-      - has_assembly
       - start
       - end
 
