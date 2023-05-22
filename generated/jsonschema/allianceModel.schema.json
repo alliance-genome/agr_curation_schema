@@ -11701,7 +11701,6 @@
                 }
             },
             "required": [
-                "genomic_entity_curie",
                 "predicate_name",
                 "chromosome_curie",
                 "assembly_curie",
@@ -17112,6 +17111,10 @@
             "additionalProperties": false,
             "description": "Ingest class for an Allele object",
             "properties": {
+                "consequence": {
+                    "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
+                    "type": "string"
+                },
                 "created_by_curie": {
                     "description": "Curie of the Person object representing the individual that created the entity",
                     "type": "string"
@@ -17164,12 +17167,20 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
+                "reference_sequence": {
+                    "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
+                    "type": "string"
+                },
                 "related_notes": {
                     "description": "Holds between an object and a list of related Note objects.",
                     "items": {
                         "$ref": "#/$defs/Note"
                     },
                     "type": "array"
+                },
+                "sequence_of_reference_accession_number": {
+                    "description": "The accession number that describes the assembly and chromosome of the reference sequence.",
+                    "type": "string"
                 },
                 "source_general_consequence": {
                     "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference when no transcript ID is provided. Since a curator would determine variant location and consequences relative to at least one specific genome assembly, transcript and/or polypeptide, no slot for curated general consequence is provided.",
@@ -17181,6 +17192,10 @@
                 },
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                },
+                "variant_sequence": {
+                    "description": "Sequence that differs from the reference sequence of genome or genomic entity at position of variant, as specified by curator.",
                     "type": "string"
                 },
                 "variant_status": {
@@ -17470,6 +17485,10 @@
                     "description": "The end of the feature in positive 1-based integer coordinates",
                     "type": "integer"
                 },
+                "evidence_code_curie": {
+                    "description": "Curie of ECOTerm",
+                    "type": "string"
+                },
                 "evidence_curies": {
                     "description": "Curies of InformationContentEntity objects given as evidence",
                     "items": {
@@ -17539,6 +17558,7 @@
                 }
             },
             "required": [
+                "variant_entity_curie",
                 "predicate_name",
                 "chromosome_curie",
                 "assembly_curie",
@@ -17715,6 +17735,10 @@
                     "description": "The end of the feature in positive 1-based integer coordinates",
                     "type": "integer"
                 },
+                "evidence_code_curie": {
+                    "description": "Curie of ECOTerm",
+                    "type": "string"
+                },
                 "evidence_curies": {
                     "description": "Curies of InformationContentEntity objects given as evidence",
                     "items": {
@@ -17763,6 +17787,7 @@
                 }
             },
             "required": [
+                "variant_entity_curie",
                 "predicate_name",
                 "chromosome_curie",
                 "assembly_curie",
@@ -18063,6 +18088,10 @@
                     "description": "The end of the feature in positive 1-based integer coordinates",
                     "type": "integer"
                 },
+                "evidence_code_curie": {
+                    "description": "Curie of ECOTerm",
+                    "type": "string"
+                },
                 "evidence_curies": {
                     "description": "Curies of InformationContentEntity objects given as evidence",
                     "items": {
@@ -18111,6 +18140,7 @@
                 }
             },
             "required": [
+                "variant_entity_curie",
                 "predicate_name",
                 "chromosome_curie",
                 "assembly_curie",

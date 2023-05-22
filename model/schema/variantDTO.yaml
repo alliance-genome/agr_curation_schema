@@ -46,6 +46,10 @@ classes:
       - related_notes
       - source_general_consequence
       - variant_status
+      - reference_sequence
+      - variant_sequence
+      - consequence
+      - sequence_of_reference_accession_number
 
   VariantGenomicLocationAssociationDTO:
     is_a: AuditedObjectDTO
@@ -54,6 +58,7 @@ classes:
       - predicate_name
       - chromosome_curie
       - evidence_curies
+      - evidence_code_curie
       - assembly_curie
       - start
       - end
@@ -68,7 +73,7 @@ classes:
       - dna_mutation_type
       - gene_localization_type
     slot_usage:
-      genomic_entity_curie:
+      variant_entity_curie:
         required: true
       predicate_name:
         required: true
@@ -90,6 +95,7 @@ classes:
       - predicate_name
       - chromosome_curie
       - evidence_curies
+      - evidence_code_curie
       - assembly_curie
       - start
       - end
@@ -97,7 +103,7 @@ classes:
       - exon_number
       - intron_number
     slot_usage:
-      genomic_entity_curie:
+      variant_entity_curie:
         required: true
       predicate_name:
         required: true
@@ -119,6 +125,7 @@ classes:
       - predicate_name
       - chromosome_curie
       - evidence_curies
+      - evidence_code_curie
       - assembly_curie
       - start
       - end
@@ -127,7 +134,7 @@ classes:
       - number_amino_acids_removed
       - number_amino_acids_inserted
     slot_usage:
-      genomic_entity_curie:
+      variant_entity_curie:
         required: true
       predicate_name:
         required: true

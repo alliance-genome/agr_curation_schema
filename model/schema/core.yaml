@@ -387,8 +387,6 @@ classes:
       - start
       - end
     slot_usage:
-      genomic_entity_curie:
-        required: true
       predicate_name:
         required: true
         any_of:
