@@ -11618,7 +11618,6 @@
                 }
             },
             "required": [
-                "has_assembly",
                 "subject",
                 "predicate",
                 "object",
@@ -17302,7 +17301,6 @@
                 }
             },
             "required": [
-                "has_assembly",
                 "subject",
                 "predicate",
                 "object",
@@ -17424,7 +17422,6 @@
             },
             "required": [
                 "polypeptide",
-                "has_assembly",
                 "subject",
                 "predicate",
                 "object",
@@ -17676,7 +17673,6 @@
                 }
             },
             "required": [
-                "has_assembly",
                 "subject",
                 "predicate",
                 "object",

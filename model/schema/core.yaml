@@ -500,7 +500,6 @@ slots:
 
   has_assembly:
     domain: GenomicLocationAssociation
-    required: true
     range: Assembly
 
   prefix:

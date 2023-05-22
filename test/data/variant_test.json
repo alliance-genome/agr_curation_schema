@@ -30,7 +30,7 @@
       "variant_genome_locations": [
         {
           "single_reference": "ZFIN:ZDB-PUB-000412-1",
-          "assembly": "GRCz11",
+          "has_assembly": "GRCz11",
           "chromosome": "7",
           "start": 30341642,
           "end": 30341642,
