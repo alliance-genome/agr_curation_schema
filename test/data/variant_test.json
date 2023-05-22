@@ -32,8 +32,8 @@
           "single_reference": "ZFIN:ZDB-PUB-000412-1",
           "assembly": "GRCz11",
           "chromosome": "7",
-          "start_position": 30341642,
-          "end_position": 30341642,
+          "start": 30341642,
+          "end": 30341642,
           "reference_sequence": "C",
           "variant_sequence": "T",
           "internal": false,
@@ -58,8 +58,8 @@
           "variant_locations": [
             {
               "single_reference": "ZFIN:ZDB-PUB-000412-1",
-              "start_position": 30341642,
-              "end_position": 30341642,
+              "start": 30341642,
+              "end": 30341642,
               "reference_sequence": "C",
               "variant_sequence": "T",
               "internal": false,

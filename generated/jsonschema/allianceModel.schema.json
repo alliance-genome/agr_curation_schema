@@ -16368,7 +16368,7 @@
             "title": "SlotAnnotationDTO",
             "type": "object"
         },
-        "SourceVariantLocation": {
+        "SourceVariantLocationAssociation": {
             "additionalProperties": false,
             "description": "Links a paper to the variant locations described in that paper",
             "properties": {
@@ -16413,7 +16413,7 @@
                     "type": "string"
                 },
                 "variant_locations": {
-                    "description": "Location of the variant within genomic entities. Variant_locations can include any or all of: one VariantGenomeLocation stanza, one or more VariantTranscriptLocation stanzas and/or one or more VariantPolypeptideLocation stanzas.",
+                    "description": "Location of the variant within genomic entities. Variant_locations can include any or all of: one VariantGenomeLocationAssociation stanza, one or more VariantTranscriptLocationAssociation stanzas and/or one or more VariantPolypeptideLocationAssociation stanzas.",
                     "items": {
                         "$ref": "#/$defs/VariantLocation"
                     },
@@ -16424,7 +16424,7 @@
                 "single_reference",
                 "internal"
             ],
-            "title": "SourceVariantLocation",
+            "title": "SourceVariantLocationAssociation",
             "type": "object"
         },
         "SpatialQualifierSet": {
@@ -17036,7 +17036,7 @@
                 "source_variant_locations": {
                     "description": "Location of the variant within genomic entities, as described in the source references.",
                     "items": {
-                        "$ref": "#/$defs/SourceVariantLocation"
+                        "$ref": "#/$defs/SourceVariantLocationAssociation"
                     },
                     "type": "array"
                 },
@@ -17051,14 +17051,14 @@
                 "variant_genome_locations": {
                     "description": "Location of the variant in a genomic context.  multiple variant_genome_locations represent multiple assemblies.  because we want the variant to stay consistent between assemblies, we must have a single  variant object apart from its location.",
                     "items": {
-                        "$ref": "#/$defs/VariantGenomeLocation"
+                        "$ref": "#/$defs/VariantGenomeLocationAssociation"
                     },
                     "type": "array"
                 },
                 "variant_polypeptide_locations": {
                     "description": "Location of the variant within polypeptide entities.",
                     "items": {
-                        "$ref": "#/$defs/VariantPolypeptideLocation"
+                        "$ref": "#/$defs/VariantPolypeptideLocationAssociation"
                     },
                     "type": "array"
                 },
@@ -17069,7 +17069,7 @@
                 "variant_transcript_locations": {
                     "description": "Location of the variant within transcript entities.",
                     "items": {
-                        "$ref": "#/$defs/VariantTranscriptLocation"
+                        "$ref": "#/$defs/VariantTranscriptLocationAssociation"
                     },
                     "type": "array"
                 },
@@ -17145,7 +17145,7 @@
                     "type": "number"
                 },
                 "subject": {
-                    "$ref": "#/$defs/VariantGenomeLocation",
+                    "$ref": "#/$defs/VariantGenomeLocationAssociation",
                     "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "updated_by": {
@@ -17169,20 +17169,12 @@
             "title": "VariantGeneConsequence",
             "type": "object"
         },
-        "VariantGenomeLocation": {
+        "VariantGenomeLocationAssociation": {
             "additionalProperties": false,
             "description": "Links a variant to a genomic position and the resulting consequence to the sequence and/or function. In practice, functional consequences for variants which overlap genes are not generally provided at the genome level but rather are calculated and annotated relative to a specific transcript or protein isoform.",
             "properties": {
-                "assembly": {
-                    "description": "Assembly to which variant is aligned.",
-                    "type": "string"
-                },
-                "chromosome": {
-                    "description": "Chromosome to which variant is aligned.",
-                    "type": "string"
-                },
                 "consequence": {
-                    "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.",
+                    "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
                     "type": "string"
                 },
                 "created_by": {
@@ -17217,12 +17209,16 @@
                     "description": "The type of DNA mutation, for example, insertion, deletion, substitution, or indel.",
                     "type": "string"
                 },
-                "end_position": {
-                    "description": "End position of variant on genomic entity.",
+                "end": {
+                    "description": "The end of the feature in positive 1-based integer coordinates",
                     "type": "integer"
                 },
-                "evidence_code": {
-                    "type": "string"
+                "evidence": {
+                    "description": "",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "exon_number": {
                     "description": "The exon number of the variant location.  If the variant is in an intron, this slot is not populated. Primarily used for zebrafish.",
@@ -17230,6 +17226,9 @@
                 },
                 "gene_localization_type": {
                     "description": "The type of gene localization, for example, intronic, intergenic, or intragenic.",
+                    "type": "string"
+                },
+                "has_assembly": {
                     "type": "string"
                 },
                 "inserted_sequence": {
@@ -17252,12 +17251,25 @@
                     "description": "The number of DNA base pairs removed from the reference sequence by the variant.   sequence.",
                     "type": "integer"
                 },
+                "object": {
+                    "description": "object should be the chromosome identifier",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
                 "padded_base": {
                     "description": "",
+                    "type": "string"
+                },
+                "predicate": {
+                    "anyOf": [
+                        {
+                            "const": "has_genomic_location"
+                        }
+                    ],
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
                 "reference_sequence": {
@@ -17268,13 +17280,13 @@
                     "description": "The accession number that describes the assembly and chromosome of the reference sequence.",
                     "type": "string"
                 },
-                "single_reference": {
-                    "description": "holds between an object and a single reference",
-                    "type": "string"
-                },
-                "start_position": {
-                    "description": "Start position of variant on genomic entity.",
+                "start": {
+                    "description": "The start of the feature in positive 1-based integer coordinates",
                     "type": "integer"
+                },
+                "subject": {
+                    "description": "subject should be a genomic entity",
+                    "type": "string"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -17290,90 +17302,16 @@
                 }
             },
             "required": [
+                "has_assembly",
+                "subject",
+                "predicate",
+                "object",
                 "internal"
             ],
-            "title": "VariantGenomeLocation",
+            "title": "VariantGenomeLocationAssociation",
             "type": "object"
         },
-        "VariantLocation": {
-            "additionalProperties": false,
-            "description": "Base class linking a variant to a position on a genomic entity and the resulting consequence to the sequence and/or function of that genomic entity. Slots are provided for data taken from a source publication or data load and for data resulting from manual curation. Where the values are the same, the curator has confirmed the information from the source.  In other cases, the curator's analysis has resulted in different values, for instance, if the assembly is different, the source did not specify the transcript or protein isoform, the definition of the transcript or protein isoform used by the source has changed, or if there was an error in the source data.",
-            "properties": {
-                "consequence": {
-                    "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.",
-                    "type": "string"
-                },
-                "created_by": {
-                    "description": "The individual that created the entity.",
-                    "type": "string"
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "end_position": {
-                    "description": "End position of variant on genomic entity.",
-                    "type": "integer"
-                },
-                "evidence_code": {
-                    "type": "string"
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": "boolean"
-                },
-                "reference_sequence": {
-                    "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
-                    "type": "string"
-                },
-                "sequence_of_reference_accession_number": {
-                    "description": "The accession number that describes the assembly and chromosome of the reference sequence.",
-                    "type": "string"
-                },
-                "single_reference": {
-                    "description": "holds between an object and a single reference",
-                    "type": "string"
-                },
-                "start_position": {
-                    "description": "Start position of variant on genomic entity.",
-                    "type": "integer"
-                },
-                "updated_by": {
-                    "description": "The individual that last modified the entity.",
-                    "type": "string"
-                },
-                "variant_sequence": {
-                    "description": "Sequence that differs from the reference sequence of genome or genomic entity at position of variant, as specified by curator.",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "internal"
-            ],
-            "title": "VariantLocation",
-            "type": "object"
-        },
-        "VariantPolypeptideLocation": {
+        "VariantPolypeptideLocationAssociation": {
             "additionalProperties": false,
             "description": "Links a variant to a position on a specified polypeptide and the resulting consequence to the sequence and/or function of that polypeptide.",
             "properties": {
@@ -17385,7 +17323,7 @@
                     "type": "array"
                 },
                 "consequence": {
-                    "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.",
+                    "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
                     "type": "string"
                 },
                 "created_by": {
@@ -17412,11 +17350,18 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "end_position": {
-                    "description": "End position of variant on genomic entity.",
+                "end": {
+                    "description": "The end of the feature in positive 1-based integer coordinates",
                     "type": "integer"
                 },
-                "evidence_code": {
+                "evidence": {
+                    "description": "",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "has_assembly": {
                     "type": "string"
                 },
                 "internal": {
@@ -17431,12 +17376,25 @@
                     "description": "The number of amino acids removed from the polypeptide as a result of the variant.",
                     "type": "integer"
                 },
+                "object": {
+                    "description": "object should be the chromosome identifier",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
                 "polypeptide": {
-                    "description": "Transcript associated with variant and for which a specific location and consequence of that variant is provided, as specified by curator. Multivalued=false for this slot because although a variant can have multiple VariantTranscriptLocation stanzas, each stanza will have one and only one curated transcript ID.",
+                    "description": "Transcript associated with variant and for which a specific location and consequence of that variant is provided, as specified by curator. Multivalued=false for this slot because although a variant can have multiple VariantTranscriptLocationAssociation stanzas, each stanza will have one and only one curated transcript ID.",
+                    "type": "string"
+                },
+                "predicate": {
+                    "anyOf": [
+                        {
+                            "const": "has_genomic_location"
+                        }
+                    ],
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
                 "reference_sequence": {
@@ -17447,13 +17405,13 @@
                     "description": "The accession number that describes the assembly and chromosome of the reference sequence.",
                     "type": "string"
                 },
-                "single_reference": {
-                    "description": "holds between an object and a single reference",
-                    "type": "string"
-                },
-                "start_position": {
-                    "description": "Start position of variant on genomic entity.",
+                "start": {
+                    "description": "The start of the feature in positive 1-based integer coordinates",
                     "type": "integer"
+                },
+                "subject": {
+                    "description": "subject should be a genomic entity",
+                    "type": "string"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -17466,9 +17424,13 @@
             },
             "required": [
                 "polypeptide",
+                "has_assembly",
+                "subject",
+                "predicate",
+                "object",
                 "internal"
             ],
-            "title": "VariantPolypeptideLocation",
+            "title": "VariantPolypeptideLocationAssociation",
             "type": "object"
         },
         "VariantStatusEnum": {
@@ -17585,7 +17547,7 @@
                     "type": "number"
                 },
                 "subject": {
-                    "$ref": "#/$defs/VariantTranscriptLocation",
+                    "$ref": "#/$defs/VariantTranscriptLocationAssociation",
                     "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "updated_by": {
@@ -17609,12 +17571,12 @@
             "title": "VariantTranscriptConsequence",
             "type": "object"
         },
-        "VariantTranscriptLocation": {
+        "VariantTranscriptLocationAssociation": {
             "additionalProperties": false,
             "description": "Links a variant to a position on a specified transcript and the resulting consequence to the sequence and/or function of that transcript.",
             "properties": {
                 "consequence": {
-                    "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocation, VariantTranscriptLocation, and VariantPolypeptideLocation.",
+                    "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
                     "type": "string"
                 },
                 "created_by": {
@@ -17641,16 +17603,23 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "end_position": {
-                    "description": "End position of variant on genomic entity.",
+                "end": {
+                    "description": "The end of the feature in positive 1-based integer coordinates",
                     "type": "integer"
                 },
-                "evidence_code": {
-                    "type": "string"
+                "evidence": {
+                    "description": "",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "exon_number": {
                     "description": "The exon number of the variant location.  If the variant is in an intron, this slot is not populated. Primarily used for zebrafish.",
                     "type": "integer"
+                },
+                "has_assembly": {
+                    "type": "string"
                 },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
@@ -17660,9 +17629,22 @@
                     "description": "The intron number of the variant location.  If the variant is in an exon, this slot is not populated. Primarily used for zebrafish.",
                     "type": "integer"
                 },
+                "object": {
+                    "description": "object should be the chromosome identifier",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "predicate": {
+                    "anyOf": [
+                        {
+                            "const": "has_genomic_location"
+                        }
+                    ],
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
                 },
                 "reference_sequence": {
                     "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
@@ -17672,16 +17654,16 @@
                     "description": "The accession number that describes the assembly and chromosome of the reference sequence.",
                     "type": "string"
                 },
-                "single_reference": {
-                    "description": "holds between an object and a single reference",
-                    "type": "string"
-                },
-                "start_position": {
-                    "description": "Start position of variant on genomic entity.",
+                "start": {
+                    "description": "The start of the feature in positive 1-based integer coordinates",
                     "type": "integer"
                 },
+                "subject": {
+                    "description": "subject should be a genomic entity",
+                    "type": "string"
+                },
                 "transcript": {
-                    "description": "Transcript associated with variant and for which a specific location and consequence of that variant is provided, as specified at source.  Multivalued=false for this slot because although a variant can have multiple VariantTranscriptLocation stanzas, each stanza will have one and only one source transcript ID.",
+                    "description": "Transcript associated with variant and for which a specific location and consequence of that variant is provided, as specified at source.  Multivalued=false for this slot because although a variant can have multiple VariantTranscriptLocationAssociation stanzas, each stanza will have one and only one source transcript ID.",
                     "type": "string"
                 },
                 "updated_by": {
@@ -17694,9 +17676,13 @@
                 }
             },
             "required": [
+                "has_assembly",
+                "subject",
+                "predicate",
+                "object",
                 "internal"
             ],
-            "title": "VariantTranscriptLocation",
+            "title": "VariantTranscriptLocationAssociation",
             "type": "object"
         },
         "VepConsequenceLevels": {
