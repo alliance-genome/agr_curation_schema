@@ -11,6 +11,7 @@ imports:
   - ontologyTerm
   - affectedGenomicModel
   - phenotypeAndDiseaseAnnotation
+  - variantDTO
 
 prefixes:
   alliance: 'http://alliancegenome.org/'
@@ -79,7 +80,15 @@ slots:
   variant_ingest_set:
     description: >-
     domain: Ingest
-    range: Variant
+    range: VariantDTO
+    multivalued: true
+    mixins:
+      - object_set
+
+  variant_dto_ingest_set:
+    description: >-
+    domain: Ingest
+    range: VariantDTO
     multivalued: true
     mixins:
       - object_set
@@ -266,7 +275,6 @@ classes:
       - variant_genomic_location_association_ingest_set
       - variant_transcript_location_association_ingest_set
       - variant_protein_location_association_ingest_set
-      - variant_allele_association_ingest_set
       - agm_ingest_set
       - sqtr_ingest_set
       - ontology_closure_ingest_set

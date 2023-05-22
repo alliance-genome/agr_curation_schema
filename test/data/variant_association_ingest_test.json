@@ -51,7 +51,7 @@
       "assembly_curie": "GRCz11",
       "start": 30341642,
       "end": 30341642,
-      "polypeptide_curie": "UniProtKB:11324235",
+      "protein_curie": "UniProtKB:11324235",
       "associated_transcripts": ["ZFIN:ZDB-TSCRIPT-000412-8"],
       "number_amino_acids_removed": 2,
       "number_amino_acids_inserted": 4

@@ -122,11 +122,6 @@ classes:
       - cross_references
       - genomic_location_associations
 
-  GenomicEntityDTO:
-    is_a: BiologicalEntityDTO
-    slots:
-      - cross_reference_dtos
-      - genomic_location_association_dtos
 
   Transcript:
     is_a: GenomicEntity
@@ -374,6 +369,38 @@ classes:
       - has_assembly
       - start
       - end
+
+  GenomicEntityDTO:
+    is_a: BiologicalEntityDTO
+    slots:
+      - cross_reference_dtos
+      - genomic_location_association_dtos
+
+  GenomicLocationAssociationDTO:
+    is_a: AuditedObjectDTO
+    slots:
+      - genomic_entity_curie
+      - predicate_name
+      - chromosome_curie
+      - evidence_curies
+      - assembly_curie
+      - start
+      - end
+    slot_usage:
+      genomic_entity_curie:
+        required: true
+      predicate_name:
+        required: true
+        any_of:
+          equals_string: has_genomic_location
+      chromosome_curie:
+        required: true
+      assembly_curie:
+        required: true
+      start:
+        required: true
+      end:
+        required: true
 
   Protein:
     is_a: GenomicEntity
@@ -640,17 +667,6 @@ slots:
     multivalued: false
     range: uriorcurie
 
-  genomic_location_associations:
-    domain: GenomicEntity
-    range: GenomicLocationAssociation
-    multivalued: true
-
-  genomic_location_association_dtos:
-    domain: GenomicEntityDTO
-    range: GenomicLocationAssociationDTO
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
 
   table_key:
     description: >-
@@ -918,6 +934,21 @@ slots:
   protein_curie:
     range: string
     required: true
+
+  genomic_entity_curie:
+    range: string
+
+  genomic_location_associations:
+    domain: GenomicEntity
+    range: GenomicLocationAssociation
+    multivalued: true
+
+  genomic_location_association_dtos:
+    domain: GenomicEntityDTO
+    range: GenomicLocationAssociationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
 
   source_organization:
     domain: DataProvider

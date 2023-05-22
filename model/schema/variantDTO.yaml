@@ -1,10 +1,10 @@
-id: https://github.com/alliance-genome/agr_curation_schema/src/schema/alleleDTO
-name: alleleDTO
-title: Allele DTO
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantDTO
+name: variantDTO
+title: variantDTO
 
 imports:
   - core
-  - variant
+  - variation
   - allele
   - linkml:types
 
@@ -37,31 +37,15 @@ emit_prefixes:
 ## ------------
 classes:
 
-  GenomicLocationAssociationDTO:
-    is_a: AuditedObjectDTO
+  VariantDTO:
+    is_a: GenomicEntityDTO
+    description: >-
+      Ingest class for an Allele object
     slots:
-      - genomic_entity_curie
-      - predicate_name
-      - chromosome_curie
-      - evidence_curies
-      - assembly_curie
-      - start
-      - end
-    slot_usage:
-      genomic_entity_curie:
-        required: true
-      predicate_name:
-        required: true
-        any_of:
-          equals_string: has_genomic_location
-      chromosome_curie:
-        required: true
-      assembly_curie:
-        required: true
-      start:
-        required: true
-      end:
-        required: true
+      - variant_type
+      - related_notes
+      - source_general_consequence
+      - variant_status
 
   VariantGenomicLocationAssociationDTO:
     is_a: AuditedObjectDTO
@@ -138,7 +122,7 @@ classes:
       - assembly_curie
       - start
       - end
-      - polypeptide_curie
+      - protein_curie
       - associated_transcripts
       - number_amino_acids_removed
       - number_amino_acids_inserted
@@ -159,14 +143,5 @@ classes:
         required: true
 
 slots:
-  genomic_entity_curie:
-    range: string
-
   variant_entity_curie:
-    is_a: genomic_entity_curie
-
-  transcript_curie:
-    is_a: genomic_entity_curie
-
-  polypeptide_curie:
     is_a: genomic_entity_curie
