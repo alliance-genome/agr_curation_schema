@@ -104,33 +104,61 @@ classes:
       Dummy cell line class
 
   Construct:
-    is_a: GenomicEntity
+    is_a: Reagent
     description: >-
+    slots:
+      - construct_genomic_entity_associations
+      - construct_components
+      - name
+      - references
     slot_usage:
       curie:
         identifier: true
       name:
         required: true
+
+
+  ConstructComponentSlotAnnotation:
+    is_a: SlotAnnotation
     slots:
-      - construct_components
-      - references
+      - single_construct
+      - component_symbol
+      - related_notes
+      - taxon
+      - taxon_text
+    slot_usage:
+      single_construct:
+        required: true
+      component_symbol:
+        required: true
+      related_notes:
+        required: false
+      taxon:
+        required: false
+      taxon_text:
+        required: false
 
-  ConstructComponent:
-    is_a: GenomicEntity
-
-  ConstructComponentAssociation:
+  ConstructGenomicEntityAssociation:
     is_a: Association
     description: >-
-      The predicate should be a VocabularyTerm with one of the following
-      values - expresses (RO:0002292) / is_regulated_by (RO:0002334) /
-      targets (RO:0002436)
+      An association class to capture the identity of a construct component that is
+      a known genomic entity with a curie and any accompanying meta data about the
+      relationship between the construct and that genomic entity component
+    slots:
+      - related_notes
     slot_usage:
-      predicate:
-        range: VocabularyTerm
       subject:
         range: Construct
+      predicate:
+        range: VocabularyTerm
+        notes: >-
+        The predicate should be a VocabularyTerm with one of the following
+        values - expresses (RO:0002292) / is_regulated_by (RO:0002334) /
+        targets (RO:0002436)
       object:
-        range: ConstructComponent
+        range: GenomicEntity
+      related_notes:
+        required: false
 
   GenerationMethod:
     is_a: AuditedObject
@@ -580,10 +608,22 @@ slots:
     domain: GenerationMethod
     range: VocabularyTerm # CV 'Chemical Mutagens'
 
+  component_symbol:
+    domain: ConstructComponentSlotAnnotation
+    range: string
+    description: >-
+      The free text of a symbol or name of a construct
+      component for which no curie exists or is available
+
   construct_components:
     multivalued: true
     domain: Construct
-    range: GenomicEntity
+    range: ConstructComponentSlotAnnotation
+
+  construct_genomic_entity_associations:
+    multivalued: true
+    domain: Construct
+    range: ConstructGenomicEntityAssociation
 
   database_status:
     description: >-
@@ -707,6 +747,16 @@ slots:
     range: Allele
     multivalued: false
 
+  single_construct:
+    domain: ConstructComponentSlotAnnotation
+    range: Construct
+    multivalued: false
+
+  taxon_text:
+    description: >-
+      The free text reference to a species or general taxon (e.g. "Yeast") for a
+      a biological entity for which the exact taxon curie is unknown or unavailable.
+
   transgene_chromosome_location:
     description: >-
       The chromosome to which a transgene has been mapped. Used for WormBase transgenes
@@ -724,7 +774,7 @@ slots:
 
 
 enums:
-  construct_component_relation_enum:
+  construct_component_relation_enum:  # this should be moved to a controlled vocabulary
     permissible_values:
       expresses:
         meaning: RO:0002292
