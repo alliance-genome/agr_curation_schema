@@ -14,7 +14,7 @@ def get_agr_jsonschema_dict() -> Dict:
     dict
         The dict of the keys and value in the agr.schema.json file.
     """
-    json_schema_file = open('jsonschema/allianceModel.schema.json')
+    json_schema_file = open('generated/jsonschema/allianceModel.schema.json')
     return json.load(json_schema_file)
 
 
