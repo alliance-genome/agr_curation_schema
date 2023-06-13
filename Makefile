@@ -231,3 +231,15 @@ gen-java: $(patsubst %, $(TARGET_DIR)/java/%.java, $(SCHEMA_NAMES))
 
 $(TARGET_DIR)/java/%.java: $(SCHEMA_DIR)/%.yaml tdir-java
 	poetry run gen-java $(JAVA_GEN_OPTS)  $<
+
+remove-container:
+	docker stop agr_curation_schema
+	docker rm agr_curation_schema
+
+build-container:
+	docker build -t agr_curation_schema .
+	docker run -it -d --mount src=`pwd`,target=/src/agr_curation_schema,type=bind --name agr_curation_schema agr_curation_schema /bin/bash
+
+run-tests:
+	docker exec -t -d agr_curation_schema echo cd /src/agr_curation_schema && make test
+
