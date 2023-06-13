@@ -33,7 +33,7 @@ RUN curl -sSL https://install.python-poetry.org | python
 
 # copy project requirement files here to ensure they will be cached.
 WORKDIR src
-COPY Makefile pyproject.toml poetry.lock README.md .
+COPY Makefile pyproject.toml poetry.lock README.md ./
 COPY . .
 
 CMD poetry install
