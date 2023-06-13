@@ -149,7 +149,7 @@ classes:
       - number_amino_acids_inserted
     slot_usage:
       object:
-        range: Polypeptide
+        range: Protein
         required: true
 
 # Slots
@@ -456,13 +456,14 @@ slots:
 
   polypeptide:
     description: >-
-      Transcript associated with variant and for which a specific location and consequence of that variant is
+      Polypeptide associated with variant and for which a specific location and consequence of that variant is
       provided, as specified by curator. Multivalued=false for this slot because although a variant can have
-      multiple VariantTranscriptLocationAssociation stanzas, each stanza will have one and only one curated transcript ID.
+      multiple VariantPolypeptideLocationAssociation stanzas, each stanza will have one and only one curated polypeptide 
+      ID.
     required: true
     multivalued: false
-    domain: VariantTranscriptLocationAssociation
-    range: Transcript
+    domain: VariantPolypeptideLocationAssociation
+    range: Protein
 
   associated_transcripts:
     description:
