@@ -280,34 +280,27 @@ make test
 
 ## Alternate development environment - Using Docker
 
-1) install docker
-2) build the docker image
+1) remove containers if exist
 ```bash
-docker build -t agr_curation_schema .
+make remove-container
 ```
-3) run the docker image
+2) build and run the tests in the container
 ```bash
-docker run -t --name agr_curation_schema agr_curation_schema -v .:/agr_curation_schema 
+make build-container
+make run-tests
+````
+This will mount and run your local directory to the docker container.  Any changes you make to the local 
+directory will be reflected in the container.  This is a convenient way to run the tests in a clean 
+environment without having to install the dependencies locally.
+
+Make a change to the schema or tests files and run again:
+```bash
+make run-tests
 ```
-# TODO: add docker cp command example here.
-# TODO: script the docker spin up.
-4) invade the running container
+
+3) remove the container when done
 ```bash
-docker exec -it agr_curation_schema /bin/bash
-```
-5) clone the repo
-```bash
-git clone https://github.com/alliance-genome/agr_curation_schema
-cd agr_curation_schema
-git checkout my_branch_to_run_tests
-```
-6) install the project
-```bash
-poetry install
-```
-7) run the tests
-```bash
-make test
+make remove-container
 ```
 
 ## Alternate alternate test environment - just use pipx on MacOS

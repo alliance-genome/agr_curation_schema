@@ -27,9 +27,13 @@ RUN apt-get update \
     && apt-get install --no-install-recommends -y \
     build-essential
 
+
 # install poetry - respects $POETRY_VERSION & $POETRY_HOME
 RUN curl -sSL https://install.python-poetry.org | python
 
 # copy project requirement files here to ensure they will be cached.
 WORKDIR src
+COPY Makefile pyproject.toml poetry.lock README.md ./
+COPY . .
 
+CMD poetry install
