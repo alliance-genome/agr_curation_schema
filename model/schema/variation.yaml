@@ -115,6 +115,8 @@ classes:
         required: true
       subject:
         required: true
+      object:
+        required: true
 
 
   VariantTranscriptLocationAssociation:
@@ -125,9 +127,14 @@ classes:
       Links a variant to a position on a specified transcript and the resulting consequence to the sequence and/or
       function of that transcript.
     slots:
-      - transcript
       - exon_number
       - intron_number
+    slot_usage:
+      object:
+        range: Transcript
+        required: true
+      subject:
+        required: true
 
   VariantPolypeptideLocationAssociation:
     is_a: GenomicLocationAssociation
@@ -137,10 +144,13 @@ classes:
       Links a variant to a position on a specified polypeptide and the resulting consequence to the sequence and/or
       function of that polypeptide.
     slots:
-      - polypeptide
       - associated_transcripts
       - number_amino_acids_removed
       - number_amino_acids_inserted
+    slot_usage:
+      object:
+        range: Polypeptide
+        required: true
 
 # Slots
 

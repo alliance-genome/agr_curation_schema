@@ -48,7 +48,6 @@ classes:
       - variant_status
       - reference_sequence
       - variant_sequence
-      - consequence
       - sequence_of_reference_accession_number
 
   VariantGenomicLocationAssociationDTO:

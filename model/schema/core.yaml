@@ -332,6 +332,7 @@ classes:
     description: The ID of the landmark used to establish the coordinate system for the current feature.
     slots:
       - curie
+      - display_name
     slot_usage:
       curie:
         required: true
@@ -924,6 +925,8 @@ slots:
 
   chromosome_curie:
     range: string
+    description: >-
+      The NCBI chromosome accession number for the chromosome.
 
   transcript_curie:
     range: string
