@@ -3,89 +3,41 @@
   "variant_ingest_set": [
     {
       "curie": "ZFIN:ZDB-ALT-000412-8",
-      "taxon_curie": "NCBITaxon:7955",
-      "created_by": "ZFIN",
-      "updated_by": "ZFIN",
-      "internal": false,
-      "variant_transcript_locations": [
-        {
-          "single_reference": "ZFIN:ZDB-PUB-000412-1",
-          "reference_sequence": "C",
-          "variant_sequence": "T",
-          "internal": false,
-          "sequence_of_reference_accession_number": "NC_006088.4",
-          "transcript": "ZFIN:ZDB-TSCRIPT-000412-2",
-          "exon_number": 3
-        }
-      ],
-      "data_provider": {
-        "source_organization": {
-          "abbreviation" : "ZFIN",
-          "full_name": "Zebrafish Information Network",
-          "short_name" : "ZFIN",
-          "internal" : false
+      "data_provider_dto": {
+        "source_organization_abbreviation": "ZFIN",
+        "cross_reference_dto": {
+          "referenced_curie": "ZFIN:ZDB-ALT-130621-1",
+          "prefix": "ZFIN",
+          "page_area": "allele",
+          "display_name": "ZFIN:ZDB-ALT-130621-1",
+          "internal": false
         },
-        "internal" : false
+        "internal": false
       },
-      "variant_genome_locations": [
-        {
-          "single_reference": "ZFIN:ZDB-PUB-000412-1",
-          "assembly": "GRCz11",
-          "chromosome": "7",
-          "start_position": 30341642,
-          "end_position": 30341642,
-          "reference_sequence": "C",
-          "variant_sequence": "T",
-          "internal": false,
-          "sequence_of_reference_accession_number": "NC_006088.4"
-        }
-      ],
-      "variant_polypeptide_locations": [
-        {
-          "single_reference": "ZFIN:ZDB-PUB-000412-1",
-          "internal": false,
-          "associated_transcripts": [
-            "ZFIN:ZDB-TSCRIPT-000412-1"
-          ],
-          "polypeptide": "UNIPROT:Q9Y6X7",
-          "number_amino_acids_removed": 3
-        }
-      ],
-      "source_variant_locations": [
-        {
-          "single_reference": "ZFIN:ZDB-PUB-000412-1",
-          "internal": false,
-          "variant_locations": [
-            {
-              "single_reference": "ZFIN:ZDB-PUB-000412-1",
-              "start_position": 30341642,
-              "end_position": 30341642,
-              "reference_sequence": "C",
-              "variant_sequence": "T",
-              "internal": false,
-              "sequence_of_reference_accession_number": "NC_006088.4"
-            }
-          ]
-        }
-      ],
+      "taxon_curie": "NCBITaxon:7955",
+      "created_by_curie": "ZFIN",
+      "updated_by_curie": "ZFIN",
+      "internal": false,
       "variant_status": "public",
       "variant_type": "SO:1000008"
     },
     {
       "curie": "ZFIN:ZDB-ALT-000412-9",
-      "taxon_curie": "NCBITaxon:7955",
-      "created_by": "ZFIN",
-      "updated_by": "ZFIN",
-      "internal": false,
-      "data_provider": {
-        "source_organization": {
-          "abbreviation" : "ZFIN",
-          "full_name": "Zebrafish Information Network",
-          "short_name" : "ZFIN",
-          "internal" : false
+      "data_provider_dto": {
+        "source_organization_abbreviation": "ZFIN",
+        "cross_reference_dto": {
+          "referenced_curie": "ZFIN:ZDB-ALT-130621-1",
+          "prefix": "ZFIN",
+          "page_area": "allele",
+          "display_name": "ZFIN:ZDB-ALT-130621-1",
+          "internal": false
         },
-        "internal" : false
+        "internal": false
       },
+      "taxon_curie": "NCBITaxon:7955",
+      "created_by_curie": "ZFIN",
+      "updated_by_curie": "ZFIN",
+      "internal": false,
       "variant_status": "private",
       "variant_type": "SO:1000008"
     }
