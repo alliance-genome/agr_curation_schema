@@ -1,0 +1,69 @@
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/rulesExamples
+name: rulesExamples
+title: rulesExamples
+
+imports:
+  - resouce
+  - reference
+  - core
+
+
+classes:
+
+  TestClass:
+    slots:
+      - entity_type
+      - entity
+      - entity_source
+      - species
+      - reference_id
+      - topic
+    rules:
+      preconditions:
+          any_of:
+            - slot_conditions:
+                entity_type:
+                  required: true
+                  value_presence: PRESENT
+                entity_source:
+                  required: true
+                  value_presence: PRESENT
+                entity:
+                  required: true
+                  value_presence: PRESENT
+                species:
+                  required: true
+                  value_presence: PRESENT
+            - slot_conditions:
+                entity_type:
+                  value_presence: ABSENT
+                entity_source:
+                  value_presence: ABSENT
+                entity:
+                  value_presence: ABSENT
+      postconditions:
+        all_of:
+          - slot_conditions:
+              entity_type:
+                value_presence: ABSENT
+              species:
+                required: true
+                value_presence: PRESENT
+    unique_keys:
+      ix_unique_entity_tag:
+        unique_key_slots:
+          - reference_id
+          - topic
+          - entity_type
+          - entity
+          - entity_source
+          - species
+        consider_nulls_inequal: false
+
+slots:
+
+  entity_type:
+  entity:
+  entity_source:
+  reference_id:
+  topic:
