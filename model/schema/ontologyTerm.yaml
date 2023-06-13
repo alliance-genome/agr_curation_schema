@@ -201,7 +201,7 @@ classes:
     is_a: OntologyTerm
 
   MMUSDVTerm:
-    is_a: OntologyTerm
+    is_a: StageTerm
 
   SOTerm:
     is_a: OntologyTerm
