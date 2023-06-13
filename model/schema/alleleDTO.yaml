@@ -328,7 +328,6 @@ slots:
     range: AlleleMutationTypeSlotAnnotationDTO
     multivalued: true
     inlined: true
-    inlined_as_list: true
 
   allele_nomenclature_event_dtos:
     domain: AlleleDTO

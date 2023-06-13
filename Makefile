@@ -218,7 +218,7 @@ test-jsonschema_invalid: $(foreach example, $(SCHEMA_TEST_EXAMPLES_INVALID), val
 validate-%: test/data/%.json $(ARTIFACTS_DIR)/jsonschema/allianceModel.schema.json
 # util/validate_allianceModel_json.py -i $< # example of validating data using the cli
 	# poetry run jsonschema -i $< $(word 2, $^)
-	poetry run linkml-validate -C Ingest -s model/schema/allianceModel.yaml -s model/schema/allianceModel.yaml $<
+	poetry run linkml-validate -C Ingest -s model/schema/allianceModel.yaml $<
 validate-invalid-%: test/data/invalid/%.json $(ARTIFACTS_DIR)/jsonschema/allianceModel.schema.json
 	! poetry run jsonschema -i $< $(word 2, $^)
 

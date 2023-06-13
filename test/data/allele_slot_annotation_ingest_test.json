@@ -46,9 +46,6 @@
           "mutation_type_curies": [
             "SO:0000180"
           ],
-          "evidence_curies": [
-            "PMID:11231512"
-          ],
           "internal": false
         }
       ],
