@@ -3,7 +3,7 @@
   "variant_ingest_set": [
     {
       "curie": "ZFIN:ZDB-ALT-000412-8",
-      "taxon": "NCBITaxon:7955",
+      "taxon_curie": "NCBITaxon:7955",
       "created_by": "ZFIN",
       "updated_by": "ZFIN",
       "internal": false,
@@ -73,7 +73,7 @@
     },
     {
       "curie": "ZFIN:ZDB-ALT-000412-9",
-      "taxon": "NCBITaxon:7955",
+      "taxon_curie": "NCBITaxon:7955",
       "created_by": "ZFIN",
       "updated_by": "ZFIN",
       "internal": false,
