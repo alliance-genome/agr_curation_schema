@@ -188,6 +188,8 @@ slots:
     range: uriorcurie
     examples:
       - value: SO:1000027 # G_to_T_transversion
+    notes: >-
+      This is a ZFIN specific field. 
 
   gene_localization_type:
     description: >-
