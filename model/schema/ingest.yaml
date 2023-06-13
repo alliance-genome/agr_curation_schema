@@ -85,14 +85,6 @@ slots:
     mixins:
       - object_set
 
-  variant_dto_ingest_set:
-    description: >-
-    domain: Ingest
-    range: VariantDTO
-    multivalued: true
-    mixins:
-      - object_set
-
   allele_variant_association_ingest_set:
     description: >-
     domain: Ingest
