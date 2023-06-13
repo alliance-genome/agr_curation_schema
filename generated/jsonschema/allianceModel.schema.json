@@ -6211,6 +6211,9 @@
                     "format": "date-time",
                     "type": "string"
                 },
+                "display_name": {
+                    "type": "string"
+                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
@@ -6226,6 +6229,7 @@
             },
             "required": [
                 "curie",
+                "display_name",
                 "internal"
             ],
             "title": "Chromosome",
@@ -11549,6 +11553,7 @@
                     "type": "string"
                 },
                 "chromosome_curie": {
+                    "description": "The NCBI chromosome accession number for the chromosome.",
                     "type": "string"
                 },
                 "created_by_curie": {
@@ -17026,10 +17031,6 @@
             "additionalProperties": false,
             "description": "Ingest class for an Allele object",
             "properties": {
-                "consequence": {
-                    "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomeLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
-                    "type": "string"
-                },
                 "created_by_curie": {
                     "description": "Curie of the Person object representing the individual that created the entity",
                     "type": "string"
@@ -17363,6 +17364,7 @@
                     "type": "string"
                 },
                 "chromosome_curie": {
+                    "description": "The NCBI chromosome accession number for the chromosome.",
                     "type": "string"
                 },
                 "consequence": {
@@ -17574,10 +17576,6 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "polypeptide": {
-                    "description": "Transcript associated with variant and for which a specific location and consequence of that variant is provided, as specified by curator. Multivalued=false for this slot because although a variant can have multiple VariantTranscriptLocationAssociation stanzas, each stanza will have one and only one curated transcript ID.",
-                    "type": "string"
-                },
                 "predicate": {
                     "anyOf": [
                         {
@@ -17613,7 +17611,6 @@
                 }
             },
             "required": [
-                "polypeptide",
                 "subject",
                 "predicate",
                 "object",
@@ -17637,6 +17634,7 @@
                     "type": "array"
                 },
                 "chromosome_curie": {
+                    "description": "The NCBI chromosome accession number for the chromosome.",
                     "type": "string"
                 },
                 "consequence": {
@@ -17976,10 +17974,6 @@
                     "description": "subject should be a genomic entity",
                     "type": "string"
                 },
-                "transcript": {
-                    "description": "Transcript associated with variant and for which a specific location and consequence of that variant is provided, as specified at source.  Multivalued=false for this slot because although a variant can have multiple VariantTranscriptLocationAssociation stanzas, each stanza will have one and only one source transcript ID.",
-                    "type": "string"
-                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": "string"
@@ -18006,6 +18000,7 @@
                     "type": "string"
                 },
                 "chromosome_curie": {
+                    "description": "The NCBI chromosome accession number for the chromosome.",
                     "type": "string"
                 },
                 "consequence": {
