@@ -325,6 +325,12 @@ classes:
       An ontology term from the Phenotype and Trait Ontology (PATO).
       PURL: http://purl.obolibrary.org/obo/PATO.owl
 
+  VTTerm:
+    is_a: OntologyTerm
+    description: >-
+      An ontology term from the Vertebrate Trait Ontologt (VT).
+      PURL: http://purl.obolibrary.org/obo/vt.owl
+
   OBITerm:
     is_a: OntologyTerm
     description: >-
