@@ -10911,22 +10911,20 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "gene_object": {
-                    "type": "string"
-                },
-                "gene_subject": {
-                    "type": "string"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
+                },
+                "object_gene": {
+                    "description": "The second gene in the orthology match pair",
+                    "type": "string"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
-                    "description": "orthologous relationship type",
+                "subject_gene": {
+                    "description": "The first gene in the orthology match pair",
                     "type": "string"
                 },
                 "updated_by": {
@@ -10935,7 +10933,8 @@
                 }
             },
             "required": [
-                "predicate",
+                "subject_gene",
+                "object_gene",
                 "internal"
             ],
             "title": "GeneToGeneOrthology",
@@ -10972,26 +10971,24 @@
                 "evidence_code": {
                     "type": "string"
                 },
-                "gene_object": {
-                    "type": "string"
-                },
-                "gene_subject": {
-                    "type": "string"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
+                },
+                "object_gene": {
+                    "description": "The second gene in the orthology match pair",
+                    "type": "string"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
-                    "description": "orthologous relationship type",
-                    "type": "string"
-                },
                 "single_reference": {
                     "description": "holds between an object and a single reference",
+                    "type": "string"
+                },
+                "subject_gene": {
+                    "description": "The first gene in the orthology match pair",
                     "type": "string"
                 },
                 "updated_by": {
@@ -11000,7 +10997,8 @@
                 }
             },
             "required": [
-                "predicate",
+                "subject_gene",
+                "object_gene",
                 "internal"
             ],
             "title": "GeneToGeneOrthologyCurated",
@@ -11011,6 +11009,7 @@
             "description": "Class that holds the properties necessary to record an orthology record from DIOPT",
             "properties": {
                 "confidence": {
+                    "description": "Confidence of orthology match Permissible values: moderate / high / low",
                     "type": "string"
                 },
                 "created_by": {
@@ -11037,34 +11036,57 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "gene_object": {
-                    "type": "string"
-                },
-                "gene_subject": {
-                    "type": "string"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
                 "is_best_reverse_score": {
+                    "description": "DIOPT schema highlights the best pair Permissible values: Yes / No",
                     "type": "string"
                 },
                 "is_best_score": {
+                    "description": "DIOPT schema highlights the best pair Permissible values: Yes / No / Yes_Adjusted",
                     "type": "string"
                 },
                 "moderate_filter": {
+                    "description": "Indicates whether this orthology match is displayed when the moderate filter is selected",
+                    "type": "boolean"
+                },
+                "object_gene": {
+                    "description": "The second gene in the orthology match pair",
                     "type": "string"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
-                    "description": "orthologous relationship type",
-                    "type": "string"
+                "prediction_methods_matched": {
+                    "description": "Source of the orthology match",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "prediction_methods_not_called": {
+                    "description": "Prediction methods that were not called",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "prediction_methods_not_matched": {
+                    "description": "Prediction methods not matched",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "strict_filter": {
+                    "description": "Indicates whether this orthology match is displayed when the strict filter is selected",
+                    "type": "boolean"
+                },
+                "subject_gene": {
+                    "description": "The first gene in the orthology match pair",
                     "type": "string"
                 },
                 "updated_by": {
@@ -11073,7 +11095,11 @@
                 }
             },
             "required": [
-                "predicate",
+                "is_best_score",
+                "is_best_reverse_score",
+                "confidence",
+                "subject_gene",
+                "object_gene",
                 "internal"
             ],
             "title": "GeneToGeneOrthologyGenerated",

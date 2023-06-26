@@ -4,7 +4,6 @@ title: Alliance Schema Orthology Term
 
 imports:
   - core
-  - allele
   - gene
   - linkml:types
 
@@ -37,26 +36,14 @@ emit_prefixes:
   - xsd
   - owl
 
-
-
 classes:
+
   GeneToGeneOrthology:
     is_a: AuditedObject
     description: >-
     slots:
-      - gene_subject
-      - predicate
-      - gene_object
-    slot_usage:
-      gene_subject:
-        range: Gene
-      gene_object:
-        range: Gene
-      predicate:
-        subproperty_of: orthologous_to
-        symmetric: true
-        description: >-
-          orthologous relationship type
+      - subject_gene
+      - object_gene
 
   GeneToGeneOrthologyCurated:
     description: >-
@@ -76,23 +63,76 @@ classes:
      - confidence
      - strict_filter
      - moderate_filter
+     - prediction_methods_matched
+     - prediction_methods_not_matched
+     - prediction_methods_not_called
 
 slots:
-  publication:
-    range: Reference
+  
   is_best_score:
-  is_best_reverse_score:
-  confidence:
-  strict_filter:
-  moderate_filter:
-  gene_subject:
-  gene_object:
-  orthologous_to:
     description: >-
-      a homology relationship between entities (typically genes) that
-      diverged after a speciation event.
-    symmetric: true
-    exact_mappings:
-      - RO:HOM0000017
-      - WIKIDATA_PROPERTY:P684
-      - biolink:orthologous_to
+      DIOPT schema highlights the best pair
+      Permissible values: Yes / No / Yes_Adjusted
+    domain: GeneToGeneOrthologyGenerated
+    range: VocabularyTerm
+    required: true
+  
+  is_best_reverse_score:
+    description: >-
+      DIOPT schema highlights the best pair
+      Permissible values: Yes / No
+    domain: GeneToGeneOrthologyGenerated
+    range: VocabularyTerm
+    required: true
+
+  confidence:
+    description: >-
+      Confidence of orthology match
+      Permissible values: moderate / high / low
+    domain: GeneToGeneOrthologyGenerated
+    range: VocabularyTerm
+    required: true
+
+  strict_filter:
+    description: >-
+      Indicates whether this orthology match is displayed when the strict filter
+      is selected
+    domain: GeneToGeneOrthologyGenerated
+    range: boolean
+
+  moderate_filter:
+    description: >-
+      Indicates whether this orthology match is displayed when the moderate filter
+      is selected
+    domain: GeneToGeneOrthologyGenerated
+    range: boolean
+
+  subject_gene:
+    description: The first gene in the orthology match pair
+    domain: GeneToGeneOrthology
+    range: Gene
+    required: true
+
+  object_gene:
+    description: The second gene in the orthology match pair
+    domain: GeneToGeneOrthology
+    range: Gene
+    required: true
+
+  prediction_methods_matched:
+    description: Source of the orthology match
+    domain: GeneToGeneOrthologyGenerated
+    range: VocabularyTerm
+    multivalued: true
+
+  prediction_methods_not_matched:
+    description: Prediction methods not matched
+    domain: GeneToGeneOrthologyGenerated
+    range: VocabularyTerm
+    multivalued: true
+
+  prediction_methods_not_called:
+    description: Prediction methods that were not called
+    domain: GeneToGeneOrthologyGenerated
+    range: VocabularyTerm
+    multivalued: true
