@@ -376,11 +376,6 @@ classes:
     description: >-
       An ontology term from the Biological Spatial Ontology (BSPO)
 
-  CLTerm:
-    is_a: OntologyTerm
-    description: >-
-      An ontology term from the Cell Ontology (CL)
-
   CMOTerm:
     is_a: OntologyTerm
     description: >-
