@@ -5081,6 +5081,123 @@
             "title": "AuthorReference",
             "type": "object"
         },
+        "BSPOTerm": {
+            "additionalProperties": false,
+            "description": "An ontology term from the Biological Spatial Ontology (BSPO)",
+            "properties": {
+                "ancestors": {
+                    "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": "array"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "dbkey": {
+                    "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+                    "type": "string"
+                },
+                "definition": {
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+                    "type": "string"
+                },
+                "definition_urls": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "descendants": {
+                    "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
+                },
+                "namespace": {
+                    "description": "the namespace of the ontology.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "subsets": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "curie",
+                "internal"
+            ],
+            "title": "BSPOTerm",
+            "type": "object"
+        },
         "BackendBulkDataTypeEnum": {
             "description": "",
             "enum": [
@@ -6028,6 +6145,123 @@
                 "internal"
             ],
             "title": "CLTerm",
+            "type": "object"
+        },
+        "CMOTerm": {
+            "additionalProperties": false,
+            "description": "An ontology term from the Clinical Measurement Ontology (CMO)",
+            "properties": {
+                "ancestors": {
+                    "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": "array"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "dbkey": {
+                    "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+                    "type": "string"
+                },
+                "definition": {
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+                    "type": "string"
+                },
+                "definition_urls": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "descendants": {
+                    "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
+                },
+                "namespace": {
+                    "description": "the namespace of the ontology.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "subsets": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "curie",
+                "internal"
+            ],
+            "title": "CMOTerm",
             "type": "object"
         },
         "CellLine": {
@@ -7939,6 +8173,123 @@
                 "internal"
             ],
             "title": "ECOTerm",
+            "type": "object"
+        },
+        "EDAMTerm": {
+            "additionalProperties": false,
+            "description": "An ontology term from the EMBRACE Data and Methods Ontology (EDAM)",
+            "properties": {
+                "ancestors": {
+                    "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": "array"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "dbkey": {
+                    "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+                    "type": "string"
+                },
+                "definition": {
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+                    "type": "string"
+                },
+                "definition_urls": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "descendants": {
+                    "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
+                },
+                "namespace": {
+                    "description": "the namespace of the ontology.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "subsets": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "curie",
+                "internal"
+            ],
+            "title": "EDAMTerm",
             "type": "object"
         },
         "EMAPATerm": {
@@ -13130,6 +13481,240 @@
             "title": "MMUSDVTerm",
             "type": "object"
         },
+        "MODTerm": {
+            "additionalProperties": false,
+            "description": "An ontology term from the Protein Modification Ontology (MOD)",
+            "properties": {
+                "ancestors": {
+                    "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": "array"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "dbkey": {
+                    "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+                    "type": "string"
+                },
+                "definition": {
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+                    "type": "string"
+                },
+                "definition_urls": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "descendants": {
+                    "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
+                },
+                "namespace": {
+                    "description": "the namespace of the ontology.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "subsets": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "curie",
+                "internal"
+            ],
+            "title": "MODTerm",
+            "type": "object"
+        },
+        "MPATHTerm": {
+            "additionalProperties": false,
+            "description": "An ontology term from the Mouse Pathology Ontology (MPATH)",
+            "properties": {
+                "ancestors": {
+                    "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": "array"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "dbkey": {
+                    "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+                    "type": "string"
+                },
+                "definition": {
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+                    "type": "string"
+                },
+                "definition_urls": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "descendants": {
+                    "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
+                },
+                "namespace": {
+                    "description": "the namespace of the ontology.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "subsets": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "curie",
+                "internal"
+            ],
+            "title": "MPATHTerm",
+            "type": "object"
+        },
         "MPTerm": {
             "additionalProperties": false,
             "description": "A phenotype ontology term from the Mammalian Phenotype (MP) Ontology. PURL: http://purl.obolibrary.org/obo/mp.owl",
@@ -14455,6 +15040,240 @@
             "title": "PATOTerm",
             "type": "object"
         },
+        "PROTerm": {
+            "additionalProperties": false,
+            "description": "An ontology term from the Protein Ontology (PRO)",
+            "properties": {
+                "ancestors": {
+                    "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": "array"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "dbkey": {
+                    "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+                    "type": "string"
+                },
+                "definition": {
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+                    "type": "string"
+                },
+                "definition_urls": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "descendants": {
+                    "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
+                },
+                "namespace": {
+                    "description": "the namespace of the ontology.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "subsets": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "curie",
+                "internal"
+            ],
+            "title": "PROTerm",
+            "type": "object"
+        },
+        "PWTerm": {
+            "additionalProperties": false,
+            "description": "An ontology term from the Pathway Ontology (PW)",
+            "properties": {
+                "ancestors": {
+                    "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": "array"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "dbkey": {
+                    "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+                    "type": "string"
+                },
+                "definition": {
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+                    "type": "string"
+                },
+                "definition_urls": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "descendants": {
+                    "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
+                },
+                "namespace": {
+                    "description": "the namespace of the ontology.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "subsets": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "curie",
+                "internal"
+            ],
+            "title": "PWTerm",
+            "type": "object"
+        },
         "Pathway": {
             "additionalProperties": false,
             "description": "",
@@ -15305,6 +16124,123 @@
                 "internal"
             ],
             "title": "ROTerm",
+            "type": "object"
+        },
+        "RSOTerm": {
+            "additionalProperties": false,
+            "description": "An ontology term from the Rat Strain Ontology (RSO)",
+            "properties": {
+                "ancestors": {
+                    "description": "The ancestors of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms from which this term develops (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": "array"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "dbkey": {
+                    "description": "Typically the primary key on the table.  Should be a global sequence in the database to insure uniqueness over the entire suite of tables.  Alternatively, could be a serial8 identifier. Tables with a dbkey should have an alternate key to establish uniqueness based on the data in the table.",
+                    "type": "string"
+                },
+                "definition": {
+                    "description": "The definition of the ontology term. This is a reference to an object that holds the text description of the term and a collection of URLs that further define the term.",
+                    "type": "string"
+                },
+                "definition_urls": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "descendants": {
+                    "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
+                    "items": {
+                        "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
+                },
+                "namespace": {
+                    "description": "the namespace of the ontology.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "subsets": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "curie",
+                "internal"
+            ],
+            "title": "RSOTerm",
             "type": "object"
         },
         "Reagent": {
