@@ -233,7 +233,6 @@ classes:
   ZFSTerm:
     is_a: StageTerm
 
-
   ExperimentalConditionOntologyTerm:
     is_a: OntologyTerm
     abstract: true
@@ -282,7 +281,7 @@ classes:
     description: >-
       An ontology term representing a characteristic of an organism. This may or may not be
       expressed as a difference in comparison to a reference organism.
-
+  
   XPOTerm:
     is_a: PhenotypeTerm
     description: >-
@@ -341,6 +340,51 @@ classes:
     is_a: OntologyTerm
     description: >-
       An ontology term from the Alliance Tags for Papers ontology (ATP)
+
+  MPATHTerm:
+    is_a: OntologyTerm
+    description: >-
+      An ontology term from the Mouse Pathology Ontology (MPATH)
+
+  MODTerm:
+    is_a: OntologyTerm
+    description: >-
+      An ontology term from the Protein Modification Ontology (MOD)
+
+  PROTerm:
+    is_a: OntologyTerm
+    description: >-
+      An ontology term from the Protein Ontology (PRO)
+
+  RSOTerm:
+    is_a: OntologyTerm
+    description: >-
+      An ontology term from the Rat Strain Ontology (RSO)
+
+  PWTerm:
+    is_a: OntologyTerm
+    description: >-
+      An ontology term from the Pathway Ontology (PW)
+
+  EDAMTerm:
+    is_a: OntologyTerm
+    description: >-
+      An ontology term from the EMBRACE Data and Methods Ontology (EDAM)
+
+  BSPOTerm:
+    is_a: OntologyTerm
+    description: >-
+      An ontology term from the Biological Spatial Ontology (BSPO)
+
+  CLTerm:
+    is_a: OntologyTerm
+    description: >-
+      An ontology term from the Cell Ontology (CL)
+
+  CMOTerm:
+    is_a: OntologyTerm
+    description: >-
+      An ontology term from the Clinical Measurement Ontology (CMO)
 
   ChemicalTerm:
     is_a: OntologyTerm
