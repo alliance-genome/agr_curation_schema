@@ -356,10 +356,10 @@ classes:
     description: >-
       An ontology term from the Protein Ontology (PRO)
 
-  RSOTerm:
+  RSTerm:
     is_a: OntologyTerm
     description: >-
-      An ontology term from the Rat Strain Ontology (RSO)
+      An ontology term from the Rat Strain Ontology (RS)
 
   PWTerm:
     is_a: OntologyTerm
