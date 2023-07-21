@@ -438,7 +438,7 @@ slots:
         retired_name: SGD-specific.
         unspecified: unclassified names.
     domain: NameSlotAnnotation
-    range: VocabularyTerm
+    range: VocabularyTerm # CV 'Name type'
     multivalued: false
     required: true
 
@@ -449,7 +449,7 @@ slots:
       systematic_name / ncbi_protein_name / uniform / non_uniform /
       retired_name / unspecified
     domain: NameSlotAnnotationDTO
-    range: string
+    range: string # CV 'Name type'
     required: true
 
   format_text:
@@ -481,7 +481,7 @@ slots:
       the scope of the synonym - permissible values are narrow /
       broad / related / exact
     domain: NameSlotAnnotation
-    range: VocabularyTerm
+    range: VocabularyTerm # CV 'Synonym scope'
 
   synonym_scope_name:
     description: >-
@@ -555,8 +555,7 @@ slots:
 
   note_type:
     description: >-
-      The type of note: e.g., cytology, comment, summary. Permissible values for 'note_type' currently = disease_summary, disease_note,
-      molecular_mutation -- please see the VocabularyTerm class for the full list.
+      The type of note: e.g., cytology, comment, summary.
     range: VocabularyTerm
     multivalued: false
 

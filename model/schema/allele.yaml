@@ -587,7 +587,7 @@ slots:
     description: >-
       Database status of the allele
     domain: AlleleDatabaseStatusSlotAnnotation
-    range: VocabularyTerm # CV 'Allele Database Status'
+    range: VocabularyTerm # CV 'Allele database status vocabulary'
     required: true
 
   functional_impacts:
@@ -595,7 +595,7 @@ slots:
       Experimentally assessed functional impact of the
       allele, e.g. knockout / amorphic
     domain: AlleleFunctionalImpactSlotAnnotation
-    range: VocabularyTerm
+    range: VocabularyTerm # CV 'Allele Functional Impact'
     multivalued: true
     required: true
 
@@ -604,7 +604,7 @@ slots:
       For alleles made in cell lines, have they been
       transmitted to the germline of an animal
     domain: AlleleGermlineTransmissionStatusSlotAnnotation
-    range: VocabularyTerm
+    range: VocabularyTerm # CV 'Allele Germline Transmission Status'
     required: true
     multivalued: false
 
@@ -625,7 +625,7 @@ slots:
     description: >-
       WormBase captures the method by which an extrachromosomal transgene was integrated into the genome.
     domain: GenerationMethod
-    range: VocabularyTerm  #CV 'WB Transgene Integration Methods'
+    range: VocabularyTerm  #CV 'WB Transgene Integration Method'
     multivalued: false
 
   irradiation_mutagen:
