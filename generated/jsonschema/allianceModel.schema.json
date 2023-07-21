@@ -14370,7 +14370,7 @@
                     "type": "boolean"
                 },
                 "note_type": {
-                    "description": "The type of note: e.g., cytology, comment, summary. Permissible values for 'note_type' currently = disease_summary, disease_note, molecular_mutation -- please see the VocabularyTerm class for the full list.",
+                    "description": "The type of note: e.g., cytology, comment, summary.",
                     "type": "string"
                 },
                 "obsolete": {
