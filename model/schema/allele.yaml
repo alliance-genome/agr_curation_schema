@@ -159,8 +159,6 @@ classes:
       genes. The predicate should be a VocabularyTerm with one of the following
       values - targets
     is_a: Association
-    slots:
-      - references
     slot_usage:
       predicate:
         range: VocabularyTerm
@@ -308,7 +306,7 @@ classes:
       Association between an allele and another allele
     slot_usage:
       predicate:
-        notes: CV 'Allele-Allele Predicates'
+        notes: CV 'Allele-Allele Association Predicates'
       object:
         range: Allele
 
@@ -354,7 +352,6 @@ classes:
   AlleleGenerationMethodAssociation:
     is_a: Association
     slots:
-      - evidence
       - mutation_target_strain
     slot_usage:
       subject:
@@ -362,6 +359,7 @@ classes:
       predicate:
         any_of:
           equals_string: has_generation_method
+        notes: CV 'Allele Generation Method predicate'
       object:
         range: GenerationMethod
 
