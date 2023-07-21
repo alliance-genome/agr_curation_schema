@@ -17188,13 +17188,6 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
-                "references": {
-                    "description": "holds between an object and a list of references",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "subject": {
                     "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
                     "type": "string"
