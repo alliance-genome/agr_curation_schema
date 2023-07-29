@@ -40,12 +40,19 @@ emit_prefixes:
 classes:
 
   Reagent:
-    is_a: BiologicalEntity     # I don't think this is an appropriate super class (CG)
+    is_a: AuditedObject
     description: >-
       A material entity used in experiments.
     slots:
+      - curie
+      - taxon
       - generated_by
       - manufactured_by
+    slot_usage:
+      curie:
+        required: true
+      taxon:
+        required: false
 
   Antibody:
     is_a: Reagent

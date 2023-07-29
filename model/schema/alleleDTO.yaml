@@ -374,6 +374,8 @@ slots:
     multivalued: true
     domain: ConstructDTO
     range: GenomicEntityDTO
+    inlined: true
+    inlined_as_list: true
 
   construct_curie:
     range: string

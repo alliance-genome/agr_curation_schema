@@ -4671,10 +4671,6 @@
                     "description": "A unique identifier for the antibody: e.g., WBAntibody0000001.",
                     "type": "string"
                 },
-                "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
-                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -4769,7 +4765,6 @@
                 "name",
                 "clonality",
                 "curie",
-                "data_provider",
                 "internal"
             ],
             "title": "Antibody",
@@ -6672,7 +6667,13 @@
             "properties": {
                 "construct_components": {
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/ConstructComponentSlotAnnotation"
+                    },
+                    "type": "array"
+                },
+                "construct_genomic_entity_associations": {
+                    "items": {
+                        "$ref": "#/$defs/ConstructGenomicEntityAssociation"
                     },
                     "type": "array"
                 },
@@ -6680,20 +6681,9 @@
                     "description": "The individual that created the entity.",
                     "type": "string"
                 },
-                "cross_references": {
-                    "description": "Holds between an object and its CrossReferences.",
-                    "items": {
-                        "$ref": "#/$defs/CrossReference"
-                    },
-                    "type": "array"
-                },
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
-                },
-                "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -6715,15 +6705,27 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "genomic_location_associations": {
+                "generated_by": {
+                    "description": "Holds between a material entity and an Agent that generated it: e.g., Thomas Blumenthal, Kornberg Laboratory.",
                     "items": {
-                        "$ref": "#/$defs/GenomicLocationAssociation"
+                        "$ref": "#/$defs/Agent"
                     },
                     "type": "array"
                 },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
+                },
+                "manufactured_by": {
+                    "description": "Holds between a material entity and an Agent that has manufactured it: e.g., Molecular Probes.",
+                    "items": {
+                        "$ref": "#/$defs/Agent"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -6746,93 +6748,31 @@
                 }
             },
             "required": [
+                "name",
                 "curie",
-                "taxon",
-                "data_provider",
                 "internal"
             ],
             "title": "Construct",
             "type": "object"
         },
-        "ConstructComponent": {
+        "ConstructComponentRelationEnum": {
+            "description": "",
+            "enum": [
+                "expresses",
+                "is_regulated_by",
+                "targets"
+            ],
+            "title": "ConstructComponentRelationEnum",
+            "type": "string"
+        },
+        "ConstructComponentSlotAnnotation": {
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "created_by": {
-                    "description": "The individual that created the entity.",
+                "component_symbol": {
+                    "description": "The free text of a symbol or name of a construct component for which no curie exists or is available",
                     "type": "string"
                 },
-                "cross_references": {
-                    "description": "Holds between an object and its CrossReferences.",
-                    "items": {
-                        "$ref": "#/$defs/CrossReference"
-                    },
-                    "type": "array"
-                },
-                "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "type": "string"
-                },
-                "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "genomic_location_associations": {
-                    "items": {
-                        "$ref": "#/$defs/GenomicLocationAssociation"
-                    },
-                    "type": "array"
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": "boolean"
-                },
-                "taxon": {
-                    "description": "The taxon from which the biological entity derives.",
-                    "type": "string"
-                },
-                "updated_by": {
-                    "description": "The individual that last modified the entity.",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "curie",
-                "taxon",
-                "data_provider",
-                "internal"
-            ],
-            "title": "ConstructComponent",
-            "type": "object"
-        },
-        "ConstructComponentAssociation": {
-            "additionalProperties": false,
-            "description": "The predicate should be a VocabularyTerm with one of the following values - expresses (RO:0002292) / is_regulated_by (RO:0002334) / targets (RO:0002436)",
-            "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -6868,20 +6808,26 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
-                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
-                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                "related_notes": {
+                    "description": "Holds between an object and a list of related Note objects.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": "array"
+                },
+                "single_construct": {
                     "type": "string"
                 },
-                "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+                "taxon": {
+                    "description": "The taxon from which the biological entity derives.",
+                    "type": "string"
+                },
+                "taxon_text": {
+                    "description": "The free text reference to a species or general taxon (e.g. \"Yeast\") for a a biological entity for which the exact taxon curie is unknown or unavailable.",
                     "type": "string"
                 },
                 "updated_by": {
@@ -6890,23 +6836,12 @@
                 }
             },
             "required": [
-                "subject",
-                "predicate",
-                "object",
+                "single_construct",
+                "component_symbol",
                 "internal"
             ],
-            "title": "ConstructComponentAssociation",
+            "title": "ConstructComponentSlotAnnotation",
             "type": "object"
-        },
-        "ConstructComponentRelationEnum": {
-            "description": "",
-            "enum": [
-                "expresses",
-                "is_regulated_by",
-                "targets"
-            ],
-            "title": "ConstructComponentRelationEnum",
-            "type": "string"
         },
         "ConstructDTO": {
             "additionalProperties": false,
@@ -6914,7 +6849,7 @@
             "properties": {
                 "construct_component_dtos": {
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/GenomicEntityDTO"
                     },
                     "type": "array"
                 },
@@ -6993,6 +6928,82 @@
                 "internal"
             ],
             "title": "ConstructDTO",
+            "type": "object"
+        },
+        "ConstructGenomicEntityAssociation": {
+            "additionalProperties": false,
+            "description": "An association class to capture the identity of a construct component that is a known genomic entity with a curie and any accompanying meta data about the relationship between the construct and that genomic entity component",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "evidence": {
+                    "description": "",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "object": {
+                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "predicate": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
+                },
+                "related_notes": {
+                    "description": "Holds between an object and a list of related Note objects.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": "array"
+                },
+                "subject": {
+                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "subject",
+                "predicate",
+                "object",
+                "internal"
+            ],
+            "title": "ConstructGenomicEntityAssociation",
             "type": "object"
         },
         "CrossReference": {
@@ -7450,10 +7461,6 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
-                "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
-                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -7507,8 +7514,6 @@
             },
             "required": [
                 "curie",
-                "taxon",
-                "data_provider",
                 "internal"
             ],
             "title": "DNAClone",
@@ -15945,10 +15950,6 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
-                "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
-                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -16002,8 +16003,6 @@
             },
             "required": [
                 "curie",
-                "taxon",
-                "data_provider",
                 "internal"
             ],
             "title": "RNAClone",
@@ -16255,10 +16254,6 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
-                "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
-                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -16312,8 +16307,6 @@
             },
             "required": [
                 "curie",
-                "taxon",
-                "data_provider",
                 "internal"
             ],
             "title": "Reagent",
