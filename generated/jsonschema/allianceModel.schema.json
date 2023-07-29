@@ -6615,7 +6615,7 @@
             "properties": {
                 "construct_component_dtos": {
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/GenomicEntityDTO"
                     },
                     "type": "array"
                 },
