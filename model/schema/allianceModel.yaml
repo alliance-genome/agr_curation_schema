@@ -31,7 +31,6 @@ imports:
   - affectedGenomicModel
   - agent
   - allele
-  - alleleDTO
   - allianceMember
   - biologicalEntitySet
   - bulkload
