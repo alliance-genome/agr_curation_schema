@@ -6755,16 +6755,6 @@
             "title": "Construct",
             "type": "object"
         },
-        "ConstructComponentRelationEnum": {
-            "description": "",
-            "enum": [
-                "expresses",
-                "is_regulated_by",
-                "targets"
-            ],
-            "title": "ConstructComponentRelationEnum",
-            "type": "string"
-        },
         "ConstructComponentSlotAnnotation": {
             "additionalProperties": false,
             "description": "",
