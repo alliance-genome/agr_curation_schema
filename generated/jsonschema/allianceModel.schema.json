@@ -18829,10 +18829,15 @@
                 "vocabulary_description": {
                     "description": "The free text description of a Vocabulary including its intended use.",
                     "type": "string"
+                },
+                "vocabulary_label": {
+                    "description": "Immutable label used for identification of vocabulary or vocabulary term set.  This is distinct from the \"name\" slot in that it cannot be changed once created.",
+                    "type": "string"
                 }
             },
             "required": [
                 "name",
+                "vocabulary_label",
                 "internal"
             ],
             "title": "Vocabulary",
@@ -18955,6 +18960,10 @@
                     "description": "The individual that last modified the entity.",
                     "type": "string"
                 },
+                "vocabulary_label": {
+                    "description": "Immutable label used for identification of vocabulary or vocabulary term set.  This is distinct from the \"name\" slot in that it cannot be changed once created.",
+                    "type": "string"
+                },
                 "vocabulary_term_set_description": {
                     "description": "The free text description of a VocabularyTermSet including its intended use.",
                     "type": "string"
@@ -18967,6 +18976,7 @@
             "required": [
                 "name",
                 "vocabulary_term_set_vocabulary",
+                "vocabulary_label",
                 "internal"
             ],
             "title": "VocabularyTermSet",
