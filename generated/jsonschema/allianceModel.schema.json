@@ -18807,6 +18807,10 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "label": {
+                    "description": "A short display name for the figure. For example: Figure 2, Figure 3B",
+                    "type": "string"
+                },
                 "member_terms": {
                     "description": "Set of VocabularyTerm objects in a Vocabulary object set",
                     "items": {
@@ -18935,6 +18939,10 @@
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
+                },
+                "label": {
+                    "description": "A short display name for the figure. For example: Figure 2, Figure 3B",
+                    "type": "string"
                 },
                 "member_terms": {
                     "description": "Set of VocabularyTerm objects in a Vocabulary object set",
