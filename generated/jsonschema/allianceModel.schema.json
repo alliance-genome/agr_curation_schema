@@ -18807,10 +18807,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "label": {
-                    "description": "A short display name for the figure. For example: Figure 2, Figure 3B",
-                    "type": "string"
-                },
                 "member_terms": {
                     "description": "Set of VocabularyTerm objects in a Vocabulary object set",
                     "items": {
@@ -18833,10 +18829,15 @@
                 "vocabulary_description": {
                     "description": "The free text description of a Vocabulary including its intended use.",
                     "type": "string"
+                },
+                "vocabulary_label": {
+                    "description": "Immutable label used for identification of vocabulary or vocabulary term set.  This is distinct from the \"name\" slot in that it cannot be changed once created.",
+                    "type": "string"
                 }
             },
             "required": [
                 "name",
+                "vocabulary_label",
                 "internal"
             ],
             "title": "Vocabulary",
@@ -18940,10 +18941,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "label": {
-                    "description": "A short display name for the figure. For example: Figure 2, Figure 3B",
-                    "type": "string"
-                },
                 "member_terms": {
                     "description": "Set of VocabularyTerm objects in a Vocabulary object set",
                     "items": {
@@ -18963,6 +18960,10 @@
                     "description": "The individual that last modified the entity.",
                     "type": "string"
                 },
+                "vocabulary_label": {
+                    "description": "Immutable label used for identification of vocabulary or vocabulary term set.  This is distinct from the \"name\" slot in that it cannot be changed once created.",
+                    "type": "string"
+                },
                 "vocabulary_term_set_description": {
                     "description": "The free text description of a VocabularyTermSet including its intended use.",
                     "type": "string"
@@ -18975,6 +18976,7 @@
             "required": [
                 "name",
                 "vocabulary_term_set_vocabulary",
+                "vocabulary_label",
                 "internal"
             ],
             "title": "VocabularyTermSet",
