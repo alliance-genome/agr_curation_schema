@@ -62,7 +62,6 @@ classes:
       - mod_internal_id
       - subject
       - object
-      - relation
       - single_reference
       - condition_relations
       - related_notes
@@ -288,7 +287,7 @@ classes:
         description: >-
           The disease ontology term.
         range: DOTerm
-      relation:
+      disease_relation:
         description: >-
           The relation between the subject biological entity and disease in the annotation.
           Permissible values are terms from the CV 'Disease Relation Vocabulary'
@@ -356,7 +355,7 @@ classes:
         description: >-
           The gene to which the disease ontology term is associated.
         range: Gene
-      relation:
+      disease_relation:
         description: >-
           The relationship between gene and disease. Submitted value should be a
           vocabulary term from the 'Gene disease relations' vocabulary
@@ -384,7 +383,7 @@ classes:
         description: >-
           The allele to which the disease ontology term is associated.
         range: Allele
-      relation:
+      disease_relation:
         description: >-
           The relationship between allele and disease. Submitted value should be
           a vocabulary term from the 'Allele disease relations' vocabulary
@@ -423,7 +422,7 @@ classes:
         description: >-
           The AGM to which the disease ontology term is associated.
         range: AffectedGenomicModel
-      relation:
+      disease_relation:
         description: >-
           The relationship between AGM and disease. Submitted value should be a
           vocabulary term from the 'AGM disease relations' vocabulary
@@ -783,12 +782,13 @@ slots:
     range: string # CV 'Disease qualifiers'
     multivalued: true
 
-  relation:
+  disease_relation:
     description: >-
-      Relationship between subject and object described
+      Relationship between subject and disease described
       by the annotation
     domain: DiseaseAnnotation
     range: VocabularyTerm
+    required: true
 
   genetic_sex:
     description: >-
