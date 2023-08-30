@@ -140,7 +140,7 @@ classes:
     is_a: AnnotationDTO
     abstract: true
     description: >-
-      Ingest class for association between a biological entity and a disease
+      Ingest class for association between a biological entity and a phenotype
     slots:
       - phenotype_statement
       - phenotype_term_curie
