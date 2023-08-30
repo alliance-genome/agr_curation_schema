@@ -75,13 +75,6 @@
                     },
                     "type": "array"
                 },
-                "evidence": {
-                    "description": "",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "evidence_codes": {
                     "description": "ECO term IDs",
                     "items": {
@@ -125,16 +118,16 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
-                    "description": "The relationship between AGM and disease. Submitted value should be a vocabulary term from the 'AGM disease relations' vocabulary",
-                    "type": "string"
-                },
                 "related_notes": {
                     "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Disease annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
                     "items": {
                         "$ref": "#/$defs/Note"
                     },
                     "type": "array"
+                },
+                "relation": {
+                    "description": "The relationship between AGM and disease. Submitted value should be a vocabulary term from the 'AGM disease relations' vocabulary",
+                    "type": "string"
                 },
                 "secondary_data_provider": {
                     "$ref": "#/$defs/DataProvider",
@@ -165,13 +158,13 @@
                 }
             },
             "required": [
-                "curie",
                 "evidence_codes",
+                "curie",
+                "subject",
+                "object",
+                "relation",
                 "single_reference",
                 "data_provider",
-                "subject",
-                "predicate",
-                "object",
                 "internal"
             ],
             "title": "AGMDiseaseAnnotation",
@@ -261,13 +254,6 @@
                 },
                 "evidence_code_curies": {
                     "description": "List of ECOTerm curies",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -370,6 +356,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date of curation at the source (MOD) database.",
                     "format": "date-time",
@@ -390,13 +380,6 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "evidence": {
-                    "description": "",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "inferred_allele": {
                     "description": "The allele to which the phenotype is inferred to be associated.",
                     "type": "string"
@@ -408,6 +391,14 @@
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
                 },
                 "object": {
                     "description": "phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed statement of the phenotype from a post-composed terminology",
@@ -421,8 +412,15 @@
                     "description": "The phenotype ontology term used to describe the phenotype of an organism or a set of organisms.",
                     "type": "string"
                 },
-                "predicate": {
-                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Phenotype annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": "array"
+                },
+                "relation": {
+                    "description": "Relationship between subject and object described by the annotation",
                     "type": "string"
                 },
                 "single_reference": {
@@ -433,6 +431,10 @@
                     "description": "The AGM to which the phenotype ontology term is associated.",
                     "type": "string"
                 },
+                "unique_id": {
+                    "description": "A non-curie unique identifier for a thing.",
+                    "type": "string"
+                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": "string"
@@ -441,12 +443,114 @@
             "required": [
                 "curie",
                 "subject",
-                "predicate",
                 "object",
+                "single_reference",
+                "data_provider",
                 "date_created",
                 "internal"
             ],
             "title": "AGMPhenotypeAnnotation",
+            "type": "object"
+        },
+        "AGMPhenotypeAnnotationDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for an association between an AGM and a phenotype",
+            "properties": {
+                "agm_curie": {
+                    "type": "string"
+                },
+                "asserted_allele_curie": {
+                    "description": "Curie of the allele to which something is manually asserted to be associated",
+                    "type": "string"
+                },
+                "asserted_gene_curies": {
+                    "description": "Curies of the gene(s) to which something is manually asserted to be associated",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "inferred_allele_curie": {
+                    "description": "Curie of allele to which something is inferred to be associated via an automated pipeline",
+                    "type": "string"
+                },
+                "inferred_gene_curie": {
+                    "description": "Curie of gene to which something is inferred to be associated via an automated pipeline",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": "array"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "phenotype_statement": {
+                    "description": "For MODs that curate to post-composed phenotype expressions composed of ontology terms and other necessary information (e.g. vocabularies, free text). This field captures the free text phenotype statement.",
+                    "type": "string"
+                },
+                "phenotype_term_curie": {
+                    "description": "The string representation of the phenotype ontology term (PhenotypeTerm) curie",
+                    "type": "string"
+                },
+                "reference_curie": {
+                    "description": "External reference curie used for ingest",
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "agm_curie",
+                "data_provider_dto",
+                "internal"
+            ],
+            "title": "AGMPhenotypeAnnotationDTO",
             "type": "object"
         },
         "APOTerm": {
@@ -2157,13 +2261,6 @@
                     },
                     "type": "array"
                 },
-                "evidence": {
-                    "description": "",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "evidence_codes": {
                     "description": "ECO term IDs",
                     "items": {
@@ -2203,16 +2300,16 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
-                    "description": "The relationship between allele and disease. Submitted value should be a vocabulary term from the 'Allele disease relations' vocabulary",
-                    "type": "string"
-                },
                 "related_notes": {
                     "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Disease annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
                     "items": {
                         "$ref": "#/$defs/Note"
                     },
                     "type": "array"
+                },
+                "relation": {
+                    "description": "The relationship between allele and disease. Submitted value should be a vocabulary term from the 'Allele disease relations' vocabulary",
+                    "type": "string"
                 },
                 "secondary_data_provider": {
                     "$ref": "#/$defs/DataProvider",
@@ -2243,13 +2340,13 @@
                 }
             },
             "required": [
-                "curie",
                 "evidence_codes",
+                "curie",
+                "subject",
+                "object",
+                "relation",
                 "single_reference",
                 "data_provider",
-                "subject",
-                "predicate",
-                "object",
                 "internal"
             ],
             "title": "AlleleDiseaseAnnotation",
@@ -2335,13 +2432,6 @@
                 },
                 "evidence_code_curies": {
                     "description": "List of ECOTerm curies",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -3754,6 +3844,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date of curation at the source (MOD) database.",
                     "format": "date-time",
@@ -3774,13 +3868,6 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "evidence": {
-                    "description": "",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "inferred_gene": {
                     "description": "The gene to which the phenotype is inferred to be associated.",
                     "type": "string"
@@ -3788,6 +3875,14 @@
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
                 },
                 "object": {
                     "description": "phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed statement of the phenotype from a post-composed terminology",
@@ -3801,8 +3896,15 @@
                     "description": "The phenotype ontology term used to describe the phenotype of an organism or a set of organisms.",
                     "type": "string"
                 },
-                "predicate": {
-                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Phenotype annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": "array"
+                },
+                "relation": {
+                    "description": "Relationship between subject and object described by the annotation",
                     "type": "string"
                 },
                 "single_reference": {
@@ -3813,6 +3915,10 @@
                     "description": "The allele to which the phenotype ontology term is associated.",
                     "type": "string"
                 },
+                "unique_id": {
+                    "description": "A non-curie unique identifier for a thing.",
+                    "type": "string"
+                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": "string"
@@ -3821,12 +3927,106 @@
             "required": [
                 "curie",
                 "subject",
-                "predicate",
                 "object",
+                "single_reference",
+                "data_provider",
                 "date_created",
                 "internal"
             ],
             "title": "AllelePhenotypeAnnotation",
+            "type": "object"
+        },
+        "AllelePhenotypeAnnotationDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for an association between an allele and a phenotype",
+            "properties": {
+                "allele_curie": {
+                    "type": "string"
+                },
+                "asserted_gene_curies": {
+                    "description": "Curies of the gene(s) to which something is manually asserted to be associated",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "inferred_gene_curie": {
+                    "description": "Curie of gene to which something is inferred to be associated via an automated pipeline",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": "array"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "phenotype_statement": {
+                    "description": "For MODs that curate to post-composed phenotype expressions composed of ontology terms and other necessary information (e.g. vocabularies, free text). This field captures the free text phenotype statement.",
+                    "type": "string"
+                },
+                "phenotype_term_curie": {
+                    "description": "The string representation of the phenotype ontology term (PhenotypeTerm) curie",
+                    "type": "string"
+                },
+                "reference_curie": {
+                    "description": "External reference curie used for ingest",
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "allele_curie",
+                "data_provider_dto",
+                "internal"
+            ],
+            "title": "AllelePhenotypeAnnotationDTO",
             "type": "object"
         },
         "AlleleProteinAssociation": {
@@ -4635,6 +4835,107 @@
                 "internal"
             ],
             "title": "AnatomicalSite",
+            "type": "object"
+        },
+        "Annotation": {
+            "additionalProperties": false,
+            "description": "An annotation describing the link between a \"first class citizen\" of the database (e.g. Gene / Allele / AGM) and an ontology term or description, supported by a single reference and an optional list of condition relations.",
+            "properties": {
+                "condition_relations": {
+                    "items": {
+                        "$ref": "#/$defs/ConditionRelation"
+                    },
+                    "type": "array"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
+                "object": {
+                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "related_notes": {
+                    "description": "Holds between an object and a list of related Note objects.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": "array"
+                },
+                "relation": {
+                    "description": "Relationship between subject and object described by the annotation",
+                    "type": "string"
+                },
+                "single_reference": {
+                    "description": "holds between an object and a single reference",
+                    "type": "string"
+                },
+                "subject": {
+                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+                    "type": "string"
+                },
+                "unique_id": {
+                    "description": "A non-curie unique identifier for a thing.",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "curie",
+                "subject",
+                "object",
+                "single_reference",
+                "data_provider",
+                "internal"
+            ],
+            "title": "Annotation",
             "type": "object"
         },
         "Antibody": {
@@ -10182,13 +10483,6 @@
                     },
                     "type": "array"
                 },
-                "evidence": {
-                    "description": "",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "evidence_codes": {
                     "description": "ECO term IDs",
                     "items": {
@@ -10224,16 +10518,16 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
-                    "description": "The relationship between gene and disease. Submitted value should be a vocabulary term from the 'Gene disease relations' vocabulary",
-                    "type": "string"
-                },
                 "related_notes": {
                     "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Disease annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
                     "items": {
                         "$ref": "#/$defs/Note"
                     },
                     "type": "array"
+                },
+                "relation": {
+                    "description": "The relationship between gene and disease. Submitted value should be a vocabulary term from the 'Gene disease relations' vocabulary",
+                    "type": "string"
                 },
                 "secondary_data_provider": {
                     "$ref": "#/$defs/DataProvider",
@@ -10267,13 +10561,13 @@
                 }
             },
             "required": [
-                "curie",
                 "evidence_codes",
+                "curie",
+                "subject",
+                "object",
+                "relation",
                 "single_reference",
                 "data_provider",
-                "subject",
-                "predicate",
-                "object",
                 "internal"
             ],
             "title": "GeneDiseaseAnnotation",
@@ -10349,13 +10643,6 @@
                 },
                 "evidence_code_curies": {
                     "description": "List of ECOTerm curies",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -10850,6 +11137,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date of curation at the source (MOD) database.",
                     "format": "date-time",
@@ -10870,16 +11161,17 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "evidence": {
-                    "description": "",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
                 },
                 "object": {
                     "description": "phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed statement of the phenotype from a post-composed terminology",
@@ -10893,8 +11185,15 @@
                     "description": "The phenotype ontology term used to describe the phenotype of an organism or a set of organisms.",
                     "type": "string"
                 },
-                "predicate": {
-                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Phenotype annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": "array"
+                },
+                "relation": {
+                    "description": "Relationship between subject and object described by the annotation",
                     "type": "string"
                 },
                 "sgd_strain_background": {
@@ -10908,6 +11207,10 @@
                     "description": "The gene to which the phenotype ontology term is associated.",
                     "type": "string"
                 },
+                "unique_id": {
+                    "description": "A non-curie unique identifier for a thing.",
+                    "type": "string"
+                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": "string"
@@ -10916,12 +11219,99 @@
             "required": [
                 "curie",
                 "subject",
-                "predicate",
                 "object",
+                "single_reference",
+                "data_provider",
                 "date_created",
                 "internal"
             ],
             "title": "GenePhenotypeAnnotation",
+            "type": "object"
+        },
+        "GenePhenotypeAnnotationDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for an association between a gene and a phenotype",
+            "properties": {
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "gene_curie": {
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": "array"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "phenotype_statement": {
+                    "description": "For MODs that curate to post-composed phenotype expressions composed of ontology terms and other necessary information (e.g. vocabularies, free text). This field captures the free text phenotype statement.",
+                    "type": "string"
+                },
+                "phenotype_term_curie": {
+                    "description": "The string representation of the phenotype ontology term (PhenotypeTerm) curie",
+                    "type": "string"
+                },
+                "reference_curie": {
+                    "description": "External reference curie used for ingest",
+                    "type": "string"
+                },
+                "sgd_strain_background_curie": {
+                    "description": "Curie of SGD strain background AGM",
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "gene_curie",
+                "data_provider_dto",
+                "internal"
+            ],
+            "title": "GenePhenotypeAnnotationDTO",
             "type": "object"
         },
         "GeneSecondaryIdSlotAnnotation": {
@@ -12625,6 +13015,27 @@
                     "description": "",
                     "items": {
                         "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": "array"
+                },
+                "phenotype_agm_ingest_set": {
+                    "description": "",
+                    "items": {
+                        "$ref": "#/$defs/AGMPhenotypeAnnotationDTO"
+                    },
+                    "type": "array"
+                },
+                "phenotype_allele_ingest_set": {
+                    "description": "",
+                    "items": {
+                        "$ref": "#/$defs/AllelePhenotypeAnnotationDTO"
+                    },
+                    "type": "array"
+                },
+                "phenotype_gene_ingest_set": {
+                    "description": "",
+                    "items": {
+                        "$ref": "#/$defs/GenePhenotypeAnnotationDTO"
                     },
                     "type": "array"
                 },
@@ -15491,6 +15902,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date of curation at the source (MOD) database.",
                     "format": "date-time",
@@ -15511,16 +15926,17 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "evidence": {
-                    "description": "",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
                 },
                 "object": {
                     "description": "phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed statement of the phenotype from a post-composed terminology",
@@ -15534,8 +15950,15 @@
                     "description": "The phenotype ontology term used to describe the phenotype of an organism or a set of organisms.",
                     "type": "string"
                 },
-                "predicate": {
-                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Phenotype annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": "array"
+                },
+                "relation": {
+                    "description": "Relationship between subject and object described by the annotation",
                     "type": "string"
                 },
                 "single_reference": {
@@ -15546,6 +15969,10 @@
                     "description": "The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, by direct curation.",
                     "type": "string"
                 },
+                "unique_id": {
+                    "description": "A non-curie unique identifier for a thing.",
+                    "type": "string"
+                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": "string"
@@ -15554,8 +15981,9 @@
             "required": [
                 "curie",
                 "subject",
-                "predicate",
                 "object",
+                "single_reference",
+                "data_provider",
                 "date_created",
                 "internal"
             ],
@@ -20538,6 +20966,27 @@
             "description": "",
             "items": {
                 "$ref": "#/$defs/OntologyTermClosure"
+            },
+            "type": "array"
+        },
+        "phenotype_agm_ingest_set": {
+            "description": "",
+            "items": {
+                "$ref": "#/$defs/AGMPhenotypeAnnotationDTO"
+            },
+            "type": "array"
+        },
+        "phenotype_allele_ingest_set": {
+            "description": "",
+            "items": {
+                "$ref": "#/$defs/AllelePhenotypeAnnotationDTO"
+            },
+            "type": "array"
+        },
+        "phenotype_gene_ingest_set": {
+            "description": "",
+            "items": {
+                "$ref": "#/$defs/GenePhenotypeAnnotationDTO"
             },
             "type": "array"
         },
