@@ -355,7 +355,7 @@ classes:
         description: >-
           The gene to which the disease ontology term is associated.
         range: Gene
-      disease_relation:
+      relation:
         description: >-
           The relationship between gene and disease. Submitted value should be a
           vocabulary term from the 'Gene disease relations' vocabulary
