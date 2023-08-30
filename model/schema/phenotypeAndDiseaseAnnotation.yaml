@@ -51,7 +51,8 @@ classes:
   Annotation:
     is_a: AuditedObject
     description: >-
-      An annotation describing the link between a subject and an object,
+      An annotation describing the link between a "first class citizen" of the
+      database (e.g. Gene / Allele / AGM) and an ontology term or description,
       supported by a single reference and an optional list of condition
       relations.  
     slots:
