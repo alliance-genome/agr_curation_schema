@@ -125,10 +125,6 @@
                     },
                     "type": "array"
                 },
-                "relation": {
-                    "description": "The relationship between AGM and disease. Submitted value should be a vocabulary term from the 'AGM disease relations' vocabulary",
-                    "type": "string"
-                },
                 "secondary_data_provider": {
                     "$ref": "#/$defs/DataProvider",
                     "description": "Object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source, and a CrossReference to that organisation's site"
@@ -162,7 +158,6 @@
                 "curie",
                 "subject",
                 "object",
-                "relation",
                 "single_reference",
                 "data_provider",
                 "internal"
@@ -418,10 +413,6 @@
                         "$ref": "#/$defs/Note"
                     },
                     "type": "array"
-                },
-                "relation": {
-                    "description": "Relationship between subject and object described by the annotation",
-                    "type": "string"
                 },
                 "single_reference": {
                     "description": "The reference in which the phenotype association was asserted/reported.",
@@ -2307,10 +2298,6 @@
                     },
                     "type": "array"
                 },
-                "relation": {
-                    "description": "The relationship between allele and disease. Submitted value should be a vocabulary term from the 'Allele disease relations' vocabulary",
-                    "type": "string"
-                },
                 "secondary_data_provider": {
                     "$ref": "#/$defs/DataProvider",
                     "description": "Object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source, and a CrossReference to that organisation's site"
@@ -2344,7 +2331,6 @@
                 "curie",
                 "subject",
                 "object",
-                "relation",
                 "single_reference",
                 "data_provider",
                 "internal"
@@ -3903,10 +3889,6 @@
                     },
                     "type": "array"
                 },
-                "relation": {
-                    "description": "Relationship between subject and object described by the annotation",
-                    "type": "string"
-                },
                 "single_reference": {
                     "description": "The reference in which the phenotype association was asserted/reported.",
                     "type": "string"
@@ -4905,10 +4887,6 @@
                         "$ref": "#/$defs/Note"
                     },
                     "type": "array"
-                },
-                "relation": {
-                    "description": "Relationship between subject and object described by the annotation",
-                    "type": "string"
                 },
                 "single_reference": {
                     "description": "holds between an object and a single reference",
@@ -10525,10 +10503,6 @@
                     },
                     "type": "array"
                 },
-                "relation": {
-                    "description": "The relationship between gene and disease. Submitted value should be a vocabulary term from the 'Gene disease relations' vocabulary",
-                    "type": "string"
-                },
                 "secondary_data_provider": {
                     "$ref": "#/$defs/DataProvider",
                     "description": "Object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source, and a CrossReference to that organisation's site"
@@ -10565,7 +10539,6 @@
                 "curie",
                 "subject",
                 "object",
-                "relation",
                 "single_reference",
                 "data_provider",
                 "internal"
@@ -11191,10 +11164,6 @@
                         "$ref": "#/$defs/Note"
                     },
                     "type": "array"
-                },
-                "relation": {
-                    "description": "Relationship between subject and object described by the annotation",
-                    "type": "string"
                 },
                 "sgd_strain_background": {
                     "type": "string"
@@ -15956,10 +15925,6 @@
                         "$ref": "#/$defs/Note"
                     },
                     "type": "array"
-                },
-                "relation": {
-                    "description": "Relationship between subject and object described by the annotation",
-                    "type": "string"
                 },
                 "single_reference": {
                     "description": "The reference in which the phenotype association was asserted/reported.",
