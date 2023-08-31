@@ -85,6 +85,7 @@ classes:
       - reference_curie
       - note_dtos
       - data_provider_dto
+      - condition_relation_dtos
 
   PhenotypeAnnotation:
     is_a: Annotation
@@ -336,7 +337,6 @@ classes:
       - annotation_type_name
       - with_gene_curies
       - disease_qualifier_names
-      - condition_relation_dtos
       - genetic_sex_name
       - secondary_data_provider_dto
       - disease_genetic_modifier_curies
