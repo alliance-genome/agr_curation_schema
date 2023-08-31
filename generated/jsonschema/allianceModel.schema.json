@@ -461,6 +461,12 @@
                     },
                     "type": "array"
                 },
+                "condition_relation_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/ConditionRelationDTO"
+                    },
+                    "type": "array"
+                },
                 "created_by_curie": {
                     "description": "Curie of the Person object representing the individual that created the entity",
                     "type": "string"
@@ -3929,6 +3935,12 @@
                     "description": "Curies of the gene(s) to which something is manually asserted to be associated",
                     "items": {
                         "type": "string"
+                    },
+                    "type": "array"
+                },
+                "condition_relation_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/ConditionRelationDTO"
                     },
                     "type": "array"
                 },
@@ -11201,6 +11213,12 @@
             "additionalProperties": false,
             "description": "Ingest class for an association between a gene and a phenotype",
             "properties": {
+                "condition_relation_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/ConditionRelationDTO"
+                    },
+                    "type": "array"
+                },
                 "created_by_curie": {
                     "description": "Curie of the Person object representing the individual that created the entity",
                     "type": "string"
