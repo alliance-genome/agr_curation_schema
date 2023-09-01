@@ -1,0 +1,46 @@
+{
+  "linkml_version": "1.7.3",
+  "phenotype_gene_ingest_set": [
+    {
+      "reference_curie": "PMID:123456",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "WB",
+        "cross_reference_dto": {
+          "referenced_curie": "WB:WBPhenotype11231",
+          "prefix": "WB",
+          "page_area": "phenotype",
+          "display_name": "WB:WBPhenotype11231",
+          "internal": false
+        },
+        "internal": false
+      },
+      "date_created": "2015-04-09T10:15:30+00:00",
+      "date_updated": "2015-04-09T10:15:30+00:00",
+      "internal": false,
+      "obsolete": false,
+      "gene_curie": "WB:WBGene00001",
+      "phenotype_statement": "dye filling defect",
+      "phenotype_term_curie": "WBPhenotype:0001383",
+      "condition_relation_dtos": [
+        {
+          "condition_relation_type_name": "has_condition",
+          "internal": false,
+          "condition_dtos": [
+            {
+              "condition_free_text": "Bacterial strain HB101",
+              "condition_class_curie": "ZECO:0000104",
+              "internal": false
+            }
+          ]
+        }
+      ],
+      "note_dtos": [
+        {
+          "free_text": "Some note about the phenotype annotation",
+          "note_type_name": "phenotype_summary",
+          "internal": false
+        }
+      ],
+    }
+  ]
+}

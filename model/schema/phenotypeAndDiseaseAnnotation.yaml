@@ -48,15 +48,51 @@ emit_prefixes:
 
 classes:
 
+  Annotation:
+    is_a: AuditedObject
+    description: >-
+      An annotation describing the link between a "first class citizen" of the
+      database (e.g. Gene / Allele / AGM) and an ontology term or description,
+      supported by a single reference and an optional list of condition
+      relations.  
+    slots:
+      - curie
+      - unique_id
+      - mod_entity_id
+      - mod_internal_id
+      - subject
+      - object
+      - single_reference
+      - condition_relations
+      - related_notes
+      - data_provider
+    slot_usage:
+        subject:
+            required: true
+        object:
+            required: true
+        single_reference:
+            required: true
+
+  AnnotationDTO:
+    is_a: AuditedObjectDTO
+    abstract: true
+    description: >-
+      Ingest class for an annotation
+    slots:
+      - mod_internal_id
+      - mod_entity_id
+      - reference_curie
+      - note_dtos
+      - data_provider_dto
+      - condition_relation_dtos
+
   PhenotypeAnnotation:
-    is_a: Association
+    is_a: Annotation
     description: >-
       An annotation asserting an association between a biological entity and a phenotype supported by evidence.
     slots:
-      - curie
-      - single_reference
-      - phenotype_term                    # phenotypeTermIdentifiers in JSON schema
-      - condition_relations
+      - phenotype_term
     slot_usage:
       subject:                            # objectId in JSON schema
         description: >-
@@ -93,6 +129,21 @@ classes:
           The date of curation at the source (MOD) database.
         required: true
         multivalued: false
+      related_notes:
+        description: >-
+          Valid note types are available for viewing in the A-Team curation tool
+          Controlled Vocabulary Terms Table (in the "Phenotype annotation note types" vocabulary)
+          on the production environment (curation.alliancegenome.org). New terms
+          can be added as needed.
+
+  PhenotypeAnnotationDTO:
+    is_a: AnnotationDTO
+    abstract: true
+    description: >-
+      Ingest class for association between a biological entity and a phenotype
+    slots:
+      - phenotype_statement
+      - phenotype_term_curie
 
   GenePhenotypeAnnotation:
     description: >-
@@ -107,10 +158,14 @@ classes:
         description: >-
           The gene to which the phenotype ontology term is associated.
         range: Gene
-#      predicate:
-#        description: The relationship between gene and phenotype.
-#        required: true
-#        range: gene_phenotype_relation_enum  # TO DO: generate this relation enumeration or don't specify predicate
+
+  GenePhenotypeAnnotationDTO:
+    is_a: PhenotypeAnnotationDTO
+    description: >-
+      Ingest class for an association between a gene and a phenotype
+    slots:
+      - gene_curie
+      - sgd_strain_background_curie
 
   AllelePhenotypeAnnotation:
     description: >-
@@ -125,10 +180,6 @@ classes:
         description: >-
           The allele to which the phenotype ontology term is associated.
         range: Allele
-#      predicate:
-#        description: The relationship between allele and phenotype.
-#        range: allele_phenotype_relation_enum   # TO DO: generate this relation enumeration or don't specify predicate
-#        required: true
       inferred_gene:
         description: >-
           The gene to which the phenotype is inferred to be associated.
@@ -138,6 +189,15 @@ classes:
         required: false
       asserted_allele:
         required: false
+
+  AllelePhenotypeAnnotationDTO:
+    is_a: PhenotypeAnnotationDTO
+    description: >-
+      Ingest class for an association between an allele and a phenotype
+    slots:
+      - allele_curie
+      - inferred_gene_curie
+      - asserted_gene_curies
 
   AGMPhenotypeAnnotation:
     description: >-
@@ -154,10 +214,6 @@ classes:
         description: >-
           The AGM to which the phenotype ontology term is associated.
         range: AffectedGenomicModel
-#      predicate:
-#        description: The relationship between AGM and phenotype.
-#        range: agm_phenotype_relation_enum   # TO DO: generate this relation enumeration or don't specify predicate
-#        required: true
       inferred_gene:
         description: >-
           The gene to which the phenotype is inferred to be associated.
@@ -172,28 +228,29 @@ classes:
         required: false
       asserted_allele:
         required: false
-
+  AGMPhenotypeAnnotationDTO:
+    is_a: PhenotypeAnnotationDTO
+    description: >-
+      Ingest class for an association between an AGM and a phenotype
+    slots:
+      - agm_curie
+      - inferred_gene_curie
+      - asserted_gene_curies
+      - inferred_allele_curie
+      - asserted_allele_curie
 
   DiseaseAnnotation:
-    is_a: Association
+    is_a: Annotation
     abstract: true
     description: >-
       An annotation asserting an association between a biological entity and a disease supported by evidence.
     slots:
-      - curie
-      - unique_id
-      - mod_entity_id
-      - mod_internal_id
       - negated
       - evidence_codes
-      - single_reference
       - annotation_type
       - with_or_from
       - disease_qualifiers
-      - condition_relations
       - genetic_sex
-      - related_notes
-      - data_provider
       - secondary_data_provider
       - disease_genetic_modifiers
       - disease_genetic_modifier_relation
@@ -223,10 +280,6 @@ classes:
         description: >-
           The biological entity to which the disease ontology term is associated.
         range: BiologicalEntity
-      predicate:  # predicate is basically disease_relation.  We should determine if we want such a generic name for this in the parent Association object
-        required: true
-        description: >-
-          Constrains the disease subject, associationType and inferredGeneAssociation.
       negated:
         description: >-
           The negative qualifier for the annotation.
@@ -235,6 +288,11 @@ classes:
         description: >-
           The disease ontology term.
         range: DOTerm
+      disease_relation:
+        description: >-
+          The relation between the subject biological entity and disease in the annotation.
+          Permissible values are terms from the CV 'Disease Relation Vocabulary'
+        required: true
       annotation_type:
         required: false
       with_or_from:
@@ -265,28 +323,21 @@ classes:
           Controlled Vocabulary Terms Table (in the "Disease annotation note types" vocabulary)
           on the production environment (curation.alliancegenome.org). New terms
           can be added as needed.
-
+  
   DiseaseAnnotationDTO:
-    is_a: AuditedObjectDTO
+    is_a: AnnotationDTO
     abstract: true
     description: >-
       Ingest class for association between a biological entity and a disease
     slots:
       - disease_relation_name
       - do_term_curie
-      - mod_entity_id
-      - mod_internal_id
       - negated
-      - evidence_curies
       - evidence_code_curies
-      - reference_curie
       - annotation_type_name
       - with_gene_curies
       - disease_qualifier_names
-      - condition_relation_dtos
       - genetic_sex_name
-      - note_dtos
-      - data_provider_dto
       - secondary_data_provider_dto
       - disease_genetic_modifier_curies
       - disease_genetic_modifier_relation_name
@@ -304,7 +355,7 @@ classes:
         description: >-
           The gene to which the disease ontology term is associated.
         range: Gene
-      predicate:
+      disease_relation:
         description: >-
           The relationship between gene and disease. Submitted value should be a
           vocabulary term from the 'Gene disease relations' vocabulary
@@ -332,7 +383,7 @@ classes:
         description: >-
           The allele to which the disease ontology term is associated.
         range: Allele
-      predicate:
+      disease_relation:
         description: >-
           The relationship between allele and disease. Submitted value should be
           a vocabulary term from the 'Allele disease relations' vocabulary
@@ -371,7 +422,7 @@ classes:
         description: >-
           The AGM to which the disease ontology term is associated.
         range: AffectedGenomicModel
-      predicate:
+      disease_relation:
         description: >-
           The relationship between AGM and disease. Submitted value should be a
           vocabulary term from the 'AGM disease relations' vocabulary
@@ -730,6 +781,14 @@ slots:
     domain: DiseaseAnnotationDTO
     range: string # CV 'Disease qualifiers'
     multivalued: true
+
+  disease_relation:
+    description: >-
+      Relationship between subject and disease described
+      by the annotation
+    domain: DiseaseAnnotation
+    range: VocabularyTerm
+    required: true
 
   genetic_sex:
     description: >-

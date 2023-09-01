@@ -206,6 +206,30 @@ slots:
     mixins:
       - object_set
 
+  phenotype_allele_ingest_set:
+    description: >-
+    domain: Ingest
+    range: AllelePhenotypeAnnotationDTO
+    multivalued: true
+    mixins:
+      - object_set
+
+  phenotype_agm_ingest_set:
+    description: >-
+    domain: Ingest
+    range: AGMPhenotypeAnnotationDTO
+    multivalued: true
+    mixins:
+      - object_set
+
+  phenotype_gene_ingest_set:
+    description: >-
+    domain: Ingest
+    range: GenePhenotypeAnnotationDTO
+    multivalued: true
+    mixins:
+      - object_set
+
   object_set:
     mixin: true
     domain: Ingest
@@ -226,6 +250,9 @@ classes:
       - disease_allele_ingest_set
       - disease_agm_ingest_set
       - disease_gene_ingest_set
+      - phenotype_allele_ingest_set
+      - phenotype_agm_ingest_set
+      - phenotype_gene_ingest_set
       - gene_ingest_set
       - variant_ingest_set
       - allele_variant_association_ingest_set
