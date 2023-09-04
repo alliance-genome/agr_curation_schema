@@ -11,6 +11,7 @@ imports:
   - ontologyTerm
   - affectedGenomicModel
   - phenotypeAndDiseaseAnnotation
+  - allele
 
 prefixes:
   alliance: 'http://alliancegenome.org/'

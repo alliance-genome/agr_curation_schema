@@ -160,8 +160,6 @@ classes:
       name:
         required: true
 
-# TO DO: create ConstructComponentDTO and ConstructComponentAssociationDTO classes? [CG]
-
   ConstructComponentSlotAnnotation:
     is_a: SlotAnnotation
     slots:
