@@ -13,6 +13,7 @@ imports:
   - linkml:types
   - ontologyTerm
   - phenotypeAndDiseaseAnnotation
+  - reagent
 
 prefixes:
   alliance: 'http://alliancegenome.org/'
