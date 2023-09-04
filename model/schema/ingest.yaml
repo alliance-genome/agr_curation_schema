@@ -12,6 +12,7 @@ imports:
   - affectedGenomicModel
   - phenotypeAndDiseaseAnnotation
   - allele
+  - reagent
 
 prefixes:
   alliance: 'http://alliancegenome.org/'
