@@ -1,4 +1,6 @@
 id: https://github.com/alliance-genome/agr_curation_schema/src/schema/reagent.yaml
+name: reagent
+title: Reagent
 
 imports:
   - core
@@ -48,7 +50,6 @@ classes:
       - taxon
       - generated_by
       - manufactured_by
-
 
   ReagentDTO:
     is_a: AuditedObjectDTO
