@@ -7124,33 +7124,17 @@
             "title": "ConstructComponentSlotAnnotation",
             "type": "object"
         },
-        "ConstructDTO": {
+        "ConstructComponentSlotAnnotationDTO": {
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "construct_component_dtos": {
-                    "items": {
-                        "$ref": "#/$defs/GenomicEntityDTO"
-                    },
-                    "type": "array"
+                "component_symbol": {
+                    "description": "The free text of a symbol or name of a construct component for which no curie exists or is available",
+                    "type": "string"
                 },
                 "created_by_curie": {
                     "description": "Curie of the Person object representing the individual that created the entity",
                     "type": "string"
-                },
-                "cross_reference_dtos": {
-                    "items": {
-                        "$ref": "#/$defs/CrossReferenceDTO"
-                    },
-                    "type": "array"
-                },
-                "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "type": "string"
-                },
-                "data_provider_dto": {
-                    "$ref": "#/$defs/DataProviderDTO",
-                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -7172,15 +7156,100 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "genomic_location_association_dtos": {
+                "evidence_curies": {
+                    "description": "Curies of InformationContentEntity objects given as evidence",
                     "items": {
-                        "$ref": "#/$defs/GenomicLocationAssociationDTO"
+                        "type": "string"
                     },
                     "type": "array"
                 },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": "array"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "taxon_curie": {
+                    "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
+                    "type": "string"
+                },
+                "taxon_text": {
+                    "description": "The free text reference to a species or general taxon (e.g. \"Yeast\") for a a biological entity for which the exact taxon curie is unknown or unavailable.",
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "component_symbol",
+                "internal"
+            ],
+            "title": "ConstructComponentSlotAnnotationDTO",
+            "type": "object"
+        },
+        "ConstructDTO": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "construct_component_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/ConstructComponentSlotAnnotationDTO"
+                    },
+                    "type": "array"
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "generated_by_identifier": {
+                    "description": "Identifier for Reagent genereated_by field.  ",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "manufactured_by_identifier": {
+                    "description": "Identifier for Reagent manufactured_by field.  ",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -7203,9 +7272,9 @@
                 }
             },
             "required": [
+                "name",
                 "curie",
                 "taxon_curie",
-                "data_provider_dto",
                 "internal"
             ],
             "title": "ConstructDTO",
@@ -7285,6 +7354,79 @@
                 "internal"
             ],
             "title": "ConstructGenomicEntityAssociation",
+            "type": "object"
+        },
+        "ConstructGenomicEntityAssociationDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for association between a construct component that is a known genomic entity with a curie and any accompanying meta data about the relationship between the construct and that genomic entity component",
+            "properties": {
+                "construct_curie": {
+                    "type": "string"
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "evidence_curies": {
+                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "genomic_entity_curie": {
+                    "type": "string"
+                },
+                "genomic_entity_relation_name": {
+                    "description": "Name of the VocabularyTerm describing the relationship between Construct and GenomicEntity",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": "array"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "construct_curie",
+                "genomic_entity_relation_name",
+                "genomic_entity_curie",
+                "internal"
+            ],
+            "title": "ConstructGenomicEntityAssociationDTO",
             "type": "object"
         },
         "CrossReference": {
@@ -16711,6 +16853,71 @@
                 "internal"
             ],
             "title": "Reagent",
+            "type": "object"
+        },
+        "ReagentDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for material entities used in experiments.",
+            "properties": {
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "generated_by_identifier": {
+                    "description": "Identifier for Reagent genereated_by field.  ",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "manufactured_by_identifier": {
+                    "description": "Identifier for Reagent manufactured_by field.  ",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "taxon_curie": {
+                    "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "curie",
+                "taxon_curie",
+                "internal"
+            ],
+            "title": "ReagentDTO",
             "type": "object"
         },
         "Reference": {
