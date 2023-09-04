@@ -179,7 +179,7 @@ slots:
       An ingest set for ConstructGenomicEntityAssociationDTO
     domain: Ingest
     range: ConstructGenomicEntityAssociationDTO
-    multivaluted: true
+    multivalued: true
     mixins:
       - object_set
 
