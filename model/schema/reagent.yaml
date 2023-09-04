@@ -48,11 +48,7 @@ classes:
       - taxon
       - generated_by
       - manufactured_by
-    slot_usage:
-      curie:
-        required: true
-      taxon:
-        required: false
+
 
   ReagentDTO:
     is_a: AuditedObjectDTO
