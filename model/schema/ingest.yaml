@@ -206,6 +206,20 @@ slots:
     mixins:
       - object_set
 
+  gene_genetic_interaction_ingest_set:
+    domain: Ingest
+    range: GeneGeneticInteractionDTO
+    multivalued: true
+    mixins:
+      - object_set
+
+  gene_molecular_interaction_ingest_set:
+    domain: Ingest
+    range: GeneMolecularInteractionDTO
+    multivalued: true
+    mixins:
+      - object_set
+
   phenotype_allele_ingest_set:
     description: >-
     domain: Ingest
@@ -265,6 +279,8 @@ classes:
       - allele_image_association_ingest_set
       - allele_generation_method_association_ingest_set
       - allele_genomic_location_association_ingest_set
+      - gene_genetic_interaction_ingest_set
+      - gene_molecular_interaction_ingest_set
       - agm_ingest_set
       - sqtr_ingest_set
       - ontology_closure_ingest_set
