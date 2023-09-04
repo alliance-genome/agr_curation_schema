@@ -1,0 +1,56 @@
+{
+  "linkml_version": "1.8.0",
+  "construct_ingest_set": [
+    {
+      "created_by_curie": "WB:WBPerson123",
+      "updated_by_curie": "WB:WBPerson123",
+      "internal": false,
+      "obsolete": false,
+      "curie": "WB:WBConstruct123",
+      "name": "Construct A",
+      "taxon_curie": "NCBITaxon:6239",
+      "generated_by_identifier": "WB:WBLaboratory123",
+      "manufatured_by_identifier": "Construct Corps",
+      "reference_curies": [
+        "PMID:101231321"
+      ],
+      "construct_component_dtos": [
+        {
+          "component_symbol": "comA",
+          "taxon_curie": "NCBITaxon:6239",
+          "taxon_text": "Caenorhabditis elegans",
+          "note_dtos": [
+            {
+              "free_text": "some text about stuff",
+              "note_type_name": "comment",
+              "internal": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "construct_genomic_entity_association_ingest_set": [
+    {
+      "construct_curie": "WB:WBConstruct123",
+      "genomic_entity_relation_name": "is_regulated_by",
+      "genomic_entity_curie": "WB:WBGene00000001",
+      "evidence_curies": [
+        "PMID:11231512"
+      ],
+      "note_dtos": [
+        {
+          "free_text": "note about association",
+          "note_type_name": "comment",
+          "internal": false
+        }
+      ],
+      "internal": false,
+      "obsolete": false,
+      "date_created": "2015-04-09T10:15:30+00:00",
+      "date_updated": "2022-07-11T13:12:51+00:00",
+      "created_by_curie": "WB:WBPerson002314",
+      "updated_by_curie": "WB:WBPerson010002"
+    }
+  ]
+}

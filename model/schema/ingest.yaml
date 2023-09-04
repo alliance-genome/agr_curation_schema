@@ -166,6 +166,23 @@ slots:
     mixins:
       - object_set
 
+  construct_ingest_set:
+    description: An ingest set for Constructs
+    domain: Ingest
+    range: ConstructDTO
+    multivalued: true
+    mixins:
+      - object_set
+
+  construct_genomic_entity_association_ingest_set:
+    description: >-
+      An ingest set for ConstructGenomicEntityAssociationDTO
+    domain: Ingest
+    range: ConstructGenomicEntityAssociationDTO
+    multivaluted: true
+    mixins:
+      - object_set
+
   disease_allele_ingest_set:
     description: >-
     domain: Ingest
