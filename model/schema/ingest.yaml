@@ -264,6 +264,8 @@ classes:
     slots:
       - linkml_version
       - allele_ingest_set
+      - construct_ingest_set
+      - construct_genomic_entity_association_ingest_set
       - disease_allele_ingest_set
       - disease_agm_ingest_set
       - disease_gene_ingest_set
