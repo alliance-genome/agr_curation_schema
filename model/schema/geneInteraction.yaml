@@ -75,6 +75,14 @@ classes:
 #    exact_mappings:
 #      - biolink:GeneToGeneAssociation
 
+  GeneToGeneAssociationDTO:
+    is_a: AuditedObjectDTO
+    slots:
+      - subject_gene_curie
+      - gene_relation
+      - object_gene_curie
+      - evidence_curies
+
   GeneInteraction:
     description: >-
       An interaction between two genes or gene products; this may be a physical
@@ -116,23 +124,36 @@ classes:
       cross_references:
         description: >-
           Additional identifier(s) of the interaction annotation other than the primary id.
-      subject:
-        range: Gene                   # is this declaration needed since it is already made in the parent class?
       predicate:
         subproperty_of: interacts_with
         symmetric: true
-      object:
-        range: Gene                   # is this declaration needed since it is already made in the parent class?
       interaction_data_provider:
         required: true
-        multivalued: false
-      references:
-        description: >-
-          The reference from which the interaction was annotated.
-        multivalued: false
 #    exact_mappings:
 #      - biolink:PairwiseGeneToGeneInteraction
 
+  GeneInteractionDTO:
+    is_a: GeneToGeneAssocationDTO
+    description: >-
+      Ingest class for an interaction between two genes or gene products; this may be a physical
+      molecular interaction between gene products (e.g. protein-protein interactions),
+      or may be a genetic interaction between genes (e.g. phenotypic suppression)
+    slots:
+      - curie
+      - cross_reference_dtos
+      - interaction_data_provider_name
+      - interaction_type_name
+      - interactor_A_role_name
+      - interactor_B_role_name
+      - interactor_A_type_name
+      - interactor_B_type_name
+    slot_usage:
+      curie:
+        description: >-
+          The unique primary identifier for the interaction. This should be the source
+          (curation) database identifier, or if that is not available then the aggregation
+          database identifier (e.g. IMEx)
+      
   GeneMolecularInteraction:
     description: >-
       A physical molecular interaction between gene products (e.g. protein-protein
@@ -182,7 +203,12 @@ slots:
     multivalued: false
 
   interaction_data_provider:
-    range: interaction_source_enum
+    range: VocabularyTerm
+    description: >-
+      The interaction database that curated the interaction. e.g. BioGRID
+
+  interaction_data_provider_name:
+    range: string
     description: >-
       The interaction database that curated the interaction. e.g. BioGRID
 
