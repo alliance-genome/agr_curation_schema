@@ -13025,35 +13025,30 @@
             "description": "",
             "properties": {
                 "agm_ingest_set": {
-                    "description": "",
                     "items": {
                         "$ref": "#/$defs/AffectedGenomicModelDTO"
                     },
                     "type": "array"
                 },
                 "allele_cell_line_association_ingest_set": {
-                    "description": "",
                     "items": {
                         "$ref": "#/$defs/AlleleCellLineAssociationDTO"
                     },
                     "type": "array"
                 },
                 "allele_construct_association_ingest_set": {
-                    "description": "",
                     "items": {
                         "$ref": "#/$defs/AlleleConstructAssociationDTO"
                     },
                     "type": "array"
                 },
                 "allele_gene_association_ingest_set": {
-                    "description": "",
                     "items": {
                         "$ref": "#/$defs/AlleleGeneAssociationDTO"
                     },
                     "type": "array"
                 },
                 "allele_generation_method_association_ingest_set": {
-                    "description": "",
                     "items": {
                         "$ref": "#/$defs/AlleleGenerationMethodAssociationDTO"
                     },
@@ -13067,42 +13062,36 @@
                     "type": "array"
                 },
                 "allele_image_association_ingest_set": {
-                    "description": "",
                     "items": {
                         "$ref": "#/$defs/AlleleImageAssociationDTO"
                     },
                     "type": "array"
                 },
                 "allele_ingest_set": {
-                    "description": "",
                     "items": {
                         "$ref": "#/$defs/AlleleDTO"
                     },
                     "type": "array"
                 },
                 "allele_origin_association_ingest_set": {
-                    "description": "",
                     "items": {
                         "$ref": "#/$defs/AlleleOriginAssociationDTO"
                     },
                     "type": "array"
                 },
                 "allele_protein_association_ingest_set": {
-                    "description": "",
                     "items": {
                         "$ref": "#/$defs/AlleleProteinAssociationDTO"
                     },
                     "type": "array"
                 },
                 "allele_transcript_association_ingest_set": {
-                    "description": "",
                     "items": {
                         "$ref": "#/$defs/AlleleTranscriptAssociationDTO"
                     },
                     "type": "array"
                 },
                 "allele_variant_association_ingest_set": {
-                    "description": "",
                     "items": {
                         "$ref": "#/$defs/AlleleVariantAssociationDTO"
                     },
@@ -13123,28 +13112,24 @@
                     "type": "array"
                 },
                 "disease_agm_ingest_set": {
-                    "description": "",
                     "items": {
                         "$ref": "#/$defs/AGMDiseaseAnnotationDTO"
                     },
                     "type": "array"
                 },
                 "disease_allele_ingest_set": {
-                    "description": "",
                     "items": {
                         "$ref": "#/$defs/AlleleDiseaseAnnotationDTO"
                     },
                     "type": "array"
                 },
                 "disease_gene_ingest_set": {
-                    "description": "",
                     "items": {
                         "$ref": "#/$defs/GeneDiseaseAnnotationDTO"
                     },
                     "type": "array"
                 },
                 "gene_ingest_set": {
-                    "description": "",
                     "items": {
                         "$ref": "#/$defs/GeneDTO"
                     },
@@ -13155,42 +13140,36 @@
                     "type": "string"
                 },
                 "ontology_closure_ingest_set": {
-                    "description": "",
                     "items": {
                         "$ref": "#/$defs/OntologyTermClosure"
                     },
                     "type": "array"
                 },
                 "phenotype_agm_ingest_set": {
-                    "description": "",
                     "items": {
                         "$ref": "#/$defs/AGMPhenotypeAnnotationDTO"
                     },
                     "type": "array"
                 },
                 "phenotype_allele_ingest_set": {
-                    "description": "",
                     "items": {
                         "$ref": "#/$defs/AllelePhenotypeAnnotationDTO"
                     },
                     "type": "array"
                 },
                 "phenotype_gene_ingest_set": {
-                    "description": "",
                     "items": {
                         "$ref": "#/$defs/GenePhenotypeAnnotationDTO"
                     },
                     "type": "array"
                 },
                 "sqtr_ingest_set": {
-                    "description": "",
                     "items": {
                         "$ref": "#/$defs/SequenceTargetingReagentDTO"
                     },
                     "type": "array"
                 },
                 "variant_ingest_set": {
-                    "description": "",
                     "items": {
                         "$ref": "#/$defs/Variant"
                     },
@@ -21051,35 +21030,30 @@
     "metamodel_version": "1.7.0",
     "properties": {
         "agm_ingest_set": {
-            "description": "",
             "items": {
                 "$ref": "#/$defs/AffectedGenomicModelDTO"
             },
             "type": "array"
         },
         "allele_cell_line_association_ingest_set": {
-            "description": "",
             "items": {
                 "$ref": "#/$defs/AlleleCellLineAssociationDTO"
             },
             "type": "array"
         },
         "allele_construct_association_ingest_set": {
-            "description": "",
             "items": {
                 "$ref": "#/$defs/AlleleConstructAssociationDTO"
             },
             "type": "array"
         },
         "allele_gene_association_ingest_set": {
-            "description": "",
             "items": {
                 "$ref": "#/$defs/AlleleGeneAssociationDTO"
             },
             "type": "array"
         },
         "allele_generation_method_association_ingest_set": {
-            "description": "",
             "items": {
                 "$ref": "#/$defs/AlleleGenerationMethodAssociationDTO"
             },
@@ -21093,42 +21067,36 @@
             "type": "array"
         },
         "allele_image_association_ingest_set": {
-            "description": "",
             "items": {
                 "$ref": "#/$defs/AlleleImageAssociationDTO"
             },
             "type": "array"
         },
         "allele_ingest_set": {
-            "description": "",
             "items": {
                 "$ref": "#/$defs/AlleleDTO"
             },
             "type": "array"
         },
         "allele_origin_association_ingest_set": {
-            "description": "",
             "items": {
                 "$ref": "#/$defs/AlleleOriginAssociationDTO"
             },
             "type": "array"
         },
         "allele_protein_association_ingest_set": {
-            "description": "",
             "items": {
                 "$ref": "#/$defs/AlleleProteinAssociationDTO"
             },
             "type": "array"
         },
         "allele_transcript_association_ingest_set": {
-            "description": "",
             "items": {
                 "$ref": "#/$defs/AlleleTranscriptAssociationDTO"
             },
             "type": "array"
         },
         "allele_variant_association_ingest_set": {
-            "description": "",
             "items": {
                 "$ref": "#/$defs/AlleleVariantAssociationDTO"
             },
@@ -21149,28 +21117,24 @@
             "type": "array"
         },
         "disease_agm_ingest_set": {
-            "description": "",
             "items": {
                 "$ref": "#/$defs/AGMDiseaseAnnotationDTO"
             },
             "type": "array"
         },
         "disease_allele_ingest_set": {
-            "description": "",
             "items": {
                 "$ref": "#/$defs/AlleleDiseaseAnnotationDTO"
             },
             "type": "array"
         },
         "disease_gene_ingest_set": {
-            "description": "",
             "items": {
                 "$ref": "#/$defs/GeneDiseaseAnnotationDTO"
             },
             "type": "array"
         },
         "gene_ingest_set": {
-            "description": "",
             "items": {
                 "$ref": "#/$defs/GeneDTO"
             },
@@ -21181,42 +21145,36 @@
             "type": "string"
         },
         "ontology_closure_ingest_set": {
-            "description": "",
             "items": {
                 "$ref": "#/$defs/OntologyTermClosure"
             },
             "type": "array"
         },
         "phenotype_agm_ingest_set": {
-            "description": "",
             "items": {
                 "$ref": "#/$defs/AGMPhenotypeAnnotationDTO"
             },
             "type": "array"
         },
         "phenotype_allele_ingest_set": {
-            "description": "",
             "items": {
                 "$ref": "#/$defs/AllelePhenotypeAnnotationDTO"
             },
             "type": "array"
         },
         "phenotype_gene_ingest_set": {
-            "description": "",
             "items": {
                 "$ref": "#/$defs/GenePhenotypeAnnotationDTO"
             },
             "type": "array"
         },
         "sqtr_ingest_set": {
-            "description": "",
             "items": {
                 "$ref": "#/$defs/SequenceTargetingReagentDTO"
             },
             "type": "array"
         },
         "variant_ingest_set": {
-            "description": "",
             "items": {
                 "$ref": "#/$defs/Variant"
             },
