@@ -13108,6 +13108,20 @@
                     },
                     "type": "array"
                 },
+                "construct_genomic_entity_association_ingest_set": {
+                    "description": "An ingest set for ConstructGenomicEntityAssociationDTO",
+                    "items": {
+                        "$ref": "#/$defs/ConstructGenomicEntityAssociationDTO"
+                    },
+                    "type": "array"
+                },
+                "construct_ingest_set": {
+                    "description": "An ingest set for Constructs",
+                    "items": {
+                        "$ref": "#/$defs/ConstructDTO"
+                    },
+                    "type": "array"
+                },
                 "disease_agm_ingest_set": {
                     "description": "",
                     "items": {
@@ -21117,6 +21131,20 @@
             "description": "",
             "items": {
                 "$ref": "#/$defs/AlleleVariantAssociationDTO"
+            },
+            "type": "array"
+        },
+        "construct_genomic_entity_association_ingest_set": {
+            "description": "An ingest set for ConstructGenomicEntityAssociationDTO",
+            "items": {
+                "$ref": "#/$defs/ConstructGenomicEntityAssociationDTO"
+            },
+            "type": "array"
+        },
+        "construct_ingest_set": {
+            "description": "An ingest set for Constructs",
+            "items": {
+                "$ref": "#/$defs/ConstructDTO"
             },
             "type": "array"
         },
