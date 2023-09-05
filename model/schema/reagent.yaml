@@ -60,11 +60,6 @@ classes:
       - taxon_curie
       - generated_by_identifier # needs to change: currently no common identifier field for Agent class
       - manufactured_by_identifier # needs to change: currently no common identifier field for Agent class
-    slot_usage:
-      curie:
-        required: true
-      taxon_curie:
-        required: true
 
   Antibody:
     is_a: Reagent
