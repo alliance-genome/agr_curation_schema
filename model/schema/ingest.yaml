@@ -155,7 +155,7 @@ slots:
     mixins:
       - object_set
 
-variant_genomic_location_association_ingest_set:
+  variant_genomic_location_association_ingest_set:
     description: >-
     domain: Ingest
     range: VariantGenomicLocationAssociationDTO
