@@ -55,7 +55,7 @@ classes:
       abstract parent class for different kinds of gene-gene or gene product
       to gene product relationships. Includes homology and interaction.
     abstract: true
-    is_a: Association
+    is_a: EvidenceAssociation
     defining_slots:
       - subject
       - object

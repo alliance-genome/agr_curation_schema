@@ -361,7 +361,7 @@ classes:
 
   GenomicLocationAssociation:
     abstract: true
-    is_a: Association
+    is_a: EvidenceAssociation
     slots:
       - has_assembly
       - start
