@@ -288,7 +288,6 @@ classes:
 
 
   Association:
-    abstract: true
     is_a: AuditedObject
     description: >-
       A typed association between two entities, supported by evidence.  Associations have three base slots: subject,
