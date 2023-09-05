@@ -125,13 +125,14 @@
           "free_text": "mCherry and GCaMP5G coding sequences were ligated into pJB9 bearing the nlp-3 promoter and nlp-3 3' untranslated region, and the resulting plasmids (GCaMP5, pKMC300, 80 ng/µl; mCherry, pKMC299, 20 ng/µl) were co-injected with pL15EK (50 ng/µl) into LX1832 worms. The extrachromosomal transgene produced was integrated with UV/TMP, creating the integrated transgene vsIs183",
           "note_type_name": "transgene_construction_summary",
           "internal": false
-          }
+        }
       ],
       "reference_curies": [
         "WB:WBPaper00050437",
         "WB:WBPaper00054725",
         "WB:WBPaper00056478",
-        "WB:WBPaper00057105"]
+        "WB:WBPaper00057105"
+      ]
     }
   ]
 }

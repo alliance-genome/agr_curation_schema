@@ -64,7 +64,7 @@ classes:
       object:
         range: Gene
       subject:
-        range: VariantGenomeLocation
+        range: VariantGenomeLocationAssociation
 
   VariantTranscriptConsequence:
     aliases: ['TranscriptLevelConsequence']
@@ -88,7 +88,7 @@ classes:
       object:
         range: Transcript
       subject:
-        range: VariantTranscriptLocation
+        range: VariantTranscriptLocationAssociation
       amino_acid_reference:
         description: >-
           Amino acid sequence encoded by codon(s) in reference genome sequence

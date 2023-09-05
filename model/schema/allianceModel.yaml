@@ -52,6 +52,7 @@ imports:
   - resource
   - variantConsequence
   - variation
+  - variantDTO
 
 subsets:
   alliance subset:
