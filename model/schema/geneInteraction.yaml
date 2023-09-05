@@ -180,7 +180,7 @@ classes:
       - aggregation_database_curie
       - detection_method_curie
     slot_usage:
-      predicate:
+      gene_relation_name:
         subproperty_of: physically_interacts_with
         symmetric: true
 
@@ -204,6 +204,9 @@ classes:
       - interactor_A_genetic_perturbation_curie
       - interactor_B_genetic_perturbation_curie
       - phenotypes_or_traits
+    slot_usage:
+      gene_relation_name:
+        subproperty_of: genetically_interacts_with
 
 ## ------------
 ## SLOTS
