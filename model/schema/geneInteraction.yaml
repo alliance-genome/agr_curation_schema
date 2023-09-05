@@ -80,7 +80,7 @@ classes:
     is_a: AuditedObjectDTO
     slots:
       - subject_gene_curie
-      - gene_relation
+      - gene_relation_name
       - object_gene_curie
       - evidence_curies
 
@@ -132,7 +132,7 @@ classes:
 #      - biolink:PairwiseGeneToGeneInteraction
 
   GeneInteractionDTO:
-    is_a: GeneToGeneAssocationDTO
+    is_a: GeneToGeneAssociationDTO
     abstract: true
     description: >-
       Ingest class for an interaction between two genes or gene products; this may be a physical
@@ -239,6 +239,12 @@ slots:
       Value is the curie of an MITerm from the AGR detection method subset of MITerms.
     range: string
 
+  gene_relation_name:
+    description: >-
+      Name of VocabularyTerm describing relationship between a subject entity and an object Gene
+    range: string
+    required: true
+  
   interaction_source:
     range: MITerm
     description: >-
@@ -359,12 +365,23 @@ slots:
     domain: GeneGeneticInteractionDTO
     range: string
 
+  object_gene_curie:
+    description: Curie of the object gene in a gene-to-gene association
+    domain: GeneToGeneAssociationDTO
+    range: string
+    required: true
+
   phenotypes_or_traits:
     required: false
     multivalued: true
     domain: GeneGeneticInteraction
     range: string                       # should eventually be updated to the Phenotype class
 
+  subject_gene_curie:
+    description: Curie of the subject gene in a gene-to-gene association
+    domain: GeneToGeneAssociationDTO
+    range: string
+    required: true
 
 ## ----------
 ## PREDICATES
@@ -410,7 +427,7 @@ slots:
 ## Values to be implemented as subsets of MITerm ontology
 ## ----------
 
-# aggregation_databas_curie:
+# aggregation_database_curie:
 #   permissible_values:
 #     mi:0670:
 

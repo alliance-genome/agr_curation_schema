@@ -1,0 +1,56 @@
+{
+    "linkml_version": "1.8.1",
+    "gene_genetic_interaction_ingest_set": [
+        {
+            "curie": "WB:WBCnstr00000001",
+            "subject_gene_curie": "WB:WBGene00000001",
+            "object_gene_curie": "WB:WBGene00000002",
+            "gene_relation_name": "interacts_with",
+            "date_created": "2015-04-09T10:15:30+00:00",
+            "date_updated": "2022-07-11T13:12:51+00:00",
+            "created_by_curie": "WB:WBPerson002314",
+            "updated_by_curie": "WB:WBPerson010002",
+            "internal": false,
+            "obsolete": false,
+            "evidence_curies": [
+                "PMID:11231512"
+            ],
+            "interaction_source_curie": "MI:1263",
+            "interaction_type_curie": "MI:02502",
+            "interactor_A_role_curie": "MI:2352",
+            "interactor_B_role_curie": "MI:2351",
+            "interactor_A_type_curie": "MI:1294",
+            "interactor_B_type_curie": "MI:1293",
+            "interactor_A_genetic_perturbation_curie": "WB:WBVar00000001",
+            "interactor_B_genetic_perturbation_curie": "WB:WBVar00000002",
+            "phenotypes_or_traits": [
+                "trait"
+            ]
+        }
+    ],
+    "gene_molecular_interaction_ingest_set": [
+        {
+            "curie": "WB:WBCnstr00000002",
+            "subject_gene_curie": "WB:WBGene00000003",
+            "object_gene_curie": "WB:WBGene00000004",
+            "gene_relation_name": "physically_interacts_with",
+            "date_created": "2015-04-09T10:15:30+00:00",
+            "date_updated": "2022-07-11T13:12:51+00:00",
+            "created_by_curie": "WB:WBPerson002314",
+            "updated_by_curie": "WB:WBPerson010002",
+            "internal": false,
+            "obsolete": false,
+            "evidence_curies": [
+                "PMID:11231512"
+            ],
+            "interaction_source_curie": "MI:1263",
+            "interaction_type_curie": "MI:02502",
+            "interactor_A_role_curie": "MI:2352",
+            "interactor_B_role_curie": "MI:2351",
+            "interactor_A_type_curie": "MI:1294",
+            "interactor_B_type_curie": "MI:1293",
+            "aggregation_database_curie": "MI:0670",
+            "detection_method_curie": "MI:0364"
+        }
+    ]
+}
