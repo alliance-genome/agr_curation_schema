@@ -4,6 +4,7 @@ title: Alliance Schema Ingest
 
 imports:
   - core
+  - allele
   - gene
   - image
   - variation
@@ -11,8 +12,6 @@ imports:
   - ontologyTerm
   - affectedGenomicModel
   - phenotypeAndDiseaseAnnotation
-  - allele
-  - reagent
 
 prefixes:
   alliance: 'http://alliancegenome.org/'
@@ -117,7 +116,6 @@ slots:
     mixins:
       - object_set
 
-
   allele_cell_line_association_ingest_set:
     domain: Ingest
     range: AlleleCellLineAssociationDTO
@@ -155,19 +153,19 @@ slots:
     mixins:
       - object_set
 
-  construct_ingest_set:
-    description: An ingest set for Constructs
-    domain: Ingest
-    range: ConstructDTO
-    multivalued: true
-    mixins:
-      - object_set
-
   construct_genomic_entity_association_ingest_set:
     description: >-
       An ingest set for ConstructGenomicEntityAssociationDTO
     domain: Ingest
     range: ConstructGenomicEntityAssociationDTO
+    multivalued: true
+    mixins:
+      - object_set
+      
+  construct_ingest_set:
+    description: An ingest set for Constructs
+    domain: Ingest
+    range: ConstructDTO
     multivalued: true
     mixins:
       - object_set
