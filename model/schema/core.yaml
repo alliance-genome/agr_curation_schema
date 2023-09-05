@@ -122,11 +122,6 @@ classes:
       - cross_references
       - genomic_location_associations
 
-  GenomicEntityDTO:
-    is_a: BiologicalEntityDTO
-    slots:
-      - cross_reference_dtos
-      - genomic_location_association_dtos
 
   Transcript:
     is_a: GenomicEntity
@@ -337,6 +332,7 @@ classes:
     description: The ID of the landmark used to establish the coordinate system for the current feature.
     slots:
       - curie
+      - display_name
     slot_usage:
       curie:
         required: true
@@ -350,6 +346,7 @@ classes:
         required: true
 
   GenomicLocationAssociation:
+    abstract: true
     is_a: Association
     slots:
       - has_assembly
@@ -371,9 +368,14 @@ classes:
       - subject
       - predicate
       - object
-      - has_assembly
       - start
       - end
+
+  GenomicEntityDTO:
+    is_a: BiologicalEntityDTO
+    slots:
+      - cross_reference_dtos
+      - genomic_location_association_dtos
 
   GenomicLocationAssociationDTO:
     is_a: AuditedObjectDTO
@@ -386,8 +388,6 @@ classes:
       - start
       - end
     slot_usage:
-      genomic_entity_curie:
-        required: true
       predicate_name:
         required: true
         any_of:
@@ -500,7 +500,6 @@ slots:
 
   has_assembly:
     domain: GenomicLocationAssociation
-    required: true
     range: Assembly
 
   prefix:
@@ -666,17 +665,6 @@ slots:
     multivalued: false
     range: uriorcurie
 
-  genomic_location_associations:
-    domain: GenomicEntity
-    range: GenomicLocationAssociation
-    multivalued: true
-
-  genomic_location_association_dtos:
-    domain: GenomicEntityDTO
-    range: GenomicLocationAssociationDTO
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
 
   table_key:
     description: >-
@@ -931,14 +919,13 @@ slots:
     description: last identifier in a range
     range: Identifier
 
-  genomic_entity_curie:
-    range: string
-
   assembly_curie:
     range: string
 
   chromosome_curie:
     range: string
+    description: >-
+      The NCBI chromosome accession number for the chromosome.
 
   transcript_curie:
     range: string
@@ -947,6 +934,21 @@ slots:
   protein_curie:
     range: string
     required: true
+
+  genomic_entity_curie:
+    range: string
+
+  genomic_location_associations:
+    domain: GenomicEntity
+    range: GenomicLocationAssociation
+    multivalued: true
+
+  genomic_location_association_dtos:
+    domain: GenomicEntityDTO
+    range: GenomicLocationAssociationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
 
   source_organization:
     domain: DataProvider

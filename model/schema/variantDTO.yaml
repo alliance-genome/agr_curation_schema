@@ -1,0 +1,165 @@
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantDTO
+name: variantDTO
+title: variantDTO
+
+imports:
+  - core
+  - variation
+  - allele
+  - linkml:types
+
+prefixes:
+  alliance: 'http://alliancegenome.org/'
+  linkml: 'https://w3id.org/linkml/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - owl
+
+## ------------
+## DTO CLASSES
+## ------------
+classes:
+
+  VariantDTO:
+    is_a: GenomicEntityDTO
+    description: >-
+      Ingest class for an Allele object
+    slots:
+      - variant_type
+      - related_notes
+      - source_general_consequence
+      - variant_status
+      - reference_sequence
+      - variant_sequence
+      - sequence_of_reference_accession_number
+
+  VariantGenomicLocationAssociationDTO:
+    is_a: AuditedObjectDTO
+    slots:
+      - variant_entity_curie
+      - predicate_name
+      - chromosome_curie
+      - evidence_curies
+      - evidence_code_curie
+      - assembly_curie
+      - start
+      - end
+      - exon_number
+      - intron_number
+      - variation_strand
+      - number_additional_dna_base_pairs
+      - number_removed_dna_base_pairs
+      - inserted_sequence
+      - deleted_sequence
+      - padded_base
+      - dna_mutation_type
+      - gene_localization_type
+      - reference_sequence
+      - variant_sequence
+      - consequence
+      - sequence_of_reference_accession_number
+    slot_usage:
+      variant_entity_curie:
+        required: true
+      predicate_name:
+        required: true
+        any_of:
+          equals_string: has_genomic_location
+      chromosome_curie:
+        required: true
+      assembly_curie:
+        required: true
+      start:
+        required: true
+      end:
+        required: true
+
+  VariantTranscriptLocationAssociationDTO:
+    is_a: AuditedObjectDTO
+    slots:
+      - variant_entity_curie
+      - predicate_name
+      - chromosome_curie
+      - evidence_curies
+      - evidence_code_curie
+      - assembly_curie
+      - start
+      - end
+      - transcript_curie
+      - exon_number
+      - intron_number
+      - reference_sequence
+      - variant_sequence
+      - consequence
+      - sequence_of_reference_accession_number
+    slot_usage:
+      variant_entity_curie:
+        required: true
+      predicate_name:
+        required: true
+        any_of:
+          equals_string: has_genomic_location
+      chromosome_curie:
+        required: true
+      assembly_curie:
+        required: true
+      start:
+        required: true
+      end:
+        required: true
+
+  VariantProteinLocationAssociationDTO:
+    is_a: AuditedObjectDTO
+    slots:
+      - variant_entity_curie
+      - predicate_name
+      - chromosome_curie
+      - evidence_curies
+      - evidence_code_curie
+      - assembly_curie
+      - start
+      - end
+      - protein_curie
+      - associated_transcripts
+      - number_amino_acids_removed
+      - number_amino_acids_inserted
+      - reference_sequence
+      - variant_sequence
+      - consequence
+      - sequence_of_reference_accession_number
+    slot_usage:
+      variant_entity_curie:
+        required: true
+      predicate_name:
+        required: true
+        any_of:
+          equals_string: has_genomic_location
+      chromosome_curie:
+        required: true
+      assembly_curie:
+        required: true
+      start:
+        required: true
+      end:
+        required: true
+
+slots:
+  variant_entity_curie:
+    is_a: genomic_entity_curie
