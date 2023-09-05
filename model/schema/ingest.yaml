@@ -4,6 +4,7 @@ title: Alliance Schema Ingest
 
 imports:
   - core
+  - reagent
   - allele
   - gene
   - image

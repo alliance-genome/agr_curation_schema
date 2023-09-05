@@ -137,95 +137,6 @@ classes:
     description: >-
       Dummy cell line DTO class
 
-  Construct:
-    is_a: Reagent
-    slots:
-      - construct_genomic_entity_associations
-      - construct_components
-      - name
-      - references
-    slot_usage:
-      curie:
-        identifier: true
-      name:
-        required: true
-
-  ConstructDTO:
-    is_a: ReagentDTO
-    slots:
-      - name
-      - construct_component_dtos
-      - reference_curies
-    slot_usage:
-      name:
-        required: true
-
-  ConstructComponentSlotAnnotation:
-    is_a: SlotAnnotation
-    slots:
-      - single_construct
-      - component_symbol
-      - related_notes
-      - taxon
-      - taxon_text
-    slot_usage:
-      single_construct:
-        required: true
-      component_symbol:
-        required: true
-      related_notes:
-        required: false
-      taxon:
-        required: false
-      taxon_text:
-        required: false
-
-  ConstructComponentSlotAnnotationDTO:
-    is_a: SlotAnnotationDTO
-    slots:
-      - component_symbol
-      - note_dtos
-      - taxon_curie
-      - taxon_text
-
-  ConstructGenomicEntityAssociation:
-    is_a: Association
-    description: >-
-      An association class to capture the identity of a construct component that is
-      a known genomic entity with a curie and any accompanying meta data about the
-      relationship between the construct and that genomic entity component
-    slots:
-      - related_notes
-    slot_usage:
-      subject:
-        range: Construct
-      predicate:
-        range: VocabularyTerm
-        notes: >-
-          The predicate should be a VocabularyTerm with one of the following
-          values - expresses (RO:0002292) / is_regulated_by (RO:0002334) /
-          targets (RO:0002436). CV: 'Construct Genomic Entity Association Predicate'
-      object:
-        range: GenomicEntity
-      related_notes:
-        required: false
-
-  ConstructGenomicEntityAssociationDTO:
-    is_a: AuditedObjectDTO
-    description: >-
-      Ingest class for association between a construct component that is a known genomic
-      entity with a curie and any accompanying meta data about the relationship between
-      the construct and that genomic entity component
-    slots:
-      - construct_curie
-      - genomic_entity_relation_name
-      - genomic_entity_curie
-      - note_dtos
-      - evidence_curies
-    slot_usage:
-      genomic_entity_curie:
-        required: true
-
   GenerationMethod:
     is_a: AuditedObject
     slots:
@@ -945,33 +856,6 @@ slots:
     domain: GenerationMethodDTO
     range: string # CV 'Chemical Mutagens'
 
-  component_symbol:
-    range: string
-    required: true
-    description: >-
-      The free text of a symbol or name of a construct
-      component for which no curie exists or is available
-
-  construct_components:
-    multivalued: true
-    domain: Construct
-    range: ConstructComponentSlotAnnotation
-
-  construct_component_dtos:
-    multivalued: true
-    range: ConstructComponentSlotAnnotationDTO
-    inlined: true
-    inlined_as_list: true
-
-  construct_curie:
-    range: string
-    required: true
-
-  construct_genomic_entity_associations:
-    multivalued: true
-    domain: Construct
-    range: ConstructGenomicEntityAssociation
-
   database_status:
     description: >-
       Database status of the allele
@@ -1009,14 +893,6 @@ slots:
     range: GenerationMethodDTO
     multivalued: false
     inlined: true
-
-  genomic_entity_relation_name:
-    description: >-
-      Name of the VocabularyTerm describing the relationship between
-      Construct and GenomicEntity
-    domain: ConstructGenomicEntityAssociationDTO
-    range: string
-    required: true
 
   germline_transmission_status:
     description: >-
@@ -1201,16 +1077,6 @@ slots:
   single_allele:
     range: Allele
     multivalued: false
-
-  single_construct:
-    domain: ConstructComponentSlotAnnotation
-    range: Construct
-    multivalued: false
-
-  taxon_text:
-    description: >-
-      The free text reference to a species or general taxon (e.g. "Yeast") for a
-      a biological entity for which the exact taxon curie is unknown or unavailable.
 
   transgene_chromosome_location:
     description: >-

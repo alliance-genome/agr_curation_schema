@@ -10,7 +10,7 @@
       "name": "Construct A",
       "taxon_curie": "NCBITaxon:6239",
       "generated_by_identifier": "WB:WBLaboratory123",
-      "manufatured_by_identifier": "Construct Corps",
+      "manufactured_by_identifier": "Construct Corps",
       "reference_curies": [
         "PMID:101231321"
       ],
@@ -25,7 +25,8 @@
               "note_type_name": "comment",
               "internal": false
             }
-          ]
+          ],
+          "internal": false
         }
       ]
     }
