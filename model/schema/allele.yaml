@@ -190,12 +190,12 @@ classes:
     slot_usage:
       subject:
         range: Construct
-      predicate:
+      relation:
         range: VocabularyTerm
         notes: >-
-          The predicate should be a VocabularyTerm with one of the following
+          The relation should be a VocabularyTerm with one of the following
           values - expresses (RO:0002292) / is_regulated_by (RO:0002334) /
-          targets (RO:0002436). CV: 'Construct Genomic Entity Association Predicate'
+          targets (RO:0002436). CV: 'Construct Genomic Entity Association Relation'
       object:
         range: GenomicEntity
       related_notes:
@@ -239,11 +239,11 @@ classes:
   SequenceTargetingReagentToGeneAssociation:
     description: >-
       the relationship between a Sequence Targeting Reagent and its targeted
-      genes. The predicate should be a VocabularyTerm with one of the following
+      genes. The relation should be a VocabularyTerm with one of the following
       values - targets
     is_a: Association
     slot_usage:
-      predicate:
+      relation:
         range: VocabularyTerm
       subject:
         range: SequenceTargetingReagent
@@ -448,8 +448,8 @@ classes:
     description: >-
       Association between an allele and another allele
     slot_usage:
-      predicate:
-        notes: CV 'Allele Allele Association Predicate'
+      relation:
+        notes: CV 'Allele Allele Association Relation'
       object:
         range: Allele
 
@@ -470,7 +470,7 @@ classes:
     slot_usage:
       subject:
         range: Allele
-      predicate:
+      relation:
         range: VocabularyTerm
       object:
         range: CellLine
@@ -483,7 +483,7 @@ classes:
         line of alleles made in embryonic stem cells.
       slots:
         - allele_curie
-        - predicate_name
+        - relation_name
         - cell_line_curie
         - evidence_curies
 
@@ -495,10 +495,10 @@ classes:
     slot_usage:
       subject:
         range: Allele
-      predicate:
+      relation:
         range: VocabularyTerm
         notes: >-
-          CV 'Allele-Construct Predicates' including - contains, contains_coinjection_marker,
+          CV 'Allele-Construct Relation' including - contains, contains_coinjection_marker,
           contains_phenotypic_sequence_feature, and contains_innocuous_sequence_feature
       object:
         range: Construct
@@ -511,9 +511,9 @@ classes:
       slots:
         - construct_curie
       slot_usage:
-        predicate_name:
+        relation_name:
           notes: >-
-            CV 'Allele-Construct Predicates' including - contains, contains_coinjection_marker,
+            CV 'Allele-Construct Relation' including - contains, contains_coinjection_marker,
             contains_phenotypic_sequence_feature, and contains_innocuous_sequence_feature
 
   AlleleGeneAssociation:
@@ -538,10 +538,10 @@ classes:
     slot_usage:
       subject:
         range: Allele
-      predicate:
+      relation:
         any_of:
           equals_string: has_generation_method
-        notes: CV 'Allele Generation Method Association Predicate'
+        notes: CV 'Allele Generation Method Association Relation'
       object:
         range: GenerationMethod
 
@@ -549,12 +549,12 @@ classes:
     is_a: AuditedObjectDTO
     slots:
       - allele_curie
-      - predicate_name
+      - relation_name
       - generation_method_dto
       - evidence_curies
       - mutation_target_strain_curie
     slot_usage:
-      predicate_name:
+      relation_name:
         required: true
         any_of:
           equals_string: has_generation_method
@@ -570,7 +570,7 @@ classes:
     slot_usage:
       subject:
         range: Allele
-      predicate:
+      relation:
         range: VocabularyTerm  # If we can adequately represent all needed relations in RO, this could be ROTerm
       object:
         range: GenomicEntity
@@ -582,7 +582,7 @@ classes:
     abstract: true
     slots:
       - allele_curie
-      - predicate_name
+      - relation_name
       - evidence_curies
       - evidence_code_curie
       - note_dto
@@ -599,7 +599,7 @@ classes:
     slot_usage:
       subject:
         range: Allele
-      predicate:
+      relation:
         range: VocabularyTerm
       object:
         range: Image
@@ -614,7 +614,7 @@ classes:
       The relationship between an allele and an image.
     slots:
       - allele_curie
-      - predicate_name
+      - relation_name
       - image_curie
       - primary_image
       - evidence_curies
@@ -640,7 +640,7 @@ classes:
       The relationship between an allele and the AGM origin of the allele.
     slots:
       - allele_curie
-      - predicate_name
+      - relation_name
       - agm_curie
       - evidence_curies
 

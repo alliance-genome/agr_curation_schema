@@ -93,7 +93,7 @@ classes:
       - interactor_B_type
     defining_slots:
       - subject
-      - predicate
+      - relation
       - object
     id_prefixes:
       - BIOGRID
@@ -118,7 +118,7 @@ classes:
           Additional identifier(s) of the interaction annotation other than the primary id.
       subject:
         range: Gene                   # is this declaration needed since it is already made in the parent class?
-      predicate:
+      relation:
         subproperty_of: interacts_with
         symmetric: true
       object:
@@ -152,7 +152,7 @@ classes:
         description: >-
           The experimental method used to identify the physical interaction between two molecules
         range: detection_methods_enum
-      predicate:
+      relation:
         subproperty_of: physically_interacts_with
         symmetric: true
 #    exact_mappings:
@@ -167,7 +167,7 @@ classes:
       - interactor_B_genetic_perturbation
       - phenotype_or_trait
     slot_usage:
-      predicate:
+      relation:
         subproperty_of: genetically_interacts_with
 
 

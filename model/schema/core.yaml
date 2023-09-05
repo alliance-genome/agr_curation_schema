@@ -288,14 +288,15 @@ classes:
 
 
   Association:
+    abstract: true
     is_a: AuditedObject
     description: >-
       A typed association between two entities, supported by evidence.  Associations have three base slots: subject,
-      object, and predicate, but they can have any number of additional attributes that help qualify the relationship
+      object, and relation, but they can have any number of additional attributes that help qualify the relationship
       between the subject and the object.  The subject is the curie (or identifier) of the class that is the subject
       of the association, and likewise the object is the curie (or identifier of the class that is the object. The
-      relationship between subject and object is defined by the predicate slot (which can also be constrained
-      using the range of the predicate).
+      relationship between subject and object is defined by the relation slot (which can also be constrained
+      using the range of the relation).
     exact_mappings:
       - biolink:association
     notes:
@@ -303,16 +304,29 @@ classes:
       qualifiers and negated slots.
     slots:
       - subject
-      - predicate
+      - relation
       - object
-      - evidence
     slot_usage:
         subject:
             required: true
-        predicate:
+        relation:
             required: true
         object:
             required: true
+
+  SingleReferenceAssociation:
+    abstract: true
+    is_a: Association
+    description: An association supported by a single Reference object
+    slots:
+      - single_reference
+
+  EvidenceAssociation:
+    abstract: true
+    is_a: Association
+    description: An association supported by any number of InformationContentEntity objects
+    slots:
+      - evidence
 
   ExternalDatabaseLink:
     is_a: AuditedObject
@@ -361,12 +375,12 @@ classes:
         range: Chromosome
         description: >-
           object should be the chromosome identifier
-      predicate:
+      relation:
         any_of:
           equals_string: has_genomic_location
     defining_slots:
       - subject
-      - predicate
+      - relation
       - object
       - start
       - end
@@ -381,14 +395,14 @@ classes:
     is_a: AuditedObjectDTO
     slots:
       - genomic_entity_curie
-      - predicate_name
+      - relation_name
       - chromosome_curie
       - evidence_curies
       - assembly_curie
       - start
       - end
     slot_usage:
-      predicate_name:
+      relation_name:
         required: true
         any_of:
           equals_string: has_genomic_location
@@ -987,7 +1001,7 @@ slots:
     exact_mappings:
       - biolink:object
 
-  predicate:
+  relation:
     is_a: association_slot
     description: >-
       A high-level grouping for the relationship type. This is analogous to category for nodes.
@@ -997,9 +1011,9 @@ slots:
     exact_mappings:
       - biolink:predicate
 
-  predicate_name:
+  relation_name:
     description: >-
-      Name of VocabularyTerm representing predicate of an Association
+      Name of VocabularyTerm representing relation of an Association
     required: true
     range: string
 

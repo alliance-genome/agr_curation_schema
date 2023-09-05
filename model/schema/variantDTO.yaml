@@ -54,7 +54,7 @@ classes:
     is_a: AuditedObjectDTO
     slots:
       - variant_entity_curie
-      - predicate_name
+      - relation_name
       - chromosome_curie
       - evidence_curies
       - evidence_code_curie
@@ -78,7 +78,7 @@ classes:
     slot_usage:
       variant_entity_curie:
         required: true
-      predicate_name:
+      relation_name:
         required: true
         any_of:
           equals_string: has_genomic_location
@@ -95,7 +95,7 @@ classes:
     is_a: AuditedObjectDTO
     slots:
       - variant_entity_curie
-      - predicate_name
+      - relation_name
       - chromosome_curie
       - evidence_curies
       - evidence_code_curie
@@ -112,7 +112,7 @@ classes:
     slot_usage:
       variant_entity_curie:
         required: true
-      predicate_name:
+      relation_name:
         required: true
         any_of:
           equals_string: has_genomic_location
@@ -129,7 +129,7 @@ classes:
     is_a: AuditedObjectDTO
     slots:
       - variant_entity_curie
-      - predicate_name
+      - relation_name
       - chromosome_curie
       - evidence_curies
       - evidence_code_curie
@@ -147,7 +147,7 @@ classes:
     slot_usage:
       variant_entity_curie:
         required: true
-      predicate_name:
+      relation_name:
         required: true
         any_of:
           equals_string: has_genomic_location
