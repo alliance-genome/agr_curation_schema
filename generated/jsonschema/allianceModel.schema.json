@@ -7278,7 +7278,6 @@
             "required": [
                 "name",
                 "curie",
-                "taxon_curie",
                 "internal"
             ],
             "title": "ConstructDTO",
@@ -16846,7 +16845,6 @@
             },
             "required": [
                 "curie",
-                "taxon_curie",
                 "internal"
             ],
             "title": "ReagentDTO",
