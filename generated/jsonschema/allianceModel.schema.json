@@ -1162,14 +1162,6 @@
             "title": "Agent",
             "type": "object"
         },
-        "AggregationDatabaseEnum": {
-            "description": "",
-            "enum": [
-                "mi:0670"
-            ],
-            "title": "AggregationDatabaseEnum",
-            "type": "string"
-        },
         "AgmSecondaryIdSlotAnnotation": {
             "additionalProperties": false,
             "description": "",
@@ -8328,204 +8320,6 @@
             "title": "DataProviderDTO",
             "type": "object"
         },
-        "DetectionMethodsEnum": {
-            "description": "",
-            "enum": [
-                "mi:0084",
-                "mi:0364",
-                "mi:0089",
-                "mi:0001",
-                "mi:0363",
-                "mi:0880",
-                "mi:0081",
-                "mi:0115",
-                "mi:0512",
-                "mi:1204",
-                "mi:1203",
-                "mi:0872",
-                "mi:0114",
-                "mi:0510",
-                "mi:0515",
-                "mi:0516",
-                "mi:0998",
-                "mi:0073",
-                "mi:0232",
-                "mi:0111",
-                "mi:0870",
-                "mi:0991",
-                "mi:0112",
-                "mi:0077",
-                "mi:0990",
-                "mi:0231",
-                "mi:0071",
-                "mi:0905",
-                "mi:0588",
-                "mi:0104",
-                "mi:0225",
-                "mi:0984",
-                "mi:0226",
-                "mi:1314",
-                "mi:0069",
-                "mi:0982",
-                "mi:1313",
-                "mi:1038",
-                "mi:1037",
-                "mi:1312",
-                "mi:0108",
-                "mi:0900",
-                "mi:0227",
-                "mi:0107",
-                "mi:0067",
-                "mi:1311",
-                "mi:0101",
-                "mi:0065",
-                "mi:0066",
-                "mi:0858",
-                "mi:0979",
-                "mi:0859",
-                "mi:1309",
-                "mi:1147",
-                "mi:0052",
-                "mi:0053",
-                "mi:0051",
-                "mi:1024",
-                "mi:0695",
-                "mi:0054",
-                "mi:0055",
-                "mi:1022",
-                "mi:2193",
-                "mi:2192",
-                "mi:2191",
-                "mi:0728",
-                "mi:0729",
-                "mi:0605",
-                "mi:0968",
-                "mi:0606",
-                "mi:0969",
-                "mi:0727",
-                "mi:0049",
-                "mi:0841",
-                "mi:0047",
-                "mi:1016",
-                "mi:1137",
-                "mi:0686",
-                "mi:0048",
-                "mi:0964",
-                "mi:1019",
-                "mi:0042",
-                "mi:2340",
-                "mi:0040",
-                "mi:0045",
-                "mi:0046",
-                "mi:2189",
-                "mi:0440",
-                "mi:0676",
-                "mi:0038",
-                "mi:0434",
-                "mi:1007",
-                "mi:0435",
-                "mi:0432",
-                "mi:1247",
-                "mi:0399",
-                "mi:1005",
-                "mi:1246",
-                "mi:0438",
-                "mi:0953",
-                "mi:0678",
-                "mi:0437",
-                "mi:1008",
-                "mi:2339",
-                "mi:0030",
-                "mi:0031",
-                "mi:0276",
-                "mi:0397",
-                "mi:0430",
-                "mi:2213",
-                "mi:0398",
-                "mi:1088",
-                "mi:1000",
-                "mi:0949",
-                "mi:0825",
-                "mi:0946",
-                "mi:0826",
-                "mi:0947",
-                "mi:0027",
-                "mi:0423",
-                "mi:0424",
-                "mi:0028",
-                "mi:0663",
-                "mi:1235",
-                "mi:1356",
-                "mi:0944",
-                "mi:0428",
-                "mi:0824",
-                "mi:0029",
-                "mi:0425",
-                "mi:0426",
-                "mi:0943",
-                "mi:0020",
-                "mi:2169",
-                "mi:0420",
-                "mi:1232",
-                "mi:1352",
-                "mi:0814",
-                "mi:0419",
-                "mi:0412",
-                "mi:0016",
-                "mi:0413",
-                "mi:0017",
-                "mi:0655",
-                "mi:0410",
-                "mi:1104",
-                "mi:0014",
-                "mi:0894",
-                "mi:0411",
-                "mi:1103",
-                "mi:0416",
-                "mi:0813",
-                "mi:0417",
-                "mi:0018",
-                "mi:0415",
-                "mi:0019",
-                "mi:0657",
-                "mi:0096",
-                "mi:0097",
-                "mi:1183",
-                "mi:0370",
-                "mi:0892",
-                "mi:0012",
-                "mi:0254",
-                "mi:0013",
-                "mi:0010",
-                "mi:0011",
-                "mi:0099",
-                "mi:0090",
-                "mi:0091",
-                "mi:0809",
-                "mi:0807",
-                "mi:0928",
-                "mi:0808",
-                "mi:0401",
-                "mi:0402",
-                "mi:0006",
-                "mi:0369",
-                "mi:0004",
-                "mi:0400",
-                "mi:0405",
-                "mi:0889",
-                "mi:0406",
-                "mi:0007",
-                "mi:0887",
-                "mi:0920",
-                "mi:1218",
-                "mi:0404",
-                "mi:0008",
-                "mi:0888",
-                "mi:0921"
-            ],
-            "title": "DetectionMethodsEnum",
-            "type": "string"
-        },
         "ECOTerm": {
             "additionalProperties": false,
             "description": "",
@@ -11013,37 +10807,41 @@
                     },
                     "type": "array"
                 },
-                "interaction_data_provider": {
-                    "$ref": "#/$defs/InteractionSourceEnum",
-                    "description": "The interaction database that curated the interaction. e.g. BioGRID"
+                "interaction_source": {
+                    "description": "The interaction database that curated the interaction. e.g. BioGRID An MITerm from the AGR interaction source subset of AGR terms.",
+                    "type": "string"
                 },
                 "interaction_type": {
-                    "$ref": "#/$defs/InteractionTypeEnum",
-                    "description": "The type of interaction between the two genes or gene products. e.g. physical association"
+                    "description": "The type of interaction between the two genes or gene products. e.g. physical association. An MITerm from the AGR interaction type subset of MITerms",
+                    "type": "string"
                 },
                 "interactor_A_genetic_perturbation": {
                     "type": "string"
                 },
                 "interactor_A_role": {
+                    "description": "An MITerm from the AGR interactor A role subset of MITerms",
                     "items": {
-                        "$ref": "#/$defs/InteractorARoleEnum"
+                        "type": "string"
                     },
                     "type": "array"
                 },
                 "interactor_A_type": {
-                    "$ref": "#/$defs/InteractorTypeEnum"
+                    "description": "An MITerm from the AGR interaction type subset of MITerms",
+                    "type": "string"
                 },
                 "interactor_B_genetic_perturbation": {
                     "type": "string"
                 },
                 "interactor_B_role": {
+                    "description": "An MITerm from the AGR interactor B role subset of MITerms",
                     "items": {
-                        "$ref": "#/$defs/InteractorBRoleEnum"
+                        "type": "string"
                     },
                     "type": "array"
                 },
                 "interactor_B_type": {
-                    "$ref": "#/$defs/InteractorTypeEnum"
+                    "description": "An MITerm from the AGR interaction type subset of MITerms",
+                    "type": "string"
                 },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
@@ -11057,7 +10855,7 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "phenotype_or_trait": {
+                "phenotypes_or_traits": {
                     "items": {
                         "type": "string"
                     },
@@ -11078,7 +10876,7 @@
             },
             "required": [
                 "curie",
-                "interaction_data_provider",
+                "interaction_source",
                 "interaction_type",
                 "interactor_A_type",
                 "interactor_B_type",
@@ -11090,13 +10888,139 @@
             "title": "GeneGeneticInteraction",
             "type": "object"
         },
+        "GeneGeneticInteractionDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for genetic interaction between genes (e.g. phenotypic suppression)",
+            "properties": {
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "cross_reference_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/CrossReferenceDTO"
+                    },
+                    "type": "array"
+                },
+                "curie": {
+                    "description": "The unique primary identifier for the interaction. This should be the source (curation) database identifier, or if that is not available then the aggregation database identifier (e.g. IMEx)",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "evidence_curies": {
+                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "gene_relation_name": {
+                    "description": "Name of VocabularyTerm describing relationship between a subject entity and an object Gene",
+                    "type": "string"
+                },
+                "interaction_source_curie": {
+                    "description": "The interaction database that curated the interaction. e.g. BioGRID. Value is the curie of an MITerm from the AGR interaction source subset of AGR terms.",
+                    "type": "string"
+                },
+                "interaction_type_curie": {
+                    "description": "The type of interaction between the two genes or gene products. e.g. physical association. Value is the curie of an MITerm from the AGR interaction type subset of MITerms",
+                    "type": "string"
+                },
+                "interactor_A_genetic_perturbation_curie": {
+                    "type": "string"
+                },
+                "interactor_A_role_curie": {
+                    "description": "Curie of an MITerm from the AGR interactor A role subset of MITerm",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "interactor_A_type_curie": {
+                    "description": "Curie of an MITerm from the AGR interaction type subset of MITerms",
+                    "type": "string"
+                },
+                "interactor_B_genetic_perturbation_curie": {
+                    "type": "string"
+                },
+                "interactor_B_role_curie": {
+                    "description": "Curie of an MITerm from the AGR interactor B role subset of MITerms",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "interactor_B_type_curie": {
+                    "description": "Curie of an MITerm from the AGR interaction type subset of MITerms",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "object_gene_curie": {
+                    "description": "Curie of the object gene in a gene-to-gene association",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "phenotypes_or_traits": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "subject_gene_curie": {
+                    "description": "Curie of the subject gene in a gene-to-gene association",
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "curie",
+                "interaction_source_curie",
+                "interaction_type_curie",
+                "interactor_A_type_curie",
+                "interactor_B_type_curie",
+                "subject_gene_curie",
+                "gene_relation_name",
+                "object_gene_curie",
+                "internal"
+            ],
+            "title": "GeneGeneticInteractionDTO",
+            "type": "object"
+        },
         "GeneMolecularInteraction": {
             "additionalProperties": false,
             "description": "A physical molecular interaction between gene products (e.g. protein-protein interactions or protein-RNA interactions) or between genes and DNA-binding factors (e.g. protein-DNA interactions)",
             "properties": {
                 "aggregation_database": {
-                    "$ref": "#/$defs/AggregationDatabaseEnum",
-                    "description": "The database that collected the interaction annotation from another resource and aggregated it into a consolidated resource. e.g. IMEx"
+                    "description": "The database that collected the interaction annotation from another resource and aggregated it into a consolidated resource, e.g. IMEx.  An MITerm from the AGR aggregation database subset of MITerms.",
+                    "type": "string"
                 },
                 "created_by": {
                     "description": "The individual that created the entity.",
@@ -11134,8 +11058,8 @@
                     "type": "string"
                 },
                 "detection_method": {
-                    "$ref": "#/$defs/DetectionMethodsEnum",
-                    "description": "The experimental method used to identify the physical interaction between two molecules"
+                    "description": "The experimental method used to identify the physical interaction between two molecules. An MITerm from the AGR detection method subset of MITerms.",
+                    "type": "string"
                 },
                 "evidence": {
                     "description": "",
@@ -11144,31 +11068,35 @@
                     },
                     "type": "array"
                 },
-                "interaction_data_provider": {
-                    "$ref": "#/$defs/InteractionSourceEnum",
-                    "description": "The interaction database that curated the interaction. e.g. BioGRID"
+                "interaction_source": {
+                    "description": "The interaction database that curated the interaction. e.g. BioGRID An MITerm from the AGR interaction source subset of AGR terms.",
+                    "type": "string"
                 },
                 "interaction_type": {
-                    "$ref": "#/$defs/InteractionTypeEnum",
-                    "description": "The type of interaction between the two genes or gene products. e.g. physical association"
+                    "description": "The type of interaction between the two genes or gene products. e.g. physical association. An MITerm from the AGR interaction type subset of MITerms",
+                    "type": "string"
                 },
                 "interactor_A_role": {
+                    "description": "An MITerm from the AGR interactor A role subset of MITerms",
                     "items": {
-                        "$ref": "#/$defs/InteractorARoleEnum"
+                        "type": "string"
                     },
                     "type": "array"
                 },
                 "interactor_A_type": {
-                    "$ref": "#/$defs/InteractorTypeEnum"
+                    "description": "An MITerm from the AGR interaction type subset of MITerms",
+                    "type": "string"
                 },
                 "interactor_B_role": {
+                    "description": "An MITerm from the AGR interactor B role subset of MITerms",
                     "items": {
-                        "$ref": "#/$defs/InteractorBRoleEnum"
+                        "type": "string"
                     },
                     "type": "array"
                 },
                 "interactor_B_type": {
-                    "$ref": "#/$defs/InteractorTypeEnum"
+                    "description": "An MITerm from the AGR interaction type subset of MITerms",
+                    "type": "string"
                 },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
@@ -11197,7 +11125,7 @@
             },
             "required": [
                 "curie",
-                "interaction_data_provider",
+                "interaction_source",
                 "interaction_type",
                 "interactor_A_type",
                 "interactor_B_type",
@@ -11207,6 +11135,128 @@
                 "internal"
             ],
             "title": "GeneMolecularInteraction",
+            "type": "object"
+        },
+        "GeneMolecularInteractionDTO": {
+            "additionalProperties": false,
+            "description": "Ingest clas for a physical molecular interaction between gene products (e.g.  protein-protein interactions or protein-RNA interactions) or between genes and DNA-binding factors (e.g. protein-DNA interactions)",
+            "properties": {
+                "aggregation_database_curie": {
+                    "description": "The database that collected the interaction annotation from another resource and aggregated it into a consolidated resource, e.g. IMEx.  Value is the curie of an MITerm from the AGR aggregation database subset of MITerms.",
+                    "type": "string"
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "cross_reference_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/CrossReferenceDTO"
+                    },
+                    "type": "array"
+                },
+                "curie": {
+                    "description": "The unique primary identifier for the interaction. This should be the source (curation) database identifier, or if that is not available then the aggregation database identifier (e.g. IMEx)",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "detection_method_curie": {
+                    "description": "The experimental method used to identify the physical interaction between two molecules. Value is the curie of an MITerm from the AGR detection method subset of MITerms.",
+                    "type": "string"
+                },
+                "evidence_curies": {
+                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "gene_relation_name": {
+                    "description": "Name of VocabularyTerm describing relationship between a subject entity and an object Gene",
+                    "type": "string"
+                },
+                "interaction_source_curie": {
+                    "description": "The interaction database that curated the interaction. e.g. BioGRID. Value is the curie of an MITerm from the AGR interaction source subset of AGR terms.",
+                    "type": "string"
+                },
+                "interaction_type_curie": {
+                    "description": "The type of interaction between the two genes or gene products. e.g. physical association. Value is the curie of an MITerm from the AGR interaction type subset of MITerms",
+                    "type": "string"
+                },
+                "interactor_A_role_curie": {
+                    "description": "Curie of an MITerm from the AGR interactor A role subset of MITerm",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "interactor_A_type_curie": {
+                    "description": "Curie of an MITerm from the AGR interaction type subset of MITerms",
+                    "type": "string"
+                },
+                "interactor_B_role_curie": {
+                    "description": "Curie of an MITerm from the AGR interactor B role subset of MITerms",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "interactor_B_type_curie": {
+                    "description": "Curie of an MITerm from the AGR interaction type subset of MITerms",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "object_gene_curie": {
+                    "description": "Curie of the object gene in a gene-to-gene association",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "subject_gene_curie": {
+                    "description": "Curie of the subject gene in a gene-to-gene association",
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "curie",
+                "interaction_source_curie",
+                "interaction_type_curie",
+                "interactor_A_type_curie",
+                "interactor_B_type_curie",
+                "subject_gene_curie",
+                "gene_relation_name",
+                "object_gene_curie",
+                "internal"
+            ],
+            "title": "GeneMolecularInteractionDTO",
             "type": "object"
         },
         "GeneNomenclatureSet": {
@@ -13087,9 +13137,21 @@
                     },
                     "type": "array"
                 },
+                "gene_genetic_interaction_ingest_set": {
+                    "items": {
+                        "$ref": "#/$defs/GeneGeneticInteractionDTO"
+                    },
+                    "type": "array"
+                },
                 "gene_ingest_set": {
                     "items": {
                         "$ref": "#/$defs/GeneDTO"
+                    },
+                    "type": "array"
+                },
+                "gene_molecular_interaction_ingest_set": {
+                    "items": {
+                        "$ref": "#/$defs/GeneMolecularInteractionDTO"
                     },
                     "type": "array"
                 },
@@ -13160,168 +13222,6 @@
             ],
             "title": "Ingest",
             "type": "object"
-        },
-        "InteractionSourceEnum": {
-            "description": "",
-            "enum": [
-                "mi:1263",
-                "mi:0471",
-                "mi:1262",
-                "mi:0463",
-                "mi:0486",
-                "mi:1222",
-                "mi:1332",
-                "mi:1264",
-                "mi:0903",
-                "mi:0917",
-                "mi:0478",
-                "mi:0974",
-                "mi:0487",
-                "mi:0465",
-                "mi:1335",
-                "mi:0469"
-            ],
-            "title": "InteractionSourceEnum",
-            "type": "string"
-        },
-        "InteractionTypeEnum": {
-            "description": "",
-            "enum": [
-                "mi:1294",
-                "mi:1250",
-                "mi:1293",
-                "mi:2388",
-                "mi:1292",
-                "mi:2380",
-                "mi:1291",
-                "mi:1290",
-                "mi:0915",
-                "mi:0914",
-                "mi:0797",
-                "mi:1127",
-                "mi:0795",
-                "mi:1126",
-                "mi:2379",
-                "mi:0559",
-                "mi:0557",
-                "mi:2374",
-                "mi:0195",
-                "mi:2373",
-                "mi:1283",
-                "mi:2372",
-                "mi:2371",
-                "mi:0194",
-                "mi:2378",
-                "mi:0199",
-                "mi:0794",
-                "mi:1288",
-                "mi:2377",
-                "mi:0871",
-                "mi:1287",
-                "mi:2376",
-                "mi:0197",
-                "mi:2375",
-                "mi:2370",
-                "mi:1280",
-                "mi:0192",
-                "mi:1237",
-                "mi:2402",
-                "mi:2369",
-                "mi:1279",
-                "mi:2401",
-                "mi:2368",
-                "mi:0945",
-                "mi:1274",
-                "mi:1273",
-                "mi:1278",
-                "mi:1310",
-                "mi:1276",
-                "mi:1110",
-                "mi:0220",
-                "mi:2364",
-                "mi:0212",
-                "mi:1148",
-                "mi:0213",
-                "mi:0216",
-                "mi:0414",
-                "mi:0217",
-                "mi:2396",
-                "mi:0570",
-                "mi:0210",
-                "mi:2397",
-                "mi:2391",
-                "mi:2390",
-                "mi:0407",
-                "mi:0408",
-                "mi:0203",
-                "mi:0566",
-                "mi:0204",
-                "mi:0403",
-                "mi:0569",
-                "mi:0844"
-            ],
-            "title": "InteractionTypeEnum",
-            "type": "string"
-        },
-        "InteractorARoleEnum": {
-            "description": "",
-            "enum": [
-                "mi:2352",
-                "mi:0496",
-                "mi:0584",
-                "mi:2334",
-                "mi:0497",
-                "mi:0684",
-                "mi:0582",
-                "mi:2354",
-                "mi:0583",
-                "mi:0498",
-                "mi:0499",
-                "mi:2335",
-                "mi:0898",
-                "mi:0865",
-                "mi:0503"
-            ],
-            "title": "InteractorARoleEnum",
-            "type": "string"
-        },
-        "InteractorBRoleEnum": {
-            "description": "",
-            "enum": [
-                "mi:2351",
-                "mi:0581",
-                "mi:0496",
-                "mi:0584",
-                "mi:2334",
-                "mi:0497",
-                "mi:0684",
-                "mi:2353",
-                "mi:0583",
-                "mi:0498",
-                "mi:0499",
-                "mi:2335",
-                "mi:0898",
-                "mi:0865",
-                "mi:0503"
-            ],
-            "title": "InteractorBRoleEnum",
-            "type": "string"
-        },
-        "InteractorTypeEnum": {
-            "description": "",
-            "enum": [
-                "mi:0250",
-                "mi:0318",
-                "mi:0319",
-                "mi:0320",
-                "mi:0324",
-                "mi:0326",
-                "mi:0327",
-                "mi:0681",
-                "mi:2190"
-            ],
-            "title": "InteractorTypeEnum",
-            "type": "string"
         },
         "Laboratory": {
             "additionalProperties": false,
@@ -21612,9 +21512,21 @@
             },
             "type": "array"
         },
+        "gene_genetic_interaction_ingest_set": {
+            "items": {
+                "$ref": "#/$defs/GeneGeneticInteractionDTO"
+            },
+            "type": "array"
+        },
         "gene_ingest_set": {
             "items": {
                 "$ref": "#/$defs/GeneDTO"
+            },
+            "type": "array"
+        },
+        "gene_molecular_interaction_ingest_set": {
+            "items": {
+                "$ref": "#/$defs/GeneMolecularInteractionDTO"
             },
             "type": "array"
         },
