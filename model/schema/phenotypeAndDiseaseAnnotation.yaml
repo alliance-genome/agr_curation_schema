@@ -288,7 +288,7 @@ classes:
       relation:
         description: >-
           The relation between the subject biological entity and disease in the annotation.
-          Permissible values are terms from the CV 'Disease Relation Vocabulary'
+          Permissible values are terms from the CV 'Disease Relation'
         required: true
       annotation_type:
         required: false
@@ -312,7 +312,7 @@ classes:
         description: >-
           Submitted value should be a vocabulary term from the 'Genetic sexes'
           vocabulary
-        range: VocabularyTerm # CV 'Genetic sexes'
+        range: VocabularyTerm # CV 'Genetic Sex'
         required: false
       related_notes:
         description: >-
@@ -357,7 +357,7 @@ classes:
           The relationship between gene and disease. Submitted value should be a
           vocabulary term from the 'Gene disease relations' vocabulary
         required: true
-        range: VocabularyTerm # CV 'Disease Relation Vocabulary' subset 'Gene disease relations'
+        range: VocabularyTerm # CV 'Disease Relation' subset 'Gene Disease Relation'
 
   GeneDiseaseAnnotationDTO:
     is_a: DiseaseAnnotationDTO
@@ -384,7 +384,7 @@ classes:
         description: >-
           The relationship between allele and disease. Submitted value should be
           a vocabulary term from the 'Allele disease relations' vocabulary
-        range: VocabularyTerm # CV 'Disease Relation Vocabulary' subset 'Allele disease relations'
+        range: VocabularyTerm # CV 'Disease Relation' subset 'Allele Disease Relation'
         required: true
       inferred_gene:
         description: >-
@@ -423,7 +423,7 @@ classes:
         description: >-
           The relationship between AGM and disease. Submitted value should be a
           vocabulary term from the 'AGM disease relations' vocabulary
-        range: VocabularyTerm # CV 'Disease Relation Vocabulary' subset 'AGM disease relations'
+        range: VocabularyTerm # CV 'Disease Relation' subset 'AGM Disease Relation'
         required: true
       inferred_gene:
         description: >-
@@ -578,7 +578,7 @@ classes:
 slots:
 
   annotation_type:
-    range: VocabularyTerm # CV 'Annotation types'
+    range: VocabularyTerm # CV 'Annotation Type'
     description: >-
       The type of annotation classified according to curation method. Submitted
       value should be a vocabulary term from the 'Annotation types' vocabulary
@@ -588,7 +588,7 @@ slots:
       Name of the VocabularyTerm describing the annotation type selected from
       the 'Annotation types' Vocabulary
     domain: DiseaseAnnotationDTO
-    range: string # CV 'Annotation types'
+    range: string # CV 'Annotation Type'
 
   asserted_allele:
     description: >-
@@ -688,13 +688,13 @@ slots:
       Submitted value should be a vocabulary term from the 'Condition relation
       types' vocabulary
     domain: ConditionRelation
-    range: VocabularyTerm # CV 'Condition relation types'
+    range: VocabularyTerm # CV 'Condition Relation Type'
 
   condition_relation_type_name:
     description: >-
       Name of VocabularyTerm from 'Condition relation types' vocabulary
     domain: ConditionRelationDTO
-    range: string # CV 'Condition relation types'
+    range: string # CV 'Condition Relation Type'
     required: true
 
   condition_relations:
@@ -754,7 +754,7 @@ slots:
       A relation describing how the genetic modifier modifies the disease model.
       Submitted value should be a vocabulary term from the 'Disease genetic
       modifiers' vocabulary
-    range: VocabularyTerm # CV 'Disease genetic modifier relations'
+    range: VocabularyTerm # CV 'Disease Genetic Modifier Relation'
 
   disease_genetic_modifier_relation_name:
     description: >-
@@ -762,7 +762,7 @@ slots:
       modifies the disease model, selected from the 'Disease genetic modifier
       relations' Vocabulary.
     domain: DiseaseAnnotationDTO
-    range: string # CV 'Disease genetic modifier relations'
+    range: string # CV 'Disease Genetic Modifier Relation'
 
   disease_qualifiers:
     description: >-
@@ -770,25 +770,25 @@ slots:
       Vocabulary
     domain: DiseaseAnnotation
     multivalued: true
-    range: VocabularyTerm # CV 'Disease qualifiers'
+    range: VocabularyTerm # CV 'Disease Qualifier'
 
   disease_qualifier_names:
     description: >-
       Names of terms from the 'Disease qualifiers' vocabulary
     domain: DiseaseAnnotationDTO
-    range: string # CV 'Disease qualifiers'
+    range: string # CV 'Disease Qualifier'
     multivalued: true
 
   genetic_sex:
     description: >-
       Submitted value should be a vocabulary term from the 'Genetic sexes'
       vocabulary
-    range: VocabularyTerm # CV 'Genetic sexes'
+    range: VocabularyTerm # CV 'Genetic Sex'
 
   genetic_sex_name:
     description: Name of term from the 'Genetic sexes' vocabulary
     domain: DiseaseAnnotationDTO
-    range: string # CV 'Genetic sexes'
+    range: string # CV 'Genetic Sex'
 
   handle:
     description: >-

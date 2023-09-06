@@ -457,7 +457,7 @@ slots:
         retired_name: SGD-specific.
         unspecified: unclassified names.
     domain: NameSlotAnnotation
-    range: VocabularyTerm # CV 'Name type'
+    range: VocabularyTerm # CV 'Name Type'
     multivalued: false
     required: true
 
@@ -468,7 +468,7 @@ slots:
       systematic_name / ncbi_protein_name / uniform / non_uniform /
       retired_name / unspecified
     domain: NameSlotAnnotationDTO
-    range: string # CV 'Name type'
+    range: string # CV 'Name Type'
     required: true
 
   format_text:
@@ -500,7 +500,7 @@ slots:
       the scope of the synonym - permissible values are narrow /
       broad / related / exact
     domain: NameSlotAnnotation
-    range: VocabularyTerm # CV 'Synonym scope'
+    range: VocabularyTerm # CV 'Synonym Scope'
 
   synonym_scope_name:
     description: >-
