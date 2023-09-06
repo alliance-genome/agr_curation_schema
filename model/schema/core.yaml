@@ -437,6 +437,12 @@ classes:
 
 slots:
 
+  name:
+    description: >-
+      a human-readable name for an entity
+    multivalued: false
+    range: string
+  
   name_type:
     description: >-
       The type of name: e.g., symbol, full_name, systematic_name, etc.

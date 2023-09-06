@@ -1,4 +1,4 @@
-id: https://github.com/alliance-genome/agr_curation_schema/src/schema/allele
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/allele.yaml
 name: allele
 title: Allele
 
@@ -13,15 +13,16 @@ imports:
   - linkml:types
   - ontologyTerm
   - phenotypeAndDiseaseAnnotation
+  - reagent
 
 prefixes:
-  alliance: 'http://alliancegenome.org/'
-  linkml: 'https://w3id.org/linkml/'
-  gff: 'https://w3id.org/gff'
-  faldo: 'http://biohackathon.org/resource/faldo#'
-  biolink: 'https://w3id.org/biolink/vocab/'
-  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
-  schema: 'http://schema.org/'
+  alliance: "http://alliancegenome.org/"
+  linkml: "https://w3id.org/linkml/"
+  gff: "https://w3id.org/gff"
+  faldo: "http://biohackathon.org/resource/faldo#"
+  biolink: "https://w3id.org/biolink/vocab/"
+  NLMID: "https://www.ncbi.nlm.nih.gov/nlmcatalog/?term="
+  schema: "http://schema.org/"
 
 default_prefix: alliance
 default_range: string
@@ -41,7 +42,6 @@ emit_prefixes:
 ## ------------
 ## CLASSES
 ## ------------
-
 
 classes:
 
@@ -84,7 +84,7 @@ classes:
     exact_mappings:
       - SO:0001023
     slot_usage:
-      aberration:    # This slot is no longer declared in the Allele class; is this covered by something else? [CG]
+      aberration: # This slot is no longer declared in the Allele class; is this covered by something else? [CG]
         notes: specific to FB
       allele_symbol:
         required: true
@@ -124,8 +124,8 @@ classes:
       note_dtos:
         notes: note_type CV 'Allele Related Note Type'
 
-# Some classes roughly grouped with the Allele class because they have relationships to Allele and were
-# designed close to the time the Allele class was designed.  These could be broken out into their own yaml files.
+  # Some classes roughly grouped with the Allele class because they have relationships to Allele and were
+  # designed close to the time the Allele class was designed.  These could be broken out into their own yaml files.
 
   CellLine:
     is_a: GenomicEntity
@@ -136,70 +136,6 @@ classes:
     is_a: GenomicEntityDTO
     description: >-
       Dummy cell line DTO class
-
-  Construct:
-    is_a: Reagent
-    description: >-
-    slots:
-      - construct_genomic_entity_associations
-      - construct_components
-      - name
-      - references
-    slot_usage:
-      curie:
-        identifier: true
-      name:
-        required: true
-
-  ConstructDTO:
-    is_a: GenomicEntityDTO
-    slots:
-      - construct_component_dtos
-      - reference_curies
-
-# TO DO: create ConstructComponentDTO and ConstructComponentAssociationDTO classes? [CG]
-
-  ConstructComponentSlotAnnotation:
-    is_a: SlotAnnotation
-    slots:
-      - single_construct
-      - component_symbol
-      - related_notes
-      - taxon
-      - taxon_text
-    slot_usage:
-      single_construct:
-        required: true
-      component_symbol:
-        required: true
-      related_notes:
-        required: false
-      taxon:
-        required: false
-      taxon_text:
-        required: false
-
-  ConstructGenomicEntityAssociation:
-    is_a: EvidenceAssociation
-    description: >-
-      An association class to capture the identity of a construct component that is
-      a known genomic entity with a curie and any accompanying meta data about the
-      relationship between the construct and that genomic entity component
-    slots:
-      - related_notes
-    slot_usage:
-      subject:
-        range: Construct
-      relation:
-        range: VocabularyTerm
-        notes: >-
-          The relation should be a VocabularyTerm with one of the following
-          values - expresses (RO:0002292) / is_regulated_by (RO:0002334) /
-          targets (RO:0002436). CV: 'Construct Genomic Entity Association Relation'
-      object:
-        range: GenomicEntity
-      related_notes:
-        required: false
 
   GenerationMethod:
     is_a: AuditedObject
@@ -219,7 +155,7 @@ classes:
       - chemical_mutagen_name
       - irradiation_mutagen_name
 
-# Need to add appropriate name synonym slotAnnotations as slots removed from GenomicEntity
+  # Need to add appropriate name synonym slotAnnotations as slots removed from GenomicEntity
   SequenceTargetingReagent:
     description: >-
     is_a: GenomicEntity
@@ -250,12 +186,11 @@ classes:
       object:
         range: Gene
 
-# TO DO: create SequenceTargetingReagentToGeneAssociationDTO class? [CG]
+  # TO DO: create SequenceTargetingReagentToGeneAssociationDTO class? [CG]
 
-
-## ------------
-## ALLELE SLOT ANNOTATION CLASSES
-## ------------
+  ## ------------
+  ## ALLELE SLOT ANNOTATION CLASSES
+  ## ------------
 
   AlleleDatabaseStatusSlotAnnotation:
     is_a: SlotAnnotation
@@ -282,7 +217,7 @@ classes:
         required: true
       name_type:
         notes: >-
-            permissible_values: full_name (VocabularyTerm)
+          permissible_values: full_name (VocabularyTerm)
 
   AlleleFunctionalImpactSlotAnnotation:
     is_a: SlotAnnotation
@@ -439,9 +374,9 @@ classes:
       single_allele:
         required: true
 
-## ------------
-## ALLELE ASSOCIATION CLASSES
-## ------------
+  ## ------------
+  ## ALLELE ASSOCIATION CLASSES
+  ## ------------
 
   AlleleAlleleAssociation:
     is_a: AlleleGenomicEntityAssociation
@@ -460,7 +395,7 @@ classes:
     slots:
       - object_allele_curie
 
-# do mutant/parent/embryonic cell line associations need to be split out?
+  # do mutant/parent/embryonic cell line associations need to be split out?
   AlleleCellLineAssociation:
     is_a: EvidenceAssociation
     description: >-
@@ -504,17 +439,17 @@ classes:
         range: Construct
 
   AlleleConstructAssociationDTO:
-      is_a: AlleleGenomicEntityAssociationDTO
-      description: >-
-        The relationship between an allele and constructs contained in
-        that allele.
-      slots:
-        - construct_curie
-      slot_usage:
-        relation_name:
-          notes: >-
-            CV 'Allele-Construct Relation' including - contains, contains_coinjection_marker,
-            contains_phenotypic_sequence_feature, and contains_innocuous_sequence_feature
+    is_a: AlleleGenomicEntityAssociationDTO
+    description: >-
+      The relationship between an allele and constructs contained in
+      that allele.
+    slots:
+      - construct_identifier
+    slot_usage:
+      predicate_name:
+        notes: >-
+          CV 'Allele-Construct Predicates' including - contains, contains_coinjection_marker,
+          contains_phenotypic_sequence_feature, and contains_innocuous_sequence_feature
 
   AlleleGeneAssociation:
     is_a: AlleleGenomicEntityAssociation
@@ -570,12 +505,12 @@ classes:
     slot_usage:
       subject:
         range: Allele
-      relation:
-        range: VocabularyTerm  # If we can adequately represent all needed relations in RO, this could be ROTerm
+      predicate:
+        range: VocabularyTerm # If we can adequately represent all needed relations in RO, this could be ROTerm
       object:
         range: GenomicEntity
       evidence:
-        required: false   # This needs to be not required, at least in the base class
+        required: false # This needs to be not required, at least in the base class
 
   AlleleGenomicEntityAssociationDTO:
     is_a: AuditedObjectDTO
@@ -629,10 +564,10 @@ classes:
     description: >-
       The relationship between an allele and the origin of the allele.
     slot_usage:
-        subject:
-            range: Allele
-        object:
-            range: AffectedGenomicModel
+      subject:
+        range: Allele
+      object:
+        range: AffectedGenomicModel
 
   AlleleOriginAssociationDTO:
     is_a: AuditedObjectDTO
@@ -700,8 +635,7 @@ classes:
 ## ------------
 
 slots:
-
-# This slot is currently not being used 2022-12-20; should it be? [CG]
+  # This slot is currently not being used 2022-12-20; should it be? [CG]
   aberration:
     description: >-
       Associated deficiency (etc.) whose breakpoint causes
@@ -795,7 +729,7 @@ slots:
     multivalued: true
 
   allele_inheritance_modes:
-    description:  >-
+    description: >-
       Inheritance modes for an allele
     domain: Allele
     range: AlleleInheritanceModeSlotAnnotation
@@ -901,7 +835,7 @@ slots:
     range: AlleleVariantAssociation
     multivalued: true
 
-# This slot is currently not being used 2022-12-20; should it be? [CG]
+  # This slot is currently not being used 2022-12-20; should it be? [CG]
   analyses:
     description: >-
       TODO: added as a result of 'origin' class - please advise on a more descriptive slot/class definition.
@@ -921,34 +855,6 @@ slots:
       The name of the chemical used to generate the mutation through mutagenesis
     domain: GenerationMethodDTO
     range: string # CV 'Chemical Mutagens'
-
-  component_symbol:
-    domain: ConstructComponentSlotAnnotation
-    range: string
-    description: >-
-      The free text of a symbol or name of a construct
-      component for which no curie exists or is available
-
-  construct_components:
-    multivalued: true
-    domain: Construct
-    range: ConstructComponentSlotAnnotation
-
-  construct_component_dtos:
-    multivalued: true
-    domain: ConstructDTO
-    range: GenomicEntityDTO
-    inlined: true
-    inlined_as_list: true
-
-  construct_curie:
-    range: string
-    required: true
-
-  construct_genomic_entity_associations:
-    multivalued: true
-    domain: Construct
-    range: ConstructGenomicEntityAssociation
 
   database_status:
     description: >-
@@ -1037,14 +943,14 @@ slots:
     description: >-
       WormBase captures the method by which an extrachromosomal transgene was integrated into the genome.
     domain: GenerationMethod
-    range: VocabularyTerm  #CV 'WB Transgene Integration Method'
+    range: VocabularyTerm #CV 'WB Transgene Integration Method'
     multivalued: false
 
   integration_method_name:
     description: >-
       WormBase captures the method by which an extrachromosomal transgene was integrated into the genome.
     domain: GenerationMethodDTO
-    range: string  #CV 'WB Transgene Integration Methods'
+    range: string #CV 'WB Transgene Integration Methods'
     multivalued: false
 
   irradiation_mutagen:
@@ -1172,16 +1078,6 @@ slots:
     range: Allele
     multivalued: false
 
-  single_construct:
-    domain: ConstructComponentSlotAnnotation
-    range: Construct
-    multivalued: false
-
-  taxon_text:
-    description: >-
-      The free text reference to a species or general taxon (e.g. "Yeast") for a
-      a biological entity for which the exact taxon curie is unknown or unavailable.
-
   transgene_chromosome_location:
     description: >-
       The chromosome to which a transgene has been mapped. Used for WormBase transgenes
@@ -1198,16 +1094,14 @@ slots:
     range: string
     multivalued: false
 
-  transposon_insertion:   # This slot is currently not being used 2022-12-20; should it be? [CG]
+  transposon_insertion: # This slot is currently not being used 2022-12-20; should it be? [CG]
     description: >-
       Associated transposon insertion that causes the
       mutation
     domain: Allele
     range: string
 
-
 enums:
-
   sqtr_relation_enum:
     permissible_values:
       targets:
