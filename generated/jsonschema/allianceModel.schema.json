@@ -1834,7 +1834,8 @@
                 "allele_curie": {
                     "type": "string"
                 },
-                "construct_curie": {
+                "construct_identifier": {
+                    "description": "Either the MOD curie or internal ID that was used in the submission of the associated construct",
                     "type": "string"
                 },
                 "created_by_curie": {
@@ -1893,7 +1894,7 @@
                 }
             },
             "required": [
-                "construct_curie",
+                "construct_identifier",
                 "allele_curie",
                 "predicate_name",
                 "evidence_curies",
@@ -5008,6 +5009,14 @@
                     },
                     "type": "array"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "name": {
                     "description": "Publicly displayed name of the antibody. It often includes the name of the antibody target: e.g., anti-WNT-4. It may also include the host species and antibody clonality.",
                     "type": "string"
@@ -5045,6 +5054,10 @@
                 },
                 "taxon": {
                     "description": "The species in which the antibody was raised: e.g., mouse, rabbit, guinea pig, goat, camel, etc.",
+                    "type": "string"
+                },
+                "unique_id": {
+                    "description": "A non-curie unique identifier for a thing.",
                     "type": "string"
                 },
                 "updated_by": {
@@ -7018,6 +7031,14 @@
                     },
                     "type": "array"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "name": {
                     "description": "a human-readable name for an entity",
                     "type": "string"
@@ -7035,6 +7056,10 @@
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
+                    "type": "string"
+                },
+                "unique_id": {
+                    "description": "A non-curie unique identifier for a thing.",
                     "type": "string"
                 },
                 "updated_by": {
@@ -7215,10 +7240,6 @@
                     "description": "Curie of the Person object representing the individual that created the entity",
                     "type": "string"
                 },
-                "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "type": "string"
-                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -7251,6 +7272,14 @@
                     "description": "Identifier for Reagent manufactured_by field.  ",
                     "type": "string"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "name": {
                     "description": "a human-readable name for an entity",
                     "type": "string"
@@ -7277,7 +7306,6 @@
             },
             "required": [
                 "name",
-                "curie",
                 "internal"
             ],
             "title": "ConstructDTO",
@@ -7363,7 +7391,8 @@
             "additionalProperties": false,
             "description": "Ingest class for association between a construct component that is a known genomic entity with a curie and any accompanying meta data about the relationship between the construct and that genomic entity component",
             "properties": {
-                "construct_curie": {
+                "construct_identifier": {
+                    "description": "Either the MOD curie or internal ID that was used in the submission of the associated construct",
                     "type": "string"
                 },
                 "created_by_curie": {
@@ -7424,7 +7453,7 @@
                 }
             },
             "required": [
-                "construct_curie",
+                "construct_identifier",
                 "genomic_entity_relation_name",
                 "genomic_entity_curie",
                 "internal"
@@ -7925,12 +7954,24 @@
                     },
                     "type": "array"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
+                    "type": "string"
+                },
+                "unique_id": {
+                    "description": "A non-curie unique identifier for a thing.",
                     "type": "string"
                 },
                 "updated_by": {
@@ -16462,12 +16503,24 @@
                     },
                     "type": "array"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
+                    "type": "string"
+                },
+                "unique_id": {
+                    "description": "A non-curie unique identifier for a thing.",
                     "type": "string"
                 },
                 "updated_by": {
@@ -16766,12 +16819,24 @@
                     },
                     "type": "array"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
+                    "type": "string"
+                },
+                "unique_id": {
+                    "description": "A non-curie unique identifier for a thing.",
                     "type": "string"
                 },
                 "updated_by": {
@@ -16792,10 +16857,6 @@
             "properties": {
                 "created_by_curie": {
                     "description": "Curie of the Person object representing the individual that created the entity",
-                    "type": "string"
-                },
-                "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
                 "date_created": {
@@ -16830,6 +16891,14 @@
                     "description": "Identifier for Reagent manufactured_by field.  ",
                     "type": "string"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
@@ -16844,7 +16913,6 @@
                 }
             },
             "required": [
-                "curie",
                 "internal"
             ],
             "title": "ReagentDTO",
