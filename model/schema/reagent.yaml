@@ -47,6 +47,9 @@ classes:
       A material entity used in experiments.
     slots:
       - curie
+      - unique_id
+      - mod_entity_id
+      - mod_internal_id
       - taxon
       - generated_by
       - manufactured_by
@@ -56,10 +59,14 @@ classes:
     description: >-
       Ingest class for material entities used in experiments.
     slots:
-      - curie
+      - mod_entity_id
+      - mod_internal_id
       - taxon_curie
       - generated_by_identifier # needs to change: currently no common identifier field for Agent class
       - manufactured_by_identifier # needs to change: currently no common identifier field for Agent class
+    slot_usage:
+      mod_internal_id:
+        notes: This is required if mod_entity_id is not submitted
 
   Antibody:
     is_a: Reagent
@@ -198,7 +205,7 @@ classes:
       entity with a curie and any accompanying meta data about the relationship between
       the construct and that genomic entity component
     slots:
-      - construct_curie
+      - construct_identifier
       - genomic_entity_relation_name
       - genomic_entity_curie
       - note_dtos
@@ -263,15 +270,18 @@ slots:
     inlined: true
     inlined_as_list: true
 
-  construct_curie:
-    range: string
-    required: true
-
   construct_genomic_entity_associations:
     multivalued: true
     domain: Construct
     range: ConstructGenomicEntityAssociation
 
+  construct_identifier:
+    description: >-
+      Either the MOD curie or internal ID that was used in the submission
+      of the associated construct
+    range: string
+    required: true
+  
   generated_by_identifier:
     description: >- 
       Identifier for Reagent genereated_by field.  

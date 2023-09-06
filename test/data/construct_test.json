@@ -6,7 +6,7 @@
       "updated_by_curie": "WB:WBPerson123",
       "internal": false,
       "obsolete": false,
-      "curie": "WB:WBConstruct123",
+      "mod_entity_id": "WB:WBConstruct123",
       "name": "Construct A",
       "taxon_curie": "NCBITaxon:6239",
       "generated_by_identifier": "WB:WBLaboratory123",
@@ -33,7 +33,7 @@
   ],
   "construct_genomic_entity_association_ingest_set": [
     {
-      "construct_curie": "WB:WBConstruct123",
+      "construct_identifier": "WB:WBConstruct123",
       "genomic_entity_relation_name": "is_regulated_by",
       "genomic_entity_curie": "WB:WBGene00000001",
       "evidence_curies": [

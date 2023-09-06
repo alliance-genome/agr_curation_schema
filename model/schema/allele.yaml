@@ -444,7 +444,7 @@ classes:
       The relationship between an allele and constructs contained in
       that allele.
     slots:
-      - construct_curie
+      - construct_identifier
     slot_usage:
       predicate_name:
         notes: >-
