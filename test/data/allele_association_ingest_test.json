@@ -121,7 +121,7 @@
   "allele_construct_association_ingest_set": [
     {
       "allele_curie": "WB:WBVar00000001",
-      "predicate_name": "has_construct",
+      "relation_name": "has_construct",
       "construct_identifier": "WB:WBConstruct00000001",
       "evidence_code_curie": "ECO:0000006",
       "evidence_curies": [
