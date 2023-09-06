@@ -7349,13 +7349,6 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "evidence": {
-                    "description": "",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
