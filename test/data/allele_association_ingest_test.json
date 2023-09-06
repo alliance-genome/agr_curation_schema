@@ -122,7 +122,7 @@
     {
       "allele_curie": "WB:WBVar00000001",
       "predicate_name": "has_construct",
-      "construct_curie": "WB:WBConstruct00000001",
+      "construct_identifier": "WB:WBConstruct00000001",
       "evidence_code_curie": "ECO:0000006",
       "evidence_curies": [
         "PMID:11231512"

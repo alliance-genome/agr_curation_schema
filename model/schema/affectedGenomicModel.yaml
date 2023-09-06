@@ -47,6 +47,11 @@ classes:
       - sequence_targeting_reagents
       - parental_populations
       - references
+    slot_usage:
+      name:
+        notes: >-
+          May want to convert this into a slot that uses NameSlotAnnotation.
+    
 
   AffectedGenomicModelDTO:
     is_a: GenomicEntityDTO
@@ -85,14 +90,6 @@ classes:
       - zygosity_curie
 
 slots:
-
-  name:
-    description: >-
-      a human-readable name for an entity
-    notes: >-
-      May want to convert this into a slot that uses NameSlotAnnotation.
-    multivalued: false
-    range: string
 
   agm_curie:
     range: string

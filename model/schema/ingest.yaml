@@ -4,6 +4,8 @@ title: Alliance Schema Ingest
 
 imports:
   - core
+  - reagent
+  - allele
   - gene
   - image
   - variation
@@ -54,7 +56,6 @@ slots:
     required: true
 
   allele_ingest_set:
-    description: >-
     domain: Ingest
     range: AlleleDTO
     multivalued: true
@@ -62,7 +63,6 @@ slots:
       - object_set
 
   agm_ingest_set:
-    description: >-
     domain: Ingest
     range: AffectedGenomicModelDTO
     multivalued: true
@@ -70,7 +70,6 @@ slots:
       - object_set
 
   sqtr_ingest_set:
-    description: >-
     domain: Ingest
     range: SequenceTargetingReagentDTO
     multivalued: true
@@ -78,7 +77,6 @@ slots:
       - object_set
 
   variant_ingest_set:
-    description: >-
     domain: Ingest
     range: VariantDTO
     multivalued: true
@@ -86,7 +84,6 @@ slots:
       - object_set
 
   allele_variant_association_ingest_set:
-    description: >-
     domain: Ingest
     range: AlleleVariantAssociationDTO
     multivalued: true
@@ -94,7 +91,6 @@ slots:
       - object_set
 
   allele_gene_association_ingest_set:
-    description: >-
     domain: Ingest
     range: AlleleGeneAssociationDTO
     multivalued: true
@@ -102,7 +98,6 @@ slots:
       - object_set
 
   allele_transcript_association_ingest_set:
-    description: >-
     domain: Ingest
     range: AlleleTranscriptAssociationDTO
     multivalued: true
@@ -110,7 +105,6 @@ slots:
       - object_set
 
   allele_protein_association_ingest_set:
-    description: >-
     domain: Ingest
     range: AlleleProteinAssociationDTO
     multivalued: true
@@ -118,16 +112,13 @@ slots:
       - object_set
 
   allele_construct_association_ingest_set:
-    description: >-
     domain: Ingest
     range: AlleleConstructAssociationDTO
     multivalued: true
     mixins:
       - object_set
 
-
   allele_cell_line_association_ingest_set:
-    description: >-
     domain: Ingest
     range: AlleleCellLineAssociationDTO
     multivalued: true
@@ -135,7 +126,6 @@ slots:
       - object_set
 
   allele_origin_association_ingest_set:
-    description: >-
     domain: Ingest
     range: AlleleOriginAssociationDTO
     multivalued: true
@@ -143,7 +133,6 @@ slots:
       - object_set
 
   allele_generation_method_association_ingest_set:
-    description: >-
     domain: Ingest
     range: AlleleGenerationMethodAssociationDTO
     multivalued: true
@@ -151,7 +140,6 @@ slots:
       - object_set
 
   allele_image_association_ingest_set:
-    description: >-
     domain: Ingest
     range: AlleleImageAssociationDTO
     multivalued: true
@@ -191,9 +179,24 @@ slots:
     mixins:
       - object_set
 
+  construct_genomic_entity_association_ingest_set:
+    description: >-
+      An ingest set for ConstructGenomicEntityAssociationDTO
+    domain: Ingest
+    range: ConstructGenomicEntityAssociationDTO
+    multivalued: true
+    mixins:
+      - object_set
+      
+  construct_ingest_set:
+    description: An ingest set for Constructs
+    domain: Ingest
+    range: ConstructDTO
+    multivalued: true
+    mixins:
+      - object_set
 
   disease_allele_ingest_set:
-    description: >-
     domain: Ingest
     range: AlleleDiseaseAnnotationDTO
     multivalued: true
@@ -201,7 +204,6 @@ slots:
       - object_set
 
   disease_agm_ingest_set:
-    description: >-
     domain: Ingest
     range: AGMDiseaseAnnotationDTO
     multivalued: true
@@ -209,7 +211,6 @@ slots:
       - object_set
 
   disease_gene_ingest_set:
-    description: >-
     domain: Ingest
     range: GeneDiseaseAnnotationDTO
     multivalued: true
@@ -217,7 +218,6 @@ slots:
       - object_set
 
   ontology_closure_ingest_set:
-    description: >-
     domain: Ingest
     range: OntologyTermClosure
     multivalued: true
@@ -225,7 +225,6 @@ slots:
       - object_set
 
   gene_ingest_set:
-    description: >-
     domain: Ingest
     range: GeneDTO
     multivalued: true
@@ -247,7 +246,6 @@ slots:
       - object_set
 
   phenotype_allele_ingest_set:
-    description: >-
     domain: Ingest
     range: AllelePhenotypeAnnotationDTO
     multivalued: true
@@ -255,7 +253,6 @@ slots:
       - object_set
 
   phenotype_agm_ingest_set:
-    description: >-
     domain: Ingest
     range: AGMPhenotypeAnnotationDTO
     multivalued: true
@@ -263,7 +260,6 @@ slots:
       - object_set
 
   phenotype_gene_ingest_set:
-    description: >-
     domain: Ingest
     range: GenePhenotypeAnnotationDTO
     multivalued: true
@@ -275,7 +271,7 @@ slots:
     domain: Ingest
     multivalued: true
     inlined_as_list: true
-    description:
+    description: >-
       Applies to a property that links a ingest object to a set of objects.
       This is necessary in a json document to provide context for a list, and
       to allow for a single json object that combines multiple object types
@@ -287,6 +283,8 @@ classes:
     slots:
       - linkml_version
       - allele_ingest_set
+      - construct_ingest_set
+      - construct_genomic_entity_association_ingest_set
       - disease_allele_ingest_set
       - disease_agm_ingest_set
       - disease_gene_ingest_set
