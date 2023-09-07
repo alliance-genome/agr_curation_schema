@@ -139,7 +139,7 @@ classes:
       - secondary_identifiers
       - reference_curies
       - original_reference_curie
-      - related_note_dtos
+      - note_dtos
       # - disease    # Need a way to give DOID term and reference. Or a generic way to specify CV term and publication attribution.
     slot_usage:
       name:
@@ -289,7 +289,7 @@ slots:
     domain: Antibody
     range: NCBITaxonTerm
 
-  antibody_taxon_curie:
+  antigen_taxon_curie:
     description: >-
       Holds between an Antibody and the species from which the antigen
       originates (as represented by taxon).
