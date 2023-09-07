@@ -125,6 +125,10 @@
                     },
                     "type": "array"
                 },
+                "relation": {
+                    "description": "The relationship between AGM and disease. Submitted value should be a vocabulary term from the 'AGM disease relations' vocabulary",
+                    "type": "string"
+                },
                 "secondary_data_provider": {
                     "$ref": "#/$defs/DataProvider",
                     "description": "Object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source, and a CrossReference to that organisation's site"
@@ -156,10 +160,11 @@
             "required": [
                 "evidence_codes",
                 "curie",
-                "subject",
-                "object",
-                "single_reference",
                 "data_provider",
+                "single_reference",
+                "subject",
+                "relation",
+                "object",
                 "internal"
             ],
             "title": "AGMDiseaseAnnotation",
@@ -414,6 +419,10 @@
                     },
                     "type": "array"
                 },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
+                },
                 "single_reference": {
                     "description": "The reference in which the phenotype association was asserted/reported.",
                     "type": "string"
@@ -433,10 +442,11 @@
             },
             "required": [
                 "curie",
-                "subject",
-                "object",
-                "single_reference",
                 "data_provider",
+                "single_reference",
+                "subject",
+                "relation",
+                "object",
                 "date_created",
                 "internal"
             ],
@@ -1506,13 +1516,13 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
-                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
-                    "type": "string"
-                },
                 "related_note": {
                     "$ref": "#/$defs/Note",
                     "description": "Holds between an object and a Note object."
+                },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
                 },
                 "subject": {
                     "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
@@ -1525,7 +1535,7 @@
             },
             "required": [
                 "subject",
-                "predicate",
+                "relation",
                 "object",
                 "internal"
             ],
@@ -1589,8 +1599,8 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate_name": {
-                    "description": "Name of VocabularyTerm representing predicate of an Association",
+                "relation_name": {
+                    "description": "Name of VocabularyTerm representing relation of an Association",
                     "type": "string"
                 },
                 "updated_by_curie": {
@@ -1600,7 +1610,7 @@
             },
             "required": [
                 "allele_curie",
-                "predicate_name",
+                "relation_name",
                 "evidence_curies",
                 "internal"
             ],
@@ -1654,7 +1664,7 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
+                "relation": {
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
@@ -1669,7 +1679,7 @@
             },
             "required": [
                 "subject",
-                "predicate",
+                "relation",
                 "object",
                 "internal"
             ],
@@ -1725,8 +1735,8 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate_name": {
-                    "description": "Name of VocabularyTerm representing predicate of an Association",
+                "relation_name": {
+                    "description": "Name of VocabularyTerm representing relation of an Association",
                     "type": "string"
                 },
                 "updated_by_curie": {
@@ -1736,7 +1746,7 @@
             },
             "required": [
                 "allele_curie",
-                "predicate_name",
+                "relation_name",
                 "cell_line_curie",
                 "internal"
             ],
@@ -1793,13 +1803,13 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
-                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
-                    "type": "string"
-                },
                 "related_note": {
                     "$ref": "#/$defs/Note",
                     "description": "Holds between an object and a Note object."
+                },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
                 },
                 "subject": {
                     "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
@@ -1812,7 +1822,7 @@
             },
             "required": [
                 "subject",
-                "predicate",
+                "relation",
                 "object",
                 "internal"
             ],
@@ -1876,8 +1886,8 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate_name": {
-                    "description": "Name of VocabularyTerm representing predicate of an Association",
+                "relation_name": {
+                    "description": "Name of VocabularyTerm representing relation of an Association",
                     "type": "string"
                 },
                 "updated_by_curie": {
@@ -1888,7 +1898,7 @@
             "required": [
                 "construct_identifier",
                 "allele_curie",
-                "predicate_name",
+                "relation_name",
                 "evidence_curies",
                 "internal"
             ],
@@ -2297,6 +2307,10 @@
                     },
                     "type": "array"
                 },
+                "relation": {
+                    "description": "The relationship between allele and disease. Submitted value should be a vocabulary term from the 'Allele disease relations' vocabulary",
+                    "type": "string"
+                },
                 "secondary_data_provider": {
                     "$ref": "#/$defs/DataProvider",
                     "description": "Object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source, and a CrossReference to that organisation's site"
@@ -2328,10 +2342,11 @@
             "required": [
                 "evidence_codes",
                 "curie",
-                "subject",
-                "object",
-                "single_reference",
                 "data_provider",
+                "single_reference",
+                "subject",
+                "relation",
+                "object",
                 "internal"
             ],
             "title": "AlleleDiseaseAnnotation",
@@ -2761,13 +2776,13 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
-                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
-                    "type": "string"
-                },
                 "related_note": {
                     "$ref": "#/$defs/Note",
                     "description": "Holds between an object and a Note object."
+                },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
                 },
                 "subject": {
                     "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
@@ -2780,7 +2795,7 @@
             },
             "required": [
                 "subject",
-                "predicate",
+                "relation",
                 "object",
                 "internal"
             ],
@@ -2843,8 +2858,8 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate_name": {
-                    "description": "Name of VocabularyTerm representing predicate of an Association",
+                "relation_name": {
+                    "description": "Name of VocabularyTerm representing relation of an Association",
                     "type": "string"
                 },
                 "updated_by_curie": {
@@ -2855,7 +2870,7 @@
             "required": [
                 "gene_curie",
                 "allele_curie",
-                "predicate_name",
+                "relation_name",
                 "evidence_curies",
                 "internal"
             ],
@@ -2913,7 +2928,7 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
+                "relation": {
                     "anyOf": [
                         {
                             "const": "has_generation_method"
@@ -2933,7 +2948,7 @@
             },
             "required": [
                 "subject",
-                "predicate",
+                "relation",
                 "object",
                 "internal"
             ],
@@ -2993,13 +3008,13 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate_name": {
+                "relation_name": {
                     "anyOf": [
                         {
                             "const": "has_generation_method"
                         }
                     ],
-                    "description": "Name of VocabularyTerm representing predicate of an Association",
+                    "description": "Name of VocabularyTerm representing relation of an Association",
                     "type": "string"
                 },
                 "updated_by_curie": {
@@ -3009,7 +3024,7 @@
             },
             "required": [
                 "allele_curie",
-                "predicate_name",
+                "relation_name",
                 "internal"
             ],
             "title": "AlleleGenerationMethodAssociationDTO",
@@ -3184,13 +3199,13 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
-                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
-                    "type": "string"
-                },
                 "primary_image": {
                     "description": "Can be null; if false, maybe you would show all the images. We need to revisit this issue.",
                     "type": "boolean"
+                },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
                 },
                 "subject": {
                     "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
@@ -3203,7 +3218,7 @@
             },
             "required": [
                 "subject",
-                "predicate",
+                "relation",
                 "object",
                 "internal"
             ],
@@ -3259,13 +3274,13 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate_name": {
-                    "description": "Name of VocabularyTerm representing predicate of an Association",
-                    "type": "string"
-                },
                 "primary_image": {
                     "description": "Can be null; if false, maybe you would show all the images. We need to revisit this issue.",
                     "type": "boolean"
+                },
+                "relation_name": {
+                    "description": "Name of VocabularyTerm representing relation of an Association",
+                    "type": "string"
                 },
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
@@ -3274,7 +3289,7 @@
             },
             "required": [
                 "allele_curie",
-                "predicate_name",
+                "relation_name",
                 "image_curie",
                 "internal"
             ],
@@ -3715,7 +3730,7 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
+                "relation": {
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
@@ -3730,7 +3745,7 @@
             },
             "required": [
                 "subject",
-                "predicate",
+                "relation",
                 "object",
                 "internal"
             ],
@@ -3786,8 +3801,8 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate_name": {
-                    "description": "Name of VocabularyTerm representing predicate of an Association",
+                "relation_name": {
+                    "description": "Name of VocabularyTerm representing relation of an Association",
                     "type": "string"
                 },
                 "updated_by_curie": {
@@ -3797,7 +3812,7 @@
             },
             "required": [
                 "allele_curie",
-                "predicate_name",
+                "relation_name",
                 "agm_curie",
                 "internal"
             ],
@@ -3888,6 +3903,10 @@
                     },
                     "type": "array"
                 },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
+                },
                 "single_reference": {
                     "description": "The reference in which the phenotype association was asserted/reported.",
                     "type": "string"
@@ -3907,10 +3926,11 @@
             },
             "required": [
                 "curie",
-                "subject",
-                "object",
-                "single_reference",
                 "data_provider",
+                "single_reference",
+                "subject",
+                "relation",
+                "object",
                 "date_created",
                 "internal"
             ],
@@ -4066,13 +4086,13 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
-                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
-                    "type": "string"
-                },
                 "related_note": {
                     "$ref": "#/$defs/Note",
                     "description": "Holds between an object and a Note object."
+                },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
                 },
                 "subject": {
                     "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
@@ -4085,7 +4105,7 @@
             },
             "required": [
                 "subject",
-                "predicate",
+                "relation",
                 "object",
                 "internal"
             ],
@@ -4145,11 +4165,11 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate_name": {
-                    "description": "Name of VocabularyTerm representing predicate of an Association",
+                "protein_curie": {
                     "type": "string"
                 },
-                "protein_curie": {
+                "relation_name": {
+                    "description": "Name of VocabularyTerm representing relation of an Association",
                     "type": "string"
                 },
                 "updated_by_curie": {
@@ -4160,7 +4180,7 @@
             "required": [
                 "protein_curie",
                 "allele_curie",
-                "predicate_name",
+                "relation_name",
                 "evidence_curies",
                 "internal"
             ],
@@ -4441,13 +4461,13 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
-                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
-                    "type": "string"
-                },
                 "related_note": {
                     "$ref": "#/$defs/Note",
                     "description": "Holds between an object and a Note object."
+                },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
                 },
                 "subject": {
                     "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
@@ -4460,7 +4480,7 @@
             },
             "required": [
                 "subject",
-                "predicate",
+                "relation",
                 "object",
                 "internal"
             ],
@@ -4520,8 +4540,8 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate_name": {
-                    "description": "Name of VocabularyTerm representing predicate of an Association",
+                "relation_name": {
+                    "description": "Name of VocabularyTerm representing relation of an Association",
                     "type": "string"
                 },
                 "transcript_curie": {
@@ -4535,7 +4555,7 @@
             "required": [
                 "transcript_curie",
                 "allele_curie",
-                "predicate_name",
+                "relation_name",
                 "evidence_curies",
                 "internal"
             ],
@@ -4592,13 +4612,13 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
-                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
-                    "type": "string"
-                },
                 "related_note": {
                     "$ref": "#/$defs/Note",
                     "description": "Holds between an object and a Note object."
+                },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
                 },
                 "subject": {
                     "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
@@ -4611,7 +4631,7 @@
             },
             "required": [
                 "subject",
-                "predicate",
+                "relation",
                 "object",
                 "internal"
             ],
@@ -4671,8 +4691,8 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate_name": {
-                    "description": "Name of VocabularyTerm representing predicate of an Association",
+                "relation_name": {
+                    "description": "Name of VocabularyTerm representing relation of an Association",
                     "type": "string"
                 },
                 "updated_by_curie": {
@@ -4685,7 +4705,7 @@
             },
             "required": [
                 "allele_curie",
-                "predicate_name",
+                "relation_name",
                 "evidence_curies",
                 "internal"
             ],
@@ -4893,6 +4913,10 @@
                     },
                     "type": "array"
                 },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
+                },
                 "single_reference": {
                     "description": "holds between an object and a single reference",
                     "type": "string"
@@ -4912,10 +4936,11 @@
             },
             "required": [
                 "curie",
-                "subject",
-                "object",
-                "single_reference",
                 "data_provider",
+                "single_reference",
+                "subject",
+                "relation",
+                "object",
                 "internal"
             ],
             "title": "Annotation",
@@ -5141,7 +5166,7 @@
         },
         "Association": {
             "additionalProperties": false,
-            "description": "A typed association between two entities, supported by evidence.  Associations have three base slots: subject, object, and predicate, but they can have any number of additional attributes that help qualify the relationship between the subject and the object.  The subject is the curie (or identifier) of the class that is the subject of the association, and likewise the object is the curie (or identifier of the class that is the object. The relationship between subject and object is defined by the predicate slot (which can also be constrained using the range of the predicate).",
+            "description": "A typed association between two entities, supported by evidence.  Associations have three base slots: subject, object, and relation, but they can have any number of additional attributes that help qualify the relationship between the subject and the object.  The subject is the curie (or identifier) of the class that is the subject of the association, and likewise the object is the curie (or identifier of the class that is the object. The relationship between subject and object is defined by the relation slot (which can also be constrained using the range of the relation).",
             "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
@@ -5167,13 +5192,6 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "evidence": {
-                    "description": "",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
@@ -5186,7 +5204,7 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
+                "relation": {
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
@@ -5201,7 +5219,7 @@
             },
             "required": [
                 "subject",
-                "predicate",
+                "relation",
                 "object",
                 "internal"
             ],
@@ -7331,13 +7349,6 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "evidence": {
-                    "description": "",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
@@ -7350,16 +7361,16 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
-                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
-                    "type": "string"
-                },
                 "related_notes": {
                     "description": "Holds between an object and a list of related Note objects.",
                     "items": {
                         "$ref": "#/$defs/Note"
                     },
                     "type": "array"
+                },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
                 },
                 "subject": {
                     "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
@@ -7372,7 +7383,7 @@
             },
             "required": [
                 "subject",
-                "predicate",
+                "relation",
                 "object",
                 "internal"
             ],
@@ -8975,7 +8986,7 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
+                "relation": {
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
@@ -8990,7 +9001,7 @@
             },
             "required": [
                 "subject",
-                "predicate",
+                "relation",
                 "object",
                 "internal"
             ],
@@ -10495,6 +10506,10 @@
                     },
                     "type": "array"
                 },
+                "relation": {
+                    "description": "The relationship between gene and disease. Submitted value should be a vocabulary term from the 'Gene disease relations' vocabulary",
+                    "type": "string"
+                },
                 "secondary_data_provider": {
                     "$ref": "#/$defs/DataProvider",
                     "description": "Object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source, and a CrossReference to that organisation's site"
@@ -10529,10 +10544,11 @@
             "required": [
                 "evidence_codes",
                 "curie",
-                "subject",
-                "object",
-                "single_reference",
                 "data_provider",
+                "single_reference",
+                "subject",
+                "relation",
+                "object",
                 "internal"
             ],
             "title": "GeneDiseaseAnnotation",
@@ -10861,7 +10877,7 @@
                     },
                     "type": "array"
                 },
-                "predicate": {
+                "relation": {
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
@@ -10881,7 +10897,7 @@
                 "interactor_A_type",
                 "interactor_B_type",
                 "subject",
-                "predicate",
+                "relation",
                 "object",
                 "internal"
             ],
@@ -11110,7 +11126,7 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
+                "relation": {
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
@@ -11130,7 +11146,7 @@
                 "interactor_A_type",
                 "interactor_B_type",
                 "subject",
-                "predicate",
+                "relation",
                 "object",
                 "internal"
             ],
@@ -11413,6 +11429,10 @@
                     },
                     "type": "array"
                 },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
+                },
                 "sgd_strain_background": {
                     "type": "string"
                 },
@@ -11435,10 +11455,11 @@
             },
             "required": [
                 "curie",
-                "subject",
-                "object",
-                "single_reference",
                 "data_provider",
+                "single_reference",
+                "subject",
+                "relation",
+                "object",
                 "date_created",
                 "internal"
             ],
@@ -12111,7 +12132,7 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
+                "relation": {
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
@@ -12126,7 +12147,7 @@
             },
             "required": [
                 "subject",
-                "predicate",
+                "relation",
                 "object",
                 "internal"
             ],
@@ -12583,13 +12604,13 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate_name": {
+                "relation_name": {
                     "anyOf": [
                         {
                             "const": "has_genomic_location"
                         }
                     ],
-                    "description": "Name of VocabularyTerm representing predicate of an Association",
+                    "description": "Name of VocabularyTerm representing relation of an Association",
                     "type": "string"
                 },
                 "start": {
@@ -12602,7 +12623,7 @@
                 }
             },
             "required": [
-                "predicate_name",
+                "relation_name",
                 "chromosome_curie",
                 "assembly_curie",
                 "start",
@@ -15166,7 +15187,7 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
+                "relation": {
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
@@ -15187,7 +15208,7 @@
             },
             "required": [
                 "subject",
-                "predicate",
+                "relation",
                 "object",
                 "internal"
             ],
@@ -15958,6 +15979,10 @@
                     },
                     "type": "array"
                 },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
+                },
                 "single_reference": {
                     "description": "The reference in which the phenotype association was asserted/reported.",
                     "type": "string"
@@ -15977,10 +16002,11 @@
             },
             "required": [
                 "curie",
-                "subject",
-                "object",
-                "single_reference",
                 "data_provider",
+                "single_reference",
+                "subject",
+                "relation",
+                "object",
                 "date_created",
                 "internal"
             ],
@@ -17638,7 +17664,7 @@
         },
         "SequenceTargetingReagentToGeneAssociation": {
             "additionalProperties": false,
-            "description": "the relationship between a Sequence Targeting Reagent and its targeted genes. The predicate should be a VocabularyTerm with one of the following values - targets",
+            "description": "the relationship between a Sequence Targeting Reagent and its targeted genes. The relation should be a VocabularyTerm with one of the following values - targets",
             "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
@@ -17683,7 +17709,7 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
+                "relation": {
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
@@ -17698,7 +17724,7 @@
             },
             "required": [
                 "subject",
-                "predicate",
+                "relation",
                 "object",
                 "internal"
             ],
@@ -18940,17 +18966,17 @@
                     "description": "",
                     "type": "string"
                 },
-                "predicate": {
+                "reference_sequence": {
+                    "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
+                    "type": "string"
+                },
+                "relation": {
                     "anyOf": [
                         {
                             "const": "has_genomic_location"
                         }
                     ],
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
-                    "type": "string"
-                },
-                "reference_sequence": {
-                    "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
                     "type": "string"
                 },
                 "sequence_of_reference_accession_number": {
@@ -18981,7 +19007,7 @@
             "required": [
                 "has_assembly",
                 "subject",
-                "predicate",
+                "relation",
                 "object",
                 "internal"
             ],
@@ -19086,17 +19112,17 @@
                     "description": "",
                     "type": "string"
                 },
-                "predicate_name": {
+                "reference_sequence": {
+                    "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
+                    "type": "string"
+                },
+                "relation_name": {
                     "anyOf": [
                         {
                             "const": "has_genomic_location"
                         }
                     ],
-                    "description": "Name of VocabularyTerm representing predicate of an Association",
-                    "type": "string"
-                },
-                "reference_sequence": {
-                    "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
+                    "description": "Name of VocabularyTerm representing relation of an Association",
                     "type": "string"
                 },
                 "sequence_of_reference_accession_number": {
@@ -19125,7 +19151,7 @@
             },
             "required": [
                 "variant_entity_curie",
-                "predicate_name",
+                "relation_name",
                 "chromosome_curie",
                 "assembly_curie",
                 "start",
@@ -19208,17 +19234,17 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
+                "reference_sequence": {
+                    "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
+                    "type": "string"
+                },
+                "relation": {
                     "anyOf": [
                         {
                             "const": "has_genomic_location"
                         }
                     ],
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
-                    "type": "string"
-                },
-                "reference_sequence": {
-                    "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
                     "type": "string"
                 },
                 "sequence_of_reference_accession_number": {
@@ -19244,7 +19270,7 @@
             },
             "required": [
                 "subject",
-                "predicate",
+                "relation",
                 "object",
                 "internal"
             ],
@@ -19328,20 +19354,20 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate_name": {
-                    "anyOf": [
-                        {
-                            "const": "has_genomic_location"
-                        }
-                    ],
-                    "description": "Name of VocabularyTerm representing predicate of an Association",
-                    "type": "string"
-                },
                 "protein_curie": {
                     "type": "string"
                 },
                 "reference_sequence": {
                     "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
+                    "type": "string"
+                },
+                "relation_name": {
+                    "anyOf": [
+                        {
+                            "const": "has_genomic_location"
+                        }
+                    ],
+                    "description": "Name of VocabularyTerm representing relation of an Association",
                     "type": "string"
                 },
                 "sequence_of_reference_accession_number": {
@@ -19366,7 +19392,7 @@
             },
             "required": [
                 "variant_entity_curie",
-                "predicate_name",
+                "relation_name",
                 "chromosome_curie",
                 "assembly_curie",
                 "start",
@@ -19581,17 +19607,17 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate": {
+                "reference_sequence": {
+                    "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
+                    "type": "string"
+                },
+                "relation": {
                     "anyOf": [
                         {
                             "const": "has_genomic_location"
                         }
                     ],
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
-                    "type": "string"
-                },
-                "reference_sequence": {
-                    "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
                     "type": "string"
                 },
                 "sequence_of_reference_accession_number": {
@@ -19617,7 +19643,7 @@
             },
             "required": [
                 "subject",
-                "predicate",
+                "relation",
                 "object",
                 "internal"
             ],
@@ -19694,17 +19720,17 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "predicate_name": {
+                "reference_sequence": {
+                    "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
+                    "type": "string"
+                },
+                "relation_name": {
                     "anyOf": [
                         {
                             "const": "has_genomic_location"
                         }
                     ],
-                    "description": "Name of VocabularyTerm representing predicate of an Association",
-                    "type": "string"
-                },
-                "reference_sequence": {
-                    "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
+                    "description": "Name of VocabularyTerm representing relation of an Association",
                     "type": "string"
                 },
                 "sequence_of_reference_accession_number": {
@@ -19732,7 +19758,7 @@
             },
             "required": [
                 "variant_entity_curie",
-                "predicate_name",
+                "relation_name",
                 "chromosome_curie",
                 "assembly_curie",
                 "start",

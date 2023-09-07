@@ -136,7 +136,7 @@ classes:
       - spatial_qualifiers
 
   ExpressionAnnotationImagePane:
-    is_a: Association
+    is_a: EvidenceAssociation
     notes: >-
       This aims to provide the same functionality as MGI imagepane.
       Some MODs (like ZFIN) point to the whole image. In these cases,

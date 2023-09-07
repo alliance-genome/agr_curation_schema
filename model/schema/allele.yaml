@@ -95,7 +95,7 @@ classes:
       is_integrated:
         required: false
       related_notes:
-        notes: note_type CV 'Allele Related Note Type'
+        notes: note_type CV 'Allele Note Type'
 
   AlleleDTO:
     is_a: GenomicEntityDTO
@@ -122,7 +122,7 @@ classes:
       - allele_synonym_dtos
     slot_usage:
       note_dtos:
-        notes: note_type CV 'Allele Related Note Type'
+        notes: note_type CV 'Allele Note Type'
 
   # Some classes roughly grouped with the Allele class because they have relationships to Allele and were
   # designed close to the time the Allele class was designed.  These could be broken out into their own yaml files.
@@ -175,11 +175,11 @@ classes:
   SequenceTargetingReagentToGeneAssociation:
     description: >-
       the relationship between a Sequence Targeting Reagent and its targeted
-      genes. The predicate should be a VocabularyTerm with one of the following
+      genes. The relation should be a VocabularyTerm with one of the following
       values - targets
-    is_a: Association
+    is_a: EvidenceAssociation
     slot_usage:
-      predicate:
+      relation:
         range: VocabularyTerm
       subject:
         range: SequenceTargetingReagent
@@ -383,8 +383,8 @@ classes:
     description: >-
       Association between an allele and another allele
     slot_usage:
-      predicate:
-        notes: CV 'Allele Allele Association Predicate'
+      relation:
+        notes: CV 'Allele Allele Association Relation'
       object:
         range: Allele
 
@@ -397,7 +397,7 @@ classes:
 
   # do mutant/parent/embryonic cell line associations need to be split out?
   AlleleCellLineAssociation:
-    is_a: Association
+    is_a: EvidenceAssociation
     description: >-
       The relationship between an allele and a cell line.  Includes mutant/
       embryonic stem cell lines known to carry the allele, and parental cell
@@ -405,22 +405,22 @@ classes:
     slot_usage:
       subject:
         range: Allele
-      predicate:
+      relation:
         range: VocabularyTerm
       object:
         range: CellLine
 
   AlleleCellLineAssociationDTO:
-    is_a: AuditedObjectDTO
-    description: >-
-      The relationship between an allele and a cell line.  Includes mutant/
-      embryonic stem cell lines known to carry the allele, and parental cell
-      line of alleles made in embryonic stem cells.
-    slots:
-      - allele_curie
-      - predicate_name
-      - cell_line_curie
-      - evidence_curies
+      is_a: AuditedObjectDTO
+      description: >-
+        The relationship between an allele and a cell line.  Includes mutant/
+        embryonic stem cell lines known to carry the allele, and parental cell
+        line of alleles made in embryonic stem cells.
+      slots:
+        - allele_curie
+        - relation_name
+        - cell_line_curie
+        - evidence_curies
 
   AlleleConstructAssociation:
     is_a: AlleleGenomicEntityAssociation
@@ -430,10 +430,10 @@ classes:
     slot_usage:
       subject:
         range: Allele
-      predicate:
+      relation:
         range: VocabularyTerm
         notes: >-
-          CV 'Allele-Construct Predicates' including - contains, contains_coinjection_marker,
+          CV 'Allele Construct Association Relation' including - contains, contains_coinjection_marker,
           contains_phenotypic_sequence_feature, and contains_innocuous_sequence_feature
       object:
         range: Construct
@@ -446,9 +446,9 @@ classes:
     slots:
       - construct_identifier
     slot_usage:
-      predicate_name:
+      relation_name:
         notes: >-
-          CV 'Allele-Construct Predicates' including - contains, contains_coinjection_marker,
+          CV 'Allele Construct Association Relation' including - contains, contains_coinjection_marker,
           contains_phenotypic_sequence_feature, and contains_innocuous_sequence_feature
 
   AlleleGeneAssociation:
@@ -467,16 +467,16 @@ classes:
       - gene_curie
 
   AlleleGenerationMethodAssociation:
-    is_a: Association
+    is_a: EvidenceAssociation
     slots:
       - mutation_target_strain
     slot_usage:
       subject:
         range: Allele
-      predicate:
+      relation:
         any_of:
           equals_string: has_generation_method
-        notes: CV 'Allele Generation Method Association Predicate'
+        notes: CV 'Allele Generation Method Association Relation'
       object:
         range: GenerationMethod
 
@@ -484,18 +484,18 @@ classes:
     is_a: AuditedObjectDTO
     slots:
       - allele_curie
-      - predicate_name
+      - relation_name
       - generation_method_dto
       - evidence_curies
       - mutation_target_strain_curie
     slot_usage:
-      predicate_name:
+      relation_name:
         required: true
         any_of:
           equals_string: has_generation_method
 
   AlleleGenomicEntityAssociation:
-    is_a: Association
+    is_a: EvidenceAssociation
     abstract: true
     description: >-
       Association between an allele and a genomic entity
@@ -505,7 +505,7 @@ classes:
     slot_usage:
       subject:
         range: Allele
-      predicate:
+      relation:
         range: VocabularyTerm # If we can adequately represent all needed relations in RO, this could be ROTerm
       object:
         range: GenomicEntity
@@ -517,7 +517,7 @@ classes:
     abstract: true
     slots:
       - allele_curie
-      - predicate_name
+      - relation_name
       - evidence_curies
       - evidence_code_curie
       - note_dto
@@ -526,7 +526,7 @@ classes:
         required: true
 
   AlleleImageAssociation:
-    is_a: Association
+    is_a: EvidenceAssociation
     description: >-
       The relationship between an allele and an image.
     slots:
@@ -534,7 +534,7 @@ classes:
     slot_usage:
       subject:
         range: Allele
-      predicate:
+      relation:
         range: VocabularyTerm
       object:
         range: Image
@@ -549,7 +549,7 @@ classes:
       The relationship between an allele and an image.
     slots:
       - allele_curie
-      - predicate_name
+      - relation_name
       - image_curie
       - primary_image
       - evidence_curies
@@ -560,7 +560,7 @@ classes:
           We need to revisit this issue.
 
   AlleleOriginAssociation:
-    is_a: Association
+    is_a: EvidenceAssociation
     description: >-
       The relationship between an allele and the origin of the allele.
     slot_usage:
@@ -575,7 +575,7 @@ classes:
       The relationship between an allele and the AGM origin of the allele.
     slots:
       - allele_curie
-      - predicate_name
+      - relation_name
       - agm_curie
       - evidence_curies
 
@@ -848,13 +848,13 @@ slots:
     description: >-
       The chemical used to generate the mutation through mutagenesis
     domain: GenerationMethod
-    range: VocabularyTerm # CV 'Chemical Mutagens'
+    range: VocabularyTerm # CV 'Chemical Mutagen'
 
   chemical_mutagen_name:
     description: >-
       The name of the chemical used to generate the mutation through mutagenesis
     domain: GenerationMethodDTO
-    range: string # CV 'Chemical Mutagens'
+    range: string # CV 'Chemical Mutagen'
 
   database_status:
     description: >-
@@ -950,20 +950,20 @@ slots:
     description: >-
       WormBase captures the method by which an extrachromosomal transgene was integrated into the genome.
     domain: GenerationMethodDTO
-    range: string #CV 'WB Transgene Integration Methods'
+    range: string #CV 'WB Transgene Integration Method'
     multivalued: false
 
   irradiation_mutagen:
     description: >-
       The irradiation used to generate the mutation through mutagenesis
     domain: GenerationMethod
-    range: VocabularyTerm # CV 'Irradiation Mutagens'
+    range: VocabularyTerm # CV 'Irradiation Mutagen'
 
   irradiation_mutagen_name:
     description: >-
       The name of the irradiation used to generate the mutation through mutagenesis
     domain: GenerationMethodDTO
-    range: string # CV 'Irradiation Mutagens'
+    range: string # CV 'Irradiation Mutagen'
 
   is_extinct:
     description: >-

@@ -156,7 +156,7 @@ classes:
         identifier: true
 
   OntologyTermClosure:
-    is_a: Association
+    is_a: EvidenceAssociation
     slots:
       - relationship_type
       - distance_between

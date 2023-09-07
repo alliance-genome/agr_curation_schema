@@ -55,7 +55,7 @@ classes:
       abstract parent class for different kinds of gene-gene or gene product
       to gene product relationships. Includes homology and interaction.
     abstract: true
-    is_a: Association
+    is_a: EvidenceAssociation
     defining_slots:
       - subject
       - object
@@ -102,7 +102,7 @@ classes:
       - interactor_B_type
     defining_slots:
       - subject
-      - predicate
+      - relation
       - object
     id_prefixes:
       - BIOGRID
@@ -125,7 +125,7 @@ classes:
       cross_references:
         description: >-
           Additional identifier(s) of the interaction annotation other than the primary id.
-      predicate:
+      relation:
         subproperty_of: interacts_with
         symmetric: true
 #    exact_mappings:
@@ -164,7 +164,7 @@ classes:
       - aggregation_database
       - detection_method
     slot_usage:
-      predicate:
+      relation:
         subproperty_of: physically_interacts_with
         symmetric: true
 #    exact_mappings:
@@ -193,7 +193,7 @@ classes:
       - interactor_B_genetic_perturbation
       - phenotypes_or_traits
     slot_usage:
-      predicate:
+      relation:
         subproperty_of: genetically_interacts_with
 
   GeneGeneticInteractionDTO:

@@ -187,12 +187,12 @@ classes:
     slot_usage:
       subject:
         range: Construct
-      predicate:
+      relation:
         range: VocabularyTerm
         notes: >-
-          The predicate should be a VocabularyTerm with one of the following
+          The relation should be a VocabularyTerm with one of the following
           values - expresses (RO:0002292) / is_regulated_by (RO:0002334) /
-          targets (RO:0002436). CV: 'Construct Genomic Entity Association Predicate'
+          targets (RO:0002436). CV: 'Construct Genomic Entity Association Relation'
       object:
         range: GenomicEntity
       related_notes:
