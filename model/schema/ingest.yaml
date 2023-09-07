@@ -188,6 +188,14 @@ slots:
     mixins:
       - object_set
       
+  antibody_ingest_set:
+    description: An ingest set for Antibody objects
+    domain: Ingest
+    range: AntibodyDTO
+    multivalued: true
+    mixins:
+      - object_set
+  
   construct_ingest_set:
     description: An ingest set for Constructs
     domain: Ingest
@@ -283,6 +291,7 @@ classes:
     slots:
       - linkml_version
       - allele_ingest_set
+      - antibody_ingest_set
       - construct_ingest_set
       - construct_genomic_entity_association_ingest_set
       - disease_allele_ingest_set

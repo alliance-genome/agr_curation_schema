@@ -73,8 +73,6 @@ classes:
     description: >-
       Immunoglobulin proteins that bind specific molecule(s). Can be used
       experimentally for the purposes of detection or purification.
-    notes: >-
-      Inherits id and taxon slots from parental BiologicalEntity.
     aliases: ['antibody', 'antibodies', 'antiserum', 'antisera']
     id_prefixes:
       - RGD
@@ -121,6 +119,46 @@ classes:
           FB does not have host taxon information for antibodies.
         required: false
       original_reference:
+        description: >-
+          The reference providing the original description of the antibody's
+          generation.
+
+  AntibodyDTO:
+    is_a: ReagentDTO
+    description: >-
+      Ingest class for immunoglobulin proteins that bind specific molecule(s).
+      Can be used experimentally for the purposes of detection or purification.
+    slots:
+      - name
+      - antigen_taxon_curie
+      - clonality_name
+      - heavy_chain_isotype_name
+      - light_chain_isotype_name
+      - antibody_target_genes
+      - cross_reference_dtos
+      - secondary_identifiers
+      - reference_curies
+      - original_reference_curie
+      - related_note_dtos
+      # - disease    # Need a way to give DOID term and reference. Or a generic way to specify CV term and publication attribution.
+    slot_usage:
+      name:
+        description: >-
+          Publicly displayed name of the antibody. It often includes the name
+          of the antibody target: e.g., anti-WNT-4. It may also include the
+          host species and antibody clonality.
+        notes: >-
+          FB does not have names for antibodies, but would be easy to generate,
+          so we may want to make this required.
+        required: true
+      taxon_curie:
+        description: >-
+          The species in which the antibody was raised: e.g., mouse, rabbit,
+          guinea pig, goat, camel, etc.
+        notes: >-
+          FB does not have host taxon information for antibodies.
+        required: false
+      original_reference_curie:
         description: >-
           The reference providing the original description of the antibody's
           generation.
@@ -234,6 +272,14 @@ slots:
     domain: Antibody
     range: Gene
 
+  antibody_target_gene_curies:
+    description: >-
+      Curies of the genes whose gene products are recognized by the antibody.
+    required: false
+    multivalued: true
+    domain: AntibodyDTO
+    range: string
+
   antigen_taxon:
     description: >-
       Holds between an Antibody and the species from which the antigen
@@ -243,6 +289,13 @@ slots:
     domain: Antibody
     range: NCBITaxonTerm
 
+  antibody_taxon_curie:
+    description: >-
+      Holds between an Antibody and the species from which the antigen
+      originates (as represented by taxon).
+    domain: AntibodyDTO
+    range: string
+
   clonality:
     description: >-
       The clonality of the antibody: e.g., monoclonal.
@@ -250,7 +303,17 @@ slots:
     required: true
     multivalued: false
     domain: Antibody
-    range: antibody_clonality_set
+    range: VocabularyTerm
+
+  clonality_name:
+    description: >-
+      Name of the VocabularyTerm representing the clonality of the antibody:
+      e.g., monoclonal. From the Antibody Clonality CV.
+    notes: I think this will be an antibody specific slot.
+    required: true
+    multivalued: false
+    domain: Antibody
+    range: VocabularyTerm
 
   component_symbol:
     range: string
@@ -302,7 +365,16 @@ slots:
     required: false
     multivalued: false
     domain: Antibody
-    range: heavy_chain_isotype_set
+    range: VocabularyTerm
+
+  heavy_chain_isotype_name:
+    description: >-
+      Name of the VocabularyTerm respresenting the isotype of the antibody heavy chain:
+      e.g., IgA. From the Heavy Chain Isotope CV.
+    required: false
+    multivalued: false
+    domain: Antibody
+    range: string
 
   light_chain_isotype:
     description: >-
@@ -310,7 +382,16 @@ slots:
     required: false
     multivalued: false
     domain: Antibody
-    range: light_chain_isotype_set
+    range: VocabularyTerm
+
+  light_chain_isotype_name:
+    description: >-
+      Name of the VocabularyTerm respresenting the isotype of the antibody light chain:
+      e.g., i4. From the Light Chain Isotope CV.
+    required: false
+    multivalued: false
+    domain: AntibodyDTO
+    range: string
 
   manufactured_by_identifier:
     description: >- 
@@ -328,75 +409,79 @@ slots:
       The free text reference to a species or general taxon (e.g. "Yeast") for a
       a biological entity for which the exact taxon curie is unknown or unavailable.
 
-enums:
+########################
+#
+# Vocabulary Terms
+#
+########################
 
-  antibody_clonality_set:
-    permissible_values:
-      monoclonal:
-      polyclonal:
-      unspecified:
+#  Antibody Clonality:
+#    permissible_values:
+#      monoclonal:
+#      polyclonal:
+#      unspecified:
 
-  heavy_chain_isotype_set:
-    permissible_values:
-      IgA:
-      IgA1:
-      IgA2:
-      IgD:
-      IgE:
-      IgG:
-      IgG1:
-      IgG2:
-      IgG2a:
-      IgG2b:
-      IgG2c:
-      IgG3:
-      IgG4:
-      IgM:
-      IgN:
-      IgR:
-      IgW:
-      IgX:
-      IgY:
+#  Heavy Chain Isotope:
+#    permissible_values:
+#      IgA:
+#      IgA1:
+#      IgA2:
+#      IgD:
+#      IgE:
+#      IgG:
+#      IgG1:
+#      IgG2:
+#      IgG2a:
+#      IgG2b:
+#      IgG2c:
+#      IgG3:
+#      IgG4:
+#      IgM:
+#      IgN:
+#      IgR:
+#      IgW:
+#      IgX:
+#      IgY:
 
-  light_chain_isotype_set:
-    permissible_values:
-      k:
-      l:
-      l1:
-      l2:
-      l3:
-      l4:
-      r:
-      s:
-      i:
-      i1:
-      i2:
-      i3:
-      i4:
+#  Light Chain Isotope:
+#    permissible_values:
+#      k:
+#      l:
+#      l1:
+#      l2:
+#      l3:
+#      l4:
+#      r:
+#      s:
+#      i:
+#      i1:
+#      i2:
+#      i3:
+#      i4:
 
-  antibody_note_type_set:
-    permissible_values:
-      antibody_description:
-        description: >-
-          A high level summary of the antibody intended for prominent display
-          e.g., Antibodies against SEIP-1 were raised by injection of the
-          peptide 261KKEEPGLLDLRKRK, corresponding to the C-terminus of SEIP-1,
-          into rabbits.
-        notes: >-
-          Equivalent to WB summary.
-      antigen_description:
-        description: >-
-          A description about the antigen used to generate the antibody
-          e.g., N-terminal peptide (SQFRPEKKEKSTCSIC) full length ceKDM1A
-          (amino acids 1-897).
-      remark:
-        description: >-
-          Information pertaining to the antibody that is not covered by other
-          fields e.g., Possible pseudonym 7G1, High level of background,
-          Works well for immunoprecipitation.
-        notes: >-
-          Equivalent to WB remark.
-      private:
-        description: >-
-          Information intended for internal use, generally regarding aspects
-          of curation.
+#  Antibody Note Type:
+#    permissible_values:
+#      antibody_description:
+#        description: >-
+#          A high level summary of the antibody intended for prominent display
+#          e.g., Antibodies against SEIP-1 were raised by injection of the
+#          peptide 261KKEEPGLLDLRKRK, corresponding to the C-terminus of SEIP-1,
+#          into rabbits.
+#        notes: >-
+#          Equivalent to WB summary.
+#      antigen_description:
+#        description: >-
+#          A description about the antigen used to generate the antibody
+#          e.g., N-terminal peptide (SQFRPEKKEKSTCSIC) full length ceKDM1A
+#          (amino acids 1-897).
+#      remark:
+#        description: >-
+#          Information pertaining to the antibody that is not covered by other
+#          fields e.g., Possible pseudonym 7G1, High level of background,
+#          Works well for immunoprecipitation.
+#        notes: >-
+#          Equivalent to WB remark.
+#      private:
+#        description: >-
+#          Information intended for internal use, generally regarding aspects
+#          of curation.
