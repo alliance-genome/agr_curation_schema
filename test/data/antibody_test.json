@@ -1,0 +1,32 @@
+{
+  "linkml_version": "1.9.1",
+  "antibody_ingest_set": [
+    {
+      "created_by_curie": "WB:WBPerson123",
+      "updated_by_curie": "WB:WBPerson123",
+      "internal": false,
+      "obsolete": false,
+      "mod_entity_id": "WB:WBAntibody123",
+      "name": "Antibody A",
+      "taxon_curie": "NCBITaxon:6239",
+      "generated_by_identifier": "WB:WBLaboratory123",
+      "manufactured_by_identifier": "Construct Corps",
+      "antigen_taxon_curie": "NCBITaxon:3324",
+      "clonality_name": "monoclonal",
+      "heavy_chain_isotype_name": "IgA",
+      "light_chain_isotype_name": "i4",
+      "reference_curies": [
+        "PMID:223131211",
+        "PMID:101231321"
+      ],
+      "original_reference_curie": "PMID:101231321",
+      "note_dtos": [
+        {
+          "free_text": "This is an antibody note",
+          "note_type_name": "antibody_description",
+          "internal": false
+        }
+      ]
+    }
+  ]
+}
