@@ -411,7 +411,7 @@ classes:
         range: CellLine
 
   AlleleCellLineAssociationDTO:
-      is_a: AuditedObjectDTO
+      is_a: EvidenceAssociationDTO
       description: >-
         The relationship between an allele and a cell line.  Includes mutant/
         embryonic stem cell lines known to carry the allele, and parental cell
@@ -420,7 +420,6 @@ classes:
         - allele_curie
         - relation_name
         - cell_line_curie
-        - evidence_curies
 
   AlleleConstructAssociation:
     is_a: AlleleGenomicEntityAssociation
@@ -481,12 +480,11 @@ classes:
         range: GenerationMethod
 
   AlleleGenerationMethodAssociationDTO:
-    is_a: AuditedObjectDTO
+    is_a: EvidenceAssociationDTO
     slots:
       - allele_curie
       - relation_name
       - generation_method_dto
-      - evidence_curies
       - mutation_target_strain_curie
     slot_usage:
       relation_name:
@@ -513,12 +511,11 @@ classes:
         required: false # This needs to be not required, at least in the base class
 
   AlleleGenomicEntityAssociationDTO:
-    is_a: AuditedObjectDTO
+    is_a: EvidenceAssociationDTO
     abstract: true
     slots:
       - allele_curie
       - relation_name
-      - evidence_curies
       - evidence_code_curie
       - note_dto
     slot_usage:
@@ -544,7 +541,7 @@ classes:
           We need to revisit this issue.
 
   AlleleImageAssociationDTO:
-    is_a: AuditedObjectDTO
+    is_a: EvidenceAssociationDTO
     description: >-
       The relationship between an allele and an image.
     slots:
@@ -552,7 +549,6 @@ classes:
       - relation_name
       - image_curie
       - primary_image
-      - evidence_curies
     slot_usage:
       primary_image:
         description: >-
@@ -570,14 +566,13 @@ classes:
         range: AffectedGenomicModel
 
   AlleleOriginAssociationDTO:
-    is_a: AuditedObjectDTO
+    is_a: EvidenceAssociationDTO
     description: >-
       The relationship between an allele and the AGM origin of the allele.
     slots:
       - allele_curie
       - relation_name
       - agm_curie
-      - evidence_curies
 
   AlleleProteinAssociation:
     is_a: AlleleGenomicEntityAssociation

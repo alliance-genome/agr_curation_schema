@@ -64,7 +64,7 @@ classes:
       object:
         range: Gene
       subject:
-        range: VariantGenomeLocationAssociation
+        range: VariantGenomicLocationAssociation
 
   VariantTranscriptConsequence:
     aliases: ['TranscriptLevelConsequence']
