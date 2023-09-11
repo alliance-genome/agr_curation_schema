@@ -13210,6 +13210,12 @@
                     },
                     "type": "array"
                 },
+                "topic_entity_tag_source_ingest_set": {
+                    "items": {
+                        "$ref": "#/$defs/TopicEntityTagSource"
+                    },
+                    "type": "array"
+                },
                 "variant_genomic_location_association_ingest_set": {
                     "description": "",
                     "items": {
@@ -18185,6 +18191,81 @@
             "title": "TemporalQualifierSet",
             "type": "string"
         },
+        "TopicEntityTagSource": {
+            "additionalProperties": false,
+            "description": "Topic entity tag source (tets)",
+            "properties": {
+                "alliance_member": {
+                    "$ref": "#/$defs/AllianceMember"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "source_method": {
+                    "type": "string"
+                },
+                "source_type": {
+                    "type": "string"
+                },
+                "tets_description": {
+                    "description": "The topic entity tag source description",
+                    "type": "string"
+                },
+                "tets_evidence_code": {
+                    "type": "string"
+                },
+                "topic_entity_tag_source_id": {
+                    "description": "Some class-specific description of how the slot should be used",
+                    "type": "integer"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                },
+                "validation_type": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "topic_entity_tag_source_id",
+                "source_type",
+                "source_method",
+                "tets_evidence_code",
+                "alliance_member",
+                "internal"
+            ],
+            "title": "TopicEntityTagSource",
+            "type": "object"
+        },
         "Transcript": {
             "additionalProperties": false,
             "description": "Placeholder.",
@@ -21587,6 +21668,12 @@
         "sqtr_ingest_set": {
             "items": {
                 "$ref": "#/$defs/SequenceTargetingReagentDTO"
+            },
+            "type": "array"
+        },
+        "topic_entity_tag_source_ingest_set": {
+            "items": {
+                "$ref": "#/$defs/TopicEntityTagSource"
             },
             "type": "array"
         },

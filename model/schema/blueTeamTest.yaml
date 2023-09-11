@@ -1,0 +1,112 @@
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/blueTeamTest.yaml
+name: Blue-Team-Test
+title: Blue Team Test
+
+imports:
+  - core
+  - allianceMember
+
+prefixes:
+  alliance: "http://alliancegenome.org/"
+  linkml: "https://w3id.org/linkml/"
+  gff: "https://w3id.org/gff"
+  faldo: "http://biohackathon.org/resource/faldo#"
+  biolink: "https://w3id.org/biolink/vocab/"
+  NLMID: "https://www.ncbi.nlm.nih.gov/nlmcatalog/?term="
+  schema: "http://schema.org/"
+
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - owl
+
+
+## ------------
+## CLASSES
+## ------------
+
+
+classes:
+
+  TopicEntityTagSource:
+    is_a: AuditedObject
+    description: >-
+      Topic entity tag source (tets)
+    slots:
+      - topic_entity_tag_source_id
+      - source_type
+      - source_method
+      - validation_type
+      - tets_description
+      - tets_evidence_code
+      - alliance_member
+    slot_usage:
+      topic_entity_tag_source_id:
+        description: Some class-specific description of how the slot should be used
+      source_type:
+        required: true
+      source_method:
+        required: true
+      validation_type:
+        required: false
+      tets_description:
+        required: false
+      tets_evidence_code:
+        required: true
+      alliance_member:
+        required: true
+
+
+## ------------
+## SLOTS
+## ------------
+
+
+slots:
+
+  alliance_member:
+    range: AllianceMember
+
+  source_method:
+    range: string
+  
+  source_type:
+    range: string
+    notes: Free text for the source type
+
+  tets_description:
+    description: >-
+      The topic entity tag source description
+    domain: TopicEntityTagSource
+    range: string
+
+  tets_evidence_code:
+    range: ECOTerm
+
+  topic_entity_tag_source_id:
+    description: >-
+      Some description
+    notes: >-
+      automatically incremented by the software
+    domain: TopicEntityTagSource
+    range: integer
+    required: true
+
+  validation_type:
+    range: VocabularyTerm 
+    notes: CV includes "null", "curator", "author", "curation_tool"
+
+  
+
+
+

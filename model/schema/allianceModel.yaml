@@ -33,6 +33,7 @@ imports:
   - allele
   - allianceMember
   - biologicalEntitySet
+  - blueTeamTest
   - bulkload
   - controlledVocabulary
   - core
