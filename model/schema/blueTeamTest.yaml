@@ -71,6 +71,8 @@ classes:
 ## SLOTS
 ## ------------
 
+# Guidelines:
+# Please provide a range for all slots
 
 slots:
 
