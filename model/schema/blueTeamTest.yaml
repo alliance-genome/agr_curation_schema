@@ -43,16 +43,13 @@ classes:
     description: >-
       Topic entity tag source (tets)
     slots:
-      - topic_entity_tag_source_id
       - source_type
       - source_method
       - validation_type
       - tets_description
-      - tets_evidence_code
+      - evidence_code
       - alliance_member
     slot_usage:
-      topic_entity_tag_source_id:
-        description: Some class-specific description of how the slot should be used
       source_type:
         required: true
       source_method:
@@ -61,10 +58,35 @@ classes:
         required: false
       tets_description:
         required: false
-      tets_evidence_code:
+      evidence_code:
         required: true
       alliance_member:
         required: true
+
+  TopicEntityTag:
+    is_a: AuditedObject
+    description: >-
+      Topic entity tag
+    slots:
+      - topic_entity_tag_source
+      - single_reference
+      - atp_topic
+      - tagged_entity
+      - atp_entity_type
+      - tagged_entity_source
+      - entity_published_as
+      - species
+      - display_tag
+      - negated
+      - confidence_level
+      - note
+    slot_usage:
+      single_reference:
+        required: true
+      atp_topic:
+        required: true
+
+
 
 
 ## ------------
@@ -79,6 +101,18 @@ slots:
   alliance_member:
     range: AllianceMember
 
+  atp_entity_type:
+    description: >-
+      An ATP term that specifies an entity type (subset of the ATP ontology - branch "entity type" ATP:0000122)
+      domain: TopicEntityTag
+      range: ATPTerm
+
+  atp_topic:
+    description: >-
+      An ATP term that specifies a topic (subset of the ATP ontology - branch "topic tag" ATP:0000002)
+    domain: TopicEntityTag
+    range: ATPTerm
+
   source_method:
     range: string
   
@@ -86,23 +120,41 @@ slots:
     range: string
     notes: Free text for the source type
 
+  tagged_entity:
+    range: BiologicalEntity
+    domain: TopicEntityTag
+    required: true
+
+  tagged_entity_source:
+    range: Organization
+    domain: TopicEntityTag
+    required: true
+    description: >-
+      This is used to identify the API where to validate the tagged_entity against
+    note: >-
+      Revisit in the future to make sure we can cover Alliance and MODs as sources
+
   tets_description:
     description: >-
       The topic entity tag source description
     domain: TopicEntityTagSource
     range: string
 
-  tets_evidence_code:
-    range: ECOTerm
-
-  topic_entity_tag_source_id:
+  topic_entity_tag_source:
     description: >-
-      Some description
-    notes: >-
-      automatically incremented by the software
-    domain: TopicEntityTagSource
-    range: integer
+      The topic entity tag source that generated a specific topic entity tag
+    domain: TopicEntityTag
+    range: TopicEntityTagSource
     required: true
+
+#  topic_entity_tag_source_id:
+#    description: >-
+#      Some description
+#    notes: >-
+#      automatically incremented by the software
+#    domain: TopicEntityTagSource
+#    range: integer
+#    required: true
 
   validation_type:
     range: VocabularyTerm 
