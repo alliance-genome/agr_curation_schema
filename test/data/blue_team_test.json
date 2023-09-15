@@ -1,0 +1,26 @@
+{
+  "linkml_version": "1.9.0",
+  "topic_entity_tag_source_ingest_set": [
+    {
+      "topic_entity_tag_source_id": 12345,
+      "source_type": "Type1",
+      "source_method": "Method1",
+      "internal": false,
+      "validation_type": {
+        "name": "curator",
+        "internal": false
+      },
+      "tets_description": "some description" ,
+      "tets_evidence_code": {
+        "curie": "ECO:0000314",
+        "internal": false
+      },
+      "alliance_member": {
+        "alliance_member_id": 1234,
+        "abbreviation": "MODA",
+        "date_created": "2021-09-01T00:00:00+00:00",
+        "internal": false
+      }
+    }
+  ]
+}

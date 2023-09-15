@@ -266,6 +266,14 @@ slots:
     mixins:
       - object_set
 
+  topic_entity_tag_source_ingest_set:
+    domain: Ingest
+    range: TopicEntityTagSource
+    multivalued: true
+    mixins:
+      - object_set
+
+
   object_set:
     mixin: true
     domain: Ingest
@@ -311,3 +319,4 @@ classes:
       - agm_ingest_set
       - sqtr_ingest_set
       - ontology_closure_ingest_set
+      - topic_entity_tag_source_ingest_set

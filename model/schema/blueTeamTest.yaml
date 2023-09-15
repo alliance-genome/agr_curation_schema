@@ -1,0 +1,166 @@
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/blueTeamTest.yaml
+name: Blue-Team-Test
+title: Blue Team Test
+
+imports:
+  - core
+  - allianceMember
+
+prefixes:
+  alliance: "http://alliancegenome.org/"
+  linkml: "https://w3id.org/linkml/"
+  gff: "https://w3id.org/gff"
+  faldo: "http://biohackathon.org/resource/faldo#"
+  biolink: "https://w3id.org/biolink/vocab/"
+  NLMID: "https://www.ncbi.nlm.nih.gov/nlmcatalog/?term="
+  schema: "http://schema.org/"
+
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - owl
+
+
+## ------------
+## CLASSES
+## ------------
+
+
+classes:
+
+  TopicEntityTagSource:
+    is_a: AuditedObject
+    description: >-
+      Topic entity tag source (tets)
+    slots:
+      - source_type
+      - source_method
+      - validation_type
+      - tets_description
+      - evidence_code
+      - alliance_member
+    slot_usage:
+      source_type:
+        required: true
+      source_method:
+        required: true
+      validation_type:
+        required: false
+      tets_description:
+        required: false
+      evidence_code:
+        required: true
+      alliance_member:
+        required: true
+
+  TopicEntityTag:
+    is_a: AuditedObject
+    description: >-
+      Topic entity tag
+    slots:
+      - topic_entity_tag_source
+      - single_reference
+      - atp_topic
+      - tagged_entity
+      - atp_entity_type
+      - tagged_entity_source
+      - entity_published_as
+      - species
+      - display_tag
+      - negated
+      - confidence_level
+      - note
+    slot_usage:
+      single_reference:
+        required: true
+      atp_topic:
+        required: true
+
+
+
+
+## ------------
+## SLOTS
+## ------------
+
+# Guidelines:
+# Please provide a range for all slots
+
+slots:
+
+  alliance_member:
+    range: AllianceMember
+
+  atp_entity_type:
+    description: >-
+      An ATP term that specifies an entity type (subset of the ATP ontology - branch "entity type" ATP:0000122)
+      domain: TopicEntityTag
+      range: ATPTerm
+
+  atp_topic:
+    description: >-
+      An ATP term that specifies a topic (subset of the ATP ontology - branch "topic tag" ATP:0000002)
+    domain: TopicEntityTag
+    range: ATPTerm
+
+  source_method:
+    range: string
+  
+  source_type:
+    range: string
+    notes: Free text for the source type
+
+  tagged_entity:
+    range: BiologicalEntity
+    domain: TopicEntityTag
+    required: true
+
+  tagged_entity_source:
+    range: Organization
+    domain: TopicEntityTag
+    required: true
+    description: >-
+      This is used to identify the API where to validate the tagged_entity against
+    note: >-
+      Revisit in the future to make sure we can cover Alliance and MODs as sources
+
+  tets_description:
+    description: >-
+      The topic entity tag source description
+    domain: TopicEntityTagSource
+    range: string
+
+  topic_entity_tag_source:
+    description: >-
+      The topic entity tag source that generated a specific topic entity tag
+    domain: TopicEntityTag
+    range: TopicEntityTagSource
+    required: true
+
+#  topic_entity_tag_source_id:
+#    description: >-
+#      Some description
+#    notes: >-
+#      automatically incremented by the software
+#    domain: TopicEntityTagSource
+#    range: integer
+#    required: true
+
+  validation_type:
+    range: VocabularyTerm 
+    notes: CV includes "null", "curator", "author", "curation_tool"
+
+  
+
+
+

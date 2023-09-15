@@ -205,6 +205,7 @@ SCHEMA_TEST_EXAMPLES := \
  	allele_slot_annotation_ingest_test \
 	gene_interaction_test \
  	variant_association_ingest_test \
+ 	blue_team_test \
 
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
