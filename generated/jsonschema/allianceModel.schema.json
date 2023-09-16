@@ -5095,8 +5095,8 @@
             "additionalProperties": false,
             "description": "Ingest class for immunoglobulin proteins that bind specific molecule(s). Can be used experimentally for the purposes of detection or purification.",
             "properties": {
-                "antibody_target_genes": {
-                    "description": "The genes whose gene products are recognized by the antibody.",
+                "antibody_target_gene_curies": {
+                    "description": "Curies of the genes whose gene products are recognized by the antibody.",
                     "items": {
                         "type": "string"
                     },

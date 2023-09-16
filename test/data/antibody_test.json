@@ -7,7 +7,20 @@
       "internal": false,
       "obsolete": false,
       "mod_entity_id": "WB:WBAntibody123",
+      "cross_reference_dtos":  [
+        {
+          "internal": false,
+          "referenced_curie": "WB:WBAntibody123",
+          "page_area": "antibody",
+          "display_name": "Antibody A",
+          "prefix": "WB"
+        }
+      ],
       "name": "Antibody A",
+      "secondary_identifiers": [
+        "WB:AntibodyXYZ",
+        "WB:Ab123"
+      ],
       "taxon_curie": "NCBITaxon:6239",
       "generated_by_identifier": "WB:WBLaboratory123",
       "manufactured_by_identifier": "Construct Corps",
@@ -15,6 +28,10 @@
       "clonality_name": "monoclonal",
       "heavy_chain_isotype_name": "IgA",
       "light_chain_isotype_name": "i4",
+      "antibody_target_gene_curies": [
+        "WB:WBGene00000001",
+        "WB:WBGene00000002"
+      ],
       "reference_curies": [
         "PMID:223131211",
         "PMID:101231321"

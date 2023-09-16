@@ -134,7 +134,7 @@ classes:
       - clonality_name
       - heavy_chain_isotype_name
       - light_chain_isotype_name
-      - antibody_target_genes
+      - antibody_target_gene_curies
       - cross_reference_dtos
       - secondary_identifiers
       - reference_curies
@@ -313,7 +313,7 @@ slots:
     required: true
     multivalued: false
     domain: Antibody
-    range: VocabularyTerm
+    range: string
 
   component_symbol:
     range: string
