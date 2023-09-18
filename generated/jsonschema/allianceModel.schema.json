@@ -4962,8 +4962,8 @@
                     "type": "string"
                 },
                 "clonality": {
-                    "$ref": "#/$defs/AntibodyClonalitySet",
-                    "description": "The clonality of the antibody: e.g., monoclonal."
+                    "description": "The clonality of the antibody: e.g., monoclonal.",
+                    "type": "string"
                 },
                 "created_by": {
                     "description": "The individual that created the entity.",
@@ -5008,16 +5008,16 @@
                     "type": "array"
                 },
                 "heavy_chain_isotype": {
-                    "$ref": "#/$defs/HeavyChainIsotypeSet",
-                    "description": "The isotype of the antibody heavy chain: e.g., IgA."
+                    "description": "The isotype of the antibody heavy chain: e.g., IgA.",
+                    "type": "string"
                 },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
                 "light_chain_isotype": {
-                    "$ref": "#/$defs/LightChainIsotypeSet",
-                    "description": "The isotype of the antibody light chain: e.g., i4."
+                    "description": "The isotype of the antibody light chain: e.g., i4.",
+                    "type": "string"
                 },
                 "manufactured_by": {
                     "description": "Holds between a material entity and an Agent that has manufactured it: e.g., Molecular Probes.",
@@ -5091,26 +5091,130 @@
             "title": "Antibody",
             "type": "object"
         },
-        "AntibodyClonalitySet": {
-            "description": "",
-            "enum": [
-                "monoclonal",
-                "polyclonal",
-                "unspecified"
+        "AntibodyDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for immunoglobulin proteins that bind specific molecule(s). Can be used experimentally for the purposes of detection or purification.",
+            "properties": {
+                "antibody_target_gene_curies": {
+                    "description": "Curies of the genes whose gene products are recognized by the antibody.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "antigen_taxon_curie": {
+                    "description": "Holds between an Antibody and the species from which the antigen originates (as represented by taxon).",
+                    "type": "string"
+                },
+                "clonality_name": {
+                    "description": "Name of the VocabularyTerm representing the clonality of the antibody: e.g., monoclonal. From the Antibody Clonality CV.",
+                    "type": "string"
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "cross_reference_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/CrossReferenceDTO"
+                    },
+                    "type": "array"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "generated_by_identifier": {
+                    "description": "Identifier for Reagent genereated_by field.  ",
+                    "type": "string"
+                },
+                "heavy_chain_isotype_name": {
+                    "description": "Name of the VocabularyTerm respresenting the isotype of the antibody heavy chain: e.g., IgA. From the Heavy Chain Isotope CV.",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "light_chain_isotype_name": {
+                    "description": "Name of the VocabularyTerm respresenting the isotype of the antibody light chain: e.g., i4. From the Light Chain Isotope CV.",
+                    "type": "string"
+                },
+                "manufactured_by_identifier": {
+                    "description": "Identifier for Reagent manufactured_by field.  ",
+                    "type": "string"
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Publicly displayed name of the antibody. It often includes the name of the antibody target: e.g., anti-WNT-4. It may also include the host species and antibody clonality.",
+                    "type": "string"
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": "array"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "original_reference_curie": {
+                    "description": "The reference providing the original description of the antibody's generation.",
+                    "type": "string"
+                },
+                "reference_curies": {
+                    "description": "External reference curies used for ingest",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "taxon_curie": {
+                    "description": "The species in which the antibody was raised: e.g., mouse, rabbit, guinea pig, goat, camel, etc.",
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "clonality_name",
+                "internal"
             ],
-            "title": "AntibodyClonalitySet",
-            "type": "string"
-        },
-        "AntibodyNoteTypeSet": {
-            "description": "",
-            "enum": [
-                "antibody_description",
-                "antigen_description",
-                "remark",
-                "private"
-            ],
-            "title": "AntibodyNoteTypeSet",
-            "type": "string"
+            "title": "AntibodyDTO",
+            "type": "object"
         },
         "Assembly": {
             "additionalProperties": false,
@@ -12750,32 +12854,6 @@
             "title": "HPTerm",
             "type": "object"
         },
-        "HeavyChainIsotypeSet": {
-            "description": "",
-            "enum": [
-                "IgA",
-                "IgA1",
-                "IgA2",
-                "IgD",
-                "IgE",
-                "IgG",
-                "IgG1",
-                "IgG2",
-                "IgG2a",
-                "IgG2b",
-                "IgG2c",
-                "IgG3",
-                "IgG4",
-                "IgM",
-                "IgN",
-                "IgR",
-                "IgW",
-                "IgX",
-                "IgY"
-            ],
-            "title": "HeavyChainIsotypeSet",
-            "type": "string"
-        },
         "Identifier": {
             "additionalProperties": false,
             "description": "",
@@ -13126,6 +13204,13 @@
                     },
                     "type": "array"
                 },
+                "antibody_ingest_set": {
+                    "description": "An ingest set for Antibody objects",
+                    "items": {
+                        "$ref": "#/$defs/AntibodyDTO"
+                    },
+                    "type": "array"
+                },
                 "construct_genomic_entity_association_ingest_set": {
                     "description": "An ingest set for ConstructGenomicEntityAssociationDTO",
                     "items": {
@@ -13312,26 +13397,6 @@
             ],
             "title": "Laboratory",
             "type": "object"
-        },
-        "LightChainIsotypeSet": {
-            "description": "",
-            "enum": [
-                "k",
-                "l",
-                "l1",
-                "l2",
-                "l3",
-                "l4",
-                "r",
-                "s",
-                "i",
-                "i1",
-                "i2",
-                "i3",
-                "i4"
-            ],
-            "title": "LightChainIsotypeSet",
-            "type": "string"
         },
         "LoggedInPerson": {
             "additionalProperties": false,
@@ -21503,6 +21568,13 @@
         "allele_variant_association_ingest_set": {
             "items": {
                 "$ref": "#/$defs/AlleleVariantAssociationDTO"
+            },
+            "type": "array"
+        },
+        "antibody_ingest_set": {
+            "description": "An ingest set for Antibody objects",
+            "items": {
+                "$ref": "#/$defs/AntibodyDTO"
             },
             "type": "array"
         },
