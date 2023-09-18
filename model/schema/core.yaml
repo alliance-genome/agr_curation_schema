@@ -871,6 +871,12 @@ slots:
     multivalued: false
     range: Reference
 
+  original_reference_curie:
+    description: >-
+      Curie of the first reference to describe an entity.
+    multivalued: false
+    range: string
+
   obsolete:
     description: >-
       Entity is no longer current.
