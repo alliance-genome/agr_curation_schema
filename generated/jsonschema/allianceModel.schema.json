@@ -18236,7 +18236,7 @@
                     "type": "integer"
                 },
                 "object": {
-                    "description": "object should be the chromosome identifier",
+                    "description": "object should be the protein identifier",
                     "type": "string"
                 },
                 "obsolete": {
@@ -18489,7 +18489,7 @@
                     "type": "integer"
                 },
                 "object": {
-                    "description": "object should be the chromosome identifier",
+                    "description": "object should be the transcript identifier",
                     "type": "string"
                 },
                 "obsolete": {
@@ -19991,7 +19991,7 @@
                     "type": "integer"
                 },
                 "object": {
-                    "description": "object should be the chromosome identifier",
+                    "description": "object should be the protein identifier",
                     "type": "string"
                 },
                 "obsolete": {
@@ -20363,7 +20363,7 @@
                     "type": "integer"
                 },
                 "object": {
-                    "description": "object should be the chromosome identifier",
+                    "description": "object should be the transcript identifier",
                     "type": "string"
                 },
                 "obsolete": {
