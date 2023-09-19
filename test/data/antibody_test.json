@@ -43,7 +43,18 @@
           "note_type_name": "antibody_description",
           "internal": false
         }
-      ]
+      ],
+      "data_provider_dto": {
+        "source_organization_abbreviation": "WB",
+        "cross_reference_dto": {
+          "referenced_curie": "WB:WBAntibody123",
+          "prefix": "WB",
+          "page_area": "construct",
+          "display_name": "WB:WBAntibody123",
+          "internal": false
+        },
+        "internal": false
+      }
     }
   ]
 }

@@ -53,6 +53,7 @@ classes:
       - taxon
       - generated_by
       - manufactured_by
+      - data_provider
 
   ReagentDTO:
     is_a: AuditedObjectDTO
@@ -64,6 +65,7 @@ classes:
       - taxon_curie
       - generated_by_identifier # needs to change: currently no common identifier field for Agent class
       - manufactured_by_identifier # needs to change: currently no common identifier field for Agent class
+      - data_provider_dto
     slot_usage:
       mod_internal_id:
         notes: This is required if mod_entity_id is not submitted
