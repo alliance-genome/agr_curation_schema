@@ -28,7 +28,18 @@
           ],
           "internal": false
         }
-      ]
+      ],
+      "data_provider_dto": {
+        "source_organization_abbreviation": "WB",
+        "cross_reference_dto": {
+          "referenced_curie": "WB:WBConstruct123",
+          "prefix": "WB",
+          "page_area": "construct",
+          "display_name": "WB:WBConstruct123",
+          "internal": false
+        },
+        "internal": false
+      }
     }
   ],
   "construct_genomic_entity_association_ingest_set": [
