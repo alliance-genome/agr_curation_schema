@@ -145,6 +145,8 @@ classes:
       - intron_number
     slot_usage:
       object:
+        description: >-
+          object should be the transcript identifier
         range: Transcript
         required: true
       subject:
@@ -161,6 +163,8 @@ classes:
       - number_amino_acids_inserted
     slot_usage:
       object:
+        description: >-
+          object should be the protein identifier
         range: Protein
         required: true
 
