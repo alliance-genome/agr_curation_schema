@@ -89,7 +89,6 @@ classes:
         description: >-
           The figure to which the image belongs.
         required: true
-        multivalued: false
       image_x_origin:
         description: >-
           The x coordinate within a larger source image from which the crop begins.
@@ -142,10 +141,18 @@ slots:
     required: false
     multivalued: false
 
+  associated_with_figures:
+    description: >-
+      Holds between an entity and a set of Figures.
+    range: Figure
+    multivalued: true
+
   associated_with_figure:
     description: >-
-      Holds between an entity and a Figure.
+      Holds between an entity and a single Figure. Singular version of
+      associated_with_figures.
     range: Figure
+    multivalued: false
 
   from_image:
     description: >-

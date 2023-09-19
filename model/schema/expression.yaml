@@ -42,98 +42,180 @@ emit_prefixes:
 
 classes:
 
-  ExpressionExperiment:
-    is_a: AuditedObject
+  ExpressionAnnotation:
+    is_a: Annotation
     description: >-
-      Defined by the gene of interest, the specimen, the assay, the reagents
-      (Antibody, Probe), and the reference. It groups ExpressionAnnotations.
+      An annotation asserting an association between some entity and an
+      expression pattern, supported by a single reference.
     notes: >-
-      Specimens are defined by their AGM and/or alleles (or gel lane at MGI).
+      A mapping of the agr_schemas (FMS) model to this LinkML model is below.
+      geneId:                                                    subject
+      evidence:                                                  single_reference
+      assay:                                                     assay_used
+      crossReference:                                            data_provider.cross_reference
+      dateAssigned:                                              date_created
+      whenExpressed.stageName:                                   n/a
+      whenExpressed.stageTermId:                                 object (ExpressionPattern.TemporalContext.developmental_stage_start)
+      whenExpressed.stageUberonSlimTerm:                         object (ExpressionPattern.TemporalContext.stage_uberon_slim_terms)
+      whereExpressed.anatomicalStructureTermId:                  object (ExpressionPattern.AnatomicalSite.anatomical_structure)
+      whereExpressed.anatomicalStructureQualifierTermId:         object (ExpressionPattern.AnatomicalSite.anatomical_structure_qualifiers)
+      whereExpressed.anatomicalStructureUberonSlimTermIds:       object (ExpressionPattern.AnatomicalSite.anatomical_structure_uberon_terms)
+      whereExpressed.anatomicalSubStructureTermId:               object (ExpressionPattern.AnatomicalSite.anatomical_substructure)
+      whereExpressed.anatomicalSubStructureQualifierTermId:      object (ExpressionPattern.AnatomicalSite.anatomical_substructure_qualifiers)
+      whereExpressed.anatomicalSubStructureUberonSlimTermIds:    object (ExpressionPattern.AnatomicalSite.anatomical_substructure_uberon_terms)
+      whereExpressed.cellularComponentTermId.cellular_component: object (ExpressionPattern.AnatomicalSite.cellular_component)
+      whereExpressed.cellularComponentQualifierTermId:           object (ExpressionPattern.AnatomicalSite.cellular_component_qualifiers)
+      whereExpressed.whereExpressedStatement:                    where_expressed_statement
+      New required slots: relation
+      Slots not represented in agr_schemas FMS submission (not required):
+        Inherited: curie, unique_id, mod_entity_id, mod_internal_id,
+                   condition_relation, related_notes.
+        Specified here: reagents_used, specimen_genomic_model, specimen_alleles,
+                        expression_qualifiers, negated, uncertain,
+                        associated_with_figures.
     slots:
-      - curie
-      - single_reference
-      - biological_entity_assayed
       - assay_used
+      # QUESTION: have dedicated slot for WhereExpressedStatement, or submit
+      #           under related_notes slot?
+      - where_expressed_statement
       - reagents_used
       - specimen_genomic_model
       - specimen_alleles
-      - condition_relations
-      - related_notes
-    slot_usage:
-      curie:
-        required: true
-    rules:
-      - postconditions:
-          any_of:
-            - slot_conditions:
-                biological_entity_assayed:
-                  required: true
-            - slot_conditions:
-                reagents_used:
-                  required: true
-          description: At least one of biological_entity_assayed or reagents_used should be populated.
-
-
-# QUESTIONS
-# - HOW TO LIMIT CVTERMS ALLOWED IN XPRN - DID I USE THE RIGHT APPROACH?
-# - OK TO JUST USE LIST OF CONDITIONS WITHOUT RELATIONS?
-# - OH, MAYBE HAVE DIFF SLOTS FOR CONDITIONS (PER RELATION ALLOWED).
-# - SHOULD 'CURIE' BE CHANGED TO 'ID' TO CONFORM TO STANDARD PRACTICE? Is this CURIE for Expression Class/Obj?
-# - What if MODs do NOT have object IDs for Experiments or Expression annotations
-
-  ExpressionAnnotation:
-    is_a: AuditedObject
-    description: >-
-      A description of when and where gene products are observed to be present,
-      including experimental details, supporting evidence, and curator notes.
-    notes: >-
-      Curators can provide several levels of evidence for an annotation, in an
-      attempt to offer support the annotation schema at various MODs.
-      A curator can provide a Figure within that reference (ZFIN).
-      Also, a curator can provide an ImagePane within some Figure (MGI).
-      It's unclear which of these approaches will be chosen for future Alliance
-      expression curation.
-    slots:
-      - belongs_to_expression_experiment # remove and model as a collection on the class.
-      - when_expressed
-      - where_expressed
       - expression_qualifiers
       - negated
       - uncertain
-      - associated_with_figure    # this is often redundant
-      - related_notes
-
+      - associated_with_figures
     slot_usage:
-      associated_with_figure:
+      # QUESTION: Set range to BiologicalEntity, or keep restricted to Gene?
+      subject:
+        description: >-
+          The entity for which an expression pattern is being described. This
+          will be limited to a Gene initially, and expanded to other entity
+          types as needed. If the exact subject is not known we may require
+          a placeholder (e.g., unknown epitope recognized by the antibody).
+          Slot is inherited from Annotation class.
+        required: true
+        range: Gene
+      # QUESTION: Set relation range to VocabularyTerm, or some other string?
+      relation:
+        description: >-
+          The relationship type between the subject and the expression pattern.
+          Limited to expressed_in for now, but we could choose an alternate
+          string or allow for a range of VocabularyTerm.
+          Slot is inherited from Annotation class.
+        required: true
+        range:
+          any_of:
+            equals_string: expressed_in
+      # QUESTION: Do we agree that the object of this annotation's assertion is
+      #           an ExpressionPattern (i.e., all spatiotemporal attributes)?
+      object:
+        description: >-
+          The spatiotemporal expression pattern of the subject, with associated
+          notes.
+          Slot is inherited from Annotation class.
+        required: true
+        range: ExpressionPattern
+      single_reference:
+        description: >-
+          Slot is inherited from Annotation class.
+      curie:
+        description: >-
+          The Alliance-minted ID for the ExpressionAnnotation.
+          Slot is inherited from Annotation class.
+      unique_id:
+        description: >-
+          Unique identifier for the ExpressionAnnotation. Will be generated at
+          AGR if not submitted by the model organism database.
+          Slot is inherited from Annotation class.
+      mod_entity_id:
+        description: >-
+          The model organism database identifier/curie for the
+          ExpressionAnnotation.
+          Slot is inherited from Annotation class.
+      mod_internal_id:
+        description: >-
+          The model organism database internal identifier for the
+          ExpressionAnnotation.
+          Slot is inherited from Annotation class.
+      condition_relations:
+        description: >-
+          Slot is inherited from Annotation class.
+      # QUESTION: What types of notes do curators want to have for a specific
+      #           expression annotation.
+      related_notes:
+        description: >-
+          Use different note types to add extra information about specific
+          aspects of the ExpressionAnnotation. Appropriate VocabularyTerms
+          will need to be created: expression_annotation_note, etc.
+          Slot is inherited from Annotation class.
+      data_provider:
+        description: >-
+          Provide information about the data provider; this slot also allows
+          for cross-references to be reported for the annotation.
+          Slot is inherited from Annotation class.
+      associated_with_figures:
         description: >-
           The figure(s) that support(s) the expression annotation.
         notes: >-
-          This can seem redundant with ExpressionAnnotationImagePane.
-          But, sometimes we know the figure but don't have the image.
+          This can seem redundant with ExpressionAnnotationImagePane, but
+          sometimes we know the figure but don't have the image file.
           Optional, as existing annotations from some MODs have no related
           images or figures.
         required: false
         multivalued: true
 
+  # QUESTION: Each FMS expression annotation is limited to one stage. However,
+  #           in the LinkML model, it's possible to specify a range.
+  #           For initial submission of FMS expression data to the
+  #           persistent store, would it make sense to keep limiting each
+  #           expression annotation to a single stage to reduce downstream
+  #           work on Alliance database and web side? This would defer work
+  #           required to infer expression stages between the range limits.
+  ExpressionPattern:
+    is_a: AuditedObject
+    description: >-
+      An expression pattern, as defined by spatial and temporal attributes,
+      including all qualifiers.
+    slots:
+      - when_expressed
+      - where_expressed
+
   TemporalContext:
     is_a: AuditedObject
     description: >-
-      The developmental stage and/or age of the specimen in an annotation. Developmental_stage_stop is optional. Add an uncertainty flag here?
+      The developmental stage and/or age of the specimen in an annotation. The
+      developmental_stage_stop slot is optional.
     slots:
       - developmental_stage_start
       - developmental_stage_stop
       - age
       - temporal_qualifiers
+      - stage_uberon_slim_terms
 
   AnatomicalSite:
     is_a: AuditedObject
     description: >-
-      The developmental stage and/or age of the specimen in an annotation.
+      The set of terms that define a specific anatomical site within a specimen.
     slots:
       - anatomical_structure
+      - anatomical_structure_qualifiers
+      - anatomical_structure_uberon_terms
       - anatomical_substructure
+      - anatomical_substructure_qualifiers
+      - anatomical_substructure_uberon_terms
       - cellular_component
-      - spatial_qualifiers
+      - cellular_component_qualifiers
+    rules:
+      - postconditions:
+          any_of:
+            - slot_conditions:
+                anatomical_structure:
+                  required: true
+            - slot_conditions:
+                cellular_component:
+                  required: true
+          description: At least one of anatomical_structure or cellular_component should be populated.
 
   ExpressionAnnotationImagePane:
     is_a: EvidenceAssociation
@@ -147,50 +229,7 @@ classes:
       object:
         range: ImagePane
 
-  # GeneExpressionStatement:
-  #   is_a: EntityStatement     # Update to use Note class instead?
-  #   description: >-
-  #     Free-text describing some aspect(s) of a gene's expression, particularly
-  #     nuanced information that is not readily captured in annotations.
-  #     May summarize data from many annotations and/or many publications.
-  #   notes: >-
-  #     Inherits: statement_subject, statement_type, statement_text, references.
-  #     Not sure if/how to use the statement_type slot - seems redundant.
-  #   slot_usage:
-  #     statement_subject:
-  #       range: Gene
-  #     statement_type:
-  #       range: expression_statement_type_enum
-
-  # ExpressionExperimentStatement:
-  #   is_a: EntityStatement     # Update to use Note class instead?
-  #   description: >-
-  #     Free-text describing some aspect(s) of a gene's expression, particularly
-  #     nuanced information that is not readily captured in annotations.
-  #     This statement's scope is limited to the associated ExpressionExperiment.
-  #   notes: >-
-  #     Inherits: statement_subject, statement_type, statement_text, references.
-  #     Not sure if/how to use the statement_type slot - seems redundant.
-  #   slot_usage:
-  #     statement_subject:
-  #       range: ExpressionExperiment
-
-  # ExpressionAnnotationStatement:
-  #   is_a: EntityStatement     # Update to use Note class instead?
-  #   slot_usage:
-  #     statement_subject:
-  #       range: ExpressionAnnotation
-  #     statement_type:
-  #       range: expression_statement_type_enum
 slots:
-
-  belongs_to_expression_experiment:
-    description: >-
-      Holds between an ExpressionAnnotation and an ExpressionExperiment.
-    domain: ExpressionAnnotation
-    range: ExpressionExperiment
-    required: true
-    multivalued: false
 
   age:
     description: >-
@@ -200,17 +239,75 @@ slots:
     multivalued: false
 
   anatomical_structure:
-    domain: AnatomicalTerm
+    domain: AnatomicalSite
     range: AnatomicalTerm
+    multivalued: false
+
+  # QUESTION: Should the range be OntologyTerm, VocabularyTerm, or other?
+  #           Many qualifiers map to BSPO, others do not (have FBcv ID).
+  # QUESTION: Should we limit this to one qualifier?
+  anatomical_structure_qualifiers:
+    notes: >-
+      See the spatial_qualifier_set enum at the bottom of this file for terms.
+    domain: AnatomicalSite
+    range: VocabularyTerm
+    multivalued: true
+
+  # QUESTION: Allow for submission of Other if no UBERONTerm applies?
+  anatomical_structure_uberon_terms:
+    notes: >-
+      Allowable terms: UBERON:0001009, UBERON:0005409, UBERON:0000949,
+                       UBERON:0001008, UBERON:0002330, UBERON:0002193,
+                       UBERON:0002416, UBERON:0002423, UBERON:0002204,
+                       UBERON:0001016, UBERON:0000990, UBERON:0001004,
+                       UBERON:0001032, UBERON:0005726, UBERON:0007037,
+                       UBERON:0002105, UBERON:0002104, UBERON:0000924,
+                       UBERON:0000925, UBERON:0000926, UBERON:0003104,
+                       UBERON:0001013, UBERON:0000026, UBERON:0016887,
+                       UBERON:6005023, UBERON:0002539, Other
+      This was a required field in the FMS submission, but if no UBERONTerm
+      applied, the word Other was used.
+    domain: AnatomicalSite
+    range: UBERONTerm
+    multivalued: true
 
   anatomical_substructure:
-    domain: AnatomicalTerm
+    domain: AnatomicalSite
     range: AnatomicalTerm
+    multivalued: false
+
+  # QUESTION: Should the range be OntologyTerm, VocabularyTerm, or other?
+  #           Many qualifiers map to BSPO, others do not (have FBcv ID).
+  # QUESTION: Should we limit this to one qualifier?
+  anatomical_substructure_qualifiers:
+    notes: >-
+      See the spatial_qualifier_set enum at the bottom of this file for terms.
+    domain: AnatomicalSite
+    range: VocabularyTerm
+    multivalued: true
+
+  # QUESTION: Allow for submission of Other if no UBERONTerm applies?
+  anatomical_substructure_uberon_terms:
+    notes: >-
+      Allowable terms: UBERON:0001009, UBERON:0005409, UBERON:0000949,
+                       UBERON:0001008, UBERON:0002330, UBERON:0002193,
+                       UBERON:0002416, UBERON:0002423, UBERON:0002204,
+                       UBERON:0001016, UBERON:0000990, UBERON:0001004,
+                       UBERON:0001032, UBERON:0005726, UBERON:0007037,
+                       UBERON:0002105, UBERON:0002104, UBERON:0000924,
+                       UBERON:0000925, UBERON:0000926, UBERON:0003104,
+                       UBERON:0001013, UBERON:0000026, UBERON:0016887,
+                       UBERON:6005023, UBERON:0002539, Other
+      This was a required field in the FMS submission, but if no UBERONTerm
+      applied, the word Other was used.
+    domain: AnatomicalSite
+    range: UBERONTerm
+    multivalued: true
 
   assay_used:
     description: >-
       The assay used to experimentally determine gene expression.
-    domain: ExpressionExperiment
+    domain: ExpressionAnnotation
     range: MMOTerm
 
   cellular_component:
@@ -219,6 +316,14 @@ slots:
       branch, but I'm not sure how to do this.
     domain: AnatomicalSite
     range: GOTerm
+
+  # QUESTION: Should the range be OntologyTerm, VocabularyTerm, or other?
+  # QUESTION: Should we limit this to one qualifier?
+  # QUESTION: Do we have a list of applicable qualifiers?
+  cellular_component_qualifiers:
+    domain: AnatomicalSite
+    range: VocabularyTerm
+    multivalued: true
 
   developmental_stage_start:
     description: >-
@@ -229,98 +334,115 @@ slots:
     domain: TemporalContext
     range: StageTerm
     multivalued: false
+    required: true
 
   developmental_stage_stop:
     description: >-
       The end developmental stage at which an annotated event was observed.
+      This is not required if the annotation applies to a single stage.
     notes: >-
       Currently, we limit this to a single stage, but we could consider allowing
       for stage ranges for a single annotation.
     domain: TemporalContext
     range: StageTerm
     multivalued: false
+    required: false
 
+  # QUESTION: Should the range be OntologyTerm, VocabularyTerm, or other?
   expression_qualifiers:
     description: >-
       Qualifiers that describe additional characteristics of gene expression.
       For example: aint, intense, restricted.
-    domain: ExpressionAnnotation
-    range: expression_qualifier_set
-
-  biological_entity_assayed:
-    description: >-
-      Holds between a BiologicalEntity and an ExpressionExperiment that
-      reports on its expression.
     notes: >-
-      The BiologicalEntity will usually be a Gene, but there are exceptions to
-      this norm at most MODs.
-      FB: some expression for genomic insertions that reflect nearby
-      regulatory region activity for unknown gene(s).
-      MGI: some expression data for "other feature type"
-      WB: some expression for sequence features (WBsf).
-      ZFIN: some expression using antibodies with unknown target. Antibody is a BiologicalEntity
-    domain: ExpressionExperiment
-    range: BiologicalEntity
-    multivalued: false
+      See the expression_qualifier_set enum at the bottom of this file for terms.
+    domain: ExpressionAnnotation
+    range: VocabularyTerm
+    multivalued: true
 
   image:
     description: >-
       The image associated with the object.
     range: Image
 
-  spatial_qualifiers:
-    description: >-
-      Qualifiers that describe the spatial characteristics of an event.
-    domain: AnatomicalSite
-    range: spatial_qualifier_set  #BSPO
-
+  # QUESTION: Limit to a single reagent? Are >1 reagents ever annotated?
   reagents_used:
     description: >-
       Reagents used in the expression assay: e.g., antibodies, probes.
-    notes: >-
-      I'm assuming that specifying Reagent below will allow for objects that
-      have the Reagent mixin.
-    domain: ExpressionExperiment
+    domain: ExpressionAnnotation
     range: Reagent
     multivalued: true
 
+  # QUESTION: I think only FB would use this?
+  #           The intent is to allow for capture of transgenic reporters that
+  #           may not qualify as a Reagent (e.g., enhancer trap). But maybe
+  #           there is a better way to capture this info.
   specimen_alleles:
     description: >-
       The Allele(s) of the specimen assayed.
-    domain: ExpressionExperiment
+    domain: ExpressionAnnotation
     range: Allele
     multivalued: true
 
   specimen_genomic_model:
     description: >-
       The AffectedGenomicModel of the specimen assayed.
-    domain: ExpressionExperiment
+    domain: ExpressionAnnotation
     range: AffectedGenomicModel
     multivalued: false
 
+  # QUESTION: Set range to OntologyTerm?
   temporal_qualifiers:
     description: >-
       Qualifiers of the stage or age in an annotation.
+    notes: >-
+      See the temporal_qualifier_set enum at the bottom of this file for terms.
     domain: TemporalContext
-    range: temporal_qualifier_set
+    range: VocabularyTerm
+
+  # QUESTION: Set range to VocabularyTerm due to UBERONTerm limitations?
+  stage_uberon_slim_terms:
+    description: >-
+      The high-level UBERON slim terms that apply to the developmental range
+      of the TemporalContext component of an ExpressionPattern. The following
+      UBERON terms are allowed: UBERON:0000068, UBERON:0000113, "post embryonic, pre-adult".
+    notes: >-
+      FMS submission allowed for a string due to absence of appropriate UBERON
+      term. This term must, for example, cover Drosophila larval and pupal
+      stages (there are UBERON terms for each, but not a single term spanning
+      both developmental phases).
+    domain: TemporalContext
+    range: UBERONTerm
+    multivalued: true
 
   when_expressed:
     description: >-
-      When a gene product is observed to be present.
-    domain: ExpressionAnnotation
+      When some entity is observed to be present in a specimen. If no temporal
+      information is available for an annotation, use a root stage term for the
+      developmental_stage_start.
+    domain: ExpressionPattern
     range: TemporalContext
     multivalued: false
+    required: true
 
   where_expressed:
     description: >-
-      Where a gene product is observed to be present.
-    notes: >-
-      Placeholder internal notes.
-    domain: ExpressionAnnotation
+      Where some entity is observed to be present in a specimen. If no spatial
+      information is available for an annotation, use a root anatomical term
+      for the anatomical_structure.
+    domain: ExpressionPattern
     range: AnatomicalSite
     multivalued: false
+    required: true
 
-  assay_notes:
+  where_expressed_statement:
+    is_a: related_note
+    description: >-
+      A human-readable free-text description of the anatomical location of the
+      expression pattern.
+    domain: ExpressionAnnotation
+    range: Note
+    required: true
+    multivalued: false
 
 enums:
 
@@ -385,30 +507,3 @@ enums:
       sometime_during:
         description: >-
           An event that happens during some of the stages included in the annotation, but maybe not all
-
-  expression_condition_relation_enum:
-    permissible_values:
-      has_condition:
-      induced_by:
-
-  # This enum should be replaced by adding new note type CV terms.
-  # e.g., expression_summary, etc.
-  # Leaving this enum in place now until that happens.
-  expression_statement_type_enum:
-    notes: >-
-      Types of free-text statements associated with an expression annotation.
-      This enum should be replaced by adding terms to the notes type controlled
-      vocabulary: e.g., expression_summary, when_expressed, where_expressed, etc.
-    permissible_values:
-      expression_summary:
-        description: >-
-          Free-text that summarizes expression across many annotations, experiments or publictaions.
-      where_expressed_note:
-        description: >-
-          Additional free-text describing the anatomical site of expression in an expression annotation.
-      expression_annotation_note:
-        description: >-
-          Additional free-text describing other aspects of an expression annotation.
-          For example, only in the head neurons, only when JNK is activated, etc.
-          Corresponds to note type #1 of AGR-1407.
-
