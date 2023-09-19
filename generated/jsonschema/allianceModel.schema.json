@@ -1201,7 +1201,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -1495,7 +1495,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -1646,7 +1646,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -1782,7 +1782,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -2101,7 +2101,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -2534,7 +2534,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -2611,7 +2611,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -2755,7 +2755,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -2906,7 +2906,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -3059,7 +3059,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -3181,7 +3181,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -3325,7 +3325,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -3463,7 +3463,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -3590,7 +3590,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -3712,7 +3712,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -4065,7 +4065,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -4216,7 +4216,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -4282,7 +4282,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -4363,7 +4363,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -4440,7 +4440,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -4591,7 +4591,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -7248,7 +7248,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -9037,6 +9037,12 @@
                     "format": "date-time",
                     "type": "string"
                 },
+                "expression_annotation_image_associations": {
+                    "items": {
+                        "$ref": "#/$defs/ExpressionAnnotationImagePaneAssociation"
+                    },
+                    "type": "array"
+                },
                 "expression_qualifiers": {
                     "description": "Qualifiers that describe additional characteristics of gene expression. For example: aint, intense, restricted.",
                     "items": {
@@ -9135,9 +9141,9 @@
             "title": "ExpressionAnnotation",
             "type": "object"
         },
-        "ExpressionAnnotationImagePane": {
+        "ExpressionAnnotationImagePaneAssociation": {
             "additionalProperties": false,
-            "description": "",
+            "description": "An association between an ExpressionAnnotation and an image (in part or in full).",
             "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
@@ -9164,7 +9170,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -9201,7 +9207,7 @@
                 "object",
                 "internal"
             ],
-            "title": "ExpressionAnnotationImagePane",
+            "title": "ExpressionAnnotationImagePaneAssociation",
             "type": "object"
         },
         "ExpressionPattern": {
@@ -10212,7 +10218,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -10868,7 +10874,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -10956,7 +10962,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -11217,7 +11223,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -11726,7 +11732,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -11792,7 +11798,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -11873,7 +11879,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -11954,7 +11960,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -12253,7 +12259,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -14883,7 +14889,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -15269,7 +15275,7 @@
                     "type": "integer"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -17512,7 +17518,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -17791,7 +17797,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -17869,7 +17875,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -19025,7 +19031,7 @@
                     "type": "integer"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -19313,7 +19319,7 @@
                     "type": "integer"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
@@ -19686,7 +19692,7 @@
                     "type": "integer"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "type": "string"
                     },
