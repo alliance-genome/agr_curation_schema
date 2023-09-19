@@ -18,8 +18,16 @@
       "created_by_curie": "ZFIN",
       "updated_by_curie": "ZFIN",
       "internal": false,
-      "variant_status": "public",
-      "variant_type": "SO:1000008"
+      "variant_status_name": "public",
+      "variant_type_curie": "SO:1000008",
+      "note_dtos": [
+        {
+          "free_text": "note about the variant",
+          "note_type_name": "comment",
+          "internal": false
+        }
+      ],
+      "source_general_consequence_curie": "SO:0001576"
     },
     {
       "curie": "ZFIN:ZDB-ALT-000412-9",
@@ -38,8 +46,8 @@
       "created_by_curie": "ZFIN",
       "updated_by_curie": "ZFIN",
       "internal": false,
-      "variant_status": "private",
-      "variant_type": "SO:1000008"
+      "variant_status_name": "private",
+      "variant_type_curie": "SO:1000008"
     }
   ]
 }

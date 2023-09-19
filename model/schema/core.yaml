@@ -320,12 +320,26 @@ classes:
     slots:
       - single_reference
 
+  SingleReferenceAssociationDTO:
+    is_a: AuditedObjectDTO
+    description: Ingest class for an association supported by a single Reference object
+    slots:
+      - reference_curie
+
   EvidenceAssociation:
     abstract: true
     is_a: Association
     description: An association supported by any number of InformationContentEntity objects
     slots:
       - evidence
+
+  EvidenceAssociationDTO:
+    abstract: true
+    is_a: AuditedObjectDTO
+    description: >-
+      Ingest class for an association supported by any number of InformationContentEntity objects
+    slots:
+      - evidence_curies
 
   ExternalDatabaseLink:
     is_a: AuditedObject
@@ -388,15 +402,12 @@ classes:
     is_a: BiologicalEntityDTO
     slots:
       - cross_reference_dtos
-      - genomic_location_association_dtos
 
   GenomicLocationAssociationDTO:
-    is_a: AuditedObjectDTO
+    abstract: true
+    is_a: EvidenceAssociationDTO
     slots:
-      - genomic_entity_curie
       - relation_name
-      - chromosome_curie
-      - evidence_curies
       - assembly_curie
       - start
       - end
@@ -405,10 +416,6 @@ classes:
         required: true
         any_of:
           equals_string: has_genomic_location
-      chromosome_curie:
-        required: true
-      assembly_curie:
-        required: true
       start:
         required: true
       end:
@@ -945,9 +952,11 @@ slots:
     range: Identifier
 
   assembly_curie:
+    required: true
     range: string
 
   chromosome_curie:
+    required: true
     range: string
     description: >-
       The NCBI chromosome accession number for the chromosome.
