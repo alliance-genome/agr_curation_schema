@@ -4980,6 +4980,10 @@
                     "description": "A unique identifier for the antibody: e.g., WBAntibody0000001.",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -5086,6 +5090,7 @@
                 "name",
                 "clonality",
                 "curie",
+                "data_provider",
                 "internal"
             ],
             "title": "Antibody",
@@ -5119,6 +5124,10 @@
                         "$ref": "#/$defs/CrossReferenceDTO"
                     },
                     "type": "array"
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -5211,6 +5220,7 @@
             "required": [
                 "name",
                 "clonality_name",
+                "data_provider_dto",
                 "internal"
             ],
             "title": "AntibodyDTO",
@@ -7107,6 +7117,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -7184,6 +7198,7 @@
             "required": [
                 "name",
                 "curie",
+                "data_provider",
                 "internal"
             ],
             "title": "Construct",
@@ -7354,6 +7369,10 @@
                     "description": "Curie of the Person object representing the individual that created the entity",
                     "type": "string"
                 },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -7420,6 +7439,7 @@
             },
             "required": [
                 "name",
+                "data_provider_dto",
                 "internal"
             ],
             "title": "ConstructDTO",
@@ -8023,6 +8043,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -8088,6 +8112,7 @@
             },
             "required": [
                 "curie",
+                "data_provider",
                 "internal"
             ],
             "title": "DNAClone",
@@ -16456,6 +16481,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -16521,6 +16550,7 @@
             },
             "required": [
                 "curie",
+                "data_provider",
                 "internal"
             ],
             "title": "RNAClone",
@@ -16772,6 +16802,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -16837,6 +16871,7 @@
             },
             "required": [
                 "curie",
+                "data_provider",
                 "internal"
             ],
             "title": "Reagent",
@@ -16849,6 +16884,10 @@
                 "created_by_curie": {
                     "description": "Curie of the Person object representing the individual that created the entity",
                     "type": "string"
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -16904,6 +16943,7 @@
                 }
             },
             "required": [
+                "data_provider_dto",
                 "internal"
             ],
             "title": "ReagentDTO",
