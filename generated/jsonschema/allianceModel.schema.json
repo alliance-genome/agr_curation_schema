@@ -4786,16 +4786,46 @@
         },
         "AnatomicalSite": {
             "additionalProperties": false,
-            "description": "The developmental stage and/or age of the specimen in an annotation.",
+            "description": "The set of terms that define a specific anatomical site within a specimen.",
             "properties": {
                 "anatomical_structure": {
                     "type": "string"
                 },
+                "anatomical_structure_qualifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "anatomical_structure_uberon_terms": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "anatomical_substructure": {
                     "type": "string"
                 },
+                "anatomical_substructure_qualifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "anatomical_substructure_uberon_terms": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "cellular_component": {
                     "type": "string"
+                },
+                "cellular_component_qualifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "created_by": {
                     "description": "The individual that created the entity.",
@@ -4828,10 +4858,6 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
-                },
-                "spatial_qualifiers": {
-                    "$ref": "#/$defs/SpatialQualifierSet",
-                    "description": "Qualifiers that describe the spatial characteristics of an event."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -8959,22 +8985,37 @@
         },
         "ExpressionAnnotation": {
             "additionalProperties": false,
-            "description": "A description of when and where gene products are observed to be present, including experimental details, supporting evidence, and curator notes.",
+            "description": "An annotation asserting an association between some entity and an expression pattern, supported by a single reference.",
             "properties": {
-                "associated_with_figure": {
+                "assay_used": {
+                    "description": "The assay used to experimentally determine gene expression.",
+                    "type": "string"
+                },
+                "associated_with_figures": {
                     "description": "The figure(s) that support(s) the expression annotation.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
-                "belongs_to_expression_experiment": {
-                    "description": "Holds between an ExpressionAnnotation and an ExpressionExperiment.",
-                    "type": "string"
+                "condition_relations": {
+                    "description": "Slot is inherited from Annotation class.",
+                    "items": {
+                        "$ref": "#/$defs/ConditionRelation"
+                    },
+                    "type": "array"
                 },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
+                },
+                "curie": {
+                    "description": "The Alliance-minted ID for the ExpressionAnnotation. Slot is inherited from Annotation class.",
+                    "type": "string"
+                },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Provide information about the data provider; this slot also allows for cross-references to be reported for the annotation. Slot is inherited from Annotation class."
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -8997,47 +9038,98 @@
                     "type": "string"
                 },
                 "expression_qualifiers": {
-                    "$ref": "#/$defs/ExpressionQualifierSet",
-                    "description": "Qualifiers that describe additional characteristics of gene expression. For example: aint, intense, restricted."
+                    "description": "Qualifiers that describe additional characteristics of gene expression. For example: aint, intense, restricted.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database identifier/curie for the ExpressionAnnotation. Slot is inherited from Annotation class.",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database internal identifier for the ExpressionAnnotation. Slot is inherited from Annotation class.",
+                    "type": "string"
+                },
                 "negated": {
                     "description": "if set to true, then the association is negated i.e. is not true",
                     "type": "boolean"
+                },
+                "object": {
+                    "$ref": "#/$defs/ExpressionPattern",
+                    "description": "The spatiotemporal expression pattern of the subject, with associated notes. Slot is inherited from Annotation class."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
+                "reagents_used": {
+                    "description": "Reagents used in the expression assay: e.g., antibodies, probes.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "related_notes": {
-                    "description": "Holds between an object and a list of related Note objects.",
+                    "description": "Use different note types to add extra information about specific aspects of the ExpressionAnnotation. Appropriate VocabularyTerms will need to be created: expression_annotation_note, etc. Slot is inherited from Annotation class.",
                     "items": {
                         "$ref": "#/$defs/Note"
                     },
                     "type": "array"
                 },
+                "relation": {
+                    "description": "The relationship type between the subject and the expression pattern. Limited to expressed_in for now, but we could choose an alternate string or allow for a range of VocabularyTerm. Slot is inherited from Annotation class.",
+                    "type": "string"
+                },
+                "single_reference": {
+                    "description": "Slot is inherited from Annotation class.",
+                    "type": "string"
+                },
+                "specimen_alleles": {
+                    "description": "The Allele(s) of the specimen assayed.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "specimen_genomic_model": {
+                    "description": "The AffectedGenomicModel of the specimen assayed.",
+                    "type": "string"
+                },
+                "subject": {
+                    "description": "The entity for which an expression pattern is being described. This will be limited to a Gene initially, and expanded to other entity types as needed. If the exact subject is not known we may require a placeholder (e.g., unknown epitope recognized by the antibody). Slot is inherited from Annotation class.",
+                    "type": "string"
+                },
                 "uncertain": {
                     "description": "If set to true, then the related entity is uncertain.",
                     "type": "boolean"
+                },
+                "unique_id": {
+                    "description": "Unique identifier for the ExpressionAnnotation. Will be generated at AGR if not submitted by the model organism database. Slot is inherited from Annotation class.",
+                    "type": "string"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": "string"
                 },
-                "when_expressed": {
-                    "$ref": "#/$defs/TemporalContext",
-                    "description": "When a gene product is observed to be present."
-                },
-                "where_expressed": {
-                    "$ref": "#/$defs/AnatomicalSite",
-                    "description": "Where a gene product is observed to be present."
+                "where_expressed_statement": {
+                    "$ref": "#/$defs/Note",
+                    "description": "A human-readable free-text description of the anatomical location of the expression pattern."
                 }
             },
             "required": [
-                "belongs_to_expression_experiment",
+                "where_expressed_statement",
+                "curie",
+                "data_provider",
+                "single_reference",
+                "subject",
+                "relation",
+                "object",
                 "internal"
             ],
             "title": "ExpressionAnnotation",
@@ -9095,8 +9187,8 @@
                     "type": "string"
                 },
                 "subject": {
-                    "$ref": "#/$defs/ExpressionAnnotation",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+                    "type": "string"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -9112,39 +9204,12 @@
             "title": "ExpressionAnnotationImagePane",
             "type": "object"
         },
-        "ExpressionConditionRelationEnum": {
-            "description": "",
-            "enum": [
-                "has_condition",
-                "induced_by"
-            ],
-            "title": "ExpressionConditionRelationEnum",
-            "type": "string"
-        },
-        "ExpressionExperiment": {
+        "ExpressionPattern": {
             "additionalProperties": false,
-            "description": "Defined by the gene of interest, the specimen, the assay, the reagents (Antibody, Probe), and the reference. It groups ExpressionAnnotations.",
+            "description": "An expression pattern, as defined by spatial and temporal attributes, including all qualifiers.",
             "properties": {
-                "assay_used": {
-                    "description": "The assay used to experimentally determine gene expression.",
-                    "type": "string"
-                },
-                "biological_entity_assayed": {
-                    "description": "Holds between a BiologicalEntity and an ExpressionExperiment that reports on its expression.",
-                    "type": "string"
-                },
-                "condition_relations": {
-                    "items": {
-                        "$ref": "#/$defs/ConditionRelation"
-                    },
-                    "type": "array"
-                },
                 "created_by": {
                     "description": "The individual that created the entity.",
-                    "type": "string"
-                },
-                "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
                 "date_created": {
@@ -9175,45 +9240,25 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "reagents_used": {
-                    "description": "Reagents used in the expression assay: e.g., antibodies, probes.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "related_notes": {
-                    "description": "Holds between an object and a list of related Note objects.",
-                    "items": {
-                        "$ref": "#/$defs/Note"
-                    },
-                    "type": "array"
-                },
-                "single_reference": {
-                    "description": "holds between an object and a single reference",
-                    "type": "string"
-                },
-                "specimen_alleles": {
-                    "description": "The Allele(s) of the specimen assayed.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "specimen_genomic_model": {
-                    "description": "The AffectedGenomicModel of the specimen assayed.",
-                    "type": "string"
-                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": "string"
+                },
+                "when_expressed": {
+                    "$ref": "#/$defs/TemporalContext",
+                    "description": "When some entity is observed to be present in a specimen. If no temporal information is available for an annotation, use a root stage term for the developmental_stage_start."
+                },
+                "where_expressed": {
+                    "$ref": "#/$defs/AnatomicalSite",
+                    "description": "Where some entity is observed to be present in a specimen. If no spatial information is available for an annotation, use a root anatomical term for the anatomical_structure."
                 }
             },
             "required": [
-                "curie",
+                "when_expressed",
+                "where_expressed",
                 "internal"
             ],
-            "title": "ExpressionExperiment",
+            "title": "ExpressionPattern",
             "type": "object"
         },
         "ExpressionQualifierSet": {
@@ -9242,16 +9287,6 @@
                 "widespread"
             ],
             "title": "ExpressionQualifierSet",
-            "type": "string"
-        },
-        "ExpressionStatementTypeEnum": {
-            "description": "",
-            "enum": [
-                "expression_summary",
-                "where_expressed_note",
-                "expression_annotation_note"
-            ],
-            "title": "ExpressionStatementTypeEnum",
             "type": "string"
         },
         "ExternalDatabaseLink": {
@@ -18180,7 +18215,7 @@
         },
         "TemporalContext": {
             "additionalProperties": false,
-            "description": "The developmental stage and/or age of the specimen in an annotation. Developmental_stage_stop is optional. Add an uncertainty flag here?",
+            "description": "The developmental stage and/or age of the specimen in an annotation. The developmental_stage_stop slot is optional.",
             "properties": {
                 "age": {
                     "description": "The age at which an annotated event was observed.",
@@ -18215,7 +18250,7 @@
                     "type": "string"
                 },
                 "developmental_stage_stop": {
-                    "description": "The end developmental stage at which an annotated event was observed.",
+                    "description": "The end developmental stage at which an annotated event was observed. This is not required if the annotation applies to a single stage.",
                     "type": "string"
                 },
                 "internal": {
@@ -18226,9 +18261,16 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
+                "stage_uberon_slim_terms": {
+                    "description": "The high-level UBERON slim terms that apply to the developmental range of the TemporalContext component of an ExpressionPattern. The following UBERON terms are allowed: UBERON:0000068, UBERON:0000113, \"post embryonic, pre-adult\".",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "temporal_qualifiers": {
-                    "$ref": "#/$defs/TemporalQualifierSet",
-                    "description": "Qualifiers of the stage or age in an annotation."
+                    "description": "Qualifiers of the stage or age in an annotation.",
+                    "type": "string"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -18236,6 +18278,7 @@
                 }
             },
             "required": [
+                "developmental_stage_start",
                 "internal"
             ],
             "title": "TemporalContext",
@@ -21697,18 +21740,18 @@
         "anyOf": [
             {
                 "properties": {
-                    "biological_entity_assayed": {}
+                    "anatomical_structure": {}
                 },
                 "required": [
-                    "biological_entity_assayed"
+                    "anatomical_structure"
                 ]
             },
             {
                 "properties": {
-                    "reagents_used": {}
+                    "cellular_component": {}
                 },
                 "required": [
-                    "reagents_used"
+                    "cellular_component"
                 ]
             }
         ]
