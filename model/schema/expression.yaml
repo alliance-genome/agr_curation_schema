@@ -69,10 +69,11 @@ classes:
       New required slots: relation
       Slots not represented in agr_schemas FMS submission (not required):
         Inherited: curie, unique_id, mod_entity_id, mod_internal_id,
-                   condition_relation, related_notes.
+                   condition_relations, related_notes.
         Specified here: reagents_used, specimen_genomic_model, specimen_alleles,
                         expression_qualifiers, negated, uncertain,
-                        associated_with_figures.
+                        associated_with_figures,
+                        expression_annotation_image_associations.
     slots:
       - assay_used
       # QUESTION: have dedicated slot for WhereExpressedStatement, or submit
@@ -85,6 +86,7 @@ classes:
       - negated
       - uncertain
       - associated_with_figures
+      - expression_annotation_image_associations
     slot_usage:
       # QUESTION: Set range to BiologicalEntity, or keep restricted to Gene?
       subject:
@@ -217,8 +219,12 @@ classes:
                   required: true
           description: At least one of anatomical_structure or cellular_component should be populated.
 
-  ExpressionAnnotationImagePane:
+  # QUESTION: Is evidence required? If not, make this a child of Association.
+  ExpressionAnnotationImagePaneAssociation:
     is_a: EvidenceAssociation
+    description: >-
+      An association between an ExpressionAnnotation and an image (in part or
+      in full).
     notes: >-
       This aims to provide the same functionality as MGI imagepane.
       Some MODs (like ZFIN) point to the whole image. In these cases,
@@ -238,39 +244,6 @@ slots:
     range: string
     multivalued: false
 
-  anatomical_structure:
-    domain: AnatomicalSite
-    range: AnatomicalTerm
-    multivalued: false
-
-  # QUESTION: Should the range be OntologyTerm, VocabularyTerm, or other?
-  #           Many qualifiers map to BSPO, others do not (have FBcv ID).
-  # QUESTION: Should we limit this to one qualifier?
-  anatomical_structure_qualifiers:
-    notes: >-
-      See the spatial_qualifier_set enum at the bottom of this file for terms.
-    domain: AnatomicalSite
-    range: VocabularyTerm
-    multivalued: true
-
-  # QUESTION: Allow for submission of Other if no UBERONTerm applies?
-  anatomical_structure_uberon_terms:
-    notes: >-
-      Allowable terms: UBERON:0001009, UBERON:0005409, UBERON:0000949,
-                       UBERON:0001008, UBERON:0002330, UBERON:0002193,
-                       UBERON:0002416, UBERON:0002423, UBERON:0002204,
-                       UBERON:0001016, UBERON:0000990, UBERON:0001004,
-                       UBERON:0001032, UBERON:0005726, UBERON:0007037,
-                       UBERON:0002105, UBERON:0002104, UBERON:0000924,
-                       UBERON:0000925, UBERON:0000926, UBERON:0003104,
-                       UBERON:0001013, UBERON:0000026, UBERON:0016887,
-                       UBERON:6005023, UBERON:0002539, Other
-      This was a required field in the FMS submission, but if no UBERONTerm
-      applied, the word Other was used.
-    domain: AnatomicalSite
-    range: UBERONTerm
-    multivalued: true
-
   anatomical_substructure:
     domain: AnatomicalSite
     range: AnatomicalTerm
@@ -288,6 +261,39 @@ slots:
 
   # QUESTION: Allow for submission of Other if no UBERONTerm applies?
   anatomical_substructure_uberon_terms:
+    notes: >-
+      Allowable terms: UBERON:0001009, UBERON:0005409, UBERON:0000949,
+                       UBERON:0001008, UBERON:0002330, UBERON:0002193,
+                       UBERON:0002416, UBERON:0002423, UBERON:0002204,
+                       UBERON:0001016, UBERON:0000990, UBERON:0001004,
+                       UBERON:0001032, UBERON:0005726, UBERON:0007037,
+                       UBERON:0002105, UBERON:0002104, UBERON:0000924,
+                       UBERON:0000925, UBERON:0000926, UBERON:0003104,
+                       UBERON:0001013, UBERON:0000026, UBERON:0016887,
+                       UBERON:6005023, UBERON:0002539, Other
+      This was a required field in the FMS submission, but if no UBERONTerm
+      applied, the word Other was used.
+    domain: AnatomicalSite
+    range: UBERONTerm
+    multivalued: true
+
+  anatomical_structure:
+    domain: AnatomicalSite
+    range: AnatomicalTerm
+    multivalued: false
+
+  # QUESTION: Should the range be OntologyTerm, VocabularyTerm, or other?
+  #           Many qualifiers map to BSPO, others do not (have FBcv ID).
+  # QUESTION: Should we limit this to one qualifier?
+  anatomical_structure_qualifiers:
+    notes: >-
+      See the spatial_qualifier_set enum at the bottom of this file for terms.
+    domain: AnatomicalSite
+    range: VocabularyTerm
+    multivalued: true
+
+  # QUESTION: Allow for submission of Other if no UBERONTerm applies?
+  anatomical_structure_uberon_terms:
     notes: >-
       Allowable terms: UBERON:0001009, UBERON:0005409, UBERON:0000949,
                        UBERON:0001008, UBERON:0002330, UBERON:0002193,
@@ -348,6 +354,11 @@ slots:
     multivalued: false
     required: false
 
+  expression_annotation_image_associations:
+    domain: ExpressionAnnotation
+    range: ExpressionAnnotationImagePaneAssociation
+    multivalued: true
+
   # QUESTION: Should the range be OntologyTerm, VocabularyTerm, or other?
   expression_qualifiers:
     description: >-
@@ -358,11 +369,6 @@ slots:
     domain: ExpressionAnnotation
     range: VocabularyTerm
     multivalued: true
-
-  image:
-    description: >-
-      The image associated with the object.
-    range: Image
 
   # QUESTION: Limit to a single reagent? Are >1 reagents ever annotated?
   reagents_used:
