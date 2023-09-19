@@ -34,7 +34,6 @@
    {
       "variant_curie": "ZFIN:ZDB-ALT-000412-8",
       "relation_name": "has_genomic_location",
-      "chromosome_curie": "NC_007118.7",
       "evidence_curies": [
         "PMID:11231512"
       ],
@@ -55,7 +54,6 @@
    {
      "variant_curie": "ZFIN:ZDB-ALT-000412-8",
       "relation_name": "has_genomic_location",
-      "chromosome_curie": "NC_007118.7",
       "evidence_curies": [
         "PMID:11231512"
       ],
@@ -110,7 +108,6 @@
       "reference_curie": "PMID:11231512",
       "variant_curie": "ZFIN:ZDB-ALT-000412-8",
       "relation_name": "has_genomic_location",
-      "chromosome_curie": "NC_007118.7",
       "evidence_curies": [
         "PMID:11231512"
       ],
@@ -132,7 +129,6 @@
       "reference_curie": "PMID:11231512",
       "variant_curie": "ZFIN:ZDB-ALT-000412-8",
       "relation_name": "has_genomic_location",
-      "chromosome_curie": "NC_007118.7",
       "evidence_curies": [
         "PMID:11231512"
       ],

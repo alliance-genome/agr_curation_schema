@@ -51,7 +51,6 @@ classes:
     is_a: GenomicLocationAssociationDTO
     slots:
       - variant_curie
-      - chromosome_curie
       - reference_sequence
       - variant_sequence
       - consequence_curie
@@ -61,8 +60,7 @@ classes:
   VariantGenomicLocationAssociationDTO:
     is_a: VariantLocationAssociationDTO
     slots:
-      - exon_number # should this be a property of the transcript location? different isoforms could have different values for this
-      - intron_number # should this be a property of the transcript location? different isoforms could have different values for this
+      - chromosome_curie
       - variation_strand
       - number_additional_dna_base_pairs
       - number_removed_dna_base_pairs
