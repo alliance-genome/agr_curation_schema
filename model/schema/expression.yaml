@@ -98,7 +98,7 @@ classes:
           Slot is inherited from Annotation class.
         required: true
         range: Gene
-      # QUESTION: Set relation range to VocabularyTerm, or some other string?
+      # QUESTION: Create expressed_in VocabularyTerm?
       relation:
         description: >-
           The relationship type between the subject and the expression pattern.
@@ -106,9 +106,7 @@ classes:
           string or allow for a range of VocabularyTerm.
           Slot is inherited from Annotation class.
         required: true
-        range:
-          any_of:
-            equals_string: expressed_in
+        range: OntologyTerm
       # QUESTION: Do we agree that the object of this annotation's assertion is
       #           an ExpressionPattern (i.e., all spatiotemporal attributes)?
       object:
