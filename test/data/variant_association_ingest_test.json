@@ -2,39 +2,44 @@
   "linkml_version": "1.7.3",
   "variant_genomic_location_association_ingest_set": [
     {
-      "variant_entity_curie": "ZFIN:ZDB-ALT-000412-8",
+      "variant_curie": "ZFIN:ZDB-ALT-000412-8",
       "relation_name": "has_genomic_location",
-      "chromosome_curie": "7",
-      "evidence_code_curie": "ECO:0000006",
+      "chromosome_curie": "NC_007118.7",
       "evidence_curies": [
         "PMID:11231512"
       ],
       "assembly_curie": "GRCz11",
       "start": 30341642,
-      "end": 30341642,
+      "end": 30341645,
       "reference_sequence": "C",
       "variant_sequence": "T",
-      "sequence_of_reference_accession_number": "NC_006088.4",
+      "sequence_of_reference_accession_number": "NC_007118.7",
       "internal": false,
       "obsolete": false,
       "date_created": "2015-04-09T10:15:30+00:00",
       "date_updated": "2022-07-11T13:12:51+00:00",
       "created_by_curie": "ZFIN:ZDB-PERS-000412-8",
-      "updated_by_curie": "ZFIN:ZDB-PERS-000412-8"
+      "updated_by_curie": "ZFIN:ZDB-PERS-000412-8",
+      "variation_strand": "+",
+      "number_additional_dna_base_pairs": 2,
+      "number_removed_dna_base_pairs": 4,
+      "inserted_sequence": "AT",
+      "deleted_sequence": "GCGC",
+      "padded_base": "A",
+      "dna_mutation_type": "SO:001231",
+      "gene_localization_type": "SO:121313"
     }
   ],
  "variant_transcript_location_association_ingest_set": [
    {
-     "variant_entity_curie": "ZFIN:ZDB-ALT-000412-8",
+      "variant_curie": "ZFIN:ZDB-ALT-000412-8",
       "relation_name": "has_genomic_location",
-      "chromosome_curie": "7",
-      "evidence_code_curie": "ECO:0000006",
       "evidence_curies": [
         "PMID:11231512"
       ],
       "assembly_curie": "GRCz11",
-      "start": 30341642,
-      "end": 30341642,
+      "start": 600,
+      "end": 602,
       "transcript_curie": "ZFIN:ZDB-TSCRIPT-000412-8",
       "exon_number": 2,
       "internal": false,
@@ -47,18 +52,91 @@
  ],
   "variant_protein_location_association_ingest_set": [
    {
-     "variant_entity_curie": "ZFIN:ZDB-ALT-000412-8",
+     "variant_curie": "ZFIN:ZDB-ALT-000412-8",
       "relation_name": "has_genomic_location",
-      "chromosome_curie": "7",
-      "evidence_code_curie": "ECO:0000006",
+      "evidence_curies": [
+        "PMID:11231512"
+      ],
+      "assembly_curie": "GRCz11",
+      "start": 200,
+      "end": 200,
+      "protein_curie": "UniProtKB:11324235",
+      "associated_transcript_curies": ["ZFIN:ZDB-TSCRIPT-000412-8"],
+      "number_amino_acids_removed": 2,
+      "number_amino_acids_inserted": 4,
+      "internal": false,
+      "obsolete": false,
+      "date_created": "2015-04-09T10:15:30+00:00",
+      "date_updated": "2022-07-11T13:12:51+00:00",
+      "created_by_curie": "ZFIN:ZDB-PERS-000412-8",
+      "updated_by_curie": "ZFIN:ZDB-PERS-000412-8"
+   }
+  ],
+  "source_variant_genomic_location_association_ingest_set": [
+    {
+      "reference_curie": "PMID:11231512",
+      "variant_curie": "ZFIN:ZDB-ALT-000412-8",
+      "relation_name": "has_genomic_location",
+      "chromosome_curie": "NC_007118.7",
       "evidence_curies": [
         "PMID:11231512"
       ],
       "assembly_curie": "GRCz11",
       "start": 30341642,
-      "end": 30341642,
+      "end": 30341645,
+      "reference_sequence": "C",
+      "variant_sequence": "T",
+      "sequence_of_reference_accession_number": "NC_007118.7",
+      "internal": false,
+      "obsolete": false,
+      "date_created": "2015-04-09T10:15:30+00:00",
+      "date_updated": "2022-07-11T13:12:51+00:00",
+      "created_by_curie": "ZFIN:ZDB-PERS-000412-8",
+      "updated_by_curie": "ZFIN:ZDB-PERS-000412-8",
+      "variation_strand": "+",
+      "number_additional_dna_base_pairs": 2,
+      "number_removed_dna_base_pairs": 4,
+      "inserted_sequence": "AT",
+      "deleted_sequence": "GCGC",
+      "padded_base": "A",
+      "dna_mutation_type": "SO:001231",
+      "gene_localization_type": "SO:121313"
+    }
+  ],
+ "source_variant_transcript_location_association_ingest_set": [
+   {
+      "reference_curie": "PMID:11231512",
+      "variant_curie": "ZFIN:ZDB-ALT-000412-8",
+      "relation_name": "has_genomic_location",
+      "evidence_curies": [
+        "PMID:11231512"
+      ],
+      "assembly_curie": "GRCz11",
+      "start": 600,
+      "end": 602,
+      "transcript_curie": "ZFIN:ZDB-TSCRIPT-000412-8",
+      "exon_number": 2,
+      "internal": false,
+      "obsolete": false,
+      "date_created": "2015-04-09T10:15:30+00:00",
+      "date_updated": "2022-07-11T13:12:51+00:00",
+      "created_by_curie": "ZFIN:ZDB-PERS-000412-8",
+      "updated_by_curie": "ZFIN:ZDB-PERS-000412-8"
+   }
+ ],
+  "source_variant_protein_location_association_ingest_set": [
+   {
+      "reference_curie": "PMID:11231512",
+      "variant_curie": "ZFIN:ZDB-ALT-000412-8",
+      "relation_name": "has_genomic_location",
+      "evidence_curies": [
+        "PMID:11231512"
+      ],
+      "assembly_curie": "GRCz11",
+      "start": 200,
+      "end": 200,
       "protein_curie": "UniProtKB:11324235",
-      "associated_transcripts": ["ZFIN:ZDB-TSCRIPT-000412-8"],
+      "associated_transcript_curies": ["ZFIN:ZDB-TSCRIPT-000412-8"],
       "number_amino_acids_removed": 2,
       "number_amino_acids_inserted": 4,
       "internal": false,

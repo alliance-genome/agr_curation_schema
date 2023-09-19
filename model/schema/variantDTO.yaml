@@ -9,13 +9,13 @@ imports:
   - linkml:types
 
 prefixes:
-  alliance: 'http://alliancegenome.org/'
-  linkml: 'https://w3id.org/linkml/'
-  gff: 'https://w3id.org/gff'
-  faldo: 'http://biohackathon.org/resource/faldo#'
-  biolink: 'https://w3id.org/biolink/vocab/'
-  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
-  schema: 'http://schema.org/'
+  alliance: "http://alliancegenome.org/"
+  linkml: "https://w3id.org/linkml/"
+  gff: "https://w3id.org/gff"
+  faldo: "http://biohackathon.org/resource/faldo#"
+  biolink: "https://w3id.org/biolink/vocab/"
+  NLMID: "https://www.ncbi.nlm.nih.gov/nlmcatalog/?term="
+  schema: "http://schema.org/"
 
 default_prefix: alliance
 default_range: string
@@ -36,33 +36,31 @@ emit_prefixes:
 ## DTO CLASSES
 ## ------------
 classes:
-
   VariantDTO:
     is_a: GenomicEntityDTO
     description: >-
       Ingest class for an Allele object
     slots:
-      - variant_type
-      - related_notes
-      - source_general_consequence
-      - variant_status
+      - variant_type_curie
+      - note_dtos
+      - source_general_consequence_curie
+      - variant_status_name
+
+  VariantLocationAssociationDTO:
+    abstract: true
+    is_a: GenomicLocationAssociationDTO
+    slots:
+      - variant_curie
       - reference_sequence
       - variant_sequence
+      - consequence_curie
+      - curated_consequence_curie
       - sequence_of_reference_accession_number
 
   VariantGenomicLocationAssociationDTO:
-    is_a: AuditedObjectDTO
+    is_a: VariantLocationAssociationDTO
     slots:
-      - variant_entity_curie
-      - relation_name
       - chromosome_curie
-      - evidence_curies
-      - evidence_code_curie
-      - assembly_curie
-      - start
-      - end
-      - exon_number
-      - intron_number
       - variation_strand
       - number_additional_dna_base_pairs
       - number_removed_dna_base_pairs
@@ -71,95 +69,100 @@ classes:
       - padded_base
       - dna_mutation_type
       - gene_localization_type
-      - reference_sequence
-      - variant_sequence
-      - consequence
-      - sequence_of_reference_accession_number
-    slot_usage:
-      variant_entity_curie:
-        required: true
-      relation_name:
-        required: true
-        any_of:
-          equals_string: has_genomic_location
-      chromosome_curie:
-        required: true
-      assembly_curie:
-        required: true
-      start:
-        required: true
-      end:
-        required: true
 
   VariantTranscriptLocationAssociationDTO:
-    is_a: AuditedObjectDTO
+    is_a: VariantLocationAssociationDTO
     slots:
-      - variant_entity_curie
-      - relation_name
-      - chromosome_curie
-      - evidence_curies
-      - evidence_code_curie
-      - assembly_curie
-      - start
-      - end
       - transcript_curie
       - exon_number
       - intron_number
-      - reference_sequence
-      - variant_sequence
-      - consequence
-      - sequence_of_reference_accession_number
-    slot_usage:
-      variant_entity_curie:
-        required: true
-      relation_name:
-        required: true
-        any_of:
-          equals_string: has_genomic_location
-      chromosome_curie:
-        required: true
-      assembly_curie:
-        required: true
-      start:
-        required: true
-      end:
-        required: true
 
-  VariantProteinLocationAssociationDTO:
-    is_a: AuditedObjectDTO
+  VariantPolypeptideLocationAssociationDTO:
+    is_a: VariantLocationAssociationDTO
     slots:
-      - variant_entity_curie
-      - relation_name
-      - chromosome_curie
-      - evidence_curies
-      - evidence_code_curie
-      - assembly_curie
-      - start
-      - end
       - protein_curie
-      - associated_transcripts
+      - associated_transcript_curies # won't this be a property of the protein objects?
       - number_amino_acids_removed
       - number_amino_acids_inserted
-      - reference_sequence
-      - variant_sequence
-      - consequence
-      - sequence_of_reference_accession_number
+
+  SourceVariantGenomicLocationAssociationDTO:
+    is_a: VariantGenomicLocationAssociationDTO
+    slots:
+      - reference_curie
     slot_usage:
-      variant_entity_curie:
+      reference_curie:
         required: true
-      relation_name:
+
+  SourceVariantPolypeptideLocationAssociationDTO:
+    is_a: VariantPolypeptideLocationAssociationDTO
+    slots:
+      - reference_curie
+    slot_usage:
+      reference_curie:
         required: true
-        any_of:
-          equals_string: has_genomic_location
-      chromosome_curie:
-        required: true
-      assembly_curie:
-        required: true
-      start:
-        required: true
-      end:
+
+  SourceVariantTranscriptLocationAssociationDTO:
+    is_a: VariantTranscriptLocationAssociationDTO
+    slots:
+      - reference_curie
+    slot_usage:
+      reference_curie:
         required: true
 
 slots:
-  variant_entity_curie:
+  associated_transcript_curies:
+    description: Curies of transcript(s) associated with polypeptide to which variant is aligned.
+    required: false
+    multivalued: true
+    domain: VariantPolypeptideLocationAssociationDTO
+    range: string
+
+  consequence_curie:
+    description: >-
+      Curie of SOTerm (child of SO:0001576 - transcript_variant) that describes the
+      consequence of the variant, as stated in the source reference. In practice source consequence will be
+      associated with locations at any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and
+      VariantPolypeptideLocationAssociation.
+    required: false
+    multivalued: false
+    domain: VariantLocationAssociationDTO
+    range: string
+
+  curated_consequence_curie:
+    description: >-
+      Curie of SOTerm that describes the consequence of the variant, as determined by
+      the curator. In practice curated consequence will be associated with locations at any or all of
+      VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.
+    required: false
+    multivalued: false
+    domain: VariantLocationAssociationDTO
+    range: string
+
+  source_general_consequence_curie:
+    description: >-
+      Curie of the SOTerm (child of SO:0001576 - transcript_variant) that describes the
+      consequence of the variant, as stated in the source reference when no transcript ID
+      is provided. Since a curator would determine variant location and consequences relative
+      to at least one specific genome assembly, transcript and/or polypeptide, no slot for
+      curated general consequence is provided.
+    required: false
+    multivalued: false
+    domain: VariantDTO
+    range: string
+
+  variant_curie:
     is_a: genomic_entity_curie
+
+  variant_status_name:
+    description: >-
+      Name of the VocabularyTerm describing the status of the variant.  From the
+      Variant Status CV
+    range: string
+
+  variant_type_curie:
+    description: >-
+      Curie of the SOTerm describing the type of variant. In practice, variant type will be limited to a subset of the SO specified
+      in an Alliance controlled vocabulary in order to maintain consistency.
+    required: true
+    domain: VariantDTO
+    range: string

@@ -72,17 +72,19 @@ classes:
             required: true
 
   AnnotationDTO:
-    is_a: AuditedObjectDTO
+    is_a: SingleReferenceAssociationDTO
     abstract: true
     description: >-
       Ingest class for an annotation
     slots:
       - mod_internal_id
       - mod_entity_id
-      - reference_curie
       - note_dtos
       - data_provider_dto
       - condition_relation_dtos
+    slot_usage:
+      reference_curie:
+        required: true
 
   PhenotypeAnnotation:
     is_a: Annotation
