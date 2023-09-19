@@ -187,30 +187,33 @@ deploy-testpypi:
 
 # datasets used test/validate the schema
 SCHEMA_TEST_EXAMPLES := \
+	agm_test \
+	allele_association_ingest_test \
+	allele_slot_annotation_ingest_test \
+	allele_test \
 	antibody_test \
 	construct_test \
-	allele_test \
-	disease_allele_test \
 	disease_agm_test \
+	disease_allele_test \
 	disease_gene_test \
-	gene_test \
-	wb_disease_test \
-	variant_test \
-	agm_test \
-	sqtr_test \
-	ontology_closure_test \
-	allele_association_ingest_test \
- 	variant_allele_association_test \
- 	sgd_disease_test \
- 	fb_disease_test \
- 	allele_slot_annotation_ingest_test \
+	fb_disease_test \
 	gene_interaction_test \
- 	variant_association_ingest_test \
-
+	gene_test \
+	ontology_closure_test \
+	phenotype_agm_test \
+	phenotype_allele_test \
+	phenotype_gene_test \
+	sgd_disease_test \
+	sqtr_test \
+	variant_allele_association_test \
+	variant_association_ingest_test \
+	variant_test \
+	wb_disease_test \
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
 	allele_invalid \
 	disease_allele_invalid \
+	missing_version \
 	variant_invalid \
 
 .PHONY: test-jsonschema
