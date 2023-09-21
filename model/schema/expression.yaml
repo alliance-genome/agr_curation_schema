@@ -42,7 +42,51 @@ emit_prefixes:
 
 classes:
 
+  ExpressionExperiment:
+    is_a: AuditedObject
+    description: >-
+      Defined by the entity_assayed (usually a gene), the specimen, the assay,
+      the reagents (Antibody, Probe), the conditions, and the reference.
+      It groups ExpressionAnnotations; it may have its own notes.
+    notes: >-
+      Specimens are defined by their AGM and/or alleles (or gel lane at MGI).
+      This entity is specific to WB and MGI.
+      There are many slots that overlap ExpressionExperiment and
+      ExpressionAnnotation; this is intentional, in case we choose to allow MODs
+      to submit ExpressionAnnotations without ExpressionExperiments.
+      If we require all MODs to submit ExpressionExperiments, this model will
+      have to allow for the submission of minimal information.
+    slots:
+      - curie
+      - unique_id
+      - mod_entity_id
+      - mod_internal_id
+      - data_provider
+      - single_reference
+      - entity_assayed
+      - assay_used
+      - reagents_used
+      - specimen_genomic_model
+      - specimen_alleles
+      - condition_relations
+      - related_notes
+    slot_usage:
+      # QUESTION: What types of notes do curators want to have for a specific
+      #           expression annotation? OK to have them at the level of the
+      #           ExpressionAnnotation if we have the correct types?
+      related_notes:
+        description: >-
+          Use different note types to add extra information about specific
+          aspects of the ExpressionAnnotation: temporal, structure, substructure,
+          cellular_component, annotation-level, etc. Appropriate VocabularyTerms
+          will need to be created: expression_annotation_note, etc.
+          Slot is inherited from Annotation class.
+
   ExpressionAnnotation:
+    # QUESTION: Inherit from SingleReferenceAssociation instead? Assess the
+    #           need for these Annotation class-specific slots: curie,
+    #           unique_id, mod_entity_id, mod_internal_id,
+    #           condition_relations, related_notes, data_provider.
     is_a: Annotation
     description: >-
       An annotation asserting an association between some entity and an
@@ -74,11 +118,13 @@ classes:
                         expression_qualifiers, negated, uncertain,
                         associated_with_figures,
                         expression_annotation_image_associations.
+      Slots common to both ExpressionAnnotation and ExpressionExperiment:
     slots:
       - assay_used
       # QUESTION: have dedicated slot for WhereExpressedStatement, or submit
       #           under related_notes slot?
       - where_expressed_statement
+      - belongs_to_expression_experiment
       - reagents_used
       - specimen_genomic_model
       - specimen_alleles
@@ -106,7 +152,7 @@ classes:
           string or allow for a range of VocabularyTerm.
           Slot is inherited from Annotation class.
         required: true
-        range: OntologyTerm
+        range: VocabularyTerm
       # QUESTION: Do we agree that the object of this annotation's assertion is
       #           an ExpressionPattern (i.e., all spatiotemporal attributes)?
       object:
@@ -138,15 +184,14 @@ classes:
           The model organism database internal identifier for the
           ExpressionAnnotation.
           Slot is inherited from Annotation class.
-      condition_relations:
-        description: >-
-          Slot is inherited from Annotation class.
       # QUESTION: What types of notes do curators want to have for a specific
-      #           expression annotation.
+      #           expression annotation? OK to have them at the level of the
+      #           ExpressionAnnotation if we have the correct types?
       related_notes:
         description: >-
           Use different note types to add extra information about specific
-          aspects of the ExpressionAnnotation. Appropriate VocabularyTerms
+          aspects of the ExpressionAnnotation: temporal, structure, substructure,
+          cellular_component, annotation-level, etc. Appropriate VocabularyTerms
           will need to be created: expression_annotation_note, etc.
           Slot is inherited from Annotation class.
       data_provider:
@@ -219,7 +264,7 @@ classes:
 
   # QUESTION: Is evidence required? If not, make this a child of Association.
   ExpressionAnnotationImagePaneAssociation:
-    is_a: EvidenceAssociation
+    is_a: Association
     description: >-
       An association between an ExpressionAnnotation and an image (in part or
       in full).
@@ -314,6 +359,14 @@ slots:
     domain: ExpressionAnnotation
     range: MMOTerm
 
+  belongs_to_expression_experiment:
+    description: >-
+      Holds between an ExpressionAnnotation and an ExpressionExperiment.
+    domain: ExpressionAnnotation
+    range: ExpressionExperiment
+    required: false
+    multivalued: false
+
   cellular_component:
     notes: >-
       I would like to restrict the range to GOTerm in cellular_component
@@ -351,6 +404,18 @@ slots:
     range: StageTerm
     multivalued: false
     required: false
+
+  # QUESTION: Set range to BiologicalEntity, or keep restricted to Gene?
+  entity_assayed:
+    description: >-
+      The subject of the ExpressionExperiment. This will be limited to a Gene
+      initially, and expanded to other entity types as needed. If the exact
+      subject is not known we may require a placeholder (e.g., unknown epitope
+      recognized by the antibody).
+    domain: ExpressionExperiment
+    range: Gene
+    required: true
+    multivalued: false
 
   expression_annotation_image_associations:
     domain: ExpressionAnnotation
