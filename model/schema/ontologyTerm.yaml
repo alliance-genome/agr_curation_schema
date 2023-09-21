@@ -109,6 +109,12 @@ slots:
   distance_between:
     range: integer
 
+  child_count:
+    range: integer
+
+  descendant_count:
+    range: integer
+
   evidence_code_curie:
     description: Curie of ECOTerm
     range: string
@@ -142,6 +148,8 @@ classes:
       - secondary_identifiers
       - ancestors
       - descendants
+      - child_count
+      - descendant_count
     defining_slots:
       - curie
       - namespace

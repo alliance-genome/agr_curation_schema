@@ -573,6 +573,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -621,6 +624,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -690,6 +696,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -738,6 +747,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -5507,6 +5519,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -5555,6 +5570,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -6319,6 +6337,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -6367,6 +6388,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -6456,6 +6480,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -6504,6 +6531,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -6573,6 +6603,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -6621,6 +6654,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -7911,6 +7947,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -7959,6 +7998,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -8115,6 +8157,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -8163,6 +8208,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -8232,6 +8280,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -8280,6 +8331,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -8461,6 +8515,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -8509,6 +8566,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -8578,6 +8638,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -8626,6 +8689,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -8695,6 +8761,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -8743,6 +8812,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -9348,6 +9420,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -9396,6 +9471,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -9465,6 +9543,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -9513,6 +9594,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -9854,6 +9938,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -9902,6 +9989,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -12663,6 +12753,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -12711,6 +12804,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -13447,6 +13543,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -13495,6 +13594,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -13564,6 +13666,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -13612,6 +13717,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -13681,6 +13789,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -13729,6 +13840,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -13798,6 +13912,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -13846,6 +13963,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -13915,6 +14035,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -13963,6 +14086,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -14032,6 +14158,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -14080,6 +14209,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -14149,6 +14281,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -14197,6 +14332,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -14420,6 +14558,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -14468,6 +14609,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -14557,6 +14701,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -14605,6 +14752,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -14888,6 +15038,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -14936,6 +15089,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -15025,6 +15181,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -15073,6 +15232,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -15357,6 +15519,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -15405,6 +15570,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -15474,6 +15642,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -15522,6 +15693,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -15591,6 +15765,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -15639,6 +15816,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -16019,6 +16199,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -16067,6 +16250,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -16472,6 +16658,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -16520,6 +16709,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -16589,6 +16781,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -16637,6 +16832,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -17287,6 +17485,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -17335,6 +17536,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -19054,6 +19258,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -19102,6 +19309,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -19239,6 +19449,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -19287,6 +19500,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -20765,6 +20981,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -20813,6 +21032,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -20882,6 +21104,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -20930,6 +21155,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -20999,6 +21227,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -21047,6 +21278,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -21116,6 +21350,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -21164,6 +21401,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -21233,6 +21473,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -21281,6 +21524,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -21350,6 +21596,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -21398,6 +21647,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -21467,6 +21719,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -21515,6 +21770,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -21584,6 +21842,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -21632,6 +21893,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -21701,6 +21965,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -21749,6 +22016,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -21838,6 +22108,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -21886,6 +22159,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -21955,6 +22231,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -22003,6 +22282,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
@@ -22072,6 +22354,9 @@
                     },
                     "type": "array"
                 },
+                "child_count": {
+                    "type": "integer"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -22120,6 +22405,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "descendant_count": {
+                    "type": "integer"
                 },
                 "descendants": {
                     "description": "The descendants of this term in the ontology, including the term itself. This language works well for the majority of use cases, however for a relationship like \"develops_from\", ancestors are the terms to which this term develops into (not a true parent/child or ancestor/descendant relationship).",
