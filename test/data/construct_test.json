@@ -11,9 +11,18 @@
       "taxon_curie": "NCBITaxon:6239",
       "generated_by_identifier": "WB:WBLaboratory123",
       "manufactured_by_identifier": "Construct Corps",
-      "synonyms": [
-        "construct synonym 1",
-        "construct synonym 2"
+      "construct_synonym_dtos": [
+        {
+          "name_type_name": "synonym",
+          "format_text": "Construct Alpha",
+          "display_text": "Construct α",
+          "synonym_url": "https://synonym_url.com/ConstructAlpha",
+          "synonym_scope_name": "exact",
+          "evidence_curies": [
+            "PMID:01231002"
+          ],
+          "internal": false
+        }
       ],
       "secondary_identifiers": [
         "AB:12345",
