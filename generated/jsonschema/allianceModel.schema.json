@@ -8998,8 +8998,11 @@
                     },
                     "type": "array"
                 },
+                "belongs_to_expression_experiment": {
+                    "description": "Holds between an ExpressionAnnotation and an ExpressionExperiment.",
+                    "type": "string"
+                },
                 "condition_relations": {
-                    "description": "Slot is inherited from Annotation class.",
                     "items": {
                         "$ref": "#/$defs/ConditionRelation"
                     },
@@ -9082,7 +9085,7 @@
                     "type": "array"
                 },
                 "related_notes": {
-                    "description": "Use different note types to add extra information about specific aspects of the ExpressionAnnotation. Appropriate VocabularyTerms will need to be created: expression_annotation_note, etc. Slot is inherited from Annotation class.",
+                    "description": "Use different note types to add extra information about specific aspects of the ExpressionAnnotation: temporal, structure, substructure, cellular_component, annotation-level, etc. Appropriate VocabularyTerms will need to be created: expression_annotation_note, etc. Slot is inherited from Annotation class.",
                     "items": {
                         "$ref": "#/$defs/Note"
                     },
@@ -9169,13 +9172,6 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "evidence": {
-                    "description": "The evidence that supports some assertion.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
@@ -9208,6 +9204,119 @@
                 "internal"
             ],
             "title": "ExpressionAnnotationImagePaneAssociation",
+            "type": "object"
+        },
+        "ExpressionExperiment": {
+            "additionalProperties": false,
+            "description": "Defined by the entity_assayed (usually a gene), the specimen, the assay, the reagents (Antibody, Probe), the conditions, and the reference. It groups ExpressionAnnotations; it may have its own notes.",
+            "properties": {
+                "assay_used": {
+                    "description": "The assay used to experimentally determine gene expression.",
+                    "type": "string"
+                },
+                "condition_relations": {
+                    "items": {
+                        "$ref": "#/$defs/ConditionRelation"
+                    },
+                    "type": "array"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "entity_assayed": {
+                    "description": "The subject of the ExpressionExperiment. This will be limited to a Gene initially, and expanded to other entity types as needed. If the exact subject is not known we may require a placeholder (e.g., unknown epitope recognized by the antibody).",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "reagents_used": {
+                    "description": "Reagents used in the expression assay: e.g., antibodies, probes.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "related_notes": {
+                    "description": "Use different note types to add extra information about specific aspects of the ExpressionAnnotation: temporal, structure, substructure, cellular_component, annotation-level, etc. Appropriate VocabularyTerms will need to be created: expression_annotation_note, etc. Slot is inherited from Annotation class.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": "array"
+                },
+                "single_reference": {
+                    "description": "holds between an object and a single reference",
+                    "type": "string"
+                },
+                "specimen_alleles": {
+                    "description": "The Allele(s) of the specimen assayed.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "specimen_genomic_model": {
+                    "description": "The AffectedGenomicModel of the specimen assayed.",
+                    "type": "string"
+                },
+                "unique_id": {
+                    "description": "A non-curie unique identifier for a thing.",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "curie",
+                "data_provider",
+                "entity_assayed",
+                "internal"
+            ],
+            "title": "ExpressionExperiment",
             "type": "object"
         },
         "ExpressionPattern": {
