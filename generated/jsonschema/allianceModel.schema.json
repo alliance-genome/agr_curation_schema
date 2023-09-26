@@ -13251,6 +13251,10 @@
                     },
                     "type": "array"
                 },
+                "alliance_member_release_version": {
+                    "description": "Version of Alliance member/MOD release used for submitted file",
+                    "type": "string"
+                },
                 "antibody_ingest_set": {
                     "description": "An ingest set for Antibody objects",
                     "items": {
@@ -22442,6 +22446,10 @@
                 "$ref": "#/$defs/AlleleVariantAssociationDTO"
             },
             "type": "array"
+        },
+        "alliance_member_release_version": {
+            "description": "Version of Alliance member/MOD release used for submitted file",
+            "type": "string"
         },
         "antibody_ingest_set": {
             "description": "An ingest set for Antibody objects",
