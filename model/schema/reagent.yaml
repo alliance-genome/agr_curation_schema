@@ -168,32 +168,35 @@ classes:
   Construct:
     is_a: Reagent
     slots:
+      - construct_symbol
+      - construct_full_name
+      - construct_synonyms
       - construct_genomic_entity_associations
       - construct_components
-      - construct_synonyms
-      - name
       - references
     slot_usage:
       curie:
         identifier: true
-      name:
+      construct_symbol:
         required: true
 
   ConstructDTO:
     is_a: ReagentDTO
     slots:
-      - name
-      - construct_component_dtos
+      - construct_symbol_dto
+      - construct_full_name_dto
       - construct_synonym_dtos
+      - construct_component_dtos
       - reference_curies
     slot_usage:
-      name:
+      construct_symbol_dto:
         required: true
 
   ConstructComponentSlotAnnotation:
     is_a: SlotAnnotation
     slots:
       - single_construct
+      - relation
       - component_symbol
       - related_notes
       - taxon
@@ -201,6 +204,12 @@ classes:
     slot_usage:
       single_construct:
         required: true
+      relation:
+        range: VocabularyTerm
+        notes: >-
+          The relation should be a VocabularyTerm with one of the following
+          values - expresses (RO:0002292) / is_regulated_by (RO:0002334) /
+          targets (RO:0002436). CV: 'Construct Genomic Entity Association Relation'
       component_symbol:
         required: true
       related_notes:
@@ -213,10 +222,37 @@ classes:
   ConstructComponentSlotAnnotationDTO:
     is_a: SlotAnnotationDTO
     slots:
+      - relation_name
       - component_symbol
       - note_dtos
       - taxon_curie
       - taxon_text
+
+  ConstructSymbolSlotAnnotation:
+    description: >-
+      The one current symbol for the construct.
+    is_a: NameSlotAnnotation
+    slots:
+      - single_construct
+    slot_usage:
+      single_construct:
+        required: true
+      name_type:
+        notes: >-
+          permissible_values: nomenclature_symbol (VocabularyTerm), systematic_name (VocabularyTerm)
+
+  ConstructFullNameSlotAnnotation:
+    description: >-
+      The one current full name for the construct.
+    is_a: NameSlotAnnotation
+    slots:
+      - single_construct
+    slot_usage:
+      single_construct:
+        required: true
+      name_type:
+        notes: >-
+          permissible_values: full_name (VocabularyTerm)
 
   ConstructSynonymSlotAnnotation:
     description: >-
@@ -359,14 +395,49 @@ slots:
     range: string
     required: true
 
+  construct_symbol:
+    description: >-
+      Holds between a Construct and the one current accepted symbol
+    exact_mappings:
+      - biolink:symbol
+    domain: Construct
+    range: ConstructSymbolSlotAnnotation
+    required: true
+    multivalued: false
+
+  construct_symbol_dto:
+    description: >-
+      Holds between a Construct and the one current accepted symbol
+    domain: ConstructDTO
+    range: SymbolSlotAnnotationDTO
+    required: true
+    multivalued: false
+    inlined: true
+
+  construct_full_name:
+    description: Holds between a Construct and a full name.
+    domain: Construct
+    required: false
+    multivalued: false
+    range: ConstructFullNameSlotAnnotation
+
+  construct_full_name_dto:
+    description: Holds between a Construct and a full name.
+    domain: ConstructDTO
+    range: NameSlotAnnotationDTO
+    multivalued: false
+    required: false
+    inlined: true
+
   construct_synonyms:
-    description: Holds between an Construct and a synonym.
+    description: Holds between a Construct and a list of synonyms.
     domain: Construct
     required: false
     multivalued: true
     range: ConstructSynonymSlotAnnotation
 
   construct_synonym_dtos:
+    description: Holds between a Construct and a list of synonyms.
     domain: ConstructDTO
     range: NameSlotAnnotationDTO
     multivalued: true
@@ -428,7 +499,6 @@ slots:
     range: string
     
   single_construct:
-    domain: ConstructComponentSlotAnnotation
     range: Construct
     multivalued: false
 
