@@ -7114,13 +7114,6 @@
                     "description": "The individual that created the entity.",
                     "type": "string"
                 },
-                "cross_references": {
-                    "description": "Holds between an object and its CrossReferences.",
-                    "items": {
-                        "$ref": "#/$defs/CrossReference"
-                    },
-                    "type": "array"
-                },
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
@@ -7149,23 +7142,9 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "generated_by": {
-                    "description": "Holds between a material entity and an Agent that generated it: e.g., Thomas Blumenthal, Kornberg Laboratory.",
-                    "items": {
-                        "$ref": "#/$defs/Agent"
-                    },
-                    "type": "array"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
-                },
-                "manufactured_by": {
-                    "description": "Holds between a material entity and an Agent that has manufactured it: e.g., Molecular Probes.",
-                    "items": {
-                        "$ref": "#/$defs/Agent"
-                    },
-                    "type": "array"
                 },
                 "mod_entity_id": {
                     "description": "The model organism database (MOD) identifier/curie for the object",
@@ -7191,10 +7170,6 @@
                         "type": "string"
                     },
                     "type": "array"
-                },
-                "taxon": {
-                    "description": "The taxon from which the biological entity derives.",
-                    "type": "string"
                 },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
@@ -7404,12 +7379,6 @@
                     "description": "Curie of the Person object representing the individual that created the entity",
                     "type": "string"
                 },
-                "cross_reference_dtos": {
-                    "items": {
-                        "$ref": "#/$defs/CrossReferenceDTO"
-                    },
-                    "type": "array"
-                },
                 "data_provider_dto": {
                     "$ref": "#/$defs/DataProviderDTO",
                     "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
@@ -7434,17 +7403,9 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "generated_by_identifier": {
-                    "description": "Identifier for Reagent genereated_by field.  ",
-                    "type": "string"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
-                },
-                "manufactured_by_identifier": {
-                    "description": "Identifier for Reagent manufactured_by field.  ",
-                    "type": "string"
                 },
                 "mod_entity_id": {
                     "description": "The model organism database (MOD) identifier/curie for the object",
@@ -7470,10 +7431,6 @@
                         "type": "string"
                     },
                     "type": "array"
-                },
-                "taxon_curie": {
-                    "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
-                    "type": "string"
                 },
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
@@ -8325,13 +8282,6 @@
                     "description": "The individual that created the entity.",
                     "type": "string"
                 },
-                "cross_references": {
-                    "description": "Holds between an object and its CrossReferences.",
-                    "items": {
-                        "$ref": "#/$defs/CrossReference"
-                    },
-                    "type": "array"
-                },
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
@@ -8360,23 +8310,9 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "generated_by": {
-                    "description": "Holds between a material entity and an Agent that generated it: e.g., Thomas Blumenthal, Kornberg Laboratory.",
-                    "items": {
-                        "$ref": "#/$defs/Agent"
-                    },
-                    "type": "array"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
-                },
-                "manufactured_by": {
-                    "description": "Holds between a material entity and an Agent that has manufactured it: e.g., Molecular Probes.",
-                    "items": {
-                        "$ref": "#/$defs/Agent"
-                    },
-                    "type": "array"
                 },
                 "mod_entity_id": {
                     "description": "The model organism database (MOD) identifier/curie for the object",
@@ -8395,10 +8331,6 @@
                         "type": "string"
                     },
                     "type": "array"
-                },
-                "taxon": {
-                    "description": "The taxon from which the biological entity derives.",
-                    "type": "string"
                 },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
@@ -16699,13 +16631,6 @@
                     "description": "The individual that created the entity.",
                     "type": "string"
                 },
-                "cross_references": {
-                    "description": "Holds between an object and its CrossReferences.",
-                    "items": {
-                        "$ref": "#/$defs/CrossReference"
-                    },
-                    "type": "array"
-                },
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
@@ -16734,23 +16659,9 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "generated_by": {
-                    "description": "Holds between a material entity and an Agent that generated it: e.g., Thomas Blumenthal, Kornberg Laboratory.",
-                    "items": {
-                        "$ref": "#/$defs/Agent"
-                    },
-                    "type": "array"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
-                },
-                "manufactured_by": {
-                    "description": "Holds between a material entity and an Agent that has manufactured it: e.g., Molecular Probes.",
-                    "items": {
-                        "$ref": "#/$defs/Agent"
-                    },
-                    "type": "array"
                 },
                 "mod_entity_id": {
                     "description": "The model organism database (MOD) identifier/curie for the object",
@@ -16769,10 +16680,6 @@
                         "type": "string"
                     },
                     "type": "array"
-                },
-                "taxon": {
-                    "description": "The taxon from which the biological entity derives.",
-                    "type": "string"
                 },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
@@ -17033,13 +16940,6 @@
                     "description": "The individual that created the entity.",
                     "type": "string"
                 },
-                "cross_references": {
-                    "description": "Holds between an object and its CrossReferences.",
-                    "items": {
-                        "$ref": "#/$defs/CrossReference"
-                    },
-                    "type": "array"
-                },
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
@@ -17068,23 +16968,9 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "generated_by": {
-                    "description": "Holds between a material entity and an Agent that generated it: e.g., Thomas Blumenthal, Kornberg Laboratory.",
-                    "items": {
-                        "$ref": "#/$defs/Agent"
-                    },
-                    "type": "array"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
-                },
-                "manufactured_by": {
-                    "description": "Holds between a material entity and an Agent that has manufactured it: e.g., Molecular Probes.",
-                    "items": {
-                        "$ref": "#/$defs/Agent"
-                    },
-                    "type": "array"
                 },
                 "mod_entity_id": {
                     "description": "The model organism database (MOD) identifier/curie for the object",
@@ -17103,10 +16989,6 @@
                         "type": "string"
                     },
                     "type": "array"
-                },
-                "taxon": {
-                    "description": "The taxon from which the biological entity derives.",
-                    "type": "string"
                 },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
@@ -17133,12 +17015,6 @@
                     "description": "Curie of the Person object representing the individual that created the entity",
                     "type": "string"
                 },
-                "cross_reference_dtos": {
-                    "items": {
-                        "$ref": "#/$defs/CrossReferenceDTO"
-                    },
-                    "type": "array"
-                },
                 "data_provider_dto": {
                     "$ref": "#/$defs/DataProviderDTO",
                     "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
@@ -17163,17 +17039,9 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "generated_by_identifier": {
-                    "description": "Identifier for Reagent genereated_by field.  ",
-                    "type": "string"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
-                },
-                "manufactured_by_identifier": {
-                    "description": "Identifier for Reagent manufactured_by field.  ",
-                    "type": "string"
                 },
                 "mod_entity_id": {
                     "description": "The model organism database (MOD) identifier/curie for the object",
@@ -17192,10 +17060,6 @@
                         "type": "string"
                     },
                     "type": "array"
-                },
-                "taxon_curie": {
-                    "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
-                    "type": "string"
                 },
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
