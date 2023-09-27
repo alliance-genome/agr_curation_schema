@@ -54,6 +54,12 @@ slots:
     range: string
     required: true
 
+  alliance_member_release_version:
+    description: >-
+      Version of Alliance member/MOD release used for submitted file
+    domain: Ingest
+    range: string
+
   allele_ingest_set:
     domain: Ingest
     range: AlleleDTO
@@ -306,6 +312,7 @@ classes:
     tree_root: true
     slots:
       - linkml_version
+      - alliance_member_release_version
       - allele_ingest_set
       - antibody_ingest_set
       - construct_ingest_set

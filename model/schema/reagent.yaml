@@ -50,9 +50,7 @@ classes:
       - unique_id
       - mod_entity_id
       - mod_internal_id
-      - taxon
-      - generated_by
-      - manufactured_by
+      - secondary_identifiers
       - data_provider
 
   ReagentDTO:
@@ -62,9 +60,7 @@ classes:
     slots:
       - mod_entity_id
       - mod_internal_id
-      - taxon_curie
-      - generated_by_identifier # needs to change: currently no common identifier field for Agent class
-      - manufactured_by_identifier # needs to change: currently no common identifier field for Agent class
+      - secondary_identifiers
       - data_provider_dto
     slot_usage:
       mod_internal_id:
@@ -91,10 +87,12 @@ classes:
       - light_chain_isotype
       - antibody_target_genes
       - cross_references
-      - secondary_identifiers
       - references
       - original_reference
       - related_notes
+      - taxon
+      - generated_by
+      - manufactured_by
       # - disease    # Need a way to give DOID term and reference. Or a generic way to specify CV term and publication attribution.
     slot_usage:
       curie:
@@ -138,10 +136,12 @@ classes:
       - light_chain_isotype_name
       - antibody_target_gene_curies
       - cross_reference_dtos
-      - secondary_identifiers
       - reference_curies
       - original_reference_curie
       - note_dtos
+      - taxon_curie
+      - generated_by_identifier # needs to change: currently no common identifier field for Agent class
+      - manufactured_by_identifier # needs to change: currently no common identifier field for Agent class
       # - disease    # Need a way to give DOID term and reference. Or a generic way to specify CV term and publication attribution.
     slot_usage:
       name:
@@ -168,30 +168,35 @@ classes:
   Construct:
     is_a: Reagent
     slots:
+      - construct_symbol
+      - construct_full_name
+      - construct_synonyms
       - construct_genomic_entity_associations
       - construct_components
-      - name
       - references
     slot_usage:
       curie:
         identifier: true
-      name:
+      construct_symbol:
         required: true
 
   ConstructDTO:
     is_a: ReagentDTO
     slots:
-      - name
+      - construct_symbol_dto
+      - construct_full_name_dto
+      - construct_synonym_dtos
       - construct_component_dtos
       - reference_curies
     slot_usage:
-      name:
+      construct_symbol_dto:
         required: true
 
   ConstructComponentSlotAnnotation:
     is_a: SlotAnnotation
     slots:
       - single_construct
+      - relation
       - component_symbol
       - related_notes
       - taxon
@@ -199,6 +204,12 @@ classes:
     slot_usage:
       single_construct:
         required: true
+      relation:
+        range: VocabularyTerm
+        notes: >-
+          The relation should be a VocabularyTerm with one of the following
+          values - expresses (RO:0002292) / is_regulated_by (RO:0002334) /
+          targets (RO:0002436). CV: 'Construct Genomic Entity Association Relation'
       component_symbol:
         required: true
       related_notes:
@@ -211,10 +222,47 @@ classes:
   ConstructComponentSlotAnnotationDTO:
     is_a: SlotAnnotationDTO
     slots:
+      - relation_name
       - component_symbol
       - note_dtos
       - taxon_curie
       - taxon_text
+
+  ConstructSymbolSlotAnnotation:
+    description: >-
+      The one current symbol for the construct.
+    is_a: NameSlotAnnotation
+    slots:
+      - single_construct
+    slot_usage:
+      single_construct:
+        required: true
+      name_type:
+        notes: >-
+          permissible_values: nomenclature_symbol (VocabularyTerm), systematic_name (VocabularyTerm)
+
+  ConstructFullNameSlotAnnotation:
+    description: >-
+      The one current full name for the construct.
+    is_a: NameSlotAnnotation
+    slots:
+      - single_construct
+    slot_usage:
+      single_construct:
+        required: true
+      name_type:
+        notes: >-
+          permissible_values: full_name (VocabularyTerm)
+
+  ConstructSynonymSlotAnnotation:
+    description: >-
+      All aliases (non-preferred names) for the construct. Any type of synonym is acceptable.
+    is_a: NameSlotAnnotation
+    slots:
+      - single_construct
+    slot_usage:
+      single_construct:
+        required: true
 
   ConstructGenomicEntityAssociation:
     is_a: Association
@@ -346,7 +394,56 @@ slots:
       of the associated construct
     range: string
     required: true
-  
+
+  construct_symbol:
+    description: >-
+      Holds between a Construct and the one current accepted symbol
+    exact_mappings:
+      - biolink:symbol
+    domain: Construct
+    range: ConstructSymbolSlotAnnotation
+    required: true
+    multivalued: false
+
+  construct_symbol_dto:
+    description: >-
+      Holds between a Construct and the one current accepted symbol
+    domain: ConstructDTO
+    range: SymbolSlotAnnotationDTO
+    required: true
+    multivalued: false
+    inlined: true
+
+  construct_full_name:
+    description: Holds between a Construct and a full name.
+    domain: Construct
+    required: false
+    multivalued: false
+    range: ConstructFullNameSlotAnnotation
+
+  construct_full_name_dto:
+    description: Holds between a Construct and a full name.
+    domain: ConstructDTO
+    range: NameSlotAnnotationDTO
+    multivalued: false
+    required: false
+    inlined: true
+
+  construct_synonyms:
+    description: Holds between a Construct and a list of synonyms.
+    domain: Construct
+    required: false
+    multivalued: true
+    range: ConstructSynonymSlotAnnotation
+
+  construct_synonym_dtos:
+    description: Holds between a Construct and a list of synonyms.
+    domain: ConstructDTO
+    range: NameSlotAnnotationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
   generated_by_identifier:
     description: >- 
       Identifier for Reagent genereated_by field.  
@@ -402,7 +499,6 @@ slots:
     range: string
     
   single_construct:
-    domain: ConstructComponentSlotAnnotation
     range: Construct
     multivalued: false
 

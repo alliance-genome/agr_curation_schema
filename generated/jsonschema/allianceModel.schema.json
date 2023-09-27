@@ -7125,9 +7125,24 @@
                     },
                     "type": "array"
                 },
+                "construct_full_name": {
+                    "$ref": "#/$defs/ConstructFullNameSlotAnnotation",
+                    "description": "Holds between a Construct and a full name."
+                },
                 "construct_genomic_entity_associations": {
                     "items": {
                         "$ref": "#/$defs/ConstructGenomicEntityAssociation"
+                    },
+                    "type": "array"
+                },
+                "construct_symbol": {
+                    "$ref": "#/$defs/ConstructSymbolSlotAnnotation",
+                    "description": "Holds between a Construct and the one current accepted symbol"
+                },
+                "construct_synonyms": {
+                    "description": "Holds between a Construct and a list of synonyms.",
+                    "items": {
+                        "$ref": "#/$defs/ConstructSynonymSlotAnnotation"
                     },
                     "type": "array"
                 },
@@ -7163,23 +7178,9 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "generated_by": {
-                    "description": "Holds between a material entity and an Agent that generated it: e.g., Thomas Blumenthal, Kornberg Laboratory.",
-                    "items": {
-                        "$ref": "#/$defs/Agent"
-                    },
-                    "type": "array"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
-                },
-                "manufactured_by": {
-                    "description": "Holds between a material entity and an Agent that has manufactured it: e.g., Molecular Probes.",
-                    "items": {
-                        "$ref": "#/$defs/Agent"
-                    },
-                    "type": "array"
                 },
                 "mod_entity_id": {
                     "description": "The model organism database (MOD) identifier/curie for the object",
@@ -7187,10 +7188,6 @@
                 },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "a human-readable name for an entity",
                     "type": "string"
                 },
                 "obsolete": {
@@ -7204,9 +7201,11 @@
                     },
                     "type": "array"
                 },
-                "taxon": {
-                    "description": "The taxon from which the biological entity derives.",
-                    "type": "string"
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
@@ -7218,7 +7217,7 @@
                 }
             },
             "required": [
-                "name",
+                "construct_symbol",
                 "curie",
                 "data_provider",
                 "internal"
@@ -7280,6 +7279,10 @@
                     },
                     "type": "array"
                 },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
+                },
                 "single_construct": {
                     "type": "string"
                 },
@@ -7298,6 +7301,7 @@
             },
             "required": [
                 "single_construct",
+                "relation",
                 "component_symbol",
                 "internal"
             ],
@@ -7357,6 +7361,10 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
+                "relation_name": {
+                    "description": "Name of VocabularyTerm representing relation of an Association",
+                    "type": "string"
+                },
                 "taxon_curie": {
                     "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
                     "type": "string"
@@ -7371,6 +7379,7 @@
                 }
             },
             "required": [
+                "relation_name",
                 "component_symbol",
                 "internal"
             ],
@@ -7384,6 +7393,21 @@
                 "construct_component_dtos": {
                     "items": {
                         "$ref": "#/$defs/ConstructComponentSlotAnnotationDTO"
+                    },
+                    "type": "array"
+                },
+                "construct_full_name_dto": {
+                    "$ref": "#/$defs/NameSlotAnnotationDTO",
+                    "description": "Holds between a Construct and a full name."
+                },
+                "construct_symbol_dto": {
+                    "$ref": "#/$defs/SymbolSlotAnnotationDTO",
+                    "description": "Holds between a Construct and the one current accepted symbol"
+                },
+                "construct_synonym_dtos": {
+                    "description": "Holds between a Construct and a list of synonyms.",
+                    "items": {
+                        "$ref": "#/$defs/NameSlotAnnotationDTO"
                     },
                     "type": "array"
                 },
@@ -7415,17 +7439,9 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "generated_by_identifier": {
-                    "description": "Identifier for Reagent genereated_by field.  ",
-                    "type": "string"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
-                },
-                "manufactured_by_identifier": {
-                    "description": "Identifier for Reagent manufactured_by field.  ",
-                    "type": "string"
                 },
                 "mod_entity_id": {
                     "description": "The model organism database (MOD) identifier/curie for the object",
@@ -7433,10 +7449,6 @@
                 },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "a human-readable name for an entity",
                     "type": "string"
                 },
                 "obsolete": {
@@ -7450,9 +7462,11 @@
                     },
                     "type": "array"
                 },
-                "taxon_curie": {
-                    "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
-                    "type": "string"
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
@@ -7460,11 +7474,92 @@
                 }
             },
             "required": [
-                "name",
+                "construct_symbol_dto",
                 "data_provider_dto",
                 "internal"
             ],
             "title": "ConstructDTO",
+            "type": "object"
+        },
+        "ConstructFullNameSlotAnnotation": {
+            "additionalProperties": false,
+            "description": "The one current full name for the construct.",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "display_text": {
+                    "description": "A version of a synonym string for display. Any UTF8 character is permitted.",
+                    "type": "string"
+                },
+                "evidence": {
+                    "description": "",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "format_text": {
+                    "description": "A version of a synonym string using only ASCII characters, which is easier to type (for searches), print and parse. For example, Greek characters are transliterated.",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name_type": {
+                    "description": "The type of name: e.g., symbol, full_name, systematic_name, etc.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "single_construct": {
+                    "type": "string"
+                },
+                "synonym_scope": {
+                    "description": "the scope of the synonym - permissible values are narrow / broad / related / exact",
+                    "type": "string"
+                },
+                "synonym_url": {
+                    "description": "URL for a synonym: e.g., NCBI URL for the NCBI synonym of an object.",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "single_construct",
+                "name_type",
+                "format_text",
+                "display_text",
+                "internal"
+            ],
+            "title": "ConstructFullNameSlotAnnotation",
             "type": "object"
         },
         "ConstructGenomicEntityAssociation": {
@@ -7608,6 +7703,168 @@
                 "internal"
             ],
             "title": "ConstructGenomicEntityAssociationDTO",
+            "type": "object"
+        },
+        "ConstructSymbolSlotAnnotation": {
+            "additionalProperties": false,
+            "description": "The one current symbol for the construct.",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "display_text": {
+                    "description": "A version of a synonym string for display. Any UTF8 character is permitted.",
+                    "type": "string"
+                },
+                "evidence": {
+                    "description": "",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "format_text": {
+                    "description": "A version of a synonym string using only ASCII characters, which is easier to type (for searches), print and parse. For example, Greek characters are transliterated.",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name_type": {
+                    "description": "The type of name: e.g., symbol, full_name, systematic_name, etc.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "single_construct": {
+                    "type": "string"
+                },
+                "synonym_scope": {
+                    "description": "the scope of the synonym - permissible values are narrow / broad / related / exact",
+                    "type": "string"
+                },
+                "synonym_url": {
+                    "description": "URL for a synonym: e.g., NCBI URL for the NCBI synonym of an object.",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "single_construct",
+                "name_type",
+                "format_text",
+                "display_text",
+                "internal"
+            ],
+            "title": "ConstructSymbolSlotAnnotation",
+            "type": "object"
+        },
+        "ConstructSynonymSlotAnnotation": {
+            "additionalProperties": false,
+            "description": "All aliases (non-preferred names) for the construct. Any type of synonym is acceptable.",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "display_text": {
+                    "description": "A version of a synonym string for display. Any UTF8 character is permitted.",
+                    "type": "string"
+                },
+                "evidence": {
+                    "description": "",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "format_text": {
+                    "description": "A version of a synonym string using only ASCII characters, which is easier to type (for searches), print and parse. For example, Greek characters are transliterated.",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name_type": {
+                    "description": "The type of name: e.g., symbol, full_name, systematic_name, etc.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "single_construct": {
+                    "type": "string"
+                },
+                "synonym_scope": {
+                    "description": "the scope of the synonym - permissible values are narrow / broad / related / exact",
+                    "type": "string"
+                },
+                "synonym_url": {
+                    "description": "URL for a synonym: e.g., NCBI URL for the NCBI synonym of an object.",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "single_construct",
+                "name_type",
+                "format_text",
+                "display_text",
+                "internal"
+            ],
+            "title": "ConstructSynonymSlotAnnotation",
             "type": "object"
         },
         "CrossReference": {
@@ -8095,23 +8352,9 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "generated_by": {
-                    "description": "Holds between a material entity and an Agent that generated it: e.g., Thomas Blumenthal, Kornberg Laboratory.",
-                    "items": {
-                        "$ref": "#/$defs/Agent"
-                    },
-                    "type": "array"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
-                },
-                "manufactured_by": {
-                    "description": "Holds between a material entity and an Agent that has manufactured it: e.g., Molecular Probes.",
-                    "items": {
-                        "$ref": "#/$defs/Agent"
-                    },
-                    "type": "array"
                 },
                 "mod_entity_id": {
                     "description": "The model organism database (MOD) identifier/curie for the object",
@@ -8125,9 +8368,11 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "taxon": {
-                    "description": "The taxon from which the biological entity derives.",
-                    "type": "string"
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
@@ -13215,6 +13460,10 @@
                     },
                     "type": "array"
                 },
+                "alliance_member_release_version": {
+                    "description": "Version of Alliance member/MOD release used for submitted file",
+                    "type": "string"
+                },
                 "antibody_ingest_set": {
                     "description": "An ingest set for Antibody objects",
                     "items": {
@@ -16596,23 +16845,9 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "generated_by": {
-                    "description": "Holds between a material entity and an Agent that generated it: e.g., Thomas Blumenthal, Kornberg Laboratory.",
-                    "items": {
-                        "$ref": "#/$defs/Agent"
-                    },
-                    "type": "array"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
-                },
-                "manufactured_by": {
-                    "description": "Holds between a material entity and an Agent that has manufactured it: e.g., Molecular Probes.",
-                    "items": {
-                        "$ref": "#/$defs/Agent"
-                    },
-                    "type": "array"
                 },
                 "mod_entity_id": {
                     "description": "The model organism database (MOD) identifier/curie for the object",
@@ -16626,9 +16861,11 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "taxon": {
-                    "description": "The taxon from which the biological entity derives.",
-                    "type": "string"
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
@@ -16929,23 +17166,9 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "generated_by": {
-                    "description": "Holds between a material entity and an Agent that generated it: e.g., Thomas Blumenthal, Kornberg Laboratory.",
-                    "items": {
-                        "$ref": "#/$defs/Agent"
-                    },
-                    "type": "array"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
-                },
-                "manufactured_by": {
-                    "description": "Holds between a material entity and an Agent that has manufactured it: e.g., Molecular Probes.",
-                    "items": {
-                        "$ref": "#/$defs/Agent"
-                    },
-                    "type": "array"
                 },
                 "mod_entity_id": {
                     "description": "The model organism database (MOD) identifier/curie for the object",
@@ -16959,9 +17182,11 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "taxon": {
-                    "description": "The taxon from which the biological entity derives.",
-                    "type": "string"
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
@@ -17012,17 +17237,9 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "generated_by_identifier": {
-                    "description": "Identifier for Reagent genereated_by field.  ",
-                    "type": "string"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
-                },
-                "manufactured_by_identifier": {
-                    "description": "Identifier for Reagent manufactured_by field.  ",
-                    "type": "string"
                 },
                 "mod_entity_id": {
                     "description": "The model organism database (MOD) identifier/curie for the object",
@@ -17036,9 +17253,11 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "taxon_curie": {
-                    "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
-                    "type": "string"
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
@@ -22560,6 +22779,10 @@
                 "$ref": "#/$defs/AlleleVariantAssociationDTO"
             },
             "type": "array"
+        },
+        "alliance_member_release_version": {
+            "description": "Version of Alliance member/MOD release used for submitted file",
+            "type": "string"
         },
         "antibody_ingest_set": {
             "description": "An ingest set for Antibody objects",
