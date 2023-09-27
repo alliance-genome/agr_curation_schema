@@ -51,10 +51,6 @@ classes:
       - mod_entity_id
       - mod_internal_id
       - secondary_identifiers
-      - cross_references
-      - taxon
-      - generated_by
-      - manufactured_by
       - data_provider
 
   ReagentDTO:
@@ -64,11 +60,7 @@ classes:
     slots:
       - mod_entity_id
       - mod_internal_id
-      - taxon_curie
       - secondary_identifiers
-      - cross_reference_dtos
-      - generated_by_identifier # needs to change: currently no common identifier field for Agent class
-      - manufactured_by_identifier # needs to change: currently no common identifier field for Agent class
       - data_provider_dto
     slot_usage:
       mod_internal_id:
@@ -94,9 +86,13 @@ classes:
       - heavy_chain_isotype
       - light_chain_isotype
       - antibody_target_genes
+      - cross_references
       - references
       - original_reference
       - related_notes
+      - taxon
+      - generated_by
+      - manufactured_by
       # - disease    # Need a way to give DOID term and reference. Or a generic way to specify CV term and publication attribution.
     slot_usage:
       curie:
@@ -139,9 +135,13 @@ classes:
       - heavy_chain_isotype_name
       - light_chain_isotype_name
       - antibody_target_gene_curies
+      - cross_reference_dtos
       - reference_curies
       - original_reference_curie
       - note_dtos
+      - taxon_curie
+      - generated_by_identifier # needs to change: currently no common identifier field for Agent class
+      - manufactured_by_identifier # needs to change: currently no common identifier field for Agent class
       # - disease    # Need a way to give DOID term and reference. Or a generic way to specify CV term and publication attribution.
     slot_usage:
       name:

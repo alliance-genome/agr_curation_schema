@@ -7,9 +7,6 @@
       "internal": false,
       "obsolete": false,
       "mod_entity_id": "WB:WBConstruct123",
-      "taxon_curie": "NCBITaxon:6239",
-      "generated_by_identifier": "WB:WBLaboratory123",
-      "manufactured_by_identifier": "Construct Corps",
       "construct_symbol_dto": {
         "name_type_name": "nomenclature_symbol",
         "format_text": "const123",
@@ -48,18 +45,6 @@
       "secondary_identifiers": [
         "AB:12345",
         "ZY:4321"
-      ],
-      "cross_reference_dtos": [
-        {"referenced_curie": "CD:54321",
-          "prefix": "CD",
-          "page_area": "construct",
-          "display_name": "CD Construct 54321",
-          "internal": false},
-        {"referenced_curie": "EF:98765",
-          "prefix": "EF",
-          "page_area": "construct",
-          "display_name": "EF Construct 98765",
-          "internal": false}
       ],
       "reference_curies": [
         "PMID:101231321"
