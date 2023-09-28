@@ -5836,6 +5836,10 @@
             "additionalProperties": false,
             "description": "This class is used to hold version of the files being loaded",
             "properties": {
+                "alliance_member_release_version": {
+                    "description": "Version of Alliance member/MOD release used for submitted file",
+                    "type": "string"
+                },
                 "bulk_load": {
                     "$ref": "#/$defs/BulkLoad",
                     "description": "A link back to the parent bulk load"
@@ -5884,6 +5888,10 @@
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
+                },
+                "linkml_schema_version": {
+                    "description": "Release of LinkML for which the file was generated and submitted",
+                    "type": "string"
                 },
                 "local_file_path": {
                     "description": "Local file path to where the file has been saved for processing",
