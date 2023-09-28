@@ -2,6 +2,7 @@ id: https://github.com/alliance-genome/agr_curation_schema/src/schema/bulkload.y
 
 imports:
   - core
+  - ingest
   - linkml:types
 
 prefixes:
@@ -64,6 +65,8 @@ classes:
       - error_message
       - bulk_load
       - date_last_loaded
+      - linkml_schema_version
+      - alliance_member_release_version
 
   BulkScheduledLoad:
     is_a: BulkLoad
@@ -105,6 +108,10 @@ classes:
 
 slots:
 
+  linkml_schema_version:
+    description: Release of LinkML for which the file was generated and submitted
+    range: string
+  
   loads:
     multivalued: true
     range: BulkLoad
