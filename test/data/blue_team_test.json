@@ -11,8 +11,8 @@
         "internal": false
       },
       "tets_description": "some description" ,
-      "tets_evidence_code": {
-        "curie": "ECO:0000314",
+      "evidence_code": {
+        "curie": "ECO:0000217",
         "internal": false
       },
       "alliance_member": {
