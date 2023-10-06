@@ -10693,6 +10693,12 @@
                     },
                     "type": "array"
                 },
+                "condition_relations": {
+                    "items": {
+                        "$ref": "#/$defs/ConditionRelation"
+                    },
+                    "type": "array"
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -10724,6 +10730,13 @@
                     "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                     "format": "date-time",
                     "type": "string"
+                },
+                "detection_reagents": {
+                    "description": "Reagents used in the expression assay: e.g., construct, antibodies, probes.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "expression_annotation_image_associations": {
                     "description": "Images for the ExpressionAnnotation.",
@@ -10778,6 +10791,10 @@
                     "description": "The single Reference that supports the ExpressionAnnotation.",
                     "type": "string"
                 },
+                "specimen_genomic_model": {
+                    "description": "The AffectedGenomicModel of the specimen assayed.",
+                    "type": "string"
+                },
                 "subject": {
                     "description": "The gene to which the expression annotation applies.",
                     "type": "string"
@@ -10800,9 +10817,9 @@
                 }
             },
             "required": [
+                "where_expressed_statement",
                 "curie",
                 "data_provider",
-                "where_expressed_statement",
                 "single_reference",
                 "subject",
                 "relation",

@@ -80,12 +80,16 @@ classes:
           The Gene that is assayed in an ExpressionExperiment.
         range: Gene
 
+  # NOTE: Many overlapping slots in ExpressionExperiment & ExpressionAnnotation.
+  #       These slots are required to uniquely define each entity.
   ExpressionAnnotation:
-    is_a: SingleReferenceAssociation
+    is_a: Annotation
     abstract: true
     description: >-
       An annotation asserting an association between some entity and an
-      expression pattern, supported by a single reference.
+      expression pattern, supported by a single reference. Uniquely identifying
+      aspects of this object comprise all slots (possibly excepting figure and
+      image information).
     notes: >-
       A mapping of the agr_schemas (FMS) model to this LinkML model:
       geneId:                                                    subject
@@ -111,13 +115,9 @@ classes:
       expression_qualifiers, negated, uncertain, associated_with_figures,
       expression_annotation_image_associations.
     slots:
-      - curie
-      - unique_id
-      - mod_entity_id
-      - mod_internal_id
-      - related_notes
-      - data_provider
       - assay_used
+      - detection_reagents
+      - specimen_genomic_model
       - where_expressed_statement
       - expression_qualifiers
       - negated
@@ -130,7 +130,7 @@ classes:
           The entity for which an expression pattern is being described; the
           exact type will be constrained by the type of ExpressionAnnotation.
         notes: >-
-          Slot is inherited from SingleReferenceAssociation class.
+          Slot is inherited from Annotation class.
         required: true
       relation:
         description: >-
@@ -138,7 +138,7 @@ classes:
           The exact relation will be constrained by the type of
           ExpressionAnnotation.
         notes: >-
-          Slot is inherited from SingleReferenceAssociation class.
+          Slot is inherited from Annotation class.
         required: true
         range: VocabularyTerm
       object:
@@ -146,7 +146,7 @@ classes:
           The spatiotemporal expression pattern of the subject, with associated
           notes.
         notes: >-
-          Slot is inherited from SingleReferenceAssociation class.
+          Slot is inherited from Annotation class.
         required: true
         range: ExpressionPattern
       # FUTURE ACTION ITEM: Accommodate WB annotations with non-Reference evidence.
@@ -154,24 +154,38 @@ classes:
         description: >-
           The single Reference that supports the ExpressionAnnotation.
         notes: >-
-          Slot is inherited from SingleReferenceAssociation class.
+          Slot is inherited from Annotation class.
         required: true
         range: Reference
       curie:
         description: >-
           The Alliance-minted ID for the ExpressionAnnotation.
+        notes: >-
+          Slot is inherited from Annotation class.
       unique_id:
         description: >-
           Unique identifier for the ExpressionAnnotation. Will be generated at
           AGR if not submitted by the model organism database.
+        notes: >-
+          Slot is inherited from Annotation class.
       mod_entity_id:
         description: >-
           The model organism database identifier/curie for the
           ExpressionAnnotation.
+        notes: >-
+          Slot is inherited from Annotation class.
       mod_internal_id:
         description: >-
           The model organism database internal identifier for the
           ExpressionAnnotation.
+        notes: >-
+          Slot is inherited from Annotation class.
+      data_provider:
+        description: >-
+          Provide information about the data provider; this slot also allows
+          for cross-references to be reported for the annotation.
+        notes: >-
+          Slot is inherited from Annotation class.
       # FUTURE ACTION ITEM: Enumerate note types for this annotation level (xprn WG).
       related_notes:
         description: >-
@@ -179,10 +193,8 @@ classes:
           aspects of the ExpressionAnnotation: temporal, structure, substructure,
           cellular_component, annotation-level, etc. Appropriate VocabularyTerms
           will need to be created: expression_annotation_note, etc.
-      data_provider:
-        description: >-
-          Provide information about the data provider; this slot also allows
-          for cross-references to be reported for the annotation.
+        notes: >-
+          Slot is inherited from Annotation class.
       associated_with_figures:
         description: >-
           The figure(s) that support(s) the expression annotation.
