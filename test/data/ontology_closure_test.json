@@ -4,31 +4,31 @@
     {
       "subject": "ZFA:brain",
       "object": "ZFA:cavitated_compound_organ",
-      "predicate": "RO:is_a",
+      "relation": "RO:is_a",
       "internal": false
     },
     {
       "subject": "ZFA:brain",
       "object": "ZFA:compound_organ",
-      "predicate": "RO:is_a",
+      "relation": "RO:is_a",
       "internal": false
     },
     {
       "subject": "ZFA:brain",
       "object": "ZFA:anatomical_structure",
-      "predicate": "RO:is_a",
+      "relation": "RO:is_a",
       "internal": false
     },
     {
       "subject": "ZFA:brain",
       "object": "ZFA:zebrafish_anatomical_entity",
-      "predicate": "RO:is_a",
+      "relation": "RO:is_a",
       "internal": false
     },
     {
       "subject": "ZFA:brain",
       "object": "ZFA:whole_organism",
-      "predicate": [
+      "relation": [
         "RO:is_a",
         "RO:part_of"
       ],
@@ -37,7 +37,7 @@
     {
       "subject": "ZFA:brain",
       "object": "ZFA:whole_organism",
-      "predicate": [
+      "relation": [
         "RO:is_a",
         "RO:part_of"
       ],

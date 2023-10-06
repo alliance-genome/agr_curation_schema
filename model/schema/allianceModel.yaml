@@ -31,7 +31,6 @@ imports:
   - affectedGenomicModel
   - agent
   - allele
-  - alleleDTO
   - allianceMember
   - biologicalEntitySet
   - bulkload
@@ -53,6 +52,7 @@ imports:
   - resource
   - variantConsequence
   - variation
+  - variantDTO
 
 subsets:
   alliance subset:

@@ -122,11 +122,6 @@ classes:
       - cross_references
       - genomic_location_associations
 
-  GenomicEntityDTO:
-    is_a: BiologicalEntityDTO
-    slots:
-      - cross_reference_dtos
-      - genomic_location_association_dtos
 
   Transcript:
     is_a: GenomicEntity
@@ -296,11 +291,11 @@ classes:
     is_a: AuditedObject
     description: >-
       A typed association between two entities, supported by evidence.  Associations have three base slots: subject,
-      object, and predicate, but they can have any number of additional attributes that help qualify the relationship
+      object, and relation, but they can have any number of additional attributes that help qualify the relationship
       between the subject and the object.  The subject is the curie (or identifier) of the class that is the subject
       of the association, and likewise the object is the curie (or identifier of the class that is the object. The
-      relationship between subject and object is defined by the predicate slot (which can also be constrained
-      using the range of the predicate).
+      relationship between subject and object is defined by the relation slot (which can also be constrained
+      using the range of the relation).
     exact_mappings:
       - biolink:association
     notes:
@@ -308,16 +303,43 @@ classes:
       qualifiers and negated slots.
     slots:
       - subject
-      - predicate
+      - relation
       - object
-      - evidence
     slot_usage:
         subject:
             required: true
-        predicate:
+        relation:
             required: true
         object:
             required: true
+
+  SingleReferenceAssociation:
+    abstract: true
+    is_a: Association
+    description: An association supported by a single Reference object
+    slots:
+      - single_reference
+
+  SingleReferenceAssociationDTO:
+    is_a: AuditedObjectDTO
+    description: Ingest class for an association supported by a single Reference object
+    slots:
+      - reference_curie
+
+  EvidenceAssociation:
+    abstract: true
+    is_a: Association
+    description: An association supported by any number of InformationContentEntity objects
+    slots:
+      - evidence
+
+  EvidenceAssociationDTO:
+    abstract: true
+    is_a: AuditedObjectDTO
+    description: >-
+      Ingest class for an association supported by any number of InformationContentEntity objects
+    slots:
+      - evidence_curies
 
   ExternalDatabaseLink:
     is_a: AuditedObject
@@ -337,6 +359,7 @@ classes:
     description: The ID of the landmark used to establish the coordinate system for the current feature.
     slots:
       - curie
+      - display_name
     slot_usage:
       curie:
         required: true
@@ -350,7 +373,8 @@ classes:
         required: true
 
   GenomicLocationAssociation:
-    is_a: Association
+    abstract: true
+    is_a: EvidenceAssociation
     slots:
       - has_assembly
       - start
@@ -364,38 +388,34 @@ classes:
         range: Chromosome
         description: >-
           object should be the chromosome identifier
-      predicate:
+      relation:
         any_of:
           equals_string: has_genomic_location
     defining_slots:
       - subject
-      - predicate
+      - relation
       - object
-      - has_assembly
       - start
       - end
 
-  GenomicLocationAssociationDTO:
-    is_a: AuditedObjectDTO
+  GenomicEntityDTO:
+    is_a: BiologicalEntityDTO
     slots:
-      - genomic_entity_curie
-      - predicate_name
-      - chromosome_curie
-      - evidence_curies
+      - cross_reference_dtos
+
+  GenomicLocationAssociationDTO:
+    abstract: true
+    is_a: EvidenceAssociationDTO
+    slots:
+      - relation_name
       - assembly_curie
       - start
       - end
     slot_usage:
-      genomic_entity_curie:
-        required: true
-      predicate_name:
+      relation_name:
         required: true
         any_of:
           equals_string: has_genomic_location
-      chromosome_curie:
-        required: true
-      assembly_curie:
-        required: true
       start:
         required: true
       end:
@@ -424,6 +444,12 @@ classes:
 
 slots:
 
+  name:
+    description: >-
+      a human-readable name for an entity
+    multivalued: false
+    range: string
+  
   name_type:
     description: >-
       The type of name: e.g., symbol, full_name, systematic_name, etc.
@@ -438,7 +464,7 @@ slots:
         retired_name: SGD-specific.
         unspecified: unclassified names.
     domain: NameSlotAnnotation
-    range: VocabularyTerm
+    range: VocabularyTerm # CV 'Name Type'
     multivalued: false
     required: true
 
@@ -449,7 +475,7 @@ slots:
       systematic_name / ncbi_protein_name / uniform / non_uniform /
       retired_name / unspecified
     domain: NameSlotAnnotationDTO
-    range: string
+    range: string # CV 'Name Type'
     required: true
 
   format_text:
@@ -481,7 +507,7 @@ slots:
       the scope of the synonym - permissible values are narrow /
       broad / related / exact
     domain: NameSlotAnnotation
-    range: VocabularyTerm
+    range: VocabularyTerm # CV 'Synonym Scope'
 
   synonym_scope_name:
     description: >-
@@ -500,7 +526,6 @@ slots:
 
   has_assembly:
     domain: GenomicLocationAssociation
-    required: true
     range: Assembly
 
   prefix:
@@ -555,8 +580,7 @@ slots:
 
   note_type:
     description: >-
-      The type of note: e.g., cytology, comment, summary. Permissible values for 'note_type' currently = disease_summary, disease_note,
-      molecular_mutation -- please see the VocabularyTerm class for the full list.
+      The type of note: e.g., cytology, comment, summary.
     range: VocabularyTerm
     multivalued: false
 
@@ -667,17 +691,6 @@ slots:
     multivalued: false
     range: uriorcurie
 
-  genomic_location_associations:
-    domain: GenomicEntity
-    range: GenomicLocationAssociation
-    multivalued: true
-
-  genomic_location_association_dtos:
-    domain: GenomicEntityDTO
-    range: GenomicLocationAssociationDTO
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
 
   table_key:
     description: >-
@@ -858,6 +871,12 @@ slots:
     multivalued: false
     range: Reference
 
+  original_reference_curie:
+    description: >-
+      Curie of the first reference to describe an entity.
+    multivalued: false
+    range: string
+
   obsolete:
     description: >-
       Entity is no longer current.
@@ -932,14 +951,15 @@ slots:
     description: last identifier in a range
     range: Identifier
 
-  genomic_entity_curie:
-    range: string
-
   assembly_curie:
+    required: true
     range: string
 
   chromosome_curie:
+    required: true
     range: string
+    description: >-
+      The NCBI chromosome accession number for the chromosome.
 
   transcript_curie:
     range: string
@@ -948,6 +968,21 @@ slots:
   protein_curie:
     range: string
     required: true
+
+  genomic_entity_curie:
+    range: string
+
+  genomic_location_associations:
+    domain: GenomicEntity
+    range: GenomicLocationAssociation
+    multivalued: true
+
+  genomic_location_association_dtos:
+    domain: GenomicEntityDTO
+    range: GenomicLocationAssociationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
 
   source_organization:
     domain: DataProvider
@@ -986,7 +1021,7 @@ slots:
     exact_mappings:
       - biolink:object
 
-  predicate:
+  relation:
     is_a: association_slot
     description: >-
       A high-level grouping for the relationship type. This is analogous to category for nodes.
@@ -996,9 +1031,9 @@ slots:
     exact_mappings:
       - biolink:predicate
 
-  predicate_name:
+  relation_name:
     description: >-
-      Name of VocabularyTerm representing predicate of an Association
+      Name of VocabularyTerm representing relation of an Association
     required: true
     range: string
 

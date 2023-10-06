@@ -132,9 +132,9 @@ classes:
 
 
   GeneToPathwayAssociation:
-    is_a: Association
+    is_a: EvidenceAssociation
     slot_usage:
-      predicate:
+      relation:
         subproperty_of: has_participant
       subject:
         range: Gene

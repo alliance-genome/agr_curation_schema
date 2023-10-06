@@ -46,9 +46,14 @@
           "mutation_type_curies": [
             "SO:0000180"
           ],
+          "test": "test",
+          "nota property": "false",
+          "evidence_curies": [
+            "PMID:11231512"
+          ],
           "internal": false
-        }
-      ],
+        }]
+      ,
       "allele_functional_impact_dtos": [
         {
           "functional_impact_names": [

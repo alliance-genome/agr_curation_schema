@@ -35,6 +35,14 @@ prefixes:
 
 slots:
 
+  vocabulary_label:
+    description: >-
+      Immutable label used for identification of vocabulary or vocabulary
+      term set.  This is distinct from the "name" slot in that it cannot
+      be changed once created.
+    range: string
+    required: true
+
   member_terms:
     description: >-
       Set of VocabularyTerm objects in a Vocabulary object set
@@ -88,6 +96,7 @@ classes:
       - name
       - vocabulary_description
       - member_terms
+      - vocabulary_label
     slot_usage:
       name:
         required: true
@@ -104,6 +113,7 @@ classes:
       - vocabulary_term_set_vocabulary
       - vocabulary_term_set_description
       - member_terms
+      - vocabulary_label
     slot_usage:
       name:
         required: true

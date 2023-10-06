@@ -57,7 +57,7 @@
   "allele_gene_association_ingest_set": [
     {
       "allele_curie": "WB:WBVar00000001",
-      "predicate_name": "is_allele_of",
+      "relation_name": "is_allele_of",
       "gene_curie": "WB:WBGene00000001",
       "evidence_code_curie": "ECO:0000006",
       "evidence_curies": [
@@ -74,7 +74,7 @@
   "allele_transcript_association_ingest_set": [
     {
       "allele_curie": "WB:WBVar00000001",
-      "predicate_name": "has_transcript",
+      "relation_name": "has_transcript",
       "transcript_curie": "WB:WBTranscript00000001",
       "evidence_code_curie": "ECO:0000006",
       "evidence_curies": [
@@ -91,7 +91,7 @@
   "allele_protein_association_ingest_set": [
     {
       "allele_curie": "WB:WBVar00000001",
-      "predicate_name": "has_protein",
+      "relation_name": "has_protein",
       "protein_curie": "WB:WBProtein00000001",
       "evidence_code_curie": "ECO:0000006",
       "evidence_curies": [
@@ -108,7 +108,7 @@
   "allele_origin_association_ingest_set": [
     {
       "allele_curie": "WB:WBVar00000001",
-      "predicate_name": "introduced_in",
+      "relation_name": "introduced_in",
       "agm_curie": "WB:WBStrain00000001",
       "internal": false,
       "obsolete": false,
@@ -121,8 +121,8 @@
   "allele_construct_association_ingest_set": [
     {
       "allele_curie": "WB:WBVar00000001",
-      "predicate_name": "has_construct",
-      "construct_curie": "WB:WBConstruct00000001",
+      "relation_name": "has_construct",
+      "construct_identifier": "WB:WBConstruct00000001",
       "evidence_code_curie": "ECO:0000006",
       "evidence_curies": [
         "PMID:11231512"
@@ -138,7 +138,7 @@
   "allele_cell_line_association_ingest_set": [
     {
       "allele_curie": "WB:WBVar00000001",
-      "predicate_name": "carried_by_cell_line",
+      "relation_name": "carried_by_cell_line",
       "cell_line_curie": "WB:WBCell00000002",
       "internal": false,
       "obsolete": false,
@@ -149,7 +149,7 @@
     },
     {
       "allele_curie": "WB:WBVar00000001",
-      "predicate_name": "has_parent_cell_line",
+      "relation_name": "has_parent_cell_line",
       "cell_line_curie": "WB:WBCell00000001",
       "internal": false,
       "obsolete": false,
@@ -162,7 +162,7 @@
   "allele_variant_association_ingest_set": [
     {
       "allele_curie": "WB:WBVar00000001",
-      "predicate_name": "has_variant",
+      "relation_name": "has_variant",
       "variant_curie": "WB:WBVar00000001",
       "evidence_code_curie": "ECO:0000006",
       "evidence_curies": [
@@ -179,7 +179,7 @@
   "allele_generation_method_association_ingest_set": [
     {
       "allele_curie": "WB:WBTransgene00023682",
-      "predicate_name": "has_generation_method",
+      "relation_name": "has_generation_method",
       "generation_method_dto": {
         "mutagenesis_method_names": [
           "chemical mutagenesis",
