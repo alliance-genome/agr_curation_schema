@@ -44,6 +44,7 @@ classes:
     description: >-
       Topic entity tag source (tets)
     slots:
+      - topic_entity_tag_source_id
       - source_type
       - source_method
       - validation_type
@@ -163,18 +164,17 @@ slots:
     domain: TopicEntityTag
     range: TopicEntityTagSource
     required: true
-    inlined: true
     multivalued: false
 
-#  topic_entity_tag_source_id:
-#    description: >-
-#      Unique ID for the source
-#    notes: >-
-#      automatically incremented by the software
-#    domain: TopicEntityTagSource
-#    range: uriorcurie
-#    required: true
-#    identifier: true
+  topic_entity_tag_source_id:
+    description: >-
+      Unique ID for the source
+    notes: >-
+      automatically incremented by the software
+    domain: TopicEntityTagSource
+    range: string
+    required: true
+    identifier: true
 
   validation_type:
     range: VocabularyTerm 

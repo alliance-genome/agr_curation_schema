@@ -18277,8 +18277,8 @@
                     "type": "string"
                 },
                 "topic_entity_tag_source": {
-                    "$ref": "#/$defs/TopicEntityTagSource",
-                    "description": "The topic entity tag source that generated a specific topic entity tag"
+                    "description": "The topic entity tag source that generated a specific topic entity tag",
+                    "type": "string"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -18346,6 +18346,10 @@
                     "description": "The topic entity tag source description",
                     "type": "string"
                 },
+                "topic_entity_tag_source_id": {
+                    "description": "Unique ID for the source",
+                    "type": "string"
+                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": "string"
@@ -18355,6 +18359,7 @@
                 }
             },
             "required": [
+                "topic_entity_tag_source_id",
                 "source_type",
                 "source_method",
                 "evidence_code",
