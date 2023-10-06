@@ -10682,10 +10682,6 @@
             "additionalProperties": false,
             "description": "An annotation describing an expression pattern for a gene.",
             "properties": {
-                "assay_used": {
-                    "description": "The assay used to experimentally determine gene expression.",
-                    "type": "string"
-                },
                 "associated_with_figures": {
                     "description": "The figure(s) that support(s) the expression annotation.",
                     "items": {
@@ -10730,13 +10726,6 @@
                     "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                     "format": "date-time",
                     "type": "string"
-                },
-                "detection_reagents": {
-                    "description": "Reagents used in the expression assay: e.g., construct, antibodies, probes.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
                 },
                 "expression_annotation_image_associations": {
                     "description": "Images for the ExpressionAnnotation.",
@@ -10791,10 +10780,6 @@
                     "description": "The single Reference that supports the ExpressionAnnotation.",
                     "type": "string"
                 },
-                "specimen_genomic_model": {
-                    "description": "The AffectedGenomicModel of the specimen assayed.",
-                    "type": "string"
-                },
                 "subject": {
                     "description": "The gene to which the expression annotation applies.",
                     "type": "string"
@@ -10812,8 +10797,8 @@
                     "type": "string"
                 },
                 "where_expressed_statement": {
-                    "$ref": "#/$defs/Note",
-                    "description": "A human-readable free-text description of the anatomical location of the expression pattern."
+                    "description": "A human-readable free-text description of the anatomical location of the expression pattern.",
+                    "type": "string"
                 }
             },
             "required": [
@@ -10902,7 +10887,7 @@
                     "type": "string"
                 },
                 "mod_internal_id": {
-                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "description": "The MOD internal identifier for an expression experiment, if no curie is available. Can be constructed at the MOD just for submission.",
                     "type": "string"
                 },
                 "obsolete": {

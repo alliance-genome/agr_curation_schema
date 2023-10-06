@@ -42,8 +42,6 @@ emit_prefixes:
 
 classes:
 
-  # QUESTION: Model instead as an Annotation or SingleReferenceAssociation?
-  #           If so, the correct object and relation will need to be determined.
   ExpressionExperiment:
     is_a: AuditedObject
     abstract: true
@@ -68,8 +66,14 @@ classes:
       - specimen_genomic_model
       - condition_relations
       - related_notes
-      - expression_annotations
+      - expression_annotations    # For non-DTO only; for data submission, relate via ExpressionAnnotationDTO.from_expression_experiment instead.
 
+  # DQM NOTE: For submission of the FMS expression data, one will need to also
+  #           submit ExpressionExperiment objects that group the annotations
+  #           based on these slots: single_reference, entity_assayed, assay_used,
+  #           specimen_genomic_model, condition_relations.
+  #           I believe we're limiting FMS data to just expression in "wildtype"
+  #           under normal conditions. This will be expanded at some point.
   GeneExpressionExperiment:
     is_a: ExpressionExperiment
     description: >-
@@ -79,9 +83,14 @@ classes:
         description: >-
           The Gene that is assayed in an ExpressionExperiment.
         range: Gene
+      mod_internal_id:
+        description: >-
+          The MOD internal identifier for an expression experiment, if no curie
+          is available. Can be constructed at the MOD just for submission.
 
-  # NOTE: Many overlapping slots in ExpressionExperiment & ExpressionAnnotation.
-  #       These slots are required to uniquely define each entity.
+
+  # DQM NOTE: The assay (MMOTerm) is now submitted for the ExpressionExperiment object instead.
+  # DQM NOTE: Must now submit a relation slot value (is_expressed_in) for each ExpressionAnnotation.
   ExpressionAnnotation:
     is_a: Annotation
     abstract: true
@@ -92,32 +101,30 @@ classes:
       image information).
     notes: >-
       A mapping of the agr_schemas (FMS) model to this LinkML model:
-      geneId:                                                    subject
-      evidence:                                                  single_reference
-      assay:                                                     assay_used
-      crossReference:                                            data_provider.cross_reference
-      dateAssigned:                                              date_created
+      geneId:                                                    ExpressionAnnotation.subject
+      evidence:                                                  ExpressionAnnotation.single_reference
+      assay:                                                     ExpressionExperiment.assay_used
+      crossReference:                                            ExpressionAnnotation.data_provider.cross_reference
+      dateAssigned:                                              ExpressionAnnotation.date_created
       whenExpressed.stageName:                                   n/a
-      whenExpressed.stageTermId:                                 object (ExpressionPattern.TemporalContext.developmental_stage_start)
-      whenExpressed.stageUberonSlimTerm:                         object (ExpressionPattern.TemporalContext.stage_uberon_slim_terms)
-      whereExpressed.anatomicalStructureTermId:                  object (ExpressionPattern.AnatomicalSite.anatomical_structure)
-      whereExpressed.anatomicalStructureQualifierTermId:         object (ExpressionPattern.AnatomicalSite.anatomical_structure_qualifiers)
-      whereExpressed.anatomicalStructureUberonSlimTermIds:       object (ExpressionPattern.AnatomicalSite.anatomical_structure_uberon_terms)
-      whereExpressed.anatomicalSubStructureTermId:               object (ExpressionPattern.AnatomicalSite.anatomical_substructure)
-      whereExpressed.anatomicalSubStructureQualifierTermId:      object (ExpressionPattern.AnatomicalSite.anatomical_substructure_qualifiers)
-      whereExpressed.anatomicalSubStructureUberonSlimTermIds:    object (ExpressionPattern.AnatomicalSite.anatomical_substructure_uberon_terms)
-      whereExpressed.cellularComponentTermId.cellular_component: object (ExpressionPattern.AnatomicalSite.cellular_component)
-      whereExpressed.cellularComponentQualifierTermId:           object (ExpressionPattern.AnatomicalSite.cellular_component_qualifiers)
-      whereExpressed.whereExpressedStatement:                    where_expressed_statement
+      whenExpressed.stageTermId:                                 ExpressionAnnotation.object (ExpressionPattern.TemporalContext.developmental_stage_start)
+      whenExpressed.stageUberonSlimTerm:                         ExpressionAnnotation.object (ExpressionPattern.TemporalContext.stage_uberon_slim_terms)
+      whereExpressed.anatomicalStructureTermId:                  ExpressionAnnotation.object (ExpressionPattern.AnatomicalSite.anatomical_structure)
+      whereExpressed.anatomicalStructureQualifierTermId:         ExpressionAnnotation.object (ExpressionPattern.AnatomicalSite.anatomical_structure_qualifiers)
+      whereExpressed.anatomicalStructureUberonSlimTermIds:       ExpressionAnnotation.object (ExpressionPattern.AnatomicalSite.anatomical_structure_uberon_terms)
+      whereExpressed.anatomicalSubStructureTermId:               ExpressionAnnotation.object (ExpressionPattern.AnatomicalSite.anatomical_substructure)
+      whereExpressed.anatomicalSubStructureQualifierTermId:      ExpressionAnnotation.object (ExpressionPattern.AnatomicalSite.anatomical_substructure_qualifiers)
+      whereExpressed.anatomicalSubStructureUberonSlimTermIds:    ExpressionAnnotation.object (ExpressionPattern.AnatomicalSite.anatomical_substructure_uberon_terms)
+      whereExpressed.cellularComponentTermId.cellular_component: ExpressionAnnotation.object (ExpressionPattern.AnatomicalSite.cellular_component)
+      whereExpressed.cellularComponentQualifierTermId:           ExpressionAnnotation.object (ExpressionPattern.AnatomicalSite.cellular_component_qualifiers)
+      whereExpressed.whereExpressedStatement:                    ExpressionAnnotation.where_expressed_statement
       New required slots: relations.
       New slots not required for submission of original FMS data: curie,
       unique_id, mod_entity_id, mod_internal_id, related_notes,
       expression_qualifiers, negated, uncertain, associated_with_figures,
-      expression_annotation_image_associations.
+      expression_annotation_image_associations, condition_relations.
     slots:
-      - assay_used
-      - detection_reagents
-      - specimen_genomic_model
+      # from_expression_experiment   # For DTO only; for database, relate via non-DTO ExpressionExperiment.expression_annotations instead.
       - where_expressed_statement
       - expression_qualifiers
       - negated
@@ -154,6 +161,7 @@ classes:
         description: >-
           The single Reference that supports the ExpressionAnnotation.
         notes: >-
+          Will not be editable in the curation interface.
           Slot is inherited from Annotation class.
         required: true
         range: Reference
@@ -218,7 +226,7 @@ classes:
         description: >-
           The gene to which the expression annotation applies.
         range: Gene
-      # ACTION ITEM: Create expressed_in VocabularyTerm (Daniela).
+      # ACTION ITEM: Create is_expressed_in VocabularyTerm (Daniela).
       relation:
         description: >-
           For a gene, the relation should be constrained to the expresssed_in
@@ -468,8 +476,9 @@ slots:
     range: VocabularyTerm
     multivalued: true
 
-  # QUESTION: OK to make range VocabularyTerm for submission of custom term?
   # ACTION ITEM: Create one Vocabulary term for: post embryonic, pre-adult.
+  # ACTION ITEM: Make VocabularyTerms that map to the UBERONTerms for now.
+  # ACTION ITEM: Ask UBERON to make the missing term (and wait).
   stage_uberon_slim_terms:
     description: >-
       The high-level UBERON slim terms that apply to the developmental range
@@ -505,16 +514,14 @@ slots:
     multivalued: false
     required: true
 
-  # ACTION ITEM: Make whereExpressed VocabularyTerm for Note.note_type.
   where_expressed_statement:
-    is_a: related_note
     description: >-
       A human-readable free-text description of the anatomical location of the
       expression pattern.
     notes: >-
       Corresponds to whereExpressedStatement in frozen JSON schema.
     domain: ExpressionAnnotation
-    range: Note
+    range: string
     required: true
     multivalued: false
 
