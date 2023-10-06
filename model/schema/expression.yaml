@@ -469,6 +469,7 @@ slots:
     multivalued: true
 
   # QUESTION: OK to make range VocabularyTerm for submission of custom term?
+  # ACTION ITEM: Create one Vocabulary term for: post embryonic, pre-adult.
   stage_uberon_slim_terms:
     description: >-
       The high-level UBERON slim terms that apply to the developmental range
