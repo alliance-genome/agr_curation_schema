@@ -2,7 +2,6 @@
   "linkml_version": "1.9.0",
   "topic_entity_tag_source_ingest_set": [
     {
-      "topic_entity_tag_source_id": 12345,
       "source_type": "Type1",
       "source_method": "Method1",
       "internal": false,
@@ -11,16 +10,41 @@
         "internal": false
       },
       "tets_description": "some description" ,
-      "evidence_code": {
-        "curie": "ECO:0000217",
-        "internal": false
-      },
+      "evidence_code": "ECO:0000217",
       "alliance_member": {
         "alliance_member_id": 1234,
-        "abbreviation": "MODA",
+        "abbreviation": "WB",
         "date_created": "2021-09-01T00:00:00+00:00",
-        "internal": false
+        "internal": false,
+        "full_name": "WormBase",
+        "short_name": "WormBase"
       }
+    }
+  ],
+  "topic_entity_tag_ingest_set": [
+    {
+      "topic_entity_tag_source": {
+        "source_type": "Type1",
+        "source_method": "Method1",
+        "internal": false,
+        "validation_type": {
+          "name": "curator",
+          "internal": false
+        },
+        "tets_description": "some description" ,
+        "evidence_code": "ECO:0000217",
+        "alliance_member": {
+          "alliance_member_id": 1234,
+          "abbreviation": "WB",
+          "date_created": "2021-09-01T00:00:00+00:00",
+          "internal": false,
+          "full_name": "WormBase",
+          "short_name": "WormBase"
+        }
+      },
+      "single_reference": "AGRKB:10100000001",
+      "atp_topic": "ATP:000002",
+      "internal": false
     }
   ]
 }

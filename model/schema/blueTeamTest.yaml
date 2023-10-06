@@ -163,15 +163,18 @@ slots:
     domain: TopicEntityTag
     range: TopicEntityTagSource
     required: true
+    inlined: true
+    multivalued: false
 
 #  topic_entity_tag_source_id:
 #    description: >-
-#      Some description
+#      Unique ID for the source
 #    notes: >-
 #      automatically incremented by the software
 #    domain: TopicEntityTagSource
-#    range: integer
+#    range: uriorcurie
 #    required: true
+#    identifier: true
 
   validation_type:
     range: VocabularyTerm 

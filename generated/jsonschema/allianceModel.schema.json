@@ -13210,6 +13210,12 @@
                     },
                     "type": "array"
                 },
+                "topic_entity_tag_ingest_set": {
+                    "items": {
+                        "$ref": "#/$defs/TopicEntityTag"
+                    },
+                    "type": "array"
+                },
                 "topic_entity_tag_source_ingest_set": {
                     "items": {
                         "$ref": "#/$defs/TopicEntityTagSource"
@@ -21760,6 +21766,12 @@
         "sqtr_ingest_set": {
             "items": {
                 "$ref": "#/$defs/SequenceTargetingReagentDTO"
+            },
+            "type": "array"
+        },
+        "topic_entity_tag_ingest_set": {
+            "items": {
+                "$ref": "#/$defs/TopicEntityTag"
             },
             "type": "array"
         },
