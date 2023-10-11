@@ -80,7 +80,7 @@ classes:
       related_notes:
         description: >-
           Valid note types are available for viewing in the A-Team curation tool
-          Controlled Vocabulary Terms Table (in the "Gene note types" vocabulary)
+          Controlled Vocabulary Terms Table (in the Gene note types vocabulary)
           on the production environment (curation.alliancegenome.org). New terms
           can be added as needed.
 
@@ -157,19 +157,17 @@ classes:
     aliases: ['ChangeEvent', 'EventHistoryEntry', 'NomenclatureEvent']
     description: >-
       A major change to an entity: e.g., new, merge, split, rename, deprecation.
-      Proposed event_type vocabulary:
-        new: The entity was created (excluding new entities from split/merges).
-        merge: The entity subsumed other entities in a merge; objects subsumed
-               in the merge get "deprecation" type ChangeEvent annotations.
-        split: The entity was split from another entity; objects deprecated in
-               the split get "deprecation" type ChangeEvent annotations.
-        deprecation: The entity was made obsolete. This may include objects
-                     deprecated by some merge/split event.
-        rename: A current accepted name of the entity was changed.
-        type_change: The entity type was changed.
-      Proposed status vocabulary:
-        provisional:
-        approved:
+      Proposed event_type vocabulary below.
+      new - The entity was created (excluding new entities from split/merges).
+      merge - The entity subsumed other entities in a merge; objects subsumed
+      in the merge get deprecation type ChangeEvent annotations.
+      split - The entity was split from another entity; objects deprecated in
+      the split get deprecation type ChangeEvent annotations.
+      deprecation - The entity was made obsolete. This may include objects
+      deprecated by some merge/split event.
+      rename - A current accepted name of the entity was changed.
+      type_change - The entity type was changed.
+      Proposed status vocabulary: provisional/approved.
     slots:
       - single_gene
       - event_type
