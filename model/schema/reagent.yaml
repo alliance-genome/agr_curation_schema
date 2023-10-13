@@ -265,7 +265,7 @@ classes:
         required: true
 
   ConstructGenomicEntityAssociation:
-    is_a: Association
+    is_a: EvidenceAssociation
     description: >-
       An association class to capture the identity of a construct component that is
       a known genomic entity with a curie and any accompanying meta data about the
@@ -287,7 +287,7 @@ classes:
         required: false
 
   ConstructGenomicEntityAssociationDTO:
-    is_a: AuditedObjectDTO
+    is_a: EvidenceAssociationDTO
     description: >-
       Ingest class for association between a construct component that is a known genomic
       entity with a curie and any accompanying meta data about the relationship between
@@ -297,7 +297,6 @@ classes:
       - genomic_entity_relation_name
       - genomic_entity_curie
       - note_dtos
-      - evidence_curies
     slot_usage:
       genomic_entity_curie:
         required: true
