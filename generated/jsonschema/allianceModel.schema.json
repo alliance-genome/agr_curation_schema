@@ -10837,6 +10837,12 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": "array"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
