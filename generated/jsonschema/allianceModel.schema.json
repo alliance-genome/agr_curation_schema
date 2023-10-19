@@ -10410,6 +10410,10 @@
                     },
                     "type": "array"
                 },
+                "gene_synopsis": {
+                    "description": "Human readable gene description or synopsis.",
+                    "type": "string"
+                },
                 "gene_systematic_name": {
                     "$ref": "#/$defs/GeneSystematicNameSlotAnnotation",
                     "description": "The one current systematic name for a gene: e.g., YHR084W, R09F10.2."
@@ -10482,6 +10486,7 @@
             },
             "required": [
                 "gene_symbol",
+                "gene_type",
                 "curie",
                 "taxon",
                 "data_provider",
@@ -10824,6 +10829,10 @@
                     },
                     "type": "array"
                 },
+                "gene_synopsis": {
+                    "description": "Human readable gene description or synopsis.",
+                    "type": "string"
+                },
                 "gene_systematic_name_dto": {
                     "$ref": "#/$defs/SystematicNameSlotAnnotationDTO",
                     "description": "The one current systematic name for a gene: e.g., YHR084W, R09F10.2."
@@ -10851,6 +10860,7 @@
             },
             "required": [
                 "gene_symbol_dto",
+                "gene_type_curie",
                 "curie",
                 "taxon_curie",
                 "data_provider_dto",
