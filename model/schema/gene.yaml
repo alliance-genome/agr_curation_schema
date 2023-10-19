@@ -48,6 +48,11 @@ classes:
       here can mean one that is directly responsible for the gene's function (e.g. catalysis,
       structure, etc.) or one that is translated to produce a functional polypeptide/protein.
       A pseudogene may be considered a gene under this definition, albeit no longer functional.
+    notes: >-
+      Submit FMS BGI geneSynopsis in the related_notes slot as a Note of type
+      MOD_provided_gene_description.
+      There is no LinkML slot corresponding to the BGI geneSynopsisUrl as this
+      attribute was not being used by any MODs (at least as directed).
     is_a: GenomicEntity
     slots:
       - gene_symbol
@@ -55,7 +60,6 @@ classes:
       - gene_systematic_name
       - gene_synonyms
       - gene_secondary_ids
-      - gene_synopsis
       - related_notes
       - gene_type
       - gene_types_secondary
@@ -95,7 +99,6 @@ classes:
       - gene_synonym_dtos
       - gene_secondary_id_dtos
       - gene_type_curie
-      - gene_synopsis
 
   GeneSymbolSlotAnnotation:
     description: >-
@@ -261,18 +264,6 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
-
-  gene_synopsis:
-    description: >-
-      Human readable gene description or synopsis.
-    notes: >-
-      Represents agr_schemas gene.json geneSynopsis attribute.
-      I chose not to import the related geneSynopsisUrl as this attribute is not
-      currently being used as directed by anyone.
-    domain: Gene
-    range: string
-    required: false
-    multivalued: false
 
   gene_systematic_name:
     description: >-
