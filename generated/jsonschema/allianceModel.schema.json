@@ -10410,10 +10410,6 @@
                     },
                     "type": "array"
                 },
-                "gene_synopsis": {
-                    "description": "Human readable gene description or synopsis.",
-                    "type": "string"
-                },
                 "gene_systematic_name": {
                     "$ref": "#/$defs/GeneSystematicNameSlotAnnotation",
                     "description": "The one current systematic name for a gene: e.g., YHR084W, R09F10.2."
@@ -10828,10 +10824,6 @@
                         "$ref": "#/$defs/NameSlotAnnotationDTO"
                     },
                     "type": "array"
-                },
-                "gene_synopsis": {
-                    "description": "Human readable gene description or synopsis.",
-                    "type": "string"
                 },
                 "gene_systematic_name_dto": {
                     "$ref": "#/$defs/SystematicNameSlotAnnotationDTO",
