@@ -99,6 +99,7 @@ classes:
       - gene_synonym_dtos
       - gene_secondary_id_dtos
       - gene_type_curie
+      - note_dtos
 
   GeneSymbolSlotAnnotation:
     description: >-
