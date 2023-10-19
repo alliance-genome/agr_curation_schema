@@ -55,6 +55,7 @@ classes:
       - gene_systematic_name
       - gene_synonyms
       - gene_secondary_ids
+      - gene_synopsis
       - related_notes
       - gene_type
       - gene_types_secondary
@@ -94,6 +95,7 @@ classes:
       - gene_synonym_dtos
       - gene_secondary_id_dtos
       - gene_type_curie
+      - gene_synopsis
 
   GeneSymbolSlotAnnotation:
     description: >-
@@ -260,6 +262,18 @@ slots:
     inlined: true
     inlined_as_list: true
 
+  gene_synopsis:
+    description: >-
+      Human readable gene description or synopsis.
+    notes: >-
+      Represents agr_schemas gene.json geneSynopsis attribute.
+      I chose not to import the related geneSynopsisUrl as this attribute is not
+      currently being used as directed by anyone.
+    domain: Gene
+    range: string
+    required: false
+    multivalued: false
+
   gene_systematic_name:
     description: >-
       The one current systematic name for a gene: e.g., YHR084W, R09F10.2.
@@ -299,11 +313,15 @@ slots:
     description: SOTerm describing gene type
     domain: Gene
     range: SOTerm
+    required: true
+    multivalued: false
 
   gene_type_curie:
     description: Curie of SOTerm describing gene type
     domain: GeneDTO
     range: string
+    required: true
+    multivalued: false
 
   gene_types_secondary:
     description: >-
