@@ -48,6 +48,11 @@ classes:
       here can mean one that is directly responsible for the gene's function (e.g. catalysis,
       structure, etc.) or one that is translated to produce a functional polypeptide/protein.
       A pseudogene may be considered a gene under this definition, albeit no longer functional.
+    notes: >-
+      Submit FMS BGI geneSynopsis in the related_notes slot as a Note of type
+      MOD_provided_gene_description.
+      There is no LinkML slot corresponding to the BGI geneSynopsisUrl as this
+      attribute was not being used by any MODs (at least as directed).
     is_a: GenomicEntity
     slots:
       - gene_symbol
@@ -94,6 +99,7 @@ classes:
       - gene_synonym_dtos
       - gene_secondary_id_dtos
       - gene_type_curie
+      - note_dtos
 
   GeneSymbolSlotAnnotation:
     description: >-
@@ -299,11 +305,15 @@ slots:
     description: SOTerm describing gene type
     domain: Gene
     range: SOTerm
+    required: true
+    multivalued: false
 
   gene_type_curie:
     description: Curie of SOTerm describing gene type
     domain: GeneDTO
     range: string
+    required: true
+    multivalued: false
 
   gene_types_secondary:
     description: >-
