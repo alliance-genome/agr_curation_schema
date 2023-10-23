@@ -201,7 +201,7 @@ classes:
       subject:
         range: Gene
       object:
-        range: ChromsomeAssembly
+        range: ChromosomeAssembly
       relation:
         any_of:
           - equals_string: has_location

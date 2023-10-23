@@ -138,7 +138,7 @@ classes:
       object:
         description: >-
           The location reference object should be a chromsome assembly curie.
-        range: ChromsomeAssembly
+        range: ChromosomeAssembly
         required: true
 
   VariantTranscriptLocationAssociation:
@@ -416,38 +416,6 @@ slots:
 
   # May want to remove domain of following 8 slots and move them to core
   # so that they can be used for alignment of other genomic entities
-  assembly:
-    description: >-
-      Assembly to which variant is aligned.
-    multivalued: false
-    required: false
-    domain: VariantLocationAssociation
-    range: Assembly
-
-  chromosome:
-    description: >-
-      Chromosome to which variant is aligned.
-    multivalued: false
-    required: false
-    domain: VariantLocationAssociation
-    range: Chromosome
-
-  start_position:
-    description: >-
-      Start position of variant on genomic entity.
-    multivalued: false
-    required: false
-    domain: VariantLocationAssociation
-    range: integer
-
-  end_position:
-    description: >-
-      End position of variant on genomic entity.
-    multivalued: false
-    required: false
-    domain: VariantLocationAssociation
-    range: integer
-
   reference_sequence:
     description: >-
       Reference sequence of genome or genomic entity at position of aligned
