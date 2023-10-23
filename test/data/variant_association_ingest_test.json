@@ -8,7 +8,6 @@
       "evidence_curies": [
         "PMID:11231512"
       ],
-      "assembly_curie": "GRCz11",
       "start": 30341642,
       "end": 30341645,
       "reference_sequence": "C",
@@ -37,7 +36,6 @@
       "evidence_curies": [
         "PMID:11231512"
       ],
-      "assembly_curie": "GRCz11",
       "start": 600,
       "end": 602,
       "transcript_curie": "ZFIN:ZDB-TSCRIPT-000412-8",
@@ -57,7 +55,6 @@
       "evidence_curies": [
         "PMID:11231512"
       ],
-      "assembly_curie": "GRCz11",
       "start": 200,
       "end": 200,
       "protein_curie": "UniProtKB:11324235",
@@ -81,7 +78,6 @@
       "evidence_curies": [
         "PMID:11231512"
       ],
-      "assembly_curie": "GRCz11",
       "start": 30341642,
       "end": 30341645,
       "reference_sequence": "C",
@@ -111,7 +107,6 @@
       "evidence_curies": [
         "PMID:11231512"
       ],
-      "assembly_curie": "GRCz11",
       "start": 600,
       "end": 602,
       "transcript_curie": "ZFIN:ZDB-TSCRIPT-000412-8",
@@ -132,7 +127,6 @@
       "evidence_curies": [
         "PMID:11231512"
       ],
-      "assembly_curie": "GRCz11",
       "start": 200,
       "end": 200,
       "protein_curie": "UniProtKB:11324235",
