@@ -11575,8 +11575,8 @@
                     "type": "integer"
                 },
                 "strand": {
-                    "description": "The strand of a DNA reference object to which an entity maps.",
-                    "type": "string"
+                    "$ref": "#/$defs/StrandEnum",
+                    "description": "The strand of a DNA reference object to which an entity maps."
                 },
                 "subject": {
                     "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
@@ -19276,6 +19276,17 @@
                 "targets"
             ],
             "title": "SqtrRelationEnum",
+            "type": "string"
+        },
+        "StrandEnum": {
+            "description": "Specify DNA strand.",
+            "enum": [
+                "+",
+                "-",
+                ".",
+                "?"
+            ],
+            "title": "StrandEnum",
             "type": "string"
         },
         "SubtypeValues": {
