@@ -534,16 +534,10 @@ slots:
     domain: LocationAssociation
     range: integer
 
-  # QUESTION: How to specify strandedness for genomic location.
   strand:
     description: >-
       The strand of a DNA reference object to which an entity maps.
-    notes: >-
-      We have strand in the FMS agr_schemas model, but not here in LinkML.
-      I tried to specify strand in LinkML as +, - or . as in FMS, but tests failed.
-      We need a convention for representing strandedness and for doing so in LinkML.
-      How to proceed?
-    range: string
+    range: strand_enum
 
   has_assembly:
     domain: ChromosomeAssembly
@@ -1054,3 +1048,15 @@ slots:
     symmetric: true
 
 enums:
+
+  strand_enum:
+    description: Specify DNA strand.
+    permissible_values:
+      "+":
+        description: Positive strand.
+      "-":
+        description: Negative strand.
+      ".":
+        description: Unstranded.
+      "?":
+        description: Unknown.
