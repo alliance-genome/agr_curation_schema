@@ -972,6 +972,12 @@ slots:
     description: last identifier in a range
     range: Identifier
 
+  chromosome_curie:
+    required: true
+    range: string
+    description: >-
+      The NCBI chromosome accession number for the chromosome.
+
   transcript_curie:
     range: string
     required: true
