@@ -202,9 +202,6 @@ classes:
         range: Gene
       object:
         range: ChromosomeAssembly
-      relation:
-        any_of:
-          - equals_string: has_location
       evidence:
         notes: List all references that support a given location association.
       start:

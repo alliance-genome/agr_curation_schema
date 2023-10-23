@@ -381,7 +381,6 @@ classes:
     slots:
       - display_name
       - has_assembly
-
     slot_usage:
       curie:
         required: true
