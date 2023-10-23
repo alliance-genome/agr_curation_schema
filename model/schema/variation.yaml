@@ -94,7 +94,7 @@ classes:
         required: true
 
   VariantLocationAssociation:
-    is_a: GenomicLocationAssociation
+    is_a: LocationAssociation
     abstract: true
     description: >-
       Base class linking a variant to a position on a genomic entity and the resulting consequence to the sequence
@@ -111,6 +111,13 @@ classes:
       - consequence
       - curated_consequence
       - sequence_of_reference_accession_number # Should this point to a chromosome object instead of a string? Will this be redundant with genomic location association of the subject?
+    slot_usage:
+      subject:
+        range: Variant
+      start:
+        required: true
+      end:
+        required: true
 
   VariantGenomicLocationAssociation:
     is_a: VariantLocationAssociation
@@ -128,11 +135,10 @@ classes:
       - dna_mutation_type
       - gene_localization_type
     slot_usage:
-      has_assembly:
-        required: true
-      subject:
-        required: true
       object:
+        description: >-
+          The location reference object should be a chromsome assembly curie.
+        range: ChromsomeAssembly
         required: true
 
   VariantTranscriptLocationAssociation:
@@ -148,8 +154,6 @@ classes:
         description: >-
           object should be the transcript identifier
         range: Transcript
-        required: true
-      subject:
         required: true
 
   VariantPolypeptideLocationAssociation:

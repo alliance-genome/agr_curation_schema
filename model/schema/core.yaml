@@ -51,7 +51,6 @@ types:
 ## CLASSES
 ## ------------
 
-
 classes:
 
   AuditedObject:
@@ -120,8 +119,11 @@ classes:
       RNA transcript translation).
     slots:
       - cross_references
-      - genomic_location_associations
 
+  GenomicEntityDTO:
+    is_a: BiologicalEntityDTO
+    slots:
+      - cross_reference_dtos
 
   Transcript:
     is_a: GenomicEntity
@@ -286,7 +288,6 @@ classes:
       secondary_id:
         required: true
 
-
   Association:
     is_a: AuditedObject
     description: >-
@@ -355,71 +356,74 @@ classes:
       - prefix_order
 
   Chromosome:
-    is_a: AuditedObject
-    description: The ID of the landmark used to establish the coordinate system for the current feature.
+    is_a: GenomicEntity
+    description: >-
+      A structure composed of a single DNA molecule and associated proteins
+      that carries here heriditary information from cell to cell. In the context
+      of this model, it is used as a landmark for cytogenetic and genetic
+      mapping of genes, alleles and chromosomal aberrations; this entity ties
+      together related chromosome sequences from different genome assemblies.
+    notes: >-
+      I'm trying to distinguish the idealized biological entity from a species'
+      genome from a chromosome sequence assembly that is specific to a given
+      genome assembly version.
+    exact_mappings:
+      - SO:0000340
+      - GO:0005694
+
+  ChromosomeAssembly:
+    is_a: GenomicEntity
+    description: >-
+      A pseudo-molecule assembled from smaller sequences, representing most or
+      all of a chromosome's DNA sequence. In the context of this model, this
+      entity is used as a landmark to establish a coordinate system for the
+      location of other genomic entities.
     slots:
-      - curie
       - display_name
+      - has_assembly
+
     slot_usage:
       curie:
         required: true
+    defining_slots:
+      - display_name
+      - has_assembly
+      - maps_to_chromosome
 
-  Assembly:
-    is_a: AuditedObject
-    slots:
-      - curie
-    slot_usage:
-      curie:
-        required: true
+  GenomeAssembly:
+    is_a: BiologicalEntity
+    description: >-
+      A set of chromosome assemblies, scaffolds and contigs that represent an
+      organism's genome sequence.
 
-  GenomicLocationAssociation:
+  LocationAssociation:
     abstract: true
     is_a: EvidenceAssociation
+    description: >-
+      The mapping of a entity relative to another entity.
+    notes: >-
+      Leaving start and end optional to allow for fuzzy location.
     slots:
-      - has_assembly
       - start
       - end
     slot_usage:
-      subject:
-        range: GenomicEntity
-        description: >-
-          subject should be a genomic entity
-      object:
-        range: Chromosome
-        description: >-
-          object should be the chromosome identifier
       relation:
+        required: true
         any_of:
-          equals_string: has_genomic_location
-    defining_slots:
-      - subject
-      - relation
-      - object
-      - start
-      - end
+          - equals_string: has_location
 
-  GenomicEntityDTO:
-    is_a: BiologicalEntityDTO
-    slots:
-      - cross_reference_dtos
-
-  GenomicLocationAssociationDTO:
+  LocationAssociationDTO:
     abstract: true
     is_a: EvidenceAssociationDTO
     slots:
       - relation_name
-      - assembly_curie
       - start
       - end
     slot_usage:
       relation_name:
         required: true
         any_of:
-          equals_string: has_genomic_location
-      start:
-        required: true
-      end:
-        required: true
+          equals_string: has_location
 
   Protein:
     is_a: GenomicEntity
@@ -517,16 +521,32 @@ slots:
     range: string
 
   start:
-    description: The start of the feature in positive 1-based integer coordinates
+    description: >-
+      The start of the feature in positive 1-based integer coordinates relative
+      to the reference landmark.
+    domain: LocationAssociation
     range: integer
 
   end:
-    description: The end of the feature in positive 1-based integer coordinates
+    description: >-
+      The end of the feature in positive 1-based integer coordinates relative
+      to the reference landmark.
+    domain: LocationAssociation
     range: integer
 
+  strand:
+    description: >-
+      The strand of a DNA reference object to which an entity maps.
+    range:
+      any_of:
+        - equals_string: '+'
+        - equals_string: '-'
+        - equals_string: '.'
+
   has_assembly:
-    domain: GenomicLocationAssociation
-    range: Assembly
+    domain: ChromosomeAssembly
+    range: GenomeAssembly
+    required: true
 
   prefix:
     required: true
@@ -690,7 +710,6 @@ slots:
   secondary_id:
     multivalued: false
     range: uriorcurie
-
 
   table_key:
     description: >-
@@ -971,18 +990,6 @@ slots:
 
   genomic_entity_curie:
     range: string
-
-  genomic_location_associations:
-    domain: GenomicEntity
-    range: GenomicLocationAssociation
-    multivalued: true
-
-  genomic_location_association_dtos:
-    domain: GenomicEntityDTO
-    range: GenomicLocationAssociationDTO
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
 
   source_organization:
     domain: DataProvider

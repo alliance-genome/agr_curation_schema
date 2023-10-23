@@ -151,15 +151,6 @@ slots:
     mixins:
       - object_set
 
-  allele_genomic_location_association_ingest_set:
-    description: >-
-      An ingest set of genomic locations DTOs that are associated with an allele
-    domain: Ingest
-    range: GenomicLocationAssociationDTO
-    multivalued: true
-    mixins:
-      - object_set
-
   variant_genomic_location_association_ingest_set:
     domain: Ingest
     range: VariantGenomicLocationAssociationDTO
@@ -334,7 +325,6 @@ classes:
       - allele_origin_association_ingest_set
       - allele_image_association_ingest_set
       - allele_generation_method_association_ingest_set
-      - allele_genomic_location_association_ingest_set
       - gene_genetic_interaction_ingest_set
       - gene_molecular_interaction_ingest_set
       - variant_genomic_location_association_ingest_set

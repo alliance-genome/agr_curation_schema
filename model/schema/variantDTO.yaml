@@ -48,7 +48,7 @@ classes:
 
   VariantLocationAssociationDTO:
     abstract: true
-    is_a: GenomicLocationAssociationDTO
+    is_a: LocationAssociationDTO
     slots:
       - variant_curie
       - reference_sequence
@@ -56,6 +56,11 @@ classes:
       - consequence_curie
       - curated_consequence_curie
       - sequence_of_reference_accession_number
+    slot_usage:
+      start:
+        required: true
+      end:
+        required: true
 
   VariantGenomicLocationAssociationDTO:
     is_a: VariantLocationAssociationDTO
@@ -121,7 +126,7 @@ slots:
     description: >-
       Curie of SOTerm (child of SO:0001576 - transcript_variant) that describes the
       consequence of the variant, as stated in the source reference. In practice source consequence will be
-      associated with locations at any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and
+      associated with locations at any or all of VariantLocationAssociation, VariantTranscriptLocationAssociation, and
       VariantPolypeptideLocationAssociation.
     required: false
     multivalued: false

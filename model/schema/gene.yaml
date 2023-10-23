@@ -59,6 +59,7 @@ classes:
       - gene_type
       - gene_types_secondary
       - gene_change_events
+      - gene_genomic_location_associations
       - designating_laboratories
       - designating_persons
       - trans_splice_leaders
@@ -189,6 +190,29 @@ classes:
         description: >-
           These notes should capture the reason for the event (e.g., rename or
           merge).
+
+  GeneGenomicLocationAssociation:
+    is_a: LocationAssociation
+    description: >-
+      Location(s) of the gene on the genome.
+    slots:
+      - strand
+    slot_usage:
+      subject:
+        range: Gene
+      object:
+        range: ChromsomeAssembly
+      relation:
+        any_of:
+          - equals_string: has_location
+      evidence:
+        notes: List all references that support a given location association.
+      start:
+        required: false
+      end:
+        required: false
+      strand:
+        required: false
 
   GeneticMapPosition:
     description: >-
@@ -406,6 +430,12 @@ slots:
     range: string
     required: false
     multivalued: false
+
+  gene_genomic_location_associations:
+    domain: Gene
+    range: GeneGenomicLocationAssociation
+    required: false
+    multivalued: true    
 
   designating_laboratories:
     description: >-
