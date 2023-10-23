@@ -537,11 +537,12 @@ slots:
   strand:
     description: >-
       The strand of a DNA reference object to which an entity maps.
+    notes: >-
+      1 indicates forward strand; -1 indicates reverse strand;
+      0 indicates unstranded.
     range:
       any_of:
-        - equals_string: '+'
-        - equals_string: '-'
-        - equals_string: '.'
+        - equals_number: -1..1
 
   has_assembly:
     domain: ChromosomeAssembly
