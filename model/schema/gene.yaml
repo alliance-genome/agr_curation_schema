@@ -201,7 +201,7 @@ classes:
       subject:
         range: Gene
       object:
-        range: ChromosomeAssembly
+        range: AssemblyComponent
       evidence:
         notes: List all references that support a given location association.
       start:

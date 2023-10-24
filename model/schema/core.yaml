@@ -356,7 +356,7 @@ classes:
       - prefix_order
 
   Chromosome:
-    is_a: GenomicEntity
+    is_a: AuditedObject
     description: >-
       A structure composed of a single DNA molecule and associated proteins
       that carries here heriditary information from cell to cell. In the context
@@ -370,30 +370,36 @@ classes:
     exact_mappings:
       - SO:0000340
       - GO:0005694
+    slots:
+      - name
+      - taxon
+      - data_provider
 
-  ChromosomeAssembly:
+  AssemblyComponent:
     is_a: GenomicEntity
     description: >-
-      A pseudo-molecule assembled from smaller sequences, representing most or
-      all of a chromosome's DNA sequence. In the context of this model, this
-      entity is used as a landmark to establish a coordinate system for the
+      A scaffold component of a genome assembly, including chromosomal
+      pseudo-molecule sequences, unplaced/unlocalized scaffolds and contigs,
+      and organelle genomes.
+    notes: >-
+      In the context of this model, this entity is used as a landmark for the
       location of other genomic entities.
     slots:
       - display_name
-      - has_assembly
+      - genome_assembly
     slot_usage:
       curie:
         required: true
     defining_slots:
       - display_name
-      - has_assembly
+      - genome_assembly
       - maps_to_chromosome
 
   GenomeAssembly:
     is_a: BiologicalEntity
     description: >-
       A set of chromosome assemblies, scaffolds and contigs that represent an
-      organism's genome sequence.
+      organism's haploid genome sequence.
 
   LocationAssociation:
     abstract: true
@@ -538,10 +544,22 @@ slots:
       The strand of a DNA reference object to which an entity maps.
     range: strand_enum
 
-  has_assembly:
-    domain: ChromosomeAssembly
+  genome_assembly:
+    description: >-
+      The GenomeAssembly to which a AssemblyComponent belongs.
+    domain: AssemblyComponent
     range: GenomeAssembly
     required: true
+    multivalued: false
+
+  maps_to_chromosome:
+    description: >-
+      The chromosome(s) to which a chromosome assembly or unlocalized
+      scaffold or contig maps.
+    domain: AssemblyComponent
+    range: Chromosome
+    required: false
+    multivalued: true
 
   prefix:
     required: true

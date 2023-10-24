@@ -138,7 +138,7 @@ classes:
       object:
         description: >-
           The location reference object should be a chromsome assembly curie.
-        range: ChromosomeAssembly
+        range: AssemblyComponent
         required: true
 
   VariantTranscriptLocationAssociation:
