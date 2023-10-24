@@ -25,6 +25,7 @@ imports:
   - ontologyTerm
   - controlledVocabulary
   - resourceDescriptor
+  - affectedGenomicModel
 
 prefixes:
   alliance: 'http://alliancegenome.org/'
@@ -364,9 +365,10 @@ classes:
       mapping of genes, alleles and chromosomal aberrations; this entity ties
       together related chromosome sequences from different genome assemblies.
     notes: >-
-      I'm trying to distinguish the idealized biological entity from a species'
-      genome from a chromosome sequence assembly that is specific to a given
-      genome assembly version.
+      The generic, idealized biological entity from a species' genome, as
+      distinct from a chromosome pseudo-molecule sequence assembly that is
+      specific to a given genome assembly version.
+      We may want to add a strain slot at some point.
     exact_mappings:
       - SO:0000340
       - GO:0005694
@@ -374,6 +376,9 @@ classes:
       - name
       - taxon
       - data_provider
+    defining_slots:
+      - name
+      - taxon
 
   AssemblyComponent:
     is_a: GenomicEntity
@@ -398,8 +403,16 @@ classes:
   GenomeAssembly:
     is_a: BiologicalEntity
     description: >-
-      A set of chromosome assemblies, scaffolds and contigs that represent an
-      organism's haploid genome sequence.
+      A set of chromosome assemblies, scaffolds and contigs that represent the
+      haploid genome sequence of a species or strain.
+    notes: >-
+      These should typically have an NCBI curie.
+    slots:
+      - specimen_genomic_model
+    slot_usage:
+      specimen_genomic_model:
+        description: >-
+          The strain or genotype of origin for the genome sequence.
 
   LocationAssociation:
     abstract: true
@@ -1052,6 +1065,12 @@ slots:
       Name of VocabularyTerm representing relation of an Association
     required: true
     range: string
+
+  specimen_genomic_model:
+    description: >-
+      The AffectedGenomicModel of the specimen.
+    range: AffectedGenomicModel
+    multivalued: false
 
 ## ----------
 ## PREDICATES

@@ -595,4 +595,6 @@ slots:
   genetic_map_position_radiation:
     description: >-
       Radiation hybrid map predicted chromosome location: e.g., 66.5 cR.
+    notes: >-
+      This type of data still needs to be modeled.
     range: float

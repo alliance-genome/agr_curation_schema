@@ -51,47 +51,18 @@ classes:
       - variant_type
       - related_notes
       - source_general_consequence
-      - variant_genomic_locations # assembly identifies a genome location, so a variant on many assemblies can have many genome locations.
-      - variant_polypeptide_locations
-      - variant_transcript_locations
+      - curated_variant_genomic_locations
+      - curated_variant_transcript_locations
+      - curated_variant_polypeptide_locations
       - source_variant_genomic_locations
       - source_variant_transcript_locations
       - source_variant_polypeptide_locations
       - variant_status
+      - references
     exact_mappings:
       - SO:0001059
     notes: >-
       a variant must have a genome location, or must be private/incomplete
-
-  SourceVariantGenomicLocationAssociation:
-    is_a: VariantGenomicLocationAssociation
-    description: >-
-      Links a paper to the variant genomic location described in that paper
-    slots:
-      - single_reference
-    slot_usage:
-      single_reference:
-        required: true
-
-  SourceVariantTranscriptLocationAssociation:
-    is_a: VariantTranscriptLocationAssociation
-    description: >-
-      Links a paper to the variant transcript location described in that paper
-    slots:
-      - single_reference
-    slot_usage:
-      single_reference:
-        required: true
-
-  SourceVariantPolypeptideLocationAssociation:
-    is_a: VariantPolypeptideLocationAssociation
-    description: >-
-      Links a paper to the variant polypeptide location described in that paper
-    slots:
-      - single_reference
-    slot_usage:
-      single_reference:
-        required: true
 
   VariantLocationAssociation:
     is_a: LocationAssociation
@@ -114,10 +85,6 @@ classes:
     slot_usage:
       subject:
         range: Variant
-      start:
-        required: true
-      end:
-        required: true
 
   VariantGenomicLocationAssociation:
     is_a: VariantLocationAssociation
@@ -172,6 +139,66 @@ classes:
         range: Protein
         required: true
 
+  CuratedVariantGenomicLocationAssociation:
+    is_a: VariantGenomicLocationAssociation
+    slot_usage:
+      start:
+        required: true
+      end:
+        required: true
+      hgvs:
+        required: true
+
+  CuratedVariantTranscriptLocationAssociation:
+    is_a: VariantTranscriptLocationAssociation
+    slot_usage:
+      start:
+        required: true
+      end:
+        required: true
+      hgvs:
+        required: true
+
+  CuratedVariantPolypeptideLocationAssociation:
+    is_a: VariantPolypeptideLocationAssociation
+    slot_usage:
+      start:
+        required: true
+      end:
+        required: true
+      hgvs:
+        required: true
+
+  SourceVariantGenomicLocationAssociation:
+    is_a: VariantGenomicLocationAssociation
+    description: >-
+      Links a paper to the variant genomic location described in that paper
+    slots:
+      - single_reference
+    slot_usage:
+      single_reference:
+        required: true
+
+  SourceVariantTranscriptLocationAssociation:
+    is_a: VariantTranscriptLocationAssociation
+    description: >-
+      Links a paper to the variant transcript location described in that paper
+    slots:
+      - single_reference
+    slot_usage:
+      single_reference:
+        required: true
+
+  SourceVariantPolypeptideLocationAssociation:
+    is_a: VariantPolypeptideLocationAssociation
+    description: >-
+      Links a paper to the variant polypeptide location described in that paper
+    slots:
+      - single_reference
+    slot_usage:
+      single_reference:
+        required: true
+
 # Slots
 
 slots:
@@ -219,6 +246,8 @@ slots:
 
   padded_base:
     description: >-
+      A base preceeded an insertion or deletion event that is reported when
+      either the reference or variant sequence would otherwise be empty. 
     range: string
     multivalued: false
     examples:
@@ -228,6 +257,10 @@ slots:
     description: >-
       The strand on which the variant is located.  This is the strand of the reference sequence, not the variant
       sequence.
+    notes: >-
+      QUESTION: I thought that the agreed upon convention was to report the
+      reference sequence relative to the + strand of the scaffold, making
+      this redundant and potentially confusing. (Gil)
     range: string
     multivalued: false
     required: false
@@ -312,13 +345,18 @@ slots:
       least one specific genome assembly, transcript and/or polypeptide, no slot for curated general consequence
       is provided.
     required: false
-    multivalued: false
+    multivalued: true
     domain: Variant
     range: SOTerm
 
   sequence_of_reference_accession_number:
     description: >-
-      The accession number that describes the assembly and chromosome of the reference sequence.
+      The accession number that describes the assembly and assembly component
+      (chromosome or scaffold) of the reference sequence.
+    notes: >-
+      With redefined Location Associations to AssemblyComponent, Transcript or
+      Protein, is this redundant?
+    required: false
     multivalued: false
     domain: VariantLocationAssociation
     range: string
@@ -353,7 +391,7 @@ slots:
     domain: Variant
     range: VariantLocationAssociation
 
-  variant_genomic_locations:
+  curated_variant_genomic_locations:
     is_a: variant_locations
     description: >-
       Location of the variant in a genomic context.  multiple variant_genome_locations represent multiple
@@ -361,25 +399,25 @@ slots:
       variant object apart from its location.
     multivalued: true
     domain: Variant
-    range: VariantGenomicLocationAssociation
+    range: CuratedVariantGenomicLocationAssociation
 
-  variant_polypeptide_locations:
-    is_a: variant_locations
-    description: >-
-      Location of the variant within polypeptide entities.
-    required: false
-    multivalued: true
-    domain: Variant
-    range: VariantPolypeptideLocationAssociation
-
-  variant_transcript_locations:
+  curated_variant_transcript_locations:
     is_a: variant_locations
     description: >-
       Location of the variant within transcript entities.
     required: false
     multivalued: true
     domain: Variant
-    range: VariantTranscriptLocationAssociation
+    range: CuratedVariantTranscriptLocationAssociation
+
+  curated_variant_polypeptide_locations:
+    is_a: variant_locations
+    description: >-
+      Location of the variant within polypeptide entities.
+    required: false
+    multivalued: true
+    domain: Variant
+    range: CuratedVariantPolypeptideLocationAssociation
 
   source_variant_genomic_locations:
     description: >-
@@ -389,14 +427,6 @@ slots:
     domain: Variant
     range: SourceVariantGenomicLocationAssociation
 
-  source_variant_polypeptide_locations:
-    description: >-
-      Location of the variant within polypeptide entities as desribed by the source reference.
-    required: false
-    multivalued: true
-    domain: Variant
-    range: SourceVariantPolypeptideLocationAssociation
-
   source_variant_transcript_locations:
     description: >-
       Location of the variant within transcript entities as desribed by the source reference.
@@ -405,12 +435,21 @@ slots:
     domain: Variant
     range: SourceVariantTranscriptLocationAssociation
 
+  source_variant_polypeptide_locations:
+    description: >-
+      Location of the variant within polypeptide entities as desribed by the source reference.
+    required: false
+    multivalued: true
+    domain: Variant
+    range: SourceVariantPolypeptideLocationAssociation
+
   hgvs:
     description: >-
       HGVS nomenclature for variant located on a genomic entity. In practice HGVS nomenclature will be derived
       for any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and 
       VariantPolypeptideLocationAssociation.
-    required: true
+    multivalued: false
+    required: false
     domain: VariantLocationAssociation
     range: string
 
