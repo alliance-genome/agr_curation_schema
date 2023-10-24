@@ -8159,6 +8159,140 @@
             "title": "CuratedVariantGenomicLocationAssociation",
             "type": "object"
         },
+        "CuratedVariantGenomicLocationAssociationDTO": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "chromosome_curie": {
+                    "description": "The NCBI chromosome accession number for the chromosome.",
+                    "type": "string"
+                },
+                "consequence_curie": {
+                    "description": "Curie of SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
+                    "type": "string"
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "curated_consequence_curie": {
+                    "description": "Curie of SOTerm that describes the consequence of the variant, as determined by the curator. In practice curated consequence will be associated with locations at any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "deleted_sequence": {
+                    "description": "The sequence of DNA base pairs removed from the reference sequence by the variant.",
+                    "type": "string"
+                },
+                "dna_mutation_type": {
+                    "description": "The type of DNA mutation, for example, insertion, deletion, substitution, or indel.",
+                    "type": "string"
+                },
+                "end": {
+                    "description": "The end of the feature in positive 1-based integer coordinates relative to the reference landmark.",
+                    "type": "integer"
+                },
+                "evidence_curies": {
+                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "gene_localization_type": {
+                    "description": "The type of gene localization, for example, intronic, intergenic, or intragenic.",
+                    "type": "string"
+                },
+                "inserted_sequence": {
+                    "description": "The sequence of DNA base pairs inserted into the reference sequence by the variant.",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "number_additional_dna_base_pairs": {
+                    "description": "The number of additional DNA base pairs inserted into the reference sequence by the variant.",
+                    "type": "integer"
+                },
+                "number_removed_dna_base_pairs": {
+                    "description": "The number of DNA base pairs removed from the reference sequence by the variant.   sequence.",
+                    "type": "integer"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "padded_base": {
+                    "description": "A base preceeded an insertion or deletion event that is reported when either the reference or variant sequence would otherwise be empty. ",
+                    "type": "string"
+                },
+                "reference_sequence": {
+                    "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
+                    "type": "string"
+                },
+                "relation_name": {
+                    "anyOf": [
+                        {
+                            "const": "has_location"
+                        }
+                    ],
+                    "description": "Name of VocabularyTerm representing relation of an Association",
+                    "type": "string"
+                },
+                "sequence_of_reference_accession_number": {
+                    "description": "The accession number that describes the assembly and assembly component (chromosome or scaffold) of the reference sequence.",
+                    "type": "string"
+                },
+                "start": {
+                    "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
+                    "type": "integer"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                },
+                "variant_curie": {
+                    "type": "string"
+                },
+                "variant_sequence": {
+                    "description": "Sequence that differs from the reference sequence of genome or genomic entity at position of variant, as specified by curator.",
+                    "type": "string"
+                },
+                "variation_strand": {
+                    "description": "The strand on which the variant is located.  This is the strand of the reference sequence, not the variant sequence.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "chromosome_curie",
+                "relation_name",
+                "start",
+                "end",
+                "internal"
+            ],
+            "title": "CuratedVariantGenomicLocationAssociationDTO",
+            "type": "object"
+        },
         "CuratedVariantPolypeptideLocationAssociation": {
             "additionalProperties": false,
             "description": "",
@@ -8283,6 +8417,122 @@
             "title": "CuratedVariantPolypeptideLocationAssociation",
             "type": "object"
         },
+        "CuratedVariantPolypeptideLocationAssociationDTO": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "associated_transcript_curies": {
+                    "description": "Curies of transcript(s) associated with polypeptide to which variant is aligned.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "consequence_curie": {
+                    "description": "Curie of SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
+                    "type": "string"
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "curated_consequence_curie": {
+                    "description": "Curie of SOTerm that describes the consequence of the variant, as determined by the curator. In practice curated consequence will be associated with locations at any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "end": {
+                    "description": "The end of the feature in positive 1-based integer coordinates relative to the reference landmark.",
+                    "type": "integer"
+                },
+                "evidence_curies": {
+                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "number_amino_acids_inserted": {
+                    "description": "The number of amino acids added from the polypeptide as a result of the variant.",
+                    "type": "integer"
+                },
+                "number_amino_acids_removed": {
+                    "description": "The number of amino acids removed from the polypeptide as a result of the variant.",
+                    "type": "integer"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "protein_curie": {
+                    "type": "string"
+                },
+                "reference_sequence": {
+                    "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
+                    "type": "string"
+                },
+                "relation_name": {
+                    "anyOf": [
+                        {
+                            "const": "has_location"
+                        }
+                    ],
+                    "description": "Name of VocabularyTerm representing relation of an Association",
+                    "type": "string"
+                },
+                "sequence_of_reference_accession_number": {
+                    "description": "The accession number that describes the assembly and assembly component (chromosome or scaffold) of the reference sequence.",
+                    "type": "string"
+                },
+                "start": {
+                    "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
+                    "type": "integer"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                },
+                "variant_curie": {
+                    "type": "string"
+                },
+                "variant_sequence": {
+                    "description": "Sequence that differs from the reference sequence of genome or genomic entity at position of variant, as specified by curator.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "protein_curie",
+                "relation_name",
+                "start",
+                "end",
+                "internal"
+            ],
+            "title": "CuratedVariantPolypeptideLocationAssociationDTO",
+            "type": "object"
+        },
         "CuratedVariantTranscriptLocationAssociation": {
             "additionalProperties": false,
             "description": "",
@@ -8398,6 +8648,115 @@
                 "internal"
             ],
             "title": "CuratedVariantTranscriptLocationAssociation",
+            "type": "object"
+        },
+        "CuratedVariantTranscriptLocationAssociationDTO": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "consequence_curie": {
+                    "description": "Curie of SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
+                    "type": "string"
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "curated_consequence_curie": {
+                    "description": "Curie of SOTerm that describes the consequence of the variant, as determined by the curator. In practice curated consequence will be associated with locations at any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "end": {
+                    "description": "The end of the feature in positive 1-based integer coordinates relative to the reference landmark.",
+                    "type": "integer"
+                },
+                "evidence_curies": {
+                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "exon_number": {
+                    "description": "The exon number of the variant location.  If the variant is in an intron, this slot is not populated. Primarily used for zebrafish.",
+                    "type": "integer"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "intron_number": {
+                    "description": "The intron number of the variant location.  If the variant is in an exon, this slot is not populated. Primarily used for zebrafish.",
+                    "type": "integer"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "reference_sequence": {
+                    "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
+                    "type": "string"
+                },
+                "relation_name": {
+                    "anyOf": [
+                        {
+                            "const": "has_location"
+                        }
+                    ],
+                    "description": "Name of VocabularyTerm representing relation of an Association",
+                    "type": "string"
+                },
+                "sequence_of_reference_accession_number": {
+                    "description": "The accession number that describes the assembly and assembly component (chromosome or scaffold) of the reference sequence.",
+                    "type": "string"
+                },
+                "start": {
+                    "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
+                    "type": "integer"
+                },
+                "transcript_curie": {
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                },
+                "variant_curie": {
+                    "type": "string"
+                },
+                "variant_sequence": {
+                    "description": "Sequence that differs from the reference sequence of genome or genomic entity at position of variant, as specified by curator.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "transcript_curie",
+                "relation_name",
+                "start",
+                "end",
+                "internal"
+            ],
+            "title": "CuratedVariantTranscriptLocationAssociationDTO",
             "type": "object"
         },
         "CurationReport": {
@@ -14192,7 +14551,7 @@
                 },
                 "variant_genomic_location_association_ingest_set": {
                     "items": {
-                        "$ref": "#/$defs/VariantGenomicLocationAssociationDTO"
+                        "$ref": "#/$defs/CuratedVariantGenomicLocationAssociationDTO"
                     },
                     "type": "array"
                 },
@@ -14204,13 +14563,13 @@
                 },
                 "variant_protein_location_association_ingest_set": {
                     "items": {
-                        "$ref": "#/$defs/VariantPolypeptideLocationAssociationDTO"
+                        "$ref": "#/$defs/CuratedVariantPolypeptideLocationAssociationDTO"
                     },
                     "type": "array"
                 },
                 "variant_transcript_location_association_ingest_set": {
                     "items": {
-                        "$ref": "#/$defs/VariantTranscriptLocationAssociationDTO"
+                        "$ref": "#/$defs/CuratedVariantTranscriptLocationAssociationDTO"
                     },
                     "type": "array"
                 }
@@ -19206,8 +19565,6 @@
                 "reference_curie",
                 "chromosome_curie",
                 "relation_name",
-                "start",
-                "end",
                 "internal"
             ],
             "title": "SourceVariantGenomicLocationAssociationDTO",
@@ -19453,8 +19810,6 @@
                 "reference_curie",
                 "protein_curie",
                 "relation_name",
-                "start",
-                "end",
                 "internal"
             ],
             "title": "SourceVariantPolypeptideLocationAssociationDTO",
@@ -19686,8 +20041,6 @@
                 "reference_curie",
                 "transcript_curie",
                 "relation_name",
-                "start",
-                "end",
                 "internal"
             ],
             "title": "SourceVariantTranscriptLocationAssociationDTO",
@@ -20451,10 +20804,9 @@
                     },
                     "type": "array"
                 },
-                "source_general_consequence": {
-                    "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference when no transcript ID is provided. Since a curator would determine variant location and consequences relative to at least one specific genome assembly, transcript and/or polypeptide, no slot for curated general consequence is provided.",
+                "source_general_consequences": {
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/VariantSourceGeneralConsequenceSlotAnnotation"
                     },
                     "type": "array"
                 },
@@ -20562,9 +20914,11 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "source_general_consequence_curie": {
-                    "description": "Curie of the SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference when no transcript ID is provided. Since a curator would determine variant location and consequences relative to at least one specific genome assembly, transcript and/or polypeptide, no slot for curated general consequence is provided.",
-                    "type": "string"
+                "source_general_consequence_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/VariantSourceGeneralConsequenceSlotAnnotationDTO"
+                    },
+                    "type": "array"
                 },
                 "taxon_curie": {
                     "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
@@ -20674,20 +21028,12 @@
             "title": "VariantGeneConsequence",
             "type": "object"
         },
-        "VariantGenomicLocationAssociation": {
+        "VariantSourceGeneralConsequenceSlotAnnotation": {
             "additionalProperties": false,
-            "description": "Links a variant to a genomic position and the resulting consequence to the sequence and/or function. In practice, functional consequences for variants which overlap genes are not generally provided at the genome level but rather are calculated and annotated relative to a specific transcript or protein isoform.",
+            "description": "The consequence of the variant, as stated in the source reference when no transcript ID is provided.",
             "properties": {
-                "consequence": {
-                    "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
-                    "type": "string"
-                },
                 "created_by": {
                     "description": "The individual that created the entity.",
-                    "type": "string"
-                },
-                "curated_consequence": {
-                    "description": "SOTerm that describes the consequence of the variant, as determined by the curator. In practice curated consequence will be associated with locations at any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
                     "type": "string"
                 },
                 "date_created": {
@@ -20709,18 +21055,6 @@
                     "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                     "format": "date-time",
                     "type": "string"
-                },
-                "deleted_sequence": {
-                    "description": "The sequence of DNA base pairs removed from the reference sequence by the variant.",
-                    "type": "string"
-                },
-                "dna_mutation_type": {
-                    "description": "The type of DNA mutation, for example, insertion, deletion, substitution, or indel.",
-                    "type": "string"
-                },
-                "end": {
-                    "description": "The end of the feature in positive 1-based integer coordinates relative to the reference landmark.",
-                    "type": "integer"
                 },
                 "evidence": {
                     "description": "",
@@ -20729,109 +21063,43 @@
                     },
                     "type": "array"
                 },
-                "gene_localization_type": {
-                    "description": "The type of gene localization, for example, intronic, intergenic, or intragenic.",
-                    "type": "string"
-                },
-                "hgvs": {
-                    "description": "HGVS nomenclature for variant located on a genomic entity. In practice HGVS nomenclature will be derived for any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and  VariantPolypeptideLocationAssociation.",
-                    "type": "string"
-                },
-                "inserted_sequence": {
-                    "description": "The sequence of DNA base pairs inserted into the reference sequence by the variant.",
-                    "type": "string"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
-                },
-                "number_additional_dna_base_pairs": {
-                    "description": "The number of additional DNA base pairs inserted into the reference sequence by the variant.",
-                    "type": "integer"
-                },
-                "number_removed_dna_base_pairs": {
-                    "description": "The number of DNA base pairs removed from the reference sequence by the variant.   sequence.",
-                    "type": "integer"
-                },
-                "object": {
-                    "description": "The location reference object should be a chromsome assembly curie.",
-                    "type": "string"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "padded_base": {
-                    "description": "A base preceeded an insertion or deletion event that is reported when either the reference or variant sequence would otherwise be empty. ",
-                    "type": "string"
-                },
-                "reference_sequence": {
-                    "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
-                    "type": "string"
-                },
-                "relation": {
-                    "anyOf": [
-                        {
-                            "const": "has_location"
-                        }
-                    ],
-                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
-                    "type": "string"
-                },
-                "sequence_of_reference_accession_number": {
-                    "description": "The accession number that describes the assembly and assembly component (chromosome or scaffold) of the reference sequence.",
-                    "type": "string"
-                },
-                "start": {
-                    "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
-                    "type": "integer"
-                },
-                "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+                "single_variant": {
+                    "description": "The variant that is the subject of a SlotAnnotation.",
                     "type": "string"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": "string"
                 },
-                "variant_sequence": {
-                    "description": "Sequence that differs from the reference sequence of genome or genomic entity at position of variant, as specified by curator.",
-                    "type": "string"
-                },
-                "variation_strand": {
-                    "description": "The strand on which the variant is located.  This is the strand of the reference sequence, not the variant sequence.",
+                "variant_source_general_consequence": {
+                    "description": "The general consequence of the variant on the transcript.",
                     "type": "string"
                 }
             },
             "required": [
-                "subject",
-                "relation",
-                "object",
+                "single_variant",
+                "variant_source_general_consequence",
                 "internal"
             ],
-            "title": "VariantGenomicLocationAssociation",
+            "title": "VariantSourceGeneralConsequenceSlotAnnotation",
             "type": "object"
         },
-        "VariantGenomicLocationAssociationDTO": {
+        "VariantSourceGeneralConsequenceSlotAnnotationDTO": {
             "additionalProperties": false,
-            "description": "",
+            "description": "The consequence of the variant, as stated in the source reference when no transcript ID is provided.",
             "properties": {
-                "chromosome_curie": {
-                    "description": "The NCBI chromosome accession number for the chromosome.",
-                    "type": "string"
-                },
-                "consequence_curie": {
-                    "description": "Curie of SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
-                    "type": "string"
-                },
                 "created_by_curie": {
                     "description": "Curie of the Person object representing the individual that created the entity",
                     "type": "string"
                 },
-                "curated_consequence_curie": {
-                    "description": "Curie of SOTerm that describes the consequence of the variant, as determined by the curator. In practice curated consequence will be associated with locations at any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
-                    "type": "string"
-                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -20851,268 +21119,6 @@
                     "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
                     "format": "date-time",
                     "type": "string"
-                },
-                "deleted_sequence": {
-                    "description": "The sequence of DNA base pairs removed from the reference sequence by the variant.",
-                    "type": "string"
-                },
-                "dna_mutation_type": {
-                    "description": "The type of DNA mutation, for example, insertion, deletion, substitution, or indel.",
-                    "type": "string"
-                },
-                "end": {
-                    "description": "The end of the feature in positive 1-based integer coordinates relative to the reference landmark.",
-                    "type": "integer"
-                },
-                "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "gene_localization_type": {
-                    "description": "The type of gene localization, for example, intronic, intergenic, or intragenic.",
-                    "type": "string"
-                },
-                "inserted_sequence": {
-                    "description": "The sequence of DNA base pairs inserted into the reference sequence by the variant.",
-                    "type": "string"
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "number_additional_dna_base_pairs": {
-                    "description": "The number of additional DNA base pairs inserted into the reference sequence by the variant.",
-                    "type": "integer"
-                },
-                "number_removed_dna_base_pairs": {
-                    "description": "The number of DNA base pairs removed from the reference sequence by the variant.   sequence.",
-                    "type": "integer"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": "boolean"
-                },
-                "padded_base": {
-                    "description": "A base preceeded an insertion or deletion event that is reported when either the reference or variant sequence would otherwise be empty. ",
-                    "type": "string"
-                },
-                "reference_sequence": {
-                    "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
-                    "type": "string"
-                },
-                "relation_name": {
-                    "anyOf": [
-                        {
-                            "const": "has_location"
-                        }
-                    ],
-                    "description": "Name of VocabularyTerm representing relation of an Association",
-                    "type": "string"
-                },
-                "sequence_of_reference_accession_number": {
-                    "description": "The accession number that describes the assembly and assembly component (chromosome or scaffold) of the reference sequence.",
-                    "type": "string"
-                },
-                "start": {
-                    "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
-                    "type": "integer"
-                },
-                "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
-                    "type": "string"
-                },
-                "variant_curie": {
-                    "type": "string"
-                },
-                "variant_sequence": {
-                    "description": "Sequence that differs from the reference sequence of genome or genomic entity at position of variant, as specified by curator.",
-                    "type": "string"
-                },
-                "variation_strand": {
-                    "description": "The strand on which the variant is located.  This is the strand of the reference sequence, not the variant sequence.",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "chromosome_curie",
-                "relation_name",
-                "start",
-                "end",
-                "internal"
-            ],
-            "title": "VariantGenomicLocationAssociationDTO",
-            "type": "object"
-        },
-        "VariantPolypeptideLocationAssociation": {
-            "additionalProperties": false,
-            "description": "Links a variant to a position on a specified polypeptide and the resulting consequence to the sequence and/or function of that polypeptide.",
-            "properties": {
-                "associated_transcripts": {
-                    "description": "Transcript(s) associated with polypeptide to which variant is aligned.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "consequence": {
-                    "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
-                    "type": "string"
-                },
-                "created_by": {
-                    "description": "The individual that created the entity.",
-                    "type": "string"
-                },
-                "curated_consequence": {
-                    "description": "SOTerm that describes the consequence of the variant, as determined by the curator. In practice curated consequence will be associated with locations at any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
-                    "type": "string"
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "end": {
-                    "description": "The end of the feature in positive 1-based integer coordinates relative to the reference landmark.",
-                    "type": "integer"
-                },
-                "evidence": {
-                    "description": "",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "hgvs": {
-                    "description": "HGVS nomenclature for variant located on a genomic entity. In practice HGVS nomenclature will be derived for any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and  VariantPolypeptideLocationAssociation.",
-                    "type": "string"
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "number_amino_acids_inserted": {
-                    "description": "The number of amino acids added from the polypeptide as a result of the variant.",
-                    "type": "integer"
-                },
-                "number_amino_acids_removed": {
-                    "description": "The number of amino acids removed from the polypeptide as a result of the variant.",
-                    "type": "integer"
-                },
-                "object": {
-                    "description": "object should be the protein identifier",
-                    "type": "string"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": "boolean"
-                },
-                "reference_sequence": {
-                    "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
-                    "type": "string"
-                },
-                "relation": {
-                    "anyOf": [
-                        {
-                            "const": "has_location"
-                        }
-                    ],
-                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
-                    "type": "string"
-                },
-                "sequence_of_reference_accession_number": {
-                    "description": "The accession number that describes the assembly and assembly component (chromosome or scaffold) of the reference sequence.",
-                    "type": "string"
-                },
-                "start": {
-                    "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
-                    "type": "integer"
-                },
-                "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
-                },
-                "updated_by": {
-                    "description": "The individual that last modified the entity.",
-                    "type": "string"
-                },
-                "variant_sequence": {
-                    "description": "Sequence that differs from the reference sequence of genome or genomic entity at position of variant, as specified by curator.",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "subject",
-                "relation",
-                "object",
-                "internal"
-            ],
-            "title": "VariantPolypeptideLocationAssociation",
-            "type": "object"
-        },
-        "VariantPolypeptideLocationAssociationDTO": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "associated_transcript_curies": {
-                    "description": "Curies of transcript(s) associated with polypeptide to which variant is aligned.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "consequence_curie": {
-                    "description": "Curie of SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
-                    "type": "string"
-                },
-                "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
-                    "type": "string"
-                },
-                "curated_consequence_curie": {
-                    "description": "Curie of SOTerm that describes the consequence of the variant, as determined by the curator. In practice curated consequence will be associated with locations at any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
-                    "type": "string"
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "end": {
-                    "description": "The end of the feature in positive 1-based integer coordinates relative to the reference landmark.",
-                    "type": "integer"
                 },
                 "evidence_curies": {
                     "description": "Curies of InformationContentEntity objects given as evidence",
@@ -21125,62 +21131,24 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "number_amino_acids_inserted": {
-                    "description": "The number of amino acids added from the polypeptide as a result of the variant.",
-                    "type": "integer"
-                },
-                "number_amino_acids_removed": {
-                    "description": "The number of amino acids removed from the polypeptide as a result of the variant.",
-                    "type": "integer"
-                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "protein_curie": {
+                "source_general_consequence_curie": {
+                    "description": "Curie of the SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference when no transcript ID is provided. Since a curator would determine variant location and consequences relative to at least one specific genome assembly, transcript and/or polypeptide, no slot for curated general consequence is provided.",
                     "type": "string"
-                },
-                "reference_sequence": {
-                    "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
-                    "type": "string"
-                },
-                "relation_name": {
-                    "anyOf": [
-                        {
-                            "const": "has_location"
-                        }
-                    ],
-                    "description": "Name of VocabularyTerm representing relation of an Association",
-                    "type": "string"
-                },
-                "sequence_of_reference_accession_number": {
-                    "description": "The accession number that describes the assembly and assembly component (chromosome or scaffold) of the reference sequence.",
-                    "type": "string"
-                },
-                "start": {
-                    "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
-                    "type": "integer"
                 },
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
                     "type": "string"
-                },
-                "variant_curie": {
-                    "type": "string"
-                },
-                "variant_sequence": {
-                    "description": "Sequence that differs from the reference sequence of genome or genomic entity at position of variant, as specified by curator.",
-                    "type": "string"
                 }
             },
             "required": [
-                "protein_curie",
-                "relation_name",
-                "start",
-                "end",
+                "source_general_consequence_curie",
                 "internal"
             ],
-            "title": "VariantPolypeptideLocationAssociationDTO",
+            "title": "VariantSourceGeneralConsequenceSlotAnnotationDTO",
             "type": "object"
         },
         "VariantTranscriptConsequence": {
@@ -21310,229 +21278,6 @@
                 "internal"
             ],
             "title": "VariantTranscriptConsequence",
-            "type": "object"
-        },
-        "VariantTranscriptLocationAssociation": {
-            "additionalProperties": false,
-            "description": "Links a variant to a position on a specified transcript and the resulting consequence to the sequence and/or function of that transcript.",
-            "properties": {
-                "consequence": {
-                    "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
-                    "type": "string"
-                },
-                "created_by": {
-                    "description": "The individual that created the entity.",
-                    "type": "string"
-                },
-                "curated_consequence": {
-                    "description": "SOTerm that describes the consequence of the variant, as determined by the curator. In practice curated consequence will be associated with locations at any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
-                    "type": "string"
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "end": {
-                    "description": "The end of the feature in positive 1-based integer coordinates relative to the reference landmark.",
-                    "type": "integer"
-                },
-                "evidence": {
-                    "description": "",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "exon_number": {
-                    "description": "The exon number of the variant location.  If the variant is in an intron, this slot is not populated. Primarily used for zebrafish.",
-                    "type": "integer"
-                },
-                "hgvs": {
-                    "description": "HGVS nomenclature for variant located on a genomic entity. In practice HGVS nomenclature will be derived for any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and  VariantPolypeptideLocationAssociation.",
-                    "type": "string"
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "intron_number": {
-                    "description": "The intron number of the variant location.  If the variant is in an exon, this slot is not populated. Primarily used for zebrafish.",
-                    "type": "integer"
-                },
-                "object": {
-                    "description": "object should be the transcript identifier",
-                    "type": "string"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": "boolean"
-                },
-                "reference_sequence": {
-                    "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
-                    "type": "string"
-                },
-                "relation": {
-                    "anyOf": [
-                        {
-                            "const": "has_location"
-                        }
-                    ],
-                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
-                    "type": "string"
-                },
-                "sequence_of_reference_accession_number": {
-                    "description": "The accession number that describes the assembly and assembly component (chromosome or scaffold) of the reference sequence.",
-                    "type": "string"
-                },
-                "start": {
-                    "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
-                    "type": "integer"
-                },
-                "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
-                },
-                "updated_by": {
-                    "description": "The individual that last modified the entity.",
-                    "type": "string"
-                },
-                "variant_sequence": {
-                    "description": "Sequence that differs from the reference sequence of genome or genomic entity at position of variant, as specified by curator.",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "subject",
-                "relation",
-                "object",
-                "internal"
-            ],
-            "title": "VariantTranscriptLocationAssociation",
-            "type": "object"
-        },
-        "VariantTranscriptLocationAssociationDTO": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "consequence_curie": {
-                    "description": "Curie of SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
-                    "type": "string"
-                },
-                "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
-                    "type": "string"
-                },
-                "curated_consequence_curie": {
-                    "description": "Curie of SOTerm that describes the consequence of the variant, as determined by the curator. In practice curated consequence will be associated with locations at any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
-                    "type": "string"
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "end": {
-                    "description": "The end of the feature in positive 1-based integer coordinates relative to the reference landmark.",
-                    "type": "integer"
-                },
-                "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "exon_number": {
-                    "description": "The exon number of the variant location.  If the variant is in an intron, this slot is not populated. Primarily used for zebrafish.",
-                    "type": "integer"
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "intron_number": {
-                    "description": "The intron number of the variant location.  If the variant is in an exon, this slot is not populated. Primarily used for zebrafish.",
-                    "type": "integer"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": "boolean"
-                },
-                "reference_sequence": {
-                    "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
-                    "type": "string"
-                },
-                "relation_name": {
-                    "anyOf": [
-                        {
-                            "const": "has_location"
-                        }
-                    ],
-                    "description": "Name of VocabularyTerm representing relation of an Association",
-                    "type": "string"
-                },
-                "sequence_of_reference_accession_number": {
-                    "description": "The accession number that describes the assembly and assembly component (chromosome or scaffold) of the reference sequence.",
-                    "type": "string"
-                },
-                "start": {
-                    "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
-                    "type": "integer"
-                },
-                "transcript_curie": {
-                    "type": "string"
-                },
-                "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
-                    "type": "string"
-                },
-                "variant_curie": {
-                    "type": "string"
-                },
-                "variant_sequence": {
-                    "description": "Sequence that differs from the reference sequence of genome or genomic entity at position of variant, as specified by curator.",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "transcript_curie",
-                "relation_name",
-                "start",
-                "end",
-                "internal"
-            ],
-            "title": "VariantTranscriptLocationAssociationDTO",
             "type": "object"
         },
         "VepConsequenceLevels": {
@@ -23452,7 +23197,7 @@
         },
         "variant_genomic_location_association_ingest_set": {
             "items": {
-                "$ref": "#/$defs/VariantGenomicLocationAssociationDTO"
+                "$ref": "#/$defs/CuratedVariantGenomicLocationAssociationDTO"
             },
             "type": "array"
         },
@@ -23464,13 +23209,13 @@
         },
         "variant_protein_location_association_ingest_set": {
             "items": {
-                "$ref": "#/$defs/VariantPolypeptideLocationAssociationDTO"
+                "$ref": "#/$defs/CuratedVariantPolypeptideLocationAssociationDTO"
             },
             "type": "array"
         },
         "variant_transcript_location_association_ingest_set": {
             "items": {
-                "$ref": "#/$defs/VariantTranscriptLocationAssociationDTO"
+                "$ref": "#/$defs/CuratedVariantTranscriptLocationAssociationDTO"
             },
             "type": "array"
         }

@@ -153,21 +153,21 @@ slots:
 
   variant_genomic_location_association_ingest_set:
     domain: Ingest
-    range: VariantGenomicLocationAssociationDTO
+    range: CuratedVariantGenomicLocationAssociationDTO
     multivalued: true
     mixins:
       - object_set
 
   variant_transcript_location_association_ingest_set:
     domain: Ingest
-    range: VariantTranscriptLocationAssociationDTO
+    range: CuratedVariantTranscriptLocationAssociationDTO
     multivalued: true
     mixins:
       - object_set
 
   variant_protein_location_association_ingest_set:
     domain: Ingest
-    range: VariantPolypeptideLocationAssociationDTO
+    range: CuratedVariantPolypeptideLocationAssociationDTO
     multivalued: true
     mixins:
       - object_set

@@ -50,7 +50,7 @@ classes:
     slots:
       - variant_type
       - related_notes
-      - source_general_consequence
+      - source_general_consequences
       - curated_variant_genomic_locations
       - curated_variant_transcript_locations
       - curated_variant_polypeptide_locations
@@ -88,6 +88,7 @@ classes:
 
   VariantGenomicLocationAssociation:
     is_a: VariantLocationAssociation
+    abstract: true
     description: >-
       Links a variant to a genomic position and the resulting consequence to the sequence and/or function.
       In practice, functional consequences for variants which overlap genes are not generally provided at the
@@ -110,6 +111,7 @@ classes:
 
   VariantTranscriptLocationAssociation:
     is_a: VariantLocationAssociation
+    abstract: true
     description: >-
       Links a variant to a position on a specified transcript and the resulting consequence to the sequence and/or
       function of that transcript.
@@ -125,6 +127,7 @@ classes:
 
   VariantPolypeptideLocationAssociation:
     is_a: VariantLocationAssociation
+    abstract: true
     description: >-
       Links a variant to a position on a specified polypeptide and the resulting consequence to the sequence and/or
       function of that polypeptide.
@@ -198,6 +201,20 @@ classes:
     slot_usage:
       single_reference:
         required: true
+
+  VariantSourceGeneralConsequenceSlotAnnotation:
+    aliases: ["transcript_consequence"]
+    is_a: SlotAnnotation
+    description: >-
+      The consequence of the variant, as stated in the source reference when no
+      transcript ID is provided.
+    notes: >-
+      Since a curator would determine variant location and consequences relative
+      to at least one specific genome assembly, transcript and/or polypeptide,
+      no slot for curated general consequence is provided.
+    slots:
+      - single_variant
+      - variant_source_general_consequence
 
 # Slots
 
@@ -336,18 +353,22 @@ slots:
     domain: Variant
     range: SOTerm
 
-  source_general_consequence:
-    aliases: ["transcript_consequence"]
-    description: >-
-      SOTerm (child of SO:0001576 - transcript_variant) that describes the
-      consequence of the variant, as stated in the source reference when no
-      transcript ID is provided. Since a curator would determine variant location and consequences relative to at
-      least one specific genome assembly, transcript and/or polypeptide, no slot for curated general consequence
-      is provided.
+  source_general_consequences:
+    aliases: ["transcript_consequences"]
     required: false
     multivalued: true
     domain: Variant
+    range: VariantSourceGeneralConsequenceSlotAnnotation
+
+  variant_source_general_consequence:
+    description: >-
+      The general consequence of the variant on the transcript.
+    notes: >-
+      The SOTerm should be a child of SO:0001576 - transcript_variant.
+    domain: VariantSourceGeneralConsequenceSlotAnnotation
     range: SOTerm
+    required: true
+    multivalued: false
 
   sequence_of_reference_accession_number:
     description: >-
@@ -463,6 +484,13 @@ slots:
     required: false
     domain: VariantLocationAssociation
     range: biological_sequence
+
+  single_variant:
+    description: >-
+      The variant that is the subject of a SlotAnnotation.
+    range: Variant
+    multivalued: false
+    required: true
 
   variant_sequence:
     description: >-
