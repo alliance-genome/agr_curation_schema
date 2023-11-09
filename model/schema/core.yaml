@@ -360,7 +360,7 @@ classes:
     is_a: AuditedObject
     description: >-
       A structure composed of a single DNA molecule and associated proteins
-      that carries here heriditary information from cell to cell. In the context
+      that carries here hereditary information from cell to cell. In the context
       of this model, it is used as a landmark for cytogenetic and genetic
       mapping of genes, alleles and chromosomal aberrations; this entity ties
       together related chromosome sequences from different genome assemblies.
@@ -572,7 +572,7 @@ slots:
     domain: AssemblyComponent
     range: Chromosome
     required: false
-    multivalued: true
+    multivalued: false
 
   prefix:
     required: true

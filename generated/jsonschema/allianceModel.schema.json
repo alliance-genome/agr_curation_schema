@@ -1444,8 +1444,8 @@
                     "type": "string"
                 },
                 "transgene_chromosome_location": {
-                    "description": "The chromosome to which a transgene has been mapped. Used for WormBase transgenes that have been integrated into the genome and mapped to a chromosome.",
-                    "type": "string"
+                    "$ref": "#/$defs/Chromosome",
+                    "description": "The chromosome to which a transgene has been mapped. Used for WormBase transgenes that have been integrated into the genome and mapped to a chromosome."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -6876,7 +6876,7 @@
         },
         "Chromosome": {
             "additionalProperties": false,
-            "description": "A structure composed of a single DNA molecule and associated proteins that carries here heriditary information from cell to cell. In the context of this model, it is used as a landmark for cytogenetic and genetic mapping of genes, alleles and chromosomal aberrations; this entity ties together related chromosome sequences from different genome assemblies.",
+            "description": "A structure composed of a single DNA molecule and associated proteins that carries here hereditary information from cell to cell. In the context of this model, it is used as a landmark for cytogenetic and genetic mapping of genes, alleles and chromosomal aberrations; this entity ties together related chromosome sequences from different genome assemblies.",
             "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
