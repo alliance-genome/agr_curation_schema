@@ -111,6 +111,10 @@ classes:
       - consequence
       - curated_consequence
       - sequence_of_reference_accession_number # Should this point to a chromosome object instead of a string? Will this be redundant with genomic location association of the subject?
+    slot_usage:
+      assembly:
+        description: Assembly to which variant is aligned.
+        required: false
 
   VariantGenomicLocationAssociation:
     is_a: VariantLocationAssociation
@@ -128,7 +132,7 @@ classes:
       - dna_mutation_type
       - gene_localization_type
     slot_usage:
-      has_assembly:
+      assembly:
         required: true
       subject:
         required: true
@@ -412,13 +416,6 @@ slots:
 
   # May want to remove domain of following 8 slots and move them to core
   # so that they can be used for alignment of other genomic entities
-  assembly:
-    description: >-
-      Assembly to which variant is aligned.
-    multivalued: false
-    required: false
-    domain: VariantLocationAssociation
-    range: Assembly
 
   chromosome:
     description: >-

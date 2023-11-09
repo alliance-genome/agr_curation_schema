@@ -13590,6 +13590,12 @@
                     },
                     "type": "array"
                 },
+                "species_ingest_set": {
+                    "items": {
+                        "$ref": "#/$defs/SpeciesDTO"
+                    },
+                    "type": "array"
+                },
                 "sqtr_ingest_set": {
                     "items": {
                         "$ref": "#/$defs/SequenceTargetingReagentDTO"
@@ -18353,6 +18359,10 @@
             "additionalProperties": false,
             "description": "Links a paper to the variant genomic location described in that paper",
             "properties": {
+                "assembly": {
+                    "description": "Assembly to which variant is aligned.",
+                    "type": "string"
+                },
                 "consequence": {
                     "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
                     "type": "string"
@@ -18406,9 +18416,6 @@
                 },
                 "gene_localization_type": {
                     "description": "The type of gene localization, for example, intronic, intergenic, or intragenic.",
-                    "type": "string"
-                },
-                "has_assembly": {
                     "type": "string"
                 },
                 "hgvs": {
@@ -18488,7 +18495,7 @@
             "required": [
                 "single_reference",
                 "hgvs",
-                "has_assembly",
+                "assembly",
                 "subject",
                 "relation",
                 "object",
@@ -18644,6 +18651,10 @@
             "additionalProperties": false,
             "description": "Links a paper to the variant polypeptide location described in that paper",
             "properties": {
+                "assembly": {
+                    "description": "Assembly to which variant is aligned.",
+                    "type": "string"
+                },
                 "associated_transcripts": {
                     "description": "Transcript(s) associated with polypeptide to which variant is aligned.",
                     "items": {
@@ -18693,9 +18704,6 @@
                         "type": "string"
                     },
                     "type": "array"
-                },
-                "has_assembly": {
-                    "type": "string"
                 },
                 "hgvs": {
                     "description": "HGVS nomenclature for variant located on a genomic entity. In practice HGVS nomenclature will be derived for any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and  VariantPolypeptideLocationAssociation.",
@@ -18899,6 +18907,10 @@
             "additionalProperties": false,
             "description": "Links a paper to the variant transcript location described in that paper",
             "properties": {
+                "assembly": {
+                    "description": "Assembly to which variant is aligned.",
+                    "type": "string"
+                },
                 "consequence": {
                     "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
                     "type": "string"
@@ -18945,9 +18957,6 @@
                 "exon_number": {
                     "description": "The exon number of the variant location.  If the variant is in an intron, this slot is not populated. Primarily used for zebrafish.",
                     "type": "integer"
-                },
-                "has_assembly": {
-                    "type": "string"
                 },
                 "hgvs": {
                     "description": "HGVS nomenclature for variant located on a genomic entity. In practice HGVS nomenclature will be derived for any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and  VariantPolypeptideLocationAssociation.",
@@ -19156,6 +19165,180 @@
             ],
             "title": "SpatialQualifierSet",
             "type": "string"
+        },
+        "Species": {
+            "additionalProperties": false,
+            "description": "This class is initially intended to capture information about Alliance \"core\" model species, canonical species for each MOD member. The information in each record pertains to logistics of loading, processing, and displaying data and rendering Alliance pages for related entities.",
+            "properties": {
+                "abbreviation": {
+                    "description": "The species abbreviation as used currently in Alliance stack; analogous to short_name in the agr_schemas species.yaml file",
+                    "type": "string"
+                },
+                "assembly": {
+                    "description": "The current canonical genome assembly used for the species",
+                    "type": "string"
+                },
+                "common_names": {
+                    "description": "The common name(s) for a species, such as \"zebrafish\", \"fruit fly\", or \"rat\"",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "display_name": {
+                    "description": "The display name of the species. Currently, these are HUMAN or the corresponding data provider MOD abbreviation, like RGD, MGI, etc. For Xenopus species these are XBXL or XBXT.",
+                    "type": "string"
+                },
+                "full_name": {
+                    "description": "The full Latin name of the species, like \"Homo sapiens\" or \"Danio rerio\"",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "phylogenetic_order": {
+                    "description": "The integer value assigned to a species to determine its relative ordering with respect to other Alliance species in various user interface displays and logical operations.",
+                    "type": "integer"
+                },
+                "taxon": {
+                    "description": "The NCBI Taxonomy term ID for the species",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "taxon",
+                "display_name",
+                "assembly",
+                "data_provider",
+                "phylogenetic_order",
+                "internal"
+            ],
+            "title": "Species",
+            "type": "object"
+        },
+        "SpeciesDTO": {
+            "additionalProperties": false,
+            "description": "This class is initially intended to capture information about Alliance \"core\" model species, canonical species for each MOD member. The information in each record pertains to logistics of loading, processing, and displaying data and rendering Alliance pages for related entities.",
+            "properties": {
+                "abbreviation": {
+                    "description": "The species abbreviation as used currently in Alliance stack; analogous to short_name in the agr_schemas species.yaml file",
+                    "type": "string"
+                },
+                "assembly_curie": {
+                    "description": "The current canonical genome assembly used for the species",
+                    "type": "string"
+                },
+                "common_names": {
+                    "description": "The common name(s) for a species, such as \"zebrafish\", \"fruit fly\", or \"rat\"",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "display_name": {
+                    "description": "The display name of the species. Currently, these are HUMAN or the corresponding data provider MOD abbreviation, like RGD, MGI, etc. For Xenopus species these are XBXL or XBXT.",
+                    "type": "string"
+                },
+                "full_name": {
+                    "description": "The full Latin name of the species, like \"Homo sapiens\" or \"Danio rerio\"",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "phylogenetic_order": {
+                    "description": "The integer value assigned to a species to determine its relative ordering with respect to other Alliance species in various user interface displays and logical operations.",
+                    "type": "integer"
+                },
+                "taxon_curie": {
+                    "description": "The NCBI Taxonomy term ID for the species",
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "taxon_curie",
+                "display_name",
+                "assembly_curie",
+                "data_provider_dto",
+                "phylogenetic_order",
+                "internal"
+            ],
+            "title": "SpeciesDTO",
+            "type": "object"
         },
         "SqtrRelationEnum": {
             "description": "",
@@ -20112,6 +20295,10 @@
             "additionalProperties": false,
             "description": "Links a variant to a genomic position and the resulting consequence to the sequence and/or function. In practice, functional consequences for variants which overlap genes are not generally provided at the genome level but rather are calculated and annotated relative to a specific transcript or protein isoform.",
             "properties": {
+                "assembly": {
+                    "description": "Assembly to which variant is aligned.",
+                    "type": "string"
+                },
                 "consequence": {
                     "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
                     "type": "string"
@@ -20165,9 +20352,6 @@
                 },
                 "gene_localization_type": {
                     "description": "The type of gene localization, for example, intronic, intergenic, or intragenic.",
-                    "type": "string"
-                },
-                "has_assembly": {
                     "type": "string"
                 },
                 "hgvs": {
@@ -20242,7 +20426,7 @@
             },
             "required": [
                 "hgvs",
-                "has_assembly",
+                "assembly",
                 "subject",
                 "relation",
                 "object",
@@ -20393,6 +20577,10 @@
             "additionalProperties": false,
             "description": "Links a variant to a position on a specified polypeptide and the resulting consequence to the sequence and/or function of that polypeptide.",
             "properties": {
+                "assembly": {
+                    "description": "Assembly to which variant is aligned.",
+                    "type": "string"
+                },
                 "associated_transcripts": {
                     "description": "Transcript(s) associated with polypeptide to which variant is aligned.",
                     "items": {
@@ -20442,9 +20630,6 @@
                         "type": "string"
                     },
                     "type": "array"
-                },
-                "has_assembly": {
-                    "type": "string"
                 },
                 "hgvs": {
                     "description": "HGVS nomenclature for variant located on a genomic entity. In practice HGVS nomenclature will be derived for any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and  VariantPolypeptideLocationAssociation.",
@@ -20767,6 +20952,10 @@
             "additionalProperties": false,
             "description": "Links a variant to a position on a specified transcript and the resulting consequence to the sequence and/or function of that transcript.",
             "properties": {
+                "assembly": {
+                    "description": "Assembly to which variant is aligned.",
+                    "type": "string"
+                },
                 "consequence": {
                     "description": "SOTerm (child of SO:0001576 - transcript_variant) that describes the consequence of the variant, as stated in the source reference. In practice source consequence will be associated with locations at any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and VariantPolypeptideLocationAssociation.",
                     "type": "string"
@@ -20813,9 +21002,6 @@
                 "exon_number": {
                     "description": "The exon number of the variant location.  If the variant is in an intron, this slot is not populated. Primarily used for zebrafish.",
                     "type": "integer"
-                },
-                "has_assembly": {
-                    "type": "string"
                 },
                 "hgvs": {
                     "description": "HGVS nomenclature for variant located on a genomic entity. In practice HGVS nomenclature will be derived for any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and  VariantPolypeptideLocationAssociation.",
@@ -22907,6 +23093,12 @@
         "source_variant_transcript_location_association_ingest_set": {
             "items": {
                 "$ref": "#/$defs/SourceVariantTranscriptLocationAssociationDTO"
+            },
+            "type": "array"
+        },
+        "species_ingest_set": {
+            "items": {
+                "$ref": "#/$defs/SpeciesDTO"
             },
             "type": "array"
         },

@@ -376,7 +376,7 @@ classes:
     abstract: true
     is_a: EvidenceAssociation
     slots:
-      - has_assembly
+      - assembly
       - start
       - end
     slot_usage:
@@ -436,6 +436,95 @@ classes:
       - first
       - last
 
+  Species:
+    is_a: AuditedObject
+    description: >-
+      This class is initially intended to capture information about Alliance
+      "core" model species, canonical species for each MOD member. The information
+      in each record pertains to logistics of loading, processing, and displaying
+      data and rendering Alliance pages for related entities.
+    notes: >-
+      Intended to accommodate data in these locations:
+      https://raw.githubusercontent.com/alliance-genome/agr_schemas/master/ingest/species/species.yaml
+      https://github.com/alliance-genome/agr_java_software/blob/2fa8d334b92c23052451b6954bc4f125016782a2/agr_java_core/src/main/java/org/alliancegenome/neo4j/entity/SpeciesType.java
+    slots:
+      - taxon
+      - full_name
+      - display_name
+      - abbreviation
+      - assembly
+      - common_names
+      - data_provider
+      - phylogenetic_order
+    slot_usage:
+      taxon:
+        description: The NCBI Taxonomy term ID for the species
+        required: true
+      full_name:
+        description: The full Latin name of the species, like "Homo sapiens" or "Danio rerio"
+      display_name:
+        description: >-
+          The display name of the species. Currently, these are HUMAN or the
+          corresponding data provider MOD abbreviation, like RGD, MGI, etc.
+          For Xenopus species these are XBXL or XBXT.
+      abbreviation:
+        description: >-
+          The species abbreviation as used currently in Alliance stack; analogous to
+          short_name in the agr_schemas species.yaml file
+        notes: Examples are Hsa, Rno, Mmu, Xla, Xtr, Dre, Dme, Cel, Sce
+      assembly:
+        description: The current canonical genome assembly used for the species
+        required: true
+      common_names:
+          description: >-
+            The common name(s) for a species, such as "zebrafish", "fruit fly", or "rat"
+
+  SpeciesDTO:
+    is_a: AuditedObjectDTO
+    description: >-
+      This class is initially intended to capture information about Alliance
+      "core" model species, canonical species for each MOD member. The information
+      in each record pertains to logistics of loading, processing, and displaying
+      data and rendering Alliance pages for related entities.
+    notes: >-
+      Intended to accommodate data in these locations:
+      https://raw.githubusercontent.com/alliance-genome/agr_schemas/master/ingest/species/species.yaml
+      https://github.com/alliance-genome/agr_java_software/blob/2fa8d334b92c23052451b6954bc4f125016782a2/agr_java_core/src/main/java/org/alliancegenome/neo4j/entity/SpeciesType.java
+    slots:
+      - taxon_curie
+      - full_name
+      - display_name
+      - abbreviation
+      - assembly_curie
+      - common_names
+      - data_provider_dto
+      - phylogenetic_order
+    slot_usage:
+      taxon_curie:
+        description: The NCBI Taxonomy term ID for the species
+        required: true
+      full_name:
+        description: The full Latin name of the species, like "Homo sapiens" or "Danio rerio"
+      display_name:
+        description: >-
+          The display name of the species. Currently, these are HUMAN or the
+          corresponding data provider MOD abbreviation, like RGD, MGI, etc.
+          For Xenopus species these are XBXL or XBXT.
+      abbreviation:
+        description: >-
+          The species abbreviation as used currently in Alliance stack; analogous to
+          short_name in the agr_schemas species.yaml file
+        notes: Examples are Hsa, Rno, Mmu, Xla, Xtr, Dre, Dme, Cel, Sce
+      assembly_curie:
+        description: The current canonical genome assembly used for the species
+        required: true
+      common_names:
+          description: >-
+            The common name(s) for a species, such as "zebrafish", "fruit fly", or "rat"
+
+
+
+
 ## ------------
 ## SLOTS
 ## ------------
@@ -449,7 +538,41 @@ slots:
       a human-readable name for an entity
     multivalued: false
     range: string
-  
+
+  common_names:
+    description: The list of common names used for a species
+    domain: Species
+    range: string
+    multivalued: true
+    required: false
+
+  short_name:
+    description: >-
+      The short name of the entity
+    multivalued: false
+    range: string
+
+  full_name:
+    description: >-
+      The full name of the entity
+    multivalued: false
+    range: string
+
+  phylogenetic_order:
+    description: >-
+      The integer value assigned to a species to determine its relative ordering
+      with respect to other Alliance species in various user interface displays
+      and logical operations.
+    notes: >-
+      In the agr_schemas repo species.yaml file, the phylogeneticOrder is given values
+      like 10, 20, 30, 40 for the original Alliance species; Xenopus laevis is 46 and
+      Xenopus tropicalis is 45; In the SpeciesType.java file the species are simply numbered
+      1, 2, 3, 4, 5, etc.
+    domain: Species
+    range: integer
+    multivalued: false
+    required: true
+
   name_type:
     description: >-
       The type of name: e.g., symbol, full_name, systematic_name, etc.
@@ -524,8 +647,9 @@ slots:
     description: The end of the feature in positive 1-based integer coordinates
     range: integer
 
-  has_assembly:
-    domain: GenomicLocationAssociation
+  assembly:
+    description: The genome assembly used in a particular context
+    multivalued: false
     range: Assembly
 
   prefix:
