@@ -64,6 +64,7 @@ classes:
       - assay_used
       - detection_reagents
       - specimen_genomic_model
+      - specimen_alleles
       - condition_relations
       - related_notes
       - expression_annotations    # For non-DTO only; for data submission, relate via ExpressionAnnotationDTO.from_expression_experiment instead.
@@ -456,6 +457,13 @@ slots:
       Reagents used in the expression assay: e.g., construct, antibodies, probes.
     domain: ExpressionAnnotation
     range: Reagent
+    multivalued: true
+
+  specimen_alleles:
+    description: >-
+      The Allele(s) of the specimen assayed.
+    domain: ExpressionExperiment
+    range: Allele
     multivalued: true
 
   specimen_genomic_model:
