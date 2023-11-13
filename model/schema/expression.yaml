@@ -126,7 +126,6 @@ classes:
     slots:
       # from_expression_experiment   # For DTO only; for database, relate via non-DTO ExpressionExperiment.expression_annotations instead.
       - where_expressed_statement
-      - expression_qualifiers
       - negated
       - uncertain
       - associated_with_figures
