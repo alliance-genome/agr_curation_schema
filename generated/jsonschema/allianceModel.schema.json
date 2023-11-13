@@ -20868,7 +20868,7 @@
         },
         "VariantDTO": {
             "additionalProperties": false,
-            "description": "Ingest class for an Allele object",
+            "description": "Ingest class for a Variant object",
             "properties": {
                 "created_by_curie": {
                     "description": "Curie of the Person object representing the individual that created the entity",

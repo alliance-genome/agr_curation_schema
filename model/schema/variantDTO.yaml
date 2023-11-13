@@ -39,7 +39,7 @@ classes:
   VariantDTO:
     is_a: GenomicEntityDTO
     description: >-
-      Ingest class for an Allele object
+      Ingest class for a Variant object
     slots:
       - variant_type_curie
       - note_dtos
