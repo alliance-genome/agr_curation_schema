@@ -50,18 +50,127 @@ classes:
     slots:
       - variant_type
       - related_notes
-      - source_general_consequence
-      - variant_genomic_locations # assembly identifies a genome location, so a variant on many assemblies can have many genome locations.
-      - variant_polypeptide_locations
-      - variant_transcript_locations
+      - source_general_consequences
+      - curated_variant_genomic_locations
+      - curated_variant_transcript_locations
+      - curated_variant_polypeptide_locations
       - source_variant_genomic_locations
       - source_variant_transcript_locations
       - source_variant_polypeptide_locations
       - variant_status
+      - references
     exact_mappings:
       - SO:0001059
     notes: >-
       a variant must have a genome location, or must be private/incomplete
+
+  VariantLocationAssociation:
+    is_a: LocationAssociation
+    abstract: true
+    description: >-
+      Base class linking a variant to a position on a genomic entity and the resulting consequence to the sequence
+      and/or function of that genomic entity. Slots are provided for data taken from a source publication or data
+      load and for data resulting from manual curation. Where the values are the same, the curator has confirmed
+      the information from the source.  In other cases, the curator's analysis has resulted in different values,
+      for instance, if the assembly is different, the source did not specify the transcript or protein isoform,
+      the definition of the transcript or protein isoform used by the source has changed, or if there was an error
+      in the source data.
+    slots:
+      - hgvs
+      - reference_sequence
+      - variant_sequence
+      - consequence
+      - curated_consequence
+      - sequence_of_reference_accession_number # Should this point to a chromosome object instead of a string? Will this be redundant with genomic location association of the subject?
+    slot_usage:
+      subject:
+        range: Variant
+
+  VariantGenomicLocationAssociation:
+    is_a: VariantLocationAssociation
+    abstract: true
+    description: >-
+      Links a variant to a genomic position and the resulting consequence to the sequence and/or function.
+      In practice, functional consequences for variants which overlap genes are not generally provided at the
+      genome level but rather are calculated and annotated relative to a specific transcript or protein isoform.
+    slots:
+      - variation_strand
+      - number_additional_dna_base_pairs
+      - number_removed_dna_base_pairs
+      - inserted_sequence
+      - deleted_sequence
+      - padded_base
+      - dna_mutation_type
+      - gene_localization_type
+    slot_usage:
+      object:
+        description: >-
+          The location reference object should be a chromsome assembly curie.
+        range: AssemblyComponent
+        required: true
+
+  VariantTranscriptLocationAssociation:
+    is_a: VariantLocationAssociation
+    abstract: true
+    description: >-
+      Links a variant to a position on a specified transcript and the resulting consequence to the sequence and/or
+      function of that transcript.
+    slots:
+      - exon_number
+      - intron_number
+    slot_usage:
+      object:
+        description: >-
+          object should be the transcript identifier
+        range: Transcript
+        required: true
+
+  VariantPolypeptideLocationAssociation:
+    is_a: VariantLocationAssociation
+    abstract: true
+    description: >-
+      Links a variant to a position on a specified polypeptide and the resulting consequence to the sequence and/or
+      function of that polypeptide.
+    slots:
+      - associated_transcripts # won't this be a property of the protein objects?
+      - number_amino_acids_removed
+      - number_amino_acids_inserted
+    slot_usage:
+      object:
+        description: >-
+          object should be the protein identifier
+        range: Protein
+        required: true
+
+  CuratedVariantGenomicLocationAssociation:
+    is_a: VariantGenomicLocationAssociation
+    slot_usage:
+      start:
+        required: true
+      end:
+        required: true
+      hgvs:
+        required: true
+
+  CuratedVariantTranscriptLocationAssociation:
+    is_a: VariantTranscriptLocationAssociation
+    slot_usage:
+      start:
+        required: true
+      end:
+        required: true
+      hgvs:
+        required: true
+
+  CuratedVariantPolypeptideLocationAssociation:
+    is_a: VariantPolypeptideLocationAssociation
+    slot_usage:
+      start:
+        required: true
+      end:
+        required: true
+      hgvs:
+        required: true
 
   SourceVariantGenomicLocationAssociation:
     is_a: VariantGenomicLocationAssociation
@@ -93,80 +202,19 @@ classes:
       single_reference:
         required: true
 
-  VariantLocationAssociation:
-    is_a: GenomicLocationAssociation
-    abstract: true
+  VariantSourceGeneralConsequenceSlotAnnotation:
+    aliases: ["transcript_consequence"]
+    is_a: SlotAnnotation
     description: >-
-      Base class linking a variant to a position on a genomic entity and the resulting consequence to the sequence
-      and/or function of that genomic entity. Slots are provided for data taken from a source publication or data
-      load and for data resulting from manual curation. Where the values are the same, the curator has confirmed
-      the information from the source.  In other cases, the curator's analysis has resulted in different values,
-      for instance, if the assembly is different, the source did not specify the transcript or protein isoform,
-      the definition of the transcript or protein isoform used by the source has changed, or if there was an error
-      in the source data.
+      The consequence of the variant, as stated in the source reference when no
+      transcript ID is provided.
+    notes: >-
+      Since a curator would determine variant location and consequences relative
+      to at least one specific genome assembly, transcript and/or polypeptide,
+      no slot for curated general consequence is provided.
     slots:
-      - hgvs
-      - reference_sequence
-      - variant_sequence
-      - consequence
-      - curated_consequence
-      - sequence_of_reference_accession_number # Should this point to a chromosome object instead of a string? Will this be redundant with genomic location association of the subject?
-
-  VariantGenomicLocationAssociation:
-    is_a: VariantLocationAssociation
-    description: >-
-      Links a variant to a genomic position and the resulting consequence to the sequence and/or function.
-      In practice, functional consequences for variants which overlap genes are not generally provided at the
-      genome level but rather are calculated and annotated relative to a specific transcript or protein isoform.
-    slots:
-      - variation_strand
-      - number_additional_dna_base_pairs
-      - number_removed_dna_base_pairs
-      - inserted_sequence
-      - deleted_sequence
-      - padded_base
-      - dna_mutation_type
-      - gene_localization_type
-    slot_usage:
-      has_assembly:
-        required: true
-      subject:
-        required: true
-      object:
-        required: true
-
-  VariantTranscriptLocationAssociation:
-    is_a: VariantLocationAssociation
-    description: >-
-      Links a variant to a position on a specified transcript and the resulting consequence to the sequence and/or
-      function of that transcript.
-    slots:
-      - exon_number
-      - intron_number
-    slot_usage:
-      object:
-        description: >-
-          object should be the transcript identifier
-        range: Transcript
-        required: true
-      subject:
-        required: true
-
-  VariantPolypeptideLocationAssociation:
-    is_a: VariantLocationAssociation
-    description: >-
-      Links a variant to a position on a specified polypeptide and the resulting consequence to the sequence and/or
-      function of that polypeptide.
-    slots:
-      - associated_transcripts # won't this be a property of the protein objects?
-      - number_amino_acids_removed
-      - number_amino_acids_inserted
-    slot_usage:
-      object:
-        description: >-
-          object should be the protein identifier
-        range: Protein
-        required: true
+      - single_variant
+      - variant_source_general_consequence
 
 # Slots
 
@@ -215,6 +263,8 @@ slots:
 
   padded_base:
     description: >-
+      A base preceeded an insertion or deletion event that is reported when
+      either the reference or variant sequence would otherwise be empty. 
     range: string
     multivalued: false
     examples:
@@ -224,6 +274,10 @@ slots:
     description: >-
       The strand on which the variant is located.  This is the strand of the reference sequence, not the variant
       sequence.
+    notes: >-
+      QUESTION: I thought that the agreed upon convention was to report the
+      reference sequence relative to the + strand of the scaffold, making
+      this redundant and potentially confusing. (Gil)
     range: string
     multivalued: false
     required: false
@@ -299,22 +353,31 @@ slots:
     domain: Variant
     range: SOTerm
 
-  source_general_consequence:
-    aliases: ["transcript_consequence"]
-    description: >-
-      SOTerm (child of SO:0001576 - transcript_variant) that describes the
-      consequence of the variant, as stated in the source reference when no
-      transcript ID is provided. Since a curator would determine variant location and consequences relative to at
-      least one specific genome assembly, transcript and/or polypeptide, no slot for curated general consequence
-      is provided.
+  source_general_consequences:
+    aliases: ["transcript_consequences"]
     required: false
-    multivalued: false
+    multivalued: true
     domain: Variant
+    range: VariantSourceGeneralConsequenceSlotAnnotation
+
+  variant_source_general_consequence:
+    description: >-
+      The general consequence of the variant on the transcript.
+    notes: >-
+      The SOTerm should be a child of SO:0001576 - transcript_variant.
+    domain: VariantSourceGeneralConsequenceSlotAnnotation
     range: SOTerm
+    required: true
+    multivalued: false
 
   sequence_of_reference_accession_number:
     description: >-
-      The accession number that describes the assembly and chromosome of the reference sequence.
+      The accession number that describes the assembly and assembly component
+      (chromosome or scaffold) of the reference sequence.
+    notes: >-
+      With redefined Location Associations to AssemblyComponent, Transcript or
+      Protein, is this redundant?
+    required: false
     multivalued: false
     domain: VariantLocationAssociation
     range: string
@@ -349,7 +412,7 @@ slots:
     domain: Variant
     range: VariantLocationAssociation
 
-  variant_genomic_locations:
+  curated_variant_genomic_locations:
     is_a: variant_locations
     description: >-
       Location of the variant in a genomic context.  multiple variant_genome_locations represent multiple
@@ -357,25 +420,25 @@ slots:
       variant object apart from its location.
     multivalued: true
     domain: Variant
-    range: VariantGenomicLocationAssociation
+    range: CuratedVariantGenomicLocationAssociation
 
-  variant_polypeptide_locations:
-    is_a: variant_locations
-    description: >-
-      Location of the variant within polypeptide entities.
-    required: false
-    multivalued: true
-    domain: Variant
-    range: VariantPolypeptideLocationAssociation
-
-  variant_transcript_locations:
+  curated_variant_transcript_locations:
     is_a: variant_locations
     description: >-
       Location of the variant within transcript entities.
     required: false
     multivalued: true
     domain: Variant
-    range: VariantTranscriptLocationAssociation
+    range: CuratedVariantTranscriptLocationAssociation
+
+  curated_variant_polypeptide_locations:
+    is_a: variant_locations
+    description: >-
+      Location of the variant within polypeptide entities.
+    required: false
+    multivalued: true
+    domain: Variant
+    range: CuratedVariantPolypeptideLocationAssociation
 
   source_variant_genomic_locations:
     description: >-
@@ -385,14 +448,6 @@ slots:
     domain: Variant
     range: SourceVariantGenomicLocationAssociation
 
-  source_variant_polypeptide_locations:
-    description: >-
-      Location of the variant within polypeptide entities as desribed by the source reference.
-    required: false
-    multivalued: true
-    domain: Variant
-    range: SourceVariantPolypeptideLocationAssociation
-
   source_variant_transcript_locations:
     description: >-
       Location of the variant within transcript entities as desribed by the source reference.
@@ -401,49 +456,26 @@ slots:
     domain: Variant
     range: SourceVariantTranscriptLocationAssociation
 
+  source_variant_polypeptide_locations:
+    description: >-
+      Location of the variant within polypeptide entities as desribed by the source reference.
+    required: false
+    multivalued: true
+    domain: Variant
+    range: SourceVariantPolypeptideLocationAssociation
+
   hgvs:
     description: >-
       HGVS nomenclature for variant located on a genomic entity. In practice HGVS nomenclature will be derived
       for any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and 
       VariantPolypeptideLocationAssociation.
-    required: true
+    multivalued: false
+    required: false
     domain: VariantLocationAssociation
     range: string
 
   # May want to remove domain of following 8 slots and move them to core
   # so that they can be used for alignment of other genomic entities
-  assembly:
-    description: >-
-      Assembly to which variant is aligned.
-    multivalued: false
-    required: false
-    domain: VariantLocationAssociation
-    range: Assembly
-
-  chromosome:
-    description: >-
-      Chromosome to which variant is aligned.
-    multivalued: false
-    required: false
-    domain: VariantLocationAssociation
-    range: Chromosome
-
-  start_position:
-    description: >-
-      Start position of variant on genomic entity.
-    multivalued: false
-    required: false
-    domain: VariantLocationAssociation
-    range: integer
-
-  end_position:
-    description: >-
-      End position of variant on genomic entity.
-    multivalued: false
-    required: false
-    domain: VariantLocationAssociation
-    range: integer
-
   reference_sequence:
     description: >-
       Reference sequence of genome or genomic entity at position of aligned
@@ -452,6 +484,13 @@ slots:
     required: false
     domain: VariantLocationAssociation
     range: biological_sequence
+
+  single_variant:
+    description: >-
+      The variant that is the subject of a SlotAnnotation.
+    range: Variant
+    multivalued: false
+    required: true
 
   variant_sequence:
     description: >-
