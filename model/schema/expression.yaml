@@ -195,6 +195,9 @@ classes:
         notes: >-
           Slot is inherited from Annotation class.
       # FUTURE ACTION ITEM: Enumerate note types for this annotation level (xprn WG).
+      # FUTURE ACTION ITEM: Is it better to have ExpressionAnnotation-level notes of
+      #                     various types, or, add related_notes slots to specific
+      #                     parts like AnatomicalSite, TemporalContext, etc?
       related_notes:
         description: >-
           Use different note types to add extra information about specific
