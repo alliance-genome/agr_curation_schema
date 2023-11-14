@@ -291,13 +291,6 @@ slots:
     range: Allele
     multivalued: true
 
-  specimen_genomic_model:
-    description: >-
-      The AffectedGenomicModel of the specimen assayed.
-    domain: ExpressionExperiment
-    range: AffectedGenomicModel
-    multivalued: false
-
   temporal_qualifiers:
     description: >-
       Qualifiers of the stage or age in an annotation.

@@ -25,6 +25,7 @@ imports:
   - ontologyTerm
   - controlledVocabulary
   - resourceDescriptor
+  - affectedGenomicModel
 
 prefixes:
   alliance: 'http://alliancegenome.org/'
@@ -50,7 +51,6 @@ types:
 ## ------------
 ## CLASSES
 ## ------------
-
 
 classes:
 
@@ -120,8 +120,11 @@ classes:
       RNA transcript translation).
     slots:
       - cross_references
-      - genomic_location_associations
 
+  GenomicEntityDTO:
+    is_a: BiologicalEntityDTO
+    slots:
+      - cross_reference_dtos
 
   Transcript:
     is_a: GenomicEntity
@@ -286,7 +289,6 @@ classes:
       secondary_id:
         required: true
 
-
   Association:
     is_a: AuditedObject
     description: >-
@@ -356,70 +358,90 @@ classes:
 
   Chromosome:
     is_a: AuditedObject
-    description: The ID of the landmark used to establish the coordinate system for the current feature.
+    description: >-
+      A structure composed of a single DNA molecule and associated proteins
+      that carries here hereditary information from cell to cell. In the context
+      of this model, it is used as a landmark for cytogenetic and genetic
+      mapping of genes, alleles and chromosomal aberrations; this entity ties
+      together related chromosome sequences from different genome assemblies.
+    notes: >-
+      The generic, idealized biological entity from a species' genome, as
+      distinct from a chromosome pseudo-molecule sequence assembly that is
+      specific to a given genome assembly version.
+      We may want to add a strain slot at some point.
+    exact_mappings:
+      - SO:0000340
+      - GO:0005694
     slots:
-      - curie
+      - name
+      - taxon
+      - data_provider
+    defining_slots:
+      - name
+      - taxon
+
+  AssemblyComponent:
+    is_a: GenomicEntity
+    description: >-
+      A scaffold component of a genome assembly, including chromosomal
+      pseudo-molecule sequences, unplaced/unlocalized scaffolds and contigs,
+      and organelle genomes.
+    notes: >-
+      In the context of this model, this entity is used as a landmark for the
+      location of other genomic entities.
+    slots:
       - display_name
+      - genome_assembly
     slot_usage:
       curie:
         required: true
+    defining_slots:
+      - display_name
+      - genome_assembly
+      - maps_to_chromosome
 
-  Assembly:
-    is_a: AuditedObject
+  GenomeAssembly:
+    is_a: BiologicalEntity
+    description: >-
+      A set of chromosome assemblies, scaffolds and contigs that represent the
+      haploid genome sequence of a species or strain.
+    notes: >-
+      These should typically have an NCBI curie.
     slots:
-      - curie
+      - specimen_genomic_model
     slot_usage:
-      curie:
-        required: true
+      specimen_genomic_model:
+        description: >-
+          The strain or genotype of origin for the genome sequence.
 
-  GenomicLocationAssociation:
+  LocationAssociation:
     abstract: true
     is_a: EvidenceAssociation
+    description: >-
+      The mapping of a entity relative to another entity.
+    notes: >-
+      Leaving start and end optional to allow for fuzzy location.
     slots:
-      - assembly
       - start
       - end
     slot_usage:
-      subject:
-        range: GenomicEntity
-        description: >-
-          subject should be a genomic entity
-      object:
-        range: Chromosome
-        description: >-
-          object should be the chromosome identifier
       relation:
+        required: true
         any_of:
-          equals_string: has_genomic_location
-    defining_slots:
-      - subject
-      - relation
-      - object
-      - start
-      - end
+          - equals_string: has_location
 
-  GenomicEntityDTO:
-    is_a: BiologicalEntityDTO
-    slots:
-      - cross_reference_dtos
-
-  GenomicLocationAssociationDTO:
+  LocationAssociationDTO:
     abstract: true
     is_a: EvidenceAssociationDTO
     slots:
       - relation_name
-      - assembly_curie
       - start
       - end
     slot_usage:
       relation_name:
         required: true
         any_of:
-          equals_string: has_genomic_location
-      start:
-        required: true
-      end:
-        required: true
+          equals_string: has_location
 
   Protein:
     is_a: GenomicEntity
@@ -598,17 +620,40 @@ slots:
     range: string
 
   start:
-    description: The start of the feature in positive 1-based integer coordinates
+    description: >-
+      The start of the feature in positive 1-based integer coordinates relative
+      to the reference landmark.
+    domain: LocationAssociation
     range: integer
 
   end:
-    description: The end of the feature in positive 1-based integer coordinates
+    description: >-
+      The end of the feature in positive 1-based integer coordinates relative
+      to the reference landmark.
+    domain: LocationAssociation
     range: integer
 
-  assembly:
-    description: The genome assembly used in a particular context
+  strand:
+    description: >-
+      The strand of a DNA reference object to which an entity maps.
+    range: strand_enum
+
+  genome_assembly:
+    description: >-
+      The GenomeAssembly to which a AssemblyComponent belongs.
+    domain: AssemblyComponent
+    range: GenomeAssembly
+    required: true
     multivalued: false
-    range: Assembly
+
+  maps_to_chromosome:
+    description: >-
+      The chromosome(s) to which a chromosome assembly or unlocalized
+      scaffold or contig maps.
+    domain: AssemblyComponent
+    range: Chromosome
+    required: false
+    multivalued: false
 
   prefix:
     required: true
@@ -646,7 +691,7 @@ slots:
 
   prefix_page:
     description: >-
-      The cateogry of pages the resource in the context of the URL associated with the crossReference
+      The category of pages the resource in the context of the URL associated with the crossReference
       provides.  Equivalent to the 'page' attribute in the Alliance resourceDescriptor file.
 
   uncertain:
@@ -773,7 +818,6 @@ slots:
     multivalued: false
     range: uriorcurie
 
-
   table_key:
     description: >-
       The primary key for a specific table entry, unique for that table.
@@ -800,14 +844,14 @@ slots:
   db_date_created:
     description: >-
       The date on which an entity was created in the Alliance database.  This
-      is disinct from date_created, which represents the date when the entity
+      is distinct from date_created, which represents the date when the entity
       was originally created (i.e. at the MOD for imported data).
     range: datetime
 
   db_date_updated:
     description: >-
       Date on which an entity was last modified in the Alliance database.  This
-      is disinct from date_updated, which represents the date when the entity
+      is distinct from date_updated, which represents the date when the entity
       was last modified and may predate import into the Alliance database.
     range: datetime
 
@@ -1033,10 +1077,6 @@ slots:
     description: last identifier in a range
     range: Identifier
 
-  assembly_curie:
-    required: true
-    range: string
-
   chromosome_curie:
     required: true
     range: string
@@ -1053,18 +1093,6 @@ slots:
 
   genomic_entity_curie:
     range: string
-
-  genomic_location_associations:
-    domain: GenomicEntity
-    range: GenomicLocationAssociation
-    multivalued: true
-
-  genomic_location_association_dtos:
-    domain: GenomicEntityDTO
-    range: GenomicLocationAssociationDTO
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
 
   source_organization:
     domain: DataProvider
@@ -1119,6 +1147,12 @@ slots:
     required: true
     range: string
 
+  specimen_genomic_model:
+    description: >-
+      The AffectedGenomicModel of the specimen.
+    range: AffectedGenomicModel
+    multivalued: false
+
 ## ----------
 ## PREDICATES
 ## ----------
@@ -1131,3 +1165,15 @@ slots:
     symmetric: true
 
 enums:
+
+  strand_enum:
+    description: Specify DNA strand.
+    permissible_values:
+      "+":
+        description: Positive strand.
+      "-":
+        description: Negative strand.
+      ".":
+        description: Unstranded.
+      "?":
+        description: Unknown.

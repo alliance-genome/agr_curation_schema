@@ -39,16 +39,16 @@ classes:
   VariantDTO:
     is_a: GenomicEntityDTO
     description: >-
-      Ingest class for an Allele object
+      Ingest class for a Variant object
     slots:
       - variant_type_curie
       - note_dtos
-      - source_general_consequence_curie
+      - source_general_consequence_dtos
       - variant_status_name
 
   VariantLocationAssociationDTO:
     abstract: true
-    is_a: GenomicLocationAssociationDTO
+    is_a: LocationAssociationDTO
     slots:
       - variant_curie
       - reference_sequence
@@ -59,6 +59,7 @@ classes:
 
   VariantGenomicLocationAssociationDTO:
     is_a: VariantLocationAssociationDTO
+    abstract: true
     slots:
       - chromosome_curie
       - variation_strand
@@ -72,6 +73,7 @@ classes:
 
   VariantTranscriptLocationAssociationDTO:
     is_a: VariantLocationAssociationDTO
+    abstract: true
     slots:
       - transcript_curie
       - exon_number
@@ -79,22 +81,39 @@ classes:
 
   VariantPolypeptideLocationAssociationDTO:
     is_a: VariantLocationAssociationDTO
+    abstract: true
     slots:
       - protein_curie
       - associated_transcript_curies # won't this be a property of the protein objects?
       - number_amino_acids_removed
       - number_amino_acids_inserted
 
-  SourceVariantGenomicLocationAssociationDTO:
+  CuratedVariantGenomicLocationAssociationDTO:
     is_a: VariantGenomicLocationAssociationDTO
-    slots:
-      - reference_curie
     slot_usage:
-      reference_curie:
+      start:
+        required: true
+      end:
         required: true
 
-  SourceVariantPolypeptideLocationAssociationDTO:
+  CuratedVariantTranscriptLocationAssociationDTO:
+    is_a: VariantTranscriptLocationAssociationDTO
+    slot_usage:
+      start:
+        required: true
+      end:
+        required: true
+
+  CuratedVariantPolypeptideLocationAssociationDTO:
     is_a: VariantPolypeptideLocationAssociationDTO
+    slot_usage:
+      start:
+        required: true
+      end:
+        required: true
+
+  SourceVariantGenomicLocationAssociationDTO:
+    is_a: VariantGenomicLocationAssociationDTO
     slots:
       - reference_curie
     slot_usage:
@@ -109,6 +128,27 @@ classes:
       reference_curie:
         required: true
 
+  SourceVariantPolypeptideLocationAssociationDTO:
+    is_a: VariantPolypeptideLocationAssociationDTO
+    slots:
+      - reference_curie
+    slot_usage:
+      reference_curie:
+        required: true
+
+  VariantSourceGeneralConsequenceSlotAnnotationDTO:
+    aliases: ["transcript_consequence"]
+    is_a: SlotAnnotationDTO
+    description: >-
+      The consequence of the variant, as stated in the source reference when no
+      transcript ID is provided.
+    notes: >-
+      Since a curator would determine variant location and consequences relative
+      to at least one specific genome assembly, transcript and/or polypeptide,
+      no slot for curated general consequence is provided.
+    slots:
+      - source_general_consequence_curie
+
 slots:
   associated_transcript_curies:
     description: Curies of transcript(s) associated with polypeptide to which variant is aligned.
@@ -121,7 +161,7 @@ slots:
     description: >-
       Curie of SOTerm (child of SO:0001576 - transcript_variant) that describes the
       consequence of the variant, as stated in the source reference. In practice source consequence will be
-      associated with locations at any or all of VariantGenomicLocationAssociation, VariantTranscriptLocationAssociation, and
+      associated with locations at any or all of VariantLocationAssociation, VariantTranscriptLocationAssociation, and
       VariantPolypeptideLocationAssociation.
     required: false
     multivalued: false
@@ -138,6 +178,14 @@ slots:
     domain: VariantLocationAssociationDTO
     range: string
 
+  source_general_consequence_dtos:
+    domain: VariantDTO
+    range: VariantSourceGeneralConsequenceSlotAnnotationDTO
+    required: false
+    multivalued: true
+    inlined_as_list: true
+    inlined: true
+
   source_general_consequence_curie:
     description: >-
       Curie of the SOTerm (child of SO:0001576 - transcript_variant) that describes the
@@ -145,9 +193,9 @@ slots:
       is provided. Since a curator would determine variant location and consequences relative
       to at least one specific genome assembly, transcript and/or polypeptide, no slot for
       curated general consequence is provided.
-    required: false
+    required: true
     multivalued: false
-    domain: VariantDTO
+    domain: VariantSourceGeneralConsequenceSlotAnnotationDTO
     range: string
 
   variant_curie:

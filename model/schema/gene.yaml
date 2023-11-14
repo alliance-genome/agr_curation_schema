@@ -64,6 +64,9 @@ classes:
       - gene_type
       - gene_types_secondary
       - gene_change_events
+      - gene_genomic_location_associations
+      - gene_chromosomal_location_associations
+      - gene_genetic_map_positions
       - designating_laboratories
       - designating_persons
       - trans_splice_leaders
@@ -196,22 +199,100 @@ classes:
           These notes should capture the reason for the event (e.g., rename or
           merge).
 
-  GeneticMapPosition:
+  GeneGenomicLocationAssociation:
+    is_a: LocationAssociation
     description: >-
-      A genetic map position.
-    is_a: GenomicEntity
+      Location(s) of the gene on the genome.
     slots:
-      - genetic_map_chromosome
-      - genetic_map_band
+      - strand
+    slot_usage:
+      subject:
+        range: Gene
+      object:
+        range: AssemblyComponent
+      evidence:
+        notes: List all references that support a given location association.
+      start:
+        required: true
+      end:
+        required: true
+      strand:
+        required: true
+
+  GeneChromosomalLocationAssociation:
+    is_a: SingleReferenceAssociation
+    description: >-
+      Localization of the gene to a chromosome, in some cases in reference to
+      specific markers.
+    notes: >-
+      Should we implement an even more generic LocationAssociaiton object where
+      start and end are not constrained to integer, but can be markers like
+      genes or chromosome bands?
+      Is this limited to cytological studies (e.g., chromosome in situs), or
+      does this include genetic segregation studies?
+      How do we handle location to specific chromosome arms? Different asso'n,
+      or different slot here, etc?
+    slots:
+      - left_boundary_marker
+      - right_boundary_marker
+    slot_usage:
+      subject:
+        range: Gene
+      object:
+        range: Chromosome
+      relation:
+        any_of:
+          - equals_string: has_location
+
+  GeneGeneticMapAssociation:
+    is_a: SingleReferenceAssociation
+    description: >-
+      The mapping of a gene along a chromosome using recombination frequency
+      relative to other visible markers to calculate the genetic distance in
+      centiMorgan (cM) units.
+    notes: >-
+      Should this be limited to reports of specific cM on a given chromosome,
+      or should it include genetic segregation studies that link gene to a
+      chromosome?
+    slot_usage:
+      subject:
+        range: Gene
+      object:
+        range: Chromosome
+      relation:
+        any_of:
+          - equals_string: has_location
+    slots:
       - genetic_map_position_centimorgan
       - genetic_map_position_centimorgan_error
-      - genetic_map_position_radiation
 
 ## ------------
 ## SLOTS
 ## ------------
 
 slots:
+
+  left_boundary_marker:
+    description: >-
+      The left boundary of a feature location relative to the landmark's
+      inherent orientation.
+    notes: >-
+      This marker could be a chromosomal band, gene, or some other marker.
+    domain: GeneChromosomalLocationAssociation
+    range: BiologicalEntity
+    required: false
+    multivalued: false
+
+  right_boundary_marker:
+    description: >-
+      The right boundary of a feature location relative to the landmark's
+      inherent orientation.
+    notes: >-
+      This marker could be a chromosomal band, gene, or some other marker.
+    domain: GeneChromosomalLocationAssociation
+    range: BiologicalEntity
+    required: false
+    multivalued: false
 
   single_gene:
     range: Gene
@@ -417,6 +498,24 @@ slots:
     required: false
     multivalued: false
 
+  gene_genomic_location_associations:
+    domain: Gene
+    range: GeneGenomicLocationAssociation
+    required: false
+    multivalued: true
+
+  gene_chromosomal_location_associations:
+    domain: Gene
+    range: GeneChromosomalLocationAssociation
+    required: false
+    multivalued: true
+
+  gene_genetic_map_positions:
+    domain: Gene
+    range: GeneGeneticMapAssociation
+    required: false
+    multivalued: true
+
   designating_laboratories:
     description: >-
       A laboratory, rarely laboratories, which designated this gene
@@ -481,42 +580,31 @@ slots:
     domain: Gene
     range: boolean
 
-  genetic_map_chromosome:
-    description: >-
-      Chromosome or contig to which the gene has been genetically mapped
-    required: false
-    multivalued: false
-    domain: GeneticMapPosition
-    range: Chromosome
-
   genetic_map_band:
     description: >-
       Genetic map predicted chromosome location eg 10q12
-    required: false
-    multivalued: false
-    domain: GeneticMapPosition
     range: string
 
   genetic_map_position_centimorgan:
     description: >-
-      Genetic map predicted chromosome location in centimorgans eg 22.3366 cM
+      Genetic map distance calculated along a chromosome in centiMorgans:
+      e.g., 22.3366 cM.
     required: false
-    multivalued: true
-    domain: GeneticMapPosition
+    multivalued: false
+    domain: GeneGeneticMapAssociation
     range: float
 
   genetic_map_position_centimorgan_error:
     description: >-
-      Genetic map calculated error in the predicted chromosome location in centimorgans eg 0.045 cM
+      Error in calculated genetic map distance in centiMorgans: e.g., 0.045 cM.
     required: false
-    multivalued: true
-    domain: GeneticMapPosition
+    multivalued: false
+    domain: GeneGeneticMapAssociation
     range: float
 
   genetic_map_position_radiation:
     description: >-
-      Radiation hybrid map predicted chromosome location eg 66.5 cR
-    required: false
-    multivalued: true
-    domain: GeneticMapPosition
+      Radiation hybrid map predicted chromosome location: e.g., 66.5 cR.
+    notes: >-
+      This type of data still needs to be modeled.
     range: float

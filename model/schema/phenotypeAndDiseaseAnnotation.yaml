@@ -261,7 +261,7 @@ classes:
           DiseaseAnnotation class code of "100", followed by a 12-digit identifier
       unique_id:
         description: >-
-          Unique identifer for the disease annotation.  Will be generated at AGR
+          Unique identifier for the disease annotation.  Will be generated at AGR
           if not submitted by the MOD.
         required: false
       mod_entity_id:
@@ -461,7 +461,7 @@ classes:
     slots:
       - unique_id                         # calculated centrally at the Alliance after import from MODs
       - condition_class                   # conditionClassId in frozen JSON schema
-      - condition_summary                 # analagous to conditionStatement in frozen JSON schema; for new DQM submissions should not be submitted but rather calculated centrally at the Alliance
+      - condition_summary                 # analogous to conditionStatement in frozen JSON schema; for new DQM submissions should not be submitted but rather calculated centrally at the Alliance
       - condition_id                      # conditionId in frozen JSON schema
       - condition_free_text               # dedicated slot for free text
       - condition_quantity                # conditionQuantity in frozen JSON schema
@@ -472,7 +472,7 @@ classes:
     slot_usage:
       unique_id:
         description: >-
-          Unique identifer for the experimental condition.  Will be generated at
+          Unique identifier for the experimental condition.  Will be generated at
           AGR.
         required: false
       condition_class:
@@ -510,7 +510,7 @@ classes:
       condition_chemical:
         description: >-
           ChEBI or molecular ontology id used in subset of condition terms.  ie: the specific
-          chemcial used in conjunction with 'chemical condition'.
+          chemical used in conjunction with 'chemical condition'.
         range: ChemicalTerm
 
   ExperimentalConditionDTO:
@@ -545,7 +545,7 @@ classes:
     slot_usage:
       unique_id:
         description: >-
-          Unique identifer for the condition relation.  Will be generated at
+          Unique identifier for the condition relation.  Will be generated at
           AGR.
         required: false
       handle:
