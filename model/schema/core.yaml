@@ -474,7 +474,7 @@ classes:
       - full_name
       - display_name
       - abbreviation
-      - assembly
+      - genome_assembly
       - common_names
       - data_provider
       - phylogenetic_order
@@ -494,7 +494,7 @@ classes:
           The species abbreviation as used currently in Alliance stack; analogous to
           short_name in the agr_schemas species.yaml file
         notes: Examples are Hsa, Rno, Mmu, Xla, Xtr, Dre, Dme, Cel, Sce
-      assembly:
+      genome_assembly:
         description: The current canonical genome assembly used for the species
         required: true
       common_names:

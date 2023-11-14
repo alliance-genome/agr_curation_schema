@@ -204,7 +204,6 @@ SCHEMA_TEST_EXAMPLES := \
 	phenotype_allele_test \
 	phenotype_gene_test \
 	sgd_disease_test \
-	species_test \
 	sqtr_test \
 	variant_allele_association_test \
 	variant_association_ingest_test \

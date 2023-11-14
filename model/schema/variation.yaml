@@ -64,38 +64,8 @@ classes:
     notes: >-
       a variant must have a genome location, or must be private/incomplete
 
-  SourceVariantGenomicLocationAssociation:
-    is_a: VariantGenomicLocationAssociation
-    description: >-
-      Links a paper to the variant genomic location described in that paper
-    slots:
-      - single_reference
-    slot_usage:
-      single_reference:
-        required: true
-
-  SourceVariantTranscriptLocationAssociation:
-    is_a: VariantTranscriptLocationAssociation
-    description: >-
-      Links a paper to the variant transcript location described in that paper
-    slots:
-      - single_reference
-    slot_usage:
-      single_reference:
-        required: true
-
-  SourceVariantPolypeptideLocationAssociation:
-    is_a: VariantPolypeptideLocationAssociation
-    description: >-
-      Links a paper to the variant polypeptide location described in that paper
-    slots:
-      - single_reference
-    slot_usage:
-      single_reference:
-        required: true
-
   VariantLocationAssociation:
-    is_a: GenomicLocationAssociation
+    is_a: LocationAssociation
     abstract: true
     description: >-
       Base class linking a variant to a position on a genomic entity and the resulting consequence to the sequence
@@ -113,12 +83,12 @@ classes:
       - curated_consequence
       - sequence_of_reference_accession_number # Should this point to a chromosome object instead of a string? Will this be redundant with genomic location association of the subject?
     slot_usage:
-      assembly:
-        description: Assembly to which variant is aligned.
-        required: false
+      subject:
+        range: Variant
 
   VariantGenomicLocationAssociation:
     is_a: VariantLocationAssociation
+    abstract: true
     description: >-
       Links a variant to a genomic position and the resulting consequence to the sequence and/or function.
       In practice, functional consequences for variants which overlap genes are not generally provided at the
@@ -133,15 +103,15 @@ classes:
       - dna_mutation_type
       - gene_localization_type
     slot_usage:
-      assembly:
-        required: true
-      subject:
-        required: true
       object:
+        description: >-
+          The location reference object should be a chromosome assembly curie.
+        range: AssemblyComponent
         required: true
 
   VariantTranscriptLocationAssociation:
     is_a: VariantLocationAssociation
+    abstract: true
     description: >-
       Links a variant to a position on a specified transcript and the resulting consequence to the sequence and/or
       function of that transcript.
@@ -154,11 +124,10 @@ classes:
           object should be the transcript identifier
         range: Transcript
         required: true
-      subject:
-        required: true
 
   VariantPolypeptideLocationAssociation:
     is_a: VariantLocationAssociation
+    abstract: true
     description: >-
       Links a variant to a position on a specified polypeptide and the resulting consequence to the sequence and/or
       function of that polypeptide.
@@ -173,6 +142,25 @@ classes:
         range: Protein
         required: true
 
+  CuratedVariantGenomicLocationAssociation:
+    is_a: VariantGenomicLocationAssociation
+    slot_usage:
+      start:
+        required: true
+      end:
+        required: true
+      hgvs:
+        required: true
+
+  CuratedVariantTranscriptLocationAssociation:
+    is_a: VariantTranscriptLocationAssociation
+    slot_usage:
+      start:
+        required: true
+      end:
+        required: true
+      hgvs:
+        required: true
 
   CuratedVariantPolypeptideLocationAssociation:
     is_a: VariantPolypeptideLocationAssociation

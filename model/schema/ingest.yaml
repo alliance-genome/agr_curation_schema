@@ -288,13 +288,6 @@ slots:
     mixins:
       - object_set
 
-  species_ingest_set:
-    domain: Ingest
-    range: SpeciesDTO
-    multivalued: true
-    mixins:
-      - object_set
-
   object_set:
     mixin: true
     domain: Ingest
@@ -323,7 +316,6 @@ classes:
       - phenotype_gene_ingest_set
       - gene_ingest_set
       - variant_ingest_set
-      - species_ingest_set
       - allele_variant_association_ingest_set
       - allele_gene_association_ingest_set
       - allele_transcript_association_ingest_set
