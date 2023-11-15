@@ -85,6 +85,8 @@ classes:
       - WB
       - ZFIN
     slot_usage:
+      mod_entity_id:
+        required: true
       related_notes:
         description: >-
           Valid note types are available for viewing in the A-Team curation tool
@@ -103,6 +105,9 @@ classes:
       - gene_secondary_id_dtos
       - gene_type_curie
       - note_dtos
+    slot_usage:
+      mod_entity_id:
+        required: true
 
   GeneSymbolSlotAnnotation:
     description: >-
@@ -378,7 +383,9 @@ slots:
     inlined: true
     inlined_as_list: true
 
-  gene_curie:
+  gene_identifier:
+    description: >-
+      Identifier (curie/mod_entity_id/mod_internal_id) of the gene
     range: string
     required: true
 

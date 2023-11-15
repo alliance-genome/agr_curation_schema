@@ -79,9 +79,9 @@ classes:
     abstract: true
     is_a: AuditedObjectDTO
     slots:
-      - subject_gene_curie
+      - subject_gene_identifier
       - gene_relation_name
-      - object_gene_curie
+      - object_gene_identifier
       - evidence_curies
 
   GeneInteraction:
@@ -368,8 +368,8 @@ slots:
     domain: GeneGeneticInteractionDTO
     range: string
 
-  object_gene_curie:
-    description: Curie of the object gene in a gene-to-gene association
+  object_gene_identifier:
+    description: Identifier (curie/mod_entity_id/mod_internal_id) of the object gene in a gene-to-gene association
     domain: GeneToGeneAssociationDTO
     range: string
     required: true
@@ -380,8 +380,8 @@ slots:
     domain: GeneGeneticInteraction
     range: string                       # should eventually be updated to the Phenotype class
 
-  subject_gene_curie:
-    description: Curie of the subject gene in a gene-to-gene association
+  subject_gene_identifier:
+    description: Identifier (curie/mod_entity_id/mod_internal_id) of the subject gene in a gene-to-gene association
     domain: GeneToGeneAssociationDTO
     range: string
     required: true

@@ -1,8 +1,8 @@
 {
-  "linkml_version": "1.7.3",
+  "linkml_version": "2.0.0",
   "variant_genomic_location_association_ingest_set": [
     {
-      "variant_curie": "ZFIN:ZDB-ALT-000412-8",
+      "variant_identifier": "ZFIN:ZDB-ALT-000412-8",
       "relation_name": "has_location",
       "chromosome_curie": "NC_007118.7",
       "evidence_curies": [
@@ -31,14 +31,14 @@
   ],
  "variant_transcript_location_association_ingest_set": [
    {
-      "variant_curie": "ZFIN:ZDB-ALT-000412-8",
+      "variant_identifier": "ZFIN:ZDB-ALT-000412-8",
       "relation_name": "has_location",
       "evidence_curies": [
         "PMID:11231512"
       ],
       "start": 600,
       "end": 602,
-      "transcript_curie": "ZFIN:ZDB-TSCRIPT-000412-8",
+      "transcript_identifier": "ZFIN:ZDB-TSCRIPT-000412-8",
       "exon_number": 2,
       "internal": false,
       "obsolete": false,
@@ -50,15 +50,15 @@
  ],
   "variant_protein_location_association_ingest_set": [
    {
-     "variant_curie": "ZFIN:ZDB-ALT-000412-8",
+     "variant_identifier": "ZFIN:ZDB-ALT-000412-8",
       "relation_name": "has_location",
       "evidence_curies": [
         "PMID:11231512"
       ],
       "start": 200,
       "end": 200,
-      "protein_curie": "UniProtKB:11324235",
-      "associated_transcript_curies": ["ZFIN:ZDB-TSCRIPT-000412-8"],
+      "protein_identifier": "UniProtKB:11324235",
+      "associated_transcript_identifiers": ["ZFIN:ZDB-TSCRIPT-000412-8"],
       "number_amino_acids_removed": 2,
       "number_amino_acids_inserted": 4,
       "internal": false,
@@ -72,7 +72,7 @@
   "source_variant_genomic_location_association_ingest_set": [
     {
       "reference_curie": "PMID:11231512",
-      "variant_curie": "ZFIN:ZDB-ALT-000412-8",
+      "variant_identifier": "ZFIN:ZDB-ALT-000412-8",
       "relation_name": "has_location",
       "chromosome_curie": "NC_007118.7",
       "evidence_curies": [
@@ -102,14 +102,14 @@
  "source_variant_transcript_location_association_ingest_set": [
    {
       "reference_curie": "PMID:11231512",
-      "variant_curie": "ZFIN:ZDB-ALT-000412-8",
+      "variant_identifier": "ZFIN:ZDB-ALT-000412-8",
       "relation_name": "has_location",
       "evidence_curies": [
         "PMID:11231512"
       ],
       "start": 600,
       "end": 602,
-      "transcript_curie": "ZFIN:ZDB-TSCRIPT-000412-8",
+      "transcript_identifier": "ZFIN:ZDB-TSCRIPT-000412-8",
       "exon_number": 2,
       "internal": false,
       "obsolete": false,
@@ -122,15 +122,15 @@
   "source_variant_protein_location_association_ingest_set": [
    {
       "reference_curie": "PMID:11231512",
-      "variant_curie": "ZFIN:ZDB-ALT-000412-8",
+      "variant_identifier": "ZFIN:ZDB-ALT-000412-8",
       "relation_name": "has_location",
       "evidence_curies": [
         "PMID:11231512"
       ],
       "start": 200,
       "end": 200,
-      "protein_curie": "UniProtKB:11324235",
-      "associated_transcript_curies": ["ZFIN:ZDB-TSCRIPT-000412-8"],
+      "protein_identifier": "UniProtKB:11324235",
+      "associated_transcript_identifiers": ["ZFIN:ZDB-TSCRIPT-000412-8"],
       "number_amino_acids_removed": 2,
       "number_amino_acids_inserted": 4,
       "internal": false,

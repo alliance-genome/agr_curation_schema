@@ -110,7 +110,7 @@ classes:
       - is_extinct
       - is_extrachromosomal
       - is_integrated
-      - transgene_chromosome_location_curie
+      - transgene_chromosome_location_name
       - note_dtos
       - allele_mutation_type_dtos
       - allele_inheritance_mode_dtos
@@ -123,6 +123,8 @@ classes:
     slot_usage:
       note_dtos:
         notes: note_type CV 'Allele Note Type'
+      mod_entity_id:
+        required: true
 
   # Some classes roughly grouped with the Allele class because they have relationships to Allele and were
   # designed close to the time the Allele class was designed.  These could be broken out into their own yaml files.
@@ -136,6 +138,9 @@ classes:
     is_a: GenomicEntityDTO
     description: >-
       Dummy cell line DTO class
+    slot_usage:
+      mod_entity_id:
+        required: true
 
   GenerationMethod:
     is_a: AuditedObject
@@ -162,8 +167,6 @@ classes:
     slots:
       - references
     slot_usage:
-      curie:
-        identifier: true
       name:
         required: true
 
@@ -171,6 +174,9 @@ classes:
     is_a: GenomicEntityDTO
     slots:
       - reference_curies
+    slot_usage:
+      mod_entity_id:
+        required: true
 
   SequenceTargetingReagentToGeneAssociation:
     description: >-
@@ -393,7 +399,7 @@ classes:
     description: >-
       Association between an allele and another allele
     slots:
-      - object_allele_curie
+      - object_allele_identifier
 
   # do mutant/parent/embryonic cell line associations need to be split out?
   AlleleCellLineAssociation:
@@ -417,9 +423,9 @@ classes:
         embryonic stem cell lines known to carry the allele, and parental cell
         line of alleles made in embryonic stem cells.
       slots:
-        - allele_curie
+        - allele_identifier
         - relation_name
-        - cell_line_curie
+        - cell_line_identifier
 
   AlleleConstructAssociation:
     is_a: AlleleGenomicEntityAssociation
@@ -463,7 +469,7 @@ classes:
       Association between an allele and a gene
     is_a: AlleleGenomicEntityAssociationDTO
     slots:
-      - gene_curie
+      - gene_identifier
 
   AlleleGenerationMethodAssociation:
     is_a: EvidenceAssociation
@@ -482,10 +488,10 @@ classes:
   AlleleGenerationMethodAssociationDTO:
     is_a: EvidenceAssociationDTO
     slots:
-      - allele_curie
+      - allele_identifier
       - relation_name
       - generation_method_dto
-      - mutation_target_strain_curie
+      - mutation_target_strain_identifier
     slot_usage:
       relation_name:
         required: true
@@ -514,7 +520,7 @@ classes:
     is_a: EvidenceAssociationDTO
     abstract: true
     slots:
-      - allele_curie
+      - allele_identifier
       - relation_name
       - evidence_code_curie
       - note_dto
@@ -545,7 +551,7 @@ classes:
     description: >-
       The relationship between an allele and an image.
     slots:
-      - allele_curie
+      - allele_identifier
       - relation_name
       - image_curie
       - primary_image
@@ -570,9 +576,9 @@ classes:
     description: >-
       The relationship between an allele and the AGM origin of the allele.
     slots:
-      - allele_curie
+      - allele_identifier
       - relation_name
-      - agm_curie
+      - agm_identifier
 
   AlleleProteinAssociation:
     is_a: AlleleGenomicEntityAssociation
@@ -587,7 +593,7 @@ classes:
     description: >-
       Association between an allele and a protein
     slots:
-      - protein_curie
+      - protein_identifier
 
   AlleleTranscriptAssociation:
     is_a: AlleleGenomicEntityAssociation
@@ -602,7 +608,7 @@ classes:
     description: >-
       Association between an allele and a transcript
     slots:
-      - transcript_curie
+      - transcript_identifier
 
   AlleleVariantAssociation:
     is_a: AlleleGenomicEntityAssociation
@@ -623,7 +629,7 @@ classes:
       Allele may have many variants and a variant can be present in many
       alleles.
     slots:
-      - variant_curie
+      - variant_identifier
 
 ## ------------
 ## SLOTS
@@ -653,7 +659,9 @@ slots:
     range: AlleleConstructAssociation
     multivalued: true
 
-  allele_curie:
+  allele_identifier:
+    description: >-
+      Identifier (curie/mod_entity_id/mod_internal_id) of the allele
     range: string
     required: true
 
@@ -835,7 +843,9 @@ slots:
     description: >-
       TODO: added as a result of 'origin' class - please advise on a more descriptive slot/class definition.
 
-  cell_line_curie:
+  cell_line_identifier:
+    description: >-
+      Identifier (curie/mod_entity_id/mod_internal_id) of the cell line
     range: string
     required: true
 
@@ -1022,9 +1032,9 @@ slots:
       by the generation method for a particular allele.
     range: AffectedGenomicModel
 
-  mutation_target_strain_curie:
+  mutation_target_strain_identifier:
     description: >-
-      Curie of the particular strain that is targeted by the generation method
+      Identifier (curie/mod_entity_id/mod_internal_id) of the particular strain that is targeted by the generation method
       for a particular allele (MGI only)
     domain: AlleleGenerationMethodAssociationDTO
     range: string
@@ -1058,9 +1068,9 @@ slots:
     range: string
     required: true
 
-  object_allele_curie:
+  object_allele_identifier:
     description: >-
-      The curie of the allele that is acting as the object of an AlleleAlleleAssociation
+      The identifier (curie/mod_entity_id/mod_internal_id) of the allele that is acting as the object of an AlleleAlleleAssociation
     domain: AlleleAlleleAssociationDTO
     range: string
 
@@ -1081,9 +1091,9 @@ slots:
     range: Chromosome
     multivalued: false
 
-  transgene_chromosome_location_curie:
+  transgene_chromosome_location_name:
     description: >-
-      The curie string of the chromosome to which a transgene has been mapped. Used for WormBase
+      The name of the chromosome to which a transgene has been mapped. Used for WormBase
       transgenes that have been integrated into the genome and mapped to a chromosome.
     domain: AlleleDTO
     range: string

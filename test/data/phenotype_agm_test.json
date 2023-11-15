@@ -1,5 +1,5 @@
 {
-  "linkml_version": "1.7.3",
+  "linkml_version": "2.0.0",
   "phenotype_agm_ingest_set": [
     {
       "reference_curie": "PMID:123456",
@@ -18,15 +18,15 @@
       "date_updated": "2015-04-09T10:15:30+00:00",
       "internal": false,
       "obsolete": false,
-      "agm_curie": "WB:WBStrain00001",
+      "agm_identifier": "WB:WBStrain00001",
       "phenotype_statement": "dye filling defect",
       "phenotype_term_curie": "WBPhenotype:0001383",
-      "inferred_gene_curie": "WB:WBGene0002311",
-      "asserted_gene_curies": [
+      "inferred_gene_identifier": "WB:WBGene0002311",
+      "asserted_gene_identifiers": [
         "WB:WBGene00012121"
       ],
-      "inferred_allele_curie": "WB:WBVar000131321",
-      "asserted_allele_curie": "WB:WBVar000131321",
+      "inferred_allele_identifier": "WB:WBVar000131321",
+      "asserted_allele_identifier": "WB:WBVar000131321",
       "condition_relation_dtos": [
         {
           "condition_relation_type_name": "has_condition",

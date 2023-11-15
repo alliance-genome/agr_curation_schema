@@ -90,25 +90,24 @@ classes:
     abstract: true
     slots:
       - curie
+      - mod_entity_id
+      - mod_internal_id
       - taxon
       - data_provider
     slot_usage:
       taxon:
-        required: true
-      curie:
         required: true
 
   BiologicalEntityDTO:
     is_a: AuditedObjectDTO
     abstract: true
     slots:
-      - curie
+      - mod_entity_id
+      - mod_internal_id
       - taxon_curie
       - data_provider_dto
     slot_usage:
       taxon_curie:
-        required: true
-      curie:
         required: true
 
   GenomicEntity:
@@ -696,7 +695,6 @@ slots:
     description: >-
       A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
     range: uriorcurie
-    identifier: true
 
   referenced_curie:
     description: >-
@@ -1002,15 +1000,15 @@ slots:
     description: >-
       The NCBI chromosome accession number for the chromosome.
 
-  transcript_curie:
+  transcript_identifier:
     range: string
     required: true
 
-  protein_curie:
+  protein_identifier:
     range: string
     required: true
 
-  genomic_entity_curie:
+  genomic_entity_identifier:
     range: string
 
   source_organization:
