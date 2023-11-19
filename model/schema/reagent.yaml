@@ -134,7 +134,7 @@ classes:
       - clonality_name
       - heavy_chain_isotype_name
       - light_chain_isotype_name
-      - antibody_target_gene_curies
+      - antibody_target_gene_identifiers
       - cross_reference_dtos
       - reference_curies
       - original_reference_curie
@@ -295,10 +295,10 @@ classes:
     slots:
       - construct_identifier
       - genomic_entity_relation_name
-      - genomic_entity_curie
+      - genomic_entity_identifier
       - note_dtos
     slot_usage:
-      genomic_entity_curie:
+      genomic_entity_identifier:
         required: true
 
   # If we need to have multiple paths to root class, then we can consider a mixin that allows
@@ -321,9 +321,10 @@ slots:
     domain: Antibody
     range: Gene
 
-  antibody_target_gene_curies:
+  antibody_target_gene_identifiers:
     description: >-
-      Curies of the genes whose gene products are recognized by the antibody.
+      Identifiers (curie/mod_entity_id/mod_internal_id) of the genes whose gene
+      products are recognized by the antibody.
     required: false
     multivalued: true
     domain: AntibodyDTO

@@ -9,13 +9,13 @@
                     "type": "string"
                 },
                 "asserted_allele": {
-                    "description": "The allele to which something is manually asserted to be associated.",
-                    "type": "string"
+                    "$ref": "#/$defs/Allele",
+                    "description": "The allele to which something is manually asserted to be associated."
                 },
                 "asserted_genes": {
                     "description": "The gene(s) to which something is manually asserted to be associated.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Gene"
                     },
                     "type": "array"
                 },
@@ -87,12 +87,12 @@
                     "type": "string"
                 },
                 "inferred_allele": {
-                    "description": "The allele to which the disease is inferred to be associated.",
-                    "type": "string"
+                    "$ref": "#/$defs/Allele",
+                    "description": "The allele to which the disease is inferred to be associated."
                 },
                 "inferred_gene": {
-                    "description": "The gene to which the disease is inferred to be associated.",
-                    "type": "string"
+                    "$ref": "#/$defs/Gene",
+                    "description": "The gene to which the disease is inferred to be associated."
                 },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
@@ -134,12 +134,12 @@
                     "description": "Object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source, and a CrossReference to that organisation's site"
                 },
                 "single_reference": {
-                    "description": "The reference in which the disease association was asserted/reported.",
-                    "type": "string"
+                    "$ref": "#/$defs/Reference",
+                    "description": "The reference in which the disease association was asserted/reported."
                 },
                 "subject": {
-                    "description": "The AGM to which the disease ontology term is associated.",
-                    "type": "string"
+                    "$ref": "#/$defs/AffectedGenomicModel",
+                    "description": "The AGM to which the disease ontology term is associated."
                 },
                 "unique_id": {
                     "description": "Unique identifer for the disease annotation.  Will be generated at AGR if not submitted by the MOD.",
@@ -152,14 +152,13 @@
                 "with_or_from": {
                     "description": "A field for disease annotations that captures the human gene the implicated MOD gene is homologous or orthologous to when using the ISS (inferred from sequence similarity) evidence code or the ISO (inferred from sequence orthology) evidence code. The assertion would state that the MOD gene is implicated in the indicated disease based on sequence-similarity/sequence-orthology \"with\" some human gene. Currently used by SGD.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Gene"
                     },
                     "type": "array"
                 }
             },
             "required": [
                 "evidence_codes",
-                "curie",
                 "data_provider",
                 "single_reference",
                 "subject",
@@ -174,19 +173,19 @@
             "additionalProperties": false,
             "description": "Ingest class for an association between an AGM and a disease",
             "properties": {
-                "agm_curie": {
+                "agm_identifier": {
                     "type": "string"
                 },
                 "annotation_type_name": {
                     "description": "Name of the VocabularyTerm describing the annotation type selected from the 'Annotation types' Vocabulary",
                     "type": "string"
                 },
-                "asserted_allele_curie": {
-                    "description": "Curie of the allele to which something is manually asserted to be associated",
+                "asserted_allele_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele to which something is manually asserted to be associated",
                     "type": "string"
                 },
-                "asserted_gene_curies": {
-                    "description": "Curies of the gene(s) to which something is manually asserted to be associated",
+                "asserted_gene_identifiers": {
+                    "description": "Identifiers (curie/mod_entity_id/mod_internal_id) of the gene(s) to which something is manually asserted to be associated",
                     "items": {
                         "type": "string"
                     },
@@ -226,8 +225,8 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "disease_genetic_modifier_curies": {
-                    "description": "Curie of BiologcalEntity that modifies the disease model",
+                "disease_genetic_modifier_identifiers": {
+                    "description": "Identifiers (curie/mod_entity_id/mod_internal_id) of BiologcalEntity that modifies the disease model",
                     "items": {
                         "type": "string"
                     },
@@ -263,12 +262,12 @@
                     "description": "Name of term from the 'Genetic sexes' vocabulary",
                     "type": "string"
                 },
-                "inferred_allele_curie": {
-                    "description": "Curie of allele to which something is inferred to be associated via an automated pipeline",
+                "inferred_allele_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of allele to which something is inferred to be associated via an automated pipeline",
                     "type": "string"
                 },
-                "inferred_gene_curie": {
-                    "description": "Curie of gene to which something is inferred to be associated via an automated pipeline",
+                "inferred_gene_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of gene to which something is inferred to be associated via an automated pipeline",
                     "type": "string"
                 },
                 "internal": {
@@ -309,8 +308,8 @@
                     "description": "Curie of the Person object representing the individual that updated the entity",
                     "type": "string"
                 },
-                "with_gene_curies": {
-                    "description": "http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8",
+                "with_gene_identifiers": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of genes http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8",
                     "items": {
                         "type": "string"
                     },
@@ -318,7 +317,7 @@
                 }
             },
             "required": [
-                "agm_curie",
+                "agm_identifier",
                 "disease_relation_name",
                 "do_term_curie",
                 "data_provider_dto",
@@ -333,13 +332,13 @@
             "description": "An annotation asserting an association between an AGM and a phenotype supported by evidence.",
             "properties": {
                 "asserted_allele": {
-                    "description": "The allele to which something is manually asserted to be associated.",
-                    "type": "string"
+                    "$ref": "#/$defs/Allele",
+                    "description": "The allele to which something is manually asserted to be associated."
                 },
                 "asserted_genes": {
                     "description": "The gene(s) to which something is manually asserted to be associated.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Gene"
                     },
                     "type": "array"
                 },
@@ -382,12 +381,12 @@
                     "type": "string"
                 },
                 "inferred_allele": {
-                    "description": "The allele to which the phenotype is inferred to be associated.",
-                    "type": "string"
+                    "$ref": "#/$defs/Allele",
+                    "description": "The allele to which the phenotype is inferred to be associated."
                 },
                 "inferred_gene": {
-                    "description": "The gene to which the phenotype is inferred to be associated.",
-                    "type": "string"
+                    "$ref": "#/$defs/Gene",
+                    "description": "The gene to which the phenotype is inferred to be associated."
                 },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
@@ -425,12 +424,12 @@
                     "type": "string"
                 },
                 "single_reference": {
-                    "description": "The reference in which the phenotype association was asserted/reported.",
-                    "type": "string"
+                    "$ref": "#/$defs/Reference",
+                    "description": "The reference in which the phenotype association was asserted/reported."
                 },
                 "subject": {
-                    "description": "The AGM to which the phenotype ontology term is associated.",
-                    "type": "string"
+                    "$ref": "#/$defs/AffectedGenomicModel",
+                    "description": "The AGM to which the phenotype ontology term is associated."
                 },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
@@ -442,7 +441,6 @@
                 }
             },
             "required": [
-                "curie",
                 "data_provider",
                 "single_reference",
                 "subject",
@@ -458,15 +456,15 @@
             "additionalProperties": false,
             "description": "Ingest class for an association between an AGM and a phenotype",
             "properties": {
-                "agm_curie": {
+                "agm_identifier": {
                     "type": "string"
                 },
-                "asserted_allele_curie": {
-                    "description": "Curie of the allele to which something is manually asserted to be associated",
+                "asserted_allele_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele to which something is manually asserted to be associated",
                     "type": "string"
                 },
-                "asserted_gene_curies": {
-                    "description": "Curies of the gene(s) to which something is manually asserted to be associated",
+                "asserted_gene_identifiers": {
+                    "description": "Identifiers (curie/mod_entity_id/mod_internal_id) of the gene(s) to which something is manually asserted to be associated",
                     "items": {
                         "type": "string"
                     },
@@ -506,12 +504,12 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "inferred_allele_curie": {
-                    "description": "Curie of allele to which something is inferred to be associated via an automated pipeline",
+                "inferred_allele_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of allele to which something is inferred to be associated via an automated pipeline",
                     "type": "string"
                 },
-                "inferred_gene_curie": {
-                    "description": "Curie of gene to which something is inferred to be associated via an automated pipeline",
+                "inferred_gene_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of gene to which something is inferred to be associated via an automated pipeline",
                     "type": "string"
                 },
                 "internal": {
@@ -554,7 +552,7 @@
                 }
             },
             "required": [
-                "agm_curie",
+                "agm_identifier",
                 "data_provider_dto",
                 "reference_curie",
                 "internal"
@@ -869,6 +867,14 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "name": {
                     "description": "a human-readable name for an entity",
                     "type": "string"
@@ -883,13 +889,13 @@
                 "references": {
                     "description": "holds between an object and a list of references",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": "array"
                 },
                 "sequence_targeting_reagents": {
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/SequenceTargetingReagent"
                     },
                     "type": "array"
                 },
@@ -908,7 +914,6 @@
             },
             "required": [
                 "subtype",
-                "curie",
                 "taxon",
                 "data_provider",
                 "internal"
@@ -953,7 +958,7 @@
                     "type": "boolean"
                 },
                 "single_allele": {
-                    "type": "string"
+                    "$ref": "#/$defs/Allele"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -974,7 +979,8 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "allele_curie": {
+                "allele_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
                 "created_by_curie": {
@@ -1019,7 +1025,7 @@
                 }
             },
             "required": [
-                "allele_curie",
+                "allele_identifier",
                 "internal"
             ],
             "title": "AffectedGenomicModelComponentDTO",
@@ -1051,10 +1057,6 @@
                     },
                     "type": "array"
                 },
-                "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "type": "string"
-                },
                 "data_provider_dto": {
                     "$ref": "#/$defs/DataProviderDTO",
                     "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
@@ -1083,6 +1085,14 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "name": {
                     "description": "a human-readable name for an entity",
                     "type": "string"
@@ -1098,7 +1108,8 @@
                     },
                     "type": "array"
                 },
-                "sequence_targeting_reagent_curies": {
+                "sequence_targeting_reagent_identifiers": {
+                    "description": "Identifiers (curie/mod_entity_id/mod_internal_id) of the STRs",
                     "items": {
                         "type": "string"
                     },
@@ -1119,7 +1130,7 @@
             },
             "required": [
                 "subtype_name",
-                "curie",
+                "mod_entity_id",
                 "taxon_curie",
                 "data_provider_dto",
                 "internal"
@@ -1205,7 +1216,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -1221,7 +1232,7 @@
                     "type": "string"
                 },
                 "single_agm": {
-                    "type": "string"
+                    "$ref": "#/$defs/AffectedGenomicModel"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -1418,7 +1429,15 @@
                     "type": "boolean"
                 },
                 "laboratory_of_origin": {
-                    "description": "The laboratory of origin for the entity.",
+                    "$ref": "#/$defs/Laboratory",
+                    "description": "The laboratory of origin for the entity."
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
                 },
                 "obsolete": {
@@ -1428,7 +1447,7 @@
                 "references": {
                     "description": "holds between an object and a list of references",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": "array"
                 },
@@ -1454,7 +1473,6 @@
             },
             "required": [
                 "allele_symbol",
-                "curie",
                 "taxon",
                 "data_provider",
                 "internal"
@@ -1493,7 +1511,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -1505,8 +1523,8 @@
                     "type": "boolean"
                 },
                 "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Allele",
+                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -1521,8 +1539,8 @@
                     "type": "string"
                 },
                 "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Allele",
+                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -1542,7 +1560,8 @@
             "additionalProperties": false,
             "description": "Association between an allele and another allele",
             "properties": {
-                "allele_curie": {
+                "allele_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
                 "created_by_curie": {
@@ -1587,8 +1606,8 @@
                 "note_dto": {
                     "$ref": "#/$defs/NoteDTO"
                 },
-                "object_allele_curie": {
-                    "description": "The curie of the allele that is acting as the object of an AlleleAlleleAssociation",
+                "object_allele_identifier": {
+                    "description": "The identifier (curie/mod_entity_id/mod_internal_id) of the allele that is acting as the object of an AlleleAlleleAssociation",
                     "type": "string"
                 },
                 "obsolete": {
@@ -1605,7 +1624,7 @@
                 }
             },
             "required": [
-                "allele_curie",
+                "allele_identifier",
                 "relation_name",
                 "evidence_curies",
                 "internal"
@@ -1644,7 +1663,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -1653,8 +1672,8 @@
                     "type": "boolean"
                 },
                 "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/CellLine",
+                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -1665,8 +1684,8 @@
                     "type": "string"
                 },
                 "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Allele",
+                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -1686,10 +1705,12 @@
             "additionalProperties": false,
             "description": "The relationship between an allele and a cell line.  Includes mutant/ embryonic stem cell lines known to carry the allele, and parental cell line of alleles made in embryonic stem cells.",
             "properties": {
-                "allele_curie": {
+                "allele_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
-                "cell_line_curie": {
+                "cell_line_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the cell line",
                     "type": "string"
                 },
                 "created_by_curie": {
@@ -1741,9 +1762,9 @@
                 }
             },
             "required": [
-                "allele_curie",
+                "allele_identifier",
                 "relation_name",
-                "cell_line_curie",
+                "cell_line_identifier",
                 "internal"
             ],
             "title": "AlleleCellLineAssociationDTO",
@@ -1780,7 +1801,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -1808,8 +1829,8 @@
                     "type": "string"
                 },
                 "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Allele",
+                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -1829,7 +1850,8 @@
             "additionalProperties": false,
             "description": "The relationship between an allele and constructs contained in that allele.",
             "properties": {
-                "allele_curie": {
+                "allele_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
                 "construct_identifier": {
@@ -1893,7 +1915,7 @@
             },
             "required": [
                 "construct_identifier",
-                "allele_curie",
+                "allele_identifier",
                 "relation_name",
                 "evidence_curies",
                 "internal"
@@ -1966,10 +1988,6 @@
                     },
                     "type": "array"
                 },
-                "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "type": "string"
-                },
                 "data_provider_dto": {
                     "$ref": "#/$defs/DataProviderDTO",
                     "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
@@ -2018,6 +2036,14 @@
                     "description": "The curie of the laboratory of origin for the entity.",
                     "type": "string"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "note_dtos": {
                     "items": {
                         "$ref": "#/$defs/NoteDTO"
@@ -2039,8 +2065,8 @@
                     "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
                     "type": "string"
                 },
-                "transgene_chromosome_location_curie": {
-                    "description": "The curie string of the chromosome to which a transgene has been mapped. Used for WormBase transgenes that have been integrated into the genome and mapped to a chromosome.",
+                "transgene_chromosome_location_name": {
+                    "description": "The name of the chromosome to which a transgene has been mapped. Used for WormBase transgenes that have been integrated into the genome and mapped to a chromosome.",
                     "type": "string"
                 },
                 "updated_by_curie": {
@@ -2050,7 +2076,7 @@
             },
             "required": [
                 "allele_symbol_dto",
-                "curie",
+                "mod_entity_id",
                 "taxon_curie",
                 "data_provider_dto",
                 "internal"
@@ -2093,7 +2119,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -2106,7 +2132,7 @@
                     "type": "boolean"
                 },
                 "single_allele": {
-                    "type": "string"
+                    "$ref": "#/$defs/Allele"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -2191,7 +2217,7 @@
                 "asserted_genes": {
                     "description": "The gene(s) to which something is manually asserted to be associated.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Gene"
                     },
                     "type": "array"
                 },
@@ -2263,8 +2289,8 @@
                     "type": "string"
                 },
                 "inferred_gene": {
-                    "description": "The gene to which the disease is inferred to be associated.",
-                    "type": "string"
+                    "$ref": "#/$defs/Gene",
+                    "description": "The gene to which the disease is inferred to be associated."
                 },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
@@ -2306,12 +2332,12 @@
                     "description": "Object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source, and a CrossReference to that organisation's site"
                 },
                 "single_reference": {
-                    "description": "The reference in which the disease association was asserted/reported.",
-                    "type": "string"
+                    "$ref": "#/$defs/Reference",
+                    "description": "The reference in which the disease association was asserted/reported."
                 },
                 "subject": {
-                    "description": "The allele to which the disease ontology term is associated.",
-                    "type": "string"
+                    "$ref": "#/$defs/Allele",
+                    "description": "The allele to which the disease ontology term is associated."
                 },
                 "unique_id": {
                     "description": "Unique identifer for the disease annotation.  Will be generated at AGR if not submitted by the MOD.",
@@ -2324,14 +2350,13 @@
                 "with_or_from": {
                     "description": "A field for disease annotations that captures the human gene the implicated MOD gene is homologous or orthologous to when using the ISS (inferred from sequence similarity) evidence code or the ISO (inferred from sequence orthology) evidence code. The assertion would state that the MOD gene is implicated in the indicated disease based on sequence-similarity/sequence-orthology \"with\" some human gene. Currently used by SGD.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Gene"
                     },
                     "type": "array"
                 }
             },
             "required": [
                 "evidence_codes",
-                "curie",
                 "data_provider",
                 "single_reference",
                 "subject",
@@ -2346,15 +2371,16 @@
             "additionalProperties": false,
             "description": "Ingest class for an association between an allele and a disease",
             "properties": {
-                "allele_curie": {
+                "allele_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
                 "annotation_type_name": {
                     "description": "Name of the VocabularyTerm describing the annotation type selected from the 'Annotation types' Vocabulary",
                     "type": "string"
                 },
-                "asserted_gene_curies": {
-                    "description": "Curies of the gene(s) to which something is manually asserted to be associated",
+                "asserted_gene_identifiers": {
+                    "description": "Identifiers (curie/mod_entity_id/mod_internal_id) of the gene(s) to which something is manually asserted to be associated",
                     "items": {
                         "type": "string"
                     },
@@ -2394,8 +2420,8 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "disease_genetic_modifier_curies": {
-                    "description": "Curie of BiologcalEntity that modifies the disease model",
+                "disease_genetic_modifier_identifiers": {
+                    "description": "Identifiers (curie/mod_entity_id/mod_internal_id) of BiologcalEntity that modifies the disease model",
                     "items": {
                         "type": "string"
                     },
@@ -2431,8 +2457,8 @@
                     "description": "Name of term from the 'Genetic sexes' vocabulary",
                     "type": "string"
                 },
-                "inferred_gene_curie": {
-                    "description": "Curie of gene to which something is inferred to be associated via an automated pipeline",
+                "inferred_gene_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of gene to which something is inferred to be associated via an automated pipeline",
                     "type": "string"
                 },
                 "internal": {
@@ -2473,8 +2499,8 @@
                     "description": "Curie of the Person object representing the individual that updated the entity",
                     "type": "string"
                 },
-                "with_gene_curies": {
-                    "description": "http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8",
+                "with_gene_identifiers": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of genes http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8",
                     "items": {
                         "type": "string"
                     },
@@ -2482,7 +2508,7 @@
                 }
             },
             "required": [
-                "allele_curie",
+                "allele_identifier",
                 "disease_relation_name",
                 "do_term_curie",
                 "data_provider_dto",
@@ -2527,7 +2553,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -2548,7 +2574,7 @@
                     "type": "boolean"
                 },
                 "single_allele": {
-                    "type": "string"
+                    "$ref": "#/$defs/Allele"
                 },
                 "synonym_scope": {
                     "description": "the scope of the synonym - permissible values are narrow / broad / related / exact",
@@ -2604,7 +2630,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -2632,7 +2658,7 @@
                     "type": "string"
                 },
                 "single_allele": {
-                    "type": "string"
+                    "$ref": "#/$defs/Allele"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -2748,7 +2774,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -2760,8 +2786,8 @@
                     "type": "boolean"
                 },
                 "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Gene",
+                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -2776,8 +2802,8 @@
                     "type": "string"
                 },
                 "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Allele",
+                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -2797,7 +2823,8 @@
             "additionalProperties": false,
             "description": "Association between an allele and a gene",
             "properties": {
-                "allele_curie": {
+                "allele_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
                 "created_by_curie": {
@@ -2835,7 +2862,8 @@
                     },
                     "type": "array"
                 },
-                "gene_curie": {
+                "gene_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the gene",
                     "type": "string"
                 },
                 "internal": {
@@ -2859,8 +2887,8 @@
                 }
             },
             "required": [
-                "gene_curie",
-                "allele_curie",
+                "gene_identifier",
+                "allele_identifier",
                 "relation_name",
                 "evidence_curies",
                 "internal"
@@ -2899,7 +2927,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -2908,8 +2936,8 @@
                     "type": "boolean"
                 },
                 "mutation_target_strain": {
-                    "description": "The particular strain (solely for and from MGI) that is targeted by the generation method for a particular allele.",
-                    "type": "string"
+                    "$ref": "#/$defs/AffectedGenomicModel",
+                    "description": "The particular strain (solely for and from MGI) that is targeted by the generation method for a particular allele."
                 },
                 "object": {
                     "$ref": "#/$defs/GenerationMethod",
@@ -2929,8 +2957,8 @@
                     "type": "string"
                 },
                 "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Allele",
+                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -2950,7 +2978,8 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "allele_curie": {
+                "allele_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
                 "created_by_curie": {
@@ -2991,8 +3020,8 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mutation_target_strain_curie": {
-                    "description": "Curie of the particular strain that is targeted by the generation method for a particular allele (MGI only)",
+                "mutation_target_strain_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the particular strain that is targeted by the generation method for a particular allele (MGI only)",
                     "type": "string"
                 },
                 "obsolete": {
@@ -3014,7 +3043,7 @@
                 }
             },
             "required": [
-                "allele_curie",
+                "allele_identifier",
                 "relation_name",
                 "internal"
             ],
@@ -3052,7 +3081,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -3069,7 +3098,7 @@
                     "type": "boolean"
                 },
                 "single_allele": {
-                    "type": "string"
+                    "$ref": "#/$defs/Allele"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -3174,7 +3203,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -3183,8 +3212,8 @@
                     "type": "boolean"
                 },
                 "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Image",
+                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -3199,8 +3228,8 @@
                     "type": "string"
                 },
                 "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Allele",
+                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -3220,7 +3249,8 @@
             "additionalProperties": false,
             "description": "The relationship between an allele and an image.",
             "properties": {
-                "allele_curie": {
+                "allele_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
                 "created_by_curie": {
@@ -3279,7 +3309,7 @@
                 }
             },
             "required": [
-                "allele_curie",
+                "allele_identifier",
                 "relation_name",
                 "image_curie",
                 "internal"
@@ -3318,7 +3348,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -3343,7 +3373,7 @@
                     "type": "string"
                 },
                 "single_allele": {
-                    "type": "string"
+                    "$ref": "#/$defs/Allele"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -3456,7 +3486,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -3476,7 +3506,7 @@
                     "type": "boolean"
                 },
                 "single_allele": {
-                    "type": "string"
+                    "$ref": "#/$defs/Allele"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -3583,7 +3613,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -3600,7 +3630,7 @@
                     "type": "boolean"
                 },
                 "single_allele": {
-                    "type": "string"
+                    "$ref": "#/$defs/Allele"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -3705,7 +3735,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -3714,8 +3744,8 @@
                     "type": "boolean"
                 },
                 "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/AffectedGenomicModel",
+                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -3726,8 +3756,8 @@
                     "type": "string"
                 },
                 "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Allele",
+                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -3747,10 +3777,11 @@
             "additionalProperties": false,
             "description": "The relationship between an allele and the AGM origin of the allele.",
             "properties": {
-                "agm_curie": {
+                "agm_identifier": {
                     "type": "string"
                 },
-                "allele_curie": {
+                "allele_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
                 "created_by_curie": {
@@ -3802,9 +3833,9 @@
                 }
             },
             "required": [
-                "allele_curie",
+                "allele_identifier",
                 "relation_name",
-                "agm_curie",
+                "agm_identifier",
                 "internal"
             ],
             "title": "AlleleOriginAssociationDTO",
@@ -3817,7 +3848,7 @@
                 "asserted_genes": {
                     "description": "The gene(s) to which something is manually asserted to be associated.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Gene"
                     },
                     "type": "array"
                 },
@@ -3860,8 +3891,8 @@
                     "type": "string"
                 },
                 "inferred_gene": {
-                    "description": "The gene to which the phenotype is inferred to be associated.",
-                    "type": "string"
+                    "$ref": "#/$defs/Gene",
+                    "description": "The gene to which the phenotype is inferred to be associated."
                 },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
@@ -3899,12 +3930,12 @@
                     "type": "string"
                 },
                 "single_reference": {
-                    "description": "The reference in which the phenotype association was asserted/reported.",
-                    "type": "string"
+                    "$ref": "#/$defs/Reference",
+                    "description": "The reference in which the phenotype association was asserted/reported."
                 },
                 "subject": {
-                    "description": "The allele to which the phenotype ontology term is associated.",
-                    "type": "string"
+                    "$ref": "#/$defs/Allele",
+                    "description": "The allele to which the phenotype ontology term is associated."
                 },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
@@ -3916,7 +3947,6 @@
                 }
             },
             "required": [
-                "curie",
                 "data_provider",
                 "single_reference",
                 "subject",
@@ -3932,11 +3962,12 @@
             "additionalProperties": false,
             "description": "Ingest class for an association between an allele and a phenotype",
             "properties": {
-                "allele_curie": {
+                "allele_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
-                "asserted_gene_curies": {
-                    "description": "Curies of the gene(s) to which something is manually asserted to be associated",
+                "asserted_gene_identifiers": {
+                    "description": "Identifiers (curie/mod_entity_id/mod_internal_id) of the gene(s) to which something is manually asserted to be associated",
                     "items": {
                         "type": "string"
                     },
@@ -3976,8 +4007,8 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "inferred_gene_curie": {
-                    "description": "Curie of gene to which something is inferred to be associated via an automated pipeline",
+                "inferred_gene_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of gene to which something is inferred to be associated via an automated pipeline",
                     "type": "string"
                 },
                 "internal": {
@@ -4020,7 +4051,7 @@
                 }
             },
             "required": [
-                "allele_curie",
+                "allele_identifier",
                 "data_provider_dto",
                 "reference_curie",
                 "internal"
@@ -4059,7 +4090,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -4071,8 +4102,8 @@
                     "type": "boolean"
                 },
                 "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Protein",
+                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -4087,8 +4118,8 @@
                     "type": "string"
                 },
                 "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Allele",
+                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -4108,7 +4139,8 @@
             "additionalProperties": false,
             "description": "Association between an allele and a protein",
             "properties": {
-                "allele_curie": {
+                "allele_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
                 "created_by_curie": {
@@ -4157,7 +4189,7 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "protein_curie": {
+                "protein_identifier": {
                     "type": "string"
                 },
                 "relation_name": {
@@ -4170,8 +4202,8 @@
                 }
             },
             "required": [
-                "protein_curie",
-                "allele_curie",
+                "protein_identifier",
+                "allele_identifier",
                 "relation_name",
                 "evidence_curies",
                 "internal"
@@ -4210,7 +4242,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -4226,7 +4258,7 @@
                     "type": "string"
                 },
                 "single_allele": {
-                    "type": "string"
+                    "$ref": "#/$defs/Allele"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -4276,7 +4308,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -4297,7 +4329,7 @@
                     "type": "boolean"
                 },
                 "single_allele": {
-                    "type": "string"
+                    "$ref": "#/$defs/Allele"
                 },
                 "synonym_scope": {
                     "description": "the scope of the synonym - permissible values are narrow / broad / related / exact",
@@ -4357,7 +4389,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -4378,7 +4410,7 @@
                     "type": "boolean"
                 },
                 "single_allele": {
-                    "type": "string"
+                    "$ref": "#/$defs/Allele"
                 },
                 "synonym_scope": {
                     "description": "the scope of the synonym - permissible values are narrow / broad / related / exact",
@@ -4434,7 +4466,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -4446,8 +4478,8 @@
                     "type": "boolean"
                 },
                 "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Transcript",
+                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -4462,8 +4494,8 @@
                     "type": "string"
                 },
                 "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Allele",
+                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -4483,7 +4515,8 @@
             "additionalProperties": false,
             "description": "Association between an allele and a transcript",
             "properties": {
-                "allele_curie": {
+                "allele_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
                 "created_by_curie": {
@@ -4536,7 +4569,7 @@
                     "description": "Name of VocabularyTerm representing relation of an Association",
                     "type": "string"
                 },
-                "transcript_curie": {
+                "transcript_identifier": {
                     "type": "string"
                 },
                 "updated_by_curie": {
@@ -4545,8 +4578,8 @@
                 }
             },
             "required": [
-                "transcript_curie",
-                "allele_curie",
+                "transcript_identifier",
+                "allele_identifier",
                 "relation_name",
                 "evidence_curies",
                 "internal"
@@ -4585,7 +4618,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -4597,8 +4630,8 @@
                     "type": "boolean"
                 },
                 "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Variant",
+                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -4613,8 +4646,8 @@
                     "type": "string"
                 },
                 "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Allele",
+                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -4634,7 +4667,8 @@
             "additionalProperties": false,
             "description": "The relationship between an allele and a variant is many to many. An Allele may have many variants and a variant can be present in many alleles.",
             "properties": {
-                "allele_curie": {
+                "allele_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
                 "created_by_curie": {
@@ -4691,12 +4725,14 @@
                     "description": "Curie of the Person object representing the individual that updated the entity",
                     "type": "string"
                 },
-                "variant_curie": {
+                "variant_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the variant",
                     "type": "string"
                 }
             },
             "required": [
-                "allele_curie",
+                "variant_identifier",
+                "allele_identifier",
                 "relation_name",
                 "evidence_curies",
                 "internal"
@@ -4910,8 +4946,8 @@
                     "type": "string"
                 },
                 "single_reference": {
-                    "description": "holds between an object and a single reference",
-                    "type": "string"
+                    "$ref": "#/$defs/Reference",
+                    "description": "holds between an object and a single reference"
                 },
                 "subject": {
                     "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
@@ -4927,7 +4963,6 @@
                 }
             },
             "required": [
-                "curie",
                 "data_provider",
                 "single_reference",
                 "subject",
@@ -4945,7 +4980,7 @@
                 "antibody_target_genes": {
                     "description": "The genes whose gene products are recognized by the antibody.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Gene"
                     },
                     "type": "array"
                 },
@@ -5041,14 +5076,14 @@
                 "original_reference": {
                     "description": "The reference providing the original description of the antibody's generation.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": "array"
                 },
                 "references": {
                     "description": "holds between an object and a list of references",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": "array"
                 },
@@ -5081,7 +5116,6 @@
             "required": [
                 "name",
                 "clonality",
-                "curie",
                 "data_provider",
                 "internal"
             ],
@@ -5092,8 +5126,8 @@
             "additionalProperties": false,
             "description": "Ingest class for immunoglobulin proteins that bind specific molecule(s). Can be used experimentally for the purposes of detection or purification.",
             "properties": {
-                "antibody_target_gene_curies": {
-                    "description": "Curies of the genes whose gene products are recognized by the antibody.",
+                "antibody_target_gene_identifiers": {
+                    "description": "Identifiers (curie/mod_entity_id/mod_internal_id) of the genes whose gene products are recognized by the antibody.",
                     "items": {
                         "type": "string"
                     },
@@ -5265,12 +5299,20 @@
                     "type": "string"
                 },
                 "genome_assembly": {
-                    "description": "The GenomeAssembly to which a AssemblyComponent belongs.",
-                    "type": "string"
+                    "$ref": "#/$defs/GenomeAssembly",
+                    "description": "The GenomeAssembly to which a AssemblyComponent belongs."
                 },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -6784,6 +6826,14 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
@@ -6798,7 +6848,6 @@
                 }
             },
             "required": [
-                "curie",
                 "taxon",
                 "data_provider",
                 "internal"
@@ -6819,10 +6868,6 @@
                         "$ref": "#/$defs/CrossReferenceDTO"
                     },
                     "type": "array"
-                },
-                "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "type": "string"
                 },
                 "data_provider_dto": {
                     "$ref": "#/$defs/DataProviderDTO",
@@ -6852,6 +6897,14 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
@@ -6866,7 +6919,7 @@
                 }
             },
             "required": [
-                "curie",
+                "mod_entity_id",
                 "taxon_curie",
                 "data_provider_dto",
                 "internal"
@@ -7049,8 +7102,8 @@
                     "type": "boolean"
                 },
                 "single_reference": {
-                    "description": "holds between an object and a single reference",
-                    "type": "string"
+                    "$ref": "#/$defs/Reference",
+                    "description": "holds between an object and a single reference"
                 },
                 "unique_id": {
                     "description": "Unique identifer for the condition relation.  Will be generated at AGR.",
@@ -7217,7 +7270,7 @@
                 "references": {
                     "description": "holds between an object and a list of references",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": "array"
                 },
@@ -7280,7 +7333,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -7536,7 +7589,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -7613,7 +7666,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -7622,8 +7675,8 @@
                     "type": "boolean"
                 },
                 "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/GenomicEntity",
+                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -7697,7 +7750,7 @@
                     },
                     "type": "array"
                 },
-                "genomic_entity_curie": {
+                "genomic_entity_identifier": {
                     "type": "string"
                 },
                 "genomic_entity_relation_name": {
@@ -7726,7 +7779,7 @@
             "required": [
                 "construct_identifier",
                 "genomic_entity_relation_name",
-                "genomic_entity_curie",
+                "genomic_entity_identifier",
                 "internal"
             ],
             "title": "ConstructGenomicEntityAssociationDTO",
@@ -7767,7 +7820,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -7848,7 +7901,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -8069,7 +8122,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -8098,8 +8151,8 @@
                     "type": "integer"
                 },
                 "object": {
-                    "description": "The location reference object should be a chromsome assembly curie.",
-                    "type": "string"
+                    "$ref": "#/$defs/AssemblyComponent",
+                    "description": "The location reference object should be a chromsome assembly curie."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -8131,8 +8184,8 @@
                     "type": "integer"
                 },
                 "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Variant",
+                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -8271,7 +8324,8 @@
                     "description": "Curie of the Person object representing the individual that updated the entity",
                     "type": "string"
                 },
-                "variant_curie": {
+                "variant_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the variant",
                     "type": "string"
                 },
                 "variant_sequence": {
@@ -8285,6 +8339,7 @@
             },
             "required": [
                 "chromosome_curie",
+                "variant_identifier",
                 "relation_name",
                 "start",
                 "end",
@@ -8300,7 +8355,7 @@
                 "associated_transcripts": {
                     "description": "Transcript(s) associated with polypeptide to which variant is aligned.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Transcript"
                     },
                     "type": "array"
                 },
@@ -8343,7 +8398,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -8364,8 +8419,8 @@
                     "type": "integer"
                 },
                 "object": {
-                    "description": "object should be the protein identifier",
-                    "type": "string"
+                    "$ref": "#/$defs/Protein",
+                    "description": "object should be the protein identifier"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -8393,8 +8448,8 @@
                     "type": "integer"
                 },
                 "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Variant",
+                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -8421,8 +8476,8 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "associated_transcript_curies": {
-                    "description": "Curies of transcript(s) associated with polypeptide to which variant is aligned.",
+                "associated_transcript_identifiers": {
+                    "description": "Identifiers (curie/mod_entity_id/mod_internal_id) of transcript(s) associated with polypeptide to which variant is aligned.",
                     "items": {
                         "type": "string"
                     },
@@ -8487,7 +8542,7 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "protein_curie": {
+                "protein_identifier": {
                     "type": "string"
                 },
                 "reference_sequence": {
@@ -8515,7 +8570,8 @@
                     "description": "Curie of the Person object representing the individual that updated the entity",
                     "type": "string"
                 },
-                "variant_curie": {
+                "variant_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the variant",
                     "type": "string"
                 },
                 "variant_sequence": {
@@ -8524,7 +8580,8 @@
                 }
             },
             "required": [
-                "protein_curie",
+                "protein_identifier",
+                "variant_identifier",
                 "relation_name",
                 "start",
                 "end",
@@ -8576,7 +8633,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -8597,8 +8654,8 @@
                     "type": "integer"
                 },
                 "object": {
-                    "description": "object should be the transcript identifier",
-                    "type": "string"
+                    "$ref": "#/$defs/Transcript",
+                    "description": "object should be the transcript identifier"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -8626,8 +8683,8 @@
                     "type": "integer"
                 },
                 "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Variant",
+                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -8734,14 +8791,15 @@
                     "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
                     "type": "integer"
                 },
-                "transcript_curie": {
+                "transcript_identifier": {
                     "type": "string"
                 },
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
                     "type": "string"
                 },
-                "variant_curie": {
+                "variant_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the variant",
                     "type": "string"
                 },
                 "variant_sequence": {
@@ -8750,7 +8808,8 @@
                 }
             },
             "required": [
-                "transcript_curie",
+                "transcript_identifier",
+                "variant_identifier",
                 "relation_name",
                 "start",
                 "end",
@@ -9152,7 +9211,6 @@
                 }
             },
             "required": [
-                "curie",
                 "data_provider",
                 "internal"
             ],
@@ -10060,13 +10118,13 @@
                 "associated_with_figure": {
                     "description": "The figure(s) that support(s) the expression annotation.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Figure"
                     },
                     "type": "array"
                 },
                 "belongs_to_expression_experiment": {
-                    "description": "Holds between an ExpressionAnnotation and an ExpressionExperiment.",
-                    "type": "string"
+                    "$ref": "#/$defs/ExpressionExperiment",
+                    "description": "Holds between an ExpressionAnnotation and an ExpressionExperiment."
                 },
                 "created_by": {
                     "description": "The individual that created the entity.",
@@ -10170,7 +10228,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -10226,8 +10284,8 @@
                     "type": "string"
                 },
                 "biological_entity_assayed": {
-                    "description": "Holds between a BiologicalEntity and an ExpressionExperiment that reports on its expression.",
-                    "type": "string"
+                    "$ref": "#/$defs/BiologicalEntity",
+                    "description": "Holds between a BiologicalEntity and an ExpressionExperiment that reports on its expression."
                 },
                 "condition_relations": {
                     "items": {
@@ -10274,7 +10332,7 @@
                 "reagents_used": {
                     "description": "Reagents used in the expression assay: e.g., antibodies, probes.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Reagent"
                     },
                     "type": "array"
                 },
@@ -10286,19 +10344,19 @@
                     "type": "array"
                 },
                 "single_reference": {
-                    "description": "holds between an object and a single reference",
-                    "type": "string"
+                    "$ref": "#/$defs/Reference",
+                    "description": "holds between an object and a single reference"
                 },
                 "specimen_alleles": {
                     "description": "The Allele(s) of the specimen assayed.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Allele"
                     },
                     "type": "array"
                 },
                 "specimen_genomic_model": {
-                    "description": "The AffectedGenomicModel of the specimen.",
-                    "type": "string"
+                    "$ref": "#/$defs/AffectedGenomicModel",
+                    "description": "The AffectedGenomicModel of the specimen."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -10723,8 +10781,8 @@
                     "type": "array"
                 },
                 "single_reference": {
-                    "description": "holds between an object and a single reference",
-                    "type": "string"
+                    "$ref": "#/$defs/Reference",
+                    "description": "holds between an object and a single reference"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -10732,7 +10790,6 @@
                 }
             },
             "required": [
-                "curie",
                 "single_reference",
                 "internal"
             ],
@@ -10906,7 +10963,7 @@
                 },
                 "genes": {
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Gene"
                     },
                     "type": "array"
                 },
@@ -10914,13 +10971,21 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
                 "single_reference": {
-                    "description": "holds between an object and a single reference",
-                    "type": "string"
+                    "$ref": "#/$defs/Reference",
+                    "description": "holds between an object and a single reference"
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
@@ -10932,7 +10997,6 @@
                 }
             },
             "required": [
-                "curie",
                 "taxon",
                 "data_provider",
                 "internal"
@@ -11123,7 +11187,7 @@
                 "designating_laboratories": {
                     "description": "A laboratory, rarely laboratories, which designated this gene",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Laboratory"
                     },
                     "type": "array"
                 },
@@ -11200,6 +11264,14 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
@@ -11248,7 +11320,7 @@
             "required": [
                 "gene_symbol",
                 "gene_type",
-                "curie",
+                "mod_entity_id",
                 "taxon",
                 "data_provider",
                 "internal"
@@ -11306,7 +11378,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -11338,7 +11410,7 @@
                     "type": "array"
                 },
                 "single_gene": {
-                    "type": "string"
+                    "$ref": "#/$defs/Gene"
                 },
                 "split_from": {
                     "description": "For an entity generated by a split, the entity from which it was split.",
@@ -11410,8 +11482,8 @@
                     "type": "boolean"
                 },
                 "left_boundary_marker": {
-                    "description": "The left boundary of a feature location relative to the landmark's inherent orientation.",
-                    "type": "string"
+                    "$ref": "#/$defs/BiologicalEntity",
+                    "description": "The left boundary of a feature location relative to the landmark's inherent orientation."
                 },
                 "object": {
                     "$ref": "#/$defs/Chromosome",
@@ -11431,16 +11503,16 @@
                     "type": "string"
                 },
                 "right_boundary_marker": {
-                    "description": "The right boundary of a feature location relative to the landmark's inherent orientation.",
-                    "type": "string"
+                    "$ref": "#/$defs/BiologicalEntity",
+                    "description": "The right boundary of a feature location relative to the landmark's inherent orientation."
                 },
                 "single_reference": {
-                    "description": "holds between an object and a single reference",
-                    "type": "string"
+                    "$ref": "#/$defs/Reference",
+                    "description": "holds between an object and a single reference"
                 },
                 "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Gene",
+                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -11494,13 +11566,21 @@
                 },
                 "genes": {
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Gene"
                     },
                     "type": "array"
                 },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -11520,7 +11600,6 @@
                 }
             },
             "required": [
-                "curie",
                 "taxon",
                 "data_provider",
                 "internal"
@@ -11573,13 +11652,21 @@
                 },
                 "genes": {
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Gene"
                     },
                     "type": "array"
                 },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -11599,7 +11686,6 @@
                 }
             },
             "required": [
-                "curie",
                 "taxon",
                 "data_provider",
                 "internal"
@@ -11620,10 +11706,6 @@
                         "$ref": "#/$defs/CrossReferenceDTO"
                     },
                     "type": "array"
-                },
-                "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "type": "string"
                 },
                 "data_provider_dto": {
                     "$ref": "#/$defs/DataProviderDTO",
@@ -11681,6 +11763,14 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "note_dtos": {
                     "items": {
                         "$ref": "#/$defs/NoteDTO"
@@ -11703,7 +11793,7 @@
             "required": [
                 "gene_symbol_dto",
                 "gene_type_curie",
-                "curie",
+                "mod_entity_id",
                 "taxon_curie",
                 "data_provider_dto",
                 "internal"
@@ -11826,15 +11916,15 @@
                     "description": "Object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source, and a CrossReference to that organisation's site"
                 },
                 "sgd_strain_background": {
-                    "type": "string"
+                    "$ref": "#/$defs/AffectedGenomicModel"
                 },
                 "single_reference": {
-                    "description": "The reference in which the disease association was asserted/reported.",
-                    "type": "string"
+                    "$ref": "#/$defs/Reference",
+                    "description": "The reference in which the disease association was asserted/reported."
                 },
                 "subject": {
-                    "description": "The gene to which the disease ontology term is associated.",
-                    "type": "string"
+                    "$ref": "#/$defs/Gene",
+                    "description": "The gene to which the disease ontology term is associated."
                 },
                 "unique_id": {
                     "description": "Unique identifer for the disease annotation.  Will be generated at AGR if not submitted by the MOD.",
@@ -11847,14 +11937,13 @@
                 "with_or_from": {
                     "description": "A field for disease annotations that captures the human gene the implicated MOD gene is homologous or orthologous to when using the ISS (inferred from sequence similarity) evidence code or the ISO (inferred from sequence orthology) evidence code. The assertion would state that the MOD gene is implicated in the indicated disease based on sequence-similarity/sequence-orthology \"with\" some human gene. Currently used by SGD.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Gene"
                     },
                     "type": "array"
                 }
             },
             "required": [
                 "evidence_codes",
-                "curie",
                 "data_provider",
                 "single_reference",
                 "subject",
@@ -11907,8 +11996,8 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "disease_genetic_modifier_curies": {
-                    "description": "Curie of BiologcalEntity that modifies the disease model",
+                "disease_genetic_modifier_identifiers": {
+                    "description": "Identifiers (curie/mod_entity_id/mod_internal_id) of BiologcalEntity that modifies the disease model",
                     "items": {
                         "type": "string"
                     },
@@ -11940,7 +12029,8 @@
                     },
                     "type": "array"
                 },
-                "gene_curie": {
+                "gene_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the gene",
                     "type": "string"
                 },
                 "genetic_sex_name": {
@@ -11981,16 +12071,16 @@
                     "$ref": "#/$defs/DataProviderDTO",
                     "description": "Ingest object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source, and a CrossReference to that organisation's site"
                 },
-                "sgd_strain_background_curie": {
-                    "description": "Curie of SGD strain background AGM",
+                "sgd_strain_background_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of SGD strain background AGM",
                     "type": "string"
                 },
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
                     "type": "string"
                 },
-                "with_gene_curies": {
-                    "description": "http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8",
+                "with_gene_identifiers": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of genes http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8",
                     "items": {
                         "type": "string"
                     },
@@ -11998,7 +12088,7 @@
                 }
             },
             "required": [
-                "gene_curie",
+                "gene_identifier",
                 "disease_relation_name",
                 "do_term_curie",
                 "data_provider_dto",
@@ -12043,7 +12133,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -12064,7 +12154,7 @@
                     "type": "boolean"
                 },
                 "single_gene": {
-                    "type": "string"
+                    "$ref": "#/$defs/Gene"
                 },
                 "synonym_scope": {
                     "description": "the scope of the synonym - permissible values are narrow / broad / related / exact",
@@ -12131,7 +12221,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -12144,7 +12234,7 @@
                     "type": "string"
                 },
                 "interactor_A_genetic_perturbation": {
-                    "type": "string"
+                    "$ref": "#/$defs/Allele"
                 },
                 "interactor_A_role": {
                     "description": "An MITerm from the AGR interactor A role subset of MITerms",
@@ -12158,7 +12248,7 @@
                     "type": "string"
                 },
                 "interactor_B_genetic_perturbation": {
-                    "type": "string"
+                    "$ref": "#/$defs/Allele"
                 },
                 "interactor_B_role": {
                     "description": "An MITerm from the AGR interactor B role subset of MITerms",
@@ -12176,8 +12266,8 @@
                     "type": "boolean"
                 },
                 "object": {
-                    "description": "the object gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa.",
-                    "type": "string"
+                    "$ref": "#/$defs/Gene",
+                    "description": "the object gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -12194,8 +12284,8 @@
                     "type": "string"
                 },
                 "subject": {
-                    "description": "the subject gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa.",
-                    "type": "string"
+                    "$ref": "#/$defs/Gene",
+                    "description": "the subject gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -12203,7 +12293,6 @@
                 }
             },
             "required": [
-                "curie",
                 "interaction_source",
                 "interaction_type",
                 "interactor_A_type",
@@ -12305,8 +12394,8 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "object_gene_curie": {
-                    "description": "Curie of the object gene in a gene-to-gene association",
+                "object_gene_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the object gene in a gene-to-gene association",
                     "type": "string"
                 },
                 "obsolete": {
@@ -12319,8 +12408,8 @@
                     },
                     "type": "array"
                 },
-                "subject_gene_curie": {
-                    "description": "Curie of the subject gene in a gene-to-gene association",
+                "subject_gene_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the subject gene in a gene-to-gene association",
                     "type": "string"
                 },
                 "updated_by_curie": {
@@ -12329,14 +12418,13 @@
                 }
             },
             "required": [
-                "curie",
                 "interaction_source_curie",
                 "interaction_type_curie",
                 "interactor_A_type_curie",
                 "interactor_B_type_curie",
-                "subject_gene_curie",
+                "subject_gene_identifier",
                 "gene_relation_name",
-                "object_gene_curie",
+                "object_gene_identifier",
                 "internal"
             ],
             "title": "GeneGeneticInteractionDTO",
@@ -12400,12 +12488,12 @@
                     "type": "string"
                 },
                 "single_reference": {
-                    "description": "holds between an object and a single reference",
-                    "type": "string"
+                    "$ref": "#/$defs/Reference",
+                    "description": "holds between an object and a single reference"
                 },
                 "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Gene",
+                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -12456,7 +12544,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -12465,8 +12553,8 @@
                     "type": "boolean"
                 },
                 "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/AssemblyComponent",
+                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -12490,8 +12578,8 @@
                     "description": "The strand of a DNA reference object to which an entity maps."
                 },
                 "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Gene",
+                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -12560,7 +12648,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -12599,8 +12687,8 @@
                     "type": "boolean"
                 },
                 "object": {
-                    "description": "the object gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa.",
-                    "type": "string"
+                    "$ref": "#/$defs/Gene",
+                    "description": "the object gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -12611,8 +12699,8 @@
                     "type": "string"
                 },
                 "subject": {
-                    "description": "the subject gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa.",
-                    "type": "string"
+                    "$ref": "#/$defs/Gene",
+                    "description": "the subject gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -12620,7 +12708,6 @@
                 }
             },
             "required": [
-                "curie",
                 "interaction_source",
                 "interaction_type",
                 "interactor_A_type",
@@ -12724,16 +12811,16 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "object_gene_curie": {
-                    "description": "Curie of the object gene in a gene-to-gene association",
+                "object_gene_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the object gene in a gene-to-gene association",
                     "type": "string"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "subject_gene_curie": {
-                    "description": "Curie of the subject gene in a gene-to-gene association",
+                "subject_gene_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the subject gene in a gene-to-gene association",
                     "type": "string"
                 },
                 "updated_by_curie": {
@@ -12742,14 +12829,13 @@
                 }
             },
             "required": [
-                "curie",
                 "interaction_source_curie",
                 "interaction_type_curie",
                 "interactor_A_type_curie",
                 "interactor_B_type_curie",
-                "subject_gene_curie",
+                "subject_gene_identifier",
                 "gene_relation_name",
-                "object_gene_curie",
+                "object_gene_identifier",
                 "internal"
             ],
             "title": "GeneMolecularInteractionDTO",
@@ -12788,12 +12874,12 @@
                     "type": "string"
                 },
                 "designating_laboratory": {
-                    "description": "A laboratory which designated this gene class",
-                    "type": "string"
+                    "$ref": "#/$defs/Laboratory",
+                    "description": "A laboratory which designated this gene class"
                 },
                 "genes": {
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Gene"
                     },
                     "type": "array"
                 },
@@ -12808,7 +12894,7 @@
                 "old_members": {
                     "description": "Gene which were formerly members of this GeneClass",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Gene"
                     },
                     "type": "array"
                 },
@@ -12829,7 +12915,6 @@
                 }
             },
             "required": [
-                "curie",
                 "designating_laboratory",
                 "internal"
             ],
@@ -12914,15 +12999,15 @@
                     "type": "string"
                 },
                 "sgd_strain_background": {
-                    "type": "string"
+                    "$ref": "#/$defs/AffectedGenomicModel"
                 },
                 "single_reference": {
-                    "description": "The reference in which the phenotype association was asserted/reported.",
-                    "type": "string"
+                    "$ref": "#/$defs/Reference",
+                    "description": "The reference in which the phenotype association was asserted/reported."
                 },
                 "subject": {
-                    "description": "The gene to which the phenotype ontology term is associated.",
-                    "type": "string"
+                    "$ref": "#/$defs/Gene",
+                    "description": "The gene to which the phenotype ontology term is associated."
                 },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
@@ -12934,7 +13019,6 @@
                 }
             },
             "required": [
-                "curie",
                 "data_provider",
                 "single_reference",
                 "subject",
@@ -12984,7 +13068,8 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "gene_curie": {
+                "gene_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the gene",
                     "type": "string"
                 },
                 "internal": {
@@ -13021,8 +13106,8 @@
                     "description": "External reference curie used for ingest",
                     "type": "string"
                 },
-                "sgd_strain_background_curie": {
-                    "description": "Curie of SGD strain background AGM",
+                "sgd_strain_background_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of SGD strain background AGM",
                     "type": "string"
                 },
                 "updated_by_curie": {
@@ -13031,7 +13116,7 @@
                 }
             },
             "required": [
-                "gene_curie",
+                "gene_identifier",
                 "data_provider_dto",
                 "reference_curie",
                 "internal"
@@ -13070,7 +13155,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -13086,7 +13171,7 @@
                     "type": "string"
                 },
                 "single_gene": {
-                    "type": "string"
+                    "$ref": "#/$defs/Gene"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -13136,7 +13221,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -13157,7 +13242,7 @@
                     "type": "boolean"
                 },
                 "single_gene": {
-                    "type": "string"
+                    "$ref": "#/$defs/Gene"
                 },
                 "synonym_scope": {
                     "description": "the scope of the synonym - permissible values are narrow / broad / related / exact",
@@ -13217,7 +13302,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -13238,7 +13323,7 @@
                     "type": "boolean"
                 },
                 "single_gene": {
-                    "type": "string"
+                    "$ref": "#/$defs/Gene"
                 },
                 "synonym_scope": {
                     "description": "the scope of the synonym - permissible values are narrow / broad / related / exact",
@@ -13298,7 +13383,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -13319,7 +13404,7 @@
                     "type": "boolean"
                 },
                 "single_gene": {
-                    "type": "string"
+                    "$ref": "#/$defs/Gene"
                 },
                 "synonym_scope": {
                     "description": "the scope of the synonym - permissible values are narrow / broad / related / exact",
@@ -13377,16 +13462,16 @@
                     "type": "boolean"
                 },
                 "object_gene": {
-                    "description": "The second gene in the orthology match pair",
-                    "type": "string"
+                    "$ref": "#/$defs/Gene",
+                    "description": "The second gene in the orthology match pair"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
                 "subject_gene": {
-                    "description": "The first gene in the orthology match pair",
-                    "type": "string"
+                    "$ref": "#/$defs/Gene",
+                    "description": "The first gene in the orthology match pair"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -13437,20 +13522,20 @@
                     "type": "boolean"
                 },
                 "object_gene": {
-                    "description": "The second gene in the orthology match pair",
-                    "type": "string"
+                    "$ref": "#/$defs/Gene",
+                    "description": "The second gene in the orthology match pair"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
                 "single_reference": {
-                    "description": "holds between an object and a single reference",
-                    "type": "string"
+                    "$ref": "#/$defs/Reference",
+                    "description": "holds between an object and a single reference"
                 },
                 "subject_gene": {
-                    "description": "The first gene in the orthology match pair",
-                    "type": "string"
+                    "$ref": "#/$defs/Gene",
+                    "description": "The first gene in the orthology match pair"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -13514,8 +13599,8 @@
                     "type": "boolean"
                 },
                 "object_gene": {
-                    "description": "The second gene in the orthology match pair",
-                    "type": "string"
+                    "$ref": "#/$defs/Gene",
+                    "description": "The second gene in the orthology match pair"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -13547,8 +13632,8 @@
                     "type": "boolean"
                 },
                 "subject_gene": {
-                    "description": "The first gene in the orthology match pair",
-                    "type": "string"
+                    "$ref": "#/$defs/Gene",
+                    "description": "The first gene in the orthology match pair"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -13597,7 +13682,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -13606,8 +13691,8 @@
                     "type": "boolean"
                 },
                 "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Pathway",
+                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -13618,8 +13703,8 @@
                     "type": "string"
                 },
                 "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Gene",
+                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -13815,13 +13900,21 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
                 "specimen_genomic_model": {
-                    "description": "The strain or genotype of origin for the genome sequence.",
-                    "type": "string"
+                    "$ref": "#/$defs/AffectedGenomicModel",
+                    "description": "The strain or genotype of origin for the genome sequence."
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
@@ -13833,7 +13926,6 @@
                 }
             },
             "required": [
-                "curie",
                 "taxon",
                 "data_provider",
                 "internal"
@@ -13888,6 +13980,14 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
@@ -13902,7 +14002,6 @@
                 }
             },
             "required": [
-                "curie",
                 "taxon",
                 "data_provider",
                 "internal"
@@ -13923,10 +14022,6 @@
                         "$ref": "#/$defs/CrossReferenceDTO"
                     },
                     "type": "array"
-                },
-                "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "type": "string"
                 },
                 "data_provider_dto": {
                     "$ref": "#/$defs/DataProviderDTO",
@@ -13956,6 +14051,14 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
@@ -13970,7 +14073,6 @@
                 }
             },
             "required": [
-                "curie",
                 "taxon_curie",
                 "data_provider_dto",
                 "internal"
@@ -14122,9 +14224,6 @@
                     "type": "string"
                 }
             },
-            "required": [
-                "curie"
-            ],
             "title": "Identifier",
             "type": "object"
         },
@@ -14133,12 +14232,12 @@
             "description": "",
             "properties": {
                 "first": {
-                    "description": "first identifier in a range",
-                    "type": "string"
+                    "$ref": "#/$defs/Identifier",
+                    "description": "first identifier in a range"
                 },
                 "last": {
-                    "description": "last identifier in a range",
-                    "type": "string"
+                    "$ref": "#/$defs/Identifier",
+                    "description": "last identifier in a range"
                 }
             },
             "title": "IdentifiersRange",
@@ -14149,16 +14248,16 @@
             "description": "The set of files and metadata that constitute an image.",
             "properties": {
                 "associated_with_figure": {
-                    "description": "The figure to which the image belongs.",
-                    "type": "string"
+                    "$ref": "#/$defs/Figure",
+                    "description": "The figure to which the image belongs."
                 },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
                 },
                 "cropped_from": {
-                    "description": "Another larger image from which this image was cropped.",
-                    "type": "string"
+                    "$ref": "#/$defs/Image",
+                    "description": "Another larger image from which this image was cropped."
                 },
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
@@ -14236,7 +14335,6 @@
                 }
             },
             "required": [
-                "curie",
                 "associated_with_figure",
                 "width",
                 "height",
@@ -14277,8 +14375,8 @@
                     "type": "string"
                 },
                 "from_image": {
-                    "description": "Holds between an ImagePane and an Image.",
-                    "type": "string"
+                    "$ref": "#/$defs/Image",
+                    "description": "Holds between an ImagePane and an Image."
                 },
                 "height": {
                     "description": "The height of the image (pixels).",
@@ -14368,7 +14466,6 @@
                 }
             },
             "required": [
-                "curie",
                 "internal"
             ],
             "title": "InformationContentEntity",
@@ -14649,7 +14746,6 @@
                 }
             },
             "required": [
-                "curie",
                 "full_name",
                 "short_name",
                 "internal"
@@ -15762,7 +15858,6 @@
                 "mod_corpus_sort_source",
                 "alliance_member_id",
                 "reference_id",
-                "curie",
                 "date_created",
                 "internal"
             ],
@@ -16163,7 +16258,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -16561,7 +16656,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -16643,13 +16738,21 @@
                 },
                 "genes": {
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Gene"
                     },
                     "type": "array"
                 },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -16669,7 +16772,6 @@
                 }
             },
             "required": [
-                "curie",
                 "taxon",
                 "data_provider",
                 "internal"
@@ -17150,6 +17252,14 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
@@ -17164,7 +17274,6 @@
                 }
             },
             "required": [
-                "curie",
                 "taxon",
                 "data_provider",
                 "internal"
@@ -17308,7 +17417,6 @@
                 }
             },
             "required": [
-                "curie",
                 "internal"
             ],
             "title": "PersonalCommunication",
@@ -17392,12 +17500,12 @@
                     "type": "string"
                 },
                 "single_reference": {
-                    "description": "The reference in which the phenotype association was asserted/reported.",
-                    "type": "string"
+                    "$ref": "#/$defs/Reference",
+                    "description": "The reference in which the phenotype association was asserted/reported."
                 },
                 "subject": {
-                    "description": "The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, by direct curation.",
-                    "type": "string"
+                    "$ref": "#/$defs/BiologicalEntity",
+                    "description": "The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, by direct curation."
                 },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
@@ -17409,7 +17517,6 @@
                 }
             },
             "required": [
-                "curie",
                 "data_provider",
                 "single_reference",
                 "subject",
@@ -17601,6 +17708,14 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
@@ -17615,7 +17730,6 @@
                 }
             },
             "required": [
-                "curie",
                 "taxon",
                 "data_provider",
                 "internal"
@@ -17663,13 +17777,21 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
                 "proteins": {
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Protein"
                     },
                     "type": "array"
                 },
@@ -17683,7 +17805,6 @@
                 }
             },
             "required": [
-                "curie",
                 "taxon",
                 "data_provider",
                 "internal"
@@ -17855,7 +17976,6 @@
                 }
             },
             "required": [
-                "curie",
                 "data_provider",
                 "internal"
             ],
@@ -18176,7 +18296,6 @@
                 }
             },
             "required": [
-                "curie",
                 "data_provider",
                 "internal"
             ],
@@ -18393,7 +18512,6 @@
                 }
             },
             "required": [
-                "curie",
                 "reference_id",
                 "internal"
             ],
@@ -18523,7 +18641,6 @@
                 }
             },
             "required": [
-                "curie",
                 "internal"
             ],
             "title": "Resource",
@@ -18825,7 +18942,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -18957,6 +19074,14 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
@@ -18964,7 +19089,7 @@
                 "references": {
                     "description": "holds between an object and a list of references",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": "array"
                 },
@@ -18978,7 +19103,6 @@
                 }
             },
             "required": [
-                "curie",
                 "taxon",
                 "data_provider",
                 "internal"
@@ -18999,10 +19123,6 @@
                         "$ref": "#/$defs/CrossReferenceDTO"
                     },
                     "type": "array"
-                },
-                "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "type": "string"
                 },
                 "data_provider_dto": {
                     "$ref": "#/$defs/DataProviderDTO",
@@ -19032,6 +19152,14 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
@@ -19053,7 +19181,7 @@
                 }
             },
             "required": [
-                "curie",
+                "mod_entity_id",
                 "taxon_curie",
                 "data_provider_dto",
                 "internal"
@@ -19092,7 +19220,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -19101,8 +19229,8 @@
                     "type": "boolean"
                 },
                 "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Gene",
+                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -19113,8 +19241,8 @@
                     "type": "string"
                 },
                 "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/SequenceTargetingReagent",
+                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -19221,7 +19349,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -19349,7 +19477,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -19378,8 +19506,8 @@
                     "type": "integer"
                 },
                 "object": {
-                    "description": "The location reference object should be a chromsome assembly curie.",
-                    "type": "string"
+                    "$ref": "#/$defs/AssemblyComponent",
+                    "description": "The location reference object should be a chromsome assembly curie."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -19407,16 +19535,16 @@
                     "type": "string"
                 },
                 "single_reference": {
-                    "description": "holds between an object and a single reference",
-                    "type": "string"
+                    "$ref": "#/$defs/Reference",
+                    "description": "holds between an object and a single reference"
                 },
                 "start": {
                     "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
                     "type": "integer"
                 },
                 "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Variant",
+                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -19557,7 +19685,8 @@
                     "description": "Curie of the Person object representing the individual that updated the entity",
                     "type": "string"
                 },
-                "variant_curie": {
+                "variant_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the variant",
                     "type": "string"
                 },
                 "variant_sequence": {
@@ -19572,6 +19701,7 @@
             "required": [
                 "reference_curie",
                 "chromosome_curie",
+                "variant_identifier",
                 "relation_name",
                 "internal"
             ],
@@ -19585,7 +19715,7 @@
                 "associated_transcripts": {
                     "description": "Transcript(s) associated with polypeptide to which variant is aligned.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Transcript"
                     },
                     "type": "array"
                 },
@@ -19628,7 +19758,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -19649,8 +19779,8 @@
                     "type": "integer"
                 },
                 "object": {
-                    "description": "object should be the protein identifier",
-                    "type": "string"
+                    "$ref": "#/$defs/Protein",
+                    "description": "object should be the protein identifier"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -19674,16 +19804,16 @@
                     "type": "string"
                 },
                 "single_reference": {
-                    "description": "holds between an object and a single reference",
-                    "type": "string"
+                    "$ref": "#/$defs/Reference",
+                    "description": "holds between an object and a single reference"
                 },
                 "start": {
                     "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
                     "type": "integer"
                 },
                 "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Variant",
+                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -19708,8 +19838,8 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "associated_transcript_curies": {
-                    "description": "Curies of transcript(s) associated with polypeptide to which variant is aligned.",
+                "associated_transcript_identifiers": {
+                    "description": "Identifiers (curie/mod_entity_id/mod_internal_id) of transcript(s) associated with polypeptide to which variant is aligned.",
                     "items": {
                         "type": "string"
                     },
@@ -19774,7 +19904,7 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "protein_curie": {
+                "protein_identifier": {
                     "type": "string"
                 },
                 "reference_curie": {
@@ -19806,7 +19936,8 @@
                     "description": "Curie of the Person object representing the individual that updated the entity",
                     "type": "string"
                 },
-                "variant_curie": {
+                "variant_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the variant",
                     "type": "string"
                 },
                 "variant_sequence": {
@@ -19816,7 +19947,8 @@
             },
             "required": [
                 "reference_curie",
-                "protein_curie",
+                "protein_identifier",
+                "variant_identifier",
                 "relation_name",
                 "internal"
             ],
@@ -19866,7 +19998,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -19887,8 +20019,8 @@
                     "type": "integer"
                 },
                 "object": {
-                    "description": "object should be the transcript identifier",
-                    "type": "string"
+                    "$ref": "#/$defs/Transcript",
+                    "description": "object should be the transcript identifier"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -19912,16 +20044,16 @@
                     "type": "string"
                 },
                 "single_reference": {
-                    "description": "holds between an object and a single reference",
-                    "type": "string"
+                    "$ref": "#/$defs/Reference",
+                    "description": "holds between an object and a single reference"
                 },
                 "start": {
                     "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
                     "type": "integer"
                 },
                 "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Variant",
+                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -20030,14 +20162,15 @@
                     "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
                     "type": "integer"
                 },
-                "transcript_curie": {
+                "transcript_identifier": {
                     "type": "string"
                 },
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
                     "type": "string"
                 },
-                "variant_curie": {
+                "variant_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the variant",
                     "type": "string"
                 },
                 "variant_sequence": {
@@ -20047,7 +20180,8 @@
             },
             "required": [
                 "reference_curie",
-                "transcript_curie",
+                "transcript_identifier",
+                "variant_identifier",
                 "relation_name",
                 "internal"
             ],
@@ -20390,6 +20524,14 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
@@ -20404,7 +20546,6 @@
                 }
             },
             "required": [
-                "curie",
                 "taxon",
                 "data_provider",
                 "internal"
@@ -20573,13 +20714,21 @@
                 },
                 "genes": {
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Gene"
                     },
                     "type": "array"
                 },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -20595,7 +20744,6 @@
                 }
             },
             "required": [
-                "curie",
                 "taxon",
                 "data_provider",
                 "internal"
@@ -20794,6 +20942,14 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
@@ -20801,7 +20957,7 @@
                 "references": {
                     "description": "holds between an object and a list of references",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": "array"
                 },
@@ -20858,7 +21014,6 @@
             },
             "required": [
                 "variant_type",
-                "curie",
                 "taxon",
                 "data_provider",
                 "internal"
@@ -20879,10 +21034,6 @@
                         "$ref": "#/$defs/CrossReferenceDTO"
                     },
                     "type": "array"
-                },
-                "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "type": "string"
                 },
                 "data_provider_dto": {
                     "$ref": "#/$defs/DataProviderDTO",
@@ -20911,6 +21062,14 @@
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
                 },
                 "note_dtos": {
                     "items": {
@@ -20947,7 +21106,6 @@
             },
             "required": [
                 "variant_type_curie",
-                "curie",
                 "taxon_curie",
                 "data_provider_dto",
                 "internal"
@@ -20988,8 +21146,8 @@
                     "type": "boolean"
                 },
                 "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Gene",
+                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -21067,7 +21225,7 @@
                 "evidence": {
                     "description": "",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
                 },
@@ -21080,8 +21238,8 @@
                     "type": "boolean"
                 },
                 "single_variant": {
-                    "description": "The variant that is the subject of a SlotAnnotation.",
-                    "type": "string"
+                    "$ref": "#/$defs/Variant",
+                    "description": "The variant that is the subject of a SlotAnnotation."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -21232,8 +21390,8 @@
                     "type": "boolean"
                 },
                 "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
+                    "$ref": "#/$defs/Transcript",
+                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",

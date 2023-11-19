@@ -1,5 +1,5 @@
 {
-  "linkml_version": "1.9.0",
+  "linkml_version": "2.0.0",
   "construct_ingest_set": [
     {
       "created_by_curie": "WB:WBPerson123",
@@ -82,7 +82,7 @@
     {
       "construct_identifier": "WB:WBConstruct123",
       "genomic_entity_relation_name": "is_regulated_by",
-      "genomic_entity_curie": "WB:WBGene00000001",
+      "genomic_entity_identifier": "WB:WBGene00000001",
       "evidence_curies": [
         "PMID:11231512"
       ],

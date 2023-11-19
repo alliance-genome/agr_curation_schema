@@ -1,8 +1,8 @@
 {
-  "linkml_version": "1.7.3",
+  "linkml_version": "2.0.0",
   "allele_ingest_set": [
     {
-      "curie": "ZFIN:ZDB-ALT-130621-1",
+      "mod_entity_id": "ZFIN:ZDB-ALT-130621-1",
       "data_provider_dto": {
         "source_organization_abbreviation": "ZFIN",
         "cross_reference_dto": {
@@ -51,7 +51,7 @@
       ]
     },
     {
-      "curie": "ZFIN:ZDB-ALT-130411-947",
+      "mod_entity_id": "ZFIN:ZDB-ALT-130411-947",
       "data_provider_dto": {
         "source_organization_abbreviation": "ZFIN",
         "cross_reference_dto": {
@@ -91,7 +91,7 @@
       }
     },
     {
-      "curie": "WB:WBTransgene00023682",
+      "mod_entity_id": "WB:WBTransgene00023682",
       "data_provider_dto": {
         "source_organization_abbreviation": "WB",
         "cross_reference_dto": {
@@ -108,7 +108,7 @@
       "updated_by_curie": "WB:curator",
       "internal": false,
       "is_integrated": true,
-      "transgene_chromosome_location_curie": "WB:II",
+      "transgene_chromosome_location_name": "WB:II",
       "allele_symbol_dto": {
         "name_type_name": "nomenclature_symbol",
         "format_text": "vsIs183",
