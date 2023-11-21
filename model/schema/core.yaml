@@ -82,16 +82,55 @@ classes:
       - internal
       - obsolete
 
-  BiologicalEntity:
+  CurieAuditedObject:
     is_a: AuditedObject
+    description: >-
+      Parent class for all LinkML classes with a curie
+    slots:
+      - curie
+
+  SubmittedCurieObject:
+    is_a: CurieAuditedObject
+    description: >-
+      Parent class for all LinkML classes of submitted entities or annotations
+      that have (or will have) a curie generated at the Alliance
+    slots:
+      - mod_entity_id
+      - mod_internal_id
+    rules:
+      - postconditions:
+          any_of:
+            - slot_conditions:
+              mod_entity_id:
+                required: true
+            - slot_conditions:
+              mod_internal_id:
+                required: true
+          description: At least one of mod_entity_id or mod_internal_id should be populated.
+
+  SubmittedCurieObjectDTO:
+    is_a: AuditedObjectDTO
+    slots:
+      - mod_entity_id
+      - mod_internal_id
+    rules:
+      - postconditions:
+          any_of:
+            - slot_conditions:
+              mod_entity_id:
+                required: true
+            - slot_conditions:
+              mod_internal_id:
+                required: true
+          description: At least one of mod_entity_id or mod_internal_id should be populated.
+
+  BiologicalEntity:
+    is_a: SubmittedCurieObject
     description: >-
       An entity of biological origin that can be unambiguously attributed to
       a single species.
     abstract: true
     slots:
-      - curie
-      - mod_entity_id
-      - mod_internal_id
       - taxon
       - data_provider
     slot_usage:
@@ -99,11 +138,9 @@ classes:
         required: true
 
   BiologicalEntityDTO:
-    is_a: AuditedObjectDTO
+    is_a: SubmittedCurieObjectDTO
     abstract: true
     slots:
-      - mod_entity_id
-      - mod_internal_id
       - taxon_curie
       - data_provider_dto
     slot_usage:

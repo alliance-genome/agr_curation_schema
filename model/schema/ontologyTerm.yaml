@@ -127,7 +127,7 @@ slots:
 classes:
 
   OntologyTerm:
-    is_a: AuditedObject
+    is_a: CurieAuditedObject
     description: >-
       A concept or class in an ontology, vocabulary or thesaurus. Note, ontology terms
       can be found in multiple ontologies (ie: mireoting). defining_slots helps define
@@ -151,7 +151,6 @@ classes:
       - child_count
       - descendant_count
     defining_slots:
-      - curie
       - namespace
     slot_usage:
       definition:

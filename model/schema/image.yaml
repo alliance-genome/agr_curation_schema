@@ -39,7 +39,7 @@ emit_prefixes:
 classes:
 
   Figure:
-    is_a: AuditedObject
+    is_a: CurieAuditedObject
     description: >-
       An entity representing a figure or table in a publication.
     notes: >-
@@ -50,7 +50,6 @@ classes:
       A Figure will usually have one related Image, but it can sometimes have
       many.
     slots:
-      - curie
       - single_reference
       - label
       - caption
@@ -65,14 +64,13 @@ classes:
       A dummy object.
 
   Image:
-    is_a: AuditedObject
+    is_a: CurieAuditedObject
     description: >-
       The set of files and metadata that constitute an image.
     notes: >-
       Do we need a separate Image.label, or can it just use the label from the
       parent Figure entity?
     slots:
-      - curie
       - associated_with_figure
       - width
       - height

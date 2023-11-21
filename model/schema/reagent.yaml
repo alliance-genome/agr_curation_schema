@@ -42,24 +42,19 @@ emit_prefixes:
 classes:
 
   Reagent:
-    is_a: AuditedObject
+    is_a: SubmittedCurieObject
     description: >-
       A material entity used in experiments.
     slots:
-      - curie
       - unique_id
-      - mod_entity_id
-      - mod_internal_id
       - secondary_identifiers
       - data_provider
 
   ReagentDTO:
-    is_a: AuditedObjectDTO
+    is_a: SubmittedCurieObjectDTO
     description: >-
       Ingest class for material entities used in experiments.
     slots:
-      - mod_entity_id
-      - mod_internal_id
       - secondary_identifiers
       - data_provider_dto
     slot_usage:

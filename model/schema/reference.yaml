@@ -38,9 +38,7 @@ emit_prefixes:
 classes:
 
   InformationContentEntity:
-    is_a: AuditedObject
-    slots:
-      - curie
+    is_a: CurieAuditedObject
     description: >-
       a piece of information that typically is used as support for an assertion or annotation.
 
@@ -63,7 +61,6 @@ classes:
       - abstract
       - authors
       - category
-      - curie
       - date_arrived_in_pubmed
       - date_last_modified_in_pubmed
       - date_published

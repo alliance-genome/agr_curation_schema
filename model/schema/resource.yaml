@@ -36,9 +36,8 @@ emit_prefixes:
 
 classes:
   Resource:
-    is_a: AuditedObject
+    is_a: CurieAuditedObject
     slots:
-      - curie
       - title
       - iso_abbreviation
       - medline_abbreviation
