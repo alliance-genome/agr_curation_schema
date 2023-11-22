@@ -97,32 +97,12 @@ classes:
     slots:
       - mod_entity_id
       - mod_internal_id
-    rules:
-      - postconditions:
-          any_of:
-            - slot_conditions:
-                mod_entity_id:
-                  required: true
-            - slot_conditions:
-                mod_internal_id:
-                  required: true
-          description: At least one of mod_entity_id or mod_internal_id should be populated.
 
   SubmittedCurieObjectDTO:
     is_a: AuditedObjectDTO
     slots:
       - mod_entity_id
       - mod_internal_id
-    rules:
-      - postconditions:
-          any_of:
-            - slot_conditions:
-                mod_entity_id:
-                  required: true
-            - slot_conditions:
-                mod_internal_id:
-                  required: true
-          description: At least one of mod_entity_id or mod_internal_id should be populated.
 
   BiologicalEntity:
     is_a: SubmittedCurieObject
