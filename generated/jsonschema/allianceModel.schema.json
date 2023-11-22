@@ -1130,9 +1130,9 @@
             },
             "required": [
                 "subtype_name",
-                "mod_entity_id",
                 "taxon_curie",
                 "data_provider_dto",
+                "mod_entity_id",
                 "internal"
             ],
             "title": "AffectedGenomicModelDTO",
@@ -2076,9 +2076,9 @@
             },
             "required": [
                 "allele_symbol_dto",
-                "mod_entity_id",
                 "taxon_curie",
                 "data_provider_dto",
+                "mod_entity_id",
                 "internal"
             ],
             "title": "AlleleDTO",
@@ -5330,9 +5330,9 @@
             "required": [
                 "display_name",
                 "genome_assembly",
-                "curie",
                 "taxon",
                 "data_provider",
+                "curie",
                 "internal"
             ],
             "title": "AssemblyComponent",
@@ -6919,9 +6919,9 @@
                 }
             },
             "required": [
-                "mod_entity_id",
                 "taxon_curie",
                 "data_provider_dto",
+                "mod_entity_id",
                 "internal"
             ],
             "title": "CellLineDTO",
@@ -7291,8 +7291,8 @@
             },
             "required": [
                 "construct_symbol",
-                "curie",
                 "data_provider",
+                "curie",
                 "internal"
             ],
             "title": "Construct",
@@ -9018,6 +9018,57 @@
                 "internal"
             ],
             "title": "CurationReportHistory",
+            "type": "object"
+        },
+        "CurieAuditedObject": {
+            "additionalProperties": false,
+            "description": "Parent class for all LinkML classes with a curie",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "internal"
+            ],
+            "title": "CurieAuditedObject",
             "type": "object"
         },
         "DAOTerm": {
@@ -11320,9 +11371,9 @@
             "required": [
                 "gene_symbol",
                 "gene_type",
-                "mod_entity_id",
                 "taxon",
                 "data_provider",
+                "mod_entity_id",
                 "internal"
             ],
             "title": "Gene",
@@ -11793,9 +11844,9 @@
             "required": [
                 "gene_symbol_dto",
                 "gene_type_curie",
-                "mod_entity_id",
                 "taxon_curie",
                 "data_provider_dto",
+                "mod_entity_id",
                 "internal"
             ],
             "title": "GeneDTO",
@@ -19181,9 +19232,9 @@
                 }
             },
             "required": [
-                "mod_entity_id",
                 "taxon_curie",
                 "data_provider_dto",
+                "mod_entity_id",
                 "internal"
             ],
             "title": "SequenceTargetingReagentDTO",
@@ -20227,6 +20278,120 @@
             ],
             "title": "StrandEnum",
             "type": "string"
+        },
+        "SubmittedCurieObject": {
+            "additionalProperties": false,
+            "description": "Parent class for all LinkML classes of submitted entities or annotations that have (or will have) a curie generated at the Alliance",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "internal"
+            ],
+            "title": "SubmittedCurieObject",
+            "type": "object"
+        },
+        "SubmittedCurieObjectDTO": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is disinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is disinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "internal"
+            ],
+            "title": "SubmittedCurieObjectDTO",
+            "type": "object"
         },
         "SubtypeValues": {
             "description": "",
