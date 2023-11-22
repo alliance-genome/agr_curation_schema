@@ -39,7 +39,7 @@ emit_prefixes:
 classes:
 
   Figure:
-    is_a: CurieAuditedObject
+    is_a: CurieObject
     description: >-
       An entity representing a figure or table in a publication.
     notes: >-
@@ -64,7 +64,7 @@ classes:
       A dummy object.
 
   Image:
-    is_a: CurieAuditedObject
+    is_a: CurieObject
     description: >-
       The set of files and metadata that constitute an image.
     notes: >-

@@ -127,7 +127,7 @@ slots:
 classes:
 
   OntologyTerm:
-    is_a: CurieAuditedObject
+    is_a: CurieObject
     description: >-
       A concept or class in an ontology, vocabulary or thesaurus. Note, ontology terms
       can be found in multiple ontologies (ie: mireoting). defining_slots helps define

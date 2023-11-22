@@ -38,7 +38,7 @@ emit_prefixes:
 classes:
 
   InformationContentEntity:
-    is_a: CurieAuditedObject
+    is_a: CurieObject
     description: >-
       a piece of information that typically is used as support for an assertion or annotation.
 

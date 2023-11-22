@@ -36,7 +36,7 @@ emit_prefixes:
 
 classes:
   Resource:
-    is_a: CurieAuditedObject
+    is_a: CurieObject
     slots:
       - title
       - iso_abbreviation

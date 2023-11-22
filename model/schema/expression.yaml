@@ -43,7 +43,7 @@ emit_prefixes:
 classes:
 
   ExpressionExperiment:
-    is_a: SubmittedCurieObject
+    is_a: SubmittedObject
     description: >-
       Defined by the gene of interest, the specimen, the assay, the reagents
       (Antibody, Probe), and the reference. It groups ExpressionAnnotations.

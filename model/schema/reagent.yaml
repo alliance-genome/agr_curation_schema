@@ -42,7 +42,7 @@ emit_prefixes:
 classes:
 
   Reagent:
-    is_a: SubmittedCurieObject
+    is_a: SubmittedObject
     description: >-
       A material entity used in experiments.
     slots:
@@ -51,7 +51,7 @@ classes:
       - data_provider
 
   ReagentDTO:
-    is_a: SubmittedCurieObjectDTO
+    is_a: SubmittedObjectDTO
     description: >-
       Ingest class for material entities used in experiments.
     slots:
