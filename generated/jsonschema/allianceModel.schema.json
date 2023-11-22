@@ -1131,8 +1131,8 @@
             "required": [
                 "subtype_name",
                 "taxon_curie",
-                "data_provider_dto",
                 "mod_entity_id",
+                "data_provider_dto",
                 "internal"
             ],
             "title": "AffectedGenomicModelDTO",
@@ -2077,8 +2077,8 @@
             "required": [
                 "allele_symbol_dto",
                 "taxon_curie",
-                "data_provider_dto",
                 "mod_entity_id",
+                "data_provider_dto",
                 "internal"
             ],
             "title": "AlleleDTO",
@@ -6920,8 +6920,8 @@
             },
             "required": [
                 "taxon_curie",
-                "data_provider_dto",
                 "mod_entity_id",
+                "data_provider_dto",
                 "internal"
             ],
             "title": "CellLineDTO",
@@ -10352,6 +10352,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -10423,6 +10427,7 @@
                 }
             },
             "required": [
+                "data_provider",
                 "internal"
             ],
             "title": "ExpressionExperiment",
@@ -11379,8 +11384,8 @@
                 "gene_symbol",
                 "gene_type",
                 "taxon",
-                "data_provider",
                 "mod_entity_id",
+                "data_provider",
                 "internal"
             ],
             "title": "Gene",
@@ -11852,8 +11857,8 @@
                 "gene_symbol_dto",
                 "gene_type_curie",
                 "taxon_curie",
-                "data_provider_dto",
                 "mod_entity_id",
+                "data_provider_dto",
                 "internal"
             ],
             "title": "GeneDTO",
@@ -19240,8 +19245,8 @@
             },
             "required": [
                 "taxon_curie",
-                "data_provider_dto",
                 "mod_entity_id",
+                "data_provider_dto",
                 "internal"
             ],
             "title": "SequenceTargetingReagentDTO",
@@ -20298,6 +20303,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -20340,6 +20349,7 @@
                 }
             },
             "required": [
+                "data_provider",
                 "internal"
             ],
             "title": "SubmittedObject",
@@ -20352,6 +20362,10 @@
                 "created_by_curie": {
                     "description": "Curie of the Person object representing the individual that created the entity",
                     "type": "string"
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -20395,6 +20409,7 @@
                 }
             },
             "required": [
+                "data_provider_dto",
                 "internal"
             ],
             "title": "SubmittedObjectDTO",
