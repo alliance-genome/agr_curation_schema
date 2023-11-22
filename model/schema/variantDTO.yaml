@@ -50,7 +50,7 @@ classes:
     abstract: true
     is_a: LocationAssociationDTO
     slots:
-      - variant_curie
+      - variant_identifier
       - reference_sequence
       - variant_sequence
       - consequence_curie
@@ -75,7 +75,7 @@ classes:
     is_a: VariantLocationAssociationDTO
     abstract: true
     slots:
-      - transcript_curie
+      - transcript_identifier
       - exon_number
       - intron_number
 
@@ -83,8 +83,8 @@ classes:
     is_a: VariantLocationAssociationDTO
     abstract: true
     slots:
-      - protein_curie
-      - associated_transcript_curies # won't this be a property of the protein objects?
+      - protein_identifier
+      - associated_transcript_identifiers # won't this be a property of the protein objects?
       - number_amino_acids_removed
       - number_amino_acids_inserted
 
@@ -150,8 +150,10 @@ classes:
       - source_general_consequence_curie
 
 slots:
-  associated_transcript_curies:
-    description: Curies of transcript(s) associated with polypeptide to which variant is aligned.
+  associated_transcript_identifiers:
+    description: >-
+      Identifiers (curie/mod_entity_id/mod_internal_id) of transcript(s) associated
+      with polypeptide to which variant is aligned.
     required: false
     multivalued: true
     domain: VariantPolypeptideLocationAssociationDTO
@@ -198,8 +200,11 @@ slots:
     domain: VariantSourceGeneralConsequenceSlotAnnotationDTO
     range: string
 
-  variant_curie:
-    is_a: genomic_entity_curie
+  variant_identifier:
+    is_a: genomic_entity_identifier
+    description: >-
+      Identifier (curie/mod_entity_id/mod_internal_id) of the variant
+    required: true
 
   variant_status_name:
     description: >-

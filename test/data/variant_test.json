@@ -1,8 +1,8 @@
 {
-  "linkml_version": "1.7.3",
+  "linkml_version": "2.0.0",
   "variant_ingest_set": [
     {
-      "curie": "ZFIN:ZDB-ALT-000412-8",
+      "mod_entity_id": "ZFIN:ZDB-ALT-000412-8",
       "data_provider_dto": {
         "source_organization_abbreviation": "ZFIN",
         "cross_reference_dto": {
@@ -36,7 +36,7 @@
       ]
     },
     {
-      "curie": "ZFIN:ZDB-ALT-000412-9",
+      "mod_entity_id": "ZFIN:ZDB-ALT-000412-9",
       "data_provider_dto": {
         "source_organization_abbreviation": "ZFIN",
         "cross_reference_dto": {

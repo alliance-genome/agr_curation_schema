@@ -1,7 +1,7 @@
 {
   "agm_ingest_set": [
     {
-      "curie": "ZFIN:ZDB-FISH-200601-1",
+      "mod_entity_id": "ZFIN:ZDB-FISH-200601-1",
       "taxon_curie": "NCBITaxon:7955",
       "created_by_curie": "ZFIN",
       "updated_by_curie": "ZFIN",
@@ -21,7 +21,7 @@
         "ZFIN:ZDB-FISH-123456-1"
       ],
       "reference_curies": [],
-      "sequence_targeting_reagent_curies": [
+      "sequence_targeting_reagent_identifiers": [
         "ZFIN:ZDB-MRPHLNO-191104-1"
       ],
       "subtype_name": "fish"
