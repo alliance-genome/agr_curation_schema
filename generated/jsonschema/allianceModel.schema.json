@@ -9020,9 +9020,9 @@
             "title": "CurationReportHistory",
             "type": "object"
         },
-        "CurieAuditedObject": {
+        "CurieObject": {
             "additionalProperties": false,
-            "description": "Parent class for all LinkML classes with a curie",
+            "description": "Parent class for LinkML classes where all child classes have a curie (or will have one generated at the Alliance)",
             "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
@@ -9068,7 +9068,7 @@
             "required": [
                 "internal"
             ],
-            "title": "CurieAuditedObject",
+            "title": "CurieObject",
             "type": "object"
         },
         "DAOTerm": {
@@ -20286,9 +20286,9 @@
             "title": "StrandEnum",
             "type": "string"
         },
-        "SubmittedCurieObject": {
+        "SubmittedObject": {
             "additionalProperties": false,
-            "description": "Parent class for all LinkML classes of submitted entities or annotations that have (or will have) a curie generated at the Alliance",
+            "description": "Parent class for all LinkML classes of submitted entities or annotations that may have a public or internal MOD ID/curie",
             "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
@@ -20342,10 +20342,10 @@
             "required": [
                 "internal"
             ],
-            "title": "SubmittedCurieObject",
+            "title": "SubmittedObject",
             "type": "object"
         },
-        "SubmittedCurieObjectDTO": {
+        "SubmittedObjectDTO": {
             "additionalProperties": false,
             "description": "",
             "properties": {
@@ -20397,7 +20397,7 @@
             "required": [
                 "internal"
             ],
-            "title": "SubmittedCurieObjectDTO",
+            "title": "SubmittedObjectDTO",
             "type": "object"
         },
         "SubtypeValues": {
