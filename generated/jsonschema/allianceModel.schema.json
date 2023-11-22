@@ -20288,7 +20288,7 @@
         },
         "SubmittedObject": {
             "additionalProperties": false,
-            "description": "Parent class for all LinkML classes of submitted entities or annotations that may have a public or internal MOD ID/curie",
+            "description": "Parent class for LinkML classes of submitted entities that may have a public or internal MOD ID/curie",
             "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
