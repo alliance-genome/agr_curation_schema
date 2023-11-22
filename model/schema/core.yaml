@@ -93,7 +93,7 @@ classes:
   SubmittedObject:
     is_a: CurieObject
     description: >-
-      Parent class for all LinkML classes of submitted entities or annotations
+      Parent class for LinkML classes of submitted entities
       that may have a public or internal MOD ID/curie
     slots:
       - mod_entity_id
