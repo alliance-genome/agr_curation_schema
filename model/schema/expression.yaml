@@ -243,7 +243,7 @@ slots:
   expression_qualifiers:
     description: >-
       Qualifiers that describe additional characteristics of gene expression.
-      For example: aint, intense, restricted.
+      For example: faint, intense, restricted.
     domain: ExpressionAnnotation
     range: expression_qualifier_set
 
@@ -395,7 +395,7 @@ enums:
     permissible_values:
       expression_summary:
         description: >-
-          Free-text that summarizes expression across many annotations, experiments or publictaions.
+          Free-text that summarizes expression across many annotations, experiments or publications.
       where_expressed_note:
         description: >-
           Additional free-text describing the anatomical site of expression in an expression annotation.

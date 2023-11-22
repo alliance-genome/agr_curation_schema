@@ -94,7 +94,7 @@ slots:
 
   url_template:
     description: >-
-      URL template for constructing link to resource using prodived ID, eg.
+      URL template for constructing link to resource using provided ID, eg.
       "https://www.omim.org/phenotypicSeries/[%s]"
     domain: ResourceDescriptor
     range: string

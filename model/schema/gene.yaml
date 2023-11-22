@@ -225,7 +225,7 @@ classes:
       Localization of the gene to a chromosome, in some cases in reference to
       specific markers.
     notes: >-
-      Should we implement an even more generic LocationAssociaiton object where
+      Should we implement an even more generic LocationAssociaton object where
       start and end are not constrained to integer, but can be markers like
       genes or chromosome bands?
       Is this limited to cytological studies (e.g., chromosome in situs), or
