@@ -48,7 +48,6 @@ classes:
     slots:
       - unique_id
       - secondary_identifiers
-      - data_provider
 
   ReagentDTO:
     is_a: SubmittedObjectDTO
@@ -56,7 +55,6 @@ classes:
       Ingest class for material entities used in experiments.
     slots:
       - secondary_identifiers
-      - data_provider_dto
     slot_usage:
       mod_internal_id:
         notes: This is required if mod_entity_id is not submitted

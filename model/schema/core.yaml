@@ -98,12 +98,14 @@ classes:
     slots:
       - mod_entity_id
       - mod_internal_id
+      - data_provider
 
   SubmittedObjectDTO:
     is_a: AuditedObjectDTO
     slots:
       - mod_entity_id
       - mod_internal_id
+      - data_provider_dto
 
   BiologicalEntity:
     is_a: SubmittedObject
@@ -113,7 +115,6 @@ classes:
     abstract: true
     slots:
       - taxon
-      - data_provider
     slot_usage:
       taxon:
         required: true
@@ -123,7 +124,6 @@ classes:
     abstract: true
     slots:
       - taxon_curie
-      - data_provider_dto
     slot_usage:
       taxon_curie:
         required: true
