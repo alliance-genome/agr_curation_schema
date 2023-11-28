@@ -153,7 +153,7 @@ slots:
 
   zygosity:
     description: >-
-      GENO onotology ID for allele zygosity
+      GENO ontology ID for allele zygosity
     domain: AffectedGenomicModelComponent
     range: zygosity_values
 

@@ -446,7 +446,7 @@ slots:
 
   generated_by_identifier:
     description: >- 
-      Identifier for Reagent genereated_by field.  
+      Identifier for Reagent generated_by field.
     domain: ReagentDTO
     range: string
   
@@ -468,7 +468,7 @@ slots:
 
   heavy_chain_isotype_name:
     description: >-
-      Name of the VocabularyTerm respresenting the isotype of the antibody heavy chain:
+      Name of the VocabularyTerm representing the isotype of the antibody heavy chain:
       e.g., IgA. From the Heavy Chain Isotope CV.
     required: false
     multivalued: false
@@ -485,7 +485,7 @@ slots:
 
   light_chain_isotype_name:
     description: >-
-      Name of the VocabularyTerm respresenting the isotype of the antibody light chain:
+      Name of the VocabularyTerm representing the isotype of the antibody light chain:
       e.g., i4. From the Light Chain Isotope CV.
     required: false
     multivalued: false

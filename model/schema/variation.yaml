@@ -105,7 +105,7 @@ classes:
     slot_usage:
       object:
         description: >-
-          The location reference object should be a chromsome assembly curie.
+          The location reference object should be a chromosome assembly curie.
         range: AssemblyComponent
         required: true
 
@@ -263,7 +263,7 @@ slots:
 
   padded_base:
     description: >-
-      A base preceeded an insertion or deletion event that is reported when
+      A base preceded an insertion or deletion event that is reported when
       either the reference or variant sequence would otherwise be empty. 
     range: string
     multivalued: false
@@ -450,7 +450,7 @@ slots:
 
   source_variant_transcript_locations:
     description: >-
-      Location of the variant within transcript entities as desribed by the source reference.
+      Location of the variant within transcript entities as described by the source reference.
     required: false
     multivalued: true
     domain: Variant
@@ -458,7 +458,7 @@ slots:
 
   source_variant_polypeptide_locations:
     description: >-
-      Location of the variant within polypeptide entities as desribed by the source reference.
+      Location of the variant within polypeptide entities as described by the source reference.
     required: false
     multivalued: true
     domain: Variant
@@ -476,6 +476,7 @@ slots:
 
   # May want to remove domain of following 8 slots and move them to core
   # so that they can be used for alignment of other genomic entities
+
   reference_sequence:
     description: >-
       Reference sequence of genome or genomic entity at position of aligned

@@ -172,7 +172,7 @@ classes:
 
   GeneMolecularInteractionDTO:
     description: >-
-      Ingest clas for a physical molecular interaction between gene products (e.g. 
+      Ingest class for a physical molecular interaction between gene products (e.g.
       protein-protein interactions or protein-RNA interactions) or between genes and
       DNA-binding factors (e.g. protein-DNA interactions)
     is_a: GeneInteractionDTO
