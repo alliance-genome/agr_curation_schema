@@ -43,14 +43,13 @@ emit_prefixes:
 classes:
 
   ExpressionExperiment:
-    is_a: AuditedObject
+    is_a: SubmittedObject
     description: >-
       Defined by the gene of interest, the specimen, the assay, the reagents
       (Antibody, Probe), and the reference. It groups ExpressionAnnotations.
     notes: >-
       Specimens are defined by their AGM and/or alleles (or gel lane at MGI).
     slots:
-      - curie
       - single_reference
       - biological_entity_assayed
       - assay_used
@@ -59,9 +58,6 @@ classes:
       - specimen_alleles
       - condition_relations
       - related_notes
-    slot_usage:
-      curie:
-        required: true
     rules:
       - postconditions:
           any_of:
