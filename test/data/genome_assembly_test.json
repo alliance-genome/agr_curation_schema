@@ -1,0 +1,34 @@
+{
+  "linkml_version": "2.0.0",
+  "genome_assembly_ingest_set": [
+    {
+      "mod_entity_id": "WB:WBcel235",
+      "taxon_curie": "NCBITaxon:6239",
+      "created_by_curie": "WB:WBPerson2987",
+      "updated_by_curie": "WB:WBPerson2987",
+      "internal": false,
+      "obsolete": false,
+      "data_provider_dto": {
+        "source_organization_abbreviation": "WB",
+        "cross_reference_dto": {
+          "referenced_curie": "WB:WBcel235",
+          "prefix": "WB",
+          "page_area": "genome_assembly",
+          "display_name": "WBcel235",
+          "internal": false
+        },
+        "internal": false
+      },
+      "specimen_genomic_model_curie": "WB:WBStrain00000001",
+      "cross_reference_dtos": [
+        {
+          "referenced_curie": "RefSeq:GCF_000002985.6",
+          "internal": false,
+          "display_name": "GCF_000002985.6",
+          "page_area": "genome_assembly",
+          "prefix": "RefSeq"
+        }
+      ]
+    }
+  ]
+}
