@@ -192,7 +192,7 @@ SCHEMA_TEST_EXAMPLES := \
 	allele_slot_annotation_ingest_test \
 	allele_test \
 	antibody_test \
-	assembly_component \
+	assembly_component_test \
 	chromosome_test \
 	construct_test \
 	disease_agm_test \
