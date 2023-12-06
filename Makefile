@@ -201,7 +201,7 @@ SCHEMA_TEST_EXAMPLES := \
 	fb_disease_test \
 	gene_interaction_test \
 	gene_test \
-	genome_assembly \
+	genome_assembly_test \
 	ontology_closure_test \
 	phenotype_agm_test \
 	phenotype_allele_test \
