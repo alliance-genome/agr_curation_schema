@@ -19,7 +19,7 @@
         },
         "internal": false
       },
-      "specimen_genomic_model_curie": "WB:WBStrain00000001",
+      "specimen_genomic_model_identifier": "WB:WBStrain00000001",
       "cross_reference_dtos": [
         {
           "referenced_curie": "RefSeq:GCF_000002985.6",
