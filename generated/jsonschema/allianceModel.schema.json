@@ -14197,7 +14197,7 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "specimen_genomic_model_curie": {
+                "specimen_genomic_model_identifier": {
                     "description": "The curie of the AffectedGenomicModel of the specimen.",
                     "type": "string"
                 },
