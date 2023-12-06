@@ -275,7 +275,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -393,7 +393,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -517,7 +517,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -868,7 +868,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -1086,7 +1086,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -1433,7 +1433,7 @@
                     "description": "The laboratory of origin for the entity."
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -2037,7 +2037,7 @@
                     "type": "string"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -2466,7 +2466,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -3899,7 +3899,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -4016,7 +4016,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -4919,7 +4919,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -5058,7 +5058,7 @@
                     "type": "array"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -5196,7 +5196,7 @@
                     "type": "string"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -5307,7 +5307,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -5388,7 +5388,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -6907,7 +6907,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -6978,7 +6978,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -7396,7 +7396,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -7657,7 +7657,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -9375,7 +9375,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -10521,7 +10521,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -11175,7 +11175,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -11468,7 +11468,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -11778,7 +11778,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -11864,7 +11864,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -11967,7 +11967,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -12245,7 +12245,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -13171,7 +13171,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -13280,7 +13280,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -14111,7 +14111,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -14186,7 +14186,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -14266,7 +14266,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -14337,7 +14337,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -15128,7 +15128,7 @@
                     "type": "string"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "obsolete": {
@@ -17062,7 +17062,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -17568,7 +17568,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -17652,7 +17652,7 @@
                     "type": "string"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "obsolete": {
@@ -17784,7 +17784,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -18024,7 +18024,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -18097,7 +18097,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -18174,7 +18174,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -18343,7 +18343,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -18663,7 +18663,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -18733,7 +18733,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -19469,7 +19469,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -19547,7 +19547,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -20750,7 +20750,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -20810,7 +20810,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -21130,7 +21130,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -21205,7 +21205,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -21407,7 +21407,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -21627,7 +21627,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -21748,7 +21748,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
