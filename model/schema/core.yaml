@@ -1092,7 +1092,9 @@ slots:
 
   mod_entity_id:
     description: >-
-      The model organism database (MOD) identifier/curie for the object
+      The model organism database (MOD) identifier/curie for the object. Note
+      that this may be an external identifier for an object, like a UniProt ID
+      for a protein, but acts as the MOD's primary key for the entity.
     range: string
 
   mod_internal_id:
