@@ -5379,7 +5379,7 @@
                 "display_name": {
                     "type": "string"
                 },
-                "genome_assembly_curie": {
+                "genome_assembly_identifier": {
                     "description": "The curie for the GenomeAssembly",
                     "type": "string"
                 },
@@ -5410,7 +5410,7 @@
             },
             "required": [
                 "display_name",
-                "genome_assembly_curie",
+                "genome_assembly_identifier",
                 "data_provider_dto",
                 "taxon_curie",
                 "internal"
