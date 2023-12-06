@@ -465,7 +465,7 @@ classes:
     description: >-
       Ingest class for genome assemblies
     slots:
-      - specimen_genomic_model_curie
+      - specimen_genomic_model_identifier
       - cross_reference_dtos
 
   LocationAssociation:
@@ -1228,7 +1228,7 @@ slots:
     range: AffectedGenomicModel
     multivalued: false
 
-  specimen_genomic_model_curie:
+  specimen_genomic_model_identifier:
     description: >-
       The curie of the AffectedGenomicModel of the specimen.
     range: string
