@@ -442,7 +442,7 @@ classes:
       Ingest class for assembly components
     slots:
       - display_name
-      - genome_assembly_curie
+      - genome_assembly_identifier
       - data_provider_dto
 
   GenomeAssembly:
@@ -714,7 +714,7 @@ slots:
     required: true
     multivalued: false
 
-  genome_assembly_curie:
+  genome_assembly_identifier:
     description: >-
       The curie for the GenomeAssembly
     domain: AssemblyComponentDTO
