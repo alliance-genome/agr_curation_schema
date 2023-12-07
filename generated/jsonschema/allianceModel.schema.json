@@ -5380,7 +5380,7 @@
                     "type": "string"
                 },
                 "genome_assembly_identifier": {
-                    "description": "The curie for the GenomeAssembly",
+                    "description": "The identifier for the GenomeAssembly. This can be a MOD curie, a MOD internal ID or an external (3rd party) identifier.",
                     "type": "string"
                 },
                 "internal": {
@@ -14198,7 +14198,7 @@
                     "type": "boolean"
                 },
                 "specimen_genomic_model_identifier": {
-                    "description": "The curie of the AffectedGenomicModel of the specimen.",
+                    "description": "The identifier of the AffectedGenomicModel of the specimen. This can be a MOD curie, a MOD internal ID or an external (3rd party) identifier.",
                     "type": "string"
                 },
                 "taxon_curie": {
