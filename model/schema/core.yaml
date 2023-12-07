@@ -716,7 +716,8 @@ slots:
 
   genome_assembly_identifier:
     description: >-
-      The curie for the GenomeAssembly
+      The identifier for the GenomeAssembly. This can be a MOD curie, a MOD internal
+      ID or an external (3rd party) identifier.
     domain: AssemblyComponentDTO
     range: string
     required: true
@@ -1232,7 +1233,8 @@ slots:
 
   specimen_genomic_model_identifier:
     description: >-
-      The curie of the AffectedGenomicModel of the specimen.
+      The identifier of the AffectedGenomicModel of the specimen. This can be a MOD curie,
+      a MOD internal ID or an external (3rd party) identifier.
     range: string
     multivalued: false
 
