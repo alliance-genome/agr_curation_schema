@@ -1,0 +1,35 @@
+{
+  "linkml_version": "2.0.0",
+  "assembly_component_ingest_set": [
+    {
+      "mod_entity_id": "WB:W02C12",
+      "taxon_curie": "NCBITaxon:6239",
+      "created_by_curie": "WB:WBPerson2987",
+      "updated_by_curie": "WB:WBPerson2987",
+      "genome_assembly_identifier": "WB:WBcel235",
+      "display_name": "W02C12",
+      "internal": false,
+      "obsolete": false,
+      "data_provider_dto": {
+        "source_organization_abbreviation": "WB",
+        "cross_reference_dto": {
+          "referenced_curie": "WB:W02C12",
+          "prefix": "WB",
+          "page_area": "clone",
+          "display_name": "W02C12",
+          "internal": false
+        },
+        "internal": false
+      },
+      "cross_reference_dtos": [
+        {
+          "referenced_curie": "NCBI:FO081298",
+          "internal": false,
+          "display_name": "FO081298",
+          "page_area": "genome_assembly",
+          "prefix": "NCBI"
+        }
+      ]
+    }
+  ]
+}

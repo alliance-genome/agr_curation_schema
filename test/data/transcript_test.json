@@ -1,0 +1,34 @@
+{
+  "linkml_version": "2.0.0",
+  "transcript_ingest_set": [
+    {
+      "mod_entity_id": "WB:M05B5.5a.1",
+      "taxon_curie": "NCBITaxon:6239",
+      "created_by_curie": "WB:WBPerson2987",
+      "updated_by_curie": "WB:WBPerson2987",
+      "internal": false,
+      "obsolete": false,
+      "name": "M05B5.5a.1",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "WB",
+        "cross_reference_dto": {
+          "referenced_curie": "WB:M05B5.5a.1",
+          "prefix": "WB",
+          "page_area": "transcript",
+          "display_name": "WB:M05B5.5a.1",
+          "internal": false
+        },
+        "internal": false
+      },
+      "cross_reference_dtos": [
+        {
+          "referenced_curie": "NCBI.transcript:NM_001026410.5",
+          "internal": false,
+          "display_name": "NM_001026410.5",
+          "page_area": "transcript",
+          "prefix": "NCBI.transcript"
+        }
+      ]
+    }
+  ]
+}

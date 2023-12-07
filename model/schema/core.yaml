@@ -146,7 +146,10 @@ classes:
   Transcript:
     is_a: GenomicEntity
     description: >-
-      Placeholder.
+      A contiguous RNA molecule representing a sequence of a genome, often
+      the result of a DNA-dependent RNA polymerase gene transcription event
+    slots:
+      - name
     id_prefixes:
       - ENSEMBL
       - FB
@@ -155,6 +158,13 @@ classes:
       - RGD
       - SGD
       - ZFIN
+
+  TranscriptDTO:
+    is_a: GenomicEntityDTO
+    description: >-
+      Ingest class for transcripts
+    slots:
+      - name
 
   CrossReference:
     is_a: AuditedObject
@@ -397,6 +407,15 @@ classes:
       - name
       - taxon
 
+  ChromosomeDTO:
+    is_a: AuditedObjectDTO
+    description: >-
+      Ingest class for chromosomes
+    slots:
+      - name
+      - taxon_curie
+      - data_provider_dto
+
   AssemblyComponent:
     is_a: GenomicEntity
     description: >-
@@ -417,6 +436,15 @@ classes:
       - genome_assembly
       - maps_to_chromosome
 
+  AssemblyComponentDTO:
+    is_a: GenomicEntityDTO
+    description: >-
+      Ingest class for assembly components
+    slots:
+      - display_name
+      - genome_assembly_identifier
+      - data_provider_dto
+
   GenomeAssembly:
     is_a: BiologicalEntity
     description: >-
@@ -426,10 +454,19 @@ classes:
       These should typically have an NCBI curie.
     slots:
       - specimen_genomic_model
+      - cross_references
     slot_usage:
       specimen_genomic_model:
         description: >-
           The strain or genotype of origin for the genome sequence.
+
+  GenomeAssemblyDTO:
+    is_a: BiologicalEntityDTO
+    description: >-
+      Ingest class for genome assemblies
+    slots:
+      - specimen_genomic_model_identifier
+      - cross_reference_dtos
 
   LocationAssociation:
     abstract: true
@@ -462,6 +499,20 @@ classes:
 
   Protein:
     is_a: GenomicEntity
+    description: >-
+      A polypeptide of amino acids, often the result of protein translation
+      of an RNA molecule (transcript) into its corresponding polypeptide by
+      the ribosome complex
+    slots:
+      - name
+
+  ProteinDTO:
+    is_a: GenomicEntityDTO
+    description: >-
+      Ingest class for proteins
+    slots:
+      - name
+
 
   Identifier:
     slots:
@@ -660,6 +711,15 @@ slots:
       The GenomeAssembly to which a AssemblyComponent belongs.
     domain: AssemblyComponent
     range: GenomeAssembly
+    required: true
+    multivalued: false
+
+  genome_assembly_identifier:
+    description: >-
+      The identifier for the GenomeAssembly. This can be a MOD curie, a MOD internal
+      ID or an external (3rd party) identifier.
+    domain: AssemblyComponentDTO
+    range: string
     required: true
     multivalued: false
 
@@ -1033,7 +1093,9 @@ slots:
 
   mod_entity_id:
     description: >-
-      The model organism database (MOD) identifier/curie for the object
+      The model organism database (MOD) identifier/curie for the object. Note
+      that this may be an external identifier for an object, like a UniProt ID
+      for a protein, but acts as the MOD's primary key for the entity.
     range: string
 
   mod_internal_id:
@@ -1167,6 +1229,13 @@ slots:
     description: >-
       The AffectedGenomicModel of the specimen.
     range: AffectedGenomicModel
+    multivalued: false
+
+  specimen_genomic_model_identifier:
+    description: >-
+      The identifier of the AffectedGenomicModel of the specimen. This can be a MOD curie,
+      a MOD internal ID or an external (3rd party) identifier.
+    range: string
     multivalued: false
 
 ## ----------
