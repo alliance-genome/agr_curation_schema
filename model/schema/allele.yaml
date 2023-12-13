@@ -524,9 +524,6 @@ classes:
       - relation_name
       - evidence_code_curie
       - note_dto
-    slot_usage:
-      evidence_curies:
-        required: true
 
   AlleleImageAssociation:
     is_a: EvidenceAssociation

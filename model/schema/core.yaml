@@ -403,6 +403,11 @@ classes:
       - name
       - taxon
       - data_provider
+    slot_usage:
+      name:
+        required: true
+      taxon:
+        required: true
     defining_slots:
       - name
       - taxon
@@ -415,6 +420,11 @@ classes:
       - name
       - taxon_curie
       - data_provider_dto
+    slot_usage:
+      name:
+        required: true
+      taxon_curie:
+        required: true
 
   AssemblyComponent:
     is_a: GenomicEntity
