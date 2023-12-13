@@ -1626,7 +1626,6 @@
             "required": [
                 "allele_identifier",
                 "relation_name",
-                "evidence_curies",
                 "internal"
             ],
             "title": "AlleleAlleleAssociationDTO",
@@ -1917,7 +1916,6 @@
                 "construct_identifier",
                 "allele_identifier",
                 "relation_name",
-                "evidence_curies",
                 "internal"
             ],
             "title": "AlleleConstructAssociationDTO",
@@ -2890,7 +2888,6 @@
                 "gene_identifier",
                 "allele_identifier",
                 "relation_name",
-                "evidence_curies",
                 "internal"
             ],
             "title": "AlleleGeneAssociationDTO",
@@ -4205,7 +4202,6 @@
                 "protein_identifier",
                 "allele_identifier",
                 "relation_name",
-                "evidence_curies",
                 "internal"
             ],
             "title": "AlleleProteinAssociationDTO",
@@ -4581,7 +4577,6 @@
                 "transcript_identifier",
                 "allele_identifier",
                 "relation_name",
-                "evidence_curies",
                 "internal"
             ],
             "title": "AlleleTranscriptAssociationDTO",
@@ -4734,7 +4729,6 @@
                 "variant_identifier",
                 "allele_identifier",
                 "relation_name",
-                "evidence_curies",
                 "internal"
             ],
             "title": "AlleleVariantAssociationDTO",
@@ -7061,6 +7055,8 @@
                 }
             },
             "required": [
+                "name",
+                "taxon",
                 "data_provider",
                 "internal"
             ],
@@ -7121,6 +7117,8 @@
                 }
             },
             "required": [
+                "name",
+                "taxon_curie",
                 "data_provider_dto",
                 "internal"
             ],
