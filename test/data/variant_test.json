@@ -1,8 +1,8 @@
 {
-  "linkml_version": "1.7.3",
+  "linkml_version": "2.0.0",
   "variant_ingest_set": [
     {
-      "curie": "ZFIN:ZDB-ALT-000412-8",
+      "mod_entity_id": "ZFIN:ZDB-ALT-000412-8",
       "data_provider_dto": {
         "source_organization_abbreviation": "ZFIN",
         "cross_reference_dto": {
@@ -27,10 +27,16 @@
           "internal": false
         }
       ],
-      "source_general_consequence_curie": "SO:0001576"
+      "source_general_consequence_dtos": [
+        {
+          "source_general_consequence_curie": "SO:0001576",
+          "evidence_curies": ["PMID:11231512"],
+          "internal": false
+        }
+      ]
     },
     {
-      "curie": "ZFIN:ZDB-ALT-000412-9",
+      "mod_entity_id": "ZFIN:ZDB-ALT-000412-9",
       "data_provider_dto": {
         "source_organization_abbreviation": "ZFIN",
         "cross_reference_dto": {

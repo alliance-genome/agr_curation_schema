@@ -1,5 +1,5 @@
 {
-  "linkml_version": "1.7.3",
+  "linkml_version": "2.0.0",
   "disease_agm_ingest_set": [
     {
       "evidence_code_curies": [
@@ -21,8 +21,8 @@
       "date_created": "2015-04-09T10:15:30+00:00",
       "date_updated": "2015-04-09T10:15:30+00:00",
       "internal": false,
-      "agm_curie": "ZFIN:ZDB-FISH-180912-16",
-      "inferred_gene_curie": "ZFIN:ZDB-GENE-060503-338",
+      "agm_identifier": "ZFIN:ZDB-FISH-180912-16",
+      "inferred_gene_identifier": "ZFIN:ZDB-GENE-060503-338",
       "disease_relation_name": "is_model_of",
       "condition_relation_dtos": [
         {

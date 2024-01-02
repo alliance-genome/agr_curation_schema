@@ -1,8 +1,8 @@
 {
-  "linkml_version": "1.7.3",
+  "linkml_version": "2.0.0",
   "allele_ingest_set": [
     {
-      "curie": "WB:WBVar00000001",
+      "mod_entity_id": "WB:WBVar00000001",
       "allele_symbol_dto": {
         "name_type_name": "nomenclature_symbol",
         "format_text": "wg<sup>1</sup>",

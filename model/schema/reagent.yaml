@@ -42,26 +42,19 @@ emit_prefixes:
 classes:
 
   Reagent:
-    is_a: AuditedObject
+    is_a: SubmittedObject
     description: >-
       A material entity used in experiments.
     slots:
-      - curie
       - unique_id
-      - mod_entity_id
-      - mod_internal_id
       - secondary_identifiers
-      - data_provider
 
   ReagentDTO:
-    is_a: AuditedObjectDTO
+    is_a: SubmittedObjectDTO
     description: >-
       Ingest class for material entities used in experiments.
     slots:
-      - mod_entity_id
-      - mod_internal_id
       - secondary_identifiers
-      - data_provider_dto
     slot_usage:
       mod_internal_id:
         notes: This is required if mod_entity_id is not submitted
@@ -134,7 +127,7 @@ classes:
       - clonality_name
       - heavy_chain_isotype_name
       - light_chain_isotype_name
-      - antibody_target_gene_curies
+      - antibody_target_gene_identifiers
       - cross_reference_dtos
       - reference_curies
       - original_reference_curie
@@ -265,7 +258,7 @@ classes:
         required: true
 
   ConstructGenomicEntityAssociation:
-    is_a: Association
+    is_a: EvidenceAssociation
     description: >-
       An association class to capture the identity of a construct component that is
       a known genomic entity with a curie and any accompanying meta data about the
@@ -287,7 +280,7 @@ classes:
         required: false
 
   ConstructGenomicEntityAssociationDTO:
-    is_a: AuditedObjectDTO
+    is_a: EvidenceAssociationDTO
     description: >-
       Ingest class for association between a construct component that is a known genomic
       entity with a curie and any accompanying meta data about the relationship between
@@ -295,11 +288,10 @@ classes:
     slots:
       - construct_identifier
       - genomic_entity_relation_name
-      - genomic_entity_curie
+      - genomic_entity_identifier
       - note_dtos
-      - evidence_curies
     slot_usage:
-      genomic_entity_curie:
+      genomic_entity_identifier:
         required: true
 
   # If we need to have multiple paths to root class, then we can consider a mixin that allows
@@ -322,9 +314,10 @@ slots:
     domain: Antibody
     range: Gene
 
-  antibody_target_gene_curies:
+  antibody_target_gene_identifiers:
     description: >-
-      Curies of the genes whose gene products are recognized by the antibody.
+      Identifiers (curie/mod_entity_id/mod_internal_id) of the genes whose gene
+      products are recognized by the antibody.
     required: false
     multivalued: true
     domain: AntibodyDTO
@@ -446,7 +439,7 @@ slots:
 
   generated_by_identifier:
     description: >- 
-      Identifier for Reagent genereated_by field.  
+      Identifier for Reagent generated_by field.
     domain: ReagentDTO
     range: string
   
@@ -468,7 +461,7 @@ slots:
 
   heavy_chain_isotype_name:
     description: >-
-      Name of the VocabularyTerm respresenting the isotype of the antibody heavy chain:
+      Name of the VocabularyTerm representing the isotype of the antibody heavy chain:
       e.g., IgA. From the Heavy Chain Isotope CV.
     required: false
     multivalued: false
@@ -485,7 +478,7 @@ slots:
 
   light_chain_isotype_name:
     description: >-
-      Name of the VocabularyTerm respresenting the isotype of the antibody light chain:
+      Name of the VocabularyTerm representing the isotype of the antibody light chain:
       e.g., i4. From the Light Chain Isotope CV.
     required: false
     multivalued: false

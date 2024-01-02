@@ -1,8 +1,8 @@
 {
-  "linkml_version": "1.7.3",
+  "linkml_version": "2.0.0",
   "agm_ingest_set": [
     {
-      "curie": "ZFIN:ZDB-FISH-200601-1",
+      "mod_entity_id": "ZFIN:ZDB-FISH-200601-1",
       "taxon_curie": "NCBITaxon:7955",
       "created_by_curie": "ZFIN",
       "updated_by_curie": "ZFIN",
@@ -18,7 +18,7 @@
         }
       ],
       "reference_curies": [],
-      "sequence_targeting_reagent_curies": [
+      "sequence_targeting_reagent_identifiers": [
         "ZFIN:ZDB-MRPHLNO-191104-1"
       ],
       "subtype_name": "fish",
@@ -35,7 +35,7 @@
       }
     },
     {
-      "curie": "ZFIN:ZDB-FISH-150901-28778",
+      "mod_entity_id": "ZFIN:ZDB-FISH-150901-28778",
       "taxon_curie": "NCBITaxon:7955",
       "created_by_curie": "ZFIN",
       "updated_by_curie": "ZFIN",
@@ -53,7 +53,7 @@
       "reference_curies": [],
       "component_dtos": [
         {
-          "allele_curie": "ZFIN:ZDB-ALT-980203-1593",
+          "allele_identifier": "ZFIN:ZDB-ALT-980203-1593",
           "internal": false,
           "zygosity_curie": "GENO:0000136"
         }

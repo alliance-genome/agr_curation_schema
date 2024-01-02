@@ -1,5 +1,5 @@
 {
-  "linkml_version": "1.7.3",
+  "linkml_version": "2.0.0",
   "disease_allele_ingest_set": [
     {
       "condition_relation_dtos": [
@@ -53,7 +53,7 @@
       "do_term_curie": "DOID:11724",
       "disease_relation_name": "is_implicated_in",
       "reference_curie": "PMID:19648295",
-      "allele_curie": "WB:WBVar00087752"
+      "allele_identifier": "WB:WBVar00087752"
     }
   ],
   "disease_gene_ingest_set": [
@@ -91,7 +91,7 @@
           "internal": false
         }
       ],
-      "disease_genetic_modifier_curies": ["WB:WBStrain00035193"],
+      "disease_genetic_modifier_identifiers": ["WB:WBStrain00035193"],
       "disease_genetic_modifier_relation_name": "ameliorated_by",
       "evidence_code_curies": [
         "ECO:0000315",
@@ -105,7 +105,7 @@
       "do_term_curie": "DOID:1826",
       "disease_relation_name": "is_implicated_in",
       "reference_curie": "PMID:19648295",
-      "gene_curie": "WB:WBGene00011955"
+      "gene_identifier": "WB:WBGene00011955"
     }
   ],
   "disease_agm_ingest_set": [
@@ -123,7 +123,7 @@
         "internal": false
       },
       "date_updated": "2019-03-08T00:00:00+00:00",
-      "disease_genetic_modifier_curies": ["WB:WBVar00250993"],
+      "disease_genetic_modifier_identifiers": ["WB:WBVar00250993"],
       "disease_genetic_modifier_relation_name": "exacerbated_by",
       "evidence_code_curies": [
         "ECO:0000315",
@@ -136,8 +136,8 @@
       "do_term_curie": "DOID:10652",
       "disease_relation_name": "is_model_of",
       "reference_curie": "PMID:19648295",
-      "agm_curie": "WB:WBStrain00005094",
-      "inferred_allele_curie": "WB:WBTransgene00000410"
+      "agm_identifier": "WB:WBStrain00005094",
+      "inferred_allele_identifier": "WB:WBTransgene00000410"
     },
     {
       "condition_relation_dtos": [
@@ -189,8 +189,8 @@
       "do_term_curie": "DOID:11723",
       "disease_relation_name": "is_model_of",
       "reference_curie": "PMID:19648295",
-      "agm_curie": "WB:WBStrain00024340",
-      "asserted_allele_curie": "WB:WBVar00054722"
+      "agm_identifier": "WB:WBStrain00024340",
+      "asserted_allele_identifier": "WB:WBVar00054722"
     }
   ]
 }

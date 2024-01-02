@@ -43,14 +43,13 @@ emit_prefixes:
 classes:
 
   ExpressionExperiment:
-    is_a: AuditedObject
+    is_a: SubmittedObject
     description: >-
       Defined by the gene of interest, the specimen, the assay, the reagents
       (Antibody, Probe), and the reference. It groups ExpressionAnnotations.
     notes: >-
       Specimens are defined by their AGM and/or alleles (or gel lane at MGI).
     slots:
-      - curie
       - single_reference
       - biological_entity_assayed
       - assay_used
@@ -59,9 +58,6 @@ classes:
       - specimen_alleles
       - condition_relations
       - related_notes
-    slot_usage:
-      curie:
-        required: true
     rules:
       - postconditions:
           any_of:
@@ -243,7 +239,7 @@ slots:
   expression_qualifiers:
     description: >-
       Qualifiers that describe additional characteristics of gene expression.
-      For example: aint, intense, restricted.
+      For example: faint, intense, restricted.
     domain: ExpressionAnnotation
     range: expression_qualifier_set
 
@@ -290,13 +286,6 @@ slots:
     domain: ExpressionExperiment
     range: Allele
     multivalued: true
-
-  specimen_genomic_model:
-    description: >-
-      The AffectedGenomicModel of the specimen assayed.
-    domain: ExpressionExperiment
-    range: AffectedGenomicModel
-    multivalued: false
 
   temporal_qualifiers:
     description: >-
@@ -402,7 +391,7 @@ enums:
     permissible_values:
       expression_summary:
         description: >-
-          Free-text that summarizes expression across many annotations, experiments or publictaions.
+          Free-text that summarizes expression across many annotations, experiments or publications.
       where_expressed_note:
         description: >-
           Additional free-text describing the anatomical site of expression in an expression annotation.

@@ -163,8 +163,8 @@ classes:
     description: >-
       Ingest class for an association between a gene and a phenotype
     slots:
-      - gene_curie
-      - sgd_strain_background_curie
+      - gene_identifier
+      - sgd_strain_background_identifier
 
   AllelePhenotypeAnnotation:
     description: >-
@@ -194,9 +194,9 @@ classes:
     description: >-
       Ingest class for an association between an allele and a phenotype
     slots:
-      - allele_curie
-      - inferred_gene_curie
-      - asserted_gene_curies
+      - allele_identifier
+      - inferred_gene_identifier
+      - asserted_gene_identifiers
 
   AGMPhenotypeAnnotation:
     description: >-
@@ -232,11 +232,11 @@ classes:
     description: >-
       Ingest class for an association between an AGM and a phenotype
     slots:
-      - agm_curie
-      - inferred_gene_curie
-      - asserted_gene_curies
-      - inferred_allele_curie
-      - asserted_allele_curie
+      - agm_identifier
+      - inferred_gene_identifier
+      - asserted_gene_identifiers
+      - inferred_allele_identifier
+      - asserted_allele_identifier
 
   DiseaseAnnotation:
     is_a: Annotation
@@ -261,7 +261,7 @@ classes:
           DiseaseAnnotation class code of "100", followed by a 12-digit identifier
       unique_id:
         description: >-
-          Unique identifer for the disease annotation.  Will be generated at AGR
+          Unique identifier for the disease annotation.  Will be generated at AGR
           if not submitted by the MOD.
         required: false
       mod_entity_id:
@@ -334,11 +334,11 @@ classes:
       - negated
       - evidence_code_curies
       - annotation_type_name
-      - with_gene_curies
+      - with_gene_identifiers
       - disease_qualifier_names
       - genetic_sex_name
       - secondary_data_provider_dto
-      - disease_genetic_modifier_curies
+      - disease_genetic_modifier_identifiers
       - disease_genetic_modifier_relation_name
 
   GeneDiseaseAnnotation:
@@ -366,8 +366,8 @@ classes:
     description: >-
       Ingest class for an association between a gene and a disease
     slots:
-      - gene_curie
-      - sgd_strain_background_curie
+      - gene_identifier
+      - sgd_strain_background_identifier
 
   AlleleDiseaseAnnotation:
     description: >-
@@ -401,9 +401,9 @@ classes:
     description: >-
       Ingest class for an association between an allele and a disease
     slots:
-      - allele_curie
-      - inferred_gene_curie
-      - asserted_gene_curies
+      - allele_identifier
+      - inferred_gene_identifier
+      - asserted_gene_identifiers
 
 
   AGMDiseaseAnnotation:
@@ -447,11 +447,11 @@ classes:
     description: >-
       Ingest class for an association between an AGM and a disease
     slots:
-      - agm_curie
-      - inferred_gene_curie
-      - asserted_gene_curies
-      - inferred_allele_curie
-      - asserted_allele_curie
+      - agm_identifier
+      - inferred_gene_identifier
+      - asserted_gene_identifiers
+      - inferred_allele_identifier
+      - asserted_allele_identifier
 
   ExperimentalCondition:
     is_a: AuditedObject
@@ -461,7 +461,7 @@ classes:
     slots:
       - unique_id                         # calculated centrally at the Alliance after import from MODs
       - condition_class                   # conditionClassId in frozen JSON schema
-      - condition_summary                 # analagous to conditionStatement in frozen JSON schema; for new DQM submissions should not be submitted but rather calculated centrally at the Alliance
+      - condition_summary                 # analogous to conditionStatement in frozen JSON schema; for new DQM submissions should not be submitted but rather calculated centrally at the Alliance
       - condition_id                      # conditionId in frozen JSON schema
       - condition_free_text               # dedicated slot for free text
       - condition_quantity                # conditionQuantity in frozen JSON schema
@@ -472,7 +472,7 @@ classes:
     slot_usage:
       unique_id:
         description: >-
-          Unique identifer for the experimental condition.  Will be generated at
+          Unique identifier for the experimental condition.  Will be generated at
           AGR.
         required: false
       condition_class:
@@ -510,7 +510,7 @@ classes:
       condition_chemical:
         description: >-
           ChEBI or molecular ontology id used in subset of condition terms.  ie: the specific
-          chemcial used in conjunction with 'chemical condition'.
+          chemical used in conjunction with 'chemical condition'.
         range: ChemicalTerm
 
   ExperimentalConditionDTO:
@@ -545,7 +545,7 @@ classes:
     slot_usage:
       unique_id:
         description: >-
-          Unique identifer for the condition relation.  Will be generated at
+          Unique identifier for the condition relation.  Will be generated at
           AGR.
         required: false
       handle:
@@ -597,9 +597,9 @@ slots:
       The allele to which something is manually asserted to be associated.
     range: Allele
 
-  asserted_allele_curie:
+  asserted_allele_identifier:
     description: >-
-      Curie of the allele to which something is manually asserted to be
+      Identifier (curie/mod_entity_id/mod_internal_id) of the allele to which something is manually asserted to be
       associated
     range: string
 
@@ -610,9 +610,9 @@ slots:
     range: Gene
     multivalued: true
 
-  asserted_gene_curies:
+  asserted_gene_identifiers:
     description: >-
-      Curies of the gene(s) to which something is manually asserted to be
+      Identifiers (curie/mod_entity_id/mod_internal_id) of the gene(s) to which something is manually asserted to be
       associated
     range: string
     multivalued: true
@@ -745,8 +745,8 @@ slots:
     required: false
     multivalued: true
 
-  disease_genetic_modifier_curies:
-    description: Curie of BiologcalEntity that modifies the disease model
+  disease_genetic_modifier_identifiers:
+    description: Identifiers (curie/mod_entity_id/mod_internal_id) of BiologcalEntity that modifies the disease model
     domain: DiseaseAnnotationDTO
     range: string
     multivalued: true
@@ -803,9 +803,9 @@ slots:
       The gene to which something is inferred to be associated.
     range: Gene
 
-  inferred_gene_curie:
+  inferred_gene_identifier:
     description: >-
-      Curie of gene to which something is inferred to be associated via an
+      Identifier (curie/mod_entity_id/mod_internal_id) of gene to which something is inferred to be associated via an
       automated pipeline
     range: string
 
@@ -814,9 +814,9 @@ slots:
       The allele to which something is inferred to be associated.
     range: Allele
 
-  inferred_allele_curie:
+  inferred_allele_identifier:
     description: >-
-      Curie of allele to which something is inferred to be associated via an
+      Identifier (curie/mod_entity_id/mod_internal_id) of allele to which something is inferred to be associated via an
       automated pipeline
     range: string
 
@@ -844,8 +844,8 @@ slots:
   sgd_strain_background:
     range: AffectedGenomicModel
 
-  sgd_strain_background_curie:
-    description: Curie of SGD strain background AGM
+  sgd_strain_background_identifier:
+    description: Identifier (curie/mod_entity_id/mod_internal_id) of SGD strain background AGM
     domain: GeneDiseaseAnnotationDTO
     range: string
 
@@ -855,8 +855,9 @@ slots:
     range: Gene
     multivalued: true
 
-  with_gene_curies:
+  with_gene_identifiers:
     description: >-
+      Identifier (curie/mod_entity_id/mod_internal_id) of genes
       http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8
     range: string
     multivalued: true

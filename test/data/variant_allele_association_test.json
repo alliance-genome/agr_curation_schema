@@ -1,12 +1,12 @@
 {
-  "linkml_version": "1.7.3",
+  "linkml_version": "2.0.0",
   "allele_variant_association_ingest_set": [
     {
       "created_by_curie": "ZFIN:curator",
       "updated_by_curie": "ZFIN:curator",
       "internal": false,
-      "allele_curie": "ZFIN:ZDB-ALT-000412-8",
-      "variant_curie": "ZFIN:ZDB-ALT-000412-8",
+      "allele_identifier": "ZFIN:ZDB-ALT-000412-8",
+      "variant_identifier": "ZFIN:ZDB-ALT-000412-8",
       "relation_name": "RO:0002525",
       "evidence_curies": [
         "ZFIN:ZDB-PUB-010101-1"

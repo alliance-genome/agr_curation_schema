@@ -1,5 +1,5 @@
 {
-  "linkml_version": "1.7.3",
+  "linkml_version": "2.0.0",
   "disease_gene_ingest_set": [
     {
       "evidence_code_curies": [
@@ -21,7 +21,7 @@
       "created_by_curie": "ZFIN",
       "updated_by_curie": "ZFIN",
       "internal": false,
-      "gene_curie": "ZFIN:ZDB-GENE-001122-1",
+      "gene_identifier": "ZFIN:ZDB-GENE-001122-1",
       "disease_relation_name": "is_implicated_in"
     }
   ]

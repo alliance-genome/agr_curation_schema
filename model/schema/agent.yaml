@@ -49,6 +49,18 @@ classes:
       - full_name
       - short_name
       - homepage_resource_descriptor_page
+    slot_usage:
+      full_name:
+        required: true
+        description: >-
+          The full name of the Organization.
+          e.g. Mouse Genome Database, FlyBase, Online Mendelian Inheritance of Man
+      short_name:
+        required: true
+        description: >-
+          The short name of the organization. For Alliance Members, this is the short name
+          used in the Members list on the website. e.g. MGD, FB, OMIM
+
 
   Laboratory:
     is_a: Organization
@@ -135,24 +147,6 @@ slots:
     description: The API token of the LoggedInPerson for the curation system
     domain: LoggedInPerson
     range: string
-
-  short_name:
-    description: >-
-      The short name of the organization. For Alliance Members, this is the short name
-      used in the Members list on the website. e.g. MGD, FB, OMIM
-    multivalued: false
-    domain: Organization
-    range: string
-    required: true
-
-  full_name:
-    description: >-
-      The full name of the Organization.
-      e.g. Mouse Genome Database, FlyBase, Online Mendelian Inheritance of Man
-    multivalued: false
-    domain: Organization
-    range: string
-    required: true
 
   homepage_resource_descriptor_page:
     description: >-

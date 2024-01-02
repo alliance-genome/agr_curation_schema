@@ -1,10 +1,10 @@
 {
-    "linkml_version": "1.8.1",
+    "linkml_version": "2.0.0",
     "gene_genetic_interaction_ingest_set": [
         {
             "curie": "WB:WBCnstr00000001",
-            "subject_gene_curie": "WB:WBGene00000001",
-            "object_gene_curie": "WB:WBGene00000002",
+            "subject_gene_identifier": "WB:WBGene00000001",
+            "object_gene_identifier": "WB:WBGene00000002",
             "gene_relation_name": "interacts_with",
             "date_created": "2015-04-09T10:15:30+00:00",
             "date_updated": "2022-07-11T13:12:51+00:00",
@@ -31,8 +31,8 @@
     "gene_molecular_interaction_ingest_set": [
         {
             "curie": "WB:WBCnstr00000002",
-            "subject_gene_curie": "WB:WBGene00000003",
-            "object_gene_curie": "WB:WBGene00000004",
+            "subject_gene_identifier": "WB:WBGene00000003",
+            "object_gene_identifier": "WB:WBGene00000004",
             "gene_relation_name": "physically_interacts_with",
             "date_created": "2015-04-09T10:15:30+00:00",
             "date_updated": "2022-07-11T13:12:51+00:00",

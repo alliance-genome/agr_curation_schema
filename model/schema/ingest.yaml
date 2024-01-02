@@ -151,32 +151,23 @@ slots:
     mixins:
       - object_set
 
-  allele_genomic_location_association_ingest_set:
-    description: >-
-      An ingest set of genomic locations DTOs that are associated with an allele
-    domain: Ingest
-    range: GenomicLocationAssociationDTO
-    multivalued: true
-    mixins:
-      - object_set
-
   variant_genomic_location_association_ingest_set:
     domain: Ingest
-    range: VariantGenomicLocationAssociationDTO
+    range: CuratedVariantGenomicLocationAssociationDTO
     multivalued: true
     mixins:
       - object_set
 
   variant_transcript_location_association_ingest_set:
     domain: Ingest
-    range: VariantTranscriptLocationAssociationDTO
+    range: CuratedVariantTranscriptLocationAssociationDTO
     multivalued: true
     mixins:
       - object_set
 
   variant_protein_location_association_ingest_set:
     domain: Ingest
-    range: VariantPolypeptideLocationAssociationDTO
+    range: CuratedVariantPolypeptideLocationAssociationDTO
     multivalued: true
     mixins:
       - object_set
@@ -297,6 +288,41 @@ slots:
     mixins:
       - object_set
 
+  transcript_ingest_set:
+    domain: Ingest
+    range: TranscriptDTO
+    multivalued: true
+    mixins:
+      - object_set
+
+  protein_ingest_set:
+    domain: Ingest
+    range: ProteinDTO
+    multivalued: true
+    mixins:
+      - object_set
+
+  chromosome_ingest_set:
+    domain: Ingest
+    range: ChromosomeDTO
+    multivalued: true
+    mixins:
+      - object_set
+
+  genome_assembly_ingest_set:
+    domain: Ingest
+    range: GenomeAssemblyDTO
+    multivalued: true
+    mixins:
+      - object_set
+
+  assembly_component_ingest_set:
+    domain: Ingest
+    range: AssemblyComponentDTO
+    multivalued: true
+    mixins:
+      - object_set
+
   object_set:
     mixin: true
     domain: Ingest
@@ -334,7 +360,6 @@ classes:
       - allele_origin_association_ingest_set
       - allele_image_association_ingest_set
       - allele_generation_method_association_ingest_set
-      - allele_genomic_location_association_ingest_set
       - gene_genetic_interaction_ingest_set
       - gene_molecular_interaction_ingest_set
       - variant_genomic_location_association_ingest_set
@@ -346,3 +371,8 @@ classes:
       - agm_ingest_set
       - sqtr_ingest_set
       - ontology_closure_ingest_set
+      - transcript_ingest_set
+      - protein_ingest_set
+      - chromosome_ingest_set
+      - genome_assembly_ingest_set
+      - assembly_component_ingest_set

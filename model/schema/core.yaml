@@ -25,6 +25,7 @@ imports:
   - ontologyTerm
   - controlledVocabulary
   - resourceDescriptor
+  - affectedGenomicModel
 
 prefixes:
   alliance: 'http://alliancegenome.org/'
@@ -50,7 +51,6 @@ types:
 ## ------------
 ## CLASSES
 ## ------------
-
 
 classes:
 
@@ -82,33 +82,50 @@ classes:
       - internal
       - obsolete
 
-  BiologicalEntity:
+  CurieObject:
     is_a: AuditedObject
+    description: >-
+      Parent class for LinkML classes where all child classes have a curie
+      (or will have one generated at the Alliance)
+    slots:
+      - curie
+
+  SubmittedObject:
+    is_a: CurieObject
+    description: >-
+      Parent class for LinkML classes of submitted entities
+      that may have a public or internal MOD ID/curie
+    slots:
+      - mod_entity_id
+      - mod_internal_id
+      - data_provider
+
+  SubmittedObjectDTO:
+    is_a: AuditedObjectDTO
+    slots:
+      - mod_entity_id
+      - mod_internal_id
+      - data_provider_dto
+
+  BiologicalEntity:
+    is_a: SubmittedObject
     description: >-
       An entity of biological origin that can be unambiguously attributed to
       a single species.
     abstract: true
     slots:
-      - curie
       - taxon
-      - data_provider
     slot_usage:
       taxon:
         required: true
-      curie:
-        required: true
 
   BiologicalEntityDTO:
-    is_a: AuditedObjectDTO
+    is_a: SubmittedObjectDTO
     abstract: true
     slots:
-      - curie
       - taxon_curie
-      - data_provider_dto
     slot_usage:
       taxon_curie:
-        required: true
-      curie:
         required: true
 
   GenomicEntity:
@@ -120,13 +137,19 @@ classes:
       RNA transcript translation).
     slots:
       - cross_references
-      - genomic_location_associations
 
+  GenomicEntityDTO:
+    is_a: BiologicalEntityDTO
+    slots:
+      - cross_reference_dtos
 
   Transcript:
     is_a: GenomicEntity
     description: >-
-      Placeholder.
+      A contiguous RNA molecule representing a sequence of a genome, often
+      the result of a DNA-dependent RNA polymerase gene transcription event
+    slots:
+      - name
     id_prefixes:
       - ENSEMBL
       - FB
@@ -135,6 +158,13 @@ classes:
       - RGD
       - SGD
       - ZFIN
+
+  TranscriptDTO:
+    is_a: GenomicEntityDTO
+    description: >-
+      Ingest class for transcripts
+    slots:
+      - name
 
   CrossReference:
     is_a: AuditedObject
@@ -286,7 +316,6 @@ classes:
       secondary_id:
         required: true
 
-
   Association:
     is_a: AuditedObject
     description: >-
@@ -356,73 +385,144 @@ classes:
 
   Chromosome:
     is_a: AuditedObject
-    description: The ID of the landmark used to establish the coordinate system for the current feature.
+    description: >-
+      A structure composed of a single DNA molecule and associated proteins
+      that carries here hereditary information from cell to cell. In the context
+      of this model, it is used as a landmark for cytogenetic and genetic
+      mapping of genes, alleles and chromosomal aberrations; this entity ties
+      together related chromosome sequences from different genome assemblies.
+    notes: >-
+      The generic, idealized biological entity from a species' genome, as
+      distinct from a chromosome pseudo-molecule sequence assembly that is
+      specific to a given genome assembly version.
+      We may want to add a strain slot at some point.
+    exact_mappings:
+      - SO:0000340
+      - GO:0005694
     slots:
-      - curie
-      - display_name
+      - name
+      - taxon
+      - data_provider
     slot_usage:
-      curie:
+      name:
         required: true
-
-  Assembly:
-    is_a: AuditedObject
-    slots:
-      - curie
-    slot_usage:
-      curie:
+      taxon:
         required: true
-
-  GenomicLocationAssociation:
-    abstract: true
-    is_a: EvidenceAssociation
-    slots:
-      - has_assembly
-      - start
-      - end
-    slot_usage:
-      subject:
-        range: GenomicEntity
-        description: >-
-          subject should be a genomic entity
-      object:
-        range: Chromosome
-        description: >-
-          object should be the chromosome identifier
-      relation:
-        any_of:
-          equals_string: has_genomic_location
     defining_slots:
-      - subject
-      - relation
-      - object
-      - start
-      - end
+      - name
+      - taxon
 
-  GenomicEntityDTO:
-    is_a: BiologicalEntityDTO
+  ChromosomeDTO:
+    is_a: AuditedObjectDTO
+    description: >-
+      Ingest class for chromosomes
     slots:
+      - name
+      - taxon_curie
+      - data_provider_dto
+    slot_usage:
+      name:
+        required: true
+      taxon_curie:
+        required: true
+
+  AssemblyComponent:
+    is_a: GenomicEntity
+    description: >-
+      A scaffold component of a genome assembly, including chromosomal
+      pseudo-molecule sequences, unplaced/unlocalized scaffolds and contigs,
+      and organelle genomes.
+    notes: >-
+      In the context of this model, this entity is used as a landmark for the
+      location of other genomic entities.
+    slots:
+      - display_name
+      - genome_assembly
+    slot_usage:
+      curie:
+        required: true
+    defining_slots:
+      - display_name
+      - genome_assembly
+      - maps_to_chromosome
+
+  AssemblyComponentDTO:
+    is_a: GenomicEntityDTO
+    description: >-
+      Ingest class for assembly components
+    slots:
+      - display_name
+      - genome_assembly_identifier
+      - data_provider_dto
+
+  GenomeAssembly:
+    is_a: BiologicalEntity
+    description: >-
+      A set of chromosome assemblies, scaffolds and contigs that represent the
+      haploid genome sequence of a species or strain.
+    notes: >-
+      These should typically have an NCBI curie.
+    slots:
+      - specimen_genomic_model
+      - cross_references
+    slot_usage:
+      specimen_genomic_model:
+        description: >-
+          The strain or genotype of origin for the genome sequence.
+
+  GenomeAssemblyDTO:
+    is_a: BiologicalEntityDTO
+    description: >-
+      Ingest class for genome assemblies
+    slots:
+      - specimen_genomic_model_identifier
       - cross_reference_dtos
 
-  GenomicLocationAssociationDTO:
+  LocationAssociation:
+    abstract: true
+    is_a: EvidenceAssociation
+    description: >-
+      The mapping of a entity relative to another entity.
+    notes: >-
+      Leaving start and end optional to allow for fuzzy location.
+    slots:
+      - start
+      - end
+    slot_usage:
+      relation:
+        required: true
+        any_of:
+          - equals_string: has_location
+
+  LocationAssociationDTO:
     abstract: true
     is_a: EvidenceAssociationDTO
     slots:
       - relation_name
-      - assembly_curie
       - start
       - end
     slot_usage:
       relation_name:
         required: true
         any_of:
-          equals_string: has_genomic_location
-      start:
-        required: true
-      end:
-        required: true
+          equals_string: has_location
 
   Protein:
     is_a: GenomicEntity
+    description: >-
+      A polypeptide of amino acids, often the result of protein translation
+      of an RNA molecule (transcript) into its corresponding polypeptide by
+      the ribosome complex
+    slots:
+      - name
+
+  ProteinDTO:
+    is_a: GenomicEntityDTO
+    description: >-
+      Ingest class for proteins
+    slots:
+      - name
+
 
   Identifier:
     slots:
@@ -435,6 +535,53 @@ classes:
     slots:
       - first
       - last
+
+  Species:
+    is_a: AuditedObject
+    description: >-
+      This class is initially intended to capture information about Alliance
+      "core" model species, canonical species for each MOD member. The information
+      in each record pertains to logistics of loading, processing, and displaying
+      data and rendering Alliance pages for related entities.
+    notes: >-
+      Intended to accommodate data in these locations:
+      https://raw.githubusercontent.com/alliance-genome/agr_schemas/master/ingest/species/species.yaml
+      https://github.com/alliance-genome/agr_java_software/blob/2fa8d334b92c23052451b6954bc4f125016782a2/agr_java_core/src/main/java/org/alliancegenome/neo4j/entity/SpeciesType.java
+    slots:
+      - taxon
+      - full_name
+      - display_name
+      - abbreviation
+      - genome_assembly
+      - common_names
+      - data_provider
+      - phylogenetic_order
+    slot_usage:
+      taxon:
+        description: The NCBI Taxonomy term ID for the species
+        required: true
+      full_name:
+        description: The full Latin name of the species, like "Homo sapiens" or "Danio rerio"
+      display_name:
+        description: >-
+          The display name of the species. Currently, these are HUMAN or the
+          corresponding data provider MOD abbreviation, like RGD, MGI, etc.
+          For Xenopus species these are XBXL or XBXT.
+      abbreviation:
+        description: >-
+          The species abbreviation as used currently in Alliance stack; analogous to
+          short_name in the agr_schemas species.yaml file
+        notes: Examples are Hsa, Rno, Mmu, Xla, Xtr, Dre, Dme, Cel, Sce
+      genome_assembly:
+        description: The current canonical genome assembly used for the species
+        required: true
+      common_names:
+          description: >-
+            The common name(s) for a species, such as "zebrafish", "fruit fly", or "rat"
+
+
+
+
 
 ## ------------
 ## SLOTS
@@ -449,7 +596,41 @@ slots:
       a human-readable name for an entity
     multivalued: false
     range: string
-  
+
+  common_names:
+    description: The list of common names used for a species
+    domain: Species
+    range: string
+    multivalued: true
+    required: false
+
+  short_name:
+    description: >-
+      The short name of the entity
+    multivalued: false
+    range: string
+
+  full_name:
+    description: >-
+      The full name of the entity
+    multivalued: false
+    range: string
+
+  phylogenetic_order:
+    description: >-
+      The integer value assigned to a species to determine its relative ordering
+      with respect to other Alliance species in various user interface displays
+      and logical operations.
+    notes: >-
+      In the agr_schemas repo species.yaml file, the phylogeneticOrder is given values
+      like 10, 20, 30, 40 for the original Alliance species; Xenopus laevis is 46 and
+      Xenopus tropicalis is 45; In the SpeciesType.java file the species are simply numbered
+      1, 2, 3, 4, 5, etc.
+    domain: Species
+    range: integer
+    multivalued: false
+    required: true
+
   name_type:
     description: >-
       The type of name: e.g., symbol, full_name, systematic_name, etc.
@@ -517,16 +698,49 @@ slots:
     range: string
 
   start:
-    description: The start of the feature in positive 1-based integer coordinates
+    description: >-
+      The start of the feature in positive 1-based integer coordinates relative
+      to the reference landmark.
+    domain: LocationAssociation
     range: integer
 
   end:
-    description: The end of the feature in positive 1-based integer coordinates
+    description: >-
+      The end of the feature in positive 1-based integer coordinates relative
+      to the reference landmark.
+    domain: LocationAssociation
     range: integer
 
-  has_assembly:
-    domain: GenomicLocationAssociation
-    range: Assembly
+  strand:
+    description: >-
+      The strand of a DNA reference object to which an entity maps.
+    range: strand_enum
+
+  genome_assembly:
+    description: >-
+      The GenomeAssembly to which a AssemblyComponent belongs.
+    domain: AssemblyComponent
+    range: GenomeAssembly
+    required: true
+    multivalued: false
+
+  genome_assembly_identifier:
+    description: >-
+      The identifier for the GenomeAssembly. This can be a MOD curie, a MOD internal
+      ID or an external (3rd party) identifier.
+    domain: AssemblyComponentDTO
+    range: string
+    required: true
+    multivalued: false
+
+  maps_to_chromosome:
+    description: >-
+      The chromosome(s) to which a chromosome assembly or unlocalized
+      scaffold or contig maps.
+    domain: AssemblyComponent
+    range: Chromosome
+    required: false
+    multivalued: false
 
   prefix:
     required: true
@@ -564,7 +778,7 @@ slots:
 
   prefix_page:
     description: >-
-      The cateogry of pages the resource in the context of the URL associated with the crossReference
+      The category of pages the resource in the context of the URL associated with the crossReference
       provides.  Equivalent to the 'page' attribute in the Alliance resourceDescriptor file.
 
   uncertain:
@@ -650,7 +864,6 @@ slots:
     description: >-
       A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI
     range: uriorcurie
-    identifier: true
 
   referenced_curie:
     description: >-
@@ -691,7 +904,6 @@ slots:
     multivalued: false
     range: uriorcurie
 
-
   table_key:
     description: >-
       The primary key for a specific table entry, unique for that table.
@@ -718,14 +930,14 @@ slots:
   db_date_created:
     description: >-
       The date on which an entity was created in the Alliance database.  This
-      is disinct from date_created, which represents the date when the entity
+      is distinct from date_created, which represents the date when the entity
       was originally created (i.e. at the MOD for imported data).
     range: datetime
 
   db_date_updated:
     description: >-
       Date on which an entity was last modified in the Alliance database.  This
-      is disinct from date_updated, which represents the date when the entity
+      is distinct from date_updated, which represents the date when the entity
       was last modified and may predate import into the Alliance database.
     range: datetime
 
@@ -891,7 +1103,9 @@ slots:
 
   mod_entity_id:
     description: >-
-      The model organism database (MOD) identifier/curie for the object
+      The model organism database (MOD) identifier/curie for the object. Note
+      that this may be an external identifier for an object, like a UniProt ID
+      for a protein, but acts as the MOD's primary key for the entity.
     range: string
 
   mod_internal_id:
@@ -951,38 +1165,22 @@ slots:
     description: last identifier in a range
     range: Identifier
 
-  assembly_curie:
-    required: true
-    range: string
-
   chromosome_curie:
     required: true
     range: string
     description: >-
       The NCBI chromosome accession number for the chromosome.
 
-  transcript_curie:
+  transcript_identifier:
     range: string
     required: true
 
-  protein_curie:
+  protein_identifier:
     range: string
     required: true
 
-  genomic_entity_curie:
+  genomic_entity_identifier:
     range: string
-
-  genomic_location_associations:
-    domain: GenomicEntity
-    range: GenomicLocationAssociation
-    multivalued: true
-
-  genomic_location_association_dtos:
-    domain: GenomicEntityDTO
-    range: GenomicLocationAssociationDTO
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
 
   source_organization:
     domain: DataProvider
@@ -1037,6 +1235,19 @@ slots:
     required: true
     range: string
 
+  specimen_genomic_model:
+    description: >-
+      The AffectedGenomicModel of the specimen.
+    range: AffectedGenomicModel
+    multivalued: false
+
+  specimen_genomic_model_identifier:
+    description: >-
+      The identifier of the AffectedGenomicModel of the specimen. This can be a MOD curie,
+      a MOD internal ID or an external (3rd party) identifier.
+    range: string
+    multivalued: false
+
 ## ----------
 ## PREDICATES
 ## ----------
@@ -1049,3 +1260,15 @@ slots:
     symmetric: true
 
 enums:
+
+  strand_enum:
+    description: Specify DNA strand.
+    permissible_values:
+      "+":
+        description: Positive strand.
+      "-":
+        description: Negative strand.
+      ".":
+        description: Unstranded.
+      "?":
+        description: Unknown.

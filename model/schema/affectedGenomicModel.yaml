@@ -61,8 +61,11 @@ classes:
       - subtype_name
       - agm_secondary_id_dtos
       - reference_curies
-      - sequence_targeting_reagent_curies
+      - sequence_targeting_reagent_identifiers
       - component_dtos
+    slot_usage:
+      mod_entity_id:
+        required: true
 
   AgmSecondaryIdSlotAnnotation:
     is_a: SlotAnnotation
@@ -86,12 +89,12 @@ classes:
   AffectedGenomicModelComponentDTO:
     is_a: AuditedObjectDTO
     slots:
-      - allele_curie
+      - allele_identifier
       - zygosity_curie
 
 slots:
 
-  agm_curie:
+  agm_identifier:
     range: string
     required: true
 
@@ -150,7 +153,7 @@ slots:
 
   zygosity:
     description: >-
-      GENO onotology ID for allele zygosity
+      GENO ontology ID for allele zygosity
     domain: AffectedGenomicModelComponent
     range: zygosity_values
 
@@ -169,10 +172,12 @@ slots:
     range: SequenceTargetingReagent
     multivalued: true
 
-  sequence_targeting_reagent_curies:
+  sequence_targeting_reagent_identifiers:
     domain: AffectedGenomicModelDTO
     range: string
     multivalued: true
+    description: >-
+      Identifiers (curie/mod_entity_id/mod_internal_id) of the STRs
 
   parental_populations:
     singular_name: parental_population
