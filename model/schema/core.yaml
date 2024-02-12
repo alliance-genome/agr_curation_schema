@@ -318,29 +318,24 @@ classes:
 
   Association:
     is_a: AuditedObject
+    abstract: true
     description: >-
-      A typed association between two entities, supported by evidence.  Associations have three base slots: subject,
+      A typed association between two entities, supported by evidence.  Associations are comprised of: subject,
       object, and relation, but they can have any number of additional attributes that help qualify the relationship
       between the subject and the object.  The subject is the curie (or identifier) of the class that is the subject
       of the association, and likewise the object is the curie (or identifier of the class that is the object. The
       relationship between subject and object is defined by the relation slot (which can also be constrained
-      using the range of the relation).
-    exact_mappings:
-      - biolink:association
+      using the range of the relation).  The subject and object slots are defined in child classes with slot name
+      suffixes relating to the type of entity (this is to avoid a limitation in the Hibernate implementation which
+      prevents defining generic subject and object slots)
     notes:
       Keeping this more generic than biolink:association by foregoing the
       qualifiers and negated slots.
     slots:
-      - subject
       - relation
-      - object
     slot_usage:
-        subject:
-            required: true
-        relation:
-            required: true
-        object:
-            required: true
+      relation:
+        required: true
 
   SingleReferenceAssociation:
     abstract: true
@@ -1196,28 +1191,63 @@ slots:
     domain: CrossReference
     range: ResourceDescriptorPage
 
-  ## --------------------
+## --------------------
 ## ASSOCIATION SLOTS
 ## --------------------
-
-  subject:
-    is_a: association_slot
-    description: >-
-      connects an association to the subject of the association.
-      For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
-    required: true
-    exact_mappings:
-      - owl:annotatedSource
-      - biolink:subject
 
   object:
     is_a: association_slot
     description: >-
-      connects an association to the object of the association.
-      For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
+      connects an association to the object of the association when the object is represented by a string
     required: true
-    exact_mappings:
-      - biolink:object
+    range: string
+
+  subject_association:
+    is_a: association_slot
+    description: >-
+      describes the subject of an association when the subject is an association itself
+    required: true
+    range: Association
+
+  subject_biological_entity:
+    is_a: association_slot
+    description: >-
+      connects an association to the subject of the association when the subject is a child of BiologicalEntity.
+      For example, the gene in a gene-to-phenotype association.
+    required: true
+    range: BiologicalEntity
+
+  object_biological_entity:
+    is_a: association_slot
+    description: >-
+      connects an association to the object of the association when the object is a child of BiologicalEntity.
+      For example, the gene in an allele-to-gene association.
+    required: true
+    range: BiologicalEntity
+
+  subject_reagent:
+    is_a: association_slot
+    description: >-
+      connects an association to the subject of the association when the subject is a child of Reagent.
+      For example, the construct in a construct-to-genomic entity association.
+    required: true
+    range: Reagent
+
+  object_reagent:
+    is_a: association_slot
+    description: >-
+      connects an association to the object of the association when the object is a child of Reagent.
+      For example, the construct in a allele-to-construct association.
+    required: true
+    range: Reagent
+
+  object_ontology_term:
+    is_a: association_slot
+    description: >-
+      connects an association to the object of the association when the object is a child of OntologyTerm.
+      For example, in a gene disease annotation, a DOTerm is the object describing the disease.
+    required: true
+    range: OntologyTerm
 
   relation:
     is_a: association_slot

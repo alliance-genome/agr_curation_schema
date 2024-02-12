@@ -137,11 +137,9 @@ classes:
       This aims to provide the same functionality as MGI imagepane.
       Some MODs (like ZFIN) point to the whole image. In these cases,
       the pane would encompass the whole image.
-    slot_usage:
-      subject:
-        range: ExpressionAnnotation
-      object:
-        range: ImagePane
+    slots:
+      - subject_expression_annotation
+      - object_image_pane
 
   # GeneExpressionStatement:
   #   is_a: EntityStatement     # Update to use Note class instead?
@@ -264,6 +262,13 @@ slots:
       The image associated with the object.
     range: Image
 
+  object_image_pane:
+    is_a: association_slot
+    description: >-
+      connects an association to the object of the association when the object is an ImagePane
+    required: true
+    range: ImagePane
+
   spatial_qualifiers:
     description: >-
       Qualifiers that describe the spatial characteristics of an event.
@@ -286,6 +291,13 @@ slots:
     domain: ExpressionExperiment
     range: Allele
     multivalued: true
+
+  subject_expression_annotation:
+    is_a: association_slot
+    description: >-
+      connects an association to the subject of the association when the subject is an expression annotatoin.
+    required: true
+    range: ExpressionAnnotation
 
   temporal_qualifiers:
     description: >-

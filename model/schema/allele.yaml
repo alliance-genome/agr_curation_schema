@@ -178,18 +178,21 @@ classes:
       mod_entity_id:
         required: true
 
-  SequenceTargetingReagentToGeneAssociation:
+  SequenceTargetingReagentGeneAssociation:
     description: >-
       the relationship between a Sequence Targeting Reagent and its targeted
       genes. The relation should be a VocabularyTerm with one of the following
       values - targets
     is_a: EvidenceAssociation
+    slots:
+      - subject_biological_entity
+      - object_biological_entity
     slot_usage:
       relation:
         range: VocabularyTerm
-      subject:
+      subject_biological_entity:
         range: SequenceTargetingReagent
-      object:
+      object_biological_entity:
         range: Gene
 
   # TO DO: create SequenceTargetingReagentToGeneAssociationDTO class? [CG]
@@ -408,12 +411,15 @@ classes:
       The relationship between an allele and a cell line.  Includes mutant/
       embryonic stem cell lines known to carry the allele, and parental cell
       line of alleles made in embryonic stem cells.
+    slots:
+      - subject_biological_entity
+      - object_biological_entity
     slot_usage:
-      subject:
+      subject_biological_entity:
         range: Allele
       relation:
         range: VocabularyTerm
-      object:
+      object_biological_entity:
         range: CellLine
 
   AlleleCellLineAssociationDTO:
@@ -428,23 +434,22 @@ classes:
         - cell_line_identifier
 
   AlleleConstructAssociation:
-    is_a: AlleleGenomicEntityAssociation
+    is_a: AlleleReagentAssociation
     description: >-
       The relationship between an allele and constructs contained in
       that allele.
     slot_usage:
-      subject:
+      subject_biological_entity:
         range: Allele
       relation:
-        range: VocabularyTerm
         notes: >-
           CV 'Allele Construct Association Relation' including - contains, contains_coinjection_marker,
           contains_phenotypic_sequence_feature, and contains_innocuous_sequence_feature
-      object:
+      object_reagent:
         range: Construct
 
   AlleleConstructAssociationDTO:
-    is_a: AlleleGenomicEntityAssociationDTO
+    is_a: AlleleReagentAssociationDTO
     description: >-
       The relationship between an allele and constructs contained in
       that allele.
@@ -474,16 +479,16 @@ classes:
   AlleleGenerationMethodAssociation:
     is_a: EvidenceAssociation
     slots:
+      - subject_biological_entity
+      - object_generation_method 
       - mutation_target_strain
     slot_usage:
-      subject:
+      subject_biological_entity:
         range: Allele
       relation:
         any_of:
           equals_string: has_generation_method
         notes: CV 'Allele Generation Method Association Relation'
-      object:
-        range: GenerationMethod
 
   AlleleGenerationMethodAssociationDTO:
     is_a: EvidenceAssociationDTO
@@ -504,14 +509,16 @@ classes:
     description: >-
       Association between an allele and a genomic entity
     slots:
+      - subject_biological_entity
+      - object_biological_entity
       - evidence_code
       - related_note
     slot_usage:
-      subject:
+      subject_biological_entity:
         range: Allele
       relation:
         range: VocabularyTerm # If we can adequately represent all needed relations in RO, this could be ROTerm
-      object:
+      object_biological_entity:
         range: GenomicEntity
       evidence:
         required: false # This needs to be not required, at least in the base class
@@ -530,14 +537,14 @@ classes:
     description: >-
       The relationship between an allele and an image.
     slots:
+      - subject_biological_entity
+      - object_image
       - primary_image
     slot_usage:
-      subject:
+      subject_biological_entity:
         range: Allele
       relation:
         range: VocabularyTerm
-      object:
-        range: Image
       primary_image:
         description: >-
           Can be null; if false, maybe you would show all the images.
@@ -562,10 +569,13 @@ classes:
     is_a: EvidenceAssociation
     description: >-
       The relationship between an allele and the origin of the allele.
+    slots:
+      - subject_biological_entity
+      - object_biological_entity
     slot_usage:
-      subject:
+      subject_biological_entity:
         range: Allele
-      object:
+      object_biological_entity:
         range: AffectedGenomicModel
 
   AlleleOriginAssociationDTO:
@@ -582,7 +592,7 @@ classes:
     description: >-
       Association between an allele and a protein
     slot_usage:
-      object:
+      object_biological_entity:
         range: Protein
 
   AlleleProteinAssociationDTO:
@@ -592,12 +602,41 @@ classes:
     slots:
       - protein_identifier
 
+  AlleleReagentAssociation:
+    is_a: EvidenceAssociation
+    abstract: true
+    description: >-
+      Association between an allele and a genomic entity
+    slots:
+      - subject_biological_entity
+      - object_reagent
+      - evidence_code
+      - related_note
+    slot_usage:
+      subject_biological_entity:
+        range: Allele
+      relation:
+        range: VocabularyTerm
+      object_reagent:
+        range: Reagent
+      evidence:
+        required: false # This needs to be not required, at least in the base class
+
+  AlleleReagentAssociationDTO:
+    is_a: EvidenceAssociationDTO
+    abstract: true
+    slots:
+      - allele_identifier
+      - relation_name
+      - evidence_code_curie
+      - note_dto
+      
   AlleleTranscriptAssociation:
     is_a: AlleleGenomicEntityAssociation
     description: >-
       Association between an allele and a transcript
     slot_usage:
-      object:
+      object_biological_entity:
         range: Transcript
 
   AlleleTranscriptAssociationDTO:
@@ -614,9 +653,7 @@ classes:
       Allele may have many variants and a variant can be present in many
       alleles.
     slot_usage:
-      subject:
-        range: Allele
-      object:
+      object_biological_entity:
         range: Variant
 
   AlleleVariantAssociationDTO:
@@ -1071,6 +1108,22 @@ slots:
     domain: AlleleAlleleAssociationDTO
     range: string
 
+  object_generation_method:
+    is_a: association_slot
+    description: >-
+      connects an association to the object of the association when the object is a GenerationMethod.
+      For example, the generation method in a allele-to-generation method association.
+    required: true
+    range: GenerationMethod
+
+  object_image:
+    is_a: association_slot
+    description: >-
+      connects an association to the object of the association when the object is a GenerationMethod.
+      For example, the generation method in a allele-to-generation method association.
+    required: true
+    range: Image
+    
   primary_image:
     description: >-
       The primary image for an allele that is used to represent the allele on a page.

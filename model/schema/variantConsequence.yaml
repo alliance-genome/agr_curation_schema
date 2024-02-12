@@ -46,8 +46,8 @@ classes:
       consequences
     abstract: true
     slots:
-      - subject
-      - object
+      - subject_association
+      - object_biological_entity
       - vep_consequence
       - vep_impact
       - polyphen_score
@@ -61,9 +61,9 @@ classes:
       Class for gene-level VEP results
     is_a: VariantConsequence
     slot_usage:
-      object:
+      object_biological_entity:
         range: Gene
-      subject:
+      subject_association:
         range: VariantGenomicLocationAssociation
 
   VariantTranscriptConsequence:
@@ -85,9 +85,9 @@ classes:
       - hgvs_protein_nomenclature
       - hgvs_coding_nomenclature
     slot_usage:
-      object:
+      object_biological_entity:
         range: Transcript
-      subject:
+      subject_association:
         range: VariantTranscriptLocationAssociation
       amino_acid_reference:
         description: >-

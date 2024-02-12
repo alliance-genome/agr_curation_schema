@@ -209,11 +209,13 @@ classes:
     description: >-
       Location(s) of the gene on the genome.
     slots:
+      - subject_biological_entity
+      - object_biological_entity
       - strand
     slot_usage:
-      subject:
+      subject_biological_entity:
         range: Gene
-      object:
+      object_biological_entity:
         range: AssemblyComponent
       evidence:
         notes: List all references that support a given location association.
@@ -238,12 +240,14 @@ classes:
       How do we handle location to specific chromosome arms? Different asso'n,
       or different slot here, etc?
     slots:
+      - subject_biological_entity
+      - object_biological_entity
       - left_boundary_marker
       - right_boundary_marker
     slot_usage:
-      subject:
+      subject_biological_entity:
         range: Gene
-      object:
+      object_biological_entity:
         range: Chromosome
       relation:
         any_of:
@@ -259,17 +263,19 @@ classes:
       Should this be limited to reports of specific cM on a given chromosome,
       or should it include genetic segregation studies that link gene to a
       chromosome?
+    slots:
+      - subject_biological_entity
+      - object_biological_entity
+      - genetic_map_position_centimorgan
+      - genetic_map_position_centimorgan_error
     slot_usage:
-      subject:
+      subject_biological_entity:
         range: Gene
-      object:
+      object_biological_entity:
         range: Chromosome
       relation:
         any_of:
           - equals_string: has_location
-    slots:
-      - genetic_map_position_centimorgan
-      - genetic_map_position_centimorgan_error
 
 ## ------------
 ## SLOTS

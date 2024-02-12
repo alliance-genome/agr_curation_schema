@@ -76,6 +76,8 @@ classes:
       the definition of the transcript or protein isoform used by the source has changed, or if there was an error
       in the source data.
     slots:
+      - subject_biological_entity
+      - object_biological_entity
       - hgvs
       - reference_sequence
       - variant_sequence
@@ -83,7 +85,7 @@ classes:
       - curated_consequence
       - sequence_of_reference_accession_number # Should this point to a chromosome object instead of a string? Will this be redundant with genomic location association of the subject?
     slot_usage:
-      subject:
+      subject_biological_entity:
         range: Variant
 
   VariantGenomicLocationAssociation:
@@ -103,7 +105,7 @@ classes:
       - dna_mutation_type
       - gene_localization_type
     slot_usage:
-      object:
+      object_biological_entity:
         description: >-
           The location reference object should be a chromosome assembly curie.
         range: AssemblyComponent
@@ -119,7 +121,7 @@ classes:
       - exon_number
       - intron_number
     slot_usage:
-      object:
+      object_biological_entity:
         description: >-
           Transcript associated with variant and for which a specific location and consequence of that variant
           is provided, as specified at source.  Multivalued=false for this slot because although a variant can have
@@ -140,7 +142,7 @@ classes:
       - number_amino_acids_removed
       - number_amino_acids_inserted
     slot_usage:
-      object:
+      object_biological_entity:
         description: >-
           Polypeptide associated with variant and for which a specific location and consequence of that variant is
           provided, as specified by curator. Multivalued=false for this slot because although a variant can have

@@ -264,9 +264,11 @@ classes:
       a known genomic entity with a curie and any accompanying meta data about the
       relationship between the construct and that genomic entity component
     slots:
+      - subject_reagent
+      - object_biological_entity
       - related_notes
     slot_usage:
-      subject:
+      subject_reagent:
         range: Construct
       relation:
         range: VocabularyTerm
@@ -274,7 +276,7 @@ classes:
           The relation should be a VocabularyTerm with one of the following
           values - expresses (RO:0002292) / is_regulated_by (RO:0002334) /
           targets (RO:0002436). CV: 'Construct Genomic Entity Association Relation'
-      object:
+      object_biological_entity:
         range: GenomicEntity
       related_notes:
         required: false

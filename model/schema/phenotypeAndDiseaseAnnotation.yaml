@@ -91,9 +91,11 @@ classes:
     description: >-
       An annotation asserting an association between a biological entity and a phenotype supported by evidence.
     slots:
+      - subject_biological_entity
       - phenotype_term
+      - object
     slot_usage:
-      subject:                            # objectId in JSON schema
+      subject_biological_entity:                            # objectId in JSON schema
         description: >-
           The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, by direct curation.
         required: true
@@ -152,8 +154,7 @@ classes:
     slots:
       - sgd_strain_background   # Does this also apply to phenotype annotations?
     slot_usage:
-      subject:
-        required: true
+      subject_biological_entity:
         description: >-
           The gene to which the phenotype ontology term is associated.
         range: Gene
@@ -175,7 +176,7 @@ classes:
       - inferred_gene
       - asserted_genes
     slot_usage:
-      subject:
+      subject_biological_entity:
         description: >-
           The allele to which the phenotype ontology term is associated.
         range: Allele
@@ -209,7 +210,7 @@ classes:
       - asserted_genes
       - asserted_allele
     slot_usage:
-      subject:
+      subject_biological_entity:
         description: >-
           The AGM to which the phenotype ontology term is associated.
         range: AffectedGenomicModel
@@ -244,6 +245,8 @@ classes:
     description: >-
       An annotation asserting an association between a biological entity and a disease supported by evidence.
     slots:
+      - subject_biological_entity
+      - object_ontology_term
       - negated
       - evidence_codes
       - annotation_type
@@ -274,7 +277,7 @@ classes:
           The model organism database (MOD) internal identifier for the disease annotation. When available,
           this is used for determination of distinctness instead of the Unique ID field.
         required: false
-      subject:
+      subject_biological_entity:
         required: true
         description: >-
           The biological entity to which the disease ontology term is associated.
@@ -282,7 +285,7 @@ classes:
       negated:
         description: >-
           The negative qualifier for the annotation.
-      object:
+      object_ontology_term:
         required: true
         description: >-
           The disease ontology term.
@@ -349,7 +352,7 @@ classes:
     slots:
       - sgd_strain_background
     slot_usage:
-      subject:
+      subject_biological_entity:
         required: true
         description: >-
           The gene to which the disease ontology term is associated.
@@ -378,7 +381,7 @@ classes:
       - inferred_gene
       - asserted_genes
     slot_usage:
-      subject:
+      subject_biological_entity:
         description: >-
           The allele to which the disease ontology term is associated.
         range: Allele
@@ -417,7 +420,7 @@ classes:
       - asserted_genes
       - asserted_allele
     slot_usage:
-      subject:
+      subject_biological_entity:
         description: >-
           The AGM to which the disease ontology term is associated.
         range: AffectedGenomicModel

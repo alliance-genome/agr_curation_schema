@@ -56,17 +56,20 @@ classes:
       to gene product relationships. Includes homology and interaction.
     abstract: true
     is_a: EvidenceAssociation
+    slots:
+      - subject_biological_entity
+      - object_biological_entity
     defining_slots:
-      - subject
-      - object
+      - subject_biological_entity
+      - object_biological_entity
     slot_usage:
-      subject:
+      subject_biological_entity:
         range: Gene
         description: >-
           the subject gene in the association. If the relation is symmetric,
           subject vs object is arbitrary. We allow a gene product to stand
           as a proxy for the gene or vice versa.
-      object:
+      object_biological_entity:
         range: Gene
         description: >-
           the object gene in the association. If the relation is symmetric,
