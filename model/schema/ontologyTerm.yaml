@@ -165,13 +165,11 @@ classes:
   OntologyTermClosure:
     is_a: EvidenceAssociation
     slots:
+      - subject_ontology_term
+      - object_ontology_term
       - relationship_type
       - distance_between
     slot_usage:
-      subject:
-        range: OntologyTerm
-      object:
-        range: OntologyTerm
       distance_between:
         description: >-
           distance_between is zero for reflexive–transitive closure
