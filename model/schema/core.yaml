@@ -1241,6 +1241,13 @@ slots:
     required: true
     range: Reagent
 
+  subject_ontology_term:
+    is_a: association_slot
+    description: >-
+      connects an association to the subject of the association when the subject is a child of OntologyTerm.
+    required: true
+    range: OntologyTerm
+    
   object_ontology_term:
     is_a: association_slot
     description: >-
