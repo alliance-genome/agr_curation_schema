@@ -16895,6 +16895,10 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "object_ontology_term": {
+                    "description": "connects an association to the object of the association when the object is a child of OntologyTerm. For example, in a gene disease annotation, a DOTerm is the object describing the disease.",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
@@ -16909,12 +16913,18 @@
                     },
                     "type": "array"
                 },
+                "subject_ontology_term": {
+                    "description": "connects an association to the subject of the association when the subject is a child of OntologyTerm.",
+                    "type": "string"
+                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": "string"
                 }
             },
             "required": [
+                "subject_ontology_term",
+                "object_ontology_term",
                 "relation",
                 "internal"
             ],
