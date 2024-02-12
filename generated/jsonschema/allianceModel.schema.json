@@ -110,7 +110,7 @@
                     "description": "The negative qualifier for the annotation.",
                     "type": "boolean"
                 },
-                "object": {
+                "object_ontology_term": {
                     "description": "The disease ontology term.",
                     "type": "string"
                 },
@@ -137,7 +137,7 @@
                     "$ref": "#/$defs/Reference",
                     "description": "The reference in which the disease association was asserted/reported."
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/AffectedGenomicModel",
                     "description": "The AGM to which the disease ontology term is associated."
                 },
@@ -158,12 +158,12 @@
                 }
             },
             "required": [
+                "subject_biological_entity",
+                "object_ontology_term",
                 "evidence_codes",
                 "data_provider",
                 "single_reference",
-                "subject",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "AGMDiseaseAnnotation",
@@ -427,7 +427,7 @@
                     "$ref": "#/$defs/Reference",
                     "description": "The reference in which the phenotype association was asserted/reported."
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/AffectedGenomicModel",
                     "description": "The AGM to which the phenotype ontology term is associated."
                 },
@@ -441,11 +441,11 @@
                 }
             },
             "required": [
+                "subject_biological_entity",
+                "object",
                 "data_provider",
                 "single_reference",
-                "subject",
                 "relation",
-                "object",
                 "date_created",
                 "internal"
             ],
@@ -1522,9 +1522,9 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "object": {
-                    "$ref": "#/$defs/Allele",
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                "object_biological_entity": {
+                    "$ref": "#/$defs/GenomicEntity",
+                    "description": "connects an association to the object of the association when the object is a child of BiologicalEntity. For example, the gene in an allele-to-gene association."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -1538,9 +1538,9 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Allele",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the subject of the association when the subject is a child of BiologicalEntity. For example, the gene in a gene-to-phenotype association."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -1548,9 +1548,9 @@
                 }
             },
             "required": [
-                "subject",
+                "subject_biological_entity",
+                "object_biological_entity",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "AlleleAlleleAssociation",
@@ -1670,9 +1670,9 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "object": {
+                "object_biological_entity": {
                     "$ref": "#/$defs/CellLine",
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the object of the association when the object is a child of BiologicalEntity. For example, the gene in an allele-to-gene association."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -1682,9 +1682,9 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Allele",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the subject of the association when the subject is a child of BiologicalEntity. For example, the gene in a gene-to-phenotype association."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -1692,9 +1692,9 @@
                 }
             },
             "required": [
-                "subject",
+                "subject_biological_entity",
+                "object_biological_entity",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "AlleleCellLineAssociation",
@@ -1811,8 +1811,8 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+                "object_reagent": {
+                    "description": "connects an association to the object of the association when the object is a child of Reagent. For example, the construct in a allele-to-construct association.",
                     "type": "string"
                 },
                 "obsolete": {
@@ -1827,9 +1827,9 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Allele",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the subject of the association when the subject is a child of BiologicalEntity. For example, the gene in a gene-to-phenotype association."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -1837,9 +1837,9 @@
                 }
             },
             "required": [
-                "subject",
+                "subject_biological_entity",
+                "object_reagent",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "AlleleConstructAssociation",
@@ -2306,7 +2306,7 @@
                     "description": "The negative qualifier for the annotation.",
                     "type": "boolean"
                 },
-                "object": {
+                "object_ontology_term": {
                     "description": "The disease ontology term.",
                     "type": "string"
                 },
@@ -2333,7 +2333,7 @@
                     "$ref": "#/$defs/Reference",
                     "description": "The reference in which the disease association was asserted/reported."
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Allele",
                     "description": "The allele to which the disease ontology term is associated."
                 },
@@ -2354,12 +2354,12 @@
                 }
             },
             "required": [
+                "subject_biological_entity",
+                "object_ontology_term",
                 "evidence_codes",
                 "data_provider",
                 "single_reference",
-                "subject",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "AlleleDiseaseAnnotation",
@@ -2783,9 +2783,9 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "object": {
-                    "$ref": "#/$defs/Gene",
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                "object_biological_entity": {
+                    "$ref": "#/$defs/GenomicEntity",
+                    "description": "connects an association to the object of the association when the object is a child of BiologicalEntity. For example, the gene in an allele-to-gene association."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -2799,9 +2799,9 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Allele",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the subject of the association when the subject is a child of BiologicalEntity. For example, the gene in a gene-to-phenotype association."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -2809,9 +2809,9 @@
                 }
             },
             "required": [
-                "subject",
+                "subject_biological_entity",
+                "object_biological_entity",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "AlleleGeneAssociation",
@@ -2936,9 +2936,9 @@
                     "$ref": "#/$defs/AffectedGenomicModel",
                     "description": "The particular strain (solely for and from MGI) that is targeted by the generation method for a particular allele."
                 },
-                "object": {
+                "object_generation_method": {
                     "$ref": "#/$defs/GenerationMethod",
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the object of the association when the object is a GenerationMethod. For example, the generation method in a allele-to-generation method association."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -2953,9 +2953,9 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Allele",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the subject of the association when the subject is a child of BiologicalEntity. For example, the gene in a gene-to-phenotype association."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -2963,9 +2963,9 @@
                 }
             },
             "required": [
-                "subject",
+                "subject_biological_entity",
+                "object_generation_method",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "AlleleGenerationMethodAssociation",
@@ -3208,9 +3208,9 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "object": {
+                "object_image": {
                     "$ref": "#/$defs/Image",
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the object of the association when the object is a GenerationMethod. For example, the generation method in a allele-to-generation method association."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -3224,9 +3224,9 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Allele",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the subject of the association when the subject is a child of BiologicalEntity. For example, the gene in a gene-to-phenotype association."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -3234,9 +3234,9 @@
                 }
             },
             "required": [
-                "subject",
+                "subject_biological_entity",
+                "object_image",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "AlleleImageAssociation",
@@ -3740,9 +3740,9 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "object": {
+                "object_biological_entity": {
                     "$ref": "#/$defs/AffectedGenomicModel",
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the object of the association when the object is a child of BiologicalEntity. For example, the gene in an allele-to-gene association."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -3752,9 +3752,9 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Allele",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the subject of the association when the subject is a child of BiologicalEntity. For example, the gene in a gene-to-phenotype association."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -3762,9 +3762,9 @@
                 }
             },
             "required": [
-                "subject",
+                "subject_biological_entity",
+                "object_biological_entity",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "AlleleOriginAssociation",
@@ -3930,7 +3930,7 @@
                     "$ref": "#/$defs/Reference",
                     "description": "The reference in which the phenotype association was asserted/reported."
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Allele",
                     "description": "The allele to which the phenotype ontology term is associated."
                 },
@@ -3944,11 +3944,11 @@
                 }
             },
             "required": [
+                "subject_biological_entity",
+                "object",
                 "data_provider",
                 "single_reference",
-                "subject",
                 "relation",
-                "object",
                 "date_created",
                 "internal"
             ],
@@ -4098,9 +4098,9 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "object": {
+                "object_biological_entity": {
                     "$ref": "#/$defs/Protein",
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the object of the association when the object is a child of BiologicalEntity. For example, the gene in an allele-to-gene association."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -4114,9 +4114,9 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Allele",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the subject of the association when the subject is a child of BiologicalEntity. For example, the gene in a gene-to-phenotype association."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -4124,9 +4124,9 @@
                 }
             },
             "required": [
-                "subject",
+                "subject_biological_entity",
+                "object_biological_entity",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "AlleleProteinAssociation",
@@ -4473,9 +4473,9 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "object": {
+                "object_biological_entity": {
                     "$ref": "#/$defs/Transcript",
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the object of the association when the object is a child of BiologicalEntity. For example, the gene in an allele-to-gene association."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -4489,9 +4489,9 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Allele",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the subject of the association when the subject is a child of BiologicalEntity. For example, the gene in a gene-to-phenotype association."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -4499,9 +4499,9 @@
                 }
             },
             "required": [
-                "subject",
+                "subject_biological_entity",
+                "object_biological_entity",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "AlleleTranscriptAssociation",
@@ -4624,9 +4624,9 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "object": {
+                "object_biological_entity": {
                     "$ref": "#/$defs/Variant",
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the object of the association when the object is a child of BiologicalEntity. For example, the gene in an allele-to-gene association."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -4640,9 +4640,9 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Allele",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the subject of the association when the subject is a child of BiologicalEntity. For example, the gene in a gene-to-phenotype association."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -4650,9 +4650,9 @@
                 }
             },
             "required": [
-                "subject",
+                "subject_biological_entity",
+                "object_biological_entity",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "AlleleVariantAssociation",
@@ -4920,10 +4920,6 @@
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
                 },
-                "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
-                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
@@ -4943,10 +4939,6 @@
                     "$ref": "#/$defs/Reference",
                     "description": "holds between an object and a single reference"
                 },
-                "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
-                },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
                     "type": "string"
@@ -4959,9 +4951,7 @@
             "required": [
                 "data_provider",
                 "single_reference",
-                "subject",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "Annotation",
@@ -5410,68 +5400,6 @@
                 "internal"
             ],
             "title": "AssemblyComponentDTO",
-            "type": "object"
-        },
-        "Association": {
-            "additionalProperties": false,
-            "description": "A typed association between two entities, supported by evidence.  Associations have three base slots: subject, object, and relation, but they can have any number of additional attributes that help qualify the relationship between the subject and the object.  The subject is the curie (or identifier) of the class that is the subject of the association, and likewise the object is the curie (or identifier of the class that is the object. The relationship between subject and object is defined by the relation slot (which can also be constrained using the range of the relation).",
-            "properties": {
-                "created_by": {
-                    "description": "The individual that created the entity.",
-                    "type": "string"
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": "boolean"
-                },
-                "relation": {
-                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
-                    "type": "string"
-                },
-                "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
-                },
-                "updated_by": {
-                    "description": "The individual that last modified the entity.",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "subject",
-                "relation",
-                "object",
-                "internal"
-            ],
-            "title": "Association",
             "type": "object"
         },
         "AuditedObject": {
@@ -7812,9 +7740,9 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "object": {
+                "object_biological_entity": {
                     "$ref": "#/$defs/GenomicEntity",
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the object of the association when the object is a child of BiologicalEntity. For example, the gene in an allele-to-gene association."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -7831,8 +7759,8 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
-                "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
+                "subject_reagent": {
+                    "description": "connects an association to the subject of the association when the subject is a child of Reagent. For example, the construct in a construct-to-genomic entity association.",
                     "type": "string"
                 },
                 "updated_by": {
@@ -7841,9 +7769,9 @@
                 }
             },
             "required": [
-                "subject",
+                "subject_reagent",
+                "object_biological_entity",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "ConstructGenomicEntityAssociation",
@@ -8288,7 +8216,7 @@
                     "description": "The number of DNA base pairs removed from the reference sequence by the variant.   sequence.",
                     "type": "integer"
                 },
-                "object": {
+                "object_biological_entity": {
                     "$ref": "#/$defs/AssemblyComponent",
                     "description": "The location reference object should be a chromosome assembly curie."
                 },
@@ -8321,9 +8249,9 @@
                     "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
                     "type": "integer"
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Variant",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the subject of the association when the subject is a child of BiologicalEntity. For example, the gene in a gene-to-phenotype association."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -8339,12 +8267,12 @@
                 }
             },
             "required": [
+                "subject_biological_entity",
+                "object_biological_entity",
                 "hgvs",
                 "start",
                 "end",
-                "subject",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "CuratedVariantGenomicLocationAssociation",
@@ -8556,7 +8484,7 @@
                     "description": "The number of amino acids removed from the polypeptide as a result of the variant.",
                     "type": "integer"
                 },
-                "object": {
+                "object_biological_entity": {
                     "$ref": "#/$defs/Protein",
                     "description": "Polypeptide associated with variant and for which a specific location and consequence of that variant is provided, as specified by curator. Multivalued=false for this slot because although a variant can have multiple VariantPolypeptideLocationAssociation stanzas, each stanza will have one and only one curated polypeptide ID."
                 },
@@ -8585,9 +8513,9 @@
                     "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
                     "type": "integer"
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Variant",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the subject of the association when the subject is a child of BiologicalEntity. For example, the gene in a gene-to-phenotype association."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -8599,12 +8527,12 @@
                 }
             },
             "required": [
+                "subject_biological_entity",
+                "object_biological_entity",
                 "hgvs",
                 "start",
                 "end",
-                "subject",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "CuratedVariantPolypeptideLocationAssociation",
@@ -8791,7 +8719,7 @@
                     "description": "The intron number of the variant location.  If the variant is in an exon, this slot is not populated. Primarily used for zebrafish.",
                     "type": "integer"
                 },
-                "object": {
+                "object_biological_entity": {
                     "$ref": "#/$defs/Transcript",
                     "description": "Transcript associated with variant and for which a specific location and consequence of that variant is provided, as specified at source.  Multivalued=false for this slot because although a variant can have multiple VariantTranscriptLocationAssociation stanzas, each stanza will have one and only one source transcript ID."
                 },
@@ -8820,9 +8748,9 @@
                     "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
                     "type": "integer"
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Variant",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the subject of the association when the subject is a child of BiologicalEntity. For example, the gene in a gene-to-phenotype association."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -8834,12 +8762,12 @@
                 }
             },
             "required": [
+                "subject_biological_entity",
+                "object_biological_entity",
                 "hgvs",
                 "start",
                 "end",
-                "subject",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "CuratedVariantTranscriptLocationAssociation",
@@ -10425,9 +10353,9 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "object": {
+                "object_image_pane": {
                     "$ref": "#/$defs/ImagePane",
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the object of the association when the object is an ImagePane"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -10437,9 +10365,9 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
-                "subject": {
+                "subject_expression_annotation": {
                     "$ref": "#/$defs/ExpressionAnnotation",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the subject of the association when the subject is an expression annotatoin."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -10447,9 +10375,9 @@
                 }
             },
             "required": [
-                "subject",
+                "subject_expression_annotation",
+                "object_image_pane",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "ExpressionAnnotationImagePane",
@@ -11686,9 +11614,9 @@
                     "$ref": "#/$defs/BiologicalEntity",
                     "description": "The left boundary of a feature location relative to the landmark's inherent orientation."
                 },
-                "object": {
+                "object_biological_entity": {
                     "$ref": "#/$defs/Chromosome",
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the object of the association when the object is a child of BiologicalEntity. For example, the gene in an allele-to-gene association."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -11711,9 +11639,9 @@
                     "$ref": "#/$defs/Reference",
                     "description": "holds between an object and a single reference"
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Gene",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the subject of the association when the subject is a child of BiologicalEntity. For example, the gene in a gene-to-phenotype association."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -11721,9 +11649,9 @@
                 }
             },
             "required": [
-                "subject",
+                "subject_biological_entity",
+                "object_biological_entity",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "GeneChromosomalLocationAssociation",
@@ -12093,7 +12021,7 @@
                     "description": "The negative qualifier for the annotation.",
                     "type": "boolean"
                 },
-                "object": {
+                "object_ontology_term": {
                     "description": "The disease ontology term.",
                     "type": "string"
                 },
@@ -12123,7 +12051,7 @@
                     "$ref": "#/$defs/Reference",
                     "description": "The reference in which the disease association was asserted/reported."
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Gene",
                     "description": "The gene to which the disease ontology term is associated."
                 },
@@ -12144,12 +12072,12 @@
                 }
             },
             "required": [
+                "subject_biological_entity",
+                "object_ontology_term",
                 "evidence_codes",
                 "data_provider",
                 "single_reference",
-                "subject",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "GeneDiseaseAnnotation",
@@ -12466,7 +12394,7 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "object": {
+                "object_biological_entity": {
                     "$ref": "#/$defs/Gene",
                     "description": "the object gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa."
                 },
@@ -12484,7 +12412,7 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Gene",
                     "description": "the subject gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa."
                 },
@@ -12498,9 +12426,9 @@
                 "interaction_type",
                 "interactor_A_type",
                 "interactor_B_type",
-                "subject",
+                "subject_biological_entity",
+                "object_biological_entity",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "GeneGeneticInteraction",
@@ -12671,9 +12599,9 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "object": {
+                "object_biological_entity": {
                     "$ref": "#/$defs/Chromosome",
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the object of the association when the object is a child of BiologicalEntity. For example, the gene in an allele-to-gene association."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -12692,9 +12620,9 @@
                     "$ref": "#/$defs/Reference",
                     "description": "holds between an object and a single reference"
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Gene",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the subject of the association when the subject is a child of BiologicalEntity. For example, the gene in a gene-to-phenotype association."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -12702,9 +12630,9 @@
                 }
             },
             "required": [
-                "subject",
+                "subject_biological_entity",
+                "object_biological_entity",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "GeneGeneticMapAssociation",
@@ -12753,9 +12681,9 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "object": {
+                "object_biological_entity": {
                     "$ref": "#/$defs/AssemblyComponent",
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the object of the association when the object is a child of BiologicalEntity. For example, the gene in an allele-to-gene association."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -12778,9 +12706,9 @@
                     "$ref": "#/$defs/StrandEnum",
                     "description": "The strand of a DNA reference object to which an entity maps."
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Gene",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the subject of the association when the subject is a child of BiologicalEntity. For example, the gene in a gene-to-phenotype association."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -12788,12 +12716,12 @@
                 }
             },
             "required": [
+                "subject_biological_entity",
+                "object_biological_entity",
                 "strand",
                 "start",
                 "end",
-                "subject",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "GeneGenomicLocationAssociation",
@@ -12887,7 +12815,7 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "object": {
+                "object_biological_entity": {
                     "$ref": "#/$defs/Gene",
                     "description": "the object gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa."
                 },
@@ -12899,7 +12827,7 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Gene",
                     "description": "the subject gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa."
                 },
@@ -12913,9 +12841,9 @@
                 "interaction_type",
                 "interactor_A_type",
                 "interactor_B_type",
-                "subject",
+                "subject_biological_entity",
+                "object_biological_entity",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "GeneMolecularInteraction",
@@ -13206,7 +13134,7 @@
                     "$ref": "#/$defs/Reference",
                     "description": "The reference in which the phenotype association was asserted/reported."
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Gene",
                     "description": "The gene to which the phenotype ontology term is associated."
                 },
@@ -13220,11 +13148,11 @@
                 }
             },
             "required": [
+                "subject_biological_entity",
+                "object",
                 "data_provider",
                 "single_reference",
-                "subject",
                 "relation",
-                "object",
                 "date_created",
                 "internal"
             ],
@@ -13891,10 +13819,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "object": {
-                    "$ref": "#/$defs/Pathway",
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
-                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
@@ -13903,19 +13827,13 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
-                "subject": {
-                    "$ref": "#/$defs/Gene",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
-                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": "string"
                 }
             },
             "required": [
-                "subject",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "GeneToPathwayAssociation",
@@ -16977,10 +16895,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "object": {
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
-                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
@@ -16995,19 +16909,13 @@
                     },
                     "type": "array"
                 },
-                "subject": {
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.",
-                    "type": "string"
-                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": "string"
                 }
             },
             "required": [
-                "subject",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "OntologyTermClosure",
@@ -17816,7 +17724,7 @@
                     "$ref": "#/$defs/Reference",
                     "description": "The reference in which the phenotype association was asserted/reported."
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/BiologicalEntity",
                     "description": "The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, by direct curation."
                 },
@@ -17830,11 +17738,11 @@
                 }
             },
             "required": [
+                "subject_biological_entity",
+                "object",
                 "data_provider",
                 "single_reference",
-                "subject",
                 "relation",
-                "object",
                 "date_created",
                 "internal"
             ],
@@ -19581,7 +19489,7 @@
             "title": "SequenceTargetingReagentDTO",
             "type": "object"
         },
-        "SequenceTargetingReagentToGeneAssociation": {
+        "SequenceTargetingReagentGeneAssociation": {
             "additionalProperties": false,
             "description": "the relationship between a Sequence Targeting Reagent and its targeted genes. The relation should be a VocabularyTerm with one of the following values - targets",
             "properties": {
@@ -19620,9 +19528,9 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "object": {
+                "object_biological_entity": {
                     "$ref": "#/$defs/Gene",
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the object of the association when the object is a child of BiologicalEntity. For example, the gene in an allele-to-gene association."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -19632,9 +19540,9 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/SequenceTargetingReagent",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the subject of the association when the subject is a child of BiologicalEntity. For example, the gene in a gene-to-phenotype association."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -19642,12 +19550,12 @@
                 }
             },
             "required": [
-                "subject",
+                "subject_biological_entity",
+                "object_biological_entity",
                 "relation",
-                "object",
                 "internal"
             ],
-            "title": "SequenceTargetingReagentToGeneAssociation",
+            "title": "SequenceTargetingReagentGeneAssociation",
             "type": "object"
         },
         "SiftPredictionLevels": {
@@ -19897,7 +19805,7 @@
                     "description": "The number of DNA base pairs removed from the reference sequence by the variant.   sequence.",
                     "type": "integer"
                 },
-                "object": {
+                "object_biological_entity": {
                     "$ref": "#/$defs/AssemblyComponent",
                     "description": "The location reference object should be a chromosome assembly curie."
                 },
@@ -19934,9 +19842,9 @@
                     "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
                     "type": "integer"
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Variant",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the subject of the association when the subject is a child of BiologicalEntity. For example, the gene in a gene-to-phenotype association."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -19953,9 +19861,9 @@
             },
             "required": [
                 "single_reference",
-                "subject",
+                "subject_biological_entity",
+                "object_biological_entity",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "SourceVariantGenomicLocationAssociation",
@@ -20170,7 +20078,7 @@
                     "description": "The number of amino acids removed from the polypeptide as a result of the variant.",
                     "type": "integer"
                 },
-                "object": {
+                "object_biological_entity": {
                     "$ref": "#/$defs/Protein",
                     "description": "Polypeptide associated with variant and for which a specific location and consequence of that variant is provided, as specified by curator. Multivalued=false for this slot because although a variant can have multiple VariantPolypeptideLocationAssociation stanzas, each stanza will have one and only one curated polypeptide ID."
                 },
@@ -20203,9 +20111,9 @@
                     "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
                     "type": "integer"
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Variant",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the subject of the association when the subject is a child of BiologicalEntity. For example, the gene in a gene-to-phenotype association."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -20218,9 +20126,9 @@
             },
             "required": [
                 "single_reference",
-                "subject",
+                "subject_biological_entity",
+                "object_biological_entity",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "SourceVariantPolypeptideLocationAssociation",
@@ -20410,7 +20318,7 @@
                     "description": "The intron number of the variant location.  If the variant is in an exon, this slot is not populated. Primarily used for zebrafish.",
                     "type": "integer"
                 },
-                "object": {
+                "object_biological_entity": {
                     "$ref": "#/$defs/Transcript",
                     "description": "Transcript associated with variant and for which a specific location and consequence of that variant is provided, as specified at source.  Multivalued=false for this slot because although a variant can have multiple VariantTranscriptLocationAssociation stanzas, each stanza will have one and only one source transcript ID."
                 },
@@ -20443,9 +20351,9 @@
                     "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
                     "type": "integer"
                 },
-                "subject": {
+                "subject_biological_entity": {
                     "$ref": "#/$defs/Variant",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the subject of the association when the subject is a child of BiologicalEntity. For example, the gene in a gene-to-phenotype association."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -20458,9 +20366,9 @@
             },
             "required": [
                 "single_reference",
-                "subject",
+                "subject_biological_entity",
+                "object_biological_entity",
                 "relation",
-                "object",
                 "internal"
             ],
             "title": "SourceVariantTranscriptLocationAssociation",
@@ -21827,9 +21735,9 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "object": {
+                "object_biological_entity": {
                     "$ref": "#/$defs/Gene",
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the object of the association when the object is a child of BiologicalEntity. For example, the gene in an allele-to-gene association."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -21851,9 +21759,9 @@
                     "description": "SIFT score between 0 and 1",
                     "type": "number"
                 },
-                "subject": {
+                "subject_association": {
                     "$ref": "#/$defs/VariantGenomicLocationAssociation",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "describes the subject of an association when the subject is an association itself"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -21869,8 +21777,8 @@
                 }
             },
             "required": [
-                "subject",
-                "object",
+                "subject_association",
+                "object_biological_entity",
                 "internal"
             ],
             "title": "VariantGeneConsequence",
@@ -22071,9 +21979,9 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "object": {
+                "object_biological_entity": {
                     "$ref": "#/$defs/Transcript",
-                    "description": "connects an association to the object of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "connects an association to the object of the association when the object is a child of BiologicalEntity. For example, the gene in an allele-to-gene association."
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -22103,9 +22011,9 @@
                     "description": "SIFT score between 0 and 1",
                     "type": "number"
                 },
-                "subject": {
+                "subject_association": {
                     "$ref": "#/$defs/VariantTranscriptLocationAssociation",
-                    "description": "connects an association to the subject of the association. For example, in a gene-to-phenotype association, the gene is subject and phenotype is object."
+                    "description": "describes the subject of an association when the subject is an association itself"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -22121,8 +22029,8 @@
                 }
             },
             "required": [
-                "subject",
-                "object",
+                "subject_association",
+                "object_biological_entity",
                 "internal"
             ],
             "title": "VariantTranscriptConsequence",
