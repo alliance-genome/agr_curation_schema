@@ -64,12 +64,8 @@ classes:
       - related_notes
       - data_provider
     slot_usage:
-        subject:
-            required: true
-        object:
-            required: true
-        single_reference:
-            required: true
+      single_reference:
+        required: true
 
   AnnotationDTO:
     is_a: SingleReferenceAssociationDTO
@@ -91,13 +87,16 @@ classes:
     description: >-
       An annotation asserting an association between a biological entity and a phenotype supported by evidence.
     slots:
+      - phenotype_annotation_subject
       - phenotype_term
-    slot_usage:
-      subject:                            # objectId in JSON schema
+    attributes:
+      phenotype_annotation_object:
         description: >-
-          The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, by direct curation.
+          phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed
+          statement of the phenotype from a post-composed terminology
         required: true
-        range: BiologicalEntity
+        range: string
+    slot_usage:
       phenotype_term:
         values_from:
           - HP
@@ -114,12 +113,6 @@ classes:
             description: axon morphology variant
           - value: MP:0001569
             description: abnormal circulating bilirubin level
-      object:             # phenotypeStatement in JSON schema; eventually object should point to Phenotype class object
-        description: >-
-          phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed
-          statement of the phenotype from a post-composed terminology
-        required: true
-        range: string
       single_reference:
         description: >-
           The reference in which the phenotype association was asserted/reported.
@@ -152,8 +145,7 @@ classes:
     slots:
       - sgd_strain_background   # Does this also apply to phenotype annotations?
     slot_usage:
-      subject:
-        required: true
+      phenotype_annotation_subject:
         description: >-
           The gene to which the phenotype ontology term is associated.
         range: Gene
@@ -175,7 +167,7 @@ classes:
       - inferred_gene
       - asserted_genes
     slot_usage:
-      subject:
+      phenotype_annotation_subject:
         description: >-
           The allele to which the phenotype ontology term is associated.
         range: Allele
@@ -209,7 +201,7 @@ classes:
       - asserted_genes
       - asserted_allele
     slot_usage:
-      subject:
+      phenotype_annotation_subject:
         description: >-
           The AGM to which the phenotype ontology term is associated.
         range: AffectedGenomicModel
@@ -227,6 +219,7 @@ classes:
         required: false
       asserted_allele:
         required: false
+
   AGMPhenotypeAnnotationDTO:
     is_a: PhenotypeAnnotationDTO
     description: >-
@@ -243,7 +236,13 @@ classes:
     abstract: true
     description: >-
       An annotation asserting an association between a biological entity and a disease supported by evidence.
+    attributes:
+      disease_annotation_object:
+        description: The Disease Ontology term
+        range: DOTerm
+        required: true
     slots:
+      - disease_annotation_subject
       - negated
       - evidence_codes
       - annotation_type
@@ -274,19 +273,9 @@ classes:
           The model organism database (MOD) internal identifier for the disease annotation. When available,
           this is used for determination of distinctness instead of the Unique ID field.
         required: false
-      subject:
-        required: true
-        description: >-
-          The biological entity to which the disease ontology term is associated.
-        range: BiologicalEntity
       negated:
         description: >-
           The negative qualifier for the annotation.
-      object:
-        required: true
-        description: >-
-          The disease ontology term.
-        range: DOTerm
       relation:
         description: >-
           The relation between the subject biological entity and disease in the annotation.
@@ -349,7 +338,7 @@ classes:
     slots:
       - sgd_strain_background
     slot_usage:
-      subject:
+      disease_annotation_subject:
         required: true
         description: >-
           The gene to which the disease ontology term is associated.
@@ -378,7 +367,7 @@ classes:
       - inferred_gene
       - asserted_genes
     slot_usage:
-      subject:
+      disease_annotation_subject:
         description: >-
           The allele to which the disease ontology term is associated.
         range: Allele
@@ -417,7 +406,7 @@ classes:
       - asserted_genes
       - asserted_allele
     slot_usage:
-      subject:
+      disease_annotation_subject:
         description: >-
           The AGM to which the disease ontology term is associated.
         range: AffectedGenomicModel
@@ -739,6 +728,13 @@ slots:
     inlined: true
     inlined_as_list: true
 
+  disease_annotation_subject:
+    required: true
+    description: >-
+      The biological entity to which the disease ontology term is associated.
+    domain: DiseaseAnnotation
+    range: BiologicalEntity
+      
   disease_genetic_modifiers:
     description: >-
       Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
@@ -820,6 +816,13 @@ slots:
       automated pipeline
     range: string
 
+  phenotype_annotation_subject:
+    description: >-
+      The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, by direct curation.
+    required: true
+    domain: PhenotypeAnnotation
+    range: BiologicalEntity
+  
   phenotype_term:
     description: >-
       The phenotype ontology term used to describe the phenotype of an organism

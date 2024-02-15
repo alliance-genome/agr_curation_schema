@@ -40,7 +40,6 @@ classes:
 
   GeneToGeneOrthology:
     is_a: AuditedObject
-    description: >-
     slots:
       - subject_gene
       - object_gene

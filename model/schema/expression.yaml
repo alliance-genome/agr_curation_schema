@@ -131,17 +131,25 @@ classes:
       - cellular_component
       - spatial_qualifiers
 
-  ExpressionAnnotationImagePane:
+  ExpressionAnnotationAssociation:
+    is_a: EvidenceAssociation
+    abstract: true
+    description: Base class for all ExpressionAnnotation associations
+    attributes:
+      expression_annotation_subject:
+        required: true
+        domain: ExpressionAnnotation
+
+  ExpressionAnnotationImagePaneAssociation:
     is_a: EvidenceAssociation
     notes: >-
       This aims to provide the same functionality as MGI imagepane.
       Some MODs (like ZFIN) point to the whole image. In these cases,
       the pane would encompass the whole image.
-    slot_usage:
-      subject:
-        range: ExpressionAnnotation
-      object:
+    attributes:
+      expression_annotation_image_pane_association_object:
         range: ImagePane
+        required: true
 
   # GeneExpressionStatement:
   #   is_a: EntityStatement     # Update to use Note class instead?
