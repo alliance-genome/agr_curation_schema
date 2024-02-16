@@ -131,15 +131,17 @@ classes:
       - proteins
 
 
-  GeneToPathwayAssociation:
+  GenePathwayAssociation:
     is_a: EvidenceAssociation
+    slots:
+      - gene_association_subject
+    attributes:
+      gene_pathway_association_object:
+        range: Pathway
+        required: true
     slot_usage:
       relation:
         subproperty_of: has_participant
-      subject:
-        range: Gene
-      object:
-        range: Pathway
 
 
 ## ------------

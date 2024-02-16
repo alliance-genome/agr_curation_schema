@@ -325,21 +325,17 @@ classes:
       of the association, and likewise the object is the curie (or identifier of the class that is the object. The
       relationship between subject and object is defined by the relation slot (which can also be constrained
       using the range of the relation).
-    exact_mappings:
-      - biolink:association
     notes:
       Keeping this more generic than biolink:association by foregoing the
       qualifiers and negated slots.
+      Association child classes must also have subject and object slots defined, but (due to implementation issues)
+      these must have distinct names if the range of the slot inherits from a different base table in the database.
+      Therefore these are defined in the appropriate classes with a prefix indicating the class(es) using the slot, 
+      e.g. disease_annotation_subject, allele_association_subject, allele_construct_association_object.
     slots:
-      - subject
       - relation
-      - object
     slot_usage:
-        subject:
-            required: true
         relation:
-            required: true
-        object:
             required: true
 
   SingleReferenceAssociation:
@@ -1199,25 +1195,6 @@ slots:
   ## --------------------
 ## ASSOCIATION SLOTS
 ## --------------------
-
-  subject:
-    is_a: association_slot
-    description: >-
-      connects an association to the subject of the association.
-      For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
-    required: true
-    exact_mappings:
-      - owl:annotatedSource
-      - biolink:subject
-
-  object:
-    is_a: association_slot
-    description: >-
-      connects an association to the object of the association.
-      For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
-    required: true
-    exact_mappings:
-      - biolink:object
 
   relation:
     is_a: association_slot

@@ -46,8 +46,6 @@ classes:
       consequences
     abstract: true
     slots:
-      - subject
-      - object
       - vep_consequence
       - vep_impact
       - polyphen_score
@@ -60,10 +58,10 @@ classes:
     description: >-
       Class for gene-level VEP results
     is_a: VariantConsequence
-    slot_usage:
-      object:
+    attributes:
+      variant_gene_consequence_object:
         range: Gene
-      subject:
+      variant_gene_consequence_subject:
         range: VariantGenomicLocationAssociation
 
   VariantTranscriptConsequence:
@@ -71,6 +69,11 @@ classes:
     is_a: VariantConsequence
     description: >-
       Class for transcript-level VEP results
+    attributes:
+      variant_transcript_consequence_object:
+        range: Transcript
+      variant_transcript_consequence_subject:
+        range: VariantTranscriptLocationAssociation 
     slots:
       - amino_acid_reference
       - amino_acid_variant
@@ -85,10 +88,6 @@ classes:
       - hgvs_protein_nomenclature
       - hgvs_coding_nomenclature
     slot_usage:
-      object:
-        range: Transcript
-      subject:
-        range: VariantTranscriptLocationAssociation
       amino_acid_reference:
         description: >-
           Amino acid sequence encoded by codon(s) in reference genome sequence

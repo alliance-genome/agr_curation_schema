@@ -178,19 +178,28 @@ classes:
       mod_entity_id:
         required: true
 
-  SequenceTargetingReagentToGeneAssociation:
+  SequenceTargetingReagentAssociation:
+    is_a: EvidenceAssociation
+    abstract: true
+    description: Base class for STR associations
+    attributes:
+      sequence_targeting_reagent_association_subject:
+        range: SequenceTargetingReagent
+        required: true
+
+  SequenceTargetingReagentGeneAssociation:
     description: >-
       the relationship between a Sequence Targeting Reagent and its targeted
       genes. The relation should be a VocabularyTerm with one of the following
       values - targets
-    is_a: EvidenceAssociation
+    is_a: SequenceTargetingReagentAssociation
+    attributes:
+      sequence_targeting_reagent_gene_association_object:
+        range: Gene
+        required: true
     slot_usage:
       relation:
         range: VocabularyTerm
-      subject:
-        range: SequenceTargetingReagent
-      object:
-        range: Gene
 
   # TO DO: create SequenceTargetingReagentToGeneAssociationDTO class? [CG]
 
@@ -384,15 +393,26 @@ classes:
   ## ALLELE ASSOCIATION CLASSES
   ## ------------
 
+  AlleleAssociation:
+    is_a: EvidenceAssociation
+    abstract: true
+    description: Base class for all Allele Associations
+    attributes:
+      allele_association_subject:
+        range: Allele
+        required: true
+  
   AlleleAlleleAssociation:
     is_a: AlleleGenomicEntityAssociation
     description: >-
       Association between an allele and another allele
+    attributes:
+      allele_allele_association_object:
+        range: Allele
+        required: true
     slot_usage:
       relation:
         notes: CV 'Allele Allele Association Relation'
-      object:
-        range: Allele
 
   AlleleAlleleAssociationDTO:
     is_a: AlleleGenomicEntityAssociationDTO
@@ -403,18 +423,18 @@ classes:
 
   # do mutant/parent/embryonic cell line associations need to be split out?
   AlleleCellLineAssociation:
-    is_a: EvidenceAssociation
+    is_a: AlleleAssociation
     description: >-
       The relationship between an allele and a cell line.  Includes mutant/
       embryonic stem cell lines known to carry the allele, and parental cell
       line of alleles made in embryonic stem cells.
+    attributes:
+      allele_cell_line_association_object:
+        range: CellLine
+        required: true
     slot_usage:
-      subject:
-        range: Allele
       relation:
         range: VocabularyTerm
-      object:
-        range: CellLine
 
   AlleleCellLineAssociationDTO:
       is_a: EvidenceAssociationDTO
@@ -432,16 +452,16 @@ classes:
     description: >-
       The relationship between an allele and constructs contained in
       that allele.
+    attributes:
+      allele_construct_association_object:
+        range: Construct
+        required: true
     slot_usage:
-      subject:
-        range: Allele
       relation:
         range: VocabularyTerm
         notes: >-
           CV 'Allele Construct Association Relation' including - contains, contains_coinjection_marker,
           contains_phenotypic_sequence_feature, and contains_innocuous_sequence_feature
-      object:
-        range: Construct
 
   AlleleConstructAssociationDTO:
     is_a: AlleleGenomicEntityAssociationDTO
@@ -460,9 +480,10 @@ classes:
     is_a: AlleleGenomicEntityAssociation
     description: >-
       Association between an allele and a gene
-    slot_usage:
-      object:
+    attributes:
+      allele_gene_association_object:
         range: Gene
+        required: true
 
   AlleleGeneAssociationDTO:
     description: >-
@@ -472,18 +493,18 @@ classes:
       - gene_identifier
 
   AlleleGenerationMethodAssociation:
-    is_a: EvidenceAssociation
+    is_a: AlleleAssociation
     slots:
       - mutation_target_strain
+    attributes:
+      allele_generation_method_association_object:
+        range: GenerationMethod
+        required: true
     slot_usage:
-      subject:
-        range: Allele
       relation:
         any_of:
           equals_string: has_generation_method
         notes: CV 'Allele Generation Method Association Relation'
-      object:
-        range: GenerationMethod
 
   AlleleGenerationMethodAssociationDTO:
     is_a: EvidenceAssociationDTO
@@ -499,7 +520,7 @@ classes:
           equals_string: has_generation_method
 
   AlleleGenomicEntityAssociation:
-    is_a: EvidenceAssociation
+    is_a: AlleleAssociation
     abstract: true
     description: >-
       Association between an allele and a genomic entity
@@ -507,12 +528,8 @@ classes:
       - evidence_code
       - related_note
     slot_usage:
-      subject:
-        range: Allele
       relation:
         range: VocabularyTerm # If we can adequately represent all needed relations in RO, this could be ROTerm
-      object:
-        range: GenomicEntity
       evidence:
         required: false # This needs to be not required, at least in the base class
 
@@ -526,18 +543,18 @@ classes:
       - note_dto
 
   AlleleImageAssociation:
-    is_a: EvidenceAssociation
+    is_a: AlleleAssociation
     description: >-
       The relationship between an allele and an image.
     slots:
       - primary_image
+    attributes:
+      allele_image_association_object:
+        range: Image
+        required: true
     slot_usage:
-      subject:
-        range: Allele
       relation:
         range: VocabularyTerm
-      object:
-        range: Image
       primary_image:
         description: >-
           Can be null; if false, maybe you would show all the images.
@@ -559,14 +576,13 @@ classes:
           We need to revisit this issue.
 
   AlleleOriginAssociation:
-    is_a: EvidenceAssociation
+    is_a: AlleleAssociation
     description: >-
       The relationship between an allele and the origin of the allele.
-    slot_usage:
-      subject:
-        range: Allele
-      object:
+    attributes:
+      allele_origin_association_object:
         range: AffectedGenomicModel
+        required: true
 
   AlleleOriginAssociationDTO:
     is_a: EvidenceAssociationDTO
@@ -581,9 +597,11 @@ classes:
     is_a: AlleleGenomicEntityAssociation
     description: >-
       Association between an allele and a protein
-    slot_usage:
-      object:
+    attributes:
+      allele_protein_association_object:
         range: Protein
+        required: true
+    
 
   AlleleProteinAssociationDTO:
     is_a: AlleleGenomicEntityAssociationDTO
@@ -596,9 +614,11 @@ classes:
     is_a: AlleleGenomicEntityAssociation
     description: >-
       Association between an allele and a transcript
-    slot_usage:
-      object:
+    attributes:
+      allele_transcript_association_object:
         range: Transcript
+        required: true
+    
 
   AlleleTranscriptAssociationDTO:
     is_a: AlleleGenomicEntityAssociationDTO
@@ -613,12 +633,11 @@ classes:
       The relationship between an allele and a variant is many to many. An
       Allele may have many variants and a variant can be present in many
       alleles.
-    slot_usage:
-      subject:
-        range: Allele
-      object:
+    attributes:
+      allele_variant_association_object:
         range: Variant
-
+        required: true
+    
   AlleleVariantAssociationDTO:
     is_a: AlleleGenomicEntityAssociationDTO
     description: >-

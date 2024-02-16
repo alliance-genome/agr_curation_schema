@@ -257,25 +257,34 @@ classes:
       single_construct:
         required: true
 
-  ConstructGenomicEntityAssociation:
+  ConstructAssociation:
+    abstract: true
     is_a: EvidenceAssociation
+    description: Base class for construct associations
+    attributes:
+      construct_association_subject:
+        range: Construct
+        required: true
+
+  ConstructGenomicEntityAssociation:
+    is_a: ConstructAssociation
     description: >-
       An association class to capture the identity of a construct component that is
       a known genomic entity with a curie and any accompanying meta data about the
       relationship between the construct and that genomic entity component
+    attributes:
+      construct_genomic_entity_association_object:
+        range: GenomicEntity
+        required: true
     slots:
       - related_notes
     slot_usage:
-      subject:
-        range: Construct
       relation:
         range: VocabularyTerm
         notes: >-
           The relation should be a VocabularyTerm with one of the following
           values - expresses (RO:0002292) / is_regulated_by (RO:0002334) /
           targets (RO:0002436). CV: 'Construct Genomic Entity Association Relation'
-      object:
-        range: GenomicEntity
       related_notes:
         required: false
 
