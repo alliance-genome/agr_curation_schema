@@ -131,7 +131,7 @@ classes:
 #      - biolink:PairwiseGeneToGeneInteraction
 
   GeneInteractionDTO:
-    is_a: GeneToGeneAssociationDTO
+    is_a: GeneGeneAssociationDTO
     abstract: true
     description: >-
       Ingest class for an interaction between two genes or gene products; this may be a physical
@@ -369,7 +369,7 @@ slots:
 
   object_gene_identifier:
     description: Identifier (curie/mod_entity_id/mod_internal_id) of the object gene in a gene-to-gene association
-    domain: GeneToGeneAssociationDTO
+    domain: GeneGeneAssociationDTO
     range: string
     required: true
 
@@ -381,7 +381,7 @@ slots:
 
   subject_gene_identifier:
     description: Identifier (curie/mod_entity_id/mod_internal_id) of the subject gene in a gene-to-gene association
-    domain: GeneToGeneAssociationDTO
+    domain: GeneGeneAssociationDTO
     range: string
     required: true
 
