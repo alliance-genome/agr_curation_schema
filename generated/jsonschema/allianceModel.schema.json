@@ -16988,6 +16988,12 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
+                "ontology_term_closure_object": {
+                    "type": "string"
+                },
+                "ontology_term_closure_subject": {
+                    "type": "string"
+                },
                 "relation": {
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
@@ -17004,6 +17010,8 @@
                 }
             },
             "required": [
+                "ontology_term_closure_subject",
+                "ontology_term_closure_object",
                 "relation",
                 "internal"
             ],
