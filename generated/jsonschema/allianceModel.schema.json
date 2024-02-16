@@ -12331,6 +12331,75 @@
             "title": "GeneFullNameSlotAnnotation",
             "type": "object"
         },
+        "GeneGeneAssociationDTO": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "evidence_curies": {
+                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "gene_relation_name": {
+                    "description": "Name of VocabularyTerm describing relationship between a subject entity and an object Gene",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "object_gene_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the object gene in a gene-to-gene association",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "subject_gene_identifier": {
+                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the subject gene in a gene-to-gene association",
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "subject_gene_identifier",
+                "gene_relation_name",
+                "object_gene_identifier",
+                "internal"
+            ],
+            "title": "GeneGeneAssociationDTO",
+            "type": "object"
+        },
         "GeneGeneticInteraction": {
             "additionalProperties": false,
             "description": "A genetic interaction between genes (e.g. phenotypic suppression)",
@@ -12376,6 +12445,10 @@
                         "$ref": "#/$defs/InformationContentEntity"
                     },
                     "type": "array"
+                },
+                "gene_association_subject": {
+                    "$ref": "#/$defs/Gene",
+                    "description": "the subject gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa."
                 },
                 "gene_gene_association_object": {
                     "$ref": "#/$defs/Gene",
@@ -12445,6 +12518,7 @@
                 "interaction_type",
                 "interactor_A_type",
                 "interactor_B_type",
+                "gene_association_subject",
                 "gene_gene_association_object",
                 "relation",
                 "internal"
@@ -12797,6 +12871,10 @@
                     },
                     "type": "array"
                 },
+                "gene_association_subject": {
+                    "$ref": "#/$defs/Gene",
+                    "description": "the subject gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa."
+                },
                 "gene_gene_association_object": {
                     "$ref": "#/$defs/Gene",
                     "description": "the object gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa."
@@ -12853,6 +12931,7 @@
                 "interaction_type",
                 "interactor_A_type",
                 "interactor_B_type",
+                "gene_association_subject",
                 "gene_gene_association_object",
                 "relation",
                 "internal"
@@ -13635,75 +13714,6 @@
                 "internal"
             ],
             "title": "GeneSystematicNameSlotAnnotation",
-            "type": "object"
-        },
-        "GeneToGeneAssociationDTO": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
-                    "type": "string"
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "gene_relation_name": {
-                    "description": "Name of VocabularyTerm describing relationship between a subject entity and an object Gene",
-                    "type": "string"
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "object_gene_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the object gene in a gene-to-gene association",
-                    "type": "string"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": "boolean"
-                },
-                "subject_gene_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the subject gene in a gene-to-gene association",
-                    "type": "string"
-                },
-                "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "subject_gene_identifier",
-                "gene_relation_name",
-                "object_gene_identifier",
-                "internal"
-            ],
-            "title": "GeneToGeneAssociationDTO",
             "type": "object"
         },
         "GeneToGeneOrthology": {
