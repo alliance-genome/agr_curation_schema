@@ -102,13 +102,6 @@ slots:
       like "develops_from", ancestors are the terms to which this term develops into (not a true
       parent/child or ancestor/descendant relationship).
 
-  relationship_type:
-    range: string
-    multivalued: true
-
-  distance_between:
-    range: integer
-
   child_count:
     range: integer
 
@@ -164,18 +157,21 @@ classes:
 
   OntologyTermClosure:
     is_a: EvidenceAssociation
-    slots:
-      - relationship_type
-      - distance_between
-    slot_usage:
-      subject:
+    attributes:
+      ontology_term_closure_subject:
         range: OntologyTerm
-      object:
+        required: true
+      ontology_term_closure_object:
         range: OntologyTerm
+        required: true
       distance_between:
+        range: integer
         description: >-
           distance_between is zero for reflexive–transitive closure
           each node has an ancestor or descendant of itself
+      relationship_type:
+        range: string
+        multivalued: true
 
   DOTerm:
     is_a: OntologyTerm
