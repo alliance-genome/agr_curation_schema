@@ -64,6 +64,8 @@ classes:
           the object gene in the association. If the relation is symmetric,
           subject vs object is arbitrary. We allow a gene product to stand
           as a proxy for the gene or vice versa.
+    slots:
+      - gene_association_subject
     slot_usage:
       gene_association_subject:
         description: >-
@@ -73,7 +75,7 @@ classes:
 #    exact_mappings:
 #      - biolink:GeneToGeneAssociation
 
-  GeneToGeneAssociationDTO:
+  GeneGeneAssociationDTO:
     is_a: AuditedObjectDTO
     slots:
       - subject_gene_identifier
