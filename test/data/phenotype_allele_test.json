@@ -20,7 +20,7 @@
       "obsolete": false,
       "allele_identifier": "WB:WBVar00001",
       "phenotype_statement": "dye filling defect",
-      "phenotype_term_curie": "WBPhenotype:0001383",
+      "phenotype_term_curies": ["WBPhenotype:0001383"],
       "inferred_gene_identifier": "WB:WBGene0002311",
       "asserted_gene_identifiers": [
         "WB:WBGene00012121"

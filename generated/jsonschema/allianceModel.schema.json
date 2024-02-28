@@ -412,9 +412,12 @@
                     "$ref": "#/$defs/AffectedGenomicModel",
                     "description": "The AGM to which the phenotype ontology term is associated."
                 },
-                "phenotype_term": {
+                "phenotype_terms": {
                     "description": "The phenotype ontology term used to describe the phenotype of an organism or a set of organisms.",
-                    "type": "string"
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "related_notes": {
                     "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Phenotype annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
@@ -538,9 +541,12 @@
                     "description": "For MODs that curate to post-composed phenotype expressions composed of ontology terms and other necessary information (e.g. vocabularies, free text). This field captures the free text phenotype statement.",
                     "type": "string"
                 },
-                "phenotype_term_curie": {
+                "phenotype_term_curies": {
                     "description": "The string representation of the phenotype ontology term (PhenotypeTerm) curie",
-                    "type": "string"
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "reference_curie": {
                     "description": "External reference curie used for ingest",
@@ -3901,9 +3907,12 @@
                     "$ref": "#/$defs/Allele",
                     "description": "The allele to which the phenotype ontology term is associated."
                 },
-                "phenotype_term": {
+                "phenotype_terms": {
                     "description": "The phenotype ontology term used to describe the phenotype of an organism or a set of organisms.",
-                    "type": "string"
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "related_notes": {
                     "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Phenotype annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
@@ -4020,9 +4029,12 @@
                     "description": "For MODs that curate to post-composed phenotype expressions composed of ontology terms and other necessary information (e.g. vocabularies, free text). This field captures the free text phenotype statement.",
                     "type": "string"
                 },
-                "phenotype_term_curie": {
+                "phenotype_term_curies": {
                     "description": "The string representation of the phenotype ontology term (PhenotypeTerm) curie",
-                    "type": "string"
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "reference_curie": {
                     "description": "External reference curie used for ingest",
@@ -13397,9 +13409,12 @@
                     "$ref": "#/$defs/Gene",
                     "description": "The gene to which the phenotype ontology term is associated."
                 },
-                "phenotype_term": {
+                "phenotype_terms": {
                     "description": "The phenotype ontology term used to describe the phenotype of an organism or a set of organisms.",
-                    "type": "string"
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "related_notes": {
                     "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Phenotype annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
@@ -13508,9 +13523,12 @@
                     "description": "For MODs that curate to post-composed phenotype expressions composed of ontology terms and other necessary information (e.g. vocabularies, free text). This field captures the free text phenotype statement.",
                     "type": "string"
                 },
-                "phenotype_term_curie": {
+                "phenotype_term_curies": {
                     "description": "The string representation of the phenotype ontology term (PhenotypeTerm) curie",
-                    "type": "string"
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "reference_curie": {
                     "description": "External reference curie used for ingest",
@@ -17939,9 +17957,12 @@
                     "$ref": "#/$defs/BiologicalEntity",
                     "description": "The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, by direct curation."
                 },
-                "phenotype_term": {
+                "phenotype_terms": {
                     "description": "The phenotype ontology term used to describe the phenotype of an organism or a set of organisms.",
-                    "type": "string"
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "related_notes": {
                     "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Phenotype annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
