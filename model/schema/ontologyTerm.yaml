@@ -194,6 +194,12 @@ classes:
   GOTerm:
     is_a: OntologyTerm
 
+  GENOTerm:
+    is_a: OntologyTerm
+    description: >-
+      An ontology term from the GENO ontology.
+      PURL: http://purl.obolibrary.org/obo/geno.owl
+
   ROTerm:
     is_a: OntologyTerm
 
