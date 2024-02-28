@@ -1090,6 +1090,20 @@ slots:
     domain: AlleleAlleleAssociationDTO
     range: string
 
+  phenotype_term:
+    description: >-
+      The phenotype ontology term used to describe the phenotype of an organism
+      or a set of organisms.
+    range: PhenotypeTerm
+    multivalued: false
+
+  phenotype_term_curie:
+    description: >-
+      The string representation of the phenotype ontology term (PhenotypeTerm)
+      curie
+    range: string
+    multivalued: false
+    
   primary_image:
     description: >-
       The primary image for an allele that is used to represent the allele on a page.

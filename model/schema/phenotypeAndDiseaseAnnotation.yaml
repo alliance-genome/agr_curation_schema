@@ -88,7 +88,7 @@ classes:
       An annotation asserting an association between a biological entity and a phenotype supported by evidence.
     slots:
       - phenotype_annotation_subject
-      - phenotype_term
+      - phenotype_terms
     attributes:
       phenotype_annotation_object:
         description: >-
@@ -97,7 +97,7 @@ classes:
         required: true
         range: string
     slot_usage:
-      phenotype_term:
+      phenotype_terms:
         values_from:
           - HP
           - MP
@@ -135,7 +135,7 @@ classes:
       Ingest class for association between a biological entity and a phenotype
     slots:
       - phenotype_statement
-      - phenotype_term_curie
+      - phenotype_term_curies
 
   GenePhenotypeAnnotation:
     description: >-
@@ -823,19 +823,19 @@ slots:
     domain: PhenotypeAnnotation
     range: BiologicalEntity
   
-  phenotype_term:
+  phenotype_terms:
     description: >-
       The phenotype ontology term used to describe the phenotype of an organism
       or a set of organisms.
     range: PhenotypeTerm
-    multivalued: false
+    multivalued: true
 
-  phenotype_term_curie:
+  phenotype_term_curies:
     description: >-
       The string representation of the phenotype ontology term (PhenotypeTerm)
       curie
     range: string
-    multivalued: false
+    multivalued: true
 
   phenotype_statement:
     description: >-
