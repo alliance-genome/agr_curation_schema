@@ -12550,10 +12550,6 @@
                     },
                     "type": "array"
                 },
-                "curie": {
-                    "description": "The unique primary identifier for the interaction. This should be the source (curation) database identifier, or if that is not available then the aggregation database identifier (e.g. IMEx)",
-                    "type": "string"
-                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -12588,6 +12584,10 @@
                 "gene_gene_association_object": {
                     "$ref": "#/$defs/Gene",
                     "description": "the object gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa."
+                },
+                "interaction_id": {
+                    "description": "The unique primary identifier for the interaction. This should be the source (curation) database identifier, or if that is not available then the aggregation database identifier (e.g. IMEx)",
+                    "type": "string"
                 },
                 "interaction_source": {
                     "description": "The interaction database that curated the interaction. e.g. BioGRID An MITerm from the AGR interaction source subset of AGR terms.",
@@ -12643,6 +12643,10 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
+                "unique_id": {
+                    "description": "A non-curie unique identifier for a thing.",
+                    "type": "string"
+                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": "string"
@@ -12675,10 +12679,6 @@
                     },
                     "type": "array"
                 },
-                "curie": {
-                    "description": "The unique primary identifier for the interaction. This should be the source (curation) database identifier, or if that is not available then the aggregation database identifier (e.g. IMEx)",
-                    "type": "string"
-                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -12708,6 +12708,10 @@
                 },
                 "gene_relation_name": {
                     "description": "Name of VocabularyTerm describing relationship between a subject entity and an object Gene",
+                    "type": "string"
+                },
+                "interaction_id": {
+                    "description": "The unique primary identifier for the interaction. This should be the source (curation) database identifier, or if that is not available then the aggregation database identifier (e.g. IMEx)",
                     "type": "string"
                 },
                 "interaction_source_curie": {
@@ -12971,10 +12975,6 @@
                     },
                     "type": "array"
                 },
-                "curie": {
-                    "description": "The unique primary identifier for the interaction. This should be the source (curation) database identifier, or if that is not available then the aggregation database identifier (e.g. IMEx)",
-                    "type": "string"
-                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -13013,6 +13013,10 @@
                 "gene_gene_association_object": {
                     "$ref": "#/$defs/Gene",
                     "description": "the object gene in the association. If the relation is symmetric, subject vs object is arbitrary. We allow a gene product to stand as a proxy for the gene or vice versa."
+                },
+                "interaction_id": {
+                    "description": "The unique primary identifier for the interaction. This should be the source (curation) database identifier, or if that is not available then the aggregation database identifier (e.g. IMEx)",
+                    "type": "string"
                 },
                 "interaction_source": {
                     "description": "The interaction database that curated the interaction. e.g. BioGRID An MITerm from the AGR interaction source subset of AGR terms.",
@@ -13056,6 +13060,10 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
+                "unique_id": {
+                    "description": "A non-curie unique identifier for a thing.",
+                    "type": "string"
+                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": "string"
@@ -13092,10 +13100,6 @@
                     },
                     "type": "array"
                 },
-                "curie": {
-                    "description": "The unique primary identifier for the interaction. This should be the source (curation) database identifier, or if that is not available then the aggregation database identifier (e.g. IMEx)",
-                    "type": "string"
-                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -13129,6 +13133,10 @@
                 },
                 "gene_relation_name": {
                     "description": "Name of VocabularyTerm describing relationship between a subject entity and an object Gene",
+                    "type": "string"
+                },
+                "interaction_id": {
+                    "description": "The unique primary identifier for the interaction. This should be the source (curation) database identifier, or if that is not available then the aggregation database identifier (e.g. IMEx)",
                     "type": "string"
                 },
                 "interaction_source_curie": {
