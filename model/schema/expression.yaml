@@ -485,13 +485,6 @@ slots:
     range: Allele
     multivalued: true
 
-  specimen_genomic_model:
-    description: >-
-      The AffectedGenomicModel of the specimen assayed.
-    domain: ExpressionExperiment
-    range: AffectedGenomicModel
-    multivalued: false
-
   # ACTION ITEM: Load needed qualifiers as Vocabulary/OntologyTerms.
   temporal_qualifiers:
     description: >-
