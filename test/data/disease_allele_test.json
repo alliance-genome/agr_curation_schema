@@ -1,5 +1,5 @@
 {
-  "linkml_version": "1.7.3",
+  "linkml_version": "2.0.0",
   "disease_allele_ingest_set": [
     {
       "evidence_code_curies": [
@@ -17,10 +17,10 @@
         },
         "internal": false
       },
-      "allele_curie": "ZFIN:ZDB-ALT-001122-1",
+      "allele_identifier": "ZFIN:ZDB-ALT-001122-1",
       "disease_relation_name": "is_implicated_in",
       "do_term_curie": "DOID:0001234",
-      "asserted_gene_curies": [
+      "asserted_gene_identifiers": [
         "ZFIN:ZDB-GENE-060503-338"
       ],
       "created_by_curie": "ZFIN",

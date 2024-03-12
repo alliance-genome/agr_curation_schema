@@ -1,33 +1,33 @@
 {
-  "linkml_version": "1.7.3",
+  "linkml_version": "2.0.0",
   "ontology_closure_ingest_set": [
     {
-      "subject": "ZFA:brain",
-      "object": "ZFA:cavitated_compound_organ",
+      "ontology_term_closure_subject": "ZFA:brain",
+      "ontology_term_closure_object": "ZFA:cavitated_compound_organ",
       "relation": "RO:is_a",
       "internal": false
     },
     {
-      "subject": "ZFA:brain",
-      "object": "ZFA:compound_organ",
+      "ontology_term_closure_subject": "ZFA:brain",
+      "ontology_term_closure_object": "ZFA:compound_organ",
       "relation": "RO:is_a",
       "internal": false
     },
     {
-      "subject": "ZFA:brain",
-      "object": "ZFA:anatomical_structure",
+      "ontology_term_closure_subject": "ZFA:brain",
+      "ontology_term_closure_object": "ZFA:anatomical_structure",
       "relation": "RO:is_a",
       "internal": false
     },
     {
-      "subject": "ZFA:brain",
-      "object": "ZFA:zebrafish_anatomical_entity",
+      "ontology_term_closure_subject": "ZFA:brain",
+      "ontology_term_closure_object": "ZFA:zebrafish_anatomical_entity",
       "relation": "RO:is_a",
       "internal": false
     },
     {
-      "subject": "ZFA:brain",
-      "object": "ZFA:whole_organism",
+      "ontology_term_closure_subject": "ZFA:brain",
+      "ontology_term_closure_object": "ZFA:whole_organism",
       "relation": [
         "RO:is_a",
         "RO:part_of"
@@ -35,8 +35,8 @@
       "internal": false
     },
     {
-      "subject": "ZFA:brain",
-      "object": "ZFA:whole_organism",
+      "ontology_term_closure_subject": "ZFA:brain",
+      "ontology_term_closure_object": "ZFA:whole_organism",
       "relation": [
         "RO:is_a",
         "RO:part_of"

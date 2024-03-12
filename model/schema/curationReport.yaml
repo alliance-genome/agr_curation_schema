@@ -56,7 +56,7 @@ classes:
   CurationReportHistory:
     is_a: AuditedObject
     description: >-
-      Object used to describe the indiviual run of this curation report
+      Object used to describe the individual run of this curation report
     slots:
       - curation_report
       - curation_report_timestamp

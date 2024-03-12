@@ -1,5 +1,5 @@
 {
-  "linkml_version": "1.8.0",
+  "linkml_version": "2.0.0",
   "construct_ingest_set": [
     {
       "created_by_curie": "WB:WBPerson123",
@@ -7,15 +7,51 @@
       "internal": false,
       "obsolete": false,
       "mod_entity_id": "WB:WBConstruct123",
-      "name": "Construct A",
-      "taxon_curie": "NCBITaxon:6239",
-      "generated_by_identifier": "WB:WBLaboratory123",
-      "manufactured_by_identifier": "Construct Corps",
+      "construct_symbol_dto": {
+        "name_type_name": "nomenclature_symbol",
+        "format_text": "const123",
+        "display_text": "const123",
+        "synonym_url": "https://synonym_url.com/const123",
+        "synonym_scope_name": "exact",
+        "evidence_curies": [
+          "PMID:01231002"
+        ],
+        "internal": false
+      },
+      "construct_full_name_dto": {
+        "name_type_name": "full_name",
+        "format_text": "Construct A",
+        "display_text": "Construct A",
+        "synonym_url": "https://synonym_url.com/a83",
+        "synonym_scope_name": "exact",
+        "evidence_curies": [
+          "PMID:01231002"
+        ],
+        "internal": false
+      },
+      "construct_synonym_dtos": [
+        {
+          "name_type_name": "synonym",
+          "format_text": "Construct Alpha",
+          "display_text": "Construct α",
+          "synonym_url": "https://synonym_url.com/ConstructAlpha",
+          "synonym_scope_name": "exact",
+          "evidence_curies": [
+            "PMID:01231002"
+          ],
+          "internal": false
+        }
+      ],
+      "secondary_identifiers": [
+        "AB:12345",
+        "ZY:4321"
+      ],
       "reference_curies": [
         "PMID:101231321"
       ],
       "construct_component_dtos": [
         {
+          "relation_name": "expresses",
           "component_symbol": "comA",
           "taxon_curie": "NCBITaxon:6239",
           "taxon_text": "Caenorhabditis elegans",
@@ -28,14 +64,25 @@
           ],
           "internal": false
         }
-      ]
+      ],
+      "data_provider_dto": {
+        "source_organization_abbreviation": "WB",
+        "cross_reference_dto": {
+          "referenced_curie": "WB:WBConstruct123",
+          "prefix": "WB",
+          "page_area": "construct",
+          "display_name": "WB:WBConstruct123",
+          "internal": false
+        },
+        "internal": false
+      }
     }
   ],
   "construct_genomic_entity_association_ingest_set": [
     {
       "construct_identifier": "WB:WBConstruct123",
       "genomic_entity_relation_name": "is_regulated_by",
-      "genomic_entity_curie": "WB:WBGene00000001",
+      "genomic_entity_identifier": "WB:WBGene00000001",
       "evidence_curies": [
         "PMID:11231512"
       ],

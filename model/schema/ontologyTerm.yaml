@@ -102,11 +102,10 @@ slots:
       like "develops_from", ancestors are the terms to which this term develops into (not a true
       parent/child or ancestor/descendant relationship).
 
-  relationship_type:
-    range: string
-    multivalued: true
+  child_count:
+    range: integer
 
-  distance_between:
+  descendant_count:
     range: integer
 
   evidence_code_curie:
@@ -121,7 +120,7 @@ slots:
 classes:
 
   OntologyTerm:
-    is_a: AuditedObject
+    is_a: CurieObject
     description: >-
       A concept or class in an ontology, vocabulary or thesaurus. Note, ontology terms
       can be found in multiple ontologies (ie: mireoting). defining_slots helps define
@@ -142,8 +141,9 @@ classes:
       - secondary_identifiers
       - ancestors
       - descendants
+      - child_count
+      - descendant_count
     defining_slots:
-      - curie
       - namespace
     slot_usage:
       definition:
@@ -157,18 +157,21 @@ classes:
 
   OntologyTermClosure:
     is_a: EvidenceAssociation
-    slots:
-      - relationship_type
-      - distance_between
-    slot_usage:
-      subject:
+    attributes:
+      ontology_term_closure_subject:
         range: OntologyTerm
-      object:
+        required: true
+      ontology_term_closure_object:
         range: OntologyTerm
+        required: true
       distance_between:
+        range: integer
         description: >-
           distance_between is zero for reflexive–transitive closure
           each node has an ancestor or descendant of itself
+      relationship_type:
+        range: string
+        multivalued: true
 
   DOTerm:
     is_a: OntologyTerm
@@ -190,6 +193,12 @@ classes:
 
   GOTerm:
     is_a: OntologyTerm
+
+  GENOTerm:
+    is_a: OntologyTerm
+    description: >-
+      An ontology term from the GENO ontology.
+      PURL: http://purl.obolibrary.org/obo/geno.owl
 
   ROTerm:
     is_a: OntologyTerm

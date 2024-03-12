@@ -64,39 +64,40 @@ classes:
       - related_notes
       - data_provider
     slot_usage:
-        subject:
-            required: true
-        object:
-            required: true
-        single_reference:
-            required: true
+      single_reference:
+        required: true
 
   AnnotationDTO:
-    is_a: AuditedObjectDTO
+    is_a: SingleReferenceAssociationDTO
     abstract: true
     description: >-
       Ingest class for an annotation
     slots:
       - mod_internal_id
       - mod_entity_id
-      - reference_curie
       - note_dtos
       - data_provider_dto
       - condition_relation_dtos
+    slot_usage:
+      reference_curie:
+        required: true
 
   PhenotypeAnnotation:
     is_a: Annotation
     description: >-
       An annotation asserting an association between a biological entity and a phenotype supported by evidence.
     slots:
-      - phenotype_term
-    slot_usage:
-      subject:                            # objectId in JSON schema
+      - phenotype_annotation_subject
+      - phenotype_terms
+    attributes:
+      phenotype_annotation_object:
         description: >-
-          The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, by direct curation.
+          phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed
+          statement of the phenotype from a post-composed terminology
         required: true
-        range: BiologicalEntity
-      phenotype_term:
+        range: string
+    slot_usage:
+      phenotype_terms:
         values_from:
           - HP
           - MP
@@ -112,12 +113,6 @@ classes:
             description: axon morphology variant
           - value: MP:0001569
             description: abnormal circulating bilirubin level
-      object:             # phenotypeStatement in JSON schema; eventually object should point to Phenotype class object
-        description: >-
-          phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed
-          statement of the phenotype from a post-composed terminology
-        required: true
-        range: string
       single_reference:
         description: >-
           The reference in which the phenotype association was asserted/reported.
@@ -140,7 +135,7 @@ classes:
       Ingest class for association between a biological entity and a phenotype
     slots:
       - phenotype_statement
-      - phenotype_term_curie
+      - phenotype_term_curies
 
   GenePhenotypeAnnotation:
     description: >-
@@ -150,8 +145,7 @@ classes:
     slots:
       - sgd_strain_background   # Does this also apply to phenotype annotations?
     slot_usage:
-      subject:
-        required: true
+      phenotype_annotation_subject:
         description: >-
           The gene to which the phenotype ontology term is associated.
         range: Gene
@@ -161,8 +155,8 @@ classes:
     description: >-
       Ingest class for an association between a gene and a phenotype
     slots:
-      - gene_curie
-      - sgd_strain_background_curie
+      - gene_identifier
+      - sgd_strain_background_identifier
 
   AllelePhenotypeAnnotation:
     description: >-
@@ -173,7 +167,7 @@ classes:
       - inferred_gene
       - asserted_genes
     slot_usage:
-      subject:
+      phenotype_annotation_subject:
         description: >-
           The allele to which the phenotype ontology term is associated.
         range: Allele
@@ -192,9 +186,9 @@ classes:
     description: >-
       Ingest class for an association between an allele and a phenotype
     slots:
-      - allele_curie
-      - inferred_gene_curie
-      - asserted_gene_curies
+      - allele_identifier
+      - inferred_gene_identifier
+      - asserted_gene_identifiers
 
   AGMPhenotypeAnnotation:
     description: >-
@@ -207,7 +201,7 @@ classes:
       - asserted_genes
       - asserted_allele
     slot_usage:
-      subject:
+      phenotype_annotation_subject:
         description: >-
           The AGM to which the phenotype ontology term is associated.
         range: AffectedGenomicModel
@@ -225,23 +219,30 @@ classes:
         required: false
       asserted_allele:
         required: false
+
   AGMPhenotypeAnnotationDTO:
     is_a: PhenotypeAnnotationDTO
     description: >-
       Ingest class for an association between an AGM and a phenotype
     slots:
-      - agm_curie
-      - inferred_gene_curie
-      - asserted_gene_curies
-      - inferred_allele_curie
-      - asserted_allele_curie
+      - agm_identifier
+      - inferred_gene_identifier
+      - asserted_gene_identifiers
+      - inferred_allele_identifier
+      - asserted_allele_identifier
 
   DiseaseAnnotation:
     is_a: Annotation
     abstract: true
     description: >-
       An annotation asserting an association between a biological entity and a disease supported by evidence.
+    attributes:
+      disease_annotation_object:
+        description: The Disease Ontology term
+        range: DOTerm
+        required: true
     slots:
+      - disease_annotation_subject
       - negated
       - evidence_codes
       - annotation_type
@@ -259,7 +260,7 @@ classes:
           DiseaseAnnotation class code of "100", followed by a 12-digit identifier
       unique_id:
         description: >-
-          Unique identifer for the disease annotation.  Will be generated at AGR
+          Unique identifier for the disease annotation.  Will be generated at AGR
           if not submitted by the MOD.
         required: false
       mod_entity_id:
@@ -272,19 +273,9 @@ classes:
           The model organism database (MOD) internal identifier for the disease annotation. When available,
           this is used for determination of distinctness instead of the Unique ID field.
         required: false
-      subject:
-        required: true
-        description: >-
-          The biological entity to which the disease ontology term is associated.
-        range: BiologicalEntity
       negated:
         description: >-
           The negative qualifier for the annotation.
-      object:
-        required: true
-        description: >-
-          The disease ontology term.
-        range: DOTerm
       relation:
         description: >-
           The relation between the subject biological entity and disease in the annotation.
@@ -332,11 +323,11 @@ classes:
       - negated
       - evidence_code_curies
       - annotation_type_name
-      - with_gene_curies
+      - with_gene_identifiers
       - disease_qualifier_names
       - genetic_sex_name
       - secondary_data_provider_dto
-      - disease_genetic_modifier_curies
+      - disease_genetic_modifier_identifiers
       - disease_genetic_modifier_relation_name
 
   GeneDiseaseAnnotation:
@@ -347,7 +338,7 @@ classes:
     slots:
       - sgd_strain_background
     slot_usage:
-      subject:
+      disease_annotation_subject:
         required: true
         description: >-
           The gene to which the disease ontology term is associated.
@@ -364,8 +355,8 @@ classes:
     description: >-
       Ingest class for an association between a gene and a disease
     slots:
-      - gene_curie
-      - sgd_strain_background_curie
+      - gene_identifier
+      - sgd_strain_background_identifier
 
   AlleleDiseaseAnnotation:
     description: >-
@@ -376,7 +367,7 @@ classes:
       - inferred_gene
       - asserted_genes
     slot_usage:
-      subject:
+      disease_annotation_subject:
         description: >-
           The allele to which the disease ontology term is associated.
         range: Allele
@@ -399,9 +390,9 @@ classes:
     description: >-
       Ingest class for an association between an allele and a disease
     slots:
-      - allele_curie
-      - inferred_gene_curie
-      - asserted_gene_curies
+      - allele_identifier
+      - inferred_gene_identifier
+      - asserted_gene_identifiers
 
 
   AGMDiseaseAnnotation:
@@ -415,7 +406,7 @@ classes:
       - asserted_genes
       - asserted_allele
     slot_usage:
-      subject:
+      disease_annotation_subject:
         description: >-
           The AGM to which the disease ontology term is associated.
         range: AffectedGenomicModel
@@ -445,11 +436,11 @@ classes:
     description: >-
       Ingest class for an association between an AGM and a disease
     slots:
-      - agm_curie
-      - inferred_gene_curie
-      - asserted_gene_curies
-      - inferred_allele_curie
-      - asserted_allele_curie
+      - agm_identifier
+      - inferred_gene_identifier
+      - asserted_gene_identifiers
+      - inferred_allele_identifier
+      - asserted_allele_identifier
 
   ExperimentalCondition:
     is_a: AuditedObject
@@ -459,7 +450,7 @@ classes:
     slots:
       - unique_id                         # calculated centrally at the Alliance after import from MODs
       - condition_class                   # conditionClassId in frozen JSON schema
-      - condition_summary                 # analagous to conditionStatement in frozen JSON schema; for new DQM submissions should not be submitted but rather calculated centrally at the Alliance
+      - condition_summary                 # analogous to conditionStatement in frozen JSON schema; for new DQM submissions should not be submitted but rather calculated centrally at the Alliance
       - condition_id                      # conditionId in frozen JSON schema
       - condition_free_text               # dedicated slot for free text
       - condition_quantity                # conditionQuantity in frozen JSON schema
@@ -470,7 +461,7 @@ classes:
     slot_usage:
       unique_id:
         description: >-
-          Unique identifer for the experimental condition.  Will be generated at
+          Unique identifier for the experimental condition.  Will be generated at
           AGR.
         required: false
       condition_class:
@@ -508,7 +499,7 @@ classes:
       condition_chemical:
         description: >-
           ChEBI or molecular ontology id used in subset of condition terms.  ie: the specific
-          chemcial used in conjunction with 'chemical condition'.
+          chemical used in conjunction with 'chemical condition'.
         range: ChemicalTerm
 
   ExperimentalConditionDTO:
@@ -543,7 +534,7 @@ classes:
     slot_usage:
       unique_id:
         description: >-
-          Unique identifer for the condition relation.  Will be generated at
+          Unique identifier for the condition relation.  Will be generated at
           AGR.
         required: false
       handle:
@@ -595,9 +586,9 @@ slots:
       The allele to which something is manually asserted to be associated.
     range: Allele
 
-  asserted_allele_curie:
+  asserted_allele_identifier:
     description: >-
-      Curie of the allele to which something is manually asserted to be
+      Identifier (curie/mod_entity_id/mod_internal_id) of the allele to which something is manually asserted to be
       associated
     range: string
 
@@ -608,9 +599,9 @@ slots:
     range: Gene
     multivalued: true
 
-  asserted_gene_curies:
+  asserted_gene_identifiers:
     description: >-
-      Curies of the gene(s) to which something is manually asserted to be
+      Identifiers (curie/mod_entity_id/mod_internal_id) of the gene(s) to which something is manually asserted to be
       associated
     range: string
     multivalued: true
@@ -737,14 +728,21 @@ slots:
     inlined: true
     inlined_as_list: true
 
+  disease_annotation_subject:
+    required: true
+    description: >-
+      The biological entity to which the disease ontology term is associated.
+    domain: DiseaseAnnotation
+    range: BiologicalEntity
+      
   disease_genetic_modifiers:
     description: >-
       Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
     required: false
     multivalued: true
 
-  disease_genetic_modifier_curies:
-    description: Curie of BiologcalEntity that modifies the disease model
+  disease_genetic_modifier_identifiers:
+    description: Identifiers (curie/mod_entity_id/mod_internal_id) of BiologcalEntity that modifies the disease model
     domain: DiseaseAnnotationDTO
     range: string
     multivalued: true
@@ -801,9 +799,9 @@ slots:
       The gene to which something is inferred to be associated.
     range: Gene
 
-  inferred_gene_curie:
+  inferred_gene_identifier:
     description: >-
-      Curie of gene to which something is inferred to be associated via an
+      Identifier (curie/mod_entity_id/mod_internal_id) of gene to which something is inferred to be associated via an
       automated pipeline
     range: string
 
@@ -812,25 +810,32 @@ slots:
       The allele to which something is inferred to be associated.
     range: Allele
 
-  inferred_allele_curie:
+  inferred_allele_identifier:
     description: >-
-      Curie of allele to which something is inferred to be associated via an
+      Identifier (curie/mod_entity_id/mod_internal_id) of allele to which something is inferred to be associated via an
       automated pipeline
     range: string
 
-  phenotype_term:
+  phenotype_annotation_subject:
+    description: >-
+      The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, by direct curation.
+    required: true
+    domain: PhenotypeAnnotation
+    range: BiologicalEntity
+  
+  phenotype_terms:
     description: >-
       The phenotype ontology term used to describe the phenotype of an organism
       or a set of organisms.
     range: PhenotypeTerm
-    multivalued: false
+    multivalued: true
 
-  phenotype_term_curie:
+  phenotype_term_curies:
     description: >-
       The string representation of the phenotype ontology term (PhenotypeTerm)
       curie
     range: string
-    multivalued: false
+    multivalued: true
 
   phenotype_statement:
     description: >-
@@ -842,8 +847,8 @@ slots:
   sgd_strain_background:
     range: AffectedGenomicModel
 
-  sgd_strain_background_curie:
-    description: Curie of SGD strain background AGM
+  sgd_strain_background_identifier:
+    description: Identifier (curie/mod_entity_id/mod_internal_id) of SGD strain background AGM
     domain: GeneDiseaseAnnotationDTO
     range: string
 
@@ -853,8 +858,9 @@ slots:
     range: Gene
     multivalued: true
 
-  with_gene_curies:
+  with_gene_identifiers:
     description: >-
+      Identifier (curie/mod_entity_id/mod_internal_id) of genes
       http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8
     range: string
     multivalued: true

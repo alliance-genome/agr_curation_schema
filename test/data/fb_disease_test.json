@@ -1,8 +1,8 @@
 {
-  "linkml_version": "1.7.3",
+  "linkml_version": "2.0.0",
   "disease_allele_ingest_set": [
     {
-      "allele_curie": "FB:FBal0000272",
+      "allele_identifier": "FB:FBal0000272",
       "disease_relation_name": "is_implicated_in",
       "do_term_curie": "DOID:3191",
       "negated": false,
@@ -31,7 +31,7 @@
   ],
   "disease_gene_ingest_set": [
     {
-      "gene_curie": "FB:FBgn0000047",
+      "gene_identifier": "FB:FBgn0000047",
       "disease_relation_name": "is_implicated_in",
       "do_term_curie": "DOID:422",
       "negated": false,

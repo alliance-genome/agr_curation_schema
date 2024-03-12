@@ -1,5 +1,5 @@
 {
-  "linkml_version": "1.7.3",
+  "linkml_version": "2.0.0",
   "phenotype_gene_ingest_set": [
     {
       "reference_curie": "PMID:123456",
@@ -18,9 +18,9 @@
       "date_updated": "2015-04-09T10:15:30+00:00",
       "internal": false,
       "obsolete": false,
-      "gene_curie": "WB:WBGene00001",
+      "gene_identifier": "WB:WBGene00001",
       "phenotype_statement": "dye filling defect",
-      "phenotype_term_curie": "WBPhenotype:0001383",
+      "phenotype_term_curies": ["WBPhenotype:0001383"],
       "condition_relation_dtos": [
         {
           "condition_relation_type_name": "has_condition",
@@ -40,7 +40,7 @@
           "note_type_name": "phenotype_summary",
           "internal": false
         }
-      ],
+      ]
     }
   ]
 }

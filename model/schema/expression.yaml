@@ -43,7 +43,7 @@ emit_prefixes:
 classes:
 
   ExpressionExperiment:
-    is_a: AuditedObject
+    is_a: SubmittedObject
     abstract: true
     description: >-
       The experimental design used to determine the expression of some entity,
@@ -68,6 +68,16 @@ classes:
       - condition_relations
       - related_notes
       - expression_annotations    # For non-DTO only; for data submission, relate via ExpressionAnnotationDTO.from_expression_experiment instead.
+    rules:
+      - postconditions:
+          any_of:
+            - slot_conditions:
+                biological_entity_assayed:
+                  required: true
+            - slot_conditions:
+                reagents_used:
+                  required: true
+          description: At least one of biological_entity_assayed or reagents_used should be populated.
 
   # DQM NOTE: For submission of the FMS expression data, one will need to also
   #           submit ExpressionExperiment objects that group the annotations
@@ -282,8 +292,17 @@ classes:
                   required: true
           description: At least one of anatomical_structure or cellular_component should be populated.
 
+  ExpressionAnnotationAssociation:
+    is_a: EvidenceAssociation
+    abstract: true
+    description: Base class for all ExpressionAnnotation associations
+    attributes:
+      expression_annotation_subject:
+        required: true
+        domain: ExpressionAnnotation
+
   ExpressionAnnotationImagePaneAssociation:
-    is_a: Association
+    is_a: EvidenceAssociation
     description: >-
       An association between an ExpressionAnnotation and an image (in part or
       in full).
@@ -291,11 +310,10 @@ classes:
       This aims to provide the same functionality as MGI imagepane.
       Some MODs (like ZFIN) point to the whole image. In these cases,
       the pane would encompass the whole image.
-    slot_usage:
-      subject:
-        range: ExpressionAnnotation
-      object:
+    attributes:
+      expression_annotation_image_pane_association_object:
         range: ImagePane
+        required: true
 
 slots:
 
@@ -449,8 +467,6 @@ slots:
     description: >-
       Qualifiers that describe additional characteristics of gene expression.
       For example: faint, intense, restricted.
-    notes: >-
-      See the expression_qualifier_set enum at the bottom of this file for terms.
     domain: ExpressionAnnotation
     range: VocabularyTerm
     multivalued: true
@@ -545,67 +561,3 @@ slots:
     range: string
     required: true
     multivalued: false
-
-enums:
-
-  spatial_qualifier_set:
-    notes: >-
-      We need to get a set of relevant qualifiers used across the MODs.
-      We may prefer to use ontology terms instead of an enum here.
-      Filled in with a small sample of FB qualifiers for now.
-      Seems like MGI has similar terms
-      ZFIN does this.
-    permissible_values:
-      anterior:
-      anterior_posterior_gradient:
-      apical:
-      basal:
-      central:
-      distal:
-      dorsal:
-      dorso-lateral:
-      egg_length:
-      gap_expression_pattern:
-      pair_rule_expression_pattern:
-      segment_polarity_expression_pattern:
-      terminal_expression_pattern:
-      gradient:
-
-  expression_qualifier_set:
-    notes: >-
-      We need to get a set of relevant qualifiers used across the MODs.
-      Filled in with FB qualifiers for now.
-    permissible_values:
-      strong:
-      moderate:
-      faint:
-      endogenous:
-      granular:
-      intense:
-      punctate:
-      uniform:
-      non-uniform:
-      variable:
-      clusters:
-      diffuse:
-      graded:
-      not_specified:
-      patchy:
-      regionally_restricted:
-      scattered:
-      single_cells:
-      spotted:
-      ubiquitous:
-      widespread:
-
-  temporal_qualifier_set:
-    notes: >-
-      We need to get a set of relevant qualifiers used across the MODs.
-      Filled in with a FB qualifier for now. MGI, WB, ZFIN don't use this.
-    permissible_values:
-      throughout:
-        description: >-
-          An event that happens from start to end times included in the annotation
-      sometime_during:
-        description: >-
-          An event that happens during some of the stages included in the annotation, but maybe not all

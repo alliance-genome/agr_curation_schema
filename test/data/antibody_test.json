@@ -1,5 +1,5 @@
 {
-  "linkml_version": "1.9.1",
+  "linkml_version": "2.0.0",
   "antibody_ingest_set": [
     {
       "created_by_curie": "WB:WBPerson123",
@@ -28,7 +28,7 @@
       "clonality_name": "monoclonal",
       "heavy_chain_isotype_name": "IgA",
       "light_chain_isotype_name": "i4",
-      "antibody_target_gene_curies": [
+      "antibody_target_gene_identifiers": [
         "WB:WBGene00000001",
         "WB:WBGene00000002"
       ],
@@ -43,7 +43,18 @@
           "note_type_name": "antibody_description",
           "internal": false
         }
-      ]
+      ],
+      "data_provider_dto": {
+        "source_organization_abbreviation": "WB",
+        "cross_reference_dto": {
+          "referenced_curie": "WB:WBAntibody123",
+          "prefix": "WB",
+          "page_area": "construct",
+          "display_name": "WB:WBAntibody123",
+          "internal": false
+        },
+        "internal": false
+      }
     }
   ]
 }

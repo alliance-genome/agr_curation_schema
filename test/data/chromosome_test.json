@@ -1,0 +1,24 @@
+{
+  "linkml_version": "2.0.0",
+  "chromosome_ingest_set": [
+    {
+      "taxon_curie": "NCBITaxon:6239",
+      "created_by_curie": "WB:WBPerson2987",
+      "updated_by_curie": "WB:WBPerson2987",
+      "internal": false,
+      "obsolete": false,
+      "name": "WB:I",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "WB",
+        "cross_reference_dto": {
+          "referenced_curie": "WB:I",
+          "prefix": "WB",
+          "page_area": "chromosome",
+          "display_name": "WB:I",
+          "internal": false
+        },
+        "internal": false
+      }
+    }
+  ]
+}
