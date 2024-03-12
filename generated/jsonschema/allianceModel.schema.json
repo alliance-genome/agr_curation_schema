@@ -10734,13 +10734,6 @@
                     },
                     "type": "array"
                 },
-                "expression_qualifiers": {
-                    "description": "Qualifiers that describe additional characteristics of gene expression. For example: faint, intense, restricted.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
@@ -10904,6 +10897,13 @@
                 "single_reference": {
                     "description": "holds between an object and a single reference",
                     "type": "string"
+                },
+                "specimen_alleles": {
+                    "description": "The Allele(s) of the specimen assayed.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "specimen_genomic_model": {
                     "description": "The AffectedGenomicModel of the specimen assayed.",
