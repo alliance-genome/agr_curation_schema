@@ -107,7 +107,7 @@ classes:
       assay:                                                     ExpressionExperiment.assay_used
       crossReference:                                            ExpressionAnnotation.data_provider.cross_reference
       dateAssigned:                                              ExpressionAnnotation.date_created
-      whenExpressed.stageName:                                   n/a
+      whenExpressed.stageName:                                   ExpressionAnnotation.when_expressed_stage_name
       whenExpressed.stageTermId:                                 ExpressionAnnotation.object (ExpressionPattern.TemporalContext.developmental_stage_start)
       whenExpressed.stageUberonSlimTerm:                         ExpressionAnnotation.object (ExpressionPattern.TemporalContext.stage_uberon_slim_terms)
       whereExpressed.anatomicalStructureTermId:                  ExpressionAnnotation.object (ExpressionPattern.AnatomicalSite.anatomical_structure)
@@ -513,6 +513,17 @@ slots:
     range: TemporalContext
     multivalued: false
     required: true
+
+  when_expressed_stage_name:
+    description: >-
+      A human-readable stage name. To be used when an ontology term for the
+      relevant stage is not available.
+    notes: >-
+      Corresponds to whenExpressed.stageName in frozen JSON schema.
+    domain: ExpressionAnnotation
+    range: string
+    required: false
+    multivalued: false
 
   where_expressed:
     description: >-
