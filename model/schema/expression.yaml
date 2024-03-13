@@ -432,7 +432,7 @@ slots:
       expression pattern is unknown (e.g., unknown epitope of an antibody).
     domain: ExpressionExperiment
     multivalued: false
-    required: true
+    required: false
 
   expression_annotation_image_associations:
     domain: ExpressionAnnotation
