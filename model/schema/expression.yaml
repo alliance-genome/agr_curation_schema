@@ -99,9 +99,6 @@ classes:
           The MOD internal identifier for an expression experiment, if no curie
           is available. Can be constructed at the MOD just for submission.
 
-
-  # DQM NOTE: The assay (MMOTerm) is now submitted for the ExpressionExperiment object instead.
-  # DQM NOTE: Must now submit a relation slot value (is_expressed_in) for each ExpressionAnnotation.
   ExpressionAnnotation:
     is_a: Annotation
     abstract: true
