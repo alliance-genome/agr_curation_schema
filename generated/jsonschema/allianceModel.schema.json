@@ -21315,7 +21315,6 @@
                 }
             },
             "required": [
-                "developmental_stage_start",
                 "internal"
             ],
             "title": "TemporalContext",
