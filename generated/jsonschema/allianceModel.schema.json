@@ -10411,7 +10411,6 @@
                 }
             },
             "required": [
-                "when_expressed",
                 "where_expressed",
                 "internal"
             ],
@@ -12234,13 +12233,6 @@
             "additionalProperties": false,
             "description": "An annotation describing an expression pattern for a gene.",
             "properties": {
-                "associated_with_figures": {
-                    "description": "The figure(s) that support(s) the expression annotation.",
-                    "items": {
-                        "$ref": "#/$defs/Figure"
-                    },
-                    "type": "array"
-                },
                 "condition_relations": {
                     "items": {
                         "$ref": "#/$defs/ConditionRelation"
@@ -12286,6 +12278,18 @@
                     },
                     "type": "array"
                 },
+                "expression_annotation_subject": {
+                    "$ref": "#/$defs/Gene",
+                    "description": "The gene to which the expression annotation applies."
+                },
+                "expression_assay_used": {
+                    "description": "The assay used to experimentally determine gene expression.",
+                    "type": "string"
+                },
+                "expression_pattern": {
+                    "$ref": "#/$defs/ExpressionPattern",
+                    "description": "The spatiotemporal expression pattern of the expression annotation subject."
+                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
@@ -12305,6 +12309,13 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "related_figures": {
+                    "description": "The figure(s) that support(s) the expression annotation.",
+                    "items": {
+                        "$ref": "#/$defs/Figure"
+                    },
+                    "type": "array"
                 },
                 "related_notes": {
                     "description": "Use different note types to add extra information about specific aspects of the ExpressionAnnotation: temporal, structure, substructure, cellular_component, annotation-level, etc. Appropriate VocabularyTerms will need to be created: expression_annotation_note, etc.",
@@ -12333,12 +12344,20 @@
                     "description": "The individual that last modified the entity.",
                     "type": "string"
                 },
+                "when_expressed_stage_name": {
+                    "description": "A human-readable stage name. To be used when an ontology term for the relevant stage is not available.",
+                    "type": "string"
+                },
                 "where_expressed_statement": {
                     "description": "A human-readable free-text description of the anatomical location of the expression pattern.",
                     "type": "string"
                 }
             },
             "required": [
+                "expression_annotation_subject",
+                "expression_pattern",
+                "expression_assay_used",
+                "when_expressed_stage_name",
                 "where_expressed_statement",
                 "data_provider",
                 "single_reference",
@@ -12352,10 +12371,6 @@
             "additionalProperties": false,
             "description": "An ExpressionExperiment for a Gene.",
             "properties": {
-                "assay_used": {
-                    "description": "The assay used to experimentally determine gene expression.",
-                    "type": "string"
-                },
                 "condition_relations": {
                     "items": {
                         "$ref": "#/$defs/ConditionRelation"
@@ -12412,6 +12427,10 @@
                     },
                     "type": "array"
                 },
+                "expression_assay_used": {
+                    "description": "The assay used to experimentally determine gene expression.",
+                    "type": "string"
+                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
@@ -12462,6 +12481,7 @@
             "required": [
                 "data_provider",
                 "entity_assayed",
+                "expression_assay_used",
                 "expression_annotations",
                 "internal"
             ],
@@ -14771,10 +14791,6 @@
             "additionalProperties": false,
             "description": "The set of files and metadata that constitute an image.",
             "properties": {
-                "associated_with_figure": {
-                    "$ref": "#/$defs/Figure",
-                    "description": "The figure to which the image belongs."
-                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -14839,6 +14855,10 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
+                "related_figure": {
+                    "$ref": "#/$defs/Figure",
+                    "description": "The figure to which the image belongs."
+                },
                 "secondary_identifiers": {
                     "items": {
                         "type": "string"
@@ -14859,7 +14879,7 @@
                 }
             },
             "required": [
-                "associated_with_figure",
+                "related_figure",
                 "width",
                 "height",
                 "image_file",
