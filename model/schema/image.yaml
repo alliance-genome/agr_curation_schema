@@ -71,7 +71,7 @@ classes:
       Do we need a separate Image.label, or can it just use the label from the
       parent Figure entity?
     slots:
-      - associated_with_figure
+      - related_figure
       - width
       - height
       - image_file
@@ -83,7 +83,7 @@ classes:
       - video_still
       - secondary_identifiers
     slot_usage:
-      associated_with_figure:
+      related_figure:
         description: >-
           The figure to which the image belongs.
         required: true
@@ -139,16 +139,16 @@ slots:
     required: false
     multivalued: false
 
-  associated_with_figures:
+  related_figures:
     description: >-
       Holds between an entity and a set of Figures.
     range: Figure
     multivalued: true
 
-  associated_with_figure:
+  related_figure:
     description: >-
       Holds between an entity and a single Figure. Singular version of
-      associated_with_figures.
+      related_figures.
     range: Figure
     multivalued: false
 

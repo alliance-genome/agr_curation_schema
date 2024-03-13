@@ -61,7 +61,7 @@ classes:
       - data_provider
       - single_reference
       - entity_assayed
-      - assay_used
+      - expression_assay_used
       - detection_reagents
       - specimen_genomic_model
       - specimen_alleles
@@ -72,12 +72,12 @@ classes:
       - postconditions:
           any_of:
             - slot_conditions:
-                biological_entity_assayed:
+                entity_assayed:
                   required: true
             - slot_conditions:
                 reagents_used:
                   required: true
-          description: At least one of biological_entity_assayed or reagents_used should be populated.
+          description: At least one of entity_assayed or reagents_used should be populated.
 
   # DQM NOTE: For submission of the FMS expression data, one will need to also
   #           submit ExpressionExperiment objects that group the annotations
@@ -110,69 +110,33 @@ classes:
       expression pattern, supported by a single reference. Uniquely identifying
       aspects of this object comprise all slots (possibly excepting figure and
       image information).
-    notes: >-
-      A mapping of the agr_schemas (FMS) model to this LinkML model:
-      geneId:                                                    ExpressionAnnotation.subject
-      evidence:                                                  ExpressionAnnotation.single_reference
-      assay:                                                     ExpressionExperiment.assay_used
-      crossReference:                                            ExpressionAnnotation.data_provider.cross_reference
-      dateAssigned:                                              ExpressionAnnotation.date_created
-      whenExpressed.stageName:                                   ExpressionAnnotation.when_expressed_stage_name
-      whenExpressed.stageTermId:                                 ExpressionAnnotation.object (ExpressionPattern.TemporalContext.developmental_stage_start)
-      whenExpressed.stageUberonSlimTerm:                         ExpressionAnnotation.object (ExpressionPattern.TemporalContext.stage_uberon_slim_terms)
-      whereExpressed.anatomicalStructureTermId:                  ExpressionAnnotation.object (ExpressionPattern.AnatomicalSite.anatomical_structure)
-      whereExpressed.anatomicalStructureQualifierTermId:         ExpressionAnnotation.object (ExpressionPattern.AnatomicalSite.anatomical_structure_qualifiers)
-      whereExpressed.anatomicalStructureUberonSlimTermIds:       ExpressionAnnotation.object (ExpressionPattern.AnatomicalSite.anatomical_structure_uberon_terms)
-      whereExpressed.anatomicalSubStructureTermId:               ExpressionAnnotation.object (ExpressionPattern.AnatomicalSite.anatomical_substructure)
-      whereExpressed.anatomicalSubStructureQualifierTermId:      ExpressionAnnotation.object (ExpressionPattern.AnatomicalSite.anatomical_substructure_qualifiers)
-      whereExpressed.anatomicalSubStructureUberonSlimTermIds:    ExpressionAnnotation.object (ExpressionPattern.AnatomicalSite.anatomical_substructure_uberon_terms)
-      whereExpressed.cellularComponentTermId.cellular_component: ExpressionAnnotation.object (ExpressionPattern.AnatomicalSite.cellular_component)
-      whereExpressed.cellularComponentQualifierTermId:           ExpressionAnnotation.object (ExpressionPattern.AnatomicalSite.cellular_component_qualifiers)
-      whereExpressed.whereExpressedStatement:                    ExpressionAnnotation.where_expressed_statement
-      New required slots: relations.
-      New slots not required for submission of original FMS data: curie,
-      unique_id, mod_entity_id, mod_internal_id, related_notes,
-      expression_qualifiers, negated, uncertain, associated_with_figures,
-      expression_annotation_image_associations, condition_relations.
     slots:
       # from_expression_experiment   # For DTO only; for database, relate via non-DTO ExpressionExperiment.expression_annotations instead.
+      - expression_annotation_subject
+      - expression_pattern
+      - expression_assay_used
+      - when_expressed_stage_name
       - where_expressed_statement
       - negated
       - uncertain
-      - associated_with_figures
+      - related_figures
       - expression_annotation_image_associations
     slot_usage:
-      subject:
-        description: >-
-          The entity for which an expression pattern is being described; the
-          exact type will be constrained by the type of ExpressionAnnotation.
-        notes: >-
-          Slot is inherited from Annotation class.
-        required: true
       relation:
         description: >-
-          The relationship type between the subject and the expression pattern.
-          The exact relation will be constrained by the type of
-          ExpressionAnnotation.
+          The relationship type between the expression annotation subject and
+          the expression pattern. The exact relation will be constrained by
+          the type of ExpressionAnnotation.
         notes: >-
-          Slot is inherited from Annotation class.
-        required: true
+          Slot is inherited from Association class.
         range: VocabularyTerm
-      object:
-        description: >-
-          The spatiotemporal expression pattern of the subject, with associated
-          notes.
-        notes: >-
-          Slot is inherited from Annotation class.
-        required: true
-        range: ExpressionPattern
       # FUTURE ACTION ITEM: Accommodate WB annotations with non-Reference evidence.
       single_reference:
         description: >-
           The single Reference that supports the ExpressionAnnotation.
         notes: >-
           Will not be editable in the curation interface.
-          Slot is inherited from Annotation class.
+          Slot is inherited from SingleReferenceAssociation class.
         required: true
         range: Reference
       curie:
@@ -216,7 +180,7 @@ classes:
           will need to be created: expression_annotation_note, etc.
         notes: >-
           Slot is inherited from Annotation class.
-      associated_with_figures:
+      related_figures:
         description: >-
           The figure(s) that support(s) the expression annotation.
         notes: >-
@@ -234,8 +198,38 @@ classes:
     is_a: ExpressionAnnotation
     description: >-
       An annotation describing an expression pattern for a gene.
+    notes: >-
+      A mapping of the agr_schemas (FMS) model to this LinkML model:
+      geneId (REQUIRED):                                                  ExpressionAnnotation.expression_annotation_subject
+      assay (REQUIRED):                                                   ExpressionAnnotation.expression_assay_used
+      evidence (REQUIRED):                                                ExpressionAnnotation.single_reference (SingleReferenceAssociation -> Annotation -> ExpressionAnnotation)
+      dateAssigned (REQUIRED):                                            ExpressionAnnotation.date_created (AuditedObject -> Association -> SingleReferenceAssociation -> Annotation -> ExpressionAnnotation)
+      whenExpressed.stageName (REQUIRED):                                 ExpressionAnnotation.when_expressed_stage_name
+      whenExpressed.stageTermId:                                          ExpressionAnnotation.expression_pattern (ExpressionPattern.TemporalContext.developmental_stage_start)
+      whenExpressed.stageUberonSlimTerm:                                  ExpressionAnnotation.expression_pattern (ExpressionPattern.TemporalContext.stage_uberon_slim_terms)
+      whereExpressed.anatomicalStructureTermId: (*REQUIRED)               ExpressionAnnotation.expression_pattern (ExpressionPattern.AnatomicalSite.anatomical_structure)
+      whereExpressed.anatomicalStructureQualifierTermId:                  ExpressionAnnotation.expression_pattern (ExpressionPattern.AnatomicalSite.anatomical_structure_qualifiers)
+      whereExpressed.anatomicalStructureUberonSlimTermIds: (*REQUIRED)    ExpressionAnnotation.expression_pattern (ExpressionPattern.AnatomicalSite.anatomical_structure_uberon_terms)
+      whereExpressed.anatomicalSubStructureTermId:                        ExpressionAnnotation.expression_pattern (ExpressionPattern.AnatomicalSite.anatomical_substructure)
+      whereExpressed.anatomicalSubStructureQualifierTermId:               ExpressionAnnotation.expression_pattern (ExpressionPattern.AnatomicalSite.anatomical_substructure_qualifiers)
+      whereExpressed.anatomicalSubStructureUberonSlimTermIds:             ExpressionAnnotation.expression_pattern (ExpressionPattern.AnatomicalSite.anatomical_substructure_uberon_terms)
+      whereExpressed.cellularComponentTermId: (*REQUIRED)                 ExpressionAnnotation.expression_pattern (ExpressionPattern.AnatomicalSite.cellular_component)
+      whereExpressed.cellularComponentQualifierTermId:                    ExpressionAnnotation.expression_pattern (ExpressionPattern.AnatomicalSite.cellular_component_qualifiers)
+      whereExpressed.whereExpressedStatement (REQUIRED):                  ExpressionAnnotation.where_expressed_statement
+      crossReference:                                                     ExpressionAnnotation.data_provider.cross_reference
+      * NOTE: For the FMS whereExpressed component, either of the following is required.
+      1) anatomicalStructureTermId AND anatomicalStructureUberonSlimTermIds, or ...
+      2) cellularComponentTermId.
+      In this LinkML model, the where_expressed slot is required, with further
+      postconditions requirements in the AnatomicalSite object, though these
+      postconditions are still not as specific as the FMS model.
+      New required slots: relation.
+      New non-required slots: curie, unique_id, mod_entity_id, mod_internal_id,
+      related_notes, expression_qualifiers, negated, uncertain,
+      related_figures, expression_annotation_image_associations,
+      condition_relations.
     slot_usage:
-      subject:
+      expression_annotation_subject:
         description: >-
           The gene to which the expression annotation applies.
         range: Gene
@@ -296,10 +290,6 @@ classes:
     is_a: EvidenceAssociation
     abstract: true
     description: Base class for all ExpressionAnnotation associations
-    attributes:
-      expression_annotation_subject:
-        required: true
-        domain: ExpressionAnnotation
 
   ExpressionAnnotationImagePaneAssociation:
     is_a: EvidenceAssociation
@@ -393,11 +383,11 @@ slots:
     required: False
     multivalued: true
 
-  assay_used:
+  expression_assay_used:
     description: >-
       The assay used to experimentally determine gene expression.
-    domain: ExpressionAnnotation
     range: MMOTerm
+    required: true
 
   cellular_component:
     notes: >-
@@ -441,13 +431,21 @@ slots:
       may be a sequence feature, or a placeholder if the exact subject of the
       expression pattern is unknown (e.g., unknown epitope of an antibody).
     domain: ExpressionExperiment
-    required: true
     multivalued: false
+    required: true
 
   expression_annotation_image_associations:
     domain: ExpressionAnnotation
     range: ExpressionAnnotationImagePaneAssociation
     multivalued: true
+
+  expression_annotation_subject:
+    description: >-
+      The entity for which an expression pattern is being described; the
+      exact type will be constrained by the type of ExpressionAnnotation.
+    domain: ExpressionAnnotation
+    multivalued: false
+    required: true
 
   expression_annotations:
     description: >-
@@ -461,6 +459,15 @@ slots:
     range: ExpressionAnnotation
     required: true
     multivalued: true
+
+  expression_pattern:
+    description: >-
+      The spatiotemporal expression pattern of the expression annotation
+      subject.
+    domain: ExpressionAnnotation
+    range: ExpressionPattern
+    multivalued: false
+    required: true
 
   # FUTURE ACTION ITEM: Load needed qualifiers as Vocabulary/OntologyTerms.
   expression_qualifiers:
@@ -521,7 +528,7 @@ slots:
     domain: ExpressionPattern
     range: TemporalContext
     multivalued: false
-    required: true
+    required: false
 
   when_expressed_stage_name:
     description: >-
@@ -531,8 +538,8 @@ slots:
       Corresponds to whenExpressed.stageName in frozen JSON schema.
     domain: ExpressionAnnotation
     range: string
-    required: false
     multivalued: false
+    required: true
 
   where_expressed:
     description: >-
@@ -552,5 +559,5 @@ slots:
       Corresponds to whereExpressedStatement in frozen JSON schema.
     domain: ExpressionAnnotation
     range: string
-    required: true
     multivalued: false
+    required: true
