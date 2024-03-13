@@ -12480,7 +12480,6 @@
             },
             "required": [
                 "data_provider",
-                "entity_assayed",
                 "expression_assay_used",
                 "expression_annotations",
                 "internal"
