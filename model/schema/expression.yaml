@@ -411,7 +411,7 @@ slots:
     domain: TemporalContext
     range: StageTerm
     multivalued: false
-    required: true
+    required: false
 
   developmental_stage_stop:
     description: >-
