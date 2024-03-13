@@ -12448,7 +12448,7 @@
                 },
                 "specimen_genomic_model": {
                     "$ref": "#/$defs/AffectedGenomicModel",
-                    "description": "The AffectedGenomicModel of the specimen assayed."
+                    "description": "The AffectedGenomicModel of the specimen."
                 },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
