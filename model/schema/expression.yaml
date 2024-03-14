@@ -54,11 +54,7 @@ classes:
       Specimens are defined by their AGM (or gel lane at MGI).
       This entity is originally specific to WB and MGI.
     slots:
-      - curie
       - unique_id
-      - mod_entity_id
-      - mod_internal_id
-      - data_provider
       - single_reference
       - entity_assayed
       - expression_assay_used
