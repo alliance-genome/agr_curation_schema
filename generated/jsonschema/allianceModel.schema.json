@@ -12479,9 +12479,9 @@
                 }
             },
             "required": [
-                "data_provider",
                 "expression_assay_used",
                 "expression_annotations",
+                "data_provider",
                 "internal"
             ],
             "title": "GeneExpressionExperiment",
