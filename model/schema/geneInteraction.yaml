@@ -91,7 +91,8 @@ classes:
     is_a: GeneGeneAssociation
     abstract: true
     slots:
-      - curie
+      - unique_id
+      - interaction_id
       - cross_references
       - interaction_source
       - interaction_type
@@ -116,7 +117,7 @@ classes:
       - WB
       - WWPDB
     slot_usage:
-      curie:
+      interaction_id:
         description: >-
           The unique primary identifier for the interaction. This should be the source
           (curation) database identifier, or if that is not available then the aggregation
@@ -138,7 +139,7 @@ classes:
       molecular interaction between gene products (e.g. protein-protein interactions),
       or may be a genetic interaction between genes (e.g. phenotypic suppression)
     slots:
-      - curie
+      - interaction_id
       - cross_reference_dtos
       - interaction_source_curie
       - interaction_type_curie
@@ -147,7 +148,7 @@ classes:
       - interactor_A_type_curie
       - interactor_B_type_curie
     slot_usage:
-      curie:
+      interaction_id:
         description: >-
           The unique primary identifier for the interaction. This should be the source
           (curation) database identifier, or if that is not available then the aggregation
@@ -247,6 +248,13 @@ slots:
     range: string
     required: true
   
+  interaction_id:
+    description: >-
+      Identifier for interaction provided by MOD or other external source
+    domain: GeneInteraction
+    range: string
+    required: false
+
   interaction_source:
     range: MITerm
     description: >-
