@@ -71,9 +71,9 @@ classes:
                 entity_assayed:
                   required: true
             - slot_conditions:
-                reagents_used:
+                detection_reagents:
                   required: true
-          description: At least one of entity_assayed or reagents_used should be populated.
+          description: At least one of entity_assayed or detection_reagents should be populated.
 
   # DQM NOTE: For submission of the FMS expression data, one will need to also
   #           submit ExpressionExperiment objects that group the annotations
