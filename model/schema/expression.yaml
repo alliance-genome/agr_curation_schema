@@ -90,6 +90,7 @@ classes:
         description: >-
           The Gene that is assayed in an ExpressionExperiment.
         range: Gene
+        required: true
       mod_internal_id:
         description: >-
           The MOD internal identifier for an expression experiment, if no curie

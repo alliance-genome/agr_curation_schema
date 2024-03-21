@@ -12479,6 +12479,7 @@
                 }
             },
             "required": [
+                "entity_assayed",
                 "expression_assay_used",
                 "expression_annotations",
                 "data_provider",
