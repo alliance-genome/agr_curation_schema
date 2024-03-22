@@ -12282,10 +12282,6 @@
                     "$ref": "#/$defs/Gene",
                     "description": "The gene to which the expression annotation applies."
                 },
-                "expression_assay_used": {
-                    "description": "The assay used to experimentally determine gene expression.",
-                    "type": "string"
-                },
                 "expression_pattern": {
                     "$ref": "#/$defs/ExpressionPattern",
                     "description": "The spatiotemporal expression pattern of the expression annotation subject."
@@ -12356,7 +12352,6 @@
             "required": [
                 "expression_annotation_subject",
                 "expression_pattern",
-                "expression_assay_used",
                 "when_expressed_stage_name",
                 "where_expressed_statement",
                 "data_provider",

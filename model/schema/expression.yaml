@@ -108,7 +108,6 @@ classes:
       # from_expression_experiment   # For DTO only; for database, relate via non-DTO ExpressionExperiment.expression_annotations instead.
       - expression_annotation_subject
       - expression_pattern
-      - expression_assay_used
       - when_expressed_stage_name
       - where_expressed_statement
       - negated
@@ -195,7 +194,7 @@ classes:
     notes: >-
       A mapping of the agr_schemas (FMS) model to this LinkML model:
       geneId (REQUIRED):                                                  ExpressionAnnotation.expression_annotation_subject
-      assay (REQUIRED):                                                   ExpressionAnnotation.expression_assay_used
+      assay (REQUIRED):                                                   ExpressionExperiment.expression_assay_used
       evidence (REQUIRED):                                                ExpressionAnnotation.single_reference (SingleReferenceAssociation -> Annotation -> ExpressionAnnotation)
       dateAssigned (REQUIRED):                                            ExpressionAnnotation.date_created (AuditedObject -> Association -> SingleReferenceAssociation -> Annotation -> ExpressionAnnotation)
       whenExpressed.stageName (REQUIRED):                                 ExpressionAnnotation.when_expressed_stage_name
