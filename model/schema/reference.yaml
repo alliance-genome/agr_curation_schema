@@ -127,6 +127,7 @@ slots:
 
   evidence:
     description: >-
+      The evidence that supports some assertion.
     range: InformationContentEntity
     multivalued: true
 

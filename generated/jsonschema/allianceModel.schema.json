@@ -1220,7 +1220,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -1521,7 +1521,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -1670,7 +1670,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -1806,7 +1806,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -2115,7 +2115,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -2549,7 +2549,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -2626,7 +2626,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -2776,7 +2776,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -2926,7 +2926,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -3072,7 +3072,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -3200,7 +3200,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -3337,7 +3337,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -3475,7 +3475,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -3602,7 +3602,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -3730,7 +3730,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -4089,7 +4089,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -4232,7 +4232,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -4298,7 +4298,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -4379,7 +4379,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -4462,7 +4462,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -4611,7 +4611,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -4800,16 +4800,48 @@
         },
         "AnatomicalSite": {
             "additionalProperties": false,
-            "description": "The developmental stage and/or age of the specimen in an annotation.",
+            "description": "The set of terms that define a specific anatomical site within a specimen.",
             "properties": {
                 "anatomical_structure": {
                     "type": "string"
                 },
+                "anatomical_structure_qualifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "anatomical_structure_uberon_terms": {
+                    "description": "UBERON slim terms that apply to the anatomical structure.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "anatomical_substructure": {
                     "type": "string"
                 },
+                "anatomical_substructure_qualifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "anatomical_substructure_uberon_terms": {
+                    "description": "UBERON slim terms that apply to the anatomical substructure.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "cellular_component": {
                     "type": "string"
+                },
+                "cellular_component_qualifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "created_by": {
                     "description": "The individual that created the entity.",
@@ -4842,10 +4874,6 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
-                },
-                "spatial_qualifiers": {
-                    "$ref": "#/$defs/SpatialQualifierSet",
-                    "description": "Qualifiers that describe the spatial characteristics of an event."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -7441,7 +7469,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -7697,7 +7725,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -7780,7 +7808,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -7926,7 +7954,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -8007,7 +8035,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -8228,7 +8256,7 @@
                     "type": "integer"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -8504,7 +8532,7 @@
                     "type": "integer"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -8739,7 +8767,7 @@
                     "type": "integer"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -10270,95 +10298,9 @@
             "title": "ExperimentalConditionDTO",
             "type": "object"
         },
-        "ExpressionAnnotation": {
-            "additionalProperties": false,
-            "description": "A description of when and where gene products are observed to be present, including experimental details, supporting evidence, and curator notes.",
-            "properties": {
-                "associated_with_figure": {
-                    "description": "The figure(s) that support(s) the expression annotation.",
-                    "items": {
-                        "$ref": "#/$defs/Figure"
-                    },
-                    "type": "array"
-                },
-                "belongs_to_expression_experiment": {
-                    "$ref": "#/$defs/ExpressionExperiment",
-                    "description": "Holds between an ExpressionAnnotation and an ExpressionExperiment."
-                },
-                "created_by": {
-                    "description": "The individual that created the entity.",
-                    "type": "string"
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "expression_qualifiers": {
-                    "$ref": "#/$defs/ExpressionQualifierSet",
-                    "description": "Qualifiers that describe additional characteristics of gene expression. For example: faint, intense, restricted."
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "negated": {
-                    "description": "if set to true, then the association is negated i.e. is not true",
-                    "type": "boolean"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": "boolean"
-                },
-                "related_notes": {
-                    "description": "Holds between an object and a list of related Note objects.",
-                    "items": {
-                        "$ref": "#/$defs/Note"
-                    },
-                    "type": "array"
-                },
-                "uncertain": {
-                    "description": "If set to true, then the related entity is uncertain.",
-                    "type": "boolean"
-                },
-                "updated_by": {
-                    "description": "The individual that last modified the entity.",
-                    "type": "string"
-                },
-                "when_expressed": {
-                    "$ref": "#/$defs/TemporalContext",
-                    "description": "When a gene product is observed to be present."
-                },
-                "where_expressed": {
-                    "$ref": "#/$defs/AnatomicalSite",
-                    "description": "Where a gene product is observed to be present."
-                }
-            },
-            "required": [
-                "belongs_to_expression_experiment",
-                "internal"
-            ],
-            "title": "ExpressionAnnotation",
-            "type": "object"
-        },
         "ExpressionAnnotationImagePaneAssociation": {
             "additionalProperties": false,
-            "description": "",
+            "description": "An association between an ExpressionAnnotation and an image (in part or in full).",
             "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
@@ -10385,7 +10327,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -10419,44 +10361,13 @@
             "title": "ExpressionAnnotationImagePaneAssociation",
             "type": "object"
         },
-        "ExpressionConditionRelationEnum": {
-            "description": "",
-            "enum": [
-                "has_condition",
-                "induced_by"
-            ],
-            "title": "ExpressionConditionRelationEnum",
-            "type": "string"
-        },
-        "ExpressionExperiment": {
+        "ExpressionPattern": {
             "additionalProperties": false,
-            "description": "Defined by the gene of interest, the specimen, the assay, the reagents (Antibody, Probe), and the reference. It groups ExpressionAnnotations.",
+            "description": "An expression pattern, as defined by spatial and temporal attributes, including all qualifiers.",
             "properties": {
-                "assay_used": {
-                    "description": "The assay used to experimentally determine gene expression.",
-                    "type": "string"
-                },
-                "biological_entity_assayed": {
-                    "$ref": "#/$defs/BiologicalEntity",
-                    "description": "Holds between a BiologicalEntity and an ExpressionExperiment that reports on its expression."
-                },
-                "condition_relations": {
-                    "items": {
-                        "$ref": "#/$defs/ConditionRelation"
-                    },
-                    "type": "array"
-                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
-                },
-                "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "type": "string"
-                },
-                "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -10482,96 +10393,29 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
-                "mod_internal_id": {
-                    "description": "The model organism database (MOD) internal identifier for the object",
-                    "type": "string"
-                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
-                "reagents_used": {
-                    "description": "Reagents used in the expression assay: e.g., antibodies, probes.",
-                    "items": {
-                        "$ref": "#/$defs/Reagent"
-                    },
-                    "type": "array"
-                },
-                "related_notes": {
-                    "description": "Holds between an object and a list of related Note objects.",
-                    "items": {
-                        "$ref": "#/$defs/Note"
-                    },
-                    "type": "array"
-                },
-                "single_reference": {
-                    "$ref": "#/$defs/Reference",
-                    "description": "holds between an object and a single reference"
-                },
-                "specimen_alleles": {
-                    "description": "The Allele(s) of the specimen assayed.",
-                    "items": {
-                        "$ref": "#/$defs/Allele"
-                    },
-                    "type": "array"
-                },
-                "specimen_genomic_model": {
-                    "$ref": "#/$defs/AffectedGenomicModel",
-                    "description": "The AffectedGenomicModel of the specimen."
-                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": "string"
+                },
+                "when_expressed": {
+                    "$ref": "#/$defs/TemporalContext",
+                    "description": "When some entity is observed to be present in a specimen. If no temporal information is available for an annotation, use a root stage term for the developmental_stage_start."
+                },
+                "where_expressed": {
+                    "$ref": "#/$defs/AnatomicalSite",
+                    "description": "Where some entity is observed to be present in a specimen. If no spatial information is available for an annotation, use a root anatomical term for the anatomical_structure."
                 }
             },
             "required": [
-                "data_provider",
+                "where_expressed",
                 "internal"
             ],
-            "title": "ExpressionExperiment",
+            "title": "ExpressionPattern",
             "type": "object"
-        },
-        "ExpressionQualifierSet": {
-            "description": "",
-            "enum": [
-                "strong",
-                "moderate",
-                "faint",
-                "endogenous",
-                "granular",
-                "intense",
-                "punctate",
-                "uniform",
-                "non-uniform",
-                "variable",
-                "clusters",
-                "diffuse",
-                "graded",
-                "not_specified",
-                "patchy",
-                "regionally_restricted",
-                "scattered",
-                "single_cells",
-                "spotted",
-                "ubiquitous",
-                "widespread"
-            ],
-            "title": "ExpressionQualifierSet",
-            "type": "string"
-        },
-        "ExpressionStatementTypeEnum": {
-            "description": "",
-            "enum": [
-                "expression_summary",
-                "where_expressed_note",
-                "expression_annotation_note"
-            ],
-            "title": "ExpressionStatementTypeEnum",
-            "type": "string"
         },
         "ExternalDatabaseLink": {
             "additionalProperties": false,
@@ -11664,7 +11508,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -12385,6 +12229,260 @@
             "title": "GeneDiseaseAnnotationDTO",
             "type": "object"
         },
+        "GeneExpressionAnnotation": {
+            "additionalProperties": false,
+            "description": "An annotation describing an expression pattern for a gene.",
+            "properties": {
+                "condition_relations": {
+                    "items": {
+                        "$ref": "#/$defs/ConditionRelation"
+                    },
+                    "type": "array"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "curie": {
+                    "description": "The Alliance-minted ID for the ExpressionAnnotation.",
+                    "type": "string"
+                },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Provide information about the data provider; this slot also allows for cross-references to be reported for the annotation."
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "expression_annotation_image_associations": {
+                    "description": "Images for the ExpressionAnnotation.",
+                    "items": {
+                        "$ref": "#/$defs/ExpressionAnnotationImagePaneAssociation"
+                    },
+                    "type": "array"
+                },
+                "expression_annotation_subject": {
+                    "$ref": "#/$defs/Gene",
+                    "description": "The gene to which the expression annotation applies."
+                },
+                "expression_pattern": {
+                    "$ref": "#/$defs/ExpressionPattern",
+                    "description": "The spatiotemporal expression pattern of the expression annotation subject."
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database identifier/curie for the ExpressionAnnotation.",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database internal identifier for the ExpressionAnnotation.",
+                    "type": "string"
+                },
+                "negated": {
+                    "description": "if set to true, then the association is negated i.e. is not true",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "related_figures": {
+                    "description": "The figure(s) that support(s) the expression annotation.",
+                    "items": {
+                        "$ref": "#/$defs/Figure"
+                    },
+                    "type": "array"
+                },
+                "related_notes": {
+                    "description": "Use different note types to add extra information about specific aspects of the ExpressionAnnotation: temporal, structure, substructure, cellular_component, annotation-level, etc. Appropriate VocabularyTerms will need to be created: expression_annotation_note, etc.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": "array"
+                },
+                "relation": {
+                    "description": "For a gene, the relation should be constrained to the expresssed_in VocabularyTerm.",
+                    "type": "string"
+                },
+                "single_reference": {
+                    "$ref": "#/$defs/Reference",
+                    "description": "The single Reference that supports the ExpressionAnnotation."
+                },
+                "uncertain": {
+                    "description": "If set to true, then the related entity is uncertain.",
+                    "type": "boolean"
+                },
+                "unique_id": {
+                    "description": "Unique identifier for the ExpressionAnnotation. Will be generated at AGR if not submitted by the model organism database.",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                },
+                "when_expressed_stage_name": {
+                    "description": "A human-readable stage name. To be used when an ontology term for the relevant stage is not available.",
+                    "type": "string"
+                },
+                "where_expressed_statement": {
+                    "description": "A human-readable free-text description of the anatomical location of the expression pattern.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "expression_annotation_subject",
+                "expression_pattern",
+                "when_expressed_stage_name",
+                "where_expressed_statement",
+                "data_provider",
+                "single_reference",
+                "relation",
+                "internal"
+            ],
+            "title": "GeneExpressionAnnotation",
+            "type": "object"
+        },
+        "GeneExpressionExperiment": {
+            "additionalProperties": false,
+            "description": "An ExpressionExperiment for a Gene.",
+            "properties": {
+                "condition_relations": {
+                    "items": {
+                        "$ref": "#/$defs/ConditionRelation"
+                    },
+                    "type": "array"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "detection_reagents": {
+                    "description": "Reagents used in the expression assay: e.g., construct, antibodies, probes.",
+                    "items": {
+                        "$ref": "#/$defs/Reagent"
+                    },
+                    "type": "array"
+                },
+                "entity_assayed": {
+                    "$ref": "#/$defs/Gene",
+                    "description": "The Gene that is assayed in an ExpressionExperiment."
+                },
+                "expression_annotations": {
+                    "description": "The list of ExpressionAnnotations for a given ExpressionExperiment.",
+                    "items": {
+                        "$ref": "#/$defs/ExpressionAnnotation"
+                    },
+                    "type": "array"
+                },
+                "expression_assay_used": {
+                    "description": "The assay used to experimentally determine gene expression.",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The MOD internal identifier for an expression experiment, if no curie is available. Can be constructed at the MOD just for submission.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "related_notes": {
+                    "description": "Holds between an object and a list of related Note objects.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": "array"
+                },
+                "single_reference": {
+                    "$ref": "#/$defs/Reference",
+                    "description": "holds between an object and a single reference"
+                },
+                "specimen_alleles": {
+                    "description": "The Allele(s) of the specimen assayed.",
+                    "items": {
+                        "$ref": "#/$defs/Allele"
+                    },
+                    "type": "array"
+                },
+                "specimen_genomic_model": {
+                    "$ref": "#/$defs/AffectedGenomicModel",
+                    "description": "The AffectedGenomicModel of the specimen."
+                },
+                "unique_id": {
+                    "description": "A non-curie unique identifier for a thing.",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "entity_assayed",
+                "expression_assay_used",
+                "expression_annotations",
+                "data_provider",
+                "internal"
+            ],
+            "title": "GeneExpressionExperiment",
+            "type": "object"
+        },
         "GeneFullNameSlotAnnotation": {
             "additionalProperties": false,
             "description": "The one current full name for the gene.",
@@ -12418,7 +12516,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -12571,7 +12669,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -12901,7 +12999,7 @@
                     "type": "integer"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -13000,7 +13098,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -13312,7 +13410,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -13589,7 +13687,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -13655,7 +13753,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -13736,7 +13834,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -13817,7 +13915,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -14696,10 +14794,6 @@
             "additionalProperties": false,
             "description": "The set of files and metadata that constitute an image.",
             "properties": {
-                "associated_with_figure": {
-                    "$ref": "#/$defs/Figure",
-                    "description": "The figure to which the image belongs."
-                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -14764,6 +14858,10 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
+                "related_figure": {
+                    "$ref": "#/$defs/Figure",
+                    "description": "The figure to which the image belongs."
+                },
                 "secondary_identifiers": {
                     "items": {
                         "type": "string"
@@ -14784,7 +14882,7 @@
                 }
             },
             "required": [
-                "associated_with_figure",
+                "related_figure",
                 "width",
                 "height",
                 "image_file",
@@ -16735,7 +16833,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -17133,7 +17231,7 @@
                     "type": "integer"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -19499,7 +19597,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -19777,7 +19875,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -19904,7 +20002,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -20032,7 +20130,7 @@
                     "type": "integer"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -20313,7 +20411,7 @@
                     "type": "integer"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -20553,7 +20651,7 @@
                     "type": "integer"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -20744,27 +20842,6 @@
             ],
             "title": "SourceVariantTranscriptLocationAssociationDTO",
             "type": "object"
-        },
-        "SpatialQualifierSet": {
-            "description": "",
-            "enum": [
-                "anterior",
-                "anterior_posterior_gradient",
-                "apical",
-                "basal",
-                "central",
-                "distal",
-                "dorsal",
-                "dorso-lateral",
-                "egg_length",
-                "gap_expression_pattern",
-                "pair_rule_expression_pattern",
-                "segment_polarity_expression_pattern",
-                "terminal_expression_pattern",
-                "gradient"
-            ],
-            "title": "SpatialQualifierSet",
-            "type": "string"
         },
         "Species": {
             "additionalProperties": false,
@@ -21175,7 +21252,7 @@
         },
         "TemporalContext": {
             "additionalProperties": false,
-            "description": "The developmental stage and/or age of the specimen in an annotation. Developmental_stage_stop is optional. Add an uncertainty flag here?",
+            "description": "The developmental stage and/or age of the specimen in an annotation. The developmental_stage_stop slot is optional.",
             "properties": {
                 "age": {
                     "description": "The age at which an annotated event was observed.",
@@ -21210,7 +21287,7 @@
                     "type": "string"
                 },
                 "developmental_stage_stop": {
-                    "description": "The end developmental stage at which an annotated event was observed.",
+                    "description": "The end developmental stage at which an annotated event was observed. This is not required if the annotation applies to a single stage.",
                     "type": "string"
                 },
                 "internal": {
@@ -21221,9 +21298,19 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
+                "stage_uberon_slim_terms": {
+                    "description": "The high-level UBERON slim terms that apply to the developmental range of the TemporalContext component of an ExpressionPattern. The following UBERON terms are allowed: UBERON:0000068, UBERON:0000113. A non-UBERON term is also allowed: post embryonic, pre-adult.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "temporal_qualifiers": {
-                    "$ref": "#/$defs/TemporalQualifierSet",
-                    "description": "Qualifiers of the stage or age in an annotation."
+                    "description": "Qualifiers of the stage or age in an annotation.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -21235,15 +21322,6 @@
             ],
             "title": "TemporalContext",
             "type": "object"
-        },
-        "TemporalQualifierSet": {
-            "description": "",
-            "enum": [
-                "throughout",
-                "sometime_during"
-            ],
-            "title": "TemporalQualifierSet",
-            "type": "string"
         },
         "Transcript": {
             "additionalProperties": false,
@@ -22066,7 +22144,7 @@
                     "type": "string"
                 },
                 "evidence": {
-                    "description": "",
+                    "description": "The evidence that supports some assertion.",
                     "items": {
                         "$ref": "#/$defs/InformationContentEntity"
                     },
@@ -24262,18 +24340,18 @@
         "anyOf": [
             {
                 "properties": {
-                    "biological_entity_assayed": {}
+                    "anatomical_structure": {}
                 },
                 "required": [
-                    "biological_entity_assayed"
+                    "anatomical_structure"
                 ]
             },
             {
                 "properties": {
-                    "reagents_used": {}
+                    "cellular_component": {}
                 },
                 "required": [
-                    "reagents_used"
+                    "cellular_component"
                 ]
             }
         ]
