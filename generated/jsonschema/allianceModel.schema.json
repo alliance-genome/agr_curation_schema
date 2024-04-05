@@ -352,6 +352,9 @@
                     "description": "The individual that created the entity.",
                     "type": "string"
                 },
+                "cross_reference": {
+                    "$ref": "#/$defs/CrossReference"
+                },
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
@@ -482,6 +485,9 @@
                 "created_by_curie": {
                     "description": "Curie of the Person object representing the individual that created the entity",
                     "type": "string"
+                },
+                "cross_reference_dto": {
+                    "$ref": "#/$defs/CrossReferenceDTO"
                 },
                 "data_provider_dto": {
                     "$ref": "#/$defs/DataProviderDTO",
@@ -3851,6 +3857,9 @@
                     "description": "The individual that created the entity.",
                     "type": "string"
                 },
+                "cross_reference": {
+                    "$ref": "#/$defs/CrossReference"
+                },
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
@@ -3974,6 +3983,9 @@
                 "created_by_curie": {
                     "description": "Curie of the Person object representing the individual that created the entity",
                     "type": "string"
+                },
+                "cross_reference_dto": {
+                    "$ref": "#/$defs/CrossReferenceDTO"
                 },
                 "data_provider_dto": {
                     "$ref": "#/$defs/DataProviderDTO",
@@ -13365,6 +13377,9 @@
                     "description": "The individual that created the entity.",
                     "type": "string"
                 },
+                "cross_reference": {
+                    "$ref": "#/$defs/CrossReference"
+                },
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
@@ -13476,6 +13491,9 @@
                 "created_by_curie": {
                     "description": "Curie of the Person object representing the individual that created the entity",
                     "type": "string"
+                },
+                "cross_reference_dto": {
+                    "$ref": "#/$defs/CrossReferenceDTO"
                 },
                 "data_provider_dto": {
                     "$ref": "#/$defs/DataProviderDTO",
@@ -17912,6 +17930,9 @@
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
+                },
+                "cross_reference": {
+                    "$ref": "#/$defs/CrossReference"
                 },
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
