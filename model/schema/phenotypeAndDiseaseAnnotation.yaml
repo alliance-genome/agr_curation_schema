@@ -89,6 +89,7 @@ classes:
     slots:
       - phenotype_annotation_subject
       - phenotype_terms
+      - cross_reference
     attributes:
       phenotype_annotation_object:
         description: >-
@@ -136,6 +137,7 @@ classes:
     slots:
       - phenotype_statement
       - phenotype_term_curies
+      - cross_reference_dto
 
   GenePhenotypeAnnotation:
     description: >-
