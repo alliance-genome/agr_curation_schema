@@ -145,7 +145,7 @@ classes:
       supported by evidence.
     is_a: PhenotypeAnnotation
     slots:
-      - sgd_strain_background   # Does this also apply to phenotype annotations?
+      - sgd_strain_background
     slot_usage:
       phenotype_annotation_subject:
         description: >-
