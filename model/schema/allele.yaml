@@ -165,7 +165,10 @@ classes:
     description: >-
     is_a: GenomicEntity
     slots:
+      - name
       - references
+      - synonyms
+      - secondary_identifiers
     slot_usage:
       name:
         required: true
@@ -173,7 +176,10 @@ classes:
   SequenceTargetingReagentDTO:
     is_a: GenomicEntityDTO
     slots:
+      - name
       - reference_curies
+      - synonyms
+      - secondary_identifiers
     slot_usage:
       mod_entity_id:
         required: true
