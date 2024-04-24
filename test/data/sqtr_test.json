@@ -3,6 +3,9 @@
   "sqtr_ingest_set": [
     {
       "mod_entity_id": "ZFIN:ZDB-TALEN-200601-1",
+      "name": "TALEN2-eftud2",
+      "synonyms" : [ "CXCR7mo1", "MO1-cxcr7b" ],
+      "secondary_identifiers" : [ "ZFIN:ZDB-MRKRSEQ-071105-1" ],
       "taxon_curie": "NCBITaxon:7955",
       "created_by_curie": "ZFIN",
       "updated_by_curie": "ZFIN",
@@ -23,15 +26,16 @@
       }
     },
     {
-      "mod_entity_id": "ZFIN:ZDB-CRISPR-220421",
+      "mod_entity_id": "ZFIN:ZDB-CRISPR-220422",
+      "name": "CRISPR1-psma1",
       "taxon_curie": "NCBITaxon:7955",
       "data_provider_dto": {
         "source_organization_abbreviation": "ZFIN",
         "cross_reference_dto": {
-          "referenced_curie": "ZFIN:ZDB-CRISPR-220421",
+          "referenced_curie": "ZFIN:ZDB-CRISPR-220422",
           "prefix": "ZFIN",
           "page_area": "allele",
-          "display_name": "ZFIN:ZDB-CRISPR-220421",
+          "display_name": "ZFIN:ZDB-CRISPR-220422",
           "internal": false
         },
         "internal": false
@@ -44,15 +48,16 @@
       ]
     },
     {
-      "mod_entity_id": "ZFIN:ZDB-MRPHLNO-220211",
+      "mod_entity_id": "ZFIN:ZDB-MRPHLNO-220216-1",
+      "name": "MO1-abcg2b",
       "taxon_curie": "NCBITaxon:7955",
       "data_provider_dto": {
         "source_organization_abbreviation": "ZFIN",
         "cross_reference_dto": {
-          "referenced_curie": "ZFIN:ZDB-MRPHLNO-220211",
+          "referenced_curie": "ZFIN:ZDB-MRPHLNO-220216-1",
           "prefix": "ZFIN",
           "page_area": "allele",
-          "display_name": "ZFIN:ZDB-MRPHLNO-220211",
+          "display_name": "ZFIN:ZDB-MRPHLNO-220216-1",
           "internal": false
         },
         "internal": false
