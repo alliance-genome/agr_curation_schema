@@ -19760,6 +19760,10 @@
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
                 },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
@@ -19768,6 +19772,19 @@
                     "description": "holds between an object and a list of references",
                     "items": {
                         "$ref": "#/$defs/Reference"
+                    },
+                    "type": "array"
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
+                    "items": {
+                        "type": "string"
                     },
                     "type": "array"
                 },
@@ -19781,6 +19798,7 @@
                 }
             },
             "required": [
+                "name",
                 "taxon",
                 "data_provider",
                 "internal"
@@ -19838,12 +19856,29 @@
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
                 },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
                 "reference_curies": {
                     "description": "External reference curies used for ingest",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
