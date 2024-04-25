@@ -165,7 +165,10 @@ classes:
     description: >-
     is_a: GenomicEntity
     slots:
+      - name
       - references
+      - synonyms
+      - secondary_identifiers
     slot_usage:
       name:
         required: true
@@ -173,7 +176,10 @@ classes:
   SequenceTargetingReagentDTO:
     is_a: GenomicEntityDTO
     slots:
+      - name
       - reference_curies
+      - synonyms
+      - secondary_identifiers
     slot_usage:
       mod_entity_id:
         required: true
@@ -187,9 +193,18 @@ classes:
         range: SequenceTargetingReagent
         required: true
 
+  SequenceTargetingReagentAssociationDTO:
+    is_a: EvidenceAssociationDTO
+    abstract: true
+    description: Base class for STR association DTOs
+    attributes:
+      sequence_targeting_reagent_identifier:
+        range: string
+        required: true
+
   SequenceTargetingReagentGeneAssociation:
     description: >-
-      the relationship between a Sequence Targeting Reagent and its targeted
+      The relationship between a Sequence Targeting Reagent and its targeted
       genes. The relation should be a VocabularyTerm with one of the following
       values - targets
     is_a: SequenceTargetingReagentAssociation
@@ -201,7 +216,22 @@ classes:
       relation:
         range: VocabularyTerm
 
-  # TO DO: create SequenceTargetingReagentToGeneAssociationDTO class? [CG]
+  SequenceTargetingReagentGeneAssociationDTO:
+    description: >-
+      The DTO class for the relationship between a Sequence Targeting Reagent and its targeted
+      genes. The relation_name should be a VocabularyTerm with one of the following
+      values - targets
+    is_a: SequenceTargetingReagentAssociationDTO
+    slots:
+      - relation_name
+    attributes:
+      gene_identifier:
+        range: string
+        required: true
+    slot_usage:
+      relation_name:
+        range: string
+
 
   ## ------------
   ## ALLELE SLOT ANNOTATION CLASSES
@@ -1108,6 +1138,17 @@ slots:
     description: >-
       The primary image for an allele that is used to represent the allele on a page.
     range: boolean
+
+  sequence_targeting_reagent_gene_association_object:
+    range: Gene
+    multivalued: false
+
+  sequence_targeting_reagent_identifier:
+    range: string
+    multivalued: false
+    domain: SequenceTargetingReagentAssociationDTO
+    description: >-
+      Identifier (curie/mod_entity_id/mod_internal_id) of the STR
 
   single_allele:
     range: Allele

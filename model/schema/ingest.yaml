@@ -81,6 +81,13 @@ slots:
     mixins:
       - object_set
 
+  sqtr_gene_association_ingest_set:
+    domain: Ingest
+    range: SequenceTargetingReagentGeneAssociationDTO
+    multivalued: true
+    mixins:
+      - object_set
+
   variant_ingest_set:
     domain: Ingest
     range: VariantDTO
@@ -370,6 +377,7 @@ classes:
       - source_variant_protein_location_association_ingest_set
       - agm_ingest_set
       - sqtr_ingest_set
+      - sqtr_gene_association_ingest_set
       - ontology_closure_ingest_set
       - transcript_ingest_set
       - protein_ingest_set

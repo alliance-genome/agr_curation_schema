@@ -15237,6 +15237,12 @@
                     },
                     "type": "array"
                 },
+                "sqtr_gene_association_ingest_set": {
+                    "items": {
+                        "$ref": "#/$defs/SequenceTargetingReagentGeneAssociationDTO"
+                    },
+                    "type": "array"
+                },
                 "sqtr_ingest_set": {
                     "items": {
                         "$ref": "#/$defs/SequenceTargetingReagentDTO"
@@ -19760,6 +19766,10 @@
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
                 },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
@@ -19768,6 +19778,19 @@
                     "description": "holds between an object and a list of references",
                     "items": {
                         "$ref": "#/$defs/Reference"
+                    },
+                    "type": "array"
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
+                    "items": {
+                        "type": "string"
                     },
                     "type": "array"
                 },
@@ -19781,6 +19804,7 @@
                 }
             },
             "required": [
+                "name",
                 "taxon",
                 "data_provider",
                 "internal"
@@ -19838,12 +19862,29 @@
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
                 },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
                 "reference_curies": {
                     "description": "External reference curies used for ingest",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -19869,7 +19910,7 @@
         },
         "SequenceTargetingReagentGeneAssociation": {
             "additionalProperties": false,
-            "description": "the relationship between a Sequence Targeting Reagent and its targeted genes. The relation should be a VocabularyTerm with one of the following values - targets",
+            "description": "The relationship between a Sequence Targeting Reagent and its targeted genes. The relation should be a VocabularyTerm with one of the following values - targets",
             "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
@@ -19932,6 +19973,73 @@
                 "internal"
             ],
             "title": "SequenceTargetingReagentGeneAssociation",
+            "type": "object"
+        },
+        "SequenceTargetingReagentGeneAssociationDTO": {
+            "additionalProperties": false,
+            "description": "The DTO class for the relationship between a Sequence Targeting Reagent and its targeted genes. The relation_name should be a VocabularyTerm with one of the following values - targets",
+            "properties": {
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "evidence_curies": {
+                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "gene_identifier": {
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "relation_name": {
+                    "description": "Name of VocabularyTerm representing relation of an Association",
+                    "type": "string"
+                },
+                "sequence_targeting_reagent_identifier": {
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "relation_name",
+                "gene_identifier",
+                "sequence_targeting_reagent_identifier",
+                "internal"
+            ],
+            "title": "SequenceTargetingReagentGeneAssociationDTO",
             "type": "object"
         },
         "SiftPredictionLevels": {
@@ -24314,6 +24422,12 @@
         "source_variant_transcript_location_association_ingest_set": {
             "items": {
                 "$ref": "#/$defs/SourceVariantTranscriptLocationAssociationDTO"
+            },
+            "type": "array"
+        },
+        "sqtr_gene_association_ingest_set": {
+            "items": {
+                "$ref": "#/$defs/SequenceTargetingReagentGeneAssociationDTO"
             },
             "type": "array"
         },
