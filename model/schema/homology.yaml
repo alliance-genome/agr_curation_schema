@@ -1,6 +1,6 @@
-id: https://github.com/alliance-genome/agr_curation_schema/ontologyTerm
-name: Alliance-Schema-Orthology-Term
-title: Alliance Schema Orthology Term
+id: https://github.com/alliance-genome/agr_curation_schema/homology.yaml
+name: Alliance-Schema-Homology
+title: Alliance Schema Homology
 
 imports:
   - core
@@ -59,12 +59,26 @@ classes:
     slots:
      - is_best_score
      - is_best_reverse_score
-     - confidence
+     - homology_confidence
      - strict_filter
      - moderate_filter
      - prediction_methods_matched
      - prediction_methods_not_matched
      - prediction_methods_not_called
+       
+  GeneToGeneParalogy:
+    is_a: AuditedObject
+    slots:
+      - subject_gene
+      - object_gene
+      - rank
+      - homology_confidence
+      - length
+      - similarity
+      - prediction_methods_matched
+      - prediction_methods_not_matched
+      - prediction_methods_not_called
+      - identity
 
 slots:
   
@@ -72,7 +86,6 @@ slots:
     description: >-
       DIOPT schema highlights the best pair
       Permissible values: Yes / No / Yes_Adjusted
-    domain: GeneToGeneOrthologyGenerated
     range: VocabularyTerm
     required: true
   
@@ -80,58 +93,70 @@ slots:
     description: >-
       DIOPT schema highlights the best pair
       Permissible values: Yes / No
-    domain: GeneToGeneOrthologyGenerated
     range: VocabularyTerm
     required: true
 
-  confidence:
+  homology_confidence:
     description: >-
-      Confidence of orthology match
+      Confidence of homology match
       Permissible values: moderate / high / low
-    domain: GeneToGeneOrthologyGenerated
     range: VocabularyTerm
     required: true
 
   strict_filter:
     description: >-
-      Indicates whether this orthology match is displayed when the strict filter
+      Indicates whether this homology match is displayed when the strict filter
       is selected
-    domain: GeneToGeneOrthologyGenerated
     range: boolean
 
   moderate_filter:
     description: >-
-      Indicates whether this orthology match is displayed when the moderate filter
+      Indicates whether this homology match is displayed when the moderate filter
       is selected
-    domain: GeneToGeneOrthologyGenerated
     range: boolean
 
   subject_gene:
-    description: The first gene in the orthology match pair
-    domain: GeneToGeneOrthology
+    description: The first gene in the homology match pair
     range: Gene
     required: true
 
   object_gene:
-    description: The second gene in the orthology match pair
-    domain: GeneToGeneOrthology
+    description: The second gene in the homology match pair
     range: Gene
     required: true
 
   prediction_methods_matched:
-    description: Source of the orthology match
-    domain: GeneToGeneOrthologyGenerated
+    description: Source of the homology match
     range: VocabularyTerm
     multivalued: true
 
   prediction_methods_not_matched:
     description: Prediction methods not matched
-    domain: GeneToGeneOrthologyGenerated
     range: VocabularyTerm
     multivalued: true
 
   prediction_methods_not_called:
     description: Prediction methods that were not called
-    domain: GeneToGeneOrthologyGenerated
     range: VocabularyTerm
     multivalued: true
+    
+  rank:
+    description: The rank (order) of the paralog result
+    range: integer
+    multivalued: false
+    
+  length:
+    description: The length of the aligned regions between two genes
+    range: integer
+    multivalued: false
+  
+  similarity:
+    description: Similarity score between the two genes
+    range: integer
+    multivalued: false
+    
+  identity:
+    description: Identity score between the two genes
+    range: integer
+    multivalued: false
+    
