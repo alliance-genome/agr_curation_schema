@@ -14015,7 +14015,7 @@
                 },
                 "object_gene": {
                     "$ref": "#/$defs/Gene",
-                    "description": "The second gene in the orthology match pair"
+                    "description": "The second gene in the homology match pair"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -14023,7 +14023,7 @@
                 },
                 "subject_gene": {
                     "$ref": "#/$defs/Gene",
-                    "description": "The first gene in the orthology match pair"
+                    "description": "The first gene in the homology match pair"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -14075,7 +14075,7 @@
                 },
                 "object_gene": {
                     "$ref": "#/$defs/Gene",
-                    "description": "The second gene in the orthology match pair"
+                    "description": "The second gene in the homology match pair"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -14087,7 +14087,7 @@
                 },
                 "subject_gene": {
                     "$ref": "#/$defs/Gene",
-                    "description": "The first gene in the orthology match pair"
+                    "description": "The first gene in the homology match pair"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -14106,10 +14106,6 @@
             "additionalProperties": false,
             "description": "Class that holds the properties necessary to record an orthology record from DIOPT",
             "properties": {
-                "confidence": {
-                    "description": "Confidence of orthology match Permissible values: moderate / high / low",
-                    "type": "string"
-                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": "string"
@@ -14134,6 +14130,10 @@
                     "format": "date-time",
                     "type": "string"
                 },
+                "homology_confidence": {
+                    "description": "Confidence of homology match Permissible values: moderate / high / low",
+                    "type": "string"
+                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
@@ -14147,19 +14147,19 @@
                     "type": "string"
                 },
                 "moderate_filter": {
-                    "description": "Indicates whether this orthology match is displayed when the moderate filter is selected",
+                    "description": "Indicates whether this homology match is displayed when the moderate filter is selected",
                     "type": "boolean"
                 },
                 "object_gene": {
                     "$ref": "#/$defs/Gene",
-                    "description": "The second gene in the orthology match pair"
+                    "description": "The second gene in the homology match pair"
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
                 "prediction_methods_matched": {
-                    "description": "Source of the orthology match",
+                    "description": "Source of the homology match",
                     "items": {
                         "type": "string"
                     },
@@ -14180,12 +14180,12 @@
                     "type": "array"
                 },
                 "strict_filter": {
-                    "description": "Indicates whether this orthology match is displayed when the strict filter is selected",
+                    "description": "Indicates whether this homology match is displayed when the strict filter is selected",
                     "type": "boolean"
                 },
                 "subject_gene": {
                     "$ref": "#/$defs/Gene",
-                    "description": "The first gene in the orthology match pair"
+                    "description": "The first gene in the homology match pair"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -14195,12 +14195,111 @@
             "required": [
                 "is_best_score",
                 "is_best_reverse_score",
-                "confidence",
+                "homology_confidence",
                 "subject_gene",
                 "object_gene",
                 "internal"
             ],
             "title": "GeneToGeneOrthologyGenerated",
+            "type": "object"
+        },
+        "GeneToGeneParalogy": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "homology_confidence": {
+                    "description": "Confidence of homology match Permissible values: moderate / high / low",
+                    "type": "string"
+                },
+                "identity": {
+                    "description": "Identity score between the two genes",
+                    "type": "integer"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "length": {
+                    "description": "The length of the aligned regions between two genes",
+                    "type": "integer"
+                },
+                "object_gene": {
+                    "$ref": "#/$defs/Gene",
+                    "description": "The second gene in the homology match pair"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "prediction_methods_matched": {
+                    "description": "Source of the homology match",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "prediction_methods_not_called": {
+                    "description": "Prediction methods that were not called",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "prediction_methods_not_matched": {
+                    "description": "Prediction methods not matched",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "rank": {
+                    "description": "The rank (order) of the paralog result",
+                    "type": "integer"
+                },
+                "similarity": {
+                    "description": "Similarity score between the two genes",
+                    "type": "integer"
+                },
+                "subject_gene": {
+                    "$ref": "#/$defs/Gene",
+                    "description": "The first gene in the homology match pair"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "subject_gene",
+                "object_gene",
+                "homology_confidence",
+                "internal"
+            ],
+            "title": "GeneToGeneParalogy",
             "type": "object"
         },
         "GenerationMethod": {
