@@ -4,6 +4,7 @@
     {
       "mod_entity_id": "WB:M05B5.5a.1",
       "taxon_curie": "NCBITaxon:6239",
+      "transcript_type_curie": "SO:0000010",
       "created_by_curie": "WB:WBPerson2987",
       "updated_by_curie": "WB:WBPerson2987",
       "internal": false,

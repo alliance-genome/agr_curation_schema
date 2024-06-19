@@ -150,6 +150,11 @@ classes:
       the result of a DNA-dependent RNA polymerase gene transcription event
     slots:
       - name
+      - transcript_type
+      - transcript_genomic_location_associations
+      - transcript_gene_association
+      - transcript_exon_associations
+      - transcript_cds_associations
     id_prefixes:
       - ENSEMBL
       - FB
@@ -165,6 +170,43 @@ classes:
       Ingest class for transcripts
     slots:
       - name
+      - transcript_type_curie
+
+  Exon:
+    is_a: GenomicEntity
+    description: >-
+      A part of a gene that will form a part of the final mature RNA produced
+      after introns have been removed by RNA splicing
+    slots:
+      - name
+      - exon_type
+      - exon_genomic_location_associations
+    
+  ExonDTO:
+    is_a: GenomicEntityDTO
+    description: >-
+      Ingest class for exons
+    slots:
+      - name
+      - exon_type_curie
+
+  CodingSequence:
+    is_a: GenomicEntity
+    description: >-
+      The coding sequence (CDS) is the portion of an exon that is translated 
+      into a protein
+    slots:
+      - name
+      - cds_type
+      - cds_genomic_location_associations
+
+  CodingSequenceDTO:
+    is_a: GenomicEntityDTO
+    description: >-
+      Ingest class for transcripts
+    slots:
+      - name
+      - cds_type_curie
 
   CrossReference:
     is_a: AuditedObject
@@ -489,6 +531,8 @@ classes:
         required: true
         any_of:
           - equals_string: has_location
+      evidence:
+        notes: List all references that support a given location association.
 
   LocationAssociationDTO:
     abstract: true
@@ -502,6 +546,98 @@ classes:
         required: true
         any_of:
           equals_string: has_location
+
+  TranscriptGenomicLocationAssociation:
+    is_a: LocationAssociation
+    description: >-
+      Location(s) of the transcript on the genome.
+    attributes:
+      transcript_genomic_location_association_object:
+        range: AssemblyComponent
+        required: true
+    slots:
+      - transcript_association_subject
+      - strand
+      - phase
+    slot_usage:
+      start:
+        required: true
+      end:
+        required: true
+      strand:
+        required: true
+
+  ExonGenomicLocationAssociation:
+    is_a: LocationAssociation
+    description: >-
+      Location(s) of the exon on the genome.
+    attributes:
+      exon_genomic_location_association_object:
+        range: AssemblyComponent
+        required: true
+    slots:
+      - exon_association_subject
+      - strand
+    slot_usage:
+      start:
+        required: true
+      end:
+        required: true
+      strand:
+        required: true
+
+  CodingSequenceGenomicLocationAssociation:
+    is_a: LocationAssociation
+    description: >-
+      Location(s) of the CDS on the genome.
+    attributes:
+      cds_genomic_location_association_object:
+        range: AssemblyComponent
+        required: true
+    slots:
+      - cds_association_subject
+      - strand
+      - phase
+    slot_usage:
+      start:
+        required: true
+      end:
+        required: true
+      strand:
+        required: true
+
+  TranscriptGeneAssociation:
+    is_a: EvidenceAssociation
+    description: >-
+      Association between a transcript and the gene that encodes it
+    slots:
+      - transcript_association_subject
+    attributes:
+      transcript_gene_association_object:
+        range: Gene
+        required: true
+
+  TranscriptExonAssociation:
+    is_a: EvidenceAssociation
+    description: >-
+      Association between a transcript and an exon of that transcript
+    slots:
+      - transcript_association_subject
+    attributes:
+      transcript_exon_association_object:
+        range: Gene
+        required: true
+  
+  TranscriptCodingSequenceAssociation:
+    is_a: EvidenceAssociation
+    description: >-
+      Association between a transcript a CDS of that transcript
+    slots:
+      - transcript_association_subject
+    attributes:
+      transcript_coding_sequence_association_object:
+        range: CodingSequence
+        required: true 
 
   Protein:
     is_a: GenomicEntity
@@ -711,6 +847,11 @@ slots:
     description: >-
       The strand of a DNA reference object to which an entity maps.
     range: strand_enum
+
+  phase:
+    description: >-
+      Number of nucleotides from the start of a feature to the start of a complete codon
+    range: integer
 
   genome_assembly:
     description: >-
@@ -1178,6 +1319,48 @@ slots:
   genomic_entity_identifier:
     range: string
 
+  genomic_entity_type:
+    description: SOTerm describing genomic entity type
+    range: SOTerm
+    required: true
+    multivalued: false
+
+  genomic_entity_type_curie:
+    description: Curie of SOTerm describing genomic entity type
+    range: string
+    required: true
+    multivalued: false
+
+  transcript_type:
+    is_a: genomic_entity_type
+    description: SOTerm describing transcript type
+    domain: Transcript
+
+  transcript_type_curie:
+    is_a: genomic_entity_type_curie
+    description: Curie of SOTerm describing transcript type
+    domain: TranscriptDTO
+
+  exon_type:
+    is_a: genomic_entity_type
+    description: SOTerm describing exon type
+    domain: Exon
+
+  exon_type_curie:
+    is_a: genomic_entity_type_curie
+    description: Curie of SOTerm describing exon type
+    domain: ExonDTO
+
+  cds_type:
+    is_a: genomic_entity_type
+    description: SOTerm describing CDS type
+    domain: CodingSequence
+
+  cds_type_curie:
+    is_a: genomic_entity_type_curie
+    description: Curie of SOTerm describing CDS type
+    domain: CodingSequenceDTO
+
   source_organization:
     domain: DataProvider
     range: Organization
@@ -1191,6 +1374,38 @@ slots:
   resource_descriptor_page:
     domain: CrossReference
     range: ResourceDescriptorPage
+
+  transcript_genomic_location_associations:
+    domain: Transcript
+    range: TranscriptGenomicLocationAssociation
+    required: false
+    multivalued: true
+
+  exon_genomic_location_associations:
+    domain: Exon
+    range: ExonGenomicLocationAssociation
+    required: false
+    multivalued: true
+
+  cds_genomic_location_associations:
+    domain: CodingSequence
+    range: CodingSequenceGenomicLocationAssociation
+    required: false
+    multivalued: true
+
+  transcript_gene_association:
+    domain: Transcript
+    range: TranscriptGeneAssociation
+
+  transcript_exon_associations:
+    domain: Transcript
+    range: TranscriptExonAssociation
+    multivalued: true
+
+  transcript_cds_associations:
+    domain: Transcript
+    range: TranscriptCodingSequenceAssociation
+    multivalued: true
 
   ## --------------------
 ## ASSOCIATION SLOTS
@@ -1224,6 +1439,24 @@ slots:
       a MOD internal ID or an external (3rd party) identifier.
     range: string
     multivalued: false
+
+  transcript_association_subject:
+    description: >-
+      Subject slot to be used for transcript associations
+    required: true
+    range: Transcript
+
+  exon_association_subject:
+    description: >-
+      Subject slot to be used for exon associations
+    required: true
+    range: Exon
+
+  cds_association_subject:
+    description: >-
+      Subject slot to be used for CDS associations
+    required: true
+    range: CodingSequence
 
 ## ----------
 ## PREDICATES
