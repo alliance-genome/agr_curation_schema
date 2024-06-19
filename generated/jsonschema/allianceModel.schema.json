@@ -7137,6 +7137,269 @@
             "title": "ChromosomeDTO",
             "type": "object"
         },
+        "CodingSequence": {
+            "additionalProperties": false,
+            "description": "The coding sequence (CDS) is the portion of an exon that is translated  into a protein",
+            "properties": {
+                "cds_genomic_location_associations": {
+                    "items": {
+                        "$ref": "#/$defs/CodingSequenceGenomicLocationAssociation"
+                    },
+                    "type": "array"
+                },
+                "cds_type": {
+                    "description": "SOTerm describing CDS type",
+                    "type": "string"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": "array"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "taxon": {
+                    "description": "The taxon from which the biological entity derives.",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "cds_type",
+                "taxon",
+                "data_provider",
+                "internal"
+            ],
+            "title": "CodingSequence",
+            "type": "object"
+        },
+        "CodingSequenceDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for transcripts",
+            "properties": {
+                "cds_type_curie": {
+                    "description": "Curie of SOTerm describing CDS type",
+                    "type": "string"
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "cross_reference_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/CrossReferenceDTO"
+                    },
+                    "type": "array"
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "taxon_curie": {
+                    "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "cds_type_curie",
+                "taxon_curie",
+                "data_provider_dto",
+                "internal"
+            ],
+            "title": "CodingSequenceDTO",
+            "type": "object"
+        },
+        "CodingSequenceGenomicLocationAssociation": {
+            "additionalProperties": false,
+            "description": "Location(s) of the CDS on the genome.",
+            "properties": {
+                "cds_association_subject": {
+                    "$ref": "#/$defs/CodingSequence",
+                    "description": "Subject slot to be used for CDS associations"
+                },
+                "cds_genomic_location_association_object": {
+                    "$ref": "#/$defs/AssemblyComponent"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "end": {
+                    "description": "The end of the feature in positive 1-based integer coordinates relative to the reference landmark.",
+                    "type": "integer"
+                },
+                "evidence": {
+                    "description": "The evidence that supports some assertion.",
+                    "items": {
+                        "$ref": "#/$defs/InformationContentEntity"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "phase": {
+                    "description": "Number of nucleotides from the start of a feature to the start of a complete codon",
+                    "type": "integer"
+                },
+                "relation": {
+                    "anyOf": [
+                        {
+                            "const": "has_location"
+                        }
+                    ],
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
+                },
+                "start": {
+                    "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
+                    "type": "integer"
+                },
+                "strand": {
+                    "$ref": "#/$defs/StrandEnum",
+                    "description": "The strand of a DNA reference object to which an entity maps."
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "cds_association_subject",
+                "strand",
+                "cds_genomic_location_association_object",
+                "start",
+                "end",
+                "relation",
+                "internal"
+            ],
+            "title": "CodingSequenceGenomicLocationAssociation",
+            "type": "object"
+        },
         "Company": {
             "additionalProperties": false,
             "description": "",
@@ -10141,6 +10404,265 @@
                 "internal"
             ],
             "title": "EMAPATerm",
+            "type": "object"
+        },
+        "Exon": {
+            "additionalProperties": false,
+            "description": "A part of a gene that will form a part of the final mature RNA produced after introns have been removed by RNA splicing",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": "array"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "exon_genomic_location_associations": {
+                    "items": {
+                        "$ref": "#/$defs/ExonGenomicLocationAssociation"
+                    },
+                    "type": "array"
+                },
+                "exon_type": {
+                    "description": "SOTerm describing exon type",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "taxon": {
+                    "description": "The taxon from which the biological entity derives.",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "exon_type",
+                "taxon",
+                "data_provider",
+                "internal"
+            ],
+            "title": "Exon",
+            "type": "object"
+        },
+        "ExonDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for exons",
+            "properties": {
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "cross_reference_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/CrossReferenceDTO"
+                    },
+                    "type": "array"
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "exon_type_curie": {
+                    "description": "Curie of SOTerm describing exon type",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_entity_id": {
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
+                    "type": "string"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "taxon_curie": {
+                    "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "exon_type_curie",
+                "taxon_curie",
+                "data_provider_dto",
+                "internal"
+            ],
+            "title": "ExonDTO",
+            "type": "object"
+        },
+        "ExonGenomicLocationAssociation": {
+            "additionalProperties": false,
+            "description": "Location(s) of the exon on the genome.",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "end": {
+                    "description": "The end of the feature in positive 1-based integer coordinates relative to the reference landmark.",
+                    "type": "integer"
+                },
+                "evidence": {
+                    "description": "The evidence that supports some assertion.",
+                    "items": {
+                        "$ref": "#/$defs/InformationContentEntity"
+                    },
+                    "type": "array"
+                },
+                "exon_association_subject": {
+                    "$ref": "#/$defs/Exon",
+                    "description": "Subject slot to be used for exon associations"
+                },
+                "exon_genomic_location_association_object": {
+                    "$ref": "#/$defs/AssemblyComponent"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "relation": {
+                    "anyOf": [
+                        {
+                            "const": "has_location"
+                        }
+                    ],
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
+                },
+                "start": {
+                    "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
+                    "type": "integer"
+                },
+                "strand": {
+                    "$ref": "#/$defs/StrandEnum",
+                    "description": "The strand of a DNA reference object to which an entity maps."
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "exon_association_subject",
+                "strand",
+                "exon_genomic_location_association_object",
+                "start",
+                "end",
+                "relation",
+                "internal"
+            ],
+            "title": "ExonGenomicLocationAssociation",
             "type": "object"
         },
         "ExperimentalCondition": {
@@ -21618,17 +22140,111 @@
                     "description": "The taxon from which the biological entity derives.",
                     "type": "string"
                 },
+                "transcript_cds_associations": {
+                    "items": {
+                        "$ref": "#/$defs/TranscriptCodingSequenceAssociation"
+                    },
+                    "type": "array"
+                },
+                "transcript_exon_associations": {
+                    "items": {
+                        "$ref": "#/$defs/TranscriptExonAssociation"
+                    },
+                    "type": "array"
+                },
+                "transcript_gene_association": {
+                    "$ref": "#/$defs/TranscriptGeneAssociation"
+                },
+                "transcript_genomic_location_associations": {
+                    "items": {
+                        "$ref": "#/$defs/TranscriptGenomicLocationAssociation"
+                    },
+                    "type": "array"
+                },
+                "transcript_type": {
+                    "description": "SOTerm describing transcript type",
+                    "type": "string"
+                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": "string"
                 }
             },
             "required": [
+                "transcript_type",
                 "taxon",
                 "data_provider",
                 "internal"
             ],
             "title": "Transcript",
+            "type": "object"
+        },
+        "TranscriptCodingSequenceAssociation": {
+            "additionalProperties": false,
+            "description": "Association between a transcript a CDS of that transcript",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "evidence": {
+                    "description": "The evidence that supports some assertion.",
+                    "items": {
+                        "$ref": "#/$defs/InformationContentEntity"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
+                },
+                "transcript_association_subject": {
+                    "$ref": "#/$defs/Transcript",
+                    "description": "Subject slot to be used for transcript associations"
+                },
+                "transcript_coding_sequence_association_object": {
+                    "$ref": "#/$defs/CodingSequence"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "transcript_association_subject",
+                "transcript_coding_sequence_association_object",
+                "relation",
+                "internal"
+            ],
+            "title": "TranscriptCodingSequenceAssociation",
             "type": "object"
         },
         "TranscriptDTO": {
@@ -21693,17 +22309,250 @@
                     "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
                     "type": "string"
                 },
+                "transcript_type_curie": {
+                    "description": "Curie of SOTerm describing transcript type",
+                    "type": "string"
+                },
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
                     "type": "string"
                 }
             },
             "required": [
+                "transcript_type_curie",
                 "taxon_curie",
                 "data_provider_dto",
                 "internal"
             ],
             "title": "TranscriptDTO",
+            "type": "object"
+        },
+        "TranscriptExonAssociation": {
+            "additionalProperties": false,
+            "description": "Association between a transcript and an exon of that transcript",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "evidence": {
+                    "description": "The evidence that supports some assertion.",
+                    "items": {
+                        "$ref": "#/$defs/InformationContentEntity"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
+                },
+                "transcript_association_subject": {
+                    "$ref": "#/$defs/Transcript",
+                    "description": "Subject slot to be used for transcript associations"
+                },
+                "transcript_exon_association_object": {
+                    "$ref": "#/$defs/Gene"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "transcript_association_subject",
+                "transcript_exon_association_object",
+                "relation",
+                "internal"
+            ],
+            "title": "TranscriptExonAssociation",
+            "type": "object"
+        },
+        "TranscriptGeneAssociation": {
+            "additionalProperties": false,
+            "description": "Association between a transcript and the gene that encodes it",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "evidence": {
+                    "description": "The evidence that supports some assertion.",
+                    "items": {
+                        "$ref": "#/$defs/InformationContentEntity"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
+                },
+                "transcript_association_subject": {
+                    "$ref": "#/$defs/Transcript",
+                    "description": "Subject slot to be used for transcript associations"
+                },
+                "transcript_gene_association_object": {
+                    "$ref": "#/$defs/Gene"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "transcript_association_subject",
+                "transcript_gene_association_object",
+                "relation",
+                "internal"
+            ],
+            "title": "TranscriptGeneAssociation",
+            "type": "object"
+        },
+        "TranscriptGenomicLocationAssociation": {
+            "additionalProperties": false,
+            "description": "Location(s) of the transcript on the genome.",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "end": {
+                    "description": "The end of the feature in positive 1-based integer coordinates relative to the reference landmark.",
+                    "type": "integer"
+                },
+                "evidence": {
+                    "description": "The evidence that supports some assertion.",
+                    "items": {
+                        "$ref": "#/$defs/InformationContentEntity"
+                    },
+                    "type": "array"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "phase": {
+                    "description": "Number of nucleotides from the start of a feature to the start of a complete codon",
+                    "type": "integer"
+                },
+                "relation": {
+                    "anyOf": [
+                        {
+                            "const": "has_location"
+                        }
+                    ],
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
+                },
+                "start": {
+                    "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
+                    "type": "integer"
+                },
+                "strand": {
+                    "$ref": "#/$defs/StrandEnum",
+                    "description": "The strand of a DNA reference object to which an entity maps."
+                },
+                "transcript_association_subject": {
+                    "$ref": "#/$defs/Transcript",
+                    "description": "Subject slot to be used for transcript associations"
+                },
+                "transcript_genomic_location_association_object": {
+                    "$ref": "#/$defs/AssemblyComponent"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "transcript_association_subject",
+                "strand",
+                "transcript_genomic_location_association_object",
+                "start",
+                "end",
+                "relation",
+                "internal"
+            ],
+            "title": "TranscriptGenomicLocationAssociation",
             "type": "object"
         },
         "UBERONTerm": {
