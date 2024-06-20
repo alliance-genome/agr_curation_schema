@@ -143,16 +143,20 @@ slots:
   rank:
     description: The rank (order) of the paralog result
     range: integer
+    required: true
     
   length:
     description: The length of the aligned regions between two genes
     range: integer
+    required: true
   
   similarity:
     description: Similarity score between the two genes
     range: integer
+    required: true
     
   identity:
     description: Identity score between the two genes
     range: integer
+    required: true
     
