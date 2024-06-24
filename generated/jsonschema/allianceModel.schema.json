@@ -19890,6 +19890,12 @@
                     },
                     "type": "array"
                 },
+                "sequence_targeting_reagent_gene_associations": {
+                    "items": {
+                        "$ref": "#/$defs/SequenceTargetingReagentGeneAssociation"
+                    },
+                    "type": "array"
+                },
                 "synonyms": {
                     "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
