@@ -399,18 +399,14 @@ slots:
     required: true
 
   gene_type:
+    is_a: genomic_entity_type
     description: SOTerm describing gene type
     domain: Gene
-    range: SOTerm
-    required: true
-    multivalued: false
 
   gene_type_curie:
+    is_a: genomic_entity_type_curie
     description: Curie of SOTerm describing gene type
     domain: GeneDTO
-    range: string
-    required: true
-    multivalued: false
 
   gene_types_secondary:
     description: >-

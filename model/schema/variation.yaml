@@ -357,14 +357,12 @@ slots:
     range: VocabularyTerm
 
   variant_type:
+    is_a: genomic_entity_type
     description: >-
       SOTerm describing the type of variant. In practice, variant type will be limited to a subset of the SO specified
       in an Alliance controlled vocabulary in order to maintain consistency.
-    required: true
-    multivalued: false
     domain: Variant
-    range: SOTerm
-
+    
   source_general_consequences:
     aliases: ["transcript_consequences"]
     required: false
