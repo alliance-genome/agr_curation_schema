@@ -1,0 +1,92 @@
+id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/highThroughputExpression.yaml
+name: High-Throughput-Expression-Dataset-Annotation
+title: High Throughput Expression Dataset Annotation
+description: Annotations for high-throughput expression experiments and datasets
+
+imports:
+  - core
+  - linkml:types
+
+prefixes:
+  alliance: 'http://alliancegenome.org/'
+  linkml: 'https://w3id.org/linkml/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+  dct: 'http://purl.org/dc/terms/'
+  WIKIDATA_PROPERTY: 'https://www.wikidata.org/wiki/Property:'
+  obograph: 'https://github.com/biodatamodels/obograph'
+
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - owl
+
+
+classes:
+
+  HighThroughputExpressionDatasetAnnotation:
+    is_a: SubmittedObject
+    description: >-
+      An entry for a published high-throughput expression dataset annotation.
+    slots:
+      - name # title in agr_schemas json
+      - references # publications in agr_schemas json
+      - related_note # use 'summary' note type; summary in agr_schemas json
+      - number_of_channels # numChannels in agr_schemas json
+      - sub_series # subSeries in agr_schemas json
+      - category_tags # categoryTags in agr_schemas json
+    slot_usage:
+      curie:
+        description: >-
+          "datasetId" in agr_schemas model. An id associated with a dataset object;
+          these will be external or MOD IDs.
+      related_note:
+        description: >-
+          When using the "summary" note type, this is the free text summary or description of the dataset
+      references:
+        description: >-
+          The list of publications associated with this dataset
+      title:
+        description: >-
+          The free text title of the dataset
+
+
+slots:
+
+  number_of_channels:
+    description: >-
+      For microarrays, the number of channels used; This can be one of two values: 1 or 2
+    domain: HighThroughputExpressionDatasetAnnotation
+    range: integer
+    multivalued: false
+    required: false
+  # TO DO from agr_schemas: need to make required for microarray assays
+
+  sub_series:
+    description: >-
+      If the dataset is a SuperSeries, this is a list of dataset ids that are associated with this dataset
+    domain: HighThroughputExpressionDatasetAnnotation
+    range: HighThroughputExpressionDatasetAnnotation
+    multivalued: true
+    required: false
+
+  category_tags:
+    description: >-
+      A list of controlled vocabulary terms to describe the experiment
+    domain: HighThroughputExpressionDatasetAnnotation
+    range: VocabularyTerm
+    multivalued: true
+    required: true

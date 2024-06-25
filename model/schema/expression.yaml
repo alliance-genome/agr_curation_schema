@@ -1,4 +1,7 @@
 id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/expression.yaml
+name: Alliance-Expression-Model
+title: Alliance Expression Model
+description: Alliance expression experiment and annotations
 
 imports:
   - affectedGenomicModel
