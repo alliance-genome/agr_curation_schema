@@ -169,6 +169,7 @@ classes:
       - references
       - synonyms
       - secondary_identifiers
+      - sequence_targeting_reagent_gene_associations
     slot_usage:
       name:
         required: true
@@ -1149,6 +1150,11 @@ slots:
     domain: SequenceTargetingReagentAssociationDTO
     description: >-
       Identifier (curie/mod_entity_id/mod_internal_id) of the STR
+
+  sequence_targeting_reagent_gene_associations:
+    domain: SequenceTargetingReagent
+    range: SequenceTargetingReagentGeneAssociation
+    multivalued: true
 
   single_allele:
     range: Allele
