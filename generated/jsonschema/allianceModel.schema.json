@@ -15820,7 +15820,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "\"datasetId\" in agr_schemas model. An id associated with a dataset object; these will be external or MOD IDs.",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
@@ -15914,7 +15914,7 @@
                     "type": "boolean"
                 },
                 "mod_entity_id": {
-                    "description": "\"datasetId\" in agr_schemas model. An id associated with a dataset object; these will be external or MOD IDs.",
+                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
