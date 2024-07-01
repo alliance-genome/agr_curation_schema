@@ -6049,9 +6049,14 @@
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": "string"
+                },
+                "when_expressed_stage_name": {
+                    "description": "A human-readable stage name. To be used when an ontology term for the relevant stage is not available.",
+                    "type": "string"
                 }
             },
             "required": [
+                "when_expressed_stage_name",
                 "data_provider",
                 "internal"
             ],
@@ -6117,9 +6122,14 @@
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
                     "type": "string"
+                },
+                "when_expressed_stage_name": {
+                    "description": "A human-readable stage name. To be used when an ontology term for the relevant stage is not available.",
+                    "type": "string"
                 }
             },
             "required": [
+                "when_expressed_stage_name",
                 "data_provider_dto",
                 "internal"
             ],

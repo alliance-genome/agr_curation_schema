@@ -712,7 +712,6 @@ slots:
       relevant stage is not available.
     notes: >-
       Corresponds to whenExpressed.stageName in frozen JSON schema.
-    domain: ExpressionAnnotation
     range: string
     multivalued: false
     required: true
