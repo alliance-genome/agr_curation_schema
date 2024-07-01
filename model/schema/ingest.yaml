@@ -330,6 +330,20 @@ slots:
     mixins:
       - object_set
 
+  high_throughput_expression_dataset_annotation_ingest_set:
+    domain: Ingest
+    range: HighThroughputExpressionDatasetAnnotationDTO
+    multivalued: true
+    mixins:
+      - object_set
+
+  high_throughput_expression_dataset_sample_annotation_ingest_set:
+    domain: Ingest
+    range: HighThroughputExpressionDatasetSampleAnnotationDTO
+    multivalued: true
+    mixins:
+      - object_set
+
   object_set:
     mixin: true
     domain: Ingest
@@ -384,3 +398,5 @@ classes:
       - chromosome_ingest_set
       - genome_assembly_ingest_set
       - assembly_component_ingest_set
+      - high_throughput_expression_dataset_annotation_ingest_set
+      - high_throughput_expression_dataset_sample_annotation_ingest_set
