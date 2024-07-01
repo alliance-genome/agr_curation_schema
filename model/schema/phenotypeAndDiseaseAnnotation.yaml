@@ -396,7 +396,6 @@ classes:
       - inferred_gene_identifier
       - asserted_gene_identifiers
 
-
   AGMDiseaseAnnotation:
     description: >-
       An annotation asserting an association between an AGM and a disease

@@ -258,6 +258,18 @@ classes:
       - temporal_qualifiers
       - stage_uberon_slim_terms
 
+  TemporalContextDTO:
+    is_a: AuditedObjectDTO
+    description: >-
+      The developmental stage and/or age of the specimen in an annotation. The
+      developmental_stage_stop slot is optional.
+    slots:
+      - developmental_stage_start_curie
+      - developmental_stage_stop_curie
+      - age
+      - temporal_qualifier_names
+      - stage_uberon_slim_term_curies
+
   AnatomicalSite:
     is_a: AuditedObject
     description: >-
@@ -281,6 +293,30 @@ classes:
                 cellular_component:
                   required: true
           description: At least one of anatomical_structure or cellular_component should be populated.
+
+  AnatomicalSiteDTO:
+    is_a: AuditedObject
+    description: >-
+      The set of terms that define a specific anatomical site within a specimen.
+    slots:
+      - anatomical_structure_curie
+      - anatomical_structure_qualifier_names
+      - anatomical_structure_uberon_term_curies
+      - anatomical_substructure_curie
+      - anatomical_substructure_qualifier_names
+      - anatomical_substructure_uberon_term_curies
+      - cellular_component_curie
+      - cellular_component_qualifier_names
+    rules:
+      - postconditions:
+          any_of:
+            - slot_conditions:
+                anatomical_structure_curie:
+                  required: true
+            - slot_conditions:
+                cellular_component_curie:
+                  required: true
+          description: At least one of anatomical_structure_curie or cellular_component_curie should be populated.
 
   ExpressionAnnotationAssociation:
     is_a: EvidenceAssociation
@@ -306,14 +342,24 @@ slots:
   age:
     description: >-
       The age at which an annotated event was observed.
-    domain: TemporalContext
     range: string
     multivalued: false
 
   anatomical_substructure:
+    description: >-
+      Primary anatomical substructure referenced within the context of an AnatomicalSite.
     domain: AnatomicalSite
     range: AnatomicalTerm
     multivalued: false
+
+  anatomical_substructure_curie:
+    description: >-
+      Primary anatomical substructure referenced within the context of an AnatomicalSiteDTO. The range
+      is any string representing an AnatomicalTerm ontology term.
+    domain: AnatomicalSiteDTO
+    range: string
+    multivalued: false
+
 
   # ACTION ITEM: Load needed qualifiers as Vocabulary/OntologyTerms.
   # ACTION ITEM: Add FlyBase qualifiers to BSPO; SCRUM-1291 (Sian).
@@ -324,6 +370,13 @@ slots:
       See the spatial_qualifier_set enum at the bottom of this file for terms.
     domain: AnatomicalSite
     range: VocabularyTerm
+    multivalued: true
+
+  anatomical_substructure_qualifier_names:
+    notes: >-
+      See the spatial_qualifier_set enum at the bottom of this file for terms.
+    domain: AnatomicalSiteDTO
+    range: string
     multivalued: true
 
   # DQM NOTE: Leave empty instead of submitting Other if no terms apply.
@@ -343,12 +396,41 @@ slots:
       Use of a placeholder term, Other, is no longer required or allowed.
     domain: AnatomicalSite
     range: UBERONTerm
-    required: False
+    required: false
+    multivalued: true
+
+  anatomical_substructure_uberon_term_curies:
+    description: >-
+      String representations of UBERON slim terms that apply to the anatomical substructure.
+    notes: >-
+      Allowable terms: UBERON:0001009, UBERON:0005409, UBERON:0000949,
+                       UBERON:0001008, UBERON:0002330, UBERON:0002193,
+                       UBERON:0002416, UBERON:0002423, UBERON:0002204,
+                       UBERON:0001016, UBERON:0000990, UBERON:0001004,
+                       UBERON:0001032, UBERON:0005726, UBERON:0007037,
+                       UBERON:0002105, UBERON:0002104, UBERON:0000924,
+                       UBERON:0000925, UBERON:0000926, UBERON:0003104,
+                       UBERON:0001013, UBERON:0000026, UBERON:0016887,
+                       UBERON:6005023, UBERON:0002539
+      Use of a placeholder term, Other, is no longer required or allowed.
+    domain: AnatomicalSiteDTO
+    range: string
+    required: false
     multivalued: true
 
   anatomical_structure:
+    description: >-
+      The primary anatomical structure referred to within the context of an AnatomicalSite object.
     domain: AnatomicalSite
     range: AnatomicalTerm
+    multivalued: false
+
+  anatomical_structure_curie:
+    description: >-
+      The primary anatomical structure referred to within the context of an AnatomicalSite object. The range
+      is any string representing an AnatomicalTerm ontology term
+    domain: AnatomicalSiteDTO
+    range: string
     multivalued: false
 
   # ACTION ITEM: Load needed qualifiers as Vocabulary/OntologyTerms.
@@ -357,6 +439,13 @@ slots:
       See the spatial_qualifier_set enum at the bottom of this file for terms.
     domain: AnatomicalSite
     range: VocabularyTerm
+    multivalued: true
+
+  anatomical_structure_qualifier_names:
+    notes: >-
+      See the spatial_qualifier_set enum at the bottom of this file for terms.
+    domain: AnatomicalSiteDTO
+    range: string
     multivalued: true
 
   # DQM NOTE: Leave empty instead of submitting Other if no terms apply.
@@ -379,23 +468,67 @@ slots:
     required: False
     multivalued: true
 
+  anatomical_structure_uberon_term_curies:
+    description: >-
+      UBERON slim terms that apply to the anatomical structure.
+    notes: >-
+      Allowable terms: UBERON:0001009, UBERON:0005409, UBERON:0000949,
+                       UBERON:0001008, UBERON:0002330, UBERON:0002193,
+                       UBERON:0002416, UBERON:0002423, UBERON:0002204,
+                       UBERON:0001016, UBERON:0000990, UBERON:0001004,
+                       UBERON:0001032, UBERON:0005726, UBERON:0007037,
+                       UBERON:0002105, UBERON:0002104, UBERON:0000924,
+                       UBERON:0000925, UBERON:0000926, UBERON:0003104,
+                       UBERON:0001013, UBERON:0000026, UBERON:0016887,
+                       UBERON:6005023, UBERON:0002539
+      Use of a placeholder term, Other, is no longer required or allowed.
+    domain: AnatomicalSiteDTO
+    range: string
+    required: False
+    multivalued: true
+
   expression_assay_used:
     description: >-
       The assay used to experimentally determine gene expression.
     range: MMOTerm
     required: true
 
+  expression_assay_curie:
+    description: >-
+      The assay used to experimentally determine gene expression.
+    range: string
+    required: true
+
   cellular_component:
+    description: >-
+      The primary cellular component referred to within the context of an AnatomicalSite object.
     notes: >-
       I would like to restrict the range to GOTerm in cellular_component
       branch, but I'm not sure how to do this.
     domain: AnatomicalSite
     range: GOTerm
+    multivalued: false
+
+  cellular_component_curie:
+    description: >-
+      The primary cellular component referred to within the context of an AnatomicalSite object. The range
+      is any string representing a GOTerm ontology term
+    notes: >-
+      I would like to restrict the range to GOTerm in cellular_component
+      branch, but I'm not sure how to do this.
+    domain: AnatomicalSiteDTO
+    range: string
+    multivalued: false
 
   # ACTION ITEM: Load needed qualifiers as Vocabulary/OntologyTerms.
   cellular_component_qualifiers:
     domain: AnatomicalSite
     range: VocabularyTerm
+    multivalued: true
+
+  cellular_component_qualifier_names:
+    domain: AnatomicalSite
+    range: string
     multivalued: true
 
   developmental_stage_start:
@@ -409,6 +542,17 @@ slots:
     multivalued: false
     required: false
 
+  developmental_stage_start_curie:
+    description: >-
+      The beginning developmental stage at which an annotated event was observed.
+    notes: >-
+      Currently, we limit this to a single stage, but we could consider allowing
+      for stage ranges for a single annotation.
+    domain: TemporalContextDTO
+    range: string
+    multivalued: false
+    required: false
+
   developmental_stage_stop:
     description: >-
       The end developmental stage at which an annotated event was observed.
@@ -418,6 +562,18 @@ slots:
       for stage ranges for a single annotation.
     domain: TemporalContext
     range: StageTerm
+    multivalued: false
+    required: false
+
+  developmental_stage_stop_curie:
+    description: >-
+      The end developmental stage at which an annotated event was observed.
+      This is not required if the annotation applies to a single stage.
+    notes: >-
+      Currently, we limit this to a single stage, but we could consider allowing
+      for stage ranges for a single annotation.
+    domain: TemporalContextDTO
+    range: string
     multivalued: false
     required: false
 
@@ -498,6 +654,15 @@ slots:
     range: VocabularyTerm
     multivalued: true
 
+  temporal_qualifier_names:
+    description: >-
+      Qualifiers of the stage or age in an annotation. The range is a string representing vocabulary term
+    notes: >-
+      See the temporal_qualifier_set enum at the bottom of this file for terms.
+    domain: TemporalContextDTO
+    range: string
+    multivalued: true
+
   # ACTION ITEM: Create one Vocabulary term for: post embryonic, pre-adult.
   # ACTION ITEM: Make VocabularyTerms that map to the UBERONTerms for now.
   # ACTION ITEM: Ask UBERON to make the missing term (and wait).
@@ -514,6 +679,21 @@ slots:
       both developmental phases).
     domain: TemporalContext
     range: VocabularyTerm
+    multivalued: true
+
+  stage_uberon_slim_term_curies:
+    description: >-
+      The high-level UBERON slim terms that apply to the developmental range
+      of the TemporalContext component of an ExpressionPattern. The following
+      UBERON terms are allowed: UBERON:0000068, UBERON:0000113. A non-UBERON
+      term is also allowed: post embryonic, pre-adult.
+    notes: >-
+      FMS submission allowed for a string due to absence of appropriate UBERON
+      term. This term must, for example, cover Drosophila larval and pupal
+      stages (there are UBERON terms for each, but not a single term spanning
+      both developmental phases).
+    domain: TemporalContextDTO
+    range: string
     multivalued: true
 
   when_expressed:
