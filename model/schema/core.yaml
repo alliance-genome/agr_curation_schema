@@ -178,6 +178,7 @@ classes:
       A part of a gene that will form a part of the final mature RNA produced
       after introns have been removed by RNA splicing
     slots:
+      - unique_id
       - name
       - exon_type
       - exon_genomic_location_associations
@@ -196,6 +197,7 @@ classes:
       The coding sequence (CDS) is the portion of an exon that is translated 
       into a protein
     slots:
+      - unique_id
       - name
       - cds_type
       - cds_genomic_location_associations

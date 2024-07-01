@@ -7214,6 +7214,10 @@
                     "description": "The taxon from which the biological entity derives.",
                     "type": "string"
                 },
+                "unique_id": {
+                    "description": "A non-curie unique identifier for a thing.",
+                    "type": "string"
+                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": "string"
@@ -10481,6 +10485,10 @@
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
+                    "type": "string"
+                },
+                "unique_id": {
+                    "description": "A non-curie unique identifier for a thing.",
                     "type": "string"
                 },
                 "updated_by": {
