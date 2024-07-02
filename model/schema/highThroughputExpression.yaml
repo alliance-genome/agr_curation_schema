@@ -43,45 +43,60 @@ classes:
     description: >-
       An entry for a published high-throughput expression dataset annotation.
     slots:
-      - dataset_id # datasetId in agr_schemas json
-      - name # title in agr_schemas json
-      - references # publications in agr_schemas json
-      - related_note # use 'summary' note type; summary in agr_schemas json
-      - number_of_channels # numChannels in agr_schemas json
-      - sub_series # subSeries in agr_schemas json
-      - category_tags # categoryTags in agr_schemas json
+      - dataset_id_object # datasetId in agr_schemas datasetAnnotation.json
+      - name # title in agr_schemas datasetAnnotation.json
+      - references # publications in agr_schemas datasetAnnotation.json
+      - related_note # use 'summary' note type; summary in agr_schemas datasetAnnotation.json
+      - number_of_channels # numChannels in agr_schemas datasetAnnotation.json
+      - sub_series # subSeries in agr_schemas datasetAnnotation.json
+      - category_tags # categoryTags in agr_schemas datasetAnnotation.json
     slot_usage:
+      dataset_id_object:
+        required: true
+      name:
+        description: >-
+          The free text title of the dataset
+        required: true
+      date_created:
+        required: true
       related_note:
         description: >-
           When using the "summary" note type, this is the free text summary or description of the dataset
       references:
         description: >-
           The list of publications associated with this dataset
-      title:
-        description: >-
-          The free text title of the dataset
+
+
 
   HighThroughputExpressionDatasetAnnotationDTO:
     is_a: SubmittedObjectDTO
     description: >-
       A DTO entry for a published high-throughput expression dataset annotation.
     slots:
-      - name # title in agr_schemas json
-      - reference_curies # publications in agr_schemas json
-      - note_dto # use 'summary' note type; summary in agr_schemas json
-      - number_of_channels # numChannels in agr_schemas json
-      - sub_series_dto # subSeries in agr_schemas json
-      - category_tag_names # categoryTags in agr_schemas json
+      - dataset_id_object_dto # datasetId in agr_schemas datasetAnnotation.json
+      - name # title in agr_schemas datasetAnnotation.json
+      - reference_curies # publications in agr_schemas datasetAnnotation.json
+      - note_dto # use 'summary' note type; summary in agr_schemas datasetAnnotation.json
+      - number_of_channels # numChannels in agr_schemas datasetAnnotation.json
+      - sub_series_dto # subSeries in agr_schemas datasetAnnotation.json
+      - category_tag_names # categoryTags in agr_schemas datasetAnnotation.json
     slot_usage:
+      dataset_id:
+        description: >-
+          An id associated with a dataset object; these will external or MOD IDs.
+        required: true
+      name:
+        description: >-
+          The free text title of the dataset
+        required: true
+      date_created:
+        required: true
       related_note:
         description: >-
           When using the "summary" note type, this is the free text summary or description of the dataset
       references:
         description: >-
           The list of publications associated with this dataset
-      title:
-        description: >-
-          The free text title of the dataset
 
   HighThroughputExpressionDatasetSampleAnnotation:
     is_a: SubmittedObject
@@ -117,26 +132,19 @@ classes:
         description: >-
           ID of the type of assay used for this sample; sample or experiment property? See enumeration below.
         range: high_throughput_expression_assay_values
+        required: true
+      dataset_ids:
+        required: true
+      sample_type:
+        required: true
     rules:
       - postconditions:
           any_of:
             - slot_conditions:
-                mod_entity_id:
-                  required: true
-                dataset_ids:
-                  required: true
-                expression_assay_used:
-                  required: true
-                sample_type:
+                sample_id:
                   required: true
             - slot_conditions:
                 sample_title:
-                  required: true
-                dataset_ids:
-                  required: true
-                expression_assay_used:
-                  required: true
-                sample_type:
                   required: true
           description: >-
             At least sample_id, dataset_ids, expression_assay_used, and sample_type should be populated OR
@@ -164,7 +172,7 @@ classes:
       - dataset_ids # datasetIds in agr_schemas json
       - microarray_sample_details # microarraySampleDetails in agr_schemas json
     slot_usage:
-      sample_id: # TO DO update this section
+      sample_id:
         description: >-
           The ID for this sample object, MOD or external database ID (ex: GEO);
           primaryId and secondaryId
@@ -175,26 +183,21 @@ classes:
         description: >-
           ID of the type of assay used for this sample; sample or experiment property? See enumeration below.
         range: high_throughput_expression_assay_values
+        required: true
+      sample_title:
+        required: true
+      dataset_ids:
+        required: true
+      sample_type_curie:
+        required: true
     rules:
       - postconditions:
           any_of:
             - slot_conditions:
                 sample_id:
                   required: true
-                dataset_ids:
-                  required: true
-                expression_assay_used:
-                  required: true
-                sample_type_curie:
-                  required: true
             - slot_conditions:
                 sample_title:
-                  required: true
-                dataset_ids:
-                  required: true
-                expression_assay_used:
-                  required: true
-                sample_type_curie:
                   required: true
           description: >-
             At least sample_id, dataset_ids, expression_assay_used, and sample_type should be populated OR
@@ -205,20 +208,50 @@ classes:
     description: >-
       A basic entry for defining a dataset or dataset sample id; htpId in agr_schemas json
     slots:
-      - dataset_id # primaryId in agr_schemas htpId.json
+      - dataset_primary_id # primaryId in agr_schemas htpId.json
       - secondary_identifiers # alternateIds in agr_schemas htpId.json
       - preferred_cross_reference # preferredCrossReference in agr_schemas htpId.json
       - cross_references # crossReferences in agr_schemas htpId.json
+    slot_usage:
+      dataset_id:
+        description: >-
+          The ID from the data provider for the dataset. When available, this is the GEO ID.
+          When no GEO ID is available, it will be the ArrayExpress ID. When these both are
+          unavailable, it will be the MOD ID.
+      secondary_identifiers:
+        description: >-
+          list of optional cross reference ids to the primary dataset id.
+      preferred_cross_reference:
+        description: >-
+          The cross reference to the preferred page to link to in search
+      cross_references:
+        description: >-
+          Optional cross references to the MOD sample or dataset page.
 
   HighThroughputExpressionDatasetIDDTO:
     is_a: SubmittedObjectDTO
     description: >-
       A basic entry for defining a dataset or dataset sample id; htpId.json in agr_schemas json
     slots:
-      - dataset_id # primaryId in agr_schemas htpId.json
+      - dataset_primary_id # primaryId in agr_schemas htpId.json
       - secondary_identifiers # alternateIds in agr_schemas htpId.json
       - preferred_cross_reference_dto # preferredCrossReference in agr_schemas htpId.json
       - cross_reference_dtos # crossReferences in agr_schemas htpId.json
+    slot_usage:
+      dataset_id:
+        description: >-
+          The ID from the data provider for the dataset. When available, this is the GEO ID.
+          When no GEO ID is available, it will be the ArrayExpress ID. When these both are
+          unavailable, it will be the MOD ID.
+      secondary_identifiers:
+        description: >-
+          list of optional cross reference ids to the primary dataset id.
+      preferred_cross_reference_dto:
+        description: >-
+          The cross reference to the preferred page to link to in search
+      cross_reference_dtos:
+        description: >-
+          Optional cross references to the MOD sample or dataset page.
 
 
   MicroarraySampleDetails:
@@ -265,8 +298,9 @@ classes:
     description: >-
       A basic entry for defining a biosample's genomic information
     slots:
-      - biosample
-      - biosample_type
+      - biosample_allele
+      - biosample_agm
+      - biosample_agm_type
       - biosample_text
     rules:
       - postconditions:
@@ -275,40 +309,16 @@ classes:
                 biosample_text:
                   required: true
             - slot_conditions:
-                biosample:
+                biosample_allele:
+                  required: true
+            - slot_conditions:
+                biosample_agm:
                   required: true
           description: >-
-            Either biosample_text or biosample_id are required
+            Either biosample_text, biosample_allele or biosample_agm are required
 
-  AlleleBioSampleGenomicInformation:
-    is_a: BioSampleGenomicInformation
-    description: >-
-      A basic entry for defining an allele biosample's genomic information
-    slot_usage:
-      biosample:
-        range: Allele
 
-  AlleleBioSampleGenomicInformationDTO:
-    is_a: BioSampleGenomicInformation
-    description: >-
-      A basic entry for defining an allele biosample's genomic information
-    slots:
-      - allele_biosample_dto
 
-  AGMBioSampleGenomicInformation:
-    is_a: BioSampleGenomicInformation
-    description: >-
-      A basic entry for defining an affected genomic model (AGM) biosample's genomic information
-    slot_usage:
-      biosample:
-        range: AffectedGenomicModel
-
-  AGMBioSampleGenomicInformationDTO:
-    is_a: BioSampleGenomicInformation
-    description: >-
-      A basic entry for defining an affected genomic model (AGM) biosample's genomic information
-    slots:
-      - agm_biosample_dto
 
 
 
@@ -321,32 +331,6 @@ slots:
     domain: HighThroughputExpressionDatasetSampleAnnotation
     range: string
 
-  agm_biosample:
-    description: >-
-      The AGM biosample referenced in an AGMBioSampleGenomicInformation
-    domain: AGMBioSampleGenomicInformation
-    range: AffectedGenomicModel
-
-  agm_biosample_dto:
-    inlined: true
-    description: >-
-      The AGM biosample referenced in an AGMBioSampleGenomicInformation
-    domain: AGMBioSampleGenomicInformation
-    range: AffectedGenomicModelDTO
-
-  allele_biosample:
-    description: >-
-      The allele biosample referenced in an AlleleBioSampleGenomicInformation
-    domain: AlleleBioSampleGenomicInformation
-    range: Allele
-
-  allele_biosample_dto:
-    inlined: true
-    description: >-
-      The allele biosample referenced in an AlleleBioSampleGenomicInformationDTO
-    domain: AlleleBioSampleGenomicInformationDTO
-    range: AlleleDTO
-
   assembly_versions: # assemblyVersions in agr_schemas json
     description: >-
       single or paired end sequencing; might be better in experiment info
@@ -354,13 +338,19 @@ slots:
     range: string
     multivalued: true
 
-  biosample:
+  biosample_allele:
     description: >-
-      The biosample referenced in BioSampleGenomicInformation: an AGM (fish, genotype or strain) or allele
+      An allele of focus for a particular biosample
+    range: Allele
 
-  biosample_type:
+  biosample_agm:
     description: >-
-      Indicates the type of biosample; enum: fish, genotype, strain or allele
+      An affected genomic model (AGM) from which a biosample has been derived
+    range: AffectedGenomicModel
+
+  biosample_agm_type:
+    description: >-
+      Indicates the type of AGM biosample; enum: fish, genotype, strain
     domain: BioSampleGenomicInformation
     range: string
 
@@ -400,13 +390,22 @@ slots:
     range: integer # enum [1,2]
     multivalued: false
 
-  dataset_id: # primaryId in agr_schemas htpId.json
+  dataset_primary_id: # primaryId in agr_schemas htpId.json
     description: >-
-      The ID from the data provider for the dataset. When available,
-      this is the GEO ID. When no GEO ID is available, it will be the
-      ArrayExpress ID. When these both are unavailable, it will be the
-      MOD ID.
+      The ID of a dataset.
     range: uriorcurie
+    multivalued: false
+
+  dataset_id_object: # datasetId in agr_schemas datasetAnnotation.json
+    description: >-
+      A identifier object for high throughput (HTP) expression dataset, as defined in htpId.json
+    range: HighThroughputExpressionDatasetID
+    multivalued: false
+
+  dataset_id_object_dto: # datasetId in agr_schemas datasetAnnotation.json
+    description: >-
+      A identifier object for high throughput (HTP) expression dataset, as defined in htpId.json
+    range: HighThroughputExpressionDatasetIDDTO
     multivalued: false
 
   dataset_ids: # datasetIds in agr_schemas datasetSampleAnnotation.json

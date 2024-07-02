@@ -189,6 +189,8 @@ classes:
         description: >-
           Images for the ExpressionAnnotation.
         required: false
+      when_expressed_stage_name:
+        required: true
 
   GeneExpressionAnnotation:
     is_a: ExpressionAnnotation
@@ -527,7 +529,7 @@ slots:
     multivalued: true
 
   cellular_component_qualifier_names:
-    domain: AnatomicalSite
+    domain: AnatomicalSiteDTO
     range: string
     multivalued: true
 
@@ -714,7 +716,6 @@ slots:
       Corresponds to whenExpressed.stageName in frozen JSON schema.
     range: string
     multivalued: false
-    required: true
 
   where_expressed:
     description: >-
