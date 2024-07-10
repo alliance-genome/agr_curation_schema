@@ -5311,9 +5311,6 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "display_name": {
-                    "type": "string"
-                },
                 "genome_assembly": {
                     "$ref": "#/$defs/GenomeAssembly",
                     "description": "The GenomeAssembly to which a AssemblyComponent belongs."
@@ -5322,12 +5319,20 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "maps_to_chromosome": {
+                    "$ref": "#/$defs/Chromosome",
+                    "description": "The chromosome(s) to which a chromosome assembly or unlocalized scaffold or contig maps."
+                },
                 "mod_entity_id": {
                     "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
                     "type": "string"
                 },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "a human-readable name for an entity",
                     "type": "string"
                 },
                 "obsolete": {
@@ -5344,11 +5349,10 @@
                 }
             },
             "required": [
-                "display_name",
+                "name",
                 "genome_assembly",
                 "taxon",
                 "data_provider",
-                "curie",
                 "internal"
             ],
             "title": "AssemblyComponent",
@@ -5392,9 +5396,6 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "display_name": {
-                    "type": "string"
-                },
                 "genome_assembly_identifier": {
                     "description": "The identifier for the GenomeAssembly. This can be a MOD curie, a MOD internal ID or an external (3rd party) identifier.",
                     "type": "string"
@@ -5411,6 +5412,10 @@
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
                 },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": "string"
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
@@ -5425,7 +5430,7 @@
                 }
             },
             "required": [
-                "display_name",
+                "name",
                 "genome_assembly_identifier",
                 "data_provider_dto",
                 "taxon_curie",
