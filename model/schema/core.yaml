@@ -476,24 +476,27 @@ classes:
       In the context of this model, this entity is used as a landmark for the
       location of other genomic entities.
     slots:
-      - display_name
-      - genome_assembly
-    slot_usage:
-      curie:
-        required: true
-    defining_slots:
-      - display_name
+      - name
       - genome_assembly
       - maps_to_chromosome
+    slot_usage:
+      name:
+        required: true
+    defining_slots:
+      - name
+      - genome_assembly
 
   AssemblyComponentDTO:
     is_a: GenomicEntityDTO
     description: >-
       Ingest class for assembly components
     slots:
-      - display_name
+      - name
       - genome_assembly_identifier
       - data_provider_dto
+    slot_usage:
+      name:
+        required: true
 
   GenomeAssembly:
     is_a: BiologicalEntity
