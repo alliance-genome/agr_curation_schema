@@ -6031,8 +6031,8 @@
                     "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": "string"
                 },
-                "stage": {
-                    "$ref": "#/$defs/TemporalContext",
+                "stage_dto": {
+                    "$ref": "#/$defs/TemporalContextDTO",
                     "description": "The life stage of an organism or biosample as expressed by a TemporalContext entity"
                 },
                 "updated_by_curie": {
@@ -6073,6 +6073,33 @@
                 }
             },
             "title": "BioSampleGenomicInformation",
+            "type": "object"
+        },
+        "BioSampleGenomicInformationDTO": {
+            "additionalProperties": false,
+            "description": "A basic (DTO) entry for defining a biosample's genomic information",
+            "properties": {
+                "agm_identifier": {
+                    "type": "string"
+                },
+                "allele_identifier": {
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the allele",
+                    "type": "string"
+                },
+                "biosample_agm_type_name": {
+                    "description": "Indicates the type of AGM biosample; enum: fish, genotype, strain",
+                    "type": "string"
+                },
+                "biosample_text": {
+                    "description": "The free text of the biosample genomic information if no biosample is available",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "allele_identifier",
+                "agm_identifier"
+            ],
+            "title": "BioSampleGenomicInformationDTO",
             "type": "object"
         },
         "BulkFMSLoad": {
@@ -15954,7 +15981,7 @@
                 },
                 "htp_expression_dataset_dto": {
                     "$ref": "#/$defs/ExternalDataBaseEntityDTO",
-                    "description": "A identifier object for high throughput (HTP) expression dataset, as defined in htpId.json"
+                    "description": "An id associated with a dataset object; these will external or MOD IDs."
                 },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
@@ -16003,6 +16030,7 @@
                 }
             },
             "required": [
+                "htp_expression_dataset_dto",
                 "name",
                 "category_tag_names",
                 "data_provider_dto",
@@ -16129,8 +16157,8 @@
                     "type": "array"
                 },
                 "sequencing_format": {
-                    "$ref": "#/$defs/SequencingFormatValues",
-                    "description": "single or paired end sequencing; might be better in experiment info"
+                    "description": "single or paired end sequencing; might be better in experiment info",
+                    "type": "string"
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
@@ -16218,12 +16246,12 @@
                     "description": "The sex of the organism the sample came from",
                     "type": "string"
                 },
-                "genomic_information": {
-                    "$ref": "#/$defs/BioSampleGenomicInformation",
+                "genomic_information_dto": {
+                    "$ref": "#/$defs/BioSampleGenomicInformationDTO",
                     "description": "A collection of information that represents the strain or genomic background of the sample, either an id or free text"
                 },
                 "htp_expression_sample_age_dto": {
-                    "$ref": "#/$defs/BioSampleAge",
+                    "$ref": "#/$defs/BioSampleAgeDTO",
                     "description": "a collection of terms that when used together represent the age and stage of the sample"
                 },
                 "htp_expression_sample_dto": {
@@ -16233,7 +16261,7 @@
                 "htp_expression_sample_location_dtos": {
                     "description": "A collection of terms that when used together represents the location within an organism from which the sample was taken",
                     "items": {
-                        "$ref": "#/$defs/AnatomicalSite"
+                        "$ref": "#/$defs/AnatomicalSiteDTO"
                     },
                     "type": "array"
                 },
@@ -16249,7 +16277,7 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "microarray_sample_details": {
+                "microarray_sample_details_dto": {
                     "$ref": "#/$defs/MicroarraySampleDetails",
                     "description": "collection of information that is specific for microarray samples"
                 },
@@ -16272,8 +16300,8 @@
                     "type": "string"
                 },
                 "sequencing_format": {
-                    "$ref": "#/$defs/SequencingFormatValues",
-                    "description": "single or paired end sequencing; might be better in experiment info"
+                    "description": "single or paired end sequencing; might be better in experiment info",
+                    "type": "string"
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
