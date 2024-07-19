@@ -76,7 +76,7 @@ classes:
       - reference_curies # publications in agr_schemas datasetAnnotation.json
       - note_dto # use 'summary' note type; summary in agr_schemas datasetAnnotation.json
       - number_of_channels # numChannels in agr_schemas datasetAnnotation.json
-      - sub_series_dto # subSeries in agr_schemas datasetAnnotation.json
+      - sub_series # subSeries in agr_schemas datasetAnnotation.json
       - category_tag_names # categoryTags in agr_schemas datasetAnnotation.json
     slot_usage:
       dataset_id:
@@ -200,7 +200,7 @@ classes:
             At least htp_expression_sample_id, dataset_ids, expression_assay_used, and htp_expression_sample_type should be populated OR
             at least htp_expression_sample_title, dataset_ids, expression_assay_used, and htp_expression_sample_type should be populated
 
-  ExternalDataBaseEntity:
+  ExternalDataBaseEntity: # htpId.json in agr_schemas
     is_a: CurieObject
     description: >-
       A local database entry representing an external database entry;
@@ -225,7 +225,7 @@ classes:
         description: >-
           Optional cross references to the MOD sample or dataset page.
 
-  ExternalDataBaseEntityDTO:
+  ExternalDataBaseEntityDTO: # htpId.json in agr_schemas
     is_a: AuditedObjectDTO
     description: >-
       DTO entity for a local database entry representing an external database entry;
