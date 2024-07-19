@@ -85,7 +85,7 @@ classes:
       - WB
       - ZFIN
     slot_usage:
-      mod_entity_id:
+      primary_external_id:
         required: true
       related_notes:
         description: >-
@@ -106,7 +106,7 @@ classes:
       - gene_type_curie
       - note_dtos
     slot_usage:
-      mod_entity_id:
+      primary_external_id:
         required: true
 
   GeneSymbolSlotAnnotation:
@@ -394,7 +394,7 @@ slots:
 
   gene_identifier:
     description: >-
-      Identifier (curie/mod_entity_id/mod_internal_id) of the gene
+      Identifier (curie/primary_external_id/mod_internal_id) of the gene
     range: string
     required: true
 

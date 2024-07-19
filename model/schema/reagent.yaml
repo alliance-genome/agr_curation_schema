@@ -57,7 +57,7 @@ classes:
       - secondary_identifiers
     slot_usage:
       mod_internal_id:
-        notes: This is required if mod_entity_id is not submitted
+        notes: This is required if primary_external_id is not submitted
 
   Antibody:
     is_a: Reagent
@@ -325,7 +325,7 @@ slots:
 
   antibody_target_gene_identifiers:
     description: >-
-      Identifiers (curie/mod_entity_id/mod_internal_id) of the genes whose gene
+      Identifiers (curie/primary_external_id/mod_internal_id) of the genes whose gene
       products are recognized by the antibody.
     required: false
     multivalued: true

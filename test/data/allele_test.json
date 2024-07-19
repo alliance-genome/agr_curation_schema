@@ -2,7 +2,7 @@
   "linkml_version": "2.0.0",
   "allele_ingest_set": [
     {
-      "mod_entity_id": "ZFIN:ZDB-ALT-130621-1",
+      "primary_external_id": "ZFIN:ZDB-ALT-130621-1",
       "data_provider_dto": {
         "source_organization_abbreviation": "ZFIN",
         "cross_reference_dto": {
@@ -51,7 +51,7 @@
       ]
     },
     {
-      "mod_entity_id": "ZFIN:ZDB-ALT-130411-947",
+      "primary_external_id": "ZFIN:ZDB-ALT-130411-947",
       "data_provider_dto": {
         "source_organization_abbreviation": "ZFIN",
         "cross_reference_dto": {
@@ -91,7 +91,7 @@
       }
     },
     {
-      "mod_entity_id": "WB:WBTransgene00023682",
+      "primary_external_id": "WB:WBTransgene00023682",
       "data_provider_dto": {
         "source_organization_abbreviation": "WB",
         "cross_reference_dto": {

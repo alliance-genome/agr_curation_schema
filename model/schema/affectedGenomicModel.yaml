@@ -64,7 +64,7 @@ classes:
       - sequence_targeting_reagent_identifiers
       - component_dtos
     slot_usage:
-      mod_entity_id:
+      primary_external_id:
         required: true
 
   AgmSecondaryIdSlotAnnotation:
@@ -177,7 +177,7 @@ slots:
     range: string
     multivalued: true
     description: >-
-      Identifiers (curie/mod_entity_id/mod_internal_id) of the STRs
+      Identifiers (curie/primary_external_id/mod_internal_id) of the STRs
 
   parental_populations:
     singular_name: parental_population

@@ -45,7 +45,7 @@
         "ECO:0007013"
       ],
       "genetic_sex_name": "hermaphrodite",
-      "mod_entity_id": "WBDOannot00001032",
+      "primary_external_id": "WBDOannot00001032",
       "mod_internal_id": "MGI:diseaseannotation_239930183_295748146",
       "updated_by_curie": "WB:WBPerson324",
       "internal": false,
@@ -98,7 +98,7 @@
         "ECO:0007013"
       ],
       "genetic_sex_name": "hermaphrodite",
-      "mod_entity_id": "WBDOannot00001014",
+      "primary_external_id": "WBDOannot00001014",
       "updated_by_curie": "WB:WBPerson324",
       "negated": false,
       "internal": false,
@@ -130,7 +130,7 @@
         "ECO:0007013"
       ],
       "genetic_sex_name": "hermaphrodite",
-      "mod_entity_id": "WBDOannot00000109",
+      "primary_external_id": "WBDOannot00000109",
       "updated_by_curie": "WB:WBPerson324",
       "internal": false,
       "do_term_curie": "DOID:10652",
@@ -183,7 +183,7 @@
         "ECO:0007013"
       ],
       "genetic_sex_name": "hermaphrodite",
-      "mod_entity_id": "WBDOannot00000110",
+      "primary_external_id": "WBDOannot00000110",
       "updated_by_curie": "WB:WBPerson324",
       "internal": false,
       "do_term_curie": "DOID:11723",

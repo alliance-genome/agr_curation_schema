@@ -79,7 +79,7 @@ classes:
       - orcid
       - emails
       - old_emails
-      - mod_entity_id
+      - primary_external_id
       - unique_id
       - affiliated_alliance_member
     exact_mappings:

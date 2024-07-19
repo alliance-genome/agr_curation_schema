@@ -376,7 +376,7 @@ slots:
     range: string
 
   object_gene_identifier:
-    description: Identifier (curie/mod_entity_id/mod_internal_id) of the object gene in a gene-to-gene association
+    description: Identifier (curie/primary_external_id/mod_internal_id) of the object gene in a gene-to-gene association
     domain: GeneGeneAssociationDTO
     range: string
     required: true
@@ -388,7 +388,7 @@ slots:
     range: string                       # should eventually be updated to the Phenotype class
 
   subject_gene_identifier:
-    description: Identifier (curie/mod_entity_id/mod_internal_id) of the subject gene in a gene-to-gene association
+    description: Identifier (curie/primary_external_id/mod_internal_id) of the subject gene in a gene-to-gene association
     domain: GeneGeneAssociationDTO
     range: string
     required: true

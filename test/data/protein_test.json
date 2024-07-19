@@ -2,7 +2,7 @@
   "linkml_version": "2.0.0",
   "protein_ingest_set": [
     {
-      "mod_entity_id": "WB:CE06191",
+      "primary_external_id": "WB:CE06191",
       "taxon_curie": "NCBITaxon:6239",
       "created_by_curie": "WB:WBPerson2987",
       "updated_by_curie": "WB:WBPerson2987",

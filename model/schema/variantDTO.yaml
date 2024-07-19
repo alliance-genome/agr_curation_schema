@@ -152,7 +152,7 @@ classes:
 slots:
   associated_transcript_identifiers:
     description: >-
-      Identifiers (curie/mod_entity_id/mod_internal_id) of transcript(s) associated
+      Identifiers (curie/primary_external_id/mod_internal_id) of transcript(s) associated
       with polypeptide to which variant is aligned.
     required: false
     multivalued: true
@@ -203,7 +203,7 @@ slots:
   variant_identifier:
     is_a: genomic_entity_identifier
     description: >-
-      Identifier (curie/mod_entity_id/mod_internal_id) of the variant
+      Identifier (curie/primary_external_id/mod_internal_id) of the variant
     required: true
 
   variant_status_name:

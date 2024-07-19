@@ -146,9 +146,9 @@ classes:
           AGR if not submitted by the model organism database.
         notes: >-
           Slot is inherited from Annotation class.
-      mod_entity_id:
+      primary_external_id:
         description: >-
-          The model organism database identifier/curie for the
+          The primary external (non-AGRKB) database identifier/curie for the
           ExpressionAnnotation.
         notes: >-
           Slot is inherited from Annotation class.
@@ -222,7 +222,7 @@ classes:
       postconditions requirements in the AnatomicalSite object, though these
       postconditions are still not as specific as the FMS model.
       New required slots: relation.
-      New non-required slots: curie, unique_id, mod_entity_id, mod_internal_id,
+      New non-required slots: curie, unique_id, primary_external_id, mod_internal_id,
       related_notes, expression_qualifiers, negated, uncertain,
       related_figures, expression_annotation_image_associations,
       condition_relations.

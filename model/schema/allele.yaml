@@ -123,7 +123,7 @@ classes:
     slot_usage:
       note_dtos:
         notes: note_type CV 'Allele Note Type'
-      mod_entity_id:
+      primary_external_id:
         required: true
 
   # Some classes roughly grouped with the Allele class because they have relationships to Allele and were
@@ -139,7 +139,7 @@ classes:
     description: >-
       Dummy cell line DTO class
     slot_usage:
-      mod_entity_id:
+      primary_external_id:
         required: true
 
   GenerationMethod:
@@ -182,7 +182,7 @@ classes:
       - synonyms
       - secondary_identifiers
     slot_usage:
-      mod_entity_id:
+      primary_external_id:
         required: true
 
   SequenceTargetingReagentAssociation:
@@ -708,7 +708,7 @@ slots:
 
   allele_identifier:
     description: >-
-      Identifier (curie/mod_entity_id/mod_internal_id) of the allele
+      Identifier (curie/primary_external_id/mod_internal_id) of the allele
     range: string
     required: true
 
@@ -892,7 +892,7 @@ slots:
 
   cell_line_identifier:
     description: >-
-      Identifier (curie/mod_entity_id/mod_internal_id) of the cell line
+      Identifier (curie/primary_external_id/mod_internal_id) of the cell line
     range: string
     required: true
 
@@ -1081,8 +1081,8 @@ slots:
 
   mutation_target_strain_identifier:
     description: >-
-      Identifier (curie/mod_entity_id/mod_internal_id) of the particular strain that is targeted by the generation method
-      for a particular allele (MGI only)
+      Identifier (curie/primary_external_id/mod_internal_id) of the particular strain
+      that is targeted by the generation method for a particular allele (MGI only)
     domain: AlleleGenerationMethodAssociationDTO
     range: string
 
@@ -1117,7 +1117,7 @@ slots:
 
   object_allele_identifier:
     description: >-
-      The identifier (curie/mod_entity_id/mod_internal_id) of the allele that is acting as the object of an AlleleAlleleAssociation
+      The identifier (curie/primary_external_id/mod_internal_id) of the allele that is acting as the object of an AlleleAlleleAssociation
     domain: AlleleAlleleAssociationDTO
     range: string
 
@@ -1149,7 +1149,7 @@ slots:
     multivalued: false
     domain: SequenceTargetingReagentAssociationDTO
     description: >-
-      Identifier (curie/mod_entity_id/mod_internal_id) of the STR
+      Identifier (curie/primary_external_id/mod_internal_id) of the STR
 
   sequence_targeting_reagent_gene_associations:
     domain: SequenceTargetingReagent

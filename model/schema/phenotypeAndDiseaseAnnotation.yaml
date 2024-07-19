@@ -58,7 +58,7 @@ classes:
     slots:
       - curie
       - unique_id
-      - mod_entity_id
+      - primary_external_id
       - mod_internal_id
       - condition_relations
       - related_notes
@@ -74,7 +74,7 @@ classes:
       Ingest class for an annotation
     slots:
       - mod_internal_id
-      - mod_entity_id
+      - primary_external_id
       - note_dtos
       - data_provider_dto
       - condition_relation_dtos
@@ -265,9 +265,9 @@ classes:
           Unique identifier for the disease annotation.  Will be generated at AGR
           if not submitted by the MOD.
         required: false
-      mod_entity_id:
+      primary_external_id:
         description: >-
-          The model organism database (MOD) identifier/curie for the disease annotation. Currently only
+          The primary external (non-AGRKB) identifier/curie for the disease annotation. Currently only
           used by WormBase for disease annotations, e.g. "WBDOannot00000907"
         required: false
       mod_internal_id:
@@ -589,7 +589,7 @@ slots:
 
   asserted_allele_identifier:
     description: >-
-      Identifier (curie/mod_entity_id/mod_internal_id) of the allele to which something is manually asserted to be
+      Identifier (curie/primary_external_id/mod_internal_id) of the allele to which something is manually asserted to be
       associated
     range: string
 
@@ -602,7 +602,7 @@ slots:
 
   asserted_gene_identifiers:
     description: >-
-      Identifiers (curie/mod_entity_id/mod_internal_id) of the gene(s) to which something is manually asserted to be
+      Identifiers (curie/primary_external_id/mod_internal_id) of the gene(s) to which something is manually asserted to be
       associated
     range: string
     multivalued: true
@@ -743,7 +743,7 @@ slots:
     multivalued: true
 
   disease_genetic_modifier_identifiers:
-    description: Identifiers (curie/mod_entity_id/mod_internal_id) of BiologcalEntity that modifies the disease model
+    description: Identifiers (curie/primary_external_id/mod_internal_id) of BiologcalEntity that modifies the disease model
     domain: DiseaseAnnotationDTO
     range: string
     multivalued: true
@@ -802,7 +802,7 @@ slots:
 
   inferred_gene_identifier:
     description: >-
-      Identifier (curie/mod_entity_id/mod_internal_id) of gene to which something is inferred to be associated via an
+      Identifier (curie/primary_external_id/mod_internal_id) of gene to which something is inferred to be associated via an
       automated pipeline
     range: string
 
@@ -813,7 +813,7 @@ slots:
 
   inferred_allele_identifier:
     description: >-
-      Identifier (curie/mod_entity_id/mod_internal_id) of allele to which something is inferred to be associated via an
+      Identifier (curie/primary_external_id/mod_internal_id) of allele to which something is inferred to be associated via an
       automated pipeline
     range: string
 
@@ -849,7 +849,7 @@ slots:
     range: AffectedGenomicModel
 
   sgd_strain_background_identifier:
-    description: Identifier (curie/mod_entity_id/mod_internal_id) of SGD strain background AGM
+    description: Identifier (curie/primary_external_id/mod_internal_id) of SGD strain background AGM
     domain: GeneDiseaseAnnotationDTO
     range: string
 
@@ -861,7 +861,7 @@ slots:
 
   with_gene_identifiers:
     description: >-
-      Identifier (curie/mod_entity_id/mod_internal_id) of genes
+      Identifier (curie/primary_external_id/mod_internal_id) of genes
       http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8
     range: string
     multivalued: true
