@@ -259,14 +259,6 @@ classes:
       - channel_id # channelId in agr_schemas json
       - channel_number # channelNum in agr_schemas json
 
-  MicroarraySampleDetailsDTO: # Is this DTO class even needed?
-    is_a: SubmittedObjectDTO
-    description: >-
-      An entry with microarray-specific metadata
-    slots:
-      - channel_id # channelId in agr_schemas json
-      - channel_number # channelNum in agr_schemas json
-
   BioSampleAge:
     is_a: SubmittedObject
     description: >-
