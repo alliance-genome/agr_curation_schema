@@ -385,8 +385,6 @@ slots:
   category_tag_names:
     description: >-
       A list of controlled vocabulary terms to describe the experiment
-    inlined: true
-    inlined_as_list: true
     domain: HighThroughputExpressionDatasetAnnotationDTO
     range: string
     multivalued: true
