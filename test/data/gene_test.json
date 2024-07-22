@@ -2,7 +2,7 @@
   "linkml_version": "2.0.0",
   "gene_ingest_set": [
     {
-      "mod_entity_id": "ZFIN:ZDB-GENE-010226-1",
+      "primary_external_id": "ZFIN:ZDB-GENE-010226-1",
       "data_provider_dto": {
         "source_organization_abbreviation": "ZFIN",
         "cross_reference_dto": {

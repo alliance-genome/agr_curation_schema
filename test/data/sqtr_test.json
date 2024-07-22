@@ -2,7 +2,7 @@
   "linkml_version": "2.0.0",
   "sqtr_ingest_set": [
     {
-      "mod_entity_id": "ZFIN:ZDB-TALEN-200601-1",
+      "primary_external_id": "ZFIN:ZDB-TALEN-200601-1",
       "name": "TALEN2-eftud2",
       "synonyms" : [ "CXCR7mo1", "MO1-cxcr7b" ],
       "secondary_identifiers" : [ "ZFIN:ZDB-MRKRSEQ-071105-1" ],
@@ -26,7 +26,7 @@
       }
     },
     {
-      "mod_entity_id": "ZFIN:ZDB-CRISPR-220422",
+      "primary_external_id": "ZFIN:ZDB-CRISPR-220422",
       "name": "CRISPR1-psma1",
       "taxon_curie": "NCBITaxon:7955",
       "data_provider_dto": {
@@ -48,7 +48,7 @@
       ]
     },
     {
-      "mod_entity_id": "ZFIN:ZDB-MRPHLNO-220216-1",
+      "primary_external_id": "ZFIN:ZDB-MRPHLNO-220216-1",
       "name": "MO1-abcg2b",
       "taxon_curie": "NCBITaxon:7955",
       "data_provider_dto": {

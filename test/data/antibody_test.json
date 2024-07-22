@@ -6,7 +6,7 @@
       "updated_by_curie": "WB:WBPerson123",
       "internal": false,
       "obsolete": false,
-      "mod_entity_id": "WB:WBAntibody123",
+      "primary_external_id": "WB:WBAntibody123",
       "cross_reference_dtos":  [
         {
           "internal": false,

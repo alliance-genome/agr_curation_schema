@@ -96,14 +96,14 @@ classes:
       Parent class for LinkML classes of submitted entities
       that may have a public or internal MOD ID/curie
     slots:
-      - mod_entity_id
+      - primary_external_id
       - mod_internal_id
       - data_provider
 
   SubmittedObjectDTO:
     is_a: AuditedObjectDTO
     slots:
-      - mod_entity_id
+      - primary_external_id
       - mod_internal_id
       - data_provider_dto
 
@@ -1243,11 +1243,11 @@ slots:
     multivalued: false
     range: string
 
-  mod_entity_id:
+  primary_external_id:
     description: >-
-      The model organism database (MOD) identifier/curie for the object. Note
-      that this may be an external identifier for an object, like a UniProt ID
-      for a protein, but acts as the MOD's primary key for the entity.
+      The primary external (non-Alliance) database identifier/curie for the object. Note
+      that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID
+      for a protein, and may act as the MOD's/Alliance member's primary key for the entity.
     range: string
 
   mod_internal_id:

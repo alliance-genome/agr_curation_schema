@@ -1,0 +1,603 @@
+id: https://github.com/alliance-genome/agr_persistent_schema/src/schema/highThroughputExpression.yaml
+name: High-Throughput-Expression-Dataset-Annotation
+title: High Throughput Expression Dataset Annotation
+description: Annotations for high-throughput gene expression experiments and datasets
+
+imports:
+  - core
+  - expression
+  - allele
+  - affectedGenomicModel
+  - linkml:types
+
+prefixes:
+  alliance: 'http://alliancegenome.org/'
+  linkml: 'https://w3id.org/linkml/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+  dct: 'http://purl.org/dc/terms/'
+  WIKIDATA_PROPERTY: 'https://www.wikidata.org/wiki/Property:'
+  obograph: 'https://github.com/biodatamodels/obograph'
+
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - owl
+
+
+classes:
+
+  HighThroughputExpressionDatasetAnnotation:
+    is_a: AuditedObject
+    description: >-
+      An entry for a published high-throughput expression dataset annotation.
+    slots:
+      - htp_expression_dataset # datasetId in agr_schemas datasetAnnotation.json
+      - name # title in agr_schemas datasetAnnotation.json
+      - references # publications in agr_schemas datasetAnnotation.json
+      - related_note # use 'summary' note type; summary in agr_schemas datasetAnnotation.json
+      - number_of_channels # numChannels in agr_schemas datasetAnnotation.json
+      - sub_series # subSeries in agr_schemas datasetAnnotation.json
+      - category_tags # categoryTags in agr_schemas datasetAnnotation.json
+    slot_usage:
+      htp_expression_dataset:
+        required: true
+      name:
+        description: >-
+          The free text title of the dataset
+        required: true
+      date_created:
+        required: true
+      related_note:
+        description: >-
+          When using the "summary" note type, this is the free text summary or description of the dataset
+      references:
+        description: >-
+          The list of publications associated with this dataset
+
+  HighThroughputExpressionDatasetAnnotationDTO:
+    is_a: SubmittedObjectDTO
+    description: >-
+      A DTO entry for a published high-throughput expression dataset annotation.
+    slots:
+      - htp_expression_dataset_dto # datasetId in agr_schemas datasetAnnotation.json
+      - name # title in agr_schemas datasetAnnotation.json
+      - reference_curies # publications in agr_schemas datasetAnnotation.json
+      - note_dto # use 'summary' note type; summary in agr_schemas datasetAnnotation.json
+      - number_of_channels # numChannels in agr_schemas datasetAnnotation.json
+      - sub_series # subSeries in agr_schemas datasetAnnotation.json
+      - category_tag_names # categoryTags in agr_schemas datasetAnnotation.json
+    slot_usage:
+      htp_expression_dataset_dto:
+        description: >-
+          An id associated with a dataset object; these will external or MOD IDs.
+        required: true
+      name:
+        description: >-
+          The free text title of the dataset
+        required: true
+      date_created:
+        required: true
+      related_note:
+        description: >-
+          When using the "summary" note type, this is the free text summary or description of the dataset
+      references:
+        description: >-
+          The list of publications associated with this dataset
+
+  HighThroughputExpressionDatasetSampleAnnotation:
+    is_a: SubmittedObject
+    description: >-
+     An entry with dataset sample object associations.
+    slots:
+      - htp_expression_sample # sampleId in agr_schemas json
+      - htp_expression_sample_title # sampleTitle in agr_schemas json
+      - htp_expression_sample_type # sampleType in agr_schemas json
+      - htp_expression_sample_age # sampleAge in agr_schemas json
+      - htp_expression_sample_locations # sampleLocations in agr_schemas json
+      - where_expressed_statement # whereExpressedStatement in whereExpressed.json
+      - abundance # abundance in agr_schemas json
+      - genomic_information # genomicInformation in agr_schemas json
+      - taxon # taxonId in agr_schemas json
+      - genetic_sex # sex in agr_schemas json
+      - expression_assay_used # assayType in agr_schemas json
+      - sequencing_format # sequencingFormat in agr_schemas json
+      - assembly_versions # assemblyVersions in agr_schemas json
+      - related_notes # notes in agr_schemas json
+      - dataset_ids # datasetIds in agr_schemas json
+      - microarray_sample_details # microarraySampleDetails in agr_schemas json
+      - when_expressed_stage_name # biosampleAge.json > stage > when_expressed.json > stageName in agr_schemas json
+    slot_usage:
+      htp_expression_sample:
+        description: >-
+          The dataset for this sample object
+      genetic_sex:
+        description: >-
+          The sex of the organism the sample came from
+      expression_assay_used:
+        description: >-
+          ID of the type of assay used for this sample; sample or experiment property? See enumeration below.
+        range: high_throughput_expression_assay_values
+        required: true
+      dataset_ids:
+        required: true
+      htp_expression_sample_type:
+        required: true
+    rules:
+      - postconditions:
+          any_of:
+            - slot_conditions:
+                htp_expression_sample:
+                  required: true
+            - slot_conditions:
+                htp_expression_sample_title:
+                  required: true
+          description: >-
+            At least htp_expression_sample_id, dataset_ids, expression_assay_used, and htp_expression_sample_type should be populated OR
+            at least htp_expression_sample_title, dataset_ids, expression_assay_used, and htp_expression_sample_type should be populated
+
+  HighThroughputExpressionDatasetSampleAnnotationDTO:
+    is_a: SubmittedObjectDTO
+    description: >-
+     An entry with dataset sample object associations.
+    slots:
+      - htp_expression_sample_dto # sampleId in agr_schemas json
+      - htp_expression_sample_title # sampleTitle in agr_schemas json
+      - htp_expression_sample_type_curie # sampleType in agr_schemas json
+      - htp_expression_sample_age_dto # sampleAge in agr_schemas json
+      - htp_expression_sample_location_dtos # sampleLocations in agr_schemas json
+      - where_expressed_statement # whereExpressedStatement in whereExpressed.json
+      - abundance # abundance in agr_schemas json
+      - genomic_information_dto # genomicInformation in agr_schemas json
+      - taxon # taxonId in agr_schemas json
+      - genetic_sex # sex in agr_schemas json
+      - expression_assay_curie # assayType in agr_schemas json
+      - sequencing_format # sequencingFormat in agr_schemas json
+      - assembly_versions # assemblyVersions in agr_schemas json
+      - note_dtos # notes in agr_schemas json
+      - dataset_ids # datasetIds in agr_schemas json
+      - microarray_sample_details_dto # microarraySampleDetails in agr_schemas json
+    slot_usage:
+      htp_expression_sample_dto:
+        description: >-
+          The ID for this sample object, MOD or external database ID (ex: GEO);
+          primaryId and secondaryId
+      genetic_sex:
+        description: >-
+          The sex of the organism the sample came from
+      expression_assay_used:
+        description: >-
+          ID of the type of assay used for this sample; sample or experiment property? See enumeration below.
+        range: high_throughput_expression_assay_values
+        required: true
+      htp_expression_sample_title:
+        required: true
+      dataset_ids:
+        required: true
+      htp_expression_sample_type_curie:
+        required: true
+    rules:
+      - postconditions:
+          any_of:
+            - slot_conditions:
+                htp_expression_sample_dto:
+                  required: true
+            - slot_conditions:
+                htp_expression_sample_title:
+                  required: true
+          description: >-
+            At least htp_expression_sample_id, dataset_ids, expression_assay_used, and htp_expression_sample_type should be populated OR
+            at least htp_expression_sample_title, dataset_ids, expression_assay_used, and htp_expression_sample_type should be populated
+
+  ExternalDataBaseEntity: # htpId.json in agr_schemas
+    is_a: CurieObject
+    description: >-
+      A local database entry representing an external database entry;
+      used currently for datasets or dataset samples; htpId.json in agr_schemas json
+    slots:
+      - secondary_identifiers # alternateIds in agr_schemas htpId.json
+      - preferred_cross_reference # preferredCrossReference in agr_schemas htpId.json
+      - cross_references # crossReferences in agr_schemas htpId.json
+    slot_usage:
+      curie: # primaryId in agr_schemas htpId.json
+        description: >-
+          The ID from the data provider for the dataset. When available, this is the GEO ID.
+          When no GEO ID is available, it will be the ArrayExpress ID. When these both are
+          unavailable, it will be the MOD ID.
+      secondary_identifiers:
+        description: >-
+          list of optional cross reference ids to the primary dataset id.
+      preferred_cross_reference:
+        description: >-
+          The cross reference to the preferred page to link to in search
+      cross_references:
+        description: >-
+          Optional cross references to the MOD sample or dataset page.
+
+  ExternalDataBaseEntityDTO: # htpId.json in agr_schemas
+    is_a: AuditedObjectDTO
+    description: >-
+      DTO entity for a local database entry representing an external database entry;
+      used currently for datasets or dataset samples; htpId.json in agr_schemas json
+    slots:
+      - curie # primaryId in agr_schemas htpId.json
+      - secondary_identifiers # alternateIds in agr_schemas htpId.json
+      - preferred_cross_reference_dto # preferredCrossReference in agr_schemas htpId.json
+      - cross_reference_dtos # crossReferences in agr_schemas htpId.json
+    slot_usage:
+      curie:
+        description: >-
+          The ID from the data provider for the dataset. When available, this is the GEO ID.
+          When no GEO ID is available, it will be the ArrayExpress ID. When these both are
+          unavailable, it will be the MOD ID.
+      secondary_identifiers:
+        description: >-
+          list of optional cross reference ids to the primary dataset id.
+      preferred_cross_reference_dto:
+        description: >-
+          The cross reference to the preferred page to link to in search
+      cross_reference_dtos:
+        description: >-
+          Optional cross references to the MOD sample or dataset page.
+
+  MicroarraySampleDetails:
+    is_a: SubmittedObject
+    description: >-
+      An entry with microarray-specific metadata
+    slots:
+      - channel_id # channelId in agr_schemas json
+      - channel_number # channelNum in agr_schemas json
+
+  BioSampleAge:
+    is_a: SubmittedObject
+    description: >-
+      An object that holds the temporal aspect of a sample.
+    slots:
+      - stage
+      - age
+      - when_expressed_stage_name
+    slot_usage:
+      age:
+        description: free text for the age of the sample
+
+  BioSampleAgeDTO:
+    is_a: SubmittedObjectDTO
+    description: >-
+      An object that holds the temporal aspect of a sample.
+    slots:
+      - stage_dto
+      - age
+      - when_expressed_stage_name
+    slot_usage:
+      age:
+        description: free text for the age of the sample
+
+  BioSampleGenomicInformation:
+    description: >-
+      A basic entry for defining a biosample's genomic information
+    slots:
+      - biosample_allele
+      - biosample_agm
+      - biosample_agm_type
+      - biosample_text
+    rules:
+      - postconditions:
+          any_of:
+            - slot_conditions:
+                biosample_text:
+                  required: true
+            - slot_conditions:
+                biosample_allele:
+                  required: true
+            - slot_conditions:
+                biosample_agm:
+                  required: true
+          description: >-
+            Either biosample_text, biosample_allele or biosample_agm are required
+
+  BioSampleGenomicInformationDTO:
+    description: >-
+      A basic (DTO) entry for defining a biosample's genomic information
+    slots:
+      - allele_identifier
+      - agm_identifier
+      - biosample_agm_type_name
+      - biosample_text
+    rules:
+      - postconditions:
+          any_of:
+            - slot_conditions:
+                biosample_text:
+                  required: true
+            - slot_conditions:
+                allele_identifier:
+                  required: true
+            - slot_conditions:
+                agm_identifier:
+                  required: true
+          description: >-
+            Either biosample_text, allele_identifier or agm_identifier are required
+
+slots:
+
+  abundance: # abundance in agr_schemas json
+    description: >-
+      The free text describing the amount of sample used
+    domain: HighThroughputExpressionDatasetSampleAnnotation
+    range: string
+
+  assembly_versions: # assemblyVersions in agr_schemas json
+    description: >-
+      single or paired end sequencing; might be better in experiment info
+    domain: HighThroughputExpressionDatasetSampleAnnotation
+    range: string
+    multivalued: true
+
+  biosample_agm:
+    description: >-
+      An affected genomic model (AGM) from which a biosample has been derived
+    range: AffectedGenomicModel
+
+  biosample_agm_type:
+    description: >-
+      Indicates the type of AGM biosample; enum: fish, genotype, strain
+    domain: BioSampleGenomicInformation
+    range: VocabularyTerm
+
+  biosample_agm_type_name:
+    description: >-
+      Indicates the type of AGM biosample; enum: fish, genotype, strain
+    domain: BioSampleGenomicInformationDTO
+    range: string
+
+  biosample_allele:
+    description: >-
+      An allele of focus for a particular biosample
+    range: Allele
+
+  biosample_text:
+    description: >-
+      The free text of the biosample genomic information if no biosample is available
+    domain: BioSampleGenomicInformation
+    range: string
+
+  category_tags:
+    description: >-
+      A list of controlled vocabulary terms to describe the experiment
+    domain: HighThroughputExpressionDatasetAnnotation
+    range: VocabularyTerm
+    multivalued: true
+    required: true
+
+  category_tag_names:
+    description: >-
+      A list of controlled vocabulary terms to describe the experiment
+    domain: HighThroughputExpressionDatasetAnnotationDTO
+    range: string
+    multivalued: true
+    required: true
+
+  channel_id: # channelId in agr_schemas json
+    description: >-
+      for microarray experiments, channel ID
+    domain: MicroarraySampleDetails
+    range: string
+    multivalued: false
+
+  channel_number: # channelNum in agr_schemas json
+    description: >-
+      for micorarray data, which channel this sample is in, 1 or 2
+    domain: MicroarraySampleDetails
+    range: integer # enum [1,2]
+    multivalued: false
+
+  dataset_ids: # datasetIds in agr_schemas datasetSampleAnnotation.json
+    description: >-
+      list of primary dataset ids that a sample is associated with
+    domain: HighThroughputExpressionDatasetSampleAnnotation
+    range: uriorcurie
+    multivalued: true
+
+  genomic_information: # genomicInformation in agr_schemas datasetSampleAnnotation.json
+    description: >-
+      A collection of information that represents the strain or genomic background of the sample, either an id or free text
+    domain: HighThroughputExpressionDatasetSampleAnnotation
+    range: BioSampleGenomicInformation
+
+  genomic_information_dto: # genomicInformation in agr_schemas datasetSampleAnnotation.json
+    description: >-
+      A collection of information that represents the strain or genomic background of the sample, either an id or free text
+    inlined: true
+    domain: HighThroughputExpressionDatasetSampleAnnotation
+    range: BioSampleGenomicInformationDTO
+
+  htp_expression_dataset: # datasetId in agr_schemas datasetAnnotation.json
+    description: >-
+      A identifier object for high throughput (HTP) expression dataset, as defined in htpId.json
+    range: ExternalDataBaseEntity
+    multivalued: false
+
+  htp_expression_dataset_dto: # datasetId in agr_schemas datasetAnnotation.json
+    description: >-
+      A identifier object for high throughput (HTP) expression dataset, as defined in htpId.json
+    inlined: true
+    range: ExternalDataBaseEntityDTO
+    multivalued: false
+
+  htp_expression_sample_age: # sampleAge in agr_schemas json
+    description: >-
+      a collection of terms that when used together represent the age and stage of the sample
+    domain: HighThroughputExpressionDatasetSampleAnnotation
+    range: BioSampleAge
+
+  htp_expression_sample_age_dto: # sampleAge in agr_schemas json
+    description: >-
+      a collection of terms that when used together represent the age and stage of the sample
+    inlined: true
+    domain: HighThroughputExpressionDatasetSampleAnnotationDTO
+    range: BioSampleAgeDTO
+
+  htp_expression_sample:
+    description: >-
+      The IDs for this sample object, MOD or external database ID (ex: GEO); primaryId and secondaryId
+    domain: HighThroughputExpressionDatasetSampleAnnotation
+    range: ExternalDataBaseEntity
+    multivalued: false
+    required: false
+
+  htp_expression_sample_dto:
+    description: >-
+      The IDs for this sample object, MOD or external database ID (ex: GEO); primaryId and secondaryId
+    inlined: true
+    domain: HighThroughputExpressionDatasetSampleAnnotationDTO
+    range: ExternalDataBaseEntityDTO
+    multivalued: false
+    required: false
+
+  htp_expression_sample_locations: # sampleLocations in agr_schemas json
+    description: >-
+      A collection of terms that when used together represents the location within an organism from which the sample was taken
+    domain: HighThroughputExpressionDatasetSampleAnnotation
+    range: AnatomicalSite
+    multivalued: true
+
+  htp_expression_sample_location_dtos: # sampleLocations in agr_schemas json
+    description: >-
+      A collection of terms that when used together represents the location within an organism from which the sample was taken
+    inlined: true
+    inlined_as_list: true
+    domain: HighThroughputExpressionDatasetSampleAnnotationDTO
+    range: AnatomicalSiteDTO
+    multivalued: true
+
+  htp_expression_sample_title: # sampleTitle in agr_schemas json
+    description: >-
+      The free text title of the sample
+    domain: HighThroughputExpressionDatasetSampleAnnotation
+    range: string
+
+  htp_expression_sample_type: # sampleType in agr_schemas json
+    description: >-
+      Ontology ID of the biosample type. EX: total mRNA, OBI:XXXXXXX. See enumeration below.
+    domain: HighThroughputExpressionDatasetSampleAnnotation
+    range: OBITerm
+    required: true
+
+  htp_expression_sample_type_curie: # sampleType in agr_schemas json
+    description: >-
+      Ontology ID of the biosample type. EX: total mRNA, OBI:XXXXXXX. See enumeration below.
+    domain: HighThroughputExpressionDatasetSampleAnnotationDTO
+    range: string
+    required: true
+
+  microarray_sample_details: # microarraySampleDetails in agr_schemas datasetSampleAnnotation.json
+    description: >-
+      collection of information that is specific for microarray samples
+    domain: HighThroughputExpressionDatasetSampleAnnotation
+    range: MicroarraySampleDetails
+
+  microarray_sample_details_dto: # microarraySampleDetails in agr_schemas datasetSampleAnnotation.json
+    description: >-
+      collection of information that is specific for microarray samples
+    inlined: true
+    domain: HighThroughputExpressionDatasetSampleAnnotation
+    range: MicroarraySampleDetails
+
+  number_of_channels:
+    description: >-
+      For microarrays, the number of channels used; This can be one of two values: 1 or 2
+    domain: HighThroughputExpressionDatasetAnnotation
+    range: integer
+    multivalued: false
+    required: false
+  # TO DO from agr_schemas: need to make required for microarray assays
+
+  preferred_cross_reference:
+    description: >-
+      cross reference to the preferred page to link to in search
+    domain: ExternalDataBaseEntity
+    range: CrossReference
+    multivalued: false
+    required: false
+
+  preferred_cross_reference_dto:
+    description: >-
+      cross reference to the preferred page to link to in search
+    inlined: true
+    domain: ExternalDataBaseEntityDTO
+    range: CrossReferenceDTO
+    multivalued: false
+    required: false
+
+  sequencing_format: # sequencingFormat in agr_schemas json
+    description: >-
+      single or paired end sequencing; might be better in experiment info
+    domain: HighThroughputExpressionDatasetSampleAnnotation
+    range: VocabularyTerm # accepted values: 'single' OR 'paired'
+
+  stage:
+    description: >-
+      The life stage of an organism or biosample as expressed by a TemporalContext entity
+    domain: BioSampleAge
+    range: TemporalContext
+
+  stage_dto:
+    description: >-
+      The life stage of an organism or biosample as expressed by a TemporalContext entity
+    inlined: true
+    domain: BioSampleAgeDTO
+    range: TemporalContextDTO
+
+  sub_series:
+    description: >-
+      If the dataset is a SuperSeries, this is a list of dataset ids that are associated with this dataset
+    domain: HighThroughputExpressionDatasetAnnotation
+    range: uriorcurie
+    multivalued: true
+    required: false
+
+
+enums:
+
+# For enumerations below, I don't know if we need to establish an ontology subset vocabulary as we do for
+# disease annotation evidence codes (CG 2024-06-26)
+
+  sample_type_values:
+    permissible_values:
+      OBI:0000895:
+      OBI:0000869:
+      OBI:0000880:
+      OBI:0000862:
+      OBI:0000423:
+      OBI:0000876:
+      OBI:0002573:
+      OBI:0002627:
+
+  sequencing_format_values:
+    permissible_values:
+      single:
+      paired:
+
+  high_throughput_expression_assay_values:
+    permissible_values:
+      MMO:0000659:
+      MMO:0000648:
+      MMO:0000650:
+      MMO:0000649:
+      MMO:0000664:
+      MMO:0000666:
+      MMO:0000000:
+      MMO:0000862:

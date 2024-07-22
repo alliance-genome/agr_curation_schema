@@ -106,10 +106,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the disease annotation. Currently only used by WormBase for disease annotations, e.g. \"WBDOannot00000907\"",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the disease annotation. When available, this is used for determination of distinctness instead of the Unique ID field.",
                     "type": "string"
@@ -121,6 +117,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-AGRKB) identifier/curie for the disease annotation. Currently only used by WormBase for disease annotations, e.g. \"WBDOannot00000907\"",
+                    "type": "string"
                 },
                 "related_notes": {
                     "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Disease annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
@@ -181,11 +181,11 @@
                     "type": "string"
                 },
                 "asserted_allele_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele to which something is manually asserted to be associated",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the allele to which something is manually asserted to be associated",
                     "type": "string"
                 },
                 "asserted_gene_identifiers": {
-                    "description": "Identifiers (curie/mod_entity_id/mod_internal_id) of the gene(s) to which something is manually asserted to be associated",
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of the gene(s) to which something is manually asserted to be associated",
                     "items": {
                         "type": "string"
                     },
@@ -226,7 +226,7 @@
                     "type": "string"
                 },
                 "disease_genetic_modifier_identifiers": {
-                    "description": "Identifiers (curie/mod_entity_id/mod_internal_id) of BiologcalEntity that modifies the disease model",
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of BiologcalEntity that modifies the disease model",
                     "items": {
                         "type": "string"
                     },
@@ -263,20 +263,16 @@
                     "type": "string"
                 },
                 "inferred_allele_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of allele to which something is inferred to be associated via an automated pipeline",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of allele to which something is inferred to be associated via an automated pipeline",
                     "type": "string"
                 },
                 "inferred_gene_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of gene to which something is inferred to be associated via an automated pipeline",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of gene to which something is inferred to be associated via an automated pipeline",
                     "type": "string"
                 },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
-                },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
                 },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
@@ -296,6 +292,10 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
+                },
                 "reference_curie": {
                     "description": "External reference curie used for ingest",
                     "type": "string"
@@ -309,7 +309,7 @@
                     "type": "string"
                 },
                 "with_gene_identifiers": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of genes http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of genes http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8",
                     "items": {
                         "type": "string"
                     },
@@ -395,10 +395,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -421,6 +417,10 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "related_notes": {
                     "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Phenotype annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
@@ -466,11 +466,11 @@
                     "type": "string"
                 },
                 "asserted_allele_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele to which something is manually asserted to be associated",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the allele to which something is manually asserted to be associated",
                     "type": "string"
                 },
                 "asserted_gene_identifiers": {
-                    "description": "Identifiers (curie/mod_entity_id/mod_internal_id) of the gene(s) to which something is manually asserted to be associated",
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of the gene(s) to which something is manually asserted to be associated",
                     "items": {
                         "type": "string"
                     },
@@ -514,20 +514,16 @@
                     "type": "string"
                 },
                 "inferred_allele_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of allele to which something is inferred to be associated via an automated pipeline",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of allele to which something is inferred to be associated via an automated pipeline",
                     "type": "string"
                 },
                 "inferred_gene_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of gene to which something is inferred to be associated via an automated pipeline",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of gene to which something is inferred to be associated via an automated pipeline",
                     "type": "string"
                 },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
-                },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
                 },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
@@ -553,6 +549,10 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "reference_curie": {
                     "description": "External reference curie used for ingest",
@@ -879,10 +879,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -896,6 +892,10 @@
                     "type": "boolean"
                 },
                 "parental_populations": {
+                    "type": "string"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": "string"
                 },
                 "references": {
@@ -992,7 +992,7 @@
             "description": "",
             "properties": {
                 "allele_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
                 "created_by_curie": {
@@ -1097,10 +1097,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -1113,6 +1109,10 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
+                },
                 "reference_curies": {
                     "description": "External reference curies used for ingest",
                     "items": {
@@ -1121,7 +1121,7 @@
                     "type": "array"
                 },
                 "sequence_targeting_reagent_identifiers": {
-                    "description": "Identifiers (curie/mod_entity_id/mod_internal_id) of the STRs",
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of the STRs",
                     "items": {
                         "type": "string"
                     },
@@ -1143,7 +1143,7 @@
             "required": [
                 "subtype_name",
                 "taxon_curie",
-                "mod_entity_id",
+                "primary_external_id",
                 "data_provider_dto",
                 "internal"
             ],
@@ -1444,10 +1444,6 @@
                     "$ref": "#/$defs/Laboratory",
                     "description": "The laboratory of origin for the entity."
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -1455,6 +1451,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "references": {
                     "description": "holds between an object and a list of references",
@@ -1571,7 +1571,7 @@
             "description": "Association between an allele and another allele",
             "properties": {
                 "allele_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
                 "created_by_curie": {
@@ -1617,7 +1617,7 @@
                     "$ref": "#/$defs/NoteDTO"
                 },
                 "object_allele_identifier": {
-                    "description": "The identifier (curie/mod_entity_id/mod_internal_id) of the allele that is acting as the object of an AlleleAlleleAssociation",
+                    "description": "The identifier (curie/primary_external_id/mod_internal_id) of the allele that is acting as the object of an AlleleAlleleAssociation",
                     "type": "string"
                 },
                 "obsolete": {
@@ -1713,11 +1713,11 @@
             "description": "The relationship between an allele and a cell line.  Includes mutant/ embryonic stem cell lines known to carry the allele, and parental cell line of alleles made in embryonic stem cells.",
             "properties": {
                 "allele_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
                 "cell_line_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the cell line",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the cell line",
                     "type": "string"
                 },
                 "created_by_curie": {
@@ -1856,7 +1856,7 @@
             "description": "The relationship between an allele and constructs contained in that allele.",
             "properties": {
                 "allele_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
                 "construct_identifier": {
@@ -2040,10 +2040,6 @@
                     "description": "The curie of the laboratory of origin for the entity.",
                     "type": "string"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -2057,6 +2053,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "reference_curies": {
                     "description": "External reference curies used for ingest",
@@ -2081,7 +2081,7 @@
             "required": [
                 "allele_symbol_dto",
                 "taxon_curie",
-                "mod_entity_id",
+                "primary_external_id",
                 "data_provider_dto",
                 "internal"
             ],
@@ -2308,10 +2308,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the disease annotation. Currently only used by WormBase for disease annotations, e.g. \"WBDOannot00000907\"",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the disease annotation. When available, this is used for determination of distinctness instead of the Unique ID field.",
                     "type": "string"
@@ -2323,6 +2319,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-AGRKB) identifier/curie for the disease annotation. Currently only used by WormBase for disease annotations, e.g. \"WBDOannot00000907\"",
+                    "type": "string"
                 },
                 "related_notes": {
                     "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Disease annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
@@ -2376,7 +2376,7 @@
             "description": "Ingest class for an association between an allele and a disease",
             "properties": {
                 "allele_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
                 "annotation_type_name": {
@@ -2384,7 +2384,7 @@
                     "type": "string"
                 },
                 "asserted_gene_identifiers": {
-                    "description": "Identifiers (curie/mod_entity_id/mod_internal_id) of the gene(s) to which something is manually asserted to be associated",
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of the gene(s) to which something is manually asserted to be associated",
                     "items": {
                         "type": "string"
                     },
@@ -2425,7 +2425,7 @@
                     "type": "string"
                 },
                 "disease_genetic_modifier_identifiers": {
-                    "description": "Identifiers (curie/mod_entity_id/mod_internal_id) of BiologcalEntity that modifies the disease model",
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of BiologcalEntity that modifies the disease model",
                     "items": {
                         "type": "string"
                     },
@@ -2462,16 +2462,12 @@
                     "type": "string"
                 },
                 "inferred_gene_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of gene to which something is inferred to be associated via an automated pipeline",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of gene to which something is inferred to be associated via an automated pipeline",
                     "type": "string"
                 },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
-                },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
                 },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
@@ -2491,6 +2487,10 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
+                },
                 "reference_curie": {
                     "description": "External reference curie used for ingest",
                     "type": "string"
@@ -2504,7 +2504,7 @@
                     "type": "string"
                 },
                 "with_gene_identifiers": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of genes http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of genes http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8",
                     "items": {
                         "type": "string"
                     },
@@ -2826,7 +2826,7 @@
             "description": "Association between an allele and a gene",
             "properties": {
                 "allele_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
                 "created_by_curie": {
@@ -2865,7 +2865,7 @@
                     "type": "array"
                 },
                 "gene_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the gene",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the gene",
                     "type": "string"
                 },
                 "internal": {
@@ -2978,7 +2978,7 @@
             "description": "",
             "properties": {
                 "allele_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
                 "created_by_curie": {
@@ -3020,7 +3020,7 @@
                     "type": "boolean"
                 },
                 "mutation_target_strain_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the particular strain that is targeted by the generation method for a particular allele (MGI only)",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the particular strain that is targeted by the generation method for a particular allele (MGI only)",
                     "type": "string"
                 },
                 "obsolete": {
@@ -3247,7 +3247,7 @@
             "description": "The relationship between an allele and an image.",
             "properties": {
                 "allele_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
                 "created_by_curie": {
@@ -3776,7 +3776,7 @@
                     "type": "string"
                 },
                 "allele_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
                 "created_by_curie": {
@@ -3896,10 +3896,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -3922,6 +3918,10 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "related_notes": {
                     "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Phenotype annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
@@ -3964,11 +3964,11 @@
             "description": "Ingest class for an association between an allele and a phenotype",
             "properties": {
                 "allele_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
                 "asserted_gene_identifiers": {
-                    "description": "Identifiers (curie/mod_entity_id/mod_internal_id) of the gene(s) to which something is manually asserted to be associated",
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of the gene(s) to which something is manually asserted to be associated",
                     "items": {
                         "type": "string"
                     },
@@ -4012,16 +4012,12 @@
                     "type": "string"
                 },
                 "inferred_gene_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of gene to which something is inferred to be associated via an automated pipeline",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of gene to which something is inferred to be associated via an automated pipeline",
                     "type": "string"
                 },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
-                },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
                 },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
@@ -4047,6 +4043,10 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "reference_curie": {
                     "description": "External reference curie used for ingest",
@@ -4145,7 +4145,7 @@
             "description": "Association between an allele and a protein",
             "properties": {
                 "allele_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
                 "created_by_curie": {
@@ -4518,7 +4518,7 @@
             "description": "Association between an allele and a transcript",
             "properties": {
                 "allele_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
                 "created_by_curie": {
@@ -4667,7 +4667,7 @@
             "description": "The relationship between an allele and a variant is many to many. An Allele may have many variants and a variant can be present in many alleles.",
             "properties": {
                 "allele_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the allele",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the allele",
                     "type": "string"
                 },
                 "created_by_curie": {
@@ -4725,7 +4725,7 @@
                     "type": "string"
                 },
                 "variant_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the variant",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the variant",
                     "type": "string"
                 }
             },
@@ -4815,6 +4815,7 @@
             "description": "The set of terms that define a specific anatomical site within a specimen.",
             "properties": {
                 "anatomical_structure": {
+                    "description": "The primary anatomical structure referred to within the context of an AnatomicalSite object.",
                     "type": "string"
                 },
                 "anatomical_structure_qualifiers": {
@@ -4831,6 +4832,7 @@
                     "type": "array"
                 },
                 "anatomical_substructure": {
+                    "description": "Primary anatomical substructure referenced within the context of an AnatomicalSite.",
                     "type": "string"
                 },
                 "anatomical_substructure_qualifiers": {
@@ -4847,6 +4849,7 @@
                     "type": "array"
                 },
                 "cellular_component": {
+                    "description": "The primary cellular component referred to within the context of an AnatomicalSite object.",
                     "type": "string"
                 },
                 "cellular_component_qualifiers": {
@@ -4898,6 +4901,97 @@
             "title": "AnatomicalSite",
             "type": "object"
         },
+        "AnatomicalSiteDTO": {
+            "additionalProperties": false,
+            "description": "The set of terms that define a specific anatomical site within a specimen.",
+            "properties": {
+                "anatomical_structure_curie": {
+                    "description": "The primary anatomical structure referred to within the context of an AnatomicalSite object. The range is any string representing an AnatomicalTerm ontology term",
+                    "type": "string"
+                },
+                "anatomical_structure_qualifier_names": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "anatomical_structure_uberon_term_curies": {
+                    "description": "UBERON slim terms that apply to the anatomical structure.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "anatomical_substructure_curie": {
+                    "description": "Primary anatomical substructure referenced within the context of an AnatomicalSiteDTO. The range is any string representing an AnatomicalTerm ontology term.",
+                    "type": "string"
+                },
+                "anatomical_substructure_qualifier_names": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "anatomical_substructure_uberon_term_curies": {
+                    "description": "String representations of UBERON slim terms that apply to the anatomical substructure.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "cellular_component_curie": {
+                    "description": "The primary cellular component referred to within the context of an AnatomicalSite object. The range is any string representing a GOTerm ontology term",
+                    "type": "string"
+                },
+                "cellular_component_qualifier_names": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "internal"
+            ],
+            "title": "AnatomicalSiteDTO",
+            "type": "object"
+        },
         "Annotation": {
             "additionalProperties": false,
             "description": "An annotation describing the link between a \"first class citizen\" of the database (e.g. Gene / Allele / AGM) and an ontology term or description, supported by a single reference and an optional list of condition relations.",
@@ -4944,10 +5038,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -4955,6 +5045,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "related_notes": {
                     "description": "Holds between an object and a list of related Note objects.",
@@ -5073,10 +5167,6 @@
                     },
                     "type": "array"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -5095,6 +5185,10 @@
                         "$ref": "#/$defs/Reference"
                     },
                     "type": "array"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "references": {
                     "description": "holds between an object and a list of references",
@@ -5143,7 +5237,7 @@
             "description": "Ingest class for immunoglobulin proteins that bind specific molecule(s). Can be used experimentally for the purposes of detection or purification.",
             "properties": {
                 "antibody_target_gene_identifiers": {
-                    "description": "Identifiers (curie/mod_entity_id/mod_internal_id) of the genes whose gene products are recognized by the antibody.",
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of the genes whose gene products are recognized by the antibody.",
                     "items": {
                         "type": "string"
                     },
@@ -5211,10 +5305,6 @@
                     "description": "Identifier for Reagent manufactured_by field.  ",
                     "type": "string"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -5235,6 +5325,10 @@
                 },
                 "original_reference_curie": {
                     "description": "The reference providing the original description of the antibody's generation.",
+                    "type": "string"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": "string"
                 },
                 "reference_curies": {
@@ -5323,10 +5417,6 @@
                     "$ref": "#/$defs/Chromosome",
                     "description": "The chromosome(s) to which a chromosome assembly or unlocalized scaffold or contig maps."
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -5338,6 +5428,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
@@ -5404,10 +5498,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -5419,6 +5509,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "taxon_curie": {
                     "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
@@ -5808,6 +5902,205 @@
             ],
             "title": "BackendBulkLoadTypeEnum",
             "type": "string"
+        },
+        "BioSampleAge": {
+            "additionalProperties": false,
+            "description": "An object that holds the temporal aspect of a sample.",
+            "properties": {
+                "age": {
+                    "description": "free text for the age of the sample",
+                    "type": "string"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
+                },
+                "stage": {
+                    "$ref": "#/$defs/TemporalContext",
+                    "description": "The life stage of an organism or biosample as expressed by a TemporalContext entity"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                },
+                "when_expressed_stage_name": {
+                    "description": "A human-readable stage name. To be used when an ontology term for the relevant stage is not available.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "data_provider",
+                "internal"
+            ],
+            "title": "BioSampleAge",
+            "type": "object"
+        },
+        "BioSampleAgeDTO": {
+            "additionalProperties": false,
+            "description": "An object that holds the temporal aspect of a sample.",
+            "properties": {
+                "age": {
+                    "description": "free text for the age of the sample",
+                    "type": "string"
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
+                },
+                "stage_dto": {
+                    "$ref": "#/$defs/TemporalContextDTO",
+                    "description": "The life stage of an organism or biosample as expressed by a TemporalContext entity"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                },
+                "when_expressed_stage_name": {
+                    "description": "A human-readable stage name. To be used when an ontology term for the relevant stage is not available.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "data_provider_dto",
+                "internal"
+            ],
+            "title": "BioSampleAgeDTO",
+            "type": "object"
+        },
+        "BioSampleGenomicInformation": {
+            "additionalProperties": false,
+            "description": "A basic entry for defining a biosample's genomic information",
+            "properties": {
+                "biosample_agm": {
+                    "$ref": "#/$defs/AffectedGenomicModel",
+                    "description": "An affected genomic model (AGM) from which a biosample has been derived"
+                },
+                "biosample_agm_type": {
+                    "description": "Indicates the type of AGM biosample; enum: fish, genotype, strain",
+                    "type": "string"
+                },
+                "biosample_allele": {
+                    "$ref": "#/$defs/Allele",
+                    "description": "An allele of focus for a particular biosample"
+                },
+                "biosample_text": {
+                    "description": "The free text of the biosample genomic information if no biosample is available",
+                    "type": "string"
+                }
+            },
+            "title": "BioSampleGenomicInformation",
+            "type": "object"
+        },
+        "BioSampleGenomicInformationDTO": {
+            "additionalProperties": false,
+            "description": "A basic (DTO) entry for defining a biosample's genomic information",
+            "properties": {
+                "agm_identifier": {
+                    "type": "string"
+                },
+                "allele_identifier": {
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the allele",
+                    "type": "string"
+                },
+                "biosample_agm_type_name": {
+                    "description": "Indicates the type of AGM biosample; enum: fish, genotype, strain",
+                    "type": "string"
+                },
+                "biosample_text": {
+                    "description": "The free text of the biosample genomic information if no biosample is available",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "allele_identifier",
+                "agm_identifier"
+            ],
+            "title": "BioSampleGenomicInformationDTO",
+            "type": "object"
         },
         "BulkFMSLoad": {
             "additionalProperties": false,
@@ -6917,10 +7210,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -6928,6 +7217,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
@@ -6988,10 +7281,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -6999,6 +7288,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "taxon_curie": {
                     "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
@@ -7011,7 +7304,7 @@
             },
             "required": [
                 "taxon_curie",
-                "mod_entity_id",
+                "primary_external_id",
                 "data_provider_dto",
                 "internal"
             ],
@@ -7199,10 +7492,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -7214,6 +7503,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
@@ -7283,10 +7576,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -7298,6 +7587,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "taxon_curie": {
                     "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
@@ -7677,10 +7970,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -7688,6 +7977,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "references": {
                     "description": "holds between an object and a list of references",
@@ -7938,10 +8231,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -7949,6 +8238,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "reference_curies": {
                     "description": "External reference curies used for ingest",
@@ -8745,7 +9038,7 @@
                     "type": "string"
                 },
                 "variant_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the variant",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the variant",
                     "type": "string"
                 },
                 "variant_sequence": {
@@ -8897,7 +9190,7 @@
             "description": "",
             "properties": {
                 "associated_transcript_identifiers": {
-                    "description": "Identifiers (curie/mod_entity_id/mod_internal_id) of transcript(s) associated with polypeptide to which variant is aligned.",
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of transcript(s) associated with polypeptide to which variant is aligned.",
                     "items": {
                         "type": "string"
                     },
@@ -8991,7 +9284,7 @@
                     "type": "string"
                 },
                 "variant_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the variant",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the variant",
                     "type": "string"
                 },
                 "variant_sequence": {
@@ -9219,7 +9512,7 @@
                     "type": "string"
                 },
                 "variant_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the variant",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the variant",
                     "type": "string"
                 },
                 "variant_sequence": {
@@ -9654,10 +9947,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -9665,6 +9954,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "secondary_identifiers": {
                     "items": {
@@ -10472,10 +10765,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -10487,6 +10776,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
@@ -10556,10 +10849,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -10571,6 +10860,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "taxon_curie": {
                     "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
@@ -10962,6 +11255,144 @@
                 "internal"
             ],
             "title": "ExpressionPattern",
+            "type": "object"
+        },
+        "ExternalDataBaseEntity": {
+            "additionalProperties": false,
+            "description": "A local database entry representing an external database entry; used currently for datasets or dataset samples; htpId.json in agr_schemas json",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "cross_references": {
+                    "description": "Optional cross references to the MOD sample or dataset page.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": "array"
+                },
+                "curie": {
+                    "description": "The ID from the data provider for the dataset. When available, this is the GEO ID. When no GEO ID is available, it will be the ArrayExpress ID. When these both are unavailable, it will be the MOD ID.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "preferred_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "The cross reference to the preferred page to link to in search"
+                },
+                "secondary_identifiers": {
+                    "description": "list of optional cross reference ids to the primary dataset id.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "internal"
+            ],
+            "title": "ExternalDataBaseEntity",
+            "type": "object"
+        },
+        "ExternalDataBaseEntityDTO": {
+            "additionalProperties": false,
+            "description": "DTO entity for a local database entry representing an external database entry; used currently for datasets or dataset samples; htpId.json in agr_schemas json",
+            "properties": {
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "cross_reference_dtos": {
+                    "description": "Optional cross references to the MOD sample or dataset page.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReferenceDTO"
+                    },
+                    "type": "array"
+                },
+                "curie": {
+                    "description": "The ID from the data provider for the dataset. When available, this is the GEO ID. When no GEO ID is available, it will be the ArrayExpress ID. When these both are unavailable, it will be the MOD ID.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "preferred_cross_reference_dto": {
+                    "$ref": "#/$defs/CrossReferenceDTO",
+                    "description": "The cross reference to the preferred page to link to in search"
+                },
+                "secondary_identifiers": {
+                    "description": "list of optional cross reference ids to the primary dataset id.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "internal"
+            ],
+            "title": "ExternalDataBaseEntityDTO",
             "type": "object"
         },
         "ExternalDatabaseLink": {
@@ -11527,10 +11958,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -11538,6 +11965,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "single_reference": {
                     "$ref": "#/$defs/Reference",
@@ -11943,10 +12374,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -11954,6 +12381,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "product_binds_matrix": {
                     "description": "WB specific. ID of position matrix object",
@@ -12000,7 +12431,7 @@
                 "gene_symbol",
                 "gene_type",
                 "taxon",
-                "mod_entity_id",
+                "primary_external_id",
                 "data_provider",
                 "internal"
             ],
@@ -12252,10 +12683,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -12263,6 +12690,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "related_note": {
                     "$ref": "#/$defs/Note",
@@ -12338,10 +12769,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -12349,6 +12776,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "related_note": {
                     "$ref": "#/$defs/Note",
@@ -12441,10 +12872,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -12459,6 +12886,10 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
+                },
                 "taxon_curie": {
                     "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
                     "type": "string"
@@ -12472,7 +12903,7 @@
                 "gene_symbol_dto",
                 "gene_type_curie",
                 "taxon_curie",
-                "mod_entity_id",
+                "primary_external_id",
                 "data_provider_dto",
                 "internal"
             ],
@@ -12566,10 +12997,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the disease annotation. Currently only used by WormBase for disease annotations, e.g. \"WBDOannot00000907\"",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the disease annotation. When available, this is used for determination of distinctness instead of the Unique ID field.",
                     "type": "string"
@@ -12581,6 +13008,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-AGRKB) identifier/curie for the disease annotation. Currently only used by WormBase for disease annotations, e.g. \"WBDOannot00000907\"",
+                    "type": "string"
                 },
                 "related_notes": {
                     "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Disease annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
@@ -12675,7 +13106,7 @@
                     "type": "string"
                 },
                 "disease_genetic_modifier_identifiers": {
-                    "description": "Identifiers (curie/mod_entity_id/mod_internal_id) of BiologcalEntity that modifies the disease model",
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of BiologcalEntity that modifies the disease model",
                     "items": {
                         "type": "string"
                     },
@@ -12708,7 +13139,7 @@
                     "type": "array"
                 },
                 "gene_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the gene",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the gene",
                     "type": "string"
                 },
                 "genetic_sex_name": {
@@ -12718,10 +13149,6 @@
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
-                },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
                 },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
@@ -12741,6 +13168,10 @@
                     "description": "Entity is no longer current.",
                     "type": "boolean"
                 },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
+                },
                 "reference_curie": {
                     "description": "External reference curie used for ingest",
                     "type": "string"
@@ -12750,7 +13181,7 @@
                     "description": "Ingest object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source, and a CrossReference to that organisation's site"
                 },
                 "sgd_strain_background_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of SGD strain background AGM",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of SGD strain background AGM",
                     "type": "string"
                 },
                 "updated_by_curie": {
@@ -12758,7 +13189,7 @@
                     "type": "string"
                 },
                 "with_gene_identifiers": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of genes http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of genes http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8",
                     "items": {
                         "type": "string"
                     },
@@ -12837,10 +13268,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database identifier/curie for the ExpressionAnnotation.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database internal identifier for the ExpressionAnnotation.",
                     "type": "string"
@@ -12852,6 +13279,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-AGRKB) database identifier/curie for the ExpressionAnnotation.",
+                    "type": "string"
                 },
                 "related_figures": {
                     "description": "The figure(s) that support(s) the expression annotation.",
@@ -12977,10 +13408,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The MOD internal identifier for an expression experiment, if no curie is available. Can be constructed at the MOD just for submission.",
                     "type": "string"
@@ -12988,6 +13415,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "related_notes": {
                     "description": "Holds between an object and a list of related Note objects.",
@@ -13155,7 +13586,7 @@
                     "type": "boolean"
                 },
                 "object_gene_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the object gene in a gene-to-gene association",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the object gene in a gene-to-gene association",
                     "type": "string"
                 },
                 "obsolete": {
@@ -13163,7 +13594,7 @@
                     "type": "boolean"
                 },
                 "subject_gene_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the subject gene in a gene-to-gene association",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the subject gene in a gene-to-gene association",
                     "type": "string"
                 },
                 "updated_by_curie": {
@@ -13400,7 +13831,7 @@
                     "type": "boolean"
                 },
                 "object_gene_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the object gene in a gene-to-gene association",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the object gene in a gene-to-gene association",
                     "type": "string"
                 },
                 "obsolete": {
@@ -13414,7 +13845,7 @@
                     "type": "array"
                 },
                 "subject_gene_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the subject gene in a gene-to-gene association",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the subject gene in a gene-to-gene association",
                     "type": "string"
                 },
                 "updated_by_curie": {
@@ -13819,7 +14250,7 @@
                     "type": "boolean"
                 },
                 "object_gene_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the object gene in a gene-to-gene association",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the object gene in a gene-to-gene association",
                     "type": "string"
                 },
                 "obsolete": {
@@ -13827,7 +14258,7 @@
                     "type": "boolean"
                 },
                 "subject_gene_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the subject gene in a gene-to-gene association",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the subject gene in a gene-to-gene association",
                     "type": "string"
                 },
                 "updated_by_curie": {
@@ -14045,10 +14476,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -14071,6 +14498,10 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "related_notes": {
                     "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Phenotype annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
@@ -14153,16 +14584,12 @@
                     "type": "string"
                 },
                 "gene_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the gene",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the gene",
                     "type": "string"
                 },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
-                },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
                 },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
@@ -14189,12 +14616,16 @@
                     },
                     "type": "array"
                 },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
+                },
                 "reference_curie": {
                     "description": "External reference curie used for ingest",
                     "type": "string"
                 },
                 "sgd_strain_background_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of SGD strain background AGM",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of SGD strain background AGM",
                     "type": "string"
                 },
                 "updated_by_curie": {
@@ -15028,10 +15459,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -15039,6 +15466,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "specimen_genomic_model": {
                     "$ref": "#/$defs/AffectedGenomicModel",
@@ -15103,10 +15534,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -15114,6 +15541,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "specimen_genomic_model_identifier": {
                     "description": "The identifier of the AffectedGenomicModel of the specimen. This can be a MOD curie, a MOD internal ID or an external (3rd party) identifier.",
@@ -15183,10 +15614,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -15194,6 +15621,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
@@ -15254,10 +15685,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -15265,6 +15692,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "taxon_curie": {
                     "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
@@ -15404,6 +15835,497 @@
                 "internal"
             ],
             "title": "HPTerm",
+            "type": "object"
+        },
+        "HighThroughputExpressionAssayValues": {
+            "description": "",
+            "enum": [
+                "MMO:0000659",
+                "MMO:0000648",
+                "MMO:0000650",
+                "MMO:0000649",
+                "MMO:0000664",
+                "MMO:0000666",
+                "MMO:0000000",
+                "MMO:0000862"
+            ],
+            "title": "HighThroughputExpressionAssayValues",
+            "type": "string"
+        },
+        "HighThroughputExpressionDatasetAnnotation": {
+            "additionalProperties": false,
+            "description": "An entry for a published high-throughput expression dataset annotation.",
+            "properties": {
+                "category_tags": {
+                    "description": "A list of controlled vocabulary terms to describe the experiment",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "htp_expression_dataset": {
+                    "$ref": "#/$defs/ExternalDataBaseEntity",
+                    "description": "A identifier object for high throughput (HTP) expression dataset, as defined in htpId.json"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "The free text title of the dataset",
+                    "type": "string"
+                },
+                "number_of_channels": {
+                    "description": "For microarrays, the number of channels used; This can be one of two values: 1 or 2",
+                    "type": "integer"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "references": {
+                    "description": "The list of publications associated with this dataset",
+                    "items": {
+                        "$ref": "#/$defs/Reference"
+                    },
+                    "type": "array"
+                },
+                "related_note": {
+                    "$ref": "#/$defs/Note",
+                    "description": "When using the \"summary\" note type, this is the free text summary or description of the dataset"
+                },
+                "sub_series": {
+                    "description": "If the dataset is a SuperSeries, this is a list of dataset ids that are associated with this dataset",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "htp_expression_dataset",
+                "name",
+                "category_tags",
+                "date_created",
+                "internal"
+            ],
+            "title": "HighThroughputExpressionDatasetAnnotation",
+            "type": "object"
+        },
+        "HighThroughputExpressionDatasetAnnotationDTO": {
+            "additionalProperties": false,
+            "description": "A DTO entry for a published high-throughput expression dataset annotation.",
+            "properties": {
+                "category_tag_names": {
+                    "description": "A list of controlled vocabulary terms to describe the experiment",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "htp_expression_dataset_dto": {
+                    "$ref": "#/$defs/ExternalDataBaseEntityDTO",
+                    "description": "An id associated with a dataset object; these will external or MOD IDs."
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The free text title of the dataset",
+                    "type": "string"
+                },
+                "note_dto": {
+                    "$ref": "#/$defs/NoteDTO"
+                },
+                "number_of_channels": {
+                    "description": "For microarrays, the number of channels used; This can be one of two values: 1 or 2",
+                    "type": "integer"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
+                },
+                "reference_curies": {
+                    "description": "External reference curies used for ingest",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "sub_series": {
+                    "description": "If the dataset is a SuperSeries, this is a list of dataset ids that are associated with this dataset",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "htp_expression_dataset_dto",
+                "name",
+                "category_tag_names",
+                "data_provider_dto",
+                "date_created",
+                "internal"
+            ],
+            "title": "HighThroughputExpressionDatasetAnnotationDTO",
+            "type": "object"
+        },
+        "HighThroughputExpressionDatasetSampleAnnotation": {
+            "additionalProperties": false,
+            "description": "An entry with dataset sample object associations.",
+            "properties": {
+                "abundance": {
+                    "description": "The free text describing the amount of sample used",
+                    "type": "string"
+                },
+                "assembly_versions": {
+                    "description": "single or paired end sequencing; might be better in experiment info",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "dataset_ids": {
+                    "description": "list of primary dataset ids that a sample is associated with",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "expression_assay_used": {
+                    "$ref": "#/$defs/HighThroughputExpressionAssayValues",
+                    "description": "ID of the type of assay used for this sample; sample or experiment property? See enumeration below."
+                },
+                "genetic_sex": {
+                    "description": "The sex of the organism the sample came from",
+                    "type": "string"
+                },
+                "genomic_information": {
+                    "$ref": "#/$defs/BioSampleGenomicInformation",
+                    "description": "A collection of information that represents the strain or genomic background of the sample, either an id or free text"
+                },
+                "htp_expression_sample": {
+                    "$ref": "#/$defs/ExternalDataBaseEntity",
+                    "description": "The dataset for this sample object"
+                },
+                "htp_expression_sample_age": {
+                    "$ref": "#/$defs/BioSampleAge",
+                    "description": "a collection of terms that when used together represent the age and stage of the sample"
+                },
+                "htp_expression_sample_locations": {
+                    "description": "A collection of terms that when used together represents the location within an organism from which the sample was taken",
+                    "items": {
+                        "$ref": "#/$defs/AnatomicalSite"
+                    },
+                    "type": "array"
+                },
+                "htp_expression_sample_title": {
+                    "description": "The free text title of the sample",
+                    "type": "string"
+                },
+                "htp_expression_sample_type": {
+                    "description": "Ontology ID of the biosample type. EX: total mRNA, OBI:XXXXXXX. See enumeration below.",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "microarray_sample_details": {
+                    "$ref": "#/$defs/MicroarraySampleDetails",
+                    "description": "collection of information that is specific for microarray samples"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
+                },
+                "related_notes": {
+                    "description": "Holds between an object and a list of related Note objects.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": "array"
+                },
+                "sequencing_format": {
+                    "description": "single or paired end sequencing; might be better in experiment info",
+                    "type": "string"
+                },
+                "taxon": {
+                    "description": "The taxon from which the biological entity derives.",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                },
+                "when_expressed_stage_name": {
+                    "description": "A human-readable stage name. To be used when an ontology term for the relevant stage is not available.",
+                    "type": "string"
+                },
+                "where_expressed_statement": {
+                    "description": "A human-readable free-text description of the anatomical location of the expression pattern.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "htp_expression_sample_type",
+                "where_expressed_statement",
+                "expression_assay_used",
+                "dataset_ids",
+                "data_provider",
+                "internal"
+            ],
+            "title": "HighThroughputExpressionDatasetSampleAnnotation",
+            "type": "object"
+        },
+        "HighThroughputExpressionDatasetSampleAnnotationDTO": {
+            "additionalProperties": false,
+            "description": "An entry with dataset sample object associations.",
+            "properties": {
+                "abundance": {
+                    "description": "The free text describing the amount of sample used",
+                    "type": "string"
+                },
+                "assembly_versions": {
+                    "description": "single or paired end sequencing; might be better in experiment info",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "dataset_ids": {
+                    "description": "list of primary dataset ids that a sample is associated with",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "expression_assay_curie": {
+                    "description": "The assay used to experimentally determine gene expression.",
+                    "type": "string"
+                },
+                "genetic_sex": {
+                    "description": "The sex of the organism the sample came from",
+                    "type": "string"
+                },
+                "genomic_information_dto": {
+                    "$ref": "#/$defs/BioSampleGenomicInformationDTO",
+                    "description": "A collection of information that represents the strain or genomic background of the sample, either an id or free text"
+                },
+                "htp_expression_sample_age_dto": {
+                    "$ref": "#/$defs/BioSampleAgeDTO",
+                    "description": "a collection of terms that when used together represent the age and stage of the sample"
+                },
+                "htp_expression_sample_dto": {
+                    "$ref": "#/$defs/ExternalDataBaseEntityDTO",
+                    "description": "The ID for this sample object, MOD or external database ID (ex: GEO); primaryId and secondaryId"
+                },
+                "htp_expression_sample_location_dtos": {
+                    "description": "A collection of terms that when used together represents the location within an organism from which the sample was taken",
+                    "items": {
+                        "$ref": "#/$defs/AnatomicalSiteDTO"
+                    },
+                    "type": "array"
+                },
+                "htp_expression_sample_title": {
+                    "description": "The free text title of the sample",
+                    "type": "string"
+                },
+                "htp_expression_sample_type_curie": {
+                    "description": "Ontology ID of the biosample type. EX: total mRNA, OBI:XXXXXXX. See enumeration below.",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "microarray_sample_details_dto": {
+                    "$ref": "#/$defs/MicroarraySampleDetails",
+                    "description": "collection of information that is specific for microarray samples"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": "array"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
+                },
+                "sequencing_format": {
+                    "description": "single or paired end sequencing; might be better in experiment info",
+                    "type": "string"
+                },
+                "taxon": {
+                    "description": "The taxon from which the biological entity derives.",
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                },
+                "where_expressed_statement": {
+                    "description": "A human-readable free-text description of the anatomical location of the expression pattern.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "htp_expression_sample_title",
+                "htp_expression_sample_type_curie",
+                "where_expressed_statement",
+                "expression_assay_curie",
+                "dataset_ids",
+                "data_provider_dto",
+                "internal"
+            ],
+            "title": "HighThroughputExpressionDatasetSampleAnnotationDTO",
             "type": "object"
         },
         "Identifier": {
@@ -15823,6 +16745,18 @@
                     },
                     "type": "array"
                 },
+                "high_throughput_expression_dataset_annotation_ingest_set": {
+                    "items": {
+                        "$ref": "#/$defs/HighThroughputExpressionDatasetAnnotationDTO"
+                    },
+                    "type": "array"
+                },
+                "high_throughput_expression_dataset_sample_annotation_ingest_set": {
+                    "items": {
+                        "$ref": "#/$defs/HighThroughputExpressionDatasetSampleAnnotationDTO"
+                    },
+                    "type": "array"
+                },
                 "linkml_version": {
                     "description": "Version of LinkML schema used for submitted file in the format n.n.n (e.g. 1.2.4 or 2.0.0)",
                     "type": "string"
@@ -16051,10 +16985,6 @@
                     "description": "middle names of a person",
                     "type": "string"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
@@ -16076,6 +17006,10 @@
                 },
                 "orcid": {
                     "description": "Open Researcher and Contributor ID",
+                    "type": "string"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": "string"
                 },
                 "unique_id": {
@@ -17025,6 +17959,78 @@
                 "internal"
             ],
             "title": "MeshDetail",
+            "type": "object"
+        },
+        "MicroarraySampleDetails": {
+            "additionalProperties": false,
+            "description": "An entry with microarray-specific metadata",
+            "properties": {
+                "channel_id": {
+                    "description": "for microarray experiments, channel ID",
+                    "type": "string"
+                },
+                "channel_number": {
+                    "description": "for micorarray data, which channel this sample is in, 1 or 2",
+                    "type": "integer"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "data_provider",
+                "internal"
+            ],
+            "title": "MicroarraySampleDetails",
             "type": "object"
         },
         "ModCorpusAssociation": {
@@ -17983,10 +18989,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -17994,6 +18996,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "related_note": {
                     "$ref": "#/$defs/Note",
@@ -18489,10 +19495,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -18500,6 +19502,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
@@ -18573,10 +19579,6 @@
                     "description": "middle names of a person",
                     "type": "string"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
@@ -18590,6 +19592,10 @@
                 },
                 "orcid": {
                     "description": "Open Researcher and Contributor ID",
+                    "type": "string"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": "string"
                 },
                 "unique_id": {
@@ -18708,10 +19714,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -18734,6 +19736,10 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "related_notes": {
                     "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Phenotype annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
@@ -18951,10 +19957,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -18966,6 +19968,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
@@ -19024,10 +20030,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -19035,6 +20037,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "proteins": {
                     "items": {
@@ -19101,10 +20107,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -19116,6 +20118,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "taxon_curie": {
                     "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
@@ -19270,10 +20276,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -19281,6 +20283,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "secondary_identifiers": {
                     "items": {
@@ -19590,10 +20596,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -19601,6 +20603,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "secondary_identifiers": {
                     "items": {
@@ -19660,10 +20666,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -19671,6 +20673,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "secondary_identifiers": {
                     "items": {
@@ -20233,6 +21239,21 @@
             "title": "SOTerm",
             "type": "object"
         },
+        "SampleTypeValues": {
+            "description": "",
+            "enum": [
+                "OBI:0000895",
+                "OBI:0000869",
+                "OBI:0000880",
+                "OBI:0000862",
+                "OBI:0000423",
+                "OBI:0000876",
+                "OBI:0002573",
+                "OBI:0002627"
+            ],
+            "title": "SampleTypeValues",
+            "type": "string"
+        },
         "SecondaryIdSlotAnnotation": {
             "additionalProperties": false,
             "description": "",
@@ -20396,10 +21417,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -20411,6 +21428,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "references": {
                     "description": "holds between an object and a list of references",
@@ -20498,10 +21519,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -20513,6 +21530,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "reference_curies": {
                     "description": "External reference curies used for ingest",
@@ -20545,7 +21566,7 @@
             },
             "required": [
                 "taxon_curie",
-                "mod_entity_id",
+                "primary_external_id",
                 "data_provider_dto",
                 "internal"
             ],
@@ -20685,6 +21706,15 @@
             ],
             "title": "SequenceTargetingReagentGeneAssociationDTO",
             "type": "object"
+        },
+        "SequencingFormatValues": {
+            "description": "",
+            "enum": [
+                "single",
+                "paired"
+            ],
+            "title": "SequencingFormatValues",
+            "type": "string"
         },
         "SiftPredictionLevels": {
             "description": "",
@@ -21114,7 +22144,7 @@
                     "type": "string"
                 },
                 "variant_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the variant",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the variant",
                     "type": "string"
                 },
                 "variant_sequence": {
@@ -21267,7 +22297,7 @@
             "description": "",
             "properties": {
                 "associated_transcript_identifiers": {
-                    "description": "Identifiers (curie/mod_entity_id/mod_internal_id) of transcript(s) associated with polypeptide to which variant is aligned.",
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of transcript(s) associated with polypeptide to which variant is aligned.",
                     "items": {
                         "type": "string"
                     },
@@ -21365,7 +22395,7 @@
                     "type": "string"
                 },
                 "variant_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the variant",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the variant",
                     "type": "string"
                 },
                 "variant_sequence": {
@@ -21598,7 +22628,7 @@
                     "type": "string"
                 },
                 "variant_identifier": {
-                    "description": "Identifier (curie/mod_entity_id/mod_internal_id) of the variant",
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the variant",
                     "type": "string"
                 },
                 "variant_sequence": {
@@ -21762,10 +22792,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -21773,6 +22799,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -21822,10 +22852,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -21833,6 +22859,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
@@ -22096,6 +23126,79 @@
             "title": "TemporalContext",
             "type": "object"
         },
+        "TemporalContextDTO": {
+            "additionalProperties": false,
+            "description": "The developmental stage and/or age of the specimen in an annotation. The developmental_stage_stop slot is optional.",
+            "properties": {
+                "age": {
+                    "description": "The age at which an annotated event was observed.",
+                    "type": "string"
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "developmental_stage_start_curie": {
+                    "description": "The beginning developmental stage at which an annotated event was observed.",
+                    "type": "string"
+                },
+                "developmental_stage_stop_curie": {
+                    "description": "The end developmental stage at which an annotated event was observed. This is not required if the annotation applies to a single stage.",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "stage_uberon_slim_term_curies": {
+                    "description": "The high-level UBERON slim terms that apply to the developmental range of the TemporalContext component of an ExpressionPattern. The following UBERON terms are allowed: UBERON:0000068, UBERON:0000113. A non-UBERON term is also allowed: post embryonic, pre-adult.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "temporal_qualifier_names": {
+                    "description": "Qualifiers of the stage or age in an annotation. The range is a string representing vocabulary term",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "internal"
+            ],
+            "title": "TemporalContextDTO",
+            "type": "object"
+        },
         "Transcript": {
             "additionalProperties": false,
             "description": "A contiguous RNA molecule representing a sequence of a genome, often the result of a DNA-dependent RNA polymerase gene transcription event",
@@ -22143,10 +23246,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -22158,6 +23257,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
@@ -22312,10 +23415,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -22327,6 +23426,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "taxon_curie": {
                     "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
@@ -22747,10 +23850,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -22758,6 +23857,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
@@ -22967,10 +24070,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -22978,6 +24077,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "references": {
                     "description": "holds between an object and a list of references",
@@ -23088,10 +24191,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_entity_id": {
-                    "description": "The model organism database (MOD) identifier/curie for the object. Note that this may be an external identifier for an object, like a UniProt ID for a protein, but acts as the MOD's primary key for the entity.",
-                    "type": "string"
-                },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": "string"
@@ -23105,6 +24204,10 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": "string"
                 },
                 "source_general_consequence_dtos": {
                     "items": {
@@ -25344,6 +26447,18 @@
             },
             "type": "array"
         },
+        "high_throughput_expression_dataset_annotation_ingest_set": {
+            "items": {
+                "$ref": "#/$defs/HighThroughputExpressionDatasetAnnotationDTO"
+            },
+            "type": "array"
+        },
+        "high_throughput_expression_dataset_sample_annotation_ingest_set": {
+            "items": {
+                "$ref": "#/$defs/HighThroughputExpressionDatasetSampleAnnotationDTO"
+            },
+            "type": "array"
+        },
         "linkml_version": {
             "description": "Version of LinkML schema used for submitted file in the format n.n.n (e.g. 1.2.4 or 2.0.0)",
             "type": "string"
@@ -25446,18 +26561,18 @@
         "anyOf": [
             {
                 "properties": {
-                    "anatomical_structure": {}
+                    "anatomical_structure_curie": {}
                 },
                 "required": [
-                    "anatomical_structure"
+                    "anatomical_structure_curie"
                 ]
             },
             {
                 "properties": {
-                    "cellular_component": {}
+                    "cellular_component_curie": {}
                 },
                 "required": [
-                    "cellular_component"
+                    "cellular_component_curie"
                 ]
             }
         ]

@@ -2,7 +2,7 @@
   "linkml_version": "2.0.0",
   "genome_assembly_ingest_set": [
     {
-      "mod_entity_id": "WB:WBcel235",
+      "primary_external_id": "WB:WBcel235",
       "taxon_curie": "NCBITaxon:6239",
       "created_by_curie": "WB:WBPerson2987",
       "updated_by_curie": "WB:WBPerson2987",
