@@ -40,7 +40,7 @@ emit_prefixes:
 
 classes:
 
-  HighThroughputExpressionDatasetAnnotation:
+  HTPExpressionDatasetAnnotation:
     is_a: AuditedObject
     description: >-
       An entry for a published high-throughput expression dataset annotation.
@@ -68,7 +68,7 @@ classes:
         description: >-
           The list of publications associated with this dataset
 
-  HighThroughputExpressionDatasetAnnotationDTO:
+  HTPExpressionDatasetAnnotationDTO:
     is_a: SubmittedObjectDTO
     description: >-
       A DTO entry for a published high-throughput expression dataset annotation.
@@ -98,7 +98,7 @@ classes:
         description: >-
           The list of publications associated with this dataset
 
-  HighThroughputExpressionDatasetSampleAnnotation:
+  HTPExpressionDatasetSampleAnnotation:
     is_a: SubmittedObject
     description: >-
      An entry with dataset sample object associations.
@@ -149,7 +149,7 @@ classes:
             At least htp_expression_sample_id, dataset_ids, expression_assay_used, and htp_expression_sample_type should be populated OR
             at least htp_expression_sample_title, dataset_ids, expression_assay_used, and htp_expression_sample_type should be populated
 
-  HighThroughputExpressionDatasetSampleAnnotationDTO:
+  HTPExpressionDatasetSampleAnnotationDTO:
     is_a: SubmittedObjectDTO
     description: >-
      An entry with dataset sample object associations.
@@ -336,13 +336,13 @@ slots:
   abundance: # abundance in agr_schemas json
     description: >-
       The free text describing the amount of sample used
-    domain: HighThroughputExpressionDatasetSampleAnnotation
+    domain: HTPExpressionDatasetSampleAnnotation
     range: string
 
   assembly_versions: # assemblyVersions in agr_schemas json
     description: >-
       single or paired end sequencing; might be better in experiment info
-    domain: HighThroughputExpressionDatasetSampleAnnotation
+    domain: HTPExpressionDatasetSampleAnnotation
     range: string
     multivalued: true
 
@@ -377,7 +377,7 @@ slots:
   category_tags:
     description: >-
       A list of controlled vocabulary terms to describe the experiment
-    domain: HighThroughputExpressionDatasetAnnotation
+    domain: HTPExpressionDatasetAnnotation
     range: VocabularyTerm
     multivalued: true
     required: true
@@ -385,7 +385,7 @@ slots:
   category_tag_names:
     description: >-
       A list of controlled vocabulary terms to describe the experiment
-    domain: HighThroughputExpressionDatasetAnnotationDTO
+    domain: HTPExpressionDatasetAnnotationDTO
     range: string
     multivalued: true
     required: true
@@ -407,21 +407,21 @@ slots:
   dataset_ids: # datasetIds in agr_schemas datasetSampleAnnotation.json
     description: >-
       list of primary dataset ids that a sample is associated with
-    domain: HighThroughputExpressionDatasetSampleAnnotation
+    domain: HTPExpressionDatasetSampleAnnotation
     range: uriorcurie
     multivalued: true
 
   genomic_information: # genomicInformation in agr_schemas datasetSampleAnnotation.json
     description: >-
       A collection of information that represents the strain or genomic background of the sample, either an id or free text
-    domain: HighThroughputExpressionDatasetSampleAnnotation
+    domain: HTPExpressionDatasetSampleAnnotation
     range: BioSampleGenomicInformation
 
   genomic_information_dto: # genomicInformation in agr_schemas datasetSampleAnnotation.json
     description: >-
       A collection of information that represents the strain or genomic background of the sample, either an id or free text
     inlined: true
-    domain: HighThroughputExpressionDatasetSampleAnnotation
+    domain: HTPExpressionDatasetSampleAnnotation
     range: BioSampleGenomicInformationDTO
 
   htp_expression_dataset: # datasetId in agr_schemas datasetAnnotation.json
@@ -440,20 +440,20 @@ slots:
   htp_expression_sample_age: # sampleAge in agr_schemas json
     description: >-
       a collection of terms that when used together represent the age and stage of the sample
-    domain: HighThroughputExpressionDatasetSampleAnnotation
+    domain: HTPExpressionDatasetSampleAnnotation
     range: BioSampleAge
 
   htp_expression_sample_age_dto: # sampleAge in agr_schemas json
     description: >-
       a collection of terms that when used together represent the age and stage of the sample
     inlined: true
-    domain: HighThroughputExpressionDatasetSampleAnnotationDTO
+    domain: HTPExpressionDatasetSampleAnnotationDTO
     range: BioSampleAgeDTO
 
   htp_expression_sample:
     description: >-
       The IDs for this sample object, MOD or external database ID (ex: GEO); primaryId and secondaryId
-    domain: HighThroughputExpressionDatasetSampleAnnotation
+    domain: HTPExpressionDatasetSampleAnnotation
     range: ExternalDataBaseEntity
     multivalued: false
     required: false
@@ -462,7 +462,7 @@ slots:
     description: >-
       The IDs for this sample object, MOD or external database ID (ex: GEO); primaryId and secondaryId
     inlined: true
-    domain: HighThroughputExpressionDatasetSampleAnnotationDTO
+    domain: HTPExpressionDatasetSampleAnnotationDTO
     range: ExternalDataBaseEntityDTO
     multivalued: false
     required: false
@@ -470,7 +470,7 @@ slots:
   htp_expression_sample_locations: # sampleLocations in agr_schemas json
     description: >-
       A collection of terms that when used together represents the location within an organism from which the sample was taken
-    domain: HighThroughputExpressionDatasetSampleAnnotation
+    domain: HTPExpressionDatasetSampleAnnotation
     range: AnatomicalSite
     multivalued: true
 
@@ -479,47 +479,47 @@ slots:
       A collection of terms that when used together represents the location within an organism from which the sample was taken
     inlined: true
     inlined_as_list: true
-    domain: HighThroughputExpressionDatasetSampleAnnotationDTO
+    domain: HTPExpressionDatasetSampleAnnotationDTO
     range: AnatomicalSiteDTO
     multivalued: true
 
   htp_expression_sample_title: # sampleTitle in agr_schemas json
     description: >-
       The free text title of the sample
-    domain: HighThroughputExpressionDatasetSampleAnnotation
+    domain: HTPExpressionDatasetSampleAnnotation
     range: string
 
   htp_expression_sample_type: # sampleType in agr_schemas json
     description: >-
       Ontology ID of the biosample type. EX: total mRNA, OBI:XXXXXXX. See enumeration below.
-    domain: HighThroughputExpressionDatasetSampleAnnotation
+    domain: HTPExpressionDatasetSampleAnnotation
     range: OBITerm
     required: true
 
   htp_expression_sample_type_curie: # sampleType in agr_schemas json
     description: >-
       Ontology ID of the biosample type. EX: total mRNA, OBI:XXXXXXX. See enumeration below.
-    domain: HighThroughputExpressionDatasetSampleAnnotationDTO
+    domain: HTPExpressionDatasetSampleAnnotationDTO
     range: string
     required: true
 
   microarray_sample_details: # microarraySampleDetails in agr_schemas datasetSampleAnnotation.json
     description: >-
       collection of information that is specific for microarray samples
-    domain: HighThroughputExpressionDatasetSampleAnnotation
+    domain: HTPExpressionDatasetSampleAnnotation
     range: MicroarraySampleDetails
 
   microarray_sample_details_dto: # microarraySampleDetails in agr_schemas datasetSampleAnnotation.json
     description: >-
       collection of information that is specific for microarray samples
     inlined: true
-    domain: HighThroughputExpressionDatasetSampleAnnotation
+    domain: HTPExpressionDatasetSampleAnnotation
     range: MicroarraySampleDetails
 
   number_of_channels:
     description: >-
       For microarrays, the number of channels used; This can be one of two values: 1 or 2
-    domain: HighThroughputExpressionDatasetAnnotation
+    domain: HTPExpressionDatasetAnnotation
     range: integer
     multivalued: false
     required: false
@@ -545,7 +545,7 @@ slots:
   sequencing_format: # sequencingFormat in agr_schemas json
     description: >-
       single or paired end sequencing; might be better in experiment info
-    domain: HighThroughputExpressionDatasetSampleAnnotation
+    domain: HTPExpressionDatasetSampleAnnotation
     range: VocabularyTerm # accepted values: 'single' OR 'paired'
 
   stage:
@@ -564,7 +564,7 @@ slots:
   sub_series:
     description: >-
       If the dataset is a SuperSeries, this is a list of dataset ids that are associated with this dataset
-    domain: HighThroughputExpressionDatasetAnnotation
+    domain: HTPExpressionDatasetAnnotation
     range: uriorcurie
     multivalued: true
     required: false

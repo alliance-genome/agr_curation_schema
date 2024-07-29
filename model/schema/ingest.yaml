@@ -332,14 +332,14 @@ slots:
 
   high_throughput_expression_dataset_annotation_ingest_set:
     domain: Ingest
-    range: HighThroughputExpressionDatasetAnnotationDTO
+    range: HTPExpressionDatasetAnnotationDTO
     multivalued: true
     mixins:
       - object_set
 
   high_throughput_expression_dataset_sample_annotation_ingest_set:
     domain: Ingest
-    range: HighThroughputExpressionDatasetSampleAnnotationDTO
+    range: HTPExpressionDatasetSampleAnnotationDTO
     multivalued: true
     mixins:
       - object_set
