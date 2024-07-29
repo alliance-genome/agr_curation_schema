@@ -16747,13 +16747,13 @@
                 },
                 "high_throughput_expression_dataset_annotation_ingest_set": {
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/HTPExpressionDatasetAnnotationDTO"
                     },
                     "type": "array"
                 },
                 "high_throughput_expression_dataset_sample_annotation_ingest_set": {
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/HTPExpressionDatasetSampleAnnotationDTO"
                     },
                     "type": "array"
                 },
@@ -26449,13 +26449,13 @@
         },
         "high_throughput_expression_dataset_annotation_ingest_set": {
             "items": {
-                "type": "string"
+                "$ref": "#/$defs/HTPExpressionDatasetAnnotationDTO"
             },
             "type": "array"
         },
         "high_throughput_expression_dataset_sample_annotation_ingest_set": {
             "items": {
-                "type": "string"
+                "$ref": "#/$defs/HTPExpressionDatasetSampleAnnotationDTO"
             },
             "type": "array"
         },
