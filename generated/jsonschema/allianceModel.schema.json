@@ -15837,22 +15837,7 @@
             "title": "HPTerm",
             "type": "object"
         },
-        "HighThroughputExpressionAssayValues": {
-            "description": "",
-            "enum": [
-                "MMO:0000659",
-                "MMO:0000648",
-                "MMO:0000650",
-                "MMO:0000649",
-                "MMO:0000664",
-                "MMO:0000666",
-                "MMO:0000000",
-                "MMO:0000862"
-            ],
-            "title": "HighThroughputExpressionAssayValues",
-            "type": "string"
-        },
-        "HighThroughputExpressionDatasetAnnotation": {
+        "HTPExpressionDatasetAnnotation": {
             "additionalProperties": false,
             "description": "An entry for a published high-throughput expression dataset annotation.",
             "properties": {
@@ -15937,10 +15922,10 @@
                 "date_created",
                 "internal"
             ],
-            "title": "HighThroughputExpressionDatasetAnnotation",
+            "title": "HTPExpressionDatasetAnnotation",
             "type": "object"
         },
-        "HighThroughputExpressionDatasetAnnotationDTO": {
+        "HTPExpressionDatasetAnnotationDTO": {
             "additionalProperties": false,
             "description": "A DTO entry for a published high-throughput expression dataset annotation.",
             "properties": {
@@ -16037,10 +16022,10 @@
                 "date_created",
                 "internal"
             ],
-            "title": "HighThroughputExpressionDatasetAnnotationDTO",
+            "title": "HTPExpressionDatasetAnnotationDTO",
             "type": "object"
         },
-        "HighThroughputExpressionDatasetSampleAnnotation": {
+        "HTPExpressionDatasetSampleAnnotation": {
             "additionalProperties": false,
             "description": "An entry with dataset sample object associations.",
             "properties": {
@@ -16185,10 +16170,10 @@
                 "data_provider",
                 "internal"
             ],
-            "title": "HighThroughputExpressionDatasetSampleAnnotation",
+            "title": "HTPExpressionDatasetSampleAnnotation",
             "type": "object"
         },
-        "HighThroughputExpressionDatasetSampleAnnotationDTO": {
+        "HTPExpressionDatasetSampleAnnotationDTO": {
             "additionalProperties": false,
             "description": "An entry with dataset sample object associations.",
             "properties": {
@@ -16325,8 +16310,23 @@
                 "data_provider_dto",
                 "internal"
             ],
-            "title": "HighThroughputExpressionDatasetSampleAnnotationDTO",
+            "title": "HTPExpressionDatasetSampleAnnotationDTO",
             "type": "object"
+        },
+        "HighThroughputExpressionAssayValues": {
+            "description": "",
+            "enum": [
+                "MMO:0000659",
+                "MMO:0000648",
+                "MMO:0000650",
+                "MMO:0000649",
+                "MMO:0000664",
+                "MMO:0000666",
+                "MMO:0000000",
+                "MMO:0000862"
+            ],
+            "title": "HighThroughputExpressionAssayValues",
+            "type": "string"
         },
         "Identifier": {
             "additionalProperties": false,
@@ -16747,13 +16747,13 @@
                 },
                 "high_throughput_expression_dataset_annotation_ingest_set": {
                     "items": {
-                        "$ref": "#/$defs/HighThroughputExpressionDatasetAnnotationDTO"
+                        "type": "string"
                     },
                     "type": "array"
                 },
                 "high_throughput_expression_dataset_sample_annotation_ingest_set": {
                     "items": {
-                        "$ref": "#/$defs/HighThroughputExpressionDatasetSampleAnnotationDTO"
+                        "type": "string"
                     },
                     "type": "array"
                 },
@@ -26449,13 +26449,13 @@
         },
         "high_throughput_expression_dataset_annotation_ingest_set": {
             "items": {
-                "$ref": "#/$defs/HighThroughputExpressionDatasetAnnotationDTO"
+                "type": "string"
             },
             "type": "array"
         },
         "high_throughput_expression_dataset_sample_annotation_ingest_set": {
             "items": {
-                "$ref": "#/$defs/HighThroughputExpressionDatasetSampleAnnotationDTO"
+                "type": "string"
             },
             "type": "array"
         },
