@@ -4852,11 +4852,19 @@
                     "description": "The primary cellular component referred to within the context of an AnatomicalSite object.",
                     "type": "string"
                 },
+                "cellular_component_other": {
+                    "description": "Is set to true when no cellular_component_ribbon_term is available",
+                    "type": "boolean"
+                },
                 "cellular_component_qualifiers": {
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "cellular_component_ribbon_term": {
+                    "description": "The primary cellular component slim term referred to within the context of an AnatomicalSite object and used by the expression ribbon.",
+                    "type": "string"
                 },
                 "created_by": {
                     "description": "The individual that created the entity.",

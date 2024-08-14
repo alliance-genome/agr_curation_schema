@@ -284,6 +284,8 @@ classes:
       - anatomical_substructure_qualifiers
       - anatomical_substructure_uberon_terms
       - cellular_component
+      - cellular_component_ribbon_term
+      - cellular_component_other
       - cellular_component_qualifiers
     rules:
       - postconditions:
@@ -509,6 +511,20 @@ slots:
       branch, but I'm not sure how to do this.
     domain: AnatomicalSite
     range: GOTerm
+    multivalued: false
+
+  cellular_component_ribbon_term:
+    description: >-
+      The primary cellular component slim term referred to within the context of an AnatomicalSite object and used by the expression ribbon.
+    domain: AnatomicalSite
+    range: GOTerm
+    multivalued: false
+
+  cellular_component_other:
+    description: >-
+      Is set to true when no cellular_component_ribbon_term is available
+    domain: AnatomicalSite
+    range: boolean
     multivalued: false
 
   cellular_component_curie:
