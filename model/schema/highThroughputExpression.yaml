@@ -576,9 +576,8 @@ slots:
   dataprovider:
     description: >-
       The data provider for the dataset annotation
-    domain: DataProvider
-    range: string
-    required: false
+    domain: HTPExpressionDatasetAnnotation
+    range: DataProvider
 
 
 enums:
