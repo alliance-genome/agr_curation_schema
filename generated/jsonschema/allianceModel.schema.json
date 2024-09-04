@@ -15861,8 +15861,8 @@
                     "type": "string"
                 },
                 "dataprovider": {
-                    "description": "The data provider for the dataset annotation",
-                    "type": "string"
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "The data provider for the dataset annotation"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
