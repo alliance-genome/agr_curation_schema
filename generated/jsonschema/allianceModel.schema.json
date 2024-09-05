@@ -15860,7 +15860,7 @@
                     "description": "The individual that created the entity.",
                     "type": "string"
                 },
-                "dataprovider": {
+                "data_provider": {
                     "$ref": "#/$defs/DataProvider",
                     "description": "The data provider for the dataset annotation"
                 },
@@ -15931,6 +15931,7 @@
                 "htp_expression_dataset",
                 "name",
                 "category_tags",
+                "data_provider",
                 "date_created",
                 "internal"
             ],
