@@ -148,15 +148,15 @@ slots:
   length:
     description: The length of the aligned regions between two genes
     range: integer
-    required: true
+    required: false
   
   similarity:
     description: Similarity score between the two genes
     range: integer
-    required: true
+    required: false
     
   identity:
     description: Identity score between the two genes
     range: integer
-    required: true
+    required: false
     

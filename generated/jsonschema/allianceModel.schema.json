@@ -15272,9 +15272,6 @@
                 "object_gene",
                 "rank",
                 "homology_confidence",
-                "length",
-                "similarity",
-                "identity",
                 "internal"
             ],
             "title": "GeneToGeneParalogy",
