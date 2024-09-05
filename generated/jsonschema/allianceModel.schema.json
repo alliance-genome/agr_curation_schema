@@ -15860,6 +15860,10 @@
                     "description": "The individual that created the entity.",
                     "type": "string"
                 },
+                "data_provider": {
+                    "$ref": "#/$defs/DataProvider",
+                    "description": "The data provider for the dataset annotation"
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -15927,6 +15931,7 @@
                 "htp_expression_dataset",
                 "name",
                 "category_tags",
+                "data_provider",
                 "date_created",
                 "internal"
             ],

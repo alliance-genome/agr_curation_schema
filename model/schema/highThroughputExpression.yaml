@@ -52,6 +52,7 @@ classes:
       - number_of_channels # numChannels in agr_schemas datasetAnnotation.json
       - sub_series # subSeries in agr_schemas datasetAnnotation.json
       - category_tags # categoryTags in agr_schemas datasetAnnotation.json
+      - data_provider
     slot_usage:
       htp_expression_dataset:
         required: true
@@ -67,6 +68,9 @@ classes:
       references:
         description: >-
           The list of publications associated with this dataset
+      data_provider:
+        description: >-
+          The data provider for the dataset annotation
 
   HTPExpressionDatasetAnnotationDTO:
     is_a: SubmittedObjectDTO
@@ -568,7 +572,6 @@ slots:
     range: uriorcurie
     multivalued: true
     required: false
-
 
 enums:
 
