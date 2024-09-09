@@ -4917,7 +4917,7 @@
                     "description": "The primary anatomical structure referred to within the context of an AnatomicalSite object. The range is any string representing an AnatomicalTerm ontology term",
                     "type": "string"
                 },
-                "anatomical_structure_qualifier_names": {
+                "anatomical_structure_qualifier_curies": {
                     "items": {
                         "type": "string"
                     },
@@ -4934,7 +4934,7 @@
                     "description": "Primary anatomical substructure referenced within the context of an AnatomicalSiteDTO. The range is any string representing an AnatomicalTerm ontology term.",
                     "type": "string"
                 },
-                "anatomical_substructure_qualifier_names": {
+                "anatomical_substructure_qualifier_curies": {
                     "items": {
                         "type": "string"
                     },
@@ -4951,7 +4951,7 @@
                     "description": "The primary cellular component referred to within the context of an AnatomicalSite object. The range is any string representing a GOTerm ontology term",
                     "type": "string"
                 },
-                "cellular_component_qualifier_names": {
+                "cellular_component_qualifier_curies": {
                     "items": {
                         "type": "string"
                     },

@@ -304,13 +304,13 @@ classes:
       The set of terms that define a specific anatomical site within a specimen.
     slots:
       - anatomical_structure_curie
-      - anatomical_structure_qualifier_names
+      - anatomical_structure_qualifier_curies
       - anatomical_structure_uberon_term_curies
       - anatomical_substructure_curie
-      - anatomical_substructure_qualifier_names
+      - anatomical_substructure_qualifier_curies
       - anatomical_substructure_uberon_term_curies
       - cellular_component_curie
-      - cellular_component_qualifier_names
+      - cellular_component_qualifier_curies
     rules:
       - postconditions:
           any_of:
@@ -373,10 +373,10 @@ slots:
     notes: >-
       See the spatial_qualifier_set enum at the bottom of this file for terms.
     domain: AnatomicalSite
-    range: VocabularyTerm
+    range: OntologyTerm
     multivalued: true
 
-  anatomical_substructure_qualifier_names:
+  anatomical_substructure_qualifier_curies:
     notes: >-
       See the spatial_qualifier_set enum at the bottom of this file for terms.
     domain: AnatomicalSiteDTO
@@ -442,10 +442,10 @@ slots:
     notes: >-
       See the spatial_qualifier_set enum at the bottom of this file for terms.
     domain: AnatomicalSite
-    range: VocabularyTerm
+    range: OntologyTerm
     multivalued: true
 
-  anatomical_structure_qualifier_names:
+  anatomical_structure_qualifier_curies:
     notes: >-
       See the spatial_qualifier_set enum at the bottom of this file for terms.
     domain: AnatomicalSiteDTO
@@ -541,10 +541,10 @@ slots:
   # ACTION ITEM: Load needed qualifiers as Vocabulary/OntologyTerms.
   cellular_component_qualifiers:
     domain: AnatomicalSite
-    range: VocabularyTerm
+    range: OntologyTerm
     multivalued: true
 
-  cellular_component_qualifier_names:
+  cellular_component_qualifier_curies:
     domain: AnatomicalSiteDTO
     range: string
     multivalued: true
