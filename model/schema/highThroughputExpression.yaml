@@ -112,7 +112,6 @@ classes:
       - htp_expression_sample_type # sampleType in agr_schemas json
       - htp_expression_sample_age # sampleAge in agr_schemas json
       - htp_expression_sample_locations # sampleLocations in agr_schemas json
-      - where_expressed_statement # whereExpressedStatement in whereExpressed.json
       - abundance # abundance in agr_schemas json
       - genomic_information # genomicInformation in agr_schemas json
       - taxon # taxonId in agr_schemas json
@@ -123,7 +122,6 @@ classes:
       - related_notes # notes in agr_schemas json
       - dataset_ids # datasetIds in agr_schemas json
       - microarray_sample_details # microarraySampleDetails in agr_schemas json
-      - when_expressed_stage_name # biosampleAge.json > stage > when_expressed.json > stageName in agr_schemas json
     slot_usage:
       htp_expression_sample:
         description: >-
@@ -163,7 +161,6 @@ classes:
       - htp_expression_sample_type_curie # sampleType in agr_schemas json
       - htp_expression_sample_age_dto # sampleAge in agr_schemas json
       - htp_expression_sample_location_dtos # sampleLocations in agr_schemas json
-      - where_expressed_statement # whereExpressedStatement in whereExpressed.json
       - abundance # abundance in agr_schemas json
       - genomic_information_dto # genomicInformation in agr_schemas json
       - taxon # taxonId in agr_schemas json
