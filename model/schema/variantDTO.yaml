@@ -55,7 +55,6 @@ classes:
       - variant_sequence
       - consequence_curie
       - curated_consequence_curie
-      - sequence_of_reference_accession_number
 
   VariantGenomicLocationAssociationDTO:
     is_a: VariantLocationAssociationDTO
@@ -68,8 +67,8 @@ classes:
       - inserted_sequence
       - deleted_sequence
       - padded_base
-      - dna_mutation_type
-      - gene_localization_type
+      - dna_mutation_type_curie
+      - gene_localization_type_curie
 
   VariantTranscriptLocationAssociationDTO:
     is_a: VariantLocationAssociationDTO
@@ -179,6 +178,22 @@ slots:
     multivalued: false
     domain: VariantLocationAssociationDTO
     range: string
+
+  dna_mutation_type_curie:
+    description: >-
+      Curie of SOTerm describing the type of DNA mutation, for example, insertion, deletion, substitution, or indel.
+    range: SOTerm
+    examples:
+      - value: SO:1000027 # G_to_T_transversion
+    notes: >-
+      This is a ZFIN specific field.
+
+  gene_localization_type_curie:
+    description: >-
+      Curie of SOTerm describing the type of gene localization, for example, intronic, intergenic, or intragenic.
+    range: string
+    examples:
+      - value: SO:0000147 # exon
 
   source_general_consequence_dtos:
     domain: VariantDTO

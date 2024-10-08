@@ -82,7 +82,6 @@ classes:
       - variant_sequence
       - consequence
       - curated_consequence
-      - sequence_of_reference_accession_number # Should this point to a chromosome object instead of a string? Will this be redundant with genomic location association of the subject?
     
   VariantGenomicLocationAssociation:
     is_a: VariantLocationAssociation
@@ -257,19 +256,19 @@ slots:
     exact_mappings:
       - SO:0001889
 
-  dna_mutation_type: # Should the range of this be an object (SOTerm / OntologyTerm) rather than just a curie?
+  dna_mutation_type:
     description: >-
       The type of DNA mutation, for example, insertion, deletion, substitution, or indel.
-    range: uriorcurie
+    range: SOTerm
     examples:
       - value: SO:1000027 # G_to_T_transversion
     notes: >-
       This is a ZFIN specific field.
 
-  gene_localization_type: # Should the range of this be an object (SOTerm / OntologyTerm) rather than just a curie?
+  gene_localization_type:
     description: >-
       The type of gene localization, for example, intronic, intergenic, or intragenic.
-    range: uriorcurie
+    range: SOTerm
     examples:
       - value: SO:0000147 # exon
 
@@ -379,18 +378,6 @@ slots:
     range: SOTerm
     required: true
     multivalued: false
-
-  sequence_of_reference_accession_number:
-    description: >-
-      The accession number that describes the assembly and assembly component
-      (chromosome or scaffold) of the reference sequence.
-    notes: >-
-      With redefined Location Associations to AssemblyComponent, Transcript or
-      Protein, is this redundant?
-    required: false
-    multivalued: false
-    domain: VariantLocationAssociation
-    range: string
 
   consequence:
     description: >-
