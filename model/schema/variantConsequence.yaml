@@ -73,7 +73,6 @@ classes:
           permissible_values: possibly_damaging, probably_damaging, benign
       sift_score:
         description: SIFT score between 0 and 1
-        domain: VariantGeneConsequence
         range: float
       sift_prediction:
         description: SIFT prediction
