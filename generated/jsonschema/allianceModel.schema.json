@@ -8892,10 +8892,6 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
-                "sequence_of_reference_accession_number": {
-                    "description": "The accession number that describes the assembly and assembly component (chromosome or scaffold) of the reference sequence.",
-                    "type": "string"
-                },
                 "start": {
                     "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
                     "type": "integer"
@@ -8977,8 +8973,8 @@
                     "description": "The sequence of DNA base pairs removed from the reference sequence by the variant.",
                     "type": "string"
                 },
-                "dna_mutation_type": {
-                    "description": "The type of DNA mutation, for example, insertion, deletion, substitution, or indel.",
+                "dna_mutation_type_curie": {
+                    "description": "Curie of SOTerm describing the type of DNA mutation, for example, insertion, deletion, substitution, or indel.",
                     "type": "string"
                 },
                 "end": {
@@ -8992,8 +8988,8 @@
                     },
                     "type": "array"
                 },
-                "gene_localization_type": {
-                    "description": "The type of gene localization, for example, intronic, intergenic, or intragenic.",
+                "gene_localization_type_curie": {
+                    "description": "Curie of SOTerm describing the type of gene localization, for example, intronic, intergenic, or intragenic.",
                     "type": "string"
                 },
                 "inserted_sequence": {
@@ -9031,10 +9027,6 @@
                         }
                     ],
                     "description": "Name of VocabularyTerm representing relation of an Association",
-                    "type": "string"
-                },
-                "sequence_of_reference_accession_number": {
-                    "description": "The accession number that describes the assembly and assembly component (chromosome or scaffold) of the reference sequence.",
                     "type": "string"
                 },
                 "start": {
@@ -9156,10 +9148,6 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
-                "sequence_of_reference_accession_number": {
-                    "description": "The accession number that describes the assembly and assembly component (chromosome or scaffold) of the reference sequence.",
-                    "type": "string"
-                },
                 "start": {
                     "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
                     "type": "integer"
@@ -9279,10 +9267,6 @@
                     "description": "Name of VocabularyTerm representing relation of an Association",
                     "type": "string"
                 },
-                "sequence_of_reference_accession_number": {
-                    "description": "The accession number that describes the assembly and assembly component (chromosome or scaffold) of the reference sequence.",
-                    "type": "string"
-                },
                 "start": {
                     "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
                     "type": "integer"
@@ -9389,10 +9373,6 @@
                         }
                     ],
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
-                    "type": "string"
-                },
-                "sequence_of_reference_accession_number": {
-                    "description": "The accession number that describes the assembly and assembly component (chromosome or scaffold) of the reference sequence.",
                     "type": "string"
                 },
                 "start": {
@@ -9502,10 +9482,6 @@
                         }
                     ],
                     "description": "Name of VocabularyTerm representing relation of an Association",
-                    "type": "string"
-                },
-                "sequence_of_reference_accession_number": {
-                    "description": "The accession number that describes the assembly and assembly component (chromosome or scaffold) of the reference sequence.",
                     "type": "string"
                 },
                 "start": {
@@ -21980,10 +21956,6 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
-                "sequence_of_reference_accession_number": {
-                    "description": "The accession number that describes the assembly and assembly component (chromosome or scaffold) of the reference sequence.",
-                    "type": "string"
-                },
                 "single_reference": {
                     "$ref": "#/$defs/Reference",
                     "description": "holds between an object and a single reference"
@@ -22067,8 +22039,8 @@
                     "description": "The sequence of DNA base pairs removed from the reference sequence by the variant.",
                     "type": "string"
                 },
-                "dna_mutation_type": {
-                    "description": "The type of DNA mutation, for example, insertion, deletion, substitution, or indel.",
+                "dna_mutation_type_curie": {
+                    "description": "Curie of SOTerm describing the type of DNA mutation, for example, insertion, deletion, substitution, or indel.",
                     "type": "string"
                 },
                 "end": {
@@ -22082,8 +22054,8 @@
                     },
                     "type": "array"
                 },
-                "gene_localization_type": {
-                    "description": "The type of gene localization, for example, intronic, intergenic, or intragenic.",
+                "gene_localization_type_curie": {
+                    "description": "Curie of SOTerm describing the type of gene localization, for example, intronic, intergenic, or intragenic.",
                     "type": "string"
                 },
                 "inserted_sequence": {
@@ -22125,10 +22097,6 @@
                         }
                     ],
                     "description": "Name of VocabularyTerm representing relation of an Association",
-                    "type": "string"
-                },
-                "sequence_of_reference_accession_number": {
-                    "description": "The accession number that describes the assembly and assembly component (chromosome or scaffold) of the reference sequence.",
                     "type": "string"
                 },
                 "start": {
@@ -22247,10 +22215,6 @@
                         }
                     ],
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
-                    "type": "string"
-                },
-                "sequence_of_reference_accession_number": {
-                    "description": "The accession number that describes the assembly and assembly component (chromosome or scaffold) of the reference sequence.",
                     "type": "string"
                 },
                 "single_reference": {
@@ -22378,10 +22342,6 @@
                     "description": "Name of VocabularyTerm representing relation of an Association",
                     "type": "string"
                 },
-                "sequence_of_reference_accession_number": {
-                    "description": "The accession number that describes the assembly and assembly component (chromosome or scaffold) of the reference sequence.",
-                    "type": "string"
-                },
                 "start": {
                     "description": "The start of the feature in positive 1-based integer coordinates relative to the reference landmark.",
                     "type": "integer"
@@ -22487,10 +22447,6 @@
                         }
                     ],
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
-                    "type": "string"
-                },
-                "sequence_of_reference_accession_number": {
-                    "description": "The accession number that describes the assembly and assembly component (chromosome or scaffold) of the reference sequence.",
                     "type": "string"
                 },
                 "single_reference": {
@@ -22606,10 +22562,6 @@
                         }
                     ],
                     "description": "Name of VocabularyTerm representing relation of an Association",
-                    "type": "string"
-                },
-                "sequence_of_reference_accession_number": {
-                    "description": "The accession number that describes the assembly and assembly component (chromosome or scaffold) of the reference sequence.",
                     "type": "string"
                 },
                 "start": {
