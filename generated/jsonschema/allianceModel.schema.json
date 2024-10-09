@@ -8879,6 +8879,13 @@
                     "description": "A base preceded an insertion or deletion event that is reported when either the reference or variant sequence would otherwise be empty. ",
                     "type": "string"
                 },
+                "predicted_variant_consequences": {
+                    "description": "VEP-calculated variant consequences",
+                    "items": {
+                        "$ref": "#/$defs/PredictedVariantConsequence"
+                    },
+                    "type": "array"
+                },
                 "reference_sequence": {
                     "description": "Reference sequence of genome or genomic entity at position of aligned variant.",
                     "type": "string"
@@ -19872,15 +19879,144 @@
             "title": "PhenotypeTerm",
             "type": "object"
         },
-        "PolyphenPredictionLevels": {
-            "description": "",
-            "enum": [
-                "possibly_damaging",
-                "probably_damaging",
-                "benign"
+        "PredictedVariantConsequence": {
+            "additionalProperties": false,
+            "description": "Class for predicted consequences and associated data from VEP analysis of a VariantGenomicLocationAssociation",
+            "properties": {
+                "amino_acid_reference": {
+                    "description": "reference genome amino acid sequence at variant position",
+                    "type": "string"
+                },
+                "amino_acid_variant": {
+                    "description": "variant amino acid sequence at variant position",
+                    "type": "string"
+                },
+                "calculated_cdna_end": {
+                    "description": "end position of variation in cDNA coordinates as calculated by VEP from input VCF, GFF and BAM files",
+                    "type": "integer"
+                },
+                "calculated_cdna_start": {
+                    "description": "start position of variation in cDNA coordinates as calculated by VEP from input VCF, GFF and BAM files",
+                    "type": "integer"
+                },
+                "calculated_cds_end": {
+                    "description": "end position of variation in CDS coordinates as calculated by VEP from input VCF, GFF and BAM files",
+                    "type": "integer"
+                },
+                "calculated_cds_start": {
+                    "description": "start position of variation in CDS coordinates as calculated by VEP from input VCF, GFF and BAM files",
+                    "type": "integer"
+                },
+                "calculated_protein_end": {
+                    "description": "end position of variation in protein amino acid coordinates as calculated by VEP from input VCF, GFF and BAM files",
+                    "type": "integer"
+                },
+                "calculated_protein_start": {
+                    "description": "start position of variation in protein amino acid coordinates as calculated by VEP from input VCF, GFF and BAM files",
+                    "type": "integer"
+                },
+                "codon_reference": {
+                    "description": "reference sequence of codon(s) affected by variation - bases outside of the variant region are in lower case, those within are in upper case (e.g. cTa)",
+                    "type": "string"
+                },
+                "codon_variant": {
+                    "description": "variant sequence of codon(s) affected by variation - bases outside of the variant region are in lower case, those within are in upper case (e.g. cAa)",
+                    "type": "string"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "gene_level_consequence": {
+                    "description": "Boolean indicating whether transcript consequence is the most severe consequence for the corresponding gene.  In the case of equally severe consequences, a single transcript consequence will be designated as the  gene-level consequence by the VEP",
+                    "type": "boolean"
+                },
+                "hgvs_coding_nomenclature": {
+                    "description": "HGVSc nomenclature for variation in coding sequence",
+                    "type": "string"
+                },
+                "hgvs_protein_nomenclature": {
+                    "description": "HGVSp nomenclature for variation in protein",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "polyphen_prediction": {
+                    "description": "PolyPhen-2 prediction",
+                    "type": "string"
+                },
+                "polyphen_score": {
+                    "description": "PolyPhen-2 score between 0 and 1",
+                    "type": "number"
+                },
+                "sift_prediction": {
+                    "description": "SIFT prediction",
+                    "type": "string"
+                },
+                "sift_score": {
+                    "description": "SIFT score between 0 and 1",
+                    "type": "number"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                },
+                "variant_genomic_location": {
+                    "$ref": "#/$defs/VariantGenomicLocationAssociation",
+                    "description": "VariantGenomicLocationAssociation for which consequences are calculated"
+                },
+                "variant_transcript": {
+                    "$ref": "#/$defs/Transcript",
+                    "description": "Transcript to which variant effect prediction applies"
+                },
+                "vep_consequences": {
+                    "description": "VEP consequence",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "vep_impact": {
+                    "description": "VEP predicted impact of variation on molecule",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "variant_genomic_location",
+                "variant_transcript",
+                "vep_impact",
+                "vep_consequences",
+                "gene_level_consequence",
+                "internal"
             ],
-            "title": "PolyphenPredictionLevels",
-            "type": "string"
+            "title": "PredictedVariantConsequence",
+            "type": "object"
         },
         "Protein": {
             "additionalProperties": false,
@@ -21686,15 +21822,6 @@
                 "paired"
             ],
             "title": "SequencingFormatValues",
-            "type": "string"
-        },
-        "SiftPredictionLevels": {
-            "description": "",
-            "enum": [
-                "deleterious",
-                "tolerated"
-            ],
-            "title": "SiftPredictionLevels",
             "type": "string"
         },
         "SingleReferenceAssociationDTO": {
@@ -24189,83 +24316,6 @@
             "title": "VariantDTO",
             "type": "object"
         },
-        "VariantGeneConsequence": {
-            "additionalProperties": false,
-            "description": "Class for gene-level VEP results",
-            "properties": {
-                "created_by": {
-                    "description": "The individual that created the entity.",
-                    "type": "string"
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": "boolean"
-                },
-                "polyphen_prediction": {
-                    "$ref": "#/$defs/PolyphenPredictionLevels",
-                    "description": "PolyPhen-2 prediction"
-                },
-                "polyphen_score": {
-                    "description": "PolyPhen-2 score between 0 and 1",
-                    "type": "number"
-                },
-                "sift_prediction": {
-                    "$ref": "#/$defs/SiftPredictionLevels",
-                    "description": "SIFT prediction"
-                },
-                "sift_score": {
-                    "description": "SIFT score between 0 and 1",
-                    "type": "number"
-                },
-                "updated_by": {
-                    "description": "The individual that last modified the entity.",
-                    "type": "string"
-                },
-                "variant_gene_consequence_object": {
-                    "$ref": "#/$defs/Gene"
-                },
-                "variant_gene_consequence_subject": {
-                    "$ref": "#/$defs/VariantGenomicLocationAssociation"
-                },
-                "vep_consequence": {
-                    "$ref": "#/$defs/VepConsequenceLevels",
-                    "description": "VEP consequence"
-                },
-                "vep_impact": {
-                    "description": "VEP predicted impact of variation on molecule",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "internal"
-            ],
-            "title": "VariantGeneConsequence",
-            "type": "object"
-        },
         "VariantSourceGeneralConsequenceSlotAnnotation": {
             "additionalProperties": false,
             "description": "The consequence of the variant, as stated in the source reference when no transcript ID is provided.",
@@ -24388,142 +24438,6 @@
             ],
             "title": "VariantSourceGeneralConsequenceSlotAnnotationDTO",
             "type": "object"
-        },
-        "VariantTranscriptConsequence": {
-            "additionalProperties": false,
-            "description": "Class for transcript-level VEP results",
-            "properties": {
-                "amino_acid_reference": {
-                    "description": "Amino acid sequence encoded by codon(s) in reference genome sequence altered by the variant",
-                    "type": "string"
-                },
-                "amino_acid_variant": {
-                    "description": "Amino acid sequence encoded by codon(s) in variant sequence",
-                    "type": "string"
-                },
-                "cdna_end": {
-                    "description": "End position of variant in cDNA coordinates",
-                    "type": "integer"
-                },
-                "cdna_start": {
-                    "description": "Start position of variant in cDNA coordinates",
-                    "type": "integer"
-                },
-                "cds_end": {
-                    "description": "End position of variant in CDS coordinates",
-                    "type": "integer"
-                },
-                "cds_start": {
-                    "description": "Start position of variant in CDS coordinates",
-                    "type": "integer"
-                },
-                "codon_reference": {
-                    "description": "Reference genome sequence of codon(s) altered by the variant.  Bases affected by the variant are given in upper case, bases flanking the variation are given in lower case",
-                    "type": "string"
-                },
-                "codon_variant": {
-                    "description": "Sequence of codon(s) in variant sequence altered by the variant. Bases affected by the variant are given in upper case, bases flanking the variation are given in lower case",
-                    "type": "string"
-                },
-                "created_by": {
-                    "description": "The individual that created the entity.",
-                    "type": "string"
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "hgvs_coding_nomenclature": {
-                    "description": "HGVS coding sequence (HGVSc) name",
-                    "type": "string"
-                },
-                "hgvs_protein_nomenclature": {
-                    "description": "HGVS protein sequence (HGVSp) name",
-                    "type": "string"
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": "boolean"
-                },
-                "polyphen_prediction": {
-                    "$ref": "#/$defs/PolyphenPredictionLevels",
-                    "description": "PolyPhen-2 prediction"
-                },
-                "polyphen_score": {
-                    "description": "PolyPhen-2 score between 0 and 1",
-                    "type": "number"
-                },
-                "protein_end": {
-                    "description": "End position of variant in amino acid sequence",
-                    "type": "integer"
-                },
-                "protein_start": {
-                    "description": "Start position of variant in amino acid sequence",
-                    "type": "integer"
-                },
-                "sift_prediction": {
-                    "$ref": "#/$defs/SiftPredictionLevels",
-                    "description": "SIFT prediction"
-                },
-                "sift_score": {
-                    "description": "SIFT score between 0 and 1",
-                    "type": "number"
-                },
-                "updated_by": {
-                    "description": "The individual that last modified the entity.",
-                    "type": "string"
-                },
-                "variant_transcript_consequence_object": {
-                    "$ref": "#/$defs/Transcript"
-                },
-                "variant_transcript_consequence_subject": {
-                    "$ref": "#/$defs/VariantTranscriptLocationAssociation"
-                },
-                "vep_consequence": {
-                    "$ref": "#/$defs/VepConsequenceLevels",
-                    "description": "VEP consequence"
-                },
-                "vep_impact": {
-                    "description": "VEP predicted impact of variation on molecule",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "internal"
-            ],
-            "title": "VariantTranscriptConsequence",
-            "type": "object"
-        },
-        "VepConsequenceLevels": {
-            "description": "",
-            "enum": [
-                "high",
-                "moderate",
-                "low",
-                "modifier"
-            ],
-            "title": "VepConsequenceLevels",
-            "type": "string"
         },
         "Vocabulary": {
             "additionalProperties": false,
