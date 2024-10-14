@@ -13345,6 +13345,9 @@
                     "description": "The individual that created the entity.",
                     "type": "string"
                 },
+                "cross_reference": {
+                    "$ref": "#/$defs/CrossReference"
+                },
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
