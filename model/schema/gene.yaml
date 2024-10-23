@@ -342,6 +342,15 @@ slots:
     required: true
     inlined: true
 
+  gene_modentityid:
+    description: >-
+      The MOD entity ID
+    domain: GeneGOTermAnnotationDTO
+    multivalued: false
+    required: true
+    inlined: true
+
+
   gene_full_name:
     description: >-
       The one current full name for a gene: e.g., wingless, paired box 2a.
