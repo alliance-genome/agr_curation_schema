@@ -109,6 +109,18 @@ classes:
       primary_external_id:
         required: true
 
+  GeneGOTermAnnotationDTO:
+    is_a: GenomicEntityDTO
+    description: Slimmed down syntax for GAF records only used for gene-goTerm associations
+    slots:
+      - gene_curie
+      - ontologyterm_curie
+    slot_usage:
+      gene_curie:
+        required: true
+      ontologyterm_curie:
+        required: true
+
   GeneSymbolSlotAnnotation:
     description: >-
       The one current symbol for the gene.
