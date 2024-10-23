@@ -13536,6 +13536,26 @@
             "title": "GeneFullNameSlotAnnotation",
             "type": "object"
         },
+        "GeneGOTermAnnotationDTO": {
+            "additionalProperties": false,
+            "description": "Slimmed down syntax for GAF records only used for gene-goTerm associations",
+            "properties": {
+                "gene_modentityid": {
+                    "description": "The MOD entity ID",
+                    "type": "string"
+                },
+                "ontologyterm_curie": {
+                    "description": "The curie of the ontology term",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "gene_modentityid",
+                "ontologyterm_curie"
+            ],
+            "title": "GeneGOTermAnnotationDTO",
+            "type": "object"
+        },
         "GeneGeneAssociationDTO": {
             "additionalProperties": false,
             "description": "",
