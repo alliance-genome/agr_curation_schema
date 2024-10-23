@@ -331,9 +331,7 @@ classes:
       - disease_qualifier_names
       - genetic_sex_name
       - secondary_data_provider_dto
-      - disease_genetic_modifier_gene_identifiers
-      - disease_genetic_modifier_allele_identifiers
-      - disease_genetic_modifier_agm_identifiers
+      - disease_genetic_modifier_identifiers
       - disease_genetic_modifier_relation_name
 
   GeneDiseaseAnnotation:
@@ -761,20 +759,8 @@ slots:
     range: AffectedGenomicModel
     multivalued: true
 
-  disease_genetic_modifier_gene_identifiers:
-    description: Identifiers (curie/primary_external_id/mod_internal_id) of Gene that modifies the disease model
-    domain: DiseaseAnnotationDTO
-    range: string
-    multivalued: true
-
-  disease_genetic_modifier_allele_identifiers:
-    description: Identifiers (curie/primary_external_id/mod_internal_id) of Allele that modifies the disease model
-    domain: DiseaseAnnotationDTO
-    range: string
-    multivalued: true
-
-  disease_genetic_modifier_agm_identifiers:
-    description: Identifiers (curie/primary_external_id/mod_internal_id) of AffectedGenomicModel that modifies the disease model
+  disease_genetic_modifier_identifiers:
+    description: Identifiers (curie/primary_external_id/mod_internal_id) of Gene, Allele or AGM that modifies the disease model
     domain: DiseaseAnnotationDTO
     range: string
     multivalued: true
