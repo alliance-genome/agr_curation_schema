@@ -252,7 +252,9 @@ classes:
       - disease_qualifiers
       - genetic_sex
       - secondary_data_provider
-      - disease_genetic_modifiers
+      - disease_genetic_modifier_genes
+      - disease_genetic_modifier_alleles
+      - disease_genetic_modifier_agms
       - disease_genetic_modifier_relation
     slot_usage:
       curie:
@@ -329,7 +331,9 @@ classes:
       - disease_qualifier_names
       - genetic_sex_name
       - secondary_data_provider_dto
-      - disease_genetic_modifier_identifiers
+      - disease_genetic_modifier_gene_identifiers
+      - disease_genetic_modifier_allele_identifiers
+      - disease_genetic_modifier_agm_identifiers
       - disease_genetic_modifier_relation_name
 
   GeneDiseaseAnnotation:
@@ -735,15 +739,42 @@ slots:
       The biological entity to which the disease ontology term is associated.
     domain: DiseaseAnnotation
     range: BiologicalEntity
-      
-  disease_genetic_modifiers:
+
+  disease_genetic_modifier_genes:
     description: >-
-      Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
+      Specifies a gene that modifies a disease model.
     required: false
+    range: Gene
     multivalued: true
 
-  disease_genetic_modifier_identifiers:
-    description: Identifiers (curie/primary_external_id/mod_internal_id) of BiologcalEntity that modifies the disease model
+  disease_genetic_modifier_alleles:
+    description: >-
+      Specifies an allele that modifies a disease model.
+    required: false
+    range: Allele
+    multivalued: true
+
+  disease_genetic_modifier_agms:
+    description: >-
+      Specifies an affected genomic model (e.g. genotype) that modifies a disease model.
+    required: false
+    range: AffectedGenomicModel
+    multivalued: true
+
+  disease_genetic_modifier_gene_identifiers:
+    description: Identifiers (curie/primary_external_id/mod_internal_id) of Gene that modifies the disease model
+    domain: DiseaseAnnotationDTO
+    range: string
+    multivalued: true
+
+  disease_genetic_modifier_allele_identifiers:
+    description: Identifiers (curie/primary_external_id/mod_internal_id) of Allele that modifies the disease model
+    domain: DiseaseAnnotationDTO
+    range: string
+    multivalued: true
+
+  disease_genetic_modifier_agm_identifiers:
+    description: Identifiers (curie/primary_external_id/mod_internal_id) of AffectedGenomicModel that modifies the disease model
     domain: DiseaseAnnotationDTO
     range: string
     multivalued: true
@@ -753,6 +784,7 @@ slots:
       A relation describing how the genetic modifier modifies the disease model.
       Submitted value should be a vocabulary term from the 'Disease genetic
       modifiers' vocabulary
+    multivalued: false
     range: VocabularyTerm # CV 'Disease Genetic Modifier Relation'
 
   disease_genetic_modifier_relation_name:
@@ -761,6 +793,7 @@ slots:
       modifies the disease model, selected from the 'Disease genetic modifier
       relations' Vocabulary.
     domain: DiseaseAnnotationDTO
+    multivalued: false
     range: string # CV 'Disease Genetic Modifier Relation'
 
   disease_qualifiers:

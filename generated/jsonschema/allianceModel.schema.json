@@ -65,16 +65,30 @@
                     "$ref": "#/$defs/AffectedGenomicModel",
                     "description": "The AGM to which the disease ontology term is associated."
                 },
+                "disease_genetic_modifier_agms": {
+                    "description": "Specifies an affected genomic model (e.g. genotype) that modifies a disease model.",
+                    "items": {
+                        "$ref": "#/$defs/AffectedGenomicModel"
+                    },
+                    "type": "array"
+                },
+                "disease_genetic_modifier_alleles": {
+                    "description": "Specifies an allele that modifies a disease model.",
+                    "items": {
+                        "$ref": "#/$defs/Allele"
+                    },
+                    "type": "array"
+                },
+                "disease_genetic_modifier_genes": {
+                    "description": "Specifies a gene that modifies a disease model.",
+                    "items": {
+                        "$ref": "#/$defs/Gene"
+                    },
+                    "type": "array"
+                },
                 "disease_genetic_modifier_relation": {
                     "description": "A relation describing how the genetic modifier modifies the disease model. Submitted value should be a vocabulary term from the 'Disease genetic modifiers' vocabulary",
                     "type": "string"
-                },
-                "disease_genetic_modifiers": {
-                    "description": "Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
                 },
                 "disease_qualifiers": {
                     "description": "Submitted values should be vocabulary terms from the 'Disease qualifiers' Vocabulary",
@@ -225,8 +239,22 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "disease_genetic_modifier_identifiers": {
-                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of BiologcalEntity that modifies the disease model",
+                "disease_genetic_modifier_agm_identifiers": {
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of AffectedGenomicModel that modifies the disease model",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "disease_genetic_modifier_allele_identifiers": {
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of Allele that modifies the disease model",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "disease_genetic_modifier_gene_identifiers": {
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of Gene that modifies the disease model",
                     "items": {
                         "type": "string"
                     },
@@ -2271,16 +2299,30 @@
                     "$ref": "#/$defs/Allele",
                     "description": "The allele to which the disease ontology term is associated."
                 },
+                "disease_genetic_modifier_agms": {
+                    "description": "Specifies an affected genomic model (e.g. genotype) that modifies a disease model.",
+                    "items": {
+                        "$ref": "#/$defs/AffectedGenomicModel"
+                    },
+                    "type": "array"
+                },
+                "disease_genetic_modifier_alleles": {
+                    "description": "Specifies an allele that modifies a disease model.",
+                    "items": {
+                        "$ref": "#/$defs/Allele"
+                    },
+                    "type": "array"
+                },
+                "disease_genetic_modifier_genes": {
+                    "description": "Specifies a gene that modifies a disease model.",
+                    "items": {
+                        "$ref": "#/$defs/Gene"
+                    },
+                    "type": "array"
+                },
                 "disease_genetic_modifier_relation": {
                     "description": "A relation describing how the genetic modifier modifies the disease model. Submitted value should be a vocabulary term from the 'Disease genetic modifiers' vocabulary",
                     "type": "string"
-                },
-                "disease_genetic_modifiers": {
-                    "description": "Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
                 },
                 "disease_qualifiers": {
                     "description": "Submitted values should be vocabulary terms from the 'Disease qualifiers' Vocabulary",
@@ -2424,8 +2466,22 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "disease_genetic_modifier_identifiers": {
-                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of BiologcalEntity that modifies the disease model",
+                "disease_genetic_modifier_agm_identifiers": {
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of AffectedGenomicModel that modifies the disease model",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "disease_genetic_modifier_allele_identifiers": {
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of Allele that modifies the disease model",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "disease_genetic_modifier_gene_identifiers": {
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of Gene that modifies the disease model",
                     "items": {
                         "type": "string"
                     },
@@ -12955,16 +13011,30 @@
                     "$ref": "#/$defs/Gene",
                     "description": "The gene to which the disease ontology term is associated."
                 },
+                "disease_genetic_modifier_agms": {
+                    "description": "Specifies an affected genomic model (e.g. genotype) that modifies a disease model.",
+                    "items": {
+                        "$ref": "#/$defs/AffectedGenomicModel"
+                    },
+                    "type": "array"
+                },
+                "disease_genetic_modifier_alleles": {
+                    "description": "Specifies an allele that modifies a disease model.",
+                    "items": {
+                        "$ref": "#/$defs/Allele"
+                    },
+                    "type": "array"
+                },
+                "disease_genetic_modifier_genes": {
+                    "description": "Specifies a gene that modifies a disease model.",
+                    "items": {
+                        "$ref": "#/$defs/Gene"
+                    },
+                    "type": "array"
+                },
                 "disease_genetic_modifier_relation": {
                     "description": "A relation describing how the genetic modifier modifies the disease model. Submitted value should be a vocabulary term from the 'Disease genetic modifiers' vocabulary",
                     "type": "string"
-                },
-                "disease_genetic_modifiers": {
-                    "description": "Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
                 },
                 "disease_qualifiers": {
                     "description": "Submitted values should be vocabulary terms from the 'Disease qualifiers' Vocabulary",
@@ -13096,8 +13166,22 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "disease_genetic_modifier_identifiers": {
-                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of BiologcalEntity that modifies the disease model",
+                "disease_genetic_modifier_agm_identifiers": {
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of AffectedGenomicModel that modifies the disease model",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "disease_genetic_modifier_allele_identifiers": {
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of Allele that modifies the disease model",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "disease_genetic_modifier_gene_identifiers": {
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of Gene that modifies the disease model",
                     "items": {
                         "type": "string"
                     },
