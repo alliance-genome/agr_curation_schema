@@ -350,6 +350,13 @@ slots:
     required: true
     inlined: true
 
+  ontologyterm_curie:
+    description: >-
+      The curie of the ontology term
+    domain: GeneGOTermAnnotationDTO
+    multivalued: false
+    required: true
+    inlined: true
 
   gene_full_name:
     description: >-
