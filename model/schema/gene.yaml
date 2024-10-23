@@ -112,7 +112,7 @@ classes:
   GeneGOTermAnnotationDTO:
     description: Slimmed down syntax for GAF records only used for gene-goTerm associations
     slots:
-      - gene_curie
+      - gene_modentityid
       - ontologyterm_curie
     slot_usage:
       gene_curie:
