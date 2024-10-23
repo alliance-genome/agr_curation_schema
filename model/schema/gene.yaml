@@ -110,7 +110,6 @@ classes:
         required: true
 
   GeneGOTermAnnotationDTO:
-    is_a: GenomicEntityDTO
     description: Slimmed down syntax for GAF records only used for gene-goTerm associations
     slots:
       - gene_curie
