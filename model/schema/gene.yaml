@@ -310,12 +310,12 @@ slots:
   go_term:
     description: the Gene Ontology (GO) term to which the gene is being annotated
     range: GOTerm
-    mulivalued: false
+    multivalued: false
 
   go_term_curie:
     description: the Gene Ontology (GO) term to which the gene is being annotated
     range: string
-    mulivalued: false
+    multivalued: false
 
   left_boundary_marker:
     description: >-
