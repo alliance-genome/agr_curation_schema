@@ -204,6 +204,27 @@ classes:
           These notes should capture the reason for the event (e.g., rename or
           merge).
 
+  GeneOntologyAnnotation:
+    is_a: AuditedObject
+    description: An annotation associating a gene to a Gene Ontology (GO) term
+    slots:
+      - single_gene
+      - go_term
+    slot_usage:
+      go_term:
+        required: true
+
+  GeneOntologyAnnotationDTO:
+    description: An annotation associating a gene to a Gene Ontology (GO) term (DTO class)
+    slots:
+      - gene_identifier
+      - go_term_curie
+    slot_usage:
+      gene_identifier:
+        required: true
+      go_term_curie:
+        required: true
+
   GeneGenomicLocationAssociation:
     is_a: LocationAssociation
     description: >-
@@ -286,6 +307,16 @@ slots:
     required: true
     range: Gene
   
+  go_term:
+    description: the Gene Ontology (GO) term to which the gene is being annotated
+    range: GOTerm
+    multivalued: false
+
+  go_term_curie:
+    description: the Gene Ontology (GO) term to which the gene is being annotated
+    range: string
+    multivalued: false
+
   left_boundary_marker:
     description: >-
       The left boundary of a feature location relative to the landmark's
