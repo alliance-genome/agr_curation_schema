@@ -65,16 +65,30 @@
                     "$ref": "#/$defs/AffectedGenomicModel",
                     "description": "The AGM to which the disease ontology term is associated."
                 },
+                "disease_genetic_modifier_agms": {
+                    "description": "Specifies an affected genomic model (e.g. genotype) that modifies a disease model.",
+                    "items": {
+                        "$ref": "#/$defs/AffectedGenomicModel"
+                    },
+                    "type": "array"
+                },
+                "disease_genetic_modifier_alleles": {
+                    "description": "Specifies an allele that modifies a disease model.",
+                    "items": {
+                        "$ref": "#/$defs/Allele"
+                    },
+                    "type": "array"
+                },
+                "disease_genetic_modifier_genes": {
+                    "description": "Specifies a gene that modifies a disease model.",
+                    "items": {
+                        "$ref": "#/$defs/Gene"
+                    },
+                    "type": "array"
+                },
                 "disease_genetic_modifier_relation": {
                     "description": "A relation describing how the genetic modifier modifies the disease model. Submitted value should be a vocabulary term from the 'Disease genetic modifiers' vocabulary",
                     "type": "string"
-                },
-                "disease_genetic_modifiers": {
-                    "description": "Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
                 },
                 "disease_qualifiers": {
                     "description": "Submitted values should be vocabulary terms from the 'Disease qualifiers' Vocabulary",
@@ -226,7 +240,7 @@
                     "type": "string"
                 },
                 "disease_genetic_modifier_identifiers": {
-                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of BiologcalEntity that modifies the disease model",
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of Gene, Allele or AGM that modifies the disease model",
                     "items": {
                         "type": "string"
                     },
@@ -2271,16 +2285,30 @@
                     "$ref": "#/$defs/Allele",
                     "description": "The allele to which the disease ontology term is associated."
                 },
+                "disease_genetic_modifier_agms": {
+                    "description": "Specifies an affected genomic model (e.g. genotype) that modifies a disease model.",
+                    "items": {
+                        "$ref": "#/$defs/AffectedGenomicModel"
+                    },
+                    "type": "array"
+                },
+                "disease_genetic_modifier_alleles": {
+                    "description": "Specifies an allele that modifies a disease model.",
+                    "items": {
+                        "$ref": "#/$defs/Allele"
+                    },
+                    "type": "array"
+                },
+                "disease_genetic_modifier_genes": {
+                    "description": "Specifies a gene that modifies a disease model.",
+                    "items": {
+                        "$ref": "#/$defs/Gene"
+                    },
+                    "type": "array"
+                },
                 "disease_genetic_modifier_relation": {
                     "description": "A relation describing how the genetic modifier modifies the disease model. Submitted value should be a vocabulary term from the 'Disease genetic modifiers' vocabulary",
                     "type": "string"
-                },
-                "disease_genetic_modifiers": {
-                    "description": "Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
                 },
                 "disease_qualifiers": {
                     "description": "Submitted values should be vocabulary terms from the 'Disease qualifiers' Vocabulary",
@@ -2425,7 +2453,7 @@
                     "type": "string"
                 },
                 "disease_genetic_modifier_identifiers": {
-                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of BiologcalEntity that modifies the disease model",
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of Gene, Allele or AGM that modifies the disease model",
                     "items": {
                         "type": "string"
                     },
@@ -12955,16 +12983,30 @@
                     "$ref": "#/$defs/Gene",
                     "description": "The gene to which the disease ontology term is associated."
                 },
+                "disease_genetic_modifier_agms": {
+                    "description": "Specifies an affected genomic model (e.g. genotype) that modifies a disease model.",
+                    "items": {
+                        "$ref": "#/$defs/AffectedGenomicModel"
+                    },
+                    "type": "array"
+                },
+                "disease_genetic_modifier_alleles": {
+                    "description": "Specifies an allele that modifies a disease model.",
+                    "items": {
+                        "$ref": "#/$defs/Allele"
+                    },
+                    "type": "array"
+                },
+                "disease_genetic_modifier_genes": {
+                    "description": "Specifies a gene that modifies a disease model.",
+                    "items": {
+                        "$ref": "#/$defs/Gene"
+                    },
+                    "type": "array"
+                },
                 "disease_genetic_modifier_relation": {
                     "description": "A relation describing how the genetic modifier modifies the disease model. Submitted value should be a vocabulary term from the 'Disease genetic modifiers' vocabulary",
                     "type": "string"
-                },
-                "disease_genetic_modifiers": {
-                    "description": "Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
                 },
                 "disease_qualifiers": {
                     "description": "Submitted values should be vocabulary terms from the 'Disease qualifiers' Vocabulary",
@@ -13097,7 +13139,7 @@
                     "type": "string"
                 },
                 "disease_genetic_modifier_identifiers": {
-                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of BiologcalEntity that modifies the disease model",
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of Gene, Allele or AGM that modifies the disease model",
                     "items": {
                         "type": "string"
                     },
@@ -14371,6 +14413,81 @@
                 "internal"
             ],
             "title": "GeneNomenclatureSet",
+            "type": "object"
+        },
+        "GeneOntologyAnnotation": {
+            "additionalProperties": false,
+            "description": "An annotation associating a gene to a Gene Ontology (GO) term",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "go_term": {
+                    "description": "the Gene Ontology (GO) term to which the gene is being annotated",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "single_gene": {
+                    "$ref": "#/$defs/Gene"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "go_term",
+                "internal"
+            ],
+            "title": "GeneOntologyAnnotation",
+            "type": "object"
+        },
+        "GeneOntologyAnnotationDTO": {
+            "additionalProperties": false,
+            "description": "An annotation associating a gene to a Gene Ontology (GO) term (DTO class)",
+            "properties": {
+                "gene_identifier": {
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the gene",
+                    "type": "string"
+                },
+                "go_term_curie": {
+                    "description": "the Gene Ontology (GO) term to which the gene is being annotated",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "gene_identifier",
+                "go_term_curie"
+            ],
+            "title": "GeneOntologyAnnotationDTO",
             "type": "object"
         },
         "GenePathwayAssociation": {
