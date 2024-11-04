@@ -23496,7 +23496,6 @@
                 }
             },
             "required": [
-                "transcript_id",
                 "transcript_type",
                 "taxon",
                 "data_provider",
@@ -23649,7 +23648,6 @@
                 }
             },
             "required": [
-                "transcript_id",
                 "transcript_type_curie",
                 "taxon_curie",
                 "data_provider_dto",
