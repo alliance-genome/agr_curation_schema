@@ -150,6 +150,7 @@ classes:
       the result of a DNA-dependent RNA polymerase gene transcription event
     slots:
       - name
+      - transcript_id
       - transcript_type
       - transcript_genomic_location_associations
       - transcript_gene_association
@@ -170,6 +171,7 @@ classes:
       Ingest class for transcripts
     slots:
       - name
+      - transcript_id
       - transcript_type_curie
 
   Exon:
@@ -1253,6 +1255,15 @@ slots:
   mod_internal_id:
     description: >-
       The model organism database (MOD) internal identifier for the object
+    range: string
+
+  transcript_id:
+    description: >-
+      The transcript identifier used by the Ensembl VEP to identify the
+      transcript and generate HGVSc identifiers.  This corresponds to
+      the transcript_id attribute in column 9 of transcript entries in
+      the GFF files.
+    required: true
     range: string
 
   first_name:
