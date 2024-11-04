@@ -23482,6 +23482,10 @@
                     },
                     "type": "array"
                 },
+                "transcript_id": {
+                    "description": "The transcript identifier used by the Ensembl VEP to identify the transcript and generate HGVSc identifiers.  This corresponds to the transcript_id attribute in column 9 of transcript entries in the GFF files.",
+                    "type": "string"
+                },
                 "transcript_type": {
                     "description": "SOTerm describing transcript type",
                     "type": "string"
@@ -23492,6 +23496,7 @@
                 }
             },
             "required": [
+                "transcript_id",
                 "transcript_type",
                 "taxon",
                 "data_provider",
@@ -23630,6 +23635,10 @@
                     "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
                     "type": "string"
                 },
+                "transcript_id": {
+                    "description": "The transcript identifier used by the Ensembl VEP to identify the transcript and generate HGVSc identifiers.  This corresponds to the transcript_id attribute in column 9 of transcript entries in the GFF files.",
+                    "type": "string"
+                },
                 "transcript_type_curie": {
                     "description": "Curie of SOTerm describing transcript type",
                     "type": "string"
@@ -23640,6 +23649,7 @@
                 }
             },
             "required": [
+                "transcript_id",
                 "transcript_type_curie",
                 "taxon_curie",
                 "data_provider_dto",
