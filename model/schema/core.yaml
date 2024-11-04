@@ -1263,7 +1263,6 @@ slots:
       transcript and generate HGVSc identifiers.  This corresponds to
       the transcript_id attribute in column 9 of transcript entries in
       the GFF files.
-    required: true
     range: string
 
   first_name:
