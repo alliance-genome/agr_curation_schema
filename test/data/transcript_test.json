@@ -3,6 +3,7 @@
   "transcript_ingest_set": [
     {
       "primary_external_id": "WB:M05B5.5a.1",
+      "transcript_id": "WB:M05B5.5a.1",
       "taxon_curie": "NCBITaxon:6239",
       "transcript_type_curie": "SO:0000010",
       "created_by_curie": "WB:WBPerson2987",
