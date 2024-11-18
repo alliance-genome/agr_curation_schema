@@ -14,15 +14,15 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Setup Python Environment
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v5
       with:
           python-version: 3.9
 
     - name: Setup Java
-      uses: actions/setup-java@v3
+      uses: actions/setup-java@v4
       with:
         distribution: 'temurin'
         java-version: '8'
