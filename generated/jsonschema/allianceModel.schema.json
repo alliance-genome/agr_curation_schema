@@ -34,8 +34,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -148,8 +152,12 @@
                     "type": "string"
                 },
                 "secondary_data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source, and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "Object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source"
+                },
+                "secondary_data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization that provided the data to the Alliance"
                 },
                 "single_reference": {
                     "$ref": "#/$defs/Reference",
@@ -374,8 +382,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date of curation at the source (MOD) database.",
@@ -866,8 +878,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -1411,8 +1427,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -2254,8 +2274,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -2364,8 +2388,12 @@
                     "type": "string"
                 },
                 "secondary_data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source, and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "Object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source"
+                },
+                "secondary_data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization that provided the data to the Alliance"
                 },
                 "single_reference": {
                     "$ref": "#/$defs/Reference",
@@ -3893,8 +3921,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date of curation at the source (MOD) database.",
@@ -5047,8 +5079,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -5154,8 +5190,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -5418,8 +5458,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -5956,8 +6000,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -7219,8 +7267,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -7356,8 +7408,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -7501,8 +7557,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -7979,8 +8039,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -9939,8 +10003,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -10244,60 +10312,6 @@
                 "internal"
             ],
             "title": "DPOTerm",
-            "type": "object"
-        },
-        "DataProvider": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "created_by": {
-                    "description": "The individual that created the entity.",
-                    "type": "string"
-                },
-                "cross_reference": {
-                    "$ref": "#/$defs/CrossReference"
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": "boolean"
-                },
-                "source_organization": {
-                    "$ref": "#/$defs/Organization"
-                },
-                "updated_by": {
-                    "description": "The individual that last modified the entity.",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "source_organization",
-                "internal"
-            ],
-            "title": "DataProvider",
             "type": "object"
         },
         "DataProviderDTO": {
@@ -10747,8 +10761,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -11944,8 +11962,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -12290,8 +12312,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -12669,8 +12695,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -12748,8 +12778,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -12952,8 +12986,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -13058,8 +13096,12 @@
                     "type": "string"
                 },
                 "secondary_data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source, and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "Object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source"
+                },
+                "secondary_data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization that provided the data to the Alliance"
                 },
                 "sgd_strain_background": {
                     "$ref": "#/$defs/AffectedGenomicModel"
@@ -13259,8 +13301,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Provide information about the data provider; this slot also allows for cross-references to be reported for the annotation."
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -13395,8 +13441,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -14560,8 +14610,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date of curation at the source (MOD) database.",
@@ -15540,8 +15594,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -15695,8 +15753,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -15961,8 +16023,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
+                    "$ref": "#/$defs/Organization",
                     "description": "The data provider for the dataset annotation"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -16162,8 +16228,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "dataset_ids": {
                     "description": "list of primary dataset ids that a sample is associated with",
@@ -18081,8 +18151,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -19055,8 +19129,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -19567,8 +19645,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -19786,8 +19868,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date of curation at the source (MOD) database.",
@@ -20158,8 +20244,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -20231,8 +20321,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -20477,8 +20571,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -20797,8 +20895,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -21618,8 +21720,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -22861,8 +22967,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -22960,8 +23070,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -23414,8 +23528,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -24020,8 +24138,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -24246,8 +24368,12 @@
                     "type": "string"
                 },
                 "data_provider": {
-                    "$ref": "#/$defs/DataProvider",
-                    "description": "Object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "$ref": "#/$defs/CrossReference",
+                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
