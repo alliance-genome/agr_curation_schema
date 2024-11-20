@@ -63,6 +63,7 @@ classes:
       - condition_relations
       - related_notes
       - data_provider
+      - data_provider_cross_reference
     slot_usage:
       single_reference:
         required: true
@@ -252,6 +253,7 @@ classes:
       - disease_qualifiers
       - genetic_sex
       - secondary_data_provider
+      - secondary_data_provider_cross_reference
       - disease_genetic_modifier_genes
       - disease_genetic_modifier_alleles
       - disease_genetic_modifier_agms

@@ -53,6 +53,7 @@ classes:
       - sub_series # subSeries in agr_schemas datasetAnnotation.json
       - category_tags # categoryTags in agr_schemas datasetAnnotation.json
       - data_provider
+      - data_provider_cross_reference
     slot_usage:
       htp_expression_dataset:
         required: true

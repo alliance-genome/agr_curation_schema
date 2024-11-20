@@ -99,6 +99,7 @@ classes:
       - primary_external_id
       - mod_internal_id
       - data_provider
+      - data_provider_cross_reference
 
   SubmittedObjectDTO:
     is_a: AuditedObjectDTO
@@ -229,12 +230,6 @@ classes:
     slot_usage:
       prefix:
         required: true
-
-  DataProvider:
-    is_a: AuditedObject
-    slots:
-      - source_organization
-      - cross_reference
 
   DataProviderDTO:
     is_a: AuditedObjectDTO
@@ -445,6 +440,7 @@ classes:
       - name
       - taxon
       - data_provider
+      - data_provider_cross_reference
     slot_usage:
       name:
         required: true
@@ -694,6 +690,7 @@ classes:
       - genome_assembly
       - common_names
       - data_provider
+      - data_provider_cross_reference
       - phylogenetic_order
     slot_usage:
       taxon:
@@ -1119,11 +1116,18 @@ slots:
 
   data_provider:
     description: >-
-      Object representing the organization (e.g. MOD) from which the data was
-      sourced and a CrossReference to that organisation's site
+      The organization (e.g. MOD) from which the data was
+      sourced
     multivalued: false
     required: true
-    range: DataProvider
+    range: Organization
+
+  data_provider_cross_reference:
+    description: >-
+      CrossReference to the organization from which the data was sourced
+    multivalued: false
+    required: false
+    range: CrossReference
 
   data_provider_dto:
     description: >-
@@ -1137,10 +1141,15 @@ slots:
   secondary_data_provider:
     description: >-
       Object representing organization (e.g. MOD) that provided the data
-      directly to the Alliance, but not the original source, and a
-      CrossReference to that organisation's site
+      directly to the Alliance, but not the original source
     multivalued: false
-    range: DataProvider
+    range: Organization
+
+  secondary_data_provider_cross_reference:
+    description: >-
+      CrossReference to the organization that provided the data to the Alliance
+    multivalued: false
+    range: CrossReference
 
   secondary_data_provider_dto:
     description: >-
@@ -1375,11 +1384,6 @@ slots:
     is_a: genomic_entity_type_curie
     description: Curie of SOTerm describing CDS type
     domain: CodingSequenceDTO
-
-  source_organization:
-    domain: DataProvider
-    range: Organization
-    required: true
 
   source_organization_abbreviation:
     domain: DataProviderDTO

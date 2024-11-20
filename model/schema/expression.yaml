@@ -160,9 +160,6 @@ classes:
         notes: >-
           Slot is inherited from Annotation class.
       data_provider:
-        description: >-
-          Provide information about the data provider; this slot also allows
-          for cross-references to be reported for the annotation.
         notes: >-
           Slot is inherited from Annotation class.
       # FUTURE ACTION ITEM: Enumerate note types for this annotation level (xprn WG).
@@ -215,7 +212,7 @@ classes:
       whereExpressed.cellularComponentTermId: (*REQUIRED)                 ExpressionAnnotation.expression_pattern (ExpressionPattern.AnatomicalSite.cellular_component)
       whereExpressed.cellularComponentQualifierTermId:                    ExpressionAnnotation.expression_pattern (ExpressionPattern.AnatomicalSite.cellular_component_qualifiers)
       whereExpressed.whereExpressedStatement (REQUIRED):                  ExpressionAnnotation.where_expressed_statement
-      crossReference:                                                     ExpressionAnnotation.data_provider.cross_reference
+      crossReference:                                                     ExpressionAnnotation.data_provider_cross_reference
       * NOTE: For the FMS whereExpressed component, either of the following is required.
       1) anatomicalStructureTermId AND anatomicalStructureUberonSlimTermIds, or ...
       2) cellularComponentTermId.
