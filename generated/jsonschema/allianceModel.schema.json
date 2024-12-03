@@ -922,7 +922,7 @@
                     "type": "boolean"
                 },
                 "parental_populations": {
-                    "type": "string"
+                    "$ref": "#/$defs/AffectedGenomicModel"
                 },
                 "primary_external_id": {
                     "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
@@ -1145,6 +1145,12 @@
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": "boolean"
+                },
+                "parental_population_curies": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "primary_external_id": {
                     "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
