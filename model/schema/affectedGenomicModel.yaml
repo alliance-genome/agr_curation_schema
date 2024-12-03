@@ -42,6 +42,7 @@ classes:
     slots:
       - name
       - subtype
+      - synonyms
       - agm_secondary_ids
       - components
       - sequence_targeting_reagents
@@ -59,9 +60,11 @@ classes:
     slots:
       - name
       - subtype_name
+      - synonyms
       - agm_secondary_id_dtos
       - reference_curies
       - sequence_targeting_reagent_identifiers
+      - parental_population_curies
       - component_dtos
     slot_usage:
       primary_external_id:
@@ -182,7 +185,12 @@ slots:
   parental_populations:
     singular_name: parental_population
     domain: AffectedGenomicModel
-    range: uriorcurie
+    range: AffectedGenomicModel
+
+  parental_population_curies:
+    domain: AffectedGenomicModelDTO
+    range: string
+    multivalued: true
 
 enums:
 

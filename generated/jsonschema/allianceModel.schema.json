@@ -945,6 +945,13 @@
                     "description": "Subtype of affected genomic model - permissible values: strain / genotype / fish",
                     "type": "string"
                 },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
                     "type": "string"
@@ -1160,6 +1167,13 @@
                 "subtype_name": {
                     "description": "Name of VocabularyTerm describing subtype - permissible values: strain / genotype / fish",
                     "type": "string"
+                },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "taxon_curie": {
                     "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
