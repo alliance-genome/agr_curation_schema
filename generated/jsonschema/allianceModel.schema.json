@@ -196,6 +196,7 @@
             "description": "Ingest class for an association between an AGM and a disease",
             "properties": {
                 "agm_identifier": {
+                    "description": "Curie or internal ID of AGM",
                     "type": "string"
                 },
                 "annotation_type_name": {
@@ -489,6 +490,7 @@
             "description": "Ingest class for an association between an AGM and a phenotype",
             "properties": {
                 "agm_identifier": {
+                    "description": "Curie or internal ID of AGM",
                     "type": "string"
                 },
                 "asserted_allele_identifier": {
@@ -855,10 +857,16 @@
                     },
                     "type": "array"
                 },
+                "agm_sequence_targeting_reagent_associations": {
+                    "items": {
+                        "$ref": "#/$defs/AgmSequenceTargetingReagentAssociation"
+                    },
+                    "type": "array"
+                },
                 "components": {
                     "description": "Collection of genomic components that make up a model, i.e. 'allele', each with a zygosity",
                     "items": {
-                        "$ref": "#/$defs/AffectedGenomicModelComponent"
+                        "$ref": "#/$defs/AgmAlleleAssociation"
                     },
                     "type": "array"
                 },
@@ -922,7 +930,10 @@
                     "type": "boolean"
                 },
                 "parental_populations": {
-                    "type": "string"
+                    "items": {
+                        "$ref": "#/$defs/AgmAgmAssociation"
+                    },
+                    "type": "array"
                 },
                 "primary_external_id": {
                     "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
@@ -935,15 +946,16 @@
                     },
                     "type": "array"
                 },
-                "sequence_targeting_reagents": {
-                    "items": {
-                        "$ref": "#/$defs/SequenceTargetingReagent"
-                    },
-                    "type": "array"
-                },
                 "subtype": {
                     "description": "Subtype of affected genomic model - permissible values: strain / genotype / fish",
                     "type": "string"
+                },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
@@ -963,116 +975,6 @@
             "title": "AffectedGenomicModel",
             "type": "object"
         },
-        "AffectedGenomicModelComponent": {
-            "additionalProperties": false,
-            "description": "Allele that affects the model and its zygosity",
-            "properties": {
-                "created_by": {
-                    "description": "The individual that created the entity.",
-                    "type": "string"
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": "boolean"
-                },
-                "single_allele": {
-                    "$ref": "#/$defs/Allele"
-                },
-                "updated_by": {
-                    "description": "The individual that last modified the entity.",
-                    "type": "string"
-                },
-                "zygosity": {
-                    "$ref": "#/$defs/ZygosityValues",
-                    "description": "GENO ontology ID for allele zygosity"
-                }
-            },
-            "required": [
-                "internal"
-            ],
-            "title": "AffectedGenomicModelComponent",
-            "type": "object"
-        },
-        "AffectedGenomicModelComponentDTO": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "allele_identifier": {
-                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the allele",
-                    "type": "string"
-                },
-                "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
-                    "type": "string"
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": "boolean"
-                },
-                "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
-                    "type": "string"
-                },
-                "zygosity_curie": {
-                    "description": "Curie of GENO ontology ID for allele zygosity - permissible_values: GENO:0000602 / GENO:0000603 / GENO:0000604 / GENO:0000605 / GENO:0000606 / GENO:0000135 / GENO:0000136 / GENO:0000137 / GENO:0000134",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "allele_identifier",
-                "internal"
-            ],
-            "title": "AffectedGenomicModelComponentDTO",
-            "type": "object"
-        },
         "AffectedGenomicModelDTO": {
             "additionalProperties": false,
             "description": "Ingest class for AGMs",
@@ -1080,12 +982,6 @@
                 "agm_secondary_id_dtos": {
                     "items": {
                         "$ref": "#/$defs/SecondaryIdSlotAnnotationDTO"
-                    },
-                    "type": "array"
-                },
-                "component_dtos": {
-                    "items": {
-                        "$ref": "#/$defs/AffectedGenomicModelComponentDTO"
                     },
                     "type": "array"
                 },
@@ -1150,16 +1046,16 @@
                     },
                     "type": "array"
                 },
-                "sequence_targeting_reagent_identifiers": {
-                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of the STRs",
+                "subtype_name": {
+                    "description": "Name of VocabularyTerm describing subtype - permissible values: strain / genotype / fish",
+                    "type": "string"
+                },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
-                },
-                "subtype_name": {
-                    "description": "Name of VocabularyTerm describing subtype - permissible values: strain / genotype / fish",
-                    "type": "string"
                 },
                 "taxon_curie": {
                     "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
@@ -1227,6 +1123,260 @@
             "title": "Agent",
             "type": "object"
         },
+        "AgmAgmAssociation": {
+            "additionalProperties": false,
+            "description": "Association (without evidence) between two AffectedGenomicModels",
+            "properties": {
+                "agm_agm_association_object": {
+                    "$ref": "#/$defs/AffectedGenomicModel"
+                },
+                "agm_association_subject": {
+                    "$ref": "#/$defs/AffectedGenomicModel",
+                    "description": "Subject slot to be used for AGM associations"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "agm_association_subject",
+                "agm_agm_association_object",
+                "relation",
+                "internal"
+            ],
+            "title": "AgmAgmAssociation",
+            "type": "object"
+        },
+        "AgmAgmAssociationDTO": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "agm_object_identifier": {
+                    "description": "Curie or internal ID of AGM that is the object of an association",
+                    "type": "string"
+                },
+                "agm_subject_identifier": {
+                    "description": "Curie or internal ID of AGM that is the subject of an association",
+                    "type": "string"
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "relation_name": {
+                    "description": "Name of VocabularyTerm representing relation of an Association",
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "agm_subject_identifier",
+                "agm_object_identifier",
+                "relation_name",
+                "internal"
+            ],
+            "title": "AgmAgmAssociationDTO",
+            "type": "object"
+        },
+        "AgmAlleleAssociation": {
+            "additionalProperties": false,
+            "description": "Association (without evidence) between two AffectedGenomicModels",
+            "properties": {
+                "agm_allele_association_object": {
+                    "$ref": "#/$defs/Allele"
+                },
+                "agm_association_subject": {
+                    "$ref": "#/$defs/AffectedGenomicModel",
+                    "description": "Subject slot to be used for AGM associations"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                },
+                "zygosity": {
+                    "description": "GENO ontology ID for allele zygosity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "agm_association_subject",
+                "agm_allele_association_object",
+                "relation",
+                "internal"
+            ],
+            "title": "AgmAlleleAssociation",
+            "type": "object"
+        },
+        "AgmAlleleAssociationDTO": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "agm_subject_identifier": {
+                    "description": "Curie or internal ID of AGM that is the subject of an association",
+                    "type": "string"
+                },
+                "allele_identifier": {
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the allele",
+                    "type": "string"
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "relation_name": {
+                    "description": "Name of VocabularyTerm representing relation of an Association",
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                },
+                "zygosity_curie": {
+                    "description": "Curie of GENO ontology ID for allele zygosity - permissible_values: GENO:0000602 / GENO:0000603 / GENO:0000604 / GENO:0000605 / GENO:0000606 / GENO:0000135 / GENO:0000136 / GENO:0000137 / GENO:0000134",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "agm_subject_identifier",
+                "allele_identifier",
+                "relation_name",
+                "internal"
+            ],
+            "title": "AgmAlleleAssociationDTO",
+            "type": "object"
+        },
         "AgmSecondaryIdSlotAnnotation": {
             "additionalProperties": false,
             "description": "",
@@ -1287,6 +1437,128 @@
                 "internal"
             ],
             "title": "AgmSecondaryIdSlotAnnotation",
+            "type": "object"
+        },
+        "AgmSequenceTargetingReagentAssociation": {
+            "additionalProperties": false,
+            "description": "Association (without evidence) between two AffectedGenomicModels",
+            "properties": {
+                "agm_association_subject": {
+                    "$ref": "#/$defs/AffectedGenomicModel",
+                    "description": "Subject slot to be used for AGM associations"
+                },
+                "agm_sequence_targeting_reagent_association_object": {
+                    "$ref": "#/$defs/SequenceTargetingReagent"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "agm_association_subject",
+                "agm_sequence_targeting_reagent_association_object",
+                "relation",
+                "internal"
+            ],
+            "title": "AgmSequenceTargetingReagentAssociation",
+            "type": "object"
+        },
+        "AgmSequenceTargetingReagentAssociationDTO": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "agm_subject_identifier": {
+                    "description": "Curie or internal ID of AGM that is the subject of an association",
+                    "type": "string"
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": "boolean"
+                },
+                "relation_name": {
+                    "description": "Name of VocabularyTerm representing relation of an Association",
+                    "type": "string"
+                },
+                "sequence_targeting_reagent_identifier": {
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the STR",
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "agm_subject_identifier",
+                "relation_name",
+                "internal"
+            ],
+            "title": "AgmSequenceTargetingReagentAssociationDTO",
             "type": "object"
         },
         "Allele": {
@@ -3829,6 +4101,7 @@
             "description": "The relationship between an allele and the AGM origin of the allele.",
             "properties": {
                 "agm_identifier": {
+                    "description": "Curie or internal ID of AGM",
                     "type": "string"
                 },
                 "allele_identifier": {
@@ -6164,6 +6437,7 @@
             "description": "A basic (DTO) entry for defining a biosample's genomic information",
             "properties": {
                 "agm_identifier": {
+                    "description": "Curie or internal ID of AGM",
                     "type": "string"
                 },
                 "allele_identifier": {
@@ -16769,9 +17043,27 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
+                "agm_agm_association_ingest_set": {
+                    "items": {
+                        "$ref": "#/$defs/AgmAgmAssociationDTO"
+                    },
+                    "type": "array"
+                },
+                "agm_allele_association_ingest_set": {
+                    "items": {
+                        "$ref": "#/$defs/AgmAlleleAssociationDTO"
+                    },
+                    "type": "array"
+                },
                 "agm_ingest_set": {
                     "items": {
                         "$ref": "#/$defs/AffectedGenomicModelDTO"
+                    },
+                    "type": "array"
+                },
+                "agm_sequence_targeting_reagent_association_ingest_set": {
+                    "items": {
+                        "$ref": "#/$defs/AgmSequenceTargetingReagentAssociationDTO"
                     },
                     "type": "array"
                 },
@@ -26395,22 +26687,6 @@
             ],
             "title": "ZFSTerm",
             "type": "object"
-        },
-        "ZygosityValues": {
-            "description": "",
-            "enum": [
-                "GENO:0000602",
-                "GENO:0000603",
-                "GENO:0000604",
-                "GENO:0000605",
-                "GENO:0000606",
-                "GENO:0000135",
-                "GENO:0000136",
-                "GENO:0000137",
-                "GENO:0000134"
-            ],
-            "title": "ZygosityValues",
-            "type": "string"
         }
     },
     "$id": "https://github.com/alliance-genome/agr_curation_schema/alliance_schema",
@@ -26418,9 +26694,27 @@
     "additionalProperties": false,
     "metamodel_version": "1.7.0",
     "properties": {
+        "agm_agm_association_ingest_set": {
+            "items": {
+                "$ref": "#/$defs/AgmAgmAssociationDTO"
+            },
+            "type": "array"
+        },
+        "agm_allele_association_ingest_set": {
+            "items": {
+                "$ref": "#/$defs/AgmAlleleAssociationDTO"
+            },
+            "type": "array"
+        },
         "agm_ingest_set": {
             "items": {
                 "$ref": "#/$defs/AffectedGenomicModelDTO"
+            },
+            "type": "array"
+        },
+        "agm_sequence_targeting_reagent_association_ingest_set": {
+            "items": {
+                "$ref": "#/$defs/AgmSequenceTargetingReagentAssociationDTO"
             },
             "type": "array"
         },
