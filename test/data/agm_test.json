@@ -8,6 +8,11 @@
       "updated_by_curie": "ZFIN",
       "internal": false,
       "name": "TL + MO1-hars",
+      "synonyms": [
+        "WF.WKy-Mcs7",
+        " line D",
+        "WF.WKY-(D10Got124-D10Rat187)/Uwm"
+      ],
       "agm_secondary_id_dtos": [
         {
           "secondary_id": "ZFIN:ZDB-FISH-123456-1",
@@ -18,9 +23,6 @@
         }
       ],
       "reference_curies": [],
-      "sequence_targeting_reagent_identifiers": [
-        "ZFIN:ZDB-MRPHLNO-191104-1"
-      ],
       "subtype_name": "fish",
       "data_provider_dto": {
         "source_organization_abbreviation": "ZFIN",
@@ -51,13 +53,6 @@
         }
       ],
       "reference_curies": [],
-      "component_dtos": [
-        {
-          "allele_identifier": "ZFIN:ZDB-ALT-980203-1593",
-          "internal": false,
-          "zygosity_curie": "GENO:0000136"
-        }
-      ],
       "subtype_name": "fish",
       "data_provider_dto": {
         "source_organization_abbreviation": "ZFIN",

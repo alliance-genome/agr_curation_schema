@@ -42,9 +42,10 @@ classes:
     slots:
       - name
       - subtype
+      - synonyms
       - agm_secondary_ids
       - components
-      - sequence_targeting_reagents
+      - agm_sequence_targeting_reagent_associations
       - parental_populations
       - references
     slot_usage:
@@ -59,10 +60,9 @@ classes:
     slots:
       - name
       - subtype_name
+      - synonyms
       - agm_secondary_id_dtos
       - reference_curies
-      - sequence_targeting_reagent_identifiers
-      - component_dtos
     slot_usage:
       primary_external_id:
         required: true
@@ -78,25 +78,87 @@ classes:
       secondary_id:
         required: true
 
-  AffectedGenomicModelComponent:
-    is_a: AuditedObject
+  AgmAgmAssociation:
+    is_a: Association
     description: >-
-      Allele that affects the model and its zygosity
+      Association (without evidence) between two AffectedGenomicModels
+    attributes:
+      agm_agm_association_object:
+        range: AffectedGenomicModel
+        required: true
     slots:
-      - single_allele
-      - zygosity
+      - agm_association_subject
 
-  AffectedGenomicModelComponentDTO:
+  AgmAgmAssociationDTO:
     is_a: AuditedObjectDTO
     slots:
+      - agm_subject_identifier
+      - agm_object_identifier
+      - relation_name
+
+  AgmAlleleAssociation:
+    is_a: Association
+    description: >-
+      Association (without evidence) between two AffectedGenomicModels
+    attributes:
+      agm_allele_association_object:
+        range: Allele
+        required: true
+    slots:
+      - agm_association_subject
+      - zygosity
+
+  AgmAlleleAssociationDTO:
+    is_a: AuditedObjectDTO
+    slots:
+      - agm_subject_identifier
       - allele_identifier
+      - relation_name
       - zygosity_curie
+
+  AgmSequenceTargetingReagentAssociation:
+    is_a: Association
+    description: >-
+      Association (without evidence) between two AffectedGenomicModels
+    attributes:
+      agm_sequence_targeting_reagent_association_object:
+        range: SequenceTargetingReagent
+        required: true
+    slots:
+      - agm_association_subject
+
+  AgmSequenceTargetingReagentAssociationDTO:
+    is_a: AuditedObjectDTO
+    slots:
+      - agm_subject_identifier
+      - sequence_targeting_reagent_identifier
+      - relation_name
 
 slots:
 
   agm_identifier:
     range: string
     required: true
+    description: >-
+      Curie or internal ID of AGM
+      
+  agm_association_subject:
+    description: >-
+      Subject slot to be used for AGM associations
+    required: true
+    range: AffectedGenomicModel
+
+  agm_subject_identifier:
+    range: string
+    required: true
+    description: >-
+      Curie or internal ID of AGM that is the subject of an association
+
+  agm_object_identifier:
+    range: string
+    required: true
+    description: >-
+      Curie or internal ID of AGM that is the object of an association
 
   single_agm:
     range: AffectedGenomicModel
@@ -137,25 +199,25 @@ slots:
       Collection of genomic components that make up a model,
       i.e. 'allele', each with a zygosity
     domain: AffectedGenomicModel
-    range: AffectedGenomicModelComponent
+    range: AgmAlleleAssociation
     multivalued: true
-
-  component_dtos:
-    domain: AffectedGenomicModelDTO
-    range: AffectedGenomicModelComponentDTO
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-
-  has_allele:
-    domain: AffectedGenomicModelComponent
-    range: Allele
 
   zygosity:
     description: >-
       GENO ontology ID for allele zygosity
-    domain: AffectedGenomicModelComponent
-    range: zygosity_values
+    domain: AgmAlleleAssociation
+    range: string
+    notes: >- 
+      permissible_values:
+      GENO:0000602
+      GENO:0000603
+      GENO:0000604
+      GENO:0000605
+      GENO:0000606
+      GENO:0000135
+      GENO:0000136
+      GENO:0000137
+      GENO:0000134
 
   zygosity_curie:
     description: >-
@@ -163,26 +225,19 @@ slots:
       GENO:0000602 / GENO:0000603 / GENO:0000604 / GENO:0000605
       / GENO:0000606 / GENO:0000135 / GENO:0000136 / GENO:0000137
       / GENO:0000134
-    domain: AffectedGenomicModelComponentDTO
+    domain: AgmAlleleAssociationDTO
     range: string
 
-  sequence_targeting_reagents:
-    singular_name: sequence_targeting_reagent
+  agm_sequence_targeting_reagent_associations:
     domain: AffectedGenomicModel
-    range: SequenceTargetingReagent
+    range: AgmSequenceTargetingReagentAssociation
     multivalued: true
-
-  sequence_targeting_reagent_identifiers:
-    domain: AffectedGenomicModelDTO
-    range: string
-    multivalued: true
-    description: >-
-      Identifiers (curie/primary_external_id/mod_internal_id) of the STRs
 
   parental_populations:
     singular_name: parental_population
     domain: AffectedGenomicModel
-    range: uriorcurie
+    range: AgmAgmAssociation
+    multivalued: true
 
 enums:
 
@@ -191,15 +246,3 @@ enums:
       strain:
       genotype:
       fish:
-
-  zygosity_values:
-    permissible_values:
-      GENO:0000602:
-      GENO:0000603:
-      GENO:0000604:
-      GENO:0000605:
-      GENO:0000606:
-      GENO:0000135:
-      GENO:0000136:
-      GENO:0000137:
-      GENO:0000134:
