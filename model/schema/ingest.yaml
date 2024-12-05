@@ -74,6 +74,27 @@ slots:
     mixins:
       - object_set
 
+  agm_agm_association_ingest_set:
+    domain: Ingest
+    range: AgmAgmAssociationDTO
+    multivalued: true
+    mixins:
+      - object_set
+
+  agm_allele_association_ingest_set:
+    domain: Ingest
+    range: AgmAlleleAssociationDTO
+    multivalued: true
+    mixins:
+      - object_set
+
+  agm_sequence_targeting_reagent_association_ingest_set:
+    domain: Ingest
+    range: AgmSequenceTargetingReagentAssociationDTO
+    multivalued: true
+    mixins:
+      - object_set
+
   sqtr_ingest_set:
     domain: Ingest
     range: SequenceTargetingReagentDTO
@@ -390,6 +411,9 @@ classes:
       - source_variant_transcript_location_association_ingest_set
       - source_variant_protein_location_association_ingest_set
       - agm_ingest_set
+      - agm_agm_association_ingest_set
+      - agm_allele_association_ingest_set
+      - agm_sequence_targeting_reagent_association_ingest_set
       - sqtr_ingest_set
       - sqtr_gene_association_ingest_set
       - ontology_closure_ingest_set
