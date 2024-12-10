@@ -724,7 +724,7 @@ slots:
 
   allele_full_name:
     description: >-
-      The one current full name for an allele: e.g., wg<sup>1</sup>.
+      The one current full name for an allele: e.g., Sternopleural.
     domain: Allele
     range: AlleleFullNameSlotAnnotation
     required: false
@@ -732,7 +732,7 @@ slots:
 
   allele_full_name_dto:
     description: >-
-      The one current full name for an allele: e.g., wg<sup>1</sup>.
+      The one current full name for an allele: e.g., Sternopleural.
     domain: AlleleDTO
     range: FullNameSlotAnnotationDTO
     multivalued: false
@@ -845,7 +845,7 @@ slots:
 
   allele_symbol:
     description: >-
-      The one current accepted symbol for the allele: e.g., wg<sup>1</sup>.
+      The one current accepted symbol for the allele: e.g., wg<sup>Sp-1</sup>.
     exact_mappings:
       - biolink:symbol
     domain: Allele
@@ -855,7 +855,7 @@ slots:
 
   allele_symbol_dto:
     description: >-
-      The one current accepted symbol for the allele: e.g., wg<sup>1</sup>.
+      The one current accepted symbol for the allele: e.g., wg<sup>Sp-1</sup>.
     domain: AlleleDTO
     range: SymbolSlotAnnotationDTO
     multivalued: false
