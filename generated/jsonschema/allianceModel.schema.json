@@ -1589,7 +1589,7 @@
                 },
                 "allele_full_name": {
                     "$ref": "#/$defs/AlleleFullNameSlotAnnotation",
-                    "description": "The one current full name for an allele: e.g., wg<sup>1</sup>."
+                    "description": "The one current full name for an allele: e.g., Sternopleural."
                 },
                 "allele_functional_impacts": {
                     "description": "Functional impacts of a given allele",
@@ -1662,7 +1662,7 @@
                 },
                 "allele_symbol": {
                     "$ref": "#/$defs/AlleleSymbolSlotAnnotation",
-                    "description": "The one current accepted symbol for the allele: e.g., wg<sup>1</sup>."
+                    "description": "The one current accepted symbol for the allele: e.g., wg<sup>Sp-1</sup>."
                 },
                 "allele_synonyms": {
                     "description": "Holds between an Allele and a synonym.",
@@ -2242,7 +2242,7 @@
                 },
                 "allele_full_name_dto": {
                     "$ref": "#/$defs/FullNameSlotAnnotationDTO",
-                    "description": "The one current full name for an allele: e.g., wg<sup>1</sup>."
+                    "description": "The one current full name for an allele: e.g., Sternopleural."
                 },
                 "allele_functional_impact_dtos": {
                     "items": {
@@ -2280,7 +2280,7 @@
                 },
                 "allele_symbol_dto": {
                     "$ref": "#/$defs/SymbolSlotAnnotationDTO",
-                    "description": "The one current accepted symbol for the allele: e.g., wg<sup>1</sup>."
+                    "description": "The one current accepted symbol for the allele: e.g., wg<sup>Sp-1</sup>."
                 },
                 "allele_synonym_dtos": {
                     "items": {
