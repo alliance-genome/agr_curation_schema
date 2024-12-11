@@ -95,6 +95,9 @@ classes:
     description: >-
       Parent class for LinkML classes of submitted entities
       that may have a public or internal MOD ID/curie
+    notes: >-
+      Each SubmittedObject data record should either get a (public) primary_external_id
+      value OR a (private) mod_internal_id value, but NOT BOTH.
     slots:
       - primary_external_id
       - mod_internal_id
@@ -103,6 +106,10 @@ classes:
 
   SubmittedObjectDTO:
     is_a: AuditedObjectDTO
+    notes: >-
+      When submitting a SubmittedObjectDTO data record to the persistent store, it is the
+      intention that each record will either get a (public) primary_external_id value OR
+      a (private) mod_internal_id value, but NOT BOTH.
     slots:
       - primary_external_id
       - mod_internal_id
@@ -114,6 +121,10 @@ classes:
       An entity of biological origin that can be unambiguously attributed to
       a single species.
     abstract: true
+    notes: >-
+      The primary identifier by which any BiologicalEntity record is referred needs to be
+      unique among identifiers used for all BiologicalEntity records so as to avoid ID
+      collisions in the biologicalentity table in Postgres
     slots:
       - taxon
     slot_usage:
@@ -123,6 +134,10 @@ classes:
   BiologicalEntityDTO:
     is_a: SubmittedObjectDTO
     abstract: true
+    notes: >-
+      The primary identifier by which any BiologicalEntity record is referred needs to be
+      unique among identifiers used for all BiologicalEntity records so as to avoid ID
+      collisions in the biologicalentity table in Postgres
     slots:
       - taxon_curie
     slot_usage:
