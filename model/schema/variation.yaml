@@ -51,6 +51,7 @@ classes:
     slots:
       - variant_type
       - related_notes
+      - synonyms
       - source_general_consequences
       - curated_variant_genomic_locations
       - curated_variant_transcript_locations

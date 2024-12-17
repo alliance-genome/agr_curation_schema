@@ -43,6 +43,7 @@ classes:
     slots:
       - variant_type_curie
       - note_dtos
+      - synonyms
       - source_general_consequence_dtos
       - variant_status_name
 

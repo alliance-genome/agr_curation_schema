@@ -24744,6 +24744,13 @@
                     },
                     "type": "array"
                 },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
                     "type": "string"
@@ -24833,6 +24840,13 @@
                 "source_general_consequence_dtos": {
                     "items": {
                         "$ref": "#/$defs/VariantSourceGeneralConsequenceSlotAnnotationDTO"
+                    },
+                    "type": "array"
+                },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
+                    "items": {
+                        "type": "string"
                     },
                     "type": "array"
                 },
