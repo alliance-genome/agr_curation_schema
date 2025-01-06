@@ -46,6 +46,7 @@ classes:
       - agm_secondary_ids
       - components
       - agm_sequence_targeting_reagent_associations
+      - agm_allele_associations
       - parental_populations
       - references
     slot_usage:
@@ -231,6 +232,11 @@ slots:
   agm_sequence_targeting_reagent_associations:
     domain: AffectedGenomicModel
     range: AgmSequenceTargetingReagentAssociation
+    multivalued: true
+    
+  agm_allele_associations:
+    domain: AffectedGenomicModel
+    range: AgmAlleleAssociation
     multivalued: true
 
   parental_populations:
