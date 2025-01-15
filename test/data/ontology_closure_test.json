@@ -28,19 +28,13 @@
     {
       "ontology_term_closure_subject": "ZFA:brain",
       "ontology_term_closure_object": "ZFA:whole_organism",
-      "relation": [
-        "RO:is_a",
-        "RO:part_of"
-      ],
+      "relation": "RO:is_a",
       "internal": false
     },
     {
       "ontology_term_closure_subject": "ZFA:brain",
       "ontology_term_closure_object": "ZFA:whole_organism",
-      "relation": [
-        "RO:is_a",
-        "RO:part_of"
-      ],
+      "relation": "RO:is_a",
       "internal": false
     }
   ]
