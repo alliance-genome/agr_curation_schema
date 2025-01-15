@@ -1930,7 +1930,7 @@
                     ]
                 },
                 "zygosity": {
-                    "description": "GENO ontology ID for allele zygosity",
+                    "description": "GENO ontology term for allele zygosity",
                     "type": [
                         "string",
                         "null"
