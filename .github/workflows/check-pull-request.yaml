@@ -3,31 +3,27 @@ name: Test PRs
 on: [pull_request]
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
-        python-version: ["3.9", "3.10", "3.11"]
+        python-version: [3.9, 3.10, 3.11]
 
     steps:
-      # Step 1: Check out the repository
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
-      # Step 2: Set up Python
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
+          cache: 'poetry'
 
-      # Step 3: Install Poetry 1.x (skip Python 3.12)
       - name: Install Poetry 1.x
         run: pipx install poetry==1.*
-      #----------------------------------------------
-      # install dependencies if cache does not exist
-      #----------------------------------------------
-      - name: Install dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+
+      - name: Install Dependencies
         run: poetry install --no-interaction --no-root
 
       - name: regenerate artifacts and validate against generated artifacts
