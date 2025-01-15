@@ -204,9 +204,9 @@ slots:
 
   zygosity:
     description: >-
-      GENO ontology ID for allele zygosity
+      GENO ontology term for allele zygosity
     domain: AgmAlleleAssociation
-    range: string
+    range: GENOTerm
     notes: >- 
       permissible_values:
       GENO:0000602
