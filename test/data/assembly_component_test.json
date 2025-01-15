@@ -2,12 +2,12 @@
   "linkml_version": "2.0.0",
   "assembly_component_ingest_set": [
     {
-      "mod_entity_id": "WB:W02C12",
+      "primary_external_id": "WB:W02C12",
       "taxon_curie": "NCBITaxon:6239",
       "created_by_curie": "WB:WBPerson2987",
       "updated_by_curie": "WB:WBPerson2987",
       "genome_assembly_identifier": "WB:WBcel235",
-      "display_name": "W02C12",
+      "name": "W02C12",
       "internal": false,
       "obsolete": false,
       "data_provider_dto": {

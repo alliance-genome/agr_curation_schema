@@ -3,7 +3,7 @@
   "allele_ingest_set": [
     {
       "additional_propertie": "this is invalid",
-      "mod_entity_id": "ZFIN:ZDB-ALT-123456-1",
+      "primary_external_id": "ZFIN:ZDB-ALT-123456-1",
       "taxon_curie": "NCBITaxon:7955",
       "created_by_curie": "ZFIN",
       "updated_by_curie": "ZFIN"

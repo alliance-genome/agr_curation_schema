@@ -43,6 +43,7 @@ classes:
     slots:
       - variant_type_curie
       - note_dtos
+      - synonyms
       - source_general_consequence_dtos
       - variant_status_name
 
@@ -55,7 +56,6 @@ classes:
       - variant_sequence
       - consequence_curie
       - curated_consequence_curie
-      - sequence_of_reference_accession_number
 
   VariantGenomicLocationAssociationDTO:
     is_a: VariantLocationAssociationDTO
@@ -68,8 +68,8 @@ classes:
       - inserted_sequence
       - deleted_sequence
       - padded_base
-      - dna_mutation_type
-      - gene_localization_type
+      - dna_mutation_type_curie
+      - gene_localization_type_curie
 
   VariantTranscriptLocationAssociationDTO:
     is_a: VariantLocationAssociationDTO
@@ -152,7 +152,7 @@ classes:
 slots:
   associated_transcript_identifiers:
     description: >-
-      Identifiers (curie/mod_entity_id/mod_internal_id) of transcript(s) associated
+      Identifiers (curie/primary_external_id/mod_internal_id) of transcript(s) associated
       with polypeptide to which variant is aligned.
     required: false
     multivalued: true
@@ -180,6 +180,22 @@ slots:
     domain: VariantLocationAssociationDTO
     range: string
 
+  dna_mutation_type_curie:
+    description: >-
+      Curie of SOTerm describing the type of DNA mutation, for example, insertion, deletion, substitution, or indel.
+    range: SOTerm
+    examples:
+      - value: SO:1000027 # G_to_T_transversion
+    notes: >-
+      This is a ZFIN specific field.
+
+  gene_localization_type_curie:
+    description: >-
+      Curie of SOTerm describing the type of gene localization, for example, intronic, intergenic, or intragenic.
+    range: string
+    examples:
+      - value: SO:0000147 # exon
+
   source_general_consequence_dtos:
     domain: VariantDTO
     range: VariantSourceGeneralConsequenceSlotAnnotationDTO
@@ -203,7 +219,7 @@ slots:
   variant_identifier:
     is_a: genomic_entity_identifier
     description: >-
-      Identifier (curie/mod_entity_id/mod_internal_id) of the variant
+      Identifier (curie/primary_external_id/mod_internal_id) of the variant
     required: true
 
   variant_status_name:
@@ -213,9 +229,8 @@ slots:
     range: string
 
   variant_type_curie:
+    is_a: genomic_entity_type_curie
     description: >-
       Curie of the SOTerm describing the type of variant. In practice, variant type will be limited to a subset of the SO specified
       in an Alliance controlled vocabulary in order to maintain consistency.
-    required: true
     domain: VariantDTO
-    range: string

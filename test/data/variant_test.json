@@ -2,7 +2,10 @@
   "linkml_version": "2.0.0",
   "variant_ingest_set": [
     {
-      "mod_entity_id": "ZFIN:ZDB-ALT-000412-8",
+      "primary_external_id": "ZFIN:ZDB-ALT-000412-8",
+      "synonyms": [
+        "name: I:g.118901G>A"
+      ],
       "data_provider_dto": {
         "source_organization_abbreviation": "ZFIN",
         "cross_reference_dto": {
@@ -36,7 +39,7 @@
       ]
     },
     {
-      "mod_entity_id": "ZFIN:ZDB-ALT-000412-9",
+      "primary_external_id": "ZFIN:ZDB-ALT-000412-9",
       "data_provider_dto": {
         "source_organization_abbreviation": "ZFIN",
         "cross_reference_dto": {

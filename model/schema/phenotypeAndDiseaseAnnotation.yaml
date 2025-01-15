@@ -58,18 +58,15 @@ classes:
     slots:
       - curie
       - unique_id
-      - mod_entity_id
+      - primary_external_id
       - mod_internal_id
       - condition_relations
       - related_notes
       - data_provider
+      - data_provider_cross_reference
     slot_usage:
-        subject:
-            required: true
-        object:
-            required: true
-        single_reference:
-            required: true
+      single_reference:
+        required: true
 
   AnnotationDTO:
     is_a: SingleReferenceAssociationDTO
@@ -78,7 +75,7 @@ classes:
       Ingest class for an annotation
     slots:
       - mod_internal_id
-      - mod_entity_id
+      - primary_external_id
       - note_dtos
       - data_provider_dto
       - condition_relation_dtos
@@ -91,14 +88,18 @@ classes:
     description: >-
       An annotation asserting an association between a biological entity and a phenotype supported by evidence.
     slots:
-      - phenotype_term
-    slot_usage:
-      subject:                            # objectId in JSON schema
+      - phenotype_annotation_subject
+      - phenotype_terms
+      - cross_reference
+    attributes:
+      phenotype_annotation_object:
         description: >-
-          The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, by direct curation.
+          phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed
+          statement of the phenotype from a post-composed terminology
         required: true
-        range: BiologicalEntity
-      phenotype_term:
+        range: string
+    slot_usage:
+      phenotype_terms:
         values_from:
           - HP
           - MP
@@ -114,12 +115,6 @@ classes:
             description: axon morphology variant
           - value: MP:0001569
             description: abnormal circulating bilirubin level
-      object:             # phenotypeStatement in JSON schema; eventually object should point to Phenotype class object
-        description: >-
-          phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed
-          statement of the phenotype from a post-composed terminology
-        required: true
-        range: string
       single_reference:
         description: >-
           The reference in which the phenotype association was asserted/reported.
@@ -142,7 +137,8 @@ classes:
       Ingest class for association between a biological entity and a phenotype
     slots:
       - phenotype_statement
-      - phenotype_term_curie
+      - phenotype_term_curies
+      - cross_reference_dto
 
   GenePhenotypeAnnotation:
     description: >-
@@ -152,8 +148,7 @@ classes:
     slots:
       - sgd_strain_background   # Does this also apply to phenotype annotations?
     slot_usage:
-      subject:
-        required: true
+      phenotype_annotation_subject:
         description: >-
           The gene to which the phenotype ontology term is associated.
         range: Gene
@@ -175,7 +170,7 @@ classes:
       - inferred_gene
       - asserted_genes
     slot_usage:
-      subject:
+      phenotype_annotation_subject:
         description: >-
           The allele to which the phenotype ontology term is associated.
         range: Allele
@@ -209,7 +204,7 @@ classes:
       - asserted_genes
       - asserted_allele
     slot_usage:
-      subject:
+      phenotype_annotation_subject:
         description: >-
           The AGM to which the phenotype ontology term is associated.
         range: AffectedGenomicModel
@@ -227,6 +222,7 @@ classes:
         required: false
       asserted_allele:
         required: false
+
   AGMPhenotypeAnnotationDTO:
     is_a: PhenotypeAnnotationDTO
     description: >-
@@ -243,7 +239,13 @@ classes:
     abstract: true
     description: >-
       An annotation asserting an association between a biological entity and a disease supported by evidence.
+    attributes:
+      disease_annotation_object:
+        description: The Disease Ontology term
+        range: DOTerm
+        required: true
     slots:
+      - disease_annotation_subject
       - negated
       - evidence_codes
       - annotation_type
@@ -251,7 +253,10 @@ classes:
       - disease_qualifiers
       - genetic_sex
       - secondary_data_provider
-      - disease_genetic_modifiers
+      - secondary_data_provider_cross_reference
+      - disease_genetic_modifier_genes
+      - disease_genetic_modifier_alleles
+      - disease_genetic_modifier_agms
       - disease_genetic_modifier_relation
     slot_usage:
       curie:
@@ -264,9 +269,9 @@ classes:
           Unique identifier for the disease annotation.  Will be generated at AGR
           if not submitted by the MOD.
         required: false
-      mod_entity_id:
+      primary_external_id:
         description: >-
-          The model organism database (MOD) identifier/curie for the disease annotation. Currently only
+          The primary external (non-AGRKB) identifier/curie for the disease annotation. Currently only
           used by WormBase for disease annotations, e.g. "WBDOannot00000907"
         required: false
       mod_internal_id:
@@ -274,19 +279,9 @@ classes:
           The model organism database (MOD) internal identifier for the disease annotation. When available,
           this is used for determination of distinctness instead of the Unique ID field.
         required: false
-      subject:
-        required: true
-        description: >-
-          The biological entity to which the disease ontology term is associated.
-        range: BiologicalEntity
       negated:
         description: >-
           The negative qualifier for the annotation.
-      object:
-        required: true
-        description: >-
-          The disease ontology term.
-        range: DOTerm
       relation:
         description: >-
           The relation between the subject biological entity and disease in the annotation.
@@ -349,7 +344,7 @@ classes:
     slots:
       - sgd_strain_background
     slot_usage:
-      subject:
+      disease_annotation_subject:
         required: true
         description: >-
           The gene to which the disease ontology term is associated.
@@ -378,7 +373,7 @@ classes:
       - inferred_gene
       - asserted_genes
     slot_usage:
-      subject:
+      disease_annotation_subject:
         description: >-
           The allele to which the disease ontology term is associated.
         range: Allele
@@ -405,7 +400,6 @@ classes:
       - inferred_gene_identifier
       - asserted_gene_identifiers
 
-
   AGMDiseaseAnnotation:
     description: >-
       An annotation asserting an association between an AGM and a disease
@@ -417,7 +411,7 @@ classes:
       - asserted_genes
       - asserted_allele
     slot_usage:
-      subject:
+      disease_annotation_subject:
         description: >-
           The AGM to which the disease ontology term is associated.
         range: AffectedGenomicModel
@@ -599,7 +593,7 @@ slots:
 
   asserted_allele_identifier:
     description: >-
-      Identifier (curie/mod_entity_id/mod_internal_id) of the allele to which something is manually asserted to be
+      Identifier (curie/primary_external_id/mod_internal_id) of the allele to which something is manually asserted to be
       associated
     range: string
 
@@ -612,7 +606,7 @@ slots:
 
   asserted_gene_identifiers:
     description: >-
-      Identifiers (curie/mod_entity_id/mod_internal_id) of the gene(s) to which something is manually asserted to be
+      Identifiers (curie/primary_external_id/mod_internal_id) of the gene(s) to which something is manually asserted to be
       associated
     range: string
     multivalued: true
@@ -739,14 +733,36 @@ slots:
     inlined: true
     inlined_as_list: true
 
-  disease_genetic_modifiers:
+  disease_annotation_subject:
+    required: true
     description: >-
-      Specifies a genetic object that modifies the disease model. May be a gene, allele, AGM.
+      The biological entity to which the disease ontology term is associated.
+    domain: DiseaseAnnotation
+    range: BiologicalEntity
+
+  disease_genetic_modifier_genes:
+    description: >-
+      Specifies a gene that modifies a disease model.
     required: false
+    range: Gene
+    multivalued: true
+
+  disease_genetic_modifier_alleles:
+    description: >-
+      Specifies an allele that modifies a disease model.
+    required: false
+    range: Allele
+    multivalued: true
+
+  disease_genetic_modifier_agms:
+    description: >-
+      Specifies an affected genomic model (e.g. genotype) that modifies a disease model.
+    required: false
+    range: AffectedGenomicModel
     multivalued: true
 
   disease_genetic_modifier_identifiers:
-    description: Identifiers (curie/mod_entity_id/mod_internal_id) of BiologcalEntity that modifies the disease model
+    description: Identifiers (curie/primary_external_id/mod_internal_id) of Gene, Allele or AGM that modifies the disease model
     domain: DiseaseAnnotationDTO
     range: string
     multivalued: true
@@ -756,6 +772,7 @@ slots:
       A relation describing how the genetic modifier modifies the disease model.
       Submitted value should be a vocabulary term from the 'Disease genetic
       modifiers' vocabulary
+    multivalued: false
     range: VocabularyTerm # CV 'Disease Genetic Modifier Relation'
 
   disease_genetic_modifier_relation_name:
@@ -764,6 +781,7 @@ slots:
       modifies the disease model, selected from the 'Disease genetic modifier
       relations' Vocabulary.
     domain: DiseaseAnnotationDTO
+    multivalued: false
     range: string # CV 'Disease Genetic Modifier Relation'
 
   disease_qualifiers:
@@ -805,7 +823,7 @@ slots:
 
   inferred_gene_identifier:
     description: >-
-      Identifier (curie/mod_entity_id/mod_internal_id) of gene to which something is inferred to be associated via an
+      Identifier (curie/primary_external_id/mod_internal_id) of gene to which something is inferred to be associated via an
       automated pipeline
     range: string
 
@@ -816,23 +834,30 @@ slots:
 
   inferred_allele_identifier:
     description: >-
-      Identifier (curie/mod_entity_id/mod_internal_id) of allele to which something is inferred to be associated via an
+      Identifier (curie/primary_external_id/mod_internal_id) of allele to which something is inferred to be associated via an
       automated pipeline
     range: string
 
-  phenotype_term:
+  phenotype_annotation_subject:
+    description: >-
+      The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, by direct curation.
+    required: true
+    domain: PhenotypeAnnotation
+    range: BiologicalEntity
+  
+  phenotype_terms:
     description: >-
       The phenotype ontology term used to describe the phenotype of an organism
       or a set of organisms.
     range: PhenotypeTerm
-    multivalued: false
+    multivalued: true
 
-  phenotype_term_curie:
+  phenotype_term_curies:
     description: >-
       The string representation of the phenotype ontology term (PhenotypeTerm)
       curie
     range: string
-    multivalued: false
+    multivalued: true
 
   phenotype_statement:
     description: >-
@@ -845,7 +870,7 @@ slots:
     range: AffectedGenomicModel
 
   sgd_strain_background_identifier:
-    description: Identifier (curie/mod_entity_id/mod_internal_id) of SGD strain background AGM
+    description: Identifier (curie/primary_external_id/mod_internal_id) of SGD strain background AGM
     domain: GeneDiseaseAnnotationDTO
     range: string
 
@@ -857,7 +882,7 @@ slots:
 
   with_gene_identifiers:
     description: >-
-      Identifier (curie/mod_entity_id/mod_internal_id) of genes
+      Identifier (curie/primary_external_id/mod_internal_id) of genes
       http://geneontology.org/docs/go-annotation-file-gaf-format-2.2/#with-or-from-column-8
     range: string
     multivalued: true

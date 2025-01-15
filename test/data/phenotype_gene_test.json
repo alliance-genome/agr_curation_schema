@@ -20,7 +20,7 @@
       "obsolete": false,
       "gene_identifier": "WB:WBGene00001",
       "phenotype_statement": "dye filling defect",
-      "phenotype_term_curie": "WBPhenotype:0001383",
+      "phenotype_term_curies": ["WBPhenotype:0001383"],
       "condition_relation_dtos": [
         {
           "condition_relation_type_name": "has_condition",

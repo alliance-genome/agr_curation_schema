@@ -209,6 +209,7 @@ SCHEMA_TEST_EXAMPLES := \
 	protein_test \
 	sgd_disease_test \
 	sqtr_test \
+	sqtr_association_ingest_test \
 	transcript_test \
 	variant_allele_association_test \
 	variant_association_ingest_test \

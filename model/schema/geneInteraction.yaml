@@ -50,33 +50,32 @@ classes:
   ## ASSOCIATIONS
   ## ------------
 
-  GeneToGeneAssociation:
+  GeneGeneAssociation:
     description: >-
       abstract parent class for different kinds of gene-gene or gene product
       to gene product relationships. Includes homology and interaction.
     abstract: true
     is_a: EvidenceAssociation
-    defining_slots:
-      - subject
-      - object
-    slot_usage:
-      subject:
+    attributes:
+      gene_gene_association_object:
         range: Gene
-        description: >-
-          the subject gene in the association. If the relation is symmetric,
-          subject vs object is arbitrary. We allow a gene product to stand
-          as a proxy for the gene or vice versa.
-      object:
-        range: Gene
+        required: true
         description: >-
           the object gene in the association. If the relation is symmetric,
+          subject vs object is arbitrary. We allow a gene product to stand
+          as a proxy for the gene or vice versa.
+    slots:
+      - gene_association_subject
+    slot_usage:
+      gene_association_subject:
+        description: >-
+          the subject gene in the association. If the relation is symmetric,
           subject vs object is arbitrary. We allow a gene product to stand
           as a proxy for the gene or vice versa.
 #    exact_mappings:
 #      - biolink:GeneToGeneAssociation
 
-  GeneToGeneAssociationDTO:
-    abstract: true
+  GeneGeneAssociationDTO:
     is_a: AuditedObjectDTO
     slots:
       - subject_gene_identifier
@@ -89,10 +88,11 @@ classes:
       An interaction between two genes or gene products; this may be a physical
       molecular interaction between gene products (e.g. protein-protein interactions),
       or may be a genetic interaction between genes (e.g. phenotypic suppression)
-    is_a: GeneToGeneAssociation
+    is_a: GeneGeneAssociation
     abstract: true
     slots:
-      - curie
+      - unique_id
+      - interaction_id
       - cross_references
       - interaction_source
       - interaction_type
@@ -101,9 +101,9 @@ classes:
       - interactor_A_type
       - interactor_B_type
     defining_slots:
-      - subject
+      - gene_association_subject
       - relation
-      - object
+      - gene_gene_association_object
     id_prefixes:
       - BIOGRID
       - DIP
@@ -117,7 +117,7 @@ classes:
       - WB
       - WWPDB
     slot_usage:
-      curie:
+      interaction_id:
         description: >-
           The unique primary identifier for the interaction. This should be the source
           (curation) database identifier, or if that is not available then the aggregation
@@ -132,14 +132,14 @@ classes:
 #      - biolink:PairwiseGeneToGeneInteraction
 
   GeneInteractionDTO:
-    is_a: GeneToGeneAssociationDTO
+    is_a: GeneGeneAssociationDTO
     abstract: true
     description: >-
       Ingest class for an interaction between two genes or gene products; this may be a physical
       molecular interaction between gene products (e.g. protein-protein interactions),
       or may be a genetic interaction between genes (e.g. phenotypic suppression)
     slots:
-      - curie
+      - interaction_id
       - cross_reference_dtos
       - interaction_source_curie
       - interaction_type_curie
@@ -148,7 +148,7 @@ classes:
       - interactor_A_type_curie
       - interactor_B_type_curie
     slot_usage:
-      curie:
+      interaction_id:
         description: >-
           The unique primary identifier for the interaction. This should be the source
           (curation) database identifier, or if that is not available then the aggregation
@@ -248,6 +248,13 @@ slots:
     range: string
     required: true
   
+  interaction_id:
+    description: >-
+      Identifier for interaction provided by MOD or other external source
+    domain: GeneInteraction
+    range: string
+    required: false
+
   interaction_source:
     range: MITerm
     description: >-
@@ -369,8 +376,8 @@ slots:
     range: string
 
   object_gene_identifier:
-    description: Identifier (curie/mod_entity_id/mod_internal_id) of the object gene in a gene-to-gene association
-    domain: GeneToGeneAssociationDTO
+    description: Identifier (curie/primary_external_id/mod_internal_id) of the object gene in a gene-to-gene association
+    domain: GeneGeneAssociationDTO
     range: string
     required: true
 
@@ -381,8 +388,8 @@ slots:
     range: string                       # should eventually be updated to the Phenotype class
 
   subject_gene_identifier:
-    description: Identifier (curie/mod_entity_id/mod_internal_id) of the subject gene in a gene-to-gene association
-    domain: GeneToGeneAssociationDTO
+    description: Identifier (curie/primary_external_id/mod_internal_id) of the subject gene in a gene-to-gene association
+    domain: GeneGeneAssociationDTO
     range: string
     required: true
 

@@ -1,0 +1,29 @@
+{
+  "linkml_version": "2.0.0",
+  "agm_agm_association_ingest_set": [
+    {
+      "agm_subject_identifier": "WB:WBStrain001231",
+      "relation_name": "is_child_of",
+      "agm_object_identifier": "WB:WBStrain001100",
+      "internal": false
+    }
+  ],
+  "agm_allele_association_ingest_set": [
+    {
+      "agm_subject_identifier": "WB:WBStrain001231",
+      "relation_name": "has_component",
+      "allele_identifier": "WB:WBVar001301",
+      "zygosity_curie": "GENO:0000602",
+      "internal": false
+    }
+  ],
+  "agm_sequence_targeting_reagent_association_ingest_set": [
+    {
+      "agm_subject_identifier": "WB:WBStrain001231",
+      "relation_name": "is_child_of",
+      "sequence_targeting_reagent_identifier": "WB:WBStrain001100",
+      "internal": false
+    }
+  ]
+   
+}

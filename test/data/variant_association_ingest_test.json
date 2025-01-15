@@ -12,7 +12,6 @@
       "end": 30341645,
       "reference_sequence": "C",
       "variant_sequence": "T",
-      "sequence_of_reference_accession_number": "NC_007118.7",
       "internal": false,
       "obsolete": false,
       "date_created": "2015-04-09T10:15:30+00:00",
@@ -25,8 +24,8 @@
       "inserted_sequence": "AT",
       "deleted_sequence": "GCGC",
       "padded_base": "A",
-      "dna_mutation_type": "SO:001231",
-      "gene_localization_type": "SO:121313"
+      "dna_mutation_type_curie": "SO:001231",
+      "gene_localization_type_curie": "SO:121313"
     }
   ],
  "variant_transcript_location_association_ingest_set": [
@@ -82,7 +81,6 @@
       "end": 30341645,
       "reference_sequence": "C",
       "variant_sequence": "T",
-      "sequence_of_reference_accession_number": "NC_007118.7",
       "internal": false,
       "obsolete": false,
       "date_created": "2015-04-09T10:15:30+00:00",
@@ -95,8 +93,8 @@
       "inserted_sequence": "AT",
       "deleted_sequence": "GCGC",
       "padded_base": "A",
-      "dna_mutation_type": "SO:001231",
-      "gene_localization_type": "SO:121313"
+      "dna_mutation_type_curie": "SO:001231",
+      "gene_localization_type_curie": "SO:121313"
     }
   ],
  "source_variant_transcript_location_association_ingest_set": [

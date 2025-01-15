@@ -7,6 +7,7 @@ imports:
   - allele
   - linkml:types
   - ontologyTerm
+  - variantConsequence
 
 prefixes:
   alliance: "http://alliancegenome.org/"
@@ -50,6 +51,7 @@ classes:
     slots:
       - variant_type
       - related_notes
+      - synonyms
       - source_general_consequences
       - curated_variant_genomic_locations
       - curated_variant_transcript_locations
@@ -76,16 +78,13 @@ classes:
       the definition of the transcript or protein isoform used by the source has changed, or if there was an error
       in the source data.
     slots:
+      - variant_association_subject
       - hgvs
       - reference_sequence
       - variant_sequence
       - consequence
       - curated_consequence
-      - sequence_of_reference_accession_number # Should this point to a chromosome object instead of a string? Will this be redundant with genomic location association of the subject?
-    slot_usage:
-      subject:
-        range: Variant
-
+    
   VariantGenomicLocationAssociation:
     is_a: VariantLocationAssociation
     abstract: true
@@ -102,8 +101,8 @@ classes:
       - padded_base
       - dna_mutation_type
       - gene_localization_type
-    slot_usage:
-      object:
+    attributes:
+      variant_genomic_location_association_object:
         description: >-
           The location reference object should be a chromosome assembly curie.
         range: AssemblyComponent
@@ -118,8 +117,8 @@ classes:
     slots:
       - exon_number
       - intron_number
-    slot_usage:
-      object:
+    attributes:
+      variant_transcript_location_object:
         description: >-
           Transcript associated with variant and for which a specific location and consequence of that variant
           is provided, as specified at source.  Multivalued=false for this slot because although a variant can have
@@ -139,8 +138,8 @@ classes:
       - associated_transcripts # won't this be a property of the protein objects?
       - number_amino_acids_removed
       - number_amino_acids_inserted
-    slot_usage:
-      object:
+    attributes:
+      variant_polypeptide_location_association_object:
         description: >-
           Polypeptide associated with variant and for which a specific location and consequence of that variant is
           provided, as specified by curator. Multivalued=false for this slot because although a variant can have
@@ -159,6 +158,11 @@ classes:
         required: true
       hgvs:
         required: true
+    attributes:
+      predicted_variant_consequences:
+        description: VEP-calculated variant consequences
+        range: PredictedVariantConsequence
+        multivalued: true
 
   CuratedVariantTranscriptLocationAssociation:
     is_a: VariantTranscriptLocationAssociation
@@ -227,6 +231,12 @@ classes:
 # Slots
 
 slots:
+  variant_association_subject:
+    description: >-
+      Subject slot to be used for variant associations
+    required: true
+    range: Variant
+  
   number_amino_acids_removed:
     description: >-
       The number of amino acids removed from the polypeptide as a result of the variant.
@@ -253,19 +263,19 @@ slots:
     exact_mappings:
       - SO:0001889
 
-  dna_mutation_type: # Should the range of this be an object (SOTerm / OntologyTerm) rather than just a curie?
+  dna_mutation_type:
     description: >-
       The type of DNA mutation, for example, insertion, deletion, substitution, or indel.
-    range: uriorcurie
+    range: SOTerm
     examples:
       - value: SO:1000027 # G_to_T_transversion
     notes: >-
       This is a ZFIN specific field.
 
-  gene_localization_type: # Should the range of this be an object (SOTerm / OntologyTerm) rather than just a curie?
+  gene_localization_type:
     description: >-
       The type of gene localization, for example, intronic, intergenic, or intragenic.
-    range: uriorcurie
+    range: SOTerm
     examples:
       - value: SO:0000147 # exon
 
@@ -353,14 +363,12 @@ slots:
     range: VocabularyTerm
 
   variant_type:
+    is_a: genomic_entity_type
     description: >-
       SOTerm describing the type of variant. In practice, variant type will be limited to a subset of the SO specified
       in an Alliance controlled vocabulary in order to maintain consistency.
-    required: true
-    multivalued: false
     domain: Variant
-    range: SOTerm
-
+    
   source_general_consequences:
     aliases: ["transcript_consequences"]
     required: false
@@ -377,18 +385,6 @@ slots:
     range: SOTerm
     required: true
     multivalued: false
-
-  sequence_of_reference_accession_number:
-    description: >-
-      The accession number that describes the assembly and assembly component
-      (chromosome or scaffold) of the reference sequence.
-    notes: >-
-      With redefined Location Associations to AssemblyComponent, Transcript or
-      Protein, is this redundant?
-    required: false
-    multivalued: false
-    domain: VariantLocationAssociation
-    range: string
 
   consequence:
     description: >-

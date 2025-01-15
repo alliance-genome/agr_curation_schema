@@ -57,7 +57,7 @@ classes:
       - secondary_identifiers
     slot_usage:
       mod_internal_id:
-        notes: This is required if mod_entity_id is not submitted
+        notes: This is required if primary_external_id is not submitted
 
   Antibody:
     is_a: Reagent
@@ -257,25 +257,34 @@ classes:
       single_construct:
         required: true
 
-  ConstructGenomicEntityAssociation:
+  ConstructAssociation:
+    abstract: true
     is_a: EvidenceAssociation
+    description: Base class for construct associations
+    attributes:
+      construct_association_subject:
+        range: Construct
+        required: true
+
+  ConstructGenomicEntityAssociation:
+    is_a: ConstructAssociation
     description: >-
       An association class to capture the identity of a construct component that is
       a known genomic entity with a curie and any accompanying meta data about the
       relationship between the construct and that genomic entity component
+    attributes:
+      construct_genomic_entity_association_object:
+        range: GenomicEntity
+        required: true
     slots:
       - related_notes
     slot_usage:
-      subject:
-        range: Construct
       relation:
         range: VocabularyTerm
         notes: >-
           The relation should be a VocabularyTerm with one of the following
           values - expresses (RO:0002292) / is_regulated_by (RO:0002334) /
           targets (RO:0002436). CV: 'Construct Genomic Entity Association Relation'
-      object:
-        range: GenomicEntity
       related_notes:
         required: false
 
@@ -316,7 +325,7 @@ slots:
 
   antibody_target_gene_identifiers:
     description: >-
-      Identifiers (curie/mod_entity_id/mod_internal_id) of the genes whose gene
+      Identifiers (curie/primary_external_id/mod_internal_id) of the genes whose gene
       products are recognized by the antibody.
     required: false
     multivalued: true

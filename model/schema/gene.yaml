@@ -85,7 +85,7 @@ classes:
       - WB
       - ZFIN
     slot_usage:
-      mod_entity_id:
+      primary_external_id:
         required: true
       related_notes:
         description: >-
@@ -106,7 +106,7 @@ classes:
       - gene_type_curie
       - note_dtos
     slot_usage:
-      mod_entity_id:
+      primary_external_id:
         required: true
 
   GeneSymbolSlotAnnotation:
@@ -204,17 +204,39 @@ classes:
           These notes should capture the reason for the event (e.g., rename or
           merge).
 
+  GeneOntologyAnnotation:
+    is_a: AuditedObject
+    description: An annotation associating a gene to a Gene Ontology (GO) term
+    slots:
+      - single_gene
+      - go_term
+    slot_usage:
+      go_term:
+        required: true
+
+  GeneOntologyAnnotationDTO:
+    description: An annotation associating a gene to a Gene Ontology (GO) term (DTO class)
+    slots:
+      - gene_identifier
+      - go_term_curie
+    slot_usage:
+      gene_identifier:
+        required: true
+      go_term_curie:
+        required: true
+
   GeneGenomicLocationAssociation:
     is_a: LocationAssociation
     description: >-
       Location(s) of the gene on the genome.
+    attributes:
+      gene_genomic_location_association_object:
+        range: AssemblyComponent
+        required: true
     slots:
+      - gene_association_subject
       - strand
     slot_usage:
-      subject:
-        range: Gene
-      object:
-        range: AssemblyComponent
       evidence:
         notes: List all references that support a given location association.
       start:
@@ -237,14 +259,15 @@ classes:
       does this include genetic segregation studies?
       How do we handle location to specific chromosome arms? Different asso'n,
       or different slot here, etc?
+    attributes:
+      gene_chromosomal_location_association_object:
+        range: Chromosome
+        required: true
     slots:
+      - gene_association_subject
       - left_boundary_marker
       - right_boundary_marker
     slot_usage:
-      subject:
-        range: Gene
-      object:
-        range: Chromosome
       relation:
         any_of:
           - equals_string: has_location
@@ -259,15 +282,16 @@ classes:
       Should this be limited to reports of specific cM on a given chromosome,
       or should it include genetic segregation studies that link gene to a
       chromosome?
-    slot_usage:
-      subject:
-        range: Gene
-      object:
+    attributes:
+      gene_genetic_map_association_object:
         range: Chromosome
+        required: true
+    slot_usage:
       relation:
         any_of:
           - equals_string: has_location
     slots:
+      - gene_association_subject
       - genetic_map_position_centimorgan
       - genetic_map_position_centimorgan_error
 
@@ -276,6 +300,22 @@ classes:
 ## ------------
 
 slots:
+
+  gene_association_subject:
+    description: >-
+      Subject slot to be used for gene associations
+    required: true
+    range: Gene
+  
+  go_term:
+    description: the Gene Ontology (GO) term to which the gene is being annotated
+    range: GOTerm
+    multivalued: false
+
+  go_term_curie:
+    description: the Gene Ontology (GO) term to which the gene is being annotated
+    range: string
+    multivalued: false
 
   left_boundary_marker:
     description: >-
@@ -385,23 +425,19 @@ slots:
 
   gene_identifier:
     description: >-
-      Identifier (curie/mod_entity_id/mod_internal_id) of the gene
+      Identifier (curie/primary_external_id/mod_internal_id) of the gene
     range: string
     required: true
 
   gene_type:
+    is_a: genomic_entity_type
     description: SOTerm describing gene type
     domain: Gene
-    range: SOTerm
-    required: true
-    multivalued: false
 
   gene_type_curie:
+    is_a: genomic_entity_type_curie
     description: Curie of SOTerm describing gene type
     domain: GeneDTO
-    range: string
-    required: true
-    multivalued: false
 
   gene_types_secondary:
     description: >-

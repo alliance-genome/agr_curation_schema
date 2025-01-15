@@ -74,9 +74,37 @@ slots:
     mixins:
       - object_set
 
+  agm_agm_association_ingest_set:
+    domain: Ingest
+    range: AgmAgmAssociationDTO
+    multivalued: true
+    mixins:
+      - object_set
+
+  agm_allele_association_ingest_set:
+    domain: Ingest
+    range: AgmAlleleAssociationDTO
+    multivalued: true
+    mixins:
+      - object_set
+
+  agm_sequence_targeting_reagent_association_ingest_set:
+    domain: Ingest
+    range: AgmSequenceTargetingReagentAssociationDTO
+    multivalued: true
+    mixins:
+      - object_set
+
   sqtr_ingest_set:
     domain: Ingest
     range: SequenceTargetingReagentDTO
+    multivalued: true
+    mixins:
+      - object_set
+
+  sqtr_gene_association_ingest_set:
+    domain: Ingest
+    range: SequenceTargetingReagentGeneAssociationDTO
     multivalued: true
     mixins:
       - object_set
@@ -323,6 +351,20 @@ slots:
     mixins:
       - object_set
 
+  high_throughput_expression_dataset_annotation_ingest_set:
+    domain: Ingest
+    range: HTPExpressionDatasetAnnotationDTO
+    multivalued: true
+    mixins:
+      - object_set
+
+  high_throughput_expression_dataset_sample_annotation_ingest_set:
+    domain: Ingest
+    range: HTPExpressionDatasetSampleAnnotationDTO
+    multivalued: true
+    mixins:
+      - object_set
+
   object_set:
     mixin: true
     domain: Ingest
@@ -369,10 +411,16 @@ classes:
       - source_variant_transcript_location_association_ingest_set
       - source_variant_protein_location_association_ingest_set
       - agm_ingest_set
+      - agm_agm_association_ingest_set
+      - agm_allele_association_ingest_set
+      - agm_sequence_targeting_reagent_association_ingest_set
       - sqtr_ingest_set
+      - sqtr_gene_association_ingest_set
       - ontology_closure_ingest_set
       - transcript_ingest_set
       - protein_ingest_set
       - chromosome_ingest_set
       - genome_assembly_ingest_set
       - assembly_component_ingest_set
+      - high_throughput_expression_dataset_annotation_ingest_set
+      - high_throughput_expression_dataset_sample_annotation_ingest_set

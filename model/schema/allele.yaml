@@ -123,7 +123,7 @@ classes:
     slot_usage:
       note_dtos:
         notes: note_type CV 'Allele Note Type'
-      mod_entity_id:
+      primary_external_id:
         required: true
 
   # Some classes roughly grouped with the Allele class because they have relationships to Allele and were
@@ -139,7 +139,7 @@ classes:
     description: >-
       Dummy cell line DTO class
     slot_usage:
-      mod_entity_id:
+      primary_external_id:
         required: true
 
   GenerationMethod:
@@ -165,7 +165,11 @@ classes:
     description: >-
     is_a: GenomicEntity
     slots:
+      - name
       - references
+      - synonyms
+      - secondary_identifiers
+      - sequence_targeting_reagent_gene_associations
     slot_usage:
       name:
         required: true
@@ -173,26 +177,62 @@ classes:
   SequenceTargetingReagentDTO:
     is_a: GenomicEntityDTO
     slots:
+      - name
       - reference_curies
+      - synonyms
+      - secondary_identifiers
     slot_usage:
-      mod_entity_id:
+      primary_external_id:
         required: true
 
-  SequenceTargetingReagentToGeneAssociation:
+  SequenceTargetingReagentAssociation:
+    is_a: EvidenceAssociation
+    abstract: true
+    description: Base class for STR associations
+    attributes:
+      sequence_targeting_reagent_association_subject:
+        range: SequenceTargetingReagent
+        required: true
+
+  SequenceTargetingReagentAssociationDTO:
+    is_a: EvidenceAssociationDTO
+    abstract: true
+    description: Base class for STR association DTOs
+    attributes:
+      sequence_targeting_reagent_identifier:
+        range: string
+        required: true
+
+  SequenceTargetingReagentGeneAssociation:
     description: >-
-      the relationship between a Sequence Targeting Reagent and its targeted
+      The relationship between a Sequence Targeting Reagent and its targeted
       genes. The relation should be a VocabularyTerm with one of the following
       values - targets
-    is_a: EvidenceAssociation
+    is_a: SequenceTargetingReagentAssociation
+    attributes:
+      sequence_targeting_reagent_gene_association_object:
+        range: Gene
+        required: true
     slot_usage:
       relation:
         range: VocabularyTerm
-      subject:
-        range: SequenceTargetingReagent
-      object:
-        range: Gene
 
-  # TO DO: create SequenceTargetingReagentToGeneAssociationDTO class? [CG]
+  SequenceTargetingReagentGeneAssociationDTO:
+    description: >-
+      The DTO class for the relationship between a Sequence Targeting Reagent and its targeted
+      genes. The relation_name should be a VocabularyTerm with one of the following
+      values - targets
+    is_a: SequenceTargetingReagentAssociationDTO
+    slots:
+      - relation_name
+    attributes:
+      gene_identifier:
+        range: string
+        required: true
+    slot_usage:
+      relation_name:
+        range: string
+
 
   ## ------------
   ## ALLELE SLOT ANNOTATION CLASSES
@@ -384,15 +424,26 @@ classes:
   ## ALLELE ASSOCIATION CLASSES
   ## ------------
 
+  AlleleAssociation:
+    is_a: EvidenceAssociation
+    abstract: true
+    description: Base class for all Allele Associations
+    attributes:
+      allele_association_subject:
+        range: Allele
+        required: true
+  
   AlleleAlleleAssociation:
     is_a: AlleleGenomicEntityAssociation
     description: >-
       Association between an allele and another allele
+    attributes:
+      allele_allele_association_object:
+        range: Allele
+        required: true
     slot_usage:
       relation:
         notes: CV 'Allele Allele Association Relation'
-      object:
-        range: Allele
 
   AlleleAlleleAssociationDTO:
     is_a: AlleleGenomicEntityAssociationDTO
@@ -403,18 +454,18 @@ classes:
 
   # do mutant/parent/embryonic cell line associations need to be split out?
   AlleleCellLineAssociation:
-    is_a: EvidenceAssociation
+    is_a: AlleleAssociation
     description: >-
       The relationship between an allele and a cell line.  Includes mutant/
       embryonic stem cell lines known to carry the allele, and parental cell
       line of alleles made in embryonic stem cells.
+    attributes:
+      allele_cell_line_association_object:
+        range: CellLine
+        required: true
     slot_usage:
-      subject:
-        range: Allele
       relation:
         range: VocabularyTerm
-      object:
-        range: CellLine
 
   AlleleCellLineAssociationDTO:
       is_a: EvidenceAssociationDTO
@@ -432,16 +483,16 @@ classes:
     description: >-
       The relationship between an allele and constructs contained in
       that allele.
+    attributes:
+      allele_construct_association_object:
+        range: Construct
+        required: true
     slot_usage:
-      subject:
-        range: Allele
       relation:
         range: VocabularyTerm
         notes: >-
           CV 'Allele Construct Association Relation' including - contains, contains_coinjection_marker,
           contains_phenotypic_sequence_feature, and contains_innocuous_sequence_feature
-      object:
-        range: Construct
 
   AlleleConstructAssociationDTO:
     is_a: AlleleGenomicEntityAssociationDTO
@@ -460,9 +511,10 @@ classes:
     is_a: AlleleGenomicEntityAssociation
     description: >-
       Association between an allele and a gene
-    slot_usage:
-      object:
+    attributes:
+      allele_gene_association_object:
         range: Gene
+        required: true
 
   AlleleGeneAssociationDTO:
     description: >-
@@ -472,18 +524,18 @@ classes:
       - gene_identifier
 
   AlleleGenerationMethodAssociation:
-    is_a: EvidenceAssociation
+    is_a: AlleleAssociation
     slots:
       - mutation_target_strain
+    attributes:
+      allele_generation_method_association_object:
+        range: GenerationMethod
+        required: true
     slot_usage:
-      subject:
-        range: Allele
       relation:
         any_of:
           equals_string: has_generation_method
         notes: CV 'Allele Generation Method Association Relation'
-      object:
-        range: GenerationMethod
 
   AlleleGenerationMethodAssociationDTO:
     is_a: EvidenceAssociationDTO
@@ -499,7 +551,7 @@ classes:
           equals_string: has_generation_method
 
   AlleleGenomicEntityAssociation:
-    is_a: EvidenceAssociation
+    is_a: AlleleAssociation
     abstract: true
     description: >-
       Association between an allele and a genomic entity
@@ -507,12 +559,8 @@ classes:
       - evidence_code
       - related_note
     slot_usage:
-      subject:
-        range: Allele
       relation:
         range: VocabularyTerm # If we can adequately represent all needed relations in RO, this could be ROTerm
-      object:
-        range: GenomicEntity
       evidence:
         required: false # This needs to be not required, at least in the base class
 
@@ -526,18 +574,18 @@ classes:
       - note_dto
 
   AlleleImageAssociation:
-    is_a: EvidenceAssociation
+    is_a: AlleleAssociation
     description: >-
       The relationship between an allele and an image.
     slots:
       - primary_image
+    attributes:
+      allele_image_association_object:
+        range: Image
+        required: true
     slot_usage:
-      subject:
-        range: Allele
       relation:
         range: VocabularyTerm
-      object:
-        range: Image
       primary_image:
         description: >-
           Can be null; if false, maybe you would show all the images.
@@ -559,14 +607,13 @@ classes:
           We need to revisit this issue.
 
   AlleleOriginAssociation:
-    is_a: EvidenceAssociation
+    is_a: AlleleAssociation
     description: >-
       The relationship between an allele and the origin of the allele.
-    slot_usage:
-      subject:
-        range: Allele
-      object:
+    attributes:
+      allele_origin_association_object:
         range: AffectedGenomicModel
+        required: true
 
   AlleleOriginAssociationDTO:
     is_a: EvidenceAssociationDTO
@@ -581,9 +628,11 @@ classes:
     is_a: AlleleGenomicEntityAssociation
     description: >-
       Association between an allele and a protein
-    slot_usage:
-      object:
+    attributes:
+      allele_protein_association_object:
         range: Protein
+        required: true
+    
 
   AlleleProteinAssociationDTO:
     is_a: AlleleGenomicEntityAssociationDTO
@@ -596,9 +645,11 @@ classes:
     is_a: AlleleGenomicEntityAssociation
     description: >-
       Association between an allele and a transcript
-    slot_usage:
-      object:
+    attributes:
+      allele_transcript_association_object:
         range: Transcript
+        required: true
+    
 
   AlleleTranscriptAssociationDTO:
     is_a: AlleleGenomicEntityAssociationDTO
@@ -613,12 +664,11 @@ classes:
       The relationship between an allele and a variant is many to many. An
       Allele may have many variants and a variant can be present in many
       alleles.
-    slot_usage:
-      subject:
-        range: Allele
-      object:
+    attributes:
+      allele_variant_association_object:
         range: Variant
-
+        required: true
+    
   AlleleVariantAssociationDTO:
     is_a: AlleleGenomicEntityAssociationDTO
     description: >-
@@ -658,7 +708,7 @@ slots:
 
   allele_identifier:
     description: >-
-      Identifier (curie/mod_entity_id/mod_internal_id) of the allele
+      Identifier (curie/primary_external_id/mod_internal_id) of the allele
     range: string
     required: true
 
@@ -674,7 +724,7 @@ slots:
 
   allele_full_name:
     description: >-
-      The one current full name for an allele: e.g., wg<sup>1</sup>.
+      The one current full name for an allele: e.g., Sternopleural.
     domain: Allele
     range: AlleleFullNameSlotAnnotation
     required: false
@@ -682,7 +732,7 @@ slots:
 
   allele_full_name_dto:
     description: >-
-      The one current full name for an allele: e.g., wg<sup>1</sup>.
+      The one current full name for an allele: e.g., Sternopleural.
     domain: AlleleDTO
     range: FullNameSlotAnnotationDTO
     multivalued: false
@@ -795,7 +845,7 @@ slots:
 
   allele_symbol:
     description: >-
-      The one current accepted symbol for the allele: e.g., wg<sup>1</sup>.
+      The one current accepted symbol for the allele: e.g., wg<sup>Sp-1</sup>.
     exact_mappings:
       - biolink:symbol
     domain: Allele
@@ -805,7 +855,7 @@ slots:
 
   allele_symbol_dto:
     description: >-
-      The one current accepted symbol for the allele: e.g., wg<sup>1</sup>.
+      The one current accepted symbol for the allele: e.g., wg<sup>Sp-1</sup>.
     domain: AlleleDTO
     range: SymbolSlotAnnotationDTO
     multivalued: false
@@ -842,7 +892,7 @@ slots:
 
   cell_line_identifier:
     description: >-
-      Identifier (curie/mod_entity_id/mod_internal_id) of the cell line
+      Identifier (curie/primary_external_id/mod_internal_id) of the cell line
     range: string
     required: true
 
@@ -1031,8 +1081,8 @@ slots:
 
   mutation_target_strain_identifier:
     description: >-
-      Identifier (curie/mod_entity_id/mod_internal_id) of the particular strain that is targeted by the generation method
-      for a particular allele (MGI only)
+      Identifier (curie/primary_external_id/mod_internal_id) of the particular strain
+      that is targeted by the generation method for a particular allele (MGI only)
     domain: AlleleGenerationMethodAssociationDTO
     range: string
 
@@ -1067,14 +1117,44 @@ slots:
 
   object_allele_identifier:
     description: >-
-      The identifier (curie/mod_entity_id/mod_internal_id) of the allele that is acting as the object of an AlleleAlleleAssociation
+      The identifier (curie/primary_external_id/mod_internal_id) of the allele that is acting as the object of an AlleleAlleleAssociation
     domain: AlleleAlleleAssociationDTO
     range: string
 
+  phenotype_term:
+    description: >-
+      The phenotype ontology term used to describe the phenotype of an organism
+      or a set of organisms.
+    range: PhenotypeTerm
+    multivalued: false
+
+  phenotype_term_curie:
+    description: >-
+      The string representation of the phenotype ontology term (PhenotypeTerm)
+      curie
+    range: string
+    multivalued: false
+    
   primary_image:
     description: >-
       The primary image for an allele that is used to represent the allele on a page.
     range: boolean
+
+  sequence_targeting_reagent_gene_association_object:
+    range: Gene
+    multivalued: false
+
+  sequence_targeting_reagent_identifier:
+    range: string
+    multivalued: false
+    domain: SequenceTargetingReagentAssociationDTO
+    description: >-
+      Identifier (curie/primary_external_id/mod_internal_id) of the STR
+
+  sequence_targeting_reagent_gene_associations:
+    domain: SequenceTargetingReagent
+    range: SequenceTargetingReagentGeneAssociation
+    multivalued: true
 
   single_allele:
     range: Allele

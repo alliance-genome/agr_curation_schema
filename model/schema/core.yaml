@@ -95,15 +95,23 @@ classes:
     description: >-
       Parent class for LinkML classes of submitted entities
       that may have a public or internal MOD ID/curie
+    notes: >-
+      Each SubmittedObject data record should either get a (public) primary_external_id
+      value OR a (private) mod_internal_id value, but NOT BOTH.
     slots:
-      - mod_entity_id
+      - primary_external_id
       - mod_internal_id
       - data_provider
+      - data_provider_cross_reference
 
   SubmittedObjectDTO:
     is_a: AuditedObjectDTO
+    notes: >-
+      When submitting a SubmittedObjectDTO data record to the persistent store, it is the
+      intention that each record will either get a (public) primary_external_id value OR
+      a (private) mod_internal_id value, but NOT BOTH.
     slots:
-      - mod_entity_id
+      - primary_external_id
       - mod_internal_id
       - data_provider_dto
 
@@ -113,6 +121,10 @@ classes:
       An entity of biological origin that can be unambiguously attributed to
       a single species.
     abstract: true
+    notes: >-
+      The primary identifier by which any BiologicalEntity record is referred needs to be
+      unique among identifiers used for all BiologicalEntity records so as to avoid ID
+      collisions in the biologicalentity table in Postgres
     slots:
       - taxon
     slot_usage:
@@ -122,6 +134,10 @@ classes:
   BiologicalEntityDTO:
     is_a: SubmittedObjectDTO
     abstract: true
+    notes: >-
+      The primary identifier by which any BiologicalEntity record is referred needs to be
+      unique among identifiers used for all BiologicalEntity records so as to avoid ID
+      collisions in the biologicalentity table in Postgres
     slots:
       - taxon_curie
     slot_usage:
@@ -150,6 +166,12 @@ classes:
       the result of a DNA-dependent RNA polymerase gene transcription event
     slots:
       - name
+      - transcript_id
+      - transcript_type
+      - transcript_genomic_location_associations
+      - transcript_gene_association
+      - transcript_exon_associations
+      - transcript_cds_associations
     id_prefixes:
       - ENSEMBL
       - FB
@@ -165,6 +187,46 @@ classes:
       Ingest class for transcripts
     slots:
       - name
+      - transcript_id
+      - transcript_type_curie
+
+  Exon:
+    is_a: GenomicEntity
+    description: >-
+      A part of a gene that will form a part of the final mature RNA produced
+      after introns have been removed by RNA splicing
+    slots:
+      - unique_id
+      - name
+      - exon_type
+      - exon_genomic_location_associations
+    
+  ExonDTO:
+    is_a: GenomicEntityDTO
+    description: >-
+      Ingest class for exons
+    slots:
+      - name
+      - exon_type_curie
+
+  CodingSequence:
+    is_a: GenomicEntity
+    description: >-
+      The coding sequence (CDS) is the portion of an exon that is translated 
+      into a protein
+    slots:
+      - unique_id
+      - name
+      - cds_type
+      - cds_genomic_location_associations
+
+  CodingSequenceDTO:
+    is_a: GenomicEntityDTO
+    description: >-
+      Ingest class for transcripts
+    slots:
+      - name
+      - cds_type_curie
 
   CrossReference:
     is_a: AuditedObject
@@ -183,12 +245,6 @@ classes:
     slot_usage:
       prefix:
         required: true
-
-  DataProvider:
-    is_a: AuditedObject
-    slots:
-      - source_organization
-      - cross_reference
 
   DataProviderDTO:
     is_a: AuditedObjectDTO
@@ -325,21 +381,17 @@ classes:
       of the association, and likewise the object is the curie (or identifier of the class that is the object. The
       relationship between subject and object is defined by the relation slot (which can also be constrained
       using the range of the relation).
-    exact_mappings:
-      - biolink:association
     notes:
       Keeping this more generic than biolink:association by foregoing the
       qualifiers and negated slots.
+      Association child classes must also have subject and object slots defined, but (due to implementation issues)
+      these must have distinct names if the range of the slot inherits from a different base table in the database.
+      Therefore these are defined in the appropriate classes with a prefix indicating the class(es) using the slot, 
+      e.g. disease_annotation_subject, allele_association_subject, allele_construct_association_object.
     slots:
-      - subject
       - relation
-      - object
     slot_usage:
-        subject:
-            required: true
         relation:
-            required: true
-        object:
             required: true
 
   SingleReferenceAssociation:
@@ -403,6 +455,7 @@ classes:
       - name
       - taxon
       - data_provider
+      - data_provider_cross_reference
     slot_usage:
       name:
         required: true
@@ -436,24 +489,27 @@ classes:
       In the context of this model, this entity is used as a landmark for the
       location of other genomic entities.
     slots:
-      - display_name
-      - genome_assembly
-    slot_usage:
-      curie:
-        required: true
-    defining_slots:
-      - display_name
+      - name
       - genome_assembly
       - maps_to_chromosome
+    slot_usage:
+      name:
+        required: true
+    defining_slots:
+      - name
+      - genome_assembly
 
   AssemblyComponentDTO:
     is_a: GenomicEntityDTO
     description: >-
       Ingest class for assembly components
     slots:
-      - display_name
+      - name
       - genome_assembly_identifier
       - data_provider_dto
+    slot_usage:
+      name:
+        required: true
 
   GenomeAssembly:
     is_a: BiologicalEntity
@@ -493,6 +549,8 @@ classes:
         required: true
         any_of:
           - equals_string: has_location
+      evidence:
+        notes: List all references that support a given location association.
 
   LocationAssociationDTO:
     abstract: true
@@ -506,6 +564,98 @@ classes:
         required: true
         any_of:
           equals_string: has_location
+
+  TranscriptGenomicLocationAssociation:
+    is_a: LocationAssociation
+    description: >-
+      Location(s) of the transcript on the genome.
+    attributes:
+      transcript_genomic_location_association_object:
+        range: AssemblyComponent
+        required: true
+    slots:
+      - transcript_association_subject
+      - strand
+      - phase
+    slot_usage:
+      start:
+        required: true
+      end:
+        required: true
+      strand:
+        required: true
+
+  ExonGenomicLocationAssociation:
+    is_a: LocationAssociation
+    description: >-
+      Location(s) of the exon on the genome.
+    attributes:
+      exon_genomic_location_association_object:
+        range: AssemblyComponent
+        required: true
+    slots:
+      - exon_association_subject
+      - strand
+    slot_usage:
+      start:
+        required: true
+      end:
+        required: true
+      strand:
+        required: true
+
+  CodingSequenceGenomicLocationAssociation:
+    is_a: LocationAssociation
+    description: >-
+      Location(s) of the CDS on the genome.
+    attributes:
+      cds_genomic_location_association_object:
+        range: AssemblyComponent
+        required: true
+    slots:
+      - cds_association_subject
+      - strand
+      - phase
+    slot_usage:
+      start:
+        required: true
+      end:
+        required: true
+      strand:
+        required: true
+
+  TranscriptGeneAssociation:
+    is_a: EvidenceAssociation
+    description: >-
+      Association between a transcript and the gene that encodes it
+    slots:
+      - transcript_association_subject
+    attributes:
+      transcript_gene_association_object:
+        range: Gene
+        required: true
+
+  TranscriptExonAssociation:
+    is_a: EvidenceAssociation
+    description: >-
+      Association between a transcript and an exon of that transcript
+    slots:
+      - transcript_association_subject
+    attributes:
+      transcript_exon_association_object:
+        range: Gene
+        required: true
+  
+  TranscriptCodingSequenceAssociation:
+    is_a: EvidenceAssociation
+    description: >-
+      Association between a transcript a CDS of that transcript
+    slots:
+      - transcript_association_subject
+    attributes:
+      transcript_coding_sequence_association_object:
+        range: CodingSequence
+        required: true 
 
   Protein:
     is_a: GenomicEntity
@@ -555,6 +705,7 @@ classes:
       - genome_assembly
       - common_names
       - data_provider
+      - data_provider_cross_reference
       - phylogenetic_order
     slot_usage:
       taxon:
@@ -715,6 +866,11 @@ slots:
     description: >-
       The strand of a DNA reference object to which an entity maps.
     range: strand_enum
+
+  phase:
+    description: >-
+      Number of nucleotides from the start of a feature to the start of a complete codon
+    range: integer
 
   genome_assembly:
     description: >-
@@ -975,11 +1131,18 @@ slots:
 
   data_provider:
     description: >-
-      Object representing the organization (e.g. MOD) from which the data was
-      sourced and a CrossReference to that organisation's site
+      The organization (e.g. MOD) from which the data was
+      sourced
     multivalued: false
     required: true
-    range: DataProvider
+    range: Organization
+
+  data_provider_cross_reference:
+    description: >-
+      CrossReference to the organization from which the data was sourced
+    multivalued: false
+    required: false
+    range: CrossReference
 
   data_provider_dto:
     description: >-
@@ -993,10 +1156,15 @@ slots:
   secondary_data_provider:
     description: >-
       Object representing organization (e.g. MOD) that provided the data
-      directly to the Alliance, but not the original source, and a
-      CrossReference to that organisation's site
+      directly to the Alliance, but not the original source
     multivalued: false
-    range: DataProvider
+    range: Organization
+
+  secondary_data_provider_cross_reference:
+    description: >-
+      CrossReference to the organization that provided the data to the Alliance
+    multivalued: false
+    range: CrossReference
 
   secondary_data_provider_dto:
     description: >-
@@ -1101,16 +1269,24 @@ slots:
     multivalued: false
     range: string
 
-  mod_entity_id:
+  primary_external_id:
     description: >-
-      The model organism database (MOD) identifier/curie for the object. Note
-      that this may be an external identifier for an object, like a UniProt ID
-      for a protein, but acts as the MOD's primary key for the entity.
+      The primary external (non-Alliance) database identifier/curie for the object. Note
+      that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID
+      for a protein, and may act as the MOD's/Alliance member's primary key for the entity.
     range: string
 
   mod_internal_id:
     description: >-
       The model organism database (MOD) internal identifier for the object
+    range: string
+
+  transcript_id:
+    description: >-
+      The transcript identifier used by the Ensembl VEP to identify the
+      transcript and generate HGVSc identifiers.  This corresponds to
+      the transcript_id attribute in column 9 of transcript entries in
+      the GFF files.
     range: string
 
   first_name:
@@ -1182,10 +1358,47 @@ slots:
   genomic_entity_identifier:
     range: string
 
-  source_organization:
-    domain: DataProvider
-    range: Organization
+  genomic_entity_type:
+    description: SOTerm describing genomic entity type
+    range: SOTerm
     required: true
+    multivalued: false
+
+  genomic_entity_type_curie:
+    description: Curie of SOTerm describing genomic entity type
+    range: string
+    required: true
+    multivalued: false
+
+  transcript_type:
+    is_a: genomic_entity_type
+    description: SOTerm describing transcript type
+    domain: Transcript
+
+  transcript_type_curie:
+    is_a: genomic_entity_type_curie
+    description: Curie of SOTerm describing transcript type
+    domain: TranscriptDTO
+
+  exon_type:
+    is_a: genomic_entity_type
+    description: SOTerm describing exon type
+    domain: Exon
+
+  exon_type_curie:
+    is_a: genomic_entity_type_curie
+    description: Curie of SOTerm describing exon type
+    domain: ExonDTO
+
+  cds_type:
+    is_a: genomic_entity_type
+    description: SOTerm describing CDS type
+    domain: CodingSequence
+
+  cds_type_curie:
+    is_a: genomic_entity_type_curie
+    description: Curie of SOTerm describing CDS type
+    domain: CodingSequenceDTO
 
   source_organization_abbreviation:
     domain: DataProviderDTO
@@ -1196,28 +1409,41 @@ slots:
     domain: CrossReference
     range: ResourceDescriptorPage
 
+  transcript_genomic_location_associations:
+    domain: Transcript
+    range: TranscriptGenomicLocationAssociation
+    required: false
+    multivalued: true
+
+  exon_genomic_location_associations:
+    domain: Exon
+    range: ExonGenomicLocationAssociation
+    required: false
+    multivalued: true
+
+  cds_genomic_location_associations:
+    domain: CodingSequence
+    range: CodingSequenceGenomicLocationAssociation
+    required: false
+    multivalued: true
+
+  transcript_gene_association:
+    domain: Transcript
+    range: TranscriptGeneAssociation
+
+  transcript_exon_associations:
+    domain: Transcript
+    range: TranscriptExonAssociation
+    multivalued: true
+
+  transcript_cds_associations:
+    domain: Transcript
+    range: TranscriptCodingSequenceAssociation
+    multivalued: true
+
   ## --------------------
 ## ASSOCIATION SLOTS
 ## --------------------
-
-  subject:
-    is_a: association_slot
-    description: >-
-      connects an association to the subject of the association.
-      For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
-    required: true
-    exact_mappings:
-      - owl:annotatedSource
-      - biolink:subject
-
-  object:
-    is_a: association_slot
-    description: >-
-      connects an association to the object of the association.
-      For example, in a gene-to-phenotype association, the gene is subject and phenotype is object.
-    required: true
-    exact_mappings:
-      - biolink:object
 
   relation:
     is_a: association_slot
@@ -1247,6 +1473,24 @@ slots:
       a MOD internal ID or an external (3rd party) identifier.
     range: string
     multivalued: false
+
+  transcript_association_subject:
+    description: >-
+      Subject slot to be used for transcript associations
+    required: true
+    range: Transcript
+
+  exon_association_subject:
+    description: >-
+      Subject slot to be used for exon associations
+    required: true
+    range: Exon
+
+  cds_association_subject:
+    description: >-
+      Subject slot to be used for CDS associations
+    required: true
+    range: CodingSequence
 
 ## ----------
 ## PREDICATES

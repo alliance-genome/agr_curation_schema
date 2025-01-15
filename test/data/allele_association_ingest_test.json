@@ -2,7 +2,7 @@
   "linkml_version": "2.0.0",
   "allele_ingest_set": [
     {
-      "mod_entity_id": "WB:WBVar00000001",
+      "primary_external_id": "WB:WBVar00000001",
       "allele_symbol_dto": {
         "name_type_name": "nomenclature_symbol",
         "format_text": "a83",

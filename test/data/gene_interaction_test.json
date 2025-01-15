@@ -2,7 +2,7 @@
     "linkml_version": "2.0.0",
     "gene_genetic_interaction_ingest_set": [
         {
-            "curie": "WB:WBCnstr00000001",
+            "interaction_id": "WB:WBInteraction000524000",
             "subject_gene_identifier": "WB:WBGene00000001",
             "object_gene_identifier": "WB:WBGene00000002",
             "gene_relation_name": "interacts_with",
@@ -30,7 +30,7 @@
     ],
     "gene_molecular_interaction_ingest_set": [
         {
-            "curie": "WB:WBCnstr00000002",
+            "interaction_id": "WB:WBInteraction000123456",
             "subject_gene_identifier": "WB:WBGene00000003",
             "object_gene_identifier": "WB:WBGene00000004",
             "gene_relation_name": "physically_interacts_with",

@@ -40,12 +40,13 @@ imports:
   - expression
   - gene
   - geneInteraction
+  - highThroughputExpression
+  - homology
   - image
   - ingest
-  - modCorpusAssociation
   - linkml:types
+  - modCorpusAssociation
   - ontologyTerm
-  - orthology
   - phenotypeAndDiseaseAnnotation
   - reagent
   - reference

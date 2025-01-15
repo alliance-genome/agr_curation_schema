@@ -2,7 +2,6 @@ id: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantCon
 
 imports:
   - core
-  - gene
   - linkml:types
   - variation
 
@@ -39,197 +38,106 @@ emit_prefixes:
 
 classes:
 
-  VariantConsequence:
+  PredictedVariantConsequence:
     is_a: AuditedObject
     description: >-
-      Parent class for gene- and transcript-level
-      consequences
-    abstract: true
-    slots:
-      - subject
-      - object
-      - vep_consequence
-      - vep_impact
-      - polyphen_score
-      - polyphen_prediction
-      - sift_score
-      - sift_prediction
-
-  VariantGeneConsequence:
-    aliases: ['GeneLevelConsequence']
-    description: >-
-      Class for gene-level VEP results
-    is_a: VariantConsequence
-    slot_usage:
-      object:
-        range: Gene
-      subject:
+      Class for predicted consequences and associated data from
+      VEP analysis of a VariantGenomicLocationAssociation
+    attributes:
+      variant_genomic_location:
+        description: VariantGenomicLocationAssociation for which consequences are calculated
         range: VariantGenomicLocationAssociation
-
-  VariantTranscriptConsequence:
-    aliases: ['TranscriptLevelConsequence']
-    is_a: VariantConsequence
-    description: >-
-      Class for transcript-level VEP results
-    slots:
-      - amino_acid_reference
-      - amino_acid_variant
-      - codon_reference
-      - codon_variant
-      - cdna_start
-      - cdna_end
-      - cds_start
-      - cds_end
-      - protein_start
-      - protein_end
-      - hgvs_protein_nomenclature
-      - hgvs_coding_nomenclature
-    slot_usage:
-      object:
+        required: true
+      variant_transcript:
+        description: Transcript to which variant effect prediction applies
         range: Transcript
-      subject:
-        range: VariantTranscriptLocationAssociation
+        required: true
+      vep_impact:
+        description: VEP predicted impact of variation on molecule
+        required: true
+        range: VocabularyTerm
+        notes: >-
+          permissible_values: high, moderate, low, modifier
+      vep_consequences:
+        description: VEP consequence
+        multivalued: true
+        required: true
+        range: SOTerm
+      polyphen_score:
+        description: PolyPhen-2 score between 0 and 1
+        range: float
+      polyphen_prediction:
+        description: PolyPhen-2 prediction
+        range: VocabularyTerm
+        notes: >-
+          permissible_values: possibly_damaging, probably_damaging, benign
+      sift_score:
+        description: SIFT score between 0 and 1
+        range: float
+      sift_prediction:
+        description: SIFT prediction
+        range: VocabularyTerm
+        notes: >-
+          permissible_values: deleterious, tolerated
       amino_acid_reference:
-        description: >-
-          Amino acid sequence encoded by codon(s) in reference genome sequence
-          altered by the variant
+        description: reference genome amino acid sequence at variant position
+        range: string
       amino_acid_variant:
-        description: >-
-          Amino acid sequence encoded by codon(s) in variant sequence
+        description: variant amino acid sequence at variant position
+        range: string
       codon_reference:
         description: >-
-          Reference genome sequence of codon(s) altered by the variant.  Bases
-          affected by the variant are given in upper case, bases flanking the
-          variation are given in lower case
+          reference sequence of codon(s) affected by variation - bases
+          outside of the variant region are in lower case, those within are in
+          upper case (e.g. cTa)
+        range: string
       codon_variant:
         description: >-
-          Sequence of codon(s) in variant sequence altered by the variant.
-          Bases affected by the variant are given in upper case, bases flanking
-          the variation are given in lower case
-      cdna_start:
-        description: Start position of variant in cDNA coordinates
-      cdna_end:
-        description: End position of variant in cDNA coordinates
-      cds_start:
-        description: Start position of variant in CDS coordinates
-      cds_end:
-        description: End position of variant in CDS coordinates
-      protein_start:
-        description: Start position of variant in amino acid sequence
-      protein_end:
-        description: End position of variant in amino acid sequence
+          variant sequence of codon(s) affected by variation - bases
+          outside of the variant region are in lower case, those within are in
+          upper case (e.g. cAa)
+        range: string
+      calculated_cdna_start:
+        description: >-
+          start position of variation in cDNA coordinates as calculated by VEP from
+          input VCF, GFF and BAM files
+        range: integer
+      calculated_cdna_end:
+        description: >-
+          end position of variation in cDNA coordinates as calculated by VEP from
+          input VCF, GFF and BAM files
+        range: integer
+      calculated_cds_start:
+        description: >-
+          start position of variation in CDS coordinates as calculated by VEP from
+          input VCF, GFF and BAM files
+        range: integer
+      calculated_cds_end:
+        description: >-
+          end position of variation in CDS coordinates as calculated by VEP from
+          input VCF, GFF and BAM files
+        range: integer
+      calculated_protein_start:
+        description: >-
+          start position of variation in protein amino acid coordinates as calculated
+          by VEP from input VCF, GFF and BAM files
+        range: integer
+      calculated_protein_end:
+        description: >-
+          end position of variation in protein amino acid coordinates as calculated
+          by VEP from input VCF, GFF and BAM files
+        range: integer
       hgvs_protein_nomenclature:
-        description: HGVS protein sequence (HGVSp) name
+        description: HGVSp nomenclature for variation in protein
+        range: string
       hgvs_coding_nomenclature:
-        description: HGVS coding sequence (HGVSc) name
-
-
-slots:
-
-  vep_impact:
-    description: VEP predicted impact of variation on molecule
-    range: string
-
-  vep_consequence:
-    description: VEP consequence
-    range: vep_consequence_levels
-
-  polyphen_score:
-    description: PolyPhen-2 score between 0 and 1
-    domain: VariantGeneConsequence
-    range: float
-
-  polyphen_prediction:
-    description: PolyPhen-2 prediction
-    range: polyphen_prediction_levels
-
-  sift_score:
-    description: SIFT score between 0 and 1
-    domain: VariantGeneConsequence
-    range: float
-
-  sift_prediction:
-    description: SIFT prediction
-    range: sift_prediction_levels
-
-  amino_acid_reference:
-    description: reference genome amino acid sequence at variant position
-    domain: VariantTranscriptConsequence
-    range: string
-
-  amino_acid_variant:
-    description: variant amino acid sequence at variant position
-    domain: VariantTranscriptConsequence
-    range: string
-
-  codon_reference:
-    description: >-
-      reference sequence of codon(s) affected by variation - bases
-      outside of the variant region are in lower case, those within are in
-      upper case (e.g. cTa)
-    domain: VariantTranscriptConsequence
-
-  codon_variant:
-    description: >-
-      variant sequence of codon(s) affected by variation - bases
-      outside of the variant region are in lower case, those within are in
-      upper case (e.g. cAa)
-    domain: VariantTranscriptConsequence
-
-  cdna_start:
-    description: start position of variation in cDNA coordinates
-    domain: VariantTranscriptConsequence
-    range: integer
-
-  cdna_end:
-    description: end position of variation in cDNA coordinates
-    domain: VariantTranscriptConsequence
-    range: integer
-
-  cds_start:
-    description: start position of variation in CDS coordinates
-    domain: VariantTranscriptConsequence
-    range: integer
-
-  cds_end:
-    description: end position of variation in CDS coordinates
-    domain: VariantTranscriptConsequence
-    range: integer
-
-  protein_start:
-    description: start position of variation in protein amino acid coordinates
-    domain: VariantTranscriptConsequence
-    range: integer
-
-  protein_end:
-    description: end position of variation in protein amino acid coordinates
-    domain: VariantTranscriptConsequence
-    range: integer
-
-  hgvs_protein_nomenclature:
-    description: HGVSp nomenclature for variation in protein
-    domain: VariantTranscriptConsequence
-
-  hgvs_coding_nomenclature:
-    description: HGVSc nomenclature for variation in coding sequence
-    domain: VariantTranscriptConsequence
-
-enums:
-
-  vep_consequence_levels:
-    permissible_values:
-      high:
-      moderate:
-      low:
-      modifier:
-
-  sift_prediction_levels:
-    permissible_values:
-      deleterious:
-      tolerated:
-
-  polyphen_prediction_levels:
-    permissible_values:
-      possibly_damaging:
-      probably_damaging:
-      benign:
+        description: HGVSc nomenclature for variation in coding sequence
+        range: string
+      gene_level_consequence:
+        description: >- 
+          Boolean indicating whether transcript consequence is the most severe
+          consequence for the corresponding gene.  In the case of equally severe
+          consequences, a single transcript consequence will be designated as the 
+          gene-level consequence by the VEP
+        range: boolean
+        required: true
