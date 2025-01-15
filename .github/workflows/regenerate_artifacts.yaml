@@ -12,69 +12,60 @@ jobs:
     permissions:
       contents: write
 
+    strategy:
+      matrix:
+        python-version: ["3.9"]
+
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Install Poetry
+        run: pipx install poetry==1.4.0
 
-    - name: Setup Python Environment
-      uses: actions/setup-python@v5
-      with:
-          python-version: 3.9
+      - name: Check out repository
+        uses: actions/checkout@v3
 
-    - name: Setup Java
-      uses: actions/setup-java@v4
-      with:
-        distribution: 'temurin'
-        java-version: '8'
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'poetry'
 
-    - name: Setup build environment
-      run: |
-        sudo apt update
-        sudo apt install -y graphviz
-        wget https://github.com/joelittlejohn/jsonschema2pojo/releases/download/jsonschema2pojo-1.0.2/jsonschema2pojo-1.0.2.tar.gz
-        tar -xvzf jsonschema2pojo-1.0.2.tar.gz
+      - name: Install Dependencies
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install --no-interaction --no-root
 
-      #----------------------------------------------
-      #          install & configure poetry
-      #----------------------------------------------
-    - name: Install Poetry
-      uses: snok/install-poetry@v1.3
-      with:
-        virtualenvs-create: true
-        virtualenvs-in-project: true
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '8'
 
-      #----------------------------------------------
-      # install dependencies if cache does not exist
-      #----------------------------------------------
-    - name: Install poetry dependencies
-      run: poetry install --no-interaction --no-root
+      - name: Setup build environment
+        run: |
+          sudo apt update
+          sudo apt install -y graphviz
+          wget https://github.com/joelittlejohn/jsonschema2pojo/releases/download/jsonschema2pojo-1.0.2/jsonschema2pojo-1.0.2.tar.gz
+          tar -xvzf jsonschema2pojo-1.0.2.tar.gz
 
-      #----------------------------------------------
-      #    install your root project, if required
-      #----------------------------------------------
-    - name: Install library
-      run: poetry install --no-interaction
+      - name: Generate AGR Curation Model artifacts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr checkout ${{ github.event.pull_request.number }}
+          export PATH=$PATH:`pwd`/jsonschema2pojo-1.0.2/bin
+          make clean-artifacts
+          make -B gen-artifacts
 
-    - name: Generate AGR Curation Model artifacts
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        gh pr checkout ${{ github.event.pull_request.number }}
-        export PATH=$PATH:`pwd`/jsonschema2pojo-1.0.2/bin
-        make clean-artifacts
-        make -B gen-artifacts
-
-    - name: Commit and push artifacts
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      shell: bash
-      run: |
-        if [[ $(git add -n generated/) ]]; then
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add generated/
-          git commit -m "Automated artifacts regeneration [skip actions]"
-          git push
-        else
-          echo "No artifact changes to commit."
-        fi
+      - name: Commit and push artifacts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          if [[ $(git add -n generated/) ]]; then
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            git add generated/
+            git commit -m "Automated artifacts regeneration [skip actions]"
+            git push
+          else
+            echo "No artifact changes to commit."
+          fi
