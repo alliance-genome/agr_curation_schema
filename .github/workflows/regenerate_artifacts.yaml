@@ -12,6 +12,10 @@ jobs:
     permissions:
       contents: write
 
+    strategy:
+      matrix:
+        python-version: ["3.9"]
+
     steps:
       - name: Install Poetry
         run: pipx install poetry==1.4.0
