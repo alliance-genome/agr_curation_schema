@@ -37,8 +37,8 @@ jobs:
       #----------------------------------------------
       #          install & configure poetry
       #----------------------------------------------
-    - name: Install Poetry
-      uses: snok/install-poetry@v1.3
+    - name: Install Poetry 1.x
+      run: pipx install poetry==1.*
       with:
         virtualenvs-create: true
         virtualenvs-in-project: true
@@ -48,12 +48,6 @@ jobs:
       #----------------------------------------------
     - name: Install poetry dependencies
       run: poetry install --no-interaction --no-root
-
-      #----------------------------------------------
-      #    install your root project, if required
-      #----------------------------------------------
-    - name: Install library
-      run: poetry install --no-interaction
 
     - name: Generate AGR Curation Model artifacts
       env:
