@@ -10,17 +10,19 @@ jobs:
         python-version: ["3.9", "3.10", "3.11"]
 
     steps:
+      # Step 1: Check out the repository
+      - name: Check out repository
+        uses: actions/checkout@v4
 
-      #----------------------------------------------
-      #       check-out repo and set-up python
-      #----------------------------------------------
-      - uses: actions/checkout@v4
+      # Step 2: Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      # Step 3: Install Poetry 1.x (skip Python 3.12)
       - name: Install Poetry 1.x
         run: pipx install poetry==1.*
-      - uses: actions/setup-python@v5
-        with:
-          python-version: 3.11  # Adjust Python version as needed
-
       #----------------------------------------------
       # install dependencies if cache does not exist
       #----------------------------------------------
