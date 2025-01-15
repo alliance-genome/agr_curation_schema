@@ -14,9 +14,6 @@ jobs:
       #----------------------------------------------
       #       check-out repo and set-up python
       #----------------------------------------------
-      - name: Check out repository
-        uses: actions/checkout@v4
-
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
@@ -25,8 +22,12 @@ jobs:
       #----------------------------------------------
       #          install & configure poetry
       #----------------------------------------------
+      - uses: actions/checkout@v4
       - name: Install Poetry 1.x
         run: pipx install poetry==1.*
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.11  # Adjust Python version as needed
 
       #----------------------------------------------
       # install dependencies if cache does not exist
