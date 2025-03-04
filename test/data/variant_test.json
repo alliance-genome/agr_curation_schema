@@ -36,6 +36,10 @@
           "evidence_curies": ["PMID:11231512"],
           "internal": false
         }
+      ],
+      "reference_curies": [
+        "PMID:1131231",
+        "PMID:1412114"
       ]
     },
     {

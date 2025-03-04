@@ -46,6 +46,7 @@ classes:
       - synonyms
       - source_general_consequence_dtos
       - variant_status_name
+      - reference_curies
 
   VariantLocationAssociationDTO:
     abstract: true
