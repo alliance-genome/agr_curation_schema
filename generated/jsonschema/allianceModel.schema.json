@@ -1930,7 +1930,7 @@
                     ]
                 },
                 "zygosity": {
-                    "description": "GENO ontology ID for allele zygosity",
+                    "description": "GENO ontology term for allele zygosity",
                     "type": [
                         "string",
                         "null"
@@ -36458,6 +36458,16 @@
                     "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "reference_curies": {
+                    "description": "External reference curies used for ingest",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
