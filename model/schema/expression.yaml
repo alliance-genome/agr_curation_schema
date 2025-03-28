@@ -192,6 +192,8 @@ classes:
 
   GeneExpressionAnnotation:
     is_a: ExpressionAnnotation
+    slots:
+     - cross_references
     description: >-
       An annotation describing an expression pattern for a gene.
     notes: >-
@@ -212,7 +214,8 @@ classes:
       whereExpressed.cellularComponentTermId: (*REQUIRED)                 ExpressionAnnotation.expression_pattern (ExpressionPattern.AnatomicalSite.cellular_component)
       whereExpressed.cellularComponentQualifierTermId:                    ExpressionAnnotation.expression_pattern (ExpressionPattern.AnatomicalSite.cellular_component_qualifiers)
       whereExpressed.whereExpressedStatement (REQUIRED):                  ExpressionAnnotation.where_expressed_statement
-      crossReference:                                                     ExpressionAnnotation.data_provider_cross_reference
+      cross_reference:                                                    Consolidation of similar annotations creates list ExpressionAnnotation.cross_references
+                                                                          Each FMS annotation to be consolidated contributes one cross_reference to the list
       * NOTE: For the FMS whereExpressed component, either of the following is required.
       1) anatomicalStructureTermId AND anatomicalStructureUberonSlimTermIds, or ...
       2) cellularComponentTermId.
@@ -234,6 +237,13 @@ classes:
         description: >-
           For a gene, the relation should be constrained to the expresssed_in
           VocabularyTerm.
+      cross_references:
+        description: >-
+          list of cross references for an annotation (e.g. WBExpr variables, ZFIN figures, MGI assays)
+        range: Reference
+        multivalued: true
+
+
 
   # DQM NOTE: Each FMS expression annotation is limited to one stage. However,
   #           in the LinkML model, it's possible to specify a range.
