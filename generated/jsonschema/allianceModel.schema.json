@@ -19995,6 +19995,16 @@
                         "null"
                     ]
                 },
+                "cross_references": {
+                    "description": "list of cross references for an annotation (e.g. WBExpr variables, ZFIN figures, MGI assays)",
+                    "items": {
+                        "$ref": "#/$defs/Reference"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "curie": {
                     "description": "The Alliance-minted ID for the ExpressionAnnotation.",
                     "type": [
