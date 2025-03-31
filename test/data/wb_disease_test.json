@@ -52,7 +52,7 @@
       "negated": false,
       "do_term_curie": "DOID:11724",
       "disease_relation_name": "is_implicated_in",
-      "reference_curie": "PMID:19648295",
+      "evidence_curie": "PMID:19648295",
       "allele_identifier": "WB:WBVar00087752"
     }
   ],
@@ -104,7 +104,7 @@
       "internal": false,
       "do_term_curie": "DOID:1826",
       "disease_relation_name": "is_implicated_in",
-      "reference_curie": "PMID:19648295",
+      "evidence_curie": "PMID:19648295",
       "gene_identifier": "WB:WBGene00011955"
     }
   ],
@@ -135,7 +135,7 @@
       "internal": false,
       "do_term_curie": "DOID:10652",
       "disease_relation_name": "is_model_of",
-      "reference_curie": "PMID:19648295",
+      "evidence_curie": "PMID:19648295",
       "agm_identifier": "WB:WBStrain00005094",
       "inferred_allele_identifier": "WB:WBTransgene00000410"
     },
@@ -188,7 +188,7 @@
       "internal": false,
       "do_term_curie": "DOID:11723",
       "disease_relation_name": "is_model_of",
-      "reference_curie": "PMID:19648295",
+      "evidence_curie": "PMID:19648295",
       "agm_identifier": "WB:WBStrain00024340",
       "asserted_allele_identifier": "WB:WBVar00054722"
     }

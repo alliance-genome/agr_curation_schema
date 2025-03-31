@@ -51,6 +51,11 @@ classes:
       - last_name
       - cross_references
 
+  ExternalDatabaseReference:
+    is_a: InformationContentEntity
+    description: >-
+      A reference to an entity in an external database
+
   Reference:
     is_a: InformationContentEntity
     aliases: [ 'references', 'publication' ]
@@ -131,6 +136,16 @@ slots:
     range: InformationContentEntity
     multivalued: true
 
+  evidence_item:
+    description: >-
+      Single item of evidence that supports some assertion.
+    range: InformationContentEntity
+
+  evidence_curie:
+    description: >-
+      Curie of InformationContentEntity object given as evidence
+    range: string
+  
   evidence_curies:
     description: >-
       Curies of InformationContentEntity objects given as evidence

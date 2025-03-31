@@ -7,7 +7,7 @@
         "ECO:0000316"
       ],
       "annotation_type_name": "manually curated",
-      "reference_curie": "PMID:21145416",
+      "evidence_curie": "PMID:21145416",
       "data_provider_dto": {
         "source_organization_abbreviation": "SGD",
         "cross_reference_dto": {

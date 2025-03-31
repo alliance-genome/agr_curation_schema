@@ -397,15 +397,15 @@ classes:
   SingleReferenceAssociation:
     abstract: true
     is_a: Association
-    description: An association supported by a single Reference object
+    description: An association supported by a single InformationContentEntity object
     slots:
-      - single_reference
+      - evidence_item
 
   SingleReferenceAssociationDTO:
     is_a: AuditedObjectDTO
-    description: Ingest class for an association supported by a single Reference object
+    description: Ingest class for an association supported by a single InformationContentEntity object
     slots:
-      - reference_curie
+      - evidence_curie
 
   EvidenceAssociation:
     abstract: true
