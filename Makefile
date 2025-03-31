@@ -98,7 +98,7 @@ $(TARGET_DIR)/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
 gen-jsonschema: $(TARGET_DIR)/jsonschema/$(SCHEMA_NAME).schema.json
 .PHONY: gen-jsonschema
 $(TARGET_DIR)/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
-	poetry run gen-json-schema $(GEN_OPTS) --indent 4 --closed -t ingest $< > $@
+	poetry run gen-json-schema $(GEN_OPTS) --indent 4 --closed -t Ingest $< > $@
 
 
 ###  -- SQL --
