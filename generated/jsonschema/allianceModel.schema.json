@@ -164,6 +164,17 @@
                     },
                     "type": "array"
                 },
+                "evidence_item": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InformationContentEntity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Single item of evidence that supports some assertion."
+                },
                 "genetic_sex": {
                     "description": "Submitted value should be a vocabulary term from the 'Genetic sexes' vocabulary",
                     "type": [
@@ -261,10 +272,6 @@
                     ],
                     "description": "CrossReference to the organization that provided the data to the Alliance"
                 },
-                "single_reference": {
-                    "$ref": "#/$defs/Reference",
-                    "description": "The reference in which the disease association was asserted/reported."
-                },
                 "unique_id": {
                     "description": "Unique identifier for the disease annotation.  Will be generated at AGR if not submitted by the MOD.",
                     "type": [
@@ -295,7 +302,6 @@
                 "evidence_codes",
                 "disease_annotation_object",
                 "data_provider",
-                "single_reference",
                 "relation",
                 "internal"
             ],
@@ -431,6 +437,13 @@
                         "null"
                     ]
                 },
+                "evidence_curie": {
+                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "genetic_sex_name": {
                     "description": "Name of term from the 'Genetic sexes' vocabulary",
                     "type": [
@@ -493,10 +506,6 @@
                         "null"
                     ]
                 },
-                "reference_curie": {
-                    "description": "External reference curie used for ingest",
-                    "type": "string"
-                },
                 "secondary_data_provider_dto": {
                     "anyOf": [
                         {
@@ -531,7 +540,6 @@
                 "disease_relation_name",
                 "do_term_curie",
                 "data_provider_dto",
-                "reference_curie",
                 "internal"
             ],
             "title": "AGMDiseaseAnnotationDTO",
@@ -639,6 +647,17 @@
                         "null"
                     ]
                 },
+                "evidence_item": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InformationContentEntity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Single item of evidence that supports some assertion."
+                },
                 "inferred_allele": {
                     "anyOf": [
                         {
@@ -718,10 +737,6 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
-                "single_reference": {
-                    "$ref": "#/$defs/Reference",
-                    "description": "The reference in which the phenotype association was asserted/reported."
-                },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
                     "type": [
@@ -741,7 +756,6 @@
                 "phenotype_annotation_subject",
                 "phenotype_annotation_object",
                 "data_provider",
-                "single_reference",
                 "relation",
                 "date_created",
                 "internal"
@@ -836,6 +850,13 @@
                         "null"
                     ]
                 },
+                "evidence_curie": {
+                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "inferred_allele_identifier": {
                     "description": "Identifier (curie/primary_external_id/mod_internal_id) of allele to which something is inferred to be associated via an automated pipeline",
                     "type": [
@@ -901,10 +922,6 @@
                         "null"
                     ]
                 },
-                "reference_curie": {
-                    "description": "External reference curie used for ingest",
-                    "type": "string"
-                },
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
                     "type": [
@@ -916,7 +933,6 @@
             "required": [
                 "agm_identifier",
                 "data_provider_dto",
-                "reference_curie",
                 "internal"
             ],
             "title": "AGMPhenotypeAnnotationDTO",
@@ -3863,6 +3879,17 @@
                     },
                     "type": "array"
                 },
+                "evidence_item": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InformationContentEntity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Single item of evidence that supports some assertion."
+                },
                 "genetic_sex": {
                     "description": "Submitted value should be a vocabulary term from the 'Genetic sexes' vocabulary",
                     "type": [
@@ -3949,10 +3976,6 @@
                     ],
                     "description": "CrossReference to the organization that provided the data to the Alliance"
                 },
-                "single_reference": {
-                    "$ref": "#/$defs/Reference",
-                    "description": "The reference in which the disease association was asserted/reported."
-                },
                 "unique_id": {
                     "description": "Unique identifier for the disease annotation.  Will be generated at AGR if not submitted by the MOD.",
                     "type": [
@@ -3983,7 +4006,6 @@
                 "evidence_codes",
                 "disease_annotation_object",
                 "data_provider",
-                "single_reference",
                 "relation",
                 "internal"
             ],
@@ -4112,6 +4134,13 @@
                         "null"
                     ]
                 },
+                "evidence_curie": {
+                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "genetic_sex_name": {
                     "description": "Name of term from the 'Genetic sexes' vocabulary",
                     "type": [
@@ -4167,10 +4196,6 @@
                         "null"
                     ]
                 },
-                "reference_curie": {
-                    "description": "External reference curie used for ingest",
-                    "type": "string"
-                },
                 "secondary_data_provider_dto": {
                     "anyOf": [
                         {
@@ -4205,7 +4230,6 @@
                 "disease_relation_name",
                 "do_term_curie",
                 "data_provider_dto",
-                "reference_curie",
                 "internal"
             ],
             "title": "AlleleDiseaseAnnotationDTO",
@@ -6149,6 +6173,17 @@
                         "null"
                     ]
                 },
+                "evidence_item": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InformationContentEntity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Single item of evidence that supports some assertion."
+                },
                 "inferred_gene": {
                     "anyOf": [
                         {
@@ -6217,10 +6252,6 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
-                "single_reference": {
-                    "$ref": "#/$defs/Reference",
-                    "description": "The reference in which the phenotype association was asserted/reported."
-                },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
                     "type": [
@@ -6240,7 +6271,6 @@
                 "phenotype_annotation_subject",
                 "phenotype_annotation_object",
                 "data_provider",
-                "single_reference",
                 "relation",
                 "date_created",
                 "internal"
@@ -6328,6 +6358,13 @@
                         "null"
                     ]
                 },
+                "evidence_curie": {
+                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "inferred_gene_identifier": {
                     "description": "Identifier (curie/primary_external_id/mod_internal_id) of gene to which something is inferred to be associated via an automated pipeline",
                     "type": [
@@ -6386,10 +6423,6 @@
                         "null"
                     ]
                 },
-                "reference_curie": {
-                    "description": "External reference curie used for ingest",
-                    "type": "string"
-                },
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
                     "type": [
@@ -6401,7 +6434,6 @@
             "required": [
                 "allele_identifier",
                 "data_provider_dto",
-                "reference_curie",
                 "internal"
             ],
             "title": "AllelePhenotypeAnnotationDTO",
@@ -7864,6 +7896,17 @@
                         "null"
                     ]
                 },
+                "evidence_item": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InformationContentEntity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Single item of evidence that supports some assertion."
+                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
@@ -7903,10 +7946,6 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
-                "single_reference": {
-                    "$ref": "#/$defs/Reference",
-                    "description": "holds between an object and a single reference"
-                },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
                     "type": [
@@ -7924,7 +7963,6 @@
             },
             "required": [
                 "data_provider",
-                "single_reference",
                 "relation",
                 "internal"
             ],
@@ -17314,6 +17352,81 @@
             "title": "ExternalDatabaseLink",
             "type": "object"
         },
+        "ExternalDatabaseReference": {
+            "additionalProperties": false,
+            "description": "A reference to an entity in an external database",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "internal"
+            ],
+            "title": "ExternalDatabaseReference",
+            "type": "object"
+        },
         "FBCVTerm": {
             "additionalProperties": false,
             "description": "",
@@ -18990,6 +19103,17 @@
                         "null"
                     ]
                 },
+                "evidence_item": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InformationContentEntity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Single item of evidence that supports some assertion."
+                },
                 "gene_association_subject": {
                     "$ref": "#/$defs/Gene",
                     "description": "Subject slot to be used for gene associations"
@@ -19038,17 +19162,6 @@
                         }
                     ],
                     "description": "The right boundary of a feature location relative to the landmark's inherent orientation."
-                },
-                "single_reference": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Reference"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "holds between an object and a single reference"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -19638,6 +19751,17 @@
                     },
                     "type": "array"
                 },
+                "evidence_item": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InformationContentEntity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Single item of evidence that supports some assertion."
+                },
                 "genetic_sex": {
                     "description": "Submitted value should be a vocabulary term from the 'Genetic sexes' vocabulary",
                     "type": [
@@ -19723,10 +19847,6 @@
                         }
                     ]
                 },
-                "single_reference": {
-                    "$ref": "#/$defs/Reference",
-                    "description": "The reference in which the disease association was asserted/reported."
-                },
                 "unique_id": {
                     "description": "Unique identifier for the disease annotation.  Will be generated at AGR if not submitted by the MOD.",
                     "type": [
@@ -19757,7 +19877,6 @@
                 "evidence_codes",
                 "disease_annotation_object",
                 "data_provider",
-                "single_reference",
                 "relation",
                 "internal"
             ],
@@ -19872,6 +19991,13 @@
                         "null"
                     ]
                 },
+                "evidence_curie": {
+                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "gene_identifier": {
                     "description": "Identifier (curie/primary_external_id/mod_internal_id) of the gene",
                     "type": "string"
@@ -19924,10 +20050,6 @@
                         "null"
                     ]
                 },
-                "reference_curie": {
-                    "description": "External reference curie used for ingest",
-                    "type": "string"
-                },
                 "secondary_data_provider_dto": {
                     "anyOf": [
                         {
@@ -19969,7 +20091,6 @@
                 "disease_relation_name",
                 "do_term_curie",
                 "data_provider_dto",
-                "reference_curie",
                 "internal"
             ],
             "title": "GeneDiseaseAnnotationDTO",
@@ -20059,6 +20180,17 @@
                         "null"
                     ]
                 },
+                "evidence_item": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InformationContentEntity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Single item of evidence that supports some assertion."
+                },
                 "expression_annotation_image_associations": {
                     "description": "Images for the ExpressionAnnotation.",
                     "items": {
@@ -20133,10 +20265,6 @@
                     "description": "For a gene, the relation should be constrained to the expresssed_in VocabularyTerm.",
                     "type": "string"
                 },
-                "single_reference": {
-                    "$ref": "#/$defs/Reference",
-                    "description": "The single Reference that supports the ExpressionAnnotation."
-                },
                 "uncertain": {
                     "description": "If set to true, then the related entity is uncertain.",
                     "type": [
@@ -20173,7 +20301,6 @@
                 "when_expressed_stage_name",
                 "where_expressed_statement",
                 "data_provider",
-                "single_reference",
                 "relation",
                 "internal"
             ],
@@ -21004,6 +21131,17 @@
                         "null"
                     ]
                 },
+                "evidence_item": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InformationContentEntity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Single item of evidence that supports some assertion."
+                },
                 "gene_association_subject": {
                     "$ref": "#/$defs/Gene",
                     "description": "Subject slot to be used for gene associations"
@@ -21044,17 +21182,6 @@
                     ],
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
-                },
-                "single_reference": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Reference"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "holds between an object and a single reference"
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -21915,6 +22042,17 @@
                         "null"
                     ]
                 },
+                "evidence_item": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InformationContentEntity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Single item of evidence that supports some assertion."
+                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
@@ -21982,10 +22120,6 @@
                         }
                     ]
                 },
-                "single_reference": {
-                    "$ref": "#/$defs/Reference",
-                    "description": "The reference in which the phenotype association was asserted/reported."
-                },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
                     "type": [
@@ -22005,7 +22139,6 @@
                 "phenotype_annotation_subject",
                 "phenotype_annotation_object",
                 "data_provider",
-                "single_reference",
                 "relation",
                 "date_created",
                 "internal"
@@ -22079,6 +22212,13 @@
                         "null"
                     ]
                 },
+                "evidence_curie": {
+                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "gene_identifier": {
                     "description": "Identifier (curie/primary_external_id/mod_internal_id) of the gene",
                     "type": "string"
@@ -22134,10 +22274,6 @@
                         "null"
                     ]
                 },
-                "reference_curie": {
-                    "description": "External reference curie used for ingest",
-                    "type": "string"
-                },
                 "sgd_strain_background_identifier": {
                     "description": "Identifier (curie/primary_external_id/mod_internal_id) of SGD strain background AGM",
                     "type": [
@@ -22156,7 +22292,6 @@
             "required": [
                 "gene_identifier",
                 "data_provider_dto",
-                "reference_curie",
                 "internal"
             ],
             "title": "GenePhenotypeAnnotationDTO",
@@ -29746,6 +29881,17 @@
                         "null"
                     ]
                 },
+                "evidence_item": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InformationContentEntity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Single item of evidence that supports some assertion."
+                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
@@ -29803,10 +29949,6 @@
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
                 },
-                "single_reference": {
-                    "$ref": "#/$defs/Reference",
-                    "description": "The reference in which the phenotype association was asserted/reported."
-                },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
                     "type": [
@@ -29826,7 +29968,6 @@
                 "phenotype_annotation_subject",
                 "phenotype_annotation_object",
                 "data_provider",
-                "single_reference",
                 "relation",
                 "date_created",
                 "internal"
@@ -32868,7 +33009,7 @@
         },
         "SingleReferenceAssociationDTO": {
             "additionalProperties": false,
-            "description": "Ingest class for an association supported by a single Reference object",
+            "description": "Ingest class for an association supported by a single InformationContentEntity object",
             "properties": {
                 "created_by_curie": {
                     "description": "Curie of the Person object representing the individual that created the entity",
@@ -32909,6 +33050,13 @@
                         "null"
                     ]
                 },
+                "evidence_curie": {
+                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
@@ -32917,13 +33065,6 @@
                     "description": "Entity is no longer current.",
                     "type": [
                         "boolean",
-                        "null"
-                    ]
-                },
-                "reference_curie": {
-                    "description": "External reference curie used for ingest",
-                    "type": [
-                        "string",
                         "null"
                     ]
                 },
