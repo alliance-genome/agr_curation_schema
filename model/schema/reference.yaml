@@ -51,6 +51,11 @@ classes:
       - last_name
       - cross_references
 
+  ExternalDatabaseReference:
+    is_a: InformationContentEntity
+    description: >-
+      A reference to an entity in an external database
+
   Reference:
     is_a: InformationContentEntity
     aliases: [ 'references', 'publication' ]
