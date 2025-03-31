@@ -9,7 +9,7 @@
       "evidence_code_curies": [
         "ECO:0007013"
       ],
-      "reference_curie": "FB:FBrf0227496",
+      "evidence_curie": "FB:FBrf0227496",
       "annotation_type_name": "manually_curated",
       "data_provider_dto": {
         "source_organization_abbreviation": "FB",
@@ -38,7 +38,7 @@
       "evidence_code_curies": [
         "ECO:0007013"
       ],
-      "reference_curie": "FB:FBrf0211153",
+      "evidence_curie": "FB:FBrf0211153",
       "annotation_type_name": "manually_curated",
       "data_provider_dto": {
         "source_organization_abbreviation": "FB",

@@ -70,7 +70,7 @@
   ],
   "source_variant_genomic_location_association_ingest_set": [
     {
-      "reference_curie": "PMID:11231512",
+      "evidence_curie": "PMID:11231512",
       "variant_identifier": "ZFIN:ZDB-ALT-000412-8",
       "relation_name": "has_location",
       "chromosome_curie": "NC_007118.7",
@@ -99,7 +99,7 @@
   ],
  "source_variant_transcript_location_association_ingest_set": [
    {
-      "reference_curie": "PMID:11231512",
+      "evidence_curie": "PMID:11231512",
       "variant_identifier": "ZFIN:ZDB-ALT-000412-8",
       "relation_name": "has_location",
       "evidence_curies": [
@@ -119,7 +119,7 @@
  ],
   "source_variant_protein_location_association_ingest_set": [
    {
-      "reference_curie": "PMID:11231512",
+      "evidence_curie": "PMID:11231512",
       "variant_identifier": "ZFIN:ZDB-ALT-000412-8",
       "relation_name": "has_location",
       "evidence_curies": [

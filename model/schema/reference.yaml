@@ -131,6 +131,16 @@ slots:
     range: InformationContentEntity
     multivalued: true
 
+  evidence_item:
+    description: >-
+      Single item of evidence that supports some assertion.
+    range: InformationContentEntity
+
+  evidence_curie:
+    description: >-
+      Curie of InformationContentEntity object given as evidence
+    range: string
+  
   evidence_curies:
     description: >-
       Curies of InformationContentEntity objects given as evidence

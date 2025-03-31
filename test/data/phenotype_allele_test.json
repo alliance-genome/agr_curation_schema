@@ -2,7 +2,7 @@
   "linkml_version": "2.0.0",
   "phenotype_allele_ingest_set": [
     {
-      "reference_curie": "PMID:123456",
+      "evidence_curie": "PMID:123456",
       "data_provider_dto": {
         "source_organization_abbreviation": "WB",
         "cross_reference_dto": {

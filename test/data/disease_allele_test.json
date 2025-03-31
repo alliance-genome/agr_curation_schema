@@ -5,7 +5,7 @@
       "evidence_code_curies": [
         "ECO:0000305"
       ],
-      "reference_curie": "PMID:123456",
+      "evidence_curie": "PMID:123456",
       "data_provider_dto": {
         "source_organization_abbreviation": "ZFIN",
         "cross_reference_dto": {
