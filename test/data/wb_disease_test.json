@@ -190,7 +190,7 @@
       "disease_relation_name": "is_model_of",
       "evidence_curie": "PMID:19648295",
       "agm_identifier": "WB:WBStrain00024340",
-      "asserted_allele_identifier": "WB:WBVar00054722"
+      "asserted_allele_identifiers": ["WB:WBVar00054722"]
     }
   ]
 }
