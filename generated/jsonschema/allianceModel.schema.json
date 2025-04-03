@@ -11,16 +11,15 @@
                         "null"
                     ]
                 },
-                "asserted_allele": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Allele"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "The allele to which something is manually asserted to be associated."
+                "asserted_alleles": {
+                    "description": "The allele to which something is manually asserted to be associated.",
+                    "items": {
+                        "$ref": "#/$defs/Allele"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "asserted_genes": {
                     "description": "The gene(s) to which something is manually asserted to be associated.",
@@ -323,10 +322,13 @@
                         "null"
                     ]
                 },
-                "asserted_allele_identifier": {
+                "asserted_allele_identifiers": {
                     "description": "Identifier (curie/primary_external_id/mod_internal_id) of the allele to which something is manually asserted to be associated",
+                    "items": {
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
@@ -549,16 +551,15 @@
             "additionalProperties": false,
             "description": "An annotation asserting an association between an AGM and a phenotype supported by evidence.",
             "properties": {
-                "asserted_allele": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Allele"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "The allele to which something is manually asserted to be associated."
+                "asserted_alleles": {
+                    "description": "The allele to which something is manually asserted to be associated.",
+                    "items": {
+                        "$ref": "#/$defs/Allele"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "asserted_genes": {
                     "description": "The gene(s) to which something is manually asserted to be associated.",
@@ -771,10 +772,13 @@
                     "description": "Curie or internal ID of AGM",
                     "type": "string"
                 },
-                "asserted_allele_identifier": {
+                "asserted_allele_identifiers": {
                     "description": "Identifier (curie/primary_external_id/mod_internal_id) of the allele to which something is manually asserted to be associated",
+                    "items": {
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
