@@ -23,6 +23,15 @@
       "internal": false,
       "agm_identifier": "ZFIN:ZDB-FISH-180912-16",
       "inferred_gene_identifier": "ZFIN:ZDB-GENE-060503-338",
+      "inferred_allele_identifier": "ZFIN:ZDB-ALLELE-060503-338",
+      "asserted_gene_identifiers": [
+        "ZFIN:ZDB-GENE-23432-121",
+        "ZFIN:ZDB-GENE-23432-122"
+      ],
+      "asserted_allele_identifiers": [
+        "ZFIN:ZDB-ALLELE-23432-121",
+        "ZFIN:ZDB-ALLELE-23432-122"
+      ],
       "disease_relation_name": "is_model_of",
       "condition_relation_dtos": [
         {

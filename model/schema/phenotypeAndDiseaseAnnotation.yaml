@@ -181,8 +181,6 @@ classes:
         range: Gene
       asserted_genes:
         required: false
-      asserted_allele:
-        required: false
 
   AllelePhenotypeAnnotationDTO:
     is_a: PhenotypeAnnotationDTO
@@ -202,7 +200,7 @@ classes:
       - inferred_allele
       - inferred_gene
       - asserted_genes
-      - asserted_allele
+      - asserted_alleles
     slot_usage:
       phenotype_annotation_subject:
         description: >-
@@ -220,7 +218,7 @@ classes:
         range: Allele
       asserted_genes:
         required: false
-      asserted_allele:
+      asserted_alleles:
         required: false
 
   AGMPhenotypeAnnotationDTO:
@@ -232,7 +230,7 @@ classes:
       - inferred_gene_identifier
       - asserted_gene_identifiers
       - inferred_allele_identifier
-      - asserted_allele_identifier
+      - asserted_allele_identifiers
 
   DiseaseAnnotation:
     is_a: Annotation
@@ -409,7 +407,7 @@ classes:
       - inferred_allele
       - inferred_gene
       - asserted_genes
-      - asserted_allele
+      - asserted_alleles
     slot_usage:
       disease_annotation_subject:
         description: >-
@@ -433,7 +431,7 @@ classes:
         range: Allele
       asserted_genes:
         required: false
-      asserted_allele:
+      asserted_alleles:
         required: false
 
   AGMDiseaseAnnotationDTO:
@@ -445,7 +443,7 @@ classes:
       - inferred_gene_identifier
       - asserted_gene_identifiers
       - inferred_allele_identifier
-      - asserted_allele_identifier
+      - asserted_allele_identifiers
 
   ExperimentalCondition:
     is_a: AuditedObject
@@ -586,16 +584,18 @@ slots:
     domain: DiseaseAnnotationDTO
     range: string # CV 'Annotation Type'
 
-  asserted_allele:
+  asserted_alleles:
     description: >-
       The allele to which something is manually asserted to be associated.
     range: Allele
+    multivalued: true
 
-  asserted_allele_identifier:
+  asserted_allele_identifiers:
     description: >-
       Identifier (curie/primary_external_id/mod_internal_id) of the allele to which something is manually asserted to be
       associated
     range: string
+    multivalued: true
 
   asserted_genes:
     singular_name: asserted_gene

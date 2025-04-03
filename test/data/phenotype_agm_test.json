@@ -26,7 +26,7 @@
         "WB:WBGene00012121"
       ],
       "inferred_allele_identifier": "WB:WBVar000131321",
-      "asserted_allele_identifier": "WB:WBVar000131321",
+      "asserted_allele_identifiers": ["WB:WBVar000131321"],
       "condition_relation_dtos": [
         {
           "condition_relation_type_name": "has_condition",
