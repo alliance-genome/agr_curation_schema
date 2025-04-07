@@ -20331,14 +20331,14 @@
                         "null"
                     ]
                 },
-                "cross_reference": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/CrossReference"
-                        },
-                        {
-                            "type": "null"
-                        }
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": [
+                        "array",
+                        "null"
                     ]
                 },
                 "curie": {
