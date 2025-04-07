@@ -58,7 +58,7 @@ classes:
       This entity is originally specific to WB and MGI.
     slots:
       - unique_id
-      - cross_reference
+      - cross_references
       - single_reference
       - entity_assayed
       - expression_assay_used
