@@ -1319,7 +1319,14 @@
             "description": "Includes inbred strains, stocks, disease models and mutant genotypes",
             "properties": {
                 "agm_full_name": {
-                    "$ref": "#/$defs/AgmFullNameSlotAnnotation",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AgmFullNameSlotAnnotation"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "The one current full name for an AGM."
                 },
                 "agm_secondary_ids": {
@@ -1492,7 +1499,6 @@
                 }
             },
             "required": [
-                "agm_full_name",
                 "subtype",
                 "taxon",
                 "data_provider",
