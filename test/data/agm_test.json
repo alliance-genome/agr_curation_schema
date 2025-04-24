@@ -10,7 +10,8 @@
       "agm_full_name_dto": {
         "name_type_name": "full_name",
         "display_text": "TL + MO1-hars",
-        "format_text": "TL + MO1-hars"
+        "format_text": "TL + MO1-hars",
+        "internal": false
       },
       "agm_synonym_dtos": [
         {
@@ -57,7 +58,8 @@
       "agm_full_name_dto": {
         "name_type_name": "full_name",
         "display_text": "pax2a<sup>tb21/tb21</sup>",
-        "format_text": "pax2a[tb21/tb21]"
+        "format_text": "pax2a[tb21/tb21]",
+        "internal": false
       },
       "agm_secondary_id_dtos": [
         {
