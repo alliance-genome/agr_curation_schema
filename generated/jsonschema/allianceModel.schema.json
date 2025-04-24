@@ -1318,6 +1318,17 @@
             "additionalProperties": false,
             "description": "Includes inbred strains, stocks, disease models and mutant genotypes",
             "properties": {
+                "agm_full_name": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AgmFullNameSlotAnnotation"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The one current full name for an AGM."
+                },
                 "agm_secondary_ids": {
                     "description": "Secondary IDs of a given AGM",
                     "items": {
@@ -1331,6 +1342,15 @@
                 "agm_sequence_targeting_reagent_associations": {
                     "items": {
                         "$ref": "#/$defs/AgmSequenceTargetingReagentAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "agm_synonyms": {
+                    "items": {
+                        "$ref": "#/$defs/AgmSynonymSlotAnnotation"
                     },
                     "type": [
                         "array",
@@ -1429,13 +1449,6 @@
                         "null"
                     ]
                 },
-                "name": {
-                    "description": "a human-readable name for an entity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": [
@@ -1473,16 +1486,6 @@
                     "description": "Subtype of affected genomic model - permissible values: strain / genotype / fish",
                     "type": "string"
                 },
-                "synonyms": {
-                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
                     "type": "string"
@@ -1508,9 +1511,29 @@
             "additionalProperties": false,
             "description": "Ingest class for AGMs",
             "properties": {
+                "agm_full_name_dto": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/FullNameSlotAnnotationDTO"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The one current full name for an AGM."
+                },
                 "agm_secondary_id_dtos": {
                     "items": {
                         "$ref": "#/$defs/SecondaryIdSlotAnnotationDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "agm_synonym_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NameSlotAnnotationDTO"
                     },
                     "type": [
                         "array",
@@ -1580,13 +1603,6 @@
                         "null"
                     ]
                 },
-                "name": {
-                    "description": "a human-readable name for an entity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": [
@@ -1611,16 +1627,6 @@
                 "subtype_name": {
                     "description": "Name of VocabularyTerm describing subtype - permissible values: strain / genotype / fish",
                     "type": "string"
-                },
-                "synonyms": {
-                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
                 },
                 "taxon_curie": {
                     "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
@@ -2056,6 +2062,117 @@
             "title": "AgmAlleleAssociationDTO",
             "type": "object"
         },
+        "AgmFullNameSlotAnnotation": {
+            "additionalProperties": false,
+            "description": "The one current full name for the AGM",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "display_text": {
+                    "description": "A version of a synonym string for display. Any UTF8 character is permitted.",
+                    "type": "string"
+                },
+                "evidence": {
+                    "description": "The evidence that supports some assertion.",
+                    "items": {
+                        "$ref": "#/$defs/InformationContentEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "format_text": {
+                    "description": "A version of a synonym string using only ASCII characters, which is easier to type (for searches), print and parse. For example, Greek characters are transliterated.",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name_type": {
+                    "description": "The type of name: e.g., symbol, full_name, systematic_name, etc.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "single_agm": {
+                    "$ref": "#/$defs/AffectedGenomicModel"
+                },
+                "synonym_scope": {
+                    "description": "the scope of the synonym - permissible values are narrow / broad / related / exact",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "synonym_url": {
+                    "description": "URL for a synonym: e.g., NCBI URL for the NCBI synonym of an object.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "single_agm",
+                "name_type",
+                "format_text",
+                "display_text",
+                "internal"
+            ],
+            "title": "AgmFullNameSlotAnnotation",
+            "type": "object"
+        },
         "AgmSecondaryIdSlotAnnotation": {
             "additionalProperties": false,
             "description": "",
@@ -2307,6 +2424,117 @@
                 "internal"
             ],
             "title": "AgmSequenceTargetingReagentAssociationDTO",
+            "type": "object"
+        },
+        "AgmSynonymSlotAnnotation": {
+            "additionalProperties": false,
+            "description": "All aliases (non-preferred names) for the AGM. Any type of synonym is acceptable.",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "display_text": {
+                    "description": "A version of a synonym string for display. Any UTF8 character is permitted.",
+                    "type": "string"
+                },
+                "evidence": {
+                    "description": "The evidence that supports some assertion.",
+                    "items": {
+                        "$ref": "#/$defs/InformationContentEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "format_text": {
+                    "description": "A version of a synonym string using only ASCII characters, which is easier to type (for searches), print and parse. For example, Greek characters are transliterated.",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name_type": {
+                    "description": "The type of name: e.g., symbol, full_name, systematic_name, etc.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "single_agm": {
+                    "$ref": "#/$defs/AffectedGenomicModel"
+                },
+                "synonym_scope": {
+                    "description": "the scope of the synonym - permissible values are narrow / broad / related / exact",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "synonym_url": {
+                    "description": "URL for a synonym: e.g., NCBI URL for the NCBI synonym of an object.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "single_agm",
+                "name_type",
+                "format_text",
+                "display_text",
+                "internal"
+            ],
+            "title": "AgmSynonymSlotAnnotation",
             "type": "object"
         },
         "Allele": {
