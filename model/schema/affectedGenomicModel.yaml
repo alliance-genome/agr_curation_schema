@@ -208,7 +208,6 @@ slots:
       The one current full name for an AGM.
     domain: AffectedGenomicModel
     range: AgmFullNameSlotAnnotation
-    required: true
     multivalued: false
 
   agm_full_name_dto:
