@@ -7,11 +7,23 @@
       "created_by_curie": "ZFIN",
       "updated_by_curie": "ZFIN",
       "internal": false,
-      "name": "TL + MO1-hars",
-      "synonyms": [
-        "WF.WKy-Mcs7",
-        " line D",
-        "WF.WKY-(D10Got124-D10Rat187)/Uwm"
+      "agm_full_name_dto": {
+        "name_type_name": "full_name",
+        "display_text": "TL + MO1-hars",
+        "format_text": "TL + MO1-hars"
+      },
+      "agm_synonym_dtos": [
+        {
+          "name_type_name": "unspecified",
+          "format_text": "WF.WKy-Mcs7",
+          "display_text": "WF.WKy-Mcs<sup>7</sup>",
+          "synonym_url": "https://synonym_url.com/wky",
+          "synonym_scope_name": "exact",
+          "evidence_curies": [
+            "PMID:01231001"
+          ],
+          "internal": false
+        }
       ],
       "agm_secondary_id_dtos": [
         {
@@ -42,7 +54,11 @@
       "created_by_curie": "ZFIN",
       "updated_by_curie": "ZFIN",
       "internal": false,
-      "name": "pax2a<sup>tb21/tb21</sup>",
+      "agm_full_name_dto": {
+        "name_type_name": "full_name",
+        "display_text": "pax2a<sup>tb21/tb21</sup>",
+        "format_text": "pax2a[tb21/tb21]"
+      },
       "agm_secondary_id_dtos": [
         {
           "secondary_id": "ZFIN:ZDB-FISH-123456-1",

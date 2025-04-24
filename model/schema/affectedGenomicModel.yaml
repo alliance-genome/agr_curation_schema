@@ -40,9 +40,9 @@ classes:
       Includes inbred strains, stocks, disease models and
       mutant genotypes
     slots:
-      - name
+      - agm_full_name
       - subtype
-      - synonyms
+      - agm_synonyms
       - agm_secondary_ids
       - components
       - agm_sequence_targeting_reagent_associations
@@ -58,14 +58,27 @@ classes:
     is_a: GenomicEntityDTO
     description: Ingest class for AGMs
     slots:
-      - name
+      - agm_full_name_dto
       - subtype_name
-      - synonyms
+      - agm_synonym_dtos
       - agm_secondary_id_dtos
       - reference_curies
     slot_usage:
       primary_external_id:
         required: true
+
+  AgmFullNameSlotAnnotation:
+    description: >-
+      The one current full name for the AGM
+    is_a: NameSlotAnnotation
+    slots:
+      - single_agm
+    slot_usage:
+      single_agm:
+        required: true
+      name_type:
+        notes: >-
+          permissible values: full_name (VocabularyTerm)
 
   AgmSecondaryIdSlotAnnotation:
     is_a: SlotAnnotation
@@ -76,6 +89,16 @@ classes:
       single_agm:
         required: true
       secondary_id:
+        required: true
+
+  AgmSynonymSlotAnnotation:
+    is_a: NameSlotAnnotation
+    description: >-
+      All aliases (non-preferred names) for the AGM. Any type of synonym is acceptable.
+    slots:
+      - single_agm
+    slot_usage:
+      single_agm:
         required: true
 
   AgmAgmAssociation:
@@ -180,6 +203,22 @@ slots:
     range: string
     required: true
 
+  agm_full_name:
+    description: >-
+      The one current full name for an AGM.
+    domain: AffectedGenomicModel
+    range: AgmFullNameSlotAnnotation
+    required: true
+    multivalued: false
+
+  agm_full_name_dto:
+    description: >-
+      The one current full name for an AGM.
+    domain: AffectedGenomicModelDTO
+    range: FullNameSlotAnnotationDTO
+    multivalued: false
+    inlined: true
+    
   agm_secondary_ids:
     description: Secondary IDs of a given AGM
     domain: AffectedGenomicModel
@@ -189,6 +228,19 @@ slots:
   agm_secondary_id_dtos:
     domain: AffectedGenomicModelDTO
     range: SecondaryIdSlotAnnotationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  agm_synonyms:
+    domain: AffectedGenomicModel
+    range: AgmSynonymSlotAnnotation
+    required: false
+    multivalued: true
+
+  agm_synonym_dtos:
+    domain: AffectedGenomicModelDTO
+    range: NameSlotAnnotationDTO
     multivalued: true
     inlined: true
     inlined_as_list: true
