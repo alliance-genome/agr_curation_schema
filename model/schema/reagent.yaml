@@ -303,6 +303,41 @@ classes:
       genomic_entity_identifier:
         required: true
 
+  ConstructCassetteAssociation:
+    is_a: ConstructAssociation
+    description: >-
+      An association class to capture the identity of a construct cassette that is
+      part of the construct
+    attributes:
+      construct_cassette_association_object:
+        range: Cassette
+        required: true
+    slots:
+      - related_notes
+    slot_usage:
+      relation:
+        range: VocabularyTerm
+        notes: >-
+          The relation should be a VocabularyTerm with one of the following
+          values - 'has_part' (BFO:0000051). CV: 'Construct Cassette Association Relation'
+      related_notes:
+        required: false
+
+  ConstructCassetteAssociationDTO:
+    is_a: EvidenceAssociationDTO
+    description: >-
+      Ingest class for the association class to capture the identity of a construct cassette
+      that is part of the construct
+    slots:
+      - construct_identifier
+      - cassette_relation_name
+      - cassette_identifier
+      - note_dtos
+    slot_usage:
+      genomic_entity_identifier:
+        required: true
+
+
   Cassette:
     is_a: Reagent
     slots:
@@ -526,14 +561,14 @@ slots:
       Either the MOD curie or internal ID that was used in the submission
       of the associated cassette
     range: string
-    required: true
+    required: false
 
   cassette_symbol:
     description: >-
       Holds between a Cassette and the one current accepted symbol
     domain: Cassette
     range: CassetteSymbolSlotAnnotation
-    required: true
+    required: false
     multivalued: false
 
   cassette_symbol_dto:
@@ -541,7 +576,7 @@ slots:
       Holds between a Cassette and the one current accepted symbol
     domain: CassetteDTO
     range: SymbolSlotAnnotationDTO
-    required: true
+    required: false
     multivalued: false
     inlined: true
 
