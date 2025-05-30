@@ -303,6 +303,156 @@ classes:
       genomic_entity_identifier:
         required: true
 
+  Cassette:
+    is_a: Reagent
+    slots:
+      - cassette_symbol
+      - cassette_full_name
+      - cassette_synonyms
+      - cassette_genomic_entity_associations
+      - cassette_components
+      - references
+    rules:    # Question for modelers: Can these postconditions work? Each slot points to either an Association or a SlotAnnotation
+      - postconditions:
+          any_of:
+            - slot_conditions:
+                cassette_genomic_entity_associations:
+                  required: true
+            - slot_conditions:
+                cassette_components:
+                  required: true
+          description: At least one of cassette_genomic_entity_associations or cassette_components should be populated.
+
+  CassetteDTO:    # Question for modelers: There need to be at least a component or an Association for a Cassette, but we cannot require any of these fields as not everyone has any single property
+    is_a: ReagentDTO
+    slots:
+      - cassette_symbol_dto
+      - cassette_full_name_dto
+      - cassette_synonym_dtos
+      - cassette_component_dtos
+      - reference_curies
+    slot_usage:
+      cassette_symbol_dto:
+        required: true
+
+  CassetteComponentSlotAnnotation:
+    is_a: SlotAnnotation
+    slots:
+      - single_cassette
+      - relation
+      - component_symbol
+      - related_notes
+      - taxon
+      - taxon_text
+    slot_usage:
+      single_cassette:
+        required: true
+      relation:
+        range: VocabularyTerm
+        notes: >-
+          The relation should be a VocabularyTerm with one of the following
+          values - expresses (RO:0002292) / is_regulated_by (RO:0002334) /
+          targets (RO:0002436). CV: 'Cassette Genomic Entity Association Relation'
+      component_symbol:
+        required: true
+      related_notes:
+        required: false
+      taxon:
+        required: false
+      taxon_text:
+        required: false
+
+  CassetteComponentSlotAnnotationDTO:
+    is_a: SlotAnnotationDTO
+    slots:
+      - relation_name
+      - component_symbol
+      - note_dtos
+      - taxon_curie
+      - taxon_text
+
+  CassetteSymbolSlotAnnotation:
+    description: >-
+      The one current symbol for the cassette.
+    is_a: NameSlotAnnotation
+    slots:
+      - single_cassette
+    slot_usage:
+      single_cassette:
+        required: true
+      name_type:
+        notes: >-
+          permissible_values: nomenclature_symbol (VocabularyTerm)
+
+  CassetteFullNameSlotAnnotation:
+    description: >-
+      The one current full name for the cassette.
+    is_a: NameSlotAnnotation
+    slots:
+      - single_cassette
+    slot_usage:
+      single_cassette:
+        required: true
+      name_type:
+        notes: >-
+          permissible_values: full_name (VocabularyTerm)
+
+  CassetteSynonymSlotAnnotation:
+    description: >-
+      All aliases (non-preferred names) for the cassette. Any type of synonym is acceptable.
+    is_a: NameSlotAnnotation
+    slots:
+      - single_cassette
+    slot_usage:
+      single_cassette:
+        required: true
+
+  CassetteAssociation:
+    abstract: true
+    is_a: EvidenceAssociation
+    description: Base class for cassette associations
+    attributes:
+      cassette_association_subject:
+        range: Cassette
+        required: true
+
+  CassetteGenomicEntityAssociation:
+    is_a: CassetteAssociation
+    description: >-
+      An association class to capture the identity of a cassette component that is
+      a known genomic entity with a curie and any accompanying meta data about the
+      relationship between the cassette and that genomic entity component
+    attributes:
+      cassette_genomic_entity_association_object:
+        range: GenomicEntity
+        required: true
+    slots:
+      - related_notes
+    slot_usage:
+      relation:
+        range: VocabularyTerm
+        notes: >-
+          The relation should be a VocabularyTerm with one of the following
+          values - expresses (RO:0002292) / is_regulated_by (RO:0002334) /
+          targets (RO:0002436). CV: 'Cassette Genomic Entity Association Relation'
+      related_notes:
+        required: false
+
+  CassetteGenomicEntityAssociationDTO:
+    is_a: EvidenceAssociationDTO
+    description: >-
+      Ingest class for association between a cassette component that is a known genomic
+      entity with a curie and any accompanying meta data about the relationship between
+      the cassette and that genomic entity component
+    slots:
+      - cassette_identifier
+      - genomic_entity_relation_name
+      - genomic_entity_identifier
+      - note_dtos
+    slot_usage:
+      genomic_entity_identifier:
+        required: true
+
   # If we need to have multiple paths to root class, then we can consider a mixin that allows
   # DNA|RNAClones to be classified independently from Reagents.
 
@@ -347,6 +497,83 @@ slots:
       originates (as represented by taxon).
     domain: AntibodyDTO
     range: string
+
+  cassette_component_symbol:
+    range: string
+    required: true
+    description: >-
+      The free text of a symbol or name of a cassette
+      component for which no curie exists or is available
+
+  cassette_components:
+    multivalued: true
+    domain: Cassette
+    range: CassetteComponentSlotAnnotation
+
+  cassette_component_dtos:
+    multivalued: true
+    range: CassetteComponentSlotAnnotationDTO
+    inlined: true
+    inlined_as_list: true
+
+  cassette_genomic_entity_associations:
+    multivalued: true
+    domain: Cassette
+    range: CassetteGenomicEntityAssociation
+
+  cassette_identifier:
+    description: >-
+      Either the MOD curie or internal ID that was used in the submission
+      of the associated cassette
+    range: string
+    required: true
+
+  cassette_symbol:
+    description: >-
+      Holds between a Cassette and the one current accepted symbol
+    domain: Cassette
+    range: CassetteSymbolSlotAnnotation
+    required: true
+    multivalued: false
+
+  cassette_symbol_dto:
+    description: >-
+      Holds between a Cassette and the one current accepted symbol
+    domain: CassetteDTO
+    range: SymbolSlotAnnotationDTO
+    required: true
+    multivalued: false
+    inlined: true
+
+  cassette_full_name:
+    description: Holds between a Cassette and a full name.
+    domain: Cassette
+    required: false
+    multivalued: false
+    range: CassetteFullNameSlotAnnotation
+
+  cassette_full_name_dto:
+    description: Holds between a Cassette and a full name.
+    domain: CassetteDTO
+    range: NameSlotAnnotationDTO
+    multivalued: false
+    required: false
+    inlined: true
+
+  cassette_synonyms:
+    description: Holds between a Cassette and a list of synonyms.
+    domain: Cassette
+    required: false
+    multivalued: true
+    range: CassetteSynonymSlotAnnotation
+
+  cassette_synonym_dtos:
+    description: Holds between a Cassette and a list of synonyms.
+    domain: CassetteDTO
+    range: NameSlotAnnotationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
 
   clonality:
     description: >-
@@ -502,6 +729,10 @@ slots:
     
   single_construct:
     range: Construct
+    multivalued: false
+
+  single_cassette:
+    range: Cassette
     multivalued: false
 
   taxon_text:
