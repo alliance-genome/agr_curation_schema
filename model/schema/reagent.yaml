@@ -563,6 +563,12 @@ slots:
     range: string
     required: false
 
+  cassette_relation_name:
+    description: >-
+      Name of VocabularyTerm describing relationship between a subject entity and an object Cassette
+    range: string
+    required: true
+
   cassette_symbol:
     description: >-
       Holds between a Cassette and the one current accepted symbol

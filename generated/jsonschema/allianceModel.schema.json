@@ -11427,7 +11427,14 @@
                     ]
                 },
                 "cassette_symbol": {
-                    "$ref": "#/$defs/CassetteSymbolSlotAnnotation",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/CassetteSymbolSlotAnnotation"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Holds between a Cassette and the one current accepted symbol"
                 },
                 "cassette_synonyms": {
@@ -11561,7 +11568,6 @@
                 }
             },
             "required": [
-                "cassette_symbol",
                 "data_provider",
                 "internal"
             ],
@@ -12174,7 +12180,10 @@
             "properties": {
                 "cassette_identifier": {
                     "description": "Either the MOD curie or internal ID that was used in the submission of the associated cassette",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "created_by_curie": {
                     "description": "Curie of the Person object representing the individual that created the entity",
@@ -12261,7 +12270,6 @@
                 }
             },
             "required": [
-                "cassette_identifier",
                 "genomic_entity_relation_name",
                 "genomic_entity_identifier",
                 "internal"
@@ -13737,6 +13745,211 @@
                 "internal"
             ],
             "title": "Construct",
+            "type": "object"
+        },
+        "ConstructCassetteAssociation": {
+            "additionalProperties": false,
+            "description": "An association class to capture the identity of a construct cassette that is part of the construct",
+            "properties": {
+                "construct_association_subject": {
+                    "type": "string"
+                },
+                "construct_cassette_association_object": {
+                    "$ref": "#/$defs/Cassette"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence": {
+                    "description": "The evidence that supports some assertion.",
+                    "items": {
+                        "$ref": "#/$defs/InformationContentEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "related_notes": {
+                    "description": "Holds between an object and a list of related Note objects.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "construct_cassette_association_object",
+                "construct_association_subject",
+                "relation",
+                "internal"
+            ],
+            "title": "ConstructCassetteAssociation",
+            "type": "object"
+        },
+        "ConstructCassetteAssociationDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for the association class to capture the identity of a construct cassette that is part of the construct",
+            "properties": {
+                "cassette_identifier": {
+                    "description": "Either the MOD curie or internal ID that was used in the submission of the associated cassette",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "cassette_relation_name": {
+                    "description": "Name of VocabularyTerm describing relationship between a subject entity and an object Cassette",
+                    "type": "string"
+                },
+                "construct_identifier": {
+                    "description": "Either the MOD curie or internal ID that was used in the submission of the associated construct",
+                    "type": "string"
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence_curies": {
+                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "construct_identifier",
+                "cassette_relation_name",
+                "internal"
+            ],
+            "title": "ConstructCassetteAssociationDTO",
             "type": "object"
         },
         "ConstructComponentSlotAnnotation": {
