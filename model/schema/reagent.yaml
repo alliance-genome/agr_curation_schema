@@ -48,6 +48,7 @@ classes:
     slots:
       - unique_id
       - secondary_identifiers
+      - related_notes
 
   ReagentDTO:
     is_a: SubmittedObjectDTO
@@ -55,6 +56,7 @@ classes:
       Ingest class for material entities used in experiments.
     slots:
       - secondary_identifiers
+      - note_dtos
     slot_usage:
       mod_internal_id:
         notes: This is required if primary_external_id is not submitted
@@ -82,7 +84,6 @@ classes:
       - cross_references
       - references
       - original_reference
-      - related_notes
       - taxon
       - generated_by
       - manufactured_by
@@ -131,7 +132,6 @@ classes:
       - cross_reference_dtos
       - reference_curies
       - original_reference_curie
-      - note_dtos
       - taxon_curie
       - generated_by_identifier # needs to change: currently no common identifier field for Agent class
       - manufactured_by_identifier # needs to change: currently no common identifier field for Agent class

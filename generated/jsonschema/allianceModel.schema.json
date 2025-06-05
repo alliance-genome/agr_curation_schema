@@ -11543,6 +11543,16 @@
                         "null"
                     ]
                 },
+                "related_notes": {
+                    "description": "Holds between an object and a list of related Note objects.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "secondary_identifiers": {
                     "items": {
                         "type": "string"
@@ -11910,6 +11920,15 @@
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -13734,6 +13753,16 @@
                         "null"
                     ]
                 },
+                "related_notes": {
+                    "description": "Holds between an object and a list of related Note objects.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "secondary_identifiers": {
                     "items": {
                         "type": "string"
@@ -14288,6 +14317,15 @@
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -16741,6 +16779,16 @@
                     "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "related_notes": {
+                    "description": "Holds between an object and a list of related Note objects.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -32472,6 +32520,16 @@
                         "null"
                     ]
                 },
+                "related_notes": {
+                    "description": "Holds between an object and a list of related Note objects.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "secondary_identifiers": {
                     "items": {
                         "type": "string"
@@ -32965,6 +33023,16 @@
                         "null"
                     ]
                 },
+                "related_notes": {
+                    "description": "Holds between an object and a list of related Note objects.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "secondary_identifiers": {
                     "items": {
                         "type": "string"
@@ -33051,6 +33119,15 @@
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
