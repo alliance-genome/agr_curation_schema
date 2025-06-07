@@ -1,0 +1,58 @@
+{
+  "@context": {
+    "@vocab": "https://github.com/alliance-genome/agr_curation_schema/",
+    "alliance": "https://github.com/alliance-genome/agr_curation_schema/",
+    "FB": "https://flybase.org/reports/",
+    "SO": "http://purl.obolibrary.org/obo/SO_",
+    "NCBITaxon": "http://purl.obolibrary.org/obo/NCBITaxon_"
+  },
+  "id": "FB:FBba0000057",
+  "category": "allele",
+  "symbol": "TM6B",
+  "name": "Third Multiple 6 Balancer",
+  "synonyms": ["TM6B"],
+  "taxon": "NCBITaxon:7227",
+  "data_provider": "FB",
+  "created_by": "FB:FB_curator",
+  "updated_by": "FB:FB_curator", 
+  "date_created": "2006-01-01",
+  "date_updated": "2025-06-07",
+  
+  "is_balancer": true,
+  "parent_aberration": "FB:FBab0005465",
+  "cytological_breakpoints": "3Lt-61A1|87B2-86C8|84F2-86C7|84B2-84F2|84B2-75C|94A-100F2|92D1-87B4|61A2-63B8|72E1-63B11|72E2-75C|94A-92E1|100F3-3Rt",
+  "carried_alleles": [
+    "FB:FBal0000583",
+    "FB:FBal0003278", 
+    "FB:FBal0029705"
+  ],
+  "balancer_utility": "suppressor_of_crossing_over",
+  
+  "mutation_type": "SO:balancer_chromosome",
+  "functional_impact": "gain_of_function",
+  
+  "references": [
+    "FB:FBrf0247151",
+    "FB:FBrf0243989", 
+    "FB:FBrf0232806",
+    "FB:FBrf0216878",
+    "FB:FBrf0201244",
+    "FB:FBrf0189689"
+  ],
+  
+  "cross_references": [
+    {
+      "reference_id": "FB:FBba0000057",
+      "page_area": "balancer",
+      "display_name": "TM6B"
+    }
+  ],
+  
+  "notes": [
+    {
+      "note_type": "balancer_description", 
+      "free_text": "Multiple inversion balancer for chromosome 3",
+      "references": ["FB:FBrf0066905"]
+    }
+  ]
+}

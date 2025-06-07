@@ -1,0 +1,51 @@
+{
+  "@context": {
+    "@vocab": "https://github.com/alliance-genome/agr_curation_schema/",
+    "alliance": "https://github.com/alliance-genome/agr_curation_schema/",
+    "FB": "https://flybase.org/reports/",
+    "SO": "http://purl.obolibrary.org/obo/SO_",
+    "NCBITaxon": "http://purl.obolibrary.org/obo/NCBITaxon_"
+  },
+  "id": "FB:FBba0000017",
+  "category": "allele",
+  "symbol": "CyO", 
+  "name": "Curly of Oster",
+  "taxon": "NCBITaxon:7227",
+  "data_provider": "FB",
+  "created_by": "FB:FB_curator",
+  "updated_by": "FB:FB_curator",
+  "date_created": "1980-01-01", 
+  "date_updated": "2025-06-07",
+  
+  "is_balancer": true,
+  "parent_aberration": "FB:FBab0005364",
+  "cytological_breakpoints": "2Lt-22D1|40A4-59F8|2Rt",
+  "carried_alleles": [
+    "FB:FBal0002285"
+  ],
+  "balancer_utility": "suppressor_of_crossing_over",
+  
+  "mutation_type": "SO:balancer_chromosome",
+  "functional_impact": "gain_of_function",
+  
+  "references": [
+    "FB:FBrf0066905",
+    "FB:FBrf0189689"
+  ],
+  
+  "cross_references": [
+    {
+      "reference_id": "FB:FBba0000017", 
+      "page_area": "balancer",
+      "display_name": "CyO"
+    }
+  ],
+  
+  "notes": [
+    {
+      "note_type": "balancer_description",
+      "free_text": "Second chromosome balancer carrying Curly wing mutation",
+      "references": ["FB:FBrf0066905"]
+    }
+  ]
+}

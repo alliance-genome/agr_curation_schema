@@ -1,0 +1,202 @@
+id: https://github.com/alliance-genome/agr_curation_schema/balancer
+name: alliance-schema-balancer
+title: Alliance Schema Balancer Extension
+description: >-
+  LinkML schema extension for balancer chromosome support in the
+  Alliance of Genome Resources (AGR) schema. This extension adds
+  support for modeling chromosomal balancers as specialized allele
+  entities with balancer-specific metadata including data provenance
+  and scientific attribution.
+
+version: 1.1.0
+default_prefix: alliance
+default_range: string
+
+imports:
+  - core
+  - allele
+  - linkml:types
+
+prefixes:
+  alliance: https://github.com/alliance-genome/agr_curation_schema/
+  linkml: https://w3id.org/linkml/
+  SO: http://purl.obolibrary.org/obo/SO_
+  biolink: https://w3id.org/biolink/vocab/
+
+slots:
+  parent_aberration:
+    domain: Allele
+    range: GenomicEntity
+    description: >-
+      The chromosomal aberration from which this balancer chromosome
+      is derived. Balancers are typically created from complex
+      chromosomal rearrangements such as inversions.
+    multivalued: false
+    required: false
+    examples:
+      - value: "FB:FBab0005465"
+        description: "In(3LR)TM6B parent aberration for TM6B balancer"
+
+  cytological_breakpoints:
+    domain: GenomicEntity
+    range: string
+    description: >-
+      Cytological description of chromosome breakpoints using
+      standard cytological band notation. Multiple breakpoints
+      are separated by pipe characters (|).
+    multivalued: false
+    required: false
+    pattern: "^[0-9]+[A-Z][a-z]?[0-9]?(-[0-9]+[A-Z][a-z]?[0-9]?)*(\\|[0-9]+[A-Z][a-z]?[0-9]?(-[0-9]+[A-Z][a-z]?[0-9]?)*)*$"
+    examples:
+      - value: "3Lt-61A1|87B2-86C8|84F2-86C7"
+        description: "Complex breakpoint notation for TM6B balancer"
+
+  carried_alleles:
+    domain: Allele
+    range: Allele
+    description: >-
+      Marker alleles carried by this balancer chromosome for
+      genetic selection purposes. These are typically visible
+      or lethal mutations that allow tracking of the balancer
+      in genetic crosses.
+    multivalued: true
+    required: false
+    examples:
+      - value: "FB:FBal0000583"
+        description: "AntpHu allele carried by TM6B balancer"
+      - value: "FB:FBal0003278"
+        description: "e1 allele carried by TM6B balancer"
+
+  balancer_utility:
+    domain: Allele
+    range: BalancerUtilityEnum
+    description: >-
+      Primary genetic utility or function of this balancer
+      chromosome in genetic analysis and stock maintenance.
+    multivalued: false
+    required: false
+    examples:
+      - value: "suppressor_of_crossing_over"
+        description: "TM6B suppresses recombination on chromosome 3"
+
+  is_balancer:
+    domain: Allele
+    range: boolean
+    description: >-
+      Boolean flag indicating that this allele represents a
+      balancer chromosome. Used for efficient querying and
+      classification of balancer entities.
+    multivalued: false
+    required: false
+    examples:
+      - value: true
+        description: "TM6B is a balancer chromosome"
+
+  # Enhanced fields based on database analysis
+  discoverer:
+    domain: Allele
+    range: string
+    description: >-
+      Name of the scientist or researcher who discovered or
+      created this balancer chromosome. Provides scientific
+      attribution and historical context.
+    multivalued: false
+    required: false
+    examples:
+      - value: "Craymer"
+        description: "TM6B was discovered by Craymer"
+      - value: "Chovnick"
+        description: "MKRS was discovered by Chovnick"
+
+  alternate_names:
+    domain: BiologicalEntity
+    range: string
+    multivalued: true
+    description: >-
+      Alternative names, synonyms, and historical naming
+      conventions for this balancer. Includes both formal
+      and informal naming variants.
+    required: false
+    examples:
+      - value: "First Multiple Seven"
+        description: "Full descriptive name for FM7a"
+      - value: "Curly of Oster"
+        description: "Descriptive name for CyO balancer"
+
+  internal_notes:
+    domain: BiologicalEntity
+    range: string
+    description: >-
+      Internal curator notes and annotations not displayed
+      on public interfaces. Used for curation workflow
+      management and reference tracking.
+    multivalued: false
+    required: false
+    examples:
+      - value: "They reference FBrf0019393 for this balancer. gm200205."
+        description: "Internal reference tracking for FM7a"
+
+  date_accessioned:
+    domain: BiologicalEntity
+    range: date
+    description: >-
+      Date when this feature was first accessioned or created
+      in the database. Provides data provenance tracking.
+    multivalued: false
+    required: false
+    examples:
+      - value: "2006-08-22"
+        description: "Date TM6B was first entered in database"
+
+  date_last_modified:
+    domain: BiologicalEntity
+    range: date
+    description: >-
+      Date of the most recent modification to this feature.
+      Essential for data freshness assessment and versioning.
+    multivalued: false
+    required: false
+    examples:
+      - value: "2020-11-30"
+        description: "Last modification date for TM6B"
+
+  is_obsolete:
+    domain: BiologicalEntity
+    range: boolean
+    description: >-
+      Flag indicating whether this feature has been marked
+      as obsolete or deprecated. Critical for data quality
+      control and filtering.
+    multivalued: false
+    required: false
+    default: false
+    examples:
+      - value: false
+        description: "TM6B is not obsolete"
+
+enums:
+  BalancerUtilityEnum:
+    description: >-
+      Controlled vocabulary for the primary genetic utility
+      of balancer chromosomes in research and stock maintenance.
+    permissible_values:
+      suppressor_of_crossing_over:
+        description: >-
+          Balancer suppresses recombination in the balanced
+          chromosomal region, maintaining linkage relationships.
+        meaning: "SO:0001059"  # chromosomal_inversion
+      lethal_when_homozygous:
+        description: >-
+          Balancer is lethal in homozygous condition, maintaining
+          heterozygous state for balanced chromosomes.
+        meaning: "SO:0001773"  # lethal_variant
+      visible_marker_carrier:
+        description: >-
+          Balancer carries visible phenotypic markers enabling
+          identification in genetic crosses.
+        meaning: "SO:0001060"  # sequence_variant
+      multiple_inversion_complex:
+        description: >-
+          Balancer contains multiple chromosomal inversions
+          forming a complex rearrangement.
+        meaning: "SO:1000037"  # inversion_breakpoint
