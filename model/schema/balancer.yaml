@@ -8,7 +8,7 @@ description: >-
   entities with balancer-specific metadata including data provenance
   and scientific attribution.
 
-version: 1.1.0
+version: 2.0.0
 default_prefix: alliance
 default_range: string
 
@@ -174,6 +174,78 @@ slots:
       - value: false
         description: "TM6B is not obsolete"
 
+# Exchange 3 Structured Slots
+  has_breakpoints:
+    domain: Balancer
+    range: Breakpoint
+    multivalued: true
+    description: >-
+      Collection of chromosomal breakpoints defining this balancer's structure.
+      Structured approach enables precise biological modeling.
+
+  suppresses_genes:
+    domain: Balancer  
+    range: Gene
+    multivalued: true
+    description: >-
+      Genes whose recombination is suppressed by this balancer.
+      Enables computational querying across genomic regions.
+
+  parent_stock_relationship:
+    domain: Balancer
+    range: StockRelationship
+    multivalued: true
+    description: >-
+      Structured relationships to parent stocks and construction history.
+
+  chromosome:
+    domain: Breakpoint
+    range: string
+    description: >-
+      Chromosome identifier using standard nomenclature.
+
+  start_position:
+    domain: Breakpoint
+    range: integer
+    description: >-
+      Start coordinate of breakpoint region.
+
+  end_position:
+    domain: Breakpoint
+    range: integer
+    description: >-
+      End coordinate of breakpoint region.
+
+  reference_genome:
+    domain: Breakpoint
+    range: string
+    description: >-
+      Reference genome assembly for coordinate system.
+
+  breakpoint_type:
+    domain: Breakpoint
+    range: BreakpointTypeEnum
+    description: >-
+      Type of chromosomal rearrangement at this breakpoint.
+
+  parent_stock_id:
+    domain: StockRelationship
+    range: uriorcurie
+    description: >-
+      Identifier of parent stock or aberration.
+
+  relationship_type:
+    domain: StockRelationship
+    range: string
+    description: >-
+      Nature of genetic relationship to parent.
+
+  construction_method:
+    domain: StockRelationship
+    range: string
+    description: >-
+      Method used to derive balancer from parent.
+
 enums:
   BalancerUtilityEnum:
     description: >-
@@ -200,3 +272,69 @@ enums:
           Balancer contains multiple chromosomal inversions
           forming a complex rearrangement.
         meaning: "SO:1000037"  # inversion_breakpoint
+
+  BreakpointTypeEnum:
+    description: >-
+      Controlled vocabulary for types of chromosomal rearrangements
+      found at balancer breakpoints.
+    permissible_values:
+      inversion:
+        description: >-
+          Chromosomal inversion breakpoint.
+        meaning: "SO:0001059"  # chromosomal_inversion
+      deletion:
+        description: >-
+          Chromosomal deletion breakpoint.
+        meaning: "SO:0000159"  # deletion
+      duplication:
+        description: >-
+          Chromosomal duplication breakpoint.
+        meaning: "SO:1000035"  # duplication
+      translocation:
+        description: >-
+          Chromosomal translocation breakpoint.
+        meaning: "SO:0000199"  # translocation
+
+# Exchange 3 Structured Approach - Modular Classes
+classes:
+  Balancer:
+    is_a: Allele
+    description: >-
+      Specialized balancer chromosome entity with structured biological modeling.
+      Extends Allele with balancer-specific attributes and relationships.
+      Implements "innovate locally, conform globally" design principle.
+    slots:
+      - has_breakpoints
+      - suppresses_genes
+      - parent_stock_relationship
+      - balancer_utility
+      - viability_phenotype
+    examples:
+      - value: "FB:FBal0016059"
+        description: "TM6B balancer with structured modeling"
+
+  Breakpoint:
+    description: >-
+      Chromosomal breakpoint with structured coordinates and biological context.
+      Uses only AGR base datatypes per Exchange 3 constraints.
+    slots:
+      - chromosome
+      - start_position
+      - end_position
+      - reference_genome
+      - breakpoint_type
+    examples:
+      - value: "TM6B_breakpoint_1"
+        description: "First breakpoint of TM6B inversion"
+
+  StockRelationship:
+    description: >-
+      Genetic relationship to parent stocks and progenitor chromosomes.
+      Captures balancer lineage and construction history.
+    slots:
+      - parent_stock_id
+      - relationship_type
+      - construction_method
+    examples:
+      - value: "TM6B_parent_relationship"
+        description: "TM6B derivation from In(3LR)TM6B"
