@@ -4,8 +4,7 @@ title: Alliance Schema Balancer Extension
 description: >-
   LinkML schema extension for balancer chromosome support in the
   Alliance of Genome Resources (AGR) schema. This extension implements
-  advanced structured modeling with the BalancerChromosome class
-  for sophisticated biological representation of Drosophila balancer chromosomes.
+  sophisticated biological modeling for Drosophila balancer chromosomes.
 
 version: 2.1.0
 default_prefix: alliance
@@ -25,13 +24,13 @@ prefixes:
   biolink: https://w3id.org/biolink/vocab/
 
 slots:
-  # BalancerChromosome core slots  
+  # BalancerChromosome slots  
   represents_allele:
     domain: BalancerChromosome
     range: uriorcurie
     description: >-
-      Back-pointer to canonical Allele entity. Maintains AGR ETL compatibility
-      while preserving clean chromosome-level semantics.
+      Back-pointer to canonical Allele entity for this balancer.
+      Maintains compatibility with existing AGR data integration.
     multivalued: false
     required: false
     examples:
@@ -42,8 +41,8 @@ slots:
     domain: BalancerChromosome
     range: uriorcurie
     description: >-
-      Core Chromosome entity affected by this balancer. Essential for
-      biological context and cross-validation with AGR chromosome data.
+      Core Chromosome entity affected by this balancer for
+      biological context and validation.
     multivalued: false
     required: true
     examples:
@@ -55,12 +54,12 @@ slots:
     range: Breakpoint
     multivalued: true
     description: >-
-      Structured chromosomal breakpoints with coordinates, orientation,
-      and rearrangement type. Enables sophisticated computational analysis.
+      Chromosomal breakpoints with coordinates, orientation,
+      and rearrangement type for computational analysis.
     required: false
     examples:
       - value: "FB:FBal0016059_brk1"
-        description: "First breakpoint of TM6B inversion complex"
+        description: "First breakpoint of TM6B balancer"
 
   suppressed_regions:
     domain: BalancerChromosome
@@ -68,7 +67,7 @@ slots:
     multivalued: true
     description: >-
       Genomic regions with recombination suppression. Many balancers only
-      suppress distal regions, captured through structured modeling.
+      suppress distal regions of chromosomes.
     required: false
     examples:
       - value: "FB:FBal0016059_supp1"
@@ -79,8 +78,8 @@ slots:
     range: StockRelationship
     multivalued: true
     description: >-
-      Structured genetic relationships to parent stocks and aberrations.
-      Captures construction history and lineage provenance.
+      Genetic relationships to parent stocks and aberrations
+      capturing construction history and lineage.
     required: false
     examples:
       - value: "FB:FBal0016059_rel1"
@@ -91,7 +90,7 @@ slots:
     range: uriorcurie
     multivalued: true
     description: >-
-      Genes whose recombination is suppressed. Enables computational
+      Genes whose recombination is suppressed for computational
       querying across genomic regions and pathway analysis.
     required: false
     examples:
@@ -102,8 +101,8 @@ slots:
     domain: BalancerChromosome
     range: ViabilityEnum
     description: >-
-      Viability when homozygous. Essential for stock centers and breeding
-      programs. Critical for genetic planning and laboratory operations.
+      Viability when homozygous for stock centers and breeding
+      programs essential for genetic planning and laboratory operations.
     required: false
     default: UNKNOWN
     examples:
@@ -125,7 +124,7 @@ slots:
     range: uriorcurie
     multivalued: true
     description: >-
-      Dominant phenotypic markers for genetic tracking. Essential for
+      Dominant phenotypic markers for genetic tracking in
       stock center operations and laboratory identification.
     required: false
     examples:
@@ -136,21 +135,20 @@ slots:
     domain: BalancerChromosome
     range: BalancerStatus
     description: >-
-      Balancer classification status with provenance capability.
-      Enables reasoning and compositionality beyond simple boolean flags.
+      Balancer classification status with provenance capability
+      enabling reasoning beyond simple boolean flags.
     required: false
     default: UNKNOWN
     examples:
       - value: "BALANCER"
         description: "TM6B confirmed as balancer chromosome"
 
-  # Breakpoint structured slots with dual coordinate systems
+  # Breakpoint slots with dual coordinate systems
   cytological_band:
     domain: Breakpoint
     range: string
     description: >-
       Cytological band location using standard Drosophila nomenclature.
-      Enhanced pattern validation for biological accuracy.
     pattern: "^[0-9XY]+[LR]?:[0-9]+[A-Z](?:\\.[0-9]+)?$"
     required: false
     examples:
@@ -161,7 +159,7 @@ slots:
     domain: Breakpoint
     range: integer
     description: >-
-      Sequence coordinate start position. Enables integration with
+      Sequence coordinate start position for integration with
       modern genome assemblies and computational genomics workflows.
     required: false
     examples:
@@ -192,7 +190,7 @@ slots:
     domain: Breakpoint
     range: OrientationEnum
     description: >-
-      Chromosomal orientation at breakpoint. Critical for accurate
+      Chromosomal orientation at breakpoint for accurate
       inversion modeling and biological representation.
     required: false
     default: UNKNOWN
@@ -204,19 +202,19 @@ slots:
     domain: Breakpoint
     range: BreakpointTypeEnum
     description: >-
-      Rearrangement type using standardized SO terminology for
+      Rearrangement type using standardized terminology for
       ontological consistency and biological accuracy.
     required: false
     examples:
       - value: "INVERSION"
         description: "Chromosomal inversion breakpoint"
 
-  # SuppressedRegion structured slots with dual coordinate systems
+  # SuppressedRegion slots with dual coordinate systems
   cytological_location:
     domain: SuppressedRegion
     range: string
     description: >-
-      Cytological range of suppression using enhanced pattern validation.
+      Cytological range of suppression with pattern validation.
     pattern: "^[0-9XY]+[LR]?:[0-9]+[A-Z](?:\\.[0-9]+)?-[0-9]+[A-Z](?:\\.[0-9]+)?$"
     required: false
     examples:
@@ -227,7 +225,7 @@ slots:
     domain: SuppressedRegion
     range: string
     description: >-
-      Sequence coordinates for suppressed region. Supports modern genomics
+      Sequence coordinates for suppressed region supporting modern genomics
       and computational analysis workflows.
     pattern: "^[0-9XY]+[LR]?:[0-9]+-[0-9]+$"
     required: false
@@ -239,14 +237,14 @@ slots:
     domain: SuppressedRegion
     range: SuppressionEnum
     description: >-
-      Recombination suppression efficiency. Captures biological variability
+      Recombination suppression efficiency capturing biological variability
       and regional differences in suppression strength.
     required: false
     examples:
       - value: "COMPLETE"
         description: "100% suppression in TM6B inversion region"
 
-  # StockRelationship structured slots
+  # StockRelationship slots
   parent_stock_id:
     domain: StockRelationship
     range: uriorcurie
@@ -303,9 +301,8 @@ classes:
   BalancerChromosome:
     is_a: GenomicEntity
     description: >-
-      Advanced balancer chromosome entity with sophisticated biological modeling.
-      Separate from Allele to avoid semantic overload and maintain clean
-      chromosome-level semantics. Supports computational genomics workflows.
+      Advanced balancer chromosome entity with sophisticated biological modeling
+      for chromosome-level semantics supporting computational genomics workflows.
     slots:
       - id
       - represents_allele
@@ -328,13 +325,13 @@ classes:
         required: true
     examples:
       - value: "FB:FBal0016059"
-        description: "TM6B balancer with advanced structured modeling"
+        description: "TM6B balancer chromosome"
 
   Breakpoint:
     is_a: InformationContentEntity
     description: >-
-      Sophisticated breakpoint modeling with sequence and cytological coordinates.
-      Supports both legacy cytological data and modern genomic assemblies.
+      Breakpoint modeling with sequence and cytological coordinates
+      supporting both legacy cytological data and modern genomic assemblies.
     slots:
       - id
       - chromosome
@@ -355,12 +352,12 @@ classes:
         required: true
     examples:
       - value: "FB:FBal0016059_brk1"
-        description: "TM6B first inversion breakpoint with dual coordinates"
+        description: "TM6B first breakpoint with dual coordinates"
 
   SuppressedRegion:
     is_a: InformationContentEntity
     description: >-
-      Genomic region with quantified recombination suppression. Captures
+      Genomic region with quantified recombination suppression capturing
       regional variation and efficiency gradients across chromosome arms.
     slots:
       - id
@@ -400,8 +397,8 @@ classes:
 enums:
   BalancerStatus:
     description: >-
-      Balancer classification status enabling provenance and reasoning.
-      Supports compositionality beyond simple boolean flags.
+      Balancer classification status enabling provenance and reasoning
+      with compositionality beyond simple boolean flags.
     permissible_values:
       BALANCER:
         description: "Confirmed balancer chromosome"
@@ -413,7 +410,7 @@ enums:
 
   OrientationEnum:
     description: >-
-      Chromosomal orientation enabling accurate inversion modeling.
+      Chromosomal orientation for accurate inversion modeling.
     permissible_values:
       FORWARD:
         description: "Normal chromosomal orientation"
@@ -426,7 +423,7 @@ enums:
 
   BreakpointTypeEnum:
     description: >-
-      Chromosomal rearrangement types using standardized SO terminology.
+      Chromosomal rearrangement types using standardized terminology.
     permissible_values:
       INVERSION:
         description: "Chromosomal inversion breakpoint"
@@ -443,7 +440,7 @@ enums:
 
   ViabilityEnum:
     description: >-
-      Homozygous viability classification. Essential for stock center operations.
+      Homozygous viability classification for stock center operations.
     permissible_values:
       LETHAL:
         description: "Lethal when homozygous"
