@@ -1,0 +1,181 @@
+{
+  "@context": {
+    "@vocab": "https://github.com/alliance-genome/agr_curation_schema/",
+    "alliance": "https://github.com/alliance-genome/agr_curation_schema/",
+    "FB": "https://flybase.org/reports/",
+    "SO": "http://purl.obolibrary.org/obo/SO_",
+    "NCBITaxon": "http://purl.obolibrary.org/obo/NCBITaxon_"
+  },
+  "@type": "Balancer",
+  "id": "FB:FBal0016059",
+  "curie": "FB:FBal0016059",
+  "category": "balancer",
+  "symbol": "TM6B",
+  "name": "Third Multiple 6 Balancer",
+  "synonyms": ["TM6B", "Third Multiple Six"],
+  "taxon": "NCBITaxon:7227",
+  "data_provider": "FB",
+  "created_by": "FB:FB_curator",
+  "updated_by": "FB:FB_curator",
+  "date_created": "2006-08-22",
+  "date_updated": "2025-06-07",
+  
+  "_comment": "=== STRUCTURED APPROACH BALANCER ENTITIES ===",
+  
+  "has_breakpoints": [
+    {
+      "@type": "Breakpoint",
+      "id": "TM6B_breakpoint_1",
+      "chromosome": "3L",
+      "start_position": 61,
+      "end_position": 61,
+      "reference_genome": "dm6",
+      "breakpoint_type": "inversion",
+      "cytological_location": "61A1",
+      "molecular_coordinates": "3L:61A1-61A2"
+    },
+    {
+      "@type": "Breakpoint", 
+      "id": "TM6B_breakpoint_2",
+      "chromosome": "3L",
+      "start_position": 84,
+      "end_position": 84,
+      "reference_genome": "dm6",
+      "breakpoint_type": "inversion",
+      "cytological_location": "84F2",
+      "molecular_coordinates": "3L:84F2-84F3"
+    },
+    {
+      "@type": "Breakpoint",
+      "id": "TM6B_breakpoint_3", 
+      "chromosome": "3R",
+      "start_position": 87,
+      "end_position": 86,
+      "reference_genome": "dm6",
+      "breakpoint_type": "inversion",
+      "cytological_location": "87B2-86C8",
+      "molecular_coordinates": "3R:87B2-86C8"
+    },
+    {
+      "@type": "Breakpoint",
+      "id": "TM6B_breakpoint_4",
+      "chromosome": "3R", 
+      "start_position": 84,
+      "end_position": 86,
+      "reference_genome": "dm6",
+      "breakpoint_type": "inversion",
+      "cytological_location": "84F2-86C7",
+      "molecular_coordinates": "3R:84F2-86C7"
+    }
+  ],
+  
+  "suppresses_genes": [
+    "FB:FBgn0000008",
+    "FB:FBgn0000014", 
+    "FB:FBgn0000015",
+    "FB:FBgn0000017"
+  ],
+  
+  "parent_stock_relationship": [
+    {
+      "@type": "StockRelationship",
+      "id": "TM6B_parent_relationship_1",
+      "parent_stock_id": "FB:FBab0005465",
+      "relationship_type": "derived_from_aberration",
+      "construction_method": "multiple_inversion_selection",
+      "construction_details": "Derived from In(3LR)TM6B through genetic selection and stabilization",
+      "construction_date": "1960s",
+      "constructor": "Craymer"
+    }
+  ],
+  
+  "balancer_utility": "suppressor_of_crossing_over",
+  "viability_phenotype": "homozygous_lethal",
+  
+  "_comment": "=== INHERITED ALLELE PROPERTIES ===",
+  
+  "allele_type": "SO:0001059",
+  "functional_impact": "gain_of_function",
+  "generation_method": "naturally_occurring", 
+  "germline_transmission_status": "cell_line",
+  "parent_cell_line": null,
+  "mutagen": "unknown",
+  "mutagee_sex": "unknown",
+  "genetic_modifier_relation": "enhancer",
+  "genetic_modifier_alleles": [],
+  
+  "_comment": "=== CARRIED MARKER ALLELES ===",
+  
+  "carried_alleles": [
+    "FB:FBal0000583",
+    "FB:FBal0003278"
+  ],
+  
+  "_comment": "=== SUPPRESSED CHROMOSOMAL REGIONS ===",
+  
+  "suppressed_regions": [
+    {
+      "chromosome": "3L",
+      "start_coordinate": 1,
+      "end_coordinate": 20000000,
+      "suppression_efficiency": "complete",
+      "region_description": "Entire 3L arm"
+    },
+    {
+      "chromosome": "3R", 
+      "start_coordinate": 1,
+      "end_coordinate": 25000000,
+      "suppression_efficiency": "complete",
+      "region_description": "Entire 3R arm"
+    }
+  ],
+  
+  "_comment": "=== BIOLOGICAL CONTEXT ===",
+  
+  "genetic_background": "y w",
+  "temperature_sensitive": false,
+  "balanced_chromosome": ["3"],
+  "stock_availability": ["BDSC:3703", "KYOTO:108027"],
+  "discoverer": "Craymer",
+  "discovery_year": "1960s",
+  
+  "_comment": "=== REFERENCES AND CROSS-REFERENCES ===",
+  
+  "references": [
+    "FB:FBrf0247151",
+    "FB:FBrf0243989", 
+    "FB:FBrf0232806"
+  ],
+  
+  "cross_references": [
+    {
+      "resource_descriptor": "FB",
+      "cross_reference_id": "FBba0000057", 
+      "page_area": "balancer",
+      "display_name": "TM6B"
+    }
+  ],
+  
+  "_comment": "=== NOTES AND ANNOTATIONS ===",
+  
+  "notes": [
+    {
+      "note_type": "balancer_description",
+      "free_text": "Multiple inversion balancer for chromosome 3 that completely suppresses recombination across both arms. Contains complex series of inversions that prevent viable recombinant formation. Essential tool for Drosophila genetics enabling maintenance of lethal and sterile mutations on chromosome 3.",
+      "evidence": ["FB:FBrf0066905"],
+      "created_by": "FB:FB_curator", 
+      "updated_by": "FB:FB_curator",
+      "date_created": "2006-08-22",
+      "date_updated": "2020-11-30"
+    },
+    {
+      "note_type": "usage_guidelines",
+      "free_text": "Maintain as heterozygote over wild-type chromosome 3. Homozygous lethal. Best maintained at 25°C. Use visible markers (e, AntpHu) for genetic tracking in crosses.",
+      "evidence": ["FB:FBrf0201244"],
+      "created_by": "FB:FB_curator",
+      "updated_by": "FB:FB_curator", 
+      "date_created": "2006-08-22",
+      "date_updated": "2020-11-30"
+    }
+  ]
+}

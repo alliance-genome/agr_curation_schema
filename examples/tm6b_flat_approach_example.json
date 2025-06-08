@@ -1,0 +1,82 @@
+{
+  "@context": {
+    "@vocab": "https://github.com/alliance-genome/agr_curation_schema/",
+    "alliance": "https://github.com/alliance-genome/agr_curation_schema/",
+    "FB": "https://flybase.org/reports/",
+    "SO": "http://purl.obolibrary.org/obo/SO_",
+    "NCBITaxon": "http://purl.obolibrary.org/obo/NCBITaxon_"
+  },
+  "@type": "Allele",
+  "id": "FB:FBal0016059",
+  "curie": "FB:FBal0016059",
+  "category": "balancer_allele",
+  "symbol": "TM6B",
+  "name": "Third Multiple 6 Balancer",
+  "synonyms": ["TM6B", "Third Multiple Six"],
+  "taxon": "NCBITaxon:7227",
+  "data_provider": "FB",
+  "created_by": "FB:FB_curator",
+  "updated_by": "FB:FB_curator",
+  "date_created": "2006-08-22",
+  "date_updated": "2025-06-07",
+  
+  "_comment": "=== FLAT APPROACH BALANCER PROPERTIES ===",
+  
+  "is_balancer": true,
+  "parent_aberration": "FB:FBab0005465",
+  "cytological_breakpoints": "61A1-2|84F2-3|87B2-86C8|84F2-86C7",
+  "carried_alleles": [
+    "FB:FBal0000583",
+    "FB:FBal0003278"
+  ],
+  "balancer_utility": "suppressor_of_crossing_over",
+  "discoverer": "Craymer",
+  "alternate_names": ["Third Multiple 6", "TM6 Balancer"],
+  "internal_notes": "Multiple inversion balancer covering chromosome 3. Essential for Drosophila genetics.",
+  "date_accessioned": "2006-08-22",
+  "date_last_modified": "2020-11-30",
+  "is_obsolete": false,
+  
+  "_comment": "=== STANDARD ALLELE PROPERTIES ===",
+  
+  "allele_type": "SO:0001059",
+  "functional_impact": "gain_of_function", 
+  "generation_method": "naturally_occurring",
+  "germline_transmission_status": "cell_line",
+  "parent_cell_line": null,
+  "mutagen": "unknown",
+  "mutagee_sex": "unknown",
+  "genetic_modifier_relation": "enhancer",
+  "genetic_modifier_alleles": [],
+  
+  "_comment": "=== REFERENCES AND CROSS-REFERENCES ===",
+  
+  "references": [
+    "FB:FBrf0247151",
+    "FB:FBrf0243989",
+    "FB:FBrf0232806"
+  ],
+  
+  "cross_references": [
+    {
+      "resource_descriptor": "FB",
+      "cross_reference_id": "FBba0000057",
+      "page_area": "balancer",
+      "display_name": "TM6B"
+    }
+  ],
+  
+  "_comment": "=== NOTES AND ANNOTATIONS ===",
+  
+  "notes": [
+    {
+      "note_type": "balancer_description",
+      "free_text": "Multiple inversion balancer for chromosome 3 that suppresses recombination across the entire chromosome arm. Essential tool for Drosophila genetics and stock maintenance.",
+      "evidence": ["FB:FBrf0066905"],
+      "created_by": "FB:FB_curator",
+      "updated_by": "FB:FB_curator",
+      "date_created": "2006-08-22",
+      "date_updated": "2020-11-30"
+    }
+  ]
+}
