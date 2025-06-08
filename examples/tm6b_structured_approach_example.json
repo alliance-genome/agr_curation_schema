@@ -32,7 +32,8 @@
       "reference_genome": "dm6",
       "breakpoint_type": "inversion",
       "cytological_location": "61A1",
-      "molecular_coordinates": "3L:61A1-61A2"
+      "molecular_coordinates": "3L:61A1-61A2",
+      "evidence_codes": ["ECO:0000088", "ECO:0000320"]
     },
     {
       "@type": "Breakpoint", 
@@ -43,7 +44,8 @@
       "reference_genome": "dm6",
       "breakpoint_type": "inversion",
       "cytological_location": "84F2",
-      "molecular_coordinates": "3L:84F2-84F3"
+      "molecular_coordinates": "3L:84F2-84F3",
+      "evidence_codes": ["ECO:0000088", "ECO:0000320"]
     },
     {
       "@type": "Breakpoint",
@@ -54,7 +56,8 @@
       "reference_genome": "dm6",
       "breakpoint_type": "inversion",
       "cytological_location": "87B2-86C8",
-      "molecular_coordinates": "3R:87B2-86C8"
+      "molecular_coordinates": "3R:87B2-86C8",
+      "evidence_codes": ["ECO:0000088", "ECO:0000320"]
     },
     {
       "@type": "Breakpoint",
@@ -65,7 +68,8 @@
       "reference_genome": "dm6",
       "breakpoint_type": "inversion",
       "cytological_location": "84F2-86C7",
-      "molecular_coordinates": "3R:84F2-86C7"
+      "molecular_coordinates": "3R:84F2-86C7",
+      "evidence_codes": ["ECO:0000088", "ECO:0000320"]
     }
   ],
   
@@ -85,12 +89,18 @@
       "construction_method": "multiple_inversion_selection",
       "construction_details": "Derived from In(3LR)TM6B through genetic selection and stabilization",
       "construction_date": "1960s",
-      "constructor": "Craymer"
+      "constructor": "Craymer",
+      "evidence_codes": ["ECO:0000016", "ECO:0000304"]
     }
   ],
   
   "balancer_utility": "suppressor_of_crossing_over",
   "viability_phenotype": "homozygous_lethal",
+  "evidence_codes": [
+    "ECO:0000314",
+    "ECO:0000033",
+    "ECO:0006056"
+  ],
   
   "_comment": "=== INHERITED ALLELE PROPERTIES ===",
   
@@ -119,14 +129,16 @@
       "start_coordinate": 1,
       "end_coordinate": 20000000,
       "suppression_efficiency": "complete",
-      "region_description": "Entire 3L arm"
+      "region_description": "Entire 3L arm",
+      "evidence_codes": ["ECO:0000314", "ECO:0000021"]
     },
     {
       "chromosome": "3R", 
       "start_coordinate": 1,
       "end_coordinate": 25000000,
       "suppression_efficiency": "complete",
-      "region_description": "Entire 3R arm"
+      "region_description": "Entire 3R arm",
+      "evidence_codes": ["ECO:0000314", "ECO:0000021"]
     }
   ],
   
