@@ -297,6 +297,22 @@ slots:
       - value: "suppressor_of_crossing_over"
         description: "TM6B primary utility"
 
+  # Evidence code slots for evidential support
+  evidence_codes:
+    description: >-
+      ECO term IDs supporting various claims about balancer chromosomes,
+      breakpoints, suppressed regions, and stock relationships.
+    multivalued: true
+    values_from:
+      - ECO
+    range: ECOTerm
+    required: false
+    examples:
+      - value: "ECO:0000314"
+        description: "direct assay evidence for balancer properties"
+      - value: "ECO:0000088"  
+        description: "computational inference for breakpoint coordinates"
+
 classes:
   BalancerChromosome:
     is_a: GenomicEntity
@@ -317,6 +333,7 @@ classes:
       - balancer_status
       - carried_alleles
       - balancer_utility
+      - evidence_codes
     slot_usage:
       id:
         identifier: true
@@ -341,6 +358,7 @@ classes:
       - reference_genome
       - orientation
       - breakpoint_type
+      - evidence_codes
     slot_usage:
       id:
         identifier: true
@@ -364,6 +382,7 @@ classes:
       - cytological_location
       - sequence_location
       - suppression_efficiency
+      - evidence_codes
     slot_usage:
       id:
         identifier: true
@@ -384,6 +403,7 @@ classes:
       - parent_stock_id
       - relationship_type
       - construction_method
+      - evidence_codes
     slot_usage:
       id:
         identifier: true
