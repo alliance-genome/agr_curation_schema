@@ -201,18 +201,3 @@ enums:
           forming a complex rearrangement.
         meaning: "SO:1000037"  # inversion_breakpoint
 
-  # Exchange 5 Minimal JSON Property Approach
-  balancer_metadata:
-    domain: Allele
-    range: string
-    description: >-
-      JSON object containing structured balancer-specific metadata.
-      Uses existing feature_property infrastructure with fb:balancer_meta CV term.
-      Machine-readable format enabling future migration to structured objects.
-    multivalued: false
-    required: false
-    examples:
-      - value: '{"molecular_type": "inversion", "suppresses_recombination": ["3L:1..20000000","3R:1..25000000"], "dominant_markers": ["e", "AntpHu"], "lethal_phase": "embryonic"}'
-        description: "TM6B structured metadata as JSON"
-      - value: '{"molecular_type": "inversion", "suppresses_recombination": ["X:1..22422827"], "dominant_markers": ["B"], "lethal_phase": "adult"}'
-        description: "FM7a structured metadata as JSON"
