@@ -3,12 +3,12 @@ name: alliance-schema-balancer
 title: Alliance Schema Balancer Extension
 description: >-
   LinkML schema extension for balancer chromosome support in the
-  Alliance of Genome Resources (AGR) schema. This extension adds
-  support for modeling chromosomal balancers as specialized allele
-  entities with balancer-specific metadata including data provenance
-  and scientific attribution.
+  Alliance of Genome Resources (AGR) schema. This extension implements
+  advanced structured modeling with BalancerChromosome class per Round 6
+  o3 architectural guidance. Includes sophisticated biological modeling
+  with P1-P3 critical fixes applied.
 
-version: 2.0.0
+version: 2.1.0
 default_prefix: alliance
 default_range: string
 
@@ -21,320 +21,492 @@ prefixes:
   alliance: https://github.com/alliance-genome/agr_curation_schema/
   linkml: https://w3id.org/linkml/
   SO: http://purl.obolibrary.org/obo/SO_
+  GENO: http://purl.obolibrary.org/obo/GENO_
+  PATO: http://purl.obolibrary.org/obo/PATO_
   biolink: https://w3id.org/biolink/vocab/
 
+# P1-P3 CRITICAL FIXES + ADVANCED STRUCTURED MODELING
+
 slots:
-  parent_aberration:
-    domain: Allele
-    range: GenomicEntity
-    description: >-
-      The chromosomal aberration from which this balancer chromosome
-      is derived. Balancers are typically created from complex
-      chromosomal rearrangements such as inversions.
-    multivalued: false
-    required: false
-    examples:
-      - value: "FB:FBab0005465"
-        description: "In(3LR)TM6B parent aberration for TM6B balancer"
-
-  cytological_breakpoints:
-    domain: GenomicEntity
-    range: string
-    description: >-
-      Cytological description of chromosome breakpoints using
-      standard cytological band notation. Multiple breakpoints
-      are separated by pipe characters (|).
-    multivalued: false
-    required: false
-    pattern: "^[0-9]+[A-Z][a-z]?[0-9]?(-[0-9]+[A-Z][a-z]?[0-9]?)*(\\|[0-9]+[A-Z][a-z]?[0-9]?(-[0-9]+[A-Z][a-z]?[0-9]?)*)*$"
-    examples:
-      - value: "3Lt-61A1|87B2-86C8|84F2-86C7"
-        description: "Complex breakpoint notation for TM6B balancer"
-
-  carried_alleles:
-    domain: Allele
+  # BalancerChromosome core slots  
+  represents_allele:
+    domain: BalancerChromosome
     range: uriorcurie
     description: >-
-      Marker alleles carried by this balancer chromosome for
-      genetic selection purposes. These are typically visible
-      or lethal mutations that allow tracking of the balancer
-      in genetic crosses.
-    multivalued: true
-    required: false
-    examples:
-      - value: "FB:FBal0000583"
-        description: "AntpHu allele carried by TM6B balancer"
-      - value: "FB:FBal0003278"
-        description: "e1 allele carried by TM6B balancer"
-
-  balancer_utility:
-    domain: Allele
-    range: BalancerUtilityEnum
-    description: >-
-      Primary genetic utility or function of this balancer
-      chromosome in genetic analysis and stock maintenance.
+      Back-pointer to canonical Allele entity. Maintains AGR ETL compatibility
+      while preserving clean chromosome-level semantics per o3 guidance.
     multivalued: false
     required: false
     examples:
-      - value: "suppressor_of_crossing_over"
-        description: "TM6B suppresses recombination on chromosome 3"
+      - value: "FB:FBal0016059"
+        description: "TM6B allele represented by this balancer chromosome"
 
-  is_balancer:
-    domain: Allele
-    range: boolean
+  chromosome:
+    domain: BalancerChromosome
+    range: uriorcurie
     description: >-
-      Boolean flag indicating that this allele represents a
-      balancer chromosome. Used for efficient querying and
-      classification of balancer entities.
+      Core Chromosome entity affected by this balancer. Essential for
+      biological context and cross-validation with AGR chromosome data.
     multivalued: false
-    required: false
+    required: true
     examples:
-      - value: true
-        description: "TM6B is a balancer chromosome"
+      - value: "FB:FBch0003081"
+        description: "Chromosome 3 for TM6B balancer"
 
-  # Enhanced fields based on database analysis
-  discoverer:
-    domain: Allele
-    range: string
-    description: >-
-      Name of the scientist or researcher who discovered or
-      created this balancer chromosome. Provides scientific
-      attribution and historical context.
-    multivalued: false
-    required: false
-    examples:
-      - value: "Craymer"
-        description: "TM6B was discovered by Craymer"
-      - value: "Chovnick"
-        description: "MKRS was discovered by Chovnick"
-
-  alternate_names:
-    domain: BiologicalEntity
-    range: string
-    multivalued: true
-    description: >-
-      Alternative names, synonyms, and historical naming
-      conventions for this balancer. Includes both formal
-      and informal naming variants.
-    required: false
-    examples:
-      - value: "First Multiple Seven"
-        description: "Full descriptive name for FM7a"
-      - value: "Curly of Oster"
-        description: "Descriptive name for CyO balancer"
-
-  internal_notes:
-    domain: BiologicalEntity
-    range: string
-    description: >-
-      Internal curator notes and annotations not displayed
-      on public interfaces. Used for curation workflow
-      management and reference tracking.
-    multivalued: false
-    required: false
-    examples:
-      - value: "They reference FBrf0019393 for this balancer. gm200205."
-        description: "Internal reference tracking for FM7a"
-
-  date_accessioned:
-    domain: BiologicalEntity
-    range: date
-    description: >-
-      Date when this feature was first accessioned or created
-      in the database. Provides data provenance tracking.
-    multivalued: false
-    required: false
-    examples:
-      - value: "2006-08-22"
-        description: "Date TM6B was first entered in database"
-
-  date_last_modified:
-    domain: BiologicalEntity
-    range: date
-    description: >-
-      Date of the most recent modification to this feature.
-      Essential for data freshness assessment and versioning.
-    multivalued: false
-    required: false
-    examples:
-      - value: "2020-11-30"
-        description: "Last modification date for TM6B"
-
-  is_obsolete:
-    domain: BiologicalEntity
-    range: boolean
-    description: >-
-      Flag indicating whether this feature has been marked
-      as obsolete or deprecated. Critical for data quality
-      control and filtering.
-    multivalued: false
-    required: false
-    default: false
-    examples:
-      - value: false
-        description: "TM6B is not obsolete"
-
-# Exchange 3 Structured Slots
   has_breakpoints:
-    domain: Balancer
+    domain: BalancerChromosome
     range: Breakpoint
     multivalued: true
     description: >-
-      Collection of chromosomal breakpoints defining this balancer's structure.
-      Structured approach enables precise biological modeling.
+      Structured chromosomal breakpoints with coordinates, orientation,
+      and rearrangement type. Enables sophisticated computational analysis.
+    required: false
+    examples:
+      - value: "FB:FBal0016059_brk1"
+        description: "First breakpoint of TM6B inversion complex"
 
-  suppresses_genes:
-    domain: Balancer  
-    range: Gene
+  suppressed_regions:
+    domain: BalancerChromosome
+    range: SuppressedRegion  
     multivalued: true
     description: >-
-      Genes whose recombination is suppressed by this balancer.
-      Enables computational querying across genomic regions.
+      Genomic regions with recombination suppression. Many balancers only
+      suppress distal regions, captured through structured modeling.
+    required: false
+    examples:
+      - value: "FB:FBal0016059_supp1"
+        description: "Distal suppression region on 3L arm"
 
-  parent_stock_relationship:
-    domain: Balancer
+  parent_stock_relationships:
+    domain: BalancerChromosome
     range: StockRelationship
     multivalued: true
     description: >-
-      Structured relationships to parent stocks and construction history.
+      Structured genetic relationships to parent stocks and aberrations.
+      Captures construction history and lineage provenance.
+    required: false
+    examples:
+      - value: "FB:FBal0016059_rel1"
+        description: "TM6B derivation from In(3LR)TM6B aberration"
 
-  chromosome:
+  suppresses_genes:
+    domain: BalancerChromosome
+    range: uriorcurie
+    multivalued: true
+    description: >-
+      Genes whose recombination is suppressed. Enables computational
+      querying across genomic regions and pathway analysis.
+    required: false
+    examples:
+      - value: "FB:FBgn0003118"
+        description: "scabrous gene in suppressed region"
+
+  # P4 - Critical missing biological concepts
+  homozygous_viability:
+    domain: BalancerChromosome
+    range: ViabilityEnum
+    description: >-
+      Viability when homozygous. Essential for stock centers and breeding
+      programs. Major gap identified in Round 6 consultation.
+    required: false
+    default: UNKNOWN
+    examples:
+      - value: "LETHAL"
+        description: "TM6B is lethal when homozygous"
+
+  viability_condition:
+    domain: BalancerChromosome
+    range: string
+    description: >-
+      Environmental conditions affecting viability (temperature, stage).
+    required: false
+    examples:
+      - value: "lethal at 25°C, semi-viable at 18°C"
+        description: "Temperature-dependent conditional lethality"
+
+  phenotypic_markers:
+    domain: BalancerChromosome
+    range: uriorcurie
+    multivalued: true
+    description: >-
+      Dominant phenotypic markers for genetic tracking. Critical gap
+      identified by o3 - essential for stock center operations.
+    required: false
+    examples:
+      - value: "FB:FBal0000583"  
+        description: "AntpHu (Antennapedia Humeral) dominant marker"
+
+  # P2 CRITICAL FIX - Replace boolean with enum
+  balancer_status:
+    domain: BalancerChromosome
+    range: BalancerStatus
+    description: >-
+      Balancer classification with provenance capability. Replaces 
+      dead-end boolean per Round 6 P2 critical fix.
+    required: false
+    default: UNKNOWN
+    examples:
+      - value: "BALANCER"
+        description: "TM6B confirmed as balancer chromosome"
+
+  # Breakpoint structured slots (P3 fix)
+  cytological_band:
     domain: Breakpoint
     range: string
     description: >-
-      Chromosome identifier using standard nomenclature.
+      Cytological band location with improved pattern validation.
+      Fixed regex per o3 technical recommendations.
+    pattern: "^[0-9XY]+[LR]?:[0-9]+[A-Z](?:\\.[0-9]+)?$"
+    required: false
+    examples:
+      - value: "3L:61A1"
+        description: "First TM6B breakpoint location"
 
-  start_position:
+  sequence_start:
     domain: Breakpoint
     range: integer
     description: >-
-      Start coordinate of breakpoint region.
+      Sequence coordinate start position. Enables integration with
+      modern genome assemblies (Nanopore data available for some balancers).
+    required: false
+    examples:
+      - value: 12650000
+        description: "Approximate sequence position for 61A1"
 
-  end_position:
+  sequence_end:
     domain: Breakpoint
     range: integer
     description: >-
-      End coordinate of breakpoint region.
+      Sequence coordinate end position for breakpoint region.
+    required: false
+    examples:
+      - value: 12655000
+        description: "Breakpoint region end coordinate"
 
   reference_genome:
     domain: Breakpoint
     range: string
     description: >-
-      Reference genome assembly for coordinate system.
+      Reference genome assembly identifier for coordinates.
+    required: false
+    examples:
+      - value: "dm6"
+        description: "Drosophila melanogaster release 6 assembly"
+
+  orientation:
+    domain: Breakpoint
+    range: OrientationEnum
+    description: >-
+      Chromosomal orientation at breakpoint. Critical for inversion
+      modeling per Round 6 P3 guidance.
+    required: false
+    default: UNKNOWN
+    examples:
+      - value: "REVERSE"
+        description: "Inverted orientation at TM6B breakpoint"
 
   breakpoint_type:
     domain: Breakpoint
     range: BreakpointTypeEnum
     description: >-
-      Type of chromosomal rearrangement at this breakpoint.
+      Rearrangement type with correct SO term mappings per Round 6.
+    required: false
+    examples:
+      - value: "INVERSION"
+        description: "Chromosomal inversion breakpoint"
 
+  # SuppressedRegion structured slots
+  cytological_location:
+    domain: SuppressedRegion
+    range: string
+    description: >-
+      Cytological range of suppression. Pattern improved per o3 guidance.
+    pattern: "^[0-9XY]+[LR]?:[0-9]+[A-Z](?:\\.[0-9]+)?-[0-9]+[A-Z](?:\\.[0-9]+)?$"
+    required: false
+    examples:
+      - value: "3L:61A1-84F3"
+        description: "Suppressed region spanning chromosome 3L arm"
+
+  sequence_location:
+    domain: SuppressedRegion
+    range: string
+    description: >-
+      Sequence coordinates for suppressed region. Supports modern genomics.
+    pattern: "^[0-9XY]+[LR]?:[0-9]+-[0-9]+$"
+    required: false
+    examples:
+      - value: "3L:12650000-28750000"
+        description: "Sequence coordinates for suppressed region"
+
+  suppression_efficiency:
+    domain: SuppressedRegion
+    range: SuppressionEnum
+    description: >-
+      Recombination suppression efficiency. Captures biological variability.
+    required: false
+    examples:
+      - value: "COMPLETE"
+        description: "100% suppression in TM6B inversion region"
+
+  # StockRelationship structured slots
   parent_stock_id:
     domain: StockRelationship
     range: uriorcurie
     description: >-
-      Identifier of parent stock or aberration.
+      Identifier of parent stock or chromosomal aberration.
+    required: true
+    examples:
+      - value: "FB:FBab0005465"
+        description: "In(3LR)TM6B parent aberration"
 
   relationship_type:
     domain: StockRelationship
-    range: string
+    range: RelationshipTypeEnum
     description: >-
-      Nature of genetic relationship to parent.
+      Nature of genetic relationship to parent stock.
+    required: false
+    examples:
+      - value: "derived_from_aberration"
+        description: "Balancer derived from chromosomal aberration"
 
   construction_method:
     domain: StockRelationship
     range: string
     description: >-
-      Method used to derive balancer from parent.
+      Method used to construct balancer from parent stock.
+    required: false
+    examples:
+      - value: "multiple_inversion_selection"
+        description: "Selection of multiple inversion complex"
 
-enums:
-  BalancerUtilityEnum:
+  # Legacy compatibility
+  carried_alleles:
+    domain: BalancerChromosome
+    range: uriorcurie
+    multivalued: true
     description: >-
-      Controlled vocabulary for the primary genetic utility
-      of balancer chromosomes in research and stock maintenance.
-    permissible_values:
-      suppressor_of_crossing_over:
-        description: >-
-          Balancer suppresses recombination in the balanced
-          chromosomal region, maintaining linkage relationships.
-        meaning: "SO:0001059"  # chromosomal_inversion
-      lethal_when_homozygous:
-        description: >-
-          Balancer is lethal in homozygous condition, maintaining
-          heterozygous state for balanced chromosomes.
-        meaning: "SO:0001773"  # lethal_variant
-      visible_marker_carrier:
-        description: >-
-          Balancer carries visible phenotypic markers enabling
-          identification in genetic crosses.
-        meaning: "SO:0001060"  # sequence_variant
-      multiple_inversion_complex:
-        description: >-
-          Balancer contains multiple chromosomal inversions
-          forming a complex rearrangement.
-        meaning: "SO:1000037"  # inversion_breakpoint
+      Marker alleles for genetic selection. Uses uriorcurie to prevent recursion.
+    required: false
+    examples:
+      - value: "FB:FBal0000583"
+        description: "AntpHu marker allele"
 
-  BreakpointTypeEnum:
+  balancer_utility:
+    domain: BalancerChromosome
+    range: BalancerUtilityEnum
     description: >-
-      Controlled vocabulary for types of chromosomal rearrangements
-      found at balancer breakpoints.
-    permissible_values:
-      inversion:
-        description: >-
-          Chromosomal inversion breakpoint.
-        meaning: "SO:0001059"  # chromosomal_inversion
-      deletion:
-        description: >-
-          Chromosomal deletion breakpoint.
-        meaning: "SO:0000159"  # deletion
-      duplication:
-        description: >-
-          Chromosomal duplication breakpoint.
-        meaning: "SO:1000035"  # duplication
-      translocation:
-        description: >-
-          Chromosomal translocation breakpoint.
-        meaning: "SO:0000199"  # translocation
+      Primary genetic utility classification.
+    required: false
+    examples:
+      - value: "suppressor_of_crossing_over"
+        description: "TM6B primary utility"
 
-# Exchange 3 Structured Approach - Modular Classes
+# P1 CRITICAL FIX - Proper ID patterns using AGR best practices
 classes:
-  Balancer:
-    is_a: Allele
+  BalancerChromosome:
+    is_a: GenomicEntity
     description: >-
-      Specialized balancer chromosome entity with structured biological modeling.
-      Extends Allele with balancer-specific attributes and relationships.
-      Implements "innovate locally, conform globally" design principle.
+      Advanced balancer chromosome entity implementing o3 Option B architecture.
+      Separate from Allele to avoid semantic overload and AGR QC failures.
+      Supports sophisticated biological modeling and computational genomics.
     slots:
+      - id
+      - represents_allele
+      - chromosome
       - has_breakpoints
+      - suppressed_regions
+      - parent_stock_relationships
       - suppresses_genes
-      - parent_stock_relationship
+      - homozygous_viability
+      - viability_condition
+      - phenotypic_markers
+      - balancer_status
+      - carried_alleles
       - balancer_utility
-      - viability_phenotype
+    slot_usage:
+      id:
+        identifier: true
+        id_prefixes: [FB]
+        pattern: "^FBal[0-9]{8}$"  # P1 fix - local pattern only
+        required: true
     examples:
       - value: "FB:FBal0016059"
-        description: "TM6B balancer with structured modeling"
+        description: "TM6B balancer with advanced structured modeling"
 
   Breakpoint:
+    is_a: InformationContentEntity  # Not NamedThing per o3 guidance
     description: >-
-      Chromosomal breakpoint with structured coordinates and biological context.
-      Uses only AGR base datatypes per Exchange 3 constraints.
+      Sophisticated breakpoint modeling with sequence and cytological coordinates.
+      Supports both legacy cytological data and modern genomic assemblies.
     slots:
+      - id
       - chromosome
-      - start_position
-      - end_position
+      - cytological_band
+      - sequence_start
+      - sequence_end
       - reference_genome
+      - orientation
       - breakpoint_type
+    slot_usage:
+      id:
+        identifier: true
+        id_prefixes: [FB]
+        pattern: "^FBal[0-9]{8}_brk[0-9]+$"  # P1 fix
+        required: true
+      chromosome:
+        range: uriorcurie
+        required: true
     examples:
-      - value: "TM6B_breakpoint_1"
-        description: "First breakpoint of TM6B inversion"
+      - value: "FB:FBal0016059_brk1"
+        description: "TM6B first inversion breakpoint with dual coordinates"
+
+  SuppressedRegion:
+    is_a: InformationContentEntity  # Not NamedThing per o3 guidance
+    description: >-
+      Genomic region with quantified recombination suppression. Captures
+      regional variation and efficiency gradients across chromosome arms.
+    slots:
+      - id
+      - cytological_location
+      - sequence_location
+      - suppression_efficiency
+    slot_usage:
+      id:
+        identifier: true
+        id_prefixes: [FB]
+        pattern: "^FBal[0-9]{8}_supp[0-9]+$"  # P1 fix
+        required: true
+    examples:
+      - value: "FB:FBal0016059_supp1"
+        description: "Primary suppression region with efficiency measurement"
 
   StockRelationship:
+    is_a: InformationContentEntity  # Not NamedThing per o3 guidance
     description: >-
-      Genetic relationship to parent stocks and progenitor chromosomes.
-      Captures balancer lineage and construction history.
+      Genetic relationship capturing balancer construction lineage and
+      derivation history from parent stocks and aberrations.
     slots:
+      - id
       - parent_stock_id
       - relationship_type
       - construction_method
+    slot_usage:
+      id:
+        identifier: true
+        id_prefixes: [FB]
+        pattern: "^FBal[0-9]{8}_rel[0-9]+$"  # P1 fix
+        required: true
     examples:
-      - value: "TM6B_parent_relationship"
-        description: "TM6B derivation from In(3LR)TM6B"
+      - value: "FB:FBal0016059_rel1"
+        description: "TM6B derivation relationship to parent aberration"
+
+# P2 CRITICAL FIX - Boolean → Enum with reasoning capability
+enums:
+  BalancerStatus:
+    description: >-
+      Balancer classification status enabling provenance and reasoning.
+      Replaces dead-end boolean per Round 6 P2 fix.
+    permissible_values:
+      BALANCER:
+        description: "Confirmed balancer chromosome"
+        meaning: "GENO:0000002"  # balancer_allele
+      NOT_BALANCER:
+        description: "Confirmed non-balancer"
+      UNKNOWN:
+        description: "Classification status not determined"
+
+  # P3 - Structured breakpoint enums with correct SO terms
+  OrientationEnum:
+    description: >-
+      Chromosomal orientation enabling inversion modeling. Essential per Round 6.
+    permissible_values:
+      FORWARD:
+        description: "Normal chromosomal orientation"
+        meaning: "SO:0001879"  # chromosomal_inversion_breakpoint
+      REVERSE:
+        description: "Inverted chromosomal orientation"
+        meaning: "SO:0001879"  # chromosomal_inversion_breakpoint
+      UNKNOWN:
+        description: "Orientation not determined"
+
+  BreakpointTypeEnum:
+    description: >-
+      Chromosomal rearrangement types with correct SO mappings per Round 6.
+    permissible_values:
+      INVERSION:
+        description: "Chromosomal inversion breakpoint"
+        meaning: "SO:0001879"  # chromosomal_inversion_breakpoint
+      DELETION:
+        description: "Chromosomal deletion breakpoint"
+        meaning: "SO:0000159"  # deletion
+      DUPLICATION:
+        description: "Chromosomal duplication breakpoint"
+        meaning: "SO:1000035"  # duplication
+      TRANSLOCATION:
+        description: "Chromosomal translocation breakpoint"
+        meaning: "SO:0000199"  # translocation
+
+  # P4 - Critical missing biological concepts
+  ViabilityEnum:
+    description: >-
+      Homozygous viability classification. Essential for stock centers per Round 6.
+    permissible_values:
+      LETHAL:
+        description: "Lethal when homozygous"
+        meaning: "PATO:0000718"  # lethal
+      VIABLE:
+        description: "Viable when homozygous"
+        meaning: "PATO:0000169"  # viable
+      STERILE:
+        description: "Sterile when homozygous"
+        meaning: "PATO:0000618"  # sterile
+      CONDITIONAL:
+        description: "Conditionally lethal/sterile"
+        meaning: "PATO:0000718"  # lethal (conditional)
+
+  SuppressionEnum:
+    description: >-
+      Recombination suppression efficiency capturing biological variability.
+    permissible_values:
+      COMPLETE:
+        description: "100% recombination suppression"
+      PARTIAL:
+        description: "Partial recombination suppression (50-90%)"
+      VARIABLE:
+        description: "Variable suppression efficiency (environment dependent)"
+      MINIMAL:
+        description: "Minimal suppression (<50%)"
+
+  RelationshipTypeEnum:
+    description: >-
+      Types of genetic relationships to parent stocks and aberrations.
+    permissible_values:
+      derived_from_aberration:
+        description: "Derived from chromosomal aberration"
+      selected_from_stock:
+        description: "Selected from existing stock"
+      constructed_from_cross:
+        description: "Constructed from genetic cross"
+      isolated_from_population:
+        description: "Isolated from wild population"
+
+  BalancerUtilityEnum:
+    description: >-
+      Primary genetic utilities with ontology mappings.
+    permissible_values:
+      suppressor_of_crossing_over:
+        description: >-
+          Suppresses recombination maintaining linkage relationships.
+        meaning: "SO:0001059"  # chromosomal_inversion
+      lethal_when_homozygous:
+        description: >-
+          Lethal in homozygous state maintaining heterozygosity.
+        meaning: "SO:0001773"  # lethal_variant
+      visible_marker_carrier:
+        description: >-
+          Carries visible phenotypic markers for identification.
+        meaning: "SO:0001060"  # sequence_variant
+      multiple_inversion_complex:
+        description: >-
+          Contains multiple inversions forming complex rearrangement.
+        meaning: "SO:1000037"  # inversion_breakpoint

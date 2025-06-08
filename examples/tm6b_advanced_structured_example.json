@@ -1,0 +1,109 @@
+{
+  "@type": "BalancerChromosome",
+  "id": "FB:FBal0016059",
+  "symbol": "TM6B",
+  "name": "Third Multiple 6B",
+  "description": "Advanced structured model of TM6B balancer with complete biological annotation",
+  
+  "represents_allele": "FB:FBal0016059",
+  "chromosome": "FB:FBch0003081",
+  
+  "balancer_status": "BALANCER",
+  "homozygous_viability": "LETHAL",
+  "viability_condition": "lethal at all tested temperatures and developmental stages",
+  "balancer_utility": "suppressor_of_crossing_over",
+  
+  "has_breakpoints": [
+    {
+      "@type": "Breakpoint",
+      "id": "FB:FBal0016059_brk1",
+      "chromosome": "FB:FBch0003081",
+      "cytological_band": "3L:61A1",
+      "sequence_start": 12650000,
+      "sequence_end": 12655000,
+      "reference_genome": "dm6",
+      "orientation": "REVERSE",
+      "breakpoint_type": "INVERSION"
+    },
+    {
+      "@type": "Breakpoint", 
+      "id": "FB:FBal0016059_brk2",
+      "chromosome": "FB:FBch0003081",
+      "cytological_band": "3R:87B2",
+      "sequence_start": 23750000,
+      "sequence_end": 23755000,
+      "reference_genome": "dm6",
+      "orientation": "REVERSE",
+      "breakpoint_type": "INVERSION"
+    },
+    {
+      "@type": "Breakpoint",
+      "id": "FB:FBal0016059_brk3", 
+      "chromosome": "FB:FBch0003081",
+      "cytological_band": "3R:86C8",
+      "sequence_start": 22950000,
+      "sequence_end": 22955000,
+      "reference_genome": "dm6",
+      "orientation": "FORWARD",
+      "breakpoint_type": "INVERSION"
+    },
+    {
+      "@type": "Breakpoint",
+      "id": "FB:FBal0016059_brk4",
+      "chromosome": "FB:FBch0003081", 
+      "cytological_band": "3R:84F2",
+      "sequence_start": 21850000,
+      "sequence_end": 21855000,
+      "reference_genome": "dm6",
+      "orientation": "FORWARD",
+      "breakpoint_type": "INVERSION"
+    }
+  ],
+  
+  "suppressed_regions": [
+    {
+      "@type": "SuppressedRegion",
+      "id": "FB:FBal0016059_supp1",
+      "cytological_location": "3L:61A1-84F3",
+      "sequence_location": "3L:12650000-28750000",
+      "suppression_efficiency": "COMPLETE"
+    },
+    {
+      "@type": "SuppressedRegion",
+      "id": "FB:FBal0016059_supp2",
+      "cytological_location": "3R:84F2-87B2",
+      "sequence_location": "3R:21850000-23755000",
+      "suppression_efficiency": "PARTIAL"
+    }
+  ],
+  
+  "parent_stock_relationships": [
+    {
+      "@type": "StockRelationship",
+      "id": "FB:FBal0016059_rel1",
+      "parent_stock_id": "FB:FBab0005465",
+      "relationship_type": "derived_from_aberration",
+      "construction_method": "multiple_inversion_selection from In(3LR)TM6B aberration"
+    }
+  ],
+  
+  "suppresses_genes": [
+    "FB:FBgn0003118",
+    "FB:FBgn0002774",
+    "FB:FBgn0002121"
+  ],
+  
+  "phenotypic_markers": [
+    "FB:FBal0000583",
+    "FB:FBal0003278"
+  ],
+  
+  "carried_alleles": [
+    "FB:FBal0000583",
+    "FB:FBal0003278"
+  ],
+  
+  "taxon": "NCBITaxon:7227",
+  "in_taxon": "NCBITaxon:7227",
+  "data_provider": "FB"
+}
