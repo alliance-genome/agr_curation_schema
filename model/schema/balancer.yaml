@@ -53,7 +53,7 @@ slots:
 
   carried_alleles:
     domain: Allele
-    range: Allele
+    range: uriorcurie
     description: >-
       Marker alleles carried by this balancer chromosome for
       genetic selection purposes. These are typically visible
