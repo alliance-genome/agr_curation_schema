@@ -1,0 +1,67 @@
+{
+  "@type": "BalancerChromosome",
+  "id": "FB:FBal0016059",
+  "symbol": "TM6B",
+  "name": "Third Multiple 6B",
+  "description": "Balancer chromosome for Drosophila chromosome 3 with multiple inversions",
+  
+  "represents_allele": "FB:FBal0016059",
+  "chromosome": "FB:FBch0003081",
+  
+  "balancer_status": "BALANCER",
+  "homozygous_viability": "LETHAL",
+  "balancer_utility": "suppressor_of_crossing_over",
+  
+  "has_breakpoints": [
+    {
+      "@type": "Breakpoint",
+      "id": "FB:FBal0016059_brk1",
+      "chromosome": "FB:FBch0003081",
+      "cytological_band": "3L:61A1",
+      "orientation": "REVERSE",
+      "breakpoint_type": "INVERSION"
+    },
+    {
+      "@type": "Breakpoint", 
+      "id": "FB:FBal0016059_brk2",
+      "chromosome": "FB:FBch0003081",
+      "cytological_band": "3R:87B2",
+      "orientation": "REVERSE",
+      "breakpoint_type": "INVERSION"
+    },
+    {
+      "@type": "Breakpoint",
+      "id": "FB:FBal0016059_brk3", 
+      "chromosome": "FB:FBch0003081",
+      "cytological_band": "3R:86C8",
+      "orientation": "FORWARD",
+      "breakpoint_type": "INVERSION"
+    },
+    {
+      "@type": "Breakpoint",
+      "id": "FB:FBal0016059_brk4",
+      "chromosome": "FB:FBch0003081", 
+      "cytological_band": "3R:84F2",
+      "orientation": "FORWARD",
+      "breakpoint_type": "INVERSION"
+    }
+  ],
+  
+  "suppressed_regions": [
+    {
+      "@type": "SuppressedRegion",
+      "id": "FB:FBal0016059_supp1",
+      "cytological_location": "3L:61A1-84F3",
+      "suppression_efficiency": "COMPLETE"
+    }
+  ],
+  
+  "carried_alleles": [
+    "FB:FBal0000583",
+    "FB:FBal0003278"
+  ],
+  
+  "taxon": "NCBITaxon:7227",
+  "in_taxon": "NCBITaxon:7227",
+  "data_provider": "FB"
+}

@@ -3,12 +3,11 @@ name: alliance-schema-balancer
 title: Alliance Schema Balancer Extension
 description: >-
   LinkML schema extension for balancer chromosome support in the
-  Alliance of Genome Resources (AGR) schema. This extension adds
-  support for modeling chromosomal balancers as specialized allele
-  entities with balancer-specific metadata including data provenance
-  and scientific attribution.
+  Alliance of Genome Resources (AGR) schema. This extension implements
+  separate BalancerChromosome class per Round 6 o3 architectural guidance.
+  Uses structured approach with P1-P3 critical fixes applied.
 
-version: 1.2.0
+version: 1.3.0
 default_prefix: alliance
 default_range: string
 
@@ -21,183 +20,346 @@ prefixes:
   alliance: https://github.com/alliance-genome/agr_curation_schema/
   linkml: https://w3id.org/linkml/
   SO: http://purl.obolibrary.org/obo/SO_
+  GENO: http://purl.obolibrary.org/obo/GENO_
+  PATO: http://purl.obolibrary.org/obo/PATO_
   biolink: https://w3id.org/biolink/vocab/
 
+# P1-P3 CRITICAL FIXES APPLIED FROM ROUND 6
+
 slots:
-  parent_aberration:
-    domain: Allele
-    range: GenomicEntity
+  # BalancerChromosome specific slots
+  represents_allele:
+    domain: BalancerChromosome
+    range: uriorcurie
     description: >-
-      The chromosomal aberration from which this balancer chromosome
-      is derived. Balancers are typically created from complex
-      chromosomal rearrangements such as inversions.
+      Back-pointer to the canonical Allele entity (if one exists).
+      Maintains compatibility with existing AGR ETL while keeping
+      semantics clean per o3 architectural guidance.
     multivalued: false
     required: false
     examples:
-      - value: "FB:FBab0005465"
-        description: "In(3LR)TM6B parent aberration for TM6B balancer"
+      - value: "FB:FBal0016059"
+        description: "TM6B allele represented by this balancer chromosome"
 
-  cytological_breakpoints:
-    domain: GenomicEntity
+  chromosome:
+    domain: BalancerChromosome
+    range: uriorcurie
+    description: >-
+      Points to core Chromosome entity that this balancer affects.
+      Essential for biological context and validation.
+    multivalued: false
+    required: true
+    examples:
+      - value: "FB:FBch0003081"
+        description: "Chromosome 3 for TM6B balancer"
+
+  has_breakpoints:
+    domain: BalancerChromosome
+    range: Breakpoint
+    multivalued: true
+    description: >-
+      Collection of structured chromosomal breakpoints defining this 
+      balancer's rearrangement pattern. Implements P3 fix from Round 6.
+    required: false
+    examples:
+      - value: "FB:FBal0016059_brk1"
+        description: "First breakpoint of TM6B balancer"
+
+  suppressed_regions:
+    domain: BalancerChromosome
+    range: SuppressedRegion
+    multivalued: true
+    description: >-
+      Regions where recombination is suppressed by this balancer.
+      Many balancers only suppress distal regions, not entire arms.
+    required: false
+    examples:
+      - value: "FB:FBal0016059_supp1"
+        description: "Distal suppression region of TM6B"
+
+  # P4 - Critical missing biological concept
+  homozygous_viability:
+    domain: BalancerChromosome
+    range: ViabilityEnum
+    description: >-
+      Viability of homozygous individuals. Essential for stock centers
+      and genetic planning. P4 fix from Round 6 consultation.
+    required: false
+    default: UNKNOWN
+    examples:
+      - value: "LETHAL"
+        description: "TM6B is lethal when homozygous"
+
+  viability_condition:
+    domain: BalancerChromosome
     range: string
     description: >-
-      Cytological description of chromosome breakpoints using
-      standard cytological band notation. Multiple breakpoints
-      are separated by pipe characters (|).
-    multivalued: false
+      Conditions for conditional viability (temperature, stage, etc.)
     required: false
-    pattern: "^[0-9]+[A-Z][a-z]?[0-9]?(-[0-9]+[A-Z][a-z]?[0-9]?)*(\\|[0-9]+[A-Z][a-z]?[0-9]?(-[0-9]+[A-Z][a-z]?[0-9]?)*)*$"
     examples:
-      - value: "3Lt-61A1|87B2-86C8|84F2-86C7"
-        description: "Complex breakpoint notation for TM6B balancer"
+      - value: "lethal at 25°C, viable at 18°C"
+        description: "Temperature-sensitive viability condition"
 
+  # P2 CRITICAL FIX - Replace boolean with enum
+  balancer_status:
+    domain: BalancerChromosome
+    range: BalancerStatus
+    description: >-
+      Balancer classification status with provenance capability.
+      Replaces boolean is_balancer per P2 Round 6 fix.
+    required: false
+    default: UNKNOWN
+    examples:
+      - value: "BALANCER"
+        description: "TM6B is confirmed balancer chromosome"
+
+  # Breakpoint specific slots  
+  cytological_band:
+    domain: Breakpoint
+    range: string
+    description: >-
+      Cytological band location using standard Drosophila nomenclature.
+      Structured approach enables proper validation.
+    pattern: "^[0-9XY]+[LR]?:[0-9]+[A-Z](?:\\.[0-9]+)?$"
+    examples:
+      - value: "3L:61A1"
+        description: "Cytological location of TM6B breakpoint"
+
+  orientation:
+    domain: Breakpoint
+    range: OrientationEnum
+    description: >-
+      Chromosomal orientation at this breakpoint. Critical for
+      inversion modeling per P3 Round 6 guidance.
+    required: false
+    default: UNKNOWN
+    examples:
+      - value: "REVERSE"
+        description: "Inverted orientation at breakpoint"
+
+  breakpoint_type:
+    domain: Breakpoint
+    range: BreakpointTypeEnum
+    description: >-
+      Type of chromosomal rearrangement at this breakpoint.
+      Uses correct SO terms per Round 6 consultation.
+    required: false
+    examples:
+      - value: "INVERSION"
+        description: "Chromosomal inversion breakpoint"
+
+  # SuppressedRegion specific slots
+  cytological_location:
+    domain: SuppressedRegion
+    range: string
+    description: >-
+      Cytological range where recombination is suppressed.
+      Pattern fixed per o3 technical recommendations.
+    pattern: "^[0-9XY]+[LR]?:[0-9]+[A-Z](?:\\.[0-9]+)?-[0-9]+[A-Z](?:\\.[0-9]+)?$"
+    required: false
+    examples:
+      - value: "3L:61A1-84F3"
+        description: "Suppressed region on chromosome 3L"
+
+  suppression_efficiency:
+    domain: SuppressedRegion
+    range: SuppressionEnum
+    description: >-
+      Efficiency of recombination suppression in this region.
+      Captures biological variability in suppression strength.
+    required: false
+    examples:
+      - value: "COMPLETE"
+        description: "100% recombination suppression"
+
+  # Legacy compatibility slots for flat approach
   carried_alleles:
-    domain: Allele
+    domain: BalancerChromosome
     range: uriorcurie
     description: >-
       Marker alleles carried by this balancer chromosome for
-      genetic selection purposes. These are typically visible
-      or lethal mutations that allow tracking of the balancer
-      in genetic crosses.
+      genetic selection purposes. Uses uriorcurie to prevent recursion.
     multivalued: true
     required: false
     examples:
       - value: "FB:FBal0000583"
         description: "AntpHu allele carried by TM6B balancer"
-      - value: "FB:FBal0003278"
-        description: "e1 allele carried by TM6B balancer"
 
   balancer_utility:
-    domain: Allele
+    domain: BalancerChromosome
     range: BalancerUtilityEnum
     description: >-
-      Primary genetic utility or function of this balancer
-      chromosome in genetic analysis and stock maintenance.
+      Primary genetic utility of this balancer chromosome.
     multivalued: false
     required: false
     examples:
       - value: "suppressor_of_crossing_over"
-        description: "TM6B suppresses recombination on chromosome 3"
+        description: "TM6B suppresses recombination"
 
-  is_balancer:
-    domain: Allele
-    range: boolean
+# P1 CRITICAL FIX - Proper ID patterns using AGR best practices
+classes:
+  BalancerChromosome:
+    is_a: GenomicEntity
     description: >-
-      Boolean flag indicating that this allele represents a
-      balancer chromosome. Used for efficient querying and
-      classification of balancer entities.
-    multivalued: false
-    required: false
+      Chromosomal balancer entity separate from Allele per o3 Option B.
+      Avoids semantic overload and AGR QC failures. Represents 
+      chromosome-level rearrangements with structured biological modeling.
+    slots:
+      - id
+      - represents_allele
+      - chromosome
+      - has_breakpoints
+      - suppressed_regions
+      - homozygous_viability
+      - viability_condition
+      - balancer_status
+      - carried_alleles
+      - balancer_utility
+    slot_usage:
+      id:
+        identifier: true
+        id_prefixes: [FB]
+        pattern: "^FBal[0-9]{8}$"  # P1 fix - pattern on local_id only
+        required: true
     examples:
-      - value: true
-        description: "TM6B is a balancer chromosome"
+      - value: "FB:FBal0016059"
+        description: "TM6B balancer chromosome with structured modeling"
 
-  # Enhanced fields based on database analysis
-  discoverer:
-    domain: Allele
-    range: string
+  Breakpoint:
+    is_a: InformationContentEntity  # Not NamedThing per o3 guidance
     description: >-
-      Name of the scientist or researcher who discovered or
-      created this balancer chromosome. Provides scientific
-      attribution and historical context.
-    multivalued: false
-    required: false
+      Chromosomal breakpoint with structured coordinates and biological context.
+      Enables precise modeling of inversion boundaries and orientations.
+    slots:
+      - id
+      - chromosome
+      - cytological_band
+      - orientation
+      - breakpoint_type
+    slot_usage:
+      id:
+        identifier: true
+        id_prefixes: [FB]
+        pattern: "^FBal[0-9]{8}_brk[0-9]+$"  # P1 fix
+        required: true
+      chromosome:
+        range: uriorcurie
+        required: true
     examples:
-      - value: "Craymer"
-        description: "TM6B was discovered by Craymer"
-      - value: "Chovnick"
-        description: "MKRS was discovered by Chovnick"
+      - value: "FB:FBal0016059_brk1"
+        description: "First breakpoint of TM6B inversion complex"
 
-  alternate_names:
-    domain: BiologicalEntity
-    range: string
-    multivalued: true
+  SuppressedRegion:
+    is_a: InformationContentEntity  # Not NamedThing per o3 guidance  
     description: >-
-      Alternative names, synonyms, and historical naming
-      conventions for this balancer. Includes both formal
-      and informal naming variants.
-    required: false
+      Genomic region where recombination is suppressed by balancer.
+      Captures regional variation in suppression efficiency.
+    slots:
+      - id
+      - cytological_location
+      - suppression_efficiency
+    slot_usage:
+      id:
+        identifier: true
+        id_prefixes: [FB]
+        pattern: "^FBal[0-9]{8}_supp[0-9]+$"  # P1 fix
+        required: true
     examples:
-      - value: "First Multiple Seven"
-        description: "Full descriptive name for FM7a"
-      - value: "Curly of Oster"
-        description: "Descriptive name for CyO balancer"
+      - value: "FB:FBal0016059_supp1"
+        description: "Primary suppression region of TM6B"
 
-  internal_notes:
-    domain: BiologicalEntity
-    range: string
-    description: >-
-      Internal curator notes and annotations not displayed
-      on public interfaces. Used for curation workflow
-      management and reference tracking.
-    multivalued: false
-    required: false
-    examples:
-      - value: "They reference FBrf0019393 for this balancer. gm200205."
-        description: "Internal reference tracking for FM7a"
-
-  date_accessioned:
-    domain: BiologicalEntity
-    range: date
-    description: >-
-      Date when this feature was first accessioned or created
-      in the database. Provides data provenance tracking.
-    multivalued: false
-    required: false
-    examples:
-      - value: "2006-08-22"
-        description: "Date TM6B was first entered in database"
-
-  date_last_modified:
-    domain: BiologicalEntity
-    range: date
-    description: >-
-      Date of the most recent modification to this feature.
-      Essential for data freshness assessment and versioning.
-    multivalued: false
-    required: false
-    examples:
-      - value: "2020-11-30"
-        description: "Last modification date for TM6B"
-
-  is_obsolete:
-    domain: BiologicalEntity
-    range: boolean
-    description: >-
-      Flag indicating whether this feature has been marked
-      as obsolete or deprecated. Critical for data quality
-      control and filtering.
-    multivalued: false
-    required: false
-    default: false
-    examples:
-      - value: false
-        description: "TM6B is not obsolete"
-
+# P2 CRITICAL FIX - Boolean → Enum transformation
 enums:
+  BalancerStatus:
+    description: >-
+      Balancer classification status with reasoning capability.
+      Replaces dead-end boolean per Round 6 P2 fix.
+    permissible_values:
+      BALANCER:
+        description: "Confirmed balancer chromosome"
+        meaning: "GENO:0000002"  # balancer_allele
+      NOT_BALANCER:
+        description: "Confirmed non-balancer"
+      UNKNOWN:
+        description: "Status not determined"
+
+  # P3 - Structured breakpoint enums with correct SO terms
+  OrientationEnum:
+    description: >-
+      Chromosomal orientation at breakpoint. Essential for inversion modeling.
+    permissible_values:
+      FORWARD:
+        description: "Normal chromosomal orientation"
+        meaning: "SO:0001879"  # chromosomal_inversion_breakpoint
+      REVERSE:
+        description: "Inverted chromosomal orientation"  
+        meaning: "SO:0001879"  # chromosomal_inversion_breakpoint
+      UNKNOWN:
+        description: "Orientation not determined"
+
+  BreakpointTypeEnum:
+    description: >-
+      Type of chromosomal rearrangement. Uses correct SO terms per Round 6.
+    permissible_values:
+      INVERSION:
+        description: "Chromosomal inversion breakpoint"
+        meaning: "SO:0001879"  # chromosomal_inversion_breakpoint
+      DELETION:
+        description: "Chromosomal deletion breakpoint"
+        meaning: "SO:0000159"  # deletion
+      DUPLICATION:
+        description: "Chromosomal duplication breakpoint"
+        meaning: "SO:1000035"  # duplication
+      TRANSLOCATION:
+        description: "Chromosomal translocation breakpoint"
+        meaning: "SO:0000199"  # translocation
+
+  # P4 - Critical missing biological concept
+  ViabilityEnum:
+    description: >-
+      Homozygous viability status. Essential for stock centers per Round 6.
+    permissible_values:
+      LETHAL:
+        description: "Lethal when homozygous"
+        meaning: "PATO:0000718"  # lethal
+      VIABLE:
+        description: "Viable when homozygous"
+        meaning: "PATO:0000169"  # viable
+      STERILE:
+        description: "Sterile when homozygous"
+        meaning: "PATO:0000618"  # sterile
+      CONDITIONAL:
+        description: "Conditionally lethal/sterile"
+        meaning: "PATO:0000718"  # lethal (conditional)
+
+  SuppressionEnum:
+    description: >-
+      Recombination suppression efficiency. Captures biological variability.
+    permissible_values:
+      COMPLETE:
+        description: "100% recombination suppression"
+      PARTIAL:
+        description: "Partial recombination suppression"
+      VARIABLE:
+        description: "Variable suppression efficiency"
+
   BalancerUtilityEnum:
     description: >-
-      Controlled vocabulary for the primary genetic utility
-      of balancer chromosomes in research and stock maintenance.
+      Primary genetic utility of balancer chromosomes.
     permissible_values:
       suppressor_of_crossing_over:
         description: >-
-          Balancer suppresses recombination in the balanced
-          chromosomal region, maintaining linkage relationships.
+          Suppresses recombination in balanced chromosomal region.
         meaning: "SO:0001059"  # chromosomal_inversion
       lethal_when_homozygous:
         description: >-
-          Balancer is lethal in homozygous condition, maintaining
-          heterozygous state for balanced chromosomes.
+          Lethal in homozygous condition, maintains heterozygous state.
         meaning: "SO:0001773"  # lethal_variant
       visible_marker_carrier:
         description: >-
-          Balancer carries visible phenotypic markers enabling
-          identification in genetic crosses.
+          Carries visible phenotypic markers for identification.
         meaning: "SO:0001060"  # sequence_variant
       multiple_inversion_complex:
         description: >-
-          Balancer contains multiple chromosomal inversions
-          forming a complex rearrangement.
+          Contains multiple chromosomal inversions.
         meaning: "SO:1000037"  # inversion_breakpoint
-
