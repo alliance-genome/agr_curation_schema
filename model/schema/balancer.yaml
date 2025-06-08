@@ -8,7 +8,7 @@ description: >-
   entities with balancer-specific metadata including data provenance
   and scientific attribution.
 
-version: 1.5.0
+version: 1.2.0
 default_prefix: alliance
 default_range: string
 
@@ -174,88 +174,6 @@ slots:
       - value: false
         description: "TM6B is not obsolete"
 
-  # Enhanced biological modeling for balancer function
-  temperature_sensitive:
-    domain: Allele
-    range: boolean
-    description: >-
-      Indicates whether this balancer exhibits temperature-sensitive
-      behavior. Many balancers have conditional lethality or altered
-      functionality at specific temperatures.
-    multivalued: false
-    required: false
-    examples:
-      - value: false
-        description: "TM6B is not temperature sensitive"
-
-  genetic_background:
-    domain: Allele
-    range: string
-    description: >-
-      Genetic background or strain context required for proper
-      balancer function. Important for stock maintenance and
-      experimental reproducibility.
-    multivalued: false
-    required: false
-    examples:
-      - value: "y w"
-        description: "Standard laboratory background for TM6B"
-
-  suppressed_region:
-    domain: Allele
-    range: string
-    description: >-
-      Chromosomal region where recombination is suppressed by
-      this balancer. Critical for understanding balancer utility
-      and experimental design.
-    multivalued: false
-    required: false
-    examples:
-      - value: "3L:1-20Mb,3R:1-25Mb"
-        description: "TM6B suppresses recombination across chromosome 3"
-
-  balanced_chromosome:
-    domain: Allele
-    range: string
-    description: >-
-      The chromosome(s) that this balancer is designed to balance.
-      Essential for understanding balancer application and utility.
-    multivalued: true
-    required: false
-    examples:
-      - value: "3"
-        description: "TM6B balances chromosome 3"
-      - value: "X"
-        description: "FM7a balances X chromosome"
-
-  viability_phenotype:
-    domain: Allele
-    range: ViabilityEnum
-    description: >-
-      Viability characteristics of this balancer, particularly
-      in homozygous condition. Critical for stock maintenance
-      and experimental design.
-    multivalued: false
-    required: false
-    examples:
-      - value: "homozygous_lethal"
-        description: "TM6B is lethal when homozygous"
-
-  stock_availability:
-    domain: Allele
-    range: string
-    description: >-
-      Stock center availability and stock identifiers for this
-      balancer. Critical information for researchers.
-    multivalued: true
-    required: false
-    pattern: "^[A-Z]+:[0-9]+(;\\s*[A-Z]+:[0-9]+)*$"
-    examples:
-      - value: "BDSC:3703"
-        description: "TM6B available from Bloomington Stock Center"
-      - value: "BDSC:3703; KYOTO:108027"
-        description: "TM6B available from multiple stock centers"
-
 enums:
   BalancerUtilityEnum:
     description: >-
@@ -283,26 +201,18 @@ enums:
           forming a complex rearrangement.
         meaning: "SO:1000037"  # inversion_breakpoint
 
-  ViabilityEnum:
+  # Exchange 5 Minimal JSON Property Approach
+  balancer_metadata:
+    domain: Allele
+    range: string
     description: >-
-      Controlled vocabulary for balancer viability characteristics,
-      particularly important for stock maintenance and breeding.
-    permissible_values:
-      homozygous_lethal:
-        description: >-
-          Lethal when present in homozygous condition.
-      homozygous_viable:
-        description: >-
-          Viable when present in homozygous condition.
-      female_sterile:
-        description: >-
-          Causes female sterility when homozygous.
-      male_sterile:
-        description: >-
-          Causes male sterility when homozygous.
-      semilethal:
-        description: >-
-          Reduced viability but some survivors when homozygous.
-      temperature_sensitive_lethal:
-        description: >-
-          Lethal at specific temperatures when homozygous.
+      JSON object containing structured balancer-specific metadata.
+      Uses existing feature_property infrastructure with fb:balancer_meta CV term.
+      Machine-readable format enabling future migration to structured objects.
+    multivalued: false
+    required: false
+    examples:
+      - value: '{"molecular_type": "inversion", "suppresses_recombination": ["3L:1..20000000","3R:1..25000000"], "dominant_markers": ["e", "AntpHu"], "lethal_phase": "embryonic"}'
+        description: "TM6B structured metadata as JSON"
+      - value: '{"molecular_type": "inversion", "suppresses_recombination": ["X:1..22422827"], "dominant_markers": ["B"], "lethal_phase": "adult"}'
+        description: "FM7a structured metadata as JSON"
