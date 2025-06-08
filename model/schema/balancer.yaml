@@ -4,8 +4,7 @@ title: Alliance Schema Balancer Extension
 description: >-
   LinkML schema extension for balancer chromosome support in the
   Alliance of Genome Resources (AGR) schema. This extension implements
-  the BalancerChromosome class with structured biological modeling
-  for Drosophila balancer chromosomes.
+  enhanced biological modeling for Drosophila balancer chromosomes.
 
 version: 1.3.0
 default_prefix: alliance
@@ -25,14 +24,13 @@ prefixes:
   biolink: https://w3id.org/biolink/vocab/
 
 slots:
-  # BalancerChromosome specific slots
+  # BalancerChromosome slots
   represents_allele:
     domain: BalancerChromosome
     range: uriorcurie
     description: >-
-      Back-pointer to the canonical Allele entity (if one exists).
-      Maintains compatibility with existing AGR ETL while keeping
-      semantics clean for chromosome-level entities.
+      Back-pointer to the canonical Allele entity for this balancer.
+      Maintains compatibility with existing AGR data integration.
     multivalued: false
     required: false
     examples:
@@ -109,13 +107,12 @@ slots:
       - value: "BALANCER"
         description: "TM6B is confirmed balancer chromosome"
 
-  # Breakpoint specific slots  
+  # Breakpoint slots  
   cytological_band:
     domain: Breakpoint
     range: string
     description: >-
       Cytological band location using standard Drosophila nomenclature.
-      Structured approach enables proper validation.
     pattern: "^[0-9XY]+[LR]?:[0-9]+[A-Z](?:\\.[0-9]+)?$"
     examples:
       - value: "3L:61A1"
@@ -125,8 +122,7 @@ slots:
     domain: Breakpoint
     range: OrientationEnum
     description: >-
-      Chromosomal orientation at this breakpoint. Critical for
-      accurate inversion modeling and biological representation.
+      Chromosomal orientation at this breakpoint for accurate inversion modeling.
     required: false
     default: UNKNOWN
     examples:
@@ -137,20 +133,18 @@ slots:
     domain: Breakpoint
     range: BreakpointTypeEnum
     description: >-
-      Type of chromosomal rearrangement at this breakpoint.
-      Uses standardized SO terminology for ontological consistency.
+      Type of chromosomal rearrangement at this breakpoint using standardized terminology.
     required: false
     examples:
       - value: "INVERSION"
         description: "Chromosomal inversion breakpoint"
 
-  # SuppressedRegion specific slots
+  # SuppressedRegion slots
   cytological_location:
     domain: SuppressedRegion
     range: string
     description: >-
       Cytological range where recombination is suppressed.
-      Improved pattern validation for biological accuracy.
     pattern: "^[0-9XY]+[LR]?:[0-9]+[A-Z](?:\\.[0-9]+)?-[0-9]+[A-Z](?:\\.[0-9]+)?$"
     required: false
     examples:
@@ -162,7 +156,6 @@ slots:
     range: SuppressionEnum
     description: >-
       Efficiency of recombination suppression in this region.
-      Captures biological variability in suppression strength.
     required: false
     examples:
       - value: "COMPLETE"
@@ -196,9 +189,8 @@ classes:
   BalancerChromosome:
     is_a: GenomicEntity
     description: >-
-      Chromosomal balancer entity modeled as separate class from Allele.
-      Avoids semantic overload and represents chromosome-level 
-      rearrangements with structured biological modeling.
+      Chromosomal balancer entity with enhanced biological modeling
+      for chromosome-level rearrangements.
     slots:
       - id
       - represents_allele
@@ -218,13 +210,12 @@ classes:
         required: true
     examples:
       - value: "FB:FBal0016059"
-        description: "TM6B balancer chromosome with structured modeling"
+        description: "TM6B balancer chromosome"
 
   Breakpoint:
     is_a: InformationContentEntity
     description: >-
-      Chromosomal breakpoint with structured coordinates and biological context.
-      Enables precise modeling of inversion boundaries and orientations.
+      Chromosomal breakpoint with coordinates and biological context.
     slots:
       - id
       - chromosome
@@ -242,13 +233,12 @@ classes:
         required: true
     examples:
       - value: "FB:FBal0016059_brk1"
-        description: "First breakpoint of TM6B inversion complex"
+        description: "First breakpoint of TM6B balancer"
 
   SuppressedRegion:
     is_a: InformationContentEntity
     description: >-
       Genomic region where recombination is suppressed by balancer.
-      Captures regional variation in suppression efficiency.
     slots:
       - id
       - cytological_location
@@ -266,8 +256,7 @@ classes:
 enums:
   BalancerStatus:
     description: >-
-      Balancer classification status with reasoning capability.
-      Enables provenance tracking and compositionality.
+      Balancer classification status for provenance tracking.
     permissible_values:
       BALANCER:
         description: "Confirmed balancer chromosome"
@@ -279,7 +268,7 @@ enums:
 
   OrientationEnum:
     description: >-
-      Chromosomal orientation at breakpoint. Essential for inversion modeling.
+      Chromosomal orientation at breakpoint for inversion modeling.
     permissible_values:
       FORWARD:
         description: "Normal chromosomal orientation"
@@ -292,7 +281,7 @@ enums:
 
   BreakpointTypeEnum:
     description: >-
-      Type of chromosomal rearrangement using standardized SO terms.
+      Type of chromosomal rearrangement using standardized terminology.
     permissible_values:
       INVERSION:
         description: "Chromosomal inversion breakpoint"
@@ -309,7 +298,7 @@ enums:
 
   ViabilityEnum:
     description: >-
-      Homozygous viability status. Essential for stock center operations.
+      Homozygous viability status for stock center operations.
     permissible_values:
       LETHAL:
         description: "Lethal when homozygous"
@@ -326,7 +315,7 @@ enums:
 
   SuppressionEnum:
     description: >-
-      Recombination suppression efficiency. Captures biological variability.
+      Recombination suppression efficiency in genomic regions.
     permissible_values:
       COMPLETE:
         description: "100% recombination suppression"
