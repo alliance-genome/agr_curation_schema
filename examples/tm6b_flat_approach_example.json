@@ -30,6 +30,11 @@
     "FB:FBal0003278"
   ],
   "balancer_utility": "suppressor_of_crossing_over",
+  "evidence_codes": [
+    "ECO:0000314",
+    "ECO:0000033",
+    "ECO:0006056"
+  ],
   "discoverer": "Craymer",
   "alternate_names": ["Third Multiple 6", "TM6 Balancer"],
   "internal_notes": "Multiple inversion balancer covering chromosome 3. Essential for Drosophila genetics.",
