@@ -344,6 +344,7 @@ classes:
       - cassette_full_name
       - cassette_synonyms
       - cassette_genomic_entity_associations
+      - cassette_transgenic_tool_associations
       - cassette_components
       - references
     rules:    # Question for modelers: Can these postconditions work? Each slot points to either an Association or a SlotAnnotation
@@ -694,6 +695,11 @@ slots:
     multivalued: true
     domain: Cassette
     range: CassetteGenomicEntityAssociation
+
+  cassette_transgenic_tool_associations:
+    multivalued: true
+    domain: Cassette
+    range: CassetteTransgenicToolAssociation
 
   cassette_identifier:
     description: >-

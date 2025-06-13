@@ -83,7 +83,7 @@
         {
           "free_text": "Decided to put alleles that encode BE3 under Spyo\\Cas9 rather than the rat Apobec1 cytidine deaminase part of the fusion protein (could have chosen either in a way !), as this is kind of consistent with what was done for FokI::dCas9, and in a way its the Cas9 part that is more important (as this is the bit that targets it to the desired genomic site in combination with sgRNA), while potentially any cytidine deaminase could have been used (PMID:27096365 tested several). gm200501.",
           "note_type_name": "internal_note",
-          "internal": false
+          "internal": true
         }
       ],
       "use_curies": [

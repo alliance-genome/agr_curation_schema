@@ -11447,6 +11447,15 @@
                         "null"
                     ]
                 },
+                "cassette_transgenic_tool_associations": {
+                    "items": {
+                        "$ref": "#/$defs/CassetteTransgenicToolAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": [
