@@ -12538,6 +12538,211 @@
             "title": "CassetteSynonymSlotAnnotation",
             "type": "object"
         },
+        "CassetteTransgenicToolAssociation": {
+            "additionalProperties": false,
+            "description": "An association class to capture the identity of a cassette component that is a known transgenic tool and any accompanying meta data about the relationship between the cassette and that transgenic tool component",
+            "properties": {
+                "cassette_association_subject": {
+                    "$ref": "#/$defs/Cassette"
+                },
+                "cassette_transgenic_tool_association_object": {
+                    "$ref": "#/$defs/TransgenicTool"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence": {
+                    "description": "The evidence that supports some assertion.",
+                    "items": {
+                        "$ref": "#/$defs/InformationContentEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "related_notes": {
+                    "description": "Holds between an object and a list of related Note objects.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "cassette_transgenic_tool_association_object",
+                "cassette_association_subject",
+                "relation",
+                "internal"
+            ],
+            "title": "CassetteTransgenicToolAssociation",
+            "type": "object"
+        },
+        "CassetteTransgenicToolAssociationDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for association between a cassette component that is a known transgenic tool and any accompanying meta data about the relationship between the cassette and that transgenic tool component",
+            "properties": {
+                "cassette_identifier": {
+                    "description": "Either the MOD curie or internal ID that was used in the submission of the associated cassette",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence_curies": {
+                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "transgenic_tool_identifier": {
+                    "description": "Either the MOD curie or internal ID that was used in the submission of the associated transgenic tool",
+                    "type": "string"
+                },
+                "transgenic_tool_relation_name": {
+                    "description": "Name of the VocabularyTerm describing the relationship between a TransgenicTool and another TransgenicTool",
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "transgenic_tool_relation_name",
+                "transgenic_tool_identifier",
+                "internal"
+            ],
+            "title": "CassetteTransgenicToolAssociationDTO",
+            "type": "object"
+        },
         "CellLine": {
             "additionalProperties": false,
             "description": "Dummy cell line class",
@@ -26957,6 +27162,33 @@
                         "null"
                     ]
                 },
+                "cassette_genomic_entity_association_ingest_set": {
+                    "items": {
+                        "$ref": "#/$defs/CassetteGenomicEntityAssociationDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "cassette_ingest_set": {
+                    "items": {
+                        "$ref": "#/$defs/CassetteDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "cassette_transgenic_tool_association_ingest_set": {
+                    "items": {
+                        "$ref": "#/$defs/CassetteTransgenicToolAssociationDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "chromosome_ingest_set": {
                     "items": {
                         "$ref": "#/$defs/ChromosomeDTO"
@@ -27164,6 +27396,24 @@
                 "transcript_ingest_set": {
                     "items": {
                         "$ref": "#/$defs/TranscriptDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "transgenic_tool_ingest_set": {
+                    "items": {
+                        "$ref": "#/$defs/TransgenicToolDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "transgenic_tool_transgenic_tool_association_ingest_set": {
+                    "items": {
+                        "$ref": "#/$defs/TransgenicToolTransgenicToolAssociationDTO"
                     },
                     "type": [
                         "array",
@@ -37440,6 +37690,859 @@
             "title": "TranscriptGenomicLocationAssociation",
             "type": "object"
         },
+        "TransgenicTool": {
+            "additionalProperties": false,
+            "description": "A Transgenic Tool is defined as a commonly used sequence that forms part of a Construct or Transgene, and which has useful properties that are exploited to study the biological function of another gene product or a biological process.",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "data_provider": {
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/CrossReference"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "CrossReference to the organization from which the data was sourced"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "references": {
+                    "description": "holds between an object and a list of references",
+                    "items": {
+                        "$ref": "#/$defs/Reference"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "related_notes": {
+                    "description": "Holds between an object and a list of related Note objects.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "transgenic_tool_full_name": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TransgenicToolFullNameSlotAnnotation"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Holds between a TransgenicTool and a full name."
+                },
+                "transgenic_tool_symbol": {
+                    "$ref": "#/$defs/TransgenicToolSymbolSlotAnnotation",
+                    "description": "Holds between a TransgenicTool and the one current accepted symbol"
+                },
+                "transgenic_tool_synonyms": {
+                    "description": "Holds between a TransgenicTool and a list of synonyms.",
+                    "items": {
+                        "$ref": "#/$defs/TransgenicToolSynonymSlotAnnotation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "unique_id": {
+                    "description": "A non-curie unique identifier for a thing.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "uses": {
+                    "description": "Holds between a TransgenicTool and a list of FBcv terms with namespace 'experimental_tool_descriptor'",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "transgenic_tool_symbol",
+                "data_provider",
+                "internal"
+            ],
+            "title": "TransgenicTool",
+            "type": "object"
+        },
+        "TransgenicToolDTO": {
+            "additionalProperties": false,
+            "description": "An ingest class for a Transgenic Tool; a Transgenic Tool is defined as a commonly used sequence that forms part of a Construct or Transgene, and which has useful properties that are exploited to study the biological function of another gene product or a biological process.",
+            "properties": {
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "cross_reference_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/CrossReferenceDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "reference_curies": {
+                    "description": "External reference curies used for ingest",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "transgenic_tool_full_name_dto": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/NameSlotAnnotationDTO"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Holds between a TransgenicTool and a full name."
+                },
+                "transgenic_tool_symbol_dto": {
+                    "description": "Holds between a TransgenicTool and the one current accepted symbol"
+                },
+                "transgenic_tool_synonym_dtos": {
+                    "description": "Holds between a TransgenicTool and a list of synonyms.",
+                    "items": {
+                        "$ref": "#/$defs/NameSlotAnnotationDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "use_curies": {
+                    "description": "Holds between a TransgenicTool and a list of curies of FBcv terms with namespace 'experimental_tool_descriptor'",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "transgenic_tool_symbol_dto",
+                "data_provider_dto",
+                "internal"
+            ],
+            "title": "TransgenicToolDTO",
+            "type": "object"
+        },
+        "TransgenicToolFullNameSlotAnnotation": {
+            "additionalProperties": false,
+            "description": "The one current full name for the TransgenicTool.",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "display_text": {
+                    "description": "A version of a synonym string for display. Any UTF8 character is permitted.",
+                    "type": "string"
+                },
+                "evidence": {
+                    "description": "The evidence that supports some assertion.",
+                    "items": {
+                        "$ref": "#/$defs/InformationContentEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "format_text": {
+                    "description": "A version of a synonym string using only ASCII characters, which is easier to type (for searches), print and parse. For example, Greek characters are transliterated.",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name_type": {
+                    "description": "The type of name: e.g., symbol, full_name, systematic_name, etc.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "single_transgenic_tool": {
+                    "$ref": "#/$defs/TransgenicTool"
+                },
+                "synonym_scope": {
+                    "description": "the scope of the synonym - permissible values are narrow / broad / related / exact",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "synonym_url": {
+                    "description": "URL for a synonym: e.g., NCBI URL for the NCBI synonym of an object.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "single_transgenic_tool",
+                "name_type",
+                "format_text",
+                "display_text",
+                "internal"
+            ],
+            "title": "TransgenicToolFullNameSlotAnnotation",
+            "type": "object"
+        },
+        "TransgenicToolSymbolSlotAnnotation": {
+            "additionalProperties": false,
+            "description": "The one current symbol for the TransgenicTool.",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "display_text": {
+                    "description": "A version of a synonym string for display. Any UTF8 character is permitted.",
+                    "type": "string"
+                },
+                "evidence": {
+                    "description": "The evidence that supports some assertion.",
+                    "items": {
+                        "$ref": "#/$defs/InformationContentEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "format_text": {
+                    "description": "A version of a synonym string using only ASCII characters, which is easier to type (for searches), print and parse. For example, Greek characters are transliterated.",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name_type": {
+                    "description": "The type of name: e.g., symbol, full_name, systematic_name, etc.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "single_transgenic_tool": {
+                    "$ref": "#/$defs/TransgenicTool"
+                },
+                "synonym_scope": {
+                    "description": "the scope of the synonym - permissible values are narrow / broad / related / exact",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "synonym_url": {
+                    "description": "URL for a synonym: e.g., NCBI URL for the NCBI synonym of an object.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "single_transgenic_tool",
+                "name_type",
+                "format_text",
+                "display_text",
+                "internal"
+            ],
+            "title": "TransgenicToolSymbolSlotAnnotation",
+            "type": "object"
+        },
+        "TransgenicToolSynonymSlotAnnotation": {
+            "additionalProperties": false,
+            "description": "All aliases (non-preferred names) for the TransgenicTool. Any type of synonym is acceptable.",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "display_text": {
+                    "description": "A version of a synonym string for display. Any UTF8 character is permitted.",
+                    "type": "string"
+                },
+                "evidence": {
+                    "description": "The evidence that supports some assertion.",
+                    "items": {
+                        "$ref": "#/$defs/InformationContentEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "format_text": {
+                    "description": "A version of a synonym string using only ASCII characters, which is easier to type (for searches), print and parse. For example, Greek characters are transliterated.",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name_type": {
+                    "description": "The type of name: e.g., symbol, full_name, systematic_name, etc.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "single_transgenic_tool": {
+                    "$ref": "#/$defs/TransgenicTool"
+                },
+                "synonym_scope": {
+                    "description": "the scope of the synonym - permissible values are narrow / broad / related / exact",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "synonym_url": {
+                    "description": "URL for a synonym: e.g., NCBI URL for the NCBI synonym of an object.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "single_transgenic_tool",
+                "name_type",
+                "format_text",
+                "display_text",
+                "internal"
+            ],
+            "title": "TransgenicToolSynonymSlotAnnotation",
+            "type": "object"
+        },
+        "TransgenicToolTransgenicToolAssociation": {
+            "additionalProperties": false,
+            "description": "Association (without evidence) between two compatible TransgenicTools. The associatied TransgenicTool is any transgenic tool that is compatible for use in combination with the tool, either as part of a multi-component experimental system (eg. binary or split systems), or because the tools form an enzyme/target site pair (eg. FLP/FRT).",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence": {
+                    "description": "The evidence that supports some assertion.",
+                    "items": {
+                        "$ref": "#/$defs/InformationContentEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
+                },
+                "transgenic_tool_association_subject": {
+                    "$ref": "#/$defs/TransgenicTool"
+                },
+                "transgenic_tool_transgenic_tool_association_object": {
+                    "$ref": "#/$defs/TransgenicTool"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "transgenic_tool_association_subject",
+                "transgenic_tool_transgenic_tool_association_object",
+                "relation",
+                "internal"
+            ],
+            "title": "TransgenicToolTransgenicToolAssociation",
+            "type": "object"
+        },
+        "TransgenicToolTransgenicToolAssociationDTO": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "relation_name": {
+                    "description": "Name of VocabularyTerm representing relation of an Association",
+                    "type": "string"
+                },
+                "transgenic_tool_object_identifier": {
+                    "description": "Curie or internal ID of TransgenicTool that is the object of an association",
+                    "type": "string"
+                },
+                "transgenic_tool_subject_identifier": {
+                    "description": "Curie or internal ID of TransgenicTool that is the subject of an association",
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "transgenic_tool_subject_identifier",
+                "transgenic_tool_object_identifier",
+                "relation_name",
+                "internal"
+            ],
+            "title": "TransgenicToolTransgenicToolAssociationDTO",
+            "type": "object"
+        },
         "UBERONTerm": {
             "additionalProperties": false,
             "description": "",
@@ -41201,6 +42304,33 @@
                 "null"
             ]
         },
+        "cassette_genomic_entity_association_ingest_set": {
+            "items": {
+                "$ref": "#/$defs/CassetteGenomicEntityAssociationDTO"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "cassette_ingest_set": {
+            "items": {
+                "$ref": "#/$defs/CassetteDTO"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "cassette_transgenic_tool_association_ingest_set": {
+            "items": {
+                "$ref": "#/$defs/CassetteTransgenicToolAssociationDTO"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
         "chromosome_ingest_set": {
             "items": {
                 "$ref": "#/$defs/ChromosomeDTO"
@@ -41408,6 +42538,24 @@
         "transcript_ingest_set": {
             "items": {
                 "$ref": "#/$defs/TranscriptDTO"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "transgenic_tool_ingest_set": {
+            "items": {
+                "$ref": "#/$defs/TransgenicToolDTO"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "transgenic_tool_transgenic_tool_association_ingest_set": {
+            "items": {
+                "$ref": "#/$defs/TransgenicToolTransgenicToolAssociationDTO"
             },
             "type": [
                 "array",

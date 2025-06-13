@@ -337,7 +337,6 @@ classes:
       genomic_entity_identifier:
         required: true
 
-
   Cassette:
     is_a: Reagent
     slots:
@@ -489,6 +488,145 @@ classes:
     slot_usage:
       genomic_entity_identifier:
         required: true
+
+  CassetteTransgenicToolAssociation:
+    is_a: CassetteAssociation
+    description: >-
+      An association class to capture the identity of a cassette component that is
+      a known transgenic tool and any accompanying meta data about the
+      relationship between the cassette and that transgenic tool component
+    attributes:
+      cassette_transgenic_tool_association_object:
+        range: TransgenicTool
+        required: true
+    slots:
+      - related_notes
+    slot_usage:
+      relation:
+        range: VocabularyTerm
+        notes: >-
+          The relation should be a VocabularyTerm with one of the following
+          values - expresses (RO:0002292) / is_regulated_by (RO:0002334) /
+          targets (RO:0002436). CV: 'Cassette Relation'
+      related_notes:
+        required: false
+
+  CassetteTransgenicToolAssociationDTO:
+    is_a: EvidenceAssociationDTO
+    description: >-
+      Ingest class for association between a cassette component that is a known transgenic
+      tool and any accompanying meta data about the relationship between
+      the cassette and that transgenic tool component
+    slots:
+      - cassette_identifier
+      - transgenic_tool_relation_name
+      - transgenic_tool_identifier
+      - note_dtos
+    slot_usage:
+      transgenic_tool_identifier:
+        required: true
+
+  TransgenicTool:
+    is_a: Reagent
+    description: >-
+      A Transgenic Tool is defined as a commonly used sequence that forms part of a Construct
+      or Transgene, and which has useful properties that are exploited to study the biological
+      function of another gene product or a biological process.
+    slots:
+      - cross_references
+      - transgenic_tool_symbol
+      - transgenic_tool_full_name
+      - transgenic_tool_synonyms
+      - uses
+      - references
+
+  TransgenicToolDTO:
+    is_a: ReagentDTO
+    description: >-
+      An ingest class for a Transgenic Tool; a Transgenic Tool is defined as a commonly used sequence
+      that forms part of a Construct or Transgene, and which has useful properties that are exploited
+      to study the biological function of another gene product or a biological process.
+    slots:
+      - cross_reference_dtos
+      - transgenic_tool_symbol_dto
+      - transgenic_tool_full_name_dto
+      - transgenic_tool_synonym_dtos
+      - use_curies
+      - reference_curies
+
+  TransgenicToolSymbolSlotAnnotation:
+    description: >-
+      The one current symbol for the TransgenicTool.
+    is_a: NameSlotAnnotation
+    slots:
+      - single_transgenic_tool
+    slot_usage:
+      single_transgenic_tool:
+        required: true
+      name_type:
+        notes: >-
+          permissible_values: nomenclature_symbol (VocabularyTerm)
+
+  TransgenicToolFullNameSlotAnnotation:
+    description: >-
+      The one current full name for the TransgenicTool.
+    is_a: NameSlotAnnotation
+    slots:
+      - single_transgenic_tool
+    slot_usage:
+      single_transgenic_tool:
+        required: true
+      name_type:
+        notes: >-
+          permissible_values: full_name (VocabularyTerm)
+
+  TransgenicToolSynonymSlotAnnotation:
+    description: >-
+      All aliases (non-preferred names) for the TransgenicTool. Any type of synonym is acceptable.
+    is_a: NameSlotAnnotation
+    slots:
+      - single_transgenic_tool
+    slot_usage:
+      single_transgenic_tool:
+        required: true
+      name_type:
+        notes: >-
+          permissible_values: full_name (VocabularyTerm)
+
+  TransgenicToolAssociation:
+    abstract: true
+    is_a: EvidenceAssociation
+    description: Base class for TransgenicTool associations
+    attributes:
+      transgenic_tool_association_subject:
+        range: TransgenicTool
+        required: true
+
+  TransgenicToolTransgenicToolAssociation:
+    is_a: TransgenicToolAssociation
+    description: >-
+      Association (without evidence) between two compatible TransgenicTools. The associatied TransgenicTool
+      is any transgenic tool that is compatible for use in combination with the tool, either as part of a
+      multi-component experimental system (eg. binary or split systems), or because the tools form an
+      enzyme/target site pair (eg. FLP/FRT).
+    attributes:
+      transgenic_tool_transgenic_tool_association_object:
+        range: TransgenicTool
+        required: true
+    slots:
+      - transgenic_tool_association_subject
+
+  TransgenicToolTransgenicToolAssociationDTO:
+    is_a: AuditedObjectDTO
+    slots:
+      - transgenic_tool_subject_identifier
+      - transgenic_tool_object_identifier
+      - relation_name
+    slot_usage:
+      relation_name:
+        notes: >-
+          permissible_values: compatible_tool (VocabularyTerm)
+
 
   # If we need to have multiple paths to root class, then we can consider a mixin that allows
   # DNA|RNAClones to be classified independently from Reagents.
@@ -788,10 +926,111 @@ slots:
     range: Cassette
     multivalued: false
 
+  single_transgenic_tool:
+    range: TransgenicTool
+    multivalued: false
+
   taxon_text:
     description: >-
       The free text reference to a species or general taxon (e.g. "Yeast") for a
       a biological entity for which the exact taxon curie is unknown or unavailable.
+
+  transgenic_tool_association_subject:
+    description: >-
+      Subject slot to be used for TransgenicTool associations
+    required: true
+    range: TransgenicTool
+
+  transgenic_tool_object_identifier:
+    range: string
+    required: true
+    description: >-
+      Curie or internal ID of TransgenicTool that is the object of an association
+
+  transgenic_tool_subject_identifier:
+    range: string
+    required: true
+    description: >-
+      Curie or internal ID of TransgenicTool that is the subject of an association
+
+  transgenic_tool_symbol:
+    description: >-
+      Holds between a TransgenicTool and the one current accepted symbol
+    exact_mappings:
+      - biolink:symbol
+    domain: TransgenicTool
+    range: TransgenicToolSymbolSlotAnnotation
+    required: true
+    multivalued: false
+
+  transgenic_tool_symbol_dto:
+    description: >-
+      Holds between a TransgenicTool and the one current accepted symbol
+    domain: TransgenicToolDTO
+    range: TransgenicToolSlotAnnotationDTO
+    required: true
+    multivalued: false
+    inlined: true
+
+  transgenic_tool_full_name:
+    description: Holds between a TransgenicTool and a full name.
+    domain: TransgenicTool
+    required: false
+    multivalued: false
+    range: TransgenicToolFullNameSlotAnnotation
+
+  transgenic_tool_full_name_dto:
+    description: Holds between a TransgenicTool and a full name.
+    domain: TransgenicToolDTO
+    range: NameSlotAnnotationDTO
+    multivalued: false
+    required: false
+    inlined: true
+
+  transgenic_tool_identifier:
+    description: >-
+      Either the MOD curie or internal ID that was used in the submission
+      of the associated transgenic tool
+    range: string
+    required: true
+
+  transgenic_tool_relation_name:
+    description: >-
+      Name of the VocabularyTerm describing the relationship between a
+      TransgenicTool and another TransgenicTool
+    domain: ConstructGenomicEntityAssociationDTO
+    range: string
+    required: true
+
+  transgenic_tool_synonyms:
+    description: Holds between a TransgenicTool and a list of synonyms.
+    domain: TransgenicTool
+    required: false
+    multivalued: true
+    range: TransgenicToolSynonymSlotAnnotation
+
+  transgenic_tool_synonym_dtos:
+    description: Holds between a TransgenicTool and a list of synonyms.
+    domain: TransgenicToolDTO
+    range: NameSlotAnnotationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  uses:
+    description: >-
+      Holds between a TransgenicTool and a list of FBcv terms with namespace
+      'experimental_tool_descriptor'
+    range: FBCVTerm
+    multivalued: true
+
+  use_curies:
+    description: >-
+      Holds between a TransgenicTool and a list of curies of FBcv terms with namespace
+      'experimental_tool_descriptor'
+    range: string
+    multivalued: true
+
 
 ########################
 #

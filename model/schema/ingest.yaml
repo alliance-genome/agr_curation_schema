@@ -365,6 +365,41 @@ slots:
     mixins:
       - object_set
 
+  cassette_ingest_set:
+    domain: Ingest
+    range: CassetteDTO
+    multivalued: true
+    mixins:
+      - object_set
+
+  cassette_genomic_entity_association_ingest_set:
+    domain: Ingest
+    range: CassetteGenomicEntityAssociationDTO
+    multivalued: true
+    mixins:
+      - object_set
+
+  cassette_transgenic_tool_association_ingest_set:
+    domain: Ingest
+    range: CassetteTransgenicToolAssociationDTO
+    multivalued: true
+    mixins:
+      - object_set
+
+  transgenic_tool_ingest_set:
+    domain: Ingest
+    range: TransgenicToolDTO
+    multivalued: true
+    mixins:
+      - object_set
+
+  transgenic_tool_transgenic_tool_association_ingest_set:
+    domain: Ingest
+    range: TransgenicToolTransgenicToolAssociationDTO
+    multivalued: true
+    mixins:
+      - object_set
+
   object_set:
     mixin: true
     domain: Ingest
@@ -383,6 +418,11 @@ classes:
       - alliance_member_release_version
       - allele_ingest_set
       - antibody_ingest_set
+      - cassette_ingest_set
+      - cassette_genomic_entity_association_ingest_set
+      - cassette_transgenic_tool_association_ingest_set
+      - transgenic_tool_ingest_set
+      - transgenic_tool_transgenic_tool_association_ingest_set
       - construct_ingest_set
       - construct_genomic_entity_association_ingest_set
       - disease_allele_ingest_set
