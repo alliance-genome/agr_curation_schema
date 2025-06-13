@@ -365,6 +365,13 @@ slots:
     mixins:
       - object_set
 
+  construct_cassette_association_ingest_set:
+    domain: Ingest
+    range: ConstructCassetteAssociationDTO
+    multivalued: true
+    mixins:
+      - object_set
+
   cassette_ingest_set:
     domain: Ingest
     range: CassetteDTO
@@ -425,6 +432,7 @@ classes:
       - transgenic_tool_transgenic_tool_association_ingest_set
       - construct_ingest_set
       - construct_genomic_entity_association_ingest_set
+      - construct_cassette_association_ingest_set
       - disease_allele_ingest_set
       - disease_agm_ingest_set
       - disease_gene_ingest_set

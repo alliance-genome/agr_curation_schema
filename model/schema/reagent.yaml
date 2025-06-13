@@ -165,6 +165,7 @@ classes:
       - construct_full_name
       - construct_synonyms
       - construct_genomic_entity_associations
+      - construct_cassette_associations
       - construct_components
       - references
     slot_usage:
@@ -813,6 +814,11 @@ slots:
     multivalued: true
     domain: Construct
     range: ConstructGenomicEntityAssociation
+
+  construct_cassette_associations:
+    multivalued: true
+    domain: Construct
+    range: ConstructCassetteAssociation
 
   construct_identifier:
     description: >-
