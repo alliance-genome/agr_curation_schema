@@ -13828,6 +13828,15 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
+                "construct_cassette_associations": {
+                    "items": {
+                        "$ref": "#/$defs/ConstructCassetteAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "construct_components": {
                     "items": {
                         "$ref": "#/$defs/ConstructComponentSlotAnnotation"
@@ -27201,6 +27210,15 @@
                 "chromosome_ingest_set": {
                     "items": {
                         "$ref": "#/$defs/ChromosomeDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "construct_cassette_association_ingest_set": {
+                    "items": {
+                        "$ref": "#/$defs/ConstructCassetteAssociationDTO"
                     },
                     "type": [
                         "array",
@@ -42343,6 +42361,15 @@
         "chromosome_ingest_set": {
             "items": {
                 "$ref": "#/$defs/ChromosomeDTO"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "construct_cassette_association_ingest_set": {
+            "items": {
+                "$ref": "#/$defs/ConstructCassetteAssociationDTO"
             },
             "type": [
                 "array",
