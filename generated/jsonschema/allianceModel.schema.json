@@ -8363,6 +8363,13 @@
                         "null"
                     ]
                 },
+                "placeholder": {
+                    "description": "A boolean property to indicate whether a data record/object/entity is intended to be a placeholder data object rather than a publicly displayed object with a proper ID, name and/or symbol, for example. For example, the Cassette class has been introduced to support FlyBase Cassette objects with IDs and names, but not every Alliance member has data tables/classes for these objects and any IDs or names/symbols would likely be derived and not helpful to end users. Data records/entities where the placeholder value is set to true would have various visible properties suppressed, so as not to confuse end users with private, internal or otherwise contrived representations.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
                 "primary_external_id": {
                     "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": [
@@ -8570,6 +8577,13 @@
                     "description": "The reference providing the original description of the antibody's generation.",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "placeholder": {
+                    "description": "A boolean property to indicate whether a data record/object/entity is intended to be a placeholder data object rather than a publicly displayed object with a proper ID, name and/or symbol, for example. For example, the Cassette class has been introduced to support FlyBase Cassette objects with IDs and names, but not every Alliance member has data tables/classes for these objects and any IDs or names/symbols would likely be derived and not helpful to end users. Data records/entities where the placeholder value is set to true would have various visible properties suppressed, so as not to confuse end users with private, internal or otherwise contrived representations.",
+                    "type": [
+                        "boolean",
                         "null"
                     ]
                 },
@@ -11535,6 +11549,13 @@
                         "null"
                     ]
                 },
+                "placeholder": {
+                    "description": "A boolean property to indicate whether a data record/object/entity is intended to be a placeholder data object rather than a publicly displayed object with a proper ID, name and/or symbol, for example. For example, the Cassette class has been introduced to support FlyBase Cassette objects with IDs and names, but not every Alliance member has data tables/classes for these objects and any IDs or names/symbols would likely be derived and not helpful to end users. Data records/entities where the placeholder value is set to true would have various visible properties suppressed, so as not to confuse end users with private, internal or otherwise contrived representations.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
                 "primary_external_id": {
                     "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": [
@@ -11943,6 +11964,13 @@
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "placeholder": {
+                    "description": "A boolean property to indicate whether a data record/object/entity is intended to be a placeholder data object rather than a publicly displayed object with a proper ID, name and/or symbol, for example. For example, the Cassette class has been introduced to support FlyBase Cassette objects with IDs and names, but not every Alliance member has data tables/classes for these objects and any IDs or names/symbols would likely be derived and not helpful to end users. Data records/entities where the placeholder value is set to true would have various visible properties suppressed, so as not to confuse end users with private, internal or otherwise contrived representations.",
                     "type": [
                         "boolean",
                         "null"
@@ -13959,6 +13987,13 @@
                         "null"
                     ]
                 },
+                "placeholder": {
+                    "description": "A boolean property to indicate whether a data record/object/entity is intended to be a placeholder data object rather than a publicly displayed object with a proper ID, name and/or symbol, for example. For example, the Cassette class has been introduced to support FlyBase Cassette objects with IDs and names, but not every Alliance member has data tables/classes for these objects and any IDs or names/symbols would likely be derived and not helpful to end users. Data records/entities where the placeholder value is set to true would have various visible properties suppressed, so as not to confuse end users with private, internal or otherwise contrived representations.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
                 "primary_external_id": {
                     "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": [
@@ -14554,6 +14589,13 @@
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "placeholder": {
+                    "description": "A boolean property to indicate whether a data record/object/entity is intended to be a placeholder data object rather than a publicly displayed object with a proper ID, name and/or symbol, for example. For example, the Cassette class has been introduced to support FlyBase Cassette objects with IDs and names, but not every Alliance member has data tables/classes for these objects and any IDs or names/symbols would likely be derived and not helpful to end users. Data records/entities where the placeholder value is set to true would have various visible properties suppressed, so as not to confuse end users with private, internal or otherwise contrived representations.",
                     "type": [
                         "boolean",
                         "null"
@@ -16993,6 +17035,13 @@
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "placeholder": {
+                    "description": "A boolean property to indicate whether a data record/object/entity is intended to be a placeholder data object rather than a publicly displayed object with a proper ID, name and/or symbol, for example. For example, the Cassette class has been introduced to support FlyBase Cassette objects with IDs and names, but not every Alliance member has data tables/classes for these objects and any IDs or names/symbols would likely be derived and not helpful to end users. Data records/entities where the placeholder value is set to true would have various visible properties suppressed, so as not to confuse end users with private, internal or otherwise contrived representations.",
                     "type": [
                         "boolean",
                         "null"
@@ -32790,6 +32839,13 @@
                         "null"
                     ]
                 },
+                "placeholder": {
+                    "description": "A boolean property to indicate whether a data record/object/entity is intended to be a placeholder data object rather than a publicly displayed object with a proper ID, name and/or symbol, for example. For example, the Cassette class has been introduced to support FlyBase Cassette objects with IDs and names, but not every Alliance member has data tables/classes for these objects and any IDs or names/symbols would likely be derived and not helpful to end users. Data records/entities where the placeholder value is set to true would have various visible properties suppressed, so as not to confuse end users with private, internal or otherwise contrived representations.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
                 "primary_external_id": {
                     "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": [
@@ -33293,6 +33349,13 @@
                         "null"
                     ]
                 },
+                "placeholder": {
+                    "description": "A boolean property to indicate whether a data record/object/entity is intended to be a placeholder data object rather than a publicly displayed object with a proper ID, name and/or symbol, for example. For example, the Cassette class has been introduced to support FlyBase Cassette objects with IDs and names, but not every Alliance member has data tables/classes for these objects and any IDs or names/symbols would likely be derived and not helpful to end users. Data records/entities where the placeholder value is set to true would have various visible properties suppressed, so as not to confuse end users with private, internal or otherwise contrived representations.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
                 "primary_external_id": {
                     "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": [
@@ -33410,6 +33473,13 @@
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "placeholder": {
+                    "description": "A boolean property to indicate whether a data record/object/entity is intended to be a placeholder data object rather than a publicly displayed object with a proper ID, name and/or symbol, for example. For example, the Cassette class has been introduced to support FlyBase Cassette objects with IDs and names, but not every Alliance member has data tables/classes for these objects and any IDs or names/symbols would likely be derived and not helpful to end users. Data records/entities where the placeholder value is set to true would have various visible properties suppressed, so as not to confuse end users with private, internal or otherwise contrived representations.",
                     "type": [
                         "boolean",
                         "null"
@@ -37810,6 +37880,13 @@
                         "null"
                     ]
                 },
+                "placeholder": {
+                    "description": "A boolean property to indicate whether a data record/object/entity is intended to be a placeholder data object rather than a publicly displayed object with a proper ID, name and/or symbol, for example. For example, the Cassette class has been introduced to support FlyBase Cassette objects with IDs and names, but not every Alliance member has data tables/classes for these objects and any IDs or names/symbols would likely be derived and not helpful to end users. Data records/entities where the placeholder value is set to true would have various visible properties suppressed, so as not to confuse end users with private, internal or otherwise contrived representations.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
                 "primary_external_id": {
                     "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": [
@@ -37982,6 +38059,13 @@
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "placeholder": {
+                    "description": "A boolean property to indicate whether a data record/object/entity is intended to be a placeholder data object rather than a publicly displayed object with a proper ID, name and/or symbol, for example. For example, the Cassette class has been introduced to support FlyBase Cassette objects with IDs and names, but not every Alliance member has data tables/classes for these objects and any IDs or names/symbols would likely be derived and not helpful to end users. Data records/entities where the placeholder value is set to true would have various visible properties suppressed, so as not to confuse end users with private, internal or otherwise contrived representations.",
                     "type": [
                         "boolean",
                         "null"
