@@ -49,6 +49,7 @@ classes:
       - unique_id
       - secondary_identifiers
       - related_notes
+      - placeholder
 
   ReagentDTO:
     is_a: SubmittedObjectDTO
@@ -57,6 +58,7 @@ classes:
     slots:
       - secondary_identifiers
       - note_dtos
+      - placeholder
     slot_usage:
       mod_internal_id:
         notes: This is required if primary_external_id is not submitted

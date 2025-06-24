@@ -6,6 +6,7 @@
       "updated_by_curie": "WB:WBPerson123",
       "internal": false,
       "obsolete": false,
+      "placeholder": false,
       "primary_external_id": "WB:WBCassette123",
       "cassette_symbol_dto": {
         "name_type_name": "nomenclature_symbol",
