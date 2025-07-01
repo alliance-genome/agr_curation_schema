@@ -1,27 +1,28 @@
 {
-  "linkml_version": "2.0.0",
-  "construct_ingest_set": [
+  "linkml_version": "2.13.0",
+  "cassette_ingest_set": [
     {
       "created_by_curie": "WB:WBPerson123",
       "updated_by_curie": "WB:WBPerson123",
       "internal": false,
       "obsolete": false,
-      "primary_external_id": "WB:WBConstruct123",
-      "construct_symbol_dto": {
+      "placeholder": false,
+      "primary_external_id": "WB:WBCassette123",
+      "cassette_symbol_dto": {
         "name_type_name": "nomenclature_symbol",
-        "format_text": "const123",
-        "display_text": "const123",
-        "synonym_url": "https://synonym_url.com/const123",
+        "format_text": "cassette123",
+        "display_text": "cassette123",
+        "synonym_url": "https://synonym_url.com/cassette123",
         "synonym_scope_name": "exact",
         "evidence_curies": [
           "PMID:01231002"
         ],
         "internal": false
       },
-      "construct_full_name_dto": {
+      "cassette_full_name_dto": {
         "name_type_name": "full_name",
-        "format_text": "Construct A",
-        "display_text": "Construct A",
+        "format_text": "Cassette A",
+        "display_text": "Cassette A",
         "synonym_url": "https://synonym_url.com/a83",
         "synonym_scope_name": "exact",
         "evidence_curies": [
@@ -29,12 +30,12 @@
         ],
         "internal": false
       },
-      "construct_synonym_dtos": [
+      "cassette_synonym_dtos": [
         {
           "name_type_name": "synonym",
-          "format_text": "Construct Alpha",
-          "display_text": "Construct α",
-          "synonym_url": "https://synonym_url.com/ConstructAlpha",
+          "format_text": "Cassette Alpha",
+          "display_text": "Cassette α",
+          "synonym_url": "https://synonym_url.com/CassetteAlpha",
           "synonym_scope_name": "exact",
           "evidence_curies": [
             "PMID:01231002"
@@ -49,7 +50,7 @@
       "reference_curies": [
         "PMID:101231321"
       ],
-      "construct_component_dtos": [
+      "cassette_component_dtos": [
         {
           "relation_name": "expresses",
           "component_symbol": "comA",
@@ -68,19 +69,19 @@
       "data_provider_dto": {
         "source_organization_abbreviation": "WB",
         "cross_reference_dto": {
-          "referenced_curie": "WB:WBConstruct123",
+          "referenced_curie": "WB:WBCassette123",
           "prefix": "WB",
-          "page_area": "construct",
-          "display_name": "WB:WBConstruct123",
+          "page_area": "cassette",
+          "display_name": "WB:WBCassette123",
           "internal": false
         },
         "internal": false
       }
     }
   ],
-  "construct_genomic_entity_association_ingest_set": [
+  "cassette_genomic_entity_association_ingest_set": [
     {
-      "construct_identifier": "WB:WBConstruct123",
+      "cassette_identifier": "WB:WBCassette123",
       "genomic_entity_relation_name": "is_regulated_by",
       "genomic_entity_identifier": "WB:WBGene00000001",
       "evidence_curies": [
@@ -101,11 +102,11 @@
       "updated_by_curie": "WB:WBPerson010002"
     }
   ],
-  "construct_cassette_association_ingest_set": [
+  "cassette_transgenic_tool_association_ingest_set": [
     {
-      "construct_identifier": "WB:WBConstruct123",
-      "cassette_relation_name": "has_component",
       "cassette_identifier": "WB:WBCassette123",
+      "transgenic_tool_relation_name": "tagged_with",
+      "transgenic_tool_identifier": "FB:FBto0000428",
       "evidence_curies": [
         "PMID:11231512"
       ],

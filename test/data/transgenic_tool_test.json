@@ -1,0 +1,108 @@
+{
+  "linkml_version": "2.13.0",
+  "transgenic_tool_ingest_set": [
+    {
+      "created_by_curie": "FB:FBPerson123",
+      "updated_by_curie": "FB:FBPerson123",
+      "internal": false,
+      "obsolete": false,
+      "primary_external_id": "FB:FBto0000428",
+      "transgenic_tool_symbol_dto": {
+        "name_type_name": "nomenclature_symbol",
+        "format_text": "Ace2N-2AA-mNeon",
+        "display_text": "Ace2N-2AA-mNeon",
+        "synonym_url": "https://synonym_url.com/transgenictool123",
+        "synonym_scope_name": "exact",
+        "evidence_curies": [
+          "PMID:01231002"
+        ],
+        "internal": false
+      },
+      "transgenic_tool_full_name_dto": {
+        "name_type_name": "full_name",
+        "format_text": "127D01 epitope tag",
+        "display_text": "127D01 epitope tag",
+        "synonym_url": "https://synonym_url.com/127D01",
+        "synonym_scope_name": "exact",
+        "evidence_curies": [
+          "PMID:01231002"
+        ],
+        "internal": false
+      },
+      "transgenic_tool_synonym_dtos": [
+        {
+          "name_type_name": "synonym",
+          "format_text": "FRT[F13]",
+          "display_text": "FRT<sup>F13</sup>",
+          "synonym_url": "https://synonym_url.com/FRTF13",
+          "synonym_scope_name": "exact",
+          "evidence_curies": [
+            "PMID:01231002"
+          ],
+          "internal": false
+        }
+      ],
+      "secondary_identifiers": [
+        "AB:12345",
+        "ZY:4321"
+      ],
+      "reference_curies": [
+        "PMID:101231321"
+      ],
+      "cross_reference_dtos": [
+        {
+          "referenced_curie": "FPbase:6ORKJ",
+          "internal": false,
+          "display_name": "6ORKJ",
+          "page_area": "default",
+          "prefix": "FPbase"
+        }
+      ],
+      "data_provider_dto": {
+        "source_organization_abbreviation": "FB",
+        "cross_reference_dto": {
+          "referenced_curie": "FB:FBto0000428",
+          "prefix": "FB",
+          "page_area": "transgenic_tool",
+          "display_name": "FB:FBto0000428",
+          "internal": false
+        },
+        "internal": false
+      },
+      "note_dtos": [
+        {
+          "free_text": "@Ace2N-2AA-mNeon@ is a fluorescent voltage sensor. It consists of a rhodopsin (GB:DQ074124) from Acetabularia acetabulum, mutated to carry a D81N amino acid substitution which inactivates the proton pump, fused via a linker to the fluorescent @mNeonGreen@ protein (FBrf0230703).",
+          "note_type_name": "summary",
+          "internal": false
+        },
+        {
+          "free_text": "@B2R@ shows no recombinase activity towards the @B3RT@, @KDRT@ or @FRT@ target sites in an in vivo excision assay. It shows a very low cross-reactivity with the @RSRT@ site: 0.9% of cells carrying a @RSRT@ cassette show an excision event compared to 99.9% of cells carrying a @B2RT@ cassette.",
+          "note_type_name": "comment",
+          "internal": false
+        },
+        {
+          "free_text": "Decided to put alleles that encode BE3 under Spyo\\Cas9 rather than the rat Apobec1 cytidine deaminase part of the fusion protein (could have chosen either in a way !), as this is kind of consistent with what was done for FokI::dCas9, and in a way its the Cas9 part that is more important (as this is the bit that targets it to the desired genomic site in combination with sgRNA), while potentially any cytidine deaminase could have been used (PMID:27096365 tested several). gm200501.",
+          "note_type_name": "internal_note",
+          "internal": true
+        }
+      ],
+      "use_curies": [
+        "FBcv:0005056",
+        "FBcv:0009038"
+      ]
+    }
+  ],
+  "transgenic_tool_transgenic_tool_association_ingest_set": [
+    {
+      "transgenic_tool_subject_identifier": "FB:FBto0000428",
+      "relation_name": "compatible_tool",
+      "transgenic_tool_object_identifier": "FB:FBto0000917",
+      "internal": false,
+      "obsolete": false,
+      "date_created": "2015-04-09T10:15:30+00:00",
+      "date_updated": "2022-07-11T13:12:51+00:00",
+      "created_by_curie": "FB:FBPerson123",
+      "updated_by_curie": "FB:FBPerson123"
+    }
+  ]
+}

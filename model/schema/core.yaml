@@ -1441,7 +1441,19 @@ slots:
     range: TranscriptCodingSequenceAssociation
     multivalued: true
 
-  ## --------------------
+  placeholder:
+    range: boolean
+    description: >-
+      A boolean property to indicate whether a data record/object/entity is intended to be
+      a placeholder data object rather than a publicly displayed object with a proper
+      ID, name and/or symbol, for example. For example, the Cassette class has been introduced
+      to support FlyBase Cassette objects with IDs and names, but not every Alliance member
+      has data tables/classes for these objects and any IDs or names/symbols would likely
+      be derived and not helpful to end users. Data records/entities where the placeholder
+      value is set to true would have various visible properties suppressed, so as not to
+      confuse end users with private, internal or otherwise contrived representations.
+
+## --------------------
 ## ASSOCIATION SLOTS
 ## --------------------
 

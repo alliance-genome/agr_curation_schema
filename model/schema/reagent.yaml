@@ -48,6 +48,8 @@ classes:
     slots:
       - unique_id
       - secondary_identifiers
+      - related_notes
+      - placeholder
 
   ReagentDTO:
     is_a: SubmittedObjectDTO
@@ -55,6 +57,8 @@ classes:
       Ingest class for material entities used in experiments.
     slots:
       - secondary_identifiers
+      - note_dtos
+      - placeholder
     slot_usage:
       mod_internal_id:
         notes: This is required if primary_external_id is not submitted
@@ -82,7 +86,6 @@ classes:
       - cross_references
       - references
       - original_reference
-      - related_notes
       - taxon
       - generated_by
       - manufactured_by
@@ -131,7 +134,6 @@ classes:
       - cross_reference_dtos
       - reference_curies
       - original_reference_curie
-      - note_dtos
       - taxon_curie
       - generated_by_identifier # needs to change: currently no common identifier field for Agent class
       - manufactured_by_identifier # needs to change: currently no common identifier field for Agent class
@@ -165,6 +167,7 @@ classes:
       - construct_full_name
       - construct_synonyms
       - construct_genomic_entity_associations
+      - construct_cassette_associations
       - construct_components
       - references
     slot_usage:
@@ -303,6 +306,332 @@ classes:
       genomic_entity_identifier:
         required: true
 
+  ConstructCassetteAssociation:
+    is_a: ConstructAssociation
+    description: >-
+      An association class to capture the identity of a construct cassette that is
+      part of the construct
+    attributes:
+      construct_cassette_association_object:
+        range: Cassette
+        required: true
+    slots:
+      - related_notes
+    slot_usage:
+      relation:
+        range: VocabularyTerm
+        notes: >-
+          The relation should be a VocabularyTerm with one of the following
+          values - 'has_part' (BFO:0000051). CV: 'Construct Cassette Association Relation'
+      related_notes:
+        required: false
+
+  ConstructCassetteAssociationDTO:
+    is_a: EvidenceAssociationDTO
+    description: >-
+      Ingest class for the association class to capture the identity of a construct cassette
+      that is part of the construct
+    slots:
+      - construct_identifier
+      - cassette_relation_name
+      - cassette_identifier
+      - note_dtos
+    slot_usage:
+      genomic_entity_identifier:
+        required: true
+
+  Cassette:
+    is_a: Reagent
+    slots:
+      - cassette_symbol
+      - cassette_full_name
+      - cassette_synonyms
+      - cassette_genomic_entity_associations
+      - cassette_transgenic_tool_associations
+      - cassette_components
+      - references
+    rules:    # Question for modelers: Can these postconditions work? Each slot points to either an Association or a SlotAnnotation
+      - postconditions:
+          any_of:
+            - slot_conditions:
+                cassette_genomic_entity_associations:
+                  required: true
+            - slot_conditions:
+                cassette_components:
+                  required: true
+          description: At least one of cassette_genomic_entity_associations or cassette_components should be populated.
+
+  CassetteDTO:    # Question for modelers: There need to be at least a component or an Association for a Cassette, but we cannot require any of these fields as not everyone has any single property
+    is_a: ReagentDTO
+    slots:
+      - cassette_symbol_dto
+      - cassette_full_name_dto
+      - cassette_synonym_dtos
+      - cassette_component_dtos
+      - reference_curies
+    slot_usage:
+      cassette_symbol_dto:
+        required: true
+
+  CassetteComponentSlotAnnotation:
+    is_a: SlotAnnotation
+    slots:
+      - single_cassette
+      - relation
+      - component_symbol
+      - related_notes
+      - taxon
+      - taxon_text
+    slot_usage:
+      single_cassette:
+        required: true
+      relation:
+        range: VocabularyTerm
+        notes: >-
+          The relation should be a VocabularyTerm with one of the following
+          values - expresses (RO:0002292) / is_regulated_by (RO:0002334) /
+          targets (RO:0002436). CV: 'Cassette Genomic Entity Association Relation'
+      component_symbol:
+        required: true
+      related_notes:
+        required: false
+      taxon:
+        required: false
+      taxon_text:
+        required: false
+
+  CassetteComponentSlotAnnotationDTO:
+    is_a: SlotAnnotationDTO
+    slots:
+      - relation_name
+      - component_symbol
+      - note_dtos
+      - taxon_curie
+      - taxon_text
+
+  CassetteSymbolSlotAnnotation:
+    description: >-
+      The one current symbol for the cassette.
+    is_a: NameSlotAnnotation
+    slots:
+      - single_cassette
+    slot_usage:
+      single_cassette:
+        required: true
+      name_type:
+        notes: >-
+          permissible_values: nomenclature_symbol (VocabularyTerm)
+
+  CassetteFullNameSlotAnnotation:
+    description: >-
+      The one current full name for the cassette.
+    is_a: NameSlotAnnotation
+    slots:
+      - single_cassette
+    slot_usage:
+      single_cassette:
+        required: true
+      name_type:
+        notes: >-
+          permissible_values: full_name (VocabularyTerm)
+
+  CassetteSynonymSlotAnnotation:
+    description: >-
+      All aliases (non-preferred names) for the cassette. Any type of synonym is acceptable.
+    is_a: NameSlotAnnotation
+    slots:
+      - single_cassette
+    slot_usage:
+      single_cassette:
+        required: true
+
+  CassetteAssociation:
+    abstract: true
+    is_a: EvidenceAssociation
+    description: Base class for cassette associations
+    attributes:
+      cassette_association_subject:
+        range: Cassette
+        required: true
+
+  CassetteGenomicEntityAssociation:
+    is_a: CassetteAssociation
+    description: >-
+      An association class to capture the identity of a cassette component that is
+      a known genomic entity with a curie and any accompanying meta data about the
+      relationship between the cassette and that genomic entity component
+    attributes:
+      cassette_genomic_entity_association_object:
+        range: GenomicEntity
+        required: true
+    slots:
+      - related_notes
+      - component_types
+    slot_usage:
+      relation:
+        range: VocabularyTerm
+        notes: >-
+          The relation should be a VocabularyTerm with one of the following
+          values - expresses (RO:0002292) / is_regulated_by (RO:0002334) /
+          targets (RO:0002436). CV: 'Cassette Genomic Entity Association Relation'
+      related_notes:
+        required: false
+
+  CassetteGenomicEntityAssociationDTO:
+    is_a: EvidenceAssociationDTO
+    description: >-
+      Ingest class for association between a cassette component that is a known genomic
+      entity with a curie and any accompanying meta data about the relationship between
+      the cassette and that genomic entity component
+    slots:
+      - cassette_identifier
+      - genomic_entity_relation_name
+      - genomic_entity_identifier
+      - note_dtos
+      - component_type_curies
+    slot_usage:
+      genomic_entity_identifier:
+        required: true
+
+  CassetteTransgenicToolAssociation:
+    is_a: CassetteAssociation
+    description: >-
+      An association class to capture the identity of a cassette component that is
+      a known transgenic tool and any accompanying meta data about the
+      relationship between the cassette and that transgenic tool component
+    attributes:
+      cassette_transgenic_tool_association_object:
+        range: TransgenicTool
+        required: true
+    slots:
+      - related_notes
+    slot_usage:
+      relation:
+        range: VocabularyTerm
+        notes: >-
+          The relation should be a VocabularyTerm with one of the following
+          values - expresses (RO:0002292) / is_regulated_by (RO:0002334) /
+          targets (RO:0002436). CV: 'Cassette Relation'
+      related_notes:
+        required: false
+
+  CassetteTransgenicToolAssociationDTO:
+    is_a: EvidenceAssociationDTO
+    description: >-
+      Ingest class for association between a cassette component that is a known transgenic
+      tool and any accompanying meta data about the relationship between
+      the cassette and that transgenic tool component
+    slots:
+      - cassette_identifier
+      - transgenic_tool_relation_name
+      - transgenic_tool_identifier
+      - note_dtos
+    slot_usage:
+      transgenic_tool_identifier:
+        required: true
+
+  TransgenicTool:
+    is_a: Reagent
+    description: >-
+      A Transgenic Tool is defined as a commonly used sequence that forms part of a Construct
+      or Transgene, and which has useful properties that are exploited to study the biological
+      function of another gene product or a biological process.
+    slots:
+      - cross_references
+      - transgenic_tool_symbol
+      - transgenic_tool_full_name
+      - transgenic_tool_synonyms
+      - uses
+      - references
+
+  TransgenicToolDTO:
+    is_a: ReagentDTO
+    description: >-
+      An ingest class for a Transgenic Tool; a Transgenic Tool is defined as a commonly used sequence
+      that forms part of a Construct or Transgene, and which has useful properties that are exploited
+      to study the biological function of another gene product or a biological process.
+    slots:
+      - cross_reference_dtos
+      - transgenic_tool_symbol_dto
+      - transgenic_tool_full_name_dto
+      - transgenic_tool_synonym_dtos
+      - use_curies
+      - reference_curies
+
+  TransgenicToolSymbolSlotAnnotation:
+    description: >-
+      The one current symbol for the TransgenicTool.
+    is_a: NameSlotAnnotation
+    slots:
+      - single_transgenic_tool
+    slot_usage:
+      single_transgenic_tool:
+        required: true
+      name_type:
+        notes: >-
+          permissible_values: nomenclature_symbol (VocabularyTerm)
+
+  TransgenicToolFullNameSlotAnnotation:
+    description: >-
+      The one current full name for the TransgenicTool.
+    is_a: NameSlotAnnotation
+    slots:
+      - single_transgenic_tool
+    slot_usage:
+      single_transgenic_tool:
+        required: true
+      name_type:
+        notes: >-
+          permissible_values: full_name (VocabularyTerm)
+
+  TransgenicToolSynonymSlotAnnotation:
+    description: >-
+      All aliases (non-preferred names) for the TransgenicTool. Any type of synonym is acceptable.
+    is_a: NameSlotAnnotation
+    slots:
+      - single_transgenic_tool
+    slot_usage:
+      single_transgenic_tool:
+        required: true
+      name_type:
+        notes: >-
+          permissible_values: full_name (VocabularyTerm)
+
+  TransgenicToolAssociation:
+    abstract: true
+    is_a: EvidenceAssociation
+    description: Base class for TransgenicTool associations
+    attributes:
+      transgenic_tool_association_subject:
+        range: TransgenicTool
+        required: true
+
+  TransgenicToolTransgenicToolAssociation:
+    is_a: TransgenicToolAssociation
+    description: >-
+      Association (without evidence) between two compatible TransgenicTools. The associatied TransgenicTool
+      is any transgenic tool that is compatible for use in combination with the tool, either as part of a
+      multi-component experimental system (eg. binary or split systems), or because the tools form an
+      enzyme/target site pair (eg. FLP/FRT).
+    attributes:
+      transgenic_tool_transgenic_tool_association_object:
+        range: TransgenicTool
+        required: true
+    slots:
+      - transgenic_tool_association_subject
+
+  TransgenicToolTransgenicToolAssociationDTO:
+    is_a: AuditedObjectDTO
+    slots:
+      - transgenic_tool_subject_identifier
+      - transgenic_tool_object_identifier
+      - relation_name
+    slot_usage:
+      relation_name:
+        notes: >-
+          permissible_values: compatible_tool (VocabularyTerm)
+
+
   # If we need to have multiple paths to root class, then we can consider a mixin that allows
   # DNA|RNAClones to be classified independently from Reagents.
 
@@ -311,7 +640,6 @@ classes:
 
   RNAClone:
     is_a: Reagent
-
 
 slots:
 
@@ -348,6 +676,94 @@ slots:
     domain: AntibodyDTO
     range: string
 
+  cassette_component_symbol:
+    range: string
+    required: true
+    description: >-
+      The free text of a symbol or name of a cassette
+      component for which no curie exists or is available
+
+  cassette_components:
+    multivalued: true
+    domain: Cassette
+    range: CassetteComponentSlotAnnotation
+
+  cassette_component_dtos:
+    multivalued: true
+    range: CassetteComponentSlotAnnotationDTO
+    inlined: true
+    inlined_as_list: true
+
+  cassette_genomic_entity_associations:
+    multivalued: true
+    domain: Cassette
+    range: CassetteGenomicEntityAssociation
+
+  cassette_transgenic_tool_associations:
+    multivalued: true
+    domain: Cassette
+    range: CassetteTransgenicToolAssociation
+
+  cassette_identifier:
+    description: >-
+      Either the MOD curie or internal ID that was used in the submission
+      of the associated cassette
+    range: string
+    required: false
+
+  cassette_relation_name:
+    description: >-
+      Name of VocabularyTerm describing relationship between a subject entity and an object Cassette
+    range: string
+    required: true
+
+  cassette_symbol:
+    description: >-
+      Holds between a Cassette and the one current accepted symbol
+    domain: Cassette
+    range: CassetteSymbolSlotAnnotation
+    required: false
+    multivalued: false
+
+  cassette_symbol_dto:
+    description: >-
+      Holds between a Cassette and the one current accepted symbol
+    domain: CassetteDTO
+    range: SymbolSlotAnnotationDTO
+    required: false
+    multivalued: false
+    inlined: true
+
+  cassette_full_name:
+    description: Holds between a Cassette and a full name.
+    domain: Cassette
+    required: false
+    multivalued: false
+    range: CassetteFullNameSlotAnnotation
+
+  cassette_full_name_dto:
+    description: Holds between a Cassette and a full name.
+    domain: CassetteDTO
+    range: NameSlotAnnotationDTO
+    multivalued: false
+    required: false
+    inlined: true
+
+  cassette_synonyms:
+    description: Holds between a Cassette and a list of synonyms.
+    domain: Cassette
+    required: false
+    multivalued: true
+    range: CassetteSynonymSlotAnnotation
+
+  cassette_synonym_dtos:
+    description: Holds between a Cassette and a list of synonyms.
+    domain: CassetteDTO
+    range: NameSlotAnnotationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
   clonality:
     description: >-
       The clonality of the antibody: e.g., monoclonal.
@@ -374,6 +790,17 @@ slots:
       The free text of a symbol or name of a construct
       component for which no curie exists or is available
 
+  component_types:
+    range: SOTerm
+    multivalued: true
+    description: >-
+      The list of SO Terms to describe the nature of the Construct Cassette component, as used by FlyBase et al.
+
+  component_type_curies:
+    description: Curies of SOTerms representing the nature of Construct Cassette components
+    range: string
+    multivalued: true
+
   construct_components:
     multivalued: true
     domain: Construct
@@ -389,6 +816,11 @@ slots:
     multivalued: true
     domain: Construct
     range: ConstructGenomicEntityAssociation
+
+  construct_cassette_associations:
+    multivalued: true
+    domain: Construct
+    range: ConstructCassetteAssociation
 
   construct_identifier:
     description: >-
@@ -504,10 +936,115 @@ slots:
     range: Construct
     multivalued: false
 
+  single_cassette:
+    range: Cassette
+    multivalued: false
+
+  single_transgenic_tool:
+    range: TransgenicTool
+    multivalued: false
+
   taxon_text:
     description: >-
       The free text reference to a species or general taxon (e.g. "Yeast") for a
       a biological entity for which the exact taxon curie is unknown or unavailable.
+
+  transgenic_tool_association_subject:
+    description: >-
+      Subject slot to be used for TransgenicTool associations
+    required: true
+    range: TransgenicTool
+
+  transgenic_tool_object_identifier:
+    range: string
+    required: true
+    description: >-
+      Curie or internal ID of TransgenicTool that is the object of an association
+
+  transgenic_tool_subject_identifier:
+    range: string
+    required: true
+    description: >-
+      Curie or internal ID of TransgenicTool that is the subject of an association
+
+  transgenic_tool_symbol:
+    description: >-
+      Holds between a TransgenicTool and the one current accepted symbol
+    exact_mappings:
+      - biolink:symbol
+    domain: TransgenicTool
+    range: TransgenicToolSymbolSlotAnnotation
+    required: true
+    multivalued: false
+
+  transgenic_tool_symbol_dto:
+    description: >-
+      Holds between a TransgenicTool and the one current accepted symbol
+    domain: TransgenicToolDTO
+    range: TransgenicToolSlotAnnotationDTO
+    required: true
+    multivalued: false
+    inlined: true
+
+  transgenic_tool_full_name:
+    description: Holds between a TransgenicTool and a full name.
+    domain: TransgenicTool
+    required: false
+    multivalued: false
+    range: TransgenicToolFullNameSlotAnnotation
+
+  transgenic_tool_full_name_dto:
+    description: Holds between a TransgenicTool and a full name.
+    domain: TransgenicToolDTO
+    range: NameSlotAnnotationDTO
+    multivalued: false
+    required: false
+    inlined: true
+
+  transgenic_tool_identifier:
+    description: >-
+      Either the MOD curie or internal ID that was used in the submission
+      of the associated transgenic tool
+    range: string
+    required: true
+
+  transgenic_tool_relation_name:
+    description: >-
+      Name of the VocabularyTerm describing the relationship between a
+      TransgenicTool and another TransgenicTool
+    domain: ConstructGenomicEntityAssociationDTO
+    range: string
+    required: true
+
+  transgenic_tool_synonyms:
+    description: Holds between a TransgenicTool and a list of synonyms.
+    domain: TransgenicTool
+    required: false
+    multivalued: true
+    range: TransgenicToolSynonymSlotAnnotation
+
+  transgenic_tool_synonym_dtos:
+    description: Holds between a TransgenicTool and a list of synonyms.
+    domain: TransgenicToolDTO
+    range: NameSlotAnnotationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  uses:
+    description: >-
+      Holds between a TransgenicTool and a list of FBcv terms with namespace
+      'experimental_tool_descriptor'
+    range: FBCVTerm
+    multivalued: true
+
+  use_curies:
+    description: >-
+      Holds between a TransgenicTool and a list of curies of FBcv terms with namespace
+      'experimental_tool_descriptor'
+    range: string
+    multivalued: true
+
 
 ########################
 #
