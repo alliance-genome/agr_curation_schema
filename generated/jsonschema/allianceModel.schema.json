@@ -20582,6 +20582,17 @@
                         "null"
                     ]
                 },
+                "gcrp_cross_reference": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/CrossReference"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The single UniProtKB Gene-Centric Reference Proteome (GCRP) UniProtKB identifier and cross reference for the gene"
+                },
                 "gene_change_events": {
                     "description": "Change events for a given gene.",
                     "items": {
@@ -21388,6 +21399,17 @@
                         "string",
                         "null"
                     ]
+                },
+                "gcrp_cross_reference_dto": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/CrossReferenceDTO"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The single UniProtKB Gene-Centric Reference Proteome (GCRP) UniProtKB identifier and cross reference for the gene, data transfer object for submission"
                 },
                 "gene_full_name_dto": {
                     "anyOf": [

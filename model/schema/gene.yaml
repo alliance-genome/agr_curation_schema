@@ -75,6 +75,14 @@ classes:
       - product_binds_matrix
       - wbprocess
       - transposon_origin
+    attributes:
+      gcrp_cross_reference:
+        range: CrossReference
+        description: >-
+          The single UniProtKB Gene-Centric Reference Proteome (GCRP) UniProtKB identifier
+          and cross reference for the gene
+        multivalued: false
+        required: false
     id_prefixes:
       - ENSEMBL
       - HGNC
@@ -105,6 +113,14 @@ classes:
       - gene_secondary_id_dtos
       - gene_type_curie
       - note_dtos
+    attributes:
+      gcrp_cross_reference_dto:
+        range: CrossReferenceDTO
+        description: >-
+          The single UniProtKB Gene-Centric Reference Proteome (GCRP) UniProtKB identifier
+          and cross reference for the gene, data transfer object for submission
+        multivalued: false
+        required: false
     slot_usage:
       primary_external_id:
         required: true
