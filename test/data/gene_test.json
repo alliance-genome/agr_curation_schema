@@ -73,6 +73,13 @@
           "internal": false
         }
       ],
+      "gcrp_cross_reference_dto": {
+        "referenced_curie": "UniProtKB:P18431",
+        "display_name": "UniProtKB:P18431",
+        "internal": false,
+        "page_area": "default",
+        "prefix": "UniProtKB"
+      },
       "cross_reference_dtos": [
         {
           "referenced_curie": "ZFIN:ZDB-GENE-010226-1",
