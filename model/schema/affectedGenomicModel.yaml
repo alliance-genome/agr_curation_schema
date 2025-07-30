@@ -45,7 +45,7 @@ classes:
       - agm_synonyms
       - agm_secondary_ids
       - components
-      - agm_sequence_targeting_reagent_associations
+      - agm_str_associations
       - parental_populations
       - references
     slot_usage:
@@ -139,18 +139,18 @@ classes:
       - relation_name
       - zygosity_curie
 
-  AgmSequenceTargetingReagentAssociation:
+  AgmStrAssociation:
     is_a: Association
     description: >-
       Association (without evidence) between two AffectedGenomicModels
     attributes:
-      agm_sequence_targeting_reagent_association_object:
+      agm_str_association_object:
         range: SequenceTargetingReagent
         required: true
     slots:
       - agm_association_subject
 
-  AgmSequenceTargetingReagentAssociationDTO:
+  AgmStrAssociationDTO:
     is_a: AuditedObjectDTO
     slots:
       - agm_subject_identifier
@@ -279,9 +279,9 @@ slots:
     domain: AgmAlleleAssociationDTO
     range: string
 
-  agm_sequence_targeting_reagent_associations:
+  agm_str_associations:
     domain: AffectedGenomicModel
-    range: AgmSequenceTargetingReagentAssociation
+    range: AgmStrAssociation
     multivalued: true
 
   parental_populations:

@@ -348,7 +348,9 @@ classes:
       - cassette_synonyms
       - cassette_genomic_entity_associations
       - cassette_transgenic_tool_associations
+      - cassette_str_associations
       - cassette_components
+      - cassette_uses
       - references
     rules:    # Question for modelers: Can these postconditions work? Each slot points to either an Association or a SlotAnnotation
       - postconditions:
@@ -368,6 +370,7 @@ classes:
       - cassette_full_name_dto
       - cassette_synonym_dtos
       - cassette_component_dtos
+      - cassette_use_dtos
       - reference_curies
     slot_usage:
       cassette_symbol_dto:
@@ -528,6 +531,67 @@ classes:
       - note_dtos
     slot_usage:
       transgenic_tool_identifier:
+        required: true
+
+  CassetteStrAssociation:
+    is_a: CassetteAssociation
+    description: >-
+      An association class to capture the identity of a sequence targeting reagent (STR) that is
+      a component of the Cassette and any accompanying meta data about the
+      relationship between the cassette and that STR component
+    attributes:
+      cassette_str_association_object:
+        range: SequenceTargetingReagent
+        required: true
+    slots:
+      - related_notes
+    slot_usage:
+      relation:
+        range: VocabularyTerm
+        notes: >-
+          The relation should be a VocabularyTerm with one of the following
+          values - expresses (RO:0002292) CV: 'Cassette STR Association Relation'
+      related_notes:
+        required: false
+
+  CassetteStrAssociationDTO:
+    is_a: EvidenceAssociationDTO
+    description: >-
+      An association class to capture the identity of a sequence targeting reagent (STR) that is
+      a component of the Cassette and any accompanying meta data about the
+      relationship between the cassette and that STR component
+    slots:
+      - cassette_identifier
+      - sequence_targeting_reagent_relation_name
+      - sequence_targeting_reagent_identifier
+      - note_dtos
+    slot_usage:
+      sequence_targeting_reagent_identifier:
+        required: true
+
+  CassetteUseSlotAnnotation:
+    is_a: SlotAnnotation
+    description: >-
+      A slot annotation to capture the use(s) (e.g. enhancer trap, protein trap) of a particular Cassette
+      with associated evidence.
+    slots:
+      - single_cassette
+      - uses
+    slot_usage:
+      single_cassette:
+        required: true
+      uses:
+        required: true
+
+  CassetteUseSlotAnnotationDTO:
+    is_a: SlotAnnotationDTO
+    description: >-
+      Ingest class for a slot annotation to capture the use(s) (e.g. enhancer trap, protein trap) of a
+      particular Cassette with associated evidence.
+    slots:
+      - use_curies
+    slot_usage:
+      use_curies:
         required: true
 
   TransgenicTool:
@@ -704,6 +768,11 @@ slots:
     domain: Cassette
     range: CassetteTransgenicToolAssociation
 
+  cassette_str_associations:
+    multivalued: true
+    domain: Cassette
+    range: CassetteStrAssociation
+
   cassette_identifier:
     description: >-
       Either the MOD curie or internal ID that was used in the submission
@@ -760,6 +829,21 @@ slots:
     description: Holds between a Cassette and a list of synonyms.
     domain: CassetteDTO
     range: NameSlotAnnotationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  cassette_uses:
+    description: Holds between a Cassette and a list of uses.
+    domain: Cassette
+    required: false
+    multivalued: true
+    range: CassetteUseSlotAnnotation
+
+  cassette_use_dtos:
+    description: Holds between a Cassette and a list of uses.
+    domain: CassetteDTO
+    range: CassetteUseSlotAnnotationDTO
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -931,7 +1015,14 @@ slots:
       Identifier for Reagent manufactured_by field.  
     domain: ReagentDTO
     range: string
-    
+
+  sequence_targeting_reagent_relation_name:
+    description: >-
+      Name of VocabularyTerm describing relationship between a subject entity and an object Sequence
+      Targeting Reagent (STR)
+    range: string
+    required: true
+
   single_construct:
     range: Construct
     multivalued: false

@@ -169,7 +169,7 @@ classes:
       - references
       - synonyms
       - secondary_identifiers
-      - sequence_targeting_reagent_gene_associations
+      - str_gene_associations
     slot_usage:
       name:
         required: true
@@ -185,16 +185,16 @@ classes:
       primary_external_id:
         required: true
 
-  SequenceTargetingReagentAssociation:
+  StrAssociation:
     is_a: EvidenceAssociation
     abstract: true
     description: Base class for STR associations
     attributes:
-      sequence_targeting_reagent_association_subject:
+      str_association_subject:
         range: SequenceTargetingReagent
         required: true
 
-  SequenceTargetingReagentAssociationDTO:
+  StrAssociationDTO:
     is_a: EvidenceAssociationDTO
     abstract: true
     description: Base class for STR association DTOs
@@ -203,26 +203,26 @@ classes:
         range: string
         required: true
 
-  SequenceTargetingReagentGeneAssociation:
+  StrGeneAssociation:
     description: >-
       The relationship between a Sequence Targeting Reagent and its targeted
       genes. The relation should be a VocabularyTerm with one of the following
       values - targets
-    is_a: SequenceTargetingReagentAssociation
+    is_a: StrAssociation
     attributes:
-      sequence_targeting_reagent_gene_association_object:
+      str_gene_association_object:
         range: Gene
         required: true
     slot_usage:
       relation:
         range: VocabularyTerm
 
-  SequenceTargetingReagentGeneAssociationDTO:
+  StrGeneAssociationDTO:
     description: >-
       The DTO class for the relationship between a Sequence Targeting Reagent and its targeted
       genes. The relation_name should be a VocabularyTerm with one of the following
       values - targets
-    is_a: SequenceTargetingReagentAssociationDTO
+    is_a: StrAssociationDTO
     slots:
       - relation_name
     attributes:
@@ -1140,20 +1140,20 @@ slots:
       The primary image for an allele that is used to represent the allele on a page.
     range: boolean
 
-  sequence_targeting_reagent_gene_association_object:
+  str_gene_association_object:
     range: Gene
     multivalued: false
 
   sequence_targeting_reagent_identifier:
     range: string
     multivalued: false
-    domain: SequenceTargetingReagentAssociationDTO
+    domain: StrAssociationDTO
     description: >-
       Identifier (curie/primary_external_id/mod_internal_id) of the STR
 
-  sequence_targeting_reagent_gene_associations:
+  str_gene_associations:
     domain: SequenceTargetingReagent
-    range: SequenceTargetingReagentGeneAssociation
+    range: StrGeneAssociation
     multivalued: true
 
   single_allele:
@@ -1184,7 +1184,7 @@ slots:
     range: string
 
 enums:
-  sqtr_relation_enum:
+  str_relation_enum:
     permissible_values:
       targets:
 

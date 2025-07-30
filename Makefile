@@ -187,12 +187,14 @@ deploy-testpypi:
 
 # datasets used test/validate the schema
 SCHEMA_TEST_EXAMPLES := \
+	agm_association_ingest_test \
 	agm_test \
 	allele_association_ingest_test \
 	allele_slot_annotation_ingest_test \
 	allele_test \
 	antibody_test \
 	assembly_component_test \
+	cassette_test \
 	chromosome_test \
 	construct_test \
 	disease_agm_test \
@@ -202,15 +204,17 @@ SCHEMA_TEST_EXAMPLES := \
 	gene_interaction_test \
 	gene_test \
 	genome_assembly_test \
+	high_throughput_expression_test \
 	ontology_closure_test \
 	phenotype_agm_test \
 	phenotype_allele_test \
 	phenotype_gene_test \
 	protein_test \
 	sgd_disease_test \
-	sqtr_test \
-	sqtr_association_ingest_test \
+	str_association_ingest_test \
+	str_test \
 	transcript_test \
+	transgenic_tool_test \
 	variant_allele_association_test \
 	variant_association_ingest_test \
 	variant_test \

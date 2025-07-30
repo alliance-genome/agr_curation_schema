@@ -43,6 +43,17 @@
           "internal": false
         }
       ],
+      "cassette_use_dtos": [
+        {
+          "use_curies": [
+            "FBcv:0005069"
+          ],
+          "evidence_curies": [
+            "PMID:01231002"
+          ],
+          "internal": false
+        }
+      ],
       "secondary_identifiers": [
         "AB:12345",
         "ZY:4321"
@@ -107,6 +118,29 @@
       "cassette_identifier": "WB:WBCassette123",
       "transgenic_tool_relation_name": "tagged_with",
       "transgenic_tool_identifier": "FB:FBto0000428",
+      "evidence_curies": [
+        "PMID:11231512"
+      ],
+      "note_dtos": [
+        {
+          "free_text": "note about association",
+          "note_type_name": "comment",
+          "internal": false
+        }
+      ],
+      "internal": false,
+      "obsolete": false,
+      "date_created": "2015-04-09T10:15:30+00:00",
+      "date_updated": "2022-07-11T13:12:51+00:00",
+      "created_by_curie": "WB:WBPerson002314",
+      "updated_by_curie": "WB:WBPerson010002"
+    }
+  ],
+  "cassette_str_association_ingest_set": [
+    {
+      "cassette_identifier": "WB:WBCassette123",
+      "sequence_targeting_reagent_relation_name": "expresses",
+      "sequence_targeting_reagent_identifier": "ZFIN:ZDB-CRISPR-230127-4",
       "evidence_curies": [
         "PMID:11231512"
       ],

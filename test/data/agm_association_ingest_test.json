@@ -17,7 +17,7 @@
       "internal": false
     }
   ],
-  "agm_sequence_targeting_reagent_association_ingest_set": [
+  "agm_str_association_ingest_set": [
     {
       "agm_subject_identifier": "WB:WBStrain001231",
       "relation_name": "is_child_of",

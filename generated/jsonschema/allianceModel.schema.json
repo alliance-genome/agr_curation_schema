@@ -1339,9 +1339,9 @@
                         "null"
                     ]
                 },
-                "agm_sequence_targeting_reagent_associations": {
+                "agm_str_associations": {
                     "items": {
-                        "$ref": "#/$defs/AgmSequenceTargetingReagentAssociation"
+                        "$ref": "#/$defs/AgmStrAssociation"
                     },
                     "type": [
                         "array",
@@ -2259,7 +2259,7 @@
             "title": "AgmSecondaryIdSlotAnnotation",
             "type": "object"
         },
-        "AgmSequenceTargetingReagentAssociation": {
+        "AgmStrAssociation": {
             "additionalProperties": false,
             "description": "Association (without evidence) between two AffectedGenomicModels",
             "properties": {
@@ -2267,7 +2267,7 @@
                     "$ref": "#/$defs/AffectedGenomicModel",
                     "description": "Subject slot to be used for AGM associations"
                 },
-                "agm_sequence_targeting_reagent_association_object": {
+                "agm_str_association_object": {
                     "$ref": "#/$defs/SequenceTargetingReagent"
                 },
                 "created_by": {
@@ -2334,14 +2334,14 @@
             },
             "required": [
                 "agm_association_subject",
-                "agm_sequence_targeting_reagent_association_object",
+                "agm_str_association_object",
                 "relation",
                 "internal"
             ],
-            "title": "AgmSequenceTargetingReagentAssociation",
+            "title": "AgmStrAssociation",
             "type": "object"
         },
-        "AgmSequenceTargetingReagentAssociationDTO": {
+        "AgmStrAssociationDTO": {
             "additionalProperties": false,
             "description": "",
             "properties": {
@@ -2423,7 +2423,7 @@
                 "relation_name",
                 "internal"
             ],
-            "title": "AgmSequenceTargetingReagentAssociationDTO",
+            "title": "AgmStrAssociationDTO",
             "type": "object"
         },
         "AgmSynonymSlotAnnotation": {
@@ -11440,6 +11440,15 @@
                         "null"
                     ]
                 },
+                "cassette_str_associations": {
+                    "items": {
+                        "$ref": "#/$defs/CassetteStrAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "cassette_symbol": {
                     "anyOf": [
                         {
@@ -11464,6 +11473,16 @@
                 "cassette_transgenic_tool_associations": {
                     "items": {
                         "$ref": "#/$defs/CassetteTransgenicToolAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "cassette_uses": {
+                    "description": "Holds between a Cassette and a list of uses.",
+                    "items": {
+                        "$ref": "#/$defs/CassetteUseSlotAnnotation"
                     },
                     "type": [
                         "array",
@@ -11893,6 +11912,16 @@
                     "description": "Holds between a Cassette and a list of synonyms.",
                     "items": {
                         "$ref": "#/$defs/NameSlotAnnotationDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "cassette_use_dtos": {
+                    "description": "Holds between a Cassette and a list of uses.",
+                    "items": {
+                        "$ref": "#/$defs/CassetteUseSlotAnnotationDTO"
                     },
                     "type": [
                         "array",
@@ -12353,6 +12382,211 @@
             "title": "CassetteGenomicEntityAssociationDTO",
             "type": "object"
         },
+        "CassetteStrAssociation": {
+            "additionalProperties": false,
+            "description": "An association class to capture the identity of a sequence targeting reagent (STR) that is a component of the Cassette and any accompanying meta data about the relationship between the cassette and that STR component",
+            "properties": {
+                "cassette_association_subject": {
+                    "$ref": "#/$defs/Cassette"
+                },
+                "cassette_str_association_object": {
+                    "$ref": "#/$defs/SequenceTargetingReagent"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence": {
+                    "description": "The evidence that supports some assertion.",
+                    "items": {
+                        "$ref": "#/$defs/InformationContentEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "related_notes": {
+                    "description": "Holds between an object and a list of related Note objects.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "cassette_str_association_object",
+                "cassette_association_subject",
+                "relation",
+                "internal"
+            ],
+            "title": "CassetteStrAssociation",
+            "type": "object"
+        },
+        "CassetteStrAssociationDTO": {
+            "additionalProperties": false,
+            "description": "An association class to capture the identity of a sequence targeting reagent (STR) that is a component of the Cassette and any accompanying meta data about the relationship between the cassette and that STR component",
+            "properties": {
+                "cassette_identifier": {
+                    "description": "Either the MOD curie or internal ID that was used in the submission of the associated cassette",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence_curies": {
+                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "sequence_targeting_reagent_identifier": {
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the STR",
+                    "type": "string"
+                },
+                "sequence_targeting_reagent_relation_name": {
+                    "description": "Name of VocabularyTerm describing relationship between a subject entity and an object Sequence Targeting Reagent (STR)",
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "sequence_targeting_reagent_relation_name",
+                "sequence_targeting_reagent_identifier",
+                "internal"
+            ],
+            "title": "CassetteStrAssociationDTO",
+            "type": "object"
+        },
         "CassetteSymbolSlotAnnotation": {
             "additionalProperties": false,
             "description": "The one current symbol for the cassette.",
@@ -12778,6 +13012,182 @@
                 "internal"
             ],
             "title": "CassetteTransgenicToolAssociationDTO",
+            "type": "object"
+        },
+        "CassetteUseSlotAnnotation": {
+            "additionalProperties": false,
+            "description": "A slot annotation to capture the use(s) (e.g. enhancer trap, protein trap) of a particular Cassette with associated evidence.",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence": {
+                    "description": "The evidence that supports some assertion.",
+                    "items": {
+                        "$ref": "#/$defs/InformationContentEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "single_cassette": {
+                    "$ref": "#/$defs/Cassette"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "uses": {
+                    "description": "Holds between a TransgenicTool and a list of FBcv terms with namespace 'experimental_tool_descriptor'",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "single_cassette",
+                "uses",
+                "internal"
+            ],
+            "title": "CassetteUseSlotAnnotation",
+            "type": "object"
+        },
+        "CassetteUseSlotAnnotationDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for a slot annotation to capture the use(s) (e.g. enhancer trap, protein trap) of a particular Cassette with associated evidence.",
+            "properties": {
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence_curies": {
+                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "use_curies": {
+                    "description": "Holds between a TransgenicTool and a list of curies of FBcv terms with namespace 'experimental_tool_descriptor'",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "use_curies",
+                "internal"
+            ],
+            "title": "CassetteUseSlotAnnotationDTO",
             "type": "object"
         },
         "CellLine": {
@@ -27126,9 +27536,9 @@
                         "null"
                     ]
                 },
-                "agm_sequence_targeting_reagent_association_ingest_set": {
+                "agm_str_association_ingest_set": {
                     "items": {
-                        "$ref": "#/$defs/AgmSequenceTargetingReagentAssociationDTO"
+                        "$ref": "#/$defs/AgmStrAssociationDTO"
                     },
                     "type": [
                         "array",
@@ -27263,6 +27673,15 @@
                 "cassette_ingest_set": {
                     "items": {
                         "$ref": "#/$defs/CassetteDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "cassette_str_association_ingest_set": {
+                    "items": {
+                        "$ref": "#/$defs/CassetteStrAssociationDTO"
                     },
                     "type": [
                         "array",
@@ -27473,16 +27892,16 @@
                         "null"
                     ]
                 },
-                "sqtr_gene_association_ingest_set": {
+                "str_gene_association_ingest_set": {
                     "items": {
-                        "$ref": "#/$defs/SequenceTargetingReagentGeneAssociationDTO"
+                        "$ref": "#/$defs/StrGeneAssociationDTO"
                     },
                     "type": [
                         "array",
                         "null"
                     ]
                 },
-                "sqtr_ingest_set": {
+                "str_ingest_set": {
                     "items": {
                         "$ref": "#/$defs/SequenceTargetingReagentDTO"
                     },
@@ -34650,9 +35069,9 @@
                         "null"
                     ]
                 },
-                "sequence_targeting_reagent_gene_associations": {
+                "str_gene_associations": {
                     "items": {
-                        "$ref": "#/$defs/SequenceTargetingReagentGeneAssociation"
+                        "$ref": "#/$defs/StrGeneAssociation"
                     },
                     "type": [
                         "array",
@@ -34823,188 +35242,6 @@
                 "internal"
             ],
             "title": "SequenceTargetingReagentDTO",
-            "type": "object"
-        },
-        "SequenceTargetingReagentGeneAssociation": {
-            "additionalProperties": false,
-            "description": "The relationship between a Sequence Targeting Reagent and its targeted genes. The relation should be a VocabularyTerm with one of the following values - targets",
-            "properties": {
-                "created_by": {
-                    "description": "The individual that created the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "evidence": {
-                    "description": "The evidence that supports some assertion.",
-                    "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "relation": {
-                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
-                    "type": "string"
-                },
-                "sequence_targeting_reagent_association_subject": {
-                    "$ref": "#/$defs/SequenceTargetingReagent"
-                },
-                "sequence_targeting_reagent_gene_association_object": {
-                    "$ref": "#/$defs/Gene"
-                },
-                "updated_by": {
-                    "description": "The individual that last modified the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "sequence_targeting_reagent_gene_association_object",
-                "sequence_targeting_reagent_association_subject",
-                "relation",
-                "internal"
-            ],
-            "title": "SequenceTargetingReagentGeneAssociation",
-            "type": "object"
-        },
-        "SequenceTargetingReagentGeneAssociationDTO": {
-            "additionalProperties": false,
-            "description": "The DTO class for the relationship between a Sequence Targeting Reagent and its targeted genes. The relation_name should be a VocabularyTerm with one of the following values - targets",
-            "properties": {
-                "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "gene_identifier": {
-                    "type": "string"
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "relation_name": {
-                    "description": "Name of VocabularyTerm representing relation of an Association",
-                    "type": "string"
-                },
-                "sequence_targeting_reagent_identifier": {
-                    "type": "string"
-                },
-                "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "relation_name",
-                "gene_identifier",
-                "sequence_targeting_reagent_identifier",
-                "internal"
-            ],
-            "title": "SequenceTargetingReagentGeneAssociationDTO",
             "type": "object"
         },
         "SequencingFormatValues": {
@@ -36452,12 +36689,194 @@
             "title": "Species",
             "type": "object"
         },
-        "SqtrRelationEnum": {
+        "StrGeneAssociation": {
+            "additionalProperties": false,
+            "description": "The relationship between a Sequence Targeting Reagent and its targeted genes. The relation should be a VocabularyTerm with one of the following values - targets",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence": {
+                    "description": "The evidence that supports some assertion.",
+                    "items": {
+                        "$ref": "#/$defs/InformationContentEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
+                },
+                "str_association_subject": {
+                    "$ref": "#/$defs/SequenceTargetingReagent"
+                },
+                "str_gene_association_object": {
+                    "$ref": "#/$defs/Gene"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "str_gene_association_object",
+                "str_association_subject",
+                "relation",
+                "internal"
+            ],
+            "title": "StrGeneAssociation",
+            "type": "object"
+        },
+        "StrGeneAssociationDTO": {
+            "additionalProperties": false,
+            "description": "The DTO class for the relationship between a Sequence Targeting Reagent and its targeted genes. The relation_name should be a VocabularyTerm with one of the following values - targets",
+            "properties": {
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence_curies": {
+                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "gene_identifier": {
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "relation_name": {
+                    "description": "Name of VocabularyTerm representing relation of an Association",
+                    "type": "string"
+                },
+                "sequence_targeting_reagent_identifier": {
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "relation_name",
+                "gene_identifier",
+                "sequence_targeting_reagent_identifier",
+                "internal"
+            ],
+            "title": "StrGeneAssociationDTO",
+            "type": "object"
+        },
+        "StrRelationEnum": {
             "description": "",
             "enum": [
                 "targets"
             ],
-            "title": "SqtrRelationEnum",
+            "title": "StrRelationEnum",
             "type": "string"
         },
         "StrandEnum": {
@@ -42312,9 +42731,9 @@
                 "null"
             ]
         },
-        "agm_sequence_targeting_reagent_association_ingest_set": {
+        "agm_str_association_ingest_set": {
             "items": {
-                "$ref": "#/$defs/AgmSequenceTargetingReagentAssociationDTO"
+                "$ref": "#/$defs/AgmStrAssociationDTO"
             },
             "type": [
                 "array",
@@ -42449,6 +42868,15 @@
         "cassette_ingest_set": {
             "items": {
                 "$ref": "#/$defs/CassetteDTO"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "cassette_str_association_ingest_set": {
+            "items": {
+                "$ref": "#/$defs/CassetteStrAssociationDTO"
             },
             "type": [
                 "array",
@@ -42659,16 +43087,16 @@
                 "null"
             ]
         },
-        "sqtr_gene_association_ingest_set": {
+        "str_gene_association_ingest_set": {
             "items": {
-                "$ref": "#/$defs/SequenceTargetingReagentGeneAssociationDTO"
+                "$ref": "#/$defs/StrGeneAssociationDTO"
             },
             "type": [
                 "array",
                 "null"
             ]
         },
-        "sqtr_ingest_set": {
+        "str_ingest_set": {
             "items": {
                 "$ref": "#/$defs/SequenceTargetingReagentDTO"
             },
