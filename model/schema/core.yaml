@@ -561,7 +561,6 @@ classes:
       - end
     slot_usage:
       relation_name:
-        required: true
         any_of:
           equals_string: has_location
 

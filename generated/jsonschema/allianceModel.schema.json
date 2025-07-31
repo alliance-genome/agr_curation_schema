@@ -2405,10 +2405,7 @@
                 },
                 "sequence_targeting_reagent_identifier": {
                     "description": "Identifier (curie/primary_external_id/mod_internal_id) of the STR",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
@@ -2420,6 +2417,7 @@
             },
             "required": [
                 "agm_subject_identifier",
+                "sequence_targeting_reagent_identifier",
                 "relation_name",
                 "internal"
             ],
@@ -12275,10 +12273,7 @@
             "properties": {
                 "cassette_identifier": {
                     "description": "Either the MOD curie or internal ID that was used in the submission of the associated cassette",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "component_type_curies": {
                     "description": "Curies of SOTerms representing the nature of Construct Cassette components",
@@ -12342,10 +12337,6 @@
                 "genomic_entity_identifier": {
                     "type": "string"
                 },
-                "genomic_entity_relation_name": {
-                    "description": "Name of the VocabularyTerm describing the relationship between Construct and GenomicEntity",
-                    "type": "string"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
@@ -12366,6 +12357,10 @@
                         "null"
                     ]
                 },
+                "relation_name": {
+                    "description": "Name of VocabularyTerm representing relation of an Association",
+                    "type": "string"
+                },
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
                     "type": [
@@ -12375,7 +12370,8 @@
                 }
             },
             "required": [
-                "genomic_entity_relation_name",
+                "cassette_identifier",
+                "relation_name",
                 "genomic_entity_identifier",
                 "internal"
             ],
@@ -12489,10 +12485,7 @@
             "properties": {
                 "cassette_identifier": {
                     "description": "Either the MOD curie or internal ID that was used in the submission of the associated cassette",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "created_by_curie": {
                     "description": "Curie of the Person object representing the individual that created the entity",
@@ -12563,12 +12556,12 @@
                         "null"
                     ]
                 },
-                "sequence_targeting_reagent_identifier": {
-                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the STR",
+                "relation_name": {
+                    "description": "Name of VocabularyTerm representing relation of an Association",
                     "type": "string"
                 },
-                "sequence_targeting_reagent_relation_name": {
-                    "description": "Name of VocabularyTerm describing relationship between a subject entity and an object Sequence Targeting Reagent (STR)",
+                "sequence_targeting_reagent_identifier": {
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the STR",
                     "type": "string"
                 },
                 "updated_by_curie": {
@@ -12580,7 +12573,8 @@
                 }
             },
             "required": [
-                "sequence_targeting_reagent_relation_name",
+                "cassette_identifier",
+                "relation_name",
                 "sequence_targeting_reagent_identifier",
                 "internal"
             ],
@@ -12916,10 +12910,7 @@
             "properties": {
                 "cassette_identifier": {
                     "description": "Either the MOD curie or internal ID that was used in the submission of the associated cassette",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "created_by_curie": {
                     "description": "Curie of the Person object representing the individual that created the entity",
@@ -12990,12 +12981,12 @@
                         "null"
                     ]
                 },
-                "transgenic_tool_identifier": {
-                    "description": "Either the MOD curie or internal ID that was used in the submission of the associated transgenic tool",
+                "relation_name": {
+                    "description": "Name of VocabularyTerm representing relation of an Association",
                     "type": "string"
                 },
-                "transgenic_tool_relation_name": {
-                    "description": "Name of the VocabularyTerm describing the relationship between a TransgenicTool and another TransgenicTool",
+                "transgenic_tool_identifier": {
+                    "description": "Either the MOD curie or internal ID that was used in the submission of the associated transgenic tool",
                     "type": "string"
                 },
                 "updated_by_curie": {
@@ -13007,7 +12998,8 @@
                 }
             },
             "required": [
-                "transgenic_tool_relation_name",
+                "cassette_identifier",
+                "relation_name",
                 "transgenic_tool_identifier",
                 "internal"
             ],
@@ -14571,13 +14563,6 @@
             "properties": {
                 "cassette_identifier": {
                     "description": "Either the MOD curie or internal ID that was used in the submission of the associated cassette",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "cassette_relation_name": {
-                    "description": "Name of VocabularyTerm describing relationship between a subject entity and an object Cassette",
                     "type": "string"
                 },
                 "construct_identifier": {
@@ -14653,6 +14638,10 @@
                         "null"
                     ]
                 },
+                "relation_name": {
+                    "description": "Name of VocabularyTerm representing relation of an Association",
+                    "type": "string"
+                },
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
                     "type": [
@@ -14663,7 +14652,8 @@
             },
             "required": [
                 "construct_identifier",
-                "cassette_relation_name",
+                "relation_name",
+                "cassette_identifier",
                 "internal"
             ],
             "title": "ConstructCassetteAssociationDTO",
@@ -15325,10 +15315,6 @@
                 "genomic_entity_identifier": {
                     "type": "string"
                 },
-                "genomic_entity_relation_name": {
-                    "description": "Name of the VocabularyTerm describing the relationship between Construct and GenomicEntity",
-                    "type": "string"
-                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
@@ -15349,6 +15335,10 @@
                         "null"
                     ]
                 },
+                "relation_name": {
+                    "description": "Name of VocabularyTerm representing relation of an Association",
+                    "type": "string"
+                },
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
                     "type": [
@@ -15359,7 +15349,7 @@
             },
             "required": [
                 "construct_identifier",
-                "genomic_entity_relation_name",
+                "relation_name",
                 "genomic_entity_identifier",
                 "internal"
             ],
@@ -30384,15 +30374,6 @@
             "title": "NameSlotAnnotationDTO",
             "type": "object"
         },
-        "NomenclatureEventEnum": {
-            "description": "",
-            "enum": [
-                "named",
-                "renamed"
-            ],
-            "title": "NomenclatureEventEnum",
-            "type": "string"
-        },
         "Note": {
             "additionalProperties": false,
             "description": "Note object for capturing free-text describing some attribute of an entity, coupled with a 'note type', internal boolean, and an optional list of references. Permissible values for note_type can be viewed and managed in the A-Team curation UI Controlled Vocabulary Terms Table.",
@@ -36852,6 +36833,7 @@
                     "type": "string"
                 },
                 "sequence_targeting_reagent_identifier": {
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the STR",
                     "type": "string"
                 },
                 "updated_by_curie": {
@@ -36870,14 +36852,6 @@
             ],
             "title": "StrGeneAssociationDTO",
             "type": "object"
-        },
-        "StrRelationEnum": {
-            "description": "",
-            "enum": [
-                "targets"
-            ],
-            "title": "StrRelationEnum",
-            "type": "string"
         },
         "StrandEnum": {
             "description": "Specify DNA strand.",

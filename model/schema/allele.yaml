@@ -198,10 +198,8 @@ classes:
     is_a: EvidenceAssociationDTO
     abstract: true
     description: Base class for STR association DTOs
-    attributes:
-      sequence_targeting_reagent_identifier:
-        range: string
-        required: true
+    slots:
+      - sequence_targeting_reagent_identifier
 
   StrGeneAssociation:
     description: >-
@@ -229,9 +227,6 @@ classes:
       gene_identifier:
         range: string
         required: true
-    slot_usage:
-      relation_name:
-        range: string
 
 
   ## ------------
@@ -546,7 +541,6 @@ classes:
       - mutation_target_strain_identifier
     slot_usage:
       relation_name:
-        required: true
         any_of:
           equals_string: has_generation_method
 
@@ -1147,6 +1141,7 @@ slots:
   sequence_targeting_reagent_identifier:
     range: string
     multivalued: false
+    required: true
     domain: StrAssociationDTO
     description: >-
       Identifier (curie/primary_external_id/mod_internal_id) of the STR
@@ -1183,13 +1178,4 @@ slots:
     domain: Allele
     range: string
 
-enums:
-  str_relation_enum:
-    permissible_values:
-      targets:
 
-  nomenclature_event_enum:
-    permissible_values:
-      named:
-      renamed:
-      # merged?

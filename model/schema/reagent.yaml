@@ -299,7 +299,7 @@ classes:
       the construct and that genomic entity component
     slots:
       - construct_identifier
-      - genomic_entity_relation_name
+      - relation_name
       - genomic_entity_identifier
       - note_dtos
     slot_usage:
@@ -333,12 +333,10 @@ classes:
       that is part of the construct
     slots:
       - construct_identifier
-      - cassette_relation_name
+      - relation_name
       - cassette_identifier
       - note_dtos
-    slot_usage:
-      genomic_entity_identifier:
-        required: true
+
 
   Cassette:
     is_a: Reagent
@@ -488,13 +486,14 @@ classes:
       the cassette and that genomic entity component
     slots:
       - cassette_identifier
-      - genomic_entity_relation_name
+      - relation_name
       - genomic_entity_identifier
       - note_dtos
       - component_type_curies
     slot_usage:
       genomic_entity_identifier:
         required: true
+
 
   CassetteTransgenicToolAssociation:
     is_a: CassetteAssociation
@@ -526,12 +525,9 @@ classes:
       the cassette and that transgenic tool component
     slots:
       - cassette_identifier
-      - transgenic_tool_relation_name
+      - relation_name
       - transgenic_tool_identifier
       - note_dtos
-    slot_usage:
-      transgenic_tool_identifier:
-        required: true
 
   CassetteStrAssociation:
     is_a: CassetteAssociation
@@ -562,12 +558,9 @@ classes:
       relationship between the cassette and that STR component
     slots:
       - cassette_identifier
-      - sequence_targeting_reagent_relation_name
+      - relation_name
       - sequence_targeting_reagent_identifier
       - note_dtos
-    slot_usage:
-      sequence_targeting_reagent_identifier:
-        required: true
 
   CassetteUseSlotAnnotation:
     is_a: SlotAnnotation
@@ -778,12 +771,6 @@ slots:
       Either the MOD curie or internal ID that was used in the submission
       of the associated cassette
     range: string
-    required: false
-
-  cassette_relation_name:
-    description: >-
-      Name of VocabularyTerm describing relationship between a subject entity and an object Cassette
-    range: string
     required: true
 
   cassette_symbol:
@@ -967,14 +954,6 @@ slots:
       Identifier for Reagent generated_by field.
     domain: ReagentDTO
     range: string
-  
-  genomic_entity_relation_name:
-    description: >-
-      Name of the VocabularyTerm describing the relationship between
-      Construct and GenomicEntity
-    domain: ConstructGenomicEntityAssociationDTO
-    range: string
-    required: true
 
   heavy_chain_isotype:
     description: >-
@@ -1015,13 +994,6 @@ slots:
       Identifier for Reagent manufactured_by field.  
     domain: ReagentDTO
     range: string
-
-  sequence_targeting_reagent_relation_name:
-    description: >-
-      Name of VocabularyTerm describing relationship between a subject entity and an object Sequence
-      Targeting Reagent (STR)
-    range: string
-    required: true
 
   single_construct:
     range: Construct
@@ -1096,14 +1068,6 @@ slots:
     description: >-
       Either the MOD curie or internal ID that was used in the submission
       of the associated transgenic tool
-    range: string
-    required: true
-
-  transgenic_tool_relation_name:
-    description: >-
-      Name of the VocabularyTerm describing the relationship between a
-      TransgenicTool and another TransgenicTool
-    domain: ConstructGenomicEntityAssociationDTO
     range: string
     required: true
 
