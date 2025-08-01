@@ -1,6 +1,6 @@
 {
   "linkml_version": "2.3.0",
-  "sqtr_gene_association_ingest_set": [
+  "str_gene_association_ingest_set": [
     {
       "sequence_targeting_reagent_identifier": "ZFIN:ZDB-CRISPR-230127-4",
       "relation_name": "targets",

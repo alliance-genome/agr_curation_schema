@@ -88,23 +88,23 @@ slots:
     mixins:
       - object_set
 
-  agm_sequence_targeting_reagent_association_ingest_set:
+  agm_str_association_ingest_set:
     domain: Ingest
-    range: AgmSequenceTargetingReagentAssociationDTO
+    range: AgmStrAssociationDTO
     multivalued: true
     mixins:
       - object_set
 
-  sqtr_ingest_set:
+  str_ingest_set:
     domain: Ingest
     range: SequenceTargetingReagentDTO
     multivalued: true
     mixins:
       - object_set
 
-  sqtr_gene_association_ingest_set:
+  str_gene_association_ingest_set:
     domain: Ingest
-    range: SequenceTargetingReagentGeneAssociationDTO
+    range: StrGeneAssociationDTO
     multivalued: true
     mixins:
       - object_set
@@ -393,6 +393,13 @@ slots:
     mixins:
       - object_set
 
+  cassette_str_association_ingest_set:
+    domain: Ingest
+    range: CassetteStrAssociationDTO
+    multivalued: true
+    mixins:
+      - object_set
+
   transgenic_tool_ingest_set:
     domain: Ingest
     range: TransgenicToolDTO
@@ -427,6 +434,7 @@ classes:
       - antibody_ingest_set
       - cassette_ingest_set
       - cassette_genomic_entity_association_ingest_set
+      - cassette_str_association_ingest_set
       - cassette_transgenic_tool_association_ingest_set
       - transgenic_tool_ingest_set
       - transgenic_tool_transgenic_tool_association_ingest_set
@@ -461,9 +469,9 @@ classes:
       - agm_ingest_set
       - agm_agm_association_ingest_set
       - agm_allele_association_ingest_set
-      - agm_sequence_targeting_reagent_association_ingest_set
-      - sqtr_ingest_set
-      - sqtr_gene_association_ingest_set
+      - agm_str_association_ingest_set
+      - str_ingest_set
+      - str_gene_association_ingest_set
       - ontology_closure_ingest_set
       - transcript_ingest_set
       - protein_ingest_set

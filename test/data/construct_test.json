@@ -81,7 +81,7 @@
   "construct_genomic_entity_association_ingest_set": [
     {
       "construct_identifier": "WB:WBConstruct123",
-      "genomic_entity_relation_name": "is_regulated_by",
+      "relation_name": "is_regulated_by",
       "genomic_entity_identifier": "WB:WBGene00000001",
       "evidence_curies": [
         "PMID:11231512"
@@ -104,7 +104,7 @@
   "construct_cassette_association_ingest_set": [
     {
       "construct_identifier": "WB:WBConstruct123",
-      "cassette_relation_name": "has_component",
+      "relation_name": "has_component",
       "cassette_identifier": "WB:WBCassette123",
       "evidence_curies": [
         "PMID:11231512"
