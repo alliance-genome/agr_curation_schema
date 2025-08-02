@@ -121,8 +121,29 @@
   "allele_construct_association_ingest_set": [
     {
       "allele_identifier": "WB:WBVar00000001",
-      "relation_name": "has_construct",
+      "relation_name": "contains",
       "construct_identifier": "WB:WBConstruct00000001",
+      "evidence_code_curie": "ECO:0000006",
+      "evidence_curies": [
+        "PMID:11231512"
+      ],
+      "allele_identifier": "WB:WBVar00000002",
+      "relation_name": "contains_coinjection_marker",
+      "construct_identifier": "WB:WBConstruct00000002",
+      "evidence_code_curie": "ECO:0000006",
+      "evidence_curies": [
+        "PMID:11231512"
+      ],
+      "allele_identifier": "WB:WBVar00000003",
+      "relation_name": "contains_innocuous_sequence_feature",
+      "construct_identifier": "WB:WBConstruct00000003",
+      "evidence_code_curie": "ECO:0000006",
+      "evidence_curies": [
+        "PMID:11231512"
+      ],
+      "allele_identifier": "WB:WBVar00000004",
+      "relation_name": "contains_phenotypic_sequence_feature",
+      "construct_identifier": "WB:WBConstruct00000004",
       "evidence_code_curie": "ECO:0000006",
       "evidence_curies": [
         "PMID:11231512"
