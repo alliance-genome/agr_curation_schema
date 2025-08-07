@@ -29,6 +29,13 @@
           "page_area": "genome_assembly",
           "prefix": "NCBI"
         }
+      ],
+      "note_dtos": [
+        {
+          "free_text": "note about assembly component",
+          "note_type_name": "comment",
+          "internal": false
+        }
       ]
     }
   ]

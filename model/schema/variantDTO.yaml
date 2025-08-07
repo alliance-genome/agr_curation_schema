@@ -42,11 +42,13 @@ classes:
       Ingest class for a Variant object
     slots:
       - variant_type_curie
-      - note_dtos
       - synonyms
       - source_general_consequence_dtos
       - variant_status_name
       - reference_curies
+    slot_usage:
+      note_dtos:
+        note_type from VocabularyTermSet 'Variant Note Type'
 
   VariantLocationAssociationDTO:
     abstract: true

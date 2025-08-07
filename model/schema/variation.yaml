@@ -50,7 +50,6 @@ classes:
       position or in a range of contiguous nucleotides or amino acids.
     slots:
       - variant_type
-      - related_notes
       - synonyms
       - source_general_consequences
       - curated_variant_genomic_locations
@@ -65,6 +64,9 @@ classes:
       - SO:0001059
     notes: >-
       a variant must have a genome location, or must be private/incomplete
+    slot_usage:
+      related_notes:
+        note_type from VocabularyTermSet 'Variant Note Type'
 
   VariantLocationAssociation:
     is_a: LocationAssociation

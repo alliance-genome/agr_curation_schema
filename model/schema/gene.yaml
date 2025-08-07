@@ -96,11 +96,7 @@ classes:
       primary_external_id:
         required: true
       related_notes:
-        description: >-
-          Valid note types are available for viewing in the A-Team curation tool
-          Controlled Vocabulary Terms Table (in the Gene note types vocabulary)
-          on the production environment (curation.alliancegenome.org). New terms
-          can be added as needed.
+        note_type from VocabularyTermSet 'Gene Note Type'
 
   GeneDTO:
     is_a: GenomicEntityDTO
@@ -112,7 +108,6 @@ classes:
       - gene_synonym_dtos
       - gene_secondary_id_dtos
       - gene_type_curie
-      - note_dtos
     attributes:
       gcrp_cross_reference_dto:
         range: CrossReferenceDTO
@@ -124,6 +119,8 @@ classes:
     slot_usage:
       primary_external_id:
         required: true
+      note_dtos:
+        note_type from VocabularyTermSet 'Gene Note Type'
 
   GeneSymbolSlotAnnotation:
     description: >-
