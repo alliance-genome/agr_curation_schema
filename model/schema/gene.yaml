@@ -96,7 +96,7 @@ classes:
       primary_external_id:
         required: true
       related_notes:
-        note_type from VocabularyTermSet 'Gene Note Type'
+        notes: note_type from VocabularyTermSet 'Gene Note Type'
 
   GeneDTO:
     is_a: GenomicEntityDTO
@@ -120,7 +120,7 @@ classes:
       primary_external_id:
         required: true
       note_dtos:
-        note_type from VocabularyTermSet 'Gene Note Type'
+        notes: note_type from VocabularyTermSet 'Gene Note Type'
 
   GeneSymbolSlotAnnotation:
     description: >-

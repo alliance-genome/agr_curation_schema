@@ -47,7 +47,7 @@ classes:
       - variant_status_name
       - reference_curies
     slot_usage:
-      note_dtos:
+      note_dtos: >-
         note_type from VocabularyTermSet 'Variant Note Type'
 
   VariantLocationAssociationDTO:

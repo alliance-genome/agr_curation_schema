@@ -66,7 +66,7 @@ classes:
       a variant must have a genome location, or must be private/incomplete
     slot_usage:
       related_notes:
-        note_type from VocabularyTermSet 'Variant Note Type'
+        notes: note_type from VocabularyTermSet 'Variant Note Type'
 
   VariantLocationAssociation:
     is_a: LocationAssociation
