@@ -52,6 +52,8 @@ classes:
       name:
         notes: >-
           May want to convert this into a slot that uses NameSlotAnnotation.
+      related_notes:
+        notes: note_type from VocabularyTermSet 'AGM Note Type'
     
 
   AffectedGenomicModelDTO:
@@ -66,6 +68,8 @@ classes:
     slot_usage:
       primary_external_id:
         required: true
+      note_dtos:
+        notes: note_type from VocabularyTermSet 'AGM Note Type'
 
   AgmFullNameSlotAnnotation:
     description: >-

@@ -30,6 +30,13 @@
           "page_area": "transcript",
           "prefix": "NCBI.transcript"
         }
+      ],
+      "note_dtos": [
+        {
+          "free_text": "note about transcript",
+          "note_type_name": "comment",
+          "internal": false
+        }
       ]
     }
   ]

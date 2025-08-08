@@ -28,6 +28,13 @@
           "page_area": "protein",
           "prefix": "UniProtKB"
         }
+      ],
+      "note_dtos": [
+        {
+          "free_text": "note about protein",
+          "note_type_name": "comment",
+          "internal": false
+        }
       ]
     }
   ]

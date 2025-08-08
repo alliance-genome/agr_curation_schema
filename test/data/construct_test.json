@@ -75,7 +75,14 @@
           "internal": false
         },
         "internal": false
-      }
+      },
+      "note_dtos": [
+        {
+          "free_text": "note about construct",
+          "note_type_name": "comment",
+          "internal": false
+        }
+      ]
     }
   ],
   "construct_genomic_entity_association_ingest_set": [

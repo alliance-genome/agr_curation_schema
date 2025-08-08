@@ -103,6 +103,15 @@ classes:
       - mod_internal_id
       - data_provider
       - data_provider_cross_reference
+      - related_notes
+    slot_usage:
+      related_notes:
+        description: >-
+          Valid note types are available for viewing in the A-Team curation tool
+          (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type
+          vocabulary).  The subset of terms applicable for a particular entity type are
+          listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms
+          can be added as needed.
 
   SubmittedObjectDTO:
     is_a: AuditedObjectDTO
@@ -114,6 +123,7 @@ classes:
       - primary_external_id
       - mod_internal_id
       - data_provider_dto
+      - note_dtos
 
   BiologicalEntity:
     is_a: SubmittedObject

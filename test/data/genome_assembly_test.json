@@ -28,6 +28,13 @@
           "page_area": "genome_assembly",
           "prefix": "RefSeq"
         }
+      ],
+      "note_dtos": [
+        {
+          "free_text": "note about assembly",
+          "note_type_name": "comment",
+          "internal": false
+        }
       ]
     }
   ]

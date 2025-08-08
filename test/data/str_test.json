@@ -23,7 +23,14 @@
           "internal": false
         },
         "internal": false
-      }
+      },
+      "note_dtos": [
+        {
+          "free_text": "note about STR",
+          "note_type_name": "comment",
+          "internal": false
+        }
+      ]
     },
     {
       "primary_external_id": "ZFIN:ZDB-CRISPR-220422",
