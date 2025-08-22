@@ -295,6 +295,8 @@ classes:
       - cellular_component_ribbon_term
       - cellular_component_other
       - cellular_component_qualifiers
+      - anatomical_structure_uberon_term_other
+      - anatomical_substructure_uberon_term_other
     rules:
       - postconditions:
           any_of:
@@ -531,6 +533,20 @@ slots:
   cellular_component_other:
     description: >-
       Is set to true when no cellular_component_ribbon_term is available
+    domain: AnatomicalSite
+    range: boolean
+    multivalued: false
+
+  anatomical_structure_uberon_term_other:
+    description: >-
+      Is set to true when other categorized uberon term is submitted in anatomical_structure_uberon_terms
+    domain: AnatomicalSite
+    range: boolean
+    multivalued: false
+
+  anatomical_substructure_uberon_term_other:
+    description: >-
+      Is set to true when other categorized uberon term is submitted in anatomical_substructure_uberon_terms
     domain: AnatomicalSite
     range: boolean
     multivalued: false
