@@ -7746,6 +7746,13 @@
                         "null"
                     ]
                 },
+                "anatomical_structure_uberon_term_other": {
+                    "description": "Is set to true when other categorized uberon term is submitted in anatomical_structure_uberon_terms",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
                 "anatomical_structure_uberon_terms": {
                     "description": "UBERON slim terms that apply to the anatomical structure.",
                     "items": {
@@ -7769,6 +7776,13 @@
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "anatomical_substructure_uberon_term_other": {
+                    "description": "Is set to true when other categorized uberon term is submitted in anatomical_substructure_uberon_terms",
+                    "type": [
+                        "boolean",
                         "null"
                     ]
                 },
