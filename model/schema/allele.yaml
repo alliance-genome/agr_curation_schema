@@ -61,7 +61,6 @@ classes:
       - is_extinct
       - is_extrachromosomal
       - is_integrated
-      - related_notes
       - transgene_chromosome_location
       - allele_mutation_types
       - allele_inheritance_modes
@@ -95,7 +94,7 @@ classes:
       is_integrated:
         required: false
       related_notes:
-        notes: note_type CV 'Allele Note Type'
+        notes: note_type from VocabularyTermSet 'Allele Note Type'
 
   AlleleDTO:
     is_a: GenomicEntityDTO
@@ -111,7 +110,6 @@ classes:
       - is_extrachromosomal
       - is_integrated
       - transgene_chromosome_location_name
-      - note_dtos
       - allele_mutation_type_dtos
       - allele_inheritance_mode_dtos
       - allele_germline_transmission_status_dto
@@ -122,7 +120,7 @@ classes:
       - allele_synonym_dtos
     slot_usage:
       note_dtos:
-        notes: note_type CV 'Allele Note Type'
+        notes: note_type from VocabularyTermSet 'Allele Note Type'
       primary_external_id:
         required: true
 

@@ -1482,6 +1482,16 @@
                         "null"
                     ]
                 },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "subtype": {
                     "description": "Subtype of affected genomic model - permissible values: strain / genotype / fish",
                     "type": "string"
@@ -1600,6 +1610,15 @@
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -2872,7 +2891,7 @@
                     ]
                 },
                 "related_notes": {
-                    "description": "Holds between an object and a list of related Note objects.",
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
                     "items": {
                         "$ref": "#/$defs/Note"
                     },
@@ -8400,7 +8419,7 @@
                     ]
                 },
                 "related_notes": {
-                    "description": "Holds between an object and a list of related Note objects.",
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
                     "items": {
                         "$ref": "#/$defs/Note"
                     },
@@ -8768,6 +8787,16 @@
                         "null"
                     ]
                 },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
                     "type": "string"
@@ -8864,6 +8893,15 @@
                 "name": {
                     "description": "a human-readable name for an entity",
                     "type": "string"
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
@@ -9530,6 +9568,16 @@
                         "null"
                     ]
                 },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "stage": {
                     "anyOf": [
                         {
@@ -9625,6 +9673,15 @@
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -11605,7 +11662,7 @@
                     ]
                 },
                 "related_notes": {
-                    "description": "Holds between an object and a list of related Note objects.",
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
                     "items": {
                         "$ref": "#/$defs/Note"
                     },
@@ -13296,6 +13353,16 @@
                         "null"
                     ]
                 },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
                     "type": "string"
@@ -13380,6 +13447,15 @@
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -13712,6 +13788,16 @@
                         "null"
                     ]
                 },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
                     "type": "string"
@@ -13815,6 +13901,15 @@
                     "description": "a human-readable name for an entity",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -14428,7 +14523,7 @@
                     ]
                 },
                 "related_notes": {
-                    "description": "Holds between an object and a list of related Note objects.",
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
                     "items": {
                         "$ref": "#/$defs/Note"
                     },
@@ -17469,7 +17564,7 @@
                     ]
                 },
                 "related_notes": {
-                    "description": "Holds between an object and a list of related Note objects.",
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
                     "items": {
                         "$ref": "#/$defs/Note"
                     },
@@ -18648,6 +18743,16 @@
                         "null"
                     ]
                 },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
                     "type": "string"
@@ -18751,6 +18856,15 @@
                     "description": "a human-readable name for an entity",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -20478,6 +20592,16 @@
                         "null"
                     ]
                 },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "single_reference": {
                     "anyOf": [
                         {
@@ -21137,7 +21261,7 @@
                     ]
                 },
                 "related_notes": {
-                    "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the Gene note types vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
                     "items": {
                         "$ref": "#/$defs/Note"
                     },
@@ -21598,6 +21722,16 @@
                     ],
                     "description": "Holds between an object and a Note object."
                 },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
                     "type": "string"
@@ -21737,6 +21871,16 @@
                         }
                     ],
                     "description": "Holds between an object and a Note object."
+                },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
@@ -22761,7 +22905,7 @@
                     ]
                 },
                 "related_notes": {
-                    "description": "Holds between an object and a list of related Note objects.",
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
                     "items": {
                         "$ref": "#/$defs/Note"
                     },
@@ -25796,6 +25940,16 @@
                         "null"
                     ]
                 },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "specimen_genomic_model": {
                     "anyOf": [
                         {
@@ -25891,6 +26045,15 @@
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -26035,6 +26198,16 @@
                         "null"
                     ]
                 },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
                     "type": "string"
@@ -26119,6 +26292,15 @@
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -26560,6 +26742,15 @@
                         }
                     ]
                 },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "number_of_channels": {
                     "description": "For microarrays, the number of channels used; This can be one of two values: 1 or 2",
                     "type": [
@@ -26811,7 +27002,7 @@
                     ]
                 },
                 "related_notes": {
-                    "description": "Holds between an object and a list of related Note objects.",
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
                     "items": {
                         "$ref": "#/$defs/Note"
                     },
@@ -29748,6 +29939,16 @@
                         "null"
                     ]
                 },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": [
@@ -31173,6 +31374,16 @@
                     ],
                     "description": "Holds between an object and a Note object."
                 },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
                     "type": "string"
@@ -31933,6 +32144,16 @@
                     "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -32849,6 +33070,16 @@
                         "null"
                     ]
                 },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
                     "type": "string"
@@ -32968,6 +33199,16 @@
                         "null"
                     ]
                 },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
                     "type": "string"
@@ -33059,6 +33300,15 @@
                     "description": "a human-readable name for an entity",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -33290,7 +33540,7 @@
                     ]
                 },
                 "related_notes": {
-                    "description": "Holds between an object and a list of related Note objects.",
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
                     "items": {
                         "$ref": "#/$defs/Note"
                     },
@@ -33800,7 +34050,7 @@
                     ]
                 },
                 "related_notes": {
-                    "description": "Holds between an object and a list of related Note objects.",
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
                     "items": {
                         "$ref": "#/$defs/Note"
                     },
@@ -35055,6 +35305,16 @@
                         "null"
                     ]
                 },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "secondary_identifiers": {
                     "items": {
                         "type": "string"
@@ -35175,6 +35435,15 @@
                     "description": "a human-readable name for an entity",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -36968,6 +37237,16 @@
                         "null"
                     ]
                 },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": [
@@ -37038,6 +37317,15 @@
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -37632,6 +37920,16 @@
                         "null"
                     ]
                 },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
                     "type": "string"
@@ -37864,6 +38162,15 @@
                     "description": "a human-readable name for an entity",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -38334,7 +38641,7 @@
                     ]
                 },
                 "related_notes": {
-                    "description": "Holds between an object and a list of related Note objects.",
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
                     "items": {
                         "$ref": "#/$defs/Note"
                     },
@@ -39368,6 +39675,16 @@
                         "null"
                     ]
                 },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
                     "type": "string"
@@ -39715,7 +40032,7 @@
                     ]
                 },
                 "related_notes": {
-                    "description": "Holds between an object and a list of related Note objects.",
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
                     "items": {
                         "$ref": "#/$defs/Note"
                     },

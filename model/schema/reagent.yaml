@@ -48,7 +48,6 @@ classes:
     slots:
       - unique_id
       - secondary_identifiers
-      - related_notes
       - placeholder
 
   ReagentDTO:
@@ -57,7 +56,6 @@ classes:
       Ingest class for material entities used in experiments.
     slots:
       - secondary_identifiers
-      - note_dtos
       - placeholder
     slot_usage:
       mod_internal_id:

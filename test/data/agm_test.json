@@ -47,7 +47,14 @@
           "internal": false
         },
         "internal": false
-      }
+      },
+      "note_dtos": [
+        {
+          "free_text": "note about AGM",
+          "note_type_name": "comment",
+          "internal": false
+        }
+      ]
     },
     {
       "primary_external_id": "ZFIN:ZDB-FISH-150901-28778",
