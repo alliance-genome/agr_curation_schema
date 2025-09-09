@@ -266,7 +266,7 @@ classes:
       - developmental_stage_stop
       - age
       - temporal_qualifiers
-      - stage_uberon_slim_terms
+      - stage_uberon_slim_term
 
   TemporalContextDTO:
     is_a: AuditedObjectDTO
@@ -278,7 +278,7 @@ classes:
       - developmental_stage_stop_curie
       - age
       - temporal_qualifier_names
-      - stage_uberon_slim_term_curies
+      - stage_uberon_slim_term_curie
 
   AnatomicalSite:
     is_a: AuditedObject
@@ -708,9 +708,9 @@ slots:
   # ACTION ITEM: Create one Vocabulary term for: post embryonic, pre-adult.
   # ACTION ITEM: Make VocabularyTerms that map to the UBERONTerms for now.
   # ACTION ITEM: Ask UBERON to make the missing term (and wait).
-  stage_uberon_slim_terms:
+  stage_uberon_slim_term:
     description: >-
-      The high-level UBERON slim terms that apply to the developmental range
+      The high-level UBERON slim term that apply to the developmental range
       of the TemporalContext component of an ExpressionPattern. The following
       UBERON terms are allowed: UBERON:0000068, UBERON:0000113. A non-UBERON
       term is also allowed: post embryonic, pre-adult.
@@ -721,11 +721,11 @@ slots:
       both developmental phases).
     domain: TemporalContext
     range: VocabularyTerm
-    multivalued: true
+    multivalued: false
 
-  stage_uberon_slim_term_curies:
+  stage_uberon_slim_term_curie:
     description: >-
-      The high-level UBERON slim terms that apply to the developmental range
+      The high-level UBERON slim term that apply to the developmental range
       of the TemporalContext component of an ExpressionPattern. The following
       UBERON terms are allowed: UBERON:0000068, UBERON:0000113. A non-UBERON
       term is also allowed: post embryonic, pre-adult.
@@ -736,7 +736,7 @@ slots:
       both developmental phases).
     domain: TemporalContextDTO
     range: string
-    multivalued: true
+    multivalued: false
 
   when_expressed:
     description: >-
