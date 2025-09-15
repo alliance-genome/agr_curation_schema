@@ -91,6 +91,7 @@ classes:
       - phenotype_annotation_subject
       - phenotype_terms
       - cross_reference
+      - negated
     attributes:
       phenotype_annotation_object:
         description: >-
@@ -139,6 +140,7 @@ classes:
       - phenotype_statement
       - phenotype_term_curies
       - cross_reference_dto
+      - negated
 
   GenePhenotypeAnnotation:
     description: >-

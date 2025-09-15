@@ -692,6 +692,13 @@
                         "null"
                     ]
                 },
+                "negated": {
+                    "description": "if set to true, then the association is negated i.e. is not true",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": [
@@ -883,6 +890,13 @@
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "negated": {
+                    "description": "if set to true, then the association is negated i.e. is not true",
+                    "type": [
+                        "boolean",
                         "null"
                     ]
                 },
@@ -6455,6 +6469,13 @@
                         "null"
                     ]
                 },
+                "negated": {
+                    "description": "if set to true, then the association is negated i.e. is not true",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": [
@@ -6629,6 +6650,13 @@
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "negated": {
+                    "description": "if set to true, then the association is negated i.e. is not true",
+                    "type": [
+                        "boolean",
                         "null"
                     ]
                 },
@@ -24527,6 +24555,13 @@
                         "null"
                     ]
                 },
+                "negated": {
+                    "description": "if set to true, then the association is negated i.e. is not true",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": [
@@ -24694,6 +24729,13 @@
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "negated": {
+                    "description": "if set to true, then the association is negated i.e. is not true",
+                    "type": [
+                        "boolean",
                         "null"
                     ]
                 },
@@ -32494,6 +32536,13 @@
                     "description": "The model organism database (MOD) internal identifier for the object",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "negated": {
+                    "description": "if set to true, then the association is negated i.e. is not true",
+                    "type": [
+                        "boolean",
                         "null"
                     ]
                 },
