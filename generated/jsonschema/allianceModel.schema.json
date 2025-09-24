@@ -622,7 +622,10 @@
                 "date_created": {
                     "description": "The date of curation at the source (MOD) database.",
                     "format": "date-time",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "date_updated": {
                     "description": "Date on which an entity was last modified.",
@@ -765,7 +768,6 @@
                 "phenotype_annotation_object",
                 "data_provider",
                 "relation",
-                "date_created",
                 "internal"
             ],
             "title": "AGMPhenotypeAnnotation",
@@ -6410,7 +6412,10 @@
                 "date_created": {
                     "description": "The date of curation at the source (MOD) database.",
                     "format": "date-time",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "date_updated": {
                     "description": "Date on which an entity was last modified.",
@@ -6542,7 +6547,6 @@
                 "phenotype_annotation_object",
                 "data_provider",
                 "relation",
-                "date_created",
                 "internal"
             ],
             "title": "AllelePhenotypeAnnotation",
@@ -24507,7 +24511,10 @@
                 "date_created": {
                     "description": "The date of curation at the source (MOD) database.",
                     "format": "date-time",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "date_updated": {
                     "description": "Date on which an entity was last modified.",
@@ -24638,7 +24645,6 @@
                 "phenotype_annotation_object",
                 "data_provider",
                 "relation",
-                "date_created",
                 "internal"
             ],
             "title": "GenePhenotypeAnnotation",
@@ -32491,7 +32497,10 @@
                 "date_created": {
                     "description": "The date of curation at the source (MOD) database.",
                     "format": "date-time",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "date_updated": {
                     "description": "Date on which an entity was last modified.",
@@ -32612,7 +32621,6 @@
                 "phenotype_annotation_object",
                 "data_provider",
                 "relation",
-                "date_created",
                 "internal"
             ],
             "title": "PhenotypeAnnotation",
