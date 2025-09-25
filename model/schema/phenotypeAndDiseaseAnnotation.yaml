@@ -119,10 +119,10 @@ classes:
       single_reference:
         description: >-
           The reference in which the phenotype association was asserted/reported.
+        required: true
       date_created:
         description: >-
           The date of curation at the source (MOD) database.
-        required: true
         multivalued: false
       related_notes:
         description: >-
