@@ -54,6 +54,7 @@ classes:
       - category_tags # categoryTags in agr_schemas datasetAnnotation.json
       - data_provider
       - data_provider_cross_reference
+      - symbol # added to accommodate FB scRNA-seq data
     slot_usage:
       htp_expression_dataset:
         required: true
@@ -123,6 +124,8 @@ classes:
       - related_notes # notes in agr_schemas json
       - dataset_ids # datasetIds in agr_schemas json
       - microarray_sample_details # microarraySampleDetails in agr_schemas json
+      - analysis # added to accommodate FB scRNA-seq data
+      - symbol # added to accommodate FB scRNA-seq data
     slot_usage:
       htp_expression_sample:
         description: >-
@@ -288,6 +291,7 @@ classes:
         description: free text for the age of the sample
 
   BioSampleGenomicInformation:
+    is_a: AuditedObject
     description: >-
       A basic entry for defining a biosample's genomic information
     slots:
@@ -311,6 +315,7 @@ classes:
             Either biosample_text, biosample_allele or biosample_agm are required
 
   BioSampleGenomicInformationDTO:
+    is_a: AuditedObjectDTO
     description: >-
       A basic (DTO) entry for defining a biosample's genomic information
     slots:
@@ -333,6 +338,40 @@ classes:
           description: >-
             Either biosample_text, allele_identifier or agm_identifier are required
 
+  SingleCellExpressionAnalysis:
+    is_a: Analysis
+    description: >-
+      An analysis of single cell expression (e.g. scRNA-seq) dataset samples or groups of samples
+    slots:
+      - cell_count
+      - symbol
+      - title
+    attributes:
+      cell_clusters:
+        description: >-
+          A cluster of cells clustered algorithmically from single cell expression (e.g. scRNA-seq) data.
+          This typically represents a cluster of individual cells sequenced that have similar expression
+          profiles.
+        range: SingleCellExpressionCellCluster
+        multivalued: true
+
+  SingleCellExpressionCellCluster:
+    is_a: SubmittedObject
+    description: >-
+      A cluster of cells derived algorithmically from single cell expression (e.g. scRNA-seq) data.
+      This typically represents a cluster of individual cells sequenced that have similar expression
+      profiles.
+    slots:
+      - cell_count
+      - symbol
+      - title
+    attributes:
+      cell_type:
+        description: >-
+          The type of cell that is represented in a given single-cell expression cluster
+        range: AnatomyTerm
+
+
 slots:
 
   abundance: # abundance in agr_schemas json
@@ -340,6 +379,11 @@ slots:
       The free text describing the amount of sample used
     domain: HTPExpressionDatasetSampleAnnotation
     range: string
+
+  analysis:
+    description: >-
+      An analysis as applied to a particular data set
+    range: Analysis
 
   assembly_versions: # assemblyVersions in agr_schemas json
     description: >-
@@ -391,6 +435,11 @@ slots:
     range: string
     multivalued: true
     required: true
+
+  cell_count:
+    description: The count of cells that are part of an analysis or cell cluster
+    range: integer
+    multivalued: false
 
   channel_id: # channelId in agr_schemas json
     description: >-
