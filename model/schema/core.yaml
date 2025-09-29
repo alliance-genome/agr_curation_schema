@@ -1485,6 +1485,16 @@ slots:
     range: string
     multivalued: false
 
+  laboratory_of_origin:
+    description: >-
+      The laboratory of origin for the entity.
+    range: Laboratory
+
+  laboratory_of_origin_curie:
+    description: >-
+      The curie of the laboratory of origin for the entity.
+    range: string
+
 ## --------------------
 ## ASSOCIATION SLOTS
 ## --------------------

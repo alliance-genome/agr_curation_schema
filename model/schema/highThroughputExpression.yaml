@@ -55,6 +55,7 @@ classes:
       - data_provider
       - data_provider_cross_reference
       - symbol # added to accommodate FB scRNA-seq data
+      - laboratory_of_origin # added to accommodate FB scRNA-seq data
     slot_usage:
       htp_expression_dataset:
         required: true

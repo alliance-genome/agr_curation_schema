@@ -1027,18 +1027,6 @@ slots:
     domain: Allele
     range: boolean
 
-  laboratory_of_origin:
-    description: >-
-      The laboratory of origin for the entity.
-    domain: Allele
-    range: Laboratory
-
-  laboratory_of_origin_curie:
-    description: >-
-      The curie of the laboratory of origin for the entity.
-    domain: AlleleDTO
-    range: string
-
   mutagenesis_methods:
     range: VocabularyTerm
     multivalued: true
