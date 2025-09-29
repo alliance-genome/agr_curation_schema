@@ -26876,6 +26876,17 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "laboratory_of_origin": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Laboratory"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The laboratory of origin for the entity."
+                },
                 "name": {
                     "description": "The free text title of the dataset",
                     "type": "string"
