@@ -1,0 +1,472 @@
+id: https://github.com/alliance-genome/agr_curation_schema/cell_line.yaml
+name: cell_line
+description: Alliance Schema for Cell Lines with LinkML
+
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+
+imports:
+  - core
+  - linkml:types
+  - ontologyTerm
+
+prefixes:
+  alliance: 'http://alliancegenome.org/'
+  linkml: 'https://w3id.org/linkml/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+  dct: 'http://purl.org/dc/terms/'
+  WIKIDATA_PROPERTY: 'https://www.wikidata.org/wiki/Property:'
+  obograph: 'https://github.com/biodatamodels/obograph'
+
+## ------------
+## CLASSES
+## ------------
+
+classes:
+
+  CellLine:
+    description: >-
+      An immortalized or finite cell population that is derived from an organism
+      and can be maintained in culture. Cell lines may be genetically modified,
+      disease-derived, or established from normal tissue. This class represents
+      cultured cell populations used in research, including embryonic stem cells,
+      immortalized cell lines, and primary cell cultures.
+    is_a: GenomicEntity
+    slots:
+      - cell_line_symbol
+      - cell_line_full_name
+      - cell_line_synonyms
+      - cell_line_secondary_ids
+      - related_notes
+      - cell_line_type
+      - tissue_of_origin
+      - cell_type
+      - disease_associations
+      - sex
+      - age_at_sampling
+      - parental_cell_line
+      - derivation_method
+      - genetic_modifications
+      - laboratory_of_origin
+      - source_genotype
+      - source_strain
+      - karyotype
+      - source_cross
+    id_prefixes:
+      - CLO       # Cell Line Ontology
+      - CVCL      # Cellosaurus
+      - BTO       # BRENDA Tissue Ontology
+      - EFO       # Experimental Factor Ontology
+      - ATCC
+      - DSMZ
+      - MGI
+      - RGD
+      - ZFIN
+      - FB
+      - WB
+      - SGD
+    slot_usage:
+      primary_external_id:
+        required: true
+      related_notes:
+        notes: note_type from VocabularyTermSet 'Cell Line Note Type'
+
+  CellLineDTO:
+    is_a: GenomicEntityDTO
+    description: Ingest class for cell lines
+    slots:
+      - cell_line_symbol_dto
+      - cell_line_full_name_dto
+      - cell_line_synonym_dtos
+      - cell_line_secondary_id_dtos
+      - cell_line_type_curie
+      - tissue_of_origin_curie
+      - cell_type_curie
+      - disease_curie
+      - sex_name
+      - age_at_sampling
+      - parental_cell_line_identifier
+      - derivation_method_curie
+      - genetic_modifications
+      - laboratory_of_origin
+      - source_genotype
+      - source_strain
+      - karyotype
+      - source_cross
+    slot_usage:
+      primary_external_id:
+        required: true
+      note_dtos:
+        notes: note_type from VocabularyTermSet 'Cell Line Note Type'
+
+  CellLineSymbolSlotAnnotation:
+    description: >-
+      The one current symbol for the cell line.
+    is_a: NameSlotAnnotation
+    slots:
+      - single_cell_line
+    slot_usage:
+      single_cell_line:
+        required: true
+      name_type:
+        notes: >-
+          permissible_values: nomenclature_symbol (VocabularyTerm), systematic_name (VocabularyTerm)
+
+  CellLineFullNameSlotAnnotation:
+    is_a: NameSlotAnnotation
+    description: >-
+      The one current full name for the cell line.
+    slots:
+      - single_cell_line
+    slot_usage:
+      single_cell_line:
+        required: true
+      name_type:
+        notes: >-
+          permissible_values: full_name (VocabularyTerm)
+
+  CellLineSecondaryIdSlotAnnotation:
+    is_a: SecondaryIdSlotAnnotation
+    slots:
+      - single_cell_line
+    slot_usage:
+      single_cell_line:
+        required: true
+
+  CellLineSynonymSlotAnnotation:
+    is_a: NameSlotAnnotation
+    description: >-
+      All aliases (non-preferred names) for the cell line. Any type of synonym is acceptable.
+    slots:
+      - single_cell_line
+    slot_usage:
+      single_cell_line:
+        required: true
+
+  CellLineDiseaseAssociation:
+    is_a: EvidenceAssociation
+    description: >-
+      Association between a cell line and the disease from which it was derived
+      or that it models. This includes cell lines derived from disease tissue
+      as well as cell lines engineered to model specific diseases.
+    slots:
+      - cell_line_association_subject
+      - relation
+    attributes:
+      cell_line_disease_association_object:
+        range: DOTerm
+        required: true
+    slot_usage:
+      relation:
+        notes: >-
+          Describes the relationship between the cell line and disease
+          (e.g., derived_from, models)
+
+  CellLineDiseaseAssociationDTO:
+    is_a: EvidenceAssociationDTO
+    description: >-
+      Ingest class for cell line-disease associations
+    slots:
+      - cell_line_identifier
+      - relation_name
+      - disease_term_curie
+    slot_usage:
+      cell_line_identifier:
+        required: true
+      disease_term_curie:
+        required: true
+      relation_name:
+        required: true
+
+## ------------
+## SLOTS
+## ------------
+
+slots:
+
+  single_cell_line:
+    description: >-
+      Holds a reference to a single CellLine object
+    range: CellLine
+    multivalued: false
+
+  cell_line_association_subject:
+    description: >-
+      Subject slot to be used for cell line associations
+    required: true
+    range: CellLine
+
+  cell_line_identifier:
+    description: >-
+      Identifier (curie/primary_external_id/mod_internal_id) of the cell line
+    range: string
+    required: true
+
+  cell_line_symbol:
+    description: >-
+      The one current accepted symbol for a cell line: e.g., HEK293, CHO-K1, ES-D3.
+    exact_mappings:
+      - biolink:symbol
+    domain: CellLine
+    range: CellLineSymbolSlotAnnotation
+    required: true
+    multivalued: false
+
+  cell_line_symbol_dto:
+    description: >-
+      The one current accepted symbol for a cell line: e.g., HEK293, CHO-K1, ES-D3.
+    domain: CellLineDTO
+    range: SymbolSlotAnnotationDTO
+    multivalued: false
+    required: true
+    inlined: true
+
+  cell_line_full_name:
+    description: >-
+      The one current full name for a cell line: e.g., Human Embryonic Kidney 293,
+      Chinese Hamster Ovary K1.
+    domain: CellLine
+    range: CellLineFullNameSlotAnnotation
+    required: false
+    multivalued: false
+
+  cell_line_full_name_dto:
+    description: >-
+      The one current full name for a cell line: e.g., Human Embryonic Kidney 293,
+      Chinese Hamster Ovary K1.
+    domain: CellLineDTO
+    range: FullNameSlotAnnotationDTO
+    multivalued: false
+    required: false
+    inlined: true
+
+  cell_line_secondary_ids:
+    description: Secondary IDs of a given cell line
+    domain: CellLine
+    range: CellLineSecondaryIdSlotAnnotation
+    multivalued: true
+
+  cell_line_secondary_id_dtos:
+    domain: CellLineDTO
+    range: SecondaryIdSlotAnnotationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  cell_line_synonyms:
+    description: Holds between a CellLine and a synonym.
+    domain: CellLine
+    range: CellLineSynonymSlotAnnotation
+    required: false
+    multivalued: true
+
+  cell_line_synonym_dtos:
+    domain: CellLineDTO
+    range: NameSlotAnnotationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  cell_line_type:
+    description: >-
+      CLO or other ontology term describing the cell line type
+      (e.g., immortalized cell line, primary cell culture, embryonic stem cell,
+      cancer cell line, induced pluripotent stem cell)
+    domain: CellLine
+    range: CLOTerm
+    required: false
+    multivalued: false
+
+  cell_line_type_curie:
+    description: >-
+      Curie of CLO or other ontology term describing cell line type
+    domain: CellLineDTO
+    range: string
+    required: false
+    multivalued: false
+
+  tissue_of_origin:
+    description: >-
+      The tissue from which the cell line was originally derived, using
+      anatomical ontology terms (e.g., kidney, liver, embryo)
+    domain: CellLine
+    range: AnatomyTerm
+    required: false
+    multivalued: false
+
+  tissue_of_origin_curie:
+    description: >-
+      Curie of anatomy term for tissue of origin
+    domain: CellLineDTO
+    range: string
+    required: false
+    multivalued: false
+
+  cell_type:
+    description: >-
+      The specific cell type of the cell line using Cell Ontology terms
+      (e.g., fibroblast, epithelial cell, neuron, lymphocyte)
+    domain: CellLine
+    range: CLTerm
+    required: false
+    multivalued: false
+
+  cell_type_curie:
+    description: >-
+      Curie of Cell Ontology term describing cell type
+    domain: CellLineDTO
+    range: string
+    required: false
+    multivalued: false
+
+  disease_associations:
+    description: >-
+      Diseases from which the cell line was derived or that it models.
+      Includes both naturally occurring diseases and experimentally induced
+      disease models.
+    domain: CellLine
+    range: CellLineDiseaseAssociation
+    multivalued: true
+
+  disease_curie:
+    description: >-
+      Curie of disease term
+    domain: CellLineDiseaseAssociationDTO
+    range: string
+
+  disease_term_curie:
+    description: >-
+      Curie of disease term for cell line disease association
+    range: string
+
+  sex:
+    description: >-
+      The biological sex of the organism from which the cell line was derived
+    domain: CellLine
+    range: VocabularyTerm
+    required: false
+    multivalued: false
+
+  sex_name:
+    description: >-
+      Name of VocabularyTerm representing biological sex (e.g., male, female,
+      hermaphrodite, unknown)
+    domain: CellLineDTO
+    range: string
+    required: false
+    multivalued: false
+
+  age_at_sampling:
+    description: >-
+      The age of the organism at the time of cell line derivation. May be
+      specified as a number with units (e.g., "6 weeks", "embryonic day 14",
+      "adult") or as a developmental stage.
+    range: string
+    required: false
+    multivalued: false
+
+  parental_cell_line:
+    description: >-
+      The cell line from which this cell line was derived through subcloning,
+      genetic modification, or other derivation methods. Used to track cell
+      line lineage.
+    domain: CellLine
+    range: CellLine
+    required: false
+    multivalued: false
+
+  parental_cell_line_identifier:
+    description: >-
+      Identifier (curie/primary_external_id/mod_internal_id) of the parental
+      cell line from which this cell line was derived
+    domain: CellLineDTO
+    range: string
+    required: false
+    multivalued: false
+
+  derivation_method:
+    description: >-
+      The method used to establish or derive the cell line (e.g., transfection,
+      viral transformation, spontaneous immortalization, CRISPR modification,
+      somatic cell nuclear transfer)
+    domain: CellLine
+    range: VocabularyTerm
+    required: false
+    multivalued: false
+
+  derivation_method_curie:
+    description: >-
+      Curie of term describing derivation method
+    domain: CellLineDTO
+    range: string
+    required: false
+    multivalued: false
+
+  genetic_modifications:
+    description: >-
+      List of genetic modifications present in the cell line, including
+      transgenes, knockouts, knock-ins, or other engineered changes. This
+      can reference specific alleles or provide free-text descriptions.
+    range: string
+    required: false
+    multivalued: true
+
+  laboratory_of_origin:
+    description: >-
+      The laboratory or organization that established/created the cell line.
+      May include PI names, lab names, or repository identifiers. This field
+      captures the provenance of the cell line. Based on FlyBase data, 96% of
+      cell lines have this information.
+    range: string
+    required: false
+    multivalued: true
+
+  source_genotype:
+    description: >-
+      The genotype of the organism from which the cell line was derived.
+      Describes the genetic background or specific allelic composition of
+      the source organism (e.g., "e/se", "w1118", "+/+").
+    range: string
+    required: false
+    multivalued: false
+
+  source_strain:
+    description: >-
+      The strain designation of the organism from which the cell line was
+      derived (e.g., "Oregon-R", "Canton-S", "C57BL/6").
+    range: string
+    required: false
+    multivalued: false
+
+  karyotype:
+    description: >-
+      The chromosomal composition of the cell line, including chromosome
+      number, sex chromosome composition, and ploidy information
+      (e.g., "XO-haplo-IV pseudodiploid", "2n=46,XX", "approximately tetraploid").
+    range: string
+    required: false
+    multivalued: true
+
+  source_cross:
+    description: >-
+      Information about the genetic cross used to generate the organism from
+      which the cell line was derived. Captures breeding scheme or crossing
+      information relevant to the cell line's genetic background.
+    range: string
+    required: false
+    multivalued: false

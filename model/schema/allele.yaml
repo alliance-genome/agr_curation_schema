@@ -5,6 +5,7 @@ title: Allele
 imports:
   - affectedGenomicModel
   - agent
+  - cell_line
   - core
   - image
   - controlledVocabulary
@@ -126,19 +127,7 @@ classes:
 
   # Some classes roughly grouped with the Allele class because they have relationships to Allele and were
   # designed close to the time the Allele class was designed.  These could be broken out into their own yaml files.
-
-  CellLine:
-    is_a: GenomicEntity
-    description: >-
-      Dummy cell line class
-
-  CellLineDTO:
-    is_a: GenomicEntityDTO
-    description: >-
-      Dummy cell line DTO class
-    slot_usage:
-      primary_external_id:
-        required: true
+  # Note: CellLine has been moved to cell_line.yaml
 
   GenerationMethod:
     is_a: AuditedObject

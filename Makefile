@@ -195,6 +195,7 @@ SCHEMA_TEST_EXAMPLES := \
 	antibody_test \
 	assembly_component_test \
 	cassette_test \
+	cell_line_test \
 	chromosome_test \
 	construct_test \
 	disease_agm_test \
@@ -222,6 +223,7 @@ SCHEMA_TEST_EXAMPLES := \
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
 	allele_invalid \
+	cell_line_invalid \
 	disease_allele_invalid \
 	missing_version \
 	variant_invalid \

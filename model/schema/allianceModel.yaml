@@ -34,6 +34,7 @@ imports:
   - allianceMember
   - biologicalEntitySet
   - bulkload
+  - cell_line
   - controlledVocabulary
   - core
   - curationReport

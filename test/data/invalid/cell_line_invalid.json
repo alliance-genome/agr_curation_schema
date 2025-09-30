@@ -1,0 +1,32 @@
+{
+  "cell_line_ingest_set": [
+    {
+      "invalid_property": "this should cause validation to fail",
+      "primary_external_id": "CVCL:0045",
+      "taxon_curie": "NCBITaxon:9606",
+      "cell_line_symbol_dto": {
+        "format_text": "HEK293",
+        "display_text": "HEK293",
+        "name_type_name": "nomenclature_symbol"
+      },
+      "created_by_curie": "CVCL:curator",
+      "updated_by_curie": "CVCL:curator",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "Cellosaurus"
+      }
+    },
+    {
+      "taxon_curie": "NCBITaxon:10090",
+      "cell_line_symbol_dto": {
+        "format_text": "ES-D3",
+        "display_text": "ES-D3",
+        "name_type_name": "nomenclature_symbol"
+      },
+      "created_by_curie": "MGI:curator_001",
+      "updated_by_curie": "MGI:curator_001",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "MGI"
+      }
+    }
+  ]
+}

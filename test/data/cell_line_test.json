@@ -1,0 +1,133 @@
+{
+  "cell_line_ingest_set": [
+    {
+      "primary_external_id": "CVCL:0045",
+      "taxon_curie": "NCBITaxon:9606",
+      "cell_line_symbol_dto": {
+        "format_text": "HEK293",
+        "display_text": "HEK293",
+        "name_type_name": "nomenclature_symbol"
+      },
+      "cell_line_full_name_dto": {
+        "format_text": "Human Embryonic Kidney 293",
+        "display_text": "Human Embryonic Kidney 293",
+        "name_type_name": "full_name"
+      },
+      "cell_line_type_curie": "CLO:0000031",
+      "tissue_of_origin_curie": "UBERON:0002113",
+      "cell_type_curie": "CL:0002293",
+      "sex_name": "female",
+      "laboratory_of_origin": ["Graham", "ATCC"],
+      "karyotype": ["2n=64, hypotetraploid"],
+      "created_by_curie": "CVCL:curator",
+      "date_created": "2024-01-15T10:00:00Z",
+      "updated_by_curie": "CVCL:curator",
+      "date_updated": "2024-01-15T10:00:00Z",
+      "internal": false,
+      "obsolete": false,
+      "data_provider_dto": {
+        "source_organization_abbreviation": "Cellosaurus",
+        "cross_reference_dto": {
+          "referenced_curie": "CVCL:0045",
+          "display_name": "Cellosaurus cell line page",
+          "prefix": "CVCL",
+          "page_area": "cell_line"
+        }
+      }
+    },
+    {
+      "primary_external_id": "MGI:CL001",
+      "taxon_curie": "NCBITaxon:10090",
+      "cell_line_symbol_dto": {
+        "format_text": "ES-D3",
+        "display_text": "ES-D3",
+        "name_type_name": "nomenclature_symbol"
+      },
+      "cell_line_full_name_dto": {
+        "format_text": "D3 embryonic stem cell line",
+        "display_text": "D3 embryonic stem cell line",
+        "name_type_name": "full_name"
+      },
+      "cell_line_synonym_dtos": [
+        {
+          "format_text": "D3",
+          "display_text": "D3",
+          "name_type_name": "nomenclature_symbol"
+        }
+      ],
+      "cell_line_type_curie": "CL:0002322",
+      "tissue_of_origin_curie": "UBERON:0000922",
+      "cell_type_curie": "CL:0002322",
+      "sex_name": "male",
+      "age_at_sampling": "embryonic day 3.5",
+      "laboratory_of_origin": ["Doetschman"],
+      "source_strain": "129/Sv",
+      "source_genotype": "+/+",
+      "created_by_curie": "MGI:curator_001",
+      "date_created": "2024-02-01T14:30:00Z",
+      "updated_by_curie": "MGI:curator_001",
+      "date_updated": "2024-02-01T14:30:00Z",
+      "internal": false,
+      "obsolete": false,
+      "data_provider_dto": {
+        "source_organization_abbreviation": "MGI",
+        "cross_reference_dto": {
+          "referenced_curie": "MGI:CL001",
+          "display_name": "MGI cell line page",
+          "prefix": "MGI",
+          "page_area": "cell_line"
+        }
+      }
+    },
+    {
+      "primary_external_id": "ATCC:CRL-1573",
+      "taxon_curie": "NCBITaxon:10029",
+      "cell_line_symbol_dto": {
+        "format_text": "CHO-K1",
+        "display_text": "CHO-K1",
+        "name_type_name": "nomenclature_symbol"
+      },
+      "cell_line_full_name_dto": {
+        "format_text": "Chinese Hamster Ovary K1",
+        "display_text": "Chinese Hamster Ovary K1",
+        "name_type_name": "full_name"
+      },
+      "cell_line_secondary_id_dtos": [
+        {
+          "secondary_id": "CVCL:0214"
+        }
+      ],
+      "cell_line_type_curie": "CLO:0000031",
+      "tissue_of_origin_curie": "UBERON:0000992",
+      "cell_type_curie": "CL:0000066",
+      "sex_name": "female",
+      "genetic_modifications": [
+        "Subclone with low chromosome number"
+      ],
+      "laboratory_of_origin": ["Puck"],
+      "karyotype": ["2n=20-22"],
+      "created_by_curie": "ATCC:curator",
+      "date_created": "2024-03-10T09:15:00Z",
+      "updated_by_curie": "ATCC:curator",
+      "date_updated": "2024-03-10T09:15:00Z",
+      "internal": false,
+      "obsolete": false,
+      "data_provider_dto": {
+        "source_organization_abbreviation": "ATCC",
+        "cross_reference_dto": {
+          "referenced_curie": "ATCC:CRL-1573",
+          "display_name": "ATCC cell line page",
+          "prefix": "ATCC",
+          "page_area": "cell_line"
+        }
+      },
+      "note_dtos": [
+        {
+          "free_text": "This is a widely used cell line for protein production",
+          "note_type_name": "comment",
+          "internal": false
+        }
+      ]
+    }
+  ]
+}

@@ -6,6 +6,7 @@ imports:
   - core
   - reagent
   - allele
+  - cell_line
   - gene
   - image
   - variation
@@ -379,6 +380,14 @@ slots:
     mixins:
       - object_set
 
+  cell_line_ingest_set:
+    description: An ingest set for CellLine objects
+    domain: Ingest
+    range: CellLineDTO
+    multivalued: true
+    mixins:
+      - object_set
+
   cassette_genomic_entity_association_ingest_set:
     domain: Ingest
     range: CassetteGenomicEntityAssociationDTO
@@ -433,6 +442,7 @@ classes:
       - allele_ingest_set
       - antibody_ingest_set
       - cassette_ingest_set
+      - cell_line_ingest_set
       - cassette_genomic_entity_association_ingest_set
       - cassette_str_association_ingest_set
       - cassette_transgenic_tool_association_ingest_set
