@@ -739,7 +739,20 @@ classes:
           description: >-
             The common name(s) for a species, such as "zebrafish", "fruit fly", or "rat"
 
-
+  Analysis:
+    is_a: SubmittedObject
+    description: >-
+      An analysis of a dataset
+    attributes:
+      analysis_type:
+        description: >-
+          The type of analysis performed; the range of this will initially be the FBCV terms
+          within the namespace "result_type"
+        range: FBCVTerm
+    slot_usage:
+      related_notes:
+        notes: >-
+          At least one valid note_type for an Analysis object is "analysis_protocol"
 
 
 
@@ -1461,6 +1474,26 @@ slots:
       be derived and not helpful to end users. Data records/entities where the placeholder
       value is set to true would have various visible properties suppressed, so as not to
       confuse end users with private, internal or otherwise contrived representations.
+
+  title:
+    description: The free text title for an entity or record
+    range: string
+    multivalued: false
+
+  symbol:
+    description: The free text symbol (human-readable) for an entity or record
+    range: string
+    multivalued: false
+
+  laboratory_of_origin:
+    description: >-
+      The laboratory of origin for the entity.
+    range: Laboratory
+
+  laboratory_of_origin_curie:
+    description: >-
+      The curie of the laboratory of origin for the entity.
+    range: string
 
 ## --------------------
 ## ASSOCIATION SLOTS

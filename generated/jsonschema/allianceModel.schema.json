@@ -7777,6 +7777,128 @@
             "title": "AllianceMember",
             "type": "object"
         },
+        "Analysis": {
+            "additionalProperties": false,
+            "description": "An analysis of a dataset",
+            "properties": {
+                "analysis_type": {
+                    "description": "The type of analysis performed; the range of this will initially be the FBCV terms within the namespace \"result_type\"",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "data_provider": {
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/CrossReference"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "CrossReference to the organization from which the data was sourced"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "data_provider",
+                "internal"
+            ],
+            "title": "Analysis",
+            "type": "object"
+        },
         "AnatomicalSite": {
             "additionalProperties": false,
             "description": "The set of terms that define a specific anatomical site within a specimen.",
@@ -9803,8 +9925,68 @@
                         "string",
                         "null"
                     ]
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
+            "required": [
+                "internal"
+            ],
             "then": {
                 "anyOf": [
                     {
@@ -9861,11 +10043,69 @@
                         "string",
                         "null"
                     ]
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "required": [
                 "allele_identifier",
-                "agm_identifier"
+                "agm_identifier",
+                "internal"
             ],
             "then": {
                 "anyOf": [
@@ -26642,6 +26882,17 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "laboratory_of_origin": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Laboratory"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The laboratory of origin for the entity."
+                },
                 "name": {
                     "description": "The free text title of the dataset",
                     "type": "string"
@@ -26688,6 +26939,13 @@
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "symbol": {
+                    "description": "The free text symbol (human-readable) for an entity or record",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -26869,6 +27127,17 @@
                         "string",
                         "null"
                     ]
+                },
+                "analysis": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Analysis"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "An analysis as applied to a particular data set"
                 },
                 "assembly_versions": {
                     "description": "single or paired end sequencing; might be better in experiment info",
@@ -27061,6 +27330,13 @@
                 },
                 "sequencing_format": {
                     "description": "single or paired end sequencing; might be better in experiment info",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "symbol": {
+                    "description": "The free text symbol (human-readable) for an entity or record",
                     "type": [
                         "string",
                         "null"
@@ -35573,6 +35849,298 @@
             ],
             "title": "SequencingFormatValues",
             "type": "string"
+        },
+        "SingleCellExpressionAnalysis": {
+            "additionalProperties": false,
+            "description": "An analysis of single cell expression (e.g. scRNA-seq) dataset samples or groups of samples",
+            "properties": {
+                "analysis_type": {
+                    "description": "The type of analysis performed; the range of this will initially be the FBCV terms within the namespace \"result_type\"",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "cell_clusters": {
+                    "description": "A cluster of cells clustered algorithmically from single cell expression (e.g. scRNA-seq) data. This typically represents a cluster of individual cells sequenced that have similar expression profiles.",
+                    "items": {
+                        "$ref": "#/$defs/SingleCellExpressionCellCluster"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "cell_count": {
+                    "description": "The count of cells that are part of an analysis or cell cluster",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "data_provider": {
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/CrossReference"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "CrossReference to the organization from which the data was sourced"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "symbol": {
+                    "description": "The free text symbol (human-readable) for an entity or record",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "A human readable title for a reference. From PubMed otherwise from Mod or manual reference creation.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "data_provider",
+                "internal"
+            ],
+            "title": "SingleCellExpressionAnalysis",
+            "type": "object"
+        },
+        "SingleCellExpressionCellCluster": {
+            "additionalProperties": false,
+            "description": "A cluster of cells derived algorithmically from single cell expression (e.g. scRNA-seq) data. This typically represents a cluster of individual cells sequenced that have similar expression profiles.",
+            "properties": {
+                "cell_count": {
+                    "description": "The count of cells that are part of an analysis or cell cluster",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "cell_type": {
+                    "description": "The type of cell that is represented in a given single-cell expression cluster"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "data_provider": {
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/CrossReference"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "CrossReference to the organization from which the data was sourced"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "symbol": {
+                    "description": "The free text symbol (human-readable) for an entity or record",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "A human readable title for a reference. From PubMed otherwise from Mod or manual reference creation.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "data_provider",
+                "internal"
+            ],
+            "title": "SingleCellExpressionCellCluster",
+            "type": "object"
         },
         "SingleReferenceAssociationDTO": {
             "additionalProperties": false,
