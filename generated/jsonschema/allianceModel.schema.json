@@ -39470,6 +39470,7 @@
                     "description": "Holds between a TransgenicTool and a full name."
                 },
                 "transgenic_tool_symbol_dto": {
+                    "$ref": "#/$defs/SymbolSlotAnnotationDTO",
                     "description": "Holds between a TransgenicTool and the one current accepted symbol"
                 },
                 "transgenic_tool_synonym_dtos": {
