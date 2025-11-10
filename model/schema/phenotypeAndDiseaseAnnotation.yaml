@@ -13,6 +13,7 @@ imports:
   - gene
   - allele
   - ontologyTerm
+  - expression
 
 
 prefixes:
@@ -83,22 +84,26 @@ classes:
       reference_curie:
         required: true
 
-  PhenotypeAnnotation:
-    is_a: Annotation
+  StructuredPhenotype:
+    is_a: AuditedObject
     description: >-
-      An annotation asserting an association between a biological entity and a phenotype supported by evidence.
+      A complex, structured phenotype described by a combination of ontological terms.
     slots:
-      - phenotype_annotation_subject
       - phenotype_terms
-      - cross_reference
-      - negated
     attributes:
-      phenotype_annotation_object:
+      affected_location:
         description: >-
-          phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed
-          statement of the phenotype from a post-composed terminology
-        required: true
-        range: string
+          The anatomical location affected by the phenotype.
+        range: AnatomicalSite
+      affected_stage:
+        description: >-
+          The developmental stage affected by the phenotype.
+        range: TemporalContext
+      qualifiers:
+        description: >-
+          Additional ontological terms to refine the description of the phenotype.
+        range: PhenotypeTerm
+        multivalued: true
     slot_usage:
       phenotype_terms:
         values_from:
@@ -116,6 +121,60 @@ classes:
             description: axon morphology variant
           - value: MP:0001569
             description: abnormal circulating bilirubin level
+    rules:
+      - postconditions:
+          any_of:
+            - slot_conditions:
+                phenotype_terms:
+                  required: true
+            - slot_conditions:
+                affected_location:
+                  required: true
+
+  StructuredPhenotypeDTO:
+    is_a: AuditedObjectDTO
+    description:
+      Ingest object for a structured phenotype.
+    slots:
+      - phenotype_term_curies
+    attributes:
+      affected_location_dto:
+        range: AnatomicalSiteDTO
+      affected_stage_dto:
+        range: TemporalContextDTO
+      qualifier_curies:
+        range: string
+        multivalued: true
+    rules:
+      - postconditions:
+          any_of:
+            - slot_conditions:
+                phenotype_term_curies:
+                  required: true
+            - slot_conditions:
+                affected_location_dto:
+                  required: true
+
+  PhenotypeAnnotation:
+    is_a: Annotation
+    description: >-
+      An annotation asserting an association between a biological entity and a phenotype supported by evidence.
+    slots:
+      - phenotype_annotation_subject
+      - cross_reference
+      - negated
+    attributes:
+      phenotype_annotation_object:
+        description: >-
+          phenotype statement: The label of an individual phenotype term from a phenotype ontology or the post-composed
+          statement of the phenotype from a post-composed terminology
+        required: true
+        range: string
+      structured_phenotype_annotation_object:
+        description: >-
+          A description of the phenotype using a structured composition of ontological terms.
+        range: StructuredPhenotype
+    slot_usage:
       single_reference:
         description: >-
           The reference in which the phenotype association was asserted/reported.
@@ -138,9 +197,11 @@ classes:
       Ingest class for association between a biological entity and a phenotype
     slots:
       - phenotype_statement
-      - phenotype_term_curies
       - cross_reference_dto
       - negated
+    attributes:
+      structured_phenotype_annotation_object_dto:
+        range: StructuredPhenotypeDTO
 
   GenePhenotypeAnnotation:
     description: >-
