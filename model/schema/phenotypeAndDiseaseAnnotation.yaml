@@ -13,6 +13,7 @@ imports:
   - gene
   - allele
   - ontologyTerm
+  - expression
 
 
 prefixes:
@@ -83,6 +84,94 @@ classes:
       reference_curie:
         required: true
 
+  AffectedEntity:
+    is_a: AuditedObject
+    description: >-
+      An entity that is affected by a phenotype.
+    attributes:
+      location:
+        description: >-
+          The anatomical site that is affected by a phenotype.
+        range: AnatomicalSite
+      stage:
+        description: >-
+          The developmental stage that is affected by a phenotye.
+        range: TemporalContext
+      process:
+        description:
+          The biological process that is affected by a phenotype.
+        range: GOTerm # FIXME: Should ideally be restricted to the "process" branch
+    rules:
+      - postconditions:
+          any_of:
+            - slot_conditions:
+                location:
+                  required: true
+            - slot_conditions:
+                stage:
+                  required: true
+            - slot_conditions:
+                process:
+                  required: true
+
+  AffectedEntityDTO:
+    is_a: AuditedObjectDTO
+    description: >-
+      Ingest class for an entity that is affected by a phenotype.
+    attributes:
+      location_dto:
+        range: AnatomicalSiteDTO
+      stage_dto:
+        range: TemporalContextDTO
+      process_curie:
+        range: string
+    rules:
+      - postconditions:
+          any_of:
+            - slot_conditions:
+                location_dto:
+                  required: true
+            - slot_conditions:
+                stage_dto:
+                  required: true
+            - slot_conditions:
+                process_curie:
+                  required: true
+
+  PhenotypeQualifier:
+    is_a: AuditedObject
+    description: >-
+      Ontological terms that refine the description of a phenotype.
+    attributes:
+      qualifier_term:
+        description: >-
+          The main ontological term that refines the description of a phenotype.
+        range: OntologicalTerm
+        values_from:
+          - HP
+          - MP
+          - WBPhenotype
+          - ZP
+          - APO
+          - FBcv
+          - PATO
+        required: true
+      related_entity:
+        description: >-
+          An affected entity that further refines the description of a phenotype.
+        range: AffectedEntity
+
+  PhenotypeQualifierDTO:
+    is_a: AuditedObjectDTO
+    description: >-
+      Ingest class for a phenotype qualifier.
+    attributes:
+      qualifier_term_curie:
+        range: string
+        required: true
+      related_entity:
+        range: AffectedEntityDTO
+
   PhenotypeAnnotation:
     is_a: Annotation
     description: >-
@@ -99,6 +188,15 @@ classes:
           statement of the phenotype from a post-composed terminology
         required: true
         range: string
+      affected_entity:
+        description: >-
+          The entity (anatomical structure, developmental stage, and/or biological process) that is affected by the
+          phenotype.
+        range: AffectedEntity
+      qualifier:
+        description: >-
+          Additional ontological terms that refine the description of the phenotype.
+        range: PhenotypeQualifier
     slot_usage:
       phenotype_terms:
         values_from:
@@ -141,6 +239,11 @@ classes:
       - phenotype_term_curies
       - cross_reference_dto
       - negated
+    attributes:
+      affected_entity_dto:
+        range: AffectedEntityDTO
+      qualifier_dto:
+        range: PhenotypeQualifierDTO
 
   GenePhenotypeAnnotation:
     description: >-
