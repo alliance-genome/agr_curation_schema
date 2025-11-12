@@ -717,16 +717,6 @@
                     "$ref": "#/$defs/AffectedGenomicModel",
                     "description": "The AGM to which the phenotype ontology term is associated."
                 },
-                "phenotype_terms": {
-                    "description": "The phenotype ontology term used to describe the phenotype of an organism or a set of organisms.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "primary_external_id": {
                     "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": [
@@ -747,6 +737,17 @@
                 "relation": {
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
+                },
+                "structured_phenotype_annotation_object": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/StructuredPhenotype"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "A description of the phenotype using a structured composition of ontological terms."
                 },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
@@ -925,21 +926,21 @@
                         "null"
                     ]
                 },
-                "phenotype_term_curies": {
-                    "description": "The string representation of the phenotype ontology term (PhenotypeTerm) curie",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "primary_external_id": {
                     "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": [
                         "string",
                         "null"
+                    ]
+                },
+                "structured_phenotype_annotation_object_dto": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/StructuredPhenotypeDTO"
+                        },
+                        {
+                            "type": "null"
+                        }
                     ]
                 },
                 "updated_by_curie": {
@@ -6496,16 +6497,6 @@
                     "$ref": "#/$defs/Allele",
                     "description": "The allele to which the phenotype ontology term is associated."
                 },
-                "phenotype_terms": {
-                    "description": "The phenotype ontology term used to describe the phenotype of an organism or a set of organisms.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "primary_external_id": {
                     "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": [
@@ -6526,6 +6517,17 @@
                 "relation": {
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
+                },
+                "structured_phenotype_annotation_object": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/StructuredPhenotype"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "A description of the phenotype using a structured composition of ontological terms."
                 },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
@@ -6687,21 +6689,21 @@
                         "null"
                     ]
                 },
-                "phenotype_term_curies": {
-                    "description": "The string representation of the phenotype ontology term (PhenotypeTerm) curie",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "primary_external_id": {
                     "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": [
                         "string",
                         "null"
+                    ]
+                },
+                "structured_phenotype_annotation_object_dto": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/StructuredPhenotypeDTO"
+                        },
+                        {
+                            "type": "null"
+                        }
                     ]
                 },
                 "updated_by_curie": {
@@ -24824,16 +24826,6 @@
                     "$ref": "#/$defs/Gene",
                     "description": "The gene to which the phenotype ontology term is associated."
                 },
-                "phenotype_terms": {
-                    "description": "The phenotype ontology term used to describe the phenotype of an organism or a set of organisms.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "primary_external_id": {
                     "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": [
@@ -24864,6 +24856,17 @@
                             "type": "null"
                         }
                     ]
+                },
+                "structured_phenotype_annotation_object": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/StructuredPhenotype"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "A description of the phenotype using a structured composition of ontological terms."
                 },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
@@ -25008,16 +25011,6 @@
                         "null"
                     ]
                 },
-                "phenotype_term_curies": {
-                    "description": "The string representation of the phenotype ontology term (PhenotypeTerm) curie",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "primary_external_id": {
                     "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": [
@@ -25030,6 +25023,16 @@
                     "type": [
                         "string",
                         "null"
+                    ]
+                },
+                "structured_phenotype_annotation_object_dto": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/StructuredPhenotypeDTO"
+                        },
+                        {
+                            "type": "null"
+                        }
                     ]
                 },
                 "updated_by_curie": {
@@ -32846,16 +32849,6 @@
                     "$ref": "#/$defs/BiologicalEntity",
                     "description": "The biological entity (e.g. gene, allele, genotype) to which the phenotype is associated, by direct curation."
                 },
-                "phenotype_terms": {
-                    "description": "The phenotype ontology term used to describe the phenotype of an organism or a set of organisms.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "primary_external_id": {
                     "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": [
@@ -32876,6 +32869,17 @@
                 "relation": {
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "type": "string"
+                },
+                "structured_phenotype_annotation_object": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/StructuredPhenotype"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "A description of the phenotype using a structured composition of ontological terms."
                 },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
@@ -37771,6 +37775,263 @@
             ],
             "title": "StrandEnum",
             "type": "string"
+        },
+        "StructuredPhenotype": {
+            "additionalProperties": false,
+            "description": "A complex, structured phenotype described by a combination of ontological terms.",
+            "properties": {
+                "affected_location": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AnatomicalSite"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The anatomical location affected by the phenotype."
+                },
+                "affected_stage": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TemporalContext"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The developmental stage affected by the phenotype."
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "phenotype_terms": {
+                    "description": "The phenotype ontology term used to describe the phenotype of an organism or a set of organisms.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "qualifiers": {
+                    "description": "Additional ontological terms to refine the description of the phenotype.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "internal"
+            ],
+            "then": {
+                "anyOf": [
+                    {
+                        "properties": {
+                            "phenotype_terms": {}
+                        },
+                        "required": [
+                            "phenotype_terms"
+                        ]
+                    },
+                    {
+                        "properties": {
+                            "affected_location": {}
+                        },
+                        "required": [
+                            "affected_location"
+                        ]
+                    }
+                ]
+            },
+            "title": "StructuredPhenotype",
+            "type": "object"
+        },
+        "StructuredPhenotypeDTO": {
+            "additionalProperties": false,
+            "description": "Ingest object for a structured phenotype.",
+            "properties": {
+                "affected_location_dto": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AnatomicalSiteDTO"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "affected_stage_dto": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TemporalContextDTO"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "phenotype_term_curies": {
+                    "description": "The string representation of the phenotype ontology term (PhenotypeTerm) curie",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "qualifier_curies": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "internal"
+            ],
+            "then": {
+                "anyOf": [
+                    {
+                        "properties": {
+                            "phenotype_term_curies": {}
+                        },
+                        "required": [
+                            "phenotype_term_curies"
+                        ]
+                    },
+                    {
+                        "properties": {
+                            "affected_location_dto": {}
+                        },
+                        "required": [
+                            "affected_location_dto"
+                        ]
+                    }
+                ]
+            },
+            "title": "StructuredPhenotypeDTO",
+            "type": "object"
         },
         "SubmittedObject": {
             "additionalProperties": false,
