@@ -100,7 +100,16 @@ classes:
       process:
         description:
           The biological process that is affected by a phenotype.
-        range: GOTerm # FIXME: Should ideally be restricted to the "process" branch
+        range: GOTerm
+        comments: >-
+          The model will accept any GO term in any branch. This should be further
+          constrained to the process branch only. In particular, should one wish
+          to indicate that a phenotype affects a cellular component, this should be
+          done using the location.cellular_component slot.
+    comments: >-
+      In the future, other slots may be added to allow referring to more kinds of
+      entities, e.g. a slot with a CHEBITerm range to allow stating that a
+      phenotype affects a particular chemical entity.
     rules:
       - postconditions:
           any_of:
@@ -155,11 +164,25 @@ classes:
           - APO
           - FBcv
           - PATO
-        required: true
+      qualifier_tag:
+        description: >-
+          Similar to qualifier_term, but using a term from a vocabulary
+          rather than a dedicated ontology. Intended for "simple" qualifications
+          such as "abnormal", "ameliorated", "exacerbated", etc.
+        range: VocabularyTerm
       related_entity:
         description: >-
           An affected entity that further refines the description of a phenotype.
         range: AffectedEntity
+    rules:
+      - postconditions:
+          any_of:
+            - slot_conditions:
+                qualifier_term:
+                  required: true
+            - slot_conditions:
+                qualifier_tag:
+                  required: true
 
   PhenotypeQualifierDTO:
     is_a: AuditedObjectDTO
@@ -168,9 +191,19 @@ classes:
     attributes:
       qualifier_term_curie:
         range: string
-        required: true
+      qualifier_tag_name:
+        range: string
       related_entity:
         range: AffectedEntityDTO
+    rules:
+      - postconditions:
+          any_of:
+            - slot_conditions:
+                qualifier_term_curie:
+                  required: true
+            - slot_conditions:
+                qualifier_tag_name:
+                  required: true
 
   PhenotypeAnnotation:
     is_a: Annotation
