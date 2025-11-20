@@ -33351,6 +33351,13 @@
                         "null"
                     ]
                 },
+                "qualifier_tag": {
+                    "description": "Similar to qualifier_term, but using a term from a vocabulary rather than a dedicated ontology. Intended for \"simple\" qualifications such as \"abnormal\", \"ameliorated\", \"exacerbated\", etc.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "qualifier_term": {
                     "description": "The main ontological term that refines the description of a phenotype."
                 },
@@ -33374,9 +33381,28 @@
                 }
             },
             "required": [
-                "qualifier_term",
                 "internal"
             ],
+            "then": {
+                "anyOf": [
+                    {
+                        "properties": {
+                            "qualifier_term": {}
+                        },
+                        "required": [
+                            "qualifier_term"
+                        ]
+                    },
+                    {
+                        "properties": {
+                            "qualifier_tag": {}
+                        },
+                        "required": [
+                            "qualifier_tag"
+                        ]
+                    }
+                ]
+            },
             "title": "PhenotypeQualifier",
             "type": "object"
         },
@@ -33434,8 +33460,17 @@
                         "null"
                     ]
                 },
+                "qualifier_tag_name": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "qualifier_term_curie": {
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "related_entity": {
                     "anyOf": [
@@ -33456,9 +33491,28 @@
                 }
             },
             "required": [
-                "qualifier_term_curie",
                 "internal"
             ],
+            "then": {
+                "anyOf": [
+                    {
+                        "properties": {
+                            "qualifier_term_curie": {}
+                        },
+                        "required": [
+                            "qualifier_term_curie"
+                        ]
+                    },
+                    {
+                        "properties": {
+                            "qualifier_tag_name": {}
+                        },
+                        "required": [
+                            "qualifier_tag_name"
+                        ]
+                    }
+                ]
+            },
             "title": "PhenotypeQualifierDTO",
             "type": "object"
         },
