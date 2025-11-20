@@ -332,6 +332,11 @@ classes:
       - agm_identifier
       - biosample_agm_type_name
       - biosample_text
+    slot_usage:
+      agm_identifier:
+        required: false
+      allele_identifier:
+        required: false
     rules:
       - postconditions:
           any_of:
