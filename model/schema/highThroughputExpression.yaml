@@ -276,7 +276,7 @@ classes:
       - channel_number # channelNum in agr_schemas json
 
   BioSampleAge:
-    is_a: SubmittedObject
+    is_a: AuditedObject
     description: >-
       An object that holds the temporal aspect of a sample.
     slots:
@@ -288,7 +288,7 @@ classes:
         description: free text for the age of the sample
 
   BioSampleAgeDTO:
-    is_a: SubmittedObjectDTO
+    is_a: AuditedObjectDTO
     description: >-
       An object that holds the temporal aspect of a sample.
     slots:
