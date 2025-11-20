@@ -7899,6 +7899,108 @@
             "title": "Analysis",
             "type": "object"
         },
+        "AnalysisDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for the analysis of a dataset",
+            "properties": {
+                "analysis_type_curie": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "data_provider_dto",
+                "internal"
+            ],
+            "title": "AnalysisDTO",
+            "type": "object"
+        },
         "AnatomicalSite": {
             "additionalProperties": false,
             "description": "The set of terms that define a specific anatomical site within a specimen.",
@@ -9643,28 +9745,6 @@
                         "null"
                     ]
                 },
-                "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "data_provider": {
-                    "$ref": "#/$defs/Organization",
-                    "description": "The organization (e.g. MOD) from which the data was sourced"
-                },
-                "data_provider_cross_reference": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/CrossReference"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "CrossReference to the organization from which the data was sourced"
-                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -9701,34 +9781,10 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_internal_id": {
-                    "description": "The model organism database (MOD) internal identifier for the object",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": [
                         "boolean",
-                        "null"
-                    ]
-                },
-                "primary_external_id": {
-                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "related_notes": {
-                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
-                    "items": {
-                        "$ref": "#/$defs/Note"
-                    },
-                    "type": [
-                        "array",
                         "null"
                     ]
                 },
@@ -9759,7 +9815,6 @@
                 }
             },
             "required": [
-                "data_provider",
                 "internal"
             ],
             "title": "BioSampleAge",
@@ -9782,10 +9837,6 @@
                         "string",
                         "null"
                     ]
-                },
-                "data_provider_dto": {
-                    "$ref": "#/$defs/DataProviderDTO",
-                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -9823,33 +9874,10 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "mod_internal_id": {
-                    "description": "The model organism database (MOD) internal identifier for the object",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "note_dtos": {
-                    "items": {
-                        "$ref": "#/$defs/NoteDTO"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": [
                         "boolean",
-                        "null"
-                    ]
-                },
-                "primary_external_id": {
-                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
-                    "type": [
-                        "string",
                         "null"
                     ]
                 },
@@ -9880,7 +9908,6 @@
                 }
             },
             "required": [
-                "data_provider_dto",
                 "internal"
             ],
             "title": "BioSampleAgeDTO",
@@ -10024,11 +10051,17 @@
             "properties": {
                 "agm_identifier": {
                     "description": "Curie or internal ID of AGM",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "allele_identifier": {
                     "description": "Identifier (curie/primary_external_id/mod_internal_id) of the allele",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "biosample_agm_type_name": {
                     "description": "Indicates the type of AGM biosample; enum: fish, genotype, strain",
@@ -10103,8 +10136,6 @@
                 }
             },
             "required": [
-                "allele_identifier",
-                "agm_identifier",
                 "internal"
             ],
             "then": {
@@ -26816,6 +26847,17 @@
             "additionalProperties": false,
             "description": "An entry for a published high-throughput expression dataset annotation.",
             "properties": {
+                "analysis": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Analysis"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "An analysis as applied to a particular data set"
+                },
                 "category_tags": {
                     "description": "A list of controlled vocabulary terms to describe the experiment",
                     "items": {
@@ -26972,6 +27014,17 @@
             "additionalProperties": false,
             "description": "A DTO entry for a published high-throughput expression dataset annotation.",
             "properties": {
+                "analysis_dto": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AnalysisDTO"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Ingest class for an analysis as applied to a particular data set"
+                },
                 "category_tag_names": {
                     "description": "A list of controlled vocabulary terms to describe the experiment",
                     "items": {
@@ -27026,6 +27079,13 @@
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
+                },
+                "laboratory_of_origin_curie": {
+                    "description": "The curie of the laboratory of origin for the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
@@ -27098,6 +27158,13 @@
                         "null"
                     ]
                 },
+                "symbol": {
+                    "description": "The free text symbol (human-readable) for an entity or record",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
                     "type": [
@@ -27146,6 +27213,13 @@
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "biological_reference": {
+                    "description": "Pointer to the sample that serves as a biological reference (\"control\") in a multi-sample high-throughput experiment",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -27398,6 +27472,17 @@
                         "null"
                     ]
                 },
+                "analysis_dto": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AnalysisDTO"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Ingest class for an analysis as applied to a particular data set"
+                },
                 "assembly_versions": {
                     "description": "single or paired end sequencing; might be better in experiment info",
                     "items": {
@@ -27405,6 +27490,13 @@
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "biological_reference_curie": {
+                    "description": "Pointer to the sample that serves as a biological reference (\"control\") in a multi-sample high-throughput experiment",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -27462,8 +27554,8 @@
                     "description": "The assay used to experimentally determine gene expression.",
                     "type": "string"
                 },
-                "genetic_sex": {
-                    "description": "The sex of the organism the sample came from",
+                "genetic_sex_name": {
+                    "description": "Name of term from the 'Genetic sexes' vocabulary",
                     "type": [
                         "string",
                         "null"
@@ -27572,8 +27664,15 @@
                         "null"
                     ]
                 },
-                "taxon": {
-                    "description": "The taxon from which the biological entity derives.",
+                "symbol": {
+                    "description": "The free text symbol (human-readable) for an entity or record",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "taxon_curie": {
+                    "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
                     "type": [
                         "string",
                         "null"
@@ -36003,6 +36102,138 @@
             "title": "SingleCellExpressionAnalysis",
             "type": "object"
         },
+        "SingleCellExpressionAnalysisDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for an analysis of single cell expression dataset samples or groups of samples",
+            "properties": {
+                "analysis_type_curie": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "cell_clusters_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/SingleCellExpressionCellClusterDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "cell_count": {
+                    "description": "The count of cells that are part of an analysis or cell cluster",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "symbol": {
+                    "description": "The free text symbol (human-readable) for an entity or record",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "A human readable title for a reference. From PubMed otherwise from Mod or manual reference creation.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "data_provider_dto",
+                "internal"
+            ],
+            "title": "SingleCellExpressionAnalysisDTO",
+            "type": "object"
+        },
         "SingleCellExpressionCellCluster": {
             "additionalProperties": false,
             "description": "A cluster of cells derived algorithmically from single cell expression (e.g. scRNA-seq) data. This typically represents a cluster of individual cells sequenced that have similar expression profiles.",
@@ -36140,6 +36371,129 @@
                 "internal"
             ],
             "title": "SingleCellExpressionCellCluster",
+            "type": "object"
+        },
+        "SingleCellExpressionCellClusterDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for a cluster of cells derived algorithmically from single cell expression",
+            "properties": {
+                "cell_count": {
+                    "description": "The count of cells that are part of an analysis or cell cluster",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "cell_type_curie": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "symbol": {
+                    "description": "The free text symbol (human-readable) for an entity or record",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "A human readable title for a reference. From PubMed otherwise from Mod or manual reference creation.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "data_provider_dto",
+                "internal"
+            ],
+            "title": "SingleCellExpressionCellClusterDTO",
             "type": "object"
         },
         "SingleReferenceAssociationDTO": {
