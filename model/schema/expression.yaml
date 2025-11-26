@@ -292,7 +292,7 @@ classes:
       - anatomical_substructure_qualifiers
       - anatomical_substructure_uberon_terms
       - cellular_component
-      - cellular_component_ribbon_term
+      - cellular_component_ribbon_terms
       - cellular_component_other
       - cellular_component_qualifiers
       - anatomical_structure_uberon_term_other
@@ -523,16 +523,16 @@ slots:
     range: GOTerm
     multivalued: false
 
-  cellular_component_ribbon_term:
+  cellular_component_ribbon_terms:
     description: >-
       The primary cellular component slim term referred to within the context of an AnatomicalSite object and used by the expression ribbon.
     domain: AnatomicalSite
     range: GOTerm
-    multivalued: false
+    multivalued: true
 
   cellular_component_other:
     description: >-
-      Is set to true when no cellular_component_ribbon_term is available
+      Is set to true when no cellular_component_ribbon_terms are available
     domain: AnatomicalSite
     range: boolean
     multivalued: false
