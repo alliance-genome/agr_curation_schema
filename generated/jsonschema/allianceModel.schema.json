@@ -7977,7 +7977,7 @@
                     ]
                 },
                 "cellular_component_other": {
-                    "description": "Is set to true when no cellular_component_ribbon_term is available",
+                    "description": "Is set to true when no cellular_component_ribbon_terms are available",
                     "type": [
                         "boolean",
                         "null"
@@ -7992,10 +7992,13 @@
                         "null"
                     ]
                 },
-                "cellular_component_ribbon_term": {
+                "cellular_component_ribbon_terms": {
                     "description": "The primary cellular component slim term referred to within the context of an AnatomicalSite object and used by the expression ribbon.",
+                    "items": {
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
