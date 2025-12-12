@@ -273,7 +273,7 @@ slots:
 
   agm_symbol:
     description: >-
-      The one current accepted symbol for an AGM: e.g. CB1370
+      The one current accepted symbol for the affected genomic model (AGM): e.g. CB1370
     exact_mappings:
       - biolink:symbol
     domain: Gene
@@ -282,7 +282,7 @@ slots:
 
   agm_symbol_dto:
     description: >-
-      The one current accepted symbol for a AGM: e.g. CB1370
+      The one current accepted symbol for the affected genomic model (AGM): e.g. CB1370
     domain: AffectedGenomicModelDTO
     range: SymbolSlotAnnotationDTO
     multivalued: false

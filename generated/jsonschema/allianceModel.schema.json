@@ -1365,7 +1365,7 @@
                     ]
                 },
                 "agm_symbol": {
-                    "description": "The one current accepted symbol for an AGM: e.g. CB1370"
+                    "description": "The one current accepted symbol for the affected genomic model (AGM): e.g. CB1370"
                 },
                 "agm_synonyms": {
                     "items": {
@@ -1589,7 +1589,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The one current accepted symbol for a AGM: e.g. CB1370"
+                    "description": "The one current accepted symbol for the affected genomic model (AGM): e.g. CB1370"
                 },
                 "agm_synonym_dtos": {
                     "items": {
