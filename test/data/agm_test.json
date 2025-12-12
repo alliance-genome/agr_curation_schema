@@ -1,5 +1,5 @@
 {
-  "linkml_version": "2.0.0",
+  "linkml_version": "2.16.0",
   "agm_ingest_set": [
     {
       "primary_external_id": "ZFIN:ZDB-FISH-200601-1",
@@ -7,10 +7,10 @@
       "created_by_curie": "ZFIN",
       "updated_by_curie": "ZFIN",
       "internal": false,
-      "agm_full_name_dto": {
-        "name_type_name": "full_name",
-        "display_text": "TL + MO1-hars",
-        "format_text": "TL + MO1-hars",
+      "agm_symbol_dto": {
+        "name_type_name": "nomenclature_symbol",
+        "display_text": "CB1370",
+        "format_text": "CB1370",
         "internal": false
       },
       "agm_synonym_dtos": [
