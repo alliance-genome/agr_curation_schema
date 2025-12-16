@@ -56,6 +56,7 @@ classes:
       - data_provider_cross_reference
       - symbol # added to accommodate FB scRNA-seq data
       - laboratory_of_origin # added to accommodate FB scRNA-seq data
+      - analysis # added to accomodate FB scRNA-seq data
     slot_usage:
       htp_expression_dataset:
         required: true
@@ -87,6 +88,9 @@ classes:
       - number_of_channels # numChannels in agr_schemas datasetAnnotation.json
       - sub_series # subSeries in agr_schemas datasetAnnotation.json
       - category_tag_names # categoryTags in agr_schemas datasetAnnotation.json
+      - symbol # added to accomodate FB scRNA-seq data
+      - laboratory_of_origin_curie # added to accomodate FB scRNA-seq data
+      - analysis_dto # added to accomodate FB scRNA-seq data
     slot_usage:
       htp_expression_dataset_dto:
         description: >-
@@ -127,6 +131,7 @@ classes:
       - microarray_sample_details # microarraySampleDetails in agr_schemas json
       - analysis # added to accommodate FB scRNA-seq data
       - symbol # added to accommodate FB scRNA-seq data
+      - biological_reference # added to accomodate FB scRNA-seq data
     slot_usage:
       htp_expression_sample:
         description: >-
@@ -168,14 +173,17 @@ classes:
       - htp_expression_sample_location_dtos # sampleLocations in agr_schemas json
       - abundance # abundance in agr_schemas json
       - genomic_information_dto # genomicInformation in agr_schemas json
-      - taxon # taxonId in agr_schemas json
-      - genetic_sex # sex in agr_schemas json
+      - taxon_curie # taxonId in agr_schemas json
+      - genetic_sex_name # sex in agr_schemas json
       - expression_assay_curie # assayType in agr_schemas json
       - sequencing_format # sequencingFormat in agr_schemas json
       - assembly_versions # assemblyVersions in agr_schemas json
       - note_dtos # notes in agr_schemas json
       - dataset_ids # datasetIds in agr_schemas json
       - microarray_sample_details_dto # microarraySampleDetails in agr_schemas json
+      - analysis_dto # added to accomodate FB scRNA-seq data
+      - symbol # added to accomodate FB scRNA-seq data
+      - biological_reference_dto # added to accomodate FB scRNA-seq data
     slot_usage:
       htp_expression_sample_dto:
         description: >-
@@ -268,7 +276,7 @@ classes:
       - channel_number # channelNum in agr_schemas json
 
   BioSampleAge:
-    is_a: SubmittedObject
+    is_a: AuditedObject
     description: >-
       An object that holds the temporal aspect of a sample.
     slots:
@@ -280,7 +288,7 @@ classes:
         description: free text for the age of the sample
 
   BioSampleAgeDTO:
-    is_a: SubmittedObjectDTO
+    is_a: AuditedObjectDTO
     description: >-
       An object that holds the temporal aspect of a sample.
     slots:
@@ -324,6 +332,11 @@ classes:
       - agm_identifier
       - biosample_agm_type_name
       - biosample_text
+    slot_usage:
+      agm_identifier:
+        required: false
+      allele_identifier:
+        required: false
     rules:
       - postconditions:
           any_of:
@@ -356,6 +369,20 @@ classes:
         range: SingleCellExpressionCellCluster
         multivalued: true
 
+  SingleCellExpressionAnalysisDTO:
+    is_a: AnalysisDTO
+    description: >-
+      Ingest class for an analysis of single cell expression dataset samples or groups of samples
+    slots:
+      - cell_count
+      - symbol
+      - title
+    attributes:
+      cell_clusters_dtos:
+        range: SingleCellExpressionCellClusterDTO
+        inlined: true
+        multivalued: true
+
   SingleCellExpressionCellCluster:
     is_a: SubmittedObject
     description: >-
@@ -372,6 +399,20 @@ classes:
           The type of cell that is represented in a given single-cell expression cluster
         range: AnatomyTerm
 
+  SingleCellExpressionCellClusterDTO:
+    is_a: SubmittedObjectDTO
+    description: >-
+      Ingest class for a cluster of cells derived algorithmically from single cell
+      expression
+    slots:
+      - cell_count
+      - symbol
+      - title
+    attributes:
+      cell_type_curie:
+        range: string
+
+
 
 slots:
 
@@ -386,12 +427,30 @@ slots:
       An analysis as applied to a particular data set
     range: Analysis
 
+  analysis_dto:
+    description: >-
+      Ingest class for an analysis as applied to a particular data set
+    range: AnalysisDTO
+    inlined: true
+
   assembly_versions: # assemblyVersions in agr_schemas json
     description: >-
       single or paired end sequencing; might be better in experiment info
     domain: HTPExpressionDatasetSampleAnnotation
     range: string
     multivalued: true
+
+  biological_reference:
+    description: >-
+      Pointer to the sample that serves as a biological reference ("control")
+      in a multi-sample high-throughput experiment
+    range: ExternalDataBaseEntity
+
+  biological_reference_dto:
+    description: >-
+      Pointer to the sample that serves as a biological reference ("control")
+      in a multi-sample high-throughput experiment
+    range: ExternalDataBaseEntityDTO
 
   biosample_agm:
     description: >-

@@ -754,6 +754,14 @@ classes:
         notes: >-
           At least one valid note_type for an Analysis object is "analysis_protocol"
 
+  AnalysisDTO:
+    is_a: SubmittedObjectDTO
+    description: >-
+      Ingest class for the analysis of a dataset
+    attributes:
+      analysis_type_curie:
+        range: string
+
 
 
 ## ------------
