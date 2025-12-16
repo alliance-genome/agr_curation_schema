@@ -41,6 +41,7 @@ classes:
       mutant genotypes
     slots:
       - agm_full_name
+      - agm_symbol
       - subtype
       - agm_synonyms
       - agm_secondary_ids
@@ -54,13 +55,24 @@ classes:
           May want to convert this into a slot that uses NameSlotAnnotation.
       related_notes:
         notes: note_type from VocabularyTermSet 'AGM Note Type'
-    
+    rules:
+      - postconditions:
+          any_of:
+            - slot_conditions:
+                agm_full_name:
+                  required: true
+            - slot_conditions:
+                agm_symbol:
+                  required: true
+          description: At least one of agm_full_name or agm_symbol should be populated.
+
 
   AffectedGenomicModelDTO:
     is_a: GenomicEntityDTO
     description: Ingest class for AGMs
     slots:
       - agm_full_name_dto
+      - agm_symbol_dto
       - subtype_name
       - agm_synonym_dtos
       - agm_secondary_id_dtos
@@ -70,6 +82,17 @@ classes:
         required: true
       note_dtos:
         notes: note_type from VocabularyTermSet 'AGM Note Type'
+    rules:
+      - postconditions:
+          any_of:
+            - slot_conditions:
+                agm_full_name_dto:
+                  required: true
+            - slot_conditions:
+                agm_symbol_dto:
+                  required: true
+          description: At least one of agm_full_name_dto or agm_symbol_dto should be populated.
+
 
   AgmFullNameSlotAnnotation:
     description: >-
@@ -161,6 +184,19 @@ classes:
       - sequence_targeting_reagent_identifier
       - relation_name
 
+  AgmSymbolSlotAnnotation:
+    description: >-
+      The one current symbol for the affected genomic model (AGM).
+    is_a: NameSlotAnnotation
+    slots:
+      - single_agm
+    slot_usage:
+      single_gene:
+        required: true
+      name_type:
+        notes: >-
+          permissible_values: nomenclature_symbol (VocabularyTerm)
+
 slots:
 
   agm_identifier:
@@ -234,6 +270,23 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
+
+  agm_symbol:
+    description: >-
+      The one current accepted symbol for the affected genomic model (AGM): e.g. CB1370
+    exact_mappings:
+      - biolink:symbol
+    domain: Gene
+    range: AGMSymbolSlotAnnotation
+    multivalued: false
+
+  agm_symbol_dto:
+    description: >-
+      The one current accepted symbol for the affected genomic model (AGM): e.g. CB1370
+    domain: AffectedGenomicModelDTO
+    range: SymbolSlotAnnotationDTO
+    multivalued: false
+    inlined: true
 
   agm_synonyms:
     domain: AffectedGenomicModel
