@@ -183,7 +183,7 @@ classes:
       - microarray_sample_details_dto # microarraySampleDetails in agr_schemas json
       - analysis_dto # added to accomodate FB scRNA-seq data
       - symbol # added to accomodate FB scRNA-seq data
-      - biological_reference_curie # added to accomodate FB scRNA-seq data
+      - biological_reference_dto # added to accomodate FB scRNA-seq data
     slot_usage:
       htp_expression_sample_dto:
         description: >-
@@ -444,13 +444,13 @@ slots:
     description: >-
       Pointer to the sample that serves as a biological reference ("control")
       in a multi-sample high-throughput experiment
-    range: uriorcurie
+    range: ExternalDataBaseEntity
 
-  biological_reference_curie:
+  biological_reference_dto:
     description: >-
       Pointer to the sample that serves as a biological reference ("control")
       in a multi-sample high-throughput experiment
-    range: string
+    range: ExternalDataBaseEntityDTO
 
   biosample_agm:
     description: >-
