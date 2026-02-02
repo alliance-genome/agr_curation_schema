@@ -191,7 +191,7 @@ classes:
     slots:
       - single_agm
     slot_usage:
-      single_gene:
+      single_agm:
         required: true
       name_type:
         notes: >-
@@ -276,8 +276,8 @@ slots:
       The one current accepted symbol for the affected genomic model (AGM): e.g. CB1370
     exact_mappings:
       - biolink:symbol
-    domain: Gene
-    range: AGMSymbolSlotAnnotation
+    domain: AffectedGenomicModel
+    range: AgmSymbolSlotAnnotation
     multivalued: false
 
   agm_symbol_dto:
