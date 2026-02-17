@@ -397,7 +397,7 @@ classes:
       cell_type:
         description: >-
           The type of cell that is represented in a given single-cell expression cluster
-        range: AnatomyTerm
+        range: AnatomicalTerm
 
   SingleCellExpressionCellClusterDTO:
     is_a: SubmittedObjectDTO

@@ -652,7 +652,7 @@ classes:
       - transcript_association_subject
     attributes:
       transcript_exon_association_object:
-        range: Gene
+        range: Exon
         required: true
   
   TranscriptCodingSequenceAssociation:
