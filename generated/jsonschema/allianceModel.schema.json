@@ -20972,12 +20972,22 @@
         },
         "FunctionalGeneSet": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Families and groups of genes related by sequence and/or function.",
             "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -21035,9 +21045,10 @@
                         "null"
                     ]
                 },
-                "genes": {
+                "gene_functional_gene_set_associations": {
+                    "description": "Gene members of this functional gene set, with supporting evidence/references.",
                     "items": {
-                        "$ref": "#/$defs/Gene"
+                        "$ref": "#/$defs/GeneFunctionalGeneSetAssociation"
                     },
                     "type": [
                         "array",
@@ -21062,6 +21073,16 @@
                         "null"
                     ]
                 },
+                "parent_sets": {
+                    "description": "Parent functional gene set(s) of which this set is a subset.",
+                    "items": {
+                        "$ref": "#/$defs/FunctionalGeneSet"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "primary_external_id": {
                     "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": [
@@ -21079,16 +21100,83 @@
                         "null"
                     ]
                 },
-                "single_reference": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Reference"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "holds between an object and a single reference"
+                "related_resources": {
+                    "description": "External resources related to this functional gene set.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "related_sets": {
+                    "description": "Other related functional gene sets.",
+                    "items": {
+                        "$ref": "#/$defs/FunctionalGeneSet"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_full_name": {
+                    "description": "The full name of the functional gene set.",
+                    "type": "string"
+                },
+                "set_go_bp_terms": {
+                    "description": "Key Gene Ontology Biological Process terms associated with this functional gene set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_cc_terms": {
+                    "description": "Key Gene Ontology Cellular Component terms associated with this functional gene set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_mf_terms": {
+                    "description": "Key Gene Ontology Molecular Function terms associated with this functional gene set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_secondary_ids": {
+                    "description": "Secondary (obsolete) identifiers for this functional gene set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_symbol": {
+                    "description": "The symbol for the functional gene set.",
+                    "type": "string"
+                },
+                "set_synonyms": {
+                    "description": "Synonyms for the functional gene set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
@@ -21103,6 +21191,8 @@
                 }
             },
             "required": [
+                "set_full_name",
+                "set_symbol",
                 "taxon",
                 "data_provider",
                 "internal"
@@ -23577,6 +23667,98 @@
                 "internal"
             ],
             "title": "GeneFullNameSlotAnnotation",
+            "type": "object"
+        },
+        "GeneFunctionalGeneSetAssociation": {
+            "additionalProperties": false,
+            "description": "Association between a gene and a functional gene set, with supporting references that demonstrate or state the gene's membership in the set.",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence": {
+                    "description": "The evidence that supports some assertion.",
+                    "items": {
+                        "$ref": "#/$defs/InformationContentEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "gene_association_subject": {
+                    "$ref": "#/$defs/Gene",
+                    "description": "Subject slot to be used for gene associations"
+                },
+                "gene_functional_gene_set_association_object": {
+                    "$ref": "#/$defs/FunctionalGeneSet"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "gene_association_subject",
+                "gene_functional_gene_set_association_object",
+                "relation",
+                "internal"
+            ],
+            "title": "GeneFunctionalGeneSetAssociation",
             "type": "object"
         },
         "GeneGeneAssociationDTO": {
