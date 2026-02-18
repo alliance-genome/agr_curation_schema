@@ -1,0 +1,128 @@
+name: Update LinkML Reviewer Reference Files
+
+# Trigger on pushes to main that touch schema-relevant files
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'model/schema/**'    # Schema files - classes, slots, enums, inheritance
+      - 'Makefile'           # Build flags (--closed, -t Ingest) - ENFORCED rules depend on this
+      - 'pyproject.toml'     # LinkML version - affects available features/constraints
+      - 'test/data/**'       # Test files - new tests signal new conventions or entities
+      - 'README.md'          # Documents conventions (DTO divergence, dual-ID rule, etc.)
+
+jobs:
+  update-linkml-reviewer:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write        # For cross-repo PR creation
+      pull-requests: write
+      id-token: write        # OIDC auth (required by claude-code-action@v1)
+
+    steps:
+      # 1. Checkout the triggering repo (agr_curation_schema)
+      - name: Checkout agr_curation_schema
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 2     # Need previous commit for diff
+
+      # 2. Checkout the target repo (agr_claude_code)
+      - name: Checkout agr_claude_code
+        uses: actions/checkout@v6
+        with:
+          repository: alliance-genome/agr_claude_code
+          path: agr_claude_code
+          token: ${{ secrets.AGR_CLAUDE_CODE_PAT }}
+
+      # 3. Generate reference files from current schema
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Generate reference files
+        run: |
+          python agr_claude_code/scripts/update-schema-inventory.py \
+            model/schema/ \
+            /tmp/generated-refs/
+
+      # 4. Claude Code agent reviews changes and decides whether to open PR
+      - name: Claude Code review and PR
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+
+          prompt: |
+            You are reviewing a schema change in agr_curation_schema and deciding whether
+            the LinkML reviewer reference files in agr_claude_code need updating.
+
+            ## Step 1: Understand what changed in the schema
+
+            Run: git diff HEAD~1 -- model/schema/ Makefile pyproject.toml test/data/ README.md
+
+            Analyze the diff to understand:
+            - What classes/slots/enums were added, removed, or modified?
+            - Did inheritance relationships change?
+            - Did import dependencies change?
+            - Did non-schema files (Makefile, pyproject.toml, README, tests) change in ways
+              that affect ENFORCED or ADVISORY rules?
+
+            ## Step 2: Compare generated vs current reference files
+
+            The Python script has pre-generated updated reference files in /tmp/generated-refs/.
+            The current reference files are in agr_claude_code/plugins/linkml-reviewer/skills/linkml-review/reference/.
+
+            Compare each pair:
+            - diff agr_claude_code/plugins/linkml-reviewer/skills/linkml-review/reference/schema-inventory.md /tmp/generated-refs/schema-inventory.md
+            - diff agr_claude_code/plugins/linkml-reviewer/skills/linkml-review/reference/inheritance-tree.md /tmp/generated-refs/inheritance-tree.md
+            - diff agr_claude_code/plugins/linkml-reviewer/skills/linkml-review/reference/import-graph.md /tmp/generated-refs/import-graph.md
+            - diff agr_claude_code/plugins/linkml-reviewer/skills/linkml-review/reference/dto-suffix-reference.md /tmp/generated-refs/dto-suffix-reference.md
+
+            ## Step 3: Decide and act
+
+            If ANY reference file has meaningful differences (not just whitespace):
+
+            1. Create a new branch in agr_claude_code:
+               cd agr_claude_code
+               git checkout -b update-linkml-refs-$(date +%Y%m%d-%H%M%S)
+
+            2. Copy the generated files over the current ones:
+               cp /tmp/generated-refs/*.md plugins/linkml-reviewer/skills/linkml-review/reference/
+
+            3. Commit with a descriptive message summarizing what schema changes triggered the update
+
+            4. Push the branch:
+               git push -u origin HEAD
+
+            5. Open a PR using gh cli:
+               gh pr create \
+                 --repo alliance-genome/agr_claude_code \
+                 --title "Update LinkML reviewer reference files" \
+                 --body "## Schema Change Summary\n\n[Summarize the schema diff]\n\n## Reference File Updates\n\n[List which files changed and why]\n\nTriggered by: ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}"
+
+            If NO reference files have meaningful differences, report that no update is needed
+            and exit without creating a branch or PR.
+
+          claude_args: |
+            --model claude-sonnet-4-5-20250929
+            --max-turns 15
+            --allowedTools "Bash,Read,Write,Glob,Grep,LS"
+            --append-system-prompt "You are an automated agent maintaining LinkML reviewer reference files.
+
+            Your job is narrow and specific:
+            1. Compare pre-generated reference files against current ones
+            2. If different, open a PR in agr_claude_code with the updates
+            3. Include a clear summary of what schema changes triggered the update
+
+            Do NOT modify the generated files. Do NOT edit the schema. Do NOT review code quality.
+            Just compare, copy if needed, and open a PR with a good summary.
+
+            When creating the PR, use the GH_TOKEN environment variable for authentication:
+            export GH_TOKEN=$AGR_CLAUDE_CODE_PAT
+
+            Important: The agr_claude_code repo is checked out at ./agr_claude_code/ (relative to workspace root)."
+        env:
+          AGR_CLAUDE_CODE_PAT: ${{ secrets.AGR_CLAUDE_CODE_PAT }}
