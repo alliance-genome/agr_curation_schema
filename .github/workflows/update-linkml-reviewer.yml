@@ -100,6 +100,7 @@ jobs:
             5. Open a PR using gh cli:
                gh pr create \
                  --repo alliance-genome/agr_claude_code \
+                 --reviewer christabone \
                  --title "Update LinkML reviewer reference files" \
                  --body "## Schema Change Summary\n\n[Summarize the schema diff]\n\n## Reference File Updates\n\n[List which files changed and why]\n\nTriggered by: ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}"
 
