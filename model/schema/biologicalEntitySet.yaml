@@ -102,10 +102,27 @@ classes:
       - genes
 
   FunctionalGeneSet:
+    description: >-
+      Families and groups of genes related by sequence and/or function.
     is_a: BiologicalEntity
     slots:
-      - genes
-      - single_reference
+      - set_full_name
+      - set_symbol
+      - set_synonyms
+      - set_go_mf_terms
+      - set_go_bp_terms
+      - set_go_cc_terms
+      - parent_sets
+      - related_sets
+      - cross_references
+      - related_resources
+      - set_secondary_ids
+      - gene_functional_gene_set_associations
+    slot_usage:
+      set_full_name:
+        required: true
+      set_symbol:
+        required: true
 
   Pathway:
     is_a: BiologicalEntity # gets all the audit fields from its parent AuditedObject
@@ -142,6 +159,21 @@ classes:
     slot_usage:
       relation:
         subproperty_of: has_participant
+
+  GeneFunctionalGeneSetAssociation:
+    description: >-
+      Association between a gene and a functional gene set, with supporting references
+      that demonstrate or state the gene's membership in the set.
+    is_a: EvidenceAssociation
+    slots:
+      - gene_association_subject
+    attributes:
+      gene_functional_gene_set_association_object:
+        range: FunctionalGeneSet
+        required: true
+    slot_usage:
+      relation:
+        subproperty_of: is_member_of
 
 
 ## ------------
@@ -201,4 +233,77 @@ slots:
     multivalued: true
     domain: GeneCollection
     range: string  # should maybe be replaced by a vocabulary
+
+  set_full_name:
+    description: >-
+      The full name of the functional gene set.
+    range: string
+    multivalued: false
+
+  set_symbol:
+    description: >-
+      The symbol for the functional gene set.
+    range: string
+    multivalued: false
+
+  set_synonyms:
+    description: >-
+      Synonyms for the functional gene set.
+    range: string
+    multivalued: true
+
+  set_go_mf_terms:
+    description: >-
+      Key Gene Ontology Molecular Function terms associated with this functional gene set.
+    range: GOTerm
+    multivalued: true
+
+  set_go_bp_terms:
+    description: >-
+      Key Gene Ontology Biological Process terms associated with this functional gene set.
+    range: GOTerm
+    multivalued: true
+
+  set_go_cc_terms:
+    description: >-
+      Key Gene Ontology Cellular Component terms associated with this functional gene set.
+    range: GOTerm
+    multivalued: true
+
+  parent_sets:
+    description: >-
+      Parent functional gene set(s) of which this set is a subset.
+    range: FunctionalGeneSet
+    multivalued: true
+
+  related_sets:
+    description: >-
+      Other related functional gene sets.
+    range: FunctionalGeneSet
+    multivalued: true
+
+  related_resources:
+    description: >-
+      External resources related to this functional gene set.
+    range: CrossReference
+    multivalued: true
+
+  set_secondary_ids:
+    description: >-
+      Secondary (obsolete) identifiers for this functional gene set.
+    range: uriorcurie
+    multivalued: true
+
+  gene_functional_gene_set_associations:
+    description: >-
+      Gene members of this functional gene set, with supporting evidence/references.
+    domain: FunctionalGeneSet
+    range: GeneFunctionalGeneSetAssociation
+    multivalued: true
+
+  is_member_of:
+    description: >-
+      Indicates membership of a gene in a functional gene set.
+    exact_mappings:
+      - RO:0002350
 
