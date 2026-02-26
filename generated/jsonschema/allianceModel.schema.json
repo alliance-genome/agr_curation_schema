@@ -21047,6 +21047,10 @@
                         "null"
                     ]
                 },
+                "full_name": {
+                    "description": "The full name of the entity",
+                    "type": "string"
+                },
                 "gene_functional_gene_set_associations": {
                     "description": "Gene members of this functional gene set, with supporting evidence/references.",
                     "items": {
@@ -21105,7 +21109,7 @@
                 "related_resources": {
                     "description": "External resources related to this functional gene set.",
                     "items": {
-                        "$ref": "#/$defs/CrossReference"
+                        "type": "string"
                     },
                     "type": [
                         "array",
@@ -21122,9 +21126,14 @@
                         "null"
                     ]
                 },
-                "set_full_name": {
-                    "description": "The full name of the functional gene set.",
-                    "type": "string"
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "set_go_bp_terms": {
                     "description": "Key Gene Ontology Biological Process terms associated with this functional gene set.",
@@ -21156,29 +21165,19 @@
                         "null"
                     ]
                 },
-                "set_secondary_ids": {
-                    "description": "Secondary (obsolete) identifiers for this functional gene set.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "set_symbol": {
-                    "description": "The symbol for the functional gene set.",
-                    "type": "string"
-                },
                 "set_synonyms": {
                     "description": "Synonyms for the functional gene set.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/FunctionalGeneSetSynonymSlotAnnotation"
                     },
                     "type": [
                         "array",
                         "null"
                     ]
+                },
+                "symbol": {
+                    "description": "The free text symbol (human-readable) for an entity or record",
+                    "type": "string"
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
@@ -21193,13 +21192,124 @@
                 }
             },
             "required": [
-                "set_full_name",
-                "set_symbol",
+                "full_name",
+                "symbol",
                 "taxon",
                 "data_provider",
                 "internal"
             ],
             "title": "FunctionalGeneSet",
+            "type": "object"
+        },
+        "FunctionalGeneSetSynonymSlotAnnotation": {
+            "additionalProperties": false,
+            "description": "All aliases (non-preferred names) for the functional gene set. Any type of synonym is acceptable.",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "display_text": {
+                    "description": "A version of a synonym string for display. Any UTF8 character is permitted.",
+                    "type": "string"
+                },
+                "evidence": {
+                    "description": "The evidence that supports some assertion.",
+                    "items": {
+                        "$ref": "#/$defs/InformationContentEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "format_text": {
+                    "description": "A version of a synonym string using only ASCII characters, which is easier to type (for searches), print and parse. For example, Greek characters are transliterated.",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name_type": {
+                    "description": "The type of name: e.g., symbol, full_name, systematic_name, etc.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "single_functional_gene_set": {
+                    "$ref": "#/$defs/FunctionalGeneSet"
+                },
+                "synonym_scope": {
+                    "description": "the scope of the synonym - permissible values are narrow / broad / related / exact",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "synonym_url": {
+                    "description": "URL for a synonym: e.g., NCBI URL for the NCBI synonym of an object.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "single_functional_gene_set",
+                "name_type",
+                "format_text",
+                "display_text",
+                "internal"
+            ],
+            "title": "FunctionalGeneSetSynonymSlotAnnotation",
             "type": "object"
         },
         "GENOTerm": {

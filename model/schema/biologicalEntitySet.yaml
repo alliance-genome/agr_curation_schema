@@ -106,8 +106,8 @@ classes:
       Families and groups of genes related by sequence and/or function.
     is_a: BiologicalEntity
     slots:
-      - set_full_name
-      - set_symbol
+      - full_name
+      - symbol
       - set_synonyms
       - set_go_mf_terms
       - set_go_bp_terms
@@ -116,12 +116,12 @@ classes:
       - related_sets
       - cross_references
       - related_resources
-      - set_secondary_ids
+      - secondary_identifiers
       - gene_functional_gene_set_associations
     slot_usage:
-      set_full_name:
+      full_name:
         required: true
-      set_symbol:
+      symbol:
         required: true
 
   Pathway:
@@ -175,6 +175,15 @@ classes:
       relation:
         subproperty_of: is_member_of
 
+  FunctionalGeneSetSynonymSlotAnnotation:
+    is_a: NameSlotAnnotation
+    description: >-
+      All aliases (non-preferred names) for the functional gene set. Any type of synonym is acceptable.
+    slots:
+      - single_functional_gene_set
+    slot_usage:
+      single_functional_gene_set:
+        required: true
 
 ## ------------
 ## SLOTS
@@ -234,24 +243,6 @@ slots:
     domain: GeneCollection
     range: string  # should maybe be replaced by a vocabulary
 
-  set_full_name:
-    description: >-
-      The full name of the functional gene set.
-    range: string
-    multivalued: false
-
-  set_symbol:
-    description: >-
-      The symbol for the functional gene set.
-    range: string
-    multivalued: false
-
-  set_synonyms:
-    description: >-
-      Synonyms for the functional gene set.
-    range: string
-    multivalued: true
-
   set_go_mf_terms:
     description: >-
       Key Gene Ontology Molecular Function terms associated with this functional gene set.
@@ -270,6 +261,17 @@ slots:
     range: GOTerm
     multivalued: true
 
+  set_synonyms:
+    description: >-
+      Synonyms for the functional gene set.
+    domain: FunctionalGeneSet
+    range: FunctionalGeneSetSynonymSlotAnnotation
+    multivalued: true
+
+  single_functional_gene_set:
+    range: FunctionalGeneSet
+    multivalued: false
+
   parent_sets:
     description: >-
       Parent functional gene set(s) of which this set is a subset.
@@ -285,12 +287,6 @@ slots:
   related_resources:
     description: >-
       External resources related to this functional gene set.
-    range: CrossReference
-    multivalued: true
-
-  set_secondary_ids:
-    description: >-
-      Secondary (obsolete) identifiers for this functional gene set.
     range: uriorcurie
     multivalued: true
 
