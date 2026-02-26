@@ -1,6 +1,6 @@
 name: Update LinkML Reviewer Reference Files
 
-# Trigger on pushes to main that touch schema-relevant files
+# Trigger on pushes to main that touch schema-relevant files, or manually
 on:
   push:
     branches: [main]
@@ -10,14 +10,13 @@ on:
       - 'pyproject.toml'     # LinkML version - affects available features/constraints
       - 'test/data/**'       # Test files - new tests signal new conventions or entities
       - 'README.md'          # Documents conventions (DTO divergence, dual-ID rule, etc.)
+  workflow_dispatch:          # Manual trigger for catching up on missed updates
 
 jobs:
   update-linkml-reviewer:
     runs-on: ubuntu-latest
     permissions:
-      contents: write        # For cross-repo PR creation
-      pull-requests: write
-      id-token: write        # OIDC auth (required by claude-code-action@v1)
+      contents: read
 
     steps:
       # 1. Checkout the triggering repo (agr_curation_schema)
@@ -49,81 +48,99 @@ jobs:
             model/schema/ \
             /tmp/generated-refs/
 
-      # 4. Claude Code agent reviews changes and decides whether to open PR
-      - name: Claude Code review and PR
-        uses: anthropics/claude-code-action@v1
-        with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+      # 4. Install Claude Code CLI and run the update agent
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
 
-          prompt: |
-            You are reviewing a schema change in agr_curation_schema and deciding whether
-            the LinkML reviewer reference files in agr_claude_code need updating.
-
-            ## Step 1: Understand what changed in the schema
-
-            Run: git diff HEAD~1 -- model/schema/ Makefile pyproject.toml test/data/ README.md
-
-            Analyze the diff to understand:
-            - What classes/slots/enums were added, removed, or modified?
-            - Did inheritance relationships change?
-            - Did import dependencies change?
-            - Did non-schema files (Makefile, pyproject.toml, README, tests) change in ways
-              that affect ENFORCED or ADVISORY rules?
-
-            ## Step 2: Compare generated vs current reference files
-
-            The Python script has pre-generated updated reference files in /tmp/generated-refs/.
-            The current reference files are in agr_claude_code/plugins/linkml-reviewer/skills/linkml-review/reference/.
-
-            Compare each pair:
-            - diff agr_claude_code/plugins/linkml-reviewer/skills/linkml-review/reference/schema-inventory.md /tmp/generated-refs/schema-inventory.md
-            - diff agr_claude_code/plugins/linkml-reviewer/skills/linkml-review/reference/inheritance-tree.md /tmp/generated-refs/inheritance-tree.md
-            - diff agr_claude_code/plugins/linkml-reviewer/skills/linkml-review/reference/import-graph.md /tmp/generated-refs/import-graph.md
-            - diff agr_claude_code/plugins/linkml-reviewer/skills/linkml-review/reference/dto-suffix-reference.md /tmp/generated-refs/dto-suffix-reference.md
-
-            ## Step 3: Decide and act
-
-            If ANY reference file has meaningful differences (not just whitespace):
-
-            1. Create a new branch in agr_claude_code:
-               cd agr_claude_code
-               git checkout -b update-linkml-refs-$(date +%Y%m%d-%H%M%S)
-
-            2. Copy the generated files over the current ones:
-               cp /tmp/generated-refs/*.md plugins/linkml-reviewer/skills/linkml-review/reference/
-
-            3. Commit with a descriptive message summarizing what schema changes triggered the update
-
-            4. Push the branch:
-               git push -u origin HEAD
-
-            5. Open a PR using gh cli:
-               gh pr create \
-                 --repo alliance-genome/agr_claude_code \
-                 --reviewer christabone \
-                 --title "Update LinkML reviewer reference files" \
-                 --body "## Schema Change Summary\n\n[Summarize the schema diff]\n\n## Reference File Updates\n\n[List which files changed and why]\n\nTriggered by: ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}"
-
-            If NO reference files have meaningful differences, report that no update is needed
-            and exit without creating a branch or PR.
-
-          claude_args: |
-            --model claude-sonnet-4-5-20250929
-            --max-turns 15
-            --allowedTools "Bash,Read,Write,Glob,Grep,LS"
-            --append-system-prompt "You are an automated agent maintaining LinkML reviewer reference files.
-
-            Your job is narrow and specific:
-            1. Compare pre-generated reference files against current ones
-            2. If different, open a PR in agr_claude_code with the updates
-            3. Include a clear summary of what schema changes triggered the update
-
-            Do NOT modify the generated files. Do NOT edit the schema. Do NOT review code quality.
-            Just compare, copy if needed, and open a PR with a good summary.
-
-            When creating the PR, use the GH_TOKEN environment variable for authentication:
-            export GH_TOKEN=$AGR_CLAUDE_CODE_PAT
-
-            Important: The agr_claude_code repo is checked out at ./agr_claude_code/ (relative to workspace root)."
+      - name: Compare and update reference files
         env:
-          AGR_CLAUDE_CODE_PAT: ${{ secrets.AGR_CLAUDE_CODE_PAT }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GH_TOKEN: ${{ secrets.AGR_CLAUDE_CODE_PAT }}
+        run: |
+          claude -p "$(cat <<'PROMPT'
+          You are an automated agent maintaining LinkML reviewer reference files
+          for the Alliance of Genome Resources.
+
+          ## Context
+
+          The agr_curation_schema repository contains LinkML schema definitions.
+          The agr_claude_code repository contains a LinkML reviewer skill that
+          helps developers review schema changes. When the schema changes, the
+          reviewer's reference files must be updated to stay current.
+
+          ## File Locations
+
+          - Schema source: ./model/schema/ (current directory is agr_curation_schema)
+          - Generated reference files: /tmp/generated-refs/ (already generated by a Python script)
+          - Current reference files: ./agr_claude_code/plugins/linkml-reviewer/skills/linkml-review/reference/
+          - Plugin version file: ./agr_claude_code/plugins/linkml-reviewer/.claude-plugin/plugin.json
+          - Marketplace version file: ./agr_claude_code/.claude-plugin/marketplace.json
+
+          ## Your Task
+
+          ### Step 1: Understand what changed in the schema
+
+          Run: git diff HEAD~1 -- model/schema/ Makefile pyproject.toml test/data/ README.md
+
+          If the diff is empty (e.g., manual trigger via workflow_dispatch), note
+          "Manual trigger — no incremental diff available" and proceed to Step 2.
+
+          Summarize the changes — what classes, slots, enums, or relationships were
+          added, removed, or modified?
+
+          ### Step 2: Compare generated vs current reference files
+
+          Compare each pair using diff:
+          - diff ./agr_claude_code/plugins/linkml-reviewer/skills/linkml-review/reference/schema-inventory.md /tmp/generated-refs/schema-inventory.md
+          - diff ./agr_claude_code/plugins/linkml-reviewer/skills/linkml-review/reference/inheritance-tree.md /tmp/generated-refs/inheritance-tree.md
+          - diff ./agr_claude_code/plugins/linkml-reviewer/skills/linkml-review/reference/import-graph.md /tmp/generated-refs/import-graph.md
+          - diff ./agr_claude_code/plugins/linkml-reviewer/skills/linkml-review/reference/dto-suffix-reference.md /tmp/generated-refs/dto-suffix-reference.md
+
+          ### Step 3: Decide and act
+
+          If NO reference files have meaningful differences (ignoring whitespace),
+          print "No reference file updates needed" and exit.
+
+          If ANY reference file has meaningful differences:
+
+          1. Copy the generated files over the current ones:
+             cp /tmp/generated-refs/*.md ./agr_claude_code/plugins/linkml-reviewer/skills/linkml-review/reference/
+
+          2. Increment the PATCH version number in TWO files:
+             - ./agr_claude_code/plugins/linkml-reviewer/.claude-plugin/plugin.json
+               (the top-level "version" field, e.g. "1.0.0" -> "1.0.1")
+             - ./agr_claude_code/.claude-plugin/marketplace.json
+               (the "version" field inside the "linkml-reviewer" entry only)
+
+          3. Create a branch, commit, push, and open a PR:
+             cd agr_claude_code
+             git checkout -b update-linkml-refs-$(date +%Y%m%d-%H%M%S)
+             git add plugins/linkml-reviewer/skills/linkml-review/reference/
+             git add plugins/linkml-reviewer/.claude-plugin/plugin.json
+             git add .claude-plugin/marketplace.json
+             git commit -m "Update LinkML reviewer reference files and bump version"
+             git push -u origin HEAD
+
+             Then open a PR with gh cli. Include:
+             - A title like "Update LinkML reviewer reference files (v<NEW_VERSION>)"
+             - A body with: schema change summary, which reference files changed,
+               the version bump, and a link to the triggering commit
+             - Reviewer: christabone
+
+             gh pr create \
+               --repo alliance-genome/agr_claude_code \
+               --reviewer christabone \
+               --title "Update LinkML reviewer reference files (v<NEW_VERSION>)" \
+               --body "<your summary>"
+
+          ## Important Rules
+
+          - Do NOT modify the generated reference files. Copy them as-is.
+          - Do NOT edit the schema files or review code quality.
+          - The GH_TOKEN environment variable is already set for gh cli and git push.
+          - The agr_claude_code repo is at ./agr_claude_code/ (git credentials pre-configured).
+          PROMPT
+          )" \
+            --model "${{ vars.CLAUDE_PR_REVIEW_MODEL }}" \
+            --max-turns 15 \
+            --allowedTools "Bash,Read,Write,Edit,Glob,Grep,LS"
