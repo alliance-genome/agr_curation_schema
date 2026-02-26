@@ -178,7 +178,8 @@ classes:
   FunctionalGeneSetSynonymSlotAnnotation:
     is_a: NameSlotAnnotation
     description: >-
-      All aliases (non-preferred names) for the functional gene set. Any type of synonym is acceptable.
+      All aliases (non-preferred names) for the functional gene set. Acceptable synonym
+      types are full_name, nomenclature_symbol, and unspecified
     slots:
       - single_functional_gene_set
     slot_usage:
