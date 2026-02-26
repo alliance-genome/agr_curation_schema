@@ -106,8 +106,8 @@ classes:
       Families and groups of genes related by sequence and/or function.
     is_a: BiologicalEntity
     slots:
-      - set_full_name
-      - set_symbol
+      - full_name
+      - symbol
       - set_synonyms
       - set_go_mf_terms
       - set_go_bp_terms
@@ -116,12 +116,12 @@ classes:
       - related_sets
       - cross_references
       - related_resources
-      - set_secondary_ids
+      - secondary_identifiers
       - gene_functional_gene_set_associations
     slot_usage:
-      set_full_name:
+      full_name:
         required: true
-      set_symbol:
+      symbol:
         required: true
 
   Pathway:
@@ -234,17 +234,7 @@ slots:
     domain: GeneCollection
     range: string  # should maybe be replaced by a vocabulary
 
-  set_full_name:
-    description: >-
-      The full name of the functional gene set.
-    range: string
-    multivalued: false
 
-  set_symbol:
-    description: >-
-      The symbol for the functional gene set.
-    range: string
-    multivalued: false
 
   set_synonyms:
     description: >-
@@ -288,11 +278,6 @@ slots:
     range: CrossReference
     multivalued: true
 
-  set_secondary_ids:
-    description: >-
-      Secondary (obsolete) identifiers for this functional gene set.
-    range: uriorcurie
-    multivalued: true
 
   gene_functional_gene_set_associations:
     description: >-
