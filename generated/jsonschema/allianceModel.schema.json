@@ -21165,8 +21165,12 @@
                         "null"
                     ]
                 },
-                "set_synonyms": {
-                    "description": "Synonyms for the functional gene set.",
+                "symbol": {
+                    "description": "The free text symbol (human-readable) for an entity or record",
+                    "type": "string"
+                },
+                "synonyms": {
+                    "description": "A generic free-text field for objects that only have string representation of one or more synonyms and do not require meta data or attribution; if meta data or attribution are required to be captured for individual synonyms, consider the NameSlotAnnotation class",
                     "items": {
                         "type": "string"
                     },
@@ -21174,10 +21178,6 @@
                         "array",
                         "null"
                     ]
-                },
-                "symbol": {
-                    "description": "The free text symbol (human-readable) for an entity or record",
-                    "type": "string"
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
