@@ -108,7 +108,7 @@ classes:
     slots:
       - full_name
       - symbol
-      - synonyms
+      - set_synonyms
       - set_go_mf_terms
       - set_go_bp_terms
       - set_go_cc_terms
@@ -175,6 +175,15 @@ classes:
       relation:
         subproperty_of: is_member_of
 
+  FunctionalGeneSetSynonymSlotAnnotation:
+    is_a: NameSlotAnnotation
+    description: >-
+      All aliases (non-preferred names) for the functional gene set. Any type of synonym is acceptable.
+    slots:
+      - single_functional_gene_set
+    slot_usage:
+      single_functional_gene_set:
+        required: true
 
 ## ------------
 ## SLOTS
@@ -252,6 +261,17 @@ slots:
     range: GOTerm
     multivalued: true
 
+  set_synonyms:
+    description: >-
+      Synonyms for the functional gene set.
+    domain: FunctionalGeneSet
+    range: FunctionalGeneSetSynonymSlotAnnotation
+    multivalued: true
+
+  single_functional_gene_set:
+    range: FunctionalGeneSet
+    multivalued: false
+
   parent_sets:
     description: >-
       Parent functional gene set(s) of which this set is a subset.
@@ -269,7 +289,6 @@ slots:
       External resources related to this functional gene set.
     range: uriorcurie
     multivalued: true
-
 
   gene_functional_gene_set_associations:
     description: >-
