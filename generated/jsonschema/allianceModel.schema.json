@@ -21047,6 +21047,10 @@
                         "null"
                     ]
                 },
+                "full_name": {
+                    "description": "The full name of the entity",
+                    "type": "string"
+                },
                 "gene_functional_gene_set_associations": {
                     "description": "Gene members of this functional gene set, with supporting evidence/references.",
                     "items": {
@@ -21122,9 +21126,14 @@
                         "null"
                     ]
                 },
-                "set_full_name": {
-                    "description": "The full name of the functional gene set.",
-                    "type": "string"
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "set_go_bp_terms": {
                     "description": "Key Gene Ontology Biological Process terms associated with this functional gene set.",
@@ -21156,20 +21165,6 @@
                         "null"
                     ]
                 },
-                "set_secondary_ids": {
-                    "description": "Secondary (obsolete) identifiers for this functional gene set.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "set_symbol": {
-                    "description": "The symbol for the functional gene set.",
-                    "type": "string"
-                },
                 "set_synonyms": {
                     "description": "Synonyms for the functional gene set.",
                     "items": {
@@ -21179,6 +21174,10 @@
                         "array",
                         "null"
                     ]
+                },
+                "symbol": {
+                    "description": "The free text symbol (human-readable) for an entity or record",
+                    "type": "string"
                 },
                 "taxon": {
                     "description": "The taxon from which the biological entity derives.",
@@ -21193,8 +21192,8 @@
                 }
             },
             "required": [
-                "set_full_name",
-                "set_symbol",
+                "full_name",
+                "symbol",
                 "taxon",
                 "data_provider",
                 "internal"
