@@ -267,7 +267,7 @@ slots:
   related_resources:
     description: >-
       External resources related to this functional gene set.
-    range: CrossReference
+    range: uriorcurie
     multivalued: true
 
 
