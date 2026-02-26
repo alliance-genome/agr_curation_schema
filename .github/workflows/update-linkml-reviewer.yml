@@ -142,5 +142,5 @@ jobs:
           PROMPT
           )" \
             --model "${{ vars.CLAUDE_PR_REVIEW_MODEL }}" \
-            --max-turns 15 \
+            --max-turns 30 \
             --allowedTools "Bash,Read,Write,Edit,Glob,Grep,LS"
