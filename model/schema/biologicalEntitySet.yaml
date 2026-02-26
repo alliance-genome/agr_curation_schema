@@ -108,7 +108,7 @@ classes:
     slots:
       - full_name
       - symbol
-      - set_synonyms
+      - synonyms
       - set_go_mf_terms
       - set_go_bp_terms
       - set_go_cc_terms
@@ -233,14 +233,6 @@ slots:
     multivalued: true
     domain: GeneCollection
     range: string  # should maybe be replaced by a vocabulary
-
-
-
-  set_synonyms:
-    description: >-
-      Synonyms for the functional gene set.
-    range: string
-    multivalued: true
 
   set_go_mf_terms:
     description: >-
