@@ -21203,7 +21203,7 @@
         },
         "FunctionalGeneSetSynonymSlotAnnotation": {
             "additionalProperties": false,
-            "description": "All aliases (non-preferred names) for the functional gene set. Any type of synonym is acceptable.",
+            "description": "All aliases (non-preferred names) for the functional gene set. Acceptable synonym types are full_name, nomenclature_symbol, and unspecified",
             "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
