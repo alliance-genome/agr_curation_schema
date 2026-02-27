@@ -102,10 +102,9 @@ classes:
           The biological process that is affected by a phenotype.
         range: GOTerm
         comments: >-
-          The model will accept any GO term in any branch. This should be further
-          constrained to the process branch only. In particular, should one wish
-          to indicate that a phenotype affects a cellular component, this should be
-          done using the location.cellular_component slot.
+          The model will accept any GO term in any branch, but should one wish to
+          indicate that a phenotype affects a cellular component, this should be
+          done using the location.cellular_component slot rather than here.
     comments: >-
       In the future, other slots may be added to allow referring to more kinds of
       entities, e.g. a slot with a CHEBITerm range to allow stating that a
@@ -157,10 +156,7 @@ classes:
           The main ontological term that refines the description of a phenotype.
         range: OntologicalTerm
         values_from:
-          - HP
-          - MP
           - WBPhenotype
-          - ZP
           - APO
           - FBcv
           - PATO
@@ -239,6 +235,7 @@ classes:
           - ZP
           - APO
           - FBcv
+          - XPO
         range: PhenotypeTerm
         examples:
           - value: HP:0002487
