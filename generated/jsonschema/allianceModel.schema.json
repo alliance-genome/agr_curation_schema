@@ -551,6 +551,17 @@
             "additionalProperties": false,
             "description": "An annotation asserting an association between an AGM and a phenotype supported by evidence.",
             "properties": {
+                "affected_entity": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AffectedEntity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The entity (anatomical structure, developmental stage, and/or biological process) that is affected by the phenotype."
+                },
                 "asserted_alleles": {
                     "description": "The allele to which something is manually asserted to be associated.",
                     "items": {
@@ -734,6 +745,17 @@
                         "null"
                     ]
                 },
+                "qualifier": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PhenotypeQualifier"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Additional ontological terms that refine the description of the phenotype."
+                },
                 "related_notes": {
                     "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Phenotype annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
                     "items": {
@@ -777,6 +799,16 @@
             "additionalProperties": false,
             "description": "Ingest class for an association between an AGM and a phenotype",
             "properties": {
+                "affected_entity_dto": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AffectedEntityDTO"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
                 "agm_identifier": {
                     "description": "Curie or internal ID of AGM",
                     "type": "string"
@@ -940,6 +972,16 @@
                     "type": [
                         "string",
                         "null"
+                    ]
+                },
+                "qualifier_dto": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PhenotypeQualifierDTO"
+                        },
+                        {
+                            "type": "null"
+                        }
                     ]
                 },
                 "updated_by_curie": {
@@ -1328,6 +1370,253 @@
                 "internal"
             ],
             "title": "ATPTerm",
+            "type": "object"
+        },
+        "AffectedEntity": {
+            "additionalProperties": false,
+            "description": "An entity that is affected by a phenotype.",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "location": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AnatomicalSite"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The anatomical site that is affected by a phenotype."
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "process": {
+                    "description": "The biological process that is affected by a phenotype.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "stage": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TemporalContext"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The developmental stage that is affected by a phenotye."
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "internal"
+            ],
+            "then": {
+                "anyOf": [
+                    {
+                        "properties": {
+                            "location": {}
+                        },
+                        "required": [
+                            "location"
+                        ]
+                    },
+                    {
+                        "properties": {
+                            "stage": {}
+                        },
+                        "required": [
+                            "stage"
+                        ]
+                    },
+                    {
+                        "properties": {
+                            "process": {}
+                        },
+                        "required": [
+                            "process"
+                        ]
+                    }
+                ]
+            },
+            "title": "AffectedEntity",
+            "type": "object"
+        },
+        "AffectedEntityDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for an entity that is affected by a phenotype.",
+            "properties": {
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "location_dto": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AnatomicalSiteDTO"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "process_curie": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "stage_dto": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TemporalContextDTO"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "internal"
+            ],
+            "then": {
+                "anyOf": [
+                    {
+                        "properties": {
+                            "location_dto": {}
+                        },
+                        "required": [
+                            "location_dto"
+                        ]
+                    },
+                    {
+                        "properties": {
+                            "stage_dto": {}
+                        },
+                        "required": [
+                            "stage_dto"
+                        ]
+                    },
+                    {
+                        "properties": {
+                            "process_curie": {}
+                        },
+                        "required": [
+                            "process_curie"
+                        ]
+                    }
+                ]
+            },
+            "title": "AffectedEntityDTO",
             "type": "object"
         },
         "AffectedGenomicModel": {
@@ -6524,6 +6813,17 @@
             "additionalProperties": false,
             "description": "An annotation asserting an association between an allele and a phenotype supported by evidence.",
             "properties": {
+                "affected_entity": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AffectedEntity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The entity (anatomical structure, developmental stage, and/or biological process) that is affected by the phenotype."
+                },
                 "asserted_genes": {
                     "description": "The gene(s) to which something is manually asserted to be associated.",
                     "items": {
@@ -6686,6 +6986,17 @@
                         "null"
                     ]
                 },
+                "qualifier": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PhenotypeQualifier"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Additional ontological terms that refine the description of the phenotype."
+                },
                 "related_notes": {
                     "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Phenotype annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
                     "items": {
@@ -6729,6 +7040,16 @@
             "additionalProperties": false,
             "description": "Ingest class for an association between an allele and a phenotype",
             "properties": {
+                "affected_entity_dto": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AffectedEntityDTO"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
                 "allele_identifier": {
                     "description": "Identifier (curie/primary_external_id/mod_internal_id) of the allele",
                     "type": "string"
@@ -6875,6 +7196,16 @@
                     "type": [
                         "string",
                         "null"
+                    ]
+                },
+                "qualifier_dto": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PhenotypeQualifierDTO"
+                        },
+                        {
+                            "type": "null"
+                        }
                     ]
                 },
                 "updated_by_curie": {
@@ -25199,6 +25530,17 @@
             "additionalProperties": false,
             "description": "An annotation asserting an association between a gene and a phenotype supported by evidence.",
             "properties": {
+                "affected_entity": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AffectedEntity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The entity (anatomical structure, developmental stage, and/or biological process) that is affected by the phenotype."
+                },
                 "condition_relations": {
                     "items": {
                         "$ref": "#/$defs/ConditionRelation"
@@ -25340,6 +25682,17 @@
                         "null"
                     ]
                 },
+                "qualifier": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PhenotypeQualifier"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Additional ontological terms that refine the description of the phenotype."
+                },
                 "related_notes": {
                     "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Phenotype annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
                     "items": {
@@ -25393,6 +25746,16 @@
             "additionalProperties": false,
             "description": "Ingest class for an association between a gene and a phenotype",
             "properties": {
+                "affected_entity_dto": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AffectedEntityDTO"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
                 "condition_relation_dtos": {
                     "items": {
                         "$ref": "#/$defs/ConditionRelationDTO"
@@ -25522,6 +25885,16 @@
                     "type": [
                         "string",
                         "null"
+                    ]
+                },
+                "qualifier_dto": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PhenotypeQualifierDTO"
+                        },
+                        {
+                            "type": "null"
+                        }
                     ]
                 },
                 "sgd_strain_background_identifier": {
@@ -33297,6 +33670,17 @@
             "additionalProperties": false,
             "description": "An annotation asserting an association between a biological entity and a phenotype supported by evidence.",
             "properties": {
+                "affected_entity": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AffectedEntity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The entity (anatomical structure, developmental stage, and/or biological process) that is affected by the phenotype."
+                },
                 "condition_relations": {
                     "items": {
                         "$ref": "#/$defs/ConditionRelation"
@@ -33438,6 +33822,17 @@
                         "null"
                     ]
                 },
+                "qualifier": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PhenotypeQualifier"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Additional ontological terms that refine the description of the phenotype."
+                },
                 "related_notes": {
                     "description": "Valid note types are available for viewing in the A-Team curation tool Controlled Vocabulary Terms Table (in the \"Phenotype annotation note types\" vocabulary) on the production environment (curation.alliancegenome.org). New terms can be added as needed.",
                     "items": {
@@ -33475,6 +33870,225 @@
                 "internal"
             ],
             "title": "PhenotypeAnnotation",
+            "type": "object"
+        },
+        "PhenotypeQualifier": {
+            "additionalProperties": false,
+            "description": "Ontological terms that refine the description of a phenotype.",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "qualifier_tag": {
+                    "description": "Similar to qualifier_term, but using a term from a vocabulary rather than a dedicated ontology. Intended for \"simple\" qualifications such as \"abnormal\", \"ameliorated\", \"exacerbated\", etc.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "qualifier_term": {
+                    "description": "The main ontological term that refines the description of a phenotype."
+                },
+                "related_entity": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AffectedEntity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "An affected entity that further refines the description of a phenotype."
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "internal"
+            ],
+            "then": {
+                "anyOf": [
+                    {
+                        "properties": {
+                            "qualifier_term": {}
+                        },
+                        "required": [
+                            "qualifier_term"
+                        ]
+                    },
+                    {
+                        "properties": {
+                            "qualifier_tag": {}
+                        },
+                        "required": [
+                            "qualifier_tag"
+                        ]
+                    }
+                ]
+            },
+            "title": "PhenotypeQualifier",
+            "type": "object"
+        },
+        "PhenotypeQualifierDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for a phenotype qualifier.",
+            "properties": {
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "qualifier_tag_name": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "qualifier_term_curie": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "related_entity": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AffectedEntityDTO"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "internal"
+            ],
+            "then": {
+                "anyOf": [
+                    {
+                        "properties": {
+                            "qualifier_term_curie": {}
+                        },
+                        "required": [
+                            "qualifier_term_curie"
+                        ]
+                    },
+                    {
+                        "properties": {
+                            "qualifier_tag_name": {}
+                        },
+                        "required": [
+                            "qualifier_tag_name"
+                        ]
+                    }
+                ]
+            },
+            "title": "PhenotypeQualifierDTO",
             "type": "object"
         },
         "PhenotypeTerm": {
