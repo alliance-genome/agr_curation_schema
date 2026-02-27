@@ -1,0 +1,999 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.com/alliance-genome/agr_curation_schema/developing-the-model/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Developing the Alliance Model - Alliance Persistent Store</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#linkml-model-to-describe-the-alliance-curationpersistence-data-store" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Alliance Persistent Store" class="md-header__button md-logo" aria-label="Alliance Persistent Store" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Alliance Persistent Store
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Developing the Alliance Model
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/alliance-genome/agr_curation_schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Alliance Persistent Store" class="md-nav__button md-logo" aria-label="Alliance Persistent Store" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Alliance Persistent Store
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/alliance-genome/agr_curation_schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Browse the Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Developing the Alliance Model
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Developing the Alliance Model
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#model-components-and-visualizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Components and Visualizations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#developing-the-agr-curation-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Developing the AGR Curation Schema
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Developing the AGR Curation Schema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slots
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enums" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enums
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alliance-model-development-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alliance Model Development Conventions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Alliance Model Development Conventions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingest-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingest classes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-the-artifacts-of-the-agr-curation-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building the Artifacts of the AGR Curation Schema
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples-of-valid-ingest-files-and-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples of valid ingest files and tests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-mod-json-files-and-validating-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generating MOD JSON files and validating them
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alternate-development-environment-using-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alternate development environment - Using Docker
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alternate-alternate-test-environment-just-use-pipx-on-macos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alternate alternate test environment - just use pipx on MacOS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#all-else-fails" class="md-nav__link">
+    <span class="md-ellipsis">
+      All else fails
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub Actions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://linkml.io/linkml/intro/tutorial.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LinkML Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#model-components-and-visualizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Components and Visualizations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#developing-the-agr-curation-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Developing the AGR Curation Schema
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Developing the AGR Curation Schema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slots
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enums" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enums
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alliance-model-development-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alliance Model Development Conventions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Alliance Model Development Conventions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingest-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingest classes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-the-artifacts-of-the-agr-curation-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building the Artifacts of the AGR Curation Schema
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples-of-valid-ingest-files-and-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples of valid ingest files and tests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-mod-json-files-and-validating-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generating MOD JSON files and validating them
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alternate-development-environment-using-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alternate development environment - Using Docker
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alternate-alternate-test-environment-just-use-pipx-on-macos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alternate alternate test environment - just use pipx on MacOS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#all-else-fails" class="md-nav__link">
+    <span class="md-ellipsis">
+      All else fails
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub Actions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="linkml-model-to-describe-the-alliance-curationpersistence-data-store">LinkML Model to describe the Alliance curation/persistence data store</h1>
+<p>Model to describe the Alliance curation/persistence data store</p>
+<h2 id="model-components-and-visualizations">Model Components and Visualizations</h2>
+<p>To browse the model through html and visualisation, visit the project page <a href="https://alliance-genome.github.io/agr_curation_schema/">here</a>.
+This page will always represent the model as available on the <a href="https://github.com/alliance-genome/agr_curation_schema/">main branch of the repository</a>.</p>
+<p>To build the html and visualisations and browse it for a specific release or code version, checkout the repository locally
+(at that specific release tag, branch or commit) and run the following command:</p>
+<pre><code class="language-bash">make serve-docs
+</code></pre>
+<p>This should report the URL at which it is serving the docs locally, usually http://127.0.0.1:8000/alliance-genome/agr_curation_schema/.</p>
+<h2 id="developing-the-agr-curation-schema">Developing the AGR Curation Schema</h2>
+<p>The Alliance schema is stored in a series of interconnected YAML files in the <code>model/schema</code> directory written using
+<a href="https://linkml.io/linkml/intro/tutorial.html">LinkML syntax</a>. LinkML is an object-oriented modeling language, tutorial 
+<a href="https://linkml.io/linkml/intro/tutorial.html">here</a> with tooling that can convert simple, easy to author YAML into 
+validatable artifacts such as: JSON schemas, SQL DDL, python and java classes, markdown documentation and others.</p>
+<p>Some of these artifact types and generated and stored in this repository as well including JSON schemas that are used
+to submit data.  The main modeling components of any LinkML model are: classes, slots, enumerations and types.  </p>
+<h3 id="classes">Classes</h3>
+<p>Classes are a set or category of things having some property or attribute in common and differentiated from others by 
+kind, type, or quality.</p>
+<h3 id="slots">Slots</h3>
+<p>Slots (synonym: attributes) are properties or attributes of classes and can be specified once and reused in many 
+classes in the model. </p>
+<h3 id="types">Types</h3>
+<p>Types can be "string" or "integer" per many language specifications, but if custom types can also be defined. 
+Alliance model reuses a custom LinkML type (URIorCurie) which restricts a slot value to a URI or CURIE data type. </p>
+<h3 id="enums">Enums</h3>
+<p>Enumerations are objects that are used to restrict the values of a particular slot to those declared in the 
+enumeration.</p>
+<h3 id="alliance-model-development-conventions">Alliance Model Development Conventions</h3>
+<p>In addition to LinkML conventions, this repository follows a series of local conventions.    </p>
+<ul>
+<li>classes should be written in CamelCase</li>
+<li>slots should be written in snake_case</li>
+</ul>
+<p>The Schema is divided into several YAML files roughly by biological domain.  There are two special YAML files that
+behave differently from the rest:</p>
+<p><code>model/schema/allianceModel.yaml</code></p>
+<p>allianceModel.yaml is the grouping schema file for all the other split out schemas (YAML files).  In its "imports"
+section, all the other YAML files are listed by name.  This helps the automated regeneration of artifacts (like 
+JSONSchema, python, java files) to find and combine all the sub schemas together.  When adding a new YAML file (a new
+biological domain, or new schema component file) be sure to add your schema file as an import to allianceModel.yaml</p>
+<p><code>model/schema/core.yaml</code> </p>
+<p>The core.yaml file holds classes and
+attributes that should or can be reused in several of the biological domains (e.g. AuditedObject, a class that holds
+all relevant data tracking information is a parent class of all other biological objects that need to be audited.<br />
+AuditedObject lives in core.yaml)</p>
+<h5 id="tests">Tests</h5>
+<p>Any time a new domain is developed, a test should be written to exercise the resulting JSON schema artifact.  This helps
+provide example data for people seeking to produce data to our standard, and helps test the model for model developers.
+Test data belongs in <code>test/data</code> and <code>test/invalid/data</code>.  Test files should be named following these conventions:</p>
+<p>valid test data files: <code>"test_name"_test.json</code></p>
+<p>invalid test data files: <code>"test_name"_invalid.json</code></p>
+<p>And test file should be added (for the moment, we can turn this into a configuration file in another iteration) in the
+Makefile collections:
+SCHEMA_TEST_EXAMPLES,
+SCHEMA_TEST_EXAMPLES_INVALID</p>
+<p><code>test/data/allele_test.json</code> and <code>test/data/invalid/allele_invalid.json</code> are good examples of how to do this.</p>
+<p>An easy way to write a test is to pull out the 'required' fields of a domain object from <code>jsonschema/allianceModel.schema.json</code>
+and write test data according to those required fields.  Alternatively, a few submission objects from an existing submission
+will be a better exercise of the schema when not many fields are required.  </p>
+<h5 id="ingest-classes">Ingest classes</h5>
+<p>The use of separate classes for data ingest came about due to the inability to adequately represent requirements of data ingest
+and storage using the same model.  An example of this is the curie field for disease annotations.  This will be populated
+with Alliance-minted IDs and will be a required field in the database.  However, because this ID is generated at the Alliance
+it cannot be a required field for ingest.  The use of separate “DTO” (data transfer object) classes to represent the
+requirements for ingest, and ingest only, avoids issues such as this.</p>
+<p>In addition to avoiding conflicting requirements, the use of separate classes for ingest makes the generated JSON schema for
+the ingest classes much cleaner.  All fields that are populated via Alliance business logic can be excluded from the ingest
+classes.  Slot naming and descriptions can also be tailored towards ingest, making it much clearer to DQMs exactly what is
+required for submission, e.g. <code>evidence_codes</code> in the <code>DiseaseAnnotation</code> class vs. <code>evidence_code_curies</code> in the
+<code>DiseaseAnnotationDTO</code> class.  In both these cases, the generated JSON schema represents these slots as a list of strings but
+in the case of the former it is not clear which field is expected to be represented in the ingest file - it could just as well be
+the evidence code name or abbreviation that could be expected.  Furthermore, the description in the <code>evidence_code_curies</code> slot
+definition could be used for ingest-specific instructions that would be propagated to the generated JSON schema.</p>
+<p>In many cases, the inheritance pattern of the DTO classes will mirror that of the corresponding non-DTO classes, but that does
+not have to be the case.  It may make sense to remove levels in the hierarchical structure in order to simplify the ingest schema
+and/or give more descriptive slot names.  An example of this can be found in the <code>DiseaseAnnotation</code> and <code>DiseaseAnnotationDTO</code>
+classes.  The <code>DiseaseAnnotation</code> class inherits from <code>Association</code>, which in turn inherits from <code>AuditedObject</code>.  However, the
+<code>DiseaseAnnotationDTO</code> class inherits directly from the <code>AuditedObjectDTO</code> class and the slots corresponding to those in the
+<code>Association</code> class are moved up to the <code>DiseaseAnnotationDTO</code> class itself and its child classes.  This allows the ingest slots
+corresponding to the <code>Association</code> class slots <code>subject</code>, <code>predicate</code> and <code>object</code> to be specific to the data type being ingested
+and be more descriptive - <code>agm_curie</code>, <code>allele_curie</code> and <code>gene_curie</code> in the <code>AGMDiseaseAnnotationDTO</code>, <code>AlleleDiseaseAnnotationDTO</code>,
+and <code>GeneDiseaseAnnotationDTO</code> classes correspond to <code>subject</code>; <code>disease_relation_name</code> and <code>do_term_curie</code> in the
+<code>DiseaseAnnotationDTO</code> class correspond to <code>predicate</code> and <code>object</code>.  This makes the generated JSON schema much more transparent to
+DQMs.</p>
+<p>Class names for ingest classes simply follow the naming of the corresponding non-ingest classes and add the DTO suffix although,
+as described above, not all classes in a hierarchy are necessarily represented.</p>
+<p>Slot names for slots used in ingest classes should be descriptive of exactly what is required to be submitted.  In many cases this
+will simply be the same name as the corresponding non-ingest slot with a suffix to indicate which field is required to be submitted.
+For classes that have a curie this is usually the snake case form of the class name with the suffix <code>_curie</code> (e.g. <code>eco_term_curie</code>
+or <code>reference_curie</code>), for slots where the corresponding non-ingest slot range is a <code>VocabularyTerm</code>  it is typically the name of the
+vocabulary with the suffix <code>_name</code>, e.g. (<code>genetic_sex_name</code>).  As with non-ingest slots, multivalued slot names should be pluralised
+(e.g. <code>disease_qualifier_names</code>).  For inlined classes, where the complete class object is submitted as part of the submission of
+another class, the suffixes <code>_dto</code> or <code>_dtos</code> should be used (e.g. <code>condition_relation_dtos</code> or <code>note_dtos</code>).  In cases where the
+non-ingest slot has a range of string, curie, or boolean and the slot name is sufficiently descriptive, there is no need to define a
+corresponding ingest slot and the same slot definition can be used in both ingest and non-ingest classes (e.g. <code>is_extinct</code>).</p>
+<h2 id="building-the-artifacts-of-the-agr-curation-schema">Building the Artifacts of the AGR Curation Schema</h2>
+<p>Artifacts of the AGR Curation Schema are defined as all the schema transformations that are automatically conducted 
+via the Makefile in this repository.   These artifact are generated using LinkML software added as a dependency in this
+repository.</p>
+<p>In the <code>Makefile</code> here, all the different kinds of generated artifact targets are prefixed with 'gen-' to indicate that
+those targets create a specific kind of file.  For example, the <code>gen-jsonschema</code> target generates the allianceModel.schema.json
+file are executed when <code>make</code> or <code>make all</code> is run from the command line.  The github actions in this repository also
+use these Makefile targets to generate the artifacts for a pull request or for a release of the repository.</p>
+<p>To regenerate python, java, jsonschema, etc. locally, run <code>make</code> from the command line.
+Two other important targets exist in the Makefile for this repository: stage and test.  Stage moves all the assembled 
+artifacts that are generated in a non-checked-in directory (<code>target</code> directory) into the top of the artifacts directory (<code>/generated/</code>)
+for easier discoverability and packaging of these artifacts and to enable ignoring these during PR review.
+<code>stage</code> is executed as part of the build targets in the Makefile via github actions (GA)
+and so developers can ignore these targets in favor of automated builds via GA.</p>
+<p>To make a schema change and test your changes:</p>
+<ol>
+<li>checkout a new branch for development
+   <code>bash
+   git checkout -b new_branch_name</code></li>
+<li>change the appropriate YAML file in <code>model/schema</code></li>
+<li>rebuild all your artifacts (this in itself is a test of the validity of your schema change):
+    <code>bash
+    make</code></li>
+<li>add or modify an existing test in <code>test/data</code> and <code>test/data/invald</code></li>
+<li>add your new test, or verify the test you changed is available in the Makefile for execution.</li>
+<li>run the tests to confirm that your test data is validated against the generated JSONschema artifact that you made in 
+step 2 above.
+    <code>bash
+    git add test/data/[new_]test.json # optional step if you added a new test
+    make clean
+    make test</code></li>
+<li>commit your change and open pull request.
+    <code>bash
+   git commit -a -m "message indicating what you changed."</code></li>
+</ol>
+<h2 id="examples-of-valid-ingest-files-and-tests">Examples of valid ingest files and tests</h2>
+<p>The Makefile in this repository runs a series of json schema validation tests using test data stored in this repository.
+Test data are located in the <code>test/data</code> directory which is split into example data that are valid JSON according
+to the Alliance JSON schema, and data that are invalid.</p>
+<p>The invalid tests will report how they are invalid, and expect to be invalid so that a passing 'invalid' test will 
+report how its invalid but not break the build.  This is a convenient way to exercise the schema and make subtle errors
+more clearly stated.</p>
+<p>To run the tests in this repository:</p>
+<pre><code class="language-bash">make clean
+make test
+</code></pre>
+<p>This will run both the valid and invalid tests. </p>
+<p>Note there is a convention in this repository to make a 'set' slot for each ingest as a convenient convention for 
+being able to validate objects in a JSON list.  In the example below, an "allele ingest set" is defined in the 
+model as being a multivalued slot that contains Allele objects.  In this way, the JSON validator and automated
+tests can validate that the submission is a list of Allele objects (as opposed to a list of Gene objects, or a 
+list of GOTerm objects).  A simple example (using only the required fields of the Allele object), would look like this:</p>
+<pre><code class="language-json">{
+  &quot;allele_ingest_set&quot;: [
+    {
+      &quot;curie&quot;: &quot;ZFIN:ZDB-ALT-123456-1&quot;,
+      &quot;taxon&quot;: &quot;NCBITaxon:7955&quot;,
+      &quot;created_by&quot;: &quot;ZFIN&quot;,
+      &quot;modified_by&quot;: &quot;ZFIN&quot;
+    },
+    {
+      &quot;curie&quot;: &quot;ZFIN:ZDB-ALT-123456-2&quot;,
+      &quot;taxon&quot;: &quot;NCBITaxon:7955&quot;,
+      &quot;created_by&quot;: &quot;ZFIN&quot;,
+      &quot;modified_by&quot;: &quot;ZFIN&quot;
+    }
+  ]
+}
+</code></pre>
+<h2 id="generating-mod-json-files-and-validating-them">Generating MOD JSON files and validating them</h2>
+<p>The Alliance JSON schema is generated from the Alliance model YAML in <code>model/schema</code> in this repository.  Also provided in 
+this repository is a simple JSON schema validator (<code>util/validate_agr_schema.py</code>) that has a command line interface.</p>
+<p>For users wishing to run a validator locally before submitting their files to the Alliance, this can be done by:</p>
+<ol>
+<li>cloning the agr_curation_schema locally: </li>
+</ol>
+<pre><code class="language-bash">git clone https://github.com/alliance-genome/agr_curation_schema
+</code></pre>
+<ol>
+<li>validating a local JSON file against the schema:
+make sure you have linkml installed (see above for instructions on how to install the agr_curation_schema dependencies into your 
+python environment).  Then run the validator:</li>
+</ol>
+<pre><code class="language-bash">poetry run linkml-validate -C Ingest -s model/schema/allianceModel.yaml -s model/schema/allianceModel.yaml [path/to/your/submission/file.json]
+</code></pre>
+<p>example command using test data (replace test/allele_ingest_test.json with the path to your submission.json):</p>
+<pre><code class="language-bash">poetry run linkml-validate -C Ingest -s model/schema/allianceModel.yaml -s model/schema/allianceModel.yaml test/allele_ingest_test.json
+</code></pre>
+<p>note: it's good practice to use a python virtual environment when running commands as the installed version of python
+(for example, on most Mac operating systems is version 2 vs. version 3).<br />
+Here is a guide for working with python and poetry virtual environments: https://berkeleybop.github.io/best_practice/python_environments
+Note, the guide above has been tested with a wide variety of biomedical python projects and is a great learning guide
+for working with python and virtual environments.</p>
+<p>The basic steps for setting up a system with multiple versions of python and virtual environments are:
+1) Install pyenv, homebrew is a good method for installing pyenv:</p>
+<pre><code class="language-bash">brew update
+brew install pyenv
+</code></pre>
+<p>once installed, you can add many versions of python to your system using pyenv:</p>
+<pre><code class="language-bash">pyenv install 3.8.15
+pyenv global 3.8.15
+</code></pre>
+<p>2) Install poetry</p>
+<pre><code class="language-bash">curl -sSL https://install.python-poetry.org | python3 -
+poetry config virtualenvs.in-project true
+poetry config virtualenvs.prefer-active-python true
+</code></pre>
+<p>3) Creating a virtual environment with poetry</p>
+<pre><code class="language-bash">git clone https://github.com/alliance-genome/agr_curation_schema
+git checkout -b my_new_branch
+cd agr_curation_schema
+poetry install  
+</code></pre>
+<p>5) Run the tests</p>
+<pre><code class="language-bash">make test
+</code></pre>
+<h2 id="alternate-development-environment-using-docker">Alternate development environment - Using Docker</h2>
+<p>1) remove containers if exist</p>
+<pre><code class="language-bash">make remove-container
+</code></pre>
+<p>2) build and run the tests in the container</p>
+<pre><code class="language-bash">make build-container
+make run-tests
+````
+This will mount and run your local directory to the docker container.  Any changes you make to the local 
+directory will be reflected in the container.  This is a convenient way to run the tests in a clean 
+environment without having to install the dependencies locally.
+
+Make a change to the schema or tests files and run again:
+```bash
+make run-tests
+</code></pre>
+<p>3) remove the container when done</p>
+<pre><code class="language-bash">make remove-container
+</code></pre>
+<h2 id="alternate-alternate-test-environment-just-use-pipx-on-macos">Alternate alternate test environment - just use pipx on MacOS</h2>
+<p>1) install pipx</p>
+<pre><code class="language-bash">brew install pipx --user
+</code></pre>
+<p>2) run tests in an isolated pipx environment</p>
+<pre><code class="language-bash">pipx run --spec linkml linkml-validate -C Ingest -s model/schema/allianceModel.yaml -s model/schema/allianceModel.yaml test/data/allele_test.json
+</code></pre>
+<p>If you need to make changes based on test results, you may wish to configure git 
+according to https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls
+in order to avoid having to enter your github credentials every time you push a change.</p>
+<h2 id="all-else-fails">All else fails</h2>
+<p>1) make schema changes in a branch
+2) push the branch to github; github actions will run all the tests for you in an isolated environment even on a draft PR.  Use the actions to see if your tests pass.</p>
+<h2 id="github-actions">GitHub Actions</h2>
+<p>There are three GitHub action files that are triggered based on actions that occur on this repository.</p>
+<ol>
+<li><code>check-pull-request.yaml</code></li>
+</ol>
+<p>On each pull request, the artifacts (JSONSchema, doc, python, java etc) are run in order to generate fresh models
+in those languages based on the changed schema YAML files.  </p>
+<p>Once the artifacts are built, the action also runs the test suite against the new schema to insure the tests data still
+passes the schema.  One should change the tests when changing the schema in order to have PRs pass this check.</p>
+<ol>
+<li><code>build-deploy-documentation.yaml</code></li>
+</ol>
+<p>On each merge into main, the docs are regerated (regenerated with a <a href="https://linkml.io/linkml/generators/markdown.html">linkml generator</a>) using the model/schema/*.yaml files, generates markdown documentation and UML diagrams and pushes them into the gh-pages branch of this repository.<br />
+Note: the documentation is only stored in the gh-pages branch only, not in the main repository.</p>
+<p>This process is controlled in part by the mkdocs.yaml file in this repo which declares the source and site documentation repos and the location of the navigation index.html.</p>
+<ol>
+<li><code>pypi-publish.yaml</code></li>
+</ol>
+<p>On release, this action is run to assembly and push this repository to PYPI automatically.  This is currently disabled for
+Alliance Schema.  </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>
