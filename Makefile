@@ -201,6 +201,7 @@ SCHEMA_TEST_EXAMPLES := \
 	disease_allele_test \
 	disease_gene_test \
 	fb_disease_test \
+	functional_gene_set_ingest_test \
 	gene_interaction_test \
 	gene_test \
 	genome_assembly_test \
