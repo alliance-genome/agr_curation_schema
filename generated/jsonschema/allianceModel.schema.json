@@ -21201,6 +21201,205 @@
             "title": "FunctionalGeneSet",
             "type": "object"
         },
+        "FunctionalGeneSetDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for functional gene sets (families and groups of genes related by sequence and/or function).",
+            "properties": {
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "cross_reference_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/CrossReferenceDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "full_name": {
+                    "description": "The full name of the entity",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "parent_set_identifiers": {
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of parent functional gene set(s) of which this set is a subset.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "related_resources": {
+                    "description": "External resources related to this functional gene set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "related_set_identifiers": {
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of other related functional gene sets.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_bp_term_curies": {
+                    "description": "CURIEs of key Gene Ontology Biological Process terms associated with this functional gene set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_cc_term_curies": {
+                    "description": "CURIEs of key Gene Ontology Cellular Component terms associated with this functional gene set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_mf_term_curies": {
+                    "description": "CURIEs of key Gene Ontology Molecular Function terms associated with this functional gene set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_synonym_dtos": {
+                    "description": "Synonyms for the functional gene set.",
+                    "items": {
+                        "$ref": "#/$defs/NameSlotAnnotationDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "symbol": {
+                    "description": "The free text symbol (human-readable) for an entity or record",
+                    "type": "string"
+                },
+                "taxon_curie": {
+                    "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "full_name",
+                "symbol",
+                "taxon_curie",
+                "data_provider_dto",
+                "internal"
+            ],
+            "title": "FunctionalGeneSetDTO",
+            "type": "object"
+        },
         "FunctionalGeneSetSynonymSlotAnnotation": {
             "additionalProperties": false,
             "description": "All aliases (non-preferred names) for the functional gene set. Acceptable synonym types are full_name, nomenclature_symbol, and unspecified",
@@ -23871,6 +24070,99 @@
                 "internal"
             ],
             "title": "GeneFunctionalGeneSetAssociation",
+            "type": "object"
+        },
+        "GeneFunctionalGeneSetAssociationDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for association between a gene and a functional gene set, with supporting references that demonstrate or state the gene's membership in the set.",
+            "properties": {
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence_curies": {
+                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "functional_gene_set_identifier": {
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the functional gene set",
+                    "type": "string"
+                },
+                "gene_identifier": {
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the gene",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "relation_name": {
+                    "description": "Name of VocabularyTerm representing relation of an Association",
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "gene_identifier",
+                "relation_name",
+                "functional_gene_set_identifier",
+                "internal"
+            ],
+            "title": "GeneFunctionalGeneSetAssociationDTO",
             "type": "object"
         },
         "GeneGeneAssociationDTO": {
@@ -28850,6 +29142,24 @@
                 "disease_gene_ingest_set": {
                     "items": {
                         "$ref": "#/$defs/GeneDiseaseAnnotationDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "functional_gene_set_ingest_set": {
+                    "items": {
+                        "$ref": "#/$defs/FunctionalGeneSetDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "gene_functional_gene_set_association_ingest_set": {
+                    "items": {
+                        "$ref": "#/$defs/GeneFunctionalGeneSetAssociationDTO"
                     },
                     "type": [
                         "array",
@@ -44722,6 +45032,24 @@
                 "null"
             ]
         },
+        "functional_gene_set_ingest_set": {
+            "items": {
+                "$ref": "#/$defs/FunctionalGeneSetDTO"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "gene_functional_gene_set_association_ingest_set": {
+            "items": {
+                "$ref": "#/$defs/GeneFunctionalGeneSetAssociationDTO"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
         "gene_genetic_interaction_ingest_set": {
             "items": {
                 "$ref": "#/$defs/GeneGeneticInteractionDTO"
@@ -44941,3 +45269,4 @@
     "type": "object",
     "version": "0.0.1"
 }
+

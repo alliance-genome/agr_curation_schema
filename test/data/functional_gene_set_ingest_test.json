@@ -1,0 +1,187 @@
+{
+  "linkml_version": "2.3.0",
+  "functional_gene_set_ingest_set": [
+    {
+      "primary_external_id": "FB:FBgg0000162",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "FB",
+        "cross_reference_dto": {
+          "referenced_curie": "FB:FBgg0000162",
+          "prefix": "FB",
+          "page_area": "functional_gene_set",
+          "display_name": "FB:FBgg0000162",
+          "internal": false
+        },
+        "internal": false
+      },
+      "taxon_curie": "NCBITaxon:7227",
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator",
+      "internal": false,
+      "full_name": "WNTs",
+      "symbol": "WNT",
+      "note_dtos": [
+        {
+          "free_text": "WNTs are evolutionarily conserved secreted Cys-rich glycoproteins, defined by sequence homology to the original members of the family - Wnt1 in mouse and wingless (wg) in Drosophila. They are extracellular ligands for members of the Frizzled family of receptors as well as other receptors. (Adapted from PMID:23151663).",
+          "note_type_name": "summary",
+          "internal": false
+        }
+      ],
+      "set_synonym_dtos": [
+        {
+          "name_type_name": "nomenclature_symbol",
+          "format_text": "DWnt",
+          "display_text": "DWnt",
+          "synonym_scope_name": "exact",
+          "internal": false
+        },
+        {
+          "name_type_name": "full_name",
+          "format_text": "Wingless-type MMTV integration site",
+          "display_text": "Wingless-type MMTV integration site",
+          "synonym_scope_name": "exact",
+          "internal": false
+        },
+        {
+          "name_type_name": "full_name",
+          "format_text": "Wingless-type mouse mammary tumour virus integration site",
+          "display_text": "Wingless-type mouse mammary tumour virus integration site",
+          "synonym_scope_name": "exact",
+          "internal": false
+        }
+      ],
+      "set_go_mf_term_curies": [
+        "GO:0005109",
+        "GO:0048018"
+      ],
+      "set_go_bp_term_curies": [
+        "GO:0016055"
+      ],
+      "set_go_cc_term_curies": [
+        "GO:0005615"
+      ],
+      "parent_set_identifiers": [
+        "FB:FBgg0000163"
+      ],
+      "related_set_identifiers": [
+        "FB:FBgg0000164",
+        "FB:FBgg0000890"
+      ],
+      "cross_reference_dtos": [
+        {
+          "referenced_curie": "FB:FBgg0000162",
+          "prefix": "FB",
+          "page_area": "functional_gene_set",
+          "display_name": "FB:FBgg0000162",
+          "internal": false
+        },
+        {
+          "referenced_curie": "HGNC:360",
+          "prefix": "HGNC",
+          "page_area": "functional_gene_set",
+          "display_name": "Human Wnt family (HGNC)",
+          "internal": false
+        }
+      ],
+      "related_resources": [
+        "http://web.stanford.edu/group/nusselab/cgi-bin/wnt/drosophila"
+      ]
+    }
+  ],
+  "gene_functional_gene_set_association_ingest_set": [
+    {
+      "gene_identifier": "FB:FBgn0284084",
+      "functional_gene_set_identifier": "FB:FBgg0000162",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0217047",
+        "FB:FBrf0141722"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0004360",
+      "functional_gene_set_identifier": "FB:FBgg0000162",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0217047",
+        "FB:FBrf0141722"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0010453",
+      "functional_gene_set_identifier": "FB:FBgg0000162",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0217047",
+        "FB:FBrf0141722",
+        "FB:FBrf0244391"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0010194",
+      "functional_gene_set_identifier": "FB:FBgg0000162",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0217047",
+        "FB:FBrf0141722",
+        "FB:FBrf0244391",
+        "FB:FBrf0228474"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0031902",
+      "functional_gene_set_identifier": "FB:FBgg0000162",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0217047",
+        "FB:FBrf0141722"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0031903",
+      "functional_gene_set_identifier": "FB:FBgg0000162",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0217047",
+        "FB:FBrf0141722"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0038134",
+      "functional_gene_set_identifier": "FB:FBgg0000162",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0217047",
+        "FB:FBrf0141722"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    }
+  ]
+}

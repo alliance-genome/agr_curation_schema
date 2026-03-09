@@ -186,6 +186,46 @@ classes:
       single_functional_gene_set:
         required: true
 
+  FunctionalGeneSetDTO:
+    is_a: BiologicalEntityDTO
+    description: >-
+      Ingest class for functional gene sets (families and groups of genes
+      related by sequence and/or function).
+    slots:
+      - full_name
+      - symbol
+      - set_synonym_dtos
+      - set_go_mf_term_curies
+      - set_go_bp_term_curies
+      - set_go_cc_term_curies
+      - parent_set_identifiers
+      - related_set_identifiers
+      - cross_reference_dtos
+      - related_resources
+      - secondary_identifiers
+    slot_usage:
+      full_name:
+        required: true
+      symbol:
+        required: true
+
+  GeneFunctionalGeneSetAssociationDTO:
+    description: >-
+      Ingest class for association between a gene and a functional gene set,
+      with supporting references that demonstrate or state the gene's
+      membership in the set.
+    is_a: EvidenceAssociationDTO
+    slots:
+      - gene_identifier
+      - relation_name
+    attributes:
+      functional_gene_set_identifier:
+        description: >-
+          Identifier (curie/primary_external_id/mod_internal_id) of the
+          functional gene set
+        range: string
+        required: true
+
 ## ------------
 ## SLOTS
 ## ------------
@@ -303,4 +343,48 @@ slots:
       Indicates membership of a gene in a functional gene set.
     exact_mappings:
       - RO:0002350
+
+  set_synonym_dtos:
+    description: >-
+      Synonyms for the functional gene set.
+    domain: FunctionalGeneSetDTO
+    range: NameSlotAnnotationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  set_go_mf_term_curies:
+    description: >-
+      CURIEs of key Gene Ontology Molecular Function terms associated with
+      this functional gene set.
+    range: string
+    multivalued: true
+
+  set_go_bp_term_curies:
+    description: >-
+      CURIEs of key Gene Ontology Biological Process terms associated with
+      this functional gene set.
+    range: string
+    multivalued: true
+
+  set_go_cc_term_curies:
+    description: >-
+      CURIEs of key Gene Ontology Cellular Component terms associated with
+      this functional gene set.
+    range: string
+    multivalued: true
+
+  parent_set_identifiers:
+    description: >-
+      Identifiers (curie/primary_external_id/mod_internal_id) of parent
+      functional gene set(s) of which this set is a subset.
+    range: string
+    multivalued: true
+
+  related_set_identifiers:
+    description: >-
+      Identifiers (curie/primary_external_id/mod_internal_id) of other
+      related functional gene sets.
+    range: string
+    multivalued: true
 
