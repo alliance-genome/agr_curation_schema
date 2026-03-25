@@ -53,7 +53,7 @@ classes:
     description: >-
       A gene cluster is a set of genes which have a biological significance, and
       which are probably clustered together on the genome, like histones and miRNAs
-    is_a: BiologicalEntity
+    is_a: SubmittedObject
     slots:
       - genes
       - related_note
@@ -61,7 +61,7 @@ classes:
   GeneCollection:
     description: >-
       A gene collection is a set of genes which have been grouped based on experimental evidence, for example a set of interacting genes, genes in expression cluster, or a set of ChIP binding peaks
-    is_a: BiologicalEntity
+    is_a: SubmittedObject
     slots:
       - genes
       - related_note
@@ -85,7 +85,7 @@ classes:
       The DNA region of a group of adjacent genes whose transcription is
       coordinated on one or several mutually overlapping transcription
       units transcribed in the same direction and sharing at least one gene.
-    is_a: BiologicalEntity
+    is_a: SubmittedObject
     slots:
       - genes
       - related_note
@@ -97,15 +97,16 @@ classes:
     description: >-
       XenBase-specific. A set of three genes from X. tropicalis and X. laevis (S and L forms)
       representing a single unigene.
-    is_a: BiologicalEntity
+    is_a: SubmittedObject
     slots:
       - genes
 
   FunctionalGeneSet:
     description: >-
       Families and groups of genes related by sequence and/or function.
-    is_a: BiologicalEntity
+    is_a: SubmittedObject
     slots:
+      - taxon
       - full_name
       - symbol
       - set_synonyms
@@ -119,13 +120,17 @@ classes:
       - secondary_identifiers
       - gene_functional_gene_set_associations
     slot_usage:
+      taxon:
+        description: >-
+          This slot is optional - it should not be used if multiple taxa are
+          represented in the set.
       full_name:
         required: true
       symbol:
         required: true
 
   Pathway:
-    is_a: BiologicalEntity # gets all the audit fields from its parent AuditedObject
+    is_a: SubmittedObject
     exact_mappings:
       - biolink:Pathway
       - PW:0000001
@@ -143,7 +148,7 @@ classes:
       - KEGG.PATHWAY
 
   ProteinComplex:
-    is_a: BiologicalEntity
+    is_a: SubmittedObject
     slots:
       - proteins
 
@@ -187,11 +192,12 @@ classes:
         required: true
 
   FunctionalGeneSetDTO:
-    is_a: BiologicalEntityDTO
+    is_a: SubmittedObjectDTO
     description: >-
       Ingest class for functional gene sets (families and groups of genes
       related by sequence and/or function).
     slots:
+      - taxon_curie
       - full_name
       - symbol
       - set_synonym_dtos
@@ -204,6 +210,10 @@ classes:
       - related_resources
       - secondary_identifiers
     slot_usage:
+      taxon_curie:
+        description: >-
+          This slot is optional - it should not be used if multiple taxa are
+          represented in the set.
       full_name:
         required: true
       symbol:
