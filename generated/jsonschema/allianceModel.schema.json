@@ -21180,8 +21180,11 @@
                     "type": "string"
                 },
                 "taxon": {
-                    "description": "The taxon from which the biological entity derives.",
-                    "type": "string"
+                    "description": "This slot is optional - it should not be used if multiple taxa are represented in the set.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -21194,7 +21197,6 @@
             "required": [
                 "full_name",
                 "symbol",
-                "taxon",
                 "data_provider",
                 "internal"
             ],
@@ -21379,8 +21381,11 @@
                     "type": "string"
                 },
                 "taxon_curie": {
-                    "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
-                    "type": "string"
+                    "description": "This slot is optional - it should not be used if multiple taxa are represented in the set.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
@@ -21393,7 +21398,6 @@
             "required": [
                 "full_name",
                 "symbol",
-                "taxon_curie",
                 "data_provider_dto",
                 "internal"
             ],
