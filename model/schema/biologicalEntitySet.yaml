@@ -124,6 +124,7 @@ classes:
         description: >-
           This slot is optional - it should not be used if multiple taxa are
           represented in the set.
+        required: false
       full_name:
         required: true
       symbol:
@@ -214,6 +215,7 @@ classes:
         description: >-
           This slot is optional - it should not be used if multiple taxa are
           represented in the set.
+        required: false
       full_name:
         required: true
       symbol:
