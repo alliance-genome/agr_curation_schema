@@ -2,6 +2,127 @@
   "linkml_version": "2.3.0",
   "functional_gene_set_ingest_set": [
     {
+      "primary_external_id": "FB:FBgg0000113",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "FB",
+        "cross_reference_dto": {
+          "referenced_curie": "FB:FBgg0000113",
+          "prefix": "FB",
+          "page_area": "functional_gene_set",
+          "display_name": "FB:FBgg0000113",
+          "internal": false
+        },
+        "internal": false
+      },
+      "taxon_curie": "NCBITaxon:7227",
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator",
+      "internal": false,
+      "full_name": "ACTIN-RELATED PROTEINS",
+      "symbol": "ARP",
+      "note_dtos": [
+        {
+          "free_text": "Actin-related proteins (Arp) share significant sequence identity with actins. Arps broadly fall into two groups: nuclear Arps, involved in chromatin remodeling; and cytoplasmic Arps, associated with actin. (Adapted from PMID:21859859).",
+          "note_type_name": "summary",
+          "internal": false
+        }
+      ],
+      "set_synonym_dtos": [
+        {
+          "name_type_name": "nomenclature_symbol",
+          "format_text": "Arps",
+          "display_text": "Arps",
+          "synonym_scope_name": "exact",
+          "internal": false
+        }
+      ],
+      "set_go_mf_term_curies": [
+        "GO:0005200"
+      ],
+      "set_go_bp_term_curies": [
+        "GO:0006338",
+        "GO:0007010"
+      ],
+      "set_go_cc_term_curies": [
+        "GO:0005884",
+        "GO:0005634"
+      ],
+      "related_set_identifiers": [
+        "FB:FBgg0000184",
+        "FB:FBgg0001797"
+      ],
+      "cross_reference_dtos": [
+        {
+          "referenced_curie": "HGNC_Group:1436",
+          "prefix": "HGNC_Group",
+          "page_area": "gene_group",
+          "display_name": "Human Actin related proteins (HGNC)",
+          "internal": false
+        },
+        {
+          "referenced_curie": "WBGeneClass:arp",
+          "prefix": "WBGeneClass",
+          "page_area": "gene_class",
+          "display_name": "Nematode Actin-Related Proteins (WormBase)",
+          "internal": false
+        }
+      ]
+    },
+    {
+      "primary_external_id": "FB:FBgg0000960",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "FB",
+        "cross_reference_dto": {
+          "referenced_curie": "FB:FBgg0000960",
+          "prefix": "FB",
+          "page_area": "functional_gene_set",
+          "display_name": "FB:FBgg0000960",
+          "internal": false
+        },
+        "internal": false
+      },
+      "taxon_curie": "NCBITaxon:7227",
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator",
+      "internal": false,
+      "full_name": "ALKALINE PHOSPHATASES",
+      "symbol": "ALP",
+      "note_dtos": [
+        {
+          "free_text": "Alkaline phosphatases function best in alkaline environments, catalyzing the hydrolysis of monoesters of phosphoric acid and a transphosphorylation reaction in the presence of large concentrations of phosphate acceptors.  With few exceptions, they are homodimeric enzymes and each catalytic site contains three metal ions, i.e., two Zn and one Mg, necessary for enzymatic activity. They have broad substrate specificity. (Adapted from PMID:18404473.)",
+          "note_type_name": "summary",
+          "internal": false
+        }
+      ],
+      "set_synonym_dtos": [
+        {
+          "name_type_name": "nomenclature_symbol",
+          "format_text": "Aph",
+          "display_text": "Aph",
+          "synonym_scope_name": "exact",
+          "internal": false
+        }
+      ],
+      "set_go_mf_term_curies": [
+        "GO:0004035"
+      ],
+      "set_go_bp_term_curies": [
+        "GO:0016311"
+      ],
+      "parent_set_identifiers": [
+        "FB:FBgg0000268"
+      ],
+      "cross_reference_dtos": [
+        {
+          "referenced_curie": "HGNC_Group:1072",
+          "prefix": "HGNC_Group",
+          "page_area": "gene_group",
+          "display_name": "Human Alkaline phosphatases (HGNC)",
+          "internal": false
+        }
+      ]
+    },
+    {
       "primary_external_id": "FB:FBgg0000162",
       "data_provider_dto": {
         "source_organization_abbreviation": "FB",
@@ -69,26 +190,301 @@
       ],
       "cross_reference_dtos": [
         {
-          "referenced_curie": "FB:FBgg0000162",
-          "prefix": "FB",
-          "page_area": "functional_gene_set",
-          "display_name": "FB:FBgg0000162",
-          "internal": false
-        },
-        {
-          "referenced_curie": "HGNC:360",
-          "prefix": "HGNC",
-          "page_area": "functional_gene_set",
+          "referenced_curie": "HGNC_Group:360",
+          "prefix": "HGNC_Group",
+          "page_area": "gene_group",
           "display_name": "Human Wnt family (HGNC)",
           "internal": false
         }
       ],
-      "related_resources": [
-        "http://web.stanford.edu/group/nusselab/cgi-bin/wnt/drosophila"
-      ]
     }
   ],
   "gene_functional_gene_set_association_ingest_set": [
+    {
+      "gene_identifier": "FB:FBgn0011745",
+      "functional_gene_set_identifier": "FB:FBgg0000113",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0132100",
+        "FB:FBrf0229848"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0011742",
+      "functional_gene_set_identifier": "FB:FBgg0000113",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0132100",
+        "FB:FBrf0229848"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0262716",
+      "functional_gene_set_identifier": "FB:FBgg0000113",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0132100",
+        "FB:FBrf0229848"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0038576",
+      "functional_gene_set_identifier": "FB:FBgg0000113",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0132100",
+        "FB:FBrf0190547",
+        "FB:FBrf0229848"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0011741",
+      "functional_gene_set_identifier": "FB:FBgg0000113",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0132100",
+        "FB:FBrf0229848"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0030877",
+      "functional_gene_set_identifier": "FB:FBgg0000113",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0190547"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0031050",
+      "functional_gene_set_identifier": "FB:FBgg0000113",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0132100",
+        "FB:FBrf0229848"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0011743",
+      "functional_gene_set_identifier": "FB:FBgg0000113",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0132100",
+        "FB:FBrf0229848"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0025716",
+      "functional_gene_set_identifier": "FB:FBgg0000113",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0132100",
+        "FB:FBrf0229848"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0283479",
+      "functional_gene_set_identifier": "FB:FBgg0000960",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0228828",
+        "FB:FBrf0253548"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0283480",
+      "functional_gene_set_identifier": "FB:FBgg0000960",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0228828",
+        "FB:FBrf0253548"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0016123",
+      "functional_gene_set_identifier": "FB:FBgg0000960",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0228828",
+        "FB:FBrf0253548"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0038845",
+      "functional_gene_set_identifier": "FB:FBgg0000960",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0228828",
+        "FB:FBrf0253548"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0033423",
+      "functional_gene_set_identifier": "FB:FBgg0000960",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0228828",
+        "FB:FBrf0253548"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0034710",
+      "functional_gene_set_identifier": "FB:FBgg0000960",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0228828",
+        "FB:FBrf0253548"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0034712",
+      "functional_gene_set_identifier": "FB:FBgg0000960",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0228828",
+        "FB:FBrf0253548"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0035620",
+      "functional_gene_set_identifier": "FB:FBgg0000960",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0228828",
+        "FB:FBrf0253548"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0035619",
+      "functional_gene_set_identifier": "FB:FBgg0000960",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0228828",
+        "FB:FBrf0253548"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0030661",
+      "functional_gene_set_identifier": "FB:FBgg0000960",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0228828",
+        "FB:FBrf0253548"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0032779",
+      "functional_gene_set_identifier": "FB:FBgg0000960",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0228828",
+        "FB:FBrf0253548"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0037786",
+      "functional_gene_set_identifier": "FB:FBgg0000960",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0228828"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0043791",
+      "functional_gene_set_identifier": "FB:FBgg0000960",
+      "relation_name": "is_member_of",
+      "evidence_curies": [
+        "FB:FBrf0228828",
+        "FB:FBrf0253548"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
     {
       "gene_identifier": "FB:FBgn0284084",
       "functional_gene_set_identifier": "FB:FBgg0000162",

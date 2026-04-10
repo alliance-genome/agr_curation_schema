@@ -1,0 +1,681 @@
+{
+  "curie": "FB:FBgg0000113",
+  "primary_external_id": "FB:FBgg0000113",
+  "full_name": "ACTIN-RELATED PROTEINS",
+  "symbol": "ARP",
+  "taxon": "NCBITaxon:7227",
+  "data_provider": {
+    "abbreviation": "FB",
+    "full_name": "FlyBase",
+    "short_name": "FlyBase",
+    "internal": false
+  },
+  "internal": false,
+  "obsolete": false,
+  "related_notes": [
+    {
+      "free_text": "Actin-related proteins (Arp) share significant sequence identity with actins. Arps broadly fall into two groups: nuclear Arps, involved in chromatin remodeling; and cytoplasmic Arps, associated with actin. (Adapted from PMID:21859859).",
+      "note_type": "summary",
+      "internal": false
+    },
+    {
+      "free_text": "Cytosketal Arps: Arp1, Arp2, Arp3 and Arp10. Nuclear Arps: Arp5, Arp6, Arp8 and Bap55. Arp53D, which has no obvious ortholog, has not been characterized.",
+      "note_type": "comment",
+      "internal": false
+    }
+  ],
+  "set_go_mf_terms": [
+    "GO:0005200"
+  ],
+  "set_go_bp_terms": [
+    "GO:0006338",
+    "GO:0007010"
+  ],
+  "set_go_cc_terms": [
+    "GO:0005884",
+    "GO:0005634"
+  ],
+  "set_synonyms": [
+    {
+      "single_functional_gene_set": {
+        "curie": "FB:FBgg0000113",
+        "full_name": "ACTIN-RELATED PROTEINS",
+        "symbol": "ARP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "name_type": "nomenclature_symbol",
+      "format_text": "ARP",
+      "display_text": "ARP",
+      "internal": false
+    },
+    {
+      "single_functional_gene_set": {
+        "curie": "FB:FBgg0000113",
+        "full_name": "ACTIN-RELATED PROTEINS",
+        "symbol": "ARP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "name_type": "nomenclature_symbol",
+      "format_text": "Arps",
+      "display_text": "Arps",
+      "internal": false
+    },
+    {
+      "single_functional_gene_set": {
+        "curie": "FB:FBgg0000113",
+        "full_name": "ACTIN-RELATED PROTEINS",
+        "symbol": "ARP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "name_type": "full_name",
+      "format_text": "ACTIN-RELATED PROTEINS",
+      "display_text": "ACTIN-RELATED PROTEINS",
+      "internal": false
+    }
+  ],
+  "cross_references": [
+    {
+      "referenced_curie": "HGNC-GG1:1436",
+      "display_name": "Human Actin related proteins (HGNC)",
+      "internal": false
+    },
+    {
+      "referenced_curie": "WB-GG:arp#01--10",
+      "display_name": "Nematode Actin-Related Proteins (WormBase)",
+      "internal": false
+    }
+  ],
+  "related_sets": [
+    {
+      "curie": "FB:FBgg0000184",
+      "primary_external_id": "FB:FBgg0000184",
+      "full_name": "ACTINS",
+      "symbol": "ACT",
+      "taxon": "NCBITaxon:7227",
+      "data_provider": {
+        "abbreviation": "FB",
+        "full_name": "FlyBase",
+        "short_name": "FlyBase",
+        "internal": false
+      },
+      "internal": false
+    },
+    {
+      "curie": "FB:FBgg0001797",
+      "primary_external_id": "FB:FBgg0001797",
+      "full_name": "ACTIN-RELATED PROTEIN 2/3 COMPLEXES",
+      "symbol": "ARPC-C",
+      "taxon": "NCBITaxon:7227",
+      "data_provider": {
+        "abbreviation": "FB",
+        "full_name": "FlyBase",
+        "short_name": "FlyBase",
+        "internal": false
+      },
+      "internal": false
+    }
+  ],
+  "gene_functional_gene_set_associations": [
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0011745",
+        "primary_external_id": "FB:FBgn0011745",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0011745",
+            "primary_external_id": "FB:FBgn0011745",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Arp1",
+          "display_text": "Arp1",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000113",
+        "full_name": "ACTIN-RELATED PROTEINS",
+        "symbol": "ARP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "evidence": [
+        {
+          "curie": "FB:FBrf0132100",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0229848",
+          "internal": false
+        }
+      ],
+      "internal": false
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0011742",
+        "primary_external_id": "FB:FBgn0011742",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0011742",
+            "primary_external_id": "FB:FBgn0011742",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Arp2",
+          "display_text": "Arp2",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000113",
+        "full_name": "ACTIN-RELATED PROTEINS",
+        "symbol": "ARP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "evidence": [
+        {
+          "curie": "FB:FBrf0132100",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0229848",
+          "internal": false
+        }
+      ],
+      "internal": false
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0262716",
+        "primary_external_id": "FB:FBgn0262716",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0262716",
+            "primary_external_id": "FB:FBgn0262716",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Arp3",
+          "display_text": "Arp3",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000113",
+        "full_name": "ACTIN-RELATED PROTEINS",
+        "symbol": "ARP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "evidence": [
+        {
+          "curie": "FB:FBrf0132100",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0229848",
+          "internal": false
+        }
+      ],
+      "internal": false
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0038576",
+        "primary_external_id": "FB:FBgn0038576",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0038576",
+            "primary_external_id": "FB:FBgn0038576",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Arp5",
+          "display_text": "Arp5",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000113",
+        "full_name": "ACTIN-RELATED PROTEINS",
+        "symbol": "ARP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "evidence": [
+        {
+          "curie": "FB:FBrf0132100",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0190547",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0229848",
+          "internal": false
+        }
+      ],
+      "internal": false
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0011741",
+        "primary_external_id": "FB:FBgn0011741",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0011741",
+            "primary_external_id": "FB:FBgn0011741",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Arp6",
+          "display_text": "Arp6",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000113",
+        "full_name": "ACTIN-RELATED PROTEINS",
+        "symbol": "ARP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "evidence": [
+        {
+          "curie": "FB:FBrf0132100",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0229848",
+          "internal": false
+        }
+      ],
+      "internal": false
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0030877",
+        "primary_external_id": "FB:FBgn0030877",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0030877",
+            "primary_external_id": "FB:FBgn0030877",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Arp8",
+          "display_text": "Arp8",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000113",
+        "full_name": "ACTIN-RELATED PROTEINS",
+        "symbol": "ARP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "evidence": [
+        {
+          "curie": "FB:FBrf0190547",
+          "internal": false
+        }
+      ],
+      "internal": false
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0031050",
+        "primary_external_id": "FB:FBgn0031050",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0031050",
+            "primary_external_id": "FB:FBgn0031050",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Arp10",
+          "display_text": "Arp10",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000113",
+        "full_name": "ACTIN-RELATED PROTEINS",
+        "symbol": "ARP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "evidence": [
+        {
+          "curie": "FB:FBrf0132100",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0229848",
+          "internal": false
+        }
+      ],
+      "internal": false
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0011743",
+        "primary_external_id": "FB:FBgn0011743",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0011743",
+            "primary_external_id": "FB:FBgn0011743",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Arp53D",
+          "display_text": "Arp53D",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000113",
+        "full_name": "ACTIN-RELATED PROTEINS",
+        "symbol": "ARP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "evidence": [
+        {
+          "curie": "FB:FBrf0132100",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0229848",
+          "internal": false
+        }
+      ],
+      "internal": false
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0025716",
+        "primary_external_id": "FB:FBgn0025716",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0025716",
+            "primary_external_id": "FB:FBgn0025716",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Bap55",
+          "display_text": "Bap55",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000113",
+        "full_name": "ACTIN-RELATED PROTEINS",
+        "symbol": "ARP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "evidence": [
+        {
+          "curie": "FB:FBrf0132100",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0229848",
+          "internal": false
+        }
+      ],
+      "internal": false
+    }
+  ]
+}

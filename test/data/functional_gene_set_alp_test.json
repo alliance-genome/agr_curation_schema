@@ -1,0 +1,888 @@
+{
+  "curie": "FB:FBgg0000960",
+  "primary_external_id": "FB:FBgg0000960",
+  "full_name": "ALKALINE PHOSPHATASES",
+  "symbol": "ALP",
+  "taxon": "NCBITaxon:7227",
+  "data_provider": {
+    "abbreviation": "FB",
+    "full_name": "FlyBase",
+    "short_name": "FlyBase",
+    "internal": false
+  },
+  "internal": false,
+  "obsolete": false,
+  "related_notes": [
+    {
+      "free_text": "Alkaline phosphatases function best in alkaline environments, catalyzing the hydrolysis of monoesters of phosphoric acid and a transphosphorylation reaction in the presence of large concentrations of phosphate acceptors.  With few exceptions, they are homodimeric enzymes and each catalytic site contains three metal ions, i.e., two Zn and one Mg, necessary for enzymatic activity. They have broad substrate specificity. (Adapted from PMID:18404473.)",
+      "note_type": "summary",
+      "internal": false
+    }
+  ],
+  "set_go_mf_terms": [
+    "GO:0004035"
+  ],
+  "set_go_bp_terms": [
+    "GO:0016311"
+  ],
+  "set_synonyms": [
+    {
+      "single_functional_gene_set": {
+        "curie": "FB:FBgg0000960",
+        "full_name": "ALKALINE PHOSPHATASES",
+        "symbol": "ALP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "name_type": "nomenclature_symbol",
+      "format_text": "Aph",
+      "display_text": "Aph",
+      "internal": false
+    },
+    {
+      "single_functional_gene_set": {
+        "curie": "FB:FBgg0000960",
+        "full_name": "ALKALINE PHOSPHATASES",
+        "symbol": "ALP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "name_type": "nomenclature_symbol",
+      "format_text": "ALP",
+      "display_text": "ALP",
+      "internal": false
+    },
+    {
+      "single_functional_gene_set": {
+        "curie": "FB:FBgg0000960",
+        "full_name": "ALKALINE PHOSPHATASES",
+        "symbol": "ALP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "name_type": "full_name",
+      "format_text": "ALKALINE PHOSPHATASES",
+      "display_text": "ALKALINE PHOSPHATASES",
+      "internal": false
+    }
+  ],
+  "parent_sets": [
+    {
+      "curie": "FB:FBgg0000268",
+      "primary_external_id": "FB:FBgg0000268",
+      "full_name": "PHOSPHATASES",
+      "symbol": "PHOSPHATASES",
+      "taxon": "NCBITaxon:7227",
+      "data_provider": {
+        "abbreviation": "FB",
+        "full_name": "FlyBase",
+        "short_name": "FlyBase",
+        "internal": false
+      },
+      "internal": false
+    }
+  ],
+  "cross_references": [
+    {
+      "referenced_curie": "HGNC-GG1:1072",
+      "display_name": "Human Alkaline phosphatases (HGNC)",
+      "internal": false
+    }
+  ],
+  "gene_functional_gene_set_associations": [
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0283479",
+        "primary_external_id": "FB:FBgn0283479",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0283479",
+            "primary_external_id": "FB:FBgn0283479",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Alp1",
+          "display_text": "Alp1",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000960",
+        "full_name": "ALKALINE PHOSPHATASES",
+        "symbol": "ALP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "internal": false,
+      "evidence": [
+        {
+          "curie": "FB:FBrf0253548",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0228828",
+          "internal": false
+        }
+      ]
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0283480",
+        "primary_external_id": "FB:FBgn0283480",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0283480",
+            "primary_external_id": "FB:FBgn0283480",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Alp2",
+          "display_text": "Alp2",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000960",
+        "full_name": "ALKALINE PHOSPHATASES",
+        "symbol": "ALP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "internal": false,
+      "evidence": [
+        {
+          "curie": "FB:FBrf0253548",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0228828",
+          "internal": false
+        }
+      ]
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0043791",
+        "primary_external_id": "FB:FBgn0043791",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0043791",
+            "primary_external_id": "FB:FBgn0043791",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "phu",
+          "display_text": "phu",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000960",
+        "full_name": "ALKALINE PHOSPHATASES",
+        "symbol": "ALP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "internal": false,
+      "evidence": [
+        {
+          "curie": "FB:FBrf0253548",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0228828",
+          "internal": false
+        }
+      ]
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0016123",
+        "primary_external_id": "FB:FBgn0016123",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0016123",
+            "primary_external_id": "FB:FBgn0016123",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Alp4",
+          "display_text": "Alp4",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000960",
+        "full_name": "ALKALINE PHOSPHATASES",
+        "symbol": "ALP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "internal": false,
+      "evidence": [
+        {
+          "curie": "FB:FBrf0253548",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0228828",
+          "internal": false
+        }
+      ]
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0038845",
+        "primary_external_id": "FB:FBgn0038845",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0038845",
+            "primary_external_id": "FB:FBgn0038845",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Alp5",
+          "display_text": "Alp5",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000960",
+        "full_name": "ALKALINE PHOSPHATASES",
+        "symbol": "ALP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "internal": false,
+      "evidence": [
+        {
+          "curie": "FB:FBrf0253548",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0228828",
+          "internal": false
+        }
+      ]
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0033423",
+        "primary_external_id": "FB:FBgn0033423",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0033423",
+            "primary_external_id": "FB:FBgn0033423",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Alp6",
+          "display_text": "Alp6",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000960",
+        "full_name": "ALKALINE PHOSPHATASES",
+        "symbol": "ALP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "internal": false,
+      "evidence": [
+        {
+          "curie": "FB:FBrf0253548",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0228828",
+          "internal": false
+        }
+      ]
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0034710",
+        "primary_external_id": "FB:FBgn0034710",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0034710",
+            "primary_external_id": "FB:FBgn0034710",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Alp7",
+          "display_text": "Alp7",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000960",
+        "full_name": "ALKALINE PHOSPHATASES",
+        "symbol": "ALP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "internal": false,
+      "evidence": [
+        {
+          "curie": "FB:FBrf0253548",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0228828",
+          "internal": false
+        }
+      ]
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0034712",
+        "primary_external_id": "FB:FBgn0034712",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0034712",
+            "primary_external_id": "FB:FBgn0034712",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Alp8",
+          "display_text": "Alp8",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000960",
+        "full_name": "ALKALINE PHOSPHATASES",
+        "symbol": "ALP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "internal": false,
+      "evidence": [
+        {
+          "curie": "FB:FBrf0253548",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0228828",
+          "internal": false
+        }
+      ]
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0035620",
+        "primary_external_id": "FB:FBgn0035620",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0035620",
+            "primary_external_id": "FB:FBgn0035620",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Alp9",
+          "display_text": "Alp9",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000960",
+        "full_name": "ALKALINE PHOSPHATASES",
+        "symbol": "ALP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "internal": false,
+      "evidence": [
+        {
+          "curie": "FB:FBrf0253548",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0228828",
+          "internal": false
+        }
+      ]
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0035619",
+        "primary_external_id": "FB:FBgn0035619",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0035619",
+            "primary_external_id": "FB:FBgn0035619",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Alp10",
+          "display_text": "Alp10",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000960",
+        "full_name": "ALKALINE PHOSPHATASES",
+        "symbol": "ALP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "internal": false,
+      "evidence": [
+        {
+          "curie": "FB:FBrf0253548",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0228828",
+          "internal": false
+        }
+      ]
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0030661",
+        "primary_external_id": "FB:FBgn0030661",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0030661",
+            "primary_external_id": "FB:FBgn0030661",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Alp11",
+          "display_text": "Alp11",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000960",
+        "full_name": "ALKALINE PHOSPHATASES",
+        "symbol": "ALP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "internal": false,
+      "evidence": [
+        {
+          "curie": "FB:FBrf0253548",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0228828",
+          "internal": false
+        }
+      ]
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0032779",
+        "primary_external_id": "FB:FBgn0032779",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0032779",
+            "primary_external_id": "FB:FBgn0032779",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Alp12",
+          "display_text": "Alp12",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000960",
+        "full_name": "ALKALINE PHOSPHATASES",
+        "symbol": "ALP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "internal": false,
+      "evidence": [
+        {
+          "curie": "FB:FBrf0253548",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0228828",
+          "internal": false
+        }
+      ]
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0037786",
+        "primary_external_id": "FB:FBgn0037786",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0037786",
+            "primary_external_id": "FB:FBgn0037786",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Alp13",
+          "display_text": "Alp13",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000960",
+        "full_name": "ALKALINE PHOSPHATASES",
+        "symbol": "ALP",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "internal": false,
+      "evidence": [
+        {
+          "curie": "FB:FBrf0228828",
+          "internal": false
+        }
+      ]
+    }
+  ]
+}

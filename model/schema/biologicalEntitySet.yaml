@@ -116,7 +116,6 @@ classes:
       - parent_sets
       - related_sets
       - cross_references
-      - related_resources
       - secondary_identifiers
       - gene_functional_gene_set_associations
     slot_usage:
@@ -208,7 +207,6 @@ classes:
       - parent_set_identifiers
       - related_set_identifiers
       - cross_reference_dtos
-      - related_resources
       - secondary_identifiers
     slot_usage:
       taxon_curie:
@@ -335,12 +333,6 @@ slots:
     description: >-
       Other related functional gene sets.
     range: FunctionalGeneSet
-    multivalued: true
-
-  related_resources:
-    description: >-
-      External resources related to this functional gene set.
-    range: uriorcurie
     multivalued: true
 
   gene_functional_gene_set_associations:
