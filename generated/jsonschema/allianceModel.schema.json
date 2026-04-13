@@ -21106,16 +21106,6 @@
                         "null"
                     ]
                 },
-                "related_resources": {
-                    "description": "External resources related to this functional gene set.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "related_sets": {
                     "description": "Other related functional gene sets.",
                     "items": {
@@ -21304,16 +21294,6 @@
                     "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": [
                         "string",
-                        "null"
-                    ]
-                },
-                "related_resources": {
-                    "description": "External resources related to this functional gene set.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
                         "null"
                     ]
                 },

@@ -1,0 +1,616 @@
+{
+  "curie": "FB:FBgg0000162",
+  "primary_external_id": "FB:FBgg0000162",
+  "full_name": "WNTs",
+  "symbol": "WNT",
+  "taxon": "NCBITaxon:7227",
+  "data_provider": {
+    "abbreviation": "FB",
+    "full_name": "FlyBase",
+    "short_name": "FlyBase",
+    "internal": false
+  },
+  "internal": false,
+  "obsolete": false,
+  "related_notes": [
+    {
+      "free_text": "WNTs are evolutionarily conserved secreted Cys-rich glycoproteins, defined by sequence homology to the original members of the family - Wnt1 in mouse and wingless (wg) in Drosophila. They are extracellular ligands for members of the Frizzled family of receptors as well as other receptors. (Adapted from PMID:23151663).",
+      "note_type": "summary",
+      "internal": false
+    }
+  ],
+  "set_go_mf_terms": [
+    "GO:0005109",
+    "GO:0048018"
+  ],
+  "set_go_bp_terms": [
+    "GO:0016055"
+  ],
+  "set_go_cc_terms": [
+    "GO:0005615"
+  ],
+  "set_synonyms": [
+    {
+      "single_functional_gene_set": {
+        "curie": "FB:FBgg0000162",
+        "full_name": "WNTs",
+        "symbol": "WNT",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "name_type": "nomenclature_symbol",
+      "format_text": "WNT",
+      "display_text": "WNT",
+      "internal": false
+    },
+    {
+      "single_functional_gene_set": {
+        "curie": "FB:FBgg0000162",
+        "full_name": "WNTs",
+        "symbol": "WNT",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "name_type": "nomenclature_symbol",
+      "format_text": "DWnt",
+      "display_text": "DWnt",
+      "internal": false
+    },
+    {
+      "single_functional_gene_set": {
+        "curie": "FB:FBgg0000162",
+        "full_name": "WNTs",
+        "symbol": "WNT",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "name_type": "full_name",
+      "format_text": "WNTs",
+      "display_text": "WNTs",
+      "internal": false
+    },
+    {
+      "single_functional_gene_set": {
+        "curie": "FB:FBgg0000162",
+        "full_name": "WNTs",
+        "symbol": "WNT",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "name_type": "full_name",
+      "format_text": "Wingless-type MMTV integration site",
+      "display_text": "Wingless-type MMTV integration site",
+      "internal": false
+    },
+    {
+      "single_functional_gene_set": {
+        "curie": "FB:FBgg0000162",
+        "full_name": "WNTs",
+        "symbol": "WNT",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "name_type": "full_name",
+      "format_text": "Wingless-type mouse mammary tumour virus integration site",
+      "display_text": "Wingless-type mouse mammary tumour virus integration site",
+      "internal": false
+    }
+  ],
+  "parent_sets": [
+    {
+      "curie": "FB:FBgg0001637",
+      "primary_external_id": "FB:FBgg0001637",
+      "full_name": "RECEPTOR LIGANDS",
+      "symbol": "RLIG",
+      "taxon": "NCBITaxon:7227",
+      "data_provider": {
+        "abbreviation": "FB",
+        "full_name": "FlyBase",
+        "short_name": "FlyBase",
+        "internal": false
+      },
+      "internal": false
+    }
+  ],
+  "cross_references": [
+    {
+      "referenced_curie": "HGNC-GG1:360",
+      "display_name": "Human Wnt family (HGNC)",
+      "internal": false
+    }
+  ],
+  "gene_functional_gene_set_associations": [
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0284084",
+        "primary_external_id": "FB:FBgn0284084",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0284084",
+            "primary_external_id": "FB:FBgn0284084",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "wg",
+          "display_text": "wg",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000162",
+        "full_name": "WNTs",
+        "symbol": "WNT",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "evidence": [
+        {
+          "curie": "FB:FBrf0217047",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0141722",
+          "internal": false
+        }
+      ],
+      "internal": false
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0004360",
+        "primary_external_id": "FB:FBgn0004360",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0004360",
+            "primary_external_id": "FB:FBgn0004360",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Wnt2",
+          "display_text": "Wnt2",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000162",
+        "full_name": "WNTs",
+        "symbol": "WNT",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "evidence": [
+        {
+          "curie": "FB:FBrf0217047",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0141722",
+          "internal": false
+        }
+      ],
+      "internal": false
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0010453",
+        "primary_external_id": "FB:FBgn0010453",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0010453",
+            "primary_external_id": "FB:FBgn0010453",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Wnt4",
+          "display_text": "Wnt4",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000162",
+        "full_name": "WNTs",
+        "symbol": "WNT",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "evidence": [
+        {
+          "curie": "FB:FBrf0217047",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0141722",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0244391",
+          "internal": false
+        }
+      ],
+      "internal": false
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0010194",
+        "primary_external_id": "FB:FBgn0010194",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0010194",
+            "primary_external_id": "FB:FBgn0010194",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Wnt5",
+          "display_text": "Wnt5",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000162",
+        "full_name": "WNTs",
+        "symbol": "WNT",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "evidence": [
+        {
+          "curie": "FB:FBrf0217047",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0141722",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0244391",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0228474",
+          "internal": false
+        }
+      ],
+      "internal": false
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0031902",
+        "primary_external_id": "FB:FBgn0031902",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0031902",
+            "primary_external_id": "FB:FBgn0031902",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Wnt6",
+          "display_text": "Wnt6",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000162",
+        "full_name": "WNTs",
+        "symbol": "WNT",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "evidence": [
+        {
+          "curie": "FB:FBrf0217047",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0141722",
+          "internal": false
+        }
+      ],
+      "internal": false
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0031903",
+        "primary_external_id": "FB:FBgn0031903",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0031903",
+            "primary_external_id": "FB:FBgn0031903",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "Wnt10",
+          "display_text": "Wnt10",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000162",
+        "full_name": "WNTs",
+        "symbol": "WNT",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "evidence": [
+        {
+          "curie": "FB:FBrf0217047",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0141722",
+          "internal": false
+        }
+      ],
+      "internal": false
+    },
+    {
+      "gene_association_subject": {
+        "curie": "FB:FBgn0038134",
+        "primary_external_id": "FB:FBgn0038134",
+        "taxon": "NCBITaxon:7227",
+        "gene_symbol": {
+          "single_gene": {
+            "curie": "FB:FBgn0038134",
+            "primary_external_id": "FB:FBgn0038134",
+            "taxon": "NCBITaxon:7227",
+            "gene_symbol": null,
+            "gene_type": "SO:0001217",
+            "data_provider": {
+              "abbreviation": "FB",
+              "full_name": "FlyBase",
+              "short_name": "FlyBase",
+              "internal": false
+            },
+            "internal": false
+          },
+          "name_type": "nomenclature_symbol",
+          "format_text": "wntD",
+          "display_text": "wntD",
+          "internal": false
+        },
+        "gene_type": "SO:0001217",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "gene_functional_gene_set_association_object": {
+        "curie": "FB:FBgg0000162",
+        "full_name": "WNTs",
+        "symbol": "WNT",
+        "taxon": "NCBITaxon:7227",
+        "data_provider": {
+          "abbreviation": "FB",
+          "full_name": "FlyBase",
+          "short_name": "FlyBase",
+          "internal": false
+        },
+        "internal": false
+      },
+      "relation": "is_member_of",
+      "evidence": [
+        {
+          "curie": "FB:FBrf0217047",
+          "internal": false
+        },
+        {
+          "curie": "FB:FBrf0141722",
+          "internal": false
+        }
+      ],
+      "internal": false
+    }
+  ],
+  "related_sets": [
+    {
+      "curie": "FB:FBgg0000090",
+      "primary_external_id": "FB:FBgg0000090",
+      "full_name": "FRIZZLED-TYPE RECEPTORS",
+      "symbol": "FZ",
+      "taxon": "NCBITaxon:7227",
+      "data_provider": {
+        "abbreviation": "FB",
+        "full_name": "FlyBase",
+        "short_name": "FlyBase",
+        "internal": false
+      },
+      "internal": false
+    },
+    {
+      "curie": "FB:FBgg0000890",
+      "primary_external_id": "FB:FBgg0000890",
+      "full_name": "WNT-TCF SIGNALING PATHWAY CORE COMPONENTS",
+      "symbol": "WNT-TCFC",
+      "taxon": "NCBITaxon:7227",
+      "data_provider": {
+        "abbreviation": "FB",
+        "full_name": "FlyBase",
+        "short_name": "FlyBase",
+        "internal": false
+      },
+      "internal": false
+    }
+  ]
+}
