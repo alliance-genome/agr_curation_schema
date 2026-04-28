@@ -12,7 +12,7 @@ imports:
   - linkml:types
   - ontologyTerm
   - affectedGenomicModel
-  - pcr_product
+  - pcrProduct
   - phenotypeAndDiseaseAnnotation
   - variantDTO
   - biologicalEntitySet

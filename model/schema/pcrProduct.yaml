@@ -1,5 +1,5 @@
-id: https://github.com/alliance-genome/agr_curation_schema/src/schema/pcr_product.yaml
-name: pcr_product
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/pcrProduct.yaml
+name: pcrProduct
 title: PCR Product
 
 imports:
@@ -153,8 +153,6 @@ classes:
       - genomic_entity_identifier
       - note_dtos
     slot_usage:
-      pcr_product_identifier:
-        required: true
       genomic_entity_identifier:
         required: true
 
@@ -183,6 +181,9 @@ slots:
     description: >-
       The PCR assay method used to generate the product (e.g., touchdown PCR,
       nested PCR). Adapts the ACEDB Method tag.
+    notes: >-
+      The pcr_assay_method should be a VocabularyTerm from the
+      'PCR Assay Method' CV.
     range: VocabularyTerm
     required: false
     multivalued: false
@@ -205,6 +206,7 @@ slots:
     range: string
     required: false
     multivalued: false
+    domain: PCRProduct
 
   pcr_product_genomic_entity_associations:
     description: >-
