@@ -207,6 +207,7 @@ SCHEMA_TEST_EXAMPLES := \
 	genome_assembly_test \
 	high_throughput_expression_test \
 	ontology_closure_test \
+	pcr_product_test \
 	phenotype_agm_test \
 	phenotype_allele_test \
 	phenotype_gene_test \
@@ -225,6 +226,7 @@ SCHEMA_TEST_EXAMPLES_INVALID := \
 	allele_invalid \
 	disease_allele_invalid \
 	missing_version \
+	pcr_product_invalid \
 	variant_invalid \
 
 .PHONY: test-jsonschema

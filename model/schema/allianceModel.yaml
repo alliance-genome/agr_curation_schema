@@ -47,6 +47,7 @@ imports:
   - linkml:types
   - modCorpusAssociation
   - ontologyTerm
+  - pcr_product
   - phenotypeAndDiseaseAnnotation
   - reagent
   - reference
