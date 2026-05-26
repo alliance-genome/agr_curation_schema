@@ -1,0 +1,78 @@
+{
+  "linkml_version": "2.0.0",
+  "gene_expression_experiment_ingest_set": [
+    {
+      "gene_identifier": "ZFIN:ZDB-GENE-010226-1",
+      "expression_assay_curie": "MMO:0000658",
+      "reference_curie": "PMID:12345678",
+      "specimen_genomic_model_identifier": "ZFIN:ZDB-GENO-960809-7",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "ZFIN",
+        "internal": false
+      },
+      "created_by_curie": "ZFIN",
+      "updated_by_curie": "ZFIN",
+      "internal": false,
+      "expression_annotation_dtos": [
+        {
+          "gene_identifier": "ZFIN:ZDB-GENE-010226-1",
+          "evidence_curie": "PMID:12345678",
+          "when_expressed_stage_name": "Prim-5",
+          "where_expressed_statement": "expressed throughout the developing brain",
+          "negated": false,
+          "uncertain": false,
+          "relation_name": "expressed_in",
+          "related_figure_identifiers": [
+            "Fig. 1A",
+            "Fig. 1B"
+          ],
+          "data_provider_dto": {
+            "source_organization_abbreviation": "ZFIN",
+            "internal": false
+          },
+          "created_by_curie": "ZFIN",
+          "updated_by_curie": "ZFIN",
+          "internal": false,
+          "expression_pattern_dto": {
+            "when_expressed_dto": {
+              "developmental_stage_start_curie": "ZFS:0000033",
+              "when_expressed_free_text": "approximately 24 hours post fertilization",
+              "internal": false
+            },
+            "where_expressed_dto": {
+              "anatomical_structure_curie": "ZFA:0000008",
+              "anatomical_structure_uberon_term_curies": [
+                "UBERON:0000955"
+              ],
+              "where_expressed_free_text": "anterior region of the developing brain, with stronger signal in the telencephalon",
+              "internal": false
+            },
+            "internal": false
+          }
+        },
+        {
+          "gene_identifier": "ZFIN:ZDB-GENE-010226-1",
+          "evidence_curie": "PMID:12345678",
+          "when_expressed_stage_name": "Long-pec",
+          "where_expressed_statement": "expressed in the somites",
+          "relation_name": "expressed_in",
+          "data_provider_dto": {
+            "source_organization_abbreviation": "ZFIN",
+            "internal": false
+          },
+          "created_by_curie": "ZFIN",
+          "updated_by_curie": "ZFIN",
+          "internal": false,
+          "expression_pattern_dto": {
+            "where_expressed_dto": {
+              "cellular_component_curie": "GO:0005634",
+              "where_expressed_free_text": "nuclei of differentiating myocytes",
+              "internal": false
+            },
+            "internal": false
+          }
+        }
+      ]
+    }
+  ]
+}

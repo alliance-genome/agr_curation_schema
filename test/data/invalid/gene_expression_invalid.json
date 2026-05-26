@@ -1,0 +1,41 @@
+{
+  "linkml_version": "2.0.0",
+  "gene_expression_experiment_ingest_set": [
+    {
+      "reference_curie": "PMID:12345678",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "ZFIN",
+        "internal": false
+      },
+      "created_by_curie": "ZFIN",
+      "updated_by_curie": "ZFIN",
+      "internal": false,
+      "expression_annotation_dtos": [
+        {
+          "gene_identifier": "ZFIN:ZDB-GENE-010226-1",
+          "when_expressed_stage_name": "Prim-5",
+          "relation_name": "expressed_in",
+          "evidence_curie": "PMID:12345678",
+          "data_provider_dto": {
+            "source_organization_abbreviation": "ZFIN",
+            "internal": false
+          },
+          "created_by_curie": "ZFIN",
+          "updated_by_curie": "ZFIN",
+          "internal": false,
+          "expression_pattern_dto": {
+            "when_expressed_dto": {
+              "when_expressed_free_text": "early larval stage",
+              "internal": false
+            },
+            "where_expressed_dto": {
+              "where_expressed_free_text": "somewhere in the embryo",
+              "internal": false
+            },
+            "internal": false
+          }
+        }
+      ]
+    }
+  ]
+}

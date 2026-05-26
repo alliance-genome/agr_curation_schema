@@ -267,6 +267,7 @@ classes:
       - age
       - temporal_qualifiers
       - stage_uberon_slim_terms
+      - when_expressed_free_text
 
   TemporalContextDTO:
     is_a: AuditedObjectDTO
@@ -279,6 +280,7 @@ classes:
       - age
       - temporal_qualifier_names
       - stage_uberon_slim_term_curies
+      - when_expressed_free_text
 
   AnatomicalSite:
     is_a: AuditedObject
@@ -297,6 +299,7 @@ classes:
       - cellular_component_qualifiers
       - anatomical_structure_uberon_term_other
       - anatomical_substructure_uberon_term_other
+      - where_expressed_free_text
     rules:
       - postconditions:
           any_of:
@@ -309,7 +312,7 @@ classes:
           description: At least one of anatomical_structure or cellular_component should be populated.
 
   AnatomicalSiteDTO:
-    is_a: AuditedObject
+    is_a: AuditedObjectDTO
     description: >-
       The set of terms that define a specific anatomical site within a specimen.
     slots:
@@ -321,6 +324,7 @@ classes:
       - anatomical_substructure_uberon_term_curies
       - cellular_component_curie
       - cellular_component_qualifier_curies
+      - where_expressed_free_text
     rules:
       - postconditions:
           any_of:
@@ -331,6 +335,86 @@ classes:
                 cellular_component_curie:
                   required: true
           description: At least one of anatomical_structure_curie or cellular_component_curie should be populated.
+
+  ExpressionPatternDTO:
+    is_a: AuditedObjectDTO
+    description: >-
+      DTO for an ExpressionPattern, capturing the spatial and temporal aspects
+      of an expression annotation.
+    slots:
+      - when_expressed_dto
+      - where_expressed_dto
+
+  GeneExpressionExperimentDTO:
+    is_a: SubmittedObjectDTO
+    description: >-
+      DTO class for the GeneExpressionExperiment class. The experimental design
+      used to determine the expression of a Gene. Member annotations are
+      provided inline via expression_annotation_dtos so submitters do not need
+      to back-reference the parent experiment by identifier.
+    slots:
+      - cross_reference_dtos
+      - reference_curie
+      - gene_identifier
+      - expression_assay_curie
+      - detection_reagent_identifiers
+      - specimen_genomic_model_identifier
+      - specimen_allele_identifiers
+      - condition_relation_dtos
+      - expression_annotation_dtos
+    slot_usage:
+      gene_identifier:
+        description: >-
+          The Gene that is assayed in the GeneExpressionExperiment.
+        required: true
+      reference_curie:
+        description: >-
+          The single Reference that supports the GeneExpressionExperiment.
+        required: true
+      expression_assay_curie:
+        description: >-
+          The assay used to experimentally determine gene expression in this
+          experiment.
+        required: true
+      expression_annotation_dtos:
+        description: >-
+          The GeneExpressionAnnotationDTOs that belong to this experiment.
+
+  GeneExpressionAnnotationDTO:
+    is_a: AnnotationDTO
+    description: >-
+      DTO class for the GeneExpressionAnnotation class. An annotation
+      describing an expression pattern for a gene, supported by a single
+      Reference (via the inherited evidence_curie slot).
+    slots:
+      - gene_identifier
+      - expression_pattern_dto
+      - when_expressed_stage_name
+      - where_expressed_statement
+      - negated
+      - uncertain
+      - relation_name
+      - cross_reference_dtos
+      - related_figure_identifiers
+    slot_usage:
+      gene_identifier:
+        description: >-
+          The gene to which the expression annotation applies.
+        required: true
+      evidence_curie:
+        description: >-
+          Curie of the single Reference that supports the
+          GeneExpressionAnnotation.
+        required: true
+      where_expressed_statement:
+        required: true
+      when_expressed_stage_name:
+        required: true
+      relation_name:
+        description: >-
+          The relationship type between the gene and the expression pattern.
+          Expected to be constrained to "expressed_in" for gene expression
+          annotations.
 
   ExpressionAnnotationAssociation:
     is_a: EvidenceAssociation
@@ -777,3 +861,98 @@ slots:
     range: string
     multivalued: false
     required: true
+
+  where_expressed_free_text:
+    description: >-
+      Free-text description of the anatomical site where the entity is
+      expressed. To be used when controlled ontology terms are insufficient
+      to capture the spatial expression pattern.
+    range: string
+    multivalued: false
+    required: false
+
+  when_expressed_free_text:
+    description: >-
+      Free-text description of the developmental stage and/or age at which the
+      entity is expressed. To be used when controlled ontology terms are
+      insufficient to capture the temporal expression pattern.
+    range: string
+    multivalued: false
+    required: false
+
+  when_expressed_dto:
+    description: >-
+      The temporal aspect of an ExpressionPatternDTO.
+    domain: ExpressionPatternDTO
+    range: TemporalContextDTO
+    multivalued: false
+    required: false
+    inlined: true
+
+  where_expressed_dto:
+    description: >-
+      The spatial aspect of an ExpressionPatternDTO.
+    domain: ExpressionPatternDTO
+    range: AnatomicalSiteDTO
+    multivalued: false
+    required: true
+    inlined: true
+
+  expression_pattern_dto:
+    description: >-
+      The spatiotemporal expression pattern of an expression annotation, as a
+      DTO.
+    domain: GeneExpressionAnnotationDTO
+    range: ExpressionPatternDTO
+    multivalued: false
+    required: true
+    inlined: true
+
+  detection_reagent_identifiers:
+    description: >-
+      Identifiers (curie/primary_external_id/mod_internal_id) of the reagents
+      used in the expression assay: e.g., construct, antibodies, probes.
+    domain: GeneExpressionExperimentDTO
+    range: string
+    multivalued: true
+    required: false
+
+  specimen_genomic_model_identifier:
+    description: >-
+      Identifier (curie/primary_external_id/mod_internal_id) of the
+      AffectedGenomicModel that defines the specimen assayed.
+    domain: GeneExpressionExperimentDTO
+    range: string
+    multivalued: false
+    required: false
+
+  specimen_allele_identifiers:
+    description: >-
+      Identifiers (curie/primary_external_id/mod_internal_id) of the Allele(s)
+      of the specimen assayed.
+    domain: GeneExpressionExperimentDTO
+    range: string
+    multivalued: true
+    required: false
+
+  related_figure_identifiers:
+    description: >-
+      Identifiers of the figures that support the ExpressionAnnotation. Values
+      may be either Alliance Figure curies or free-text figure labels (e.g.,
+      "Fig. 1A") when no Figure object identifier is available.
+    domain: GeneExpressionAnnotationDTO
+    range: string
+    multivalued: true
+    required: false
+
+  expression_annotation_dtos:
+    description: >-
+      The list of GeneExpressionAnnotationDTOs grouped under a single
+      GeneExpressionExperimentDTO. Annotations are inlined here so submitters
+      do not need to back-reference the parent experiment by identifier.
+    domain: GeneExpressionExperimentDTO
+    range: GeneExpressionAnnotationDTO
+    multivalued: true
+    required: true
+    inlined: true
+    inlined_as_list: true
