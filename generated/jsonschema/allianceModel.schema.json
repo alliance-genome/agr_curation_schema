@@ -22184,7 +22184,7 @@
         },
         "GeneChangeEventSlotAnnotation": {
             "additionalProperties": false,
-            "description": "A major change to a gene: e.g., new, merge, split, rename, deprecation, type_change.",
+            "description": "A major change to a gene: e.g., new, merge, split, rename, deprecation.",
             "properties": {
                 "acquires_in_merge": {
                     "description": "For an entity that persists through a merge, the list of entities that it subsumes in a given NomenclatureEvent.",
@@ -22361,7 +22361,7 @@
         },
         "GeneChangeEventSlotAnnotationDTO": {
             "additionalProperties": false,
-            "description": "A major change to a gene: e.g., new, merge, split, rename, deprecation, type_change (DTO class).",
+            "description": "A major change to a gene: e.g., new, merge, split, rename, deprecation (DTO class).",
             "properties": {
                 "acquires_in_merge_curies": {
                     "description": "Curies of the entities subsumed by an entity that persists through a merge.",
