@@ -183,8 +183,7 @@ classes:
   GeneChangeEventSlotAnnotation:
     is_a: ChangeEventSlotAnnotation
     description: >-
-      A major change to a gene: e.g., new, merge, split, rename, deprecation,
-      type_change.
+      A major change to a gene: e.g., new, merge, split, rename, deprecation.
     slots:
       - single_gene
     slot_usage:
@@ -206,8 +205,8 @@ classes:
   GeneChangeEventSlotAnnotationDTO:
     is_a: ChangeEventSlotAnnotationDTO
     description: >-
-      A major change to a gene: e.g., new, merge, split, rename, deprecation,
-      type_change (DTO class).
+      A major change to a gene: e.g., new, merge, split, rename, deprecation
+      (DTO class).
     slots:
       - gene_identifier
     slot_usage:

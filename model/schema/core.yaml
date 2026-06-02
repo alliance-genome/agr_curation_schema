@@ -397,7 +397,6 @@ classes:
       deprecation - The entity was made obsolete. This may include objects
       deprecated by some merge/split event.
       rename - A current accepted name of the entity was changed.
-      type_change - The entity type was changed.
       Proposed status vocabulary: provisional/approved.
     slots:
       - event_type
