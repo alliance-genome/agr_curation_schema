@@ -1,0 +1,48 @@
+name: Claude Code Review
+
+# Automated Claude Code review for schema pull requests.
+#
+# This is a thin caller; the review logic lives in the org-wide reusable workflow
+# in alliance-genome/.github. The model (Opus) and the Anthropic API key are
+# inherited from the organization:
+#   - vars.CLAUDE_PR_REVIEW_MODEL  (org Actions variable, currently Claude Opus)
+#   - secrets.ANTHROPIC_API_KEY    (org secret)
+# We deliberately do NOT pin a model here so this repo tracks the org's chosen
+# Opus version automatically.
+#
+# Per-repo review guidance is read by the reviewer from REVIEW.md (rubric) and
+# CLAUDE.md (project context) in the repo root.
+#
+# Auto-review runs when a PR is opened. To request a re-review after pushing
+# changes, comment "@claude review my changes" on the PR.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  issue_comment:
+    types: [created]
+
+jobs:
+  claude-review:
+    # Auto-review only on PR open (cost control); @claude comments trigger re-reviews.
+    if: |
+      (github.event_name == 'pull_request' && github.event.action == 'opened') ||
+      (github.event_name == 'issue_comment' && github.event.issue.pull_request)
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+      id-token: write   # required by the reusable workflow
+      actions: read     # lets the reviewer read CI results
+    uses: alliance-genome/.github/.github/workflows/claude-code-review.yml@main
+    with:
+      review_focus: >-
+        Correctness and consistency of LinkML curation-schema changes: class / slot /
+        enum definitions, inheritance and slot_usage, required-vs-optional and
+        cardinality constraints, identifier rules (curie / primary_external_id /
+        mod_entity_id), and especially DTO (ingest) divergence from the entity model.
+        Follow REVIEW.md in this repo for the detailed rubric and for which items to
+        assert vs. ask about.
+      trigger_phrase: '@claude'
+    secrets:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
