@@ -67,7 +67,7 @@ classes:
       - specimen_alleles
       - condition_relations
       - related_notes
-      - expression_annotations    # For non-DTO only; for data submission, relate via ExpressionAnnotationDTO.from_expression_experiment instead.
+      - expression_annotations
     rules:
       - postconditions:
           any_of:
@@ -101,7 +101,7 @@ classes:
           is available. Can be constructed at the MOD just for submission.
 
   ExpressionAnnotation:
-    is_a: Annotation
+    is_a: Association
     abstract: true
     description: >-
       An annotation asserting an association between some entity and an
@@ -109,8 +109,6 @@ classes:
       aspects of this object comprise all slots (possibly excepting figure and
       image information).
     slots:
-      # from_expression_experiment   # For DTO only; for database, relate via non-DTO ExpressionExperiment.expression_annotations instead.
-      - expression_annotation_subject
       - expression_pattern
       - when_expressed_stage_name
       - where_expressed_statement
@@ -118,6 +116,14 @@ classes:
       - uncertain
       - related_figures
       - expression_annotation_image_associations
+      # The slots below were formerly inherited via Annotation.
+      # ExpressionAnnotation now inherits directly from Association, so the
+      # ones we want to keep are declared explicitly here.
+      - curie
+      - unique_id
+      - primary_external_id
+      - mod_internal_id
+      - related_notes
     slot_usage:
       relation:
         description: >-
@@ -127,41 +133,33 @@ classes:
         notes: >-
           Slot is inherited from Association class.
         range: VocabularyTerm
-      # FUTURE ACTION ITEM: Accommodate WB annotations with non-Reference evidence.
-      single_reference:
-        description: >-
-          The single Reference that supports the ExpressionAnnotation.
-        notes: >-
-          Will not be editable in the curation interface.
-          Slot is inherited from SingleReferenceAssociation class.
-        required: true
-        range: Reference
       curie:
         description: >-
           The Alliance-minted ID for the ExpressionAnnotation.
         notes: >-
-          Slot is inherited from Annotation class.
+          Declared directly on ExpressionAnnotation (formerly inherited from
+          Annotation).
       unique_id:
         description: >-
           Unique identifier for the ExpressionAnnotation. Will be generated at
           AGR if not submitted by the model organism database.
         notes: >-
-          Slot is inherited from Annotation class.
+          Declared directly on ExpressionAnnotation (formerly inherited from
+          Annotation).
       primary_external_id:
         description: >-
           The primary external (non-AGRKB) database identifier/curie for the
           ExpressionAnnotation.
         notes: >-
-          Slot is inherited from Annotation class.
+          Declared directly on ExpressionAnnotation (formerly inherited from
+          Annotation).
       mod_internal_id:
         description: >-
           The model organism database internal identifier for the
           ExpressionAnnotation.
         notes: >-
-          Slot is inherited from Annotation class.
-      data_provider:
-        notes: >-
-          Slot is inherited from Annotation class.
+          Declared directly on ExpressionAnnotation (formerly inherited from
+          Annotation).
       # FUTURE ACTION ITEM: Enumerate note types for this annotation level (xprn WG).
       # FUTURE ACTION ITEM: Is it better to have ExpressionAnnotation-level notes of
       #                     various types, or, add related_notes slots to specific
@@ -173,7 +171,8 @@ classes:
           cellular_component, annotation-level, etc. Appropriate VocabularyTerms
           will need to be created: expression_annotation_note, etc.
         notes: >-
-          Slot is inherited from Annotation class.
+          Declared directly on ExpressionAnnotation (formerly inherited from
+          Annotation).
       related_figures:
         description: >-
           The figure(s) that support(s) the expression annotation.
@@ -193,15 +192,15 @@ classes:
   GeneExpressionAnnotation:
     is_a: ExpressionAnnotation
     slots:
-     - cross_references
+      - cross_references
     description: >-
       An annotation describing an expression pattern for a gene.
     notes: >-
-      A mapping of the agr_schemas (FMS) model to this LinkML model:
-      geneId (REQUIRED):                                                  ExpressionAnnotation.expression_annotation_subject
+      A mapping of the agr_schemas (FMS) model to this LinkML model; note some properties map to ExpressionExperiment:
+      geneId (REQUIRED):                                                  GeneExpressionExperiment.entity_assayed
       assay (REQUIRED):                                                   ExpressionExperiment.expression_assay_used
-      evidence (REQUIRED):                                                ExpressionAnnotation.single_reference (SingleReferenceAssociation -> Annotation -> ExpressionAnnotation)
-      dateAssigned (REQUIRED):                                            ExpressionAnnotation.date_created (AuditedObject -> Association -> SingleReferenceAssociation -> Annotation -> ExpressionAnnotation)
+      evidence (REQUIRED):                                                ExpressionExperiment.single_reference
+      dateAssigned (REQUIRED):                                            ExpressionAnnotation.date_created (AuditedObject -> Association -> ExpressionAnnotation)
       whenExpressed.stageName (REQUIRED):                                 ExpressionAnnotation.when_expressed_stage_name
       whenExpressed.stageTermId:                                          ExpressionAnnotation.expression_pattern (ExpressionPattern.TemporalContext.developmental_stage_start)
       whenExpressed.stageUberonSlimTerm:                                  ExpressionAnnotation.expression_pattern (ExpressionPattern.TemporalContext.stage_uberon_slim_terms)
@@ -225,18 +224,12 @@ classes:
       New required slots: relation.
       New non-required slots: curie, unique_id, primary_external_id, mod_internal_id,
       related_notes, expression_qualifiers, negated, uncertain,
-      related_figures, expression_annotation_image_associations,
-      condition_relations.
+      related_figures, expression_annotation_image_associations.
     slot_usage:
-      expression_annotation_subject:
-        description: >-
-          The gene to which the expression annotation applies.
-        range: Gene
-      # ACTION ITEM: Create is_expressed_in VocabularyTerm (Daniela).
       relation:
         description: >-
-          For a gene, the relation should be constrained to the expresssed_in
-          VocabularyTerm.
+          For a gene, the relation should be constrained to the "is_expressed_in"
+          VocabularyTerm from the vocabulary "Expression Relation"
       cross_references:
         description: >-
           list of cross references for an annotation (e.g. WBExpr variables, ZFIN figures, MGI assays)
@@ -385,13 +378,13 @@ classes:
           The GeneExpressionAnnotationDTOs that belong to this experiment.
 
   GeneExpressionAnnotationDTO:
-    is_a: AnnotationDTO
+    is_a: AuditedObjectDTO
     description: >-
       DTO class for the GeneExpressionAnnotation class. An annotation
-      describing an expression pattern for a gene, supported by a single
-      Reference (via the inherited evidence_curie slot).
+      describing an expression pattern for a gene. The annotated gene and the
+      supporting Reference are provided once at the
+      GeneExpressionExperimentDTO level and are not repeated on each annotation.
     slots:
-      - gene_identifier
       - expression_pattern_dto
       - when_expressed_stage_name
       - where_expressed_statement
@@ -400,16 +393,12 @@ classes:
       - relation_name
       - cross_reference_dtos
       - related_figure_identifiers
+      # Formerly inherited via AnnotationDTO; retained here now that this class
+      # inherits directly from AuditedObjectDTO.
+      - mod_internal_id
+      - primary_external_id
+      - note_dtos
     slot_usage:
-      gene_identifier:
-        description: >-
-          The gene to which the expression annotation applies.
-        required: true
-      evidence_curie:
-        description: >-
-          Curie of the single Reference that supports the
-          GeneExpressionAnnotation.
-        required: true
       where_expressed_statement:
         required: true
       when_expressed_stage_name:
@@ -417,7 +406,7 @@ classes:
       relation_name:
         description: >-
           The relationship type between the gene and the expression pattern.
-          Expected to be constrained to "expressed_in" for gene expression
+          Expected to be constrained to "is_expressed_in" for gene expression
           annotations.
 
   ExpressionAnnotationAssociation:

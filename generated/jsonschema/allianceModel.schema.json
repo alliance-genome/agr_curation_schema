@@ -23544,15 +23544,6 @@
             "additionalProperties": false,
             "description": "An annotation describing an expression pattern for a gene.",
             "properties": {
-                "condition_relations": {
-                    "items": {
-                        "$ref": "#/$defs/ConditionRelation"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": [
@@ -23576,21 +23567,6 @@
                         "string",
                         "null"
                     ]
-                },
-                "data_provider": {
-                    "$ref": "#/$defs/Organization",
-                    "description": "The organization (e.g. MOD) from which the data was sourced"
-                },
-                "data_provider_cross_reference": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/CrossReference"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "CrossReference to the organization from which the data was sourced"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -23624,17 +23600,6 @@
                         "null"
                     ]
                 },
-                "evidence_item": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/InformationContentEntity"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Single item of evidence that supports some assertion."
-                },
                 "expression_annotation_image_associations": {
                     "description": "Images for the ExpressionAnnotation.",
                     "items": {
@@ -23644,10 +23609,6 @@
                         "array",
                         "null"
                     ]
-                },
-                "expression_annotation_subject": {
-                    "$ref": "#/$defs/Gene",
-                    "description": "The gene to which the expression annotation applies."
                 },
                 "expression_pattern": {
                     "$ref": "#/$defs/ExpressionPattern",
@@ -23706,7 +23667,7 @@
                     ]
                 },
                 "relation": {
-                    "description": "For a gene, the relation should be constrained to the expresssed_in VocabularyTerm.",
+                    "description": "For a gene, the relation should be constrained to the \"is_expressed_in\" VocabularyTerm from the vocabulary \"Expression Relation\"",
                     "type": "string"
                 },
                 "uncertain": {
@@ -23740,11 +23701,9 @@
                 }
             },
             "required": [
-                "expression_annotation_subject",
                 "expression_pattern",
                 "when_expressed_stage_name",
                 "where_expressed_statement",
-                "data_provider",
                 "relation",
                 "internal"
             ],
@@ -23753,17 +23712,8 @@
         },
         "GeneExpressionAnnotationDTO": {
             "additionalProperties": false,
-            "description": "DTO class for the GeneExpressionAnnotation class. An annotation describing an expression pattern for a gene, supported by a single Reference (via the inherited evidence_curie slot).",
+            "description": "DTO class for the GeneExpressionAnnotation class. An annotation describing an expression pattern for a gene. The annotated gene and the supporting Reference are provided once at the GeneExpressionExperimentDTO level and are not repeated on each annotation.",
             "properties": {
-                "condition_relation_dtos": {
-                    "items": {
-                        "$ref": "#/$defs/ConditionRelationDTO"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "created_by_curie": {
                     "description": "Curie of the Person object representing the individual that created the entity",
                     "type": [
@@ -23779,10 +23729,6 @@
                         "array",
                         "null"
                     ]
-                },
-                "data_provider_dto": {
-                    "$ref": "#/$defs/DataProviderDTO",
-                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
                 },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
@@ -23816,17 +23762,9 @@
                         "null"
                     ]
                 },
-                "evidence_curie": {
-                    "description": "Curie of the single Reference that supports the GeneExpressionAnnotation.",
-                    "type": "string"
-                },
                 "expression_pattern_dto": {
                     "$ref": "#/$defs/ExpressionPatternDTO",
                     "description": "The spatiotemporal expression pattern of an expression annotation, as a DTO."
-                },
-                "gene_identifier": {
-                    "description": "The gene to which the expression annotation applies.",
-                    "type": "string"
                 },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
@@ -23880,7 +23818,7 @@
                     ]
                 },
                 "relation_name": {
-                    "description": "The relationship type between the gene and the expression pattern. Expected to be constrained to \"expressed_in\" for gene expression annotations.",
+                    "description": "The relationship type between the gene and the expression pattern. Expected to be constrained to \"is_expressed_in\" for gene expression annotations.",
                     "type": "string"
                 },
                 "uncertain": {
@@ -23907,13 +23845,10 @@
                 }
             },
             "required": [
-                "gene_identifier",
                 "expression_pattern_dto",
                 "when_expressed_stage_name",
                 "where_expressed_statement",
                 "relation_name",
-                "data_provider_dto",
-                "evidence_curie",
                 "internal"
             ],
             "title": "GeneExpressionAnnotationDTO",

@@ -15,21 +15,15 @@
       "internal": false,
       "expression_annotation_dtos": [
         {
-          "gene_identifier": "ZFIN:ZDB-GENE-010226-1",
-          "evidence_curie": "PMID:12345678",
           "when_expressed_stage_name": "Prim-5",
           "where_expressed_statement": "expressed throughout the developing brain",
           "negated": false,
           "uncertain": false,
-          "relation_name": "expressed_in",
+          "relation_name": "is_expressed_in",
           "related_figure_identifiers": [
             "Fig. 1A",
             "Fig. 1B"
           ],
-          "data_provider_dto": {
-            "source_organization_abbreviation": "ZFIN",
-            "internal": false
-          },
           "created_by_curie": "ZFIN",
           "updated_by_curie": "ZFIN",
           "internal": false,
@@ -51,15 +45,9 @@
           }
         },
         {
-          "gene_identifier": "ZFIN:ZDB-GENE-010226-1",
-          "evidence_curie": "PMID:12345678",
           "when_expressed_stage_name": "Long-pec",
           "where_expressed_statement": "expressed in the somites",
-          "relation_name": "expressed_in",
-          "data_provider_dto": {
-            "source_organization_abbreviation": "ZFIN",
-            "internal": false
-          },
+          "relation_name": "is_expressed_in",
           "created_by_curie": "ZFIN",
           "updated_by_curie": "ZFIN",
           "internal": false,
