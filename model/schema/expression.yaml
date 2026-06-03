@@ -323,7 +323,11 @@ classes:
       - anatomical_substructure_qualifier_curies
       - anatomical_substructure_uberon_term_curies
       - cellular_component_curie
+      - cellular_component_ribbon_term_curies
+      - cellular_component_other
       - cellular_component_qualifier_curies
+      - anatomical_structure_uberon_term_other
+      - anatomical_substructure_uberon_term_other
       - where_expressed_free_text
     rules:
       - postconditions:
@@ -614,24 +618,29 @@ slots:
     range: GOTerm
     multivalued: true
 
+  cellular_component_ribbon_term_curies:
+    description: >-
+      The primary cellular component slim term referred to within the context of an AnatomicalSite object and used by the expression ribbon. The range
+      is any string representing a GOTerm ontology term.
+    domain: AnatomicalSiteDTO
+    range: string
+    multivalued: true
+
   cellular_component_other:
     description: >-
       Is set to true when no cellular_component_ribbon_terms are available
-    domain: AnatomicalSite
     range: boolean
     multivalued: false
 
   anatomical_structure_uberon_term_other:
     description: >-
       Is set to true when other categorized uberon term is submitted in anatomical_structure_uberon_terms
-    domain: AnatomicalSite
     range: boolean
     multivalued: false
 
   anatomical_substructure_uberon_term_other:
     description: >-
       Is set to true when other categorized uberon term is submitted in anatomical_substructure_uberon_terms
-    domain: AnatomicalSite
     range: boolean
     multivalued: false
 
@@ -937,9 +946,7 @@ slots:
 
   related_figure_identifiers:
     description: >-
-      Identifiers of the figures that support the ExpressionAnnotation. Values
-      may be either Alliance Figure curies or free-text figure labels (e.g.,
-      "Fig. 1A") when no Figure object identifier is available.
+      Identifiers of the figures that support the ExpressionAnnotation.
     domain: GeneExpressionAnnotationDTO
     range: string
     multivalued: true
