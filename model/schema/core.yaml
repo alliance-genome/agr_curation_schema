@@ -411,6 +411,11 @@ classes:
       - symbol_renamed_from
       - full_name_renamed_to
       - full_name_renamed_from
+    slot_usage:
+      event_status:
+        required: false
+      current_version:
+        required: false
 
   ChangeEventSlotAnnotationDTO:
     is_a: SlotAnnotationDTO
@@ -431,6 +436,11 @@ classes:
       - symbol_renamed_from
       - full_name_renamed_to
       - full_name_renamed_from
+    slot_usage:
+      event_status_name:
+        required: false
+      current_version:
+        required: false
 
   Association:
     is_a: AuditedObject
@@ -1096,7 +1106,6 @@ slots:
       Status for an event change: provisional or approved.
     range: VocabularyTerm
     multivalued: false
-    required: true
 
   event_status_name:
     description: >-
@@ -1104,7 +1113,6 @@ slots:
       provisional or approved.
     range: string
     multivalued: false
-    required: true
 
   current_version:
     description: >-
@@ -1112,7 +1120,6 @@ slots:
       It starts at one, and is incremented by one with every major change.
     range: integer
     multivalued: false
-    required: true
 
   acquires_in_merge:
     description: >-
