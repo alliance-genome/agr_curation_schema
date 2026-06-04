@@ -1106,7 +1106,6 @@ slots:
       Status for an event change: provisional or approved.
     range: VocabularyTerm
     multivalued: false
-    required: true
 
   event_status_name:
     description: >-
@@ -1114,7 +1113,6 @@ slots:
       provisional or approved.
     range: string
     multivalued: false
-    required: true
 
   current_version:
     description: >-
@@ -1122,7 +1120,6 @@ slots:
       It starts at one, and is incremented by one with every major change.
     range: integer
     multivalued: false
-    required: true
 
   acquires_in_merge:
     description: >-
