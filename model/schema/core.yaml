@@ -411,6 +411,11 @@ classes:
       - symbol_renamed_from
       - full_name_renamed_to
       - full_name_renamed_from
+    slot_usage:
+      event_status:
+        required: false
+      current_version:
+        required: false
 
   ChangeEventSlotAnnotationDTO:
     is_a: SlotAnnotationDTO
@@ -431,6 +436,11 @@ classes:
       - symbol_renamed_from
       - full_name_renamed_to
       - full_name_renamed_from
+    slot_usage:
+      event_status_name:
+        required: false
+      current_version:
+        required: false
 
   Association:
     is_a: AuditedObject

@@ -189,10 +189,6 @@ classes:
     slot_usage:
       single_gene:
         required: true
-      event_status:
-        required: false
-      current_version:
-        required: false
       acquires_in_merge:
         range: Gene
       merged_into:
@@ -216,10 +212,6 @@ classes:
     slot_usage:
       gene_identifier:
         required: true
-      event_status_name:
-        required: false
-      current_version:
-        required: false
 
   GeneOntologyAnnotation:
     is_a: AuditedObject
