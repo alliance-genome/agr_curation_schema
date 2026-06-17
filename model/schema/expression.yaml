@@ -68,6 +68,11 @@ classes:
       - condition_relations
       - related_notes
       - expression_annotations
+    slot_usage:
+      single_reference:
+        description: >-
+          The single Reference that supports the GeneExpressionExperiment.
+        required: true
     rules:
       - postconditions:
           any_of:

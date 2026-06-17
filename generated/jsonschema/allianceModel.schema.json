@@ -23999,15 +23999,8 @@
                     ]
                 },
                 "single_reference": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Reference"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "holds between an object and a single reference"
+                    "$ref": "#/$defs/Reference",
+                    "description": "The single Reference that supports the GeneExpressionExperiment."
                 },
                 "specimen_alleles": {
                     "description": "The Allele(s) of the specimen assayed.",
@@ -24046,6 +24039,7 @@
                 }
             },
             "required": [
+                "single_reference",
                 "entity_assayed",
                 "expression_assay_used",
                 "expression_annotations",
