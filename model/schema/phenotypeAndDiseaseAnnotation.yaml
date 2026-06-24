@@ -88,23 +88,10 @@ classes:
     is_a: AuditedObject
     description: >-
       An entity that is affected by a phenotype.
-    attributes:
-      location:
-        description: >-
-          The anatomical site that is affected by a phenotype.
-        range: AnatomicalSite
-      stage:
-        description: >-
-          The developmental stage that is affected by a phenotye.
-        range: TemporalContext
-      process:
-        description:
-          The biological process that is affected by a phenotype.
-        range: GOTerm
-        comments: >-
-          The model will accept any GO term in any branch, but should one wish to
-          indicate that a phenotype affects a cellular component, this should be
-          done using the location.cellular_component slot rather than here.
+    slots:
+      - phenotype_location
+      - phenotype_stage
+      - phenotype_process
     comments: >-
       In the future, other slots may be added to allow referring to more kinds of
       entities, e.g. a slot with a CHEBITerm range to allow stating that a
@@ -113,71 +100,52 @@ classes:
       - postconditions:
           any_of:
             - slot_conditions:
-                location:
+                phenotype_location:
                   required: true
             - slot_conditions:
-                stage:
+                phenotype_stage:
                   required: true
             - slot_conditions:
-                process:
+                phenotype_process:
                   required: true
 
   AffectedEntityDTO:
     is_a: AuditedObjectDTO
     description: >-
       Ingest class for an entity that is affected by a phenotype.
-    attributes:
-      location_dto:
-        range: AnatomicalSiteDTO
-      stage_dto:
-        range: TemporalContextDTO
-      process_curie:
-        range: string
+    slots:
+      - phenotype_location_dto
+      - phenotype_stage_dto
+      - phenotype_process_curie
     rules:
       - postconditions:
           any_of:
             - slot_conditions:
-                location_dto:
+                phenotype_location_dto:
                   required: true
             - slot_conditions:
-                stage_dto:
+                phenotype_stage_dto:
                   required: true
             - slot_conditions:
-                process_curie:
+                phenotype_process_curie:
                   required: true
 
   PhenotypeQualifier:
     is_a: AuditedObject
     description: >-
       Ontological terms that refine the description of a phenotype.
-    attributes:
-      qualifier_term:
-        description: >-
-          The main ontological term that refines the description of a phenotype.
-        range: OntologicalTerm
-        values_from:
-          - WBPhenotype
-          - APO
-          - FBcv
-          - PATO
-      qualifier_tag:
-        description: >-
-          Similar to qualifier_term, but using a term from a vocabulary
-          rather than a dedicated ontology. Intended for "simple" qualifications
-          such as "abnormal", "ameliorated", "exacerbated", etc.
-        range: VocabularyTerm
-      related_entity:
-        description: >-
-          An affected entity that further refines the description of a phenotype.
-        range: AffectedEntity
+    slots:
+      - phenotype_qualifier_term
+      - phenotype_qualifier_tag
+      - phenotype_related_entity
     rules:
       - postconditions:
           any_of:
             - slot_conditions:
-                qualifier_term:
+                phenotype_qualifier_term:
                   required: true
             - slot_conditions:
-                qualifier_tag:
+                phenotype_qualifier_tag:
                   required: true
 
   PhenotypeQualifierDTO:
@@ -189,8 +157,9 @@ classes:
         range: string
       qualifier_tag_name:
         range: string
-      related_entity:
+      related_entity_dto:
         range: AffectedEntityDTO
+        inlined: true
     rules:
       - postconditions:
           any_of:
@@ -272,8 +241,10 @@ classes:
     attributes:
       affected_entity_dto:
         range: AffectedEntityDTO
+        inlined: true
       qualifier_dto:
         range: PhenotypeQualifierDTO
+        inlined: true
 
   GenePhenotypeAnnotation:
     description: >-
@@ -979,7 +950,96 @@ slots:
     required: true
     domain: PhenotypeAnnotation
     range: BiologicalEntity
-  
+
+  phenotype_location:
+    description: >-
+      The anatomical site that is affected by a phenotype.
+    domain: AffectedEntity
+    range: AnatomicalSite
+
+  phenotype_location_dto:
+    description: >-
+      The anatomical site that is affected by a phenotype (submitted).
+    domain: AffectedEntityDTO
+    range: AnatomicalSiteDTO
+    inlined: true
+
+  phenotype_process:
+    description:
+      The biological process that is affected by a phenotype.
+    domain: AffectedEntity
+    range: GOTerm
+    comments: >-
+      The model will accept any GO term in any branch, but should one wish to
+      indicate that a phenotype affects a cellular component, this should be
+      done using the location.cellular_component slot rather than here.
+
+  phenotype_process_curie:
+    description:
+      The biological process that is affected by a phenotype (submitted).
+    domain: AffectedEntityDTO
+    range: string
+
+  phenotype_qualifier_term:
+    description: >-
+      The main ontological term that refines the description of a phenotype.
+    domain: PhenotypeQualifier
+    range: OntologyTerm
+    values_from:
+      - WBPhenotype
+      - APO
+      - FBcv
+      - PATO
+
+  phenotype_qualifier_term_curie:
+    domain: PhenotypeQualifierDTO
+    range: string
+
+  phenotype_qualifier_tag_name:
+    domain: PhenotypeQualifierDTO
+    range: string
+
+  phenotype_related_entity_dto:
+    domain: PhenotypeQualifierDTO
+    range: AffectedEntityDTO
+    inlined: true
+
+  phenotype_qualifier_tag:
+    description: >-
+      Similar to phenotype_qualifier_term, but using a term from a vocabulary
+      rather than a dedicated ontology. Intended for "simple" qualifications
+      such as "abnormal", "ameliorated", "exacerbated", etc.
+    domain: PhenotypeQualifier
+    range: VocabularyTerm
+
+  phenotype_related_entity:
+    description: >-
+      An affected entity that further refines the description of a phenotype.
+    domain: PhenotypeQualifier
+    range: AffectedEntity
+
+  phenotype_stage:
+    description: >-
+      The developmental stage that is affected by a phenotype.
+    domain: AffectedEntity
+    range: TemporalContext
+
+  phenotype_stage_dto:
+    description: >-
+      The developmental stage that is affected by a phenotype (submitted).
+    domain: AffectedEntityDTO
+    range: TemporalContextDTO
+    inlined: true
+
+
+
+  phenotype_statement:
+    description: >-
+      For MODs that curate to post-composed phenotype expressions composed
+      of ontology terms and other necessary information (e.g. vocabularies,
+      free text). This field captures the free text phenotype statement.
+    range: string
+
   phenotype_terms:
     description: >-
       The phenotype ontology term used to describe the phenotype of an organism
@@ -993,13 +1053,6 @@ slots:
       curie
     range: string
     multivalued: true
-
-  phenotype_statement:
-    description: >-
-      For MODs that curate to post-composed phenotype expressions composed
-      of ontology terms and other necessary information (e.g. vocabularies,
-      free text). This field captures the free text phenotype statement.
-    range: string
 
   sgd_strain_background:
     range: AffectedGenomicModel
