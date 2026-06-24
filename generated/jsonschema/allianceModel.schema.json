@@ -1419,7 +1419,14 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "location": {
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "phenotype_location": {
                     "anyOf": [
                         {
                             "$ref": "#/$defs/AnatomicalSite"
@@ -1430,21 +1437,14 @@
                     ],
                     "description": "The anatomical site that is affected by a phenotype."
                 },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "process": {
+                "phenotype_process": {
                     "description": "The biological process that is affected by a phenotype.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "stage": {
+                "phenotype_stage": {
                     "anyOf": [
                         {
                             "$ref": "#/$defs/TemporalContext"
@@ -1453,7 +1453,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The developmental stage that is affected by a phenotye."
+                    "description": "The developmental stage that is affected by a phenotype."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -1470,26 +1470,26 @@
                 "anyOf": [
                     {
                         "properties": {
-                            "location": {}
+                            "phenotype_location": {}
                         },
                         "required": [
-                            "location"
+                            "phenotype_location"
                         ]
                     },
                     {
                         "properties": {
-                            "stage": {}
+                            "phenotype_stage": {}
                         },
                         "required": [
-                            "stage"
+                            "phenotype_stage"
                         ]
                     },
                     {
                         "properties": {
-                            "process": {}
+                            "phenotype_process": {}
                         },
                         "required": [
-                            "process"
+                            "phenotype_process"
                         ]
                     }
                 ]
@@ -1544,16 +1544,6 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
-                "location_dto": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/AnatomicalSiteDTO"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
                 "obsolete": {
                     "description": "Entity is no longer current.",
                     "type": [
@@ -1561,13 +1551,25 @@
                         "null"
                     ]
                 },
-                "process_curie": {
+                "phenotype_location_dto": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AnatomicalSiteDTO"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The anatomical site that is affected by a phenotype (submitted)."
+                },
+                "phenotype_process_curie": {
+                    "description": "The biological process that is affected by a phenotype (submitted).",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "stage_dto": {
+                "phenotype_stage_dto": {
                     "anyOf": [
                         {
                             "$ref": "#/$defs/TemporalContextDTO"
@@ -1575,7 +1577,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "description": "The developmental stage that is affected by a phenotype (submitted)."
                 },
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
@@ -1592,26 +1595,26 @@
                 "anyOf": [
                     {
                         "properties": {
-                            "location_dto": {}
+                            "phenotype_location_dto": {}
                         },
                         "required": [
-                            "location_dto"
+                            "phenotype_location_dto"
                         ]
                     },
                     {
                         "properties": {
-                            "stage_dto": {}
+                            "phenotype_stage_dto": {}
                         },
                         "required": [
-                            "stage_dto"
+                            "phenotype_stage_dto"
                         ]
                     },
                     {
                         "properties": {
-                            "process_curie": {}
+                            "phenotype_process_curie": {}
                         },
                         "required": [
-                            "process_curie"
+                            "phenotype_process_curie"
                         ]
                     }
                 ]
@@ -33351,17 +33354,21 @@
                         "null"
                     ]
                 },
-                "qualifier_tag": {
-                    "description": "Similar to qualifier_term, but using a term from a vocabulary rather than a dedicated ontology. Intended for \"simple\" qualifications such as \"abnormal\", \"ameliorated\", \"exacerbated\", etc.",
+                "phenotype_qualifier_tag": {
+                    "description": "Similar to phenotype_qualifier_term, but using a term from a vocabulary rather than a dedicated ontology. Intended for \"simple\" qualifications such as \"abnormal\", \"ameliorated\", \"exacerbated\", etc.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "qualifier_term": {
-                    "description": "The main ontological term that refines the description of a phenotype."
+                "phenotype_qualifier_term": {
+                    "description": "The main ontological term that refines the description of a phenotype.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
-                "related_entity": {
+                "phenotype_related_entity": {
                     "anyOf": [
                         {
                             "$ref": "#/$defs/AffectedEntity"
@@ -33387,18 +33394,18 @@
                 "anyOf": [
                     {
                         "properties": {
-                            "qualifier_term": {}
+                            "phenotype_qualifier_term": {}
                         },
                         "required": [
-                            "qualifier_term"
+                            "phenotype_qualifier_term"
                         ]
                     },
                     {
                         "properties": {
-                            "qualifier_tag": {}
+                            "phenotype_qualifier_tag": {}
                         },
                         "required": [
-                            "qualifier_tag"
+                            "phenotype_qualifier_tag"
                         ]
                     }
                 ]
@@ -33472,7 +33479,7 @@
                         "null"
                     ]
                 },
-                "related_entity": {
+                "related_entity_dto": {
                     "anyOf": [
                         {
                             "$ref": "#/$defs/AffectedEntityDTO"
