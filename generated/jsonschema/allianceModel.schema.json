@@ -3308,6 +3308,20 @@
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
                 },
+                "is_aberration": {
+                    "description": "Indicates whether the allele is a chromosomal aberration (a multi-gene allele), as opposed to a traditional single-gene allele.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "is_balancer": {
+                    "description": "Indicates whether the allele is a balancer: a chromosomal rearrangement that suppresses recombination over a region of one or more chromosomes. Balancers are a subtype of aberration, so this is only applicable to alleles for which is_aberration is true.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
                 "is_extinct": {
                     "description": "Does the allele still exist in a population somewhere?",
                     "type": [
@@ -4191,6 +4205,20 @@
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
+                },
+                "is_aberration": {
+                    "description": "Indicates whether the allele is a chromosomal aberration (a multi-gene allele), as opposed to a traditional single-gene allele.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "is_balancer": {
+                    "description": "Indicates whether the allele is a balancer: a chromosomal rearrangement that suppresses recombination over a region of one or more chromosomes. Balancers are a subtype of aberration, so this is only applicable to alleles for which is_aberration is true.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "is_extinct": {
                     "description": "Does the allele still exist in a population somewhere?",
