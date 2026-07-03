@@ -3309,7 +3309,7 @@
                     "type": "boolean"
                 },
                 "is_aberration": {
-                    "description": "Indicates whether the allele is a chromosomal aberration (a multi-gene allele), as opposed to a traditional single-gene allele.",
+                    "description": "Indicates whether the allele is a chromosomal aberration, defined (per SO:1000183 - chromosome_structure_variation) as an alteration of the genome that leads to a change in the structure or number of one or more chromosomes.",
                     "type": [
                         "boolean",
                         "null"
@@ -4207,7 +4207,7 @@
                     "type": "boolean"
                 },
                 "is_aberration": {
-                    "description": "Indicates whether the allele is a chromosomal aberration (a multi-gene allele), as opposed to a traditional single-gene allele.",
+                    "description": "Indicates whether the allele is a chromosomal aberration, defined (per SO:1000183 - chromosome_structure_variation) as an alteration of the genome that leads to a change in the structure or number of one or more chromosomes.",
                     "type": [
                         "boolean",
                         "null"
