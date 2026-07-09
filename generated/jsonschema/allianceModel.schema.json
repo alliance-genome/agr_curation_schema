@@ -16597,7 +16597,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "description": "ResourceDescriptorPage providing the URL template used to render a linkout to the referenced external identifier."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
@@ -20664,6 +20665,17 @@
                         "boolean",
                         "null"
                     ]
+                },
+                "resource_descriptor_page": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ResourceDescriptorPage"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "ResourceDescriptorPage providing the URL template used to render a linkout to the referenced external identifier."
                 },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
