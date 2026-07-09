@@ -55,6 +55,8 @@ classes:
     is_a: InformationContentEntity
     description: >-
       A reference to an entity in an external database
+    slots:
+      - resource_descriptor_page
 
   Reference:
     is_a: InformationContentEntity
