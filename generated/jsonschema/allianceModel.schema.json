@@ -8333,13 +8333,6 @@
                         "string",
                         "null"
                     ]
-                },
-                "where_expressed_free_text": {
-                    "description": "Free-text description of the anatomical site where the entity is expressed. To be used when controlled ontology terms are insufficient to capture the spatial expression pattern.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
                 }
             },
             "required": [
@@ -8523,13 +8516,6 @@
                 },
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "where_expressed_free_text": {
-                    "description": "Free-text description of the anatomical site where the entity is expressed. To be used when controlled ontology terms are insufficient to capture the spatial expression pattern.",
                     "type": [
                         "string",
                         "null"
@@ -10028,7 +10014,7 @@
                     ]
                 },
                 "when_expressed_stage_name": {
-                    "description": "A human-readable stage name. To be used when an ontology term for the relevant stage is not available.",
+                    "description": "A human-readable summary of when the entity is expressed, composed of developmental stage ontology term labels and/or free text.",
                     "type": [
                         "string",
                         "null"
@@ -10121,7 +10107,7 @@
                     ]
                 },
                 "when_expressed_stage_name": {
-                    "description": "A human-readable stage name. To be used when an ontology term for the relevant stage is not available.",
+                    "description": "A human-readable summary of when the entity is expressed, composed of developmental stage ontology term labels and/or free text.",
                     "type": [
                         "string",
                         "null"
@@ -23691,12 +23677,26 @@
                         "null"
                     ]
                 },
+                "when_expressed_free_text": {
+                    "description": "Submitted free-text description of the developmental stage and/or age at which the entity is expressed. To be used when controlled ontology terms are insufficient to capture the temporal expression pattern. Contributes to the post-ingest assembly of when_expressed_stage_name.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "when_expressed_stage_name": {
-                    "description": "A human-readable stage name. To be used when an ontology term for the relevant stage is not available.",
+                    "description": "A human-readable summary of when the entity is expressed, composed of developmental stage ontology term labels and/or free text.",
                     "type": "string"
                 },
+                "where_expressed_free_text": {
+                    "description": "Submitted free-text description of the anatomical site where the entity is expressed. To be used when controlled ontology terms are insufficient to capture the spatial expression pattern. Contributes to the post-ingest assembly of where_expressed_statement.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "where_expressed_statement": {
-                    "description": "A human-readable free-text description of the anatomical location of the expression pattern.",
+                    "description": "A human-readable summary of where the entity is expressed, composed of anatomical site ontology term labels and/or free text.",
                     "type": "string"
                 }
             },
@@ -23835,19 +23835,23 @@
                         "null"
                     ]
                 },
-                "when_expressed_stage_name": {
-                    "description": "A human-readable stage name. To be used when an ontology term for the relevant stage is not available.",
-                    "type": "string"
+                "when_expressed_free_text": {
+                    "description": "Submitted free-text description of the developmental stage and/or age at which the entity is expressed. To be used when controlled ontology terms are insufficient to capture the temporal expression pattern. Contributes to the post-ingest assembly of when_expressed_stage_name.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
-                "where_expressed_statement": {
-                    "description": "A human-readable free-text description of the anatomical location of the expression pattern.",
-                    "type": "string"
+                "where_expressed_free_text": {
+                    "description": "Submitted free-text description of the anatomical site where the entity is expressed. To be used when controlled ontology terms are insufficient to capture the spatial expression pattern. Contributes to the post-ingest assembly of where_expressed_statement.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "required": [
                 "expression_pattern_dto",
-                "when_expressed_stage_name",
-                "where_expressed_statement",
                 "relation_name",
                 "internal"
             ],
@@ -39823,13 +39827,6 @@
                         "string",
                         "null"
                     ]
-                },
-                "when_expressed_free_text": {
-                    "description": "Free-text description of the developmental stage and/or age at which the entity is expressed. To be used when controlled ontology terms are insufficient to capture the temporal expression pattern.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
                 }
             },
             "required": [
@@ -39935,13 +39932,6 @@
                 },
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "when_expressed_free_text": {
-                    "description": "Free-text description of the developmental stage and/or age at which the entity is expressed. To be used when controlled ontology terms are insufficient to capture the temporal expression pattern.",
                     "type": [
                         "string",
                         "null"

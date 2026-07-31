@@ -15,8 +15,8 @@
       "internal": false,
       "expression_annotation_dtos": [
         {
-          "when_expressed_stage_name": "Prim-5",
-          "where_expressed_statement": "expressed throughout the developing brain",
+          "when_expressed_free_text": "shortly after the onset of circulation",
+          "where_expressed_free_text": "anterior region of the developing brain, with stronger signal in the telencephalon",
           "negated": false,
           "uncertain": false,
           "relation_name": "is_expressed_in",
@@ -30,7 +30,6 @@
           "expression_pattern_dto": {
             "when_expressed_dto": {
               "developmental_stage_start_curie": "ZFS:0000033",
-              "when_expressed_free_text": "approximately 24 hours post fertilization",
               "internal": false
             },
             "where_expressed_dto": {
@@ -38,15 +37,13 @@
               "anatomical_structure_uberon_term_curies": [
                 "UBERON:0000955"
               ],
-              "where_expressed_free_text": "anterior region of the developing brain, with stronger signal in the telencephalon",
               "internal": false
             },
             "internal": false
           }
         },
         {
-          "when_expressed_stage_name": "Long-pec",
-          "where_expressed_statement": "expressed in the somites",
+          "where_expressed_free_text": "nuclei of differentiating myocytes",
           "relation_name": "is_expressed_in",
           "created_by_curie": "ZFIN",
           "updated_by_curie": "ZFIN",
@@ -54,7 +51,6 @@
           "expression_pattern_dto": {
             "where_expressed_dto": {
               "cellular_component_curie": "GO:0005634",
-              "where_expressed_free_text": "nuclei of differentiating myocytes",
               "internal": false
             },
             "internal": false

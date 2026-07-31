@@ -117,6 +117,8 @@ classes:
       - expression_pattern
       - when_expressed_stage_name
       - where_expressed_statement
+      - when_expressed_free_text
+      - where_expressed_free_text
       - negated
       - uncertain
       - related_figures
@@ -193,6 +195,15 @@ classes:
         required: false
       when_expressed_stage_name:
         required: true
+        notes: >-
+          Not submitted. Assembled programmatically after ingest from the
+          TemporalContext terms of the expression_pattern together with
+          when_expressed_free_text.
+      where_expressed_statement:
+        notes: >-
+          Not submitted. Assembled programmatically after ingest from the
+          AnatomicalSite terms of the expression_pattern together with
+          where_expressed_free_text.
 
   GeneExpressionAnnotation:
     is_a: ExpressionAnnotation
@@ -206,7 +217,7 @@ classes:
       assay (REQUIRED):                                                   ExpressionExperiment.expression_assay_used
       evidence (REQUIRED):                                                ExpressionExperiment.single_reference
       dateAssigned (REQUIRED):                                            ExpressionAnnotation.date_created (AuditedObject -> Association -> ExpressionAnnotation)
-      whenExpressed.stageName (REQUIRED):                                 ExpressionAnnotation.when_expressed_stage_name
+      whenExpressed.stageName (REQUIRED):                                 ExpressionAnnotation.when_expressed_stage_name (assembled post-ingest; not submitted)
       whenExpressed.stageTermId:                                          ExpressionAnnotation.expression_pattern (ExpressionPattern.TemporalContext.developmental_stage_start)
       whenExpressed.stageUberonSlimTerm:                                  ExpressionAnnotation.expression_pattern (ExpressionPattern.TemporalContext.stage_uberon_slim_terms)
       whereExpressed.anatomicalStructureTermId: (*REQUIRED)               ExpressionAnnotation.expression_pattern (ExpressionPattern.AnatomicalSite.anatomical_structure)
@@ -217,7 +228,7 @@ classes:
       whereExpressed.anatomicalSubStructureUberonSlimTermIds:             ExpressionAnnotation.expression_pattern (ExpressionPattern.AnatomicalSite.anatomical_substructure_uberon_terms)
       whereExpressed.cellularComponentTermId: (*REQUIRED)                 ExpressionAnnotation.expression_pattern (ExpressionPattern.AnatomicalSite.cellular_component)
       whereExpressed.cellularComponentQualifierTermId:                    ExpressionAnnotation.expression_pattern (ExpressionPattern.AnatomicalSite.cellular_component_qualifiers)
-      whereExpressed.whereExpressedStatement (REQUIRED):                  ExpressionAnnotation.where_expressed_statement
+      whereExpressed.whereExpressedStatement (REQUIRED):                  ExpressionAnnotation.where_expressed_statement (assembled post-ingest; not submitted)
       cross_reference:                                                    Consolidation of similar annotations creates list ExpressionAnnotation.cross_references
                                                                           Each FMS annotation to be consolidated contributes one cross_reference to the list
       * NOTE: For the FMS whereExpressed component, either of the following is required.
@@ -229,7 +240,8 @@ classes:
       New required slots: relation.
       New non-required slots: curie, unique_id, primary_external_id, mod_internal_id,
       related_notes, expression_qualifiers, negated, uncertain,
-      related_figures, expression_annotation_image_associations.
+      related_figures, expression_annotation_image_associations,
+      when_expressed_free_text, where_expressed_free_text.
     slot_usage:
       relation:
         description: >-
@@ -265,7 +277,6 @@ classes:
       - age
       - temporal_qualifiers
       - stage_uberon_slim_terms
-      - when_expressed_free_text
 
   TemporalContextDTO:
     is_a: AuditedObjectDTO
@@ -278,7 +289,6 @@ classes:
       - age
       - temporal_qualifier_names
       - stage_uberon_slim_term_curies
-      - when_expressed_free_text
 
   AnatomicalSite:
     is_a: AuditedObject
@@ -297,7 +307,6 @@ classes:
       - cellular_component_qualifiers
       - anatomical_structure_uberon_term_other
       - anatomical_substructure_uberon_term_other
-      - where_expressed_free_text
     rules:
       - postconditions:
           any_of:
@@ -326,7 +335,6 @@ classes:
       - cellular_component_qualifier_curies
       - anatomical_structure_uberon_term_other
       - anatomical_substructure_uberon_term_other
-      - where_expressed_free_text
     rules:
       - postconditions:
           any_of:
@@ -389,10 +397,17 @@ classes:
       describing an expression pattern for a gene. The annotated gene and the
       supporting Reference are provided once at the
       GeneExpressionExperimentDTO level and are not repeated on each annotation.
+    notes: >-
+      The when_expressed_stage_name and where_expressed_statement slots of
+      GeneExpressionAnnotation are deliberately absent from this DTO. They are
+      not submitted; the loading pipeline assembles them after ingest from the
+      controlled terms of the expression_pattern_dto together with the
+      when_expressed_free_text and where_expressed_free_text values submitted
+      here.
     slots:
       - expression_pattern_dto
-      - when_expressed_stage_name
-      - where_expressed_statement
+      - when_expressed_free_text
+      - where_expressed_free_text
       - negated
       - uncertain
       - relation_name
@@ -404,10 +419,6 @@ classes:
       - primary_external_id
       - note_dtos
     slot_usage:
-      where_expressed_statement:
-        required: true
-      when_expressed_stage_name:
-        required: true
       relation_name:
         description: >-
           The relationship type between the gene and the expression pattern.
@@ -837,10 +848,15 @@ slots:
 
   when_expressed_stage_name:
     description: >-
-      A human-readable stage name. To be used when an ontology term for the
-      relevant stage is not available.
+      A human-readable summary of when the entity is expressed, composed of
+      developmental stage ontology term labels and/or free text.
     notes: >-
       Corresponds to whenExpressed.stageName in frozen JSON schema.
+      On ExpressionAnnotation this slot is not submitted: it is assembled
+      programmatically after ingest from the TemporalContext terms of the
+      ExpressionPattern together with when_expressed_free_text, and is
+      therefore absent from the expression annotation DTOs. Other classes
+      that reuse this slot (e.g. BioSampleAge) do accept it on submission.
     range: string
     multivalued: false
 
@@ -856,10 +872,14 @@ slots:
 
   where_expressed_statement:
     description: >-
-      A human-readable free-text description of the anatomical location of the
-      expression pattern.
+      A human-readable summary of where the entity is expressed, composed of
+      anatomical site ontology term labels and/or free text.
     notes: >-
       Corresponds to whereExpressedStatement in frozen JSON schema.
+      Not submitted: assembled programmatically after ingest from the
+      AnatomicalSite terms of the ExpressionPattern together with
+      where_expressed_free_text, and therefore absent from the expression
+      annotation DTOs.
     domain: ExpressionAnnotation
     range: string
     multivalued: false
@@ -867,18 +887,20 @@ slots:
 
   where_expressed_free_text:
     description: >-
-      Free-text description of the anatomical site where the entity is
-      expressed. To be used when controlled ontology terms are insufficient
-      to capture the spatial expression pattern.
+      Submitted free-text description of the anatomical site where the entity
+      is expressed. To be used when controlled ontology terms are insufficient
+      to capture the spatial expression pattern. Contributes to the
+      post-ingest assembly of where_expressed_statement.
     range: string
     multivalued: false
     required: false
 
   when_expressed_free_text:
     description: >-
-      Free-text description of the developmental stage and/or age at which the
-      entity is expressed. To be used when controlled ontology terms are
-      insufficient to capture the temporal expression pattern.
+      Submitted free-text description of the developmental stage and/or age at
+      which the entity is expressed. To be used when controlled ontology terms
+      are insufficient to capture the temporal expression pattern. Contributes
+      to the post-ingest assembly of when_expressed_stage_name.
     range: string
     multivalued: false
     required: false

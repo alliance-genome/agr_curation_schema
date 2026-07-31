@@ -12,18 +12,14 @@
       "internal": false,
       "expression_annotation_dtos": [
         {
-          "when_expressed_stage_name": "Prim-5",
+          "when_expressed_free_text": "expressed prior to hatching",
+          "where_expressed_free_text": "somewhere in the embryo",
           "relation_name": "is_expressed_in",
           "created_by_curie": "ZFIN",
           "updated_by_curie": "ZFIN",
           "internal": false,
           "expression_pattern_dto": {
             "when_expressed_dto": {
-              "when_expressed_free_text": "early larval stage",
-              "internal": false
-            },
-            "where_expressed_dto": {
-              "where_expressed_free_text": "somewhere in the embryo",
               "internal": false
             },
             "internal": false
