@@ -61,6 +61,8 @@ classes:
       - is_extinct
       - is_extrachromosomal
       - is_integrated
+      - is_aberration
+      - is_balancer
       - transgene_chromosome_location
       - allele_mutation_types
       - allele_inheritance_modes
@@ -83,8 +85,6 @@ classes:
     exact_mappings:
       - SO:0001023
     slot_usage:
-      aberration: # This slot is no longer declared in the Allele class; is this covered by something else? [CG]
-        notes: specific to FB
       allele_symbol:
         required: true
       laboratory_of_origin:
@@ -92,6 +92,10 @@ classes:
       is_extrachromosomal:
         required: false
       is_integrated:
+        required: false
+      is_aberration:
+        required: false
+      is_balancer:
         required: false
       related_notes:
         notes: note_type from VocabularyTermSet 'Allele Note Type'
@@ -109,6 +113,8 @@ classes:
       - is_extinct
       - is_extrachromosomal
       - is_integrated
+      - is_aberration
+      - is_balancer
       - transgene_chromosome_location_name
       - allele_mutation_type_dtos
       - allele_inheritance_mode_dtos
@@ -675,14 +681,6 @@ classes:
 ## ------------
 
 slots:
-  # This slot is currently not being used 2022-12-20; should it be? [CG]
-  aberration:
-    description: >-
-      Associated deficiency (etc.) whose breakpoint causes
-      the mutation
-    domain: Allele
-    range: string
-
   allele_allele_associations:
     domain: Allele
     range: AlleleAlleleAssociation
@@ -1008,6 +1006,24 @@ slots:
       The name of the irradiation used to generate the mutation through mutagenesis
     domain: GenerationMethodDTO
     range: string # CV 'Irradiation Mutagen'
+
+  is_aberration:
+    description: >-
+      Indicates whether the allele is a chromosomal aberration, defined
+      (per SO:1000183 - chromosome_structure_variation) as an alteration of the
+      genome that leads to a change in the structure or number of one or more
+      chromosomes.
+    domain: Allele
+    range: boolean
+
+  is_balancer:
+    description: >-
+      Indicates whether the allele is a balancer: a chromosomal rearrangement
+      that suppresses recombination over a region of one or more chromosomes.
+      Balancers are a subtype of aberration, so this is only applicable to
+      alleles for which is_aberration is true.
+    domain: Allele
+    range: boolean
 
   is_extinct:
     description: >-
