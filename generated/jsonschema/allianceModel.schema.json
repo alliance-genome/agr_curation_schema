@@ -13993,7 +13993,7 @@
                     ]
                 },
                 "uses": {
-                    "description": "Holds between a TransgenicTool and a list of FBcv terms with namespace 'experimental_tool_descriptor'",
+                    "description": "A list of FBcv terms with namespace 'experimental_tool_descriptor'.",
                     "items": {
                         "type": "string"
                     },
@@ -14080,7 +14080,7 @@
                     ]
                 },
                 "use_curies": {
-                    "description": "Holds between a TransgenicTool and a list of curies of FBcv terms with namespace 'experimental_tool_descriptor'",
+                    "description": "A list of curies for FBcv terms with namespace 'experimental_tool_descriptor'.",
                     "items": {
                         "type": "string"
                     },
@@ -41265,6 +41265,16 @@
                         "null"
                     ]
                 },
+                "transgenic_tool_uses": {
+                    "description": "Holds between a TransgenicTool and a list of uses.",
+                    "items": {
+                        "$ref": "#/$defs/TransgenicToolUseSlotAnnotation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
                     "type": [
@@ -41276,16 +41286,6 @@
                     "description": "The individual that last modified the entity.",
                     "type": [
                         "string",
-                        "null"
-                    ]
-                },
-                "uses": {
-                    "description": "Holds between a TransgenicTool and a list of FBcv terms with namespace 'experimental_tool_descriptor'",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
                         "null"
                     ]
                 }
@@ -41439,20 +41439,20 @@
                         "null"
                     ]
                 },
+                "transgenic_tool_use_dtos": {
+                    "description": "Holds between a TransgenicTool and a list of uses.",
+                    "items": {
+                        "$ref": "#/$defs/TransgenicToolUseSlotAnnotationDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "updated_by_curie": {
                     "description": "Curie of the Person object representing the individual that updated the entity",
                     "type": [
                         "string",
-                        "null"
-                    ]
-                },
-                "use_curies": {
-                    "description": "Holds between a TransgenicTool and a list of curies of FBcv terms with namespace 'experimental_tool_descriptor'",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
                         "null"
                     ]
                 }
@@ -41970,6 +41970,182 @@
                 "internal"
             ],
             "title": "TransgenicToolTransgenicToolAssociationDTO",
+            "type": "object"
+        },
+        "TransgenicToolUseSlotAnnotation": {
+            "additionalProperties": false,
+            "description": "A slot annotation to capture the use(s) of a particular TransgenicTool with associated evidence.",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence": {
+                    "description": "The evidence that supports some assertion.",
+                    "items": {
+                        "$ref": "#/$defs/InformationContentEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "single_transgenic_tool": {
+                    "$ref": "#/$defs/TransgenicTool"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "uses": {
+                    "description": "A list of FBcv terms with namespace 'experimental_tool_descriptor'.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "single_transgenic_tool",
+                "uses",
+                "internal"
+            ],
+            "title": "TransgenicToolUseSlotAnnotation",
+            "type": "object"
+        },
+        "TransgenicToolUseSlotAnnotationDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for a slot annotation to capture the use(s) of a particular TransgenicTool with associated evidence.",
+            "properties": {
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence_curies": {
+                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "use_curies": {
+                    "description": "A list of curies for FBcv terms with namespace 'experimental_tool_descriptor'.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "use_curies",
+                "internal"
+            ],
+            "title": "TransgenicToolUseSlotAnnotationDTO",
             "type": "object"
         },
         "UBERONTerm": {
