@@ -86,9 +86,17 @@
           "internal": true
         }
       ],
-      "use_curies": [
-        "FBcv:0005056",
-        "FBcv:0009038"
+      "transgenic_tool_use_dtos": [
+        {
+          "use_curies": [
+            "FBcv:0005056",
+            "FBcv:0009038"
+          ],
+          "evidence_curies": [
+            "PMID:01231002"
+          ],
+          "internal": false
+        }
       ]
     }
   ],

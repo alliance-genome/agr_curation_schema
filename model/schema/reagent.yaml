@@ -596,7 +596,7 @@ classes:
       - transgenic_tool_symbol
       - transgenic_tool_full_name
       - transgenic_tool_synonyms
-      - uses
+      - transgenic_tool_uses
       - references
 
   TransgenicToolDTO:
@@ -610,8 +610,32 @@ classes:
       - transgenic_tool_symbol_dto
       - transgenic_tool_full_name_dto
       - transgenic_tool_synonym_dtos
-      - use_curies
+      - transgenic_tool_use_dtos
       - reference_curies
+
+  TransgenicToolUseSlotAnnotation:
+    is_a: SlotAnnotation
+    description: >-
+      A slot annotation to capture the use(s) of a particular TransgenicTool with associated evidence.
+    slots:
+      - single_transgenic_tool
+      - uses
+    slot_usage:
+      single_transgenic_tool:
+        required: true
+      uses:
+        required: true
+
+  TransgenicToolUseSlotAnnotationDTO:
+    is_a: SlotAnnotationDTO
+    description: >-
+      Ingest class for a slot annotation to capture the use(s) of a particular TransgenicTool with
+      associated evidence.
+    slots:
+      - use_curies
+    slot_usage:
+      use_curies:
+        required: true
 
   TransgenicToolSymbolSlotAnnotation:
     description: >-
@@ -1080,6 +1104,21 @@ slots:
     description: Holds between a TransgenicTool and a list of synonyms.
     domain: TransgenicToolDTO
     range: NameSlotAnnotationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  transgenic_tool_uses:
+    description: Holds between a TransgenicTool and a list of uses.
+    domain: TransgenicTool
+    required: false
+    multivalued: true
+    range: TransgenicToolUseSlotAnnotation
+
+  transgenic_tool_use_dtos:
+    description: Holds between a TransgenicTool and a list of uses.
+    domain: TransgenicToolDTO
+    range: TransgenicToolUseSlotAnnotationDTO
     multivalued: true
     inlined: true
     inlined_as_list: true
