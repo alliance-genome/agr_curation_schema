@@ -1125,15 +1125,13 @@ slots:
 
   uses:
     description: >-
-      Holds between a TransgenicTool and a list of FBcv terms with namespace
-      'experimental_tool_descriptor'
+      A list of FBcv terms with namespace 'experimental_tool_descriptor'.
     range: FBCVTerm
     multivalued: true
 
   use_curies:
     description: >-
-      Holds between a TransgenicTool and a list of curies of FBcv terms with namespace
-      'experimental_tool_descriptor'
+      A list of curies for FBcv terms with namespace 'experimental_tool_descriptor'.
     range: string
     multivalued: true
 
