@@ -1,0 +1,224 @@
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/pcrProduct.yaml
+name: pcrProduct
+title: PCR Product
+
+imports:
+  - core
+  - reagent
+  - reference
+  - controlledVocabulary
+  - ontologyTerm
+  - linkml:types
+
+prefixes:
+  alliance: 'http://alliancegenome.org/'
+  linkml: 'https://w3id.org/linkml/'
+  gff: 'https://w3id.org/gff'
+  faldo: 'http://biohackathon.org/resource/faldo#'
+  biolink: 'https://w3id.org/biolink/vocab/'
+  NLMID: 'https://www.ncbi.nlm.nih.gov/nlmcatalog/?term='
+  schema: 'http://schema.org/'
+  dct: 'http://purl.org/dc/terms/'
+  WIKIDATA_PROPERTY: 'https://www.wikidata.org/wiki/Property:'
+  obograph: 'https://github.com/biodatamodels/obograph'
+
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - owl
+
+
+classes:
+
+  PCRProduct:
+    is_a: Reagent
+    description: >-
+      A DNA segment amplified by PCR using a defined primer pair, used as a
+      laboratory reagent. PCR products are typically mapped to one or more
+      overlapping genomic features (CDS, transcript, pseudogene) or variants
+      in a reference genome. Adapted from the WormBase ACEDB ?PCR_product
+      class (wspec/models.wrm).
+    aliases: ['PCR product', 'amplicon']
+    id_prefixes:
+      - WB
+    slots:
+      - name
+      - taxon
+      - forward_primer_sequence
+      - reverse_primer_sequence
+      - pcr_assay_method
+      - assay_conditions
+      - pcr_product_genomic_entity_associations
+      - cross_references
+      - references
+      - generated_by
+    slot_usage:
+      curie:
+        description: >-
+          A unique identifier for the PCR product: e.g., WB:WBPCR_product123.
+          As not all MODs have IDs, some IDs may need to be minted at the
+          Alliance.
+      name:
+        description: >-
+          Publicly displayed name of the PCR product, often a primer-pair
+          identifier such as sjj_F08F1.5.
+        required: false
+      taxon:
+        description: >-
+          The species from which the genomic template DNA was amplified.
+        required: true
+      generated_by:
+        description: >-
+          The laboratory or agent that generated the PCR product. Adapts the
+          ACEDB From_laboratory tag.
+
+  PCRProductDTO:
+    is_a: ReagentDTO
+    description: >-
+      Ingest class for a PCR product reagent.
+    slots:
+      - name
+      - taxon_curie
+      - forward_primer_sequence
+      - reverse_primer_sequence
+      - pcr_assay_method_name
+      - assay_conditions
+      - cross_reference_dtos
+      - reference_curies
+      - generated_by_identifier
+    slot_usage:
+      taxon_curie:
+        description: >-
+          Curie of the NCBITaxonTerm representing the species from which the
+          genomic template DNA was amplified.
+        required: true
+      generated_by_identifier:
+        description: >-
+          Identifier of the Agent (e.g., Laboratory) that generated the PCR
+          product. Adapts the ACEDB From_laboratory tag. (Currently no common
+          identifier field for Agent class — see Antibody for the same
+          caveat.)
+
+  PCRProductAssociation:
+    abstract: true
+    is_a: EvidenceAssociation
+    description: Base class for PCR product associations.
+    attributes:
+      pcr_product_association_subject:
+        range: PCRProduct
+        required: true
+
+  PCRProductGenomicEntityAssociation:
+    is_a: PCRProductAssociation
+    description: >-
+      An association capturing that a PCR product overlaps (or amplifies) a
+      genomic entity — CDS, transcript, pseudogene, or variant — in a
+      reference genome. Adapts the ACEDB Overlaps_CDS / Overlaps_transcript /
+      Overlaps_pseudogene / Variation tags into a single relation-typed
+      association.
+    attributes:
+      pcr_product_genomic_entity_association_object:
+        range: GenomicEntity
+        required: true
+    slots:
+      - related_notes
+    slot_usage:
+      relation:
+        range: VocabularyTerm
+        notes: >-
+          The relation should be a VocabularyTerm with one of the following
+          values: overlaps_cds / overlaps_transcript / overlaps_pseudogene /
+          overlaps_variant. CV: 'PCR Product Genomic Entity Association Relation'
+      related_notes:
+        required: false
+
+  PCRProductGenomicEntityAssociationDTO:
+    is_a: EvidenceAssociationDTO
+    description: >-
+      Ingest class for an association between a PCR product and a genomic
+      entity it overlaps in a reference genome.
+    slots:
+      - pcr_product_identifier
+      - relation_name
+      - genomic_entity_identifier
+      - note_dtos
+    slot_usage:
+      genomic_entity_identifier:
+        required: true
+
+
+slots:
+
+  forward_primer_sequence:
+    description: >-
+      The 5'->3' sequence of the forward (left) primer used to amplify the
+      PCR product. Adapts the ACEDB Mapping_primers/Left_mapping_primer tag.
+    range: string
+    required: true
+    multivalued: false
+    domain: PCRProduct
+
+  reverse_primer_sequence:
+    description: >-
+      The 5'->3' sequence of the reverse (right) primer used to amplify the
+      PCR product. Adapts the ACEDB Mapping_primers/Right_mapping_primer tag.
+    range: string
+    required: true
+    multivalued: false
+    domain: PCRProduct
+
+  pcr_assay_method:
+    description: >-
+      The PCR assay method used to generate the product (e.g., touchdown PCR,
+      nested PCR). Adapts the ACEDB Method tag.
+    notes: >-
+      The pcr_assay_method should be a VocabularyTerm from the
+      'PCR Assay Method' CV.
+    range: VocabularyTerm
+    required: false
+    multivalued: false
+    domain: PCRProduct
+
+  pcr_assay_method_name:
+    description: >-
+      Name of the VocabularyTerm representing the PCR assay method used to
+      generate the product. From the 'PCR Assay Method' CV.
+    range: string
+    required: false
+    multivalued: false
+    domain: PCRProductDTO
+
+  assay_conditions:
+    description: >-
+      Free-text description of the PCR assay conditions (e.g., annealing
+      temperature, cycle count, buffer). Adapts the ACEDB Assay_conditions
+      tag.
+    range: string
+    required: false
+    multivalued: false
+    domain: PCRProduct
+
+  pcr_product_genomic_entity_associations:
+    description: >-
+      Associations between a PCR product and the genomic entities (CDS,
+      transcript, pseudogene, variant) it overlaps in a reference genome.
+    multivalued: true
+    domain: PCRProduct
+    range: PCRProductGenomicEntityAssociation
+
+  pcr_product_identifier:
+    description: >-
+      Either the MOD curie or internal ID that was used in the submission of
+      the associated PCR product.
+    range: string
+    required: true

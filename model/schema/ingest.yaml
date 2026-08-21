@@ -12,6 +12,7 @@ imports:
   - linkml:types
   - ontologyTerm
   - affectedGenomicModel
+  - pcrProduct
   - phenotypeAndDiseaseAnnotation
   - variantDTO
   - biologicalEntitySet
@@ -401,6 +402,24 @@ slots:
     mixins:
       - object_set
 
+  pcr_product_ingest_set:
+    description: An ingest set for PCR Product objects
+    domain: Ingest
+    range: PCRProductDTO
+    multivalued: true
+    mixins:
+      - object_set
+
+  pcr_product_genomic_entity_association_ingest_set:
+    description: >-
+      An ingest set for associations between PCR products and the genomic
+      entities they overlap
+    domain: Ingest
+    range: PCRProductGenomicEntityAssociationDTO
+    multivalued: true
+    mixins:
+      - object_set
+
   transgenic_tool_ingest_set:
     domain: Ingest
     range: TransgenicToolDTO
@@ -456,6 +475,8 @@ classes:
       - construct_ingest_set
       - construct_genomic_entity_association_ingest_set
       - construct_cassette_association_ingest_set
+      - pcr_product_ingest_set
+      - pcr_product_genomic_entity_association_ingest_set
       - disease_allele_ingest_set
       - disease_agm_ingest_set
       - disease_gene_ingest_set
