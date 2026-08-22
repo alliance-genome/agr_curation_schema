@@ -67,7 +67,12 @@ classes:
       - specimen_alleles
       - condition_relations
       - related_notes
-      - expression_annotations    # For non-DTO only; for data submission, relate via ExpressionAnnotationDTO.from_expression_experiment instead.
+      - expression_annotations
+    slot_usage:
+      single_reference:
+        description: >-
+          The single Reference that supports the GeneExpressionExperiment.
+        required: true
     rules:
       - postconditions:
           any_of:
@@ -101,7 +106,7 @@ classes:
           is available. Can be constructed at the MOD just for submission.
 
   ExpressionAnnotation:
-    is_a: Annotation
+    is_a: Association
     abstract: true
     description: >-
       An annotation asserting an association between some entity and an
@@ -109,15 +114,23 @@ classes:
       aspects of this object comprise all slots (possibly excepting figure and
       image information).
     slots:
-      # from_expression_experiment   # For DTO only; for database, relate via non-DTO ExpressionExperiment.expression_annotations instead.
-      - expression_annotation_subject
       - expression_pattern
       - when_expressed_stage_name
       - where_expressed_statement
+      - when_expressed_free_text
+      - where_expressed_free_text
       - negated
       - uncertain
       - related_figures
       - expression_annotation_image_associations
+      # The slots below were formerly inherited via Annotation.
+      # ExpressionAnnotation now inherits directly from Association, so the
+      # ones we want to keep are declared explicitly here.
+      - curie
+      - unique_id
+      - primary_external_id
+      - mod_internal_id
+      - related_notes
     slot_usage:
       relation:
         description: >-
@@ -127,41 +140,33 @@ classes:
         notes: >-
           Slot is inherited from Association class.
         range: VocabularyTerm
-      # FUTURE ACTION ITEM: Accommodate WB annotations with non-Reference evidence.
-      single_reference:
-        description: >-
-          The single Reference that supports the ExpressionAnnotation.
-        notes: >-
-          Will not be editable in the curation interface.
-          Slot is inherited from SingleReferenceAssociation class.
-        required: true
-        range: Reference
       curie:
         description: >-
           The Alliance-minted ID for the ExpressionAnnotation.
         notes: >-
-          Slot is inherited from Annotation class.
+          Declared directly on ExpressionAnnotation (formerly inherited from
+          Annotation).
       unique_id:
         description: >-
           Unique identifier for the ExpressionAnnotation. Will be generated at
           AGR if not submitted by the model organism database.
         notes: >-
-          Slot is inherited from Annotation class.
+          Declared directly on ExpressionAnnotation (formerly inherited from
+          Annotation).
       primary_external_id:
         description: >-
           The primary external (non-AGRKB) database identifier/curie for the
           ExpressionAnnotation.
         notes: >-
-          Slot is inherited from Annotation class.
+          Declared directly on ExpressionAnnotation (formerly inherited from
+          Annotation).
       mod_internal_id:
         description: >-
           The model organism database internal identifier for the
           ExpressionAnnotation.
         notes: >-
-          Slot is inherited from Annotation class.
-      data_provider:
-        notes: >-
-          Slot is inherited from Annotation class.
+          Declared directly on ExpressionAnnotation (formerly inherited from
+          Annotation).
       # FUTURE ACTION ITEM: Enumerate note types for this annotation level (xprn WG).
       # FUTURE ACTION ITEM: Is it better to have ExpressionAnnotation-level notes of
       #                     various types, or, add related_notes slots to specific
@@ -173,7 +178,8 @@ classes:
           cellular_component, annotation-level, etc. Appropriate VocabularyTerms
           will need to be created: expression_annotation_note, etc.
         notes: >-
-          Slot is inherited from Annotation class.
+          Declared directly on ExpressionAnnotation (formerly inherited from
+          Annotation).
       related_figures:
         description: >-
           The figure(s) that support(s) the expression annotation.
@@ -189,20 +195,29 @@ classes:
         required: false
       when_expressed_stage_name:
         required: true
+        notes: >-
+          Not submitted. Assembled programmatically after ingest from the
+          TemporalContext terms of the expression_pattern together with
+          when_expressed_free_text.
+      where_expressed_statement:
+        notes: >-
+          Not submitted. Assembled programmatically after ingest from the
+          AnatomicalSite terms of the expression_pattern together with
+          where_expressed_free_text.
 
   GeneExpressionAnnotation:
     is_a: ExpressionAnnotation
     slots:
-     - cross_references
+      - cross_references
     description: >-
       An annotation describing an expression pattern for a gene.
     notes: >-
-      A mapping of the agr_schemas (FMS) model to this LinkML model:
-      geneId (REQUIRED):                                                  ExpressionAnnotation.expression_annotation_subject
+      A mapping of the agr_schemas (FMS) model to this LinkML model; note some properties map to ExpressionExperiment:
+      geneId (REQUIRED):                                                  GeneExpressionExperiment.entity_assayed
       assay (REQUIRED):                                                   ExpressionExperiment.expression_assay_used
-      evidence (REQUIRED):                                                ExpressionAnnotation.single_reference (SingleReferenceAssociation -> Annotation -> ExpressionAnnotation)
-      dateAssigned (REQUIRED):                                            ExpressionAnnotation.date_created (AuditedObject -> Association -> SingleReferenceAssociation -> Annotation -> ExpressionAnnotation)
-      whenExpressed.stageName (REQUIRED):                                 ExpressionAnnotation.when_expressed_stage_name
+      evidence (REQUIRED):                                                ExpressionExperiment.single_reference
+      dateAssigned (REQUIRED):                                            ExpressionAnnotation.date_created (AuditedObject -> Association -> ExpressionAnnotation)
+      whenExpressed.stageName (REQUIRED):                                 ExpressionAnnotation.when_expressed_stage_name (assembled post-ingest; not submitted)
       whenExpressed.stageTermId:                                          ExpressionAnnotation.expression_pattern (ExpressionPattern.TemporalContext.developmental_stage_start)
       whenExpressed.stageUberonSlimTerm:                                  ExpressionAnnotation.expression_pattern (ExpressionPattern.TemporalContext.stage_uberon_slim_terms)
       whereExpressed.anatomicalStructureTermId: (*REQUIRED)               ExpressionAnnotation.expression_pattern (ExpressionPattern.AnatomicalSite.anatomical_structure)
@@ -213,7 +228,7 @@ classes:
       whereExpressed.anatomicalSubStructureUberonSlimTermIds:             ExpressionAnnotation.expression_pattern (ExpressionPattern.AnatomicalSite.anatomical_substructure_uberon_terms)
       whereExpressed.cellularComponentTermId: (*REQUIRED)                 ExpressionAnnotation.expression_pattern (ExpressionPattern.AnatomicalSite.cellular_component)
       whereExpressed.cellularComponentQualifierTermId:                    ExpressionAnnotation.expression_pattern (ExpressionPattern.AnatomicalSite.cellular_component_qualifiers)
-      whereExpressed.whereExpressedStatement (REQUIRED):                  ExpressionAnnotation.where_expressed_statement
+      whereExpressed.whereExpressedStatement (REQUIRED):                  ExpressionAnnotation.where_expressed_statement (assembled post-ingest; not submitted)
       cross_reference:                                                    Consolidation of similar annotations creates list ExpressionAnnotation.cross_references
                                                                           Each FMS annotation to be consolidated contributes one cross_reference to the list
       * NOTE: For the FMS whereExpressed component, either of the following is required.
@@ -226,17 +241,12 @@ classes:
       New non-required slots: curie, unique_id, primary_external_id, mod_internal_id,
       related_notes, expression_qualifiers, negated, uncertain,
       related_figures, expression_annotation_image_associations,
-      condition_relations.
+      when_expressed_free_text, where_expressed_free_text.
     slot_usage:
-      expression_annotation_subject:
-        description: >-
-          The gene to which the expression annotation applies.
-        range: Gene
-      # ACTION ITEM: Create is_expressed_in VocabularyTerm (Daniela).
       relation:
         description: >-
-          For a gene, the relation should be constrained to the expresssed_in
-          VocabularyTerm.
+          For a gene, the relation should be constrained to the "is_expressed_in"
+          VocabularyTerm from the vocabulary "Expression Relation"
       cross_references:
         description: >-
           list of cross references for an annotation (e.g. WBExpr variables, ZFIN figures, MGI assays)
@@ -309,7 +319,7 @@ classes:
           description: At least one of anatomical_structure or cellular_component should be populated.
 
   AnatomicalSiteDTO:
-    is_a: AuditedObject
+    is_a: AuditedObjectDTO
     description: >-
       The set of terms that define a specific anatomical site within a specimen.
     slots:
@@ -320,7 +330,11 @@ classes:
       - anatomical_substructure_qualifier_curies
       - anatomical_substructure_uberon_term_curies
       - cellular_component_curie
+      - cellular_component_ribbon_term_curies
+      - cellular_component_other
       - cellular_component_qualifier_curies
+      - anatomical_structure_uberon_term_other
+      - anatomical_substructure_uberon_term_other
     rules:
       - postconditions:
           any_of:
@@ -331,6 +345,85 @@ classes:
                 cellular_component_curie:
                   required: true
           description: At least one of anatomical_structure_curie or cellular_component_curie should be populated.
+
+  ExpressionPatternDTO:
+    is_a: AuditedObjectDTO
+    description: >-
+      DTO for an ExpressionPattern, capturing the spatial and temporal aspects
+      of an expression annotation.
+    slots:
+      - when_expressed_dto
+      - where_expressed_dto
+
+  GeneExpressionExperimentDTO:
+    is_a: SubmittedObjectDTO
+    description: >-
+      DTO class for the GeneExpressionExperiment class. The experimental design
+      used to determine the expression of a Gene. Member annotations are
+      provided inline via expression_annotation_dtos so submitters do not need
+      to back-reference the parent experiment by identifier.
+    slots:
+      - cross_reference_dtos
+      - reference_curie
+      - gene_identifier
+      - expression_assay_curie
+      - detection_reagent_identifiers
+      - specimen_genomic_model_identifier
+      - specimen_allele_identifiers
+      - condition_relation_dtos
+      - expression_annotation_dtos
+    slot_usage:
+      gene_identifier:
+        description: >-
+          The Gene that is assayed in the GeneExpressionExperiment.
+        required: true
+      reference_curie:
+        description: >-
+          The single Reference that supports the GeneExpressionExperiment.
+        required: true
+      expression_assay_curie:
+        description: >-
+          The assay used to experimentally determine gene expression in this
+          experiment.
+        required: true
+      expression_annotation_dtos:
+        description: >-
+          The GeneExpressionAnnotationDTOs that belong to this experiment.
+
+  GeneExpressionAnnotationDTO:
+    is_a: AuditedObjectDTO
+    description: >-
+      DTO class for the GeneExpressionAnnotation class. An annotation
+      describing an expression pattern for a gene. The annotated gene and the
+      supporting Reference are provided once at the
+      GeneExpressionExperimentDTO level and are not repeated on each annotation.
+    notes: >-
+      The when_expressed_stage_name and where_expressed_statement slots of
+      GeneExpressionAnnotation are deliberately absent from this DTO. They are
+      not submitted; the loading pipeline assembles them after ingest from the
+      controlled terms of the expression_pattern_dto together with the
+      when_expressed_free_text and where_expressed_free_text values submitted
+      here.
+    slots:
+      - expression_pattern_dto
+      - when_expressed_free_text
+      - where_expressed_free_text
+      - negated
+      - uncertain
+      - relation_name
+      - cross_reference_dtos
+      - related_figure_identifiers
+      # Formerly inherited via AnnotationDTO; retained here now that this class
+      # inherits directly from AuditedObjectDTO.
+      - mod_internal_id
+      - primary_external_id
+      - note_dtos
+    slot_usage:
+      relation_name:
+        description: >-
+          The relationship type between the gene and the expression pattern.
+          Expected to be constrained to "is_expressed_in" for gene expression
+          annotations.
 
   ExpressionAnnotationAssociation:
     is_a: EvidenceAssociation
@@ -530,24 +623,29 @@ slots:
     range: GOTerm
     multivalued: true
 
+  cellular_component_ribbon_term_curies:
+    description: >-
+      The primary cellular component slim term referred to within the context of an AnatomicalSite object and used by the expression ribbon. The range
+      is any string representing a GOTerm ontology term.
+    domain: AnatomicalSiteDTO
+    range: string
+    multivalued: true
+
   cellular_component_other:
     description: >-
       Is set to true when no cellular_component_ribbon_terms are available
-    domain: AnatomicalSite
     range: boolean
     multivalued: false
 
   anatomical_structure_uberon_term_other:
     description: >-
       Is set to true when other categorized uberon term is submitted in anatomical_structure_uberon_terms
-    domain: AnatomicalSite
     range: boolean
     multivalued: false
 
   anatomical_substructure_uberon_term_other:
     description: >-
       Is set to true when other categorized uberon term is submitted in anatomical_substructure_uberon_terms
-    domain: AnatomicalSite
     range: boolean
     multivalued: false
 
@@ -750,10 +848,15 @@ slots:
 
   when_expressed_stage_name:
     description: >-
-      A human-readable stage name. To be used when an ontology term for the
-      relevant stage is not available.
+      A human-readable summary of when the entity is expressed, composed of
+      developmental stage ontology term labels and/or free text.
     notes: >-
       Corresponds to whenExpressed.stageName in frozen JSON schema.
+      On ExpressionAnnotation this slot is not submitted: it is assembled
+      programmatically after ingest from the TemporalContext terms of the
+      ExpressionPattern together with when_expressed_free_text, and is
+      therefore absent from the expression annotation DTOs. Other classes
+      that reuse this slot (e.g. BioSampleAge) do accept it on submission.
     range: string
     multivalued: false
 
@@ -769,11 +872,110 @@ slots:
 
   where_expressed_statement:
     description: >-
-      A human-readable free-text description of the anatomical location of the
-      expression pattern.
+      A human-readable summary of where the entity is expressed, composed of
+      anatomical site ontology term labels and/or free text.
     notes: >-
       Corresponds to whereExpressedStatement in frozen JSON schema.
+      Not submitted: assembled programmatically after ingest from the
+      AnatomicalSite terms of the ExpressionPattern together with
+      where_expressed_free_text, and therefore absent from the expression
+      annotation DTOs.
     domain: ExpressionAnnotation
     range: string
     multivalued: false
     required: true
+
+  where_expressed_free_text:
+    description: >-
+      Submitted free-text description of the anatomical site where the entity
+      is expressed. To be used when controlled ontology terms are insufficient
+      to capture the spatial expression pattern. Contributes to the
+      post-ingest assembly of where_expressed_statement.
+    range: string
+    multivalued: false
+    required: false
+
+  when_expressed_free_text:
+    description: >-
+      Submitted free-text description of the developmental stage and/or age at
+      which the entity is expressed. To be used when controlled ontology terms
+      are insufficient to capture the temporal expression pattern. Contributes
+      to the post-ingest assembly of when_expressed_stage_name.
+    range: string
+    multivalued: false
+    required: false
+
+  when_expressed_dto:
+    description: >-
+      The temporal aspect of an ExpressionPatternDTO.
+    domain: ExpressionPatternDTO
+    range: TemporalContextDTO
+    multivalued: false
+    required: false
+    inlined: true
+
+  where_expressed_dto:
+    description: >-
+      The spatial aspect of an ExpressionPatternDTO.
+    domain: ExpressionPatternDTO
+    range: AnatomicalSiteDTO
+    multivalued: false
+    required: true
+    inlined: true
+
+  expression_pattern_dto:
+    description: >-
+      The spatiotemporal expression pattern of an expression annotation, as a
+      DTO.
+    domain: GeneExpressionAnnotationDTO
+    range: ExpressionPatternDTO
+    multivalued: false
+    required: true
+    inlined: true
+
+  detection_reagent_identifiers:
+    description: >-
+      Identifiers (curie/primary_external_id/mod_internal_id) of the reagents
+      used in the expression assay: e.g., construct, antibodies, probes.
+    domain: GeneExpressionExperimentDTO
+    range: string
+    multivalued: true
+    required: false
+
+  specimen_genomic_model_identifier:
+    description: >-
+      Identifier (curie/primary_external_id/mod_internal_id) of the
+      AffectedGenomicModel that defines the specimen assayed.
+    domain: GeneExpressionExperimentDTO
+    range: string
+    multivalued: false
+    required: false
+
+  specimen_allele_identifiers:
+    description: >-
+      Identifiers (curie/primary_external_id/mod_internal_id) of the Allele(s)
+      of the specimen assayed.
+    domain: GeneExpressionExperimentDTO
+    range: string
+    multivalued: true
+    required: false
+
+  related_figure_identifiers:
+    description: >-
+      Identifiers of the figures that support the ExpressionAnnotation.
+    domain: GeneExpressionAnnotationDTO
+    range: string
+    multivalued: true
+    required: false
+
+  expression_annotation_dtos:
+    description: >-
+      The list of GeneExpressionAnnotationDTOs grouped under a single
+      GeneExpressionExperimentDTO. Annotations are inlined here so submitters
+      do not need to back-reference the parent experiment by identifier.
+    domain: GeneExpressionExperimentDTO
+    range: GeneExpressionAnnotationDTO
+    multivalued: true
+    required: true
+    inlined: true
+    inlined_as_list: true

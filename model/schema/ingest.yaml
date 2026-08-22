@@ -15,6 +15,7 @@ imports:
   - phenotypeAndDiseaseAnnotation
   - variantDTO
   - biologicalEntitySet
+  - expression
 
 prefixes:
   alliance: "http://alliancegenome.org/"
@@ -366,6 +367,13 @@ slots:
     mixins:
       - object_set
 
+  gene_expression_experiment_ingest_set:
+    domain: Ingest
+    range: GeneExpressionExperimentDTO
+    multivalued: true
+    mixins:
+      - object_set
+
   construct_cassette_association_ingest_set:
     domain: Ingest
     range: ConstructCassetteAssociationDTO
@@ -495,5 +503,6 @@ classes:
       - assembly_component_ingest_set
       - high_throughput_expression_dataset_annotation_ingest_set
       - high_throughput_expression_dataset_sample_annotation_ingest_set
+      - gene_expression_experiment_ingest_set
       - functional_gene_set_ingest_set
       - gene_functional_gene_set_association_ingest_set
