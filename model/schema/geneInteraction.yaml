@@ -65,6 +65,7 @@ classes:
           subject vs object is arbitrary. We allow a gene product to stand
           as a proxy for the gene or vice versa.
     slots:
+      - curie
       - gene_association_subject
     slot_usage:
       gene_association_subject:
