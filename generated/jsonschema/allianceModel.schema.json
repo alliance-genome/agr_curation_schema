@@ -14426,6 +14426,94 @@
             "title": "Chromosome",
             "type": "object"
         },
+        "ChromosomeAccession": {
+            "additionalProperties": false,
+            "description": "A mapping of a chromosome name to its RefSeq accession within a specific genome assembly. Holds the reference data formerly hard-coded in the ChromosomeAccessionEnum so that new genome assemblies can be added via data load rather than a code change.",
+            "properties": {
+                "accession": {
+                    "description": "The RefSeq accession of the chromosome sequence (e.g. \"RefSeq:NC_002333.2\").",
+                    "type": "string"
+                },
+                "assembly_identifier": {
+                    "description": "The identifier of the genome assembly the accession belongs to (e.g. \"GRCz11\").",
+                    "type": "string"
+                },
+                "chromosome_name": {
+                    "description": "The chromosome name within the genome assembly (e.g. \"2L\", \"X\", \"MT\").",
+                    "type": "string"
+                },
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "display_order": {
+                    "description": "Ordering used to resolve an accession shared across assemblies to the earlier-declared assembly first, preserving the former enum's lookup behaviour.",
+                    "type": "integer"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "chromosome_name",
+                "accession",
+                "assembly_identifier",
+                "display_order",
+                "internal"
+            ],
+            "title": "ChromosomeAccession",
+            "type": "object"
+        },
         "ChromosomeDTO": {
             "additionalProperties": false,
             "description": "Ingest class for chromosomes",

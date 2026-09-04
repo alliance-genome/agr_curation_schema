@@ -581,6 +581,36 @@ classes:
       name:
         required: true
 
+  ChromosomeAccession:
+    is_a: AuditedObject
+    description: >-
+      A mapping of a chromosome name to its RefSeq accession within a specific
+      genome assembly. Holds the reference data formerly hard-coded in the
+      ChromosomeAccessionEnum so that new genome assemblies can be added via data
+      load rather than a code change.
+    attributes:
+      chromosome_name:
+        range: string
+        required: true
+        description: >-
+          The chromosome name within the genome assembly (e.g. "2L", "X", "MT").
+      accession:
+        range: string
+        required: true
+        description: >-
+          The RefSeq accession of the chromosome sequence (e.g. "RefSeq:NC_002333.2").
+      assembly_identifier:
+        range: string
+        required: true
+        description: >-
+          The identifier of the genome assembly the accession belongs to (e.g. "GRCz11").
+      display_order:
+        range: integer
+        required: true
+        description: >-
+          Ordering used to resolve an accession shared across assemblies to the
+          earlier-declared assembly first, preserving the former enum's lookup behaviour.
+
   GenomeAssembly:
     is_a: BiologicalEntity
     description: >-
