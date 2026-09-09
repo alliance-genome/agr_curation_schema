@@ -1,6 +1,5 @@
-id: https://github.com/alliance-genome/agr_curation_schema/entity_reference_association
+id: https://github.com/alliance-genome/agr_curation_schema/abc/entity_reference_association
 name: entity_reference_association
-title: MOD Entity-Reference Association Submission
 description: >-
   LinkML model for the entity-reference association files MODs provide to the
   Alliance Bibliography Central (ABC), and the accompanying curator mapping
@@ -12,12 +11,9 @@ description: >-
   "Providing Entity-Reference Association Files to the ABC"
   (https://agr-jira.atlassian.net/wiki/spaces/BLUE/pages/1454014467).
 
-license: MIT
-version: 0.1.0
-
 prefixes:
   linkml: https://w3id.org/linkml/
-  erassoc: https://github.com/alliance-genome/agr_curation_schema/entity_reference_association/
+  erassoc: https://github.com/alliance-genome/agr_curation_schema/abc/entity_reference_association/
   ATP: http://purl.obolibrary.org/obo/ATP_
 
 default_prefix: erassoc
@@ -150,7 +146,7 @@ slots:
 
   entity_type:
     description: The kind of entity the reference is associated with.
-    range: EntityTypeEnum
+    range: entity_type_enum
 
   entity_name:
     description: >-
@@ -219,7 +215,7 @@ slots:
 
 enums:
 
-  EntityTypeEnum:
+  entity_type_enum:
     description: >-
       Entity types accepted in entity-reference association submissions,
       matching the entity types available in the ABC curation interface.

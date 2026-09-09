@@ -1,6 +1,5 @@
-id: https://github.com/alliance-genome/agr_literature_service/linkml/topic_entity_tag
+id: https://github.com/alliance-genome/agr_curation_schema/abc/topic_entity_tag
 name: topic_entity_tag
-title: ABC Topic Entity Tag
 description: >-
   LinkML model of the ABC topic_entity_tag and topic_entity_tag_source tables
   (SCRUM-6452), covering every column, so consumers -- in particular the
@@ -8,12 +7,9 @@ description: >-
   for TET documents. Mirrors
   agr_literature_service/api/models/topic_entity_tag_model.py.
 
-license: MIT
-version: 0.1.0
-
 prefixes:
   linkml: https://w3id.org/linkml/
-  tet: https://github.com/alliance-genome/agr_literature_service/linkml/topic_entity_tag/
+  tet: https://github.com/alliance-genome/agr_curation_schema/abc/topic_entity_tag/
   ATP: http://purl.obolibrary.org/obo/ATP_
   NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
 
@@ -29,7 +25,7 @@ imports:
 
 classes:
 
-  AuditedObject:
+  AbcAuditedObject:
     abstract: true
     description: >-
       Audit columns shared by all ABC tables (AuditedModel). created_by /
@@ -42,7 +38,7 @@ classes:
       - updated_by
 
   TopicEntityTag:
-    is_a: AuditedObject
+    is_a: AbcAuditedObject
     description: >-
       One curated or machine-generated assertion that a reference is about a
       topic, optionally tied to a specific entity. The topic, entity_type,
@@ -97,7 +93,7 @@ classes:
               value_presence: ABSENT
 
   TopicEntityTagSource:
-    is_a: AuditedObject
+    is_a: AbcAuditedObject
     description: >-
       Where a family of tags comes from: the combination of evidence
       assertion, method, and data providers. Unique on
@@ -215,13 +211,13 @@ slots:
     description: >-
       Rollup of author validations of this tag, computed from the
       validating tags.
-    range: ValidationValueEnum
+    range: validation_value_enum
 
   validation_by_professional_biocurator:
     description: >-
       Rollup of professional-biocurator validations of this tag, computed
       from the validating tags.
-    range: ValidationValueEnum
+    range: validation_value_enum
 
   validated_by:
     description: >-
@@ -288,7 +284,7 @@ slots:
 
 enums:
 
-  ValidationValueEnum:
+  validation_value_enum:
     description: >-
       Computed validation rollup values (see
       calculate_validation_value_for_tag in topic_entity_tag_crud).
