@@ -1,0 +1,303 @@
+id: https://github.com/alliance-genome/agr_literature_service/linkml/topic_entity_tag
+name: topic_entity_tag
+title: ABC Topic Entity Tag
+description: >-
+  LinkML model of the ABC topic_entity_tag and topic_entity_tag_source tables
+  (SCRUM-6452), covering every column, so consumers -- in particular the
+  public-site search index generation -- have an authoritative shared shape
+  for TET documents. Mirrors
+  agr_literature_service/api/models/topic_entity_tag_model.py.
+
+license: MIT
+version: 0.1.0
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  tet: https://github.com/alliance-genome/agr_literature_service/linkml/topic_entity_tag/
+  ATP: http://purl.obolibrary.org/obo/ATP_
+  NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
+
+default_prefix: tet
+default_range: string
+
+imports:
+  - linkml:types
+
+#==============================================================
+# Classes
+#==============================================================
+
+classes:
+
+  AuditedObject:
+    abstract: true
+    description: >-
+      Audit columns shared by all ABC tables (AuditedModel). created_by /
+      updated_by reference users.id -- in the ABC these are Okta subject
+      strings or auto-created verbatim ids from data loads.
+    slots:
+      - date_created
+      - date_updated
+      - created_by
+      - updated_by
+
+  TopicEntityTag:
+    is_a: AuditedObject
+    description: >-
+      One curated or machine-generated assertion that a reference is about a
+      topic, optionally tied to a specific entity. The topic, entity_type,
+      display_tag, data_novelty, and data_context values are ATP ontology
+      curies; species is an NCBITaxon curie; entity is a MOD entity curie
+      resolved through the Alliance persistent store.
+    slots:
+      - topic_entity_tag_id
+      - reference_id
+      - reference_curie
+      - topic_entity_tag_source_id
+      - topic
+      - entity_type
+      - entity
+      - entity_id_validation
+      - species
+      - display_tag
+      - negated
+      - confidence_score
+      - confidence_level
+      - note
+      - data_novelty
+      - data_context
+      - validation_by_author
+      - validation_by_professional_biocurator
+      - validated_by
+      - ml_model_id
+    rules:
+      - description: >-
+          entity_type, entity, and entity_id_validation are set together or
+          not at all (check constraint valid_entity_type_dependencies).
+        preconditions:
+          slot_conditions:
+            entity:
+              required: true
+        postconditions:
+          slot_conditions:
+            entity_type:
+              required: true
+            entity_id_validation:
+              required: true
+      - description: A tag without an entity carries no entity_type.
+        preconditions:
+          slot_conditions:
+            entity:
+              value_presence: ABSENT
+        postconditions:
+          slot_conditions:
+            entity_type:
+              value_presence: ABSENT
+            entity_id_validation:
+              value_presence: ABSENT
+
+  TopicEntityTagSource:
+    is_a: AuditedObject
+    description: >-
+      Where a family of tags comes from: the combination of evidence
+      assertion, method, and data providers. Unique on
+      (source_evidence_assertion, source_method, data_provider,
+      secondary_data_provider).
+    slots:
+      - topic_entity_tag_source_id
+      - source_evidence_assertion
+      - source_method
+      - validation_type
+      - data_provider
+      - secondary_data_provider_abbreviation
+      - source_description
+
+#==============================================================
+# Slots
+#==============================================================
+
+slots:
+
+  topic_entity_tag_id:
+    description: Primary key of the topic_entity_tag row.
+    identifier: true
+    range: integer
+    required: true
+
+  reference_id:
+    description: >-
+      Internal foreign key to the reference table. Public consumers should
+      use reference_curie instead.
+    range: integer
+    required: true
+
+  reference_curie:
+    description: >-
+      The AGRKB curie of the tagged reference (e.g. AGRKB:101000000860007);
+      the join of reference_id exposed by the API and the search index.
+
+  topic_entity_tag_source_id:
+    description: Foreign key to the tag's TopicEntityTagSource.
+    range: integer
+    required: true
+
+  topic:
+    description: >-
+      ATP curie of the topic asserted for the reference (A-team ontology
+      term id), e.g. ATP:0000005 (gene) for a pure entity tag or a
+      descendant of ATP:0000002 for a subject topic.
+    required: true
+
+  entity_type:
+    description: >-
+      ATP curie of the kind of entity tagged (e.g. ATP:0000005 gene,
+      ATP:0000006 allele, ATP:0000027 strain). Present exactly when entity
+      is present.
+
+  entity:
+    description: >-
+      Curie of the tagged entity (e.g. SGD:S000002284, ZFIN:ZDB-ALT-...),
+      resolved via the Alliance persistent store per entity_id_validation.
+
+  entity_id_validation:
+    description: >-
+      How the entity curie was validated, e.g. "alliance". Present exactly
+      when entity is present.
+
+  species:
+    description: NCBITaxon curie of the species the tag applies to.
+
+  display_tag:
+    description: >-
+      ATP curie of the MOD display section the tag appears under on the
+      public reference pages (e.g. ATP:0000147 primary display,
+      ATP:0000130 review display).
+
+  negated:
+    description: >-
+      True when the tag asserts the reference is NOT about the
+      topic/entity.
+    range: boolean
+
+  confidence_score:
+    description: Classifier confidence score for machine-generated tags.
+    range: float
+
+  confidence_level:
+    description: >-
+      Classifier confidence bucket for machine-generated tags (in practice
+      high / medium / low, compared case-insensitively).
+
+  note:
+    description: Free-text curator note on the tag.
+
+  data_novelty:
+    description: >-
+      ATP curie stating whether the tagged data is novel: ATP:0000334
+      (existing data), or a new-data term -- ATP:0000335 (new data) and its
+      descendants ATP:0000321 (new data type), ATP:0000228 (new to
+      database), ATP:0000229 (new to field).
+    required: true
+
+  data_context:
+    description: >-
+      ATP curie stating what kind of data the tag represents, one of four
+      disjoint terms: ATP:0000325 (experimentally studied data), ATP:0000360
+      (background information), ATP:0000328 (expression marker), ATP:0000327
+      (genetic marker). SCRUM-5697; added by migration d7b3e1c95a24
+      (2026-08-31). Required in the application model, but nullable in the
+      database until the backfill completes -- and not yet present in every
+      environment (e.g. literature-4006), so index generation must tolerate
+      its absence.
+    recommended: true
+
+  validation_by_author:
+    description: >-
+      Rollup of author validations of this tag, computed from the
+      validating tags.
+    range: ValidationValueEnum
+
+  validation_by_professional_biocurator:
+    description: >-
+      Rollup of professional-biocurator validations of this tag, computed
+      from the validating tags.
+    range: ValidationValueEnum
+
+  validated_by:
+    description: >-
+      topic_entity_tag_ids of the tags validating this tag (the
+      topic_entity_tag_validation association table).
+    range: integer
+    multivalued: true
+
+  ml_model_id:
+    description: >-
+      Foreign key to the ml_model that produced a machine-generated tag;
+      absent for manual tags.
+    range: integer
+
+  date_created:
+    description: When the row was created (stored UTC).
+    range: datetime
+    required: true
+
+  date_updated:
+    description: When the row was last updated (stored UTC).
+    range: datetime
+
+  created_by:
+    description: users.id of the creator.
+
+  updated_by:
+    description: users.id of the last updater.
+
+  source_evidence_assertion:
+    description: >-
+      ATP curie of the evidence assertion type, e.g. ATP:0000036 (assertion
+      by professional biocurator), ATP:0000035 (author assertion), or an
+      ML-method term for classifiers.
+    required: true
+
+  source_method:
+    description: >-
+      The system or pipeline that produced the tags, e.g.
+      abc_literature_system, sgd_reference_curation, abc_entity_extractor.
+    required: true
+
+  validation_type:
+    description: >-
+      How tags from this source validate others (e.g. professional_biocurator,
+      author); null for sources whose tags do not validate.
+
+  data_provider:
+    description: MOD abbreviation of the group that generated the tags (e.g. SGD).
+    required: true
+
+  secondary_data_provider_abbreviation:
+    description: >-
+      MOD abbreviation of the Alliance member responsible for the data
+      (mod.abbreviation behind secondary_data_provider_id).
+    required: true
+
+  source_description:
+    description: Human-readable description of the source.
+
+#==============================================================
+# Enums
+#==============================================================
+
+enums:
+
+  ValidationValueEnum:
+    description: >-
+      Computed validation rollup values (see
+      calculate_validation_value_for_tag in topic_entity_tag_crud).
+    permissible_values:
+      validated_right:
+        description: Validating tags agree with this tag.
+      validated_wrong:
+        description: Validating tags contradict this tag.
+      validated_right_self:
+        description: The tag validates itself (its own source validates).
+      validation_conflict:
+        description: Validating tags disagree with each other.
