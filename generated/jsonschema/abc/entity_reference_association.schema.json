@@ -161,7 +161,7 @@
                 },
                 "entity_type": {
                     "$ref": "#/$defs/EntityTypeEnum",
-                    "description": "The kind of entity the reference is associated with, one of the 13 types in entity_type_enum: gene, allele, transgenic_allele, classical_allele, species, strain, genotype, fish, transgenic_construct, sequence_targeting_reagent, antibody, complex, pathway. Canonical values are the snake_case enum names; submitted files may write them with spaces (each value's title), which the loader normalizes."
+                    "description": "The kind of entity the reference is associated with, one of the 13 types in entity_type_enum: gene, allele, transgenic_allele, classical_allele, species, strain, genotype, fish, transgenic_construct, sequence_targeting_reagent, antibody, complex, pathway. Canonical values are the snake_case enum names; submitted TSV files may write them with spaces (each value's title), which the loader normalizes -- but the generated (closed) JSON Schema accepts only the snake_case names, so JSON submissions must use those."
                 },
                 "reference_id": {
                     "description": "The MOD's identifier for the paper (e.g. SGDID S000039113) or a PMID curie (PMID:12345678); resolved through the ABC reference cross-references.",

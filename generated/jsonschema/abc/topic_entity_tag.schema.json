@@ -25,26 +25,42 @@
                 },
                 {
                     "if": {
-                        "not": {
-                            "required": [
-                                "entity"
-                            ]
-                        },
                         "properties": {
-                            "entity": {}
-                        }
+                            "entity_type": {}
+                        },
+                        "required": [
+                            "entity_type"
+                        ]
                     },
                     "then": {
-                        "not": {
-                            "required": [
-                                "entity_type",
-                                "entity_id_validation"
-                            ]
-                        },
                         "properties": {
-                            "entity_id_validation": {},
+                            "entity": {},
+                            "entity_id_validation": {}
+                        },
+                        "required": [
+                            "entity",
+                            "entity_id_validation"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "entity_id_validation": {}
+                        },
+                        "required": [
+                            "entity_id_validation"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "entity": {},
                             "entity_type": {}
-                        }
+                        },
+                        "required": [
+                            "entity",
+                            "entity_type"
+                        ]
                     }
                 }
             ],
@@ -337,26 +353,42 @@
         },
         {
             "if": {
-                "not": {
-                    "required": [
-                        "entity"
-                    ]
-                },
                 "properties": {
-                    "entity": {}
-                }
+                    "entity_type": {}
+                },
+                "required": [
+                    "entity_type"
+                ]
             },
             "then": {
-                "not": {
-                    "required": [
-                        "entity_type",
-                        "entity_id_validation"
-                    ]
-                },
                 "properties": {
-                    "entity_id_validation": {},
+                    "entity": {},
+                    "entity_id_validation": {}
+                },
+                "required": [
+                    "entity",
+                    "entity_id_validation"
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": {
+                    "entity_id_validation": {}
+                },
+                "required": [
+                    "entity_id_validation"
+                ]
+            },
+            "then": {
+                "properties": {
+                    "entity": {},
                     "entity_type": {}
-                }
+                },
+                "required": [
+                    "entity",
+                    "entity_type"
+                ]
             }
         }
     ],
