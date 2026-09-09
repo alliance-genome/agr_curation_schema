@@ -15,7 +15,7 @@ ARTIFACT_TGTS = jsonschema
 JAVA_GEN_OPTS = --output-directory $(ARTIFACTS_DIR)/java/org/alliancegenome/curation/model --package org.alliancegenome.curation.model
 DDL_GEN_OPTS = --sqla-file $(TARGET_DIR)/sqla-files/
 
-all: clean gen stage
+all: clean gen stage gen-abc-jsonschema stage-abc-jsonschema
 artifacts: clean-artifacts gen-artifacts stage-artifacts
 gen: $(patsubst %,gen-%,$(TGTS))
 .PHONY: all gen clean t echo test install gh-deploy-docs clean-artifacts clean-doc clean-artifacts gen-artifacts clean-docs .FORCE
@@ -261,7 +261,7 @@ ABC_TET_SCHEMA = $(ABC_DIR)/topic_entity_tag.yaml
 .PHONY: test-abc gen-abc-jsonschema stage-abc-jsonschema
 gen-abc-jsonschema: $(patsubst %, $(TARGET_DIR)/jsonschema/abc/%.schema.json, $(ABC_SCHEMA_NAMES))
 $(TARGET_DIR)/jsonschema/abc/%.schema.json: $(ABC_DIR)/%.yaml
-	mkdir -p $(TARGET_DIR)/jsonschema/abc
+	mkdir -p $(dir $@)
 	poetry run gen-json-schema --indent 4 --closed $< > $@
 
 stage-abc-jsonschema: gen-abc-jsonschema
@@ -274,10 +274,11 @@ stage-abc-jsonschema: gen-abc-jsonschema
 test-abc: gen-abc-jsonschema
 	poetry run linkml-validate -s $(ABC_ERA_SCHEMA) -C EntityReferenceAssociationIngest test/data/abc/entity_reference_association_valid.json
 	poetry run linkml-validate -s $(ABC_TET_SCHEMA) -C TopicEntityTag test/data/abc/topic_entity_tag_valid.json
-	! poetry run linkml-validate -s $(ABC_ERA_SCHEMA) -C EntityReferenceAssociationIngest test/data/abc/invalid/era_entity_without_entity_type.json
-	! poetry run linkml-validate -s $(ABC_ERA_SCHEMA) -C EntityReferenceAssociationIngest test/data/abc/invalid/era_topic_only_without_display_section.json
-	! poetry run linkml-validate -s $(ABC_ERA_SCHEMA) -C EntityReferenceAssociationIngest test/data/abc/invalid/era_curator_without_contact.json
-	! poetry run linkml-validate -s $(ABC_TET_SCHEMA) -C TopicEntityTag test/data/abc/invalid/tet_entity_without_entity_type.json
+	poetry run linkml-validate -s $(ABC_ERA_SCHEMA) -C EntityReferenceAssociationIngest test/data/abc/invalid/era_entity_without_entity_type.json 2>&1 | grep -q "'entity_type' is a required property"
+	poetry run linkml-validate -s $(ABC_ERA_SCHEMA) -C EntityReferenceAssociationIngest test/data/abc/invalid/era_topic_only_without_display_section.json 2>&1 | grep -q "'display_section' is a required property"
+	poetry run linkml-validate -s $(ABC_ERA_SCHEMA) -C EntityReferenceAssociationIngest test/data/abc/invalid/era_curator_without_contact.json 2>&1 | grep -q "'full_name' is a required property"
+	poetry run linkml-validate -s $(ABC_TET_SCHEMA) -C TopicEntityTag test/data/abc/invalid/tet_entity_without_entity_type.json 2>&1 | grep -q "'entity_type' is a required property"
+	poetry run linkml-validate -s $(ABC_TET_SCHEMA) -C TopicEntityTag test/data/abc/invalid/tet_entity_type_without_entity.json 2>&1 | grep -q "'entity' is a required property"
 
 # ---------------------------------------
 # Java

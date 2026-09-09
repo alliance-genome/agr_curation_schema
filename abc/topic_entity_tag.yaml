@@ -93,17 +93,28 @@ classes:
               required: true
             entity_id_validation:
               required: true
-      - description: A tag without an entity carries no entity_type.
+      - description: A tag with an entity_type must name the entity.
         preconditions:
           slot_conditions:
-            entity:
-              value_presence: ABSENT
+            entity_type:
+              value_presence: PRESENT
         postconditions:
           slot_conditions:
-            entity_type:
-              value_presence: ABSENT
+            entity:
+              required: true
             entity_id_validation:
-              value_presence: ABSENT
+              required: true
+      - description: A tag with an entity_id_validation must name the entity.
+        preconditions:
+          slot_conditions:
+            entity_id_validation:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            entity:
+              required: true
+            entity_type:
+              required: true
 
   TopicEntityTagSource:
     is_a: AbcAuditedObject
