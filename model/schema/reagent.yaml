@@ -84,7 +84,7 @@ classes:
       - cross_references
       - references
       - original_reference
-      - taxon_term
+      - host_taxon_term
       - generated_by
       - manufactured_by
       # - disease    # Need a way to give DOID term and reference. Or a generic way to specify CV term and publication attribution.
@@ -105,7 +105,7 @@ classes:
           FB does not have names for antibodies, but would be easy to generate,
           so we may want to make this required.
         required: true
-      taxon_term:
+      host_taxon_term:
         description: >-
           The species in which the antibody was raised: e.g., mouse, rabbit,
           guinea pig, goat, camel, etc.
@@ -124,7 +124,7 @@ classes:
       Can be used experimentally for the purposes of detection or purification.
     slots:
       - name
-      - antigen_taxon_term_string
+      - antigen_taxon_term_name
       - clonality_name
       - heavy_chain_isotype_name
       - light_chain_isotype_name
@@ -132,7 +132,7 @@ classes:
       - cross_reference_dtos
       - reference_curies
       - original_reference_curie
-      - taxon_term_string
+      - host_taxon_term_name
       - generated_by_identifier # needs to change: currently no common identifier field for Agent class
       - manufactured_by_identifier # needs to change: currently no common identifier field for Agent class
       # - disease    # Need a way to give DOID term and reference. Or a generic way to specify CV term and publication attribution.
@@ -146,12 +146,10 @@ classes:
           FB does not have names for antibodies, but would be easy to generate,
           so we may want to make this required.
         required: true
-      taxon_term_string:
+      host_taxon_term_name:
         description: >-
           The species in which the antibody was raised: e.g., mouse, rabbit,
           guinea pig, goat, camel, etc.
-        notes: >-
-          FB does not have host taxon information for antibodies.
         required: false
       original_reference_curie:
         description: >-
@@ -742,41 +740,19 @@ slots:
   antigen_taxon_term:
     description: >-
       Holds between an Antibody and the species from which the antigen
-      originates (as represented by taxon). A VocabularyTerm rather than an
-      NCBITaxonTerm so free-text/not-specified values can be recorded
-      alongside real NCBITaxon IDs.
+      originates. A VocabularyTerm rather than an NCBITaxonTerm so
+      free-text/not-specified values can be recorded alongside real
+      NCBITaxon IDs.
     required: false
     multivalued: false
     domain: Antibody
     range: VocabularyTerm
 
-  antigen_taxon_term_string:
+  antigen_taxon_term_name:
     description: >-
       Name of the VocabularyTerm representing the species from which the
-      antigen originates (as represented by taxon): either an NCBITaxon curie
-      or a free-text/not-specified value. From the Antibody Antigen Taxon CV.
-    domain: AntibodyDTO
-    range: string
-
-  taxon_term:
-    description: >-
-      The species in which the antibody was raised: e.g., mouse, rabbit,
-      guinea pig, goat, camel, etc. A VocabularyTerm rather than an
-      NCBITaxonTerm so free-text/not-specified values can be recorded
-      alongside real NCBITaxon IDs.
-    notes: >-
-      FB does not have host taxon information for antibodies.
-    required: false
-    multivalued: false
-    domain: Antibody
-    range: VocabularyTerm
-
-  taxon_term_string:
-    description: >-
-      Name of the VocabularyTerm representing the species in which the
-      antibody was raised: e.g., mouse, rabbit, guinea pig, goat, camel, etc.
-      Either an NCBITaxon curie or a free-text/not-specified value. From the
-      Antibody Taxon CV.
+      antigen originates: either an NCBITaxon curie or a
+      free-text/not-specified value. From the Antibody Antigen Taxon CV.
     domain: AntibodyDTO
     range: string
 
@@ -1017,6 +993,26 @@ slots:
     required: false
     multivalued: false
     domain: Antibody
+    range: string
+
+  host_taxon_term:
+    description: >-
+      The species in which the antibody was raised: e.g., mouse, rabbit,
+      guinea pig, goat, camel, etc. A VocabularyTerm rather than an
+      NCBITaxonTerm so free-text/not-specified values can be recorded
+      alongside real NCBITaxon IDs.
+    required: false
+    multivalued: false
+    domain: Antibody
+    range: VocabularyTerm
+
+  host_taxon_term_name:
+    description: >-
+      Name of the VocabularyTerm representing the species in which the
+      antibody was raised: e.g., mouse, rabbit, guinea pig, goat, camel, etc.
+      Either an NCBITaxon curie or a free-text/not-specified value. From the
+      Antibody Host Taxon CV.
+    domain: AntibodyDTO
     range: string
 
   light_chain_isotype:
