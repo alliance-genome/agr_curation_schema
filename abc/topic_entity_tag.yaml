@@ -74,6 +74,7 @@ classes:
       - validation_by_professional_biocurator
       - validated_by
       - ml_model_id
+      - source
     slot_usage:
       topic_entity_tag_source_id:
         description: Foreign key to the tag's TopicEntityTagSource.
@@ -251,6 +252,16 @@ slots:
       Foreign key to the ml_model that produced a machine-generated tag;
       absent for manual tags.
     range: integer
+
+  source:
+    description: >-
+      The tag's TopicEntityTagSource embedded inline -- for documents (e.g.
+      the public search index) that carry the source's evidence assertion,
+      method, and data providers next to the tag instead of joining on
+      topic_entity_tag_source_id. When present it is the row
+      topic_entity_tag_source_id points at.
+    range: TopicEntityTagSource
+    inlined: true
 
   date_created:
     description: When the row was created (stored UTC).

@@ -105,15 +105,26 @@ classes:
       - email
       - full_name
     rules:
-      - description: A mapping row must provide an email or a full name.
+      - description: >-
+          A mapping row must provide an email or a full name: when email is
+          absent, full_name is required.
+        preconditions:
+          slot_conditions:
+            email:
+              value_presence: ABSENT
         postconditions:
-          any_of:
-            - slot_conditions:
-                email:
-                  required: true
-            - slot_conditions:
-                full_name:
-                  required: true
+          slot_conditions:
+            full_name:
+              required: true
+      - description: When full_name is absent, email is required.
+        preconditions:
+          slot_conditions:
+            full_name:
+              value_presence: ABSENT
+        postconditions:
+          slot_conditions:
+            email:
+              required: true
 
 #==============================================================
 # Slots
@@ -131,7 +142,11 @@ slots:
     description: >-
       IANA timezone of the date_created / date_updated values (e.g.
       America/Los_Angeles), or UTC when the timestamps are exported already
-      converted. The ABC converts to UTC at load time.
+      converted. The ABC converts to UTC at load time. Note for JSON
+      submissions: datetime values must carry an explicit offset (JSON
+      Schema date-time, e.g. 2024-03-15T10:22:31-07:00), which should agree
+      with this declared timezone; offset-less TSV timestamps are
+      interpreted in this timezone by the loader.
     required: true
 
   entity_reference_associations:
@@ -182,20 +197,18 @@ slots:
   date_created:
     description: >-
       When the association was curated in the MOD database, in the timezone
-      declared by the submission. Required as the contract for new
-      submissions; at load time, legacy rows from dumps predating this
-      column degrade gracefully (the load time is stamped instead).
+      declared by the submission. Strongly encouraged; when absent (e.g.
+      dumps predating this column), the load date is stamped instead.
     range: datetime
-    required: true
+    recommended: true
 
   created_by:
     description: >-
       The MOD's internal user id of the curator who curated the association
       (not who added the paper). Every distinct value should have a
-      CuratorMapping. Required as the contract for new submissions; at load
-      time, legacy rows without it degrade gracefully (the loader's
-      automation user is stamped instead).
-    required: true
+      CuratorMapping. Strongly encouraged; when absent (e.g. dumps predating
+      this column), the ABC default user (default_user) is stamped instead.
+    recommended: true
 
   updated_by:
     description: >-
@@ -205,7 +218,7 @@ slots:
   date_updated:
     description: >-
       When the association was last modified, in the declared timezone;
-      defaults to the ABC load time when absent.
+      defaults to date_created when absent.
     range: datetime
 
   display_section:
@@ -217,7 +230,10 @@ slots:
       the ABC team to an ABC display_tag ATP curie -- NOT to the ABC tag's
       topic slot. Named "topic" in SGD's dump (the alias); called
       display_section here to avoid colliding with the ABC's topic column,
-      which holds an ATP topic curie.
+      which holds an ATP topic curie. The alias is documentation only: a MOD
+      converting its TSV to JSON must rename the topic column to
+      display_section -- the generated (closed) JSON Schema accepts only the
+      display_section key.
 
   user_id:
     description: >-
@@ -252,10 +268,8 @@ enums:
       to the ATP term given as its meaning.
     permissible_values:
       gene:
-        title: gene
         meaning: ATP:0000005
       allele:
-        title: allele
         meaning: ATP:0000006
       transgenic_allele:
         title: transgenic allele
@@ -264,16 +278,12 @@ enums:
         title: classical allele
         meaning: ATP:0000285
       species:
-        title: species
         meaning: ATP:0000123
       strain:
-        title: strain
         meaning: ATP:0000027
       genotype:
-        title: genotype
         meaning: ATP:0000025
       fish:
-        title: fish
         description: ZFIN genotype + sequence targeting reagent combination.
         meaning: ATP:0000026
       transgenic_construct:
@@ -283,13 +293,10 @@ enums:
         title: sequence targeting reagent
         meaning: ATP:0000093
       antibody:
-        title: antibody
         meaning: ATP:0000096
       complex:
-        title: complex
         description: Mainly used by SGD.
         meaning: ATP:0000128
       pathway:
-        title: pathway
         description: Mainly used by SGD.
         meaning: ATP:0000022

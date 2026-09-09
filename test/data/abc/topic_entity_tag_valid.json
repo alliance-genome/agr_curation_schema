@@ -1,0 +1,23 @@
+{
+    "topic_entity_tag_id": 123,
+    "reference_curie": "AGRKB:101000000860007",
+    "topic_entity_tag_source_id": 7,
+    "topic": "ATP:0000005",
+    "entity_type": "ATP:0000005",
+    "entity": "SGD:S000002284",
+    "entity_id_validation": "alliance",
+    "species": "NCBITaxon:559292",
+    "data_novelty": "ATP:0000334",
+    "data_context": "ATP:0000325",
+    "negated": false,
+    "date_created": "2026-09-01T12:00:00Z",
+    "created_by": "okta-example",
+    "source": {
+        "topic_entity_tag_source_id": 7,
+        "source_evidence_assertion": "ATP:0000036",
+        "source_method": "sgd_reference_curation",
+        "data_provider": "SGD",
+        "secondary_data_provider_abbreviation": "SGD",
+        "date_created": "2026-09-01T12:00:00Z"
+    }
+}
