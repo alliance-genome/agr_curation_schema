@@ -146,7 +146,7 @@
                     ]
                 },
                 "entity_id": {
-                    "description": "The MOD's stable identifier for the entity (e.g. SGDID S000002284); must be resolvable through the Alliance persistent store. Empty for a topic-only annotation.",
+                    "description": "The MOD's stable identifier for the entity (e.g. SGDID SGD:S000002284); must be resolvable through the Alliance persistent store. Empty for a topic-only annotation.",
                     "type": [
                         "string",
                         "null"
