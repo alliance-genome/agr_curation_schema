@@ -4,12 +4,23 @@ description: >-
   LinkML model for the entity-reference association files MODs provide to the
   Alliance Bibliography Central (ABC), and the accompanying curator mapping
   file. One EntityReferenceAssociation per curated association of an entity
-  (gene / allele / complex / pathway) with a paper, carrying provenance
+  (gene, allele, strain, antibody, ... -- see entity_type_enum for the full
+  13 types) with a paper, carrying provenance
   (created_by / date_created, optionally updated_by / date_updated); one
   CuratorMapping per distinct curator id used in those provenance fields.
   Mirrors the tab-delimited submission format documented in
   "Providing Entity-Reference Association Files to the ABC"
-  (https://agr-jira.atlassian.net/wiki/spaces/BLUE/pages/1454014467).
+  (https://agr-jira.atlassian.net/wiki/spaces/BLUE/pages/1454014467): each
+  data row of the association TSV maps to one EntityReferenceAssociation and
+  each row of the curator mapping TSV to one CuratorMapping, while the
+  container's mod_abbreviation and timezone are submission-level metadata
+  agreed with the ABC team out of band (they have no TSV column; a MOD
+  submitting JSON instead may materialize the container directly).
+
+  Standalone by design: not imported by allianceModel/core and not importable
+  alongside them or topic_entity_tag.yaml -- slots like reference_id,
+  entity_type, topic-related and audit fields intentionally mirror the
+  submission columns and differ from the same-named definitions elsewhere.
 
 prefixes:
   linkml: https://w3id.org/linkml/
@@ -55,7 +66,7 @@ classes:
       - created_by
       - updated_by
       - date_updated
-      - topic
+      - display_section
     rules:
       - description: >-
           An association with an entity_id must state its entity_type (unless
@@ -70,15 +81,16 @@ classes:
             entity_type:
               required: true
       - description: >-
-          A topic-only annotation (no entity_id) must carry a topic; it is
-          what identifies the annotation.
+          An entity-less literature annotation (no entity_id) must carry a
+          display_section; it is what identifies the annotation (it becomes
+          the ABC tag's display_tag, with the root topic ATP as its topic).
         preconditions:
           slot_conditions:
             entity_id:
               value_presence: ABSENT
         postconditions:
           slot_conditions:
-            topic:
+            display_section:
               required: true
 
   CuratorMapping:
@@ -145,7 +157,14 @@ slots:
     required: true
 
   entity_type:
-    description: The kind of entity the reference is associated with.
+    description: >-
+      The kind of entity the reference is associated with, one of the 13
+      types in entity_type_enum: gene, allele, transgenic_allele,
+      classical_allele, species, strain, genotype, fish,
+      transgenic_construct, sequence_targeting_reagent, antibody, complex,
+      pathway. Canonical values are the snake_case enum names; submitted
+      files may write them with spaces (each value's title), which the
+      loader normalizes.
     range: entity_type_enum
 
   entity_name:
@@ -163,7 +182,9 @@ slots:
   date_created:
     description: >-
       When the association was curated in the MOD database, in the timezone
-      declared by the submission.
+      declared by the submission. Required as the contract for new
+      submissions; at load time, legacy rows from dumps predating this
+      column degrade gracefully (the load time is stamped instead).
     range: datetime
     required: true
 
@@ -171,7 +192,9 @@ slots:
     description: >-
       The MOD's internal user id of the curator who curated the association
       (not who added the paper). Every distinct value should have a
-      CuratorMapping.
+      CuratorMapping. Required as the contract for new submissions; at load
+      time, legacy rows without it degrade gracefully (the loader's
+      automation user is stamped instead).
     required: true
 
   updated_by:
@@ -185,12 +208,16 @@ slots:
       defaults to the ABC load time when absent.
     range: datetime
 
-  topic:
+  display_section:
+    aliases: ['topic']
     description: >-
       MOD-specific literature-topic / display section the association appears
       under on the MOD's reference pages (e.g. SGD's Primary Literature,
-      Additional Literature, Reviews, Omics); mapped to an ABC display tag by
-      prior agreement with the ABC team.
+      Additional Literature, Reviews, Omics); mapped by prior agreement with
+      the ABC team to an ABC display_tag ATP curie -- NOT to the ABC tag's
+      topic slot. Named "topic" in SGD's dump (the alias); called
+      display_section here to avoid colliding with the ABC's topic column,
+      which holds an ATP topic curie.
 
   user_id:
     description: >-
@@ -225,31 +252,44 @@ enums:
       to the ATP term given as its meaning.
     permissible_values:
       gene:
+        title: gene
         meaning: ATP:0000005
       allele:
+        title: allele
         meaning: ATP:0000006
-      transgenic allele:
+      transgenic_allele:
+        title: transgenic allele
         meaning: ATP:0000110
-      classical allele:
+      classical_allele:
+        title: classical allele
         meaning: ATP:0000285
       species:
+        title: species
         meaning: ATP:0000123
       strain:
+        title: strain
         meaning: ATP:0000027
       genotype:
+        title: genotype
         meaning: ATP:0000025
       fish:
+        title: fish
         description: ZFIN genotype + sequence targeting reagent combination.
         meaning: ATP:0000026
-      transgenic construct:
+      transgenic_construct:
+        title: transgenic construct
         meaning: ATP:0000013
-      sequence targeting reagent:
+      sequence_targeting_reagent:
+        title: sequence targeting reagent
         meaning: ATP:0000093
       antibody:
+        title: antibody
         meaning: ATP:0000096
       complex:
+        title: complex
         description: Mainly used by SGD.
         meaning: ATP:0000128
       pathway:
+        title: pathway
         description: Mainly used by SGD.
         meaning: ATP:0000022

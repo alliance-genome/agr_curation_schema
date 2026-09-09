@@ -7,6 +7,13 @@ description: >-
   for TET documents. Mirrors
   agr_literature_service/api/models/topic_entity_tag_model.py.
 
+  Standalone by design: this schema is not imported by allianceModel/core
+  and must not be imported alongside them (or alongside
+  entity_reference_association.yaml) -- slot names deliberately mirror the
+  ABC column names (created_by, date_created, data_provider, ...) and would
+  collide with the different definitions in core.yaml and in the submission
+  schema.
+
 prefixes:
   linkml: https://w3id.org/linkml/
   tet: https://github.com/alliance-genome/agr_curation_schema/abc/topic_entity_tag/
@@ -39,6 +46,7 @@ classes:
 
   TopicEntityTag:
     is_a: AbcAuditedObject
+    tree_root: true
     description: >-
       One curated or machine-generated assertion that a reference is about a
       topic, optionally tied to a specific entity. The topic, entity_type,
@@ -66,10 +74,14 @@ classes:
       - validation_by_professional_biocurator
       - validated_by
       - ml_model_id
+    slot_usage:
+      topic_entity_tag_source_id:
+        description: Foreign key to the tag's TopicEntityTagSource.
     rules:
       - description: >-
           entity_type, entity, and entity_id_validation are set together or
-          not at all (check constraint valid_entity_type_dependencies).
+          not at all (check constraint valid_entity_type_dependencies); the
+          ABC never stores an entity-type-only tag.
         preconditions:
           slot_conditions:
             entity:
@@ -107,6 +119,10 @@ classes:
       - data_provider
       - secondary_data_provider_abbreviation
       - source_description
+    slot_usage:
+      topic_entity_tag_source_id:
+        identifier: true
+        description: Primary key of the topic_entity_tag_source row.
 
 #==============================================================
 # Slots
@@ -122,18 +138,22 @@ slots:
 
   reference_id:
     description: >-
-      Internal foreign key to the reference table. Public consumers should
-      use reference_curie instead.
+      Internal foreign key to the reference table; may be omitted in public
+      TET documents, which key on reference_curie.
     range: integer
-    required: true
 
   reference_curie:
     description: >-
       The AGRKB curie of the tagged reference (e.g. AGRKB:101000000860007);
-      the join of reference_id exposed by the API and the search index.
+      the join of reference_id exposed by the API and the search index, and
+      the usable reference key for public consumers.
+    required: true
 
   topic_entity_tag_source_id:
-    description: Foreign key to the tag's TopicEntityTagSource.
+    description: >-
+      Identifier of a topic_entity_tag_source row (see slot_usage on the two
+      classes: primary key on TopicEntityTagSource, foreign key on
+      TopicEntityTag).
     range: integer
     required: true
 

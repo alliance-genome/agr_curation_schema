@@ -43,7 +43,7 @@ t:
 echo:
 	echo $(patsubst %,gen-%,$(TGTS))
 
-test: all test-jsonschema
+test: all test-jsonschema test-abc
 
 install:
 	poetry install
@@ -240,6 +240,24 @@ validate-%: test/data/%.json $(ARTIFACTS_DIR)/jsonschema/allianceModel.schema.js
 validate-invalid-%: test/data/invalid/%.json $(ARTIFACTS_DIR)/jsonschema/allianceModel.schema.json
 	! poetry run jsonschema -i $< $(word 2, $^)
 
+
+
+##  -- ABC (standalone) SCHEMAS --
+# The schemas under abc/ are deliberately outside allianceModel (different
+# store, own prefixes/roots) but must still compile: generate a JSON Schema
+# artifact for each so a LinkML error or untranslatable construct fails CI.
+ABC_DIR = abc
+ABC_SOURCE_FILES := $(shell find $(ABC_DIR) -name '*.yaml')
+ABC_SCHEMA_NAMES = $(patsubst $(ABC_DIR)/%.yaml, %, $(ABC_SOURCE_FILES))
+
+.PHONY: test-abc gen-abc-jsonschema
+gen-abc-jsonschema: $(patsubst %, $(TARGET_DIR)/jsonschema/abc/%.schema.json, $(ABC_SCHEMA_NAMES))
+$(TARGET_DIR)/jsonschema/abc/%.schema.json: $(ABC_DIR)/%.yaml
+	mkdir -p $(TARGET_DIR)/jsonschema/abc
+	poetry run gen-json-schema --indent 4 --closed $< > $@
+
+test-abc: gen-abc-jsonschema
+	cp -pr $(TARGET_DIR)/jsonschema/abc $(ARTIFACTS_DIR)/jsonschema/
 
 # ---------------------------------------
 # Java
