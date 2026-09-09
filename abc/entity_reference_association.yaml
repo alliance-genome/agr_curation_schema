@@ -69,9 +69,10 @@ classes:
       - display_section
     rules:
       - description: >-
-          An association with an entity_id must state its entity_type (unless
-          the submission is split into one file per entity type, in which case
-          entity_type may be defaulted file-wide by the loader).
+          An association with an entity_id must state its entity_type. (A
+          per-entity-type TSV dump may omit the column; the loader stamps the
+          file-wide type while converting, before the data takes this form,
+          so conforming documents always carry it.)
         preconditions:
           slot_conditions:
             entity_id:
