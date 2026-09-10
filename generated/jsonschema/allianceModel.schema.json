@@ -9040,8 +9040,15 @@
                         "null"
                     ]
                 },
+                "antigen_taxon": {
+                    "description": "Holds between an Antibody and the species from which the antigen originates (as represented by taxon). Antigen source species is an open set (potentially any organism used to raise the antigen), unlike the small closed set of common antibody hosts, so unlike host_taxon_term this stays an NCBITaxonTerm reference rather than a closed CV -- see antigen_taxon_term for why a species is absent (not specified, etc.).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "antigen_taxon_term": {
-                    "description": "Holds between an Antibody and the species from which the antigen originates. A VocabularyTerm rather than an NCBITaxonTerm so free-text/not-specified values can be recorded alongside real NCBITaxon IDs.",
+                    "description": "Records *why* the antigen's source species is absent (not specified, etc.) when antigen_taxon isn't submitted. This CV is disjoint from NCBITaxon and must never contain an NCBITaxon curie: a taxonomy-aware query (e.g. \"any antibody against a Drosophila antigen\") only needs to check antigen_taxon, and allowing curies here would reintroduce the ambiguity of two possible locations for a species value.",
                     "type": [
                         "string",
                         "null"
@@ -9276,8 +9283,15 @@
                         "null"
                     ]
                 },
+                "antigen_taxon_curie": {
+                    "description": "Curie of the NCBITaxonTerm representing the species from which the antigen originates (as represented by taxon).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "antigen_taxon_term_name": {
-                    "description": "Name of the VocabularyTerm representing the species from which the antigen originates: either an NCBITaxon curie or a free-text/not-specified value. From the Antibody Antigen Taxon CV.",
+                    "description": "Name of the VocabularyTerm recording why the antigen's source species is absent: a free-text/not-specified value, never an NCBITaxon curie (submit antigen_taxon_curie instead when the species is known). From the Antibody Antigen Taxon CV.",
                     "type": [
                         "string",
                         "null"
