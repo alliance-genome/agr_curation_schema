@@ -35666,12 +35666,22 @@
         },
         "ProteinComplex": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A set of proteins that assemble into a stable complex to carry out a biological function.",
             "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -35729,6 +35739,10 @@
                         "null"
                     ]
                 },
+                "full_name": {
+                    "description": "The full name of the entity",
+                    "type": "string"
+                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
@@ -35744,6 +35758,16 @@
                     "description": "Entity is no longer current.",
                     "type": [
                         "boolean",
+                        "null"
+                    ]
+                },
+                "parent_sets": {
+                    "description": "Parent set(s) of which this set is a subset.",
+                    "items": {
+                        "$ref": "#/$defs/ProteinComplex"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -35773,6 +35797,79 @@
                         "null"
                     ]
                 },
+                "related_sets": {
+                    "description": "Other related sets.",
+                    "items": {
+                        "$ref": "#/$defs/BiologicalEntitySet"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_bp_terms": {
+                    "description": "Key Gene Ontology Biological Process terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_cc_terms": {
+                    "description": "Key Gene Ontology Cellular Component terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_mf_terms": {
+                    "description": "Key Gene Ontology Molecular Function terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_synonyms": {
+                    "description": "Synonyms for the biological entity set.",
+                    "items": {
+                        "$ref": "#/$defs/BiologicalEntitySetSynonymSlotAnnotation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "symbol": {
+                    "description": "The free text symbol (human-readable) for an entity or record",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "taxon": {
+                    "description": "This slot is optional - it should not be used if multiple taxa are represented in the set.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": [
@@ -35782,6 +35879,7 @@
                 }
             },
             "required": [
+                "full_name",
                 "data_provider",
                 "internal"
             ],
