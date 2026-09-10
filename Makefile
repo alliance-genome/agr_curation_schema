@@ -70,7 +70,14 @@ stage-%: gen-%
 gen-docs:
 	poetry run gen-doc model/schema/allianceModel.yaml --directory $(TARGET_DIR)/docs --template-directory doc_templates
 
-stage-docs: gen-docs
+# The abc/ schemas are standalone (not imported by allianceModel), so they
+# get their own doc trees under docs/abc/<schema>/ and their own nav section.
+gen-abc-docs:
+	for s in $(ABC_SCHEMA_NAMES); do \
+	  poetry run gen-doc $(ABC_DIR)/$$s.yaml --directory $(TARGET_DIR)/docs/abc/$$s --template-directory doc_templates; \
+	done
+
+stage-docs: gen-docs gen-abc-docs
 	cp -pr $(TARGET_DIR)/docs $(ARTIFACTS_DIR)/
 	cp css/extra_css.css $(ARTIFACTS_DIR)/docs/
 	cp README.md $(ARTIFACTS_DIR)/docs/developing-the-model.md
@@ -258,7 +265,7 @@ ABC_SCHEMA_NAMES = $(patsubst $(ABC_DIR)/%.yaml, %, $(ABC_SOURCE_FILES))
 ABC_ERA_SCHEMA = $(ABC_DIR)/entity_reference_association.yaml
 ABC_TET_SCHEMA = $(ABC_DIR)/topic_entity_tag.yaml
 
-.PHONY: test-abc gen-abc-jsonschema stage-abc-jsonschema
+.PHONY: test-abc gen-abc-jsonschema stage-abc-jsonschema gen-abc-docs
 gen-abc-jsonschema: $(patsubst %, $(TARGET_DIR)/jsonschema/abc/%.schema.json, $(ABC_SCHEMA_NAMES))
 $(TARGET_DIR)/jsonschema/abc/%.schema.json: $(ABC_DIR)/%.yaml
 	mkdir -p $(dir $@)
