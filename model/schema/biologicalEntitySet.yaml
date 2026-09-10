@@ -174,7 +174,7 @@ classes:
       organism that brings about a particular biological outcome.
     is_a: BiologicalEntitySet
     notes: >-
-      Each pathway is expected to carry exactly one related_note of type 'summary',
+      Each pathway is expected to carry exactly one related_notes entry of type 'summary',
       giving a curator-written textual description of the pathway. This cannot be
       expressed in the schema, as LinkML cannot require a note of a particular type,
       and so is enforced at load.
@@ -202,9 +202,15 @@ classes:
       - KEGG.PATHWAY
 
   ProteinComplex:
-    is_a: SubmittedObject
+    description: >-
+      A set of proteins that assemble into a stable complex to carry out a
+      biological function.
+    is_a: BiologicalEntitySet
     slots:
       - proteins
+    slot_usage:
+      parent_sets:
+        range: ProteinComplex
 
 
   GenePathwayAssociation:
