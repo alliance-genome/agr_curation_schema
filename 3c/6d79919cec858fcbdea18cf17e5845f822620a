@@ -1,0 +1,21 @@
+model/schema/reagent.yaml
+  s_c9787873abcd01::t_114c0d932fa99b 79,128,742,745-769,777-780
+test/data/antibody_test.json
+  s_c9787873abcd01::t_f110070e1f84c7 27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "3c6d79919cec858fcbdea18cf17e5845f822620a",
+  "prompts": {},
+  "sessions": {
+    "s_c9787873abcd01": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_c9787873abcd01",
+        "model": "unknown"
+      },
+      "human_author": "Ketaki Kindre <kkindre@caltech.edu>"
+    }
+  }
+}
