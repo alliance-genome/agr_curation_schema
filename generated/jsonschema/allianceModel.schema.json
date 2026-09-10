@@ -10707,6 +10707,117 @@
             "title": "BioSampleGenomicInformationDTO",
             "type": "object"
         },
+        "BiologicalEntitySetSynonymSlotAnnotation": {
+            "additionalProperties": false,
+            "description": "All aliases (non-preferred names) for the biological entity set. Acceptable synonym types are full_name, nomenclature_symbol, and unspecified",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "display_text": {
+                    "description": "A version of a synonym string for display. Any UTF8 character is permitted.",
+                    "type": "string"
+                },
+                "evidence": {
+                    "description": "The evidence that supports some assertion.",
+                    "items": {
+                        "$ref": "#/$defs/InformationContentEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "format_text": {
+                    "description": "A version of a synonym string using only ASCII characters, which is easier to type (for searches), print and parse. For example, Greek characters are transliterated.",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name_type": {
+                    "description": "The type of name: e.g., symbol, full_name, systematic_name, etc.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "single_biological_entity_set": {
+                    "$ref": "#/$defs/BiologicalEntitySet"
+                },
+                "synonym_scope": {
+                    "description": "the scope of the synonym - permissible values are narrow / broad / related / exact",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "synonym_url": {
+                    "description": "URL for a synonym: e.g., NCBI URL for the NCBI synonym of an object.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "single_biological_entity_set",
+                "name_type",
+                "format_text",
+                "display_text",
+                "internal"
+            ],
+            "title": "BiologicalEntitySetSynonymSlotAnnotation",
+            "type": "object"
+        },
         "BulkFMSLoad": {
             "additionalProperties": false,
             "description": "This bulk load automatically pulls files from the BulkFMSLoad",
@@ -21542,7 +21653,7 @@
                     ]
                 },
                 "parent_sets": {
-                    "description": "Parent functional gene set(s) of which this set is a subset.",
+                    "description": "Parent set(s) of which this set is a subset.",
                     "items": {
                         "$ref": "#/$defs/FunctionalGeneSet"
                     },
@@ -21569,9 +21680,9 @@
                     ]
                 },
                 "related_sets": {
-                    "description": "Other related functional gene sets.",
+                    "description": "Other related sets.",
                     "items": {
-                        "$ref": "#/$defs/FunctionalGeneSet"
+                        "$ref": "#/$defs/BiologicalEntitySet"
                     },
                     "type": [
                         "array",
@@ -21588,7 +21699,7 @@
                     ]
                 },
                 "set_go_bp_terms": {
-                    "description": "Key Gene Ontology Biological Process terms associated with this functional gene set.",
+                    "description": "Key Gene Ontology Biological Process terms associated with this set.",
                     "items": {
                         "type": "string"
                     },
@@ -21598,7 +21709,7 @@
                     ]
                 },
                 "set_go_cc_terms": {
-                    "description": "Key Gene Ontology Cellular Component terms associated with this functional gene set.",
+                    "description": "Key Gene Ontology Cellular Component terms associated with this set.",
                     "items": {
                         "type": "string"
                     },
@@ -21608,7 +21719,7 @@
                     ]
                 },
                 "set_go_mf_terms": {
-                    "description": "Key Gene Ontology Molecular Function terms associated with this functional gene set.",
+                    "description": "Key Gene Ontology Molecular Function terms associated with this set.",
                     "items": {
                         "type": "string"
                     },
@@ -21618,9 +21729,9 @@
                     ]
                 },
                 "set_synonyms": {
-                    "description": "Synonyms for the functional gene set.",
+                    "description": "Synonyms for the biological entity set.",
                     "items": {
-                        "$ref": "#/$defs/FunctionalGeneSetSynonymSlotAnnotation"
+                        "$ref": "#/$defs/BiologicalEntitySetSynonymSlotAnnotation"
                     },
                     "type": [
                         "array",
@@ -21629,7 +21740,10 @@
                 },
                 "symbol": {
                     "description": "The free text symbol (human-readable) for an entity or record",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "taxon": {
                     "description": "This slot is optional - it should not be used if multiple taxa are represented in the set.",
@@ -21648,7 +21762,6 @@
             },
             "required": [
                 "full_name",
-                "symbol",
                 "data_provider",
                 "internal"
             ],
@@ -21743,7 +21856,7 @@
                     ]
                 },
                 "parent_set_identifiers": {
-                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of parent functional gene set(s) of which this set is a subset.",
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of parent set(s) of which this set is a subset.",
                     "items": {
                         "type": "string"
                     },
@@ -21760,7 +21873,7 @@
                     ]
                 },
                 "related_set_identifiers": {
-                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of other related functional gene sets.",
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of other related sets.",
                     "items": {
                         "type": "string"
                     },
@@ -21779,7 +21892,7 @@
                     ]
                 },
                 "set_go_bp_term_curies": {
-                    "description": "CURIEs of key Gene Ontology Biological Process terms associated with this functional gene set.",
+                    "description": "CURIEs of key Gene Ontology Biological Process terms associated with this set.",
                     "items": {
                         "type": "string"
                     },
@@ -21789,7 +21902,7 @@
                     ]
                 },
                 "set_go_cc_term_curies": {
-                    "description": "CURIEs of key Gene Ontology Cellular Component terms associated with this functional gene set.",
+                    "description": "CURIEs of key Gene Ontology Cellular Component terms associated with this set.",
                     "items": {
                         "type": "string"
                     },
@@ -21799,7 +21912,7 @@
                     ]
                 },
                 "set_go_mf_term_curies": {
-                    "description": "CURIEs of key Gene Ontology Molecular Function terms associated with this functional gene set.",
+                    "description": "CURIEs of key Gene Ontology Molecular Function terms associated with this set.",
                     "items": {
                         "type": "string"
                     },
@@ -21809,7 +21922,7 @@
                     ]
                 },
                 "set_synonym_dtos": {
-                    "description": "Synonyms for the functional gene set.",
+                    "description": "Synonyms for the biological entity set.",
                     "items": {
                         "$ref": "#/$defs/NameSlotAnnotationDTO"
                     },
@@ -21820,7 +21933,10 @@
                 },
                 "symbol": {
                     "description": "The free text symbol (human-readable) for an entity or record",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "taxon_curie": {
                     "description": "This slot is optional - it should not be used if multiple taxa are represented in the set.",
@@ -21839,122 +21955,10 @@
             },
             "required": [
                 "full_name",
-                "symbol",
                 "data_provider_dto",
                 "internal"
             ],
             "title": "FunctionalGeneSetDTO",
-            "type": "object"
-        },
-        "FunctionalGeneSetSynonymSlotAnnotation": {
-            "additionalProperties": false,
-            "description": "All aliases (non-preferred names) for the functional gene set. Acceptable synonym types are full_name, nomenclature_symbol, and unspecified",
-            "properties": {
-                "created_by": {
-                    "description": "The individual that created the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "display_text": {
-                    "description": "A version of a synonym string for display. Any UTF8 character is permitted.",
-                    "type": "string"
-                },
-                "evidence": {
-                    "description": "The evidence that supports some assertion.",
-                    "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "format_text": {
-                    "description": "A version of a synonym string using only ASCII characters, which is easier to type (for searches), print and parse. For example, Greek characters are transliterated.",
-                    "type": "string"
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "name_type": {
-                    "description": "The type of name: e.g., symbol, full_name, systematic_name, etc.",
-                    "type": "string"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "single_functional_gene_set": {
-                    "$ref": "#/$defs/FunctionalGeneSet"
-                },
-                "synonym_scope": {
-                    "description": "the scope of the synonym - permissible values are narrow / broad / related / exact",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "synonym_url": {
-                    "description": "URL for a synonym: e.g., NCBI URL for the NCBI synonym of an object.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "updated_by": {
-                    "description": "The individual that last modified the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "single_functional_gene_set",
-                "name_type",
-                "format_text",
-                "display_text",
-                "internal"
-            ],
-            "title": "FunctionalGeneSetSynonymSlotAnnotation",
             "type": "object"
         },
         "GENOTerm": {
@@ -26025,7 +26029,7 @@
         },
         "GenePathwayAssociation": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Association between a gene and a pathway, with supporting references that demonstrate or state the gene's participation in the pathway.",
             "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
@@ -26113,6 +26117,99 @@
                 "internal"
             ],
             "title": "GenePathwayAssociation",
+            "type": "object"
+        },
+        "GenePathwayAssociationDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for association between a gene and a pathway, with supporting references that demonstrate or state the gene's participation in the pathway.",
+            "properties": {
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence_curies": {
+                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "gene_identifier": {
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the gene",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "pathway_identifier": {
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the pathway",
+                    "type": "string"
+                },
+                "relation_name": {
+                    "description": "Name of VocabularyTerm representing relation of an Association",
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "gene_identifier",
+                "relation_name",
+                "pathway_identifier",
+                "internal"
+            ],
+            "title": "GenePathwayAssociationDTO",
             "type": "object"
         },
         "GenePhenotypeAnnotation": {
@@ -29863,6 +29960,15 @@
                         "null"
                     ]
                 },
+                "gene_pathway_association_ingest_set": {
+                    "items": {
+                        "$ref": "#/$defs/GenePathwayAssociationDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "genome_assembly_ingest_set": {
                     "items": {
                         "$ref": "#/$defs/GenomeAssemblyDTO"
@@ -29897,6 +30003,15 @@
                 "ontology_closure_ingest_set": {
                     "items": {
                         "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "pathway_ingest_set": {
+                    "items": {
+                        "$ref": "#/$defs/PathwayDTO"
                     },
                     "type": [
                         "array",
@@ -32845,7 +32960,8 @@
                 "WBBT",
                 "EMAPA",
                 "GO",
-                "SO"
+                "SO",
+                "PW"
             ],
             "title": "OntologyBulkLoadTypeEnum",
             "type": "string"
@@ -33933,12 +34049,22 @@
         },
         "Pathway": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A series of molecular interactions and reactions occurring within a cell or organism that brings about a particular biological outcome.",
             "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -33996,6 +34122,20 @@
                         "null"
                     ]
                 },
+                "full_name": {
+                    "description": "The full name of the entity",
+                    "type": "string"
+                },
+                "gene_pathway_associations": {
+                    "description": "Gene participants in this pathway, with supporting evidence/references.",
+                    "items": {
+                        "$ref": "#/$defs/GenePathwayAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
@@ -34014,6 +34154,27 @@
                         "null"
                     ]
                 },
+                "parent_sets": {
+                    "description": "Parent set(s) of which this set is a subset.",
+                    "items": {
+                        "$ref": "#/$defs/Pathway"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "pathway_image_filename": {
+                    "description": "Filename of an image file depicting the pathway.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "pathway_type": {
+                    "description": "The type of biological process that the pathway represents, given as a top-level term from the Pathway Ontology (PW).",
+                    "type": "string"
+                },
                 "primary_external_id": {
                     "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": [
@@ -34031,6 +34192,79 @@
                         "null"
                     ]
                 },
+                "related_sets": {
+                    "description": "Other related sets.",
+                    "items": {
+                        "$ref": "#/$defs/BiologicalEntitySet"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_bp_terms": {
+                    "description": "Key Gene Ontology Biological Process terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_cc_terms": {
+                    "description": "Key Gene Ontology Cellular Component terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_mf_terms": {
+                    "description": "Key Gene Ontology Molecular Function terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_synonyms": {
+                    "description": "Synonyms for the biological entity set.",
+                    "items": {
+                        "$ref": "#/$defs/BiologicalEntitySetSynonymSlotAnnotation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "symbol": {
+                    "description": "The free text symbol (human-readable) for an entity or record",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "taxon": {
+                    "description": "This slot is optional - it should not be used if multiple taxa are represented in the set.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": [
@@ -34040,10 +34274,217 @@
                 }
             },
             "required": [
+                "pathway_type",
+                "full_name",
                 "data_provider",
                 "internal"
             ],
             "title": "Pathway",
+            "type": "object"
+        },
+        "PathwayDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for pathways (series of molecular interactions and reactions occurring within a cell or organism that bring about a particular biological outcome).",
+            "properties": {
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "cross_reference_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/CrossReferenceDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "full_name": {
+                    "description": "The full name of the entity",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "parent_set_identifiers": {
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of parent set(s) of which this set is a subset.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "pathway_image_filename": {
+                    "description": "Filename of an image file depicting the pathway.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "pathway_type_curie": {
+                    "description": "CURIE of the top-level Pathway Ontology (PW) term representing the type of biological process that the pathway represents - one of PW:0000002 (classic metabolic pathway), PW:0000003 (signaling pathway), PW:0000004 (regulatory pathway), PW:0000013 (disease pathway), or PW:0000754 (drug pathway).",
+                    "type": "string"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "related_set_identifiers": {
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of other related sets.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_bp_term_curies": {
+                    "description": "CURIEs of key Gene Ontology Biological Process terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_cc_term_curies": {
+                    "description": "CURIEs of key Gene Ontology Cellular Component terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_mf_term_curies": {
+                    "description": "CURIEs of key Gene Ontology Molecular Function terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_synonym_dtos": {
+                    "description": "Synonyms for the biological entity set.",
+                    "items": {
+                        "$ref": "#/$defs/NameSlotAnnotationDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "symbol": {
+                    "description": "The free text symbol (human-readable) for an entity or record",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "taxon_curie": {
+                    "description": "This slot is optional - it should not be used if multiple taxa are represented in the set.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "pathway_type_curie",
+                "full_name",
+                "data_provider_dto",
+                "internal"
+            ],
+            "title": "PathwayDTO",
             "type": "object"
         },
         "Person": {
@@ -35225,12 +35666,22 @@
         },
         "ProteinComplex": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A set of proteins that assemble into a stable complex to carry out a biological function.",
             "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -35288,6 +35739,10 @@
                         "null"
                     ]
                 },
+                "full_name": {
+                    "description": "The full name of the entity",
+                    "type": "string"
+                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
@@ -35303,6 +35758,16 @@
                     "description": "Entity is no longer current.",
                     "type": [
                         "boolean",
+                        "null"
+                    ]
+                },
+                "parent_sets": {
+                    "description": "Parent set(s) of which this set is a subset.",
+                    "items": {
+                        "$ref": "#/$defs/ProteinComplex"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -35332,6 +35797,79 @@
                         "null"
                     ]
                 },
+                "related_sets": {
+                    "description": "Other related sets.",
+                    "items": {
+                        "$ref": "#/$defs/BiologicalEntitySet"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_bp_terms": {
+                    "description": "Key Gene Ontology Biological Process terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_cc_terms": {
+                    "description": "Key Gene Ontology Cellular Component terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_mf_terms": {
+                    "description": "Key Gene Ontology Molecular Function terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_synonyms": {
+                    "description": "Synonyms for the biological entity set.",
+                    "items": {
+                        "$ref": "#/$defs/BiologicalEntitySetSynonymSlotAnnotation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "symbol": {
+                    "description": "The free text symbol (human-readable) for an entity or record",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "taxon": {
+                    "description": "This slot is optional - it should not be used if multiple taxa are represented in the set.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": [
@@ -35341,6 +35879,7 @@
                 }
             },
             "required": [
+                "full_name",
                 "data_provider",
                 "internal"
             ],
@@ -46148,6 +46687,15 @@
                 "null"
             ]
         },
+        "gene_pathway_association_ingest_set": {
+            "items": {
+                "$ref": "#/$defs/GenePathwayAssociationDTO"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
         "genome_assembly_ingest_set": {
             "items": {
                 "$ref": "#/$defs/GenomeAssemblyDTO"
@@ -46182,6 +46730,15 @@
         "ontology_closure_ingest_set": {
             "items": {
                 "$ref": "#/$defs/OntologyTermClosure"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "pathway_ingest_set": {
+            "items": {
+                "$ref": "#/$defs/PathwayDTO"
             },
             "type": [
                 "array",
