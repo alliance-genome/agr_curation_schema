@@ -76,7 +76,6 @@ classes:
       - ZFIN
     slots:
       - name
-      - antigen_taxon
       - antigen_taxon_term
       - clonality
       - heavy_chain_isotype
@@ -125,7 +124,6 @@ classes:
       Can be used experimentally for the purposes of detection or purification.
     slots:
       - name
-      - antigen_taxon_curie
       - antigen_taxon_term_name
       - clonality_name
       - heavy_chain_isotype_name
@@ -739,34 +737,12 @@ slots:
     domain: AntibodyDTO
     range: string
 
-  antigen_taxon:
-    description: >-
-      Holds between an Antibody and the species from which the antigen
-      originates (as represented by taxon). Antigen source species is an
-      open set (potentially any organism used to raise the antigen), unlike
-      the small closed set of common antibody hosts, so unlike host_taxon_term
-      this stays an NCBITaxonTerm reference rather than a closed CV -- see
-      antigen_taxon_term for why a species is absent (not specified, etc.).
-    required: false
-    multivalued: false
-    domain: Antibody
-    range: NCBITaxonTerm
-
-  antigen_taxon_curie:
-    description: >-
-      Curie of the NCBITaxonTerm representing the species from which the
-      antigen originates (as represented by taxon).
-    domain: AntibodyDTO
-    range: string
-
   antigen_taxon_term:
     description: >-
-      Records *why* the antigen's source species is absent (not specified,
-      etc.) when antigen_taxon isn't submitted. This CV is disjoint from
-      NCBITaxon and must never contain an NCBITaxon curie: a taxonomy-aware
-      query (e.g. "any antibody against a Drosophila antigen") only needs to
-      check antigen_taxon, and allowing curies here would reintroduce the
-      ambiguity of two possible locations for a species value.
+      Holds between an Antibody and the species from which the antigen
+      originates: e.g., mouse, rabbit, human. A VocabularyTerm rather than
+      an NCBITaxonTerm so free-text/not-specified values can be recorded
+      alongside real NCBITaxon IDs.
     required: false
     multivalued: false
     domain: Antibody
@@ -774,10 +750,9 @@ slots:
 
   antigen_taxon_term_name:
     description: >-
-      Name of the VocabularyTerm recording why the antigen's source species
-      is absent: a free-text/not-specified value, never an NCBITaxon curie
-      (submit antigen_taxon_curie instead when the species is known). From
-      the Antibody Antigen Taxon CV.
+      Name of the VocabularyTerm representing the species from which the
+      antigen originates: either an NCBITaxon curie or a
+      free-text/not-specified value. From the Antibody Antigen Taxon CV.
     domain: AntibodyDTO
     range: string
 
