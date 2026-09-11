@@ -1,0 +1,304 @@
+id: https://github.com/alliance-genome/agr_curation_schema/abc/entity_reference_association
+name: entity_reference_association
+description: >-
+  LinkML model for the entity-reference association files MODs provide to the
+  Alliance Bibliography Central (ABC), and the accompanying curator mapping
+  file. One EntityReferenceAssociation per curated association of an entity
+  (gene, allele, strain, antibody, ... -- see entity_type_enum for the full
+  13 types) with a paper, carrying provenance
+  (created_by / date_created, optionally updated_by / date_updated); one
+  CuratorMapping per distinct curator id used in those provenance fields.
+  Mirrors the tab-delimited submission format documented in
+  "Providing Entity-Reference Association Files to the ABC"
+  (https://agr-jira.atlassian.net/wiki/spaces/BLUE/pages/1454014467): each
+  data row of the association TSV maps to one EntityReferenceAssociation and
+  each row of the curator mapping TSV to one CuratorMapping, while the
+  container's mod_abbreviation and timezone are submission-level metadata
+  agreed with the ABC team out of band (they have no TSV column; a MOD
+  submitting JSON instead may materialize the container directly).
+
+  Standalone by design: not imported by allianceModel/core and not importable
+  alongside them or topic_entity_tag.yaml -- slots like reference_id,
+  entity_type, topic-related and audit fields intentionally mirror the
+  submission columns and differ from the same-named definitions elsewhere.
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  erassoc: https://github.com/alliance-genome/agr_curation_schema/abc/entity_reference_association/
+  ATP: http://purl.obolibrary.org/obo/ATP_
+
+default_prefix: erassoc
+default_range: string
+
+imports:
+  - linkml:types
+
+#==============================================================
+# Classes
+#==============================================================
+
+classes:
+
+  EntityReferenceAssociationIngest:
+    description: >-
+      Root container for one MOD submission: the association records plus the
+      curator mappings resolving every distinct created_by / updated_by value
+      they use.
+    tree_root: true
+    slots:
+      - mod_abbreviation
+      - timezone
+      - entity_reference_associations
+      - curator_mappings
+
+  EntityReferenceAssociation:
+    description: >-
+      One curated association between a reference and an entity (or a
+      topic-only literature annotation when the entity slots are empty).
+      Provenance is the curation of the association itself in the MOD
+      database, not the addition of the paper.
+    slots:
+      - reference_id
+      - entity_type
+      - entity_name
+      - entity_id
+      - date_created
+      - created_by
+      - updated_by
+      - date_updated
+      - display_section
+    rules:
+      - description: >-
+          An association with an entity_id must state its entity_type. (A
+          per-entity-type TSV dump may omit the column; the loader stamps the
+          file-wide type while converting, before the data takes this form,
+          so conforming documents always carry it.)
+        preconditions:
+          slot_conditions:
+            entity_id:
+              required: true
+        postconditions:
+          slot_conditions:
+            entity_type:
+              required: true
+      - description: >-
+          An entity-less literature annotation (no entity_id) must carry a
+          display_section; it is what identifies the annotation (it becomes
+          the ABC tag's display_tag, with the root topic ATP as its topic).
+        preconditions:
+          slot_conditions:
+            entity_id:
+              value_presence: ABSENT
+        postconditions:
+          slot_conditions:
+            display_section:
+              required: true
+
+  CuratorMapping:
+    description: >-
+      Maps one distinct created_by / updated_by value from the association
+      records to the curator's identity. Email is required for current,
+      active curators (it matches their ABC login); full name alone is
+      acceptable for former curators. Ids with no mapping are stored verbatim
+      as the user id in the ABC.
+    slots:
+      - user_id
+      - email
+      - full_name
+    rules:
+      - description: >-
+          A mapping row must provide an email or a full name: when email is
+          absent, full_name is required.
+        preconditions:
+          slot_conditions:
+            email:
+              value_presence: ABSENT
+        postconditions:
+          slot_conditions:
+            full_name:
+              required: true
+      - description: When full_name is absent, email is required.
+        preconditions:
+          slot_conditions:
+            full_name:
+              value_presence: ABSENT
+        postconditions:
+          slot_conditions:
+            email:
+              required: true
+
+#==============================================================
+# Slots
+#==============================================================
+
+slots:
+
+  mod_abbreviation:
+    description: >-
+      Alliance abbreviation of the submitting MOD (e.g. SGD, ZFIN, WB, MGI,
+      RGD, FB).
+    required: true
+
+  timezone:
+    description: >-
+      IANA timezone of the date_created / date_updated values (e.g.
+      America/Los_Angeles), or UTC when the timestamps are exported already
+      converted. The ABC converts to UTC at load time. Note for JSON
+      submissions: datetime values must carry an explicit offset (JSON
+      Schema date-time, e.g. 2024-03-15T10:22:31-07:00), which should agree
+      with this declared timezone; offset-less TSV timestamps are
+      interpreted in this timezone by the loader.
+    required: true
+
+  entity_reference_associations:
+    description: The association records of this submission.
+    range: EntityReferenceAssociation
+    multivalued: true
+    inlined_as_list: true
+    required: true
+
+  curator_mappings:
+    description: >-
+      One mapping per distinct created_by / updated_by value appearing in the
+      association records.
+    range: CuratorMapping
+    multivalued: true
+    inlined_as_list: true
+
+  reference_id:
+    description: >-
+      The MOD's identifier for the paper (e.g. SGDID S000039113) or a PMID
+      curie (PMID:12345678); resolved through the ABC reference
+      cross-references.
+    required: true
+
+  entity_type:
+    description: >-
+      The kind of entity the reference is associated with, one of the 13
+      types in entity_type_enum: gene, allele, transgenic_allele,
+      classical_allele, species, strain, genotype, fish,
+      transgenic_construct, sequence_targeting_reagent, antibody, complex,
+      pathway. Canonical values are the snake_case enum names; submitted TSV
+      files may write them with spaces (each value's title), which the
+      loader normalizes -- but the generated (closed) JSON Schema accepts
+      only the snake_case names, so JSON submissions must use those.
+    range: entity_type_enum
+
+  entity_name:
+    description: >-
+      Human-readable entity name (e.g. ACT1, act1-1); used for report sanity
+      checks, not for resolution.
+    recommended: true
+
+  entity_id:
+    description: >-
+      The MOD's stable identifier for the entity (e.g. SGDID
+      SGD:S000002284); must be resolvable through the Alliance persistent
+      store. Empty for a topic-only annotation.
+
+  date_created:
+    description: >-
+      When the association was curated in the MOD database, in the timezone
+      declared by the submission. Strongly encouraged; when absent (e.g.
+      dumps predating this column), the load date is stamped instead.
+    range: datetime
+    recommended: true
+
+  created_by:
+    description: >-
+      The MOD's internal user id of the curator who curated the association
+      (not who added the paper). Every distinct value should have a
+      CuratorMapping. Strongly encouraged; when absent (e.g. dumps predating
+      this column), the ABC default user (default_user) is stamped instead.
+    recommended: true
+
+  updated_by:
+    description: >-
+      The MOD's internal user id of the last curator to modify the
+      association; defaults to created_by when absent.
+
+  date_updated:
+    description: >-
+      When the association was last modified, in the declared timezone;
+      defaults to date_created when absent.
+    range: datetime
+
+  display_section:
+    aliases: ['topic']
+    description: >-
+      MOD-specific literature-topic / display section the association appears
+      under on the MOD's reference pages (e.g. SGD's Primary Literature,
+      Additional Literature, Reviews, Omics); mapped by prior agreement with
+      the ABC team to an ABC display_tag ATP curie -- NOT to the ABC tag's
+      topic slot. Named "topic" in SGD's dump (the alias); called
+      display_section here to avoid colliding with the ABC's topic column,
+      which holds an ATP topic curie. The alias is documentation only: a MOD
+      converting its TSV to JSON must rename the topic column to
+      display_section -- the generated (closed) JSON Schema accepts only the
+      display_section key.
+
+  user_id:
+    description: >-
+      The exact created_by / updated_by value being mapped
+      (case-insensitive match).
+    identifier: true
+    required: true
+
+  email:
+    description: >-
+      The curator's current work email, as used for their ABC login.
+      Required for current, active curators.
+
+  full_name:
+    description: >-
+      The curator's display name, "First Last". Required when email is
+      absent (former curators).
+
+#==============================================================
+# Enums
+#==============================================================
+
+enums:
+
+  entity_type_enum:
+    description: >-
+      Entity types accepted in entity-reference association submissions,
+      matching the entity types available in the ABC curation interface.
+      Not every MOD uses every type (complex and pathway are mainly SGD;
+      fish, genotype, transgenic construct, and sequence targeting reagent
+      are mainly ZFIN). Extensible by agreement with the ABC team; each maps
+      to the ATP term given as its meaning.
+    permissible_values:
+      gene:
+        meaning: ATP:0000005
+      allele:
+        meaning: ATP:0000006
+      transgenic_allele:
+        title: transgenic allele
+        meaning: ATP:0000110
+      classical_allele:
+        title: classical allele
+        meaning: ATP:0000285
+      species:
+        meaning: ATP:0000123
+      strain:
+        meaning: ATP:0000027
+      genotype:
+        meaning: ATP:0000025
+      fish:
+        description: ZFIN genotype + sequence targeting reagent combination.
+        meaning: ATP:0000026
+      transgenic_construct:
+        title: transgenic construct
+        meaning: ATP:0000013
+      sequence_targeting_reagent:
+        title: sequence targeting reagent
+        meaning: ATP:0000093
+      antibody:
+        meaning: ATP:0000096
+      complex:
+        description: Mainly used by SGD.
+        meaning: ATP:0000128
+      pathway:
+        description: Mainly used by SGD.
+        meaning: ATP:0000022

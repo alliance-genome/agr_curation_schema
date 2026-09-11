@@ -1,0 +1,570 @@
+{
+    "$defs": {
+        "TopicEntityTag": {
+            "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "entity": {}
+                        },
+                        "required": [
+                            "entity"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "entity_id_validation": {},
+                            "entity_type": {}
+                        },
+                        "required": [
+                            "entity_type",
+                            "entity_id_validation"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "entity_type": {}
+                        },
+                        "required": [
+                            "entity_type"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "entity": {},
+                            "entity_id_validation": {}
+                        },
+                        "required": [
+                            "entity",
+                            "entity_id_validation"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "entity_id_validation": {}
+                        },
+                        "required": [
+                            "entity_id_validation"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "entity": {},
+                            "entity_type": {}
+                        },
+                        "required": [
+                            "entity",
+                            "entity_type"
+                        ]
+                    }
+                }
+            ],
+            "description": "One curated or machine-generated assertion that a reference is about a topic, optionally tied to a specific entity. The topic, entity_type, display_tag, data_novelty, and data_context values are ATP ontology curies; species is an NCBITaxon curie; entity is a MOD entity curie resolved through the Alliance persistent store.",
+            "properties": {
+                "confidence_level": {
+                    "description": "Classifier confidence bucket for machine-generated tags (in practice high / medium / low, compared case-insensitively).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "confidence_score": {
+                    "description": "Classifier confidence score for machine-generated tags.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "created_by": {
+                    "description": "users.id of the creator.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "data_context": {
+                    "description": "ATP curie stating what kind of data the tag represents, one of four disjoint terms: ATP:0000325 (experimentally studied data), ATP:0000360 (background information), ATP:0000328 (expression marker), ATP:0000327 (genetic marker). SCRUM-5697; added by migration d7b3e1c95a24 (2026-08-31). Required in the application model, but nullable in the database until the backfill completes -- and not yet present in every environment (e.g. literature-4006), so index generation must tolerate its absence.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "data_novelty": {
+                    "description": "ATP curie stating whether the tagged data is novel: ATP:0000334 (existing data), or a new-data term -- ATP:0000335 (new data) and its descendants ATP:0000321 (new data type), ATP:0000228 (new to database), ATP:0000229 (new to field).",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "When the row was created (stored UTC).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "When the row was last updated (stored UTC).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "display_tag": {
+                    "description": "ATP curie of the MOD display section the tag appears under on the public reference pages (e.g. ATP:0000147 primary display, ATP:0000130 review display).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "entity": {
+                    "description": "Curie of the tagged entity (e.g. SGD:S000002284, ZFIN:ZDB-ALT-...), resolved via the Alliance persistent store per entity_id_validation.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "entity_id_validation": {
+                    "description": "How the entity curie was validated, e.g. \"alliance\". Present exactly when entity is present.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "entity_type": {
+                    "description": "ATP curie of the kind of entity tagged (e.g. ATP:0000005 gene, ATP:0000006 allele, ATP:0000027 strain). Present exactly when entity is present.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ml_model_id": {
+                    "description": "Foreign key to the ml_model that produced a machine-generated tag; absent for manual tags.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "negated": {
+                    "description": "True when the tag asserts the reference is NOT about the topic/entity.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "note": {
+                    "description": "Free-text curator note on the tag.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "reference_curie": {
+                    "description": "The AGRKB curie of the tagged reference (e.g. AGRKB:101000000860007); the join of reference_id exposed by the API and the search index, and the usable reference key for public consumers.",
+                    "type": "string"
+                },
+                "reference_id": {
+                    "description": "Internal foreign key to the reference table; may be omitted in public TET documents, which key on reference_curie.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "source": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TopicEntityTagSource"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The tag's TopicEntityTagSource embedded inline -- for documents (e.g. the public search index) that carry the source's evidence assertion, method, and data providers next to the tag instead of joining on topic_entity_tag_source_id. When present it is the row topic_entity_tag_source_id points at."
+                },
+                "species": {
+                    "description": "NCBITaxon curie of the species the tag applies to.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "topic": {
+                    "description": "ATP curie of the topic asserted for the reference (A-team ontology term id), e.g. ATP:0000005 (gene) for a pure entity tag or a descendant of ATP:0000002 for a subject topic.",
+                    "type": "string"
+                },
+                "topic_entity_tag_id": {
+                    "description": "Primary key of the topic_entity_tag row.",
+                    "type": "integer"
+                },
+                "topic_entity_tag_source_id": {
+                    "description": "Foreign key to the tag's TopicEntityTagSource.",
+                    "type": "integer"
+                },
+                "updated_by": {
+                    "description": "users.id of the last updater.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "validated_by": {
+                    "description": "topic_entity_tag_ids of the tags validating this tag (the topic_entity_tag_validation association table).",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "validation_by_author": {
+                    "$ref": "#/$defs/ValidationValueEnum",
+                    "description": "Rollup of author validations of this tag, computed from the validating tags."
+                },
+                "validation_by_professional_biocurator": {
+                    "$ref": "#/$defs/ValidationValueEnum",
+                    "description": "Rollup of professional-biocurator validations of this tag, computed from the validating tags."
+                }
+            },
+            "required": [
+                "topic_entity_tag_id",
+                "reference_curie",
+                "topic_entity_tag_source_id",
+                "topic",
+                "data_novelty",
+                "date_created"
+            ],
+            "title": "TopicEntityTag",
+            "type": "object"
+        },
+        "TopicEntityTagSource": {
+            "additionalProperties": false,
+            "description": "Where a family of tags comes from: the combination of evidence assertion, method, and data providers. Unique on (source_evidence_assertion, source_method, data_provider, secondary_data_provider).",
+            "properties": {
+                "created_by": {
+                    "description": "users.id of the creator.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "data_provider": {
+                    "description": "MOD abbreviation of the group that generated the tags (e.g. SGD).",
+                    "type": "string"
+                },
+                "date_created": {
+                    "description": "When the row was created (stored UTC).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "date_updated": {
+                    "description": "When the row was last updated (stored UTC).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "secondary_data_provider_abbreviation": {
+                    "description": "MOD abbreviation of the Alliance member responsible for the data (mod.abbreviation behind secondary_data_provider_id).",
+                    "type": "string"
+                },
+                "source_description": {
+                    "description": "Human-readable description of the source.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "source_evidence_assertion": {
+                    "description": "ATP curie of the evidence assertion type, e.g. ATP:0000036 (assertion by professional biocurator), ATP:0000035 (author assertion), or an ML-method term for classifiers.",
+                    "type": "string"
+                },
+                "source_method": {
+                    "description": "The system or pipeline that produced the tags, e.g. abc_literature_system, sgd_reference_curation, abc_entity_extractor.",
+                    "type": "string"
+                },
+                "topic_entity_tag_source_id": {
+                    "description": "Primary key of the topic_entity_tag_source row.",
+                    "type": "integer"
+                },
+                "updated_by": {
+                    "description": "users.id of the last updater.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "validation_type": {
+                    "description": "How tags from this source validate others (e.g. professional_biocurator, author); null for sources whose tags do not validate.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "topic_entity_tag_source_id",
+                "source_evidence_assertion",
+                "source_method",
+                "data_provider",
+                "secondary_data_provider_abbreviation",
+                "date_created"
+            ],
+            "title": "TopicEntityTagSource",
+            "type": "object"
+        },
+        "ValidationValueEnum": {
+            "description": "Computed validation rollup values (see calculate_validation_value_for_tag in topic_entity_tag_crud).",
+            "enum": [
+                "validated_right",
+                "validated_wrong",
+                "validated_right_self",
+                "validation_conflict"
+            ],
+            "title": "ValidationValueEnum",
+            "type": "string"
+        }
+    },
+    "$id": "https://github.com/alliance-genome/agr_curation_schema/abc/topic_entity_tag",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": false,
+    "allOf": [
+        {
+            "if": {
+                "properties": {
+                    "entity": {}
+                },
+                "required": [
+                    "entity"
+                ]
+            },
+            "then": {
+                "properties": {
+                    "entity_id_validation": {},
+                    "entity_type": {}
+                },
+                "required": [
+                    "entity_type",
+                    "entity_id_validation"
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": {
+                    "entity_type": {}
+                },
+                "required": [
+                    "entity_type"
+                ]
+            },
+            "then": {
+                "properties": {
+                    "entity": {},
+                    "entity_id_validation": {}
+                },
+                "required": [
+                    "entity",
+                    "entity_id_validation"
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": {
+                    "entity_id_validation": {}
+                },
+                "required": [
+                    "entity_id_validation"
+                ]
+            },
+            "then": {
+                "properties": {
+                    "entity": {},
+                    "entity_type": {}
+                },
+                "required": [
+                    "entity",
+                    "entity_type"
+                ]
+            }
+        }
+    ],
+    "description": "One curated or machine-generated assertion that a reference is about a topic, optionally tied to a specific entity. The topic, entity_type, display_tag, data_novelty, and data_context values are ATP ontology curies; species is an NCBITaxon curie; entity is a MOD entity curie resolved through the Alliance persistent store.",
+    "metamodel_version": "1.7.0",
+    "properties": {
+        "confidence_level": {
+            "description": "Classifier confidence bucket for machine-generated tags (in practice high / medium / low, compared case-insensitively).",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "confidence_score": {
+            "description": "Classifier confidence score for machine-generated tags.",
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "created_by": {
+            "description": "users.id of the creator.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "data_context": {
+            "description": "ATP curie stating what kind of data the tag represents, one of four disjoint terms: ATP:0000325 (experimentally studied data), ATP:0000360 (background information), ATP:0000328 (expression marker), ATP:0000327 (genetic marker). SCRUM-5697; added by migration d7b3e1c95a24 (2026-08-31). Required in the application model, but nullable in the database until the backfill completes -- and not yet present in every environment (e.g. literature-4006), so index generation must tolerate its absence.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "data_novelty": {
+            "description": "ATP curie stating whether the tagged data is novel: ATP:0000334 (existing data), or a new-data term -- ATP:0000335 (new data) and its descendants ATP:0000321 (new data type), ATP:0000228 (new to database), ATP:0000229 (new to field).",
+            "type": "string"
+        },
+        "date_created": {
+            "description": "When the row was created (stored UTC).",
+            "format": "date-time",
+            "type": "string"
+        },
+        "date_updated": {
+            "description": "When the row was last updated (stored UTC).",
+            "format": "date-time",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "display_tag": {
+            "description": "ATP curie of the MOD display section the tag appears under on the public reference pages (e.g. ATP:0000147 primary display, ATP:0000130 review display).",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "entity": {
+            "description": "Curie of the tagged entity (e.g. SGD:S000002284, ZFIN:ZDB-ALT-...), resolved via the Alliance persistent store per entity_id_validation.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "entity_id_validation": {
+            "description": "How the entity curie was validated, e.g. \"alliance\". Present exactly when entity is present.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "entity_type": {
+            "description": "ATP curie of the kind of entity tagged (e.g. ATP:0000005 gene, ATP:0000006 allele, ATP:0000027 strain). Present exactly when entity is present.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "ml_model_id": {
+            "description": "Foreign key to the ml_model that produced a machine-generated tag; absent for manual tags.",
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "negated": {
+            "description": "True when the tag asserts the reference is NOT about the topic/entity.",
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "note": {
+            "description": "Free-text curator note on the tag.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "reference_curie": {
+            "description": "The AGRKB curie of the tagged reference (e.g. AGRKB:101000000860007); the join of reference_id exposed by the API and the search index, and the usable reference key for public consumers.",
+            "type": "string"
+        },
+        "reference_id": {
+            "description": "Internal foreign key to the reference table; may be omitted in public TET documents, which key on reference_curie.",
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "source": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/TopicEntityTagSource"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "description": "The tag's TopicEntityTagSource embedded inline -- for documents (e.g. the public search index) that carry the source's evidence assertion, method, and data providers next to the tag instead of joining on topic_entity_tag_source_id. When present it is the row topic_entity_tag_source_id points at."
+        },
+        "species": {
+            "description": "NCBITaxon curie of the species the tag applies to.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "topic": {
+            "description": "ATP curie of the topic asserted for the reference (A-team ontology term id), e.g. ATP:0000005 (gene) for a pure entity tag or a descendant of ATP:0000002 for a subject topic.",
+            "type": "string"
+        },
+        "topic_entity_tag_id": {
+            "description": "Primary key of the topic_entity_tag row.",
+            "type": "integer"
+        },
+        "topic_entity_tag_source_id": {
+            "description": "Foreign key to the tag's TopicEntityTagSource.",
+            "type": "integer"
+        },
+        "updated_by": {
+            "description": "users.id of the last updater.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "validated_by": {
+            "description": "topic_entity_tag_ids of the tags validating this tag (the topic_entity_tag_validation association table).",
+            "items": {
+                "type": "integer"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "validation_by_author": {
+            "$ref": "#/$defs/ValidationValueEnum",
+            "description": "Rollup of author validations of this tag, computed from the validating tags."
+        },
+        "validation_by_professional_biocurator": {
+            "$ref": "#/$defs/ValidationValueEnum",
+            "description": "Rollup of professional-biocurator validations of this tag, computed from the validating tags."
+        }
+    },
+    "required": [
+        "topic_entity_tag_id",
+        "reference_curie",
+        "topic_entity_tag_source_id",
+        "topic",
+        "data_novelty",
+        "date_created"
+    ],
+    "title": "topic_entity_tag",
+    "type": "object",
+    "version": null
+}

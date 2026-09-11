@@ -1,0 +1,283 @@
+{
+    "$defs": {
+        "CuratorMapping": {
+            "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "not": {
+                            "required": [
+                                "email"
+                            ]
+                        },
+                        "properties": {
+                            "email": {}
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "full_name": {}
+                        },
+                        "required": [
+                            "full_name"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "not": {
+                            "required": [
+                                "full_name"
+                            ]
+                        },
+                        "properties": {
+                            "full_name": {}
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "email": {}
+                        },
+                        "required": [
+                            "email"
+                        ]
+                    }
+                }
+            ],
+            "description": "Maps one distinct created_by / updated_by value from the association records to the curator's identity. Email is required for current, active curators (it matches their ABC login); full name alone is acceptable for former curators. Ids with no mapping are stored verbatim as the user id in the ABC.",
+            "properties": {
+                "email": {
+                    "description": "The curator's current work email, as used for their ABC login. Required for current, active curators.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "full_name": {
+                    "description": "The curator's display name, \"First Last\". Required when email is absent (former curators).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "user_id": {
+                    "description": "The exact created_by / updated_by value being mapped (case-insensitive match).",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "user_id"
+            ],
+            "title": "CuratorMapping",
+            "type": "object"
+        },
+        "EntityReferenceAssociation": {
+            "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "entity_id": {}
+                        },
+                        "required": [
+                            "entity_id"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "entity_type": {}
+                        },
+                        "required": [
+                            "entity_type"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "not": {
+                            "required": [
+                                "entity_id"
+                            ]
+                        },
+                        "properties": {
+                            "entity_id": {}
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "display_section": {}
+                        },
+                        "required": [
+                            "display_section"
+                        ]
+                    }
+                }
+            ],
+            "description": "One curated association between a reference and an entity (or a topic-only literature annotation when the entity slots are empty). Provenance is the curation of the association itself in the MOD database, not the addition of the paper.",
+            "properties": {
+                "created_by": {
+                    "description": "The MOD's internal user id of the curator who curated the association (not who added the paper). Every distinct value should have a CuratorMapping. Strongly encouraged; when absent (e.g. dumps predating this column), the ABC default user (default_user) is stamped instead.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "When the association was curated in the MOD database, in the timezone declared by the submission. Strongly encouraged; when absent (e.g. dumps predating this column), the load date is stamped instead.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "When the association was last modified, in the declared timezone; defaults to date_created when absent.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "display_section": {
+                    "description": "MOD-specific literature-topic / display section the association appears under on the MOD's reference pages (e.g. SGD's Primary Literature, Additional Literature, Reviews, Omics); mapped by prior agreement with the ABC team to an ABC display_tag ATP curie -- NOT to the ABC tag's topic slot. Named \"topic\" in SGD's dump (the alias); called display_section here to avoid colliding with the ABC's topic column, which holds an ATP topic curie. The alias is documentation only: a MOD converting its TSV to JSON must rename the topic column to display_section -- the generated (closed) JSON Schema accepts only the display_section key.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "entity_id": {
+                    "description": "The MOD's stable identifier for the entity (e.g. SGDID SGD:S000002284); must be resolvable through the Alliance persistent store. Empty for a topic-only annotation.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "entity_name": {
+                    "description": "Human-readable entity name (e.g. ACT1, act1-1); used for report sanity checks, not for resolution.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "entity_type": {
+                    "$ref": "#/$defs/EntityTypeEnum",
+                    "description": "The kind of entity the reference is associated with, one of the 13 types in entity_type_enum: gene, allele, transgenic_allele, classical_allele, species, strain, genotype, fish, transgenic_construct, sequence_targeting_reagent, antibody, complex, pathway. Canonical values are the snake_case enum names; submitted TSV files may write them with spaces (each value's title), which the loader normalizes -- but the generated (closed) JSON Schema accepts only the snake_case names, so JSON submissions must use those."
+                },
+                "reference_id": {
+                    "description": "The MOD's identifier for the paper (e.g. SGDID S000039113) or a PMID curie (PMID:12345678); resolved through the ABC reference cross-references.",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The MOD's internal user id of the last curator to modify the association; defaults to created_by when absent.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "reference_id"
+            ],
+            "title": "EntityReferenceAssociation",
+            "type": "object"
+        },
+        "EntityReferenceAssociationIngest": {
+            "additionalProperties": false,
+            "description": "Root container for one MOD submission: the association records plus the curator mappings resolving every distinct created_by / updated_by value they use.",
+            "properties": {
+                "curator_mappings": {
+                    "description": "One mapping per distinct created_by / updated_by value appearing in the association records.",
+                    "items": {
+                        "$ref": "#/$defs/CuratorMapping"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "entity_reference_associations": {
+                    "description": "The association records of this submission.",
+                    "items": {
+                        "$ref": "#/$defs/EntityReferenceAssociation"
+                    },
+                    "type": "array"
+                },
+                "mod_abbreviation": {
+                    "description": "Alliance abbreviation of the submitting MOD (e.g. SGD, ZFIN, WB, MGI, RGD, FB).",
+                    "type": "string"
+                },
+                "timezone": {
+                    "description": "IANA timezone of the date_created / date_updated values (e.g. America/Los_Angeles), or UTC when the timestamps are exported already converted. The ABC converts to UTC at load time. Note for JSON submissions: datetime values must carry an explicit offset (JSON Schema date-time, e.g. 2024-03-15T10:22:31-07:00), which should agree with this declared timezone; offset-less TSV timestamps are interpreted in this timezone by the loader.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "mod_abbreviation",
+                "timezone",
+                "entity_reference_associations"
+            ],
+            "title": "EntityReferenceAssociationIngest",
+            "type": "object"
+        },
+        "EntityTypeEnum": {
+            "description": "Entity types accepted in entity-reference association submissions, matching the entity types available in the ABC curation interface. Not every MOD uses every type (complex and pathway are mainly SGD; fish, genotype, transgenic construct, and sequence targeting reagent are mainly ZFIN). Extensible by agreement with the ABC team; each maps to the ATP term given as its meaning.",
+            "enum": [
+                "gene",
+                "allele",
+                "transgenic_allele",
+                "classical_allele",
+                "species",
+                "strain",
+                "genotype",
+                "fish",
+                "transgenic_construct",
+                "sequence_targeting_reagent",
+                "antibody",
+                "complex",
+                "pathway"
+            ],
+            "title": "EntityTypeEnum",
+            "type": "string"
+        }
+    },
+    "$id": "https://github.com/alliance-genome/agr_curation_schema/abc/entity_reference_association",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": false,
+    "description": "Root container for one MOD submission: the association records plus the curator mappings resolving every distinct created_by / updated_by value they use.",
+    "metamodel_version": "1.7.0",
+    "properties": {
+        "curator_mappings": {
+            "description": "One mapping per distinct created_by / updated_by value appearing in the association records.",
+            "items": {
+                "$ref": "#/$defs/CuratorMapping"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "entity_reference_associations": {
+            "description": "The association records of this submission.",
+            "items": {
+                "$ref": "#/$defs/EntityReferenceAssociation"
+            },
+            "type": "array"
+        },
+        "mod_abbreviation": {
+            "description": "Alliance abbreviation of the submitting MOD (e.g. SGD, ZFIN, WB, MGI, RGD, FB).",
+            "type": "string"
+        },
+        "timezone": {
+            "description": "IANA timezone of the date_created / date_updated values (e.g. America/Los_Angeles), or UTC when the timestamps are exported already converted. The ABC converts to UTC at load time. Note for JSON submissions: datetime values must carry an explicit offset (JSON Schema date-time, e.g. 2024-03-15T10:22:31-07:00), which should agree with this declared timezone; offset-less TSV timestamps are interpreted in this timezone by the loader.",
+            "type": "string"
+        }
+    },
+    "required": [
+        "mod_abbreviation",
+        "timezone",
+        "entity_reference_associations"
+    ],
+    "title": "entity_reference_association",
+    "type": "object",
+    "version": null
+}

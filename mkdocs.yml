@@ -12,6 +12,9 @@ site_dir: generated/mkdocs_html
 nav:
   - Browse the Model: index.md
   - Developing the Alliance Model: developing-the-model.md
+  - ABC (Literature) Schemas:
+    - Topic Entity Tag: abc/topic_entity_tag/index.md
+    - Entity-Reference Association Submission: abc/entity_reference_association/index.md
   - LinkML Tutorial: https://linkml.io/linkml/intro/tutorial.html
 
 site_url: https://github.com/alliance-genome/agr_curation_schema
