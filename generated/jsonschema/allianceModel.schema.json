@@ -24907,6 +24907,13 @@
                         "null"
                     ]
                 },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -25491,6 +25498,13 @@
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -28297,6 +28311,13 @@
                 },
                 "created_by": {
                     "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": [
                         "string",
                         "null"
