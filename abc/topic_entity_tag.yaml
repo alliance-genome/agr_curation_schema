@@ -36,8 +36,8 @@ classes:
     abstract: true
     description: >-
       Audit columns shared by all ABC tables (AuditedModel). created_by /
-      updated_by reference users.id -- in the ABC these are Okta subject
-      strings or auto-created verbatim ids from data loads.
+      updated_by reference users.id -- in the ABC these are person AGRKB
+      ids for curators or auto-created verbatim ids from data loads.
     slots:
       - date_created
       - date_updated
