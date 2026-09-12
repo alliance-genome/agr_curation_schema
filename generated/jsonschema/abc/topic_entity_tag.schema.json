@@ -88,7 +88,7 @@
                     ]
                 },
                 "data_context": {
-                    "description": "ATP curie stating what kind of data the tag represents, one of four disjoint terms: ATP:0000325 (experimentally studied data), ATP:0000360 (background information), ATP:0000328 (expression marker), ATP:0000327 (genetic marker). SCRUM-5697; added by migration d7b3e1c95a24 (2026-08-31). Required in the application model, but nullable in the database until the backfill completes -- and not yet present in every environment (e.g. literature-4006), so index generation must tolerate its absence.",
+                    "description": "ATP curie stating what kind of data the tag represents, one of four disjoint terms: ATP:0000325 (experimentally studied data), ATP:0000360 (background information), ATP:0000328 (expression marker), ATP:0000327 (genetic marker).",
                     "type": [
                         "string",
                         "null"
@@ -417,7 +417,7 @@
             ]
         },
         "data_context": {
-            "description": "ATP curie stating what kind of data the tag represents, one of four disjoint terms: ATP:0000325 (experimentally studied data), ATP:0000360 (background information), ATP:0000328 (expression marker), ATP:0000327 (genetic marker). SCRUM-5697; added by migration d7b3e1c95a24 (2026-08-31). Required in the application model, but nullable in the database until the backfill completes -- and not yet present in every environment (e.g. literature-4006), so index generation must tolerate its absence.",
+            "description": "ATP curie stating what kind of data the tag represents, one of four disjoint terms: ATP:0000325 (experimentally studied data), ATP:0000360 (background information), ATP:0000328 (expression marker), ATP:0000327 (genetic marker).",
             "type": [
                 "string",
                 "null"
