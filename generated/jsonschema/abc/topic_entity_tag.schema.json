@@ -88,11 +88,8 @@
                     ]
                 },
                 "data_context": {
-                    "description": "ATP curie stating what kind of data the tag represents, one of four disjoint terms: ATP:0000325 (experimentally studied data), ATP:0000360 (background information), ATP:0000328 (expression marker), ATP:0000327 (genetic marker).",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "description": "ATP curie stating what kind of data the tag represents: ATP:0000323 (data context) or one of its descendants -- ATP:0000325 (experimentally studied data), ATP:0000360 (background information), ATP:0000328 (expression marker), ATP:0000327 (genetic marker). The root term ATP:0000323 itself marks tags whose specific context is unknown (backfilled rows).",
+                    "type": "string"
                 },
                 "data_novelty": {
                     "description": "ATP curie stating whether the tagged data is novel: ATP:0000334 (existing data), or a new-data term -- ATP:0000335 (new data) and its descendants ATP:0000321 (new data type), ATP:0000228 (new to database), ATP:0000229 (new to field).",
@@ -233,6 +230,7 @@
                 "topic_entity_tag_source_id",
                 "topic",
                 "data_novelty",
+                "data_context",
                 "date_created"
             ],
             "title": "TopicEntityTag",
@@ -417,11 +415,8 @@
             ]
         },
         "data_context": {
-            "description": "ATP curie stating what kind of data the tag represents, one of four disjoint terms: ATP:0000325 (experimentally studied data), ATP:0000360 (background information), ATP:0000328 (expression marker), ATP:0000327 (genetic marker).",
-            "type": [
-                "string",
-                "null"
-            ]
+            "description": "ATP curie stating what kind of data the tag represents: ATP:0000323 (data context) or one of its descendants -- ATP:0000325 (experimentally studied data), ATP:0000360 (background information), ATP:0000328 (expression marker), ATP:0000327 (genetic marker). The root term ATP:0000323 itself marks tags whose specific context is unknown (backfilled rows).",
+            "type": "string"
         },
         "data_novelty": {
             "description": "ATP curie stating whether the tagged data is novel: ATP:0000334 (existing data), or a new-data term -- ATP:0000335 (new data) and its descendants ATP:0000321 (new data type), ATP:0000228 (new to database), ATP:0000229 (new to field).",
@@ -562,6 +557,7 @@
         "topic_entity_tag_source_id",
         "topic",
         "data_novelty",
+        "data_context",
         "date_created"
     ],
     "title": "topic_entity_tag",
