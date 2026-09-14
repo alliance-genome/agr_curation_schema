@@ -229,11 +229,13 @@ slots:
 
   data_context:
     description: >-
-      ATP curie stating what kind of data the tag represents, one of four
-      disjoint terms: ATP:0000325 (experimentally studied data), ATP:0000360
-      (background information), ATP:0000328 (expression marker), ATP:0000327
-      (genetic marker).
-    recommended: true
+      ATP curie stating what kind of data the tag represents: ATP:0000323
+      (data context) or one of its descendants -- ATP:0000325
+      (experimentally studied data), ATP:0000360 (background information),
+      ATP:0000328 (expression marker), ATP:0000327 (genetic marker). The
+      root term ATP:0000323 itself marks tags whose specific context is
+      unknown (backfilled rows).
+    required: true
 
   validation_by_author:
     description: >-
