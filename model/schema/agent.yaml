@@ -70,9 +70,27 @@ classes:
   Company:
     is_a: Organization
 
+  SoftwareAgent:
+    is_a: Agent
+    description: >-
+      An automated agent -- a pipeline, load script, or other software
+      process -- that creates or modifies records. Identified by a stable
+      name string rather than an AGRKB curie: software agents are not
+      registered with MATI. Covers e.g. the ABC's automation users
+      (ACKnowledge_pipeline, data-load ids).
+    slots:
+      - unique_id
+    slot_usage:
+      unique_id:
+        identifier: true
+        required: true
+        description: >-
+          Stable name of the software agent (e.g. ACKnowledge_pipeline).
+
   Person:
     is_a: Agent
     slots:
+      - curie
       - last_name
       - middle_name
       - first_name
@@ -86,21 +104,30 @@ classes:
       - schema:person
       - foaf:Person
     slot_usage:
-      unique_id:
+      curie:
         identifier: true
+        description: >-
+          The AGRKB curie of the person, minted by MATI; the shared person
+          identifier across the Alliance curation systems and the ABC.
+      unique_id:
+        description: >-
+          Legacy non-curie identifier (systematic concatenation of defining
+          properties); retained during the transition to curie as the person
+          identifier.
 
   LoggedInPerson:
     is_a: Person
+    description: >-
+      A Person who can authenticate to an Alliance curation system. Identity
+      is the person's AGRKB curie (the inherited curie slot); the
+      authentication slots tie the person to an external authentication
+      provider and are deliberately provider-agnostic (Okta, Cognito, ...).
     slots:
-      - okta_id
-      - okta_email
+      - authentication_provider
+      - authentication_id
+      - authentication_email
       - user_settings
       - api_token
-    slot_usage:
-      okta_id:
-        required: true
-      okta_email:
-        required: true
 
 slots:
 
@@ -125,14 +152,26 @@ slots:
     multivalued: true
     range: string
 
-  okta_id:
-    description: The Okta identifier for the person registered in Okta for user authentication
+  authentication_provider:
+    description: >-
+      The external authentication provider the person's login is registered
+      with (e.g. okta, cognito).
     domain: LoggedInPerson
     range: string
     multivalued: false
 
-  okta_email:
-    description: The email address of the LoggedInPerson registered with Okta for user authentication
+  authentication_id:
+    description: >-
+      The person's subject identifier in the external authentication
+      provider (replaces the former okta_id).
+    domain: LoggedInPerson
+    range: string
+    multivalued: false
+
+  authentication_email:
+    description: >-
+      The email address registered with the external authentication provider
+      (replaces the former okta_email).
     domain: LoggedInPerson
     range: string
     multivalued: false
