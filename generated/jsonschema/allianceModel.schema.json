@@ -55,8 +55,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -250,11 +250,15 @@
                     "type": "string"
                 },
                 "secondary_data_provider": {
-                    "description": "Object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Organization"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source"
                 },
                 "secondary_data_provider_cross_reference": {
                     "anyOf": [
@@ -612,8 +616,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -1707,8 +1711,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -3255,8 +3259,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -3348,11 +3352,15 @@
                     ]
                 },
                 "laboratory_of_origin": {
-                    "description": "The laboratory of origin for the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Laboratory"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The laboratory of origin for the entity."
                 },
                 "mod_internal_id": {
                     "description": "The model organism database (MOD) internal identifier for the object",
@@ -4529,8 +4537,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -4713,11 +4721,15 @@
                     "type": "string"
                 },
                 "secondary_data_provider": {
-                    "description": "Object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Organization"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source"
                 },
                 "secondary_data_provider_cross_reference": {
                     "anyOf": [
@@ -6895,8 +6907,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -8342,8 +8354,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -8911,8 +8923,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -9080,8 +9092,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -9129,7 +9141,7 @@
                 "generated_by": {
                     "description": "Holds between a material entity and an Agent that generated it: e.g., Thomas Blumenthal, Kornberg Laboratory.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Agent"
                     },
                     "type": [
                         "array",
@@ -9157,7 +9169,7 @@
                 "manufactured_by": {
                     "description": "Holds between a material entity and an Agent that has manufactured it: e.g., Molecular Probes.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Agent"
                     },
                     "type": [
                         "array",
@@ -9495,8 +9507,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -10064,7 +10076,7 @@
                     ]
                 },
                 "curie": {
-                    "description": "Stable name of the automated agent (e.g. ACKnowledge_pipeline); not MATI-minted.",
+                    "description": "Stable name of the automated agent (e.g. ACKnowledge_pipeline); not MATI-minted, and a bare name rather than a CURIE (hence the range refinement from uriorcurie to string).",
                     "type": [
                         "string",
                         "null"
@@ -12501,8 +12513,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -14210,8 +14222,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -14431,8 +14443,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -14726,8 +14738,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -15458,8 +15470,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -18292,7 +18304,10 @@
                 },
                 "user_id": {
                     "description": "The exact created_by / updated_by value being mapped (case-insensitive match).",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "required": [
@@ -18581,8 +18596,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -19916,8 +19931,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -21797,8 +21812,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -22712,8 +22727,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -22761,7 +22776,7 @@
                 "designating_laboratories": {
                     "description": "A laboratory, rarely laboratories, which designated this gene",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Laboratory"
                     },
                     "type": [
                         "array",
@@ -23471,8 +23486,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -23606,8 +23621,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -23946,8 +23961,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -24119,11 +24134,15 @@
                     "type": "string"
                 },
                 "secondary_data_provider": {
-                    "description": "Object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Organization"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source"
                 },
                 "secondary_data_provider_cross_reference": {
                     "anyOf": [
@@ -24433,8 +24452,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -24644,8 +24663,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -26181,8 +26200,8 @@
                     ]
                 },
                 "designating_laboratory": {
-                    "description": "A laboratory which designated this gene class",
-                    "type": "string"
+                    "$ref": "#/$defs/Laboratory",
+                    "description": "A laboratory which designated this gene class"
                 },
                 "genes": {
                     "items": {
@@ -26494,8 +26513,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -27948,8 +27967,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -28206,8 +28225,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -28633,8 +28652,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The data provider for the dataset annotation",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The data provider for the dataset annotation"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -28685,11 +28704,15 @@
                     "type": "boolean"
                 },
                 "laboratory_of_origin": {
-                    "description": "The laboratory of origin for the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Laboratory"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The laboratory of origin for the entity."
                 },
                 "name": {
                     "description": "The free text title of the dataset",
@@ -28998,8 +29021,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -30488,11 +30511,15 @@
             "description": "A Person who can authenticate to an Alliance curation system. Identity is the person's AGRKB curie (the inherited curie slot); the authentication slots tie the person to an external authentication provider and are deliberately provider-agnostic (Okta, Cognito, ...).",
             "properties": {
                 "affiliated_alliance_member": {
-                    "description": "The Alliance Member the person is affiliated with",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AllianceMember"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The Alliance Member the person is affiliated with"
                 },
                 "api_token": {
                     "description": "The API token of the LoggedInPerson for the curation system",
@@ -30502,7 +30529,7 @@
                     ]
                 },
                 "auth_email": {
-                    "description": "The email address registered with the external authentication provider (replaces the former okta_email).",
+                    "description": "The email address registered with the external authentication provider (replaces the former okta_email). Deliberately optional -- unlike okta_email, which was required -- since identity is the person's AGRKB curie, not the authentication account.",
                     "type": [
                         "string",
                         "null"
@@ -32089,8 +32116,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -33504,8 +33531,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -34300,8 +34327,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -34401,11 +34428,15 @@
             "description": "",
             "properties": {
                 "affiliated_alliance_member": {
-                    "description": "The Alliance Member the person is affiliated with",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AllianceMember"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The Alliance Member the person is affiliated with"
                 },
                 "created_by": {
                     "description": "The agent (person or automated process) that created the entity.",
@@ -34675,8 +34706,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -35478,8 +35509,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -35605,8 +35636,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -35942,8 +35973,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -36452,8 +36483,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -37701,8 +37732,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -38041,8 +38072,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -38316,8 +38347,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -39886,8 +39917,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -40198,8 +40229,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -41037,7 +41068,10 @@
                 },
                 "topic_entity_tag_id": {
                     "description": "Primary key of the topic_entity_tag row.",
-                    "type": "integer"
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 },
                 "topic_entity_tag_source_id": {
                     "description": "Foreign key to the tag's TopicEntityTagSource.",
@@ -41187,8 +41221,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -41897,8 +41931,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -43117,8 +43151,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
@@ -43478,8 +43512,8 @@
                     ]
                 },
                 "data_provider": {
-                    "description": "The organization (e.g. MOD) from which the data was sourced",
-                    "type": "string"
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
                 },
                 "data_provider_cross_reference": {
                     "anyOf": [
