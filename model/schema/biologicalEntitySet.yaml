@@ -277,6 +277,7 @@ slots:
     multivalued: false
     domain: Gene
     range: Laboratory
+    inlined: true
 
   old_members:
     description: >-

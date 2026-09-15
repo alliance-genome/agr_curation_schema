@@ -497,6 +497,8 @@ slots:
     multivalued: true
     domain: Gene
     range: Laboratory
+    inlined: true
+    inlined_as_list: true
 
   designating_persons:
     description: >-

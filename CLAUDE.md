@@ -1,7 +1,8 @@
 # agr_curation_schema — project context
 
 LinkML model describing the Alliance of Genome Resources curation / persistence data
-store. 27 schema files in `model/schema/`, aggregated via `allianceModel.yaml` imports.
+store. 29 schema files in `model/schema/`, aggregated via `allianceModel.yaml` imports
+(including the ABC literature schemas topicEntityTag / entityReferenceAssociation).
 Parallel `*DTO` (ingest) classes mirror the entity classes to separate *submission*
 requirements from *database* requirements.
 

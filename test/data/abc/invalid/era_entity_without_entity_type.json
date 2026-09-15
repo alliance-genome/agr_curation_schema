@@ -1,0 +1,37 @@
+{
+    "mod_abbreviation": "SGD",
+    "timezone": "America/Los_Angeles",
+    "entity_reference_associations": [
+        {
+            "reference_id": "S000039113",
+            "entity_name": "ACT1",
+            "entity_id": "S000002284",
+            "date_created": "2024-03-15T10:22:31-07:00",
+            "created_by": "JDOE",
+            "display_section": "Primary Literature"
+        },
+        {
+            "reference_id": "S000305012",
+            "date_created": "2021-09-08T16:40:00-07:00",
+            "created_by": "RLEE",
+            "display_section": "Reviews"
+        },
+        {
+            "reference_id": "S000246789",
+            "entity_type": "sequence_targeting_reagent",
+            "entity_name": "str-1",
+            "entity_id": "S000186503"
+        }
+    ],
+    "curator_mappings": [
+        {
+            "user_id": "JDOE",
+            "email": "jdoe@stanford.edu",
+            "full_name": "Jane Doe"
+        },
+        {
+            "user_id": "RLEE",
+            "full_name": "Robert Lee"
+        }
+    ]
+}

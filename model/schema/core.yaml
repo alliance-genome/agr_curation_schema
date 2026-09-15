@@ -1241,6 +1241,8 @@ slots:
     required: false
     multivalued: true
     range: Agent
+    inlined: true
+    inlined_as_list: true
 
   manufactured_by:
     description: >-
@@ -1249,6 +1251,8 @@ slots:
     required: false
     multivalued: true
     range: Agent
+    inlined: true
+    inlined_as_list: true
 
   current:
     range: boolean
@@ -1337,29 +1341,33 @@ slots:
 
   created_by:
     description: >-
-      The individual that created the entity.
+      The agent (person or automated process) that created the entity.
     multivalued: false
-    domain: AuditedObject
-    range: Person
+    range: Agent
 
   created_by_curie:
     description: >-
-      Curie of the Person object representing the individual that created the
-      entity
+      Identifier of the Agent that created the entity. For a person: the
+      AGRKB curie (Person.curie) or another identifier the person is known
+      by, e.g. a MOD person id such as WB:WBPerson002314 (held in the
+      person's primary_external_id, or secondary_identifiers for
+      additional/legacy ids) -- the loader resolves against curie,
+      primary_external_id, and secondary_identifiers. For an automated
+      process: the AutomatedAgent's stable name.
     domain: AuditedObjectDTO
     range: string
 
   updated_by:
     description: >-
-      The individual that last modified the entity.
+      The agent (person or automated process) that last modified the entity.
     multivalued: false
-    domain: AuditedObject
-    range: Person
+    range: Agent
 
   updated_by_curie:
     description: >-
-      Curie of the Person object representing the individual that updated the
-      entity
+      Identifier of the Agent that last modified the entity: a person's
+      AGRKB curie or other known identifier, or an automated agent's stable
+      name (see created_by_curie).
     domain: AuditedObjectDTO
     range: string
 
@@ -1374,6 +1382,7 @@ slots:
     multivalued: false
     required: true
     range: Organization
+    inlined: true
 
   data_provider_cross_reference:
     description: >-
@@ -1397,6 +1406,7 @@ slots:
       directly to the Alliance, but not the original source
     multivalued: false
     range: Organization
+    inlined: true
 
   secondary_data_provider_cross_reference:
     description: >-
@@ -1462,6 +1472,13 @@ slots:
   negated:
     range: boolean
     description: if set to true, then the association is negated i.e. is not true
+
+  entity_type:
+    description: >-
+      The kind of entity being tagged or associated; contextually refined
+      per class (see slot_usage on TopicEntityTag and
+      EntityReferenceAssociation).
+    range: string
 
   qualifiers:
     singular_name: qualifier
@@ -1707,6 +1724,7 @@ slots:
     description: >-
       The laboratory of origin for the entity.
     range: Laboratory
+    inlined: true
 
   laboratory_of_origin_curie:
     description: >-
