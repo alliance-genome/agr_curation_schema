@@ -202,6 +202,7 @@ SCHEMA_TEST_EXAMPLES := \
 	disease_gene_test \
 	fb_disease_test \
 	functional_gene_set_ingest_test \
+	gene_expression_test \
 	gene_interaction_test \
 	gene_test \
 	genome_assembly_test \
@@ -224,6 +225,7 @@ SCHEMA_TEST_EXAMPLES := \
 SCHEMA_TEST_EXAMPLES_INVALID := \
 	allele_invalid \
 	disease_allele_invalid \
+	gene_expression_invalid \
 	missing_version \
 	variant_invalid \
 
