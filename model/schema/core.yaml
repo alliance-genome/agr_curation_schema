@@ -1469,6 +1469,12 @@ slots:
     range: boolean
     description: if set to true, then the association is negated i.e. is not true
 
+  entity_type:
+    description: >-
+      The kind of entity being tagged or associated; contextually refined
+      per class (see slot_usage on TopicEntityTag and
+      EntityReferenceAssociation).
+
   qualifiers:
     singular_name: qualifier
     description: >-

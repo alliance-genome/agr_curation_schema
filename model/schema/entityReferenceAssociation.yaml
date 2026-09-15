@@ -1,5 +1,5 @@
-id: https://github.com/alliance-genome/agr_curation_schema/abc/entity_reference_association
-name: entity_reference_association
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/entityReferenceAssociation
+
 description: >-
   LinkML model for the entity-reference association files MODs provide to the
   Alliance Bibliography Central (ABC), and the accompanying curator mapping
@@ -17,25 +17,26 @@ description: >-
   agreed with the ABC team out of band (they have no TSV column; a MOD
   submitting JSON instead may materialize the container directly).
 
-  Standalone by design: not imported by allianceModel/core and not importable
-  alongside them or topic_entity_tag.yaml -- slots like reference_id,
-  entity_type, topic-related and audit fields intentionally mirror the
-  submission columns and differ from the same-named definitions elsewhere.
+  Slot names are the submission-format column names, which are also the JSON
+  keys of JSON submissions (an external contract with the submitting MODs).
+  Slots shared with the rest of the model (reference_id, entity_type,
+  created_by, date_created, full_name) are reused from core/reference and
+  contextually refined per class via slot_usage -- note in particular that
+  created_by / updated_by here carry the MOD's internal user id (resolved
+  via CuratorMapping), not the Agent curie they carry elsewhere in the
+  model.
+
+default_prefix: alliance
+default_range: string
 
 prefixes:
-  linkml: https://w3id.org/linkml/
-  erassoc: https://github.com/alliance-genome/agr_curation_schema/abc/entity_reference_association/
-  ATP: http://purl.obolibrary.org/obo/ATP_
-
-default_prefix: erassoc
-default_range: string
+  alliance: 'http://alliancegenome.org/'
+  linkml: 'https://w3id.org/linkml/'
+  ATP: 'http://purl.obolibrary.org/obo/ATP_'
 
 imports:
   - linkml:types
-
-#==============================================================
-# Classes
-#==============================================================
+  - core
 
 classes:
 
@@ -44,7 +45,6 @@ classes:
       Root container for one MOD submission: the association records plus the
       curator mappings resolving every distinct created_by / updated_by value
       they use.
-    tree_root: true
     slots:
       - mod_abbreviation
       - timezone
@@ -67,6 +67,53 @@ classes:
       - updated_by
       - date_updated
       - display_section
+    slot_usage:
+      reference_id:
+        range: string
+        description: >-
+          The MOD's identifier for the paper (e.g. SGDID S000039113) or a
+          PMID curie (PMID:12345678); resolved through the ABC reference
+          cross-references. Unlike the integer reference_id elsewhere in the
+          model, this is the submitted string id.
+      entity_type:
+        range: entity_type_enum
+        description: >-
+          The kind of entity the reference is associated with, one of the 13
+          types in entity_type_enum: gene, allele, transgenic_allele,
+          classical_allele, species, strain, genotype, fish,
+          transgenic_construct, sequence_targeting_reagent, antibody,
+          complex, pathway. Canonical values are the snake_case enum names;
+          submitted TSV files may write them with spaces (each value's
+          title), which the loader normalizes -- but the generated (closed)
+          JSON Schema accepts only the snake_case names, so JSON submissions
+          must use those.
+      date_created:
+        recommended: true
+        description: >-
+          When the association was curated in the MOD database, in the
+          timezone declared by the submission. Strongly encouraged; when
+          absent (e.g. dumps predating this column), the load date is
+          stamped instead.
+      created_by:
+        range: string
+        recommended: true
+        description: >-
+          The MOD's internal user id of the curator who curated the
+          association (not who added the paper) -- unlike elsewhere in the
+          model, NOT an Agent curie; every distinct value should have a
+          CuratorMapping. Strongly encouraged; when absent (e.g. dumps
+          predating this column), the ABC default user (default_user) is
+          stamped instead.
+      updated_by:
+        range: string
+        description: >-
+          The MOD's internal user id of the last curator to modify the
+          association (not an Agent curie); defaults to created_by when
+          absent.
+      date_updated:
+        description: >-
+          When the association was last modified, in the declared timezone;
+          defaults to date_created when absent.
     rules:
       - description: >-
           An association with an entity_id must state its entity_type. (A
@@ -106,6 +153,11 @@ classes:
       - user_id
       - email
       - full_name
+    slot_usage:
+      full_name:
+        description: >-
+          The curator's display name, "First Last". Required when email is
+          absent (former curators).
     rules:
       - description: >-
           A mapping row must provide an email or a full name: when email is
@@ -127,10 +179,6 @@ classes:
           slot_conditions:
             email:
               required: true
-
-#==============================================================
-# Slots
-#==============================================================
 
 slots:
 
@@ -166,25 +214,6 @@ slots:
     multivalued: true
     inlined_as_list: true
 
-  reference_id:
-    description: >-
-      The MOD's identifier for the paper (e.g. SGDID S000039113) or a PMID
-      curie (PMID:12345678); resolved through the ABC reference
-      cross-references.
-    required: true
-
-  entity_type:
-    description: >-
-      The kind of entity the reference is associated with, one of the 13
-      types in entity_type_enum: gene, allele, transgenic_allele,
-      classical_allele, species, strain, genotype, fish,
-      transgenic_construct, sequence_targeting_reagent, antibody, complex,
-      pathway. Canonical values are the snake_case enum names; submitted TSV
-      files may write them with spaces (each value's title), which the
-      loader normalizes -- but the generated (closed) JSON Schema accepts
-      only the snake_case names, so JSON submissions must use those.
-    range: entity_type_enum
-
   entity_name:
     description: >-
       Human-readable entity name (e.g. ACT1, act1-1); used for report sanity
@@ -196,33 +225,6 @@ slots:
       The MOD's stable identifier for the entity (e.g. SGDID
       SGD:S000002284); must be resolvable through the Alliance persistent
       store. Empty for a topic-only annotation.
-
-  date_created:
-    description: >-
-      When the association was curated in the MOD database, in the timezone
-      declared by the submission. Strongly encouraged; when absent (e.g.
-      dumps predating this column), the load date is stamped instead.
-    range: datetime
-    recommended: true
-
-  created_by:
-    description: >-
-      The MOD's internal user id of the curator who curated the association
-      (not who added the paper). Every distinct value should have a
-      CuratorMapping. Strongly encouraged; when absent (e.g. dumps predating
-      this column), the ABC default user (default_user) is stamped instead.
-    recommended: true
-
-  updated_by:
-    description: >-
-      The MOD's internal user id of the last curator to modify the
-      association; defaults to created_by when absent.
-
-  date_updated:
-    description: >-
-      When the association was last modified, in the declared timezone;
-      defaults to date_created when absent.
-    range: datetime
 
   display_section:
     aliases: ['topic']
@@ -249,15 +251,6 @@ slots:
     description: >-
       The curator's current work email, as used for their ABC login.
       Required for current, active curators.
-
-  full_name:
-    description: >-
-      The curator's display name, "First Last". Required when email is
-      absent (former curators).
-
-#==============================================================
-# Enums
-#==============================================================
 
 enums:
 

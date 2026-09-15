@@ -82,10 +82,10 @@ classes:
     is_a: Agent
     description: >-
       An automated agent -- a pipeline, load script, or other software
-      process -- that creates or modifies records. Its curie is its stable
-      name verbatim (e.g. ACKnowledge_pipeline): automated agents are not
-      registered with MATI. Covers e.g. the ABC's automation users (users
-      without a person_id).
+      process -- that creates or modifies records. Its curie is simply its
+      stable name, used as-is (e.g. ACKnowledge_pipeline): automated agents
+      are not registered with MATI. Covers e.g. the ABC's automation users
+      (users without a person_id).
     slots:
       - evidence_code
     slot_usage:

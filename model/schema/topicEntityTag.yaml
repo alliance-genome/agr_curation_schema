@@ -1,5 +1,5 @@
-id: https://github.com/alliance-genome/agr_curation_schema/abc/topic_entity_tag
-name: topic_entity_tag
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/topicEntityTag
+
 description: >-
   LinkML model of the ABC topic_entity_tag and topic_entity_tag_source tables
   (SCRUM-6452), covering every column, so consumers -- in particular the
@@ -7,49 +7,28 @@ description: >-
   for TET documents. Mirrors
   agr_literature_service/api/models/topic_entity_tag_model.py.
 
-  Standalone by design: this schema is not imported by allianceModel/core
-  and must not be imported alongside them (or alongside
-  entity_reference_association.yaml) -- slot names deliberately mirror the
-  ABC column names (created_by, date_created, data_provider, ...) and would
-  collide with the different definitions in core.yaml and in the submission
-  schema.
+  Slot names are the ABC column names, which are also the JSON keys of TET
+  documents (an external contract with the search-index consumers). Slots
+  shared with the rest of the model (created_by, date_created, negated,
+  reference_id, reference_curie, entity_type, data_provider) are reused from
+  core/reference and contextually refined per class via slot_usage.
+
+default_prefix: alliance
+default_range: string
 
 prefixes:
-  linkml: https://w3id.org/linkml/
-  tet: https://github.com/alliance-genome/agr_curation_schema/abc/topic_entity_tag/
-  ATP: http://purl.obolibrary.org/obo/ATP_
-  NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
-
-default_prefix: tet
-default_range: string
+  alliance: 'http://alliancegenome.org/'
+  linkml: 'https://w3id.org/linkml/'
+  ATP: 'http://purl.obolibrary.org/obo/ATP_'
+  NCBITaxon: 'http://purl.obolibrary.org/obo/NCBITaxon_'
 
 imports:
   - linkml:types
-
-#==============================================================
-# Classes
-#==============================================================
+  - core
 
 classes:
 
-  AbcAuditedObject:
-    abstract: true
-    description: >-
-      Audit columns shared by all ABC tables (AuditedModel). created_by /
-      updated_by reference users.id, which holds the Agent identifier of
-      the Alliance model (agent.yaml): the person AGRKB curie (Person.curie)
-      for person-backed users (users.person_id set), or an AutomatedAgent
-      name (e.g. ACKnowledge_pipeline, auto-created verbatim ids from data
-      loads) for automation users without a person_id.
-    slots:
-      - date_created
-      - date_updated
-      - created_by
-      - updated_by
-
   TopicEntityTag:
-    is_a: AbcAuditedObject
-    tree_root: true
     description: >-
       One curated or machine-generated assertion that a reference is about a
       topic, optionally tied to a specific entity. The topic, entity_type,
@@ -78,9 +57,49 @@ classes:
       - validated_by
       - ml_model_id
       - source
+      - date_created
+      - date_updated
+      - created_by
+      - updated_by
     slot_usage:
+      reference_id:
+        required: false
+        description: >-
+          Internal foreign key to the ABC reference table; may be omitted in
+          public TET documents, which key on reference_curie.
+      reference_curie:
+        required: true
+        description: >-
+          The AGRKB curie of the tagged reference (e.g.
+          AGRKB:101000000860007); the join of reference_id exposed by the API
+          and the search index, and the usable reference key for public
+          consumers.
       topic_entity_tag_source_id:
         description: Foreign key to the tag's TopicEntityTagSource.
+      entity_type:
+        description: >-
+          ATP curie of the kind of entity tagged (e.g. ATP:0000005 gene,
+          ATP:0000006 allele, ATP:0000027 strain). Present exactly when
+          entity is present.
+      negated:
+        description: >-
+          True when the tag asserts the reference is NOT about the
+          topic/entity.
+      date_created:
+        required: true
+        description: When the ABC row was created (stored UTC).
+      date_updated:
+        description: When the ABC row was last updated (stored UTC).
+      created_by:
+        description: >-
+          ABC users.id of the creator: the Agent curie -- the person AGRKB
+          curie (Person.curie) for person-backed users (users.person_id
+          set), or an AutomatedAgent name (e.g. ACKnowledge_pipeline,
+          auto-created ids from data loads) for automation users without a
+          person_id.
+      updated_by:
+        description: >-
+          ABC users.id of the last updater (an Agent curie; see created_by).
     rules:
       - description: >-
           entity_type, entity, and entity_id_validation are set together or
@@ -120,7 +139,6 @@ classes:
               required: true
 
   TopicEntityTagSource:
-    is_a: AbcAuditedObject
     description: >-
       Where a family of tags comes from: the combination of evidence
       assertion, method, and data providers. Unique on
@@ -134,14 +152,28 @@ classes:
       - data_provider
       - secondary_data_provider_abbreviation
       - source_description
+      - date_created
+      - date_updated
+      - created_by
+      - updated_by
     slot_usage:
       topic_entity_tag_source_id:
         identifier: true
         description: Primary key of the topic_entity_tag_source row.
-
-#==============================================================
-# Slots
-#==============================================================
+      data_provider:
+        range: string
+        description: >-
+          MOD abbreviation of the group that generated the tags (e.g. SGD) --
+          not an Organization reference.
+      date_created:
+        required: true
+        description: When the ABC row was created (stored UTC).
+      date_updated:
+        description: When the ABC row was last updated (stored UTC).
+      created_by:
+        description: ABC users.id of the creator (an Agent curie).
+      updated_by:
+        description: ABC users.id of the last updater (an Agent curie).
 
 slots:
 
@@ -149,19 +181,6 @@ slots:
     description: Primary key of the topic_entity_tag row.
     identifier: true
     range: integer
-    required: true
-
-  reference_id:
-    description: >-
-      Internal foreign key to the reference table; may be omitted in public
-      TET documents, which key on reference_curie.
-    range: integer
-
-  reference_curie:
-    description: >-
-      The AGRKB curie of the tagged reference (e.g. AGRKB:101000000860007);
-      the join of reference_id exposed by the API and the search index, and
-      the usable reference key for public consumers.
     required: true
 
   topic_entity_tag_source_id:
@@ -178,12 +197,6 @@ slots:
       term id), e.g. ATP:0000005 (gene) for a pure entity tag or a
       descendant of ATP:0000002 for a subject topic.
     required: true
-
-  entity_type:
-    description: >-
-      ATP curie of the kind of entity tagged (e.g. ATP:0000005 gene,
-      ATP:0000006 allele, ATP:0000027 strain). Present exactly when entity
-      is present.
 
   entity:
     description: >-
@@ -203,12 +216,6 @@ slots:
       ATP curie of the MOD display section the tag appears under on the
       public reference pages (e.g. ATP:0000147 primary display,
       ATP:0000130 review display).
-
-  negated:
-    description: >-
-      True when the tag asserts the reference is NOT about the
-      topic/entity.
-    range: boolean
 
   confidence_score:
     description: Classifier confidence score for machine-generated tags.
@@ -275,21 +282,6 @@ slots:
     range: TopicEntityTagSource
     inlined: true
 
-  date_created:
-    description: When the row was created (stored UTC).
-    range: datetime
-    required: true
-
-  date_updated:
-    description: When the row was last updated (stored UTC).
-    range: datetime
-
-  created_by:
-    description: users.id of the creator.
-
-  updated_by:
-    description: users.id of the last updater.
-
   source_evidence_assertion:
     description: >-
       ATP curie of the evidence assertion type, e.g. ATP:0000036 (assertion
@@ -308,10 +300,6 @@ slots:
       How tags from this source validate others (e.g. professional_biocurator,
       author); null for sources whose tags do not validate.
 
-  data_provider:
-    description: MOD abbreviation of the group that generated the tags (e.g. SGD).
-    required: true
-
   secondary_data_provider_abbreviation:
     description: >-
       MOD abbreviation of the Alliance member responsible for the data
@@ -320,10 +308,6 @@ slots:
 
   source_description:
     description: Human-readable description of the source.
-
-#==============================================================
-# Enums
-#==============================================================
 
 enums:
 

@@ -37,6 +37,7 @@ imports:
   - controlledVocabulary
   - core
   - curationReport
+  - entityReferenceAssociation
   - expression
   - gene
   - geneInteraction
@@ -51,6 +52,7 @@ imports:
   - reagent
   - reference
   - resource
+  - topicEntityTag
   - variantConsequence
   - variation
   - variantDTO
