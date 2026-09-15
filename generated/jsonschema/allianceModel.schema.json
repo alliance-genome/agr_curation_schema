@@ -30158,7 +30158,7 @@
         },
         "LoggedInPerson": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A Person who can authenticate to an Alliance curation system. Identity is the person's AGRKB curie (the inherited curie slot); the authentication slots tie the person to an external authentication provider and are deliberately provider-agnostic (Okta, Cognito, ...).",
             "properties": {
                 "affiliated_alliance_member": {
                     "anyOf": [
@@ -30178,8 +30178,36 @@
                         "null"
                     ]
                 },
+                "authentication_email": {
+                    "description": "The email address registered with the external authentication provider (replaces the former okta_email).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "authentication_id": {
+                    "description": "The person's subject identifier in the external authentication provider (replaces the former okta_id).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "authentication_provider": {
+                    "description": "The external authentication provider the person's login is registered with (e.g. okta, cognito).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "created_by": {
                     "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "curie": {
+                    "description": "The AGRKB curie of the person, minted by MATI; the shared person identifier across the Alliance curation systems and the ABC.",
                     "type": [
                         "string",
                         "null"
@@ -30259,14 +30287,6 @@
                         "null"
                     ]
                 },
-                "okta_email": {
-                    "description": "The email address of the LoggedInPerson registered with Okta for user authentication",
-                    "type": "string"
-                },
-                "okta_id": {
-                    "description": "The Okta identifier for the person registered in Okta for user authentication",
-                    "type": "string"
-                },
                 "old_emails": {
                     "description": "list of old (outdated) emails for a person",
                     "items": {
@@ -30292,7 +30312,7 @@
                     ]
                 },
                 "unique_id": {
-                    "description": "A non-curie unique identifier for a thing.",
+                    "description": "Legacy non-curie identifier (systematic concatenation of defining properties); retained during the transition to curie as the person identifier.",
                     "type": [
                         "string",
                         "null"
@@ -30314,9 +30334,7 @@
                 }
             },
             "required": [
-                "okta_id",
-                "okta_email",
-                "unique_id",
+                "curie",
                 "internal"
             ],
             "title": "LoggedInPerson",
@@ -34068,6 +34086,13 @@
                         "null"
                     ]
                 },
+                "curie": {
+                    "description": "The AGRKB curie of the person, minted by MATI; the shared person identifier across the Alliance curation systems and the ABC.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -34167,7 +34192,7 @@
                     ]
                 },
                 "unique_id": {
-                    "description": "A non-curie unique identifier for a thing.",
+                    "description": "Legacy non-curie identifier (systematic concatenation of defining properties); retained during the transition to curie as the person identifier.",
                     "type": [
                         "string",
                         "null"
@@ -34182,7 +34207,7 @@
                 }
             },
             "required": [
-                "unique_id",
+                "curie",
                 "internal"
             ],
             "title": "Person",
@@ -38415,6 +38440,79 @@
                 "internal"
             ],
             "title": "SlotAnnotationDTO",
+            "type": "object"
+        },
+        "SoftwareAgent": {
+            "additionalProperties": false,
+            "description": "An automated agent -- a pipeline, load script, or other software process -- that creates or modifies records. Identified by a stable name string rather than an AGRKB curie: software agents are not registered with MATI. Covers e.g. the ABC's automation users (ACKnowledge_pipeline, data-load ids).",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "unique_id": {
+                    "description": "Stable name of the software agent (e.g. ACKnowledge_pipeline).",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "unique_id",
+                "internal"
+            ],
+            "title": "SoftwareAgent",
             "type": "object"
         },
         "SourceVariantGenomicLocationAssociation": {
