@@ -281,11 +281,11 @@ stage-abc-jsonschema: gen-abc-jsonschema
 test-abc: gen-abc-jsonschema
 	poetry run linkml-validate -s $(ABC_ERA_SCHEMA) -C EntityReferenceAssociationIngest test/data/abc/entity_reference_association_valid.json
 	poetry run linkml-validate -s $(ABC_TET_SCHEMA) -C TopicEntityTag test/data/abc/topic_entity_tag_valid.json
-	poetry run linkml-validate -s $(ABC_ERA_SCHEMA) -C EntityReferenceAssociationIngest test/data/abc/invalid/era_entity_without_entity_type.json 2>&1 | grep -q "'entity_type' is a required property"
-	poetry run linkml-validate -s $(ABC_ERA_SCHEMA) -C EntityReferenceAssociationIngest test/data/abc/invalid/era_topic_only_without_display_section.json 2>&1 | grep -q "'display_section' is a required property"
-	poetry run linkml-validate -s $(ABC_ERA_SCHEMA) -C EntityReferenceAssociationIngest test/data/abc/invalid/era_curator_without_contact.json 2>&1 | grep -q "'full_name' is a required property"
-	poetry run linkml-validate -s $(ABC_TET_SCHEMA) -C TopicEntityTag test/data/abc/invalid/tet_entity_without_entity_type.json 2>&1 | grep -q "'entity_type' is a required property"
-	poetry run linkml-validate -s $(ABC_TET_SCHEMA) -C TopicEntityTag test/data/abc/invalid/tet_entity_type_without_entity.json 2>&1 | grep -q "'entity' is a required property"
+	@poetry run linkml-validate -s $(ABC_ERA_SCHEMA) -C EntityReferenceAssociationIngest test/data/abc/invalid/era_entity_without_entity_type.json 2>&1 | grep -q "'entity_type' is a required property" && echo "ok: era_entity_without_entity_type rejected"
+	@poetry run linkml-validate -s $(ABC_ERA_SCHEMA) -C EntityReferenceAssociationIngest test/data/abc/invalid/era_topic_only_without_display_section.json 2>&1 | grep -q "'display_section' is a required property" && echo "ok: era_topic_only_without_display_section rejected"
+	@poetry run linkml-validate -s $(ABC_ERA_SCHEMA) -C EntityReferenceAssociationIngest test/data/abc/invalid/era_curator_without_contact.json 2>&1 | grep -q "'full_name' is a required property" && echo "ok: era_curator_without_contact rejected"
+	@poetry run linkml-validate -s $(ABC_TET_SCHEMA) -C TopicEntityTag test/data/abc/invalid/tet_entity_without_entity_type.json 2>&1 | grep -q "'entity_type' is a required property" && echo "ok: tet_entity_without_entity_type rejected"
+	@poetry run linkml-validate -s $(ABC_TET_SCHEMA) -C TopicEntityTag test/data/abc/invalid/tet_entity_type_without_entity.json 2>&1 | grep -q "'entity' is a required property" && echo "ok: tet_entity_type_without_entity rejected"
 
 # ---------------------------------------
 # Java

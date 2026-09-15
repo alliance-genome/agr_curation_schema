@@ -35,10 +35,19 @@ classes:
     is_a: CurieObject
     description: >-
       An individual, group, organization, project, or automated process that
-      provides information and/or materials. Subclass of CurieObject: agents
-      carry an AGRKB curie where one is minted (e.g. persons).
+      provides information and/or materials. Subclass of CurieObject, with
+      curie as the identifier for all agents so that non-inlined Agent
+      references (created_by, updated_by, generated_by, ...) serialize as
+      the identifier string.
     close_mappings:
       - biolink:agent
+    slot_usage:
+      curie:
+        identifier: true
+        description: >-
+          The agent's identifier: for persons the MATI-minted AGRKB curie;
+          for automated agents the agent's stable name (not MATI-minted);
+          for organizations the organization's curie.
 
   Organization:
     is_a: Agent
@@ -73,19 +82,17 @@ classes:
     is_a: Agent
     description: >-
       An automated agent -- a pipeline, load script, or other software
-      process -- that creates or modifies records. Identified by a stable
-      name string rather than an AGRKB curie: automated agents are not
-      registered with MATI (the inherited curie slot stays empty). Covers
-      e.g. the ABC's automation users (ACKnowledge_pipeline, data-load ids).
+      process -- that creates or modifies records. Its curie is its stable
+      name verbatim (e.g. ACKnowledge_pipeline): automated agents are not
+      registered with MATI. Covers e.g. the ABC's automation users (users
+      without a person_id).
     slots:
-      - unique_id
       - evidence_code
     slot_usage:
-      unique_id:
-        identifier: true
-        required: true
+      curie:
         description: >-
-          Stable name of the automated agent (e.g. ACKnowledge_pipeline).
+          Stable name of the automated agent (e.g. ACKnowledge_pipeline);
+          not MATI-minted.
       evidence_code:
         description: >-
           Default ECO term for assertions produced by this agent (e.g. an
@@ -110,15 +117,19 @@ classes:
       - foaf:Person
     slot_usage:
       curie:
-        identifier: true
         description: >-
-          The AGRKB curie of the person (inherited from CurieObject via
+          The AGRKB curie of the person (the identifier inherited from
           Agent), minted by MATI; the shared person identifier across the
           Alliance curation systems and the ABC.
+      primary_external_id:
+        description: >-
+          The person's primary MOD person id (e.g. WB:WBPerson002314) when a
+          MOD is the authority for the person record; additional or legacy
+          ids go in secondary_identifiers.
       secondary_identifiers:
         description: >-
-          Other identifiers the person is known by, e.g. MOD person ids
-          (WBPerson...).
+          Other identifiers the person is known by beyond curie and
+          primary_external_id, e.g. additional or legacy MOD person ids.
       unique_id:
         description: >-
           Legacy non-curie identifier (systematic concatenation of defining
