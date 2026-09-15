@@ -65,8 +65,6 @@ classes:
 
   Laboratory:
     is_a: Organization
-    slots:
-      - curie
 
   Company:
     is_a: Organization
@@ -90,8 +88,9 @@ classes:
           Stable name of the automated agent (e.g. ACKnowledge_pipeline).
       evidence_code:
         description: >-
-          ECO term for assertions produced by this agent (e.g. an automated
-          assertion evidence code).
+          Default ECO term for assertions produced by this agent (e.g. an
+          automated-assertion evidence code); an annotation's own evidence
+          code takes precedence where present.
 
   Person:
     is_a: Agent
@@ -125,6 +124,13 @@ classes:
           Legacy non-curie identifier (systematic concatenation of defining
           properties); retained during the transition to curie as the person
           identifier.
+    unique_keys:
+      legacy_unique_id:
+        description: >-
+          unique_id is no longer the identifier but legacy consumers still
+          key on it; keep it unique through the transition.
+        unique_key_slots:
+          - unique_id
 
   LoggedInPerson:
     is_a: Person
@@ -138,6 +144,9 @@ classes:
       - auth_email
       - user_settings
       - api_token
+    slot_usage:
+      auth_id:
+        required: true
 
 slots:
 
@@ -163,6 +172,7 @@ slots:
     range: string
 
   auth_id:
+    aliases: ['okta_id']
     description: >-
       The person's subject identifier in the external authentication
       provider (e.g. Okta, Cognito; replaces the former okta_id).
@@ -171,6 +181,7 @@ slots:
     multivalued: false
 
   auth_email:
+    aliases: ['okta_email']
     description: >-
       The email address registered with the external authentication provider
       (replaces the former okta_email).

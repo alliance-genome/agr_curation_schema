@@ -1344,8 +1344,11 @@ slots:
 
   created_by_curie:
     description: >-
-      Curie of the Person object representing the individual that created the
-      entity
+      Identifier of the Person that created the entity: the person's AGRKB
+      curie (Person.curie) or another identifier the person is known by,
+      e.g. a MOD person id such as WB:WBPerson002314 (held in the person's
+      secondary_identifiers). The loader resolves either form to the Person
+      record.
     domain: AuditedObjectDTO
     range: string
 
@@ -1358,8 +1361,9 @@ slots:
 
   updated_by_curie:
     description: >-
-      Curie of the Person object representing the individual that updated the
-      entity
+      Identifier of the Person that last modified the entity: the person's
+      AGRKB curie (Person.curie) or another identifier the person is known
+      by (see created_by_curie).
     domain: AuditedObjectDTO
     range: string
 
