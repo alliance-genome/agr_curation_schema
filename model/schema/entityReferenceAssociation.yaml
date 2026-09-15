@@ -245,7 +245,6 @@ slots:
       The exact created_by / updated_by value being mapped
       (case-insensitive match).
     identifier: true
-    required: true
 
   email:
     description: >-

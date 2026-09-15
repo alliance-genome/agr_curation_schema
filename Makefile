@@ -258,16 +258,16 @@ ABC_MODEL = $(SCHEMA_DIR)/allianceModel.yaml
 
 .PHONY: test-abc gen-abc-jsonschema stage-abc-jsonschema
 gen-abc-jsonschema: $(TARGET_DIR)/jsonschema/abc/topic_entity_tag.schema.json $(TARGET_DIR)/jsonschema/abc/entity_reference_association.schema.json
-$(TARGET_DIR)/jsonschema/abc/topic_entity_tag.schema.json: $(SCHEMA_DIR)/topicEntityTag.yaml $(ABC_MODEL)
+$(TARGET_DIR)/jsonschema/abc/topic_entity_tag.schema.json: $(SOURCE_FILES)
 	mkdir -p $(dir $@)
 	poetry run gen-json-schema --indent 4 --closed -t TopicEntityTag $(ABC_MODEL) > $@
-$(TARGET_DIR)/jsonschema/abc/entity_reference_association.schema.json: $(SCHEMA_DIR)/entityReferenceAssociation.yaml $(ABC_MODEL)
+$(TARGET_DIR)/jsonschema/abc/entity_reference_association.schema.json: $(SOURCE_FILES)
 	mkdir -p $(dir $@)
 	poetry run gen-json-schema --indent 4 --closed -t EntityReferenceAssociationIngest $(ABC_MODEL) > $@
 
 stage-abc-jsonschema: gen-abc-jsonschema
-	mkdir -p $(ARTIFACTS_DIR)/jsonschema
-	cp -pr $(TARGET_DIR)/jsonschema/abc $(ARTIFACTS_DIR)/jsonschema/
+	mkdir -p $(ARTIFACTS_DIR)/jsonschema/abc
+	cp -pr $(TARGET_DIR)/jsonschema/abc/. $(ARTIFACTS_DIR)/jsonschema/abc/
 
 # exercise the abc class rules against valid/invalid fixtures
 # (linkml-validate enforces the rules; the generated JSON Schema alone does
@@ -280,6 +280,7 @@ test-abc: gen-abc-jsonschema
 	@poetry run linkml-validate -s $(ABC_MODEL) -C EntityReferenceAssociationIngest test/data/abc/invalid/era_curator_without_contact.json 2>&1 | grep -q "'full_name' is a required property" && echo "ok: era_curator_without_contact rejected"
 	@poetry run linkml-validate -s $(ABC_MODEL) -C TopicEntityTag test/data/abc/invalid/tet_entity_without_entity_type.json 2>&1 | grep -q "'entity_type' is a required property" && echo "ok: tet_entity_without_entity_type rejected"
 	@poetry run linkml-validate -s $(ABC_MODEL) -C TopicEntityTag test/data/abc/invalid/tet_entity_type_without_entity.json 2>&1 | grep -q "'entity' is a required property" && echo "ok: tet_entity_type_without_entity rejected"
+	@poetry run linkml-validate -s $(ABC_MODEL) -C TopicEntityTag test/data/abc/invalid/tet_entity_id_validation_without_entity.json 2>&1 | grep -q "'entity' is a required property" && echo "ok: tet_entity_id_validation_without_entity rejected"
 
 # ---------------------------------------
 # Java

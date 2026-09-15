@@ -181,7 +181,6 @@ slots:
     description: Primary key of the topic_entity_tag row.
     identifier: true
     range: integer
-    required: true
 
   topic_entity_tag_source_id:
     description: >-

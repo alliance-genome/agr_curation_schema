@@ -3,7 +3,7 @@
     "reference_curie": "AGRKB:101000000860007",
     "topic_entity_tag_source_id": 7,
     "topic": "ATP:0000005",
-    "entity": "SGD:S000002284",
+    "entity_id_validation": "alliance",
     "species": "NCBITaxon:559292",
     "data_novelty": "ATP:0000334",
     "data_context": "ATP:0000325",

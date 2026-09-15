@@ -9,7 +9,7 @@
     "data_context": "ATP:0000325",
     "negated": false,
     "date_created": "2026-09-01T12:00:00Z",
-    "created_by": "okta-example",
+    "created_by": "ACKnowledge_pipeline",
     "source": {
         "topic_entity_tag_source_id": 7,
         "source_evidence_assertion": "ATP:0000036",

@@ -90,9 +90,11 @@ classes:
       - evidence_code
     slot_usage:
       curie:
+        range: string
         description: >-
           Stable name of the automated agent (e.g. ACKnowledge_pipeline);
-          not MATI-minted.
+          not MATI-minted, and a bare name rather than a CURIE (hence the
+          range refinement from uriorcurie to string).
       evidence_code:
         description: >-
           Default ECO term for assertions produced by this agent (e.g. an
@@ -139,7 +141,9 @@ classes:
       legacy_unique_id:
         description: >-
           unique_id is no longer the identifier but legacy consumers still
-          key on it; keep it unique through the transition.
+          key on it; rows that carry it stay unique through the transition
+          (it is nullable -- persons created after the transition may omit
+          it).
         unique_key_slots:
           - unique_id
 
@@ -165,6 +169,7 @@ slots:
     description: The Alliance Member the person is affiliated with
     domain: Person
     range: AllianceMember
+    inlined: true
 
   orcid:
     description:  Open Researcher and Contributor ID
@@ -195,7 +200,9 @@ slots:
     aliases: ['okta_email']
     description: >-
       The email address registered with the external authentication provider
-      (replaces the former okta_email).
+      (replaces the former okta_email). Deliberately optional -- unlike
+      okta_email, which was required -- since identity is the person's AGRKB
+      curie, not the authentication account.
     domain: LoggedInPerson
     range: string
     multivalued: false

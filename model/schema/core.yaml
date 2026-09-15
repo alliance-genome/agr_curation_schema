@@ -1241,6 +1241,8 @@ slots:
     required: false
     multivalued: true
     range: Agent
+    inlined: true
+    inlined_as_list: true
 
   manufactured_by:
     description: >-
@@ -1249,6 +1251,8 @@ slots:
     required: false
     multivalued: true
     range: Agent
+    inlined: true
+    inlined_as_list: true
 
   current:
     range: boolean
@@ -1339,7 +1343,6 @@ slots:
     description: >-
       The agent (person or automated process) that created the entity.
     multivalued: false
-    domain: AuditedObject
     range: Agent
 
   created_by_curie:
@@ -1358,7 +1361,6 @@ slots:
     description: >-
       The agent (person or automated process) that last modified the entity.
     multivalued: false
-    domain: AuditedObject
     range: Agent
 
   updated_by_curie:
@@ -1380,6 +1382,7 @@ slots:
     multivalued: false
     required: true
     range: Organization
+    inlined: true
 
   data_provider_cross_reference:
     description: >-
@@ -1403,6 +1406,7 @@ slots:
       directly to the Alliance, but not the original source
     multivalued: false
     range: Organization
+    inlined: true
 
   secondary_data_provider_cross_reference:
     description: >-
@@ -1474,6 +1478,7 @@ slots:
       The kind of entity being tagged or associated; contextually refined
       per class (see slot_usage on TopicEntityTag and
       EntityReferenceAssociation).
+    range: string
 
   qualifiers:
     singular_name: qualifier
@@ -1719,6 +1724,7 @@ slots:
     description: >-
       The laboratory of origin for the entity.
     range: Laboratory
+    inlined: true
 
   laboratory_of_origin_curie:
     description: >-
