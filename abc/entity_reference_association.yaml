@@ -100,8 +100,8 @@ classes:
       records to the curator's identity. Email is required for current,
       active curators (it matches their ABC login); full name alone is
       acceptable for former curators. Ids with no mapping are stored verbatim
-      as the user id in the ABC -- as automation users (SoftwareAgent in the
-      Alliance Agent model), not person-backed users.
+      as the user id in the ABC -- as automation users without a person_id
+      (AutomatedAgent in the Alliance Agent model), not person-backed users.
     slots:
       - user_id
       - email

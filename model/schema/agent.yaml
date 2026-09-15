@@ -32,10 +32,11 @@ prefixes:
 classes:
 
   Agent:
-    is_a: AuditedObject
+    is_a: CurieObject
     description: >-
-      An individual, group, organization or project that provides information
-      and/or materials.
+      An individual, group, organization, project, or automated process that
+      provides information and/or materials. Subclass of CurieObject: agents
+      carry an AGRKB curie where one is minted (e.g. persons).
     close_mappings:
       - biolink:agent
 
@@ -70,27 +71,31 @@ classes:
   Company:
     is_a: Organization
 
-  SoftwareAgent:
+  AutomatedAgent:
     is_a: Agent
     description: >-
       An automated agent -- a pipeline, load script, or other software
       process -- that creates or modifies records. Identified by a stable
-      name string rather than an AGRKB curie: software agents are not
-      registered with MATI. Covers e.g. the ABC's automation users
-      (ACKnowledge_pipeline, data-load ids).
+      name string rather than an AGRKB curie: automated agents are not
+      registered with MATI (the inherited curie slot stays empty). Covers
+      e.g. the ABC's automation users (ACKnowledge_pipeline, data-load ids).
     slots:
       - unique_id
+      - evidence_code
     slot_usage:
       unique_id:
         identifier: true
         required: true
         description: >-
-          Stable name of the software agent (e.g. ACKnowledge_pipeline).
+          Stable name of the automated agent (e.g. ACKnowledge_pipeline).
+      evidence_code:
+        description: >-
+          ECO term for assertions produced by this agent (e.g. an automated
+          assertion evidence code).
 
   Person:
     is_a: Agent
     slots:
-      - curie
       - last_name
       - middle_name
       - first_name
@@ -98,6 +103,7 @@ classes:
       - emails
       - old_emails
       - primary_external_id
+      - secondary_identifiers
       - unique_id
       - affiliated_alliance_member
     exact_mappings:
@@ -107,8 +113,13 @@ classes:
       curie:
         identifier: true
         description: >-
-          The AGRKB curie of the person, minted by MATI; the shared person
-          identifier across the Alliance curation systems and the ABC.
+          The AGRKB curie of the person (inherited from CurieObject via
+          Agent), minted by MATI; the shared person identifier across the
+          Alliance curation systems and the ABC.
+      secondary_identifiers:
+        description: >-
+          Other identifiers the person is known by, e.g. MOD person ids
+          (WBPerson...).
       unique_id:
         description: >-
           Legacy non-curie identifier (systematic concatenation of defining
@@ -123,9 +134,8 @@ classes:
       authentication slots tie the person to an external authentication
       provider and are deliberately provider-agnostic (Okta, Cognito, ...).
     slots:
-      - authentication_provider
-      - authentication_id
-      - authentication_email
+      - auth_id
+      - auth_email
       - user_settings
       - api_token
 
@@ -152,23 +162,15 @@ slots:
     multivalued: true
     range: string
 
-  authentication_provider:
-    description: >-
-      The external authentication provider the person's login is registered
-      with (e.g. okta, cognito).
-    domain: LoggedInPerson
-    range: string
-    multivalued: false
-
-  authentication_id:
+  auth_id:
     description: >-
       The person's subject identifier in the external authentication
-      provider (replaces the former okta_id).
+      provider (e.g. Okta, Cognito; replaces the former okta_id).
     domain: LoggedInPerson
     range: string
     multivalued: false
 
-  authentication_email:
+  auth_email:
     description: >-
       The email address registered with the external authentication provider
       (replaces the former okta_email).

@@ -38,8 +38,9 @@ classes:
       Audit columns shared by all ABC tables (AuditedModel). created_by /
       updated_by reference users.id, which holds the Agent identifier of
       the Alliance model (agent.yaml): the person AGRKB curie (Person.curie)
-      for curators, or a SoftwareAgent name (e.g. ACKnowledge_pipeline,
-      auto-created verbatim ids from data loads) for automation users.
+      for person-backed users (users.person_id set), or an AutomatedAgent
+      name (e.g. ACKnowledge_pipeline, auto-created verbatim ids from data
+      loads) for automation users without a person_id.
     slots:
       - date_created
       - date_updated
