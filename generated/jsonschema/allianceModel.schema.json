@@ -352,7 +352,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -520,7 +520,7 @@
                     "description": "Ingest object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source, and a CrossReference to that organisation's site"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -843,7 +843,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -985,7 +985,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -1502,7 +1502,7 @@
             "description": "Ingest class for an entity that is affected by a phenotype.",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -1581,7 +1581,7 @@
                     "description": "The developmental stage that is affected by a phenotype (submitted)."
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -1901,7 +1901,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -2002,7 +2002,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -2209,7 +2209,7 @@
                     "type": "string"
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -2263,7 +2263,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -2381,7 +2381,7 @@
                     "type": "string"
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -2435,7 +2435,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -2746,7 +2746,7 @@
                     "type": "string"
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -2804,7 +2804,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -3551,7 +3551,7 @@
                     "type": "string"
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -3639,7 +3639,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -3758,7 +3758,7 @@
                     "type": "string"
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -3822,7 +3822,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -3959,7 +3959,7 @@
                     "type": "string"
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -4040,7 +4040,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -4151,7 +4151,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -4304,7 +4304,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -4413,7 +4413,7 @@
             "description": "",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -4477,7 +4477,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -4812,7 +4812,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -4973,7 +4973,7 @@
                     "description": "Ingest object representing organization (e.g. MOD) that provided the data directly to the Alliance, but not the original source, and a CrossReference to that organisation's site"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -5220,7 +5220,7 @@
             "description": "",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -5301,7 +5301,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -5432,7 +5432,7 @@
                     "type": "string"
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -5517,7 +5517,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -5649,7 +5649,7 @@
                     "type": "string"
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -5735,7 +5735,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -5842,7 +5842,7 @@
             "description": "",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -5906,7 +5906,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -6027,7 +6027,7 @@
                     "type": "string"
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -6101,7 +6101,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -6223,7 +6223,7 @@
             "description": "",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -6301,7 +6301,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -6410,7 +6410,7 @@
             "description": "",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -6480,7 +6480,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -6585,7 +6585,7 @@
             "description": "",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -6649,7 +6649,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -6767,7 +6767,7 @@
                     "type": "string"
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -6831,7 +6831,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -7112,7 +7112,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -7247,7 +7247,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -7379,7 +7379,7 @@
                     "type": "string"
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -7463,7 +7463,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -7904,7 +7904,7 @@
                     "type": "string"
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -7988,7 +7988,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -8121,7 +8121,7 @@
                     "type": "string"
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -8202,7 +8202,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -8459,7 +8459,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -8536,7 +8536,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -9302,7 +9302,7 @@
                     "type": "string"
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -9460,7 +9460,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -9632,7 +9632,7 @@
             "description": "Ingest class for assembly components",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -9730,7 +9730,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -9893,7 +9893,7 @@
             "description": "Base class for all other LinkML DTO classes.",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -9943,7 +9943,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -10113,7 +10113,7 @@
                     ]
                 },
                 "evidence_code": {
-                    "description": "ECO term for assertions produced by this agent (e.g. an automated assertion evidence code).",
+                    "description": "Default ECO term for assertions produced by this agent (e.g. an automated-assertion evidence code); an annotation's own evidence code takes precedence where present.",
                     "type": [
                         "string",
                         "null"
@@ -10471,7 +10471,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -10532,7 +10532,7 @@
                     "description": "The life stage of an organism or biosample as expressed by a TemporalContext entity"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -10717,7 +10717,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -10767,7 +10767,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -12789,7 +12789,7 @@
                     "type": "string"
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -12876,7 +12876,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -12940,7 +12940,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -13043,7 +13043,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -13299,7 +13299,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -13375,7 +13375,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -13501,7 +13501,7 @@
                     "type": "string"
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -13578,7 +13578,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -13926,7 +13926,7 @@
                     "type": "string"
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -14003,7 +14003,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -14114,7 +14114,7 @@
             "description": "Ingest class for a slot annotation to capture the use(s) (e.g. enhancer trap, protein trap) of a particular Cassette with associated evidence.",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -14174,7 +14174,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -14330,7 +14330,7 @@
             "description": "Dummy cell line DTO class",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -14417,7 +14417,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -14620,7 +14620,7 @@
             "description": "Ingest class for chromosomes",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -14682,7 +14682,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -14865,7 +14865,7 @@
                     "type": "string"
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -14962,7 +14962,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -15321,7 +15321,7 @@
                     "type": "string"
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -15385,7 +15385,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -15716,7 +15716,7 @@
                     "type": "string"
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -15789,7 +15789,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -15930,7 +15930,7 @@
                     "type": "string"
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -16017,7 +16017,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -16071,7 +16071,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -16174,7 +16174,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -16410,7 +16410,7 @@
                     "type": "string"
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -16486,7 +16486,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -16817,7 +16817,7 @@
             "description": "",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -16881,7 +16881,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -17121,7 +17121,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -17261,7 +17261,7 @@
                     "type": "integer"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -17484,7 +17484,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -17592,7 +17592,7 @@
                     "type": "integer"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -17788,7 +17788,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -17896,7 +17896,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -19019,7 +19019,7 @@
             "description": "",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -19082,7 +19082,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -19824,7 +19824,7 @@
             "description": "Ingest class for exons",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -19925,7 +19925,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -20246,7 +20246,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -20296,7 +20296,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -20592,7 +20592,7 @@
             "description": "DTO entity for a local database entry representing an external database entry; used currently for datasets or dataset samples; htpId.json in agr_schemas json",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -20680,7 +20680,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -21435,7 +21435,7 @@
             "description": "",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -21526,7 +21526,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -21768,7 +21768,7 @@
             "description": "Ingest class for functional gene sets (families and groups of genes related by sequence and/or function).",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -21938,7 +21938,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -22948,7 +22948,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -23091,7 +23091,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -23511,7 +23511,7 @@
             "description": "Ingest class for genes",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -23667,7 +23667,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -23981,7 +23981,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -24146,7 +24146,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -24813,7 +24813,7 @@
             "description": "Ingest class for association between a gene and a functional gene set, with supporting references that demonstrate or state the gene's membership in the set.",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -24885,7 +24885,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -24906,7 +24906,7 @@
             "description": "",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -24978,7 +24978,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -25185,7 +25185,7 @@
             "description": "Ingest class for genetic interaction between genes (e.g. phenotypic suppression)",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -25330,7 +25330,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -25757,7 +25757,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -25888,7 +25888,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -26463,7 +26463,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -26602,7 +26602,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -27603,7 +27603,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -27684,7 +27684,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -27843,7 +27843,7 @@
             "description": "Ingest class for genome assemblies",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -27940,7 +27940,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -28090,7 +28090,7 @@
             "description": "",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -28180,7 +28180,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -28571,7 +28571,7 @@
                     "type": "array"
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -28704,7 +28704,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -29047,7 +29047,7 @@
                     "description": "Pointer to the sample that serves as a biological reference (\"control\") in a multi-sample high-throughput experiment"
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -29225,7 +29225,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -30295,10 +30295,7 @@
                 },
                 "auth_id": {
                     "description": "The person's subject identifier in the external authentication provider (e.g. Okta, Cognito; replaces the former okta_id).",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "created_by": {
                     "description": "The individual that created the entity.",
@@ -30445,6 +30442,7 @@
                 }
             },
             "required": [
+                "auth_id",
                 "curie",
                 "internal"
             ],
@@ -32495,7 +32493,7 @@
             "description": "",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -32581,7 +32579,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -32690,7 +32688,7 @@
             "description": "",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -32758,7 +32756,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -34740,7 +34738,7 @@
             "description": "Ingest class for a phenotype qualifier.",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -34812,7 +34810,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -35505,7 +35503,7 @@
             "description": "Ingest class for proteins",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -35602,7 +35600,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -36366,7 +36364,7 @@
             "description": "Ingest class for material entities used in experiments.",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -36459,7 +36457,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -37385,7 +37383,7 @@
             "description": "",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -37448,7 +37446,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -37640,7 +37638,7 @@
             "description": "",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -37763,7 +37761,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -37968,7 +37966,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -38059,7 +38057,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -38234,7 +38232,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -38325,7 +38323,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -38344,7 +38342,7 @@
             "description": "Ingest class for an association supported by a single InformationContentEntity object",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -38401,7 +38399,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -38497,7 +38495,7 @@
             "description": "",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -38557,7 +38555,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -38794,7 +38792,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -38944,7 +38942,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -39177,7 +39175,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -39295,7 +39293,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -39501,7 +39499,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -39619,7 +39617,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -39871,7 +39869,7 @@
             "description": "The DTO class for the relationship between a Sequence Targeting Reagent and its targeted genes. The relation_name should be a VocabularyTerm with one of the following values - targets",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -39942,7 +39940,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -40089,7 +40087,7 @@
             "description": "",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -40166,7 +40164,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -40195,7 +40193,7 @@
             "description": "",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -40289,7 +40287,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -40310,7 +40308,7 @@
             "description": "",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -40401,7 +40399,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -40538,7 +40536,7 @@
                     ]
                 },
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -40622,7 +40620,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -40918,7 +40916,7 @@
             "description": "Ingest class for transcripts",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -41026,7 +41024,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -41544,7 +41542,7 @@
             "description": "An ingest class for a Transgenic Tool; a Transgenic Tool is defined as a commonly used sequence that forms part of a Construct or Transgene, and which has useful properties that are exploited to study the biological function of another gene product or a biological process.",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -41691,7 +41689,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -42135,7 +42133,7 @@
             "description": "",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -42197,7 +42195,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -42308,7 +42306,7 @@
             "description": "Ingest class for a slot annotation to capture the use(s) of a particular TransgenicTool with associated evidence.",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -42368,7 +42366,7 @@
                     ]
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -43121,7 +43119,7 @@
             "description": "Ingest class for a Variant object",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -43240,7 +43238,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
@@ -43360,7 +43358,7 @@
             "description": "The consequence of the variant, as stated in the source reference when no transcript ID is provided.",
             "properties": {
                 "created_by_curie": {
-                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "description": "Identifier of the Person that created the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's secondary_identifiers). The loader resolves either form to the Person record.",
                     "type": [
                         "string",
                         "null"
@@ -43424,7 +43422,7 @@
                     "type": "string"
                 },
                 "updated_by_curie": {
-                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "description": "Identifier of the Person that last modified the entity: the person's AGRKB curie (Person.curie) or another identifier the person is known by (see created_by_curie).",
                     "type": [
                         "string",
                         "null"
