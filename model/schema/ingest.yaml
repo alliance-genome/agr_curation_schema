@@ -222,15 +222,6 @@ slots:
     mixins:
       - object_set
 
-  construct_genomic_entity_association_ingest_set:
-    description: >-
-      An ingest set for ConstructGenomicEntityAssociationDTO
-    domain: Ingest
-    range: ConstructGenomicEntityAssociationDTO
-    multivalued: true
-    mixins:
-      - object_set
-      
   antibody_ingest_set:
     description: An ingest set for Antibody objects
     domain: Ingest
@@ -454,7 +445,6 @@ classes:
       - transgenic_tool_ingest_set
       - transgenic_tool_transgenic_tool_association_ingest_set
       - construct_ingest_set
-      - construct_genomic_entity_association_ingest_set
       - construct_cassette_association_ingest_set
       - disease_allele_ingest_set
       - disease_agm_ingest_set
