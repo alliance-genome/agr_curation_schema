@@ -32,3 +32,4 @@ jobs:
           make clean
           make all
           make test-jsonschema
+          make test-abc
