@@ -9056,8 +9056,8 @@
                         "null"
                     ]
                 },
-                "antigen_taxon": {
-                    "description": "Holds between an Antibody and the species from which the antigen originates (as represented by taxon).",
+                "antigen_taxon_term": {
+                    "description": "Holds between an Antibody and the species from which the antigen originates: e.g., mouse, rabbit, human. A VocabularyTerm rather than an NCBITaxonTerm so free-text/not-specified values can be recorded alongside real NCBITaxon IDs.",
                     "type": [
                         "string",
                         "null"
@@ -9155,6 +9155,13 @@
                         "null"
                     ]
                 },
+                "host_taxon_term": {
+                    "description": "The species in which the antibody was raised: e.g., mouse, rabbit, guinea pig, goat, camel, etc.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
@@ -9247,13 +9254,6 @@
                         "null"
                     ]
                 },
-                "taxon": {
-                    "description": "The species in which the antibody was raised: e.g., mouse, rabbit, guinea pig, goat, camel, etc.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "unique_id": {
                     "description": "A non-curie unique identifier for a thing.",
                     "type": [
@@ -9292,8 +9292,8 @@
                         "null"
                     ]
                 },
-                "antigen_taxon_curie": {
-                    "description": "Holds between an Antibody and the species from which the antigen originates (as represented by taxon).",
+                "antigen_taxon_term_name": {
+                    "description": "Name of the VocabularyTerm representing the species from which the antigen originates: either an NCBITaxon curie or a free-text/not-specified value. From the Antibody Antigen Taxon CV.",
                     "type": [
                         "string",
                         "null"
@@ -9364,6 +9364,13 @@
                 },
                 "heavy_chain_isotype_name": {
                     "description": "Name of the VocabularyTerm representing the isotype of the antibody heavy chain: e.g., IgA. From the Heavy Chain Isotope CV.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "host_taxon_term_name": {
+                    "description": "The species in which the antibody was raised: e.g., mouse, rabbit, guinea pig, goat, camel, etc.",
                     "type": [
                         "string",
                         "null"
@@ -9451,13 +9458,6 @@
                     },
                     "type": [
                         "array",
-                        "null"
-                    ]
-                },
-                "taxon_curie": {
-                    "description": "The species in which the antibody was raised: e.g., mouse, rabbit, guinea pig, goat, camel, etc.",
-                    "type": [
-                        "string",
                         "null"
                     ]
                 },
@@ -15412,15 +15412,6 @@
                         "null"
                     ]
                 },
-                "construct_components": {
-                    "items": {
-                        "$ref": "#/$defs/ConstructComponentSlotAnnotation"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "construct_full_name": {
                     "anyOf": [
                         {
@@ -15431,15 +15422,6 @@
                         }
                     ],
                     "description": "Holds between a Construct and a full name."
-                },
-                "construct_genomic_entity_associations": {
-                    "items": {
-                        "$ref": "#/$defs/ConstructGenomicEntityAssociation"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
                 },
                 "construct_symbol": {
                     "$ref": "#/$defs/ConstructSymbolSlotAnnotation",
@@ -15804,246 +15786,10 @@
             "title": "ConstructCassetteAssociationDTO",
             "type": "object"
         },
-        "ConstructComponentSlotAnnotation": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "component_symbol": {
-                    "description": "The free text of a symbol or name of a construct component for which no curie exists or is available",
-                    "type": "string"
-                },
-                "created_by": {
-                    "description": "The agent (person or automated process) that created the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "evidence": {
-                    "description": "The evidence that supports some assertion.",
-                    "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "related_notes": {
-                    "description": "Holds between an object and a list of related Note objects.",
-                    "items": {
-                        "$ref": "#/$defs/Note"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "relation": {
-                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
-                    "type": "string"
-                },
-                "single_construct": {
-                    "type": "string"
-                },
-                "taxon": {
-                    "description": "The taxon from which the biological entity derives.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "taxon_text": {
-                    "description": "The free text reference to a species or general taxon (e.g. \"Yeast\") for a a biological entity for which the exact taxon curie is unknown or unavailable.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "updated_by": {
-                    "description": "The agent (person or automated process) that last modified the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "single_construct",
-                "relation",
-                "component_symbol",
-                "internal"
-            ],
-            "title": "ConstructComponentSlotAnnotation",
-            "type": "object"
-        },
-        "ConstructComponentSlotAnnotationDTO": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "component_symbol": {
-                    "description": "The free text of a symbol or name of a construct component for which no curie exists or is available",
-                    "type": "string"
-                },
-                "created_by_curie": {
-                    "description": "Identifier of the Agent that created the entity. For a person: the AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's primary_external_id, or secondary_identifiers for additional/legacy ids) -- the loader resolves against curie, primary_external_id, and secondary_identifiers. For an automated process: the AutomatedAgent's stable name.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "note_dtos": {
-                    "items": {
-                        "$ref": "#/$defs/NoteDTO"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "relation_name": {
-                    "description": "Name of VocabularyTerm representing relation of an Association",
-                    "type": "string"
-                },
-                "taxon_curie": {
-                    "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "taxon_text": {
-                    "description": "The free text reference to a species or general taxon (e.g. \"Yeast\") for a a biological entity for which the exact taxon curie is unknown or unavailable.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "updated_by_curie": {
-                    "description": "Identifier of the Agent that last modified the entity: a person's AGRKB curie or other known identifier, or an automated agent's stable name (see created_by_curie).",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "relation_name",
-                "component_symbol",
-                "internal"
-            ],
-            "title": "ConstructComponentSlotAnnotationDTO",
-            "type": "object"
-        },
         "ConstructDTO": {
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "construct_component_dtos": {
-                    "items": {
-                        "$ref": "#/$defs/ConstructComponentSlotAnnotationDTO"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "construct_full_name_dto": {
                     "anyOf": [
                         {
@@ -16297,208 +16043,6 @@
                 "internal"
             ],
             "title": "ConstructFullNameSlotAnnotation",
-            "type": "object"
-        },
-        "ConstructGenomicEntityAssociation": {
-            "additionalProperties": false,
-            "description": "An association class to capture the identity of a construct component that is a known genomic entity with a curie and any accompanying meta data about the relationship between the construct and that genomic entity component",
-            "properties": {
-                "construct_association_subject": {
-                    "type": "string"
-                },
-                "construct_genomic_entity_association_object": {
-                    "$ref": "#/$defs/GenomicEntity"
-                },
-                "created_by": {
-                    "description": "The agent (person or automated process) that created the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "evidence": {
-                    "description": "The evidence that supports some assertion.",
-                    "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "related_notes": {
-                    "description": "Holds between an object and a list of related Note objects.",
-                    "items": {
-                        "$ref": "#/$defs/Note"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "relation": {
-                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
-                    "type": "string"
-                },
-                "updated_by": {
-                    "description": "The agent (person or automated process) that last modified the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "construct_genomic_entity_association_object",
-                "construct_association_subject",
-                "relation",
-                "internal"
-            ],
-            "title": "ConstructGenomicEntityAssociation",
-            "type": "object"
-        },
-        "ConstructGenomicEntityAssociationDTO": {
-            "additionalProperties": false,
-            "description": "Ingest class for association between a construct component that is a known genomic entity with a curie and any accompanying meta data about the relationship between the construct and that genomic entity component",
-            "properties": {
-                "construct_identifier": {
-                    "description": "Either the MOD curie or internal ID that was used in the submission of the associated construct",
-                    "type": "string"
-                },
-                "created_by_curie": {
-                    "description": "Identifier of the Agent that created the entity. For a person: the AGRKB curie (Person.curie) or another identifier the person is known by, e.g. a MOD person id such as WB:WBPerson002314 (held in the person's primary_external_id, or secondary_identifiers for additional/legacy ids) -- the loader resolves against curie, primary_external_id, and secondary_identifiers. For an automated process: the AutomatedAgent's stable name.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "genomic_entity_identifier": {
-                    "type": "string"
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "note_dtos": {
-                    "items": {
-                        "$ref": "#/$defs/NoteDTO"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "relation_name": {
-                    "description": "Name of VocabularyTerm representing relation of an Association",
-                    "type": "string"
-                },
-                "updated_by_curie": {
-                    "description": "Identifier of the Agent that last modified the entity: a person's AGRKB curie or other known identifier, or an automated agent's stable name (see created_by_curie).",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "construct_identifier",
-                "relation_name",
-                "genomic_entity_identifier",
-                "internal"
-            ],
-            "title": "ConstructGenomicEntityAssociationDTO",
             "type": "object"
         },
         "ConstructSymbolSlotAnnotation": {
@@ -25256,6 +24800,13 @@
                         "null"
                     ]
                 },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "date_created": {
                     "description": "The date on which an entity was created. This can be applied to nodes or edges.",
                     "format": "date-time",
@@ -25840,6 +25391,13 @@
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -28651,6 +28209,13 @@
                         "null"
                     ]
                 },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "data_provider": {
                     "$ref": "#/$defs/Organization",
                     "description": "The data provider for the dataset annotation"
@@ -30114,16 +29679,6 @@
                 "construct_cassette_association_ingest_set": {
                     "items": {
                         "$ref": "#/$defs/ConstructCassetteAssociationDTO"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "construct_genomic_entity_association_ingest_set": {
-                    "description": "An ingest set for ConstructGenomicEntityAssociationDTO",
-                    "items": {
-                        "$ref": "#/$defs/ConstructGenomicEntityAssociationDTO"
                     },
                     "type": [
                         "array",
