@@ -76,7 +76,7 @@ classes:
       - ZFIN
     slots:
       - name
-      - antigen_taxon
+      - antigen_taxon_term
       - clonality
       - heavy_chain_isotype
       - light_chain_isotype
@@ -84,7 +84,7 @@ classes:
       - cross_references
       - references
       - original_reference
-      - taxon
+      - host_taxon_term
       - generated_by
       - manufactured_by
       # - disease    # Need a way to give DOID term and reference. Or a generic way to specify CV term and publication attribution.
@@ -105,7 +105,7 @@ classes:
           FB does not have names for antibodies, but would be easy to generate,
           so we may want to make this required.
         required: true
-      taxon:
+      host_taxon_term:
         description: >-
           The species in which the antibody was raised: e.g., mouse, rabbit,
           guinea pig, goat, camel, etc.
@@ -124,7 +124,7 @@ classes:
       Can be used experimentally for the purposes of detection or purification.
     slots:
       - name
-      - antigen_taxon_curie
+      - antigen_taxon_term_name
       - clonality_name
       - heavy_chain_isotype_name
       - light_chain_isotype_name
@@ -132,7 +132,7 @@ classes:
       - cross_reference_dtos
       - reference_curies
       - original_reference_curie
-      - taxon_curie
+      - host_taxon_term_name
       - generated_by_identifier # needs to change: currently no common identifier field for Agent class
       - manufactured_by_identifier # needs to change: currently no common identifier field for Agent class
       # - disease    # Need a way to give DOID term and reference. Or a generic way to specify CV term and publication attribution.
@@ -146,12 +146,10 @@ classes:
           FB does not have names for antibodies, but would be easy to generate,
           so we may want to make this required.
         required: true
-      taxon_curie:
+      host_taxon_term_name:
         description: >-
           The species in which the antibody was raised: e.g., mouse, rabbit,
           guinea pig, goat, camel, etc.
-        notes: >-
-          FB does not have host taxon information for antibodies.
         required: false
       original_reference_curie:
         description: >-
@@ -164,9 +162,7 @@ classes:
       - construct_symbol
       - construct_full_name
       - construct_synonyms
-      - construct_genomic_entity_associations
       - construct_cassette_associations
-      - construct_components
       - references
     slot_usage:
       curie:
@@ -180,47 +176,10 @@ classes:
       - construct_symbol_dto
       - construct_full_name_dto
       - construct_synonym_dtos
-      - construct_component_dtos
       - reference_curies
     slot_usage:
       construct_symbol_dto:
         required: true
-
-  ConstructComponentSlotAnnotation:
-    is_a: SlotAnnotation
-    slots:
-      - single_construct
-      - relation
-      - component_symbol
-      - related_notes
-      - taxon
-      - taxon_text
-    slot_usage:
-      single_construct:
-        required: true
-      relation:
-        range: VocabularyTerm
-        notes: >-
-          The relation should be a VocabularyTerm with one of the following
-          values - expresses (RO:0002292) / is_regulated_by (RO:0002334) /
-          targets (RO:0002436). CV: 'Construct Genomic Entity Association Relation'
-      component_symbol:
-        required: true
-      related_notes:
-        required: false
-      taxon:
-        required: false
-      taxon_text:
-        required: false
-
-  ConstructComponentSlotAnnotationDTO:
-    is_a: SlotAnnotationDTO
-    slots:
-      - relation_name
-      - component_symbol
-      - note_dtos
-      - taxon_curie
-      - taxon_text
 
   ConstructSymbolSlotAnnotation:
     description: >-
@@ -265,43 +224,6 @@ classes:
     attributes:
       construct_association_subject:
         range: Construct
-        required: true
-
-  ConstructGenomicEntityAssociation:
-    is_a: ConstructAssociation
-    description: >-
-      An association class to capture the identity of a construct component that is
-      a known genomic entity with a curie and any accompanying meta data about the
-      relationship between the construct and that genomic entity component
-    attributes:
-      construct_genomic_entity_association_object:
-        range: GenomicEntity
-        required: true
-    slots:
-      - related_notes
-    slot_usage:
-      relation:
-        range: VocabularyTerm
-        notes: >-
-          The relation should be a VocabularyTerm with one of the following
-          values - expresses (RO:0002292) / is_regulated_by (RO:0002334) /
-          targets (RO:0002436). CV: 'Construct Genomic Entity Association Relation'
-      related_notes:
-        required: false
-
-  ConstructGenomicEntityAssociationDTO:
-    is_a: EvidenceAssociationDTO
-    description: >-
-      Ingest class for association between a construct component that is a known genomic
-      entity with a curie and any accompanying meta data about the relationship between
-      the construct and that genomic entity component
-    slots:
-      - construct_identifier
-      - relation_name
-      - genomic_entity_identifier
-      - note_dtos
-    slot_usage:
-      genomic_entity_identifier:
         required: true
 
   ConstructCassetteAssociation:
@@ -739,19 +661,22 @@ slots:
     domain: AntibodyDTO
     range: string
 
-  antigen_taxon:
+  antigen_taxon_term:
     description: >-
       Holds between an Antibody and the species from which the antigen
-      originates (as represented by taxon).
+      originates: e.g., mouse, rabbit, human. A VocabularyTerm rather than
+      an NCBITaxonTerm so free-text/not-specified values can be recorded
+      alongside real NCBITaxon IDs.
     required: false
     multivalued: false
     domain: Antibody
-    range: NCBITaxonTerm
+    range: VocabularyTerm
 
-  antigen_taxon_curie:
+  antigen_taxon_term_name:
     description: >-
-      Holds between an Antibody and the species from which the antigen
-      originates (as represented by taxon).
+      Name of the VocabularyTerm representing the species from which the
+      antigen originates: either an NCBITaxon curie or a
+      free-text/not-specified value. From the Antibody Antigen Taxon CV.
     domain: AntibodyDTO
     range: string
 
@@ -894,22 +819,6 @@ slots:
     range: string
     multivalued: true
 
-  construct_components:
-    multivalued: true
-    domain: Construct
-    range: ConstructComponentSlotAnnotation
-
-  construct_component_dtos:
-    multivalued: true
-    range: ConstructComponentSlotAnnotationDTO
-    inlined: true
-    inlined_as_list: true
-
-  construct_genomic_entity_associations:
-    multivalued: true
-    domain: Construct
-    range: ConstructGenomicEntityAssociation
-
   construct_cassette_associations:
     multivalued: true
     domain: Construct
@@ -992,6 +901,26 @@ slots:
     required: false
     multivalued: false
     domain: Antibody
+    range: string
+
+  host_taxon_term:
+    description: >-
+      The species in which the antibody was raised: e.g., mouse, rabbit,
+      guinea pig, goat, camel, etc. A VocabularyTerm rather than an
+      NCBITaxonTerm so free-text/not-specified values can be recorded
+      alongside real NCBITaxon IDs.
+    required: false
+    multivalued: false
+    domain: Antibody
+    range: VocabularyTerm
+
+  host_taxon_term_name:
+    description: >-
+      Name of the VocabularyTerm representing the species in which the
+      antibody was raised: e.g., mouse, rabbit, guinea pig, goat, camel, etc.
+      Either an NCBITaxon curie or a free-text/not-specified value. From the
+      Antibody Host Taxon CV.
+    domain: AntibodyDTO
     range: string
 
   light_chain_isotype:

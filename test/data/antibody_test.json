@@ -21,10 +21,10 @@
         "WB:AntibodyXYZ",
         "WB:Ab123"
       ],
-      "taxon_curie": "NCBITaxon:6239",
+      "host_taxon_term_name": "NCBITaxon:9606",
       "generated_by_identifier": "WB:WBLaboratory123",
       "manufactured_by_identifier": "Construct Corps",
-      "antigen_taxon_curie": "NCBITaxon:3324",
+      "antigen_taxon_term_name": "NCBITaxon:6239",
       "clonality_name": "monoclonal",
       "heavy_chain_isotype_name": "IgA",
       "light_chain_isotype_name": "i4",
