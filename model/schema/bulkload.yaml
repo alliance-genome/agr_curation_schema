@@ -264,6 +264,7 @@ enums:
       EMAPA:
       GO:
       SO:
+      PW:
 
   backend_bulk_data_type_enum:
     permissible_values:
