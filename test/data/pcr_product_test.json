@@ -1,0 +1,104 @@
+{
+  "linkml_version": "2.0.0",
+  "pcr_product_ingest_set": [
+    {
+      "created_by_curie": "WB:WBPerson123",
+      "updated_by_curie": "WB:WBPerson123",
+      "internal": false,
+      "obsolete": false,
+      "primary_external_id": "WB:WBPCR_product000001",
+      "name": "sjj_F08F1.5",
+      "taxon_curie": "NCBITaxon:6239",
+      "forward_primer_sequence": "ACGTACGTACGTACGTACGT",
+      "reverse_primer_sequence": "TGCATGCATGCATGCATGCA",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "WB",
+        "cross_reference_dto": {
+          "referenced_curie": "WB:WBPCR_product000001",
+          "prefix": "WB",
+          "page_area": "pcr_product",
+          "display_name": "WB:WBPCR_product000001",
+          "internal": false
+        },
+        "internal": false
+      }
+    },
+    {
+      "created_by_curie": "WB:WBPerson123",
+      "updated_by_curie": "WB:WBPerson123",
+      "internal": false,
+      "obsolete": false,
+      "primary_external_id": "WB:WBPCR_product000002",
+      "name": "mv_F08F1.5",
+      "secondary_identifiers": [
+        "WB:PCR_alt_id_1"
+      ],
+      "taxon_curie": "NCBITaxon:6239",
+      "forward_primer_sequence": "GATCGATCGATCGATCGATC",
+      "reverse_primer_sequence": "CTAGCTAGCTAGCTAGCTAG",
+      "pcr_assay_method_name": "touchdown_pcr",
+      "assay_conditions": "Annealing 58C, 30 cycles, GoTaq buffer",
+      "generated_by_identifier": "WB:WBLaboratory_HM",
+      "cross_reference_dtos": [
+        {
+          "internal": false,
+          "referenced_curie": "WB:WBPCR_product000002",
+          "page_area": "pcr_product",
+          "display_name": "mv_F08F1.5",
+          "prefix": "WB"
+        }
+      ],
+      "reference_curies": [
+        "PMID:15479665"
+      ],
+      "note_dtos": [
+        {
+          "free_text": "Used for Orfeome amplification.",
+          "note_type_name": "comment",
+          "internal": false
+        }
+      ],
+      "data_provider_dto": {
+        "source_organization_abbreviation": "WB",
+        "cross_reference_dto": {
+          "referenced_curie": "WB:WBPCR_product000002",
+          "prefix": "WB",
+          "page_area": "pcr_product",
+          "display_name": "WB:WBPCR_product000002",
+          "internal": false
+        },
+        "internal": false
+      }
+    }
+  ],
+  "pcr_product_genomic_entity_association_ingest_set": [
+    {
+      "pcr_product_identifier": "WB:WBPCR_product000002",
+      "relation_name": "overlaps_cds",
+      "genomic_entity_identifier": "WB:WBGene00000001",
+      "evidence_curies": [
+        "PMID:15479665"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "WB:WBPerson123",
+      "updated_by_curie": "WB:WBPerson123"
+    },
+    {
+      "pcr_product_identifier": "WB:WBPCR_product000002",
+      "relation_name": "overlaps_variant",
+      "genomic_entity_identifier": "WB:WBVar00000001",
+      "internal": false,
+      "obsolete": false,
+      "note_dtos": [
+        {
+          "free_text": "Amplifies the region containing the variant.",
+          "note_type_name": "comment",
+          "internal": false
+        }
+      ],
+      "created_by_curie": "WB:WBPerson123",
+      "updated_by_curie": "WB:WBPerson123"
+    }
+  ]
+}

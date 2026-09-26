@@ -1,0 +1,49 @@
+{
+  "linkml_version": "2.0.0",
+  "pcr_product_ingest_set": [
+    {
+      "created_by_curie": "WB:WBPerson123",
+      "updated_by_curie": "WB:WBPerson123",
+      "internal": false,
+      "obsolete": false,
+      "primary_external_id": "WB:WBPCR_product999001",
+      "name": "missing_forward_primer",
+      "taxon_curie": "NCBITaxon:6239",
+      "reverse_primer_sequence": "TGCATGCATGCATGCATGCA",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "WB",
+        "cross_reference_dto": {
+          "referenced_curie": "WB:WBPCR_product999001",
+          "prefix": "WB",
+          "page_area": "pcr_product",
+          "display_name": "WB:WBPCR_product999001",
+          "internal": false
+        },
+        "internal": false
+      }
+    },
+    {
+      "created_by_curie": "WB:WBPerson123",
+      "updated_by_curie": "WB:WBPerson123",
+      "internal": false,
+      "obsolete": false,
+      "primary_external_id": "WB:WBPCR_product999002",
+      "name": "extra_field_pcr_product",
+      "taxon_curie": "NCBITaxon:6239",
+      "forward_primer_sequence": "ACGTACGTACGTACGTACGT",
+      "reverse_primer_sequence": "TGCATGCATGCATGCATGCA",
+      "acedb_legacy_field": "this property is not in the schema",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "WB",
+        "cross_reference_dto": {
+          "referenced_curie": "WB:WBPCR_product999002",
+          "prefix": "WB",
+          "page_area": "pcr_product",
+          "display_name": "WB:WBPCR_product999002",
+          "internal": false
+        },
+        "internal": false
+      }
+    }
+  ]
+}
