@@ -519,6 +519,7 @@ classes:
       - transgenic_tool_full_name
       - transgenic_tool_synonyms
       - transgenic_tool_uses
+      - transgenic_tool_transgenic_tool_associations
       - references
 
   TransgenicToolDTO:
@@ -1036,6 +1037,15 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
+
+  transgenic_tool_transgenic_tool_associations:
+    description: >-
+      Holds between a TransgenicTool and the associations that tie it to compatible
+      TransgenicTools, where it is the subject of the association.
+    domain: TransgenicTool
+    required: false
+    multivalued: true
+    range: TransgenicToolTransgenicToolAssociation
 
   transgenic_tool_uses:
     description: Holds between a TransgenicTool and a list of uses.
