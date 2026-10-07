@@ -17,9 +17,36 @@
         }
       ],
       "name": "Antibody A",
-      "synonyms": [
-        "anti-ABC-1",
-        "alpha-ABC-1"
+      "antibody_synonym_dtos": [
+        {
+          "name_type_name": "synonym",
+          "format_text": "anti-ABC-1",
+          "display_text": "anti-ABC-1",
+          "synonym_url": "https://synonym_url.com/antiABC1",
+          "synonym_scope_name": "exact",
+          "evidence_curies": [
+            "PMID:223131211",
+            "PMID:101231321"
+          ],
+          "internal": false
+        },
+        {
+          "name_type_name": "synonym",
+          "format_text": "alpha-ABC-1",
+          "display_text": "\u03b1-ABC-1",
+          "synonym_scope_name": "exact",
+          "evidence_curies": [
+            "PMID:101231321"
+          ],
+          "internal": false
+        },
+        {
+          "name_type_name": "synonym",
+          "format_text": "ABC-1 antiserum",
+          "display_text": "ABC-1 antiserum",
+          "synonym_scope_name": "related",
+          "internal": false
+        }
       ],
       "secondary_identifiers": [
         "WB:AntibodyXYZ",
