@@ -17,6 +17,10 @@
         }
       ],
       "name": "Antibody A",
+      "synonyms": [
+        "anti-ABC-1",
+        "alpha-ABC-1"
+      ],
       "secondary_identifiers": [
         "WB:AntibodyXYZ",
         "WB:Ab123"

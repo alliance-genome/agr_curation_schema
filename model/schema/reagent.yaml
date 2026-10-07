@@ -76,6 +76,7 @@ classes:
       - ZFIN
     slots:
       - name
+      - synonyms
       - antigen_taxon_term
       - clonality
       - heavy_chain_isotype
@@ -124,6 +125,7 @@ classes:
       Can be used experimentally for the purposes of detection or purification.
     slots:
       - name
+      - synonyms
       - antigen_taxon_term_name
       - clonality_name
       - heavy_chain_isotype_name
