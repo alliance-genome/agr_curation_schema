@@ -40908,6 +40908,16 @@
                         "null"
                     ]
                 },
+                "transgenic_tool_transgenic_tool_associations": {
+                    "description": "Holds between a TransgenicTool and the associations that tie it to compatible TransgenicTools, where it is the subject of the association.",
+                    "items": {
+                        "$ref": "#/$defs/TransgenicToolTransgenicToolAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "transgenic_tool_uses": {
                     "description": "Holds between a TransgenicTool and a list of uses.",
                     "items": {
