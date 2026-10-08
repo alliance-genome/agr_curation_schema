@@ -76,6 +76,7 @@ classes:
       - ZFIN
     slots:
       - name
+      - antibody_synonyms
       - antigen_taxon_term
       - clonality
       - heavy_chain_isotype
@@ -124,6 +125,7 @@ classes:
       Can be used experimentally for the purposes of detection or purification.
     slots:
       - name
+      - antibody_synonym_dtos
       - antigen_taxon_term_name
       - clonality_name
       - heavy_chain_isotype_name
@@ -155,6 +157,16 @@ classes:
         description: >-
           The reference providing the original description of the antibody's
           generation.
+
+  AntibodySynonymSlotAnnotation:
+    description: >-
+      All aliases (non-preferred names) for the antibody. Any type of synonym is acceptable.
+    is_a: NameSlotAnnotation
+    slots:
+      - single_antibody
+    slot_usage:
+      single_antibody:
+        required: true
 
   Construct:
     is_a: Reagent
@@ -645,6 +657,21 @@ classes:
 
 slots:
 
+  antibody_synonyms:
+    description: Holds between an Antibody and a list of synonyms.
+    domain: Antibody
+    required: false
+    multivalued: true
+    range: AntibodySynonymSlotAnnotation
+
+  antibody_synonym_dtos:
+    description: Holds between an Antibody and a list of synonyms.
+    domain: AntibodyDTO
+    range: NameSlotAnnotationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
   antibody_target_genes:
     description: >-
       The genes whose gene products are recognized by the antibody.
@@ -946,6 +973,10 @@ slots:
       Identifier for Reagent manufactured_by field.  
     domain: ReagentDTO
     range: string
+
+  single_antibody:
+    range: Antibody
+    multivalued: false
 
   single_construct:
     range: Construct
