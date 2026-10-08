@@ -49,6 +49,63 @@ classes:
 # Types of BiologicalEntitySets
 # Attributes shared/specific to each type of BiologicalEntitySets.
 
+  BiologicalEntitySet:
+    description: >-
+      A named group of biological entities assembled because its members share a
+      biological property, function, or context.
+    is_a: SubmittedObject
+    abstract: true
+    notes: >-
+      Deliberately parented on SubmittedObject rather than BiologicalEntity, as
+      BiologicalEntity requires a single taxon and a set may span multiple taxa.
+    slots:
+      - taxon
+      - full_name
+      - symbol
+      - set_synonyms
+      - set_go_mf_terms
+      - set_go_bp_terms
+      - set_go_cc_terms
+      - parent_sets
+      - related_sets
+      - cross_references
+      - secondary_identifiers
+    slot_usage:
+      taxon:
+        description: >-
+          This slot is optional - it should not be used if multiple taxa are
+          represented in the set.
+        required: false
+      full_name:
+        required: true
+
+  BiologicalEntitySetDTO:
+    description: >-
+      Ingest class for named groups of biological entities assembled because their
+      members share a biological property, function, or context.
+    is_a: SubmittedObjectDTO
+    abstract: true
+    slots:
+      - taxon_curie
+      - full_name
+      - symbol
+      - set_synonym_dtos
+      - set_go_mf_term_curies
+      - set_go_bp_term_curies
+      - set_go_cc_term_curies
+      - parent_set_identifiers
+      - related_set_identifiers
+      - cross_reference_dtos
+      - secondary_identifiers
+    slot_usage:
+      taxon_curie:
+        description: >-
+          This slot is optional - it should not be used if multiple taxa are
+          represented in the set.
+        required: false
+      full_name:
+        required: true
+
   GeneCluster:
     description: >-
       A gene cluster is a set of genes which have a biological significance, and
@@ -104,33 +161,30 @@ classes:
   FunctionalGeneSet:
     description: >-
       Families and groups of genes related by sequence and/or function.
-    is_a: SubmittedObject
+    is_a: BiologicalEntitySet
     slots:
-      - taxon
-      - full_name
-      - symbol
-      - set_synonyms
-      - set_go_mf_terms
-      - set_go_bp_terms
-      - set_go_cc_terms
-      - parent_sets
-      - related_sets
-      - cross_references
-      - secondary_identifiers
       - gene_functional_gene_set_associations
     slot_usage:
-      taxon:
-        description: >-
-          This slot is optional - it should not be used if multiple taxa are
-          represented in the set.
-        required: false
-      full_name:
-        required: true
-      symbol:
-        required: true
+      parent_sets:
+        range: FunctionalGeneSet
 
   Pathway:
-    is_a: SubmittedObject
+    description: >-
+      A series of molecular interactions and reactions occurring within a cell or
+      organism that brings about a particular biological outcome.
+    is_a: BiologicalEntitySet
+    notes: >-
+      Each pathway is expected to carry exactly one related_notes entry of type 'summary',
+      giving a curator-written textual description of the pathway. This cannot be
+      expressed in the schema, as LinkML cannot require a note of a particular type,
+      and so is enforced at load.
+    slots:
+      - pathway_type
+      - pathway_image_filename
+      - gene_pathway_associations
+    slot_usage:
+      parent_sets:
+        range: Pathway
     exact_mappings:
       - biolink:Pathway
       - PW:0000001
@@ -148,12 +202,21 @@ classes:
       - KEGG.PATHWAY
 
   ProteinComplex:
-    is_a: SubmittedObject
+    description: >-
+      A set of proteins that assemble into a stable complex to carry out a
+      biological function.
+    is_a: BiologicalEntitySet
     slots:
       - proteins
+    slot_usage:
+      parent_sets:
+        range: ProteinComplex
 
 
   GenePathwayAssociation:
+    description: >-
+      Association between a gene and a pathway, with supporting references that
+      demonstrate or state the gene's participation in the pathway.
     is_a: EvidenceAssociation
     slots:
       - gene_association_subject
@@ -163,7 +226,9 @@ classes:
         required: true
     slot_usage:
       relation:
-        subproperty_of: has_participant
+        subproperty_of: participates_in
+        notes: >-
+          CV 'Gene Pathway Association Relation' including - participates_in
 
   GeneFunctionalGeneSetAssociation:
     description: >-
@@ -179,44 +244,50 @@ classes:
     slot_usage:
       relation:
         subproperty_of: is_member_of
+        notes: >-
+          CV 'Gene Functional Gene Set Association Relation' including - is_member_of
 
-  FunctionalGeneSetSynonymSlotAnnotation:
+  BiologicalEntitySetSynonymSlotAnnotation:
     is_a: NameSlotAnnotation
     description: >-
-      All aliases (non-preferred names) for the functional gene set. Acceptable synonym
+      All aliases (non-preferred names) for the biological entity set. Acceptable synonym
       types are full_name, nomenclature_symbol, and unspecified
     slots:
-      - single_functional_gene_set
+      - single_biological_entity_set
     slot_usage:
-      single_functional_gene_set:
+      single_biological_entity_set:
         required: true
 
   FunctionalGeneSetDTO:
-    is_a: SubmittedObjectDTO
+    is_a: BiologicalEntitySetDTO
     description: >-
       Ingest class for functional gene sets (families and groups of genes
       related by sequence and/or function).
+
+  PathwayDTO:
+    is_a: BiologicalEntitySetDTO
+    description: >-
+      Ingest class for pathways (series of molecular interactions and reactions
+      occurring within a cell or organism that bring about a particular
+      biological outcome).
     slots:
-      - taxon_curie
-      - full_name
-      - symbol
-      - set_synonym_dtos
-      - set_go_mf_term_curies
-      - set_go_bp_term_curies
-      - set_go_cc_term_curies
-      - parent_set_identifiers
-      - related_set_identifiers
-      - cross_reference_dtos
-      - secondary_identifiers
-    slot_usage:
-      taxon_curie:
+      - pathway_type_curie
+      - pathway_image_filename
+
+  GenePathwayAssociationDTO:
+    description: >-
+      Ingest class for association between a gene and a pathway, with supporting
+      references that demonstrate or state the gene's participation in the
+      pathway.
+    is_a: EvidenceAssociationDTO
+    slots:
+      - gene_identifier
+      - relation_name
+    attributes:
+      pathway_identifier:
         description: >-
-          This slot is optional - it should not be used if multiple taxa are
-          represented in the set.
-        required: false
-      full_name:
-        required: true
-      symbol:
+          Identifier (curie/primary_external_id/mod_internal_id) of the pathway
+        range: string
         required: true
 
   GeneFunctionalGeneSetAssociationDTO:
@@ -261,6 +332,14 @@ slots:
     exact_mappings:
       - RO:0000057
 
+  participates_in:
+    description: >-
+      Indicates participation of a gene in a pathway. Inverse of has_participant;
+      used because the subject of a GenePathwayAssociation is the gene, not the
+      pathway.
+    exact_mappings:
+      - RO:0000056
+
   has_input:
     is_a: has_participant
 
@@ -296,43 +375,91 @@ slots:
 
   set_go_mf_terms:
     description: >-
-      Key Gene Ontology Molecular Function terms associated with this functional gene set.
+      Key Gene Ontology Molecular Function terms associated with this set.
     range: GOTerm
     multivalued: true
 
   set_go_bp_terms:
     description: >-
-      Key Gene Ontology Biological Process terms associated with this functional gene set.
+      Key Gene Ontology Biological Process terms associated with this set.
     range: GOTerm
     multivalued: true
 
   set_go_cc_terms:
     description: >-
-      Key Gene Ontology Cellular Component terms associated with this functional gene set.
+      Key Gene Ontology Cellular Component terms associated with this set.
     range: GOTerm
     multivalued: true
 
   set_synonyms:
     description: >-
-      Synonyms for the functional gene set.
-    domain: FunctionalGeneSet
-    range: FunctionalGeneSetSynonymSlotAnnotation
+      Synonyms for the biological entity set.
+    domain: BiologicalEntitySet
+    range: BiologicalEntitySetSynonymSlotAnnotation
     multivalued: true
 
-  single_functional_gene_set:
-    range: FunctionalGeneSet
+  single_biological_entity_set:
+    range: BiologicalEntitySet
     multivalued: false
 
   parent_sets:
     description: >-
-      Parent functional gene set(s) of which this set is a subset.
-    range: FunctionalGeneSet
+      Parent set(s) of which this set is a subset.
+    range: BiologicalEntitySet
     multivalued: true
 
   related_sets:
     description: >-
-      Other related functional gene sets.
-    range: FunctionalGeneSet
+      Other related sets.
+    range: BiologicalEntitySet
+    multivalued: true
+
+  pathway_type:
+    description: >-
+      The type of biological process that the pathway represents, given as a
+      top-level term from the Pathway Ontology (PW).
+    domain: Pathway
+    range: PWTerm
+    required: true
+    multivalued: false
+    notes: >-
+      Expected to be one of the five top-level PW terms - classic metabolic pathway
+      (PW:0000002), signaling pathway (PW:0000003), regulatory pathway (PW:0000004),
+      disease pathway (PW:0000013), or drug pathway (PW:0000754). PW is the canonical
+      Alliance representation of pathway type; MOD-native classifications of the same
+      concept (e.g. the FlyBase FBcv pathway group terms) are deliberately not captured.
+
+  pathway_type_curie:
+    description: >-
+      CURIE of the top-level Pathway Ontology (PW) term representing the type of
+      biological process that the pathway represents - one of PW:0000002 (classic
+      metabolic pathway), PW:0000003 (signaling pathway), PW:0000004 (regulatory
+      pathway), PW:0000013 (disease pathway), or PW:0000754 (drug pathway).
+    domain: PathwayDTO
+    range: string
+    required: true
+    multivalued: false
+
+  pathway_image_filename:
+    description: >-
+      Filename of an image file depicting the pathway.
+    range: string
+    required: false
+    multivalued: false
+    notes: >-
+      INTERIM - this slot records only a bare filename, with no accompanying
+      definition of where the file is stored or how a consumer resolves the name
+      to a retrievable image. The Alliance has no general mechanism for
+      submitting or hosting image files - the File class in image.yaml is a
+      placeholder with no slots, and there are no Image/Figure/File ingest
+      classes. To be revisited with the image working group, at which point this
+      slot should be replaced by a proper reference to an Image entity.
+
+  gene_pathway_associations:
+    description: >-
+      Gene participants in this pathway, with supporting evidence/references.
+    domain: Pathway
+    range: GenePathwayAssociation
     multivalued: true
 
   gene_functional_gene_set_associations:
@@ -350,8 +477,8 @@ slots:
 
   set_synonym_dtos:
     description: >-
-      Synonyms for the functional gene set.
-    domain: FunctionalGeneSetDTO
+      Synonyms for the biological entity set.
+    domain: BiologicalEntitySetDTO
     range: NameSlotAnnotationDTO
     multivalued: true
     inlined: true
@@ -360,35 +487,35 @@ slots:
   set_go_mf_term_curies:
     description: >-
       CURIEs of key Gene Ontology Molecular Function terms associated with
-      this functional gene set.
+      this set.
     range: string
     multivalued: true
 
   set_go_bp_term_curies:
     description: >-
       CURIEs of key Gene Ontology Biological Process terms associated with
-      this functional gene set.
+      this set.
     range: string
     multivalued: true
 
   set_go_cc_term_curies:
     description: >-
       CURIEs of key Gene Ontology Cellular Component terms associated with
-      this functional gene set.
+      this set.
     range: string
     multivalued: true
 
   parent_set_identifiers:
     description: >-
       Identifiers (curie/primary_external_id/mod_internal_id) of parent
-      functional gene set(s) of which this set is a subset.
+      set(s) of which this set is a subset.
     range: string
     multivalued: true
 
   related_set_identifiers:
     description: >-
       Identifiers (curie/primary_external_id/mod_internal_id) of other
-      related functional gene sets.
+      related sets.
     range: string
     multivalued: true
 

@@ -27,7 +27,7 @@
   ],
   "set_synonyms": [
     {
-      "single_functional_gene_set": {
+      "single_biological_entity_set": {
         "curie": "FB:FBgg0000960",
         "full_name": "ALKALINE PHOSPHATASES",
         "symbol": "ALP",
@@ -46,7 +46,7 @@
       "internal": false
     },
     {
-      "single_functional_gene_set": {
+      "single_biological_entity_set": {
         "curie": "FB:FBgg0000960",
         "full_name": "ALKALINE PHOSPHATASES",
         "symbol": "ALP",
@@ -65,7 +65,7 @@
       "internal": false
     },
     {
-      "single_functional_gene_set": {
+      "single_biological_entity_set": {
         "curie": "FB:FBgg0000960",
         "full_name": "ALKALINE PHOSPHATASES",
         "symbol": "ALP",
