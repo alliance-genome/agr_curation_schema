@@ -134,12 +134,12 @@ classes:
   # designed close to the time the Allele class was designed.  These could be broken out into their own yaml files.
 
   CellLine:
-    is_a: GenomicEntity
+    is_a: BiologicalEntity
     description: >-
       Dummy cell line class
 
   CellLineDTO:
-    is_a: GenomicEntityDTO
+    is_a: BiologicalEntityDTO
     description: >-
       Dummy cell line DTO class
     slot_usage:
