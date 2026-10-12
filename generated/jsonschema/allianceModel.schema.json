@@ -14267,16 +14267,6 @@
                         "null"
                     ]
                 },
-                "cross_references": {
-                    "description": "Holds between an object and its CrossReferences.",
-                    "items": {
-                        "$ref": "#/$defs/CrossReference"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": [
@@ -14394,15 +14384,6 @@
                     "description": "Curie of the Person object representing the individual that created the entity",
                     "type": [
                         "string",
-                        "null"
-                    ]
-                },
-                "cross_reference_dtos": {
-                    "items": {
-                        "$ref": "#/$defs/CrossReferenceDTO"
-                    },
-                    "type": [
-                        "array",
                         "null"
                     ]
                 },
