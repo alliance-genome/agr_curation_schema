@@ -43015,6 +43015,13 @@
                     "description": "The taxon from which the biological entity derives.",
                     "type": "string"
                 },
+                "unique_id": {
+                    "description": "A non-curie unique identifier for a thing.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": [
