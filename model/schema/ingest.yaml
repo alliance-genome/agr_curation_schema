@@ -428,6 +428,20 @@ slots:
     mixins:
       - object_set
 
+  pathway_ingest_set:
+    domain: Ingest
+    range: PathwayDTO
+    multivalued: true
+    mixins:
+      - object_set
+
+  gene_pathway_association_ingest_set:
+    domain: Ingest
+    range: GenePathwayAssociationDTO
+    multivalued: true
+    mixins:
+      - object_set
+
   object_set:
     mixin: true
     domain: Ingest
@@ -496,3 +510,5 @@ classes:
       - gene_expression_experiment_ingest_set
       - functional_gene_set_ingest_set
       - gene_functional_gene_set_association_ingest_set
+      - pathway_ingest_set
+      - gene_pathway_association_ingest_set

@@ -1,0 +1,364 @@
+{
+  "linkml_version": "2.3.0",
+  "pathway_ingest_set": [
+    {
+      "primary_external_id": "FB:FBgg0000978",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "FB",
+        "cross_reference_dto": {
+          "referenced_curie": "FB:FBgg0000978",
+          "prefix": "FB",
+          "page_area": "pathway",
+          "display_name": "FB:FBgg0000978",
+          "internal": false
+        },
+        "internal": false
+      },
+      "taxon_curie": "NCBITaxon:7227",
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator",
+      "internal": false,
+      "full_name": "HEDGEHOG SIGNALING PATHWAY",
+      "symbol": "HH-SMO",
+      "pathway_type_curie": "PW:0000003",
+      "pathway_image_filename": "FBgg0000978_pathway_thumb.svg",
+      "note_dtos": [
+        {
+          "free_text": "The hedgehog signaling pathway is initiated by hedgehog (hh) ligand binding to the extracellular domain of patched receptor (ptc), leading to the derepression of smoothened (smo) activity. Activation of the atypical GPCR smo results in the accumulation of the transcriptional activator form of cubitus interruptus (ci) and the derepression/activation of hh target genes. In the absence of hh, smo is repressed by ptc and ci is processed to a truncated repressor form. (Adapted from FBrf0220683 and FBrf0231236).",
+          "note_type_name": "summary",
+          "internal": false,
+          "evidence_curies": [
+            "FB:FBrf0225556"
+          ]
+        }
+      ],
+      "set_synonym_dtos": [
+        {
+          "name_type_name": "full_name",
+          "format_text": "Smoothened signaling pathway",
+          "display_text": "Smoothened signaling pathway",
+          "synonym_scope_name": "exact",
+          "internal": false,
+          "evidence_curies": [
+            "FB:FBrf0225556"
+          ]
+        }
+      ],
+      "related_set_identifiers": [
+        "FB:FBgg0001342"
+      ],
+      "cross_reference_dtos": [
+        {
+          "referenced_curie": "KEGG:dme04341",
+          "prefix": "KEGG",
+          "page_area": "default",
+          "display_name": "KEGG Hedgehog signaling pathway",
+          "internal": false
+        },
+        {
+          "referenced_curie": "REACT:R-DME-209392",
+          "prefix": "REACT",
+          "page_area": "default",
+          "display_name": "Reactome Hedgehog signaling",
+          "internal": false
+        },
+        {
+          "referenced_curie": "WIKIPATHWAYS:WP492",
+          "prefix": "WIKIPATHWAYS",
+          "page_area": "default",
+          "display_name": "WikiPathways Hedgehog signaling",
+          "internal": false
+        }
+      ]
+    },
+    {
+      "primary_external_id": "FB:FBgg0002043",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "FB",
+        "cross_reference_dto": {
+          "referenced_curie": "FB:FBgg0002043",
+          "prefix": "FB",
+          "page_area": "pathway",
+          "display_name": "FB:FBgg0002043",
+          "internal": false
+        },
+        "internal": false
+      },
+      "taxon_curie": "NCBITaxon:7227",
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator",
+      "internal": false,
+      "full_name": "GLYCOLYSIS",
+      "symbol": "GLYCO",
+      "pathway_type_curie": "PW:0000002",
+      "pathway_image_filename": "FBgg0002043_pathway_thumb.svg",
+      "note_dtos": [
+        {
+          "free_text": "Glycolysis converts glucose into ATP and pyruvate in the cytosol. The overall reaction is glucose + 2 ADP + 2Pi + 2 NAD+ -> 2 pyruvate + 2 ATP + 2 NADH 2H+ + 2 H2O and involves 10 enzymatic steps. (Adapted from PMID:33941515 and FBrf0144936.)",
+          "note_type_name": "summary",
+          "internal": false,
+          "evidence_curies": [
+            "FB:FBrf0225556"
+          ]
+        }
+      ],
+      "set_synonym_dtos": [
+        {
+          "name_type_name": "full_name",
+          "format_text": "Canonical glycolysis",
+          "display_text": "Canonical glycolysis",
+          "synonym_scope_name": "exact",
+          "internal": false,
+          "evidence_curies": [
+            "FB:FBrf0225556"
+          ]
+        }
+      ],
+      "set_go_bp_term_curies": [
+        "GO:0061621"
+      ],
+      "set_go_cc_term_curies": [
+        "GO:0005829"
+      ],
+      "parent_set_identifiers": [
+        "FB:FBgg0002134"
+      ],
+      "cross_reference_dtos": [
+        {
+          "referenced_curie": "FlyCyc:DMEL:ANAGLYCOLYSIS-PWY",
+          "prefix": "FlyCyc",
+          "page_area": "default",
+          "display_name": "FlyCyc glycolysis",
+          "internal": false
+        },
+        {
+          "referenced_curie": "go.model:65a1f4f800000617",
+          "prefix": "go.model",
+          "page_area": "default",
+          "display_name": "GO-CAM model of glycolysis",
+          "internal": false
+        },
+        {
+          "referenced_curie": "KEGG:dme00010",
+          "prefix": "KEGG",
+          "page_area": "default",
+          "display_name": "KEGG Glycolysis / Gluconeogenesis",
+          "internal": false
+        },
+        {
+          "referenced_curie": "REACT:R-DME-70171",
+          "prefix": "REACT",
+          "page_area": "default",
+          "display_name": "Reactome Glycolysis",
+          "internal": false
+        }
+      ]
+    }
+  ],
+  "gene_pathway_association_ingest_set": [
+    {
+      "gene_identifier": "FB:FBgn0003444",
+      "pathway_identifier": "FB:FBgg0000978",
+      "relation_name": "participates_in",
+      "evidence_curies": [
+        "FB:FBrf0225556"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0004644",
+      "pathway_identifier": "FB:FBgg0000978",
+      "relation_name": "participates_in",
+      "evidence_curies": [
+        "FB:FBrf0225556"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0040388",
+      "pathway_identifier": "FB:FBgg0000978",
+      "relation_name": "participates_in",
+      "evidence_curies": [
+        "FB:FBrf0225556"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0031872",
+      "pathway_identifier": "FB:FBgg0000978",
+      "relation_name": "participates_in",
+      "evidence_curies": [
+        "FB:FBrf0225556"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0001079",
+      "pathway_identifier": "FB:FBgg0000978",
+      "relation_name": "participates_in",
+      "evidence_curies": [
+        "FB:FBrf0225556"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0000064",
+      "pathway_identifier": "FB:FBgg0002043",
+      "relation_name": "participates_in",
+      "evidence_curies": [
+        "FB:FBrf0225556"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0000579",
+      "pathway_identifier": "FB:FBgg0002043",
+      "relation_name": "participates_in",
+      "evidence_curies": [
+        "FB:FBrf0225556"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0001091",
+      "pathway_identifier": "FB:FBgg0002043",
+      "relation_name": "participates_in",
+      "evidence_curies": [
+        "FB:FBrf0225556"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0001092",
+      "pathway_identifier": "FB:FBgg0002043",
+      "relation_name": "participates_in",
+      "evidence_curies": [
+        "FB:FBrf0225556"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0001186",
+      "pathway_identifier": "FB:FBgg0002043",
+      "relation_name": "participates_in",
+      "evidence_curies": [
+        "FB:FBrf0225556"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0001187",
+      "pathway_identifier": "FB:FBgg0002043",
+      "relation_name": "participates_in",
+      "evidence_curies": [
+        "FB:FBrf0225556"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0003071",
+      "pathway_identifier": "FB:FBgg0002043",
+      "relation_name": "participates_in",
+      "evidence_curies": [
+        "FB:FBrf0225556"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0014869",
+      "pathway_identifier": "FB:FBgg0002043",
+      "relation_name": "participates_in",
+      "evidence_curies": [
+        "FB:FBrf0225556"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0003074",
+      "pathway_identifier": "FB:FBgg0002043",
+      "relation_name": "participates_in",
+      "evidence_curies": [
+        "FB:FBrf0225556"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0250906",
+      "pathway_identifier": "FB:FBgg0002043",
+      "relation_name": "participates_in",
+      "evidence_curies": [
+        "FB:FBrf0225556"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0267385",
+      "pathway_identifier": "FB:FBgg0002043",
+      "relation_name": "participates_in",
+      "evidence_curies": [
+        "FB:FBrf0225556"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    },
+    {
+      "gene_identifier": "FB:FBgn0086355",
+      "pathway_identifier": "FB:FBgg0002043",
+      "relation_name": "participates_in",
+      "evidence_curies": [
+        "FB:FBrf0225556"
+      ],
+      "internal": false,
+      "obsolete": false,
+      "created_by_curie": "FB:FB_curator",
+      "updated_by_curie": "FB:FB_curator"
+    }
+  ]
+}
