@@ -5,6 +5,7 @@ title: Alliance Schema Ingest
 imports:
   - core
   - reagent
+  - nucleicAcidReagent
   - allele
   - gene
   - image
@@ -438,6 +439,49 @@ slots:
       This is necessary in a json document to provide context for a list, and
       to allow for a single json object that combines multiple object types
 
+  dna_clone_ingest_set:
+    description: Submission collection of DNACloneDTO records.
+    range: DNACloneDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  cdna_clone_ingest_set:
+    description: Submission collection of CDNACloneDTO records.
+    range: CDNACloneDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  genomic_clone_ingest_set:
+    description: Submission collection of GenomicCloneDTO records.
+    range: GenomicCloneDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  pcr_product_ingest_set:
+    description: Submission collection of PCRProductDTO records.
+    range: PCRProductDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  nucleic_acid_probe_preparation_ingest_set:
+    description: Submission collection of NucleicAcidProbePreparationDTO records.
+    range: NucleicAcidProbePreparationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  nucleic_acid_reagent_genomic_entity_association_ingest_set:
+    description: Submission collection of NucleicAcidReagentGenomicEntityAssociationDTO
+      records.
+    range: NucleicAcidReagentGenomicEntityAssociationDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
 classes:
   Ingest:
     tree_root: true
@@ -446,6 +490,12 @@ classes:
       - alliance_member_release_version
       - allele_ingest_set
       - antibody_ingest_set
+      - dna_clone_ingest_set
+      - cdna_clone_ingest_set
+      - genomic_clone_ingest_set
+      - pcr_product_ingest_set
+      - nucleic_acid_probe_preparation_ingest_set
+      - nucleic_acid_reagent_genomic_entity_association_ingest_set
       - cassette_ingest_set
       - cassette_genomic_entity_association_ingest_set
       - cassette_str_association_ingest_set

@@ -49,6 +49,7 @@ imports:
   - ontologyTerm
   - phenotypeAndDiseaseAnnotation
   - reagent
+  - nucleicAcidReagent
   - reference
   - resource
   - variantConsequence

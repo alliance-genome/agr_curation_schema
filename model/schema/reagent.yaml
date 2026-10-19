@@ -646,11 +646,8 @@ classes:
           permissible_values: compatible_tool (VocabularyTerm)
 
 
-  # If we need to have multiple paths to root class, then we can consider a mixin that allows
-  # DNA|RNAClones to be classified independently from Reagents.
-
-  DNAClone:
-    is_a: Reagent
+  # DNAClone and its subclasses are defined in nucleicAcidReagent.yaml.
+  # RNAClone placement is unchanged pending source review.
 
   RNAClone:
     is_a: Reagent

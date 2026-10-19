@@ -1,0 +1,247 @@
+{
+  "linkml_version": "2.19.0",
+  "dna_clone_ingest_set": [
+    {
+      "internal": false,
+      "primary_external_id": "XB:EXAMPLE_CLONE_1",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "XB"
+      },
+      "name": "Illustrative clone of unknown insert origin",
+      "nucleic_acid_source_dtos": [
+        {
+          "internal": false,
+          "source_library_identifier": "XB:EXAMPLE_LIBRARY_1",
+          "source_library_name": "Example library one",
+          "source_vector_name": "Example library vector"
+        },
+        {
+          "internal": false,
+          "source_library_identifier": "XB:EXAMPLE_LIBRARY_2",
+          "source_library_name": "Example library two",
+          "source_vector_type_name": "not specified",
+          "source_cloning_sites": [
+            "EcoRI"
+          ]
+        }
+      ],
+      "reagent_sequence_dtos": [
+        {
+          "internal": false,
+          "reagent_sequence_source_identifier": "XB:EXAMPLE_READ_5",
+          "reagent_sequence_accessions": [
+            "INSDC:EXAMPLE_5.1"
+          ],
+          "reagent_sequence_role_name": "5-prime EST"
+        },
+        {
+          "internal": false,
+          "reagent_sequence_source_identifier": "XB:EXAMPLE_READ_3",
+          "reagent_sequence_role_name": "3-prime EST",
+          "reagent_sequence_residues": "ATGNNNTAA"
+        }
+      ]
+    }
+  ],
+  "cdna_clone_ingest_set": [
+    {
+      "internal": false,
+      "primary_external_id": "ZFIN:EXAMPLE_CDNA_1",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "ZFIN"
+      },
+      "name": "Illustrative confirmed cDNA clone",
+      "taxon_curie": "NCBITaxon:7955",
+      "nucleic_acid_reagent_type_name": "EST",
+      "clone_insert_length": 300,
+      "clone_vector_name": "Example vector",
+      "generated_by_identifiers": [
+        "ZFIN:EXAMPLE_LAB_1",
+        "ZFIN:EXAMPLE_PERSON_1"
+      ],
+      "nucleic_acid_reagent_synonym_dtos": [
+        {
+          "internal": false,
+          "name_type_name": "synonym",
+          "format_text": "Example alias",
+          "display_text": "Example alias",
+          "evidence_curies": [
+            "PMID:12345678"
+          ]
+        }
+      ],
+      "reagent_availability_name": "available"
+    },
+    {
+      "internal": false,
+      "primary_external_id": "FB:EXAMPLE_REAGENT_CLONE_1",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "FB"
+      },
+      "nucleic_acid_source_dtos": [
+        {
+          "internal": false,
+          "source_library_type": "reagent collection",
+          "source_library_membership_relation": "member_of_reagent_collection"
+        }
+      ]
+    }
+  ],
+  "genomic_clone_ingest_set": [
+    {
+      "internal": false,
+      "primary_external_id": "WB:EXAMPLE_GENOMIC_CLONE_1",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "WB"
+      },
+      "clone_vector_type_name": "BAC",
+      "clone_cloning_sites": [
+        "HindIII"
+      ]
+    }
+  ],
+  "pcr_product_ingest_set": [
+    {
+      "internal": false,
+      "primary_external_id": "WB:EXAMPLE_PCR_1",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "WB"
+      },
+      "name": "Illustrative legacy product lacking primers and taxon"
+    },
+    {
+      "internal": false,
+      "primary_external_id": "WB:EXAMPLE_PCR_2",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "WB"
+      },
+      "forward_primer_sequence": "ATGCA",
+      "reverse_primer_sequence": "TTCGA",
+      "taxon_curie": "NCBITaxon:6239",
+      "pcr_assay_method_name": "PCR",
+      "assay_conditions": "Illustrative cycling conditions",
+      "pcr_template_description": "Genomic DNA from the source-specified strain",
+      "pcr_template_source_identifiers": [
+        "WB:EXAMPLE_STRAIN_1"
+      ]
+    }
+  ],
+  "nucleic_acid_probe_preparation_ingest_set": [
+    {
+      "internal": false,
+      "mod_internal_id": "MGI:gxd_probeprep:EXAMPLE_1",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "MGI"
+      },
+      "name": "Illustrative assay-owned antisense RNA preparation",
+      "source_template_identifiers": [
+        "MGI:EXAMPLE_NONCLONED_PROBE_1"
+      ],
+      "preparation_assay_identifier": "MGI:gxd_assay:EXAMPLE_1",
+      "probe_nucleic_acid_type_name": "RNA",
+      "probe_strand_orientation_name": "antisense",
+      "probe_label_names": [
+        "digoxigenin"
+      ],
+      "probe_visualization_method_names": [
+        "alkaline phosphatase"
+      ]
+    },
+    {
+      "internal": false,
+      "primary_external_id": "ZFIN:EXAMPLE_PREPARATION_1",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "ZFIN"
+      },
+      "derived_from_reagent_identifiers": [
+        "ZFIN:EXAMPLE_CDNA_1"
+      ],
+      "probe_polymerase_name": "T7",
+      "probe_nucleic_acid_type_name": "RNA"
+    }
+  ],
+  "nucleic_acid_reagent_genomic_entity_association_ingest_set": [
+    {
+      "internal": false,
+      "nucleic_acid_reagent_identifier": "ZFIN:EXAMPLE_CDNA_1",
+      "relation_name": "encodes",
+      "genomic_entity_identifier": "ZFIN:EXAMPLE_GENE_1",
+      "evidence_curies": [
+        "PMID:12345678"
+      ],
+      "source_association_identifier": "ZFIN:EXAMPLE_CLONE_GENE_LINK_1",
+      "source_relation": "E"
+    },
+    {
+      "internal": false,
+      "nucleic_acid_reagent_identifier": "FB:EXAMPLE_REAGENT_CLONE_1",
+      "relation_name": "sequence_supports",
+      "genomic_entity_identifier": "FB:EXAMPLE_GENE_1",
+      "reagent_association_method": "AEVAST using BLAST",
+      "reagent_association_source_release": "illustrative release",
+      "supporting_sequence_identifiers": [
+        "FB:EXAMPLE_CDNA_SEQUENCE_1",
+        "INSDC:EXAMPLE_EST.1"
+      ],
+      "supporting_transcript_identifiers": [
+        "FB:EXAMPLE_TRANSCRIPT_1"
+      ],
+      "source_relation": "supports"
+    }
+  ],
+  "gene_expression_experiment_ingest_set": [
+    {
+      "internal": false,
+      "mod_internal_id": "ZFIN:EXAMPLE_ASSAY_1",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "ZFIN"
+      },
+      "gene_identifier": "ZFIN:EXAMPLE_GENE_1",
+      "reference_curie": "PMID:12345678",
+      "expression_assay_curie": "MMO:0000658",
+      "detection_reagent_identifiers": [
+        "ZFIN:EXAMPLE_CDNA_1",
+        "ZFIN:EXAMPLE_PREPARATION_1"
+      ],
+      "expression_annotation_dtos": [
+        {
+          "when_expressed_free_text": "shortly after the onset of circulation",
+          "where_expressed_free_text": "anterior region of the developing brain, with stronger signal in the telencephalon",
+          "negated": false,
+          "uncertain": false,
+          "relation_name": "is_expressed_in",
+          "related_figure_identifiers": [
+            "Fig. 1A",
+            "Fig. 1B"
+          ],
+          "created_by_curie": "ZFIN",
+          "updated_by_curie": "ZFIN",
+          "internal": false,
+          "expression_pattern_dto": {
+            "when_expressed_dto": {
+              "developmental_stage_start_curie": "ZFS:0000033",
+              "internal": false
+            },
+            "where_expressed_dto": {
+              "anatomical_structure_curie": "ZFA:0000008",
+              "anatomical_structure_uberon_term_curies": [
+                "UBERON:0000955"
+              ],
+              "internal": false
+            },
+            "internal": false
+          }
+        }
+      ]
+    }
+  ]
+}
