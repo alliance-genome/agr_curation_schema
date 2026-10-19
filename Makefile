@@ -46,7 +46,7 @@ echo:
 test: all test-jsonschema
 
 install:
-	poetry install
+	uv sync
 
 tdir-%:
 	mkdir -p $(TARGET_DIR)/$*
@@ -63,7 +63,7 @@ stage-%: gen-%
 	cp -pr $(TARGET_DIR)/$* $(ARTIFACTS_DIR)/
 
 gen-docs:
-	poetry run gen-doc model/schema/allianceModel.yaml --directory $(TARGET_DIR)/docs --template-directory doc_templates
+	uv run gen-doc model/schema/allianceModel.yaml --directory $(TARGET_DIR)/docs --template-directory doc_templates
 
 stage-docs: gen-docs
 	cp -pr $(TARGET_DIR)/docs $(ARTIFACTS_DIR)/
@@ -71,7 +71,7 @@ stage-docs: gen-docs
 	cp README.md $(ARTIFACTS_DIR)/docs/developing-the-model.md
 
 serve-docs: stage-docs
-	poetry run mkdocs serve
+	uv run mkdocs serve
 
 $(ARTIFACTS_DIR)/guidelines/%.md: $(ARTIFACTS_DIR)/docs/index.md
 	cp -R $(ARTIFACTS_DIR)/guidelines/* $(dir $@)
@@ -86,60 +86,60 @@ gen-python: $(patsubst %, $(TARGET_DIR)/python/%.py, $(SCHEMA_NAMES))
 $(TARGET_DIR)/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python
 # --no-mergeimports was causing an import error
 #	gen-py-classes --no-mergeimports $(GEN_OPTS) $< > $@
-	poetry run gen-py-classes --mergeimports $(GEN_OPTS) $< > $@
+	uv run gen-py-classes --mergeimports $(GEN_OPTS) $< > $@
 
 ###  -- GRAPHQL --
 gen-graphql:$(TARGET_DIR)/graphql/$(SCHEMA_NAME).graphql
 .PHONY: gen-graphql
 $(TARGET_DIR)/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
-	poetry run gen-graphql $(GEN_OPTS) $< > $@
+	uv run gen-graphql $(GEN_OPTS) $< > $@
 
 ###  -- JSON SCHEMA --
 gen-jsonschema: $(TARGET_DIR)/jsonschema/$(SCHEMA_NAME).schema.json
 .PHONY: gen-jsonschema
 $(TARGET_DIR)/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
-	poetry run gen-json-schema $(GEN_OPTS) --indent 4 --closed -t Ingest $< > $@
+	uv run gen-json-schema $(GEN_OPTS) --indent 4 --closed -t Ingest $< > $@
 
 
 ###  -- SQL --
 gen-sqlddl: $(TARGET_DIR)/sqlddl/$(SCHEMA_NAME).sql
 .PHONY: gen-sqlddl
 $(TARGET_DIR)/sqlddl/%.sql: $(SCHEMA_DIR)/%.yaml tdir-sqlddl
-	poetry run gen-sqlddl $(GEN_OPTS) $< > $@
+	uv run gen-sqlddl $(GEN_OPTS) $< > $@
 
 ###  -- JSONLD Context --
 gen-jsonld-context: $(TARGET_DIR)/jsonld-context/$(SCHEMA_NAME).context.jsonld
 .PHONY: gen-jsonld-context
 $(TARGET_DIR)/jsonld-context/%.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld-context
-	poetry run gen-jsonld-context $(GEN_OPTS) $< > $@
+	uv run gen-jsonld-context $(GEN_OPTS) $< > $@
 
 ###  -- SHEX --
 # one file per module
 gen-shex: $(patsubst %, $(TARGET_DIR)/shex/%.shex, $(SCHEMA_NAMES))
 .PHONY: gen-shex
 $(TARGET_DIR)/shex/%.shex: $(SCHEMA_DIR)/%.yaml tdir-shex
-	poetry run gen-shex --no-mergeimports $(GEN_OPTS) $< > $@
+	uv run gen-shex --no-mergeimports $(GEN_OPTS) $< > $@
 
 ###  -- CSV --
 # one file per module
 gen-csv: $(patsubst %, $(TARGET_DIR)/csv/%.csv, $(SCHEMA_NAMES))
 .PHONY: gen-csv
 $(TARGET_DIR)/csv/%.csv: $(SCHEMA_DIR)/%.yaml tdir-csv
-	poetry run gen-csv $(GEN_OPTS) $< > $@
+	uv run gen-csv $(GEN_OPTS) $< > $@
 
 ###  -- OWL --
 # TODO: modularize imports. For now imports are merged.
 gen-owl: $(TARGET_DIR)/owl/$(SCHEMA_NAME).owl.ttl
 .PHONY: gen-owl
 $(TARGET_DIR)/owl/%.owl.ttl: $(SCHEMA_DIR)/%.yaml tdir-owl
-	poetry run gen-owl $(GEN_OPTS) $< > $@
+	uv run gen-owl $(GEN_OPTS) $< > $@
 
 ###  -- RDF (direct mapping) --
 # TODO: modularize imports. For now imports are merged.
 gen-rdf: $(TARGET_DIR)/rdf/$(SCHEMA_NAME).ttl
 .PHONY: gen-rdf
 $(TARGET_DIR)/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml tdir-rdf
-	poetry run gen-rdf $(GEN_OPTS) $< > $@
+	uv run gen-rdf $(GEN_OPTS) $< > $@
 
 ###  -- LINKML --
 # linkml (copy)
@@ -151,7 +151,7 @@ $(TARGET_DIR)/linkml/%.yaml: $(SCHEMA_DIR)/%.yaml tdir-limkml
 
 gh-deploy-docs: stage-docs
 # deploy documentation (note: requires documentation is in docs dir)
-	poetry run mkdocs gh-deploy --remote-branch gh-pages --force
+	uv run mkdocs gh-deploy --remote-branch gh-pages --force
 
 ###  -- PYPI TARGETS
 # Use the build-package target to build a PYPI package locally
@@ -237,10 +237,10 @@ test-jsonschema_invalid: $(foreach example, $(SCHEMA_TEST_EXAMPLES_INVALID), val
 
 validate-%: test/data/%.json $(ARTIFACTS_DIR)/jsonschema/allianceModel.schema.json
 # util/validate_allianceModel_json.py -i $< # example of validating data using the cli
-	# poetry run jsonschema -i $< $(word 2, $^)
-	poetry run linkml-validate -C Ingest -s model/schema/allianceModel.yaml -s model/schema/allianceModel.yaml $<
+	# uv run jsonschema -i $< $(word 2, $^)
+	uv run linkml-validate -C Ingest -s model/schema/allianceModel.yaml -s model/schema/allianceModel.yaml $<
 validate-invalid-%: test/data/invalid/%.json $(ARTIFACTS_DIR)/jsonschema/allianceModel.schema.json
-	! poetry run jsonschema -i $< $(word 2, $^)
+	! uv run jsonschema -i $< $(word 2, $^)
 
 
 # ---------------------------------------
@@ -250,7 +250,7 @@ gen-java: $(patsubst %, $(TARGET_DIR)/java/%.java, $(SCHEMA_NAMES))
 .PHONY: gen-java
 
 $(TARGET_DIR)/java/%.java: $(SCHEMA_DIR)/%.yaml tdir-java
-	poetry run gen-java $(JAVA_GEN_OPTS)  $<
+	uv run gen-java $(JAVA_GEN_OPTS)  $<
 
 remove-container:
 	docker stop agr_curation_schema
