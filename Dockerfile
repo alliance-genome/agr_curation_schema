@@ -21,7 +21,7 @@ RUN apt-get update \
     build-essential
 
 # install uv
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+COPY --from=ghcr.io/astral-sh/uv:0.12 /uv /uvx /bin/
 
 # copy project requirement files here to ensure they will be cached.
 WORKDIR /src

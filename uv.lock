@@ -18,20 +18,12 @@ dependencies = [
     { name = "mkdocs-mermaid2-plugin" },
 ]
 
-[package.dev-dependencies]
-dev = [
-    { name = "pytest" },
-]
-
 [package.metadata]
 requires-dist = [
     { name = "linkml", specifier = ">=1.8.6,<2.0" },
     { name = "mkdocs", specifier = ">=1.3.0,<2.0" },
     { name = "mkdocs-mermaid2-plugin", specifier = ">=0.6.0,<0.7" },
 ]
-
-[package.metadata.requires-dev]
-dev = [{ name = "pytest", specifier = ">=5.2,<6.0" }]
 
 [[package]]
 name = "alabaster"

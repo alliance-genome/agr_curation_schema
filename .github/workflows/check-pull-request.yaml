@@ -22,7 +22,7 @@ jobs:
           enable-cache: true
 
       - name: Install Dependencies
-        run: uv sync
+        run: uv sync --locked
 
       - name: regenerate artifacts and validate against generated artifacts
         run: |

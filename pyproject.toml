@@ -12,11 +12,6 @@ dependencies = [
     "mkdocs-mermaid2-plugin>=0.6.0,<0.7",
 ]
 
-[dependency-groups]
-dev = [
-    "pytest>=5.2,<6.0",
-]
-
 [tool.uv]
 # This project is an environment for running LinkML generators against the
 # schema; it is not installed as a Python package.

@@ -27,7 +27,7 @@ jobs:
           enable-cache: true
 
       - name: Install Dependencies
-        run: uv sync
+        run: uv sync --locked
 
       - name: Setup Java
         uses: actions/setup-java@v4
