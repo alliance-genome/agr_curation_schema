@@ -42,9 +42,7 @@
           "reagent_sequence_residues": "ATGNNNTAA"
         }
       ]
-    }
-  ],
-  "cdna_clone_ingest_set": [
+    },
     {
       "internal": false,
       "primary_external_id": "ZFIN:EXAMPLE_CDNA_1",
@@ -72,7 +70,8 @@
           ]
         }
       ],
-      "reagent_availability_name": "available"
+      "reagent_availability_name": "available",
+      "clone_insert_origin_name": "cDNA"
     },
     {
       "internal": false,
@@ -87,10 +86,9 @@
           "source_library_type": "reagent collection",
           "source_library_membership_relation": "member_of_reagent_collection"
         }
-      ]
-    }
-  ],
-  "genomic_clone_ingest_set": [
+      ],
+      "clone_insert_origin_name": "cDNA"
+    },
     {
       "internal": false,
       "primary_external_id": "WB:EXAMPLE_GENOMIC_CLONE_1",
@@ -101,7 +99,8 @@
       "clone_vector_type_name": "BAC",
       "clone_cloning_sites": [
         "HindIII"
-      ]
+      ],
+      "clone_insert_origin_name": "genomic DNA"
     }
   ],
   "pcr_product_ingest_set": [

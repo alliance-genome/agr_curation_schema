@@ -227,6 +227,7 @@ SCHEMA_TEST_EXAMPLES_INVALID := \
 	nucleic_acid_missing_provider_invalid \
 	nucleic_acid_primer_type_invalid \
 	nucleic_acid_insert_length_invalid \
+	nucleic_acid_insert_origin_cardinality_invalid \
 	nucleic_acid_agent_cardinality_invalid \
 	nucleic_acid_association_target_invalid \
 	nucleic_acid_material_preparation_boundary_invalid \

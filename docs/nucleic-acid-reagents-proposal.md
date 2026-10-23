@@ -2,14 +2,14 @@
 
 This proposal provides schema classes and submission examples for hands-on review.
 It incorporates MOD database analysis and curator feedback received through
-October 19, 2026. It is a schema prototype, not approval of every mapping or a
+October 19, 2026, with the clone-origin design revised on October 23, 2026. It is a schema prototype, not approval of every mapping or a
 working persistence/ingest implementation. Do not transfer source records merely
 because a source class has a similar name.
 
 Baseline: `main` at `8e491ab8e0772ff863fd5b471ab3a435b86f1d8b` (v2.19.0).
 The expression DTO work from PR #325 is already on that baseline. This proposal
 is intended to supersede the PCR-only proposal in [PR #321](https://github.com/alliance-genome/agr_curation_schema/pull/321),
-reviewed at `14af569d`. It does not close that PR.
+reviewed at `14af569d`. PR #321 has been closed.
 
 ## Inheritance and biological boundaries
 
@@ -20,18 +20,25 @@ AuditedObject
       Reagent
         NucleicAcidReagent (abstract; new)
           DNAClone (existing class moved here)
-            CDNAClone (new)
-            GenomicClone (new)
           PCRProduct (new)
           NucleicAcidProbePreparation (new)
         Antibody / Construct / Cassette / RNAClone (unchanged)
 ```
 
-A DNAClone has an insert maintained in a cloning vector. CDNAClone and
-GenomicClone distinguish the insert's origin. Use DNAClone when cloning is
-established but the origin is unknown. cDNA/genomic sequence origin alone does
-not establish a clone. EST is an optional source-supported subtype, not a new
-ESTClone class.
+A DNAClone has an insert maintained in a cloning vector. All confirmed DNA clones
+use this one class and DNACloneDTO. Origin is a property of the clone; it
+does not require a subclass with no additional slots. The optional, single-valued `clone_insert_origin`
+references a VocabularyTerm from the proposed Clone Insert Origin vocabulary:
+`cDNA` means derived by reverse transcription of RNA; `genomic DNA` means derived
+from genomic DNA. The DTO submits the term using `clone_insert_origin_name`.
+For unknown or unspecified origin, omit the submission field or use null.
+The persistence field can remain null; no artificial unknown term is required.
+
+Origin is independent of `nucleic_acid_reagent_type` (DTO: `_name`), which retains
+source-supported reagent subtypes such as EST. An EST designation alone does
+not establish origin. cDNA/genomic sequence origin alone does not establish a
+clone. The vocabulary must be seeded and term membership checked downstream;
+the DTO's string field does not itself enforce these two proposed labels.
 
 PCRProduct identifies a provider-recorded amplified material. A primer pair
 can produce different products in different template backgrounds. This model
@@ -50,8 +57,6 @@ AuditedObjectDTO
     ReagentDTO
       NucleicAcidReagentDTO (abstract; new)
         DNACloneDTO
-          CDNACloneDTO
-          GenomicCloneDTO
         PCRProductDTO
         NucleicAcidProbePreparationDTO
 
@@ -90,16 +95,14 @@ with this branch needs a separate review before changing established inheritance
 
 | Ingest collection | DTO | Intended records |
 | --- | --- | --- |
-| `dna_clone_ingest_set` | DNACloneDTO | Confirmed clones whose insert origin is unknown |
-| `cdna_clone_ingest_set` | CDNACloneDTO | Confirmed cDNA clones, including supported ZFIN EST-designated clones |
-| `genomic_clone_ingest_set` | GenomicCloneDTO | Confirmed genomic clones |
+| `dna_clone_ingest_set` | DNACloneDTO | All confirmed DNA clones, with cDNA, genomic DNA or unspecified insert origin |
 | `pcr_product_ingest_set` | PCRProductDTO | Provider-identified PCR material, including legacy records lacking primer or taxon details |
 | `nucleic_acid_probe_preparation_ingest_set` | NucleicAcidProbePreparationDTO | Separately identified preparations, including assay-owned MGI records |
 | `nucleic_acid_reagent_genomic_entity_association_ingest_set` | NucleicAcidReagentGenomicEntityAssociationDTO | Typed and evidenced material-to-gene/transcript/CDS/variant relationships |
 
 The abstract parent has no generic ingest collection. Submit an object once in
-the collection for its most specific supported class. Do not duplicate a
-CDNAClone in both cDNA and generic DNA collections.
+the collection for its supported class. All DNA clones use the single
+`dna_clone_ingest_set` collection, regardless of insert origin.
 
 The common fields provide optional name, taxon, subtype, attributed synonyms,
 references, cross-references, generating Agents, source-library details,
@@ -182,7 +185,7 @@ The following cross-MOD decisions also remain open:
    structure with Chris Grove, Chris Tabone and persistence/ingest owners.
    Authorization to build this prototype is not implementation approval.
 2. Assign runtime vocabulary ownership and approve values for reagent type,
-   availability, vector type, sequence role, preparation properties, PCR method
+   availability, clone insert origin, vector type, sequence role, preparation properties, PCR method
    and genomic-entity relations. Unspecified, not applicable and unknown must
    remain distinct where the source distinguishes them.
 3. Confirm source identity rules, provider qualification of private identifiers,
@@ -224,34 +227,34 @@ or that a curator's biological classification is correct.
 | Required taxon and both primer sequences | Optional source-supported values on entity and DTO |
 | PCR-specific genomic-entity association | Shared evidence-supported reagent association, with computational/source provenance |
 | Singular generated_by_identifier | Plural generated_by_identifiers matching entity cardinality |
-| PCR ingest collection and association collection | Five material/preparation collections and one shared association collection |
+| PCR ingest collection and association collection | Three material/preparation collections and one shared association collection |
 | PCR-focused examples | Clone, preparation, legacy PCR, sequence/library and expression integration examples |
 
 PR #321's unrelated functional-gene-set fixture correction is not copied into
 this proposal. Generated artifacts remain CI-owned and are not committed here.
-No automatic closing keyword is used for PR #321; Chris intends to close it
-once the replacement is available.
+PR #321 is closed and is superseded by this proposal.
 
 ## Try the model
 
 [The submission fixture](../test/data/nucleic_acid_reagent_test.json) contains
 illustrative, explicitly `EXAMPLE`-named identifiers. It is not a verified MOD
 export or a database transfer. It exercises every new collection, multiple
-library memberships and reads, synonym evidence, missing taxon/primers,
+library memberships and reads, known and unspecified clone origin, synonym
+evidence, missing taxon/primers,
 assay-owned preparations, a computed association with unknown method version,
 and the existing expression detection-reference path.
 
-Seven separately invalid fixtures test missing provider, primer value type,
-negative insert length, Agent and label cardinality, missing association target
+Eight separately invalid fixtures test missing provider, primer value type,
+negative insert length, insert-origin, Agent and label cardinality, missing association target
 and preparation-only fields incorrectly submitted on PCRProduct. These are
 registered in the Makefile. Runtime CV membership, source semantics, uniqueness
 and cross-record identifier resolution require downstream tests.
 
-For local experiments with the repository's LinkML 1.9.2 environment:
+For local experiments with the repository's uv environment:
 
 ```sh
-poetry run gen-json-schema --closed -t Ingest model/schema/allianceModel.yaml > /tmp/nucleic-acid-ingest.schema.json
-poetry run linkml-validate -C Ingest -s model/schema/allianceModel.yaml test/data/nucleic_acid_reagent_test.json
+uv run gen-json-schema --closed -t Ingest model/schema/allianceModel.yaml > /tmp/nucleic-acid-ingest.schema.json
+uv run linkml-validate -C Ingest -s model/schema/allianceModel.yaml test/data/nucleic_acid_reagent_test.json
 ```
 
 ## Evidence and discussion
@@ -270,18 +273,20 @@ older review passages describing PR #325 as unmerged are historical.
 
 ## Validation of this iteration
 
-Using LinkML 1.9.2 from the repository's locked environment:
+Using the available LinkML 1.9.2 environment, compared with PR head
+`0428ebfb` before the October 23 clone-origin revision:
 
 - Closed Ingest JSON Schema generation and LinkML validation of the new
   submission fixture pass.
-- Each of the seven invalid fixtures fails independently for its intended
+- Each of the eight invalid fixtures fails independently for its intended
   constraint, not an unrelated schema error.
 - All 37 existing valid-directory fixtures have exactly the same JSON Schema
   validation results as the baseline. The three legacy functional-gene-set
   ALP/ARP/WNT examples each retain two pre-existing errors; this proposal
   introduces no new failures and does not repair those unrelated fixtures.
-- New class parents/ranges, optional taxon/primers, multivalued generating
-  Agents, the detection-reagent range and the corrected domain were checked.
+- The clone-origin slots are optional and single-valued. Known, omitted and
+  explicit JSON-null origins pass validation. The empty clone subclasses and
+  their separate ingest collections have been removed.
 - Gitleaks, TruffleHog and staged whitespace checks pass. No generated artifact
   is included in the patch.
 

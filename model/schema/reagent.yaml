@@ -646,7 +646,7 @@ classes:
           permissible_values: compatible_tool (VocabularyTerm)
 
 
-  # DNAClone and its subclasses are defined in nucleicAcidReagent.yaml.
+  # DNAClone is defined in nucleicAcidReagent.yaml.
   # RNAClone placement is unchanged pending source review.
 
   RNAClone:

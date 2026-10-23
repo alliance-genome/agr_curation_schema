@@ -1,6 +1,6 @@
 {
   "linkml_version": "2.19.0",
-  "cdna_clone_ingest_set": [
+  "dna_clone_ingest_set": [
     {
       "internal": false,
       "primary_external_id": "ZFIN:EXAMPLE_CDNA_1",
@@ -28,7 +28,8 @@
           ]
         }
       ],
-      "reagent_availability_name": "available"
+      "reagent_availability_name": "available",
+      "clone_insert_origin_name": "cDNA"
     }
   ]
 }

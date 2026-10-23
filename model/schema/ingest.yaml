@@ -440,22 +440,8 @@ slots:
       to allow for a single json object that combines multiple object types
 
   dna_clone_ingest_set:
-    description: Submission collection of DNACloneDTO records.
+    description: Submission collection of DNACloneDTO records with known or unspecified insert origin.
     range: DNACloneDTO
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-
-  cdna_clone_ingest_set:
-    description: Submission collection of CDNACloneDTO records.
-    range: CDNACloneDTO
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-
-  genomic_clone_ingest_set:
-    description: Submission collection of GenomicCloneDTO records.
-    range: GenomicCloneDTO
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -491,8 +477,6 @@ classes:
       - allele_ingest_set
       - antibody_ingest_set
       - dna_clone_ingest_set
-      - cdna_clone_ingest_set
-      - genomic_clone_ingest_set
       - pcr_product_ingest_set
       - nucleic_acid_probe_preparation_ingest_set
       - nucleic_acid_reagent_genomic_entity_association_ingest_set
