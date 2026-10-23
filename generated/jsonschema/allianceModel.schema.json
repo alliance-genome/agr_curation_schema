@@ -38487,6 +38487,519 @@
             "title": "NucleicAcidProbePreparationDTO",
             "type": "object"
         },
+        "NucleicAcidReagent": {
+            "additionalProperties": false,
+            "description": "An experimentally used nucleic-acid material or a separately identified preparation of that material. Excludes sequence-only records, abstract primer-pair definitions and genetic-marker identities.",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "data_provider": {
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/CrossReference"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "CrossReference to the organization from which the data was sourced"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "generated_by": {
+                    "description": "Holds between a material entity and an Agent that generated it: e.g., Thomas Blumenthal, Kornberg Laboratory.",
+                    "items": {
+                        "$ref": "#/$defs/Agent"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "nucleic_acid_reagent_synonyms": {
+                    "description": "Alternative names with per-name evidence and metadata.",
+                    "items": {
+                        "$ref": "#/$defs/NucleicAcidReagentSynonymSlotAnnotation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "nucleic_acid_reagent_type": {
+                    "description": "The provider-supported material subtype, such as EST for a confirmed cDNA clone. Proposed CV: Nucleic Acid Reagent Type.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "nucleic_acid_sources": {
+                    "description": "Library memberships and source-scoped provenance. Retain multiple memberships and their original scopes.",
+                    "items": {
+                        "$ref": "#/$defs/NucleicAcidSource"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "placeholder": {
+                    "description": "A boolean property to indicate whether a data record/object/entity is intended to be a placeholder data object rather than a publicly displayed object with a proper ID, name and/or symbol, for example. For example, the Cassette class has been introduced to support FlyBase Cassette objects with IDs and names, but not every Alliance member has data tables/classes for these objects and any IDs or names/symbols would likely be derived and not helpful to end users. Data records/entities where the placeholder value is set to true would have various visible properties suppressed, so as not to confuse end users with private, internal or otherwise contrived representations.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "reagent_availability": {
+                    "description": "Source-reported material availability. Proposed CV: Reagent Availability; available, not available and unknown are distinct. Being unavailable does not make a sequence record a material.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "reagent_sequences": {
+                    "description": "Sequence evidence describing this material; each sequence retains its own role and source identifier.",
+                    "items": {
+                        "$ref": "#/$defs/ReagentSequence"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "references": {
+                    "description": "holds between an object and a list of references",
+                    "items": {
+                        "$ref": "#/$defs/Reference"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "taxon": {
+                    "description": "The taxon from which the biological entity derives.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "unique_id": {
+                    "description": "A non-curie unique identifier for a thing.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "data_provider",
+                "internal"
+            ],
+            "title": "NucleicAcidReagent",
+            "type": "object"
+        },
+        "NucleicAcidReagentAssociation": {
+            "additionalProperties": false,
+            "description": "Base for evidence-supported associations with a nucleic-acid reagent subject.",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence": {
+                    "description": "The evidence that supports some assertion.",
+                    "items": {
+                        "$ref": "#/$defs/InformationContentEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "nucleic_acid_reagent_association_subject": {
+                    "$ref": "#/$defs/NucleicAcidReagent",
+                    "description": "The material or preparation that is the subject of this association."
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "relation": {
+                    "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "nucleic_acid_reagent_association_subject",
+                "relation",
+                "internal"
+            ],
+            "title": "NucleicAcidReagentAssociation",
+            "type": "object"
+        },
+        "NucleicAcidReagentDTO": {
+            "additionalProperties": false,
+            "description": "Submission foundation for nucleic-acid materials and preparations. Submit a provider and either primary_external_id or mod_internal_id; inherited source identifiers must not be invented.",
+            "properties": {
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "cross_reference_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/CrossReferenceDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "generated_by_identifiers": {
+                    "description": "Source identifiers of the Agents that generated the material. Match generated_by cardinality; Agent identifier resolution remains a downstream implementation requirement.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "a human-readable name for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "nucleic_acid_reagent_synonym_dtos": {
+                    "description": "Inline alternative name annotations retaining each name\u2019s evidence and metadata.",
+                    "items": {
+                        "$ref": "#/$defs/NameSlotAnnotationDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "nucleic_acid_reagent_type_name": {
+                    "description": "Name of the runtime VocabularyTerm for the provider-supported material subtype, such as EST for a confirmed cDNA clone. Proposed CV: Nucleic Acid Reagent Type.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "nucleic_acid_source_dtos": {
+                    "description": "Ingest details for library memberships and source-scoped provenance. Retain multiple memberships and their original scopes.",
+                    "items": {
+                        "$ref": "#/$defs/NucleicAcidSourceDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "placeholder": {
+                    "description": "A boolean property to indicate whether a data record/object/entity is intended to be a placeholder data object rather than a publicly displayed object with a proper ID, name and/or symbol, for example. For example, the Cassette class has been introduced to support FlyBase Cassette objects with IDs and names, but not every Alliance member has data tables/classes for these objects and any IDs or names/symbols would likely be derived and not helpful to end users. Data records/entities where the placeholder value is set to true would have various visible properties suppressed, so as not to confuse end users with private, internal or otherwise contrived representations.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "reagent_availability_name": {
+                    "description": "Name of the runtime VocabularyTerm for source-reported material availability. Proposed CV: Reagent Availability; available, not available and unknown are distinct. Being unavailable does not make a sequence record a material.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "reagent_sequence_dtos": {
+                    "description": "Ingest details for sequence evidence describing this material; each sequence retains its own role and source identifier.",
+                    "items": {
+                        "$ref": "#/$defs/ReagentSequenceDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "reference_curies": {
+                    "description": "External reference curies used for ingest",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "taxon_curie": {
+                    "description": "Curie of the NCBITaxonTerm representing the taxon from which the biological entity derives",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "data_provider_dto",
+                "internal"
+            ],
+            "title": "NucleicAcidReagentDTO",
+            "type": "object"
+        },
         "NucleicAcidReagentGenomicEntityAssociation": {
             "additionalProperties": false,
             "description": "A typed, evidenced material-to-genomic-entity relationship. Keep computed support, hybridization, amplification, encoding and overlap semantically distinct. It is not an expression-detection assertion.",
@@ -38891,6 +39404,7 @@
                 },
                 "synonym_url": {
                     "description": "URL for a synonym: e.g., NCBI URL for the NCBI synonym of an object.",
+                    "format": "uri",
                     "type": [
                         "string",
                         "null"
