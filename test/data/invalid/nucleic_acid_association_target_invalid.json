@@ -1,0 +1,15 @@
+{
+  "linkml_version": "2.19.0",
+  "nucleic_acid_reagent_genomic_entity_association_ingest_set": [
+    {
+      "internal": false,
+      "nucleic_acid_reagent_identifier": "ZFIN:EXAMPLE_CDNA_1",
+      "relation_name": "encodes",
+      "evidence_curies": [
+        "PMID:12345678"
+      ],
+      "source_association_identifier": "ZFIN:EXAMPLE_CLONE_GENE_LINK_1",
+      "source_relation": "E"
+    }
+  ]
+}

@@ -187,6 +187,7 @@ deploy-testpypi:
 
 # datasets used test/validate the schema
 SCHEMA_TEST_EXAMPLES := \
+	nucleic_acid_reagent_test \
 	agm_association_ingest_test \
 	agm_test \
 	allele_association_ingest_test \
@@ -223,6 +224,14 @@ SCHEMA_TEST_EXAMPLES := \
 	wb_disease_test \
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
+	nucleic_acid_missing_provider_invalid \
+	nucleic_acid_primer_type_invalid \
+	nucleic_acid_insert_length_invalid \
+	nucleic_acid_insert_origin_cardinality_invalid \
+	nucleic_acid_agent_cardinality_invalid \
+	nucleic_acid_association_target_invalid \
+	nucleic_acid_material_preparation_boundary_invalid \
+	nucleic_acid_label_cardinality_invalid \
 	allele_invalid \
 	disease_allele_invalid \
 	gene_expression_invalid \
