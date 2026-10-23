@@ -646,12 +646,6 @@ classes:
           permissible_values: compatible_tool (VocabularyTerm)
 
 
-  # DNAClone is defined in nucleicAcidReagent.yaml.
-  # RNAClone placement is unchanged pending source review.
-
-  RNAClone:
-    is_a: Reagent
-
 slots:
 
   antibody_synonyms:
