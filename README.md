@@ -232,46 +232,61 @@ git clone https://github.com/alliance-genome/agr_curation_schema
 make sure you have linkml installed (see above for instructions on how to install the agr_curation_schema dependencies into your 
 python environment).  Then run the validator:
 ```bash
-poetry run linkml-validate -C Ingest -s model/schema/allianceModel.yaml -s model/schema/allianceModel.yaml [path/to/your/submission/file.json]
+uv run linkml-validate -C Ingest -s model/schema/allianceModel.yaml -s model/schema/allianceModel.yaml [path/to/your/submission/file.json]
 ```
 
 example command using test data (replace test/allele_ingest_test.json with the path to your submission.json):
 ```bash
-poetry run linkml-validate -C Ingest -s model/schema/allianceModel.yaml -s model/schema/allianceModel.yaml test/allele_ingest_test.json
+uv run linkml-validate -C Ingest -s model/schema/allianceModel.yaml -s model/schema/allianceModel.yaml test/allele_ingest_test.json
 ```
 
-note: it's good practice to use a python virtual environment when running commands as the installed version of python
-(for example, on most Mac operating systems is version 2 vs. version 3).  
-Here is a guide for working with python and poetry virtual environments: https://berkeleybop.github.io/best_practice/python_environments
-Note, the guide above has been tested with a wide variety of biomedical python projects and is a great learning guide
-for working with python and virtual environments.
+## Local development with uv
 
-The basic steps for setting up a system with multiple versions of python and virtual environments are:
-1) Install pyenv, homebrew is a good method for installing pyenv:
+This repository uses [uv](https://docs.astral.sh/uv/) to manage its Python environment and
+dependencies (`pyproject.toml` + `uv.lock`). uv replaces poetry and also manages Python
+versions for you, so pyenv is not required.
+
+1) Install uv (one time):
 ```bash
-brew update
-brew install pyenv
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
-once installed, you can add many versions of python to your system using pyenv:
-```bash
-pyenv install 3.8.15
-pyenv global 3.8.15
-```
+(or `brew install uv` on MacOS)
 
-2) Install poetry
-```bash
-curl -sSL https://install.python-poetry.org | python3 -
-poetry config virtualenvs.in-project true
-poetry config virtualenvs.prefer-active-python true
-```
-
-3) Creating a virtual environment with poetry
+2) Clone the repository and create the environment:
 ```bash
 git clone https://github.com/alliance-genome/agr_curation_schema
-git checkout -b my_new_branch
 cd agr_curation_schema
-poetry install  
+git checkout -b my_new_branch
+uv sync
 ```
+`uv sync` creates a `.venv/` in the project directory with all dependencies pinned by
+`uv.lock`, downloading a compatible Python interpreter if needed.
+
+3) Run commands inside the environment with `uv run`, e.g.:
+```bash
+uv run linkml-validate -C Ingest -s model/schema/allianceModel.yaml -s model/schema/allianceModel.yaml test/data/allele_test.json
+```
+The Makefile targets (`make all`, `make test`, etc.) already use `uv run` internally.
+
+### SOP: switching an existing poetry checkout to uv
+
+If you previously developed in this repository with poetry:
+
+1) Pull the latest `main` (the poetry files `poetry.lock` and the
+   `[tool.poetry]` sections of `pyproject.toml` are gone; `uv.lock` replaces them).
+2) Remove your old poetry-managed virtual environment:
+```bash
+rm -rf .venv            # if you used virtualenvs.in-project
+# or: poetry env remove --all   (for poetry-managed envs outside the project)
+```
+3) Install uv (see above) and run:
+```bash
+uv sync
+```
+4) Replace `poetry run <cmd>` with `uv run <cmd>` in your habits/scripts, and
+   `poetry install` with `uv sync`. Adding a dependency is `uv add <package>`
+   (or `uv add --dev <package>` for dev-only tools), which updates both
+   `pyproject.toml` and `uv.lock`.
 
 5) Run the tests
 ```bash
