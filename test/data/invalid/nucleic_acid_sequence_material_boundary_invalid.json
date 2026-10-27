@@ -1,0 +1,14 @@
+{
+  "linkml_version": "2.19.0",
+  "nucleic_acid_sequence_record_ingest_set": [
+    {
+      "internal": false,
+      "primary_external_id": "FB:EXAMPLE_NEVER_CLONED",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "FB"
+      },
+      "clone_vector_identifier": "FB:EXAMPLE_VECTOR"
+    }
+  ]
+}

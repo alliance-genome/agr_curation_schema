@@ -1,0 +1,21 @@
+{
+  "linkml_version": "2.19.0",
+  "dna_clone_ingest_set": [
+    {
+      "internal": false,
+      "primary_external_id": "XB:EXAMPLE_CLONE_1",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "XB"
+      },
+      "nucleic_acid_source_dtos": [
+        {
+          "internal": false,
+          "source_tissue_curie": [
+            "FBbt:00007011"
+          ]
+        }
+      ]
+    }
+  ]
+}

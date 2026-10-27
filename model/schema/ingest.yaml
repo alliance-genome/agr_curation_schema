@@ -468,6 +468,34 @@ slots:
     inlined: true
     inlined_as_list: true
 
+  nucleic_acid_sequence_record_ingest_set:
+    description: Submission collection of NucleicAcidSequenceRecordDTO records.
+    range: NucleicAcidSequenceRecordDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  oligo_ingest_set:
+    description: Submission collection of OligoDTO records.
+    range: OligoDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  primer_pair_ingest_set:
+    description: Submission collection of PrimerPairDTO records.
+    range: PrimerPairDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  nucleic_acid_library_ingest_set:
+    description: Submission collection of NucleicAcidLibraryDTO records.
+    range: NucleicAcidLibraryDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
 classes:
   Ingest:
     tree_root: true
@@ -477,6 +505,10 @@ classes:
       - allele_ingest_set
       - antibody_ingest_set
       - dna_clone_ingest_set
+      - nucleic_acid_library_ingest_set
+      - primer_pair_ingest_set
+      - oligo_ingest_set
+      - nucleic_acid_sequence_record_ingest_set
       - pcr_product_ingest_set
       - nucleic_acid_probe_preparation_ingest_set
       - nucleic_acid_reagent_genomic_entity_association_ingest_set

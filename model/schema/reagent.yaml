@@ -3,6 +3,7 @@ name: reagent
 title: Reagent
 
 imports:
+  - nucleicAcidReagent
   - core
   - gene
   - reference
@@ -171,6 +172,8 @@ classes:
   Construct:
     is_a: Reagent
     slots:
+      - construct_sequences
+      - construct_progenitor_clones
       - construct_symbol
       - construct_full_name
       - construct_synonyms
@@ -185,6 +188,8 @@ classes:
   ConstructDTO:
     is_a: ReagentDTO
     slots:
+      - construct_sequence_dtos
+      - construct_progenitor_clone_identifiers
       - construct_symbol_dto
       - construct_full_name_dto
       - construct_synonym_dtos
@@ -1173,3 +1178,33 @@ slots:
 #        description: >-
 #          Information intended for internal use, generally regarding aspects
 #          of curation.
+
+  construct_sequences:
+    description: >-
+      Sequence evidence for the construct, including a complete vector sequence. Clone insert
+      sequences remain on DNAClone.
+    range: ReagentSequence
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  construct_sequence_dtos:
+    description: >-
+      Inline sequence evidence for this construct, including the vector backbone where supplied.
+    range: ReagentSequenceDTO
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  construct_progenitor_clones:
+    description: >-
+      Clones used to generate this construct; this relation does not identify a vector used to
+      propagate a clone.
+    range: DNAClone
+    multivalued: true
+
+  construct_progenitor_clone_identifiers:
+    description: >-
+      Identifiers of separately submitted DNAClone progenitors of this construct.
+    range: string
+    multivalued: true

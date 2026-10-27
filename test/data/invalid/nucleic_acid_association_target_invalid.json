@@ -9,7 +9,7 @@
         "PMID:12345678"
       ],
       "source_association_identifier": "ZFIN:EXAMPLE_CLONE_GENE_LINK_1",
-      "source_relation": "E"
+      "reagent_association_source_relation": "E"
     }
   ]
 }

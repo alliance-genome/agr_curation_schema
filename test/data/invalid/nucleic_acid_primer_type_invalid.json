@@ -12,7 +12,7 @@
       "reverse_primer_sequence": "TTCGA",
       "taxon_curie": "NCBITaxon:6239",
       "pcr_assay_method_name": "PCR",
-      "assay_conditions": "Illustrative cycling conditions",
+      "pcr_assay_conditions": "Illustrative cycling conditions",
       "pcr_template_description": "Genomic DNA from the source-specified strain",
       "pcr_template_source_identifiers": [
         "WB:EXAMPLE_STRAIN_1"
