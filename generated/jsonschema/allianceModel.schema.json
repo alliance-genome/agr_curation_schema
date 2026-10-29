@@ -608,16 +608,6 @@
                         }
                     ]
                 },
-                "cross_references": {
-                    "description": "Cross references to external online resources describing the phenotype or disease underlying the annotation. Currently used exclusively for human phenotype annotations from RGD, to link to the corresponding OMIM and ORPHANET resources.",
-                    "items": {
-                        "$ref": "#/$defs/CrossReference"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": [
@@ -874,15 +864,6 @@
                         {
                             "type": "null"
                         }
-                    ]
-                },
-                "cross_reference_dtos": {
-                    "items": {
-                        "$ref": "#/$defs/CrossReferenceDTO"
-                    },
-                    "type": [
-                        "array",
-                        "null"
                     ]
                 },
                 "data_provider_dto": {
@@ -7215,16 +7196,6 @@
                         }
                     ]
                 },
-                "cross_references": {
-                    "description": "Cross references to external online resources describing the phenotype or disease underlying the annotation. Currently used exclusively for human phenotype annotations from RGD, to link to the corresponding OMIM and ORPHANET resources.",
-                    "items": {
-                        "$ref": "#/$defs/CrossReference"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": [
@@ -7460,15 +7431,6 @@
                         {
                             "type": "null"
                         }
-                    ]
-                },
-                "cross_reference_dtos": {
-                    "items": {
-                        "$ref": "#/$defs/CrossReferenceDTO"
-                    },
-                    "type": [
-                        "array",
-                        "null"
                     ]
                 },
                 "data_provider_dto": {
@@ -29667,16 +29629,6 @@
                         }
                     ]
                 },
-                "cross_references": {
-                    "description": "Cross references to external online resources describing the phenotype or disease underlying the annotation. Currently used exclusively for human phenotype annotations from RGD, to link to the corresponding OMIM and ORPHANET resources.",
-                    "items": {
-                        "$ref": "#/$defs/CrossReference"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": [
@@ -29897,15 +29849,6 @@
                         {
                             "type": "null"
                         }
-                    ]
-                },
-                "cross_reference_dtos": {
-                    "items": {
-                        "$ref": "#/$defs/CrossReferenceDTO"
-                    },
-                    "type": [
-                        "array",
-                        "null"
                     ]
                 },
                 "data_provider_dto": {
@@ -38015,16 +37958,6 @@
                         }
                     ]
                 },
-                "cross_references": {
-                    "description": "Cross references to external online resources describing the phenotype or disease underlying the annotation. Currently used exclusively for human phenotype annotations from RGD, to link to the corresponding OMIM and ORPHANET resources.",
-                    "items": {
-                        "$ref": "#/$defs/CrossReference"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": [
@@ -38235,15 +38168,6 @@
                         {
                             "type": "null"
                         }
-                    ]
-                },
-                "cross_reference_dtos": {
-                    "items": {
-                        "$ref": "#/$defs/CrossReferenceDTO"
-                    },
-                    "type": [
-                        "array",
-                        "null"
                     ]
                 },
                 "data_provider_dto": {
