@@ -178,7 +178,6 @@ classes:
       - phenotype_annotation_subject
       - phenotype_terms
       - cross_reference
-      - cross_references
       - negated
     attributes:
       phenotype_annotation_object:
@@ -214,11 +213,6 @@ classes:
             description: axon morphology variant
           - value: MP:0001569
             description: abnormal circulating bilirubin level
-      cross_references:
-        description: >-
-          Cross references to external online resources describing the phenotype or disease
-          underlying the annotation. Currently used exclusively for human phenotype annotations
-          from RGD, to link to the corresponding OMIM and ORPHANET resources.
       single_reference:
         description: >-
           The reference in which the phenotype association was asserted/reported.
@@ -243,7 +237,6 @@ classes:
       - phenotype_statement
       - phenotype_term_curies
       - cross_reference_dto
-      - cross_reference_dtos
       - negated
     attributes:
       affected_entity_dto:

@@ -55,22 +55,34 @@
       "gene_identifier": "HGNC:1100",
       "phenotype_statement": "Breast carcinoma",
       "phenotype_term_curies": ["HP:0003002"],
-      "cross_reference_dtos": [
-        {
-          "referenced_curie": "OMIM:604370",
-          "prefix": "OMIM",
-          "page_area": "default",
-          "display_name": "OMIM:604370",
-          "internal": false
-        },
-        {
-          "referenced_curie": "ORPHA:145",
-          "prefix": "ORPHA",
-          "page_area": "default",
-          "display_name": "ORPHA:145",
-          "internal": false
-        }
-      ]
+      "cross_reference_dto": {
+        "referenced_curie": "MIM:604370",
+        "prefix": "MIM",
+        "page_area": "default",
+        "display_name": "MIM:604370",
+        "internal": false
+      }
+    },
+    {
+      "evidence_curie": "PMID:20301425",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "RGD",
+        "internal": false
+      },
+      "date_created": "2015-04-09T10:15:30+00:00",
+      "date_updated": "2015-04-09T10:15:30+00:00",
+      "internal": false,
+      "obsolete": false,
+      "gene_identifier": "HGNC:1100",
+      "phenotype_statement": "Breast carcinoma",
+      "phenotype_term_curies": ["HP:0003002"],
+      "cross_reference_dto": {
+        "referenced_curie": "ORPHA:145",
+        "prefix": "ORPHA",
+        "page_area": "default",
+        "display_name": "ORPHA:145",
+        "internal": false
+      }
     }
   ]
 }
