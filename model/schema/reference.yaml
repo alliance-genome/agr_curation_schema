@@ -37,11 +37,6 @@ emit_prefixes:
 
 classes:
 
-  InformationContentEntity:
-    is_a: CurieObject
-    description: >-
-      a piece of information that typically is used as support for an assertion or annotation.
-
   AuthorReference:
     is_a: AuditedObject
     slots:
@@ -51,15 +46,8 @@ classes:
       - last_name
       - cross_references
 
-  ExternalDatabaseReference:
-    is_a: InformationContentEntity
-    description: >-
-      A reference to an entity in an external database
-    slots:
-      - resource_descriptor_page
-
   Reference:
-    is_a: InformationContentEntity
+    is_a: CurieObject
     aliases: [ 'references', 'publication' ]
     notes: >-
       In the ABC literature database, the table holding Reference objects is
@@ -103,15 +91,6 @@ classes:
         description: >-
           The primary key for the Reference object in the references table.
 
-  PersonalCommunication:
-    aliases: ["person_evidence"]
-    is_a: InformationContentEntity
-    description: >-
-      a piece of information that is used to support an assertion or annotation, where the information
-      comes from a person other than the author of the assertion or annotation, or the author of the reference.
-    slot_usage:
-
-
   MeshDetail:
     is_a: AuditedObject
     description: >-
@@ -135,22 +114,22 @@ slots:
   evidence:
     description: >-
       The evidence that supports some assertion.
-    range: InformationContentEntity
+    range: Reference
     multivalued: true
 
   evidence_item:
     description: >-
       Single item of evidence that supports some assertion.
-    range: InformationContentEntity
+    range: Reference
 
   evidence_curie:
     description: >-
-      Curie of InformationContentEntity object given as evidence
+      Curie of Reference object given as evidence
     range: string
   
   evidence_curies:
     description: >-
-      Curies of InformationContentEntity objects given as evidence
+      Curies of Reference objects given as evidence
     range: string
     multivalued: true
 
