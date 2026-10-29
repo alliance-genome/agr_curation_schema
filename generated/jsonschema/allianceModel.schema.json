@@ -166,7 +166,7 @@
                 "evidence_item": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/InformationContentEntity"
+                            "$ref": "#/$defs/Reference"
                         },
                         {
                             "type": "null"
@@ -440,7 +440,7 @@
                     ]
                 },
                 "evidence_curie": {
-                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "description": "Curie of Reference object given as evidence",
                     "type": [
                         "string",
                         "null"
@@ -608,6 +608,16 @@
                         }
                     ]
                 },
+                "cross_references": {
+                    "description": "Cross references to external online resources describing the phenotype or disease underlying the annotation. Currently used exclusively for human phenotype annotations from RGD, to link to the corresponding OMIM and ORPHANET resources.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": [
@@ -665,7 +675,7 @@
                 "evidence_item": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/InformationContentEntity"
+                            "$ref": "#/$defs/Reference"
                         },
                         {
                             "type": "null"
@@ -866,6 +876,15 @@
                         }
                     ]
                 },
+                "cross_reference_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/CrossReferenceDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "data_provider_dto": {
                     "$ref": "#/$defs/DataProviderDTO",
                     "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
@@ -903,7 +922,7 @@
                     ]
                 },
                 "evidence_curie": {
-                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "description": "Curie of Reference object given as evidence",
                     "type": [
                         "string",
                         "null"
@@ -2508,7 +2527,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -2616,7 +2635,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -2871,7 +2890,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -2983,7 +3002,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -3489,7 +3508,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -3600,7 +3619,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -3706,7 +3725,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -3796,7 +3815,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -3887,7 +3906,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -3980,7 +3999,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -4095,7 +4114,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -4461,7 +4480,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -4546,7 +4565,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -4737,7 +4756,7 @@
                 "evidence_item": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/InformationContentEntity"
+                            "$ref": "#/$defs/Reference"
                         },
                         {
                             "type": "null"
@@ -4990,7 +5009,7 @@
                     ]
                 },
                 "evidence_curie": {
-                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "description": "Curie of Reference object given as evidence",
                     "type": [
                         "string",
                         "null"
@@ -5140,7 +5159,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -5248,7 +5267,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -5350,7 +5369,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -5458,7 +5477,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -5569,7 +5588,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -5676,7 +5695,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -5778,7 +5797,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -5888,7 +5907,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -5998,7 +6017,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -6094,7 +6113,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -6179,7 +6198,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -6270,7 +6289,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -6364,7 +6383,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -6461,7 +6480,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -6560,7 +6579,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -6659,7 +6678,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -6747,7 +6766,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -6837,7 +6856,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -6922,7 +6941,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -7013,7 +7032,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -7104,7 +7123,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -7196,6 +7215,16 @@
                         }
                     ]
                 },
+                "cross_references": {
+                    "description": "Cross references to external online resources describing the phenotype or disease underlying the annotation. Currently used exclusively for human phenotype annotations from RGD, to link to the corresponding OMIM and ORPHANET resources.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": [
@@ -7253,7 +7282,7 @@
                 "evidence_item": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/InformationContentEntity"
+                            "$ref": "#/$defs/Reference"
                         },
                         {
                             "type": "null"
@@ -7433,6 +7462,15 @@
                         }
                     ]
                 },
+                "cross_reference_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/CrossReferenceDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "data_provider_dto": {
                     "$ref": "#/$defs/DataProviderDTO",
                     "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
@@ -7470,7 +7508,7 @@
                     ]
                 },
                 "evidence_curie": {
-                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "description": "Curie of Reference object given as evidence",
                     "type": [
                         "string",
                         "null"
@@ -7619,7 +7657,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -7730,7 +7768,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -7830,7 +7868,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -7920,7 +7958,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -8032,7 +8070,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -8146,7 +8184,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -8257,7 +8295,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -8363,7 +8401,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -8474,7 +8512,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -9487,7 +9525,7 @@
                 "evidence_item": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/InformationContentEntity"
+                            "$ref": "#/$defs/Reference"
                         },
                         {
                             "type": "null"
@@ -9614,7 +9652,7 @@
                     ]
                 },
                 "evidence_curie": {
-                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "description": "Curie of Reference object given as evidence",
                     "type": [
                         "string",
                         "null"
@@ -10175,7 +10213,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -13733,7 +13771,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -13821,7 +13859,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -13935,7 +13973,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -14215,7 +14253,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -14339,7 +14377,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -14446,7 +14484,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -14551,7 +14589,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -14648,7 +14686,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -14752,7 +14790,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -14864,7 +14902,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -14978,7 +15016,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -15075,7 +15113,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -15175,7 +15213,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -15263,7 +15301,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -15598,7 +15636,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -15765,7 +15803,7 @@
                     "type": "string"
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -16684,7 +16722,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -17271,7 +17309,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -17361,7 +17399,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -17462,7 +17500,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -17710,7 +17748,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -17822,7 +17860,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -17934,7 +17972,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -18255,7 +18293,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -18492,7 +18530,7 @@
                     "type": "integer"
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -18699,7 +18737,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -18871,7 +18909,7 @@
                     "type": "integer"
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -19031,7 +19069,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -19183,7 +19221,7 @@
                     "type": "integer"
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -20586,7 +20624,7 @@
                 "evidence_item": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/InformationContentEntity"
+                            "$ref": "#/$defs/Reference"
                         },
                         {
                             "type": "null"
@@ -20814,7 +20852,7 @@
                     ]
                 },
                 "evidence_curie": {
-                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "description": "Curie of Reference object given as evidence",
                     "type": [
                         "string",
                         "null"
@@ -21473,7 +21511,7 @@
         },
         "EvidenceAssociation": {
             "additionalProperties": false,
-            "description": "An association supported by any number of InformationContentEntity objects",
+            "description": "An association supported by any number of Reference objects",
             "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
@@ -21517,7 +21555,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -21556,7 +21594,7 @@
         },
         "EvidenceAssociationDTO": {
             "additionalProperties": false,
-            "description": "Ingest class for an association supported by any number of InformationContentEntity objects",
+            "description": "Ingest class for an association supported by any number of Reference objects",
             "properties": {
                 "created_by_curie": {
                     "description": "Curie of the Person object representing the individual that created the entity",
@@ -21598,7 +21636,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -21962,7 +22000,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -22686,7 +22724,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -22769,7 +22807,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -23518,92 +23556,6 @@
             "title": "ExternalDatabaseLink",
             "type": "object"
         },
-        "ExternalDatabaseReference": {
-            "additionalProperties": false,
-            "description": "A reference to an entity in an external database",
-            "properties": {
-                "created_by": {
-                    "description": "The individual that created the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "resource_descriptor_page": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ResourceDescriptorPage"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "ResourceDescriptorPage providing the URL template used to render a linkout to the referenced external identifier."
-                },
-                "updated_by": {
-                    "description": "The individual that last modified the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "internal"
-            ],
-            "title": "ExternalDatabaseReference",
-            "type": "object"
-        },
         "FBCVTerm": {
             "additionalProperties": false,
             "description": "",
@@ -24195,7 +24147,7 @@
                     "type": "string"
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -24721,7 +24673,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -25544,7 +25496,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -25723,7 +25675,7 @@
                     "type": "string"
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -25870,7 +25822,7 @@
                 "evidence_item": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/InformationContentEntity"
+                            "$ref": "#/$defs/Reference"
                         },
                         {
                             "type": "null"
@@ -26548,7 +26500,7 @@
                 "evidence_item": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/InformationContentEntity"
+                            "$ref": "#/$defs/Reference"
                         },
                         {
                             "type": "null"
@@ -26786,7 +26738,7 @@
                     ]
                 },
                 "evidence_curie": {
-                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "description": "Curie of Reference object given as evidence",
                     "type": [
                         "string",
                         "null"
@@ -27654,7 +27606,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -27762,7 +27714,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -27855,7 +27807,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -27957,7 +27909,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -28048,7 +28000,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -28160,7 +28112,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -28346,7 +28298,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -28512,7 +28464,7 @@
                 "evidence_item": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/InformationContentEntity"
+                            "$ref": "#/$defs/Reference"
                         },
                         {
                             "type": "null"
@@ -28627,7 +28579,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -28751,7 +28703,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -28910,7 +28862,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -29083,7 +29035,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -29254,7 +29206,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -29622,7 +29574,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -29715,6 +29667,16 @@
                         }
                     ]
                 },
+                "cross_references": {
+                    "description": "Cross references to external online resources describing the phenotype or disease underlying the annotation. Currently used exclusively for human phenotype annotations from RGD, to link to the corresponding OMIM and ORPHANET resources.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "curie": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": [
@@ -29772,7 +29734,7 @@
                 "evidence_item": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/InformationContentEntity"
+                            "$ref": "#/$defs/Reference"
                         },
                         {
                             "type": "null"
@@ -29937,6 +29899,15 @@
                         }
                     ]
                 },
+                "cross_reference_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/CrossReferenceDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "data_provider_dto": {
                     "$ref": "#/$defs/DataProviderDTO",
                     "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
@@ -29974,7 +29945,7 @@
                     ]
                 },
                 "evidence_curie": {
-                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "description": "Curie of Reference object given as evidence",
                     "type": [
                         "string",
                         "null"
@@ -30121,7 +30092,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -30211,7 +30182,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -30323,7 +30294,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -30435,7 +30406,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -33062,81 +33033,6 @@
             "title": "ImagePane",
             "type": "object"
         },
-        "InformationContentEntity": {
-            "additionalProperties": false,
-            "description": "a piece of information that typically is used as support for an assertion or annotation.",
-            "properties": {
-                "created_by": {
-                    "description": "The individual that created the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "updated_by": {
-                    "description": "The individual that last modified the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "internal"
-            ],
-            "title": "InformationContentEntity",
-            "type": "object"
-        },
         "Ingest": {
             "additionalProperties": false,
             "description": "",
@@ -33784,7 +33680,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -33883,7 +33779,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -36185,7 +36081,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -36291,7 +36187,7 @@
                     "type": "string"
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -36397,7 +36293,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -36493,7 +36389,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -36982,7 +36878,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -38078,81 +37974,6 @@
             "title": "Person",
             "type": "object"
         },
-        "PersonalCommunication": {
-            "additionalProperties": false,
-            "description": "a piece of information that is used to support an assertion or annotation, where the information comes from a person other than the author of the assertion or annotation, or the author of the reference.",
-            "properties": {
-                "created_by": {
-                    "description": "The individual that created the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "updated_by": {
-                    "description": "The individual that last modified the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "internal"
-            ],
-            "title": "PersonalCommunication",
-            "type": "object"
-        },
         "PhenotypeAnnotation": {
             "additionalProperties": false,
             "description": "An annotation asserting an association between a biological entity and a phenotype supported by evidence.",
@@ -38192,6 +38013,16 @@
                         {
                             "type": "null"
                         }
+                    ]
+                },
+                "cross_references": {
+                    "description": "Cross references to external online resources describing the phenotype or disease underlying the annotation. Currently used exclusively for human phenotype annotations from RGD, to link to the corresponding OMIM and ORPHANET resources.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": [
+                        "array",
+                        "null"
                     ]
                 },
                 "curie": {
@@ -38251,7 +38082,7 @@
                 "evidence_item": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/InformationContentEntity"
+                            "$ref": "#/$defs/Reference"
                         },
                         {
                             "type": "null"
@@ -38406,6 +38237,15 @@
                         }
                     ]
                 },
+                "cross_reference_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/CrossReferenceDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "data_provider_dto": {
                     "$ref": "#/$defs/DataProviderDTO",
                     "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
@@ -38443,7 +38283,7 @@
                     ]
                 },
                 "evidence_curie": {
-                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "description": "Curie of Reference object given as evidence",
                     "type": [
                         "string",
                         "null"
@@ -41268,7 +41108,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -41348,7 +41188,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -42265,7 +42105,7 @@
         },
         "SingleReferenceAssociation": {
             "additionalProperties": false,
-            "description": "An association supported by a single InformationContentEntity object",
+            "description": "An association supported by a single Reference object",
             "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
@@ -42309,7 +42149,7 @@
                 "evidence_item": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/InformationContentEntity"
+                            "$ref": "#/$defs/Reference"
                         },
                         {
                             "type": "null"
@@ -42349,7 +42189,7 @@
         },
         "SingleReferenceAssociationDTO": {
             "additionalProperties": false,
-            "description": "Ingest class for an association supported by a single InformationContentEntity object",
+            "description": "Ingest class for an association supported by a single Reference object",
             "properties": {
                 "created_by_curie": {
                     "description": "Curie of the Person object representing the individual that created the entity",
@@ -42391,7 +42231,7 @@
                     ]
                 },
                 "evidence_curie": {
-                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "description": "Curie of Reference object given as evidence",
                     "type": [
                         "string",
                         "null"
@@ -42424,7 +42264,7 @@
         },
         "SlotAnnotation": {
             "additionalProperties": false,
-            "description": "SlotAnnotation classes should be used when we need to attach metadata (in particular evidence and provenance) to a slot in the context of its referencing class, that can not be fully captured using an Association between the full class itself, and an InformationContentEntity. Evidence and provenance can exist here in the form of an evidence code, a publication, a personal communication or any other kind of InformationContentEntity. SlotAnnotation classes are used where the slot is not referencing a class in and of itself, and often has a scalar range.",
+            "description": "SlotAnnotation classes should be used when we need to attach metadata (in particular evidence and provenance) to a slot in the context of its referencing class, that can not be fully captured using an Association between the full class itself, and a Reference. Evidence and provenance can exist here in the form of an evidence code or a Reference (e.g. a publication). SlotAnnotation classes are used where the slot is not referencing a class in and of itself, and often has a scalar range.",
             "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
@@ -42468,7 +42308,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -42544,7 +42384,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -42666,7 +42506,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -42904,7 +42744,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -43120,7 +42960,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -43303,7 +43143,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -43472,7 +43312,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -43635,7 +43475,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -44087,7 +43927,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -44172,7 +44012,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -44257,7 +44097,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -44346,7 +44186,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -44674,7 +44514,7 @@
                     "type": "string"
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -44789,7 +44629,7 @@
                     "type": "string"
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -45303,7 +45143,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -45524,7 +45364,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -45616,7 +45456,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -45712,7 +45552,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -46030,7 +45870,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -46288,7 +46128,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -46400,7 +46240,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -46512,7 +46352,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -46620,7 +46460,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -46794,7 +46634,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -46882,7 +46722,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -47897,7 +47737,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -48130,7 +47970,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -48331,7 +48171,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -48470,7 +48310,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -48616,7 +48456,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -48794,7 +48634,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -48937,7 +48777,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -49023,7 +48863,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -49129,7 +48969,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -49287,7 +49127,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
