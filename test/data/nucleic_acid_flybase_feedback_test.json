@@ -1,0 +1,158 @@
+{
+  "linkml_version": "2.19.0",
+  "dna_clone_ingest_set": [
+    {
+      "internal": false,
+      "primary_external_id": "FB:FBcl0158098",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "FB"
+      },
+      "name": "LD10016",
+      "taxon_curie": "NCBITaxon:7227",
+      "clone_insert_origin_name": "cDNA",
+      "clone_vector_identifier": "FB:FBmc0002981",
+      "clone_vector_name": "pBluescript_SK(-)",
+      "clone_insert_length": 1646,
+      "clone_collection_status_names": [
+        "DGC gold",
+        "BDGP"
+      ],
+      "nucleic_acid_source_dtos": [
+        {
+          "internal": false,
+          "source_library_name": "LD_pBS_cDNA",
+          "source_library_type_name": "reagent collection"
+        }
+      ],
+      "reagent_sequence_dtos": [
+        {
+          "internal": false,
+          "reagent_sequence_accessions": [
+            "GenBank:AY118900"
+          ],
+          "reagent_sequence_role_name": "full insert"
+        }
+      ]
+    },
+    {
+      "internal": false,
+      "primary_external_id": "FB:FBcl0741583",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "FB"
+      },
+      "name": "DPiM_LD10016",
+      "taxon_curie": "NCBITaxon:7227",
+      "derived_from_reagent_identifiers": [
+        "FB:FBcl0158098"
+      ]
+    },
+    {
+      "internal": false,
+      "primary_external_id": "FB:FBcl0122173",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "FB"
+      },
+      "name": "GH03509",
+      "taxon_curie": "NCBITaxon:7227",
+      "clone_insert_origin_name": "cDNA",
+      "clone_vector_identifier": "FB:FBmc0002959",
+      "clone_vector_name": "pOT2",
+      "nucleic_acid_source_dtos": [
+        {
+          "internal": false,
+          "source_library_name": "GH_cDNA"
+        }
+      ],
+      "reagent_sequence_dtos": [
+        {
+          "internal": false,
+          "reagent_sequence_accessions": [
+            "GenBank:AI063603"
+          ],
+          "reagent_sequence_role_name": "5-prime EST"
+        },
+        {
+          "internal": false,
+          "reagent_sequence_accessions": [
+            "GenBank:BG632109"
+          ],
+          "reagent_sequence_role_name": "3-prime EST"
+        }
+      ]
+    },
+    {
+      "internal": false,
+      "primary_external_id": "FB:FBcl0784728",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "FB"
+      },
+      "name": "CH322-53M21",
+      "taxon_curie": "NCBITaxon:7227",
+      "clone_vector_type_name": "BAC",
+      "nucleic_acid_source_dtos": [
+        {
+          "internal": false,
+          "source_library_name": "CHORI-322_BAC"
+        }
+      ],
+      "reagent_sequence_dtos": [
+        {
+          "internal": false,
+          "reagent_sequence_accessions": [
+            "GenBank:FI470208"
+          ],
+          "reagent_sequence_role_name": "clone end"
+        },
+        {
+          "internal": false,
+          "reagent_sequence_accessions": [
+            "GenBank:FI470209"
+          ],
+          "reagent_sequence_role_name": "clone end"
+        }
+      ]
+    }
+  ],
+  "construct_ingest_set": [
+    {
+      "internal": false,
+      "primary_external_id": "FB:FBmc0002981",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "FB"
+      },
+      "construct_symbol_dto": {
+        "internal": false,
+        "name_type_name": "nomenclature_symbol",
+        "format_text": "pBluescript_SK(-)",
+        "display_text": "pBluescript_SK(-)"
+      }
+    },
+    {
+      "internal": false,
+      "primary_external_id": "FB:FBmc0002959",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "FB"
+      },
+      "construct_symbol_dto": {
+        "internal": false,
+        "name_type_name": "nomenclature_symbol",
+        "format_text": "pOT2",
+        "display_text": "pOT2"
+      }
+    }
+  ],
+  "nucleic_acid_reagent_genomic_entity_association_ingest_set": [
+    {
+      "internal": false,
+      "nucleic_acid_reagent_identifier": "FB:FBcl0158098",
+      "genomic_entity_identifier": "FB:FBgn0030060",
+      "relation_name": "sequence_supports"
+    }
+  ]
+}

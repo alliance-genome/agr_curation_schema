@@ -1,0 +1,15 @@
+{
+  "linkml_version": "2.19.0",
+  "pcr_product_ingest_set": [
+    {
+      "internal": false,
+      "primary_external_id": "WB:EXAMPLE_PCR_1",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "WB"
+      },
+      "name": "Illustrative legacy product lacking primers and taxon",
+      "probe_strand_orientation_name": "antisense"
+    }
+  ]
+}

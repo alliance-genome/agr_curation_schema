@@ -1,0 +1,16 @@
+{
+  "linkml_version": "2.19.0",
+  "nucleic_acid_library_ingest_set": [
+    {
+      "internal": false,
+      "primary_external_id": "FB:EXAMPLE_LIBRARY",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "FB"
+      },
+      "source_library_type_name": [
+        "assay dataset"
+      ]
+    }
+  ]
+}

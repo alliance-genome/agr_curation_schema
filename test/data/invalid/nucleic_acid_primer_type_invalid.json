@@ -1,0 +1,22 @@
+{
+  "linkml_version": "2.19.0",
+  "pcr_product_ingest_set": [
+    {
+      "internal": false,
+      "primary_external_id": "WB:EXAMPLE_PCR_2",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "WB"
+      },
+      "forward_primer_sequence": 23,
+      "reverse_primer_sequence": "TTCGA",
+      "taxon_curie": "NCBITaxon:6239",
+      "pcr_assay_method_name": "PCR",
+      "pcr_assay_conditions": "Illustrative cycling conditions",
+      "pcr_template_description": "Genomic DNA from the source-specified strain",
+      "pcr_template_source_identifiers": [
+        "WB:EXAMPLE_STRAIN_1"
+      ]
+    }
+  ]
+}

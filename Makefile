@@ -187,6 +187,8 @@ deploy-testpypi:
 
 # datasets used test/validate the schema
 SCHEMA_TEST_EXAMPLES := \
+	nucleic_acid_reagent_test \
+	nucleic_acid_flybase_feedback_test \
 	agm_association_ingest_test \
 	agm_test \
 	allele_association_ingest_test \
@@ -223,6 +225,23 @@ SCHEMA_TEST_EXAMPLES := \
 	wb_disease_test \
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
+	nucleic_acid_source_tissue_type_invalid \
+	nucleic_acid_source_background_type_invalid \
+	nucleic_acid_source_age_type_invalid \
+	nucleic_acid_source_old_tissue_invalid \
+	nucleic_acid_sequence_material_boundary_invalid \
+	nucleic_acid_primer_pair_material_boundary_invalid \
+	nucleic_acid_oligo_sequence_type_invalid \
+	nucleic_acid_library_type_cardinality_invalid \
+	nucleic_acid_vector_type_invalid \
+	nucleic_acid_missing_provider_invalid \
+	nucleic_acid_primer_type_invalid \
+	nucleic_acid_insert_length_invalid \
+	nucleic_acid_insert_origin_cardinality_invalid \
+	nucleic_acid_agent_cardinality_invalid \
+	nucleic_acid_association_target_invalid \
+	nucleic_acid_material_preparation_boundary_invalid \
+	nucleic_acid_label_cardinality_invalid \
 	allele_invalid \
 	disease_allele_invalid \
 	gene_expression_invalid \
