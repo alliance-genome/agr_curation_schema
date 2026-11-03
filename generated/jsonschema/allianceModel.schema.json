@@ -35567,6 +35567,299 @@
             "title": "ModCorpusSortSourceEnum",
             "type": "string"
         },
+        "ModVariant": {
+            "additionalProperties": false,
+            "description": "An allele and one of its variants with the variant's HGVS names and its predicted consequence on each transcript. Obsolete alleles, variants, genomic locations and consequences are left out.",
+            "properties": {
+                "allele_identifier": {
+                    "description": "Primary external ID of the allele, as submitted by the data provider.",
+                    "examples": [
+                        "ZFIN:ZDB-ALT-080929-3"
+                    ],
+                    "type": "string"
+                },
+                "hgvs_coding_nomenclatures": {
+                    "description": "Distinct HGVSc nomenclatures of the variant's predicted consequences, sorted",
+                    "examples": [
+                        [
+                            "NM_131322.2:c.3G>T"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "hgvs_genomic_nomenclature": {
+                    "description": "HGVSg nomenclature of the variant, from its curated genomic location",
+                    "examples": [
+                        "NC_133187.1:g.6252231G>T"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "hgvs_protein_nomenclatures": {
+                    "description": "Distinct HGVSp nomenclatures of the variant's predicted consequences, sorted",
+                    "examples": [
+                        [
+                            "NP_571397.2:p.Met1?"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "predicted_variant_consequences": {
+                    "description": "The VEP result for each transcript the variant falls on, sorted by transcript identifier",
+                    "items": {
+                        "$ref": "#/$defs/ModVariantConsequence"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "variant_curie": {
+                    "description": "Alliance curie of the variant",
+                    "examples": [
+                        "AGRKB:107000000060080"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "allele_identifier",
+                "variant_curie"
+            ],
+            "title": "ModVariant",
+            "type": "object"
+        },
+        "ModVariantConsequence": {
+            "additionalProperties": false,
+            "description": "The predicted consequence of a variant on one transcript: the fields of a PredictedVariantConsequence shown in the Genomic Variant Information and Variant Molecular Consequences sections of the allele page, with each object reduced to its identifier or name.",
+            "properties": {
+                "amino_acid_reference": {
+                    "description": "Reference genome amino acid sequence at the variant position",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "amino_acid_variant": {
+                    "description": "Variant amino acid sequence at the variant position",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "calculated_cdna_end": {
+                    "description": "End of the variant in cDNA coordinates, as calculated by VEP",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "calculated_cdna_start": {
+                    "description": "Start of the variant in cDNA coordinates, as calculated by VEP",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "calculated_cds_end": {
+                    "description": "End of the variant in CDS coordinates, as calculated by VEP",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "calculated_cds_start": {
+                    "description": "Start of the variant in CDS coordinates, as calculated by VEP",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "calculated_protein_end": {
+                    "description": "End of the variant in protein amino acid coordinates, as calculated by VEP",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "calculated_protein_start": {
+                    "description": "Start of the variant in protein amino acid coordinates, as calculated by VEP",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "codon_reference": {
+                    "description": "Reference sequence of the codon(s) affected by the variant: bases outside the variant region are in lower case, those within in upper case (e.g. cTa)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "codon_variant": {
+                    "description": "Variant sequence of the codon(s) affected by the variant: bases outside the variant region are in lower case, those within in upper case (e.g. cAa)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "gene_identifier": {
+                    "description": "Primary external ID of the gene the transcript belongs to",
+                    "examples": [
+                        "ZFIN:ZDB-GENE-980526-280"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "gene_symbol": {
+                    "description": "Symbol of the gene the transcript belongs to",
+                    "examples": [
+                        "dlx3b"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "hgvs_coding_nomenclature": {
+                    "description": "HGVSc nomenclature of the variant on the transcript",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "hgvs_protein_nomenclature": {
+                    "description": "HGVSp nomenclature of the variant on the protein",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "intron_exon_location": {
+                    "description": "The exon(s) and/or intron(s) of the transcript the variant falls in, each as number/total",
+                    "examples": [
+                        "Exon 1/3",
+                        "Exon 2/5 : Intron 2/4"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "polyphen_prediction_name": {
+                    "description": "PolyPhen-2 prediction",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "polyphen_score": {
+                    "description": "PolyPhen-2 score between 0 and 1",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "sift_prediction_name": {
+                    "description": "SIFT prediction",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sift_score": {
+                    "description": "SIFT score between 0 and 1",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "transcript_identifier": {
+                    "description": "Accession of the transcript, or its Alliance identifier when it has none",
+                    "examples": [
+                        "NM_131322.2"
+                    ],
+                    "type": "string"
+                },
+                "transcript_name": {
+                    "description": "Name of the transcript",
+                    "examples": [
+                        "NM_131322.2"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "transcript_type_name": {
+                    "description": "Name of the SOTerm for the transcript type",
+                    "examples": [
+                        "mRNA"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "vep_consequence_names": {
+                    "description": "Names of the SOTerms for the VEP consequences",
+                    "examples": [
+                        [
+                            "start_lost"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "vep_impact_name": {
+                    "description": "VEP predicted impact of the variant on the transcript",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "transcript_identifier",
+                "vep_impact_name",
+                "vep_consequence_names"
+            ],
+            "title": "ModVariantConsequence",
+            "type": "object"
+        },
+        "ModVariantExport": {
+            "additionalProperties": false,
+            "description": "A page of a data provider's alleles and their variants, as returned by GET /api/variant/export/{dataProvider}.",
+            "properties": {
+                "mod_variants": {
+                    "description": "One entry per allele - variant pair",
+                    "items": {
+                        "$ref": "#/$defs/ModVariant"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "ModVariantExport",
+            "type": "object"
+        },
         "Molecule": {
             "additionalProperties": false,
             "description": "Molecules as described by WormBase",

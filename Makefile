@@ -43,7 +43,7 @@ t:
 echo:
 	echo $(patsubst %,gen-%,$(TGTS))
 
-test: all test-jsonschema
+test: all test-jsonschema test-output
 
 install:
 	uv sync
@@ -228,6 +228,18 @@ SCHEMA_TEST_EXAMPLES_INVALID := \
 	gene_expression_invalid \
 	missing_version \
 	variant_invalid \
+
+# Output examples describe what an API returns, so each is validated against its own class rather than Ingest
+SCHEMA_OUTPUT_TEST_EXAMPLES := \
+	mod_variant_export_test \
+
+OUTPUT_CLASS_mod_variant_export_test := ModVariantExport
+
+.PHONY: test-output
+test-output: $(foreach example, $(SCHEMA_OUTPUT_TEST_EXAMPLES), validate-output-$(example))
+
+validate-output-%: test/data/%.json
+	uv run linkml-validate -C $(OUTPUT_CLASS_$*) -s model/schema/allianceModel.yaml $<
 
 .PHONY: test-jsonschema
 test-jsonschema: $(foreach example, $(SCHEMA_TEST_EXAMPLES), validate-$(example))

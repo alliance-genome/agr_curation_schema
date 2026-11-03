@@ -71,7 +71,7 @@ AuditedObject lives in core.yaml)
 
 Any time a new domain is developed, a test should be written to exercise the resulting JSON schema artifact.  This helps
 provide example data for people seeking to produce data to our standard, and helps test the model for model developers.
-Test data belongs in `test/data` and `test/invalid/data`.  Test files should be named following these conventions:
+Test data belongs in `test/data` and `test/data/invalid`.  Test files should be named following these conventions:
 
 valid test data files: `"test_name"_test.json`
 
@@ -83,6 +83,21 @@ SCHEMA_TEST_EXAMPLES,
 SCHEMA_TEST_EXAMPLES_INVALID
 
 `test/data/allele_test.json` and `test/data/invalid/allele_invalid.json` are good examples of how to do this.
+
+**Output examples** (e.g. `test/data/mod_variant_export_test.json`) describe what an API *returns* rather than what a
+MOD *submits*, so they are not validated against `Ingest` and must **not** be added to `SCHEMA_TEST_EXAMPLES` (nor
+given a `linkml_version` field). Instead, add the file to `SCHEMA_OUTPUT_TEST_EXAMPLES` and declare the class it is
+validated against:
+
+```make
+SCHEMA_OUTPUT_TEST_EXAMPLES := \
+	mod_variant_export_test \
+
+OUTPUT_CLASS_mod_variant_export_test := ModVariantExport
+```
+
+Output examples run as part of `make test` (via the `test-output` target). See
+[Running a single test](#running-a-single-test) to run one on its own.
 
 An easy way to write a test is to pull out the 'required' fields of a domain object from `jsonschema/allianceModel.schema.json`
 and write test data according to those required fields.  Alternatively, a few submission objects from an existing submission
@@ -159,7 +174,7 @@ To make a schema change and test your changes:
     ```bash
     make
     ```
-4. add or modify an existing test in `test/data` and `test/data/invald`
+4. add or modify an existing test in `test/data` and `test/data/invalid`
 5. add your new test, or verify the test you changed is available in the Makefile for execution.
 6. run the tests to confirm that your test data is validated against the generated JSONschema artifact that you made in 
 step 2 above.
@@ -167,6 +182,7 @@ step 2 above.
     git add test/data/[new_]test.json # optional step if you added a new test
     make clean
     make test 
+    make test-jsonschema_invalid # not included in 'make test'
     ```
 7. commit your change and open pull request.
     ```bash
@@ -189,7 +205,41 @@ make clean
 make test
 ```
 
-This will run both the valid and invalid tests. 
+This regenerates the artifacts and runs the valid ingest examples (`test-jsonschema`) and the output examples
+(`test-output`). It does **not** run the invalid tests; run those separately:
+
+```bash
+make test-jsonschema_invalid
+```
+
+Each invalid example (listed in `SCHEMA_TEST_EXAMPLES_INVALID`, files in `test/data/invalid/`) is checked against the
+generated JSON schema (`generated/jsonschema/allianceModel.schema.json`), and the check passes only if validation
+*fails*. The validation errors are printed so you can confirm the file is rejected for the reason you intended. To
+check a single invalid example:
+
+```bash
+make validate-invalid-allele_invalid
+# equivalent to:
+! uv run jsonschema -i test/data/invalid/allele_invalid.json generated/jsonschema/allianceModel.schema.json
+```
+
+### Running a single test
+
+To validate one ingest example (validated against the `Ingest` class):
+```bash
+make validate-allele_test
+# equivalent to:
+uv run linkml-validate -C Ingest -s model/schema/allianceModel.yaml test/data/allele_test.json
+```
+
+To validate one output example (validated against its own output class, set by `OUTPUT_CLASS_<name>` in the Makefile):
+```bash
+make validate-output-mod_variant_export_test
+# equivalent to:
+uv run linkml-validate -C ModVariantExport -s model/schema/allianceModel.yaml test/data/mod_variant_export_test.json
+```
+
+To run only the output examples: `make test-output`.
 
 Note there is a convention in this repository to make a 'set' slot for each ingest as a convenient convention for 
 being able to validate objects in a JSON list.  In the example below, an "allele ingest set" is defined in the 
