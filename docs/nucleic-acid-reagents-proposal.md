@@ -188,7 +188,9 @@ separate ingest requirement.
 The relation vocabulary retains encodes, hybridizes_to, amplifies, feature-overlap
 relations and sequence_supports, and adds:
 
-- `contains_gene`: the gene lies entirely within the clone insert.
+- `contains_gene`: at least part of the gene is present in the clone.
+- `does_not_contain_gene`: at least part of the gene is absent from the clone.
+  Both assertions may coexist; neither alone asserts whole-gene inclusion or exclusion.
 - `partially_overlaps_gene`: the gene extends beyond an insert end.
 
 These gene-overlap relations should be restricted downstream to appropriate
@@ -196,8 +198,9 @@ clone/gene endpoints. They are not expression-detection assertions. Gil reports
 309,491 BAC-to-gene links, including 72,941 partial overlaps, in the FlyBase evidence
 behind this request; these counts were not remeasured for this commit.
 
-`reagent_association_source_relation` retains exact original text separately from
-the normalized relation. `reagent_association_method` is now VocabularyTerm,
+`reagent_association_source_relation` retains original values or documented source-tag
+normalization separately from the normalized relation (for example, WormBase
+`Positive_gene` becomes `positive_gene`). `reagent_association_method` is now VocabularyTerm,
 submitted through `reagent_association_method_name`. Method version, source
 release, supporting sequence identifiers and intervening transcript identifiers
 remain available. FlyBase did not record an AEVAST version; omit it.
@@ -300,3 +303,48 @@ Validation results for this revision are recorded in the PR description.
 Source evidence and discussion remain in the
 [curator review](https://model-preview.alliancegenome.org/reviews/nucleic-acid-reagents/).
 The website is a separately published snapshot; this PR update does not rebuild it.
+
+## November 6 sample feedback update
+
+This update incorporates the schema extension used by the published
+[MOD sample JSON files](https://model-preview.alliancegenome.org/reviews/nucleic-acid-reagents/downloads/samples/WB.json),
+including WormBase feedback through comments #133–142. All five published MOD
+files (FB, MGI, WB, XB and ZFIN; 320 records) are validation inputs. The focused
+`nucleic_acid_wormbase_feedback_test.json` fixture retains representative WS298
+records and their source identifiers.
+
+| Entity slot | Submission slot | Meaning |
+| --- | --- | --- |
+| `clone_backbone_length` | `clone_backbone_length` | Optional positive integer length in bp, distinct from insert and total length |
+| `pcr_primer_uses` | `pcr_primer_use_dtos` | Product or confirmation primer uses, each with an Oligo reference, sequence, or both |
+| `pcr_template_origin` | `pcr_template_origin_name` | Optional template origin using the proposed Clone Insert Origin vocabulary |
+
+`PCRProductPrimerUse` and its DTO are embedded value objects audited through the
+containing product, without independent identifiers. Each requires a primer-use
+role and at least one Oligo reference or sequence. Direction is optional and
+belongs to the use, not intrinsically to the Oligo. Product and confirmation
+roles remain distinct. Complete recorded sequences, including possible cloning
+tails, are preserved. Sequence-only uses do not mint Oligo identifiers; whether
+to identify Oligos by sequence remains a curator decision.
+
+The proposed runtime vocabularies use `product`/`confirmation` for Primer Use,
+`forward`/`reverse` for Primer Orientation, and `genomic DNA`/`cDNA` for template
+origin. These remain VocabularyTerm references with DTO names, not closed enums;
+vocabulary installation and ingest resolution are separate implementation work.
+
+For WB samples, curator-confirmed suffix conventions supply direction where
+supported, while `_F2`/`_R2` remain unresolved. The confirmed `mv_` and
+`sjj_`/`sjj2_` conventions supply cDNA and genomic DNA template origins,
+respectively. These are source-specific export rules, not universal schema rules.
+Source relation, release and interpretation details stay on each primer use.
+
+WB positive and negative clone–gene assertions apply to all selected clones,
+not only 2RSSE clones. The B0496 assertions demonstrate that both relations can
+coexist. FlyBase evidence of whole-gene coverage is stronger than the shared
+`contains_gene` predicate and must remain in source relationship evidence.
+
+Existing derivation and generating-agent slots already accommodate the updated
+samples; direct `Derived_from` relationships do not imply transitive ancestry.
+Unresolved source properties such as Primer1 and Resistance_marker remain in
+comments rather than acquiring unapproved vocabulary meanings. This update does
+not resolve outstanding agent-identity or sequence-based Oligo-identity policy.

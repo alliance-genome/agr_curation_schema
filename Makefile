@@ -189,6 +189,7 @@ deploy-testpypi:
 SCHEMA_TEST_EXAMPLES := \
 	nucleic_acid_reagent_test \
 	nucleic_acid_flybase_feedback_test \
+	nucleic_acid_wormbase_feedback_test \
 	agm_association_ingest_test \
 	agm_test \
 	allele_association_ingest_test \
@@ -225,6 +226,10 @@ SCHEMA_TEST_EXAMPLES := \
 	wb_disease_test \
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
+	nucleic_acid_backbone_length_invalid \
+	nucleic_acid_primer_use_empty_invalid \
+	nucleic_acid_primer_use_role_invalid \
+	nucleic_acid_template_origin_cardinality_invalid \
 	nucleic_acid_source_tissue_type_invalid \
 	nucleic_acid_source_background_type_invalid \
 	nucleic_acid_source_age_type_invalid \
