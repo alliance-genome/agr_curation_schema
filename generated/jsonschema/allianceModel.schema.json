@@ -19899,6 +19899,14 @@
                         "null"
                     ]
                 },
+                "clone_backbone_length": {
+                    "description": "Reported length of this clone backbone in base pairs, excluding insert sequence. Distinct from insert length and total clone length. Omit when unknown.",
+                    "minimum": 1,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
                 "clone_cloning_sites": {
                     "description": "Cloning or restriction sites recorded for the individual clone, retaining source text.",
                     "items": {
@@ -20232,6 +20240,14 @@
                     "description": "Curator assessment of the clone, preserving the original wording.",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "clone_backbone_length": {
+                    "description": "Reported length of this clone backbone in base pairs, excluding insert sequence. Distinct from insert length and total clone length. Omit when unknown.",
+                    "minimum": 1,
+                    "type": [
+                        "integer",
                         "null"
                     ]
                 },
@@ -38877,7 +38893,7 @@
                     ]
                 },
                 "reagent_association_source_relation": {
-                    "description": "Exact original relationship value, including an empty string when that is the original encoding. Omission means not supplied; notes can record SQL NULL or other missing-value encodings.",
+                    "description": "Original relationship value or a documented normalization of its source tag (for example, WormBase Positive_gene to positive_gene), preserving its meaning. Retain an empty string when that is the original encoding. Omission means not supplied; notes can record SQL NULL or other missing-value encodings.",
                     "type": [
                         "string",
                         "null"
@@ -39044,7 +39060,7 @@
                     ]
                 },
                 "reagent_association_source_relation": {
-                    "description": "Exact original relationship value, including an empty string when that is the original encoding. Omission means not supplied; notes can record SQL NULL or other missing-value encodings.",
+                    "description": "Original relationship value or a documented normalization of its source tag (for example, WormBase Positive_gene to positive_gene), preserving its meaning. Retain an empty string when that is the original encoding. Omission means not supplied; notes can record SQL NULL or other missing-value encodings.",
                     "type": [
                         "string",
                         "null"
@@ -41458,7 +41474,7 @@
                     ]
                 },
                 "forward_primer_sequence": {
-                    "description": "The forward primer sequence in the source-reported 5-prime to 3-prime orientation. Optional for legacy PCR products; do not infer missing sequence.",
+                    "description": "The actual product or primer-pair forward primer sequence in the source-reported 5-prime to 3-prime orientation. Separate confirmation primers belong in primer uses. Optional for legacy PCR products; do not infer missing sequence.",
                     "type": [
                         "string",
                         "null"
@@ -41551,8 +41567,25 @@
                     ],
                     "description": "Primer-pair definition used to generate this product; template context remains separate."
                 },
+                "pcr_primer_uses": {
+                    "description": "Product and confirmation primer uses, with role and source context retained.",
+                    "items": {
+                        "$ref": "#/$defs/PCRProductPrimerUse"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "pcr_template_description": {
                     "description": "Source-reported template and genetic background for this product. Distinguish different template contexts even when primer sequences match.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "pcr_template_origin": {
+                    "description": "Optional template origin; shares proposed Clone Insert Origin CV: genomic DNA or cDNA.",
                     "type": [
                         "string",
                         "null"
@@ -41637,7 +41670,7 @@
                     ]
                 },
                 "reverse_primer_sequence": {
-                    "description": "The reverse primer sequence in the source-reported 5-prime to 3-prime orientation. Optional for legacy PCR products.",
+                    "description": "The actual product or primer-pair reverse primer sequence in the source-reported 5-prime to 3-prime orientation. Separate confirmation primers belong in primer uses. Optional for legacy PCR products.",
                     "type": [
                         "string",
                         "null"
@@ -41748,7 +41781,7 @@
                     ]
                 },
                 "forward_primer_sequence": {
-                    "description": "The forward primer sequence in the source-reported 5-prime to 3-prime orientation. Optional for legacy PCR products; do not infer missing sequence.",
+                    "description": "The actual product or primer-pair forward primer sequence in the source-reported 5-prime to 3-prime orientation. Separate confirmation primers belong in primer uses. Optional for legacy PCR products; do not infer missing sequence.",
                     "type": [
                         "string",
                         "null"
@@ -41846,8 +41879,25 @@
                         "null"
                     ]
                 },
+                "pcr_primer_use_dtos": {
+                    "description": "Inline product and confirmation primer uses; do not invent a primer-pair identity.",
+                    "items": {
+                        "$ref": "#/$defs/PCRProductPrimerUseDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "pcr_template_description": {
                     "description": "Source-reported template and genetic background for this product. Distinguish different template contexts even when primer sequences match.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "pcr_template_origin_name": {
+                    "description": "Optional template origin name from the same CV as clone_insert_origin_name: genomic DNA or cDNA. Omit if unknown.",
                     "type": [
                         "string",
                         "null"
@@ -41922,7 +41972,7 @@
                     ]
                 },
                 "reverse_primer_sequence": {
-                    "description": "The reverse primer sequence in the source-reported 5-prime to 3-prime orientation. Optional for legacy PCR products.",
+                    "description": "The actual product or primer-pair reverse primer sequence in the source-reported 5-prime to 3-prime orientation. Separate confirmation primers belong in primer uses. Optional for legacy PCR products.",
                     "type": [
                         "string",
                         "null"
@@ -41957,6 +42007,160 @@
                 "internal"
             ],
             "title": "PCRProductDTO",
+            "type": "object"
+        },
+        "PCRProductPrimerUse": {
+            "additionalProperties": false,
+            "anyOf": [
+                {
+                    "properties": {
+                        "primer_oligo": {}
+                    },
+                    "required": [
+                        "primer_oligo"
+                    ]
+                },
+                {
+                    "properties": {
+                        "primer_sequence": {}
+                    },
+                    "required": [
+                        "primer_sequence"
+                    ]
+                }
+            ],
+            "description": "A primer use scoped to one PCR product. Product primers and separate confirmation primers remain distinct. Direction belongs to this use, never intrinsically to Oligo. Supply a source-identified Oligo or the recorded primer sequence, or both.",
+            "properties": {
+                "primer_oligo": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Oligo"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Source-identified Oligo used in this context; optional for a sequence-only use."
+                },
+                "primer_orientation": {
+                    "description": "Optional direction in this use. Proposed Primer Orientation CV: forward or reverse.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "primer_sequence": {
+                    "description": "Recorded sequence for this use, preserving complete sequence including possible cloning tails.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "primer_source_detail": {
+                    "description": "Source relationship details or attribution of an orientation interpretation.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "primer_source_relation": {
+                    "description": "Original source property normalized to lower snake_case, without discarding its distinct meaning.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "primer_source_release": {
+                    "description": "Source release for this primer use.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "primer_use": {
+                    "description": "Proposed Primer Use CV: product or confirmation. Confirmation does not designate the actual product primer.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "primer_use"
+            ],
+            "title": "PCRProductPrimerUse",
+            "type": "object"
+        },
+        "PCRProductPrimerUseDTO": {
+            "additionalProperties": false,
+            "anyOf": [
+                {
+                    "properties": {
+                        "primer_oligo_identifier": {}
+                    },
+                    "required": [
+                        "primer_oligo_identifier"
+                    ]
+                },
+                {
+                    "properties": {
+                        "primer_sequence": {}
+                    },
+                    "required": [
+                        "primer_sequence"
+                    ]
+                }
+            ],
+            "description": "Inline submission of a primer use. At least one of primer_oligo_identifier and primer_sequence must be supplied. Sequence-only uses do not create an Oligo identity. That identity policy is under review.",
+            "properties": {
+                "primer_oligo_identifier": {
+                    "description": "Resolvable identifier of a separately submitted Oligo; optional for a sequence-only use.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "primer_orientation_name": {
+                    "description": "Optional direction name for this use: forward or reverse. Omit when unresolved.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "primer_sequence": {
+                    "description": "Recorded sequence for this use, preserving complete sequence including possible cloning tails.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "primer_source_detail": {
+                    "description": "Source relationship details or attribution of an orientation interpretation.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "primer_source_relation": {
+                    "description": "Original source property normalized to lower snake_case, without discarding its distinct meaning.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "primer_source_release": {
+                    "description": "Source release for this primer use.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "primer_use_name": {
+                    "description": "Proposed Primer Use CV name: product or confirmation.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "primer_use_name"
+            ],
+            "title": "PCRProductPrimerUseDTO",
             "type": "object"
         },
         "PROTerm": {
@@ -43743,7 +43947,7 @@
                     "description": "Separately identified forward primer oligonucleotide."
                 },
                 "forward_primer_sequence": {
-                    "description": "The forward primer sequence in the source-reported 5-prime to 3-prime orientation. Optional for legacy PCR products; do not infer missing sequence.",
+                    "description": "The actual product or primer-pair forward primer sequence in the source-reported 5-prime to 3-prime orientation. Separate confirmation primers belong in primer uses. Optional for legacy PCR products; do not infer missing sequence.",
                     "type": [
                         "string",
                         "null"
@@ -43820,7 +44024,7 @@
                     "description": "Separately identified reverse primer oligonucleotide."
                 },
                 "reverse_primer_sequence": {
-                    "description": "The reverse primer sequence in the source-reported 5-prime to 3-prime orientation. Optional for legacy PCR products.",
+                    "description": "The actual product or primer-pair reverse primer sequence in the source-reported 5-prime to 3-prime orientation. Separate confirmation primers belong in primer uses. Optional for legacy PCR products.",
                     "type": [
                         "string",
                         "null"
@@ -43912,7 +44116,7 @@
                     ]
                 },
                 "forward_primer_sequence": {
-                    "description": "The forward primer sequence in the source-reported 5-prime to 3-prime orientation. Optional for legacy PCR products; do not infer missing sequence.",
+                    "description": "The actual product or primer-pair forward primer sequence in the source-reported 5-prime to 3-prime orientation. Separate confirmation primers belong in primer uses. Optional for legacy PCR products; do not infer missing sequence.",
                     "type": [
                         "string",
                         "null"
@@ -43984,7 +44188,7 @@
                     ]
                 },
                 "reverse_primer_sequence": {
-                    "description": "The reverse primer sequence in the source-reported 5-prime to 3-prime orientation. Optional for legacy PCR products.",
+                    "description": "The actual product or primer-pair reverse primer sequence in the source-reported 5-prime to 3-prime orientation. Separate confirmation primers belong in primer uses. Optional for legacy PCR products.",
                     "type": [
                         "string",
                         "null"
