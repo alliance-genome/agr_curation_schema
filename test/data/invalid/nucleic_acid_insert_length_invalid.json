@@ -1,0 +1,35 @@
+{
+  "linkml_version": "2.19.0",
+  "dna_clone_ingest_set": [
+    {
+      "internal": false,
+      "primary_external_id": "ZFIN:EXAMPLE_CDNA_1",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "ZFIN"
+      },
+      "name": "Illustrative confirmed cDNA clone",
+      "taxon_curie": "NCBITaxon:7955",
+      "nucleic_acid_reagent_type_name": "EST",
+      "clone_insert_length": -1,
+      "clone_vector_name": "Example vector",
+      "generated_by_identifiers": [
+        "ZFIN:EXAMPLE_LAB_1",
+        "ZFIN:EXAMPLE_PERSON_1"
+      ],
+      "nucleic_acid_reagent_synonym_dtos": [
+        {
+          "internal": false,
+          "name_type_name": "synonym",
+          "format_text": "Example alias",
+          "display_text": "Example alias",
+          "evidence_curies": [
+            "PMID:12345678"
+          ]
+        }
+      ],
+      "reagent_availability_name": "available",
+      "clone_insert_origin_name": "cDNA"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "linkml_version": "2.19.0",
+  "nucleic_acid_probe_preparation_ingest_set": [
+    {
+      "internal": false,
+      "mod_internal_id": "MGI:gxd_probeprep:EXAMPLE_1",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "MGI"
+      },
+      "name": "Illustrative assay-owned antisense RNA preparation",
+      "source_template_identifiers": [
+        "MGI:EXAMPLE_NONCLONED_PROBE_1"
+      ],
+      "preparation_assay_identifier": "MGI:gxd_assay:EXAMPLE_1",
+      "probe_nucleic_acid_type_name": "RNA",
+      "probe_strand_orientation_name": "antisense",
+      "probe_label_names": "digoxigenin",
+      "probe_visualization_method_names": [
+        "alkaline phosphatase"
+      ]
+    }
+  ]
+}
