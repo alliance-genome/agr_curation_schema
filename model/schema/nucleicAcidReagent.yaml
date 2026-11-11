@@ -124,6 +124,7 @@ classes:
     slots:
       - pcr_primer_uses
       - pcr_template_origin
+      - pcr_amplification_successful
       - pcr_primer_pair
       - forward_primer_sequence
       - reverse_primer_sequence
@@ -139,6 +140,7 @@ classes:
     slots:
       - pcr_primer_use_dtos
       - pcr_template_origin_name
+      - pcr_amplification_successful
       - pcr_primer_pair_identifier
       - forward_primer_sequence
       - reverse_primer_sequence
@@ -1172,3 +1174,18 @@ slots:
   primer_source_detail:
     description: Source relationship details or attribution of an orientation interpretation.
     range: string
+
+  pcr_amplification_successful:
+    description: >-
+      Whether amplification of this PCR product was successful. True records successful
+      amplification; false records no successful amplification. Omit when the outcome
+      is unknown or unrecorded; absence does not mean false. This is an amplification
+      outcome, not a relationship to a gene, an expression result, or a primer-use role.
+    notes: >-
+      WormBase PCR_product.Amplified encodes 1 for successful amplification and 0 for
+      no successful amplification (Chris Grove, corrected comment 143 version 3,
+      November 9, 2026). Convert these explicitly to JSON true and false during export;
+      do not use general truthiness or infer an outcome from primers or template origin.
+    range: boolean
+    required: false
+    multivalued: false

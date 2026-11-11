@@ -187,6 +187,7 @@ deploy-testpypi:
 
 # datasets used test/validate the schema
 SCHEMA_TEST_EXAMPLES := \
+	nucleic_acid_amplification_outcome_test \
 	nucleic_acid_reagent_test \
 	nucleic_acid_flybase_feedback_test \
 	nucleic_acid_wormbase_feedback_test \
@@ -226,6 +227,10 @@ SCHEMA_TEST_EXAMPLES := \
 	wb_disease_test \
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
+	nucleic_acid_amplification_integer_invalid \
+	nucleic_acid_amplification_zero_invalid \
+	nucleic_acid_amplification_string_invalid \
+	nucleic_acid_amplification_cardinality_invalid \
 	nucleic_acid_backbone_length_invalid \
 	nucleic_acid_primer_use_empty_invalid \
 	nucleic_acid_primer_use_role_invalid \

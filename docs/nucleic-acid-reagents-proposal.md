@@ -157,7 +157,7 @@ check vocabulary membership and ontology class resolution.
 | Clone Vector Type (`clone_vector_type`, `source_vector_type`) | plasmid → SO:0000755; BAC → SO:0000153; PAC → SO:0000154; YAC → SO:0000152; cosmid → SO:0000156; phagemid → SO:0000157; fosmid → SO:0000158 | Retain local not specified and not applicable distinctly; SO:0000754 is lambda vector, not every phage vector. |
 | Reagent Sequence Role | EST → SO:0000345; 5-prime EST → SO:0001208; 3-prime EST → SO:0001209; clone end → SO:0001793 | Full insert → SO:0000753 is qualified: the term does not assert completeness. Complete vector remains a local role pending review. |
 | Probe Nucleic Acid Type (`probe_nucleic_acid_type`, `oligo_chemical_type`) | DNA → SO:0000352; RNA → SO:0000356 | These describe sequence composition; apply to material chemistry with that qualification. Modified or mixed chemistry needs explicit review. |
-| Probe Label / Oligo Modification | digoxigenin → CHEBI:42098; biotin → CHEBI:15956; P32 → CHEBI:37972; P33 → CHEBI:37973; S35 → CHEBI:37983; tritium → CHEBI:29238 | Distinguish free chemical, attached moiety and labeled nucleotide. Positional oligo modifications are not modeled yet. |
+| Probe Label / Oligo Modification | digoxigenin → CHEBI:42098; biotinate → CHEBI:57586; P32 → CHEBI:37972; P33 → CHEBI:37973; S35 → CHEBI:37983; tritium → CHEBI:29238 | Distinguish free chemical, attached moiety and labeled nucleotide. Positional oligo modifications are not modeled yet. |
 | Clone Collection Status | BDGP; DGC gold | Provider-supported designations; not chemical or availability terms. |
 | Library Type / Library Membership Relation | reagent collection; assay dataset / member_of_reagent_collection; member_of_assay | Distinct lists; curators must approve normalization of original source values. |
 | Reagent Association Method | AEVAST with BLAST; source-supported manual or other computational methods | Method absence is not manual curation; retain version separately. |
@@ -172,6 +172,19 @@ questions. Candidate SO terms were checked against the official ontology at
 ChEBI candidates were checked through EBI OLS on October 27. DNP, generic rhodamine,
 EvaGreen and other unresolved labels are not assigned guessed identifiers.
 An unresolved mapping does not establish that the ontology lacks the concept.
+
+Chris Grove's October 30 comment #111, relaying Chris Mungall, requests checking
+chemical candidates against ChEBI pH 7.3 mappings rather than choosing unnecessarily
+specific protonation states. The November 2 review used the
+[Rhea pH 7.3 mapping](https://ftp.expasy.org/databases/rhea/tsv/chebi_pH7_3_mapping.tsv):
+biotin CHEBI:15956 maps to biotinate CHEBI:57586. This is a free-chemical candidate;
+it does not establish the identity of the moiety attached to a probe. The review
+records unchanged IDs and missing mapping rows separately; neither proves an
+exact match to an unspecified source label. See the
+[dated vocabulary review](https://model-preview.alliancegenome.org/reviews/nucleic-acid-reagents/vocabularies.html)
+for the remaining chemical qualifications. These are reviewed candidates, not
+installed runtime vocabulary entries.
+
 
 ## Genomic-entity associations
 
@@ -241,10 +254,12 @@ invented. BAC gene names and the PBac construct name supplied without identifier
 are documented as follow-up examples rather than used as identifiers. The fixture
 is curator-supplied evidence, not a new database extraction or complete MOD export.
 
-Earlier downloaded MOD samples and the published mapping tables describe the
-previous branch schema. They require regeneration or migration for these renamed
-DTO fields and new library-resolution rules. This commit does not silently certify
-those older files against the expanded proposal.
+The November 6 published MOD sample package contains 320 records across FB, MGI,
+WB, XB and ZFIN. Its backbone-length, primer-use and template-origin extensions
+are now included in this PR. Those files remain compatible with the optional
+amplification-outcome addition, but do not yet demonstrate that new field. Older
+downloads and website text may still refer to the earlier pinned baseline and
+local patch; do not apply that patch again to this updated branch.
 
 ## Feedback coverage and remaining implementation questions
 
@@ -348,3 +363,54 @@ samples; direct `Derived_from` relationships do not imply transitive ancestry.
 Unresolved source properties such as Primer1 and Resistance_marker remain in
 comments rather than acquiring unapproved vocabulary meanings. This update does
 not resolve outstanding agent-identity or sequence-based Oligo-identity policy.
+
+## November 11 amplification outcome and outstanding decisions
+
+Chris Grove's corrected comment #143 v3 (November 9) establishes that WormBase
+`?PCR_product.Amplified` stores `1` for successful amplification and `0` for no
+successful amplification. The earlier Yes/No encoding description is superseded.
+
+`PCRProduct` and `PCRProductDTO` now share the optional, single-valued boolean
+`pcr_amplification_successful`. It has no default. Exporters must map `1` to
+`true`, `0` to `false`, and omit the field when the source value is absent.
+Unexpected source values require review, not a general truthiness conversion.
+This outcome is separate from the `amplifies` genomic-entity relation, expression
+results, template origin and product/confirmation primer roles. No inference of
+successful amplification follows from a PCRProduct record's existence.
+
+The illustrative fixture `nucleic_acid_amplification_outcome_test.json` covers
+true, false and omitted values without attributing outcomes to unqueried source
+records. Negative fixtures reject numeric 1/0, string values and arrays. Existing
+published MOD samples remain unchanged; their missing values remain unspecified.
+The November 9 website publication records the source meaning but predates this
+schema addition. This PR update does not rebuild the website or its sample package.
+
+The following decisions remain open; this PR does not imply their approval:
+
+- **MGI strandedness (#119):** Double stranded describes preparation strandedness,
+  not sense/antisense orientation. Decide between a separate property and an
+  explicitly broader existing slot. The current orientation slot has not been
+  silently reinterpreted.
+- **MGI detection chemistry (#119):** SYBR Green/EvaGreen belong to preparation/assay
+  details, not probe records. Decide how to represent detection dyes or methods
+  without treating every reagent as a physically attached `probe_labels` value.
+- **Sequence-only Oligo identity (#142):** sequence-only primer uses are supported;
+  using sequence as an Oligo key remains unresolved. Account for chemistry and
+  modifications before defining identity. Existing Oligos keep their source IDs.
+- **Producer identity and note types (#135–136):** `generated_by_identifiers` already
+  supports Agent references; resolving WormBase Authors is downstream work. Source
+  names remain an allowed temporary fallback. Dedicated `primer1` and
+  `resistance_marker` note types remain vocabulary candidates; no primer sequence
+  or direction is inferred from the designation alone.
+- **Remaining source interpretations:** clone origin and PCR Variation meanings,
+  unusual primer-direction suffixes, and confirmation-template exceptions remain
+  curator questions. They do not weaken the confirmed Amplified conversion.
+- **Runtime implementation:** approve and seed vocabularies, resolve identifiers and
+  endpoint classes, and implement loader/lifecycle rules separately from this schema.
+
+Holly Paddock's #121 clarification also removes ZFIN as evidence for a Gateway
+entry-vector term: community use does not establish a corresponding ZFIN record.
+A generic ZFIN unknown value needs its source field identified before mapping.
+Leyla Ruzicka's #110/#113 clarifications retain the specified EST/mRNA interpretation
+and direct clone references for expression detection; exporters must not invent
+separate preparation identities when ZFIN does not distinguish them.
