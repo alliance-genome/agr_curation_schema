@@ -1,0 +1,624 @@
+{
+  "linkml_version": "2.19.0",
+  "alliance_member_release_version": "WS298",
+  "dna_clone_ingest_set": [
+    {
+      "internal": false,
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "WB"
+      },
+      "mod_internal_id": "WB:Clone:coel::GFP",
+      "name": "coel::GFP",
+      "taxon_curie": "NCBITaxon:6239",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Vector carrying unc-122 promoter in a 4000bp construct. This has been cloned into PstI-BamHI sites of pPD95.77."
+        },
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Plasmid clone data imported from AddGene."
+        },
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Source Vector_type: Worm expression"
+        },
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Source Author: Piali Sengupta"
+        },
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Source Primer1: M13R"
+        },
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Source Resistance_marker: Ampicillin"
+        }
+      ],
+      "clone_vector_type_name": "plasmid",
+      "clone_insert_length": 4000,
+      "cross_reference_dtos": [
+        {
+          "internal": false,
+          "prefix": "Addgene",
+          "page_area": "default",
+          "referenced_curie": "Addgene:8937",
+          "display_name": "8937"
+        }
+      ],
+      "clone_backbone_length": 4500,
+      "derived_from_reagent_identifiers": [
+        "WB:Clone:pPD95.77"
+      ]
+    },
+    {
+      "internal": false,
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "WB"
+      },
+      "mod_internal_id": "WB:Clone:pPD95.77",
+      "name": "pPD95.77",
+      "taxon_curie": "NCBITaxon:6239",
+      "clone_vector_type_name": "plasmid",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Fire Vector Kit comment:Promoterless gfp vector."
+        },
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Plasmid clone data imported from AddGene."
+        },
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Source Author: Andrew Fire"
+        },
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Source Resistance_marker: Ampicillin"
+        }
+      ],
+      "cross_reference_dtos": [
+        {
+          "internal": false,
+          "prefix": "Addgene",
+          "page_area": "default",
+          "referenced_curie": "Addgene:1495",
+          "display_name": "1495"
+        }
+      ],
+      "clone_backbone_length": 4493
+    },
+    {
+      "internal": false,
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "WB"
+      },
+      "mod_internal_id": "WB:Clone:B0496",
+      "name": "B0496",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "B0496 has both positive_gene and negative_gene links to egl-19 (WBGene00001187). Chris Grove #140 explains partial overlap; no exact fraction or coordinates are inferred."
+        }
+      ],
+      "taxon_curie": "NCBITaxon:6239"
+    }
+  ],
+  "pcr_product_ingest_set": [
+    {
+      "internal": false,
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "WB"
+      },
+      "mod_internal_id": "WB:PCR_product:mv_AAA28110",
+      "name": "mv_AAA28110",
+      "taxon_curie": "NCBITaxon:6239",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "DQM review: left/right mapping primers are provisionally mapped to forward/reverse without reversing the source sequences. Confirm the source orientation convention."
+        },
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Source Method: Orfeome"
+        },
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Source Clone: OST10017A2"
+        }
+      ],
+      "pcr_assay_conditions": "to perform this experiment in the 96 well format, \n  - the annealing temperature of the primers for each plate must be the \n  same, and \n  - the ORF should have the same size in average (+ - 500 pb) in a plate \n  to adjust the elongation time. \n  use a High Fidelity taq DNA polymerase to diminish the mutation rate \n  inherent to the PCR reaction. \n\n  PCR one reaction: \n\n  10X buffer:  5ul   1X final \n  100mM dNTPs 0,4ul (0,1ul each) 0,2mM final each \n  50 mM MgSO4 2ul   2mM final \n  primer1 20uM  1ul   4uM final \n  primer2 20uM  1ul   4uM final \n  cDNA library  200-400ng   (depending on the size of the ORF) \n  PlatinumHF (Gibco) 0,2ul   up to 0,5ul if necessary \n  H2O  up to 50ul \n\n  PCR condition: \n\n  1- 94C  2' \n  2- 94C  45s \n  3- 54C  1' \n  4- 68C  1'/kb \n  5- go to step 2( 35 times) \n  6- 68C  5' \n  7- 4C for ever\n\n  using Platinum taq from Invitrogen",
+      "pcr_assay_method_name": "PCR",
+      "pcr_template_description": "cDNA library 200-400ng (depending on the size of the ORF)",
+      "pcr_primer_use_dtos": [
+        {
+          "primer_oligo_identifier": "WB:Oligo:mv_AAA28110_b",
+          "primer_use_name": "product",
+          "primer_source_relation": "oligo",
+          "primer_source_release": "WS298",
+          "primer_orientation_name": "reverse",
+          "primer_source_detail": "Direction from source-name suffix convention confirmed by Chris Grove #141; applies to this product use."
+        },
+        {
+          "primer_oligo_identifier": "WB:Oligo:mv_AAA28110_f",
+          "primer_use_name": "product",
+          "primer_source_relation": "oligo",
+          "primer_source_release": "WS298",
+          "primer_orientation_name": "forward",
+          "primer_source_detail": "Direction from source-name suffix convention confirmed by Chris Grove #141; applies to this product use."
+        },
+        {
+          "primer_sequence": "AATGAGCCGCAGCAGTTCCCTGGTGTTGAT",
+          "primer_use_name": "confirmation",
+          "primer_source_relation": "left_mapping_primer",
+          "primer_source_release": "WS298",
+          "primer_source_detail": "Separate confirmation set per Chris Grove #141\u2013142. Source left/right retained; genomic-template interpretation and exact direction need confirmation."
+        },
+        {
+          "primer_sequence": "TGGCTTGCAAGTGTGGTGAGTTAATCTATA",
+          "primer_use_name": "confirmation",
+          "primer_source_relation": "right_mapping_primer",
+          "primer_source_release": "WS298",
+          "primer_source_detail": "Separate confirmation set per Chris Grove #141\u2013142. Source left/right retained; genomic-template interpretation and exact direction need confirmation."
+        }
+      ],
+      "pcr_template_origin_name": "cDNA"
+    },
+    {
+      "internal": false,
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "WB"
+      },
+      "mod_internal_id": "WB:PCR_product:bdP4",
+      "name": "bdP4",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Type:DELETION; Seq_change:Predicted AF16:1013; Observed AF16:~990; Predicted HK104:903; Observed HK104:~880;"
+        },
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Validation_status:110 bp deletion"
+        },
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Source Method: Mapped_var_PCR"
+        }
+      ],
+      "pcr_primer_use_dtos": [
+        {
+          "primer_oligo_identifier": "WB:Oligo:bdP4_f",
+          "primer_use_name": "product",
+          "primer_source_relation": "oligo",
+          "primer_source_release": "WS298",
+          "primer_orientation_name": "forward",
+          "primer_source_detail": "Direction from source-name suffix convention confirmed by Chris Grove #141; applies to this product use."
+        },
+        {
+          "primer_oligo_identifier": "WB:Oligo:bdP4_r",
+          "primer_use_name": "product",
+          "primer_source_relation": "oligo",
+          "primer_source_release": "WS298",
+          "primer_orientation_name": "reverse",
+          "primer_source_detail": "Direction from source-name suffix convention confirmed by Chris Grove #141; applies to this product use."
+        }
+      ]
+    },
+    {
+      "internal": false,
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "WB"
+      },
+      "mod_internal_id": "WB:PCR_product:sjj2_2RSSE.1",
+      "name": "sjj2_2RSSE.1",
+      "note_dtos": [],
+      "pcr_primer_use_dtos": [
+        {
+          "primer_oligo_identifier": "WB:Oligo:sjj2_2RSSE.1_F2",
+          "primer_use_name": "product",
+          "primer_source_relation": "oligo",
+          "primer_source_release": "WS298",
+          "primer_source_detail": "Direction unresolved; no rule is assumed beyond the suffix conventions confirmed in #141."
+        },
+        {
+          "primer_oligo_identifier": "WB:Oligo:sjj2_2RSSE.1_R2",
+          "primer_use_name": "product",
+          "primer_source_relation": "oligo",
+          "primer_source_release": "WS298",
+          "primer_source_detail": "Direction unresolved; no rule is assumed beyond the suffix conventions confirmed in #141."
+        }
+      ],
+      "pcr_template_origin_name": "genomic DNA",
+      "pcr_template_description": "Genomic DNA, per Chris Grove #141 for sjj_/sjj2_ PCR_product names; source Assay_conditions: GenePair_protocol."
+    }
+  ],
+  "oligo_ingest_set": [
+    {
+      "internal": false,
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "WB"
+      },
+      "mod_internal_id": "WB:Oligo:mv_AAA28110_b",
+      "name": "mv_AAA28110_b",
+      "oligo_sequence": "AATGAGCCGCAGCAGTTC"
+    },
+    {
+      "internal": false,
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "WB"
+      },
+      "mod_internal_id": "WB:Oligo:mv_AAA28110_f",
+      "name": "mv_AAA28110_f",
+      "oligo_sequence": "TGGCTTGCAAGTGTGACTGCAAA"
+    },
+    {
+      "internal": false,
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "WB"
+      },
+      "mod_internal_id": "WB:Oligo:bdP4_f",
+      "name": "bdP4_f",
+      "oligo_sequence": "CAGGCGAAAAATGCCTGACAAGTG"
+    },
+    {
+      "internal": false,
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "WB"
+      },
+      "mod_internal_id": "WB:Oligo:bdP4_r",
+      "name": "bdP4_r",
+      "oligo_sequence": "AATCCGTTCCGTTGATGGAGGC"
+    },
+    {
+      "internal": false,
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "WB"
+      },
+      "mod_internal_id": "WB:Oligo:sjj2_2RSSE.1_F2",
+      "name": "sjj2_2RSSE.1_F2",
+      "oligo_sequence": "TGCCAGTTAGCAAAATGCTG"
+    },
+    {
+      "internal": false,
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "WB"
+      },
+      "mod_internal_id": "WB:Oligo:sjj2_2RSSE.1_R2",
+      "name": "sjj2_2RSSE.1_R2",
+      "oligo_sequence": "TAATCTAGGCTCCGCCCTTT"
+    }
+  ],
+  "nucleic_acid_reagent_genomic_entity_association_ingest_set": [
+    {
+      "internal": false,
+      "nucleic_acid_reagent_identifier": "WB:Clone:B0496",
+      "relation_name": "contains_gene",
+      "genomic_entity_identifier": "WB:WBGene00001187",
+      "reagent_association_source_relation": "positive_gene",
+      "reagent_association_source_release": "WS298",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Mapping per Chris Grove #140. Positive records some gene sequence present; negative records some gene sequence absent. Neither asserts whole-gene inclusion or exclusion; both may coexist."
+        }
+      ]
+    },
+    {
+      "internal": false,
+      "nucleic_acid_reagent_identifier": "WB:Clone:B0496",
+      "relation_name": "contains_gene",
+      "genomic_entity_identifier": "WB:WBGene00006814",
+      "reagent_association_source_relation": "positive_gene",
+      "reagent_association_source_release": "WS298",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Mapping per Chris Grove #140. Positive records some gene sequence present; negative records some gene sequence absent. Neither asserts whole-gene inclusion or exclusion; both may coexist."
+        }
+      ]
+    },
+    {
+      "internal": false,
+      "nucleic_acid_reagent_identifier": "WB:Clone:B0496",
+      "relation_name": "contains_gene",
+      "genomic_entity_identifier": "WB:WBGene00015216",
+      "reagent_association_source_relation": "positive_gene",
+      "reagent_association_source_release": "WS298",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Mapping per Chris Grove #140. Positive records some gene sequence present; negative records some gene sequence absent. Neither asserts whole-gene inclusion or exclusion; both may coexist."
+        }
+      ]
+    },
+    {
+      "internal": false,
+      "nucleic_acid_reagent_identifier": "WB:Clone:B0496",
+      "relation_name": "contains_gene",
+      "genomic_entity_identifier": "WB:WBGene00015217",
+      "reagent_association_source_relation": "positive_gene",
+      "reagent_association_source_release": "WS298",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Mapping per Chris Grove #140. Positive records some gene sequence present; negative records some gene sequence absent. Neither asserts whole-gene inclusion or exclusion; both may coexist."
+        }
+      ]
+    },
+    {
+      "internal": false,
+      "nucleic_acid_reagent_identifier": "WB:Clone:B0496",
+      "relation_name": "contains_gene",
+      "genomic_entity_identifier": "WB:WBGene00015214",
+      "reagent_association_source_relation": "positive_gene",
+      "reagent_association_source_release": "WS298",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Mapping per Chris Grove #140. Positive records some gene sequence present; negative records some gene sequence absent. Neither asserts whole-gene inclusion or exclusion; both may coexist."
+        }
+      ]
+    },
+    {
+      "internal": false,
+      "nucleic_acid_reagent_identifier": "WB:Clone:B0496",
+      "relation_name": "contains_gene",
+      "genomic_entity_identifier": "WB:WBGene00167671",
+      "reagent_association_source_relation": "positive_gene",
+      "reagent_association_source_release": "WS298",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Mapping per Chris Grove #140. Positive records some gene sequence present; negative records some gene sequence absent. Neither asserts whole-gene inclusion or exclusion; both may coexist."
+        }
+      ]
+    },
+    {
+      "internal": false,
+      "nucleic_acid_reagent_identifier": "WB:Clone:B0496",
+      "relation_name": "contains_gene",
+      "genomic_entity_identifier": "WB:WBGene00174454",
+      "reagent_association_source_relation": "positive_gene",
+      "reagent_association_source_release": "WS298",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Mapping per Chris Grove #140. Positive records some gene sequence present; negative records some gene sequence absent. Neither asserts whole-gene inclusion or exclusion; both may coexist."
+        }
+      ]
+    },
+    {
+      "internal": false,
+      "nucleic_acid_reagent_identifier": "WB:Clone:B0496",
+      "relation_name": "contains_gene",
+      "genomic_entity_identifier": "WB:WBGene00015215",
+      "reagent_association_source_relation": "positive_gene",
+      "reagent_association_source_release": "WS298",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Mapping per Chris Grove #140. Positive records some gene sequence present; negative records some gene sequence absent. Neither asserts whole-gene inclusion or exclusion; both may coexist."
+        }
+      ]
+    },
+    {
+      "internal": false,
+      "nucleic_acid_reagent_identifier": "WB:Clone:B0496",
+      "relation_name": "contains_gene",
+      "genomic_entity_identifier": "WB:WBGene00015211",
+      "reagent_association_source_relation": "positive_gene",
+      "reagent_association_source_release": "WS298",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Mapping per Chris Grove #140. Positive records some gene sequence present; negative records some gene sequence absent. Neither asserts whole-gene inclusion or exclusion; both may coexist."
+        }
+      ]
+    },
+    {
+      "internal": false,
+      "nucleic_acid_reagent_identifier": "WB:Clone:B0496",
+      "relation_name": "contains_gene",
+      "genomic_entity_identifier": "WB:WBGene00015210",
+      "reagent_association_source_relation": "positive_gene",
+      "reagent_association_source_release": "WS298",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Mapping per Chris Grove #140. Positive records some gene sequence present; negative records some gene sequence absent. Neither asserts whole-gene inclusion or exclusion; both may coexist."
+        }
+      ]
+    },
+    {
+      "internal": false,
+      "nucleic_acid_reagent_identifier": "WB:Clone:B0496",
+      "relation_name": "contains_gene",
+      "genomic_entity_identifier": "WB:WBGene00195793",
+      "reagent_association_source_relation": "positive_gene",
+      "reagent_association_source_release": "WS298",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Mapping per Chris Grove #140. Positive records some gene sequence present; negative records some gene sequence absent. Neither asserts whole-gene inclusion or exclusion; both may coexist."
+        }
+      ]
+    },
+    {
+      "internal": false,
+      "nucleic_acid_reagent_identifier": "WB:Clone:B0496",
+      "relation_name": "contains_gene",
+      "genomic_entity_identifier": "WB:WBGene00195826",
+      "reagent_association_source_relation": "positive_gene",
+      "reagent_association_source_release": "WS298",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Mapping per Chris Grove #140. Positive records some gene sequence present; negative records some gene sequence absent. Neither asserts whole-gene inclusion or exclusion; both may coexist."
+        }
+      ]
+    },
+    {
+      "internal": false,
+      "nucleic_acid_reagent_identifier": "WB:Clone:B0496",
+      "relation_name": "contains_gene",
+      "genomic_entity_identifier": "WB:WBGene00198668",
+      "reagent_association_source_relation": "positive_gene",
+      "reagent_association_source_release": "WS298",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Mapping per Chris Grove #140. Positive records some gene sequence present; negative records some gene sequence absent. Neither asserts whole-gene inclusion or exclusion; both may coexist."
+        }
+      ]
+    },
+    {
+      "internal": false,
+      "nucleic_acid_reagent_identifier": "WB:Clone:B0496",
+      "relation_name": "contains_gene",
+      "genomic_entity_identifier": "WB:WBGene00198986",
+      "reagent_association_source_relation": "positive_gene",
+      "reagent_association_source_release": "WS298",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Mapping per Chris Grove #140. Positive records some gene sequence present; negative records some gene sequence absent. Neither asserts whole-gene inclusion or exclusion; both may coexist."
+        }
+      ]
+    },
+    {
+      "internal": false,
+      "nucleic_acid_reagent_identifier": "WB:Clone:B0496",
+      "relation_name": "contains_gene",
+      "genomic_entity_identifier": "WB:WBGene00199083",
+      "reagent_association_source_relation": "positive_gene",
+      "reagent_association_source_release": "WS298",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Mapping per Chris Grove #140. Positive records some gene sequence present; negative records some gene sequence absent. Neither asserts whole-gene inclusion or exclusion; both may coexist."
+        }
+      ]
+    },
+    {
+      "internal": false,
+      "nucleic_acid_reagent_identifier": "WB:Clone:B0496",
+      "relation_name": "contains_gene",
+      "genomic_entity_identifier": "WB:WBGene00199787",
+      "reagent_association_source_relation": "positive_gene",
+      "reagent_association_source_release": "WS298",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Mapping per Chris Grove #140. Positive records some gene sequence present; negative records some gene sequence absent. Neither asserts whole-gene inclusion or exclusion; both may coexist."
+        }
+      ]
+    },
+    {
+      "internal": false,
+      "nucleic_acid_reagent_identifier": "WB:Clone:B0496",
+      "relation_name": "contains_gene",
+      "genomic_entity_identifier": "WB:WBGene00199849",
+      "reagent_association_source_relation": "positive_gene",
+      "reagent_association_source_release": "WS298",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Mapping per Chris Grove #140. Positive records some gene sequence present; negative records some gene sequence absent. Neither asserts whole-gene inclusion or exclusion; both may coexist."
+        }
+      ]
+    },
+    {
+      "internal": false,
+      "nucleic_acid_reagent_identifier": "WB:Clone:B0496",
+      "relation_name": "contains_gene",
+      "genomic_entity_identifier": "WB:WBGene00201851",
+      "reagent_association_source_relation": "positive_gene",
+      "reagent_association_source_release": "WS298",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Mapping per Chris Grove #140. Positive records some gene sequence present; negative records some gene sequence absent. Neither asserts whole-gene inclusion or exclusion; both may coexist."
+        }
+      ]
+    },
+    {
+      "internal": false,
+      "nucleic_acid_reagent_identifier": "WB:Clone:B0496",
+      "relation_name": "contains_gene",
+      "genomic_entity_identifier": "WB:WBGene00194883",
+      "reagent_association_source_relation": "positive_gene",
+      "reagent_association_source_release": "WS298",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Mapping per Chris Grove #140. Positive records some gene sequence present; negative records some gene sequence absent. Neither asserts whole-gene inclusion or exclusion; both may coexist."
+        }
+      ]
+    },
+    {
+      "internal": false,
+      "nucleic_acid_reagent_identifier": "WB:Clone:B0496",
+      "relation_name": "does_not_contain_gene",
+      "genomic_entity_identifier": "WB:WBGene00001187",
+      "reagent_association_source_relation": "negative_gene",
+      "reagent_association_source_release": "WS298",
+      "note_dtos": [
+        {
+          "internal": false,
+          "note_type_name": "comment",
+          "free_text": "Mapping per Chris Grove #140. Positive records some gene sequence present; negative records some gene sequence absent. Neither asserts whole-gene inclusion or exclusion; both may coexist."
+        }
+      ]
+    }
+  ]
+}

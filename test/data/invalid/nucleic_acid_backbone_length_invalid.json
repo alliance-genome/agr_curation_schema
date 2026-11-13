@@ -1,0 +1,16 @@
+{
+  "linkml_version": "2.19.0",
+  "alliance_member_release_version": "WS298",
+  "dna_clone_ingest_set": [
+    {
+      "internal": false,
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "WB"
+      },
+      "mod_internal_id": "WB:Clone:coel::GFP",
+      "name": "coel::GFP",
+      "clone_backbone_length": 0
+    }
+  ]
+}

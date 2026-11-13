@@ -1,0 +1,51 @@
+{
+  "dna_clone_ingest_set": [
+    {
+      "internal": false,
+      "primary_external_id": "XB:EXAMPLE_CLONE_1",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "XB"
+      },
+      "name": "Illustrative clone of unknown insert origin",
+      "nucleic_acid_source_dtos": [
+        {
+          "internal": false,
+          "source_library_identifier": "XB:EXAMPLE_LIBRARY_1",
+          "source_library_name": "Example library one",
+          "source_vector_name": "Example library vector"
+        },
+        {
+          "internal": false,
+          "source_library_identifier": "XB:EXAMPLE_LIBRARY_2",
+          "source_library_name": "Example library two",
+          "source_vector_type_name": "not specified",
+          "source_cloning_sites": [
+            "EcoRI"
+          ]
+        }
+      ],
+      "reagent_sequence_dtos": [
+        {
+          "internal": false,
+          "reagent_sequence_source_identifier": "XB:EXAMPLE_READ_5",
+          "reagent_sequence_accessions": [
+            "INSDC:EXAMPLE_5.1"
+          ],
+          "reagent_sequence_role_name": "5-prime EST"
+        },
+        {
+          "internal": false,
+          "reagent_sequence_source_identifier": "XB:EXAMPLE_READ_3",
+          "reagent_sequence_role_name": "3-prime EST",
+          "reagent_sequence_residues": "ATGNNNTAA"
+        }
+      ],
+      "clone_insert_origin_name": [
+        "cDNA",
+        "genomic DNA"
+      ]
+    }
+  ],
+  "linkml_version": "2.19.0"
+}
