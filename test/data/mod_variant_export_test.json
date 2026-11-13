@@ -1,0 +1,45 @@
+{
+  "mod_variants": [
+    {
+      "allele_identifier": "ZFIN:ZDB-ALT-080929-3",
+      "variant_curie": "AGRKB:107000000060080",
+      "hgvs_genomic_nomenclature": "NC_133187.1:g.6252231G>T",
+      "hgvs_coding_nomenclatures": [
+        "NM_131322.2:c.3G>T"
+      ],
+      "hgvs_protein_nomenclatures": [
+        "NP_571397.2:p.Met1?"
+      ],
+      "predicted_variant_consequences": [
+        {
+          "transcript_identifier": "NM_131322.2",
+          "transcript_name": "NM_131322.2",
+          "transcript_type_name": "mRNA",
+          "gene_identifier": "ZFIN:ZDB-GENE-980526-280",
+          "gene_symbol": "dlx3b",
+          "vep_impact_name": "HIGH",
+          "vep_consequence_names": [
+            "start_lost"
+          ],
+          "polyphen_prediction_name": "possibly_damaging",
+          "polyphen_score": 0.929,
+          "sift_prediction_name": "deleterious",
+          "sift_score": 0.0,
+          "amino_acid_reference": "M",
+          "amino_acid_variant": "I",
+          "codon_reference": "atG",
+          "codon_variant": "atT",
+          "calculated_cdna_start": 143,
+          "calculated_cdna_end": 143,
+          "calculated_cds_start": 3,
+          "calculated_cds_end": 3,
+          "calculated_protein_start": 1,
+          "calculated_protein_end": 1,
+          "hgvs_coding_nomenclature": "NM_131322.2:c.3G>T",
+          "hgvs_protein_nomenclature": "NP_571397.2:p.Met1?",
+          "intron_exon_location": "Exon 1/3"
+        }
+      ]
+    }
+  ]
+}
