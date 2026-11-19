@@ -1,0 +1,786 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://github.com/alliance-genome/agr_curation_schema/ModVariantConsequence/" rel="canonical"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<title>ModVariantConsequence - Alliance Persistent Store</title>
+<link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#modvariantconsequence">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Alliance Persistent Store" class="md-header__button md-logo" data-md-component="logo" href=".." title="Alliance Persistent Store">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Alliance Persistent Store
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              ModVariantConsequence
+            
+          </span>
+</div>
+</div>
+</div>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/alliance-genome/agr_curation_schema" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Alliance Persistent Store" class="md-nav__button md-logo" data-md-component="logo" href=".." title="Alliance Persistent Store">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Alliance Persistent Store
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/alliance-genome/agr_curation_schema" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    
+  
+    Browse the Model
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../developing-the-model/">
+<span class="md-ellipsis">
+    
+  
+    Developing the Alliance Model
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="https://linkml.io/linkml/intro/tutorial.html">
+<span class="md-ellipsis">
+    
+  
+    LinkML Tutorial
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#induced">
+<span class="md-ellipsis">
+      
+        Induced
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="modvariantconsequence">ModVariantConsequence</h1>
+<p>The predicted consequence of a variant on one transcript: the fields of a PredictedVariantConsequence shown in the Genomic Variant Information and Variant Molecular Consequences sections of the allele page, with each object reduced to its identifier or name.</p>
+<div class="mermaid"> classDiagram
+    class ModVariantConsequence
+      ModVariantConsequence : amino_acid_reference
+      ModVariantConsequence : amino_acid_variant
+      ModVariantConsequence : calculated_cdna_end
+      ModVariantConsequence : calculated_cdna_start
+      ModVariantConsequence : calculated_cds_end
+      ModVariantConsequence : calculated_cds_start
+      ModVariantConsequence : calculated_protein_end
+      ModVariantConsequence : calculated_protein_start
+      ModVariantConsequence : codon_reference
+      ModVariantConsequence : codon_variant
+      ModVariantConsequence : gene_identifier
+      ModVariantConsequence : gene_symbol
+      ModVariantConsequence : hgvs_coding_nomenclature
+      ModVariantConsequence : hgvs_protein_nomenclature
+      ModVariantConsequence : intron_exon_location
+      ModVariantConsequence : polyphen_prediction_name
+      ModVariantConsequence : polyphen_score
+      ModVariantConsequence : sift_prediction_name
+      ModVariantConsequence : sift_score
+      ModVariantConsequence : transcript_identifier
+      ModVariantConsequence : transcript_name
+      ModVariantConsequence : transcript_type_name
+      ModVariantConsequence : vep_consequence_names
+      ModVariantConsequence : vep_impact_name
+
+
+
+
+
+URI: [alliance:ModVariantConsequence](http://alliancegenome.org/ModVariantConsequence)
+
+
+## Parent Classes
+
+
+
+
+&lt;!-- no inheritance hierarchy --&gt;
+
+
+## Slots
+
+| Name | Description  |
+| ---  | ---  |
+| [amino_acid_reference](amino_acid_reference.md) | Reference genome amino acid sequence at the variant position |
+| [amino_acid_variant](amino_acid_variant.md) | Variant amino acid sequence at the variant position |
+| [calculated_cdna_end](calculated_cdna_end.md) | End of the variant in cDNA coordinates, as calculated by VEP |
+| [calculated_cdna_start](calculated_cdna_start.md) | Start of the variant in cDNA coordinates, as calculated by VEP |
+| [calculated_cds_end](calculated_cds_end.md) | End of the variant in CDS coordinates, as calculated by VEP |
+| [calculated_cds_start](calculated_cds_start.md) | Start of the variant in CDS coordinates, as calculated by VEP |
+| [calculated_protein_end](calculated_protein_end.md) | End of the variant in protein amino acid coordinates, as calculated by VEP |
+| [calculated_protein_start](calculated_protein_start.md) | Start of the variant in protein amino acid coordinates, as calculated by VEP |
+| [codon_reference](codon_reference.md) | Reference sequence of the codon(s) affected by the variant: bases outside the variant region are in lower case, those within in upper case (e.g. cTa) |
+| [codon_variant](codon_variant.md) | Variant sequence of the codon(s) affected by the variant: bases outside the variant region are in lower case, those within in upper case (e.g. cAa) |
+| [gene_identifier](gene_identifier.md) | Primary external ID of the gene the transcript belongs to |
+| [gene_symbol](gene_symbol.md) | Symbol of the gene the transcript belongs to |
+| [hgvs_coding_nomenclature](hgvs_coding_nomenclature.md) | HGVSc nomenclature of the variant on the transcript |
+| [hgvs_protein_nomenclature](hgvs_protein_nomenclature.md) | HGVSp nomenclature of the variant on the protein |
+| [intron_exon_location](intron_exon_location.md) | The exon(s) and/or intron(s) of the transcript the variant falls in, each as number/total |
+| [polyphen_prediction_name](polyphen_prediction_name.md) | PolyPhen-2 prediction |
+| [polyphen_score](polyphen_score.md) | PolyPhen-2 score between 0 and 1 |
+| [sift_prediction_name](sift_prediction_name.md) | SIFT prediction |
+| [sift_score](sift_score.md) | SIFT score between 0 and 1 |
+| [transcript_identifier](transcript_identifier.md) | Accession of the transcript, or its Alliance identifier when it has none |
+| [transcript_name](transcript_name.md) | Name of the transcript |
+| [transcript_type_name](transcript_type_name.md) | Name of the SOTerm for the transcript type |
+| [vep_consequence_names](vep_consequence_names.md) | Names of the SOTerms for the VEP consequences |
+| [vep_impact_name](vep_impact_name.md) | VEP predicted impact of the variant on the transcript |
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | ['alliance:ModVariantConsequence'] |
+| native | ['alliance:ModVariantConsequence'] |
+
+
+
+
+## LinkML Specification
+
+&lt;!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx --&gt;
+
+### Direct
+
+&lt;details&gt;
+```yaml
+name: ModVariantConsequence
+description: 'The predicted consequence of a variant on one transcript: the fields
+  of a PredictedVariantConsequence shown in the Genomic Variant Information and Variant
+  Molecular Consequences sections of the allele page, with each object reduced to
+  its identifier or name.'
+from_schema: https://github.com/alliance-genome/agr_curation_schema/alliance_schema
+attributes:
+  transcript_identifier:
+    name: transcript_identifier
+    description: Accession of the transcript, or its Alliance identifier when it has
+      none
+    examples:
+    - value: NM_131322.2
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    domain_of:
+    - AlleleTranscriptAssociationDTO
+    - VariantTranscriptLocationAssociationDTO
+    - ModVariantConsequence
+    required: true
+  transcript_name:
+    name: transcript_name
+    description: Name of the transcript
+    examples:
+    - value: NM_131322.2
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    domain_of:
+    - ModVariantConsequence
+  transcript_type_name:
+    name: transcript_type_name
+    description: Name of the SOTerm for the transcript type
+    examples:
+    - value: mRNA
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    domain_of:
+    - ModVariantConsequence
+  gene_identifier:
+    name: gene_identifier
+    description: Primary external ID of the gene the transcript belongs to
+    examples:
+    - value: ZFIN:ZDB-GENE-980526-280
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    domain_of:
+    - StrGeneAssociationDTO
+    - AlleleGeneAssociationDTO
+    - GeneFunctionalGeneSetAssociationDTO
+    - GeneExpressionExperimentDTO
+    - GeneChangeEventSlotAnnotationDTO
+    - GeneOntologyAnnotationDTO
+    - GenePhenotypeAnnotationDTO
+    - GeneDiseaseAnnotationDTO
+    - ModVariantConsequence
+  gene_symbol:
+    name: gene_symbol
+    description: Symbol of the gene the transcript belongs to
+    examples:
+    - value: dlx3b
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    domain_of:
+    - Gene
+    - ModVariantConsequence
+  vep_impact_name:
+    name: vep_impact_name
+    description: VEP predicted impact of the variant on the transcript
+    notes:
+    - 'permissible_values: HIGH, MODERATE, LOW, MODIFIER'
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    domain_of:
+    - ModVariantConsequence
+    required: true
+  vep_consequence_names:
+    name: vep_consequence_names
+    description: Names of the SOTerms for the VEP consequences
+    examples:
+    - value: start_lost
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    domain_of:
+    - ModVariantConsequence
+    required: true
+    multivalued: true
+  polyphen_prediction_name:
+    name: polyphen_prediction_name
+    description: PolyPhen-2 prediction
+    notes:
+    - 'permissible_values: possibly_damaging, probably_damaging, benign'
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    domain_of:
+    - ModVariantConsequence
+  polyphen_score:
+    name: polyphen_score
+    description: PolyPhen-2 score between 0 and 1
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+    range: float
+  sift_prediction_name:
+    name: sift_prediction_name
+    description: SIFT prediction
+    notes:
+    - 'permissible_values: deleterious, tolerated'
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    domain_of:
+    - ModVariantConsequence
+  sift_score:
+    name: sift_score
+    description: SIFT score between 0 and 1
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+    range: float
+  amino_acid_reference:
+    name: amino_acid_reference
+    description: Reference genome amino acid sequence at the variant position
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+  amino_acid_variant:
+    name: amino_acid_variant
+    description: Variant amino acid sequence at the variant position
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+  codon_reference:
+    name: codon_reference
+    description: 'Reference sequence of the codon(s) affected by the variant: bases
+      outside the variant region are in lower case, those within in upper case (e.g.
+      cTa)'
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+  codon_variant:
+    name: codon_variant
+    description: 'Variant sequence of the codon(s) affected by the variant: bases
+      outside the variant region are in lower case, those within in upper case (e.g.
+      cAa)'
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+  calculated_cdna_start:
+    name: calculated_cdna_start
+    description: Start of the variant in cDNA coordinates, as calculated by VEP
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+    range: integer
+  calculated_cdna_end:
+    name: calculated_cdna_end
+    description: End of the variant in cDNA coordinates, as calculated by VEP
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+    range: integer
+  calculated_cds_start:
+    name: calculated_cds_start
+    description: Start of the variant in CDS coordinates, as calculated by VEP
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+    range: integer
+  calculated_cds_end:
+    name: calculated_cds_end
+    description: End of the variant in CDS coordinates, as calculated by VEP
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+    range: integer
+  calculated_protein_start:
+    name: calculated_protein_start
+    description: Start of the variant in protein amino acid coordinates, as calculated
+      by VEP
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+    range: integer
+  calculated_protein_end:
+    name: calculated_protein_end
+    description: End of the variant in protein amino acid coordinates, as calculated
+      by VEP
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+    range: integer
+  hgvs_coding_nomenclature:
+    name: hgvs_coding_nomenclature
+    description: HGVSc nomenclature of the variant on the transcript
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+  hgvs_protein_nomenclature:
+    name: hgvs_protein_nomenclature
+    description: HGVSp nomenclature of the variant on the protein
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+  intron_exon_location:
+    name: intron_exon_location
+    description: The exon(s) and/or intron(s) of the transcript the variant falls
+      in, each as number/total
+    examples:
+    - value: Exon 1/3
+    - value: 'Exon 2/5 : Intron 2/4'
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    domain_of:
+    - ModVariantConsequence
+
+</div>
+
+<h3 id="induced">Induced</h3>
+<details>
+<pre><code class="language-yaml">name: ModVariantConsequence
+description: 'The predicted consequence of a variant on one transcript: the fields
+  of a PredictedVariantConsequence shown in the Genomic Variant Information and Variant
+  Molecular Consequences sections of the allele page, with each object reduced to
+  its identifier or name.'
+from_schema: https://github.com/alliance-genome/agr_curation_schema/alliance_schema
+attributes:
+  transcript_identifier:
+    name: transcript_identifier
+    description: Accession of the transcript, or its Alliance identifier when it has
+      none
+    examples:
+    - value: NM_131322.2
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    owner: ModVariantConsequence
+    domain_of:
+    - AlleleTranscriptAssociationDTO
+    - VariantTranscriptLocationAssociationDTO
+    - ModVariantConsequence
+    range: string
+    required: true
+  transcript_name:
+    name: transcript_name
+    description: Name of the transcript
+    examples:
+    - value: NM_131322.2
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    owner: ModVariantConsequence
+    domain_of:
+    - ModVariantConsequence
+    range: string
+  transcript_type_name:
+    name: transcript_type_name
+    description: Name of the SOTerm for the transcript type
+    examples:
+    - value: mRNA
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    owner: ModVariantConsequence
+    domain_of:
+    - ModVariantConsequence
+    range: string
+  gene_identifier:
+    name: gene_identifier
+    description: Primary external ID of the gene the transcript belongs to
+    examples:
+    - value: ZFIN:ZDB-GENE-980526-280
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    owner: ModVariantConsequence
+    domain_of:
+    - StrGeneAssociationDTO
+    - AlleleGeneAssociationDTO
+    - GeneFunctionalGeneSetAssociationDTO
+    - GeneExpressionExperimentDTO
+    - GeneChangeEventSlotAnnotationDTO
+    - GeneOntologyAnnotationDTO
+    - GenePhenotypeAnnotationDTO
+    - GeneDiseaseAnnotationDTO
+    - ModVariantConsequence
+    range: string
+  gene_symbol:
+    name: gene_symbol
+    description: Symbol of the gene the transcript belongs to
+    examples:
+    - value: dlx3b
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    owner: ModVariantConsequence
+    domain_of:
+    - Gene
+    - ModVariantConsequence
+    range: string
+  vep_impact_name:
+    name: vep_impact_name
+    description: VEP predicted impact of the variant on the transcript
+    notes:
+    - 'permissible_values: HIGH, MODERATE, LOW, MODIFIER'
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    owner: ModVariantConsequence
+    domain_of:
+    - ModVariantConsequence
+    range: string
+    required: true
+  vep_consequence_names:
+    name: vep_consequence_names
+    description: Names of the SOTerms for the VEP consequences
+    examples:
+    - value: start_lost
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    owner: ModVariantConsequence
+    domain_of:
+    - ModVariantConsequence
+    range: string
+    required: true
+    multivalued: true
+  polyphen_prediction_name:
+    name: polyphen_prediction_name
+    description: PolyPhen-2 prediction
+    notes:
+    - 'permissible_values: possibly_damaging, probably_damaging, benign'
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    owner: ModVariantConsequence
+    domain_of:
+    - ModVariantConsequence
+    range: string
+  polyphen_score:
+    name: polyphen_score
+    description: PolyPhen-2 score between 0 and 1
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    owner: ModVariantConsequence
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+    range: float
+  sift_prediction_name:
+    name: sift_prediction_name
+    description: SIFT prediction
+    notes:
+    - 'permissible_values: deleterious, tolerated'
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    owner: ModVariantConsequence
+    domain_of:
+    - ModVariantConsequence
+    range: string
+  sift_score:
+    name: sift_score
+    description: SIFT score between 0 and 1
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    owner: ModVariantConsequence
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+    range: float
+  amino_acid_reference:
+    name: amino_acid_reference
+    description: Reference genome amino acid sequence at the variant position
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    owner: ModVariantConsequence
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+    range: string
+  amino_acid_variant:
+    name: amino_acid_variant
+    description: Variant amino acid sequence at the variant position
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    owner: ModVariantConsequence
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+    range: string
+  codon_reference:
+    name: codon_reference
+    description: 'Reference sequence of the codon(s) affected by the variant: bases
+      outside the variant region are in lower case, those within in upper case (e.g.
+      cTa)'
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    owner: ModVariantConsequence
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+    range: string
+  codon_variant:
+    name: codon_variant
+    description: 'Variant sequence of the codon(s) affected by the variant: bases
+      outside the variant region are in lower case, those within in upper case (e.g.
+      cAa)'
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    owner: ModVariantConsequence
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+    range: string
+  calculated_cdna_start:
+    name: calculated_cdna_start
+    description: Start of the variant in cDNA coordinates, as calculated by VEP
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    owner: ModVariantConsequence
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+    range: integer
+  calculated_cdna_end:
+    name: calculated_cdna_end
+    description: End of the variant in cDNA coordinates, as calculated by VEP
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    owner: ModVariantConsequence
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+    range: integer
+  calculated_cds_start:
+    name: calculated_cds_start
+    description: Start of the variant in CDS coordinates, as calculated by VEP
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    owner: ModVariantConsequence
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+    range: integer
+  calculated_cds_end:
+    name: calculated_cds_end
+    description: End of the variant in CDS coordinates, as calculated by VEP
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    owner: ModVariantConsequence
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+    range: integer
+  calculated_protein_start:
+    name: calculated_protein_start
+    description: Start of the variant in protein amino acid coordinates, as calculated
+      by VEP
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    owner: ModVariantConsequence
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+    range: integer
+  calculated_protein_end:
+    name: calculated_protein_end
+    description: End of the variant in protein amino acid coordinates, as calculated
+      by VEP
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    owner: ModVariantConsequence
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+    range: integer
+  hgvs_coding_nomenclature:
+    name: hgvs_coding_nomenclature
+    description: HGVSc nomenclature of the variant on the transcript
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    owner: ModVariantConsequence
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+    range: string
+  hgvs_protein_nomenclature:
+    name: hgvs_protein_nomenclature
+    description: HGVSp nomenclature of the variant on the protein
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    owner: ModVariantConsequence
+    domain_of:
+    - PredictedVariantConsequence
+    - ModVariantConsequence
+    range: string
+  intron_exon_location:
+    name: intron_exon_location
+    description: The exon(s) and/or intron(s) of the transcript the variant falls
+      in, each as number/total
+    examples:
+    - value: Exon 1/3
+    - value: 'Exon 2/5 : Intron 2/4'
+    from_schema: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+    owner: ModVariantConsequence
+    domain_of:
+    - ModVariantConsequence
+    range: string
+
+</code></pre>
+</details>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+</html>
