@@ -1,0 +1,21 @@
+{
+  "linkml_version": "2.19.0",
+  "alliance_member_release_version": "WS298",
+  "pcr_product_ingest_set": [
+    {
+      "internal": false,
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "WB"
+      },
+      "mod_internal_id": "WB:PCR_product:mv_AAA28110",
+      "name": "mv_AAA28110",
+      "pcr_primer_use_dtos": [
+        {
+          "primer_use_name": "product"
+        }
+      ],
+      "pcr_template_origin_name": "cDNA"
+    }
+  ]
+}

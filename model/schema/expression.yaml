@@ -773,7 +773,7 @@ slots:
   detection_reagents:
     description: >-
       Reagents used in the expression assay: e.g., construct, antibodies, probes.
-    domain: ExpressionAnnotation
+    domain: ExpressionExperiment
     range: Reagent
     multivalued: true
 

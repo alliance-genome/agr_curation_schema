@@ -1,0 +1,50 @@
+{
+  "linkml_version": "2.19.0",
+  "alliance_member_release_version": "WS298",
+  "pcr_product_ingest_set": [
+    {
+      "internal": false,
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "WB"
+      },
+      "mod_internal_id": "WB:PCR_product:mv_AAA28110",
+      "name": "mv_AAA28110",
+      "pcr_primer_use_dtos": [
+        {
+          "primer_oligo_identifier": "WB:Oligo:mv_AAA28110_b",
+          "primer_use_name": "product",
+          "primer_source_relation": "oligo",
+          "primer_source_release": "WS298",
+          "primer_orientation_name": "reverse",
+          "primer_source_detail": "Direction from source-name suffix convention confirmed by Chris Grove #141; applies to this product use."
+        },
+        {
+          "primer_oligo_identifier": "WB:Oligo:mv_AAA28110_f",
+          "primer_use_name": "product",
+          "primer_source_relation": "oligo",
+          "primer_source_release": "WS298",
+          "primer_orientation_name": "forward",
+          "primer_source_detail": "Direction from source-name suffix convention confirmed by Chris Grove #141; applies to this product use."
+        },
+        {
+          "primer_sequence": "AATGAGCCGCAGCAGTTCCCTGGTGTTGAT",
+          "primer_use_name": "confirmation",
+          "primer_source_relation": "left_mapping_primer",
+          "primer_source_release": "WS298",
+          "primer_source_detail": "Separate confirmation set per Chris Grove #141\u2013142. Source left/right retained; genomic-template interpretation and exact direction need confirmation."
+        },
+        {
+          "primer_sequence": "TGGCTTGCAAGTGTGGTGAGTTAATCTATA",
+          "primer_use_name": "confirmation",
+          "primer_source_relation": "right_mapping_primer",
+          "primer_source_release": "WS298",
+          "primer_source_detail": "Separate confirmation set per Chris Grove #141\u2013142. Source left/right retained; genomic-template interpretation and exact direction need confirmation."
+        }
+      ],
+      "pcr_template_origin_name": [
+        "cDNA"
+      ]
+    }
+  ]
+}
