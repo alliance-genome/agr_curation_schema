@@ -45,6 +45,7 @@ classes:
     description: >-
       An entry for a published high-throughput expression dataset annotation.
     slots:
+      - curie
       - htp_expression_dataset # datasetId in agr_schemas datasetAnnotation.json
       - name # title in agr_schemas datasetAnnotation.json
       - references # publications in agr_schemas datasetAnnotation.json

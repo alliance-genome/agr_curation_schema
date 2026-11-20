@@ -5,7 +5,7 @@
             "interaction_id": "WB:WBInteraction000524000",
             "subject_gene_identifier": "WB:WBGene00000001",
             "object_gene_identifier": "WB:WBGene00000002",
-            "gene_relation_name": "interacts_with",
+            "gene_relation_name": "genetically_interacts_with",
             "date_created": "2015-04-09T10:15:30+00:00",
             "date_updated": "2022-07-11T13:12:51+00:00",
             "created_by_curie": "WB:WBPerson002314",

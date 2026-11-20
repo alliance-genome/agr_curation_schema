@@ -49,6 +49,7 @@ classes:
       designated reference sequence.  The sequence occurs at a single
       position or in a range of contiguous nucleotides or amino acids.
     slots:
+      - unique_id
       - variant_type
       - synonyms
       - source_general_consequences

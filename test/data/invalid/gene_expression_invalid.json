@@ -1,0 +1,31 @@
+{
+  "linkml_version": "2.0.0",
+  "gene_expression_experiment_ingest_set": [
+    {
+      "reference_curie": "PMID:12345678",
+      "data_provider_dto": {
+        "source_organization_abbreviation": "ZFIN",
+        "internal": false
+      },
+      "created_by_curie": "ZFIN",
+      "updated_by_curie": "ZFIN",
+      "internal": false,
+      "expression_annotation_dtos": [
+        {
+          "when_expressed_free_text": "expressed prior to hatching",
+          "where_expressed_free_text": "somewhere in the embryo",
+          "relation_name": "is_expressed_in",
+          "created_by_curie": "ZFIN",
+          "updated_by_curie": "ZFIN",
+          "internal": false,
+          "expression_pattern_dto": {
+            "when_expressed_dto": {
+              "internal": false
+            },
+            "internal": false
+          }
+        }
+      ]
+    }
+  ]
+}
