@@ -166,7 +166,7 @@
                 "evidence_item": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/InformationContentEntity"
+                            "$ref": "#/$defs/Reference"
                         },
                         {
                             "type": "null"
@@ -440,7 +440,7 @@
                     ]
                 },
                 "evidence_curie": {
-                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "description": "Curie of Reference object given as evidence",
                     "type": [
                         "string",
                         "null"
@@ -665,7 +665,7 @@
                 "evidence_item": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/InformationContentEntity"
+                            "$ref": "#/$defs/Reference"
                         },
                         {
                             "type": "null"
@@ -903,7 +903,7 @@
                     ]
                 },
                 "evidence_curie": {
-                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "description": "Curie of Reference object given as evidence",
                     "type": [
                         "string",
                         "null"
@@ -2508,7 +2508,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -2616,7 +2616,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -2871,7 +2871,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -2983,7 +2983,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -3489,7 +3489,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -3600,7 +3600,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -3706,7 +3706,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -3796,7 +3796,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -3887,7 +3887,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -3980,7 +3980,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -4095,7 +4095,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -4461,7 +4461,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -4546,7 +4546,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -4737,7 +4737,7 @@
                 "evidence_item": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/InformationContentEntity"
+                            "$ref": "#/$defs/Reference"
                         },
                         {
                             "type": "null"
@@ -4990,7 +4990,7 @@
                     ]
                 },
                 "evidence_curie": {
-                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "description": "Curie of Reference object given as evidence",
                     "type": [
                         "string",
                         "null"
@@ -5140,7 +5140,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -5248,7 +5248,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -5350,7 +5350,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -5458,7 +5458,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -5569,7 +5569,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -5676,7 +5676,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -5778,7 +5778,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -5888,7 +5888,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -5998,7 +5998,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -6094,7 +6094,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -6179,7 +6179,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -6270,7 +6270,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -6364,7 +6364,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -6461,7 +6461,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -6560,7 +6560,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -6659,7 +6659,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -6747,7 +6747,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -6837,7 +6837,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -6922,7 +6922,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -7013,7 +7013,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -7104,7 +7104,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -7253,7 +7253,7 @@
                 "evidence_item": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/InformationContentEntity"
+                            "$ref": "#/$defs/Reference"
                         },
                         {
                             "type": "null"
@@ -7470,7 +7470,7 @@
                     ]
                 },
                 "evidence_curie": {
-                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "description": "Curie of Reference object given as evidence",
                     "type": [
                         "string",
                         "null"
@@ -7619,7 +7619,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -7730,7 +7730,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -7830,7 +7830,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -7920,7 +7920,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -8032,7 +8032,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -8146,7 +8146,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -8257,7 +8257,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -8363,7 +8363,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -8474,7 +8474,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -9487,7 +9487,7 @@
                 "evidence_item": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/InformationContentEntity"
+                            "$ref": "#/$defs/Reference"
                         },
                         {
                             "type": "null"
@@ -9614,7 +9614,7 @@
                     ]
                 },
                 "evidence_curie": {
-                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "description": "Curie of Reference object given as evidence",
                     "type": [
                         "string",
                         "null"
@@ -10175,7 +10175,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -11701,6 +11701,524 @@
                 "internal"
             ],
             "title": "BiologicalEntityDTO",
+            "type": "object"
+        },
+        "BiologicalEntitySet": {
+            "additionalProperties": false,
+            "description": "A named group of biological entities assembled because its members share a biological property, function, or context.",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "curie": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "data_provider": {
+                    "$ref": "#/$defs/Organization",
+                    "description": "The organization (e.g. MOD) from which the data was sourced"
+                },
+                "data_provider_cross_reference": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/CrossReference"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "CrossReference to the organization from which the data was sourced"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "full_name": {
+                    "description": "The full name of the entity",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "parent_sets": {
+                    "description": "Parent set(s) of which this set is a subset.",
+                    "items": {
+                        "$ref": "#/$defs/BiologicalEntitySet"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "related_notes": {
+                    "description": "Valid note types are available for viewing in the A-Team curation tool (curation.alliancegenome.org) Controlled Vocabulary Terms Table (in the Note Type vocabulary).  The subset of terms applicable for a particular entity type are listed in the Vocabulary Term Sets table (e.g. Allele Note Type). New terms can be added as needed.",
+                    "items": {
+                        "$ref": "#/$defs/Note"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "related_sets": {
+                    "description": "Other related sets.",
+                    "items": {
+                        "$ref": "#/$defs/BiologicalEntitySet"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_bp_terms": {
+                    "description": "Key Gene Ontology Biological Process terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_cc_terms": {
+                    "description": "Key Gene Ontology Cellular Component terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_mf_terms": {
+                    "description": "Key Gene Ontology Molecular Function terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_synonyms": {
+                    "description": "Synonyms for the biological entity set.",
+                    "items": {
+                        "$ref": "#/$defs/BiologicalEntitySetSynonymSlotAnnotation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "symbol": {
+                    "description": "The free text symbol (human-readable) for an entity or record",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "taxon": {
+                    "description": "This slot is optional - it should not be used if multiple taxa are represented in the set.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "full_name",
+                "data_provider",
+                "internal"
+            ],
+            "title": "BiologicalEntitySet",
+            "type": "object"
+        },
+        "BiologicalEntitySetDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for named groups of biological entities assembled because their members share a biological property, function, or context.",
+            "properties": {
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "cross_reference_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/CrossReferenceDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "full_name": {
+                    "description": "The full name of the entity",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "parent_set_identifiers": {
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of parent set(s) of which this set is a subset.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "related_set_identifiers": {
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of other related sets.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_bp_term_curies": {
+                    "description": "CURIEs of key Gene Ontology Biological Process terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_cc_term_curies": {
+                    "description": "CURIEs of key Gene Ontology Cellular Component terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_mf_term_curies": {
+                    "description": "CURIEs of key Gene Ontology Molecular Function terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_synonym_dtos": {
+                    "description": "Synonyms for the biological entity set.",
+                    "items": {
+                        "$ref": "#/$defs/NameSlotAnnotationDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "symbol": {
+                    "description": "The free text symbol (human-readable) for an entity or record",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "taxon_curie": {
+                    "description": "This slot is optional - it should not be used if multiple taxa are represented in the set.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "full_name",
+                "data_provider_dto",
+                "internal"
+            ],
+            "title": "BiologicalEntitySetDTO",
+            "type": "object"
+        },
+        "BiologicalEntitySetSynonymSlotAnnotation": {
+            "additionalProperties": false,
+            "description": "All aliases (non-preferred names) for the biological entity set. Acceptable synonym types are full_name, nomenclature_symbol, and unspecified",
+            "properties": {
+                "created_by": {
+                    "description": "The individual that created the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "display_text": {
+                    "description": "A version of a synonym string for display. Any UTF8 character is permitted.",
+                    "type": "string"
+                },
+                "evidence": {
+                    "description": "The evidence that supports some assertion.",
+                    "items": {
+                        "$ref": "#/$defs/Reference"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "format_text": {
+                    "description": "A version of a synonym string using only ASCII characters, which is easier to type (for searches), print and parse. For example, Greek characters are transliterated.",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "name_type": {
+                    "description": "The type of name: e.g., symbol, full_name, systematic_name, etc.",
+                    "type": "string"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "single_biological_entity_set": {
+                    "$ref": "#/$defs/BiologicalEntitySet"
+                },
+                "synonym_scope": {
+                    "description": "the scope of the synonym - permissible values are narrow / broad / related / exact",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "synonym_url": {
+                    "description": "URL for a synonym: e.g., NCBI URL for the NCBI synonym of an object.",
+                    "format": "uri",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "updated_by": {
+                    "description": "The individual that last modified the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "single_biological_entity_set",
+                "name_type",
+                "format_text",
+                "display_text",
+                "internal"
+            ],
+            "title": "BiologicalEntitySetSynonymSlotAnnotation",
             "type": "object"
         },
         "BulkFMSLoad": {
@@ -13733,7 +14251,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -13821,7 +14339,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -13935,7 +14453,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -14215,7 +14733,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -14339,7 +14857,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -14446,7 +14964,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -14551,7 +15069,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -14648,7 +15166,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -14752,7 +15270,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -14864,7 +15382,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -14978,7 +15496,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -15075,7 +15593,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -15175,7 +15693,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -15263,7 +15781,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -15598,7 +16116,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -15765,7 +16283,7 @@
                     "type": "string"
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -16684,7 +17202,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -17291,7 +17809,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -17381,7 +17899,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -17482,7 +18000,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -17750,7 +18268,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -17862,7 +18380,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -17974,7 +18492,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -18295,7 +18813,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -18532,7 +19050,7 @@
                     "type": "integer"
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -18739,7 +19257,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -18911,7 +19429,7 @@
                     "type": "integer"
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -19071,7 +19589,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -19223,7 +19741,7 @@
                     "type": "integer"
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -21149,7 +21667,7 @@
                 "evidence_item": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/InformationContentEntity"
+                            "$ref": "#/$defs/Reference"
                         },
                         {
                             "type": "null"
@@ -21377,7 +21895,7 @@
                     ]
                 },
                 "evidence_curie": {
-                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "description": "Curie of Reference object given as evidence",
                     "type": [
                         "string",
                         "null"
@@ -22036,7 +22554,7 @@
         },
         "EvidenceAssociation": {
             "additionalProperties": false,
-            "description": "An association supported by any number of InformationContentEntity objects",
+            "description": "An association supported by any number of Reference objects",
             "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
@@ -22080,7 +22598,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -22119,7 +22637,7 @@
         },
         "EvidenceAssociationDTO": {
             "additionalProperties": false,
-            "description": "Ingest class for an association supported by any number of InformationContentEntity objects",
+            "description": "Ingest class for an association supported by any number of Reference objects",
             "properties": {
                 "created_by_curie": {
                     "description": "Curie of the Person object representing the individual that created the entity",
@@ -22161,7 +22679,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -22525,7 +23043,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -23249,7 +23767,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -23332,7 +23850,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -24081,92 +24599,6 @@
             "title": "ExternalDatabaseLink",
             "type": "object"
         },
-        "ExternalDatabaseReference": {
-            "additionalProperties": false,
-            "description": "A reference to an entity in an external database",
-            "properties": {
-                "created_by": {
-                    "description": "The individual that created the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "resource_descriptor_page": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ResourceDescriptorPage"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "ResourceDescriptorPage providing the URL template used to render a linkout to the referenced external identifier."
-                },
-                "updated_by": {
-                    "description": "The individual that last modified the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "internal"
-            ],
-            "title": "ExternalDatabaseReference",
-            "type": "object"
-        },
         "FBCVTerm": {
             "additionalProperties": false,
             "description": "",
@@ -24758,7 +25190,7 @@
                     "type": "string"
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -24930,7 +25362,7 @@
                     ]
                 },
                 "parent_sets": {
-                    "description": "Parent functional gene set(s) of which this set is a subset.",
+                    "description": "Parent set(s) of which this set is a subset.",
                     "items": {
                         "$ref": "#/$defs/FunctionalGeneSet"
                     },
@@ -24957,9 +25389,9 @@
                     ]
                 },
                 "related_sets": {
-                    "description": "Other related functional gene sets.",
+                    "description": "Other related sets.",
                     "items": {
-                        "$ref": "#/$defs/FunctionalGeneSet"
+                        "$ref": "#/$defs/BiologicalEntitySet"
                     },
                     "type": [
                         "array",
@@ -24976,7 +25408,7 @@
                     ]
                 },
                 "set_go_bp_terms": {
-                    "description": "Key Gene Ontology Biological Process terms associated with this functional gene set.",
+                    "description": "Key Gene Ontology Biological Process terms associated with this set.",
                     "items": {
                         "type": "string"
                     },
@@ -24986,7 +25418,7 @@
                     ]
                 },
                 "set_go_cc_terms": {
-                    "description": "Key Gene Ontology Cellular Component terms associated with this functional gene set.",
+                    "description": "Key Gene Ontology Cellular Component terms associated with this set.",
                     "items": {
                         "type": "string"
                     },
@@ -24996,7 +25428,7 @@
                     ]
                 },
                 "set_go_mf_terms": {
-                    "description": "Key Gene Ontology Molecular Function terms associated with this functional gene set.",
+                    "description": "Key Gene Ontology Molecular Function terms associated with this set.",
                     "items": {
                         "type": "string"
                     },
@@ -25006,9 +25438,9 @@
                     ]
                 },
                 "set_synonyms": {
-                    "description": "Synonyms for the functional gene set.",
+                    "description": "Synonyms for the biological entity set.",
                     "items": {
-                        "$ref": "#/$defs/FunctionalGeneSetSynonymSlotAnnotation"
+                        "$ref": "#/$defs/BiologicalEntitySetSynonymSlotAnnotation"
                     },
                     "type": [
                         "array",
@@ -25017,7 +25449,10 @@
                 },
                 "symbol": {
                     "description": "The free text symbol (human-readable) for an entity or record",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "taxon": {
                     "description": "This slot is optional - it should not be used if multiple taxa are represented in the set.",
@@ -25036,7 +25471,6 @@
             },
             "required": [
                 "full_name",
-                "symbol",
                 "data_provider",
                 "internal"
             ],
@@ -25131,7 +25565,7 @@
                     ]
                 },
                 "parent_set_identifiers": {
-                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of parent functional gene set(s) of which this set is a subset.",
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of parent set(s) of which this set is a subset.",
                     "items": {
                         "type": "string"
                     },
@@ -25148,7 +25582,7 @@
                     ]
                 },
                 "related_set_identifiers": {
-                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of other related functional gene sets.",
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of other related sets.",
                     "items": {
                         "type": "string"
                     },
@@ -25167,7 +25601,7 @@
                     ]
                 },
                 "set_go_bp_term_curies": {
-                    "description": "CURIEs of key Gene Ontology Biological Process terms associated with this functional gene set.",
+                    "description": "CURIEs of key Gene Ontology Biological Process terms associated with this set.",
                     "items": {
                         "type": "string"
                     },
@@ -25177,7 +25611,7 @@
                     ]
                 },
                 "set_go_cc_term_curies": {
-                    "description": "CURIEs of key Gene Ontology Cellular Component terms associated with this functional gene set.",
+                    "description": "CURIEs of key Gene Ontology Cellular Component terms associated with this set.",
                     "items": {
                         "type": "string"
                     },
@@ -25187,7 +25621,7 @@
                     ]
                 },
                 "set_go_mf_term_curies": {
-                    "description": "CURIEs of key Gene Ontology Molecular Function terms associated with this functional gene set.",
+                    "description": "CURIEs of key Gene Ontology Molecular Function terms associated with this set.",
                     "items": {
                         "type": "string"
                     },
@@ -25197,7 +25631,7 @@
                     ]
                 },
                 "set_synonym_dtos": {
-                    "description": "Synonyms for the functional gene set.",
+                    "description": "Synonyms for the biological entity set.",
                     "items": {
                         "$ref": "#/$defs/NameSlotAnnotationDTO"
                     },
@@ -25208,7 +25642,10 @@
                 },
                 "symbol": {
                     "description": "The free text symbol (human-readable) for an entity or record",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "taxon_curie": {
                     "description": "This slot is optional - it should not be used if multiple taxa are represented in the set.",
@@ -25227,123 +25664,10 @@
             },
             "required": [
                 "full_name",
-                "symbol",
                 "data_provider_dto",
                 "internal"
             ],
             "title": "FunctionalGeneSetDTO",
-            "type": "object"
-        },
-        "FunctionalGeneSetSynonymSlotAnnotation": {
-            "additionalProperties": false,
-            "description": "All aliases (non-preferred names) for the functional gene set. Acceptable synonym types are full_name, nomenclature_symbol, and unspecified",
-            "properties": {
-                "created_by": {
-                    "description": "The individual that created the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "display_text": {
-                    "description": "A version of a synonym string for display. Any UTF8 character is permitted.",
-                    "type": "string"
-                },
-                "evidence": {
-                    "description": "The evidence that supports some assertion.",
-                    "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "format_text": {
-                    "description": "A version of a synonym string using only ASCII characters, which is easier to type (for searches), print and parse. For example, Greek characters are transliterated.",
-                    "type": "string"
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "name_type": {
-                    "description": "The type of name: e.g., symbol, full_name, systematic_name, etc.",
-                    "type": "string"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "single_functional_gene_set": {
-                    "$ref": "#/$defs/FunctionalGeneSet"
-                },
-                "synonym_scope": {
-                    "description": "the scope of the synonym - permissible values are narrow / broad / related / exact",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "synonym_url": {
-                    "description": "URL for a synonym: e.g., NCBI URL for the NCBI synonym of an object.",
-                    "format": "uri",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "updated_by": {
-                    "description": "The individual that last modified the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "single_functional_gene_set",
-                "name_type",
-                "format_text",
-                "display_text",
-                "internal"
-            ],
-            "title": "FunctionalGeneSetSynonymSlotAnnotation",
             "type": "object"
         },
         "GENOTerm": {
@@ -26107,7 +26431,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -26286,7 +26610,7 @@
                     "type": "string"
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -26433,7 +26757,7 @@
                 "evidence_item": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/InformationContentEntity"
+                            "$ref": "#/$defs/Reference"
                         },
                         {
                             "type": "null"
@@ -27111,7 +27435,7 @@
                 "evidence_item": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/InformationContentEntity"
+                            "$ref": "#/$defs/Reference"
                         },
                         {
                             "type": "null"
@@ -27349,7 +27673,7 @@
                     ]
                 },
                 "evidence_curie": {
-                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "description": "Curie of Reference object given as evidence",
                     "type": [
                         "string",
                         "null"
@@ -28217,7 +28541,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -28325,7 +28649,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -28418,7 +28742,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -28520,7 +28844,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -28611,7 +28935,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -28723,7 +29047,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -28909,7 +29233,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -29075,7 +29399,7 @@
                 "evidence_item": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/InformationContentEntity"
+                            "$ref": "#/$defs/Reference"
                         },
                         {
                             "type": "null"
@@ -29190,7 +29514,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -29314,7 +29638,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -29473,7 +29797,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -29646,7 +29970,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -29817,7 +30141,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -30141,7 +30465,7 @@
         },
         "GenePathwayAssociation": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Association between a gene and a pathway, with supporting references that demonstrate or state the gene's participation in the pathway.",
             "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
@@ -30185,7 +30509,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -30213,10 +30537,7 @@
                 "relation": {
                     "description": "A high-level grouping for the relationship type. This is analogous to category for nodes. In RDF, this corresponds to rdf:predicate and in Neo4j this corresponds to the relationship type.",
                     "enum": [
-                        "enables",
-                        "has_input",
-                        "has_output",
-                        "has_participant"
+                        "participates_in"
                     ],
                     "type": "string"
                 },
@@ -30235,6 +30556,99 @@
                 "internal"
             ],
             "title": "GenePathwayAssociation",
+            "type": "object"
+        },
+        "GenePathwayAssociationDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for association between a gene and a pathway, with supporting references that demonstrate or state the gene's participation in the pathway.",
+            "properties": {
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence_curies": {
+                    "description": "Curies of Reference objects given as evidence",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "gene_identifier": {
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the gene",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "pathway_identifier": {
+                    "description": "Identifier (curie/primary_external_id/mod_internal_id) of the pathway",
+                    "type": "string"
+                },
+                "relation_name": {
+                    "description": "Name of VocabularyTerm representing relation of an Association",
+                    "type": "string"
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "gene_identifier",
+                "relation_name",
+                "pathway_identifier",
+                "internal"
+            ],
+            "title": "GenePathwayAssociationDTO",
             "type": "object"
         },
         "GenePhenotypeAnnotation": {
@@ -30335,7 +30749,7 @@
                 "evidence_item": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/InformationContentEntity"
+                            "$ref": "#/$defs/Reference"
                         },
                         {
                             "type": "null"
@@ -30537,7 +30951,7 @@
                     ]
                 },
                 "evidence_curie": {
-                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "description": "Curie of Reference object given as evidence",
                     "type": [
                         "string",
                         "null"
@@ -30684,7 +31098,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -30774,7 +31188,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -30886,7 +31300,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -30998,7 +31412,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -33625,81 +34039,6 @@
             "title": "ImagePane",
             "type": "object"
         },
-        "InformationContentEntity": {
-            "additionalProperties": false,
-            "description": "a piece of information that typically is used as support for an assertion or annotation.",
-            "properties": {
-                "created_by": {
-                    "description": "The individual that created the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "updated_by": {
-                    "description": "The individual that last modified the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "internal"
-            ],
-            "title": "InformationContentEntity",
-            "type": "object"
-        },
         "Ingest": {
             "additionalProperties": false,
             "description": "",
@@ -34011,6 +34350,15 @@
                         "null"
                     ]
                 },
+                "gene_pathway_association_ingest_set": {
+                    "items": {
+                        "$ref": "#/$defs/GenePathwayAssociationDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "genome_assembly_ingest_set": {
                     "items": {
                         "$ref": "#/$defs/GenomeAssemblyDTO"
@@ -34095,6 +34443,15 @@
                 "ontology_closure_ingest_set": {
                     "items": {
                         "$ref": "#/$defs/OntologyTermClosure"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "pathway_ingest_set": {
+                    "items": {
+                        "$ref": "#/$defs/PathwayDTO"
                     },
                     "type": [
                         "array",
@@ -34427,7 +34784,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -34526,7 +34883,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -36371,6 +36728,299 @@
             "title": "ModCorpusSortSourceEnum",
             "type": "string"
         },
+        "ModVariant": {
+            "additionalProperties": false,
+            "description": "An allele and one of its variants with the variant's HGVS names and its predicted consequence on each transcript. Obsolete alleles, variants, genomic locations and consequences are left out.",
+            "properties": {
+                "allele_identifier": {
+                    "description": "Primary external ID of the allele, as submitted by the data provider.",
+                    "examples": [
+                        "ZFIN:ZDB-ALT-080929-3"
+                    ],
+                    "type": "string"
+                },
+                "hgvs_coding_nomenclatures": {
+                    "description": "Distinct HGVSc nomenclatures of the variant's predicted consequences, sorted",
+                    "examples": [
+                        [
+                            "NM_131322.2:c.3G>T"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "hgvs_genomic_nomenclature": {
+                    "description": "HGVSg nomenclature of the variant, from its curated genomic location",
+                    "examples": [
+                        "NC_133187.1:g.6252231G>T"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "hgvs_protein_nomenclatures": {
+                    "description": "Distinct HGVSp nomenclatures of the variant's predicted consequences, sorted",
+                    "examples": [
+                        [
+                            "NP_571397.2:p.Met1?"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "predicted_variant_consequences": {
+                    "description": "The VEP result for each transcript the variant falls on, sorted by transcript identifier",
+                    "items": {
+                        "$ref": "#/$defs/ModVariantConsequence"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "variant_curie": {
+                    "description": "Alliance curie of the variant",
+                    "examples": [
+                        "AGRKB:107000000060080"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "allele_identifier",
+                "variant_curie"
+            ],
+            "title": "ModVariant",
+            "type": "object"
+        },
+        "ModVariantConsequence": {
+            "additionalProperties": false,
+            "description": "The predicted consequence of a variant on one transcript: the fields of a PredictedVariantConsequence shown in the Genomic Variant Information and Variant Molecular Consequences sections of the allele page, with each object reduced to its identifier or name.",
+            "properties": {
+                "amino_acid_reference": {
+                    "description": "Reference genome amino acid sequence at the variant position",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "amino_acid_variant": {
+                    "description": "Variant amino acid sequence at the variant position",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "calculated_cdna_end": {
+                    "description": "End of the variant in cDNA coordinates, as calculated by VEP",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "calculated_cdna_start": {
+                    "description": "Start of the variant in cDNA coordinates, as calculated by VEP",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "calculated_cds_end": {
+                    "description": "End of the variant in CDS coordinates, as calculated by VEP",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "calculated_cds_start": {
+                    "description": "Start of the variant in CDS coordinates, as calculated by VEP",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "calculated_protein_end": {
+                    "description": "End of the variant in protein amino acid coordinates, as calculated by VEP",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "calculated_protein_start": {
+                    "description": "Start of the variant in protein amino acid coordinates, as calculated by VEP",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "codon_reference": {
+                    "description": "Reference sequence of the codon(s) affected by the variant: bases outside the variant region are in lower case, those within in upper case (e.g. cTa)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "codon_variant": {
+                    "description": "Variant sequence of the codon(s) affected by the variant: bases outside the variant region are in lower case, those within in upper case (e.g. cAa)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "gene_identifier": {
+                    "description": "Primary external ID of the gene the transcript belongs to",
+                    "examples": [
+                        "ZFIN:ZDB-GENE-980526-280"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "gene_symbol": {
+                    "description": "Symbol of the gene the transcript belongs to",
+                    "examples": [
+                        "dlx3b"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "hgvs_coding_nomenclature": {
+                    "description": "HGVSc nomenclature of the variant on the transcript",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "hgvs_protein_nomenclature": {
+                    "description": "HGVSp nomenclature of the variant on the protein",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "intron_exon_location": {
+                    "description": "The exon(s) and/or intron(s) of the transcript the variant falls in, each as number/total",
+                    "examples": [
+                        "Exon 1/3",
+                        "Exon 2/5 : Intron 2/4"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "polyphen_prediction_name": {
+                    "description": "PolyPhen-2 prediction",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "polyphen_score": {
+                    "description": "PolyPhen-2 score between 0 and 1",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "sift_prediction_name": {
+                    "description": "SIFT prediction",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sift_score": {
+                    "description": "SIFT score between 0 and 1",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "transcript_identifier": {
+                    "description": "Accession of the transcript, or its Alliance identifier when it has none",
+                    "examples": [
+                        "NM_131322.2"
+                    ],
+                    "type": "string"
+                },
+                "transcript_name": {
+                    "description": "Name of the transcript",
+                    "examples": [
+                        "NM_131322.2"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "transcript_type_name": {
+                    "description": "Name of the SOTerm for the transcript type",
+                    "examples": [
+                        "mRNA"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "vep_consequence_names": {
+                    "description": "Names of the SOTerms for the VEP consequences",
+                    "examples": [
+                        [
+                            "start_lost"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "vep_impact_name": {
+                    "description": "VEP predicted impact of the variant on the transcript",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "transcript_identifier",
+                "vep_impact_name",
+                "vep_consequence_names"
+            ],
+            "title": "ModVariantConsequence",
+            "type": "object"
+        },
+        "ModVariantExport": {
+            "additionalProperties": false,
+            "description": "A page of a data provider's alleles and their variants, as returned by GET /api/variant/export/{dataProvider}.",
+            "properties": {
+                "mod_variants": {
+                    "description": "One entry per allele - variant pair",
+                    "items": {
+                        "$ref": "#/$defs/ModVariant"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "ModVariantExport",
+            "type": "object"
+        },
         "Molecule": {
             "additionalProperties": false,
             "description": "Molecules as described by WormBase",
@@ -36828,7 +37478,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -36934,7 +37584,7 @@
                     "type": "string"
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -37040,7 +37690,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -37136,7 +37786,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -38516,7 +39166,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -38841,7 +39491,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -39008,7 +39658,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -39171,7 +39821,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -40674,7 +41324,8 @@
                 "WBBT",
                 "EMAPA",
                 "GO",
-                "SO"
+                "SO",
+                "PW"
             ],
             "title": "OntologyBulkLoadTypeEnum",
             "type": "string"
@@ -40918,7 +41569,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -41542,6 +42193,13 @@
                         "null"
                     ]
                 },
+                "pcr_amplification_successful": {
+                    "description": "Whether amplification of this PCR product was successful. True records successful amplification; false records no successful amplification. Omit when the outcome is unknown or unrecorded; absence does not mean false. This is an amplification outcome, not a relationship to a gene, an expression result, or a primer-use role.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
                 "pcr_assay_conditions": {
                     "description": "Source-reported PCR conditions as text.",
                     "type": [
@@ -41853,6 +42511,13 @@
                 },
                 "obsolete": {
                     "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "pcr_amplification_successful": {
+                    "description": "Whether amplification of this PCR product was successful. True records successful amplification; false records no successful amplification. Omit when the outcome is unknown or unrecorded; absence does not mean false. This is an amplification outcome, not a relationship to a gene, an expression result, or a primer-use role.",
                     "type": [
                         "boolean",
                         "null"
@@ -42537,12 +43202,22 @@
         },
         "Pathway": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A series of molecular interactions and reactions occurring within a cell or organism that brings about a particular biological outcome.",
             "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -42600,6 +43275,20 @@
                         "null"
                     ]
                 },
+                "full_name": {
+                    "description": "The full name of the entity",
+                    "type": "string"
+                },
+                "gene_pathway_associations": {
+                    "description": "Gene participants in this pathway, with supporting evidence/references.",
+                    "items": {
+                        "$ref": "#/$defs/GenePathwayAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
@@ -42618,6 +43307,27 @@
                         "null"
                     ]
                 },
+                "parent_sets": {
+                    "description": "Parent set(s) of which this set is a subset.",
+                    "items": {
+                        "$ref": "#/$defs/Pathway"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "pathway_image_filename": {
+                    "description": "Filename of an image file depicting the pathway.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "pathway_type": {
+                    "description": "The type of biological process that the pathway represents, given as a top-level term from the Pathway Ontology (PW).",
+                    "type": "string"
+                },
                 "primary_external_id": {
                     "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
                     "type": [
@@ -42635,6 +43345,79 @@
                         "null"
                     ]
                 },
+                "related_sets": {
+                    "description": "Other related sets.",
+                    "items": {
+                        "$ref": "#/$defs/BiologicalEntitySet"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_bp_terms": {
+                    "description": "Key Gene Ontology Biological Process terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_cc_terms": {
+                    "description": "Key Gene Ontology Cellular Component terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_mf_terms": {
+                    "description": "Key Gene Ontology Molecular Function terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_synonyms": {
+                    "description": "Synonyms for the biological entity set.",
+                    "items": {
+                        "$ref": "#/$defs/BiologicalEntitySetSynonymSlotAnnotation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "symbol": {
+                    "description": "The free text symbol (human-readable) for an entity or record",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "taxon": {
+                    "description": "This slot is optional - it should not be used if multiple taxa are represented in the set.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": [
@@ -42644,10 +43427,217 @@
                 }
             },
             "required": [
+                "pathway_type",
+                "full_name",
                 "data_provider",
                 "internal"
             ],
             "title": "Pathway",
+            "type": "object"
+        },
+        "PathwayDTO": {
+            "additionalProperties": false,
+            "description": "Ingest class for pathways (series of molecular interactions and reactions occurring within a cell or organism that bring about a particular biological outcome).",
+            "properties": {
+                "created_by_curie": {
+                    "description": "Curie of the Person object representing the individual that created the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "cross_reference_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/CrossReferenceDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "data_provider_dto": {
+                    "$ref": "#/$defs/DataProviderDTO",
+                    "description": "Ingest object representing the organization (e.g. MOD) from which the data was sourced and a CrossReference to that organisation's site"
+                },
+                "date_created": {
+                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "Date on which an entity was last modified.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_created": {
+                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_date_updated": {
+                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "full_name": {
+                    "description": "The full name of the entity",
+                    "type": "string"
+                },
+                "internal": {
+                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
+                    "type": "boolean"
+                },
+                "mod_internal_id": {
+                    "description": "The model organism database (MOD) internal identifier for the object",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "note_dtos": {
+                    "items": {
+                        "$ref": "#/$defs/NoteDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "obsolete": {
+                    "description": "Entity is no longer current.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "parent_set_identifiers": {
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of parent set(s) of which this set is a subset.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "pathway_image_filename": {
+                    "description": "Filename of an image file depicting the pathway.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "pathway_type_curie": {
+                    "description": "CURIE of the top-level Pathway Ontology (PW) term representing the type of biological process that the pathway represents - one of PW:0000002 (classic metabolic pathway), PW:0000003 (signaling pathway), PW:0000004 (regulatory pathway), PW:0000013 (disease pathway), or PW:0000754 (drug pathway).",
+                    "type": "string"
+                },
+                "primary_external_id": {
+                    "description": "The primary external (non-Alliance) database identifier/curie for the object. Note that this may be an external (non-Alliance member) identifier for an object, like a UniProt ID for a protein, and may act as the MOD's/Alliance member's primary key for the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "related_set_identifiers": {
+                    "description": "Identifiers (curie/primary_external_id/mod_internal_id) of other related sets.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_bp_term_curies": {
+                    "description": "CURIEs of key Gene Ontology Biological Process terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_cc_term_curies": {
+                    "description": "CURIEs of key Gene Ontology Cellular Component terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_mf_term_curies": {
+                    "description": "CURIEs of key Gene Ontology Molecular Function terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_synonym_dtos": {
+                    "description": "Synonyms for the biological entity set.",
+                    "items": {
+                        "$ref": "#/$defs/NameSlotAnnotationDTO"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "symbol": {
+                    "description": "The free text symbol (human-readable) for an entity or record",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "taxon_curie": {
+                    "description": "This slot is optional - it should not be used if multiple taxa are represented in the set.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "updated_by_curie": {
+                    "description": "Curie of the Person object representing the individual that updated the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "pathway_type_curie",
+                "full_name",
+                "data_provider_dto",
+                "internal"
+            ],
+            "title": "PathwayDTO",
             "type": "object"
         },
         "Person": {
@@ -42789,81 +43779,6 @@
             "title": "Person",
             "type": "object"
         },
-        "PersonalCommunication": {
-            "additionalProperties": false,
-            "description": "a piece of information that is used to support an assertion or annotation, where the information comes from a person other than the author of the assertion or annotation, or the author of the reference.",
-            "properties": {
-                "created_by": {
-                    "description": "The individual that created the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "curie": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_created": {
-                    "description": "The date on which an entity was created. This can be applied to nodes or edges.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "date_updated": {
-                    "description": "Date on which an entity was last modified.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_created": {
-                    "description": "The date on which an entity was created in the Alliance database.  This is distinct from date_created, which represents the date when the entity was originally created (i.e. at the MOD for imported data).",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "db_date_updated": {
-                    "description": "Date on which an entity was last modified in the Alliance database.  This is distinct from date_updated, which represents the date when the entity was last modified and may predate import into the Alliance database.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "internal": {
-                    "description": "Classifies the entity as private (for internal use) or not (for public use).",
-                    "type": "boolean"
-                },
-                "obsolete": {
-                    "description": "Entity is no longer current.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "updated_by": {
-                    "description": "The individual that last modified the entity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "internal"
-            ],
-            "title": "PersonalCommunication",
-            "type": "object"
-        },
         "PhenotypeAnnotation": {
             "additionalProperties": false,
             "description": "An annotation asserting an association between a biological entity and a phenotype supported by evidence.",
@@ -42962,7 +43877,7 @@
                 "evidence_item": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/InformationContentEntity"
+                            "$ref": "#/$defs/Reference"
                         },
                         {
                             "type": "null"
@@ -43154,7 +44069,7 @@
                     ]
                 },
                 "evidence_curie": {
-                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "description": "Curie of Reference object given as evidence",
                     "type": [
                         "string",
                         "null"
@@ -44355,12 +45270,22 @@
         },
         "ProteinComplex": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A set of proteins that assemble into a stable complex to carry out a biological function.",
             "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "cross_references": {
+                    "description": "Holds between an object and its CrossReferences.",
+                    "items": {
+                        "$ref": "#/$defs/CrossReference"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -44418,6 +45343,10 @@
                         "null"
                     ]
                 },
+                "full_name": {
+                    "description": "The full name of the entity",
+                    "type": "string"
+                },
                 "internal": {
                     "description": "Classifies the entity as private (for internal use) or not (for public use).",
                     "type": "boolean"
@@ -44433,6 +45362,16 @@
                     "description": "Entity is no longer current.",
                     "type": [
                         "boolean",
+                        "null"
+                    ]
+                },
+                "parent_sets": {
+                    "description": "Parent set(s) of which this set is a subset.",
+                    "items": {
+                        "$ref": "#/$defs/ProteinComplex"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -44462,6 +45401,79 @@
                         "null"
                     ]
                 },
+                "related_sets": {
+                    "description": "Other related sets.",
+                    "items": {
+                        "$ref": "#/$defs/BiologicalEntitySet"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "secondary_identifiers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_bp_terms": {
+                    "description": "Key Gene Ontology Biological Process terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_cc_terms": {
+                    "description": "Key Gene Ontology Cellular Component terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_go_mf_terms": {
+                    "description": "Key Gene Ontology Molecular Function terms associated with this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "set_synonyms": {
+                    "description": "Synonyms for the biological entity set.",
+                    "items": {
+                        "$ref": "#/$defs/BiologicalEntitySetSynonymSlotAnnotation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "symbol": {
+                    "description": "The free text symbol (human-readable) for an entity or record",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "taxon": {
+                    "description": "This slot is optional - it should not be used if multiple taxa are represented in the set.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "updated_by": {
                     "description": "The individual that last modified the entity.",
                     "type": [
@@ -44471,6 +45483,7 @@
                 }
             },
             "required": [
+                "full_name",
                 "data_provider",
                 "internal"
             ],
@@ -46415,7 +47428,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -46495,7 +47508,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -47412,7 +48425,7 @@
         },
         "SingleReferenceAssociation": {
             "additionalProperties": false,
-            "description": "An association supported by a single InformationContentEntity object",
+            "description": "An association supported by a single Reference object",
             "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
@@ -47456,7 +48469,7 @@
                 "evidence_item": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/InformationContentEntity"
+                            "$ref": "#/$defs/Reference"
                         },
                         {
                             "type": "null"
@@ -47496,7 +48509,7 @@
         },
         "SingleReferenceAssociationDTO": {
             "additionalProperties": false,
-            "description": "Ingest class for an association supported by a single InformationContentEntity object",
+            "description": "Ingest class for an association supported by a single Reference object",
             "properties": {
                 "created_by_curie": {
                     "description": "Curie of the Person object representing the individual that created the entity",
@@ -47538,7 +48551,7 @@
                     ]
                 },
                 "evidence_curie": {
-                    "description": "Curie of InformationContentEntity object given as evidence",
+                    "description": "Curie of Reference object given as evidence",
                     "type": [
                         "string",
                         "null"
@@ -47571,7 +48584,7 @@
         },
         "SlotAnnotation": {
             "additionalProperties": false,
-            "description": "SlotAnnotation classes should be used when we need to attach metadata (in particular evidence and provenance) to a slot in the context of its referencing class, that can not be fully captured using an Association between the full class itself, and an InformationContentEntity. Evidence and provenance can exist here in the form of an evidence code, a publication, a personal communication or any other kind of InformationContentEntity. SlotAnnotation classes are used where the slot is not referencing a class in and of itself, and often has a scalar range.",
+            "description": "SlotAnnotation classes should be used when we need to attach metadata (in particular evidence and provenance) to a slot in the context of its referencing class, that can not be fully captured using an Association between the full class itself, and a Reference. Evidence and provenance can exist here in the form of an evidence code or a Reference (e.g. a publication). SlotAnnotation classes are used where the slot is not referencing a class in and of itself, and often has a scalar range.",
             "properties": {
                 "created_by": {
                     "description": "The individual that created the entity.",
@@ -47615,7 +48628,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -47691,7 +48704,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -47813,7 +48826,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -48051,7 +49064,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -48267,7 +49280,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -48450,7 +49463,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -48619,7 +49632,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -48782,7 +49795,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -49234,7 +50247,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -49319,7 +50332,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -49404,7 +50417,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -49493,7 +50506,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -49821,7 +50834,7 @@
                     "type": "string"
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -49936,7 +50949,7 @@
                     "type": "string"
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -50450,7 +51463,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -50671,7 +51684,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -50763,7 +51776,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -50859,7 +51872,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -51177,7 +52190,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -51435,7 +52448,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -51547,7 +52560,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -51659,7 +52672,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -51767,7 +52780,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -51941,7 +52954,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -52029,7 +53042,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -53044,7 +54057,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -53277,7 +54290,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -53478,7 +54491,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -53617,7 +54630,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -53763,7 +54776,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -53941,7 +54954,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -54084,7 +55097,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -54170,7 +55183,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -54276,7 +55289,7 @@
                 "evidence": {
                     "description": "The evidence that supports some assertion.",
                     "items": {
-                        "$ref": "#/$defs/InformationContentEntity"
+                        "$ref": "#/$defs/Reference"
                     },
                     "type": [
                         "array",
@@ -54434,7 +55447,7 @@
                     ]
                 },
                 "evidence_curies": {
-                    "description": "Curies of InformationContentEntity objects given as evidence",
+                    "description": "Curies of Reference objects given as evidence",
                     "items": {
                         "type": "string"
                     },
@@ -57393,6 +58406,15 @@
                 "null"
             ]
         },
+        "gene_pathway_association_ingest_set": {
+            "items": {
+                "$ref": "#/$defs/GenePathwayAssociationDTO"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
         "genome_assembly_ingest_set": {
             "items": {
                 "$ref": "#/$defs/GenomeAssemblyDTO"
@@ -57477,6 +58499,15 @@
         "ontology_closure_ingest_set": {
             "items": {
                 "$ref": "#/$defs/OntologyTermClosure"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "pathway_ingest_set": {
+            "items": {
+                "$ref": "#/$defs/PathwayDTO"
             },
             "type": [
                 "array",
