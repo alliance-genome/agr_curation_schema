@@ -55,6 +55,7 @@ imports:
   - variantConsequence
   - variation
   - variantDTO
+  - variantOutput
 
 subsets:
   alliance subset:

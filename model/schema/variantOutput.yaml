@@ -1,0 +1,183 @@
+id: https://github.com/alliance-genome/agr_curation_schema/src/schema/variantOutput
+name: variantOutput
+title: variantOutput
+
+imports:
+  - core
+  - linkml:types
+
+prefixes:
+  alliance: "http://alliancegenome.org/"
+  linkml: "https://w3id.org/linkml/"
+  biolink: "https://w3id.org/biolink/vocab/"
+  schema: "http://schema.org/"
+
+default_prefix: alliance
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  - semweb_context
+  - monarch_context
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - owl
+
+## ---------------
+## OUTPUT CLASSES
+## ---------------
+# Output classes describe what an Alliance API returns, as the DTO classes describe what is submitted.
+# They are flat: each slot holds a value (an identifier, a name, a number), never a persisted object.
+# Attributes are used instead of shared slots so that these names cannot collide with ingest or entity slots.
+classes:
+  ModVariantExport:
+    description: >-
+      A page of a data provider's alleles and their variants, as returned by
+      GET /api/variant/export/{dataProvider}.
+    attributes:
+      mod_variants:
+        description: One entry per allele - variant pair
+        range: ModVariant
+        multivalued: true
+        inlined_as_list: true
+
+  ModVariant:
+    description: >-
+      An allele and one of its variants with the variant's HGVS names and its predicted
+      consequence on each transcript. Obsolete alleles, variants, genomic locations and
+      consequences are left out.
+    attributes:
+      allele_identifier:
+        description: >-
+          Primary external ID of the allele, as submitted by the data provider.
+        required: true
+        examples:
+          - value: ZFIN:ZDB-ALT-080929-3
+      variant_curie:
+        description: Alliance curie of the variant
+        required: true
+        examples:
+          - value: AGRKB:107000000060080
+      hgvs_genomic_nomenclature:
+        description: >-
+          HGVSg nomenclature of the variant, from its curated genomic location
+        examples:
+          - value: NC_133187.1:g.6252231G>T
+      hgvs_coding_nomenclatures:
+        description: >-
+          Distinct HGVSc nomenclatures of the variant's predicted consequences, sorted
+        multivalued: true
+        examples:
+          - value: NM_131322.2:c.3G>T
+      hgvs_protein_nomenclatures:
+        description: >-
+          Distinct HGVSp nomenclatures of the variant's predicted consequences, sorted
+        multivalued: true
+        examples:
+          - value: NP_571397.2:p.Met1?
+      predicted_variant_consequences:
+        description: >-
+          The VEP result for each transcript the variant falls on, sorted by transcript identifier
+        range: ModVariantConsequence
+        multivalued: true
+        inlined_as_list: true
+
+  ModVariantConsequence:
+    description: >-
+      The predicted consequence of a variant on one transcript: the fields of a
+      PredictedVariantConsequence shown in the Genomic Variant Information and Variant
+      Molecular Consequences sections of the allele page, with each object reduced to its
+      identifier or name.
+    attributes:
+      transcript_identifier:
+        description: >-
+          Accession of the transcript, or its Alliance identifier when it has none
+        required: true
+        examples:
+          - value: NM_131322.2
+      transcript_name:
+        description: Name of the transcript
+        examples:
+          - value: NM_131322.2
+      transcript_type_name:
+        description: Name of the SOTerm for the transcript type
+        examples:
+          - value: mRNA
+      gene_identifier:
+        description: Primary external ID of the gene the transcript belongs to
+        examples:
+          - value: ZFIN:ZDB-GENE-980526-280
+      gene_symbol:
+        description: Symbol of the gene the transcript belongs to
+        examples:
+          - value: dlx3b
+      vep_impact_name:
+        description: VEP predicted impact of the variant on the transcript
+        required: true
+        notes:
+          - "permissible_values: HIGH, MODERATE, LOW, MODIFIER"
+      vep_consequence_names:
+        description: Names of the SOTerms for the VEP consequences
+        required: true
+        multivalued: true
+        examples:
+          - value: start_lost
+      polyphen_prediction_name:
+        description: PolyPhen-2 prediction
+        notes:
+          - "permissible_values: possibly_damaging, probably_damaging, benign"
+      polyphen_score:
+        description: PolyPhen-2 score between 0 and 1
+        range: float
+      sift_prediction_name:
+        description: SIFT prediction
+        notes:
+          - "permissible_values: deleterious, tolerated"
+      sift_score:
+        description: SIFT score between 0 and 1
+        range: float
+      amino_acid_reference:
+        description: Reference genome amino acid sequence at the variant position
+      amino_acid_variant:
+        description: Variant amino acid sequence at the variant position
+      codon_reference:
+        description: >-
+          Reference sequence of the codon(s) affected by the variant: bases outside the
+          variant region are in lower case, those within in upper case (e.g. cTa)
+      codon_variant:
+        description: >-
+          Variant sequence of the codon(s) affected by the variant: bases outside the
+          variant region are in lower case, those within in upper case (e.g. cAa)
+      calculated_cdna_start:
+        description: Start of the variant in cDNA coordinates, as calculated by VEP
+        range: integer
+      calculated_cdna_end:
+        description: End of the variant in cDNA coordinates, as calculated by VEP
+        range: integer
+      calculated_cds_start:
+        description: Start of the variant in CDS coordinates, as calculated by VEP
+        range: integer
+      calculated_cds_end:
+        description: End of the variant in CDS coordinates, as calculated by VEP
+        range: integer
+      calculated_protein_start:
+        description: Start of the variant in protein amino acid coordinates, as calculated by VEP
+        range: integer
+      calculated_protein_end:
+        description: End of the variant in protein amino acid coordinates, as calculated by VEP
+        range: integer
+      hgvs_coding_nomenclature:
+        description: HGVSc nomenclature of the variant on the transcript
+      hgvs_protein_nomenclature:
+        description: HGVSp nomenclature of the variant on the protein
+      intron_exon_location:
+        description: >-
+          The exon(s) and/or intron(s) of the transcript the variant falls in, each as
+          number/total
+        examples:
+          - value: Exon 1/3
+          - value: "Exon 2/5 : Intron 2/4"

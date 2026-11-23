@@ -258,8 +258,8 @@ classes:
       relation:
         range: VocabularyTerm
         notes: >-
-          The relation should be a VocabularyTerm with one of the following
-          values - 'has_part' (BFO:0000051). CV: 'Construct Cassette Association Relation'
+          The relation should be a VocabularyTerm with a value from the controlled
+          vocabulary: 'Construct Cassette Association Relation'
       related_notes:
         required: false
 
