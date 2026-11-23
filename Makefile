@@ -208,6 +208,7 @@ SCHEMA_TEST_EXAMPLES := \
 	genome_assembly_test \
 	high_throughput_expression_test \
 	ontology_closure_test \
+	pathway_ingest_test \
 	phenotype_agm_test \
 	phenotype_allele_test \
 	phenotype_gene_test \
