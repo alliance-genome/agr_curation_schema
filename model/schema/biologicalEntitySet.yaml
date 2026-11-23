@@ -174,10 +174,11 @@ classes:
       organism that brings about a particular biological outcome.
     is_a: BiologicalEntitySet
     notes: >-
-      Each pathway is expected to carry exactly one related_notes entry of type 'summary',
+      Each FlyBase pathway is expected to carry exactly one related_notes entry of type 'summary',
       giving a curator-written textual description of the pathway. This cannot be
       expressed in the schema, as LinkML cannot require a note of a particular type,
-      and so is enforced at load.
+      and so could be enforced at load for FlyBase specifically. Not all MODs provide a 
+      pathway summary, so it can't be a universal requirement.
     slots:
       - pathway_type
       - pathway_image_filename
