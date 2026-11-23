@@ -1,0 +1,34 @@
+{
+  "linkml_version": "2.19.0",
+  "pcr_product_ingest_set": [
+    {
+      "internal": false,
+      "mod_internal_id": "WB:EXAMPLE_PCR_SUCCESS",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "WB"
+      },
+      "name": "Illustrative amplification outcome: success",
+      "pcr_amplification_successful": true
+    },
+    {
+      "internal": false,
+      "mod_internal_id": "WB:EXAMPLE_PCR_UNSUCCESSFUL",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "WB"
+      },
+      "name": "Illustrative amplification outcome: unsuccessful",
+      "pcr_amplification_successful": false
+    },
+    {
+      "internal": false,
+      "mod_internal_id": "WB:EXAMPLE_PCR_UNRECORDED",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "WB"
+      },
+      "name": "Illustrative amplification outcome: unrecorded"
+    }
+  ]
+}

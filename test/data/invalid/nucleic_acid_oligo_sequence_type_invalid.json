@@ -1,0 +1,16 @@
+{
+  "linkml_version": "2.19.0",
+  "oligo_ingest_set": [
+    {
+      "internal": false,
+      "primary_external_id": "FB:EXAMPLE_FORWARD_OLIGO",
+      "data_provider_dto": {
+        "internal": false,
+        "source_organization_abbreviation": "FB"
+      },
+      "oligo_sequence": [
+        "ATGC"
+      ]
+    }
+  ]
+}
